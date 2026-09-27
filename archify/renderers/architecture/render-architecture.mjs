@@ -582,16 +582,21 @@ function validateArchitecture() {
       });
       problems.push(message);
     }
-    const estLabelW = textUnits(c.label) * typography(6.6);
-    if (estLabelW > c.width + 8) {
-      const message = `Label "${c.label}" (~${Math.round(estLabelW)}px) is wider than component "${c.id}" (${c.width}px) — shorten the label or widen size.`;
+    const labelWidth = typographyScale === 1 ? c.width + 8 : availableNodeTextWidth(brandLabelFitWidth(c, c.width));
+    const minimumWidth = typographyScale === 1
+      ? textUnits(c.label) * typography(6.6)
+      : minimumNodeTextWidth(c.label, typography(8));
+    if (minimumWidth > labelWidth) {
+      const message = typographyScale === 1
+        ? `Label "${c.label}" (~${Math.round(minimumWidth)}px) is wider than component "${c.id}" (${c.width}px) — shorten the label or widen size.`
+        : `Label "${c.label}" needs ~${Math.ceil(minimumWidth)}px at the ${typography(8)}px legible minimum, but component "${c.id}" provides ${labelWidth}px — shorten the label or widen size.`;
       diagnostics.push({
         code: 'architecture/component-label-overflow', severity: 'error', message,
         subject: { diagramType: 'architecture', nodeId: c.id },
-        evidence: { text: c.label, estimatedWidthPx: Math.round(estLabelW), availableWidthPx: c.width },
+        evidence: { text: c.label, estimatedWidthPx: Math.round(minimumWidth), availableWidthPx: labelWidth },
         supportedFixes: [
           `shorten component "${c.id}" label "${c.label}" while preserving its meaning`,
-          `or widen component "${c.id}" to at least ${Math.ceil(estLabelW - 8)}px`,
+          `or widen component "${c.id}" to at least ${Math.ceil(minimumWidth - 8)}px`,
         ],
       });
       problems.push(message);
@@ -1102,12 +1107,16 @@ function renderComponent(c) {
   const accent = componentText[c.type] || 't-muted';
   const cx = c.cx;
   const hasSub = c.sublabel != null && c.sublabel !== '';
-  const labelY = hasSub ? c.y + c.height / 2 - 2 : c.y + c.height / 2 + 4;
+  const labelY = typographyScale === 1
+    ? (hasSub ? c.y + c.height / 2 - 2 : c.y + c.height / 2 + 4)
+    : (hasSub ? c.y + c.height / 2 - typography(2) : c.y + c.height / 2 + typography(4));
+  const subY = typographyScale === 1 ? c.y + c.height / 2 + 14 : labelY + typography(16);
+  const tagY = typographyScale === 1 ? c.y + c.height - 8 : c.y + c.height - typography(5);
   const sub = hasSub
-    ? `\n        <text data-detail="context" x="${cx}" y="${c.y + c.height / 2 + 14}" class="t-muted" font-size="${fittedNodeFontSize(c.sublabel, c.width, componentTextFit.sublabelPreferred, componentTextFit.sublabelMinimum)}" text-anchor="middle">${esc(c.sublabel)}</text>`
+    ? `\n        <text data-detail="context" x="${cx}" y="${subY}" class="t-muted" font-size="${fittedNodeFontSize(c.sublabel, c.width, componentTextFit.sublabelPreferred, componentTextFit.sublabelMinimum)}" text-anchor="middle">${esc(c.sublabel)}</text>`
     : '';
   const tag = c.tag
-    ? `\n        <text data-detail="fine" x="${cx}" y="${c.y + c.height - 8}" class="${accent}" font-size="${fittedNodeFontSize(c.tag, c.width, componentTextFit.tagPreferred, componentTextFit.tagMinimum)}" text-anchor="middle">${esc(c.tag)}</text>`
+    ? `\n        <text data-detail="fine" x="${cx}" y="${tagY}" class="${accent}" font-size="${fittedNodeFontSize(c.tag, c.width, componentTextFit.tagPreferred, componentTextFit.tagMinimum)}" text-anchor="middle">${esc(c.tag)}</text>`
     : '';
   const brand = renderBrandMark(c, { x: c.x + c.width - 22, y: c.y + 6 });
   const labelFontSize = fittedNodeFontSize(c.label, brandLabelFitWidth(c, c.width), typography(11), typography(8));
