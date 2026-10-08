@@ -263,6 +263,12 @@ test('compare reports meta.translations changes as presentation changes', () => 
   assert.equal(receipt.summary.presentationChanged, true);
   assert.deepEqual(receipt.changes, { components: [], connections: [], boundaries: [] });
 
+  const embeddedMatch = fs.readFileSync(output, 'utf8')
+    .match(/<script id="archify-compare-receipt" type="application\/json">([\s\S]*?)<\/script>/);
+  assert.ok(embeddedMatch, 'embedded receipt missing');
+  const embeddedReceipt = JSON.parse(embeddedMatch[1]);
+  assert.equal(embeddedReceipt.summary.presentationChanged, true);
+
   const added = structuredClone(base);
   added.meta.translations['legend.architecture.database'] = 'Storage';
   const addReceipt = compareArchitecture(base, added);
