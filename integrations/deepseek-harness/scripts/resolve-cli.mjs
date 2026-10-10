@@ -70,11 +70,11 @@ export function resolveCliInvocation(command, args = [], options = {}) {
 }
 
 export function spawnCliSync(command, args, options) {
-  const invocation = resolveCliInvocation(command, args);
+  const invocation = resolveCliInvocation(command, args, { env: options?.env });
   return spawnSync(invocation.command, invocation.args, options);
 }
 
 export function spawnCli(command, args, options) {
-  const invocation = resolveCliInvocation(command, args);
+  const invocation = resolveCliInvocation(command, args, { env: options?.env });
   return spawn(invocation.command, invocation.args, options);
 }
