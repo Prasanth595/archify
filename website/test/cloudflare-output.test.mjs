@@ -64,3 +64,11 @@ test('Cloudflare output resolves nested-page assets against the HTML base', t =>
   fs.rmSync(path.join(root, 'site.css'));
   assert.throws(() => checkCloudflareOutput(root), /missing local target site\.css/);
 });
+
+for (const markup of ["<meta name='robots' content='noindex'>", '<meta content=noindex name=robots>', '<META NAME="ROBOTS" CONTENT="NOINDEX,nofollow">']) {
+  test(`Cloudflare sitemap rejects semantic noindex regardless of HTML quoting: ${markup}`, t => {
+    const root = fixture(t);
+    fs.appendFileSync(path.join(root, 'guide.html'), markup);
+    assert.throws(() => checkCloudflareOutput(root), /Noindex sitemap page/);
+  });
+}
