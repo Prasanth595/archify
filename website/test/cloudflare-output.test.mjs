@@ -64,3 +64,11 @@ test('Cloudflare output resolves nested-page assets against the HTML base', t =>
   fs.rmSync(path.join(root, 'site.css'));
   assert.throws(() => checkCloudflareOutput(root), /missing local target site\.css/);
 });
+
+test('Cloudflare output checks the video poster shown before playback', t => {
+  const root = fixture(t);
+  fs.appendFileSync(path.join(root, 'index.html'), '<video poster="preview.png"></video>');
+  assert.throws(() => checkCloudflareOutput(root), /index\.html: missing local target preview\.png/);
+  fs.writeFileSync(path.join(root, 'preview.png'), 'poster fixture');
+  assert.equal(checkCloudflareOutput(root), 11);
+});

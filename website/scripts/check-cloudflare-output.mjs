@@ -35,7 +35,7 @@ export function checkCloudflareOutput(root) {
     const baseUrl = new URL(findBase(document) || documentUrl, documentUrl);
     const visit = node => {
       for (const { name, value } of node.attrs ?? []) {
-        if (!['src', 'href'].includes(name) || !value || value.startsWith('#')) continue;
+        if (!['src', 'href', 'poster'].includes(name) || !value || value.startsWith('#')) continue;
         const url = new URL(value, baseUrl);
         if (url.origin !== 'https://archify.si') continue;
         const pathname = decodeURIComponent(url.pathname);
