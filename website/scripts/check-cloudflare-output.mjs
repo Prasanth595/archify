@@ -64,7 +64,7 @@ export function checkCloudflareOutput(root) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');
     const hasCanonical = node => {
       const attributes = Object.fromEntries((node.attrs ?? []).map(({ name, value }) => [name, value]));
-      return (node.tagName === 'link' && (attributes.rel ?? '').toLowerCase().split(/\s+/).includes('canonical')
+      return (node.tagName === 'link' && (attributes.rel ?? '').toLowerCase().split(/[ \t\n\f\r]+/).includes('canonical')
         && attributes.href === location)
         || (node.childNodes ?? []).some(hasCanonical);
     };
