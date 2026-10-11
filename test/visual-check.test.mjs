@@ -387,6 +387,41 @@ test('visual-check disables the Chrome sandbox only for root or an explicit envi
   assert.equal(root.includes('--no-sandbox'), true);
 });
 
+test('visual-check keeps Windows Chrome and Edge in the process holding the DevTools pipe', async () => {
+  const profileRoot = path.join(tmp, 'windows-chrome-profile');
+  const relaunchSwitches = ['--do-not-de-elevate', '--edge-skip-compat-layer-relaunch'];
+  const windows = chromeVisualBrowserArgs(profileRoot, { platform: 'win32', env: {}, getuid: null });
+  for (const flag of relaunchSwitches) assert.ok(windows.includes(flag), flag);
+  assert.ok(windows.includes('--remote-debugging-pipe'));
+  assert.equal(windows.includes('--no-sandbox'), false);
+  for (const platform of ['darwin', 'linux']) {
+    const args = chromeVisualBrowserArgs(profileRoot, { platform, env: {}, getuid: () => 1001 });
+    assert.deepEqual(windows.filter((arg) => !relaunchSwitches.includes(arg)), args);
+  }
+
+  // Exercise the constructor's actual spawn boundary as well as the argument builder.
+  const child = fakeChromeChild();
+  let launched;
+  const browser = new ChromeVisualBrowser('/fake/msedge.exe', {
+    platform: 'win32', env: {}, getuid: null,
+    spawnImpl: (executable, args, options) => {
+      launched = { executable, args, options };
+      return child;
+    },
+  });
+  const attached = browser.sessionPromise.catch(() => {});
+  try {
+    assert.equal(launched.executable, '/fake/msedge.exe');
+    for (const flag of relaunchSwitches) assert.ok(launched.args.includes(flag), flag);
+    assert.ok(launched.args.includes(`--user-data-dir=${browser.profileRoot}`));
+    assert.deepEqual(launched.options.stdio, ['ignore', 'ignore', 'pipe', 'pipe', 'pipe']);
+  } finally {
+    await browser.close();
+    await attached;
+  }
+  assert.equal(fs.existsSync(browser.profileRoot), false);
+});
+
 test('Windows browser launch removes only the standalone inherited app-health layer', async () => {
   for (const [key, layer] of [
     ['__COMPAT_LAYER', 'DetectorsAppHealth'],
@@ -418,12 +453,12 @@ test('Windows browser launch removes only the standalone inherited app-health la
         Object.entries(env).filter(([name]) => name !== key),
       ));
       assert.equal(env[key], layer, 'the parent environment is untouched');
-      assert.deepEqual(launched.args, chromeVisualBrowserArgs(browser.profileRoot, { env, getuid: null }));
+      assert.deepEqual(launched.args, chromeVisualBrowserArgs(browser.profileRoot, { platform: 'win32', env, getuid: null }));
       assert.ok(launched.args.includes('--remote-debugging-pipe'));
       assert.ok(launched.args.includes(`--user-data-dir=${browser.profileRoot}`));
       assert.equal(launched.args.includes('--no-sandbox'), false);
-      assert.equal(launched.args.includes('--do-not-de-elevate'), false);
-      assert.equal(launched.args.includes('--edge-skip-compat-layer-relaunch'), false);
+      assert.equal(launched.args.includes('--do-not-de-elevate'), true);
+      assert.equal(launched.args.includes('--edge-skip-compat-layer-relaunch'), true);
       assert.deepEqual(launched.options.stdio, ['ignore', 'ignore', 'pipe', 'pipe', 'pipe']);
     } finally {
       await browser.close();
@@ -513,7 +548,7 @@ test('Windows pipe startup failure provides a non-elevated remedy without claimi
       assert.match(error.message, /receivedBytes=0/);
       assert.match(error.message, /Windows browser startup may have relaunched/);
       assert.match(error.message, /non-elevated PowerShell/);
-      assert.match(error.message, /does not disable browser de-elevation or the sandbox/);
+      assert.match(error.message, /an elevated parent keeps the browser elevated/);
       return true;
     });
     child.stdio[4].end();

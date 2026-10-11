@@ -1511,6 +1511,7 @@ class PipeCdp {
 }
 
 export function chromeVisualBrowserArgs(profileRoot, {
+  platform = process.platform,
   env = process.env,
   getuid = typeof process.getuid === 'function' ? () => process.getuid() : null,
 } = {}) {
@@ -1533,6 +1534,10 @@ export function chromeVisualBrowserArgs(profileRoot, {
     `--user-data-dir=${profileRoot}`,
     'about:blank',
   ];
+  // Windows browser relaunches do not inherit the DevTools pipe handles.
+  // Keep Chrome/Edge in the launched process, including elevated shells and
+  // Edge's inherited AppCompat layer. These switches do not disable the sandbox.
+  if (platform === 'win32') args.unshift('--do-not-de-elevate', '--edge-skip-compat-layer-relaunch');
   const rootUser = typeof getuid === 'function' && getuid() === 0;
   const sandboxOptOut = env?.[CHROME_NO_SANDBOX_ENV] === '1';
   if (rootUser || sandboxOptOut) args.unshift('--no-sandbox');
@@ -1577,7 +1582,7 @@ export class ChromeVisualBrowser {
     this.profileRoot = this.#profile.path;
     this.shutdownTimeoutMs = shutdownTimeoutMs;
     this.stderr = '';
-    const args = chromeVisualBrowserArgs(this.profileRoot, { env, getuid });
+    const args = chromeVisualBrowserArgs(this.profileRoot, { platform, env, getuid });
     this.child = spawnImpl(chromePath, args, {
       stdio: ['ignore', 'ignore', 'pipe', 'pipe', 'pipe'],
       env: browserEnvironment(env, platform),
@@ -1601,7 +1606,7 @@ export class ChromeVisualBrowser {
           platform === 'win32' && this.cdp?.receivedBytes === 0
             ? 'Windows browser startup may have relaunched before connecting to the DevTools pipe. '
               + 'Retry from a non-elevated PowerShell opened normally, outside an elevated or compatibility-mode parent. '
-              + 'Archify does not disable browser de-elevation or the sandbox to preserve pipe handles.'
+              + 'Archify suppresses browser de-elevation on Windows; an elevated parent keeps the browser elevated. These flags do not disable the sandbox.'
             : '',
         ].filter(Boolean).join('\n');
       },

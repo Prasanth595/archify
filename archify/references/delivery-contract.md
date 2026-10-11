@@ -475,12 +475,15 @@ pipe before any response arrives. Archify removes a standalone
 `__COMPAT_LAYER=DetectorsAppHealth` from the browser child's environment only
 (case-insensitive name and value); the parent environment, unknown layers,
 combined layers, and privilege-related compatibility settings are unchanged.
-This targets the reported non-elevated Git Bash app-health case, not every
-AppCompat mode. Elevated-shell relaunches remain unsupported: rerun from a
-non-elevated PowerShell opened normally, outside an elevated or compatibility-mode
-parent. Archify does not suppress browser de-elevation or disable the sandbox
-as a relaunch workaround. A zero-response startup diagnostic suggests this
-remedy without claiming that elevation or AppCompat caused every pipe failure.
+This environment cleanup targets the reported non-elevated Git Bash app-health
+case, not every AppCompat mode. Windows launches also use
+`--do-not-de-elevate` and `--edge-skip-compat-layer-relaunch` to preserve the
+process holding the DevTools pipes. An elevated parent therefore keeps the
+browser elevated; these flags do not disable the sandbox. Native Windows
+validation of elevated and AppCompat scenarios remains pending. A zero-response
+startup diagnostic suggests retrying from a non-elevated PowerShell opened
+normally, outside an elevated or compatibility-mode parent, without claiming
+that elevation or AppCompat caused every pipe failure.
 
 A provenance failure exits before browser inspection and persists a failed
 browser-check receipt bound to the attempted artifact. If the failure receipt
