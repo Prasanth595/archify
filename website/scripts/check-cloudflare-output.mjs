@@ -69,7 +69,7 @@ export function checkCloudflareOutput(root) {
         && (attributes.content ?? '').toLowerCase().split(/[\s,]+/).includes('noindex'))
         || (node.childNodes ?? []).some(hasNoindex);
     };
-    assert.ok(!hasNoindex(parse(html)), `Noindex sitemap page: ${location}`);
+    assert.ok(!hasNoindex(parse(html)) && !hasNoindex(parse(html, { scriptingEnabled: false })), `Noindex sitemap page: ${location}`);
   }
   assert.equal(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8').includes('Sitemap: https://archify.si/sitemap.xml'), true);
   assert.match(fs.readFileSync(path.join(root, '_headers'), 'utf8'), /\/\*\.json\n  X-Robots-Tag: noindex/);

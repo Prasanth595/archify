@@ -72,3 +72,12 @@ for (const markup of ["<meta name='robots' content='noindex'>", '<meta content=n
     assert.throws(() => checkCloudflareOutput(root), /Noindex sitemap page/);
   });
 }
+
+for (const content of ['noindex', 'index,follow']) {
+  test(`Cloudflare sitemap inspects head noscript robots metadata: ${content}`, t => {
+    const root = fixture(t);
+    fs.writeFileSync(path.join(root, 'guide.html'), `<!doctype html><head><title>Guide</title><link rel="canonical" href="https://archify.si/guide"><noscript><meta name="robots" content="${content}"></noscript></head><body>Guide</body>`);
+    if (content === 'noindex') assert.throws(() => checkCloudflareOutput(root), /Noindex sitemap page/);
+    else assert.equal(checkCloudflareOutput(root), 11);
+  });
+}
