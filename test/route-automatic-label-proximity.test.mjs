@@ -1,5 +1,10 @@
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { placeAutomaticLabels } from '../archify/renderers/shared/automatic-labels.mjs';
 import { rectsOverlap } from '../archify/renderers/shared/geometry.mjs';
 
@@ -15,4 +20,40 @@ test('blocked own-route slots retain a diagnostic collision instead of orphaning
     assert.deepEqual(bounded, label, JSON.stringify(policy));
     assert.equal(rectsOverlap(bounded, obstacle), true, 'validation must retain the original repairable collision');
   }
+});
+
+test('Architecture showcase caller keeps a blocked label attached to its own route', t => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-route-label-'));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const input = path.join(directory, 'source.json');
+  const diagram = {
+    schema_version: 1, diagram_type: 'architecture',
+    meta: { title: 'Blocked label', output: 'diagram.html', quality_profile: 'showcase', viewBox: [560, 320] },
+    components: [
+      { id: 'source', type: 'backend', label: 'Source', pos: [0, 100], size: [120, 60] },
+      { id: 'destination', type: 'database', label: 'Destination', pos: [400, 100], size: [120, 60] },
+      { id: 'blocker', type: 'backend', label: 'Blocked corridor', pos: [128, 60], size: [264, 140] },
+    ],
+    // The authored corridor is deliberately blocked: validation should explain
+    // that defect, rather than making its unpinned label look unrelated.
+    connections: [{ id: 'read', from: 'source', to: 'destination', label: 'Read result', via: [[200, 130], [300, 130]] }],
+  };
+  const source = JSON.stringify(diagram);
+  fs.writeFileSync(input, source);
+  const cli = fileURLToPath(new URL('../archify/bin/archify.mjs', import.meta.url));
+  const result = spawnSync(process.execPath, [cli, 'validate', 'architecture', input, '--layout-json'], { encoding: 'utf8' });
+  assert.equal(result.stderr, '');
+  assert.equal(fs.readFileSync(input, 'utf8'), source);
+  const report = JSON.parse(result.stdout);
+  assert.equal(report.labels.length, 1);
+  const [label] = report.labels;
+  assert.equal(label.text, 'Read result');
+  const blocker = report.components.find(component => component.id === 'blocker');
+  const originalCollision = rectsOverlap(label, blocker)
+    && report.diagnostics?.some(diagnostic => /Label "Read result" overlaps component "blocker"/.test(diagnostic.message));
+  // This is the distance from the label rectangle to the authored horizontal
+  // route, not an assertion about an automatically selected label coordinate.
+  const ownRouteDistance = Math.max(label.y - 130, 130 - label.y - label.height, 0);
+  assert.ok(originalCollision || ownRouteDistance <= label.height * 2,
+    `label lost its repair diagnostic and moved ${ownRouteDistance}px away from its route`);
 });
