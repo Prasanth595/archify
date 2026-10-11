@@ -30,9 +30,9 @@ test('third-party notices cover every recorded individual mark license', () => {
   const notices = fs.readFileSync(path.join(skillRoot, 'THIRD_PARTY_NOTICES.md'), 'utf8');
   const licensedMarks = BRAND_MARKS.filter((mark) => mark.provenance?.license);
 
-  assert.equal(THIRD_PARTY_NOTICE_DISCLOSURE_COUNT, 39, 'notice contract changed without review');
+  assert.equal(THIRD_PARTY_NOTICE_DISCLOSURE_COUNT, 43, 'notice contract changed without review');
   assert.deepEqual(validateThirdPartyNotices(notices), { ok: true, missing: [] });
-  assert.equal(licensedMarks.length, 8, 'pinned Simple Icons license inventory changed');
+  assert.equal(licensedMarks.length, 9, 'pinned Simple Icons license inventory changed');
   for (const mark of licensedMarks) {
     assert.match(notices, new RegExp(`\\| ${mark.title.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')} \\|`));
     assert.ok(notices.includes(mark.provenance.source), `${mark.id} source must be disclosed`);
@@ -128,7 +128,7 @@ function nodeBlock(html, id) {
 }
 
 test('generated catalog exposes a substantial, unique, provenance-backed preset library', () => {
-  assert.equal(BRAND_MARKS.length, 107);
+  assert.equal(BRAND_MARKS.length, 108);
   assert.equal(new Set(BRAND_MARKS.map((mark) => mark.id)).size, BRAND_MARKS.length);
   for (const mark of BRAND_MARKS) {
     assert.match(mark.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
@@ -145,6 +145,7 @@ test('brand discovery resolves model names, aliases, domains, and Chinese channe
     ['GPT', 'openai'],
     ['Gemini', 'google-gemini'],
     ['github.com', 'github'],
+    ['codeberg.org', 'codeberg'],
     ['微信', 'wechat'],
   ]) {
     const result = spawnSync(process.execPath, [cli, 'brands', query, '--json'], {
