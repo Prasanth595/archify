@@ -754,3 +754,20 @@ for (const fontPath of [null, 'archify/assets/template.html', 'archify/examples/
     } finally { fs.rmSync(root, { recursive: true, force: true }); }
   });
 }
+
+test('clean staging derives the font disclosure requirement from staged contents', () => {
+  const root = repositoryFixture();
+  const destination = path.join(root, 'staged-skill');
+  try {
+    const legacy = canonicalNotices.replace(/## JetBrains Mono[\s\S]*?(?=\n## |$)/, '');
+    write(root, 'THIRD_PARTY_NOTICES.md', legacy);
+    write(root, 'archify/THIRD_PARTY_NOTICES.md', legacy);
+    write(root, 'archify/assets/template.html', '@font-face { src: url(data:font/woff2;base64,fixture); }');
+    write(root, 'archify/assets/JetBrainsMono-OFL.txt', 'fixture license');
+    git(root, ['add', '.']);
+    assert.throws(
+      () => stageCleanSkill({ repoRoot: root, destination, noticeOptions: { embeddedFonts: false } }),
+      /missing required disclosure: JetBrains Mono/,
+    );
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});

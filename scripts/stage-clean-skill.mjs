@@ -439,7 +439,7 @@ function cleanupOwnedStaging(ownership) {
   }
 }
 
-function validateThirdPartyNoticeInputs(repoRoot, packageEntries, noticeOptions) {
+function validateThirdPartyNoticeInputs(repoRoot, packageEntries, { allowLegacyCodeberg = false } = {}) {
   const packagedEntry = packageEntries.find((entry) => (
     entry.relative === 'archify/THIRD_PARTY_NOTICES.md'
   ));
@@ -462,7 +462,10 @@ function validateThirdPartyNoticeInputs(repoRoot, packageEntries, noticeOptions)
     throw new Error('embedded viewer font requires assets/JetBrainsMono-OFL.txt');
   }
   const packagedNotices = packagedEntry.content;
-  const options = { embeddedFonts, ...noticeOptions };
+  // The package contents determine whether the font disclosure is mandatory.
+  // Callers may preserve an immutable historical Codeberg disclosure, but may
+  // not weaken the computed font requirement.
+  const options = { embeddedFonts, allowLegacyCodeberg };
   assertThirdPartyNotices(repositoryNotices.toString('utf8'), 'repository THIRD_PARTY_NOTICES.md', options);
   assertThirdPartyNotices(packagedNotices.toString('utf8'), 'archify/THIRD_PARTY_NOTICES.md', options);
   if (!packagedNotices.equals(repositoryNotices)) {
