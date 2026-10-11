@@ -439,7 +439,7 @@ function cleanupOwnedStaging(ownership) {
   }
 }
 
-function validateThirdPartyNoticeInputs(repoRoot, packageEntries) {
+function validateThirdPartyNoticeInputs(repoRoot, packageEntries, noticeOptions) {
   const packagedEntry = packageEntries.find((entry) => (
     entry.relative === 'archify/THIRD_PARTY_NOTICES.md'
   ));
@@ -462,8 +462,9 @@ function validateThirdPartyNoticeInputs(repoRoot, packageEntries) {
     throw new Error('embedded viewer font requires assets/JetBrainsMono-OFL.txt');
   }
   const packagedNotices = packagedEntry.content;
-  assertThirdPartyNotices(repositoryNotices.toString('utf8'), 'repository THIRD_PARTY_NOTICES.md', { embeddedFonts });
-  assertThirdPartyNotices(packagedNotices.toString('utf8'), 'archify/THIRD_PARTY_NOTICES.md', { embeddedFonts });
+  const options = { embeddedFonts, ...noticeOptions };
+  assertThirdPartyNotices(repositoryNotices.toString('utf8'), 'repository THIRD_PARTY_NOTICES.md', options);
+  assertThirdPartyNotices(packagedNotices.toString('utf8'), 'archify/THIRD_PARTY_NOTICES.md', options);
   if (!packagedNotices.equals(repositoryNotices)) {
     throw new Error('archify/THIRD_PARTY_NOTICES.md must byte-match the repository notice');
   }
@@ -485,7 +486,7 @@ function validateRuntimeDependencies(packageEntries) {
   }
 }
 
-export function stageCleanSkill({ repoRoot = scriptRoot, destination, modeManifest = null }) {
+export function stageCleanSkill({ repoRoot = scriptRoot, destination, modeManifest = null, noticeOptions = {} }) {
   const resolvedRoot = fs.realpathSync(path.resolve(repoRoot));
   if (!destination) throw new Error('clean Skill staging requires a destination');
   const resolvedDestination = path.resolve(destination);
@@ -544,7 +545,7 @@ export function stageCleanSkill({ repoRoot = scriptRoot, destination, modeManife
   // Current packages must contain every imported runtime, while historical
   // snapshots that predate a runtime remain reproducible by the DSH adapter.
   validateRuntimeDependencies(packageEntries);
-  validateThirdPartyNoticeInputs(resolvedRoot, packageEntries);
+  validateThirdPartyNoticeInputs(resolvedRoot, packageEntries, noticeOptions);
   cleanPackageManifestEntry(packageEntries);
 
   const modes = Object.fromEntries(

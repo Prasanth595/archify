@@ -47,11 +47,14 @@ const FONT_DISCLOSURES = [
   ['embedded-font treatment', 'embed the JetBrains Mono variable font\nsubsets served by Google Fonts'],
 ];
 
-export function validateThirdPartyNotices(content, { embeddedFonts = true } = {}) {
+export function validateThirdPartyNotices(content, { embeddedFonts = true, allowLegacyCodeberg = false } = {}) {
   if (typeof content !== 'string' || content.length === 0) {
     return { ok: false, missing: ['non-empty notice'] };
   }
-  const missing = [...REQUIRED_DISCLOSURES, ...(embeddedFonts ? FONT_DISCLOSURES : [])]
+  const requiredDisclosures = allowLegacyCodeberg
+    ? REQUIRED_DISCLOSURES.filter(([label]) => !label.startsWith('Codeberg '))
+    : REQUIRED_DISCLOSURES;
+  const missing = [...requiredDisclosures, ...(embeddedFonts ? FONT_DISCLOSURES : [])]
     .filter(([, fragment]) => !content.includes(fragment))
     .map(([label]) => label);
   return { ok: missing.length === 0, missing };

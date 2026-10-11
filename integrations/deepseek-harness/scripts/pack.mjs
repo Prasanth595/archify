@@ -21,7 +21,13 @@ const snapshot = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-dsh-source-'));
 try {
   stageAdapter(stage);
   releaseSnapshot(snapshot);
-  stageCleanSkill({ repoRoot: snapshot, destination: path.join(stage, 'skills', 'archify') });
+  // DSH 1.0 is pinned to a pre-Codeberg source commit. Its immutable payload
+  // must validate against the disclosures that existed at that release point.
+  stageCleanSkill({
+    repoRoot: snapshot,
+    destination: path.join(stage, 'skills', 'archify'),
+    noticeOptions: { allowLegacyCodeberg: true },
+  });
   fs.copyFileSync(path.join(snapshot, 'LICENSE'), path.join(stage, 'LICENSE'));
 
   const packed = spawnCliSync('npm', ['pack', '--json', '--ignore-scripts', '--pack-destination', stage], {
