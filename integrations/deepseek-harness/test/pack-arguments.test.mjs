@@ -4,19 +4,19 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const integrationRoot = fileURLToPath(new URL('../', import.meta.url));
 const pack = path.join(integrationRoot, 'scripts/pack.mjs');
 
 test('DSH pack rejects missing output values before allocating a stage', (t) => {
-  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-pack-arguments-'));
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify pack arguments '));
   t.after(() => fs.rmSync(scratch, { recursive: true, force: true }));
   const preload = path.join(scratch, 'no-staging.mjs');
   fs.writeFileSync(preload, `import fs from 'node:fs';
 fs.mkdtempSync = () => { throw new Error('STAGING_STARTED'); };
 `);
-  const run = (args) => spawnSync(process.execPath, ['--import', preload, pack, ...args], {
+  const run = (args) => spawnSync(process.execPath, ['--import', pathToFileURL(preload).href, pack, ...args], {
     cwd: scratch, encoding: 'utf8',
   });
   for (const args of [['--out'], ['--out', '--json'], ['--out', '']]) {
