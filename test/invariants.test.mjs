@@ -54,6 +54,18 @@ test('invariants reject references to unknown elements with a diagnostic', () =>
   );
 });
 
+test('invariants reject duplicate stable IDs', () => {
+  const document = fixture('workflow');
+  document.invariants = [
+    { id: 'INV-1', statement: 'First statement.', constrains: [document.nodes[0].id] },
+    { id: 'INV-1', statement: 'Second statement.', constrains: [document.nodes[1].id] },
+  ];
+  assert.throws(
+    () => validateCrossCollectionContracts('workflow', document),
+    (error) => error.archifyDiagnostics?.some((diagnostic) => diagnostic.code === 'invariant/duplicate-id'),
+  );
+});
+
 test('invariants remain schema constrained before semantic validation', () => {
   const document = fixture('architecture');
   document.invariants = [{ id: 'INV-1', statement: '', constrains: [] }];

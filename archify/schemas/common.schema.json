@@ -125,7 +125,7 @@
           "focus": {
             "type": "array",
             "minItems": 1,
-            "items": { "$ref": "#/$defs/id" }
+            "items": { "type": "string", "$ref": "#/$defs/id" }
           },
           "note": { "type": "string", "maxLength": 140 }
         }
