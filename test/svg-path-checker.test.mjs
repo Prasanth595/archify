@@ -272,6 +272,26 @@ test('多子路径只以真实最后一段检测 marker-end，早期片段不产
   assert.equal(result.receipt.composition.metrics.arrowheadCollisions, 0);
 });
 
+test('public check does not attribute terminal Q arrowheads to earlier straight pieces', async t => {
+  const marker = '<defs><marker id="arrowhead" viewBox="0 0 7 7" refX="7" refY="3.5" markerWidth="7" markerHeight="7" orient="auto"><polygon points="0,0 7,3.5 0,7"/></marker></defs>';
+  for (const [left, right, collision] of [
+    ['M20 20H100Q140 20 140 60', 'M20 25H100Q100 140 140 140', false],
+    ['M20 20H100Q140 20 140 60L140 100', 'M20 25H100Q100 140 140 140L180 140', false],
+    ['M20 20H100Q140 20 140 60L140 100', 'M20 25H100Q145 25 145 60L145 100', true],
+    ['M20 20H80Q90 20 100 20', 'M20 25H80Q90 25 100 25', true],
+    ['M20 20H100L100.00001 20', 'M20 25H100L100.00001 25', true],
+  ]) {
+    const result = await check(t, marker
+      + arrow(left, { id: 'first', from: 'a', to: 'end', extra: 'fill="none" stroke="#111" stroke-width="1.5"' })
+      + arrow(right, { id: 'second', from: 'b', to: 'end', extra: 'fill="none" stroke="#111" stroke-width="1.5"' }), {
+      publicCli: true, rootAttrs: 'data-layout-contract="readable-v2"',
+    });
+    assert.equal(result.receipt.composition.metrics.arrowheadCollisions, Number(collision), `${left} / ${right}`);
+    if (collision) assert.equal(result.code, 1);
+    else assertPass(result);
+  }
+});
+
 test('末尾仅有 M 的子路径不把早期直线当作最终箭头', async t => {
   const result = await check(t, arrow('M20 20H100 M200 100', { from: 'a', to: 'end' })
     + arrow('M20 21H100 M200 200', { id: 'other', from: 'b', to: 'end' }), {
