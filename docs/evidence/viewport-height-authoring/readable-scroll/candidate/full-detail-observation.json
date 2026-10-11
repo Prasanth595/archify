@@ -1,0 +1,242 @@
+{
+  "conditions": "Supplemental actual Viewer camera: four zoom-in clicks from default, 1440x900 light still. Not the default acceptance state.",
+  "level": "full",
+  "cameraViewBox": "0 0 560 1832",
+  "resetButtonText": "FULL200%",
+  "notes": [
+    {
+      "text": "Batch B-042 covers account A-17 for the previous business day.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": -795,
+        "left": 304.5,
+        "width": 390.625,
+        "height": 61
+      }
+    },
+    {
+      "text": "Read the last signed closing balance before processing any entries.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": -524.9999389648438,
+        "left": 810,
+        "width": 365.40625,
+        "height": 94.00006103515625
+      }
+    },
+    {
+      "text": "The starting balance is 1250.00 and its revision is R-100.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": -255,
+        "left": 810,
+        "width": 390.625,
+        "height": 61.0001220703125
+      }
+    },
+    {
+      "text": "Deposits are selected by booking date and stable transaction identifiers.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 15,
+        "left": 810,
+        "width": 403.21875,
+        "height": 94.0001220703125
+      }
+    },
+    {
+      "text": "Deposit D-11 adds 250.00; deposit D-12 adds 100.00.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 285,
+        "left": 810,
+        "width": 315,
+        "height": 61
+      }
+    },
+    {
+      "text": "Withdrawals use the same day boundary as deposits.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 555,
+        "left": 810,
+        "width": 352.8125,
+        "height": 61
+      }
+    },
+    {
+      "text": "Withdrawal W-21 removes 80.00; withdrawal W-22 removes 20.00.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 825,
+        "left": 810,
+        "width": 378,
+        "height": 61
+      }
+    },
+    {
+      "text": "Adjustment J-31 adds a 5.00 fee reversal approved by finance.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 1095,
+        "left": 810,
+        "width": 390.625,
+        "height": 61
+      }
+    },
+    {
+      "text": "Approval AP-7 is attached to J-31 and must remain in the audit.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 1365,
+        "left": 810,
+        "width": 352.8125,
+        "height": 94
+      }
+    },
+    {
+      "text": "Duplicate transaction IDs stop publication rather than being silently skipped.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 1635,
+        "left": 810,
+        "width": 378,
+        "height": 94
+      }
+    },
+    {
+      "text": "D-11, D-12, W-21, W-22 and J-31 are distinct.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 1905.000244140625,
+        "left": 810,
+        "width": 390.625,
+        "height": 61.000244140625
+      }
+    },
+    {
+      "text": "A changed opening revision requires a complete batch restart.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 2175.000244140625,
+        "left": 810,
+        "width": 327.625,
+        "height": 94.000244140625
+      }
+    },
+    {
+      "text": "The opening revision remains R-100 throughout the calculation.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 2445.000244140625,
+        "left": 810,
+        "width": 352.8125,
+        "height": 94.000244140625
+      }
+    },
+    {
+      "text": "The proposed closing balance is 1505.00, not yet externally visible.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 2715.000244140625,
+        "left": 810,
+        "width": 390.625,
+        "height": 94.000244140625
+      }
+    },
+    {
+      "text": "Candidate C-42 is staged under batch B-042 with all five transactions.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 2985,
+        "left": 810,
+        "width": 378,
+        "height": 94.00048828125
+      }
+    },
+    {
+      "text": "Audit A-42 and the closing balance are committed atomically.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 3255,
+        "left": 810,
+        "width": 327.625,
+        "height": 94.00048828125
+      }
+    },
+    {
+      "text": "Closing revision R-101 binds balance 1505.00 and audit A-42.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 3525,
+        "left": 810,
+        "width": 390.625,
+        "height": 61.00048828125
+      }
+    },
+    {
+      "text": "The operator receives B-042, R-101 and A-42 for later investigation.",
+      "display": "block",
+      "opacity": "1",
+      "visibility": "visible",
+      "fill": "rgb(91, 100, 116)",
+      "box": {
+        "top": 3795,
+        "left": 304.5,
+        "width": 352.81256103515625,
+        "height": 94.00048828125
+      }
+    }
+  ]
+}

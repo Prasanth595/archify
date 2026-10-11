@@ -1,0 +1,182 @@
+--- base/first-draft.json (normalized formatting)
++++ candidate/first-draft.json (normalized formatting)
+@@ -26,10 +26,10 @@
+         40
+       ],
+       "size": [
+-        160,
++        130,
+         60
+       ],
+-      "type": "frontend"
++      "type": "external"
+     },
+     {
+       "id": "upload-api",
+@@ -39,46 +39,46 @@
+         40
+       ],
+       "size": [
+-        140,
++        170,
+         60
+       ],
+       "type": "backend"
+     },
+     {
++      "id": "original-store",
++      "label": "Object Store",
++      "pos": [
++        350,
++        210
++      ],
++      "size": [
++        170,
++        60
++      ],
++      "type": "database"
++    },
++    {
+       "id": "job-queue",
+       "label": "Job Queue",
+       "pos": [
+-        740,
++        650,
+         40
+       ],
+       "size": [
+-        150,
++        175,
+         60
+       ],
+       "type": "messagebus"
+     },
+     {
+-      "id": "object-store",
+-      "label": "Object Store",
+-      "pos": [
+-        350,
+-        220
+-      ],
+-      "size": [
+-        140,
+-        60
+-      ],
+-      "type": "database"
+-    },
+-    {
+       "id": "transform-worker",
+       "label": "Transform Worker",
+       "pos": [
+-        740,
+-        220
++        650,
++        210
+       ],
+       "size": [
+-        150,
++        175,
+         60
+       ],
+       "type": "backend"
+@@ -87,11 +87,11 @@
+       "id": "result-store",
+       "label": "Result Store",
+       "pos": [
+-        970,
+-        220
++        900,
++        210
+       ],
+       "size": [
+-        110,
++        150,
+         60
+       ],
+       "type": "database"
+@@ -101,7 +101,7 @@
+       "label": "Notification Service",
+       "pos": [
+         40,
+-        220
++        350
+       ],
+       "size": [
+         190,
+@@ -113,38 +113,40 @@
+   "connections": [
+     {
+       "from": "browser",
+-      "id": "https-upload",
++      "id": "upload-request",
+       "label": "HTTPS upload",
+       "to": "upload-api",
+       "variant": "emphasis"
+     },
+     {
+       "from": "upload-api",
+-      "id": "write-original",
++      "id": "save-original",
+       "label": "original",
+-      "to": "object-store"
++      "to": "original-store"
+     },
+     {
+       "from": "upload-api",
+       "id": "enqueue-job",
+       "label": "enqueue",
+-      "to": "job-queue"
++      "to": "job-queue",
++      "variant": "dashed"
+     },
+     {
+       "from": "job-queue",
+       "id": "dispatch-job",
+       "label": "dispatch",
+-      "to": "transform-worker"
++      "to": "transform-worker",
++      "variant": "dashed"
+     },
+     {
+       "from": "transform-worker",
+       "id": "read-original",
+       "label": "read",
+-      "to": "object-store"
++      "to": "original-store"
+     },
+     {
+       "from": "transform-worker",
+-      "id": "write-result",
++      "id": "save-result",
+       "label": "result",
+       "to": "result-store"
+     },
+@@ -154,13 +156,16 @@
+       "id": "publish-completion",
+       "label": "complete",
+       "to": "notification-service",
+-      "toSide": "bottom"
++      "toSide": "right",
++      "variant": "dashed"
+     },
+     {
+       "from": "notification-service",
+-      "id": "send-result-url",
++      "fromSide": "top",
++      "id": "notify-browser",
+       "label": "result URL",
+-      "to": "browser"
++      "to": "browser",
++      "toSide": "bottom"
+     }
+   ],
+   "diagram_type": "architecture",
+@@ -171,7 +176,7 @@
+     "title": "Northstar image processing: upload, queue, transformation and notification",
+     "viewBox": [
+       1100,
+-      420
++      460
+     ]
+   },
+   "schema_version": 1

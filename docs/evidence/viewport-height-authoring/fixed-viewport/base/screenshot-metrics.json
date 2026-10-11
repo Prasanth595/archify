@@ -1,0 +1,55 @@
+{
+  "conditions": {
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "deviceScaleFactor": 1,
+    "motion": "still",
+    "detail": "read",
+    "reader": "default",
+    "scrollTop": 0
+  },
+  "metrics": {
+    "pageComposition": {
+      "bodyPaddingPx": 12,
+      "headerPx": 52,
+      "diagramChromePx": 78,
+      "svgPx": 514,
+      "cardsPx": 0,
+      "viewBoxHeight": 420
+    },
+    "innerWidth": 1440,
+    "innerHeight": 900,
+    "scrollWidth": 1440,
+    "scrollHeight": 900,
+    "resolvedTheme": "light",
+    "readerLayout": "adaptive",
+    "readerOverflow": null,
+    "readerFit": "authored-height",
+    "diagramType": "architecture",
+    "documentScrollUnclipped": true,
+    "readerWidth": 1376,
+    "diagramWidth": 1346,
+    "viewBoxWidth": 1100,
+    "workflowLanes": [],
+    "minimumProjectedNodeTextPx": 8,
+    "minimumProjectedNonEdgeTextPx": 11,
+    "minimumProjectedEdgeTextPx": 8,
+    "minimumProjectedNodeText": "HTTPS upload",
+    "minimumProjectedNodeTextDetail": "edge",
+    "minimumProjectedNodeTextOwner": {
+      "kind": "edge",
+      "id": "https-upload",
+      "from": "browser",
+      "to": "upload-api"
+    },
+    "hasLegend": true,
+    "hasNavigationDock": true,
+    "legendDockIntersectionArea": 0,
+    "dockStageIntersectionArea": 0,
+    "dockStageGap": 10,
+    "viewerChromeRequiredGap": 10,
+    "viewerChromeReserve": 54,
+    "viewerChromeActive": true
+  }
+}

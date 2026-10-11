@@ -1,0 +1,162 @@
+--- base/first-draft.json (normalized formatting)
++++ candidate/first-draft.json (normalized formatting)
+@@ -15,7 +15,7 @@
+       "label": "Load opening balance",
+       "note": "Read the last signed closing balance before processing any entries.",
+       "to": "ledger",
+-      "y": 260
++      "y": 250
+     },
+     {
+       "from": "ledger",
+@@ -24,7 +24,7 @@
+       "note": "The starting balance is 1250.00 and its revision is R-100.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 360
++      "y": 340
+     },
+     {
+       "from": "reconciler",
+@@ -32,7 +32,7 @@
+       "label": "Read deposits",
+       "note": "Deposits are selected by booking date and stable transaction identifiers.",
+       "to": "ledger",
+-      "y": 460
++      "y": 430
+     },
+     {
+       "from": "ledger",
+@@ -41,7 +41,7 @@
+       "note": "Deposit D-11 adds 250.00; deposit D-12 adds 100.00.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 560
++      "y": 520
+     },
+     {
+       "from": "reconciler",
+@@ -49,7 +49,7 @@
+       "label": "Read withdrawals",
+       "note": "Withdrawals use the same day boundary as deposits.",
+       "to": "ledger",
+-      "y": 660
++      "y": 610
+     },
+     {
+       "from": "ledger",
+@@ -58,7 +58,7 @@
+       "note": "Withdrawal W-21 removes 80.00; withdrawal W-22 removes 20.00.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 760
++      "y": 700
+     },
+     {
+       "from": "reconciler",
+@@ -66,7 +66,7 @@
+       "label": "Read adjustments",
+       "note": "Adjustment J-31 adds a 5.00 fee reversal approved by finance.",
+       "to": "ledger",
+-      "y": 860
++      "y": 790
+     },
+     {
+       "from": "ledger",
+@@ -75,15 +75,15 @@
+       "note": "Approval AP-7 is attached to J-31 and must remain in the audit.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 960
++      "y": 880
+     },
+     {
+       "from": "reconciler",
+-      "id": "check-duplicate-ids",
++      "id": "check-duplicates",
+       "label": "Check duplicate IDs",
+       "note": "Duplicate transaction IDs stop publication rather than being silently skipped.",
+       "to": "ledger",
+-      "y": 1060
++      "y": 970
+     },
+     {
+       "from": "ledger",
+@@ -92,7 +92,7 @@
+       "note": "D-11, D-12, W-21, W-22 and J-31 are distinct.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 1160
++      "y": 1060
+     },
+     {
+       "from": "reconciler",
+@@ -100,7 +100,7 @@
+       "label": "Check revision R-100",
+       "note": "A changed opening revision requires a complete batch restart.",
+       "to": "ledger",
+-      "y": 1260
++      "y": 1150
+     },
+     {
+       "from": "ledger",
+@@ -109,7 +109,7 @@
+       "note": "The opening revision remains R-100 throughout the calculation.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 1360
++      "y": 1240
+     },
+     {
+       "from": "reconciler",
+@@ -117,7 +117,7 @@
+       "label": "Write candidate close",
+       "note": "The proposed closing balance is 1505.00, not yet externally visible.",
+       "to": "ledger",
+-      "y": 1460
++      "y": 1330
+     },
+     {
+       "from": "ledger",
+@@ -126,7 +126,7 @@
+       "note": "Candidate C-42 is staged under batch B-042 with all five transactions.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 1560
++      "y": 1420
+     },
+     {
+       "from": "reconciler",
+@@ -135,7 +135,7 @@
+       "note": "Audit A-42 and the closing balance are committed atomically.",
+       "to": "ledger",
+       "variant": "emphasis",
+-      "y": 1660
++      "y": 1510
+     },
+     {
+       "from": "ledger",
+@@ -144,7 +144,7 @@
+       "note": "Closing revision R-101 binds balance 1505.00 and audit A-42.",
+       "to": "reconciler",
+       "variant": "return",
+-      "y": 1760
++      "y": 1600
+     },
+     {
+       "from": "reconciler",
+@@ -153,12 +153,12 @@
+       "note": "The operator receives B-042, R-101 and A-42 for later investigation.",
+       "to": "operator",
+       "variant": "return",
+-      "y": 1860
++      "y": 1690
+     }
+   ],
+   "meta": {
+     "locale": "en",
+-    "output": "ledger-batch-reconciliation.html",
++    "output": "ledger-reconciliation.html",
+     "quality_profile": "showcase",
+     "title": "Ledger batch reconciliation: staged checks and durable audit"
+   },

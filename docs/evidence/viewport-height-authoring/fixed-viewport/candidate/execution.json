@@ -1,0 +1,161 @@
+{
+  "sessionId": "candidate-fixed-viewport-authoring",
+  "skillRevision": "96ceea70197183673594567bc0c9e252eef14c9d",
+  "firstDraftSha256": "e633435a13a38276e2b62b72a621b93834af1ff533f8238a49183a04f9617ff8",
+  "finalDraftSha256": "e633435a13a38276e2b62b72a621b93834af1ff533f8238a49183a04f9617ff8",
+  "artifactSha256": "648f93056d2db13addfa3abba74e1ebd8adf9d4b807f2a678ac67d76f14d038f",
+  "finalizeAttempts": 1,
+  "finalizeExitCode": 0,
+  "contentGeometryRepairs": 0,
+  "preAuthoringEnvironmentRetries": 1,
+  "command": "$env:ARCHIFY_CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'; & '<NODE22>/node.exe' '<CANDIDATE_WORKTREE>/archify/bin/archify.mjs' finalize architecture candidate.json northstar.html --quality showcase --json",
+  "actions": [
+    {
+      "index": 1,
+      "kind": "exec",
+      "purpose": "Read unchanged task and SKILL.md",
+      "command": "Get-Content -LiteralPath '<EXPERIMENT_ROOT>/task-fixed-viewport.md'; Get-Content -LiteralPath '<CANDIDATE_WORKTREE>/archify/SKILL.md'",
+      "shell": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "sandbox": "use_default",
+      "outcome": "process-not-started",
+      "errorPath": "environment-retry-1.error.txt",
+      "exitCode": null
+    },
+    {
+      "index": 2,
+      "kind": "exec",
+      "purpose": "Retry task and SKILL read",
+      "command": "Get-Content -LiteralPath '<EXPERIMENT_ROOT>/task-fixed-viewport.md'; Get-Content -LiteralPath '<CANDIDATE_WORKTREE>/archify/SKILL.md'",
+      "sandbox": "require_escalated",
+      "exitCode": 0,
+      "reads": [
+        "<EXPERIMENT_ROOT>/task-fixed-viewport.md",
+        "<CANDIDATE_WORKTREE>/archify/SKILL.md"
+      ]
+    },
+    {
+      "index": 3,
+      "kind": "read",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/references/authoring-defaults.md",
+        "<CANDIDATE_WORKTREE>/archify/examples/web-app.architecture.json"
+      ],
+      "method": "PowerShell Get-Content",
+      "exitCode": 0,
+      "purpose": "Required bounded authoring defaults and shape example"
+    },
+    {
+      "index": 4,
+      "kind": "read",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/references/authoring-contract.md",
+        "<CANDIDATE_WORKTREE>/archify/schemas/architecture.schema.json",
+        "<CANDIDATE_WORKTREE>/archify/schemas/common.schema.json"
+      ],
+      "method": "PowerShell Get-Content",
+      "exitCode": 0,
+      "outputTruncated": true,
+      "purpose": "Viewport contract and field definitions"
+    },
+    {
+      "index": 5,
+      "kind": "read",
+      "path": "<CANDIDATE_WORKTREE>/archify/references/authoring-contract.md",
+      "section": "Viewport height budget through Repair order",
+      "method": "PowerShell selected heading range",
+      "exitCode": 0,
+      "outputTruncated": false,
+      "purpose": "Recover complete required viewport section before writing"
+    },
+    {
+      "index": 6,
+      "kind": "write",
+      "paths": [
+        "candidate.json",
+        "first-draft.json",
+        "attempt-1.candidate.json"
+      ],
+      "purpose": "Write complete first candidate and freeze before finalize",
+      "candidateSha256": "e633435a13a38276e2b62b72a621b93834af1ff533f8238a49183a04f9617ff8"
+    },
+    {
+      "index": 7,
+      "kind": "write",
+      "path": "attempt-1.command.txt",
+      "purpose": "Retain exact CLI invocation"
+    },
+    {
+      "index": 8,
+      "kind": "exec",
+      "command": "$env:ARCHIFY_CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe'; & '<NODE22>/node.exe' '<CANDIDATE_WORKTREE>/archify/bin/archify.mjs' finalize architecture candidate.json northstar.html --quality showcase --json",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\fixed-viewport",
+      "exitCode": 0,
+      "stdout": "attempt-1.stdout.txt",
+      "stderr": "attempt-1.stderr.txt",
+      "exitCodePath": "attempt-1.exit-code.txt",
+      "candidate": "attempt-1.candidate.json",
+      "html": "attempt-1.html",
+      "receipt": "northstar.finalize.json",
+      "summaryReceipt": "northstar.finalize-summary.json",
+      "browserReceipt": "northstar.browser-check.json",
+      "status": "pass",
+      "gates": [
+        "validate",
+        "deliver",
+        "check",
+        "browser-check"
+      ],
+      "diagnostics": []
+    },
+    {
+      "index": 9,
+      "kind": "read",
+      "paths": [
+        "northstar.finalize.json",
+        "northstar.browser-check.json"
+      ],
+      "purpose": "Inspect gates and mandatory placement recommendation",
+      "outputTruncated": true,
+      "exitCode": 0
+    },
+    {
+      "index": 10,
+      "kind": "read",
+      "path": "<CANDIDATE_WORKTREE>/archify/SKILL.md",
+      "method": "Get-FileHash SHA256",
+      "sha256": "1bac4fd2b6ab8a92c8731b3eb316f5402ddf8fb5aca382265a284dfeb4819a27",
+      "purpose": "Retain Skill identity",
+      "exitCode": 0
+    },
+    {
+      "index": 11,
+      "kind": "read",
+      "paths": [
+        "northstar.finalize.json",
+        "northstar.browser-check.json",
+        "attempt-1.stderr.txt"
+      ],
+      "method": "PowerShell JSON field extraction",
+      "purpose": "Recover untruncated review recommendations and target viewport",
+      "recommendation": null,
+      "diagnostics": [],
+      "exitCode": 0
+    },
+    {
+      "index": 12,
+      "kind": "write",
+      "paths": [
+        "final-candidate.json",
+        "attempt-1.html",
+        "environment-retry-1.command.txt",
+        "environment-retry-1.error.txt",
+        "environment-retry-1.exit-code.txt",
+        "author-notes.md",
+        "session.json"
+      ],
+      "purpose": "Preserve final artifact and write session metadata"
+    }
+  ],
+  "metadataSupportFailures": null,
+  "publicationNote": "Agent-recorded action log and retained original command, not a host-private-history export. Local paths replaced by placeholders."
+}

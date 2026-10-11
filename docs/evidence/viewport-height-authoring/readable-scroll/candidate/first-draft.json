@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Ledger batch reconciliation: staged checks and durable audit",
+    "locale": "en",
+    "output": "ledger-reconciliation.html",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    {"id": "operator", "type": "external", "label": "Operator"},
+    {"id": "reconciler", "type": "backend", "label": "Reconciler"},
+    {"id": "ledger", "type": "database", "label": "Ledger"}
+  ],
+  "messages": [
+    {"id": "start-batch", "from": "operator", "to": "reconciler", "y": 160, "label": "Start batch", "note": "Batch B-042 covers account A-17 for the previous business day."},
+    {"id": "load-opening", "from": "reconciler", "to": "ledger", "y": 250, "label": "Load opening balance", "note": "Read the last signed closing balance before processing any entries."},
+    {"id": "opening-balance", "from": "ledger", "to": "reconciler", "y": 340, "label": "Opening balance", "variant": "return", "note": "The starting balance is 1250.00 and its revision is R-100."},
+    {"id": "read-deposits", "from": "reconciler", "to": "ledger", "y": 430, "label": "Read deposits", "note": "Deposits are selected by booking date and stable transaction identifiers."},
+    {"id": "deposit-records", "from": "ledger", "to": "reconciler", "y": 520, "label": "Deposit records", "variant": "return", "note": "Deposit D-11 adds 250.00; deposit D-12 adds 100.00."},
+    {"id": "read-withdrawals", "from": "reconciler", "to": "ledger", "y": 610, "label": "Read withdrawals", "note": "Withdrawals use the same day boundary as deposits."},
+    {"id": "withdrawal-records", "from": "ledger", "to": "reconciler", "y": 700, "label": "Withdrawal records", "variant": "return", "note": "Withdrawal W-21 removes 80.00; withdrawal W-22 removes 20.00."},
+    {"id": "read-adjustments", "from": "reconciler", "to": "ledger", "y": 790, "label": "Read adjustments", "note": "Adjustment J-31 adds a 5.00 fee reversal approved by finance."},
+    {"id": "adjustment-record", "from": "ledger", "to": "reconciler", "y": 880, "label": "Adjustment record", "variant": "return", "note": "Approval AP-7 is attached to J-31 and must remain in the audit."},
+    {"id": "check-duplicates", "from": "reconciler", "to": "ledger", "y": 970, "label": "Check duplicate IDs", "note": "Duplicate transaction IDs stop publication rather than being silently skipped."},
+    {"id": "ids-unique", "from": "ledger", "to": "reconciler", "y": 1060, "label": "IDs unique", "variant": "return", "note": "D-11, D-12, W-21, W-22 and J-31 are distinct."},
+    {"id": "check-revision", "from": "reconciler", "to": "ledger", "y": 1150, "label": "Check revision R-100", "note": "A changed opening revision requires a complete batch restart."},
+    {"id": "revision-unchanged", "from": "ledger", "to": "reconciler", "y": 1240, "label": "Revision unchanged", "variant": "return", "note": "The opening revision remains R-100 throughout the calculation."},
+    {"id": "write-candidate", "from": "reconciler", "to": "ledger", "y": 1330, "label": "Write candidate close", "note": "The proposed closing balance is 1505.00, not yet externally visible."},
+    {"id": "candidate-staged", "from": "ledger", "to": "reconciler", "y": 1420, "label": "Candidate staged", "variant": "return", "note": "Candidate C-42 is staged under batch B-042 with all five transactions."},
+    {"id": "commit-audit-close", "from": "reconciler", "to": "ledger", "y": 1510, "label": "Commit audit and close", "variant": "emphasis", "note": "Audit A-42 and the closing balance are committed atomically."},
+    {"id": "commit-confirmed", "from": "ledger", "to": "reconciler", "y": 1600, "label": "Commit confirmed", "variant": "return", "note": "Closing revision R-101 binds balance 1505.00 and audit A-42."},
+    {"id": "batch-complete", "from": "reconciler", "to": "operator", "y": 1690, "label": "Batch complete", "variant": "return", "note": "The operator receives B-042, R-101 and A-42 for later investigation."}
+  ]
+}

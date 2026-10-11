@@ -1,0 +1,136 @@
+{
+  "sessionId": "candidate-readable-scroll",
+  "skillRevision": "96ceea70197183673594567bc0c9e252eef14c9d",
+  "firstDraftSha256": "27cfff22e06bdcca37023592dc79860e59d9fc2384bba820b99770f6adc44d10",
+  "finalDraftSha256": "27cfff22e06bdcca37023592dc79860e59d9fc2384bba820b99770f6adc44d10",
+  "artifactSha256": "45c91f88d903ab44f4314475cac3b7e57af97904188c6fa70c76eba0929ffefd",
+  "finalizeAttempts": 1,
+  "finalizeExitCode": 0,
+  "contentGeometryRepairs": 0,
+  "preAuthoringEnvironmentRetries": 1,
+  "command": "{\n  \"executable\": \"<NODE22>\\\\node.exe\",\n  \"arguments\": [\n    \"<CANDIDATE_WORKTREE>\\\\archify\\\\bin\\\\archify.mjs\",\n    \"finalize\",\n    \"sequence\",\n    \"candidate.json\",\n    \"ledger-reconciliation.html\",\n    \"--quality\",\n    \"showcase\",\n    \"--json\"\n  ],\n  \"cwd\": \"<EXPERIMENT_ROOT>\\\\runs\\\\candidate\\\\readable-scroll\",\n  \"environment\": {\n    \"ARCHIFY_CHROME\": \"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"\n  }\n}\n",
+  "actions": [
+    {
+      "index": 1,
+      "kind": "exec",
+      "status": "environment-failed",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "description": "Requested PowerShell read of SKILL.md and unchanged task; sandbox process failed before execution",
+      "retainedOutput": "environment-1.failure.txt"
+    },
+    {
+      "index": 2,
+      "kind": "read",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "description": "Retried initial read with require_escalated",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/SKILL.md",
+        "<EXPERIMENT_ROOT>/task-readable-scroll.md"
+      ]
+    },
+    {
+      "index": 3,
+      "kind": "read",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/references/authoring-defaults.md",
+        "<CANDIDATE_WORKTREE>/archify/examples/cache-miss-request.sequence.json"
+      ]
+    },
+    {
+      "index": 4,
+      "kind": "read",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/schemas/sequence.schema.json",
+        "<CANDIDATE_WORKTREE>/archify/schemas/common.schema.json"
+      ]
+    },
+    {
+      "index": 5,
+      "kind": "read",
+      "status": "truncated",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/references/authoring-contract.md",
+        "<CANDIDATE_WORKTREE>/archify/references/delivery-contract.md"
+      ],
+      "description": "Attempted viewport section by heading; heading did not match. Delivery output was truncated."
+    },
+    {
+      "index": 6,
+      "kind": "exec",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "description": "rg located viewport and delivery headings in the same two references."
+    },
+    {
+      "index": 7,
+      "kind": "read",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "<CANDIDATE_WORKTREE>/archify/references/authoring-contract.md:244-306",
+        "<CANDIDATE_WORKTREE>/archify/references/authoring-contract.md:381-386",
+        "<CANDIDATE_WORKTREE>/archify/references/delivery-contract.md:263-398"
+      ],
+      "description": "Recovered bounded viewport, Sequence placement, and truncated finalize guidance."
+    },
+    {
+      "index": 8,
+      "kind": "write",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "candidate.json",
+        "first-draft.json",
+        "attempt-1.candidate.json",
+        "run-finalize.ps1"
+      ],
+      "description": "Authored complete candidate, froze unchanged first draft before first finalize, retained attempt copy and exact CLI logging wrapper."
+    },
+    {
+      "index": 9,
+      "kind": "exec",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "command": ".\\run-finalize.ps1 -Attempt 1",
+      "retainedCommand": "attempt-1.command.json",
+      "retainedStdout": "attempt-1.stdout.txt",
+      "retainedStderr": "attempt-1.stderr.txt",
+      "exitCode": 0,
+      "retainedExecution": "attempt-1.execution.json",
+      "description": "Genuine finalize using specified Node executable and Chrome, without candidate edits."
+    },
+    {
+      "index": 10,
+      "kind": "read",
+      "status": "truncated-display",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "ledger-reconciliation.finalize.json",
+        "ledger-reconciliation.browser-check.json"
+      ],
+      "description": "Read retained full receipts for audit; display truncated. Complete files retained."
+    },
+    {
+      "index": 11,
+      "kind": "read-write-exec",
+      "status": "pass",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\candidate\\readable-scroll",
+      "paths": [
+        "task-source.md",
+        "semantic-preservation.json",
+        "environment-1.failure.txt",
+        "session.json",
+        "author-notes.md"
+      ],
+      "description": "Retained unchanged task, compared all 18 message labels/directions/notes, recorded environment failure and session handoff."
+    }
+  ],
+  "metadataSupportFailures": null,
+  "publicationNote": "Agent-recorded action log and retained original command, not a host-private-history export. Local paths replaced by placeholders."
+}

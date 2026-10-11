@@ -1,0 +1,55 @@
+{
+  "conditions": {
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "deviceScaleFactor": 1,
+    "motion": "still",
+    "detail": "read",
+    "reader": "default",
+    "scrollTop": 0
+  },
+  "metrics": {
+    "pageComposition": {
+      "bodyPaddingPx": 12,
+      "headerPx": 52,
+      "diagramChromePx": 78,
+      "svgPx": 2748,
+      "cardsPx": 0,
+      "viewBoxHeight": 1832
+    },
+    "innerWidth": 1440,
+    "innerHeight": 900,
+    "scrollWidth": 1440,
+    "scrollHeight": 2890,
+    "resolvedTheme": "light",
+    "readerLayout": "adaptive",
+    "readerOverflow": "authored",
+    "readerFit": "width-first",
+    "diagramType": null,
+    "documentScrollUnclipped": true,
+    "readerWidth": 1376,
+    "diagramWidth": 840,
+    "viewBoxWidth": 560,
+    "workflowLanes": [],
+    "minimumProjectedNodeTextPx": 11,
+    "minimumProjectedNonEdgeTextPx": 11,
+    "minimumProjectedEdgeTextPx": 11,
+    "minimumProjectedNodeText": "Start batch",
+    "minimumProjectedNodeTextDetail": "edge",
+    "minimumProjectedNodeTextOwner": {
+      "kind": "edge",
+      "id": "start-batch",
+      "from": "operator",
+      "to": "reconciler"
+    },
+    "hasLegend": true,
+    "hasNavigationDock": true,
+    "legendDockIntersectionArea": 0,
+    "dockStageIntersectionArea": 0,
+    "dockStageGap": 10,
+    "viewerChromeRequiredGap": 10,
+    "viewerChromeReserve": 54,
+    "viewerChromeActive": true
+  }
+}
