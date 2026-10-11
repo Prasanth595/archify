@@ -243,6 +243,7 @@ test('preview opener rejects credentials, fragments, and absent nondefault ports
   for (const target of [
     'http://user@127.0.0.1:43127/',
     'http://user:password@127.0.0.1:43127/',
+    'http://:password@127.0.0.1:43127/',
     'http://127.0.0.1:43127/#state',
     'http://127.0.0.1/',
     'http://127.0.0.1:80/',
