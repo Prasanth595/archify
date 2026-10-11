@@ -11355,6 +11355,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             return { saved: true, transport: &#39;host&#39; };
           }).catch(function (error) {
             if (error &amp;&amp; error.code === &#39;declined&#39;) return { saved: false, cancelled: true, transport: &#39;host&#39; };
+            if (error &amp;&amp; typeof error === &#39;object&#39;) error.archifyDownloadFailure = true;
             throw error;
           });
         });
@@ -12158,6 +12159,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           document.documentElement.setAttribute(&#39;data-last-export-error-format&#39;, format);
           document.documentElement.setAttribute(&#39;data-last-export-error&#39;, technicalMessage);
           if (format === &#39;webm&#39;) {
+            if (err &amp;&amp; err.archifyDownloadFailure) {
+              alert(viewerText(&#39;viewer.export.failed&#39;, { message: message }));
+              return;
+            }
             var motionItem = menu.querySelector(&#39;button[data-format=&quot;webm&quot;]&#39;);
             if (motionItem) {
               motionItem.disabled = true;
@@ -26087,6 +26092,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             return { saved: true, transport: &#39;host&#39; };
           }).catch(function (error) {
             if (error &amp;&amp; error.code === &#39;declined&#39;) return { saved: false, cancelled: true, transport: &#39;host&#39; };
+            if (error &amp;&amp; typeof error === &#39;object&#39;) error.archifyDownloadFailure = true;
             throw error;
           });
         });
@@ -26890,6 +26896,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           document.documentElement.setAttribute(&#39;data-last-export-error-format&#39;, format);
           document.documentElement.setAttribute(&#39;data-last-export-error&#39;, technicalMessage);
           if (format === &#39;webm&#39;) {
+            if (err &amp;&amp; err.archifyDownloadFailure) {
+              alert(viewerText(&#39;viewer.export.failed&#39;, { message: message }));
+              return;
+            }
             var motionItem = menu.querySelector(&#39;button[data-format=&quot;webm&quot;]&#39;);
             if (motionItem) {
               motionItem.disabled = true;
