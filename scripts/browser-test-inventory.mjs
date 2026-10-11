@@ -14,6 +14,7 @@ export const browserTestFiles = [
   'architecture-reading-size-browser.test.mjs',
   'export-cleanup-browser.test.mjs',
   'i18n-browser.test.mjs',
+  'architecture-typography-scale-browser.test.mjs',
   'offline-font-browser.test.mjs',
   'viewer-chrome-layout.test.mjs',
   'semantic-radar.test.mjs',
