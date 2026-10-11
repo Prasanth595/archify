@@ -6,7 +6,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { placeAutomaticLabels } from '../archify/renderers/shared/automatic-labels.mjs';
-import { rectsOverlap } from '../archify/renderers/shared/geometry.mjs';
+import { rectsOverlap, segmentRectClearance } from '../archify/renderers/shared/geometry.mjs';
 
 test('blocked own-route slots retain a diagnostic collision instead of orphaning a label', () => {
   const label = { relation: {}, relationIndex: 0, lx: 100, ly: 100, x: 80, y: 90, width: 40, height: 14 };
@@ -49,11 +49,21 @@ test('Architecture showcase caller keeps a blocked label attached to its own rou
   const [label] = report.labels;
   assert.equal(label.text, 'Read result');
   const blocker = report.components.find(component => component.id === 'blocker');
-  const originalCollision = rectsOverlap(label, blocker)
-    && report.diagnostics?.some(diagnostic => /Label "Read result" overlaps component "blocker"/.test(diagnostic.message));
-  // This is the distance from the label rectangle to the authored horizontal
-  // route, not an assertion about an automatically selected label coordinate.
-  const ownRouteDistance = Math.max(label.y - 130, 130 - label.y - label.height, 0);
-  assert.ok(originalCollision || ownRouteDistance <= label.height * 2,
-    `label lost its repair diagnostic and moved ${ownRouteDistance}px away from its route`);
+  if (rectsOverlap(label, blocker)) {
+    assert.ok(report.diagnostics?.some(diagnostic =>
+      /Label "Read result" overlaps component "blocker"/.test(diagnostic.message)),
+    'a retained collision must include its repair diagnostic');
+  } else {
+    // Measure the actual finite route, including its endpoints. A label next
+    // to the route's infinite extension is still detached from the connection.
+    const points = report.connections[0].points;
+    assert.ok(points.length >= 2, 'the caller report includes its routed connection');
+    const clearances = points.slice(1).map((point, index) =>
+      segmentRectClearance({ start: points[index], end: point }, label));
+    assert.ok(clearances.every(clearance => Number.isFinite(clearance)),
+      'all reported route segments have measurable clearance');
+    const ownRouteDistance = Math.min(...clearances);
+    assert.ok(ownRouteDistance <= label.height * 2,
+      `clear label moved ${ownRouteDistance}px away from its route`);
+  }
 });
