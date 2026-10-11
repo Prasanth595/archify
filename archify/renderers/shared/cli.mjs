@@ -354,6 +354,49 @@ export function validateRelationshipIds(diagramType, diagram) {
 // and workflow compiler without performing filesystem operations (see #429).
 export function validateCrossCollectionContracts(diagramType, diagram) {
   validateRelationshipIds(diagramType, diagram);
+  validateInvariants(diagramType, diagram);
+}
+
+const INVARIANT_ELEMENT_COLLECTIONS = {
+  architecture: 'components',
+  class: 'types',
+  dataflow: 'nodes',
+  erd: 'entities',
+  lifecycle: 'states',
+  sequence: 'participants',
+  timeline: 'events',
+  tree: 'nodes',
+  waterfall: 'spans',
+  workflow: 'nodes',
+};
+
+function validateInvariants(diagramType, diagram) {
+  if (!Array.isArray(diagram.invariants)) return;
+  const collection = INVARIANT_ELEMENT_COLLECTIONS[diagramType];
+  const elements = collection && Array.isArray(diagram[collection]) ? diagram[collection] : [];
+  const elementIds = new Set(elements.map((element) => element.id));
+  const problems = [];
+
+  diagram.invariants.forEach((invariant, index) => {
+    invariant.constrains.forEach((id, constrainedIndex) => {
+      if (!elementIds.has(id)) {
+        problems.push(`/invariants/${index}/constrains/${constrainedIndex} references unknown ${collection} id ${JSON.stringify(id)}`);
+      }
+    });
+  });
+
+  if (problems.length) {
+    throwDiagnosticProblems('Invariant reference validation failed', problems, {
+      code: 'invariant/unknown-element',
+      subject: { diagramType, collection },
+      diagnostics: problems.map(message => ({
+        message,
+        code: 'invariant/unknown-element',
+        subject: { diagramType, collection },
+        supportedFixes: [`use an id from the diagram's ${collection} collection`],
+      })),
+    });
+  }
 }
 
 // Accessible name for the generated diagram SVG.
