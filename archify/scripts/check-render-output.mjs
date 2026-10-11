@@ -486,10 +486,16 @@ function collectArrows(fragment, useActualPoints = false) {
     const borderSegments = line ? segments : parsed.subpaths.flatMap(part => part.straightSegments);
     let routeSubpaths = line ? continuousRoutePoints(segments)
       : parsed.subpaths.flatMap(part => continuousRoutePoints(part.straightSegments));
+    let routeEndpoints = line
+      ? [segments[0]?.start, segments.at(-1)?.end]
+      : [parsed.subpaths[0]?.points[0], parsed.subpaths.at(-1)?.points.at(-1)];
     // Legacy single-path metadata remains supported. It cannot bridge actual moveto boundaries.
     if (!useActualPoints && (line || parsed.subpaths.length === 1)) {
       const authoredPoints = parseRoutePoints(attrs['data-composition-points']);
-      if (authoredPoints) routeSubpaths = [authoredPoints];
+      if (authoredPoints) {
+        routeSubpaths = [authoredPoints];
+        routeEndpoints = [authoredPoints[0], authoredPoints.at(-1)];
+      }
     }
     arrows.push({
       kind: name,
@@ -515,6 +521,7 @@ function collectArrows(fragment, useActualPoints = false) {
       borderSegments,
       routePoints: routeSubpaths.length === 1 ? routeSubpaths[0] : [],
       routeSubpaths,
+      routeEndpoints,
       from: attrs['data-edge-from'] || attrs['data-composition-edge-from'],
       to: attrs['data-edge-to'] || attrs['data-composition-edge-to'],
       id: attrs['data-edge-id'] || attrs['data-composition-edge-id'],
@@ -573,8 +580,14 @@ function routeParts(entry) {
   let segmentOffset = 0;
   return subpaths.flatMap((points, subpathIndex) => {
     const normalized = normalizeRoutePoints(points);
+    // A projected straight piece may stop before a terminal Q, or start after
+    // an initial Q. Only the actual path endpoints receive semantic flags.
+    const [source, target] = entry.relation.routeEndpoints;
+    const matches = (point, endpoint) => point && endpoint
+      && point[0] === endpoint[0] && point[1] === endpoint[1];
     const part = { ...entry, points: normalized, segmentOffset,
-      sourceEndpoint: subpathIndex === 0, targetEndpoint: subpathIndex === subpaths.length - 1 };
+      sourceEndpoint: subpathIndex === 0 && matches(points[0], source),
+      targetEndpoint: subpathIndex === subpaths.length - 1 && matches(points.at(-1), target) };
     segmentOffset += Math.max(0, normalized.length - 1);
     return normalized.length > 1 ? [part] : [];
   });
