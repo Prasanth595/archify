@@ -83,7 +83,15 @@ const HTML_RAW_TEXT_ELEMENTS = new Set(['script', 'style', 'textarea', 'title'])
 const HTML_BREAKOUT_ELEMENTS = new Set(['a', 'article', 'body', 'div', 'head', 'html', 'img', 'p', 'span', 'table', 'textarea']);
 // These SVG primitives never contain child elements in Archify output. Their
 // unquoted final attribute can legally run into the SVG `/>` terminator.
-const SVG_LEAF_ELEMENTS = new Set(['circle', 'ellipse', 'image', 'line', 'path', 'polygon', 'polyline', 'rect', 'stop', 'use']);
+const SVG_LEAF_ELEMENTS = new Set([
+  'animate', 'animatemotion', 'animatetransform',
+  'circle', 'ellipse', 'image', 'line', 'path', 'polygon', 'polyline', 'rect', 'stop', 'use',
+  'fecolormatrix', 'fecomponenttransfer', 'fecomposite', 'feconvolvematrix', 'fediffuselighting',
+  'fedisplacementmap', 'fedistantlight', 'fedropshadow', 'feflood', 'fefunca', 'fefuncb', 'fefuncg',
+  'fefuncr', 'fegaussianblur', 'feimage', 'femerge', 'femergenode', 'femorphology', 'feoffset',
+  'fepointlight', 'fespecularlighting', 'fespotlight', 'fetile', 'feturbulence',
+  'lineargradient', 'radialgradient',
+]);
 const HTML_ATTRIBUTE = /([A-Za-z_:][\w:.-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/g;
 const readerContract = readerContractFromHtml(html);
 const NUMERIC_ATTRS = new Set([

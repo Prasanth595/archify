@@ -123,6 +123,16 @@ test('SVG structure scanner does not self-close unquoted SVG or non-void HTML va
   assert.equal(result.receipt.checks.find(item => item.name === 'svg_structure').ok, false);
 });
 
+test('SVG structure scanner accepts compact filter, gradient, and animation leaf elements', async t => {
+  assertPass(await check(t, [
+    '<radialGradient fr=0/>',
+    '<feGaussianBlur stdDeviation=3/>',
+    '<fePointLight z=10/>',
+    '<feColorMatrix values=1/>',
+    '<animate attributeName=x values=0;1/>',
+  ].join('')));
+});
+
 for (const d of [
   'M 20', 'M 20 20 Q 30 30 40', 'M 20 20 L 100', 'M 20 20 L 100 M 200 20',
   'M 20 NaN', 'M 20 20 L 1e999 30', 'M 20 20 X 100 20', 'M 20 20 Z 7', 'M20 20L40,,20',
