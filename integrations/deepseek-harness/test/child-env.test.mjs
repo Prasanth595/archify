@@ -41,3 +41,39 @@ for (const [command, childEnv, entry] of [
     });
   }
 }
+
+
+for (const [childEnv, expected] of [
+  [{ PATH: 'C:\\Git\\usr\\bin' }, 'C:\\Windows\\System32\\tar.exe'],
+  [{ PATH: 'C:\\Git\\usr\\bin', SystemRoot: 'C:\\ChildWindows' }, 'C:\\ChildWindows\\System32\\tar.exe'],
+]) {
+  for (const launcher of ['spawnCli', 'spawnCliSync']) {
+    test(`${launcher} retains system tar with child environment ${JSON.stringify(childEnv)}`, t => {
+      const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-tar-env-'));
+      t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+      const preload = path.join(root, 'capture.cjs');
+      fs.writeFileSync(preload, `
+        Object.defineProperty(process, 'platform', { value: 'win32' });
+        const fs = require('node:fs');
+        const known = ${JSON.stringify(['C:\\Windows\\System32\\tar.exe', 'C:\\ChildWindows\\System32\\tar.exe', 'C:\\Git\\usr\\bin\\tar.exe'])};
+        fs.existsSync = p => known.includes(p);
+        const cp = require('node:child_process');
+        cp.spawn = cp.spawnSync = (command, args, options) => ({ command, args, options });
+        require('node:module').syncBuiltinESMExports();
+      `);
+      const moduleUrl = new URL('../scripts/resolve-cli.mjs', import.meta.url).href;
+      const result = spawnSync(process.execPath, ['--require', preload, '--input-type=module', '-e', `
+        import { ${launcher} } from ${JSON.stringify(moduleUrl)};
+        console.log(JSON.stringify(${launcher}('tar', ['-tf', 'archive.tgz'], {
+          env: ${JSON.stringify(childEnv)}, cwd: 'fixture',
+        })));
+      `], { encoding: 'utf8', env: { ...process.env, SystemRoot: 'C:\\Windows' } });
+      assert.equal(result.status, 0, result.stderr);
+      const call = JSON.parse(result.stdout);
+      assert.equal(call.command, expected);
+      assert.deepEqual(call.args, ['-tf', 'archive.tgz']);
+      assert.deepEqual(call.options.env, childEnv, 'resolution must not merge parent variables into the child');
+      assert.equal(call.options.cwd, 'fixture');
+    });
+  }
+}

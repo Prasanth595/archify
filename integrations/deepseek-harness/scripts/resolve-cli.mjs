@@ -56,7 +56,8 @@ export function resolveCliInvocation(command, args = [], options = {}) {
   if (platform === 'win32' && command === 'tar') {
     const env = options.env || process.env;
     const existsSync = options.existsSync || fs.existsSync;
-    const systemRoot = env.SystemRoot || env.SYSTEMROOT || env.windir || env.WINDIR;
+    const systemRoot = env.SystemRoot || env.SYSTEMROOT || env.windir || env.WINDIR
+      || process.env.SystemRoot || process.env.SYSTEMROOT || process.env.windir || process.env.WINDIR;
     const systemTar = systemRoot && path.win32.join(systemRoot, 'System32', 'tar.exe');
     if (systemTar && existsSync(systemTar)) return { command: systemTar, args };
   }
