@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tt-a1i/archify/schemas/hierarchy.schema.json",
+  "title": "Archify Hierarchy Diagram",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "diagram_type",
+    "meta",
+    "root",
+    "nodes"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [1]
+    },
+    "diagram_type": {
+      "const": "hierarchy"
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "output"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "locale": {
+          "$ref": "common.schema.json#/$defs/locale"
+        },
+        "translations": {
+          "$ref": "common.schema.json#/$defs/translations"
+        },
+        "output": {
+          "$ref": "common.schema.json#/$defs/portableOutputPath"
+        },
+        "animation": {
+          "$ref": "common.schema.json#/$defs/animation"
+        },
+        "visual_preset": {
+          "$ref": "common.schema.json#/$defs/visualPreset"
+        },
+        "quality_profile": {
+          "$ref": "common.schema.json#/$defs/qualityProfile"
+        },
+        "repository": {
+          "$ref": "common.schema.json#/$defs/repository"
+        },
+        "allow_view_all": {
+          "type": "boolean",
+          "description": "Optional gate for the top-level 'Expand all / Collapse all' tool pair. Defaults to false; readers can still toggle individual branches without this flag."
+        },
+        "viewBox": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 420
+            },
+            {
+              "type": "number",
+              "minimum": 300
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "root": {
+      "$ref": "common.schema.json#/$defs/id",
+      "description": "The id of the top-level node. Must reference an entry in nodes[]. The same id is the only node whose parent may be null."
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "parent"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional one-line summary rendered in the description band beneath the label when the branch is expanded."
+          },
+          "parent": {
+            "description": "Either null (allowed only for the node whose id matches meta.root) or the id of another node in nodes[].",
+            "type": ["string", "null"],
+            "if": { "type": "string" },
+            "then": { "$ref": "common.schema.json#/$defs/id" }
+          },
+          "sources": {
+            "$ref": "common.schema.json#/$defs/sourceReferences"
+          },
+          "icon": {
+            "$ref": "common.schema.json#/$defs/nodeIcon"
+          }
+        }
+      }
+    },
+    "default_expand": {
+      "type": "array",
+      "description": "Node ids whose subtree is open on load; everything else starts collapsed. When omitted, only the root is open. Duplicates are tolerated (later entries override earlier ones in the renderer).",
+      "items": {
+        "$ref": "common.schema.json#/$defs/id"
+      }
+    },
+    "cards": {
+      "$ref": "common.schema.json#/$defs/cards"
+    }
+  }
+}

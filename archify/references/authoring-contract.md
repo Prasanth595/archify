@@ -326,6 +326,34 @@ states in the same column there need distinct `yOffset` values.
 In both versions a recoverable failure needs a real transition back to an
 active state. A card saying “retry” is not topology.
 
+### Hierarchy
+
+A hierarchy models containment, not flow. Each node has at most one `parent`
+and the single node with `parent: null` is `meta.root`; every other node
+walks a chain of parent pointers up to the root. Cross-branch edges,
+multiple parents, and runtime editing are out of scope for the first slice
+(`#690`); the renderer rejects cycles, dangling parent references, and
+duplicated null-roots.
+
+Author the smallest tree that answers the reader's question. Branches are
+read with their sibling and parent context preserved; collapse a subtree
+when you don't need its leaves on the same screen. Use `default_expand`
+to control which branches are open on load — the root is always open, and
+siblings may be opened or closed independently. Keep labels short enough
+that a leaf slot does not need to stretch past the authored `viewBox`;
+the renderer widens a node when its label runs long but does not reflow
+the rest of the canvas to compensate. Include `description` only when
+the one-line summary names the owned runtime boundary, the contract, or
+the user-visible outcome of the branch — not restated labels.
+
+Set `meta.allow_view_all: true` only when the audience expects to scan
+the full tree as a single reading pass. The top-right tool pair (Expand
+all / Collapse all) is hidden by default so a focused reader is not
+prompted to override the authored open/close defaults. Keyboard focus
+moves back to the parent's chevron when a subtree collapses with focus
+inside it; honor keyboard navigation by keeping chevron order stable when
+you rename or reorder branches.
+
 ## Repository evidence
 
 When the diagram must reflect real code, inspect repository entrypoints,
