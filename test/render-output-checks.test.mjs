@@ -31,7 +31,7 @@ test('render output check: finite_svg preserves slashes in unquoted HTML attribu
 });
 
 test('render output check: rejects a closing tag after a self-closed SVG element', () => {
-  const { code, result } = checkHtml('redundant-self-close', '<line x1=NaN/></line>');
+  const { code, result } = checkHtml('redundant-self-close', '<line x1="NaN"/></line>');
   assert.notEqual(code, 0);
   const structure = result.checks.find((entry) => entry.name === 'svg_structure');
   assert.equal(structure?.ok, false);
