@@ -81,6 +81,9 @@ const HTML_VOID_ELEMENTS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 
 const SVG_HTML_INTEGRATION_POINTS = new Set(['foreignobject', 'desc', 'title']);
 const HTML_RAW_TEXT_ELEMENTS = new Set(['script', 'style', 'textarea', 'title']);
 const HTML_BREAKOUT_ELEMENTS = new Set(['a', 'article', 'body', 'div', 'head', 'html', 'img', 'p', 'span', 'table', 'textarea']);
+// These SVG primitives never contain child elements in Archify output. Their
+// unquoted final attribute can legally run into the SVG `/>` terminator.
+const SVG_LEAF_ELEMENTS = new Set(['circle', 'ellipse', 'image', 'line', 'path', 'polygon', 'polyline', 'rect', 'stop', 'use']);
 const HTML_ATTRIBUTE = /([A-Za-z_:][\w:.-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/g;
 const readerContract = readerContractFromHtml(html);
 const NUMERIC_ATTRS = new Set([
@@ -506,7 +509,7 @@ function scanMarkup(markup) {
     // In HTML, an unquoted value ending in '/' absorbs that slash. SVG output
     // normally has quoted values, or whitespace before an explicit '/'.
     const selfClosing = tail.trim() === '/' || /\s\/\s*$/.test(tail)
-      || (tail.endsWith('/') && !/=[^\s"'=<>`]+$/.test(tail.slice(0, -1)));
+      || (SVG_LEAF_ELEMENTS.has(name) && tail.endsWith('/'));
     tokens.push({ raw, index: start, name, closing: false, selfClosing });
     index = cursor + 1;
     if (HTML_RAW_TEXT_ELEMENTS.has(name)) rawText = name;
