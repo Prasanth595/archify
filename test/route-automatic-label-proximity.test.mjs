@@ -12,9 +12,18 @@ test('blocked own-route slots retain a diagnostic collision instead of orphaning
   const label = { relation: {}, relationIndex: 0, lx: 100, ly: 100, x: 80, y: 90, width: 40, height: 14 };
   const obstacle = { x: 0, y: 60, width: 200, height: 80 };
   const scene = { labels: [label], components: [obstacle], titles: [], viewBox: [200, 200],
-    routes: [{ relationIndex: 0, points: [[20, 100], [180, 100]] }] };
+    routes: [
+      { relationIndex: 0, points: [[20, 100], [180, 100]] },
+      // An unrelated relationship is close to the clear ring fallback but
+      // outside its route-mask clearance. It must not satisfy an own-route bound.
+      { relationIndex: 1, points: [[20, 25], [180, 25]] },
+    ] };
   const [unrestricted] = placeAutomaticLabels(scene);
   assert.equal(rectsOverlap(unrestricted, obstacle), false, 'fixture offers a distant clear fallback');
+  const clearance = route => segmentRectClearance({ start: route.points[0], end: route.points[1] }, unrestricted);
+  assert.ok(clearance(scene.routes[0]) > 36, 'the clear fallback is outside both own-route bounds');
+  assert.ok(clearance(scene.routes[1]) > 4 && clearance(scene.routes[1]) < label.height * 2,
+    'the competing route is unmasked but near enough to expose incorrect relationship filtering');
   for (const policy of [{ keepFallbackNearRoute: true }, { maxOwnRouteDistance: 36 }]) {
     const [bounded] = placeAutomaticLabels({ ...scene, ...policy });
     assert.deepEqual(bounded, label, JSON.stringify(policy));
