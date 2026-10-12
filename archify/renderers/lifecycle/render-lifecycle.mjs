@@ -651,6 +651,54 @@ const automaticPorts = automaticPortSpread(
   { sideFor: (transition, endpoint) => transitionSides(transition)[endpoint === 'source' ? 'fromSide' : 'toSide'] },
 );
 
+// Per-state port snap (Issue #739): when a lower state's top ports can all
+// move onto their matching upper ports while preserving port spacing/order,
+// move them; otherwise leave that state's ports alone. All-or-nothing per
+// state keeps a go-and-return pair symmetric — one straight, one jogged
+// is never acceptable.
+function snapPorts(automaticPorts, transitions, { gutter = 16, minSpacing = 14 } = {}) {
+  // Group transitions by the lower state (whose port sits on its top side).
+  const byTopState = new Map();
+  for (const transition of transitions) {
+    if (plannerRouted(transition)) continue;
+    const sides = transitionSides(transition);
+    let lowerKey;
+    if (sides.toSide === 'top') lowerKey = 'to';
+    else if (sides.fromSide === 'top') lowerKey = 'from';
+    else continue;
+    const ports = automaticPorts.get(transition);
+    if (!ports) continue;
+    const upperKey = lowerKey === 'to' ? 'from' : 'to';
+    if (!ports[lowerKey] || !ports[upperKey]) continue;
+    const key = transition[lowerKey];
+    const items = byTopState.get(key) || [];
+    items.push({ ports, lowerKey, upperKey });
+    byTopState.set(key, items);
+  }
+  for (const items of byTopState.values()) {
+    if (items.length < 2) continue;
+    // Sort by original lower-port x so the ordering check matches how the
+    // ports would be read left-to-right after the snap.
+    const sorted = [...items].sort((a, b) => a.ports[a.lowerKey][0] - b.ports[b.lowerKey][0]);
+    const offsets = sorted.map(({ ports, lowerKey, upperKey }) => Math.abs(ports[lowerKey][0] - ports[upperKey][0]));
+    if (!offsets.every((offset) => offset <= gutter)) continue;
+    const newXs = sorted.map(({ ports, upperKey }) => ports[upperKey][0]);
+    let orderOk = true;
+    for (let i = 1; i < newXs.length; i += 1) {
+      if (newXs[i] <= newXs[i - 1] || newXs[i] - newXs[i - 1] < minSpacing) {
+        orderOk = false;
+        break;
+      }
+    }
+    if (!orderOk) continue;
+    for (const { ports, lowerKey, upperKey } of items) {
+      ports[lowerKey][0] = ports[upperKey][0];
+    }
+  }
+}
+
+snapPorts(automaticPorts, asArray(lifecycle.transitions));
+
 function pathFor(transition) {
   if (pathCache.has(transition)) return pathCache.get(transition);
   if (plannerRouted(transition)) {
