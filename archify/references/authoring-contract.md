@@ -339,10 +339,7 @@ Author the smallest tree that answers the reader's question. Branches are
 read with their sibling and parent context preserved; collapse a subtree
 when you don't need its leaves on the same screen. Use `default_expand`
 to control which branches are open on load — the root is always open, and
-siblings may be opened or closed independently. Keep labels short enough
-that a leaf slot does not need to stretch past the authored `viewBox`;
-the renderer widens a node when its label runs long but does not reflow
-the rest of the canvas to compensate. Include `description` only when
+siblings may be opened or closed independently. Keep labels short enough that a leaf slot does not need to stretch past the authored `viewBox`; if the computed subtree width exceeds the authored canvas the renderer widens its working `viewBox` (and grows its height for deep trees) without reflowing sibling subtrees. The leaf slot width is clamped to 196–260 px regardless of label length, so a long label will overflow horizontally — author tighter wording or a wider `viewBox` instead. Include `description` only when
 the one-line summary names the owned runtime boundary, the contract, or
 the user-visible outcome of the branch — not restated labels.
 

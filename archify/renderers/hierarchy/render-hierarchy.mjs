@@ -22,10 +22,10 @@ const { diagram: hierarchy, template, outPath, sourceEvidence } = await loadDiag
   defaultExample: 'hierarchy-simple.json',
 });
 
+const AUTHORED_VIEW_BOX = Array.isArray(hierarchy.meta?.viewBox) && hierarchy.meta.viewBox.length === 2
+  ? hierarchy.meta.viewBox.slice()
+  : null;
 const DEFAULT_VIEW_BOX = [960, 640];
-const viewBox = Array.isArray(hierarchy.meta?.viewBox) && hierarchy.meta.viewBox.length === 2
-  ? hierarchy.meta.viewBox
-  : DEFAULT_VIEW_BOX;
 
 // Layout constants mirror the other renderers' rhythm: a fixed node height,
 // a repeated level pitch for vertical breathing room, and a per-leaf slot
@@ -159,11 +159,13 @@ function computeSubtreeWidth(node, leafWidth) {
 }
 
 // Layout pass: walk the tree DFS, computing SVG coordinates for every node
-// frame and every parent→child connector.
+// frame. Connectors are emitted by the renderer so they live inside their
+// parent's subtree group and hide when the subtree collapses.
 function layoutTree(root) {
   const accumulator = { count: 0 };
   countLeaves(root, accumulator);
-  const usableWidth = viewBox[0] - LAYOUT.sidePad * 2;
+  const authored = AUTHORED_VIEW_BOX || DEFAULT_VIEW_BOX;
+  const usableWidth = authored[0] - LAYOUT.sidePad * 2;
   const leafWidth = Math.max(
     LAYOUT.minLeafWidth,
     Math.min(LAYOUT.maxLeafWidth, Math.floor(usableWidth / Math.max(accumulator.count, 1))),
@@ -171,7 +173,7 @@ function layoutTree(root) {
   computeSubtreeWidth(root, leafWidth);
 
   const frames = [];
-  const connectors = [];
+  let maxDepth = 0;
   function walk(node, depth, leftX) {
     const width = node.subtreeWidth || leafWidth;
     const cx = leftX + width / 2;
@@ -199,22 +201,37 @@ function layoutTree(root) {
       depth,
     };
     frames.push(frame);
+    if (depth > maxDepth) maxDepth = depth;
     let childCursor = leftX;
     for (const child of node.children) {
       const childWidth = child.subtreeWidth || leafWidth;
       walk(child, depth + 1, childCursor);
-      connectors.push({
-        id: `${node.id}->${child.id}`,
-        x1: cx,
-        y1: cy + totalHeight / 2,
-        x2: child.cx,
-        y2: child.cy - LAYOUT.nodeHeight / 2,
-      });
       childCursor += childWidth;
     }
   }
   walk(root, 0, LAYOUT.sidePad);
-  return { frames, connectors };
+
+  // Expand the working viewBox if the computed tree grows past the
+  // authored canvas. Widen to fit the root subtree width; grow the height
+  // to fit the deepest level + node footprint + bottom pad.
+  const usedWidth = root.subtreeWidth || leafWidth;
+  const usedHeight = LAYOUT.rootTop + maxDepth * LAYOUT.levelPitch + LAYOUT.nodeHeight + LAYOUT.sidePad;
+  const viewBox = AUTHORED_VIEW_BOX
+    ? [Math.max(authored[0], usedWidth + LAYOUT.sidePad * 2), Math.max(authored[1], usedHeight)]
+    : [Math.max(DEFAULT_VIEW_BOX[0], usedWidth + LAYOUT.sidePad * 2), Math.max(DEFAULT_VIEW_BOX[1], usedHeight)];
+
+  return { frames, leafWidth, viewBox };
+}
+
+// Initial open set: every node in `default_expand` plus the root. The root
+// is forced open so the very first paint always shows the top of the tree.
+function computeInitialOpen() {
+  const set = new Set();
+  set.add(hierarchy.root);
+  for (const id of asArray(hierarchy.default_expand)) {
+    set.add(id);
+  }
+  return set;
 }
 
 function nodeBoxClass(frame) {
@@ -238,9 +255,9 @@ function renderNode(frame) {
   const chevronX = frame.cx + frame.width / 2 - 14;
   const chevron = frame.hasChildren
     ? `
-          <g class="hierarchy-chevron" data-hierarchy-toggle="${esc(frame.id)}" tabindex="0" role="button" aria-label="Toggle ${esc(frame.label)} subtree" aria-controls="hierarchy-subtree-${esc(frame.id)}" aria-expanded="true">
+          <g class="hierarchy-chevron" data-hierarchy-toggle="${esc(frame.id)}" tabindex="0" role="button" aria-label="Toggle ${esc(frame.label)} subtree" aria-controls="hierarchy-subtree-${esc(frame.id)}" aria-expanded="${frame.initialOpen ? 'true' : 'false'}">
             <circle cx="${chevronX}" cy="${frame.y + 14}" r="9" class="c-mask"/>
-            <text x="${chevronX}" y="${frame.y + 18}" font-size="12" text-anchor="middle" class="hierarchy-chevron-icon">−</text>
+            <text x="${chevronX}" y="${frame.y + 18}" font-size="12" text-anchor="middle" class="hierarchy-chevron-icon">${frame.initialOpen ? '−' : '+'}</text>
           </g>`
     : '';
   const description = frame.description
@@ -254,9 +271,12 @@ function renderNode(frame) {
 }
 
 function renderSubtreeOpen(frame) {
-  return frame.hasChildren
-    ? `\n        <g id="hierarchy-subtree-${esc(frame.id)}" data-hierarchy-subtree="${esc(frame.id)}" data-hierarchy-open="true">`
-    : '';
+  if (!frame.hasChildren) return '';
+  const open = frame.initialOpen ? 'true' : 'false';
+  // Closed-by-default subtrees must hide — the runtime script alone only
+  // toggles the boolean on click, so the static HTML needs `display:none`.
+  const hidden = frame.initialOpen ? '' : ' style="display:none"';
+  return `\n        <g id="hierarchy-subtree-${esc(frame.id)}" data-hierarchy-subtree="${esc(frame.id)}" data-hierarchy-open="${open}"${hidden}>`;
 }
 
 function renderSubtreeClose(frame) {
@@ -320,9 +340,40 @@ function renderScript() {
   }
   function toggleAll(open) {
     var subs = document.querySelectorAll('[data-hierarchy-subtree]');
-    for (var i = 0; i < subs.length; i += 1) setOpen(subs[i], open);
+    for (var i = 0; i < subs.length; i += 1) toggle(subs[i].getAttribute('data-hierarchy-subtree'), open);
   }
   document.addEventListener('click', function (event) {
+    var target = event.target;
+    if (!target || !target.closest) return;
+    var chevron = target.closest('[data-hierarchy-toggle]');
+    if (chevron) {
+      event.preventDefault();
+      toggle(chevron.getAttribute('data-hierarchy-toggle'));
+      return;
+    }
+    if (target.closest('[data-hierarchy-expand-all]')) {
+      event.preventDefault();
+      toggleAll(true);
+      return;
+    }
+    if (target.closest('[data-hierarchy-collapse-all]')) {
+      event.preventDefault();
+      // Move focus OUT of any subtree before mass-collapsing so keyboard
+      // readers don't strand focus inside a hidden group.
+      var active = document.activeElement;
+      var btnTool = document.querySelector('[data-hierarchy-collapse-all]');
+      if (active && active !== btnTool && active.closest('[data-hierarchy-subtree]')) {
+        if (btnTool) {
+          btnTool.focus();
+        } else {
+          active.blur();
+        }
+      }
+      toggleAll(false);
+    }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
     var target = event.target;
     if (!target || !target.closest) return;
     var chevron = target.closest('[data-hierarchy-toggle]');
@@ -341,43 +392,43 @@ function renderScript() {
       toggleAll(false);
     }
   });
-  document.addEventListener('keydown', function (event) {
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-    var target = event.target;
-    if (!target || !target.closest) return;
-    var chevron = target.closest('[data-hierarchy-toggle]');
-    if (chevron) {
-      event.preventDefault();
-      toggle(chevron.getAttribute('data-hierarchy-toggle'));
-    }
-  });
 })();
         ]]></script>`;
 }
 
 // Render the body of the SVG: root + subtrees + connectors. Walks DFS so
-// every subtree group naturally wraps its descendants.
-function renderArt(frames) {
+// every subtree group naturally wraps its descendants, and the parent's
+// outgoing connectors are emitted inside the parent's subtree group so
+// they hide when the subtree collapses.
+function renderArt(frames, initialOpen) {
   const byId = new Map(frames.map((frame) => [frame.id, frame]));
-  const connectors = [];
+  // Pre-decorate each frame with its initial open state once, so the
+  // node, chevron, and subtree opener agree.
+  for (const frame of frames) {
+    frame.initialOpen = initialOpen.has(frame.id);
+  }
+  function makeParentConnector(parent, child) {
+    return {
+      x1: parent.cx,
+      y1: parent.cy + parent.totalHeight / 2,
+      x2: child.cx,
+      y2: child.cy - child.height / 2,
+    };
+  }
   function walk(frame) {
     let art = renderNode(frame);
     if (frame.hasChildren) {
-      const localConnectors = [];
-      for (const child of frame.children) {
-        const childFrame = byId.get(child.id);
-        localConnectors.push({
-          x1: frame.cx,
-          y1: frame.cy + frame.totalHeight / 2,
-          x2: childFrame.cx,
-          y2: childFrame.cy - childFrame.height / 2,
-        });
-      }
-      connectors.push(...localConnectors);
       art += renderSubtreeOpen(frame);
+      // Emit parent's outgoing connectors INSIDE the subtree group so
+      // they hide together when the subtree collapses.
+      const connectors = frame.children.map((child) => makeParentConnector(frame, byId.get(child.id)));
+      for (const connector of connectors) {
+        art += '\n';
+        art += renderConnector(connector);
+      }
+      art += '\n';
       for (const child of frame.children) {
         const childFrame = byId.get(child.id);
-        art += '\n';
         art += walk(childFrame);
       }
       art += renderSubtreeClose(frame);
@@ -385,10 +436,10 @@ function renderArt(frames) {
     return art;
   }
   const root = byId.get(hierarchy.root);
-  return { art: walk(root), connectors };
+  return walk(root);
 }
 
-function renderSvg({ frames, connectors, art }) {
+function renderSvg({ viewBox, art }) {
   return `      <svg viewBox="0 0 ${viewBox[0]} ${viewBox[1]}" data-reader-fit="intrinsic-height" data-diagram-type="hierarchy"${svgRootAttrs(hierarchy.meta)}>
 ${svgAccessibleText(hierarchy.meta, 'hierarchy')}
 ${renderDefinitions()}
@@ -397,10 +448,7 @@ ${renderDefinitions()}
         <rect width="100%" height="100%" fill="url(#grid)" />
 ${renderToolPair()}
 
-        <!-- Connectors -->
-${connectors.map(renderConnector).join('\n')}
-
-        <!-- Hierarchy (root + subtrees) -->
+        <!-- Hierarchy (root + subtrees + connectors live inside their groups) -->
 ${art}
 ${renderScript()}
       </svg>`;
@@ -410,14 +458,10 @@ ${renderScript()}
 const indexed = indexNodes();
 validateHierarchy(indexed);
 const root = buildChildren(indexed.byId);
-const { frames, connectors: layoutConnectors } = layoutTree(root);
-const { art, connectors: artConnectors } = renderArt(frames);
-// `layoutConnectors` is the layout's own pass for in-tree connectors; the
-// renderer's `walk` emits its own local connectors so they animate with
-// each subtree. Use the renderer's connectors — they share the same
-// tree positions because both come from the same `frames` array.
-const connectors = artConnectors.length ? artConnectors : layoutConnectors;
-const svg = renderSvg({ frames, connectors, art });
+const initialOpen = computeInitialOpen();
+const { frames, viewBox } = layoutTree(root);
+const art = renderArt(frames, initialOpen);
+const svg = renderSvg({ viewBox, art });
 
 writeDiagram({
   outPath,

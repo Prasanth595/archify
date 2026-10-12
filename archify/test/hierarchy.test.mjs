@@ -184,17 +184,40 @@ test('archify validate hierarchy surfaces a cycle diagnostic', (t) => {
   assert.ok(cycleHit, 'expected cycle diagnostic');
 });
 
-// Schema tolerates duplicate default_expand entries (renderer is idempotent
-// via Set semantics).
+// Schema tolerates duplicate default_expand entries.
 test('hierarchy schema tolerates duplicate default_expand entries', () => {
   const doc = cloneExample();
   doc.default_expand = ['platform', 'platform', 'orders'];
   assert.equal(acceptsSchema(doc), true);
 });
 
+// Initial render reflects the default_expand open set: every node in
+// default_expand starts with data-hierarchy-open="true"; nodes not in the
+// set start closed and inline-hidden.
+test('hierarchy initial render reflects default_expand open set', (t) => {
+  const dir = workspace(t);
+  const out = path.join(dir, 'archify-hierarchy-defaults.html');
+  const result = runCli(['render', 'hierarchy', example, out]);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(out, 'utf8');
+  // platform and orders are explicitly opened by default_expand.
+  for (const id of ['platform', 'orders']) {
+    const re = new RegExp(`id="hierarchy-subtree-${id}"[^>]*data-hierarchy-open="true"`);
+    assert.match(html, re, `subtree ${id} should be open on load`);
+  }
+  // payments and operations inherit a parent subtree that is closed-by-default,
+  // so their subtree groups must carry data-hierarchy-open="false" and inline
+  // display:none.
+  for (const id of ['payments', 'operations']) {
+    const re = new RegExp(`id="hierarchy-subtree-${id}"[^>]*data-hierarchy-open="false"[^>]*style="display:none"`);
+    assert.match(html, re, `subtree ${id} should be hidden by default`);
+  }
+});
+
 // Acceptance gate mirror.
-test('hierarchy example renders to > 10 KB with every authored node id', () => {
-  const out = path.join(os.tmpdir(), 'archify-hierarchy-gate.html');
+test('hierarchy example renders to > 10 KB with every authored node id', (t) => {
+  const dir = workspace(t);
+  const out = path.join(dir, 'archify-hierarchy-gate.html');
   const result = runCli(['render', 'hierarchy', example, out]);
   assert.equal(result.status, 0, result.stderr);
   const html = fs.readFileSync(out, 'utf8');

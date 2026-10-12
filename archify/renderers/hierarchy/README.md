@@ -21,7 +21,7 @@ field of the JSON file.
 {
   "schema_version": 1,
   "diagram_type": "hierarchy",
-  "meta": { "title": "Payment platform", "theme": "dark", "viewBox": [960, 640] },
+  "meta": { "title": "Payment platform", "output": "examples/payment-platform.html", "viewBox": [960, 640] },
   "root": "platform",
   "nodes": [
     { "id": "platform", "label": "Payment Platform", "parent": null },
