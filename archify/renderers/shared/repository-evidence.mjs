@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { throwDiagnosticError, withDiagnosticRecordingSuppressed } from './diagnostics.mjs';
 import { sameEntry } from './path-semantics.mjs';
-import { parseRepositoryRemote, redactRepositoryRemote, repositorySourceHref } from './repository-location.mjs';
+import { parseRepositoryRemote, redactRepositoryRemote, repositoryRootHref, repositorySourceHref } from './repository-location.mjs';
 
 const FULL_SHA_RE = /^[a-f0-9]{40}$/i;
 const CONTROL_CHARACTER_RE = /[\u0000-\u001f\u007f]/;
@@ -344,7 +344,7 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
       revision,
       shortRevision: revision.slice(0, 7),
       label: location.provider === 'github' ? location.path : location.url.replace(/^(?:https?:\/\/|ssh:\/\/git@|git@)/, ''),
-      ...(linkMode === 'web' ? { href: `${location.url}/tree/${revision}` } : { linkMode }),
+      ...(linkMode === 'web' ? { href: repositoryRootHref(location.provider, location.url, revision) } : { linkMode }),
     },
     referenceCount,
     nodes,

@@ -25,7 +25,11 @@ export function parseRepositoryRemote(value, { authored = false } = {}) {
   if (authored && protocol !== 'ssh:' && (url.username || url.password)) return null;
   const hostname = url.hostname.toLowerCase();
   if (!hostname) return null;
-  const provider = hostname === 'github.com' ? 'github' : hostname === 'gitee.com' ? 'gitee' : null;
+  const provider = hostname === 'github.com' ? 'github'
+    : hostname === 'gitee.com' ? 'gitee'
+    : hostname === 'codeberg.org' ? 'codeberg'
+    : hostname === 'gitea.com' ? 'gitea'
+    : null;
   const last = segments.length - 1;
   if (provider) segments[last] = segments[last].replace(provider === 'github' ? /\.git$/i : /\.git$/, '');
   if (!segments[last] || segments[last] === '.' || segments[last] === '..') return null;
@@ -52,8 +56,23 @@ export function redactRepositoryRemote(value) {
 
 export function repositorySourceHref(provider, url, revision, source) {
   const encodedPath = source.path.split('/').map(encodeURIComponent).join('/');
+  // GitHub, Codeberg (Forgejo), and public gitea.com (Gitea) all emit the
+  // GitLab-style #L<line>-L<end_line> fragment for line ranges; Gitee alone
+  // uses the short #L<line>-<end_line> form.
+  const rangeLikeGitHub = provider === 'github' || provider === 'codeberg' || provider === 'gitea';
   const end = source.endLine && source.endLine !== source.line
-    ? `-${provider === 'github' ? 'L' : ''}${source.endLine}` : '';
+    ? `-${rangeLikeGitHub ? 'L' : ''}${source.endLine}` : '';
   const fragment = source.line ? `#L${source.line}${end}` : '';
-  return `${url}/blob/${revision}/${encodedPath}${fragment}`;
+  // Codeberg (Forgejo) and public gitea.com (Gitea) expose source at
+  // /src/commit/<sha>/... rather than the /blob/<sha>/... form used by
+  // GitHub and Gitee. Path case is preserved for both, like Gitee.
+  const blobSegment = (provider === 'codeberg' || provider === 'gitea') ? 'src/commit' : 'blob';
+  return `${url}/${blobSegment}/${revision}/${encodedPath}${fragment}`;
+}
+
+export function repositoryRootHref(provider, url, revision) {
+  // Codeberg (Forgejo) and public gitea.com (Gitea) expose the revision-pinned
+  // repository view at /src/commit/<sha> rather than /tree/<sha>.
+  return (provider === 'codeberg' || provider === 'gitea')
+    ? `${url}/src/commit/${revision}` : `${url}/tree/${revision}`;
 }
