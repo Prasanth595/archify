@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · DCache Tag/Meta/Data阵列",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/dcache-arrays/dcache-arrays.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "Load/Store读端",
+      "sublabel": "val bankedDataArray",
+      "tag": "逻辑步骤",
+      "pos": [
+        560,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1061,
+          "end_line": 1070,
+          "label": "RTL · val bankedDataArray"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "一致性metadata",
+      "sublabel": "val metaArray",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1062,
+          "end_line": 1071,
+          "label": "RTL · val metaArray"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "database",
+      "label": "error metadata",
+      "sublabel": "val errorArray",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1063,
+          "end_line": 1072,
+          "label": "RTL · val errorArray"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "database",
+      "label": "预取来源/访问位",
+      "sublabel": "val prefetchArray",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1064,
+          "end_line": 1073,
+          "label": "RTL · val prefetchArray"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "database",
+      "label": "重复Tag读",
+      "sublabel": "val tagArray",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1072,
+          "end_line": 1081,
+          "label": "RTL · val tagArray"
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "type": "backend",
+      "label": "模块内部设计",
+      "sublabel": "dcache-arrays",
+      "tag": "结构视图",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1061,
+          "end_line": 1070,
+          "label": "RTL · val bankedDataArray"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "dcache-arrays-owns-n0",
+      "from": "owner",
+      "to": "n0",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-arrays-owns-n1",
+      "from": "owner",
+      "to": "n1",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-arrays-owns-n2",
+      "from": "owner",
+      "to": "n2",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-arrays-owns-n3",
+      "from": "owner",
+      "to": "n3",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-arrays-owns-n4",
+      "from": "owner",
+      "to": "n4",
+      "label": "结构角色",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "DCache把数据、coherence meta、错误、预取来源和tag分到不同阵列。",
+        "DataArray实现由WPU配置选择，不能同时画Banked和Sramed为必经双数据副本。",
+        "Tag读端复制是端口/PPA选择，并不把相同缓存行重复算容量。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "本页按模块结构角色展开，连线表示组成/控制关联；并行子单元之间不串接。实际I/O主路径在父图或相应细节页。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

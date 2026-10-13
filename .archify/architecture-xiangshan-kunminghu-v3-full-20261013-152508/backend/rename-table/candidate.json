@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · RenameTable 推测/架构映射",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/rename-table/rename-table.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "逻辑寄存器读取",
+      "sublabel": "val t1_raddr",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/RenameTable.scala",
+          "line": 115,
+          "end_line": 124,
+          "label": "RTL · val t1_raddr"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "推测映射",
+      "sublabel": "val spec_table =",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/RenameTable.scala",
+          "line": 100,
+          "end_line": 109,
+          "label": "RTL · val spec_table ="
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "读后写旁路",
+      "sublabel": "val bypass_data",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/RenameTable.scala",
+          "line": 142,
+          "end_line": 151,
+          "label": "RTL · val bypass_data"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "database",
+      "label": "提交架构映射",
+      "sublabel": "val arch_table =",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/RenameTable.scala",
+          "line": 103,
+          "end_line": 112,
+          "label": "RTL · val arch_table ="
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "恢复快照/架构态",
+      "sublabel": "val snapshots",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/RenameTable.scala",
+          "line": 122,
+          "end_line": 131,
+          "label": "RTL · val snapshots"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "旧目的回收",
+      "sublabel": "io.need_free",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/RenameTable.scala",
+          "line": 164,
+          "end_line": 173,
+          "label": "RTL · io.need_free"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "rename-table-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rename-table-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rename-table-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rename-table-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rename-table-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "推测映射与架构映射分离，读写旁路保证同周期依赖正确。",
+        "redirect 优先修复 spec_table，Snapshot/walk 决定恢复基础。",
+        "old_pdest 必须未被架构映射引用且非重复项才允许回收。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "RenameTableWrapper 实例化 INT、FP、VEC、VL 四类映射；同设计复用。"
+      ]
+    }
+  ]
+}

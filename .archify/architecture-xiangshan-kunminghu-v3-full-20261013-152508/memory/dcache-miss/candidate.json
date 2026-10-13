@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · DCache MissQueue 合并与MSHR",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/dcache-miss/dcache-miss.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "缺失分析",
+      "sublabel": "class ReqAnalysisResult",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/mainpipe/MissQueue.scala",
+          "line": 207,
+          "end_line": 216,
+          "label": "RTL · class ReqAnalysisResult"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "messagebus",
+      "label": "MissEntry",
+      "sublabel": "class MissEntry",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/mainpipe/MissQueue.scala",
+          "line": 423,
+          "end_line": 432,
+          "label": "RTL · class MissEntry"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "请求合并/命中",
+      "sublabel": "req_handled_by_this_entry",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/mainpipe/MissQueue.scala",
+          "line": 493,
+          "end_line": 502,
+          "label": "RTL · req_handled_by_this_entry"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "外层通道选择",
+      "sublabel": "io.channel_sel",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/mainpipe/MissQueue.scala",
+          "line": 398,
+          "end_line": 407,
+          "label": "RTL · io.channel_sel"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "回填信息",
+      "sublabel": "class MissQueueRefillInfo",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/mainpipe/MissQueue.scala",
+          "line": 102,
+          "end_line": 111,
+          "label": "RTL · class MissQueueRefillInfo"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "dcache-miss-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "dcache-miss-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "dcache-miss-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "dcache-miss-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "MissQueue合并同block缺失，分配独立entry并路由L1-L2通道。",
+        "收到Grant后提供refill/forward信息，并与MainPipe回填协作。",
+        "CMOUnit是独立事务通路，不把所有cache操作归为普通load miss。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

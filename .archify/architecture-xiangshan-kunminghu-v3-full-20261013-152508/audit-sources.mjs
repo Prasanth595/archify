@@ -1,0 +1,4 @@
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {definitions} from './designs.mjs';
+const base=path.dirname(fileURLToPath(import.meta.url));const roots=JSON.parse(fs.readFileSync(path.join(base,'local-runtime.json')));let misses=0;
+for(const d of definitions.filter(d=>d.file)){const p=path.join(roots[d.repository||'xiangshan'],d.file);if(!fs.existsSync(p)){console.log('FILE '+d.id+' '+d.file);misses++;continue;}const lines=fs.readFileSync(p,'utf8').split(/\r?\n/);for(const n of [...d.flow,...(d.branches||[]).map(b=>[b[1],b[2]])])if(typeof n[1]==='string'&&!lines.some(l=>l.includes(n[1])&&!l.trim().startsWith('//'))){console.log('ANCHOR '+d.id+' '+d.file+' :: '+n[1]);misses++;}}
+console.log('Definitions '+definitions.length+', missing anchors '+misses);if(misses)process.exitCode=1;

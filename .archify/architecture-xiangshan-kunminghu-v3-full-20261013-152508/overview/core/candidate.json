@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · 全核架构",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/overview/core/core.html",
+    "quality_profile": "showcase",
+    "locale": "zh-CN"
+  },
+  "components": [
+    {
+      "id": "front",
+      "type": "processor",
+      "label": "Frontend",
+      "sublabel": "预测 / FTQ / I$ / IFU / IBuffer",
+      "pos": [
+        80,
+        90
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/XSCore.scala",
+          "line": 64,
+          "end_line": 71,
+          "label": "RTL · val frontend"
+        }
+      ]
+    },
+    {
+      "id": "decode",
+      "type": "backend",
+      "label": "Decode / Fusion",
+      "sublabel": "默认 8 路 · 向量拆分",
+      "pos": [
+        460,
+        90
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 58,
+          "end_line": 65,
+          "label": "RTL · val decode"
+        }
+      ]
+    },
+    {
+      "id": "rename",
+      "type": "backend",
+      "label": "Rename",
+      "sublabel": "映射 · 空闲表 · 快照 · 压缩",
+      "pos": [
+        840,
+        90
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 117,
+          "end_line": 124,
+          "label": "RTL · val rename"
+        }
+      ]
+    },
+    {
+      "id": "dispatch",
+      "type": "messagebus",
+      "label": "Dispatch / Issue",
+      "sublabel": "整数 / FP / 向量派发与调度",
+      "pos": [
+        840,
+        370
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 113,
+          "end_line": 120,
+          "label": "RTL · val dispatch"
+        }
+      ]
+    },
+    {
+      "id": "int",
+      "type": "backend",
+      "label": "Integer / Memory Issue",
+      "sublabel": "ALU / BJU / MUL / DIV / CSR",
+      "pos": [
+        80,
+        650
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/Parameters.scala",
+          "line": 342,
+          "end_line": 349,
+          "label": "RTL · val intSchdParams"
+        }
+      ]
+    },
+    {
+      "id": "fp",
+      "type": "backend",
+      "label": "Float Region",
+      "sublabel": "FEX0–FEX3 · 浮点读写/旁路",
+      "pos": [
+        460,
+        650
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/Backend.scala",
+          "line": 180,
+          "end_line": 187,
+          "label": "RTL · val fpRegion"
+        }
+      ]
+    },
+    {
+      "id": "vec",
+      "type": "backend",
+      "label": "Vector Region",
+      "sublabel": "向量译码 / 运算 / 访存",
+      "pos": [
+        840,
+        650
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/Backend.scala",
+          "line": 179,
+          "end_line": 186,
+          "label": "RTL · val vecRegion"
+        }
+      ]
+    },
+    {
+      "id": "wb",
+      "type": "messagebus",
+      "label": "Writeback / Bypass",
+      "sublabel": "结果仲裁 · 唤醒 · ROB 完成",
+      "pos": [
+        460,
+        930
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbArbiter.scala",
+          "line": 85,
+          "end_line": 92,
+          "label": "RTL · class WbDataPath"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "type": "backend",
+      "label": "Memory Block",
+      "sublabel": "LSU / LSQ / D$ / MMU / PF",
+      "pos": [
+        80,
+        930
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/XSCore.scala",
+          "line": 68,
+          "end_line": 75,
+          "label": "RTL · val memBlock"
+        }
+      ]
+    },
+    {
+      "id": "rob",
+      "type": "messagebus",
+      "label": "ROB / RAB",
+      "sublabel": "144 ROB · 352 RAB · 顺序提交",
+      "pos": [
+        80,
+        370
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 86,
+          "end_line": 93,
+          "label": "RTL · val rab"
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "database",
+      "label": "CoupledL2",
+      "sublabel": "2MiB · 8 路 · 4 bank",
+      "pos": [
+        80,
+        1210
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/top/Configs.scala",
+          "line": 583,
+          "end_line": 590,
+          "label": "RTL · class DefaultConfig"
+        }
+      ]
+    },
+    {
+      "id": "llc",
+      "type": "database",
+      "label": "OpenLLC / L3",
+      "sublabel": "32MiB · 16 路 · 4 bank",
+      "pos": [
+        80,
+        1490
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/top/Configs.scala",
+          "line": 584,
+          "end_line": 591,
+          "label": "RTL · OpenLLCConfig(\"32MB\""
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "type": "external",
+      "label": "外部内存与中断",
+      "sublabel": "CHI / AXI / 设备接口",
+      "pos": [
+        460,
+        1490
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/system/SoC.scala",
+          "line": 42,
+          "end_line": 49,
+          "label": "RTL · SoCParameters"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "core-r0",
+      "from": "front",
+      "to": "decode",
+      "label": "指令",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r1",
+      "from": "decode",
+      "to": "rename",
+      "label": "微操作",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r2",
+      "from": "rename",
+      "to": "dispatch",
+      "label": "重命名",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r3",
+      "from": "dispatch",
+      "to": "int",
+      "label": "INT 发射",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r4",
+      "from": "dispatch",
+      "to": "fp",
+      "label": "FP 发射",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r5",
+      "from": "dispatch",
+      "to": "vec",
+      "label": "VEC 发射",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r6",
+      "from": "int",
+      "to": "wb",
+      "label": "结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r7",
+      "from": "fp",
+      "to": "wb",
+      "label": "结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r8",
+      "from": "vec",
+      "to": "wb",
+      "label": "结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r9",
+      "from": "memory",
+      "to": "wb",
+      "label": "访存结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r10",
+      "from": "wb",
+      "to": "rob",
+      "label": "完成通知",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r11",
+      "from": "int",
+      "to": "memory",
+      "label": "访存请求",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r12",
+      "from": "vec",
+      "to": "memory",
+      "label": "向量访存",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r13",
+      "from": "memory",
+      "to": "l2",
+      "label": "缓存访问",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r14",
+      "from": "l2",
+      "to": "llc",
+      "label": "CHI",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r15",
+      "from": "llc",
+      "to": "system",
+      "label": "内存请求",
+      "variant": "emphasis"
+    },
+    {
+      "id": "core-r16",
+      "from": "rob",
+      "to": "rename",
+      "label": "提交 / 恢复",
+      "variant": "security"
+    },
+    {
+      "id": "core-r17",
+      "from": "rob",
+      "to": "front",
+      "label": "提交 / 重定向",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "主数据与控制路径",
+      "items": [
+        "主数据路径从前端进入 Decode、Rename、Dispatch，再分到整数、浮点、向量及访存通路。",
+        "执行结果写回寄存器/唤醒依赖，并向 ROB 报告完成；ROB/RAB 顺序提交和恢复架构状态。",
+        "默认缓存层次：64KiB I$、64KiB 4-way D$、2MiB L2、32MiB OpenLLC；旧参考图参数不混用。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "固定配置",
+      "items": [
+        "top.DefaultConfig(1) · 单核 · OpenLLC。实例和参数依据固定 RTL。",
+        "点击节点查看代码；各模块的内部设计通过图集父子目录进入。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · SSIT/LFST 访存依赖预测",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/store-set/store-set.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "PC与违例训练",
+      "sublabel": "class SSIT",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/mdp/StoreSet.scala",
+          "line": 38,
+          "end_line": 47,
+          "label": "RTL · class SSIT"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "SSIT标识存储",
+      "sublabel": "val data_array",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/mdp/StoreSet.scala",
+          "line": 92,
+          "end_line": 101,
+          "label": "RTL · val data_array"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "database",
+      "label": "最新store记录",
+      "sublabel": "class LFST",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/mdp/StoreSet.scala",
+          "line": 422,
+          "end_line": 431,
+          "label": "RTL · class LFST"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "Load等待关联",
+      "sublabel": "class LFSTResp",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/mdp/StoreSet.scala",
+          "line": 434,
+          "end_line": 443,
+          "label": "RTL · class LFSTResp"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "错误路径清除",
+      "sublabel": "when(validVec(i)(j)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/mdp/StoreSet.scala",
+          "line": 544,
+          "end_line": 553,
+          "label": "RTL · when(validVec(i)(j)"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "store-set-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "store-set-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "store-set-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "store-set-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "SSIT按PC建立store-set标识；LFST维护关联的最新未完成store。",
+        "实际违例训练更新关联，Load调度可等待对应SQ位置。",
+        "redirect按SQ年龄清除年轻store记录，不当作精确地址别名检查。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · aBTB 提前流水与快速训练",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/abtb/abtb.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "PC / 路径历史",
+      "sublabel": "s0_hashIndex",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 94,
+          "end_line": 103,
+          "label": "RTL · s0_hashIndex"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "bank 查询",
+      "sublabel": "b.io.readReq.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 100,
+          "end_line": 109,
+          "label": "RTL · b.io.readReq.valid"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "正常/覆盖状态选择",
+      "sublabel": "s1_state",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 145,
+          "end_line": 154,
+          "label": "RTL · s1_state"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "预测元数据",
+      "sublabel": "io.meta.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 199,
+          "end_line": 208,
+          "label": "RTL · io.meta.valid"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "快速训练",
+      "sublabel": "t1_trainTaken",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 249,
+          "end_line": 258,
+          "label": "RTL · t1_trainTaken"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "database",
+      "label": "Bank / Replacer",
+      "sublabel": "private val banks",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 49,
+          "end_line": 58,
+          "label": "RTL · private val banks"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "database",
+      "label": "S3 重放状态",
+      "sublabel": "bpuS3ReplayState",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala",
+          "line": 79,
+          "end_line": 88,
+          "label": "RTL · bpuS3ReplayState"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "abtb-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "abtb-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "abtb-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "abtb-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "abtb-branch-0",
+      "from": "b0",
+      "to": "n1",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "abtb-branch-1",
+      "from": "b1",
+      "to": "n2",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "aBTB 默认 1024 项/4 路，提前流水把 bank 响应保存在状态中。",
+        "S2/S3 override 会切换已缓存的 PipelineState，redirect/disable 清理有效位。",
+        "训练同时使用计数器、位置与目标比较，读写冲突经 buffer/replacer 处理。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

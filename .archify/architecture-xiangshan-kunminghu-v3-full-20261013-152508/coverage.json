@@ -1,0 +1,2930 @@
+{
+  "schemaVersion": 1,
+  "configuration": {
+    "class": "top.DefaultConfig",
+    "cores": 1,
+    "llc": "OpenLLC",
+    "runtimeOverrides": [],
+    "note": "Use selected config composition and inherited XSCoreParameters; actual instantiation is traced before asserting per-unit quantities."
+  },
+  "requirements": [
+    {
+      "name": "全核及三分区",
+      "diagramIds": [
+        "core",
+        "frontend",
+        "backend",
+        "memory"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "前端主模块",
+      "diagramIds": [
+        "bpu",
+        "ftq",
+        "ifu",
+        "ibuffer",
+        "icache",
+        "instr-uncache"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "目标与方向预测",
+      "diagramIds": [
+        "ubtb",
+        "abtb",
+        "utage",
+        "mbtb",
+        "victim-btb",
+        "tage",
+        "sc",
+        "ittage"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "历史与训练恢复",
+      "diagramIds": [
+        "ras",
+        "ras-stack",
+        "micro-ras",
+        "phr",
+        "common-hr",
+        "ftq-meta",
+        "resolve-queue",
+        "commit-queue"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "预测器表与bank",
+      "diagramIds": [
+        "tage-table",
+        "sc-table",
+        "ittage-table",
+        "utage-table",
+        "abtb-bank",
+        "mbtb-align",
+        "mbtb-internal"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "取指与缓存微模块",
+      "diagramIds": [
+        "instr-boundary",
+        "compact-align",
+        "pred-checker",
+        "rvc-expander",
+        "ifu-uncache",
+        "icache-prefetch",
+        "way-lookup",
+        "icache-main",
+        "icache-miss",
+        "icache-mshr",
+        "icache-meta-array",
+        "icache-data-array",
+        "icache-replacer",
+        "icache-ctrl"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "后端控制与退休",
+      "diagramIds": [
+        "decode",
+        "fusion",
+        "vector-split",
+        "uop-select",
+        "rename",
+        "rename-table",
+        "free-list",
+        "snapshot",
+        "busy-table",
+        "move-elimination",
+        "dispatch",
+        "rob",
+        "rab",
+        "rob-compression",
+        "rob-exception",
+        "redirect",
+        "vtype-buffer",
+        "vset"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "调度与数据通路",
+      "diagramIds": [
+        "integer-region",
+        "float-region",
+        "vector-region",
+        "issue-queue",
+        "float-issue",
+        "vector-issue",
+        "float-issue-pipe",
+        "vector-issue-pipe",
+        "iq-enqueue",
+        "iq-dequeue",
+        "age-arbiter",
+        "new-age",
+        "wakeup-queue",
+        "datapath",
+        "rf-read",
+        "writeback",
+        "bypass",
+        "regfile",
+        "regcache",
+        "regcache-tag",
+        "regcache-data",
+        "regcache-age",
+        "wb-busy"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "功能单元与算术",
+      "diagramIds": [
+        "alu",
+        "bit-crypto",
+        "branch",
+        "jump",
+        "link",
+        "multiply",
+        "int-divider",
+        "csr",
+        "csr-permit",
+        "interrupt",
+        "trap",
+        "fence",
+        "fp-alu",
+        "fp-mul",
+        "fp-div",
+        "fp-cvt",
+        "fp-compare",
+        "vector-alu",
+        "vector-imac",
+        "vector-idiv",
+        "vector-fmac",
+        "vector-fdiv",
+        "vector-cvt",
+        "vector-move"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "YunSuan内部运算",
+      "diagramIds": [
+        "float-adder",
+        "fadd-s0",
+        "fadd-s1",
+        "float-mul",
+        "fmul-s0",
+        "fmul-s1",
+        "fmul-s2",
+        "float-divider",
+        "float-div-iterate",
+        "fp-convert",
+        "vector-integer-alu",
+        "vector-integer-div",
+        "vector-falu",
+        "vector-fdiv-kernel",
+        "vector-fmul",
+        "vector-imac-kernel",
+        "vector-cvt-kernel",
+        "vector-add-kernel",
+        "vector-fixpoint",
+        "vector-misc",
+        "vector-move-kernel"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "访存/LSQ/依赖",
+      "diagramIds": [
+        "load-unit",
+        "store-unit",
+        "store-data",
+        "load-forward",
+        "load-misalign",
+        "vector-memory",
+        "atomics",
+        "lsq",
+        "load-queue",
+        "virtual-lq",
+        "lq-rar",
+        "lq-raw",
+        "lq-replay",
+        "load-uncache",
+        "store-queue",
+        "sq-forward",
+        "sq-dequeue",
+        "virtual-sq",
+        "sbuffer",
+        "memory-exception",
+        "store-set",
+        "wait-table"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "DCache与MMU",
+      "diagramIds": [
+        "dcache",
+        "dcache-load",
+        "dcache-store",
+        "dcache-main",
+        "dcache-miss",
+        "dcache-probe",
+        "dcache-writeback",
+        "amo-alu",
+        "dcache-arrays",
+        "tlb",
+        "tlb-storage",
+        "ptw-repeater",
+        "l2tlb",
+        "page-cache",
+        "ptw",
+        "hptw",
+        "llptw",
+        "l2tlb-miss",
+        "pmp"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "预取器及变体",
+      "diagramIds": [
+        "prefetch",
+        "stream",
+        "stride",
+        "berti",
+        "berti-history",
+        "berti-delta",
+        "sms",
+        "sms-agt",
+        "l2-bop",
+        "l2-cdp",
+        "l2-prefetch-ctrl",
+        "vector-perm-legacy"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "L2事务/一致性/桥接",
+      "diagramIds": [
+        "coupled-l2",
+        "l2-arb",
+        "l2-req-buffer",
+        "l2-directory",
+        "l2-data",
+        "l2-main",
+        "l2-mshr-ctl",
+        "l2-mshr",
+        "l2-grant",
+        "l2-sink-a",
+        "l2-sink-c",
+        "l2-source-b",
+        "l2-txreq",
+        "l2-txdat",
+        "l2-rxdat",
+        "l2-rxsnp"
+      ],
+      "status": "authored"
+    },
+    {
+      "name": "OpenLLC L3",
+      "diagramIds": [
+        "open-llc",
+        "llc-slice",
+        "llc-arb",
+        "llc-directory",
+        "llc-data",
+        "llc-main",
+        "llc-response",
+        "llc-snoop",
+        "llc-memory",
+        "llc-refill",
+        "llc-link",
+        "llc-mmio"
+      ],
+      "status": "authored"
+    }
+  ],
+  "modules": [
+    {
+      "id": "frontend",
+      "parent": "core",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+        "src/main/scala/xiangshan/frontend/ftq/FtqParameters.scala",
+        "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+        "src/main/scala/xiangshan/frontend/icache/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+        "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+        "src/main/scala/xiangshan/frontend/ibuffer/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/Frontend.scala",
+        "src/main/scala/xiangshan/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala"
+      ],
+      "design": "frontend/frontend/read.html",
+      "instances": null
+    },
+    {
+      "id": "bpu",
+      "parent": "frontend",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+        "src/main/scala/xiangshan/frontend/bpu/ubtb/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/bpu/abtb/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/bpu/mbtb/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/bpu/ras/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/ftq/Ftq.scala"
+      ],
+      "design": "frontend/bpu/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache",
+      "parent": "frontend",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+        "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+        "src/main/scala/xiangshan/frontend/Frontend.scala",
+        "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+        "src/main/scala/xiangshan/frontend/icache/Parameters.scala"
+      ],
+      "design": "frontend/icache/read.html",
+      "instances": null
+    },
+    {
+      "id": "ifu",
+      "parent": "frontend",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+        "src/main/scala/xiangshan/frontend/ifu/InstrBoundary.scala",
+        "src/main/scala/xiangshan/frontend/FrontendParameters.scala",
+        "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+        "src/main/scala/xiangshan/frontend/ibuffer/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/ibuffer/IBuffer.scala",
+        "src/main/scala/xiangshan/Parameters.scala",
+        "src/main/scala/xiangshan/frontend/Frontend.scala"
+      ],
+      "design": "frontend/ifu/read.html",
+      "instances": null
+    },
+    {
+      "id": "core",
+      "parent": null,
+      "section": "overview",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/XSCore.scala",
+        "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+        "src/main/scala/xiangshan/Parameters.scala",
+        "src/main/scala/xiangshan/backend/Backend.scala",
+        "src/main/scala/xiangshan/backend/datapath/WbArbiter.scala",
+        "src/main/scala/xiangshan/backend/rob/Rob.scala",
+        "src/main/scala/top/Configs.scala",
+        "src/main/scala/system/SoC.scala"
+      ],
+      "design": "overview/core/read.html",
+      "instances": null
+    },
+    {
+      "id": "backend",
+      "parent": "core",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+        "src/main/scala/xiangshan/backend/Backend.scala",
+        "src/main/scala/xiangshan/backend/datapath/WbArbiter.scala",
+        "src/main/scala/xiangshan/backend/rob/Rob.scala",
+        "src/main/scala/xiangshan/XSCore.scala"
+      ],
+      "design": "backend/backend/read.html",
+      "instances": null
+    },
+    {
+      "id": "memory",
+      "parent": "core",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/MemBlock.scala",
+        "src/main/scala/top/Configs.scala",
+        "src/main/scala/xiangshan/XSCore.scala"
+      ],
+      "design": "memory/memory/read.html",
+      "instances": null
+    },
+    {
+      "id": "ubtb",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala"
+      ],
+      "design": "frontend/ubtb/read.html",
+      "instances": null
+    },
+    {
+      "id": "abtb",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtb.scala"
+      ],
+      "design": "frontend/abtb/read.html",
+      "instances": null
+    },
+    {
+      "id": "utage",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/utage/MicroTage.scala"
+      ],
+      "design": "frontend/utage/read.html",
+      "instances": null
+    },
+    {
+      "id": "mbtb",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtb.scala"
+      ],
+      "design": "frontend/mbtb/read.html",
+      "instances": null
+    },
+    {
+      "id": "victim-btb",
+      "parent": "mbtb",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala"
+      ],
+      "design": "frontend/victim-btb/read.html",
+      "instances": null
+    },
+    {
+      "id": "tage",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala"
+      ],
+      "design": "frontend/tage/read.html",
+      "instances": null
+    },
+    {
+      "id": "sc",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala"
+      ],
+      "design": "frontend/sc/read.html",
+      "instances": null
+    },
+    {
+      "id": "ittage",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/ittage/Ittage.scala"
+      ],
+      "design": "frontend/ittage/read.html",
+      "instances": null
+    },
+    {
+      "id": "ras",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/ras/Ras.scala"
+      ],
+      "design": "frontend/ras/read.html",
+      "instances": null
+    },
+    {
+      "id": "ras-stack",
+      "parent": "ras",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/ras/RasStack.scala"
+      ],
+      "design": "frontend/ras-stack/read.html",
+      "instances": null
+    },
+    {
+      "id": "micro-ras",
+      "parent": "ras",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/ras/MicroRas.scala"
+      ],
+      "design": "frontend/micro-ras/read.html",
+      "instances": null
+    },
+    {
+      "id": "phr",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/history/phr/Phr.scala"
+      ],
+      "design": "frontend/phr/read.html",
+      "instances": null
+    },
+    {
+      "id": "common-hr",
+      "parent": "bpu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/history/commonhr/CommonHR.scala"
+      ],
+      "design": "frontend/common-hr/read.html",
+      "instances": null
+    },
+    {
+      "id": "ftq",
+      "parent": "frontend",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ftq/Ftq.scala"
+      ],
+      "design": "frontend/ftq/read.html",
+      "instances": null
+    },
+    {
+      "id": "ftq-meta",
+      "parent": "ftq",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ftq/MetaQueue.scala"
+      ],
+      "design": "frontend/ftq-meta/read.html",
+      "instances": null
+    },
+    {
+      "id": "resolve-queue",
+      "parent": "ftq",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ftq/ResolveQueue.scala"
+      ],
+      "design": "frontend/resolve-queue/read.html",
+      "instances": null
+    },
+    {
+      "id": "commit-queue",
+      "parent": "ftq",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ftq/CommitQueue.scala"
+      ],
+      "design": "frontend/commit-queue/read.html",
+      "instances": null
+    },
+    {
+      "id": "ibuffer",
+      "parent": "ifu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ibuffer/IBuffer.scala"
+      ],
+      "design": "frontend/ibuffer/read.html",
+      "instances": null
+    },
+    {
+      "id": "instr-boundary",
+      "parent": "ifu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ifu/InstrBoundary.scala"
+      ],
+      "design": "frontend/instr-boundary/read.html",
+      "instances": null
+    },
+    {
+      "id": "compact-align",
+      "parent": "ifu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ifu/Ifu.scala"
+      ],
+      "design": "frontend/compact-align/read.html",
+      "instances": null
+    },
+    {
+      "id": "pred-checker",
+      "parent": "ifu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ifu/PredChecker.scala"
+      ],
+      "design": "frontend/pred-checker/read.html",
+      "instances": null
+    },
+    {
+      "id": "rvc-expander",
+      "parent": "ifu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ifu/RvcExpander.scala"
+      ],
+      "design": "frontend/rvc-expander/read.html",
+      "instances": "默认36个常规展开位置 + 1个非缓存展开位置；有效指令数受掩码限制。"
+    },
+    {
+      "id": "ifu-uncache",
+      "parent": "ifu",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala"
+      ],
+      "design": "frontend/ifu-uncache/read.html",
+      "instances": null
+    },
+    {
+      "id": "instr-uncache",
+      "parent": "frontend",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/instruncache/InstrUncacheImp.scala"
+      ],
+      "design": "frontend/instr-uncache/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-prefetch",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICachePrefetchPipe.scala"
+      ],
+      "design": "frontend/icache-prefetch/read.html",
+      "instances": null
+    },
+    {
+      "id": "way-lookup",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala"
+      ],
+      "design": "frontend/way-lookup/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-main",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheMainPipe.scala"
+      ],
+      "design": "frontend/icache-main/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-miss",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheMissUnit.scala"
+      ],
+      "design": "frontend/icache-miss/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-mshr",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheMshr.scala"
+      ],
+      "design": "frontend/icache-mshr/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-meta-array",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheMetaArray.scala"
+      ],
+      "design": "frontend/icache-meta-array/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-data-array",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheDataArray.scala"
+      ],
+      "design": "frontend/icache-data-array/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-replacer",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheReplacer.scala"
+      ],
+      "design": "frontend/icache-replacer/read.html",
+      "instances": null
+    },
+    {
+      "id": "icache-ctrl",
+      "parent": "icache",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/icache/ICacheCtrlUnit.scala"
+      ],
+      "design": "frontend/icache-ctrl/read.html",
+      "instances": null
+    },
+    {
+      "id": "decode",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/vector/Decoder/DecodeStage.scala"
+      ],
+      "design": "backend/decode/read.html",
+      "instances": null
+    },
+    {
+      "id": "fusion",
+      "parent": "decode",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/decode/FusionDecoder.scala"
+      ],
+      "design": "backend/fusion/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-split",
+      "parent": "decode",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/vector/Decoder/Split/VecUopSplitModule.scala"
+      ],
+      "design": "backend/vector-split/read.html",
+      "instances": null
+    },
+    {
+      "id": "uop-select",
+      "parent": "vector-split",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/vector/Decoder/Select/UopSelectModule.scala"
+      ],
+      "design": "backend/uop-select/read.html",
+      "instances": null
+    },
+    {
+      "id": "rename",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/Rename.scala"
+      ],
+      "design": "backend/rename/read.html",
+      "instances": null
+    },
+    {
+      "id": "rename-table",
+      "parent": "rename",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/RenameTable.scala"
+      ],
+      "design": "backend/rename-table/read.html",
+      "instances": "RenameTableWrapper 实例化 INT、FP、VEC、VL 四类映射；同设计复用。"
+    },
+    {
+      "id": "free-list",
+      "parent": "rename",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala"
+      ],
+      "design": "backend/free-list/read.html",
+      "instances": null
+    },
+    {
+      "id": "snapshot",
+      "parent": "rename",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/Snapshot.scala"
+      ],
+      "design": "backend/snapshot/read.html",
+      "instances": null
+    },
+    {
+      "id": "busy-table",
+      "parent": "dispatch",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/BusyTable.scala"
+      ],
+      "design": "backend/busy-table/read.html",
+      "instances": null
+    },
+    {
+      "id": "rob-compression",
+      "parent": "rename",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/CompressUnit.scala"
+      ],
+      "design": "backend/rob-compression/read.html",
+      "instances": null
+    },
+    {
+      "id": "move-elimination",
+      "parent": "rename",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rename/Rename.scala"
+      ],
+      "design": "backend/move-elimination/read.html",
+      "instances": null
+    },
+    {
+      "id": "dispatch",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/dispatch/Dispatch.scala"
+      ],
+      "design": "backend/dispatch/read.html",
+      "instances": null
+    },
+    {
+      "id": "rob",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rob/Rob.scala"
+      ],
+      "design": "backend/rob/read.html",
+      "instances": null
+    },
+    {
+      "id": "rab",
+      "parent": "rob",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rob/Rab.scala"
+      ],
+      "design": "backend/rab/read.html",
+      "instances": null
+    },
+    {
+      "id": "rob-exception",
+      "parent": "rob",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rob/ExceptionGen.scala"
+      ],
+      "design": "backend/rob-exception/read.html",
+      "instances": null
+    },
+    {
+      "id": "vtype-buffer",
+      "parent": "rob",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/rob/VTypeBuffer.scala"
+      ],
+      "design": "backend/vtype-buffer/read.html",
+      "instances": null
+    },
+    {
+      "id": "redirect",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/ctrlblock/RedirectGenerator.scala"
+      ],
+      "design": "backend/redirect/read.html",
+      "instances": null
+    },
+    {
+      "id": "integer-region",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/Region.scala"
+      ],
+      "design": "backend/integer-region/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-region",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/float/FltRegionModule.scala"
+      ],
+      "design": "backend/float-region/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-region",
+      "parent": "backend",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/vector/VecRegionModule.scala"
+      ],
+      "design": "backend/vector-region/read.html",
+      "instances": null
+    },
+    {
+      "id": "issue-queue",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/issue/IssueQueue.scala"
+      ],
+      "design": "backend/issue-queue/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-issue",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/float/FltIssueQueue.scala"
+      ],
+      "design": "backend/float-issue/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-issue",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/vector/VecIssueQueue.scala"
+      ],
+      "design": "backend/vector-issue/read.html",
+      "instances": null
+    },
+    {
+      "id": "wakeup-queue",
+      "parent": "issue-queue",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/issue/MultiWakeupQueue.scala"
+      ],
+      "design": "backend/wakeup-queue/read.html",
+      "instances": null
+    },
+    {
+      "id": "datapath",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/datapath/DataPath.scala"
+      ],
+      "design": "backend/datapath/read.html",
+      "instances": null
+    },
+    {
+      "id": "rf-read",
+      "parent": "datapath",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/datapath/RFReadArbiter.scala"
+      ],
+      "design": "backend/rf-read/read.html",
+      "instances": null
+    },
+    {
+      "id": "writeback",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/datapath/WbArbiter.scala"
+      ],
+      "design": "backend/writeback/read.html",
+      "instances": null
+    },
+    {
+      "id": "bypass",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/datapath/BypassNetwork.scala"
+      ],
+      "design": "backend/bypass/read.html",
+      "instances": null
+    },
+    {
+      "id": "regfile",
+      "parent": "datapath",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/regfile/Regfile.scala"
+      ],
+      "design": "backend/regfile/read.html",
+      "instances": null
+    },
+    {
+      "id": "regcache",
+      "parent": "datapath",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/regcache/RegCache.scala"
+      ],
+      "design": "backend/regcache/read.html",
+      "instances": null
+    },
+    {
+      "id": "age-arbiter",
+      "parent": "issue-queue",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/issue/AgeDetector.scala"
+      ],
+      "design": "backend/age-arbiter/read.html",
+      "instances": null
+    },
+    {
+      "id": "iq-enqueue",
+      "parent": "issue-queue",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/issue/EnqPolicy.scala"
+      ],
+      "design": "backend/iq-enqueue/read.html",
+      "instances": null
+    },
+    {
+      "id": "iq-dequeue",
+      "parent": "issue-queue",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/issue/DeqPolicy.scala"
+      ],
+      "design": "backend/iq-dequeue/read.html",
+      "instances": null
+    },
+    {
+      "id": "load-unit",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala"
+      ],
+      "design": "memory/load-unit/read.html",
+      "instances": null
+    },
+    {
+      "id": "load-forward",
+      "parent": "load-unit",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala"
+      ],
+      "design": "memory/load-forward/read.html",
+      "instances": null
+    },
+    {
+      "id": "load-misalign",
+      "parent": "load-unit",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala"
+      ],
+      "design": "memory/load-misalign/read.html",
+      "instances": null
+    },
+    {
+      "id": "store-unit",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/NewStoreUnit.scala"
+      ],
+      "design": "memory/store-unit/read.html",
+      "instances": null
+    },
+    {
+      "id": "store-data",
+      "parent": "store-unit",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/StdExeUnit.scala"
+      ],
+      "design": "memory/store-data/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-memory",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala"
+      ],
+      "design": "memory/vector-memory/read.html",
+      "instances": null
+    },
+    {
+      "id": "atomics",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/pipeline/AtomicsUnit.scala"
+      ],
+      "design": "memory/atomics/read.html",
+      "instances": null
+    },
+    {
+      "id": "lsq",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala"
+      ],
+      "design": "memory/lsq/read.html",
+      "instances": null
+    },
+    {
+      "id": "load-queue",
+      "parent": "lsq",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/LoadQueue.scala"
+      ],
+      "design": "memory/load-queue/read.html",
+      "instances": null
+    },
+    {
+      "id": "virtual-lq",
+      "parent": "load-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/VirtualLoadQueue.scala"
+      ],
+      "design": "memory/virtual-lq/read.html",
+      "instances": null
+    },
+    {
+      "id": "lq-rar",
+      "parent": "load-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/LoadQueueRAR.scala"
+      ],
+      "design": "memory/lq-rar/read.html",
+      "instances": null
+    },
+    {
+      "id": "lq-raw",
+      "parent": "load-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/LoadQueueRAW.scala"
+      ],
+      "design": "memory/lq-raw/read.html",
+      "instances": null
+    },
+    {
+      "id": "lq-replay",
+      "parent": "load-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/LoadQueueReplay.scala"
+      ],
+      "design": "memory/lq-replay/read.html",
+      "instances": null
+    },
+    {
+      "id": "load-uncache",
+      "parent": "load-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/LoadQueueUncache.scala"
+      ],
+      "design": "memory/load-uncache/read.html",
+      "instances": null
+    },
+    {
+      "id": "store-queue",
+      "parent": "lsq",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/NewStoreQueue.scala"
+      ],
+      "design": "memory/store-queue/read.html",
+      "instances": null
+    },
+    {
+      "id": "sq-forward",
+      "parent": "store-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/NewStoreQueue.scala"
+      ],
+      "design": "memory/sq-forward/read.html",
+      "instances": null
+    },
+    {
+      "id": "sq-dequeue",
+      "parent": "store-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/NewStoreQueue.scala"
+      ],
+      "design": "memory/sq-dequeue/read.html",
+      "instances": null
+    },
+    {
+      "id": "virtual-sq",
+      "parent": "store-queue",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/VirtualStoreQueue.scala"
+      ],
+      "design": "memory/virtual-sq/read.html",
+      "instances": null
+    },
+    {
+      "id": "sbuffer",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/sbuffer/Sbuffer.scala"
+      ],
+      "design": "memory/sbuffer/read.html",
+      "instances": null
+    },
+    {
+      "id": "memory-exception",
+      "parent": "lsq",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/lsqueue/ExceptionInfoGen.scala"
+      ],
+      "design": "memory/memory-exception/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala"
+      ],
+      "design": "memory/dcache/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-load",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/loadpipe/LoadPipe.scala"
+      ],
+      "design": "memory/dcache-load/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-store",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/storepipe/StorePipe.scala"
+      ],
+      "design": "memory/dcache-store/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-main",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/mainpipe/MainPipe.scala"
+      ],
+      "design": "memory/dcache-main/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-miss",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/mainpipe/MissQueue.scala"
+      ],
+      "design": "memory/dcache-miss/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-probe",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/mainpipe/Probe.scala"
+      ],
+      "design": "memory/dcache-probe/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-writeback",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/mainpipe/WritebackQueue.scala"
+      ],
+      "design": "memory/dcache-writeback/read.html",
+      "instances": null
+    },
+    {
+      "id": "amo-alu",
+      "parent": "dcache-main",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/mainpipe/AMOALU.scala"
+      ],
+      "design": "memory/amo-alu/read.html",
+      "instances": null
+    },
+    {
+      "id": "tlb",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/TLB.scala"
+      ],
+      "design": "memory/tlb/read.html",
+      "instances": null
+    },
+    {
+      "id": "tlb-storage",
+      "parent": "tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/TLBStorage.scala"
+      ],
+      "design": "memory/tlb-storage/read.html",
+      "instances": null
+    },
+    {
+      "id": "ptw-repeater",
+      "parent": "tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/Repeater.scala"
+      ],
+      "design": "memory/ptw-repeater/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2tlb",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/L2TLB.scala"
+      ],
+      "design": "memory/l2tlb/read.html",
+      "instances": null
+    },
+    {
+      "id": "page-cache",
+      "parent": "l2tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/PageTableCache.scala"
+      ],
+      "design": "memory/page-cache/read.html",
+      "instances": null
+    },
+    {
+      "id": "ptw",
+      "parent": "l2tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/PageTableWalker.scala"
+      ],
+      "design": "memory/ptw/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2tlb-miss",
+      "parent": "l2tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/L2TLBMissQueue.scala"
+      ],
+      "design": "memory/l2tlb-miss/read.html",
+      "instances": null
+    },
+    {
+      "id": "pmp",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/PMP.scala"
+      ],
+      "design": "memory/pmp/read.html",
+      "instances": null
+    },
+    {
+      "id": "prefetch",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/PrefetcherWrapper.scala"
+      ],
+      "design": "memory/prefetch/read.html",
+      "instances": null
+    },
+    {
+      "id": "stream",
+      "parent": "prefetch",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/L1StreamPrefetcher.scala"
+      ],
+      "design": "memory/stream/read.html",
+      "instances": null
+    },
+    {
+      "id": "stride",
+      "parent": "prefetch",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/L1StridePrefetcher.scala"
+      ],
+      "design": "memory/stride/read.html",
+      "instances": null
+    },
+    {
+      "id": "berti",
+      "parent": "prefetch",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "variant",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/Berti.scala"
+      ],
+      "design": "memory/berti/read.html",
+      "instances": null
+    },
+    {
+      "id": "sms",
+      "parent": "prefetch",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala"
+      ],
+      "design": "memory/sms/read.html",
+      "instances": null
+    },
+    {
+      "id": "store-set",
+      "parent": "dispatch",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/mdp/StoreSet.scala"
+      ],
+      "design": "backend/store-set/read.html",
+      "instances": null
+    },
+    {
+      "id": "wait-table",
+      "parent": "store-set",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/mdp/WaitTable.scala"
+      ],
+      "design": "backend/wait-table/read.html",
+      "instances": null
+    },
+    {
+      "id": "coupled-l2",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/Slice.scala"
+      ],
+      "design": "memory/coupled-l2/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-arb",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/RequestArb.scala"
+      ],
+      "design": "memory/l2-arb/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-req-buffer",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/RequestBuffer.scala"
+      ],
+      "design": "memory/l2-req-buffer/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-directory",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/Directory.scala"
+      ],
+      "design": "memory/l2-directory/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-data",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/DataStorage.scala"
+      ],
+      "design": "memory/l2-data/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-main",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/MainPipe.scala"
+      ],
+      "design": "memory/l2-main/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-mshr-ctl",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/MSHRCtl.scala"
+      ],
+      "design": "memory/l2-mshr-ctl/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-mshr",
+      "parent": "l2-mshr-ctl",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/MSHR.scala"
+      ],
+      "design": "memory/l2-mshr/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-grant",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/GrantBuffer.scala"
+      ],
+      "design": "memory/l2-grant/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-sink-a",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/SinkA.scala"
+      ],
+      "design": "memory/l2-sink-a/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-sink-c",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/SinkC.scala"
+      ],
+      "design": "memory/l2-sink-c/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-source-b",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/SourceB.scala"
+      ],
+      "design": "memory/l2-source-b/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-txreq",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/TXREQ.scala"
+      ],
+      "design": "memory/l2-txreq/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-txdat",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/TXDAT.scala"
+      ],
+      "design": "memory/l2-txdat/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-rxdat",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/RXDAT.scala"
+      ],
+      "design": "memory/l2-rxdat/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-rxsnp",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/RXSNP.scala"
+      ],
+      "design": "memory/l2-rxsnp/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-bop",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/prefetch/BestOffsetPrefetch.scala"
+      ],
+      "design": "memory/l2-bop/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-cdp",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/prefetch/CDP.scala"
+      ],
+      "design": "memory/l2-cdp/read.html",
+      "instances": null
+    },
+    {
+      "id": "l2-prefetch-ctrl",
+      "parent": "coupled-l2",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/coupledL2/prefetch/PrefetchController.scala"
+      ],
+      "design": "memory/l2-prefetch-ctrl/read.html",
+      "instances": null
+    },
+    {
+      "id": "open-llc",
+      "parent": "memory",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/OpenLLC.scala"
+      ],
+      "design": "memory/open-llc/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-slice",
+      "parent": "open-llc",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/Slice.scala"
+      ],
+      "design": "memory/llc-slice/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-arb",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/RequestArb.scala"
+      ],
+      "design": "memory/llc-arb/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-directory",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/Directory.scala"
+      ],
+      "design": "memory/llc-directory/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-data",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/DataStorage.scala"
+      ],
+      "design": "memory/llc-data/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-main",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/MainPipe.scala"
+      ],
+      "design": "memory/llc-main/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-response",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/ResponseUnit.scala"
+      ],
+      "design": "memory/llc-response/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-snoop",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/SnoopUnit.scala"
+      ],
+      "design": "memory/llc-snoop/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-memory",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/MemUnit.scala"
+      ],
+      "design": "memory/llc-memory/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-refill",
+      "parent": "llc-slice",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/RefillUnit.scala"
+      ],
+      "design": "memory/llc-refill/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-link",
+      "parent": "open-llc",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/chi/LinkLayer.scala"
+      ],
+      "design": "memory/llc-link/read.html",
+      "instances": null
+    },
+    {
+      "id": "llc-mmio",
+      "parent": "open-llc",
+      "section": "memory",
+      "repository": "xscache",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/openLLC/utils/MMIOBridge.scala"
+      ],
+      "design": "memory/llc-mmio/read.html",
+      "instances": null
+    },
+    {
+      "id": "alu",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/Alu.scala"
+      ],
+      "design": "backend/alu/read.html",
+      "instances": null
+    },
+    {
+      "id": "bit-crypto",
+      "parent": "alu",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/Bku.scala"
+      ],
+      "design": "backend/bit-crypto/read.html",
+      "instances": null
+    },
+    {
+      "id": "branch",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/Branch.scala"
+      ],
+      "design": "backend/branch/read.html",
+      "instances": null
+    },
+    {
+      "id": "jump",
+      "parent": "branch",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/JumpUnit.scala"
+      ],
+      "design": "backend/jump/read.html",
+      "instances": null
+    },
+    {
+      "id": "link",
+      "parent": "jump",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/LinkUnit.scala"
+      ],
+      "design": "backend/link/read.html",
+      "instances": null
+    },
+    {
+      "id": "multiply",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/Multiplier.scala"
+      ],
+      "design": "backend/multiply/read.html",
+      "instances": null
+    },
+    {
+      "id": "int-divider",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/SRT16Divider.scala"
+      ],
+      "design": "backend/int-divider/read.html",
+      "instances": null
+    },
+    {
+      "id": "csr",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/NewCSR/NewCSR.scala"
+      ],
+      "design": "backend/csr/read.html",
+      "instances": null
+    },
+    {
+      "id": "csr-permit",
+      "parent": "csr",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/NewCSR/CSRPermitModule.scala"
+      ],
+      "design": "backend/csr-permit/read.html",
+      "instances": null
+    },
+    {
+      "id": "interrupt",
+      "parent": "csr",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/NewCSR/InterruptFilter.scala"
+      ],
+      "design": "backend/interrupt/read.html",
+      "instances": null
+    },
+    {
+      "id": "trap",
+      "parent": "csr",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/NewCSR/TrapHandleModule.scala"
+      ],
+      "design": "backend/trap/read.html",
+      "instances": null
+    },
+    {
+      "id": "fence",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/Fence.scala"
+      ],
+      "design": "backend/fence/read.html",
+      "instances": null
+    },
+    {
+      "id": "fp-alu",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/FALUV2.scala"
+      ],
+      "design": "backend/fp-alu/read.html",
+      "instances": null
+    },
+    {
+      "id": "fp-mul",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/FMUL.scala"
+      ],
+      "design": "backend/fp-mul/read.html",
+      "instances": null
+    },
+    {
+      "id": "fp-div",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/FDivSqrt.scala"
+      ],
+      "design": "backend/fp-div/read.html",
+      "instances": null
+    },
+    {
+      "id": "fp-cvt",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/FCVT.scala"
+      ],
+      "design": "backend/fp-cvt/read.html",
+      "instances": null
+    },
+    {
+      "id": "fp-compare",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/FCMP.scala"
+      ],
+      "design": "backend/fp-compare/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-alu",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VIAluWrapper.scala"
+      ],
+      "design": "backend/vector-alu/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-imac",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VIMacU.scala"
+      ],
+      "design": "backend/vector-imac/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-idiv",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VIDiv.scala"
+      ],
+      "design": "backend/vector-idiv/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-fmac",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VFMacWrapper.scala"
+      ],
+      "design": "backend/vector-fmac/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-fdiv",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VFDivWrapper.scala"
+      ],
+      "design": "backend/vector-fdiv/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-cvt",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VCVTWrapper.scala"
+      ],
+      "design": "backend/vector-cvt/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-move",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VMove.scala"
+      ],
+      "design": "backend/vector-move/read.html",
+      "instances": null
+    },
+    {
+      "id": "vset",
+      "parent": "integer-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/fu/wrapper/VSet.scala"
+      ],
+      "design": "backend/vset/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-adder",
+      "parent": "fp-alu",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/falu/FloatAdderV2.scala"
+      ],
+      "design": "backend/float-adder/read.html",
+      "instances": null
+    },
+    {
+      "id": "fadd-s0",
+      "parent": "float-adder",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala"
+      ],
+      "design": "backend/fadd-s0/read.html",
+      "instances": null
+    },
+    {
+      "id": "fadd-s1",
+      "parent": "float-adder",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS1.scala"
+      ],
+      "design": "backend/fadd-s1/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-mul",
+      "parent": "fp-mul",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/fmul/FloatMUL.scala"
+      ],
+      "design": "backend/float-mul/read.html",
+      "instances": null
+    },
+    {
+      "id": "fmul-s0",
+      "parent": "float-mul",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/fmul/FloatMULS0.scala"
+      ],
+      "design": "backend/fmul-s0/read.html",
+      "instances": null
+    },
+    {
+      "id": "fmul-s1",
+      "parent": "float-mul",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/fmul/FloatMULS1.scala"
+      ],
+      "design": "backend/fmul-s1/read.html",
+      "instances": null
+    },
+    {
+      "id": "fmul-s2",
+      "parent": "float-mul",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala"
+      ],
+      "design": "backend/fmul-s2/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-divider",
+      "parent": "fp-div",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/FloatDivider.scala"
+      ],
+      "design": "backend/float-divider/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-div-iterate",
+      "parent": "float-divider",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/fpu/FloatDivider.scala"
+      ],
+      "design": "backend/float-div-iterate/read.html",
+      "instances": null
+    },
+    {
+      "id": "fp-convert",
+      "parent": "fp-cvt",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/scalar/Convert.scala"
+      ],
+      "design": "backend/fp-convert/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-integer-alu",
+      "parent": "vector-alu",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorALU/VIAlu.scala"
+      ],
+      "design": "backend/vector-integer-alu/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-integer-div",
+      "parent": "vector-idiv",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorIdiv/VectorIdiv.scala"
+      ],
+      "design": "backend/vector-integer-div/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-falu",
+      "parent": "vector-fmac",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/vfalu/VectorFALU.scala"
+      ],
+      "design": "backend/vector-falu/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-fdiv-kernel",
+      "parent": "vector-fdiv",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorFloatDivider.scala"
+      ],
+      "design": "backend/vector-fdiv-kernel/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-perm-legacy",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "variant",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorPermFsm/PermFsm.scala"
+      ],
+      "design": "backend/vector-perm-legacy/read.html",
+      "instances": null
+    },
+    {
+      "id": "tage-table",
+      "parent": "tage",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/tage/TageTable.scala"
+      ],
+      "design": "frontend/tage-table/read.html",
+      "instances": null
+    },
+    {
+      "id": "sc-table",
+      "parent": "sc",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/sc/ScTable.scala"
+      ],
+      "design": "frontend/sc-table/read.html",
+      "instances": null
+    },
+    {
+      "id": "ittage-table",
+      "parent": "ittage",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/ittage/IttageTable.scala"
+      ],
+      "design": "frontend/ittage-table/read.html",
+      "instances": null
+    },
+    {
+      "id": "utage-table",
+      "parent": "utage",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/utage/MicroTageTable.scala"
+      ],
+      "design": "frontend/utage-table/read.html",
+      "instances": null
+    },
+    {
+      "id": "abtb-bank",
+      "parent": "abtb",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/abtb/AheadBtbBank.scala"
+      ],
+      "design": "frontend/abtb-bank/read.html",
+      "instances": null
+    },
+    {
+      "id": "mbtb-align",
+      "parent": "mbtb",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbAlignBank.scala"
+      ],
+      "design": "frontend/mbtb-align/read.html",
+      "instances": null
+    },
+    {
+      "id": "mbtb-internal",
+      "parent": "mbtb-align",
+      "section": "frontend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbInternalBank.scala"
+      ],
+      "design": "frontend/mbtb-internal/read.html",
+      "instances": null
+    },
+    {
+      "id": "regcache-tag",
+      "parent": "regcache",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/regcache/RegCacheTagTable.scala"
+      ],
+      "design": "backend/regcache-tag/read.html",
+      "instances": null
+    },
+    {
+      "id": "regcache-data",
+      "parent": "regcache",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/regcache/RegCacheDataModule.scala"
+      ],
+      "design": "backend/regcache-data/read.html",
+      "instances": null
+    },
+    {
+      "id": "regcache-age",
+      "parent": "regcache",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/regcache/RegCacheAgeTimer.scala"
+      ],
+      "design": "backend/regcache-age/read.html",
+      "instances": null
+    },
+    {
+      "id": "wb-busy",
+      "parent": "writeback",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/datapath/WbFuBusyTable.scala"
+      ],
+      "design": "backend/wb-busy/read.html",
+      "instances": null
+    },
+    {
+      "id": "new-age",
+      "parent": "issue-queue",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/issue/NewAgeDetector.scala"
+      ],
+      "design": "backend/new-age/read.html",
+      "instances": null
+    },
+    {
+      "id": "hptw",
+      "parent": "l2tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/PageTableWalker.scala"
+      ],
+      "design": "memory/hptw/read.html",
+      "instances": null
+    },
+    {
+      "id": "llptw",
+      "parent": "l2tlb",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/mmu/PageTableWalker.scala"
+      ],
+      "design": "memory/llptw/read.html",
+      "instances": null
+    },
+    {
+      "id": "dcache-arrays",
+      "parent": "dcache",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala"
+      ],
+      "design": "memory/dcache-arrays/read.html",
+      "instances": null
+    },
+    {
+      "id": "berti-history",
+      "parent": "berti",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "variant",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/Berti.scala"
+      ],
+      "design": "memory/berti-history/read.html",
+      "instances": null
+    },
+    {
+      "id": "berti-delta",
+      "parent": "berti",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "variant",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/Berti.scala"
+      ],
+      "design": "memory/berti-delta/read.html",
+      "instances": null
+    },
+    {
+      "id": "sms-agt",
+      "parent": "sms",
+      "section": "memory",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala"
+      ],
+      "design": "memory/sms-agt/read.html",
+      "instances": null
+    },
+    {
+      "id": "float-issue-pipe",
+      "parent": "float-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/float/FltIssuePipe.scala"
+      ],
+      "design": "backend/float-issue-pipe/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-issue-pipe",
+      "parent": "vector-region",
+      "section": "backend",
+      "repository": "xiangshan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/xiangshan/backend/vector/IssuePipe.scala"
+      ],
+      "design": "backend/vector-issue-pipe/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-fmul",
+      "parent": "vector-fmac",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/vfmul/VectorFMul.scala"
+      ],
+      "design": "backend/vector-fmul/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-imac-kernel",
+      "parent": "vector-imac",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/vectorIMAC/VIMac64b.scala"
+      ],
+      "design": "backend/vector-imac-kernel/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-cvt-kernel",
+      "parent": "vector-cvt",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorConvert/Convert.scala"
+      ],
+      "design": "backend/vector-cvt-kernel/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-add-kernel",
+      "parent": "vector-integer-alu",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorALU/Adder.scala"
+      ],
+      "design": "backend/vector-add-kernel/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-fixpoint",
+      "parent": "vector-integer-alu",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorALU/FixPoint.scala"
+      ],
+      "design": "backend/vector-fixpoint/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-misc",
+      "parent": "vector-integer-alu",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorALU/Misc.scala"
+      ],
+      "design": "backend/vector-misc/read.html",
+      "instances": null
+    },
+    {
+      "id": "vector-move-kernel",
+      "parent": "vector-move",
+      "section": "backend",
+      "repository": "yunsuan",
+      "configurationStatus": "active",
+      "sourceFiles": [
+        "src/main/scala/yunsuan/vector/VectorMove/VMove.scala"
+      ],
+      "design": "backend/vector-move-kernel/read.html",
+      "instances": null
+    }
+  ],
+  "excluded": [
+    "Type definitions and generic combinational primitives are grouped into their functional owner.",
+    "Unselected ZhuJiang/Minimal/FPGA variants are documented as alternatives, not simultaneously instantiated in DefaultConfig."
+  ],
+  "allAuthored": true,
+  "diagramCount": 214
+}

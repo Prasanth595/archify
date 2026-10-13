@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · OpenLLC 顶层互连与Slice",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XSCache.git",
+      "revision": "300515bc7b2f65ca988041a984204489d80ec2fb"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/open-llc/open-llc.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "RN入口互连",
+      "sublabel": "val rnXbar",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/OpenLLC.scala",
+          "line": 55,
+          "end_line": 64,
+          "label": "RTL · val rnXbar"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "多bank Slice",
+      "sublabel": "val slice = Module",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/OpenLLC.scala",
+          "line": 60,
+          "end_line": 69,
+          "label": "RTL · val slice = Module"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "非缓存分流",
+      "sublabel": "val mmioDiverger",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/OpenLLC.scala",
+          "line": 53,
+          "end_line": 62,
+          "label": "RTL · val mmioDiverger"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "messagebus",
+      "label": "内存侧互连",
+      "sublabel": "val snXbar",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/OpenLLC.scala",
+          "line": 56,
+          "end_line": 65,
+          "label": "RTL · val snXbar"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "external",
+      "label": "合并与链路监控",
+      "sublabel": "val snLinkMonitor",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/OpenLLC.scala",
+          "line": 57,
+          "end_line": 66,
+          "label": "RTL · val snLinkMonitor"
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "type": "backend",
+      "label": "模块内部设计",
+      "sublabel": "open-llc",
+      "tag": "结构视图",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/OpenLLC.scala",
+          "line": 55,
+          "end_line": 64,
+          "label": "RTL · val rnXbar"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "open-llc-owns-n0",
+      "from": "owner",
+      "to": "n0",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "open-llc-owns-n1",
+      "from": "owner",
+      "to": "n1",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "open-llc-owns-n2",
+      "from": "owner",
+      "to": "n2",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "open-llc-owns-n3",
+      "from": "owner",
+      "to": "n3",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "open-llc-owns-n4",
+      "from": "owner",
+      "to": "n4",
+      "label": "结构角色",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "DefaultConfig选OpenLLC，32MiB/16way/4bank，RN来自各L2。",
+        "默认LLC不是ZhuJiang，不能把ZhuJiang另一实现并列成同时存在的bank。",
+        "MMIO分流与cache请求在内存侧合并，源身份和链路状态保留。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "本页按模块结构角色展开，连线表示组成/控制关联；并行子单元之间不串接。实际I/O主路径在父图或相应细节页。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xscache @ 300515bc7b2f",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

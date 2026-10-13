@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · uBTB 全相联目标预测",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/ubtb/ubtb.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "PC 与 tag",
+      "sublabel": "s0_tag",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 63,
+          "end_line": 72,
+          "label": "RTL · s0_tag"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "全相联查找",
+      "sublabel": "s0_hitOH",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 65,
+          "end_line": 74,
+          "label": "RTL · s0_hitOH"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "S1 命中选择",
+      "sublabel": "s1_hitEntry",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 88,
+          "end_line": 97,
+          "label": "RTL · s1_hitEntry"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "目标重建",
+      "sublabel": "io.prediction.bits.target",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 94,
+          "end_line": 103,
+          "label": "RTL · io.prediction.bits.target"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "训练更新",
+      "sublabel": "t1_updatedEntry",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 141,
+          "end_line": 150,
+          "label": "RTL · t1_updatedEntry"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "database",
+      "label": "预测项状态",
+      "sublabel": "private val entries",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 46,
+          "end_line": 55,
+          "label": "RTL · private val entries"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "backend",
+      "label": "替换器",
+      "sublabel": "new MicroBtbReplacer",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/MicroBtb.scala",
+          "line": 48,
+          "end_line": 57,
+          "label": "RTL · new MicroBtbReplacer"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "ubtb-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ubtb-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ubtb-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ubtb-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ubtb-branch-0",
+      "from": "b0",
+      "to": "n1",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "ubtb-branch-1",
+      "from": "b1",
+      "to": "n4",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "32 项寄存器表以 valid/tag 并行比较；S1 用 one-hot 选择命中项。",
+        "目标从低位/进位重建，usefulCnt 与位置/类型/目标的一致性决定训练和分配。",
+        "resolve 训练与 fastTrain 共用更新，替换器参考有用计数和 touch。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

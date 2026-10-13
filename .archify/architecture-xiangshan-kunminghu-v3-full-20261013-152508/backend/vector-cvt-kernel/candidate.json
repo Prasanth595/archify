@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · VectorCvt 格式分流",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/vector-cvt-kernel/vector-cvt-kernel.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "转换控制",
+      "sublabel": "class VectorCvt(",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorConvert/Convert.scala",
+          "line": 69,
+          "end_line": 78,
+          "label": "RTL · class VectorCvt("
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "普通64/32/16转换",
+      "sublabel": "private val cvt64",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorConvert/Convert.scala",
+          "line": 107,
+          "end_line": 116,
+          "label": "RTL · private val cvt64"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "narrow64/32路径",
+      "sublabel": "private val src2NarrowCvt64",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorConvert/Convert.scala",
+          "line": 111,
+          "end_line": 120,
+          "label": "RTL · private val src2NarrowCvt64"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "多来源narrow",
+      "sublabel": "private val src1NarrowCvt64",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorConvert/Convert.scala",
+          "line": 115,
+          "end_line": 124,
+          "label": "RTL · private val src1NarrowCvt64"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "阶段结果选择",
+      "sublabel": "private case class CvtStageOut",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorConvert/Convert.scala",
+          "line": 124,
+          "end_line": 133,
+          "label": "RTL · private case class CvtStageOut"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "vector-cvt-kernel-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-cvt-kernel-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-cvt-kernel-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-cvt-kernel-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "widen、normal、narrow拥有不同格式转换内核，来源位置取决于对应uOP。",
+        "当前固定子仓对narrow shift bias已有修正，图按此版本实现。",
+        "结果/fflags必须从同一已激活元素路径选取。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

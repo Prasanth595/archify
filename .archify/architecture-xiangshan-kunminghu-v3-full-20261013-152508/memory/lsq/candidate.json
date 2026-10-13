@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · LsqWrapper 分配与顺序控制",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/lsq/lsq.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "Rename 分配",
+      "sublabel": "io.enq.canAccept",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala",
+          "line": 170,
+          "end_line": 179,
+          "label": "RTL · io.enq.canAccept"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "messagebus",
+      "label": "LoadQueue",
+      "sublabel": "val loadQueue = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala",
+          "line": 156,
+          "end_line": 165,
+          "label": "RTL · val loadQueue = Module"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "messagebus",
+      "label": "StoreQueue",
+      "sublabel": "val storeQueue = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala",
+          "line": 157,
+          "end_line": 166,
+          "label": "RTL · val storeQueue = Module"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "地址/数据接收",
+      "sublabel": "storeQueue.io.storeDataIn",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala",
+          "line": 206,
+          "end_line": 215,
+          "label": "RTL · storeQueue.io.storeDataIn"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "提交到SBuffer",
+      "sublabel": "storeQueue.io.writeToSbuffer",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala",
+          "line": 207,
+          "end_line": 216,
+          "label": "RTL · storeQueue.io.writeToSbuffer"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "重定向处理",
+      "sublabel": "storeQueue.io.redirect",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/lsqueue/LSQWrapper.scala",
+          "line": 202,
+          "end_line": 211,
+          "label": "RTL · storeQueue.io.redirect"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "lsq-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "lsq-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "lsq-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "lsq-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "lsq-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "LQ/SQ容量共同决定Rename接受；两个队列各自维护入出指针。",
+        "Load转发/违例/replay与store地址/数据在Wrapper中接入。",
+        "ROB commit、redirect和向量例外通过明确接口影响释放与恢复。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

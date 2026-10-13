@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · RVC Expander 条件译码",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/rvc-expander/rvc-expander.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "指令/FS 状态",
+      "sublabel": "class RVCExpanderIO",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/RvcExpander.scala",
+          "line": 22,
+          "end_line": 31,
+          "label": "RTL · class RVCExpanderIO"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "RVC 译码结果",
+      "sublabel": "io.out := decoder.decode",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/RvcExpander.scala",
+          "line": 33,
+          "end_line": 41,
+          "label": "RTL · io.out := decoder.decode"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "非法编码反馈",
+      "sublabel": "io.ill := decoder.ill",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/RvcExpander.scala",
+          "line": 34,
+          "end_line": 41,
+          "label": "RTL · io.ill := decoder.ill"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "32 位透传",
+      "sublabel": "io.out := decoder.passthrough",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/RvcExpander.scala",
+          "line": 36,
+          "end_line": 41,
+          "label": "RTL · io.out := decoder.passthrough"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "rvc-expander-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rvc-expander-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rvc-expander-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "压缩指令通过 decoder 扩为32位；普通指令走 passthrough。",
+        "非法压缩编码以 ill 保留，而非当作正常展开结果。",
+        "默认 IFU 按 IBufferEnqueueWidth=36 实例化展开位置，并另有非缓存展开器。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "默认36个常规展开位置 + 1个非缓存展开位置；有效指令数受掩码限制。"
+      ]
+    }
+  ]
+}

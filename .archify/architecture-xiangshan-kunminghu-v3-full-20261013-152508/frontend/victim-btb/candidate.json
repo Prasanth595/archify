@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · Victim BTB 去重与快照替换",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/victim-btb/victim-btb.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "全相联匹配",
+      "sublabel": "s1_readRawHitMask",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 90,
+          "end_line": 99,
+          "label": "RTL · s1_readRawHitMask"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "最早分支选择",
+      "sublabel": "s1_selectOH",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 102,
+          "end_line": 111,
+          "label": "RTL · s1_selectOH"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "主表重复检测",
+      "sublabel": "s2_mainBtbDuplicateMask",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 137,
+          "end_line": 146,
+          "label": "RTL · s2_mainBtbDuplicateMask"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "替换/迁移选择",
+      "sublabel": "snapshotEntryWayMask",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 163,
+          "end_line": 172,
+          "label": "RTL · snapshotEntryWayMask"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "训练与去重更新",
+      "sublabel": "when(trainEntry.req.valid)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 203,
+          "end_line": 212,
+          "label": "RTL · when(trainEntry.req.valid)"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "database",
+      "label": "Victim 项",
+      "sublabel": "private val entries",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 84,
+          "end_line": 93,
+          "label": "RTL · private val entries"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "backend",
+      "label": "Victim Replacer",
+      "sublabel": "new VictimBtbReplacer",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/VictimBtb.scala",
+          "line": 87,
+          "end_line": 96,
+          "label": "RTL · new VictimBtbReplacer"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "victim-btb-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "victim-btb-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "victim-btb-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "victim-btb-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "victim-btb-branch-0",
+      "from": "b0",
+      "to": "n1",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "victim-btb-branch-1",
+      "from": "b1",
+      "to": "n3",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "该固定提交引入全相联 Victim BTB；按分支位置选择最早命中。",
+        "Victim 与主表重复项被清理；主表快照替换会迁移被逐出的条目。",
+        "预测 touch、训练 touch 与快照更新驱动替换器。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

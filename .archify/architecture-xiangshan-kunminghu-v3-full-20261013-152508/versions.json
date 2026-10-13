@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "frozenAt": "2026-10-13T15:25:08+08:00",
+  "configuration": {
+    "class": "top.DefaultConfig",
+    "cores": 1,
+    "llc": "OpenLLC",
+    "runtimeOverrides": [],
+    "note": "Use selected config composition and inherited XSCoreParameters; actual instantiation is traced before asserting per-unit quantities."
+  },
+  "archify": {
+    "version": "3.0.1",
+    "baselineCommit": "05e644fca7c9588702701183ec327f49925d84df"
+  },
+  "repositories": {
+    "xiangshan": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2",
+      "branch": "kunminghu-v3"
+    },
+    "xscache": {
+      "url": "https://github.com/OpenXiangShan/XSCache.git",
+      "revision": "300515bc7b2f65ca988041a984204489d80ec2fb",
+      "parent": "xiangshan",
+      "submodulePath": "XSCache"
+    },
+    "yunsuan": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c",
+      "parent": "xiangshan",
+      "submodulePath": "yunsuan"
+    },
+    "utility": {
+      "url": "https://github.com/OpenXiangShan/Utility.git",
+      "revision": "eb8e12b00a33e4716e7778175f6dd45b7a3a9ede",
+      "parent": "xiangshan",
+      "submodulePath": "utility"
+    },
+    "rocketChip": {
+      "url": "https://github.com/OpenXiangShan/rocket-chip.git",
+      "revision": "a2df1a42399cfe2b343eeb5293796268dc2bc211",
+      "parent": "xiangshan",
+      "submodulePath": "rocket-chip"
+    }
+  }
+}

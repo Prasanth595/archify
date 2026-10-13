@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · FloatAdderV2 两级运算",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/float-adder/float-adder.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "格式/操作码输入",
+      "sublabel": "class FloatAdderV2Input",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/FloatAdderV2.scala",
+          "line": 9,
+          "end_line": 18,
+          "label": "RTL · class FloatAdderV2Input"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "S0处理",
+      "sublabel": "val FloatAdderV2S0",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/FloatAdderV2.scala",
+          "line": 33,
+          "end_line": 42,
+          "label": "RTL · val FloatAdderV2S0"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "database",
+      "label": "中间结果锁存",
+      "sublabel": "FloatAdderV2toS1Reg",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/FloatAdderV2.scala",
+          "line": 35,
+          "end_line": 42,
+          "label": "RTL · FloatAdderV2toS1Reg"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "S1处理",
+      "sublabel": "val FloatAdderV2S1",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/FloatAdderV2.scala",
+          "line": 37,
+          "end_line": 42,
+          "label": "RTL · val FloatAdderV2S1"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "最终结果",
+      "sublabel": "io.out",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/FloatAdderV2.scala",
+          "line": 39,
+          "end_line": 42,
+          "label": "RTL · io.out"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "float-adder-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "float-adder-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "float-adder-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "float-adder-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "FP16/32/64加法由S0/S1实现，保留FMUL传来的额外中间位。",
+        "regEnable/fire控制对应操作的锁存。",
+        "不是每次调用所有格式都作为独立结果返回，S1按格式选择。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

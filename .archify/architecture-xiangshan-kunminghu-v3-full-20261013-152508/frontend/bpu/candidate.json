@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · BPU 预测与恢复细节",
+    "locale": "zh-CN",
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/bpu/bpu.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "逻辑模块"
+        },
+        "database": {
+          "label": "存储 / 历史"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "翻译 / 权限"
+        },
+        "external": {
+          "label": "相邻接口"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "early",
+      "type": "processor",
+      "label": "S1 早期预测器组",
+      "sublabel": "uBTB 32 · aBTB 1K/4 路 · uTAGE",
+      "pos": [
+        80,
+        100
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 60,
+          "end_line": 71,
+          "label": "实例化"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ubtb/Parameters.scala",
+          "line": 21,
+          "end_line": 29,
+          "label": "uBTB"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/abtb/Parameters.scala",
+          "line": 23,
+          "end_line": 32,
+          "label": "aBTB"
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "type": "backend",
+      "label": "S1 选择与排序",
+      "sublabel": "aBTB + uTAGE 优先；uBTB 回退",
+      "pos": [
+        470,
+        100
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 280,
+          "end_line": 328,
+          "label": "S1 预测选择"
+        }
+      ]
+    },
+    {
+      "id": "fallthrough",
+      "type": "backend",
+      "label": "FallThrough / uRAS",
+      "sublabel": "无 taken 顺序前进；返回栈目标",
+      "pos": [
+        910,
+        100
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 280,
+          "end_line": 328,
+          "label": "fall-through 与 micro RAS"
+        }
+      ]
+    },
+    {
+      "id": "mbtb",
+      "type": "database",
+      "label": "mBTB / Victim BTB",
+      "sublabel": "8K · 4 路 · Victim 32 项",
+      "pos": [
+        80,
+        410
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/Parameters.scala",
+          "line": 21,
+          "end_line": 37,
+          "label": "mBTB 默认参数"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "type": "backend",
+      "label": "S2 中间覆盖",
+      "sublabel": "比较方向 / CFI 位置 / 属性",
+      "pos": [
+        470,
+        410
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 346,
+          "end_line": 384,
+          "label": "S2 taken 及覆盖"
+        }
+      ]
+    },
+    {
+      "id": "tage",
+      "type": "database",
+      "label": "TAGE",
+      "sublabel": "历史相关方向 · fastTakenVec",
+      "pos": [
+        910,
+        410
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 232,
+          "end_line": 246,
+          "label": "历史输入"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 351,
+          "end_line": 359,
+          "label": "S2 快速方向"
+        }
+      ]
+    },
+    {
+      "id": "sc",
+      "type": "database",
+      "label": "SC 统计纠正器",
+      "sublabel": "PHR · GHR · BW · IMLI",
+      "pos": [
+        80,
+        720
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 243,
+          "end_line": 246,
+          "label": "SC 历史"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 425,
+          "end_line": 444,
+          "label": "S3 SC 优先级"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "type": "backend",
+      "label": "S3 最终覆盖",
+      "sublabel": "SC > TAGE > BTB base 方向",
+      "pos": [
+        470,
+        720
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 425,
+          "end_line": 495,
+          "label": "最终方向/目标选择"
+        }
+      ]
+    },
+    {
+      "id": "targets",
+      "type": "database",
+      "label": "ITTAGE / RAS",
+      "sublabel": "间接目标 · 返回地址",
+      "pos": [
+        910,
+        720
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 448,
+          "end_line": 468,
+          "label": "RAS/ITTAGE 目标选择"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/ras/Parameters.scala",
+          "line": 21,
+          "end_line": 26,
+          "label": "16 提交栈 / 32 推测队列"
+        }
+      ]
+    },
+    {
+      "id": "mux",
+      "type": "messagebus",
+      "label": "预测输出仲裁",
+      "sublabel": "S3 覆盖 > S2 覆盖 > S1",
+      "pos": [
+        470,
+        1030
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 523,
+          "end_line": 535,
+          "label": "FTQ 输出优先级"
+        }
+      ]
+    },
+    {
+      "id": "ftq",
+      "type": "external",
+      "label": "FTQ / 后端反馈",
+      "sublabel": "redirect · resolve train · commit",
+      "pos": [
+        470,
+        1340
+      ],
+      "size": [
+        320,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 379,
+          "end_line": 445,
+          "label": "恢复与训练"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 508,
+          "end_line": 514,
+          "label": "RAS 提交反馈"
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "type": "database",
+      "label": "PHR / CommonHR",
+      "sublabel": "推测历史 · 折叠 · 重定向恢复",
+      "pos": [
+        80,
+        1030
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 207,
+          "end_line": 246,
+          "label": "折叠历史输入"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 545,
+          "end_line": 565,
+          "label": "PC 与历史状态"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "early-s1",
+      "from": "early",
+      "to": "s1",
+      "label": "候选分支",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fallback-s1",
+      "from": "fallthrough",
+      "to": "s1",
+      "label": "默认 / 返回",
+      "variant": "default"
+    },
+    {
+      "id": "s1-s2",
+      "from": "s1",
+      "to": "s2",
+      "label": "S1 锁存",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mbtb-s2",
+      "from": "mbtb",
+      "to": "s2",
+      "label": "分支信息",
+      "variant": "default"
+    },
+    {
+      "id": "tage-s2",
+      "from": "tage",
+      "to": "s2",
+      "label": "快速方向",
+      "variant": "default"
+    },
+    {
+      "id": "s2-s3",
+      "from": "s2",
+      "to": "s3",
+      "label": "S2 锁存",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sc-s3",
+      "from": "sc",
+      "to": "s3",
+      "label": "统计方向",
+      "variant": "default"
+    },
+    {
+      "id": "targets-s3",
+      "from": "targets",
+      "to": "s3",
+      "label": "目标选择",
+      "variant": "default"
+    },
+    {
+      "id": "tage-s3",
+      "from": "tage",
+      "to": "s3",
+      "label": "TAGE 方向",
+      "variant": "default"
+    },
+    {
+      "id": "s3-mux",
+      "from": "s3",
+      "to": "mux",
+      "label": "S3 覆盖",
+      "variant": "emphasis"
+    },
+    {
+      "id": "s2-mux",
+      "from": "s2",
+      "to": "mux",
+      "label": "S2 覆盖",
+      "variant": "default"
+    },
+    {
+      "id": "s1-mux",
+      "from": "s1",
+      "to": "mux",
+      "label": "S1 预测",
+      "variant": "default"
+    },
+    {
+      "id": "mux-ftq",
+      "from": "mux",
+      "to": "ftq",
+      "label": "预测 / 元数据",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ftq-history",
+      "from": "ftq",
+      "to": "history",
+      "label": "历史恢复",
+      "variant": "security"
+    },
+    {
+      "id": "history-early",
+      "from": "history",
+      "to": "early",
+      "label": "折叠历史",
+      "variant": "default"
+    },
+    {
+      "id": "ftq-mux",
+      "from": "ftq",
+      "to": "mux",
+      "label": "预测就绪",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "阶段关系",
+      "items": [
+        "S1 选择 aBTB/uTAGE，miss 时使用 uBTB，未 taken 时使用 FallThrough；返回目标可来自 MicroRas。",
+        "S2 引入 mBTB 与 TAGE.fastTakenVec，比对 taken、位置和属性；S2 不单独比较目标地址。",
+        "S3 使用 SC/TAGE/base 方向并选最早 taken，返回目标优先 RAS，其次 ITTAGE，再使用 mBTB 目标。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "历史与训练",
+      "items": [
+        "PHR 给 uTAGE/TAGE/ITTAGE/SC 提供折叠路径历史；CommonHR 补充 GHR、向后分支和 IMLI 历史。",
+        "FTQ resolve train 发往预测器；RAS 在 commit 接口接收 call/ret；重定向携带历史与栈恢复元数据。",
+        "S3 的 fastTrain 同时用于 aBTB/uTAGE 快速更新；图中阶段间连线表示结果锁存，不是预测器串行查询。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "版本与范围",
+      "items": [
+        "官方 kunminghu-v3 RTL @ d48cd2dd7972；参数来自该快照的默认配置，可被具体 SoC 配置覆盖。",
+        "点击节点查看固定版本源码；本图表达模块与逻辑流向，连线不是逐根硬件信号或周期时序。",
+        "前端总览、BPU、ICache、IFU 四张图配合阅读；当前 V3 采用 64B fetch block 与 8 路 Decode。"
+      ]
+    }
+  ]
+}

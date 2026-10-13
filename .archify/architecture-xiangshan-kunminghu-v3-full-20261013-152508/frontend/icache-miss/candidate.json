@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · ICache MissUnit",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/icache-miss/icache-miss.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "fetch 请求去重",
+      "sublabel": "fetchDemux.io.in.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheMissUnit.scala",
+          "line": 85,
+          "end_line": 94,
+          "label": "RTL · fetchDemux.io.in.valid"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "messagebus",
+      "label": "fetch/prefetch MSHR",
+      "sublabel": "new ICacheMshr",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheMissUnit.scala",
+          "line": 99,
+          "end_line": 108,
+          "label": "RTL · new ICacheMshr"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "请求优先级",
+      "sublabel": "acquireArb.io.in.last",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheMissUnit.scala",
+          "line": 90,
+          "end_line": 99,
+          "label": "RTL · acquireArb.io.in.last"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "TileLink A",
+      "sublabel": "io.memAcquire.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheMissUnit.scala",
+          "line": 93,
+          "end_line": 102,
+          "label": "RTL · io.memAcquire.valid"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "messagebus",
+      "label": "prefetch 排队顺序",
+      "sublabel": "private val priorityFIFO",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheMissUnit.scala",
+          "line": 143,
+          "end_line": 152,
+          "label": "RTL · private val priorityFIFO"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "icache-miss-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "icache-miss-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "icache-miss-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "icache-miss-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "默认4 fetch MSHR +10 prefetch MSHR，fetch/prefetch 各自匹配和分配。",
+        "fetch 请求与预取请求汇入 Acquire/Get 仲裁，prefetch FIFO 保持优先关系。",
+        "L2 响应按 source 归属，回填写阵列并通知上下游。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

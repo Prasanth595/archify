@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · ICache / FDIP 细节",
+    "locale": "zh-CN",
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/icache/icache.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "逻辑模块"
+        },
+        "database": {
+          "label": "存储 / 历史"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "翻译 / 权限"
+        },
+        "external": {
+          "label": "相邻接口"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "ftq",
+      "type": "external",
+      "label": "FTQ 请求端",
+      "sublabel": "toPrefetch / toMainPipe",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 280,
+          "end_line": 355,
+          "label": "预取和取指接口"
+        }
+      ]
+    },
+    {
+      "id": "software",
+      "type": "external",
+      "label": "软件 prefetch.i",
+      "sublabel": "缓冲一条 · 仲裁优先",
+      "pos": [
+        880,
+        80
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 159,
+          "end_line": 178,
+          "label": "软件预取仲裁"
+        }
+      ]
+    },
+    {
+      "id": "prefetch",
+      "type": "backend",
+      "label": "PrefetchPipe",
+      "sublabel": "FDIP · Meta 查询 · ITLB",
+      "pos": [
+        460,
+        350
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 143,
+          "end_line": 178,
+          "label": "元数据与请求"
+        }
+      ]
+    },
+    {
+      "id": "meta",
+      "type": "database",
+      "label": "MetaArray",
+      "sublabel": "tag / valid / maybeRVC / parity",
+      "pos": [
+        80,
+        350
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 128,
+          "end_line": 147,
+          "label": "元数组读取与冲刷"
+        }
+      ]
+    },
+    {
+      "id": "tlb",
+      "type": "security",
+      "label": "ITLB / PMP-PMA",
+      "sublabel": "翻译 · 页属性 · 取指权限",
+      "pos": [
+        880,
+        350
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 208,
+          "end_line": 212,
+          "label": "检查接口"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 149,
+          "end_line": 211,
+          "label": "TLB 与 PMP 实例"
+        }
+      ]
+    },
+    {
+      "id": "lookup",
+      "type": "messagebus",
+      "label": "WayLookup",
+      "sublabel": "32 项 · way / PA / 异常元数据",
+      "pos": [
+        460,
+        620
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 50,
+          "end_line": 69,
+          "label": "队列深度"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 195,
+          "end_line": 203,
+          "label": "写入/消费/回填更新"
+        }
+      ]
+    },
+    {
+      "id": "main",
+      "type": "backend",
+      "label": "MainPipe",
+      "sublabel": "按 wayMask 读数据 · 异常 / parity",
+      "pos": [
+        460,
+        890
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 184,
+          "end_line": 219,
+          "label": "取指主通路"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "type": "database",
+      "label": "DataArray",
+      "sublabel": "64KiB · 4 路 · 8 个数据 bank",
+      "pos": [
+        80,
+        890
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/Parameters.scala",
+          "line": 29,
+          "end_line": 34,
+          "label": "cache 参数"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 120,
+          "end_line": 125,
+          "label": "读写接口"
+        }
+      ]
+    },
+    {
+      "id": "ifu",
+      "type": "external",
+      "label": "IFU 接收端",
+      "sublabel": "字节 · block info · corrupt",
+      "pos": [
+        460,
+        1160
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 215,
+          "end_line": 224,
+          "label": "向 IFU 返回"
+        }
+      ]
+    },
+    {
+      "id": "miss",
+      "type": "messagebus",
+      "label": "MissUnit / MSHR",
+      "sublabel": "4 fetch + 10 prefetch",
+      "pos": [
+        880,
+        890
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/Parameters.scala",
+          "line": 39,
+          "end_line": 41,
+          "label": "MSHR 数量"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 180,
+          "end_line": 188,
+          "label": "miss 请求及回填"
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "external",
+      "label": "TileLink / L2",
+      "sublabel": "A: Get · D: 回填 / 异常",
+      "pos": [
+        880,
+        1160
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 186,
+          "end_line": 188,
+          "label": "D 通道"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 238,
+          "end_line": 239,
+          "label": "A 通道"
+        }
+      ]
+    },
+    {
+      "id": "replacer",
+      "type": "backend",
+      "label": "Replacer",
+      "sublabel": "默认 setplru · touch / victim",
+      "pos": [
+        880,
+        1410
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/Parameters.scala",
+          "line": 36,
+          "end_line": 38,
+          "label": "替换策略"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 205,
+          "end_line": 206,
+          "label": "touch/victim"
+        }
+      ]
+    },
+    {
+      "id": "ctrl",
+      "type": "security",
+      "label": "CtrlUnit / fence.i",
+      "sublabel": "可选 parity 注错 · I$ 冲刷",
+      "pos": [
+        80,
+        620
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 110,
+          "end_line": 148,
+          "label": "注错与 fence.i"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/Parameters.scala",
+          "line": 62,
+          "end_line": 64,
+          "label": "CtrlUnit 开关"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "ftq-prefetch",
+      "from": "ftq",
+      "to": "prefetch",
+      "label": "硬件预取",
+      "variant": "emphasis"
+    },
+    {
+      "id": "software-prefetch",
+      "from": "software",
+      "to": "prefetch",
+      "label": "软件优先",
+      "variant": "dashed"
+    },
+    {
+      "id": "meta-prefetch",
+      "from": "meta",
+      "to": "prefetch",
+      "label": "tag / way",
+      "variant": "default"
+    },
+    {
+      "id": "prefetch-tlb",
+      "from": "prefetch",
+      "to": "tlb",
+      "label": "翻译 / 权限",
+      "variant": "default"
+    },
+    {
+      "id": "prefetch-lookup",
+      "from": "prefetch",
+      "to": "lookup",
+      "label": "元数据入队",
+      "variant": "emphasis"
+    },
+    {
+      "id": "lookup-main",
+      "from": "lookup",
+      "to": "main",
+      "label": "元数据出队",
+      "variant": "emphasis"
+    },
+    {
+      "id": "data-main",
+      "from": "data",
+      "to": "main",
+      "label": "指令字节",
+      "variant": "default"
+    },
+    {
+      "id": "main-ifu",
+      "from": "main",
+      "to": "ifu",
+      "label": "命中 / 回填",
+      "variant": "emphasis"
+    },
+    {
+      "id": "main-miss",
+      "from": "main",
+      "to": "miss",
+      "label": "fetch miss",
+      "variant": "dashed"
+    },
+    {
+      "id": "prefetch-miss",
+      "from": "prefetch",
+      "to": "miss",
+      "label": "prefetch miss",
+      "variant": "dashed"
+    },
+    {
+      "id": "miss-l2",
+      "from": "miss",
+      "to": "l2",
+      "label": "Get 请求",
+      "variant": "dashed"
+    },
+    {
+      "id": "l2-miss",
+      "from": "l2",
+      "to": "miss",
+      "label": "D 回填",
+      "variant": "default"
+    },
+    {
+      "id": "miss-data",
+      "from": "miss",
+      "to": "data",
+      "label": "数据回填",
+      "variant": "default"
+    },
+    {
+      "id": "miss-meta",
+      "from": "miss",
+      "to": "meta",
+      "label": "tag 回填",
+      "variant": "default"
+    },
+    {
+      "id": "ftq-main",
+      "from": "ftq",
+      "to": "main",
+      "label": "取指请求",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ctrl-meta",
+      "from": "ctrl",
+      "to": "meta",
+      "label": "冲刷 / 注错",
+      "variant": "security"
+    },
+    {
+      "id": "miss-replacer",
+      "from": "miss",
+      "to": "replacer",
+      "label": "victim 查询",
+      "variant": "default"
+    },
+    {
+      "id": "main-replacer",
+      "from": "main",
+      "to": "replacer",
+      "label": "命中 touch",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "violet",
+      "title": "缓存通路解耦",
+      "items": [
+        "PrefetchPipe 提前读取 MetaArray/ITLB，WayLookup 缓存结果；MainPipe 消费元数据后读取 DataArray。",
+        "硬件预取与取指保持顺序，可在 WayLookup 缓冲范围内并行；预取不是等待取指命中后才触发。",
+        "软件预取优先于 FTQ 硬件预取，其元数据不作为正常取指的 WayLookup 项。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "缺失、替换与错误",
+      "items": [
+        "取指缺失等待 MissUnit/L2 回填；预取缺失可在发出请求后继续前进。",
+        "MissUnit 写回 MetaArray/DataArray，并更新 WayLookup；MainPipe 向 IFU 提供数据与错误。",
+        "默认缓存使用 parity；CtrlUnit 可选。fence.i 冲刷 ICache 元数据，redirect 冲刷流水和查询队列。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "版本与范围",
+      "items": [
+        "官方 kunminghu-v3 RTL @ d48cd2dd7972；参数来自该快照的默认配置，可被具体 SoC 配置覆盖。",
+        "点击节点查看固定版本源码；本图表达模块与逻辑流向，连线不是逐根硬件信号或周期时序。",
+        "前端总览、BPU、ICache、IFU 四张图配合阅读；当前 V3 采用 64B fetch block 与 8 路 Decode。"
+      ]
+    }
+  ]
+}

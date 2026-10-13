@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · 访存与缓存总览",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/memory/memory.html",
+    "quality_profile": "showcase",
+    "locale": "zh-CN"
+  },
+  "components": [
+    {
+      "id": "issue",
+      "type": "external",
+      "label": "后端访存发射",
+      "sublabel": "LSQ 指针 · 操作数 · ROB index",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 514,
+          "end_line": 521,
+          "label": "RTL · val newLoadUnits"
+        }
+      ]
+    },
+    {
+      "id": "load",
+      "type": "backend",
+      "label": "NewLoadUnit ×3",
+      "sublabel": "地址 / DTLB / D$ / forward",
+      "pos": [
+        80,
+        350
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 514,
+          "end_line": 521,
+          "label": "RTL · val newLoadUnits"
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "type": "backend",
+      "label": "NewStoreUnit ×2",
+      "sublabel": "地址检查 / StoreQueue",
+      "pos": [
+        460,
+        350
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 515,
+          "end_line": 522,
+          "label": "RTL · val storeUnits"
+        }
+      ]
+    },
+    {
+      "id": "std",
+      "type": "backend",
+      "label": "StdExeUnit ×2",
+      "sublabel": "标量/向量 store data",
+      "pos": [
+        840,
+        350
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 516,
+          "end_line": 523,
+          "label": "RTL · val stdExeUnits"
+        }
+      ]
+    },
+    {
+      "id": "lsq",
+      "type": "messagebus",
+      "label": "LSQ / Load & Store Queue",
+      "sublabel": "转发 · 违例 · Replay · 异常",
+      "pos": [
+        460,
+        620
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 185,
+          "end_line": 192,
+          "label": "RTL · val lsq"
+        }
+      ]
+    },
+    {
+      "id": "dcache",
+      "type": "database",
+      "label": "DCache",
+      "sublabel": "64KiB · 4 路 · 2 个 L1-L2 通道",
+      "pos": [
+        80,
+        890
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 330,
+          "end_line": 337,
+          "label": "RTL · val dcache"
+        }
+      ]
+    },
+    {
+      "id": "sbuffer",
+      "type": "messagebus",
+      "label": "SBuffer",
+      "sublabel": "16 项 · 提交 store 合并",
+      "pos": [
+        460,
+        890
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 591,
+          "end_line": 598,
+          "label": "RTL · val sbuffer"
+        }
+      ]
+    },
+    {
+      "id": "tlb",
+      "type": "security",
+      "label": "DTLB / PMP / L2TLB",
+      "sublabel": "翻译 · 嵌套走页 · 权限",
+      "pos": [
+        840,
+        620
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 334,
+          "end_line": 341,
+          "label": "RTL · val ptw"
+        }
+      ]
+    },
+    {
+      "id": "prefetch",
+      "type": "backend",
+      "label": "PrefetcherWrapper",
+      "sublabel": "Stream / Stride / Berti / SMS",
+      "pos": [
+        840,
+        890
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 780,
+          "end_line": 787,
+          "label": "RTL · val prefetcher"
+        }
+      ]
+    },
+    {
+      "id": "l2",
+      "type": "database",
+      "label": "CoupledL2",
+      "sublabel": "inclusive · 2MiB / 8 路 / 4 bank",
+      "pos": [
+        80,
+        1160
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/top/Configs.scala",
+          "line": 586,
+          "end_line": 593,
+          "label": "RTL · L2CacheConfig(\"2MB\""
+        }
+      ]
+    },
+    {
+      "id": "llc",
+      "type": "database",
+      "label": "OpenLLC",
+      "sublabel": "32MiB / 16 路 / 4 bank",
+      "pos": [
+        80,
+        1430
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/top/Configs.scala",
+          "line": 584,
+          "end_line": 591,
+          "label": "RTL · OpenLLCConfig(\"32MB\""
+        }
+      ]
+    },
+    {
+      "id": "uncache",
+      "type": "backend",
+      "label": "Uncache / Atomics",
+      "sublabel": "非缓存 · LR/SC/AMO · 顺序门禁",
+      "pos": [
+        460,
+        1160
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/MemBlock.scala",
+          "line": 549,
+          "end_line": 556,
+          "label": "RTL · val atomicsUnit"
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "type": "external",
+      "label": "后端完成与恢复",
+      "sublabel": "完成 · cancel · memoryViolation",
+      "pos": [
+        460,
+        1430
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/XSCore.scala",
+          "line": 148,
+          "end_line": 155,
+          "label": "RTL · memoryViolation"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "memory-r0",
+      "from": "issue",
+      "to": "load",
+      "label": "load",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r1",
+      "from": "issue",
+      "to": "store",
+      "label": "store addr",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r2",
+      "from": "issue",
+      "to": "std",
+      "label": "store data",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r3",
+      "from": "load",
+      "to": "lsq",
+      "label": "检查 / 重放",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r4",
+      "from": "store",
+      "to": "lsq",
+      "label": "地址入队",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r5",
+      "from": "std",
+      "to": "lsq",
+      "label": "数据入队",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r6",
+      "from": "lsq",
+      "to": "sbuffer",
+      "label": "提交 store",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r7",
+      "from": "sbuffer",
+      "to": "dcache",
+      "label": "合并写入",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r8",
+      "from": "load",
+      "to": "dcache",
+      "label": "缓存读取",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r9",
+      "from": "store",
+      "to": "tlb",
+      "label": "翻译 / 权限",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r10",
+      "from": "prefetch",
+      "to": "dcache",
+      "label": "L1 预取",
+      "variant": "dashed"
+    },
+    {
+      "id": "memory-r11",
+      "from": "dcache",
+      "to": "l2",
+      "label": "缺失 / 回填",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r12",
+      "from": "l2",
+      "to": "llc",
+      "label": "CHI",
+      "variant": "emphasis"
+    },
+    {
+      "id": "memory-r13",
+      "from": "lsq",
+      "to": "backend",
+      "label": "违例 / 完成",
+      "variant": "security"
+    },
+    {
+      "id": "memory-r14",
+      "from": "uncache",
+      "to": "backend",
+      "label": "完成 / 异常",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "主数据与控制路径",
+      "items": [
+        "NewLoadUnit/NewStoreUnit 是当前默认实现；Legacy Load/Store/Hybrid 不当作同时存在的默认实例。",
+        "新流水内部也处理非对齐/向量 flow；LSQ 维护转发、顺序检查和重放，SBuffer 只保存已提交 store。",
+        "预取器实例与运行开关分别标注，不能把 RTL 存在等同于默认启用。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "固定配置",
+      "items": [
+        "top.DefaultConfig(1) · 单核 · OpenLLC。实例和参数依据固定 RTL。",
+        "点击节点查看代码；各模块的内部设计通过图集父子目录进入。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · Berti 延迟相关delta学习",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/berti/berti.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "访问历史",
+      "sublabel": "class HistoryTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/Berti.scala",
+          "line": 172,
+          "end_line": 181,
+          "label": "RTL · class HistoryTable"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "delta统计",
+      "sublabel": "class DeltaTable",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/Berti.scala",
+          "line": 444,
+          "end_line": 453,
+          "label": "RTL · class DeltaTable"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "目标请求",
+      "sublabel": "io.prefetch_l1.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/Berti.scala",
+          "line": 709,
+          "end_line": 718,
+          "label": "RTL · io.prefetch_l1.valid"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "messagebus",
+      "label": "翻译缓冲",
+      "sublabel": "class DeltaPrefetchBuffer",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/Berti.scala",
+          "line": 748,
+          "end_line": 757,
+          "label": "RTL · class DeltaPrefetchBuffer"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "TLB仲裁",
+      "sublabel": "val tlbReqArb",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/Berti.scala",
+          "line": 819,
+          "end_line": 828,
+          "label": "RTL · val tlbReqArb"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "berti-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "berti-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "berti-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "berti-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "结合历史访问与响应时延学习可及时到达的delta。",
+        "DeltaTable/Buffer分别承担统计和目标翻译/请求排队。",
+        "DefaultConfig中实例存在但modeStrideBerti=01运行关闭；页标为配置变体。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "配置变体：当前默认配置未启用此通路。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

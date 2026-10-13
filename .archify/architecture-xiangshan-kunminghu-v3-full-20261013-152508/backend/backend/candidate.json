@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · 后端总览",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/backend/backend.html",
+    "quality_profile": "showcase",
+    "locale": "zh-CN"
+  },
+  "components": [
+    {
+      "id": "decode",
+      "type": "backend",
+      "label": "DecodeStage / Fusion",
+      "sublabel": "8 路 · CFI/向量属性 · uOP",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 58,
+          "end_line": 65,
+          "label": "RTL · val decode"
+        }
+      ]
+    },
+    {
+      "id": "rename",
+      "type": "backend",
+      "label": "Rename / RAT / FreeList",
+      "sublabel": "物理目的寄存器 · Snapshot",
+      "pos": [
+        460,
+        350
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 117,
+          "end_line": 124,
+          "label": "RTL · val rename"
+        }
+      ]
+    },
+    {
+      "id": "dispatch",
+      "type": "messagebus",
+      "label": "Dispatch",
+      "sublabel": "就绪表 · IQ 分配 · LSQ/ROB",
+      "pos": [
+        460,
+        620
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 113,
+          "end_line": 120,
+          "label": "RTL · val dispatch"
+        }
+      ]
+    },
+    {
+      "id": "int",
+      "type": "backend",
+      "label": "整数调度 / 数据通路",
+      "sublabel": "IssueQueue · RegCache · Int RF",
+      "pos": [
+        80,
+        890
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/Backend.scala",
+          "line": 194,
+          "end_line": 201,
+          "label": "RTL · private val intRegion"
+        }
+      ]
+    },
+    {
+      "id": "float",
+      "type": "backend",
+      "label": "Float Region",
+      "sublabel": "FltIQ · FltIssuePipe · FP RF",
+      "pos": [
+        460,
+        890
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/Backend.scala",
+          "line": 180,
+          "end_line": 187,
+          "label": "RTL · val fpRegion"
+        }
+      ]
+    },
+    {
+      "id": "vector",
+      "type": "backend",
+      "label": "Vector Region",
+      "sublabel": "VecIQ · IssuePipe · Vector RF",
+      "pos": [
+        840,
+        890
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/Backend.scala",
+          "line": 179,
+          "end_line": 186,
+          "label": "RTL · val vecRegion"
+        }
+      ]
+    },
+    {
+      "id": "wb",
+      "type": "messagebus",
+      "label": "WB / Wakeup / Bypass",
+      "sublabel": "端口冲突 · 结果优先级",
+      "pos": [
+        460,
+        1160
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbArbiter.scala",
+          "line": 85,
+          "end_line": 92,
+          "label": "RTL · class WbDataPath"
+        }
+      ]
+    },
+    {
+      "id": "rob",
+      "type": "messagebus",
+      "label": "ROB / RAB / VType",
+      "sublabel": "提交 · walk · 异常/重定向",
+      "pos": [
+        460,
+        1430
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 86,
+          "end_line": 93,
+          "label": "RTL · val rab"
+        }
+      ]
+    },
+    {
+      "id": "mem",
+      "type": "external",
+      "label": "访存接口",
+      "sublabel": "LSQ 分配 · issue · replay",
+      "pos": [
+        80,
+        1160
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/XSCore.scala",
+          "line": 144,
+          "end_line": 151,
+          "label": "RTL · backend.io.mem"
+        }
+      ]
+    },
+    {
+      "id": "redirect",
+      "type": "security",
+      "label": "RedirectGenerator",
+      "sublabel": "最老事件 · 优先级 · PC 修复",
+      "pos": [
+        840,
+        1430
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/CtrlBlock.scala",
+          "line": 118,
+          "end_line": 125,
+          "label": "RTL · val redirectGen"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "backend-r0",
+      "from": "decode",
+      "to": "rename",
+      "label": "微操作",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r1",
+      "from": "rename",
+      "to": "dispatch",
+      "label": "物理映射",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r2",
+      "from": "dispatch",
+      "to": "int",
+      "label": "INT",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r3",
+      "from": "dispatch",
+      "to": "float",
+      "label": "FP",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r4",
+      "from": "dispatch",
+      "to": "vector",
+      "label": "VEC",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r5",
+      "from": "int",
+      "to": "wb",
+      "label": "结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r6",
+      "from": "float",
+      "to": "wb",
+      "label": "结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r7",
+      "from": "vector",
+      "to": "wb",
+      "label": "结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r8",
+      "from": "mem",
+      "to": "wb",
+      "label": "访存结果",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r9",
+      "from": "wb",
+      "to": "rob",
+      "label": "完成",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r10",
+      "from": "int",
+      "to": "mem",
+      "label": "访存发射",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-r11",
+      "from": "rob",
+      "to": "rename",
+      "label": "提交 / walk",
+      "variant": "security"
+    },
+    {
+      "id": "backend-r12",
+      "from": "rob",
+      "to": "redirect",
+      "label": "异常冲刷",
+      "variant": "security"
+    },
+    {
+      "id": "backend-r13",
+      "from": "redirect",
+      "to": "decode",
+      "label": "流水恢复",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "主数据与控制路径",
+      "items": [
+        "控制、数据和提交是不同职责，Issue/WB 箭头表示实际接口联系而非一个共用执行队列。",
+        "默认整数/FP/VEC 配置分别来自 intSchdParams/fpSchdParams/vecSchdParams；同类多实例在配置表列出。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "固定配置",
+      "items": [
+        "top.DefaultConfig(1) · 单核 · OpenLLC。实例和参数依据固定 RTL。",
+        "点击节点查看代码；各模块的内部设计通过图集父子目录进入。"
+      ]
+    }
+  ]
+}

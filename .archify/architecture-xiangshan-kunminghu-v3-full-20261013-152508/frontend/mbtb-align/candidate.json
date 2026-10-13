@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · MainBtbAlignBank 目标/替换",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/mbtb-align/mbtb-align.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "对齐bank查询",
+      "sublabel": "private val s0_setIdx",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbAlignBank.scala",
+          "line": 119,
+          "end_line": 128,
+          "label": "RTL · private val s0_setIdx"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "内部SRAM bank",
+      "sublabel": "new MainBtbInternalBank",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbAlignBank.scala",
+          "line": 95,
+          "end_line": 104,
+          "label": "RTL · new MainBtbInternalBank"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "MainBtbReplacer",
+      "sublabel": "private val replacer",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbAlignBank.scala",
+          "line": 98,
+          "end_line": 107,
+          "label": "RTL · private val replacer"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "database",
+      "label": "Victim BTB",
+      "sublabel": "private val victimBtb",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbAlignBank.scala",
+          "line": 102,
+          "end_line": 111,
+          "label": "RTL · private val victimBtb"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "内部bank路由",
+      "sublabel": "b.io.read.req.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/mbtb/MainBtbAlignBank.scala",
+          "line": 129,
+          "end_line": 138,
+          "label": "RTL · b.io.read.req.valid"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "mbtb-align-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mbtb-align-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mbtb-align-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mbtb-align-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "按startPC选内部bank并保存跨页/位置信息。",
+        "主表替换与VictimBtb的快照迁移保持统一分支身份。",
+        "重复项去重和位置选择防止两个bank对同分支产生冲突预测。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

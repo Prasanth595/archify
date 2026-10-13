@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · BOP RecentRequest与偏移评分",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XSCache.git",
+      "revision": "300515bc7b2f65ca988041a984204489d80ec2fb"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/l2-bop/l2-bop.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "近期请求表",
+      "sublabel": "class RecentRequestTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/prefetch/BestOffsetPrefetch.scala",
+          "line": 199,
+          "end_line": 208,
+          "label": "RTL · class RecentRequestTable"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "候选offset评分",
+      "sublabel": "class OffsetScoreTable",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/prefetch/BestOffsetPrefetch.scala",
+          "line": 273,
+          "end_line": 282,
+          "label": "RTL · class OffsetScoreTable"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "学习阶段",
+      "sublabel": "when(state === s_learn)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/prefetch/BestOffsetPrefetch.scala",
+          "line": 342,
+          "end_line": 351,
+          "label": "RTL · when(state === s_learn)"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "最佳偏移提交",
+      "sublabel": "io.phaseBestOffsetCommitted",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/prefetch/BestOffsetPrefetch.scala",
+          "line": 377,
+          "end_line": 386,
+          "label": "RTL · io.phaseBestOffsetCommitted"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "预取使能",
+      "sublabel": "io.prefetchDisable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/prefetch/BestOffsetPrefetch.scala",
+          "line": 375,
+          "end_line": 384,
+          "label": "RTL · io.prefetchDisable"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "l2-bop-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-bop-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-bop-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-bop-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "RecentRequestTable验证访问之间的候选offset相关性。",
+        "ScoreTable在phase内学习，阶段结束提交bestOffset并判定issue enable。",
+        "prefetchDisable/degree与翻译条件限制真实发出；不宣称每个命中都产生预取。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xscache @ 300515bc7b2f",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · ROB 顺序退休与恢复",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/rob/rob.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "入队分配",
+      "sublabel": "io.enq.canAccept",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 202,
+          "end_line": 211,
+          "label": "RTL · io.enq.canAccept"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "writeback 完成",
+      "sublabel": "writeback",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 75,
+          "end_line": 84,
+          "label": "RTL · writeback"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "最老异常状态",
+      "sublabel": "val exceptionGen",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 449,
+          "end_line": 458,
+          "label": "RTL · val exceptionGen"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "退休/Walk 模式",
+      "sublabel": "state === s_walk",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 423,
+          "end_line": 432,
+          "label": "RTL · state === s_walk"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "RAB/VType 提交",
+      "sublabel": "rab.io.fromRob.commitSize",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 477,
+          "end_line": 486,
+          "label": "RTL · rab.io.fromRob.commitSize"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "后端冲刷",
+      "sublabel": "io.flushOut",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 543,
+          "end_line": 552,
+          "label": "RTL · io.flushOut"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "security",
+      "label": "异常合并",
+      "sublabel": "new ExceptionGen",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 449,
+          "end_line": 458,
+          "label": "RTL · new ExceptionGen"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "messagebus",
+      "label": "RenameBuffer",
+      "sublabel": "new RenameBuffer",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rob/Rob.scala",
+          "line": 173,
+          "end_line": 182,
+          "label": "RTL · new RenameBuffer"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "rob-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rob-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rob-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rob-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rob-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rob-branch-0",
+      "from": "b0",
+      "to": "n2",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "rob-branch-1",
+      "from": "b1",
+      "to": "n4",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "默认144项 ROB，跟踪压缩 entry 成员和 uOP完成，不把 ROB项数等同架构指令数量。",
+        "RAB=352保存重命名退休信息，VTypeBuffer 保持向量状态顺序。",
+        "头部异常、WFI、向量异常修复等限制commit；redirect触发walk恢复。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

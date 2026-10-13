@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · FMUL S2 最终格式选择",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/fmul-s2/fmul-s2.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "S1乘法元数据",
+      "sublabel": "val FMUL16S2",
+      "tag": "逻辑步骤",
+      "pos": [
+        560,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala",
+          "line": 17,
+          "end_line": 26,
+          "label": "RTL · val FMUL16S2"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "FP32舍入",
+      "sublabel": "val FMUL32S2",
+      "tag": "逻辑步骤",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala",
+          "line": 22,
+          "end_line": 31,
+          "label": "RTL · val FMUL32S2"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "FP64舍入",
+      "sublabel": "val FMUL64S2",
+      "tag": "逻辑步骤",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala",
+          "line": 27,
+          "end_line": 36,
+          "label": "RTL · val FMUL64S2"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "结果Mux",
+      "sublabel": "io.out.fp_result",
+      "tag": "逻辑步骤",
+      "pos": [
+        560,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala",
+          "line": 32,
+          "end_line": 41,
+          "label": "RTL · io.out.fp_result"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "flagsMux",
+      "sublabel": "io.out.fflags",
+      "tag": "逻辑步骤",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala",
+          "line": 37,
+          "end_line": 44,
+          "label": "RTL · io.out.fflags"
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "type": "backend",
+      "label": "模块内部设计",
+      "sublabel": "fmul-s2",
+      "tag": "结构视图",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/fmul/FloatMULS2.scala",
+          "line": 17,
+          "end_line": 26,
+          "label": "RTL · val FMUL16S2"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "fmul-s2-owns-n0",
+      "from": "owner",
+      "to": "n0",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "fmul-s2-owns-n1",
+      "from": "owner",
+      "to": "n1",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "fmul-s2-owns-n2",
+      "from": "owner",
+      "to": "n2",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "fmul-s2-owns-n3",
+      "from": "owner",
+      "to": "n3",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "fmul-s2-owns-n4",
+      "from": "owner",
+      "to": "n4",
+      "label": "结构角色",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "各格式按自己的IEEE精度形成结果/异常。",
+        "isF16/isF32/isF64决定返回格式，结果flags同时选定。",
+        "本页描述独立乘法最终结果；级联FMA中间积由S1直接提供。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "本页按模块结构角色展开，连线表示组成/控制关联；并行子单元之间不串接。实际I/O主路径在父图或相应细节页。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}
