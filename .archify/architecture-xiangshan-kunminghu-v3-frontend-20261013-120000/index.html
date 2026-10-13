@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>昆明湖 V3 前端 · 架构图集</title>
+<style>body{margin:0;background:#081221;color:#ecf4ff;font:16px/1.65 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1120px;margin:auto;padding:64px 28px}small{color:#78d4dc;letter-spacing:.12em}h1{font-size:clamp(28px,5vw,48px);margin:12px 0}p{color:#adc1d8}nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:34px 0}nav a{display:block;background:#112339;border:1px solid #2e455e;border-radius:14px;padding:24px;color:inherit;text-decoration:none}nav a:hover,nav a:focus-visible{border-color:#62dbe5;outline:2px solid #62dbe5;outline-offset:3px}strong{display:block;font-size:22px}nav span{display:block;color:#adbed1;margin-top:8px}figure{margin:32px 0}img{max-width:100%;border-radius:14px;border:1px solid #34495e}a{color:#73dce5}footer{border-top:1px solid #263d53;margin-top:32px;padding-top:22px;color:#adc1d8;font-size:14px}@media(max-width:650px){main{padding:32px 18px}nav{grid-template-columns:1fr}}</style>
+</head><body><main><small>XIANGSHAN · KUNMINGHU V3</small><h1>从预测到指令供给</h1><p>阅读前端主数据路径，再展开预测、缓存与取指内部细节。四张图支持主题切换、节点搜索、关系聚焦和源码查看。</p>
+<nav aria-label="选择架构图">
+<a href="xiangshan-kunminghu-v3-frontend.html"><small>01 · FRONTEND</small><strong>前端架构总览</strong><span>BPU → FTQ → ICache → IFU → IBuffer → Decode；重定向与翻译、回填、非缓存路径。</span></a>
+<a href="kunminghu-v3-bpu.html"><small>02 · BRANCH PREDICTION</small><strong>BPU 预测与恢复</strong><span>早期预测、S2/S3 覆盖、TAGE-SC、目标预测、历史恢复和输出仲裁。</span></a>
+<a href="kunminghu-v3-icache.html"><small>03 · INSTRUCTION CACHE</small><strong>ICache 与 FDIP</strong><span>PrefetchPipe、WayLookup、MainPipe、Meta/DataArray、MSHR、L2 回填。</span></a>
+<a href="kunminghu-v3-ifu.html"><small>04 · INSTRUCTION FETCH</small><strong>IFU 与指令缓冲</strong><span>S0 边界、S1 压紧/预对齐、S2 展开与校验、反压和非缓存门禁。</span></a>
+</nav><figure><a href="xiangshan-kunminghu-v3-frontend.html"><img src="preview.png" alt="香山昆明湖 V3 前端总览，包含主路径与控制反馈"></a></figure>
+<footer>依据官方 kunminghu-v3 RTL 快照 d48cd2dd7972（2026-10-13）。图中参数为该版本默认配置。<br><a href="README.md">来源、参数和复现说明</a> · <a href="validation.json">验证记录</a> · <a href="https://github.com/OpenXiangShan/XiangShan/tree/d48cd2dd79726c2d7a1264b3c7a50679c77461e2">官方固定版本源码</a></footer></main></body></html>

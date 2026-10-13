@@ -1,0 +1,537 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · IFU / IBuffer 细节",
+    "locale": "zh-CN",
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-frontend-20261013-120000/kunminghu-v3-ifu.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "逻辑模块"
+        },
+        "database": {
+          "label": "存储 / 历史"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "翻译 / 权限"
+        },
+        "external": {
+          "label": "相邻接口"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "icache",
+      "type": "external",
+      "label": "ICache 输入",
+      "sublabel": "双 fetch 字节 · metadata · 异常",
+      "pos": [
+        460,
+        80
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 122,
+          "end_line": 148,
+          "label": "cache 数据接收"
+        }
+      ]
+    },
+    {
+      "id": "boundary",
+      "type": "backend",
+      "label": "S0 · InstrBoundary",
+      "sublabel": "RVC/RVI 边界 · 跨块半条指令",
+      "pos": [
+        460,
+        350
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/InstrBoundary.scala",
+          "line": 45,
+          "end_line": 86,
+          "label": "半条指令与边界"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 137,
+          "end_line": 169,
+          "label": "边界与保存状态"
+        }
+      ]
+    },
+    {
+      "id": "compact",
+      "type": "backend",
+      "label": "S1 · Compact / Align",
+      "sublabel": "压紧 · 预对齐 · PC 与 CFI 属性",
+      "pos": [
+        460,
+        620
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 191,
+          "end_line": 207,
+          "label": "指令压紧"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 281,
+          "end_line": 322,
+          "label": "预对齐"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 374,
+          "end_line": 385,
+          "label": "预译码属性"
+        }
+      ]
+    },
+    {
+      "id": "expand",
+      "type": "backend",
+      "label": "S2 · RVC Expand",
+      "sublabel": "默认 36 个展开位置",
+      "pos": [
+        80,
+        890
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 87,
+          "end_line": 92,
+          "label": "展开器实例"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 424,
+          "end_line": 443,
+          "label": "RVC 展开"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/FrontendParameters.scala",
+          "line": 81,
+          "end_line": 87,
+          "label": "32 + 4 写 bank"
+        }
+      ]
+    },
+    {
+      "id": "checker",
+      "type": "backend",
+      "label": "S2 · PredChecker",
+      "sublabel": "CFI 类型 / 目标 / valid 修正",
+      "pos": [
+        460,
+        890
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 502,
+          "end_line": 515,
+          "label": "预测检查"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 735,
+          "end_line": 768,
+          "label": "writeback redirect"
+        }
+      ]
+    },
+    {
+      "id": "uncache",
+      "type": "backend",
+      "label": "IfuUncacheUnit",
+      "sublabel": "MMIO / PBMT-IO 等待排空",
+      "pos": [
+        880,
+        890
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 460,
+          "end_line": 494,
+          "label": "非缓存请求"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 85,
+          "end_line": 105,
+          "label": "顺序等待门禁"
+        }
+      ]
+    },
+    {
+      "id": "trigger",
+      "type": "security",
+      "label": "FrontendTrigger",
+      "sublabel": "CSR 配置 · PC 触发",
+      "pos": [
+        80,
+        1160
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 521,
+          "end_line": 530,
+          "label": "触发器接入"
+        }
+      ]
+    },
+    {
+      "id": "enqueue",
+      "type": "messagebus",
+      "label": "S2 · 指令输出",
+      "sublabel": "instrs · valid · enqEnable · PC",
+      "pos": [
+        460,
+        1160
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 532,
+          "end_line": 552,
+          "label": "入队数据"
+        }
+      ]
+    },
+    {
+      "id": "buffer",
+      "type": "messagebus",
+      "label": "IBuffer",
+      "sublabel": "48 项 · 4 写 bank / 8 读 bank",
+      "pos": [
+        460,
+        1430
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ibuffer/Parameters.scala",
+          "line": 23,
+          "end_line": 27,
+          "label": "默认参数"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ibuffer/IBuffer.scala",
+          "line": 120,
+          "end_line": 165,
+          "label": "入队指针与 bypass"
+        }
+      ]
+    },
+    {
+      "id": "decode",
+      "type": "external",
+      "label": "8 路 Decode 接口",
+      "sublabel": "CtrlFlow · decodeCanAccept",
+      "pos": [
+        460,
+        1700
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ibuffer/IBuffer.scala",
+          "line": 38,
+          "end_line": 44,
+          "label": "DecodeWidth 端口"
+        },
+        {
+          "path": "src/main/scala/xiangshan/Parameters.scala",
+          "line": 80,
+          "end_line": 84,
+          "label": "译码宽度"
+        }
+      ]
+    },
+    {
+      "id": "ftq",
+      "type": "external",
+      "label": "FTQ 恢复接口",
+      "sublabel": "预测覆盖 / 后端 redirect / WB",
+      "pos": [
+        880,
+        350
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 106,
+          "end_line": 135,
+          "label": "冲刷优先级"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 735,
+          "end_line": 768,
+          "label": "FTQ writeback"
+        }
+      ]
+    },
+    {
+      "id": "instruncache",
+      "type": "external",
+      "label": "InstrUncache / 总线",
+      "sublabel": "非缓存数据 · denied / corrupt",
+      "pos": [
+        880,
+        1160
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 265,
+          "end_line": 267,
+          "label": "非缓存桥接"
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "type": "external",
+      "label": "后端与 IBuffer 空状态",
+      "sublabel": "backendEmpty && ibufferEmpty",
+      "pos": [
+        880,
+        620
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 486,
+          "end_line": 494,
+          "label": "emptyAfter 输入"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 95,
+          "end_line": 104,
+          "label": "wait-last-commit 判定"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "cache-boundary",
+      "from": "icache",
+      "to": "boundary",
+      "label": "字节 / 属性",
+      "variant": "emphasis"
+    },
+    {
+      "id": "boundary-compact",
+      "from": "boundary",
+      "to": "compact",
+      "label": "指令边界",
+      "variant": "emphasis"
+    },
+    {
+      "id": "compact-checker",
+      "from": "compact",
+      "to": "checker",
+      "label": "预译码信息",
+      "variant": "emphasis"
+    },
+    {
+      "id": "compact-expand",
+      "from": "compact",
+      "to": "expand",
+      "label": "压紧后指令",
+      "variant": "default"
+    },
+    {
+      "id": "expand-enqueue",
+      "from": "expand",
+      "to": "enqueue",
+      "label": "32 位指令",
+      "variant": "default"
+    },
+    {
+      "id": "checker-enqueue",
+      "from": "checker",
+      "to": "enqueue",
+      "label": "有效范围",
+      "variant": "emphasis"
+    },
+    {
+      "id": "enqueue-buffer",
+      "from": "enqueue",
+      "to": "buffer",
+      "label": "有效指令入队",
+      "variant": "emphasis"
+    },
+    {
+      "id": "buffer-decode",
+      "from": "buffer",
+      "to": "decode",
+      "label": "译码供给",
+      "variant": "emphasis"
+    },
+    {
+      "id": "decode-buffer",
+      "from": "decode",
+      "to": "buffer",
+      "label": "反压就绪",
+      "variant": "dashed"
+    },
+    {
+      "id": "trigger-enqueue",
+      "from": "trigger",
+      "to": "enqueue",
+      "label": "触发标记",
+      "variant": "security"
+    },
+    {
+      "id": "checker-ftq",
+      "from": "checker",
+      "to": "ftq",
+      "label": "校验重定向",
+      "variant": "security"
+    },
+    {
+      "id": "ftq-boundary",
+      "from": "ftq",
+      "to": "boundary",
+      "label": "冲刷 / 恢复",
+      "variant": "security"
+    },
+    {
+      "id": "compact-uncache",
+      "from": "compact",
+      "to": "uncache",
+      "label": "非缓存属性",
+      "variant": "dashed"
+    },
+    {
+      "id": "uncache-instruncache",
+      "from": "uncache",
+      "to": "instruncache",
+      "label": "允许后取指",
+      "variant": "dashed"
+    },
+    {
+      "id": "instruncache-uncache",
+      "from": "instruncache",
+      "to": "uncache",
+      "label": "返回 / 异常",
+      "variant": "default"
+    },
+    {
+      "id": "backend-uncache",
+      "from": "backend",
+      "to": "uncache",
+      "label": "排空门禁",
+      "variant": "security"
+    },
+    {
+      "id": "uncache-enqueue",
+      "from": "uncache",
+      "to": "enqueue",
+      "label": "数据 / 异常",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "当前 RTL 的取指流水",
+      "items": [
+        "S0 使用 maybeRVCMap 生成指令边界，保存跨 fetch block 的 RVI 半条状态。",
+        "S1 压紧并按 IBuffer 写 bank 预对齐，同时生成 PC、预测 taken 掩码和 CFI 属性。",
+        "S2 展开 RVC、检查预测并生成入队掩码；默认 32 个半字位置 + 4 写 bank = 36 个展开位置。"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "反压与恢复",
+      "items": [
+        "enqEnable 表示预测检查后实际可入队的指令，valid 仍保留预对齐位置有效性。",
+        "PredChecker writeback 回 FTQ 修复预测；后端重定向优先，BPU 覆盖可冲刷尚未稳定的取指。",
+        "MMIO / PBMT-IO 先等待排空，首条指令例外；PBMT-NC 不要求该门禁，跨页半条可重发。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "版本与范围",
+      "items": [
+        "官方 kunminghu-v3 RTL @ d48cd2dd7972；参数来自该快照的默认配置，可被具体 SoC 配置覆盖。",
+        "点击节点查看固定版本源码；本图表达模块与逻辑流向，连线不是逐根硬件信号或周期时序。",
+        "前端总览、BPU、ICache、IFU 四张图配合阅读；当前 V3 采用 64B fetch block 与 8 路 Decode。"
+      ]
+    }
+  ]
+}

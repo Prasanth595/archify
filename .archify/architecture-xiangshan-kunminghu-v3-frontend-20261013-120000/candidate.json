@@ -2,263 +2,516 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "香山昆明湖 V3 前端架构",
+    "title": "香山昆明湖 V3 · 前端详细架构",
     "locale": "zh-CN",
-    "output": "xiangshan-kunminghu-v3-frontend.html",
-    "quality_profile": "showcase"
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-frontend-20261013-120000/xiangshan-kunminghu-v3-frontend.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "逻辑模块"
+        },
+        "database": {
+          "label": "存储 / 历史"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "翻译 / 权限"
+        },
+        "external": {
+          "label": "相邻接口"
+        }
+      }
+    }
   },
   "components": [
     {
-      "id": "backend_control",
-      "type": "external",
-      "label": "后端控制",
-      "sublabel": "redirect · commit · PC read",
-      "pos": [40, 282],
-      "size": [180, 72],
-      "tag": "frontend control"
-    },
-    {
-      "id": "bpu_early",
+      "id": "bpu",
       "type": "processor",
-      "label": "BPU · S1 早期预测",
-      "sublabel": "uBTB 32 · aBTB 1K/4-way · uTAGE",
-      "architecture": "Kunminghu-V3 BPU",
-      "vendor": "OpenXiangShan",
-      "pos": [330, 70],
-      "size": [220, 82],
-      "tag": "early target + direction"
-    },
-    {
-      "id": "bpu_late",
-      "type": "processor",
-      "label": "BPU · S3 精确预测",
-      "sublabel": "mBTB 12K/4-way · TAGE-SC · ITTAGE · RAS",
-      "architecture": "Kunminghu-V3 BPU",
-      "vendor": "OpenXiangShan",
-      "pos": [600, 70],
-      "size": [250, 82],
-      "tag": "override + training"
+      "label": "BPU 分支预测",
+      "sublabel": "S1 快预测 · S2/S3 覆盖",
+      "pos": [
+        480,
+        90
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 60,
+          "end_line": 71,
+          "label": "预测器组成"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/Bpu.scala",
+          "line": 520,
+          "end_line": 551,
+          "label": "预测输出与 PC 选择"
+        }
+      ],
+      "architecture": "RISC-V / Kunminghu-V3"
     },
     {
       "id": "ftq",
       "type": "messagebus",
-      "label": "Fetch Target Queue",
-      "sublabel": "64 entries · 2 fetch blocks · ≤64B total",
-      "pos": [340, 282],
-      "size": [220, 82],
-      "tag": "decoupled frontend supply"
-    },
-    {
-      "id": "ifu",
-      "type": "backend",
-      "label": "Instruction Fetch Unit",
-      "sublabel": "F0–F3 · 4×PreDecode · PredChecker · 16×Expanders",
-      "pos": [700, 282],
-      "size": [230, 86],
-      "tag": "≤32B prediction block"
-    },
-    {
-      "id": "ibuffer",
-      "type": "messagebus",
-      "label": "Instruction Buffer",
-      "sublabel": "valid / enqEnable · FTQ metadata",
-      "pos": [1060, 282],
-      "size": [210, 82],
-      "tag": "instruction queue"
-    },
-    {
-      "id": "decode",
-      "type": "backend",
-      "label": "6-way Decode",
-      "sublabel": "instruction fusion · uOP output",
-      "pos": [1060, 500],
-      "size": [190, 82],
-      "tag": "downstream context"
-    },
-    {
-      "id": "backend_exec",
-      "type": "external",
-      "label": "后端执行与提交",
-      "sublabel": "rename · issue · execute · commit",
-      "pos": [1390, 500],
-      "size": [200, 82],
-      "tag": "backend context"
-    },
-    {
-      "id": "instruction_uncache",
-      "type": "cloud",
-      "label": "Instruction Uncache",
-      "sublabel": "MMIO instruction fetch",
-      "pos": [340, 530],
-      "size": [220, 78],
-      "tag": "commit-serialized"
+      "label": "FTQ 取指目标队列",
+      "sublabel": "64 项 · 预测 / 预取 / 取指指针",
+      "pos": [
+        80,
+        340
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/FtqParameters.scala",
+          "line": 23,
+          "end_line": 29,
+          "label": "FTQ 默认参数"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 280,
+          "end_line": 355,
+          "label": "双预取与双取指请求"
+        }
+      ]
     },
     {
       "id": "icache",
       "type": "database",
-      "label": "L1 Instruction Cache",
-      "sublabel": "64KB · 4-way · 64B line · 4 fetch MSHR",
-      "pos": [700, 530],
-      "size": [230, 88],
-      "tag": "FDIP · 2-fetch"
+      "label": "ICache 指令缓存",
+      "sublabel": "64KiB · 4 路 · 64B 行",
+      "pos": [
+        480,
+        620
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/Parameters.scala",
+          "line": 29,
+          "end_line": 41,
+          "label": "缓存与 MSHR 参数"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 175,
+          "end_line": 218,
+          "label": "FTQ 到 IFU 通路"
+        }
+      ]
     },
     {
-      "id": "itlb",
+      "id": "ifu",
+      "type": "processor",
+      "label": "IFU 取指处理",
+      "sublabel": "S0 边界 → S1 压紧 → S2 检查",
+      "pos": [
+        480,
+        900
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 87,
+          "end_line": 92,
+          "label": "IFU 子模块"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 514,
+          "end_line": 535,
+          "label": "IBuffer 输出数据"
+        }
+      ],
+      "architecture": "RISC-V / Kunminghu-V3"
+    },
+    {
+      "id": "ibuffer",
+      "type": "messagebus",
+      "label": "IBuffer 指令缓冲",
+      "sublabel": "48 项 · 4 写 bank · 8 读 bank",
+      "pos": [
+        480,
+        1180
+      ],
+      "size": [
+        300,
+        94
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ibuffer/Parameters.scala",
+          "line": 23,
+          "end_line": 27,
+          "label": "缓冲默认参数"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 245,
+          "end_line": 263,
+          "label": "入队与后端接口"
+        }
+      ]
+    },
+    {
+      "id": "decode",
+      "type": "external",
+      "label": "后端 Decode",
+      "sublabel": "默认 8 路 · 下游译码接口",
+      "pos": [
+        900,
+        1180
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/Parameters.scala",
+          "line": 80,
+          "end_line": 84,
+          "label": "默认译码宽度"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 262,
+          "end_line": 263,
+          "label": "CtrlFlow 输出"
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "type": "external",
+      "label": "后端控制接口",
+      "sublabel": "resolve · commit · redirect",
+      "pos": [
+        900,
+        340
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 250,
+          "end_line": 258,
+          "label": "后端连接"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 391,
+          "end_line": 445,
+          "label": "resolve 到预测训练"
+        }
+      ]
+    },
+    {
+      "id": "translation",
       "type": "security",
       "label": "ITLB / PMP-PMA",
-      "sublabel": "translation · page/access fault",
-      "pos": [1020, 620],
-      "size": [210, 78],
-      "tag": "frontend protection"
+      "sublabel": "虚实翻译 · 属性与权限检查",
+      "pos": [
+        80,
+        620
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 149,
+          "end_line": 208,
+          "label": "PMP 与 ITLB 接入"
+        }
+      ]
+    },
+    {
+      "id": "ptw",
+      "type": "external",
+      "label": "L2 TLB / PTW",
+      "sublabel": "PTWFilter → PTWRepeaterNB",
+      "pos": [
+        80,
+        900
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 207,
+          "end_line": 211,
+          "label": "PTW 请求桥接"
+        }
+      ]
     },
     {
       "id": "l2",
-      "type": "database",
+      "type": "external",
       "label": "L2 / TileLink",
-      "sublabel": "miss request · refill response",
-      "pos": [1250, 760],
-      "size": [190, 78],
-      "tag": "memory system"
-    }
-  ],
-  "boundaries": [
-    {
-      "kind": "region",
-      "label": "XiangShan Kunminghu-V3 Frontend",
-      "wraps": [
-        "bpu_early",
-        "bpu_late",
-        "ftq",
-        "ifu",
-        "ibuffer",
-        "instruction_uncache",
-        "icache",
-        "itlb"
+      "sublabel": "miss 请求 · 数据回填",
+      "pos": [
+        80,
+        1180
       ],
-      "pad": 26
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 184,
+          "end_line": 188,
+          "label": "miss 与 D 通道"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheImp.scala",
+          "line": 238,
+          "end_line": 239,
+          "label": "A 通道请求"
+        }
+      ]
+    },
+    {
+      "id": "uncache",
+      "type": "backend",
+      "label": "InstrUncache",
+      "sublabel": "PMP-MMIO / PBMT 非缓存取指",
+      "pos": [
+        900,
+        900
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 265,
+          "end_line": 267,
+          "label": "IFU 非缓存接口"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 85,
+          "end_line": 101,
+          "label": "MMIO / IO 序列化条件"
+        }
+      ]
+    },
+    {
+      "id": "softprefetch",
+      "type": "external",
+      "label": "软件预取 / 控制",
+      "sublabel": "prefetch.i · fence.i · CSR",
+      "pos": [
+        900,
+        620
+      ],
+      "size": [
+        280,
+        84
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 214,
+          "end_line": 215,
+          "label": "软件预取接入"
+        },
+        {
+          "path": "src/main/scala/xiangshan/frontend/Frontend.scala",
+          "line": 241,
+          "end_line": 243,
+          "label": "预取开关与 fence.i"
+        }
+      ]
     }
   ],
   "connections": [
     {
-      "id": "backend-redirect-ftq",
-      "from": "backend_control",
+      "id": "prediction",
+      "from": "bpu",
       "to": "ftq",
-      "label": "redirect / commit",
+      "label": "预测块",
+      "variant": "emphasis"
+    },
+    {
+      "id": "predictor-feedback",
+      "from": "ftq",
+      "to": "bpu",
+      "label": "训练 / 恢复",
       "variant": "security"
     },
     {
-      "id": "bpu-early-ftq",
-      "from": "bpu_early",
-      "to": "ftq",
-      "label": "S1 early prediction",
-      "variant": "emphasis",
-      "fromSide": "bottom",
-      "toSide": "top"
+      "id": "ftq-icache",
+      "from": "ftq",
+      "to": "icache",
+      "label": "取指 / FDIP",
+      "variant": "emphasis"
     },
     {
-      "id": "bpu-late-ftq",
-      "from": "bpu_late",
+      "id": "cache-data",
+      "from": "icache",
+      "to": "ifu",
+      "label": "指令 / 元数据",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ifu-ibuffer",
+      "from": "ifu",
+      "to": "ibuffer",
+      "label": "指令 / 有效掩码",
+      "variant": "emphasis"
+    },
+    {
+      "id": "decode-feed",
+      "from": "ibuffer",
+      "to": "decode",
+      "label": "CtrlFlow",
+      "variant": "emphasis"
+    },
+    {
+      "id": "backend-ftq",
+      "from": "backend",
       "to": "ftq",
-      "label": "S3 override / train",
-      "variant": "emphasis",
-      "fromSide": "bottom",
-      "toSide": "top"
+      "label": "解析 / 提交",
+      "variant": "security"
+    },
+    {
+      "id": "cache-translate",
+      "from": "icache",
+      "to": "translation",
+      "label": "地址检查",
+      "variant": "default"
+    },
+    {
+      "id": "translation-walk",
+      "from": "translation",
+      "to": "ptw",
+      "label": "翻译缺失",
+      "variant": "dashed"
+    },
+    {
+      "id": "cache-refill",
+      "from": "icache",
+      "to": "l2",
+      "label": "miss / refill",
+      "variant": "dashed"
+    },
+    {
+      "id": "ifu-uncache",
+      "from": "ifu",
+      "to": "uncache",
+      "label": "非缓存请求",
+      "variant": "dashed"
+    },
+    {
+      "id": "uncache-ifu",
+      "from": "uncache",
+      "to": "ifu",
+      "label": "数据 / 异常",
+      "variant": "default"
+    },
+    {
+      "id": "software-prefetch",
+      "from": "softprefetch",
+      "to": "icache",
+      "label": "软件预取",
+      "variant": "dashed"
+    },
+    {
+      "id": "ifu-ftq",
+      "from": "ifu",
+      "to": "ftq",
+      "label": "预测校验重定向",
+      "variant": "security",
+      "fromSide": "right",
+      "toSide": "right"
     },
     {
       "id": "ftq-ifu",
       "from": "ftq",
       "to": "ifu",
-      "label": "2 fetch blocks · ≤64B",
-      "variant": "emphasis"
+      "label": "冲刷 / 控制",
+      "variant": "security",
+      "fromSide": "left",
+      "toSide": "left"
     },
     {
-      "id": "ifu-icache",
-      "from": "ifu",
-      "to": "icache",
-      "label": "fetch request ↔ cacheline data",
-      "variant": "emphasis",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "ifu-uncache",
-      "from": "ifu",
-      "to": "instruction_uncache",
-      "label": "MMIO fetch",
-      "variant": "dashed",
-      "fromSide": "bottom",
-      "toSide": "top",
-      "via": [[815, 430], [450, 430]]
-    },
-    {
-      "id": "itlb-icache",
-      "from": "itlb",
-      "to": "icache",
-      "label": "VA translation / protection",
-      "variant": "security"
-    },
-    {
-      "id": "ibuffer-decode",
-      "from": "ibuffer",
-      "to": "decode",
-      "label": "instr / valid range",
-      "variant": "emphasis"
-    },
-    {
-      "id": "decode-backend",
+      "id": "decode-backpressure",
       "from": "decode",
-      "to": "backend_exec",
-      "label": "uOP / fusion",
-      "variant": "emphasis"
-    },
-    {
-      "id": "icache-l2",
-      "from": "icache",
-      "to": "l2",
-      "label": "miss / TileLink refill",
-      "variant": "dashed",
-      "fromSide": "bottom",
-      "toSide": "top",
-      "via": [[815, 740], [1345, 740]]
+      "to": "ibuffer",
+      "label": "接收就绪",
+      "variant": "dashed"
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "BPU V3 组成",
+      "title": "预测与取指解耦",
       "items": [
-        "S1 由 uBTB、aBTB 与 uTAGE 提供早期目标和方向预测",
-        "S3 由 mBTB、TAGE-SC、ITTAGE 与 RAS 完成精确覆盖或纠正",
-        "公开 V3 设计页仍将 TAGE-SC、ITTAGE、RAS 的部分参数标为 TBD"
-      ]
-    },
-    {
-      "dot": "emerald",
-      "title": "取指主路径",
-      "items": [
-        "FTQ 以预测块为单位向 IFU 和 ICache 供给最多两个 fetch block",
-        "IFU F2 并行送入四个 PreDecode，F3 对最多 16 条指令做 32-bit 扩展",
-        "PredChecker 在 F3 检查 JAL、ret、非法预测和目标地址错误，再把修正范围写回 FTQ"
+        "FTQ 同时保存预测结果与恢复/训练元数据，以 bpuPtr、pfPtr、fetchPtr、commitPtr 分离前进位置。",
+        "BPU 先输出 S1；S2/S3 可覆盖已有预测。IFU 和后端重定向经 FTQ 恢复 BPU 与取指路径。",
+        "ResolveQueue 驱动方向/目标训练；CommitQueue 传递已提交 call/ret 的 RAS 信息。"
       ]
     },
     {
       "dot": "violet",
-      "title": "ICache 与异常路径",
+      "title": "缓存与吞吐",
       "items": [
-        "V3 ICache 使用 64KB、4-way、64B cache line，支持 FDIP、2-fetch 和 4 个 fetch MSHR",
-        "ITLB/PMP-PMA 提供翻译和取指权限检查；miss 通过 TileLink 请求 L2 并回填",
-        "MMIO 取指进入 Instruction Uncache，并等待 commit 后继续推进"
+        "FTQ 直接发请求到 ICache，ICache 向 IFU 返回取指字节；IFU 不直接向 ICache 发取指请求。",
+        "默认 fetch block 为 64B；双 fetch 的两个块总长度不超过 64B，并须同页及满足 point-of-no-return 条件。",
+        "缓存由 PrefetchPipe、WayLookup、MainPipe、Meta/DataArray、MissUnit、Replacer 与可选 CtrlUnit 组成。"
       ]
     },
     {
-      "dot": "rose",
-      "title": "公开资料",
+      "dot": "emerald",
+      "title": "指令供给与特殊路径",
       "items": [
-        "XiangShan-Design-Doc · kunminghu-v3 · frontend/BPU、IFU、ICache",
-        "2025 RVSC：香山昆明湖 V3 前端架构总览",
-        "资料状态：BPU 与 ICache 文档仍在 draft；本图保留 TBD 与文档边界"
+        "IFU S0 推导边界，S1 压紧和预对齐，S2 展开 RVC 并校验预测；随后通过 valid/enqEnable 入队 IBuffer。",
+        "PMP-MMIO 或 PBMT-IO 需等先前指令排空（首条指令例外）；PBMT-NC 不要求该等待。",
+        "下游接口按当前默认 DecodeWidth=8 表达；图中不展开后端执行流水。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "版本与范围",
+      "items": [
+        "官方 kunminghu-v3 RTL @ d48cd2dd7972；参数来自该快照的默认配置，可被具体 SoC 配置覆盖。",
+        "点击节点查看固定版本源码；本图表达模块与逻辑流向，连线不是逐根硬件信号或周期时序。",
+        "前端总览、BPU、ICache、IFU 四张图配合阅读；当前 V3 采用 64B fetch block 与 8 路 Decode。"
       ]
     }
   ]
 }
-

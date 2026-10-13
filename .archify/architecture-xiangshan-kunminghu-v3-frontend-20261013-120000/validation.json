@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "renderer": {
+    "package": "Archify",
+    "version": "3.0.1",
+    "sourceBaseline": "3699e79"
+  },
+  "repository": {
+    "url": "https://github.com/OpenXiangShan/XiangShan.git",
+    "branch": "kunminghu-v3",
+    "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+  },
+  "diagrams": [
+    {
+      "id": "overview",
+      "title": "香山昆明湖 V3 · 前端详细架构",
+      "specification": {
+        "path": "candidate.json",
+        "sha256": "da076c1de0520763ccabdd92b0fc068520ecbe62cc4d7df228bc7b35f32ddb61",
+        "bytes": 12638
+      },
+      "artifact": {
+        "path": "xiangshan-kunminghu-v3-frontend.html",
+        "sha256": "0ae32fa817b7cb9767567185bfe5d3f7116c5b81cf19b4a4ea6ae613830a5987",
+        "bytes": 782350
+      },
+      "nodeCount": 12,
+      "relationshipCount": 16,
+      "sourceReferenceCount": 22,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "artifactChecks": [
+        {
+          "name": "single_svg",
+          "ok": true
+        },
+        {
+          "name": "finite_svg",
+          "ok": true
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true
+        }
+      ],
+      "composition": {
+        "warningCount": 0,
+        "resolvedCrossovers": 3
+      },
+      "browser": {
+        "implementation": "Microsoft Edge (Chromium)",
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "containment": "pass",
+        "readability": "pass",
+        "viewerChrome": "pass",
+        "themes": "pass",
+        "viewports": [
+          {
+            "width": 1440,
+            "height": 900,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.502459016393442,
+            "minimumProjectedEdgeTextPx": 6.668852459016393,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.502459016393442,
+            "minimumProjectedEdgeTextPx": 6.668852459016393,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.502459016393442,
+            "minimumProjectedEdgeTextPx": 6.668852459016393,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.502459016393442,
+            "minimumProjectedEdgeTextPx": 6.668852459016393,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1440,
+            "height": 900,
+            "resolvedTheme": "dark"
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "resolvedTheme": "dark"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bpu",
+      "title": "昆明湖 V3 · BPU 预测与恢复细节",
+      "specification": {
+        "path": "bpu.json",
+        "sha256": "d448d12ca0f6ea181b2b26c85d7f868b1af8f475c0b5228a9f69b992df730d31",
+        "bytes": 11173
+      },
+      "artifact": {
+        "path": "kunminghu-v3-bpu.html",
+        "sha256": "5640304ceeec78d57e0de65b25c339fcb499be1c851ed5b82cb825d1d88eba74",
+        "bytes": 779355
+      },
+      "nodeCount": 12,
+      "relationshipCount": 16,
+      "sourceReferenceCount": 19,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "artifactChecks": [
+        {
+          "name": "single_svg",
+          "ok": true
+        },
+        {
+          "name": "finite_svg",
+          "ok": true
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true
+        }
+      ],
+      "composition": {
+        "warningCount": 0,
+        "resolvedCrossovers": 4
+      },
+      "browser": {
+        "implementation": "Microsoft Edge (Chromium)",
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "containment": "pass",
+        "readability": "pass",
+        "viewerChrome": "pass",
+        "themes": "pass",
+        "viewports": [
+          {
+            "width": 1440,
+            "height": 900,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1440,
+            "height": 900,
+            "resolvedTheme": "dark"
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "resolvedTheme": "dark"
+          }
+        ]
+      }
+    },
+    {
+      "id": "icache",
+      "title": "昆明湖 V3 · ICache / FDIP 细节",
+      "specification": {
+        "path": "icache.json",
+        "sha256": "13eb218f05a55db0072933bb534cf1abab396de455392a768be7bb7d2955bd88",
+        "bytes": 12028
+      },
+      "artifact": {
+        "path": "kunminghu-v3-icache.html",
+        "sha256": "4ce91d4f93b29efb4dce3f5bb3407b8a18ff682bf48483872018002f4adc5c70",
+        "bytes": 783587
+      },
+      "nodeCount": 13,
+      "relationshipCount": 18,
+      "sourceReferenceCount": 20,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "artifactChecks": [
+        {
+          "name": "single_svg",
+          "ok": true
+        },
+        {
+          "name": "finite_svg",
+          "ok": true
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true
+        }
+      ],
+      "composition": {
+        "warningCount": 0,
+        "resolvedCrossovers": 10
+      },
+      "browser": {
+        "implementation": "Microsoft Edge (Chromium)",
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "containment": "pass",
+        "readability": "pass",
+        "viewerChrome": "pass",
+        "themes": "pass",
+        "viewports": [
+          {
+            "width": 1440,
+            "height": 900,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.503740648379052,
+            "minimumProjectedEdgeTextPx": 6.6699916874480465,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.503740648379052,
+            "minimumProjectedEdgeTextPx": 6.6699916874480465,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.503740648379052,
+            "minimumProjectedEdgeTextPx": 6.6699916874480465,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.503740648379052,
+            "minimumProjectedEdgeTextPx": 6.6699916874480465,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1440,
+            "height": 900,
+            "resolvedTheme": "dark"
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "resolvedTheme": "dark"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ifu",
+      "title": "昆明湖 V3 · IFU / IBuffer 细节",
+      "specification": {
+        "path": "ifu.json",
+        "sha256": "103a404cbdaf42e6012bbf5fdecddfb40f64b85f42efe3d49b6e924c7a6997a4",
+        "bytes": 12750
+      },
+      "artifact": {
+        "path": "kunminghu-v3-ifu.html",
+        "sha256": "9ba2f79ccb927f6bf8b9765f919d35faa849916b0575c7af0fde3f7017f6782e",
+        "bytes": 783038
+      },
+      "nodeCount": 13,
+      "relationshipCount": 17,
+      "sourceReferenceCount": 24,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "artifactChecks": [
+        {
+          "name": "single_svg",
+          "ok": true
+        },
+        {
+          "name": "finite_svg",
+          "ok": true
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true
+        }
+      ],
+      "composition": {
+        "warningCount": 0,
+        "resolvedCrossovers": 1
+      },
+      "browser": {
+        "implementation": "Microsoft Edge (Chromium)",
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "containment": "pass",
+        "readability": "pass",
+        "viewerChrome": "pass",
+        "themes": "pass",
+        "viewports": [
+          {
+            "width": 1440,
+            "height": 900,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "theme": "light",
+            "resolvedTheme": "light",
+            "overflowX": false,
+            "overflowDisposition": "readable-vertical-scroll",
+            "readabilityOk": true,
+            "minimumProjectedNonEdgeTextPx": 7.5,
+            "minimumProjectedEdgeTextPx": 6.666666666666667,
+            "viewerChromeOk": true
+          },
+          {
+            "width": 1440,
+            "height": 900,
+            "resolvedTheme": "dark"
+          },
+          {
+            "width": 1600,
+            "height": 1000,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "resolvedTheme": "light"
+          },
+          {
+            "width": 2048,
+            "height": 1320,
+            "resolvedTheme": "dark"
+          }
+        ]
+      }
+    }
+  ],
+  "perceptualInspection": {
+    "status": "inspected-8-viewport-captures",
+    "reviewer": "Codex",
+    "capturesPerDiagram": [
+      "1440x900/dark",
+      "2048x1320/light"
+    ],
+    "scope": "Visible main and branch paths, captions, theme contrast, and automatic crossover masks. Longer content remains available through normal page scrolling.",
+    "notes": [
+      "All required semantic relationships were preserved during position review.",
+      "Automatic crossover masks remain; no zero-crossing claim is made.",
+      "Native finalize reports visualReview not-requested; native capture reports pending. Neither receipt was relabeled as a human approval."
+    ]
+  },
+  "preview": {
+    "path": "preview.png",
+    "sha256": "bf81b52fd53f7b62a1d70866419ee8733180838b3510a0ca8bf11e581e4bac3b",
+    "bytes": 128698
+  }
+}
