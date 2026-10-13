@@ -1,0 +1,624 @@
+import { createHash } from 'node:crypto';
+
+// 表驱动的 MD → HTML 编译器。
+//
+// 构造表就是实现。每一行声明怎么认、渲染成什么、要不要留锚；解析器从上往下问，
+// 第一个认领的接手，所以表的顺序就是优先级。
+//
+// anchor 那一栏的判据是：渲染出来的位置能不能唯一确定源跨度。能就是 optional。
+
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const TICK = '\x60';
+
+// ── 行内 ──────────────────────────────────────────────────────────────────
+
+const sticky = (re) => new RegExp(re.source, re.flags.replace(/[gy]/g, '') + 'y');
+const tryAt = (re, s, i) => { re.lastIndex = i; return re.exec(s); };
+const ENTITY = sticky(/&(#x[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/);
+const BACKTICKS = sticky(/\x60+/);
+const IMAGE = sticky(/!\[([^\]]*)\]\(([^)]*)\)/);
+const LINK = sticky(/\[([^\]]*)\](?:\(([^)]*)\)|\[([^\]]*)\])?/);
+const AUTOLINK = sticky(/<((?:https?|mailto):[^>\s]+)>/);
+const RAWHTML = sticky(/<\/?[a-zA-Z][^>]*>/);
+const ESCAPABLE = /[!-/:-@\[-\x60{-~]/;
+const ENTITY_MAP = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0' };
+
+const decodeEntity = (m) => {
+  if (m[1][0] === '#') {
+    const code = m[1][1] === 'x' || m[1][1] === 'X' ? parseInt(m[1].slice(2), 16) : parseInt(m[1].slice(1), 10);
+    return Number.isFinite(code) ? String.fromCodePoint(code) : m[0];
+  }
+  return ENTITY_MAP[m[1]] !== undefined ? ENTITY_MAP[m[1]] : m[0];
+};
+
+// 强调与加粗是同一种写法的两个构造，标记长度不同。合成一个 emitter，各自声明。
+function emphasis(src, i, st, width, construct, tag) {
+  const c = src[i];
+  if (c !== '*' && c !== '_') return null;
+  const doubled = src.startsWith(c + c, i);
+  if (doubled !== (width === 2)) return null;
+  const marker = c.repeat(width);
+  const close = src.indexOf(marker, i + width);
+  if (close <= i + width) return null;
+  st.flush();
+  const before = st.shown;
+  const rendered = st.nested(src.slice(i + width, close), i + width);
+  st.shown += st.ctx.lastLen;
+  st.wrap(construct, before, i, close + width, st.ctx.lastLen,
+    '<' + tag + '>' + rendered + '</' + tag + '>');
+  return close + width;
+}
+
+// emit 返回消费到的位置，返回 null 表示不认领这一格。
+const INLINES = [
+  {
+    name: 'escape', anchor: 'required', why: '反斜杠在渲染结果里没有了',
+    emit: (src, i, st) => {
+      if (src[i] !== '\\' || i + 1 >= src.length || !ESCAPABLE.test(src[i + 1])) return null;
+      st.flush();
+      st.raw('escape', i, i + 2, 1, esc(src[i + 1]));
+      return i + 2;
+    },
+  },
+  {
+    name: 'entity', anchor: 'required', why: '三种写法渲染成同一个字符',
+    emit: (src, i, st) => {
+      const m = tryAt(ENTITY, src, i);
+      if (!m) return null;
+      const decoded = decodeEntity(m);
+      st.flush();
+      st.raw('entity', i, i + m[0].length, decoded.length, esc(decoded));
+      return i + m[0].length;
+    },
+  },
+  {
+    name: 'codeSpan', anchor: 'required', why: '用几个反引号包起来，渲染结果里没有',
+    emit: (src, i, st) => {
+      if (src[i] !== TICK) return null;
+      const open = tryAt(BACKTICKS, src, i)[0];
+      const close = src.indexOf(open, i + open.length);
+      if (close === -1) return null;
+      st.flush();
+      st.raw('codeSpan', i, close + open.length, close - i - open.length,
+        '<code>' + esc(src.slice(i + open.length, close)) + '</code>');
+      return close + open.length;
+    },
+  },
+  {
+    name: 'image', anchor: 'required', why: '括号写法不进渲染',
+    emit: (src, i, st) => {
+      const m = tryAt(IMAGE, src, i);
+      if (!m) return null;
+      st.flush();
+      st.note('image', i, i + m[0].length, 0);
+      st.out += '<img src="' + esc(m[2]) + '" alt="' + esc(m[1]) + '">';
+      return i + m[0].length;
+    },
+  },
+  {
+    name: 'link', anchor: 'required', why: '四种写法渲染成同一个 a，目标还可能定义在文档别处',
+    emit: (src, i, st) => {
+      const m = tryAt(LINK, src, i);
+      if (!m) return null;
+      st.flush();
+      // 四种写法：行内带目标、完整引用、折叠引用、短路引用。
+      // 后三种都要有对应的定义才算链接 —— 没有定义的 [abc] 就是一对方括号。
+      let target;
+      if (m[2] !== undefined) target = m[2];
+      else if (m[3] !== undefined) target = st.ctx.refs.get((m[3] || m[1]).toLowerCase());
+      else target = st.ctx.refs.get(m[1].toLowerCase());
+      if (target === undefined) return null;
+      const before = st.shown;
+      const inner = st.nested(m[1], i + 1);
+      st.shown += st.ctx.lastLen;
+      st.wrap('link', before, i, i + m[0].length, st.ctx.lastLen, '<a href="' + esc(target) + '">' + inner + '</a>');
+      return i + m[0].length;
+    },
+  },
+  {
+    name: 'autolink', anchor: 'required', why: '一个源跨度渲染出两处位置',
+    emit: (src, i, st) => {
+      const m = tryAt(AUTOLINK, src, i);
+      if (!m) return null;
+      st.flush();
+      st.note('autolink', i, i + m[0].length, m[1].length);
+      st.out += '<a href="' + esc(m[1]) + '">' + esc(m[1]) + '</a>';
+      return i + m[0].length;
+    },
+  },
+  {
+    name: 'rawHtml', anchor: 'optional', why: '原样输出',
+    emit: (src, i, st) => {
+      const m = tryAt(RAWHTML, src, i);
+      if (!m) return null;
+      st.flush();
+      st.out += m[0];
+      st.ctx.note('rawHtml');
+      return i + m[0].length;
+    },
+  },
+  {
+    name: 'emph', anchor: 'required', why: '星号还是下划线，渲染结果里没有',
+    emit: (src, i, st) => emphasis(src, i, st, 1, 'emph', 'em'),
+  },
+  {
+    name: 'strong', anchor: 'required', why: '同上',
+    emit: (src, i, st) => emphasis(src, i, st, 2, 'strong', 'strong'),
+  },
+  {
+    name: 'hardBreak', anchor: 'required', why: '两种写法渲染成同一个换行',
+    emit: (src, i, st) => {
+      if (src[i] !== '\n') return null;
+      const back = src[i - 1] === '\\';
+      const two = /\s\s$/.test(src.slice(0, i));
+      if (!back && !two) return null;
+      st.buf = st.buf.replace(/\s+$/, '');
+      st.flush();
+      st.note('hardBreak', i - (back ? 1 : 2), i + 1, 0);
+      st.out += '<br>';
+      return i + 1;
+    },
+  },
+  {
+    name: 'softBreak', anchor: 'required', why: '和一个空格渲染成同一个字符',
+    emit: (src, i, st) => {
+      if (src[i] !== '\n') return null;
+      st.flush();
+      st.raw('softBreak', i, i + 1, 1, ' ');
+      return i + 1;
+    },
+  },
+];
+
+// 行内锚把渲染文字里的偏移映射回源偏移。note 记一条，wrap 记一条并让外层排在内层前面。
+function inline(src, ctx, base = 0) {
+  const st = {
+    out: '', buf: '', shown: 0, anchors: [], ctx,
+    note: (construct, from, to, textLen = 0) => {
+      const anchor = { at: st.shown, len: textLen, start: base + from, end: base + to, construct };
+      st.anchors.push(anchor); ctx.all.push(anchor);
+      st.shown += textLen;
+      ctx.note(construct);
+    },
+    flush: () => {
+      if (!st.buf) return;
+      ctx.note('plainText');
+      st.out += esc(st.buf); st.shown += st.buf.length; st.buf = '';
+    },
+    raw: (construct, from, to, textLen, html) => { st.note(construct, from, to, textLen); st.out += html; },
+    wrap: (construct, before, from, to, len, html) => {
+      const anchor = { at: before, len, start: base + from, end: base + to, construct };
+      st.anchors.unshift(anchor); ctx.all.push(anchor);
+      st.out += html;
+      ctx.note(construct);
+    },
+    nested: (text, offset) => {
+      const mark = ctx.all.length;
+      const html = inline(text, ctx, base + offset);
+      for (const anchor of ctx.all.slice(mark)) anchor.at += st.shown;
+      return html;
+    },
+  };
+  ctx.anchors = st.anchors;
+  let i = 0;
+  while (i < src.length) {
+    let next = null;
+    for (const row of INLINES) {
+      next = row.emit(src, i, st);
+      if (next !== null) break;
+    }
+    if (next === null) { st.buf += src[i]; i += 1; } else i = next;
+  }
+  st.flush();
+  ctx.lastLen = st.shown;
+  return st.out;
+}
+
+// ── 块级 ──────────────────────────────────────────────────────────────────
+
+// 一行表格按未被转义、也不在行内代码里的竖线切开。
+function splitRow(lineText) {
+  const parts = [];
+  let start = 0;
+  let backticks = false;
+  for (let i = 0; i < lineText.length; i++) {
+    const c = lineText[i];
+    if (c === '\\') { i += 1; continue; }
+    if (c === TICK) { backticks = !backticks; continue; }
+    if (c === '|' && !backticks) { parts.push([start, i]); start = i + 1; }
+  }
+  parts.push([start, lineText.length]);
+  return parts;
+}
+
+// 单元格的文字和它的源范围取自同一次切分。
+function cellsOf(lineText, lineStart) {
+  const out = [];
+  for (const [from, to] of splitRow(lineText)) {
+    const raw = lineText.slice(from, to);
+    const text = raw.trim();
+    if (!text) continue;
+    const lead = raw.length - raw.trimStart().length;
+    out.push({ text, start: lineStart + from + lead, end: lineStart + from + lead + text.length });
+  }
+  return out;
+}
+
+// 派生 id 只出 ASCII，这样能写回 {#id} 语法。
+const slug = (s) => {
+  const ascii = String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return ascii ? ascii.slice(0, 24) : createHash('sha256').update(String(s)).digest('hex').slice(0, 8);
+};
+
+// 作者写了身份就用，没写就派生。派生的记下来，可以写回源稿。
+function makeIdentity(authored, construct, text, seen, counters) {
+  if (authored) { seen.set(authored, true); return { id: authored, authored: true }; }
+  const base = construct.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase()) + '-' + slug(text);
+  let n = counters.get(base) || 0;
+  let id;
+  do { n += 1; id = n === 1 ? base : base + '-' + n; } while (seen.has(id));
+  counters.set(base, n);
+  seen.set(id, true);
+  return { id, authored: false };
+}
+
+// emit 返回消费到的下一行；lines 和 i 一起给，因为块级构造要看后面几行。
+const BLOCKS = [
+  {
+    name: 'atxHeading', anchor: 'optional', why: '级别和文字都在渲染结果里',
+    match: (lines, i) => /^(#{1,6})\s+(.*?)(?:\s+\{#([^}\s]+)\})?\s*$/.exec(lines[i]),
+    emit: (m, ctx, i) => {
+      const level = m[1].length;
+      const base = ctx.at(i) + m[1].length + 1;
+      ctx.block(m[3], 'atxHeading', m[2], ctx.span(i, i + 1, i + 1), (n) => {
+        ctx.push('<h' + level + ' data-src="' + esc(n) + '">' + inline(m[2], ctx, base) + '</h' + level + '>');
+        ctx.entry(n).textBase = base;
+      });
+      return i + 1;
+    },
+  },
+  {
+    name: 'thematicBreak', anchor: 'required', why: '渲染出来只剩一条线，文字没了',
+    match: (lines, i) => (/^(\*\s*){3,}$|^(-\s*){3,}$|^(_\s*){3,}$/.test(lines[i].trim()) ? { 0: lines[i].trim() } : null),
+    emit: (m, ctx, i) => {
+      ctx.block(undefined, 'thematicBreak', m[0], ctx.span(i, i + 1, i + 1), (n) => ctx.push('<hr data-src="' + esc(n) + '">'));
+      return i + 1;
+    },
+  },
+  {
+    name: 'fencedCode', anchor: 'required', why: '围栏用几个字符、有多长，渲染结果里没有',
+    // 信息串是围栏之后的全部。只认一个词的话，```js title=x 这一行根本不算围栏 ——
+    // 它变成段落，内容跟着变段落，反而是结尾那道围栏被认成空的代码块。
+    match: (lines, i) => {
+      const m = /^\s*(\x60{3,}|~{3,})[ \t]*(.*)$/.exec(lines[i]);
+      if (!m) return null;
+      if (m[1][0] === '\x60' && m[2].includes('\x60')) return null;
+      return m;
+    },
+    emit: (m, ctx, i) => {
+      const fence = m[1];
+      // 语言取信息串的第一个词，其余是元数据。
+      const lang = (m[2] || '').trim().split(/\s+/)[0] || '';
+      const from = i;
+      let at = i + 1;
+      const body = [];
+      const closes = (line) => {
+        const t = line.trim();
+        return t.length >= fence.length && t[0] === fence[0] && /^(\x60+|~+)$/.test(t);
+      };
+      while (at < ctx.lines.length && !closes(ctx.lines[at])) { body.push(ctx.lines[at]); at += 1; }
+      if (at < ctx.lines.length) at += 1;
+      ctx.block(undefined, 'fencedCode', lang || 'code', ctx.span(from, at, from + 1), (n) => {
+        ctx.push('<pre data-src="' + esc(n) + '"><code' + (lang ? ' class="language-' + esc(lang) + '"' : '') + '>' + esc(body.join('\n')) + '</code></pre>');
+      });
+      return at;
+    },
+  },
+  {
+    name: 'setextHeading', anchor: 'required', why: '和 ATX 渲染成同一个 h 元素',
+    match: (lines, i) => {
+      if (!lines[i].trim() || i + 1 >= lines.length) return null;
+      const underline = lines[i + 1].trim();
+      return /^(=+|-+)\s*$/.test(underline) ? { underline } : null;
+    },
+    emit: (m, ctx, i) => {
+      const level = m.underline[0] === '=' ? 1 : 2;
+      const text = ctx.lines[i].trim();
+      ctx.block(undefined, 'setextHeading', text, ctx.span(i, i + 2, i + 1), (n) => {
+        ctx.push('<h' + level + ' data-src="' + esc(n) + '">' + inline(text, ctx) + '</h' + level + '>');
+      });
+      return i + 2;
+    },
+  },
+  {
+    name: 'blockQuote', anchor: 'optional', why: '引用记号不进渲染，但嵌套还在',
+    match: (lines, i) => (/^>\s?/.test(lines[i]) ? { 0: lines[i] } : null),
+    emit: (m, ctx, i) => {
+      const from = i;
+      const inner = [];
+      while (i < ctx.lines.length && /^>\s?/.test(ctx.lines[i])) { inner.push(ctx.lines[i].replace(/^>\s?/, '')); i += 1; }
+      ctx.block(undefined, 'blockQuote', inner.join(' '), ctx.span(from, i, from + 1), (n) => {
+        ctx.push('<blockquote data-src="' + esc(n) + '">' + inline(inner.join('\n'), ctx) + '</blockquote>');
+      });
+      return i;
+    },
+  },
+  {
+    name: 'table', anchor: 'required', why: '对齐写法不进渲染',
+    match: (lines, i) => {
+      if (!lines[i].includes('|') || i + 1 >= lines.length) return null;
+      const delimiter = lines[i + 1];
+      return delimiter.includes('-') && /^\s*\|?[\s:|-]+\|?\s*$/.test(delimiter) ? { 0: lines[i] } : null;
+    },
+    emit: (m, ctx, i) => {
+      const from = i;
+      const headLine = i;
+      const cells = (row) => cellsOf(row, 0).map((c) => c.text);
+      const head = cells(ctx.lines[i]);
+      const align = cells(ctx.lines[i + 1]).map((c) => (c.startsWith(':') && c.endsWith(':') ? 'center' : c.endsWith(':') ? 'right' : c.startsWith(':') ? 'left' : ''));
+      i += 2;
+      const body = [];
+      const bodyLines = [];
+      while (i < ctx.lines.length && ctx.lines[i].includes('|') && ctx.lines[i].trim()) { body.push(cells(ctx.lines[i])); bodyLines.push(i); i += 1; }
+      // 单元格各自的范围：视觉结构一变（表格排成卡片），块级锚就不够用了。
+      const spans = [headLine, ...bodyLines].map((n) => cellsOf(ctx.lines[n], ctx.at(n)));
+      ctx.block(undefined, 'table', head.join(' '), ctx.span(from, i, from + 1), (n) => {
+        ctx.entry(n).cells = spans;
+        const th = head.map((c, k) => '<th' + (align[k] ? ' style="text-align:' + align[k] + '"' : '') + '>' + inline(c, ctx) + '</th>').join('');
+        const tr = body.map((r) => '<tr>' + r.map((c, k) => '<td' + (align[k] ? ' style="text-align:' + align[k] + '"' : '') + '>' + inline(c, ctx) + '</td>').join('') + '</tr>').join('');
+        ctx.push('<table data-src="' + esc(n) + '"><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table>');
+      });
+      return i;
+    },
+  },
+  {
+    name: 'listItem', anchor: 'required', why: '无序用哪个标记、有序用点还是括号，渲染结果里没有',
+    match: (lines, i) => (/^\s*([-*+]|\d+[.)])\s+/.test(lines[i]) ? { 0: lines[i] } : null),
+    emit: (m, ctx, i) => {
+      const from = i;
+      const ordered = /^\s*\d/.test(ctx.lines[i]);
+      // 起始号进渲染：从 3 起渲染成 <ol start="3">，从 1 起不带 start。两者不是同一样东西。
+      const start = ordered ? Number((ctx.lines[i].match(/^\s*(\d+)/) || [])[1]) : 1;
+      const items = [];
+      while (i < ctx.lines.length && /^\s*([-*+]|\d+[.)])\s+/.test(ctx.lines[i])) {
+        const marker = ctx.lines[i].match(/^(\s*)([-*+]|\d+[.)])\s+(.*)$/);
+        const sub = [];
+        i += 1;
+        while (i < ctx.lines.length && /^\s{2,}[-*+]\s+/.test(ctx.lines[i])) { sub.push(ctx.lines[i].replace(/^\s+[-*+]\s+/, '')); i += 1; }
+        items.push({ text: marker[3], sub });
+      }
+      const tag = ordered ? 'ol' : 'ul';
+      ctx.block(undefined, 'listItem', items.map((x) => x.text).join(' '), ctx.span(from, i, from + 1), (n) => {
+        const li = items.map((x) => '<li>' + inline(x.text, ctx) + (x.sub.length ? '<ul>' + x.sub.map((s) => '<li>' + inline(s, ctx) + '</li>').join('') + '</ul>' : '') + '</li>').join('');
+        ctx.push('<' + tag + (ordered && start !== 1 ? ' start="' + start + '"' : '') + ' data-src="' + esc(n) + '">' + li + '</' + tag + '>');
+      });
+      return i;
+    },
+  },
+  {
+    name: 'indentedCode', anchor: 'required', why: '和无语言围栏渲染成同一个元素',
+    match: (lines, i) => (/^ {4}/.test(lines[i]) ? { 0: lines[i] } : null),
+    emit: (m, ctx, i) => {
+      const from = i;
+      const body = [];
+      while (i < ctx.lines.length && (/^ {4}/.test(ctx.lines[i]) || !ctx.lines[i].trim())) { body.push(ctx.lines[i].replace(/^ {4}/, '')); i += 1; }
+      ctx.block(undefined, 'indentedCode', body.join('\n').trim(), ctx.span(from, i, from + 1), (n) => {
+        ctx.push('<pre data-src="' + esc(n) + '"><code>' + esc(body.join('\n').replace(/\n+$/, '')) + '</code></pre>');
+      });
+      return i;
+    },
+  },
+  {
+    // 注释不产生任何展示位置，所以标注不到它，也不该给它身份。
+    // 但它是内容的一部分：删掉它，页面就不一样了，所以记进不可标注的跨度里。
+    name: 'htmlComment', anchor: 'none', why: '注释不产生展示位置；但删掉它页面就变了',
+    match: (lines, i) => (/^\s*<!--/.test(lines[i]) ? { 0: lines[i] } : null),
+    emit: (m, ctx, i) => {
+      const from = i;
+      const body = [];
+      while (i < ctx.lines.length) {
+        body.push(ctx.lines[i]);
+        const done = /-->\s*$/.test(ctx.lines[i]);
+        i += 1;
+        if (done) break;
+      }
+      ctx.note('htmlComment');
+      ctx.untouchable.push({ construct: 'htmlComment', start: ctx.at(from), end: ctx.at(i - 1) + ctx.lines[i - 1].length });
+      ctx.push(body.join('\n'));
+      return i;
+    },
+  },
+  {
+    name: 'htmlBlock', anchor: 'optional', why: '原样输出',
+    match: (lines, i) => (/^\s*</.test(lines[i]) ? { 0: lines[i] } : null),
+    emit: (m, ctx, i) => {
+      const from = i;
+      const body = [];
+      while (i < ctx.lines.length && ctx.lines[i].trim()) { body.push(ctx.lines[i]); i += 1; }
+      ctx.block(undefined, 'htmlBlock', body[0].slice(0, 20), ctx.span(from, i, from + 1), (n) => {
+        ctx.push('<div data-src="' + esc(n) + '">' + body.join('\n') + '</div>');
+      });
+      return i;
+    },
+  },
+  {
+    name: 'paragraph', anchor: 'optional', why: '文字在渲染结果里',
+    match: (lines, i) => (lines[i].trim() ? { 0: lines[i] } : null),
+    emit: (m, ctx, i) => {
+      const from = i;
+      const para = [];
+      while (i < ctx.lines.length && ctx.lines[i].trim() && !/^(#{1,6}\s|>|\s*([-*+]|\d+[.)])\s|\s*(\x60{3,}|~{3,})|\s*<)/.test(ctx.lines[i])) {
+        para.push(ctx.lines[i]); i += 1;
+        if (i < ctx.lines.length && /^(=+|-+)\s*$/.test(ctx.lines[i].trim())) break;
+      }
+      if (!para.length) return i + 1;
+      const base = ctx.at(from);
+      ctx.block(undefined, 'paragraph', para.join(' '), ctx.span(from, i, from + 1), (n) => {
+        ctx.push('<p data-src="' + esc(n) + '">' + inline(para.join('\n'), ctx, base) + '</p>');
+        ctx.entry(n).textBase = base;
+      });
+      return i;
+    },
+  },
+];
+
+const REF_DEF = /^\[([^\]]+)\]:\s*(\S+)\s*$/;
+const ATTRIBUTE = /^\{#([A-Za-z][A-Za-z0-9_-]*)\}$/;
+
+// 有声明、但不是由某个 emitter 行产出的构造：纯文本走兜底，引用定义走单独一遍。
+const DERIVED = [
+  { name: 'plainText', anchor: 'optional', why: '原样', block: false },
+  { name: 'refDef', anchor: 'none', why: '不产出任何内容，标注不到它；但删掉它引用式链接就断了', block: true },
+];
+
+// block 是派生的：分成哪张表本身就是它的类别，不必再存一遍。
+export const TABLE = Object.fromEntries([
+  ...BLOCKS.map((row) => [row.name, { ...row, block: true }]),
+  ...INLINES.map((row) => [row.name, { ...row, block: false }]),
+  ...DERIVED.map((row) => [row.name, row]),
+]);;
+
+export function compile(source) {
+  const original = String(source);
+  const normalized = original.replace(/\r\n?/g, '\n');
+  const lines = normalized.split('\n');
+  const starts = [];
+  { let at = 0; for (const line of lines) { starts.push(at); at += line.length + 1; } }
+
+  const refs = new Map();
+  const seen = new Map();
+  const counters = new Map();
+  const map = {};
+  const derived = [];
+  const used = new Map();
+  const all = [];
+  const untouchable = [];
+  const attributes = [];
+  const html = [];
+  const blocks = [];
+  let pendingId = null;
+
+  const ctx = {
+    lines, refs, all,
+    at: (n) => starts[n] ?? normalized.length,
+    // 终点取最后一行的末尾，不取下一行的开头。
+    span: (from, to, line) => ({ start: starts[from], end: to > from ? starts[to - 1] + lines[to - 1].length : starts[from], line }),
+    note: (construct) => used.set(construct, (used.get(construct) || 0) + 1),
+    push: (piece) => html.push(piece),
+    untouchable,
+    entry: (id) => map[id],
+    block: (authored, construct, text, range, target) => {
+      const claimed = authored || pendingId || undefined;
+      pendingId = null;
+      const made = makeIdentity(claimed, construct, text, seen, counters);
+      if (!made.authored) derived.push({ id: made.id, construct, line: range.line });
+      map[made.id] = { start: range.start, end: range.end, construct, anchor: TABLE[construct].anchor };
+      ctx.note(construct);
+      const mark = html.length;
+      target(made.id);
+      const entry = map[made.id];
+      blocks.push({
+        id: made.id, construct, anchor: TABLE[construct].anchor,
+        line: range.line, start: range.start, end: range.end,
+        html: html.slice(mark).join('\n'),
+        ...(entry.cells ? { cells: entry.cells } : {}),
+      });
+    },
+  };
+
+  // 引用定义的目标可能在文档任何地方，先收一遍。
+  for (let n = 0; n < lines.length; n++) {
+    const m = REF_DEF.exec(lines[n]);
+    if (!m) continue;
+    refs.set(m[1].toLowerCase(), m[2]);
+    ctx.note('refDef');
+    untouchable.push({ construct: 'refDef', label: m[1], start: ctx.at(n), end: ctx.at(n) + lines[n].length });
+  }
+
+  let i = 0;
+  while (i < lines.length) {
+    const text = lines[i].trim();
+    if (!text) { i += 1; continue; }
+    // 独立一行的 {#id} 不产出内容，把身份挂给下一个块。
+    const attribute = ATTRIBUTE.exec(text);
+    if (attribute) {
+      pendingId = attribute[1];
+      const start = ctx.at(i);
+      attributes.push({ id: attribute[1], start, end: start + lines[i].length });
+      i += 1; continue;
+    }
+    // 引用定义那一行已经被第一遍收走了，它不产出任何东西。
+    if (REF_DEF.test(text)) { i += 1; continue; }
+    let next = null;
+    for (const row of BLOCKS) {
+      const m = row.match(lines, i, ctx);
+      if (!m) continue;
+      next = row.emit(m, ctx, i);
+      break;
+    }
+    i = next === null ? i + 1 : next;
+  }
+
+  // 行内锚按范围归到所属块。
+  const ordered = Object.entries(map).sort((a, b) => a[1].start - b[1].start);
+  const anchors = all.slice().sort((a, b) => a.start - b.start);
+  let k = 0;
+  for (const [, entry] of ordered) {
+    const inside = [];
+    while (k < anchors.length && anchors[k].start < entry.end) {
+      if (anchors[k].start >= entry.start) inside.push(anchors[k]);
+      k += 1;
+    }
+    if (inside.length) entry.inline = inside.sort((a, b) => a.at - b.at);
+  }
+
+  for (const entry of Object.values(map)) if (entry.textBase === undefined) entry.textBase = entry.start;
+
+  // 解析使用统一换行，输出范围仍定位到原文件中的字符。
+  if (original.includes('\r')) {
+    const offsets = [];
+    for (let at = 0; at < original.length; at++) {
+      offsets.push(at);
+      if (original[at] === '\r' && original[at + 1] === '\n') at++;
+    }
+    offsets.push(original.length);
+    const visited = new Set();
+    const restore = (value) => {
+      if (!value || typeof value !== 'object' || visited.has(value)) return;
+      visited.add(value);
+      for (const key of ['start', 'end', 'textBase']) if (typeof value[key] === 'number') value[key] = offsets[value[key]];
+      for (const child of Object.values(value)) if (typeof child === 'object') restore(child);
+    };
+    for (const value of [map, blocks, untouchable, attributes]) restore(value);
+  }
+
+  return {
+    html: html.join('\n'), blocks, map, derived,
+    refs: [...refs.entries()],
+    used: Object.fromEntries(used),
+    inlineCount: all.length,
+    untouchable, attributes,
+  };
+}
+
+// 把派生身份写回源稿。写回之后它是作者写的，内容怎么改都不动，也能在源稿里直接搜到。
+export function materialize(source, derived) {
+  if (!derived.length) return { source, inserted: 0 };
+  const lines = source.split('\n');
+  const byLine = new Map();
+  for (const d of derived) {
+    if (!d.line) continue;
+    if (!byLine.has(d.line)) byLine.set(d.line, []);
+    byLine.get(d.line).push(d.id);
+  }
+  let inserted = 0;
+  for (const line of [...byLine.keys()].sort((a, b) => b - a)) {
+    const n = line - 1;
+    if (n < 0 || n >= lines.length) continue;
+    const id = byLine.get(line)[0];
+    if (lines[n].trim().startsWith('#')) lines[n] = lines[n].replace(/\s*$/, '') + ' {#' + id + '}';
+    else lines.splice(n, 0, '{#' + id + '}');
+    inserted += byLine.get(line).length;
+  }
+  return { source: lines.join('\n'), inserted };
+}
