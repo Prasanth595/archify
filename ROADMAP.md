@@ -2,6 +2,15 @@
 
 The current stable version is `v3.0.1`; its delivered changes are recorded in Changelog 3.0.1. [CHANGELOG.md](CHANGELOG.md) is the single owner for delivered feature history. This file owns architectural direction, retained rationale, and explicitly declined ideas.
 
+The post-`v3.0.1` working set lands five small slices in one parallel pass: a per-state port snap in the lifecycle renderer, the bundled Codeberg brand mark, two new web-evidence providers (Codeberg and public gitea.com), and a new typed hierarchy diagram type. Each slice ships with its own failing test, regenerated `archify.zip`, and follow-up commit; no schema rewrite, no new dependency, no auto-layout engine, and no hosted service. The new hierarchy type is a first slice — cross-branch connectors, multi-parent DAGs, and runtime editing are deferred. The four PRs (one per slice, with #866 and #864 combined) are open against `tt-a1i/main`; once merged, the next stable release will pick up these bytes. The brand bundle, evidence verifier, and viewer contract are unchanged in surface, schema, dependency, and embedding behavior.
+
+- **Lifecycle: per-state port snap (#739)** — per-state `snapPorts` step; all-or-nothing per state; bundled `examples/agent-run.lifecycle.json` is already x-monotone so the path is dormant on that example; new `archify/test/lifecycle-layout.test.mjs` proves the synthetic go-and-return straightening.
+- **Bundled Codeberg mark (#868)** — `archify brands codeberg --json` lists the mark; `archify/THIRD_PARTY_NOTICES.md` carries the CC0-1.0 disclosure row; catalog ships 108 marks; brand bundle regenerated.
+- **Web evidence for Codeberg and public gitea.com (#866, #864)** — `parseRepositoryRemote` recognises `codeberg.org` and `gitea.com`; new `repositoryRootHref` plus extended `repositorySourceHref` emit `/src/commit/<sha>`; self-hosted Forgejo and Gitea stay `local-only`; six new tests in `archify/test/repository-evidence.test.mjs`.
+- **Interactive hierarchy and tree diagram type (#690)** — new `diagram_type: "hierarchy"` JSON IR; renderer reuses the viewer head/foot wrapper; initial open set derives from `{root} ∪ default_expand`; closed-by-default subtrees carry inline `display:none`; connectors inside the parent subtree group hide together; CLI + validator + example wired; 14 tests; first slice per the issue (cross-branch connectors, multi-parent DAGs, runtime editing deferred).
+
+Closes #739, #868, #866, #864, #690.
+
 <details>
 <summary>Archived delivered-slice context (frozen; no longer maintained as a second changelog)</summary>
 

@@ -4,6 +4,12 @@ All notable changes are documented here. Format loosely follows [Keep a Changelo
 
 ## [Unreleased]
 
+### Added
+- **Lifecycle: per-state port snap (#739).** A new `snapPorts` step in the lifecycle renderer straightens a lower state's connectors when every top port can move onto its matching upper port while preserving port spacing and order; the decision is all-or-nothing per state, so a go-and-return pair stays symmetric. `archify/test/lifecycle-layout.test.mjs` proves the per-state straightening on a synthetic go-and-return pair, and the bundled `examples/agent-run.lifecycle.json` remains showcase-clean.
+- **Bundled Codeberg mark (#868).** The pinned `simple-icons` Codeberg mark is now enrolled as an engineering brand: `archify brands codeberg --json` lists it, `archify/THIRD_PARTY_NOTICES.md` carries the corresponding CC0-1.0 disclosure row, the brand catalog ships 108 marks (was 107), and a focused rendering assertion exercises both `brand: "codeberg"` and `https://codeberg.org/...` URLs.
+- **Web evidence for Codeberg and public gitea.com (#866, #864).** `parseRepositoryRemote` recognises `codeberg.org` and `gitea.com`; `repositorySourceHref` and the new `repositoryRootHref` emit `<url>/src/commit/<sha>` for both providers. Self-hosted Forgejo, Bitbucket, self-hosted Gitea, and non-canonical endpoints remain `link_mode: "local-only"`. Six new tests in `archify/test/repository-evidence.test.mjs` cover provider detection, HTTPS/SSH/SCP forms, encoded paths and line ranges, and the local-only rejection surface.
+- **Interactive hierarchy and tree diagram type (#690).** A new `diagram_type: "hierarchy"` JSON IR with single-parent parent/child relationships, optional descriptions and source links, and per-branch expand/collapse. The renderer reuses the existing viewer head/foot wrapper; the initial open set derives from `{root} ∪ default_expand`; closed-by-default subtrees carry inline `display:none`; connectors are emitted inside the parent's subtree group so they hide together. The CLI dispatch, validator generator, and `archify/examples/hierarchy-simple.json` are wired in. First slice per the issue: cross-branch connectors, multi-parent DAGs, and runtime editing are deferred.
+
 ## [3.0.1] — 2026-09-28
 
 ### Changed
