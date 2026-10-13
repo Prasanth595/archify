@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · L2 MSHRCtl 分配与应答路由",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XSCache.git",
+      "revision": "300515bc7b2f65ca988041a984204489d80ec2fb"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/l2-mshr-ctl/l2-mshr-ctl.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "空闲MSHR",
+      "sublabel": "val mshrs",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/MSHRCtl.scala",
+          "line": 106,
+          "end_line": 115,
+          "label": "RTL · val mshrs"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "空闲选择",
+      "sublabel": "val mshrSelector",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/MSHRCtl.scala",
+          "line": 112,
+          "end_line": 121,
+          "label": "RTL · val mshrSelector"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "分配广播",
+      "sublabel": "m.io.alloc.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/MSHRCtl.scala",
+          "line": 135,
+          "end_line": 144,
+          "label": "RTL · m.io.alloc.valid"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "CHI响应归属",
+      "sublabel": "m.io.resps.rxdat.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/MSHRCtl.scala",
+          "line": 142,
+          "end_line": 151,
+          "label": "RTL · m.io.resps.rxdat.valid"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "入口阻塞",
+      "sublabel": "io.toReqArb.blockA_s1",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/MSHRCtl.scala",
+          "line": 162,
+          "end_line": 171,
+          "label": "RTL · io.toReqArb.blockA_s1"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "Probe发出",
+      "sublabel": "val sourceB",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/MSHRCtl.scala",
+          "line": 172,
+          "end_line": 181,
+          "label": "RTL · val sourceB"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "l2-mshr-ctl-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-mshr-ctl-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-mshr-ctl-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-mshr-ctl-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-mshr-ctl-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "mshrsAll个独立事务项，Selector选择空闲项，ID对应响应source。",
+        "SinkC/CHI response按事务身份路由，避免某请求消费另一个事务的回包。",
+        "MSHR满分别影响不同通道，SourceB发起L1 coherence probe。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xscache @ 300515bc7b2f",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

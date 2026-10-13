@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · SMS ActiveGenerationTable",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/sms-agt/sms-agt.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "区域访问状态",
+      "sublabel": "class ActiveGenerationTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala",
+          "line": 290,
+          "end_line": 299,
+          "label": "RTL · class ActiveGenerationTable"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "DCache逐出协作",
+      "sublabel": "io.s0_dcache_evict.ready",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala",
+          "line": 358,
+          "end_line": 367,
+          "label": "RTL · io.s0_dcache_evict.ready"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "stride选择",
+      "sublabel": "io.s1_sel_stride",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala",
+          "line": 516,
+          "end_line": 525,
+          "label": "RTL · io.s1_sel_stride"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "footprint逐出",
+      "sublabel": "io.s2_evict.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala",
+          "line": 536,
+          "end_line": 545,
+          "label": "RTL · io.s2_evict.valid"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "PHT查询",
+      "sublabel": "io.s2_pht_lookup.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/SMSPrefetcher.scala",
+          "line": 549,
+          "end_line": 558,
+          "label": "RTL · io.s2_pht_lookup.valid"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "sms-agt-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sms-agt-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sms-agt-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sms-agt-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "AGT维护活跃region的访问footprint和相邻访问相关信息。",
+        "退出活跃区的记录供模式历史训练，DCache逐出会影响更新时机。",
+        "s2_pf_gen_req需要实际生成门禁，不能凭结构存在画成恒有效预取。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

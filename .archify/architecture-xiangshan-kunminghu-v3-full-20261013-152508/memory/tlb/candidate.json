@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · L1 ITLB/DTLB 查询回填",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/tlb/tlb.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "翻译请求",
+      "sublabel": "class TLB(",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/mmu/TLB.scala",
+          "line": 46,
+          "end_line": 55,
+          "label": "RTL · class TLB("
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "TLB存储",
+      "sublabel": "val entries = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/mmu/TLB.scala",
+          "line": 254,
+          "end_line": 263,
+          "label": "RTL · val entries = Module"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "PTW响应接受",
+      "sublabel": "io.ptw.resp.ready",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/mmu/TLB.scala",
+          "line": 298,
+          "end_line": 307,
+          "label": "RTL · io.ptw.resp.ready"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "缺失请求",
+      "sublabel": "io.ptw.req",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/mmu/TLB.scala",
+          "line": 149,
+          "end_line": 158,
+          "label": "RTL · io.ptw.req"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "返回翻译",
+      "sublabel": "io.requestor",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/mmu/TLB.scala",
+          "line": 52,
+          "end_line": 61,
+          "label": "RTL · io.requestor"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "tlb-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tlb-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tlb-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tlb-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "ITLB/DTLB实例按各自TLBParameters和端口数配置，共用Storage/权限逻辑。",
+        "命中包含VPN/ASID/VMID、页大小与两阶段信息；miss发PTW请求。",
+        "sfence和CSR地址空间变化清理对应项，非阻塞端口允许多个未完成请求。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

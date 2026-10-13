@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · FALU S0 close/far路径",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/fadd-s0/fadd-s0.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "FP输入",
+      "sublabel": "class FALUAddS0(",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala",
+          "line": 26,
+          "end_line": 35,
+          "label": "RTL · class FALUAddS0("
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "指数比较",
+      "sublabel": "expNE",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala",
+          "line": 145,
+          "end_line": 154,
+          "label": "RTL · expNE"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "close路径LZA",
+      "sublabel": "val lzd0",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala",
+          "line": 156,
+          "end_line": 165,
+          "label": "RTL · val lzd0"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "far路径对齐",
+      "sublabel": "fracFar",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala",
+          "line": 119,
+          "end_line": 128,
+          "label": "RTL · fracFar"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "舍入候选",
+      "sublabel": "io.toS1.roundUp",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala",
+          "line": 222,
+          "end_line": 231,
+          "label": "RTL · io.toS1.roundUp"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "特殊值flags",
+      "sublabel": "io.toS1.resultIsNaN",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/falu/utils/FALUAddS0.scala",
+          "line": 229,
+          "end_line": 238,
+          "label": "RTL · io.toS1.resultIsNaN"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "fadd-s0-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fadd-s0-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fadd-s0-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fadd-s0-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fadd-s0-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "close/far路径分别适合接近指数相减和大指数差对齐。",
+        "LZA/LZD提供规范化依据，sticky/round形成多个舍入候选。",
+        "Inf/NaN、NV/OF/UF/NX信息保留到S1，支持级联FMA无中间舍入。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

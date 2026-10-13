@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · SC 多历史统计纠正",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/sc/sc.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "路径/公共历史",
+      "sublabel": "s0_commonHR",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 103,
+          "end_line": 112,
+          "label": "RTL · s0_commonHR"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "统计表索引",
+      "sublabel": "s0_pathIdx",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 111,
+          "end_line": 120,
+          "label": "RTL · s0_pathIdx"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "响应转 percsum",
+      "sublabel": "s1_pathPercsum",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 206,
+          "end_line": 215,
+          "label": "RTL · s1_pathPercsum"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "S2 加权和",
+      "sublabel": "s2_biasPercsum",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 224,
+          "end_line": 233,
+          "label": "RTL · s2_biasPercsum"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "纠正结果",
+      "sublabel": "io.scTakenMask",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 322,
+          "end_line": 331,
+          "label": "RTL · io.scTakenMask"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "database",
+      "label": "统计表组",
+      "sublabel": "private val pathTable",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 64,
+          "end_line": 73,
+          "label": "RTL · private val pathTable"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "database",
+      "label": "阈值状态",
+      "sublabel": "private val scThreshold",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/sc/Sc.scala",
+          "line": 90,
+          "end_line": 99,
+          "label": "RTL · private val scThreshold"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "sc-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sc-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sc-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sc-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sc-branch-0",
+      "from": "b0",
+      "to": "n1",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "sc-branch-1",
+      "from": "b1",
+      "to": "n3",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "Path、Global、Backward、IMLI、Bias 表提供饱和计数；各表开关独立。",
+        "计数映射到统计和，与阈值及 TAGE 条件联合决定是否采用纠正。",
+        "训练更新表和自适应阈值；公共历史 valid 控制部分表访问。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

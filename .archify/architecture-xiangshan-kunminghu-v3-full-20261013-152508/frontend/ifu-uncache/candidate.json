@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · IFU 非缓存顺序状态机",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/ifu-uncache/ifu-uncache.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "请求属性",
+      "sublabel": "val shouldWait",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 86,
+          "end_line": 95,
+          "label": "RTL · val shouldWait"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "等待先前排空",
+      "sublabel": "is(UncacheFsmState.WaitLastCommit)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 95,
+          "end_line": 104,
+          "label": "RTL · is(UncacheFsmState.WaitLastCommit)"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "非缓存请求",
+      "sublabel": "is(UncacheFsmState.SendReq)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 103,
+          "end_line": 112,
+          "label": "RTL · is(UncacheFsmState.SendReq)"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "等待总线响应",
+      "sublabel": "is(UncacheFsmState.WaitResp)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 107,
+          "end_line": 116,
+          "label": "RTL · is(UncacheFsmState.WaitResp)"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "数据/异常返回",
+      "sublabel": "io.resp.bits.exception",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/IfuUncacheUnit.scala",
+          "line": 135,
+          "end_line": 144,
+          "label": "RTL · io.resp.bits.exception"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "ifu-uncache-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ifu-uncache-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ifu-uncache-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ifu-uncache-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "PMP-MMIO 或 PBMT-IO 进入 WaitLastCommit；PBMT-NC 可直接发出，首条指令例外。",
+        "实际等待条件为 IBuffer 和后端 emptyAfter，不等于无条件按 ROB 每条 commit。",
+        "flush 重置 FSM，跨页半条 needResend 通过响应返回。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

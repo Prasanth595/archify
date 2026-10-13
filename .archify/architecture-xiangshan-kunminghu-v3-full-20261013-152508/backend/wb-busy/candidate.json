@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · WbFuBusyTable 跨区端口占用",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/wb-busy/wb-busy.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "各区忙表",
+      "sublabel": "private val intSchdBusyTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbFuBusyTable.scala",
+          "line": 17,
+          "end_line": 26,
+          "label": "RTL · private val intSchdBusyTable"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "整合INT占用",
+      "sublabel": "private val intAllBusyTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbFuBusyTable.scala",
+          "line": 29,
+          "end_line": 38,
+          "label": "RTL · private val intAllBusyTable"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "整合FP/VEC占用",
+      "sublabel": "private val vfAllBusyTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbFuBusyTable.scala",
+          "line": 31,
+          "end_line": 40,
+          "label": "RTL · private val vfAllBusyTable"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "端口延迟位图",
+      "sublabel": "private val intWbBusyTable",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbFuBusyTable.scala",
+          "line": 66,
+          "end_line": 75,
+          "label": "RTL · private val intWbBusyTable"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "反馈数据",
+      "sublabel": "io",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/datapath/WbFuBusyTable.scala",
+          "line": 1,
+          "end_line": 10,
+          "label": "RTL · io"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "wb-busy-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "wb-busy-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "wb-busy-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "wb-busy-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "把不同执行区对同物理写端口的未来占用组合起来。",
+        "固定/非固定延迟FU需要不同控制，不能只用当前WB valid预测未来无冲突。",
+        "反馈发射/读操作数阶段避免发出必然写口冲突的uOP。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

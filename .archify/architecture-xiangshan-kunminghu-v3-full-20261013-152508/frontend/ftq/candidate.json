@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · FTQ 指针与供给控制",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/ftq/ftq.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "BPU 预测接收",
+      "sublabel": "private val bpuEnqueue",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 190,
+          "end_line": 199,
+          "label": "RTL · private val bpuEnqueue"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "预测块记录",
+      "sublabel": "metaQueueRedirect",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 112,
+          "end_line": 121,
+          "label": "RTL · metaQueueRedirect"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "双预取条件",
+      "sublabel": "private val canTwoPrefetch",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 284,
+          "end_line": 293,
+          "label": "RTL · private val canTwoPrefetch"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "双取指条件",
+      "sublabel": "private val rawTwoFetchValid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 325,
+          "end_line": 334,
+          "label": "RTL · private val rawTwoFetchValid"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "重定向指针恢复",
+      "sublabel": "when(redirect.valid)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 365,
+          "end_line": 374,
+          "label": "RTL · when(redirect.valid)"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "训练缓存输出",
+      "sublabel": "io.toBpu.train.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 171,
+          "end_line": 180,
+          "label": "RTL · io.toBpu.train.valid"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "messagebus",
+      "label": "ResolveQueue",
+      "sublabel": "new ResolveQueue",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 119,
+          "end_line": 128,
+          "label": "RTL · new ResolveQueue"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "messagebus",
+      "label": "CommitQueue",
+      "sublabel": "new CommitQueue",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ftq/Ftq.scala",
+          "line": 122,
+          "end_line": 131,
+          "label": "RTL · new CommitQueue"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "ftq-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ftq-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ftq-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ftq-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ftq-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ftq-branch-0",
+      "from": "b0",
+      "to": "n2",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "ftq-branch-1",
+      "from": "b1",
+      "to": "n4",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "64 项 FTQ 分离 bpu/prefetch/fetch/commit 指针，并维护预测、恢复和训练元数据。",
+        "双取指要求总长度不超过64B、同页、第二块已过 PNR、没有已知后端异常标记。",
+        "ResolveQueue 与 CommitQueue 分别提供预测训练和 RAS 提交反馈。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

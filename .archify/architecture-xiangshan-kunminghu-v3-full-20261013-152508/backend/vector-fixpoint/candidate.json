@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · FixPoint 饱和与窄化选择",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/vector-fixpoint/vector-fixpoint.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "中间算术结果",
+      "sublabel": "class FixPoint",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorALU/FixPoint.scala",
+          "line": 7,
+          "end_line": 16,
+          "label": "RTL · class FixPoint"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "上游窄化候选",
+      "sublabel": "private val nclipResultSel8Tmp",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorALU/FixPoint.scala",
+          "line": 41,
+          "end_line": 50,
+          "label": "RTL · private val nclipResultSel8Tmp"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "饱和判断",
+      "sublabel": "sat",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorALU/FixPoint.scala",
+          "line": 26,
+          "end_line": 35,
+          "label": "RTL · sat"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "结果/vxsat",
+      "sublabel": "out",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/VectorALU/FixPoint.scala",
+          "line": 10,
+          "end_line": 19,
+          "label": "RTL · out"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "vector-fixpoint-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-fixpoint-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-fixpoint-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "接收Adder/Misc已经准备的中间结果，选择饱和/窄化结果与标志。",
+        "vxsat只聚合真实活跃元素，mask/tail不能引入假的饱和。",
+        "上层VIAlu选择是否采用此路径，图不宣称所有向量加法都饱和。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

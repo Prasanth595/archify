@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · LLC CHI Link/credit状态",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XSCache.git",
+      "revision": "300515bc7b2f65ca988041a984204489d80ec2fb"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/llc-link/llc-link.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "RN链路监控",
+      "sublabel": "class RNLinkMonitor",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/chi/LinkLayer.scala",
+          "line": 56,
+          "end_line": 65,
+          "label": "RTL · class RNLinkMonitor"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "sysco握手",
+      "sublabel": "io.out.syscoack",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/chi/LinkLayer.scala",
+          "line": 105,
+          "end_line": 114,
+          "label": "RTL · io.out.syscoack"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "SN监控",
+      "sublabel": "class SNLinkMonitor",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/chi/LinkLayer.scala",
+          "line": 140,
+          "end_line": 149,
+          "label": "RTL · class SNLinkMonitor"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "发送链路激活",
+      "sublabel": "io.out.tx.linkactivereq",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/chi/LinkLayer.scala",
+          "line": 175,
+          "end_line": 184,
+          "label": "RTL · io.out.tx.linkactivereq"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "接收激活确认",
+      "sublabel": "io.out.rx.linkactiveack",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/openLLC/chi/LinkLayer.scala",
+          "line": 176,
+          "end_line": 185,
+          "label": "RTL · io.out.rx.linkactiveack"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "llc-link-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "llc-link-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "llc-link-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "llc-link-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "RN/SN链路方向不同，激活与sysco握手不是普通data valid。",
+        "缓存事务的credit和link状态约束通道发送。",
+        "图列出方向性控制操作，不把RN→SN三个类当固定串行流水。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xscache @ 300515bc7b2f",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

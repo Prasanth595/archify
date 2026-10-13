@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · RegCacheTagTable 物理tag命中",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/regcache-tag/regcache-tag.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "源寄存器查询",
+      "sublabel": "class RegCacheTagTable(",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/regcache/RegCacheTagTable.scala",
+          "line": 28,
+          "end_line": 37,
+          "label": "RTL · class RegCacheTagTable("
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "INT TagModule",
+      "sublabel": "val IntRCTagTable",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/regcache/RegCacheTagTable.scala",
+          "line": 42,
+          "end_line": 51,
+          "label": "RTL · val IntRCTagTable"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "database",
+      "label": "MEM TagModule",
+      "sublabel": "val MemRCTagTable",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/regcache/RegCacheTagTable.scala",
+          "line": 45,
+          "end_line": 54,
+          "label": "RTL · val MemRCTagTable"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "唤醒/取消更新",
+      "sublabel": "wakeup",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/regcache/RegCacheTagTable.scala",
+          "line": 62,
+          "end_line": 71,
+          "label": "RTL · wakeup"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "RC索引输出",
+      "sublabel": "io",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/regcache/RegCacheTagTable.scala",
+          "line": 4,
+          "end_line": 13,
+          "label": "RTL · io"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "regcache-tag-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "regcache-tag-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "regcache-tag-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "regcache-tag-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "tag表由Dispatch查询物理寄存器身份，数据实际由RegCacheDataModule读取。",
+        "取消/唤醒和victim替换同步更新tag可用性。",
+        "不把tag命中单独当作寄存器已架构提交。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

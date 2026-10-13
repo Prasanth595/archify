@@ -93,6 +93,10 @@ function measureComponent(c) {
 }
 
 const components = new Map(asArray(arch.components).map((c) => [c.id, measureComponent(c)]));
+if ([...components.values()].some((component) => component.type === 'processor')
+  || Object.hasOwn(arch.meta?.legend?.entries || {}, 'processor')) {
+  LEGEND_CATALOG.push({ kind: 'processor', label: arch.meta.locale === 'zh-CN' ? '处理器' : 'Processor' });
+}
 const enforcesBoundaryTitleComposition = Boolean(arch.meta?.quality_profile);
 const componentSteps = new Map();
 for (const [index, conn] of asArray(arch.connections).entries()) {
@@ -882,18 +886,29 @@ function renderComponent(c) {
   const fill = componentFill[c.type] || 'c-external';
   const accent = componentText[c.type] || 't-muted';
   const cx = c.cx;
-  const hasSub = c.sublabel != null && c.sublabel !== '';
+  const processorDetail = c.type === 'processor' && !c.sublabel
+    ? [c.architecture, c.vendor, c.cores != null ? `${c.cores} cores` : null,
+      c.threads != null ? `${c.threads} threads` : null, c.cache, c.frequency]
+      .filter(Boolean).join(' · ')
+    : '';
+  const detail = c.sublabel || processorDetail;
+  const hasSub = detail !== '';
   const labelY = hasSub ? c.y + c.height / 2 - 2 : c.y + c.height / 2 + 4;
   const sub = hasSub
-    ? `\n        <text data-detail="context" x="${cx}" y="${c.y + c.height / 2 + 14}" class="t-muted" font-size="${fittedNodeFontSize(c.sublabel, c.width, componentTextFit.sublabelPreferred, componentTextFit.sublabelMinimum)}" text-anchor="middle">${esc(c.sublabel)}</text>`
+    ? `\n        <text data-detail="context" x="${cx}" y="${c.y + c.height / 2 + 14}" class="t-muted" font-size="${fittedNodeFontSize(detail, c.width, componentTextFit.sublabelPreferred, componentTextFit.sublabelMinimum)}" text-anchor="middle">${esc(detail)}</text>`
     : '';
   const tag = c.tag
     ? `\n        <text data-detail="fine" x="${cx}" y="${c.y + c.height - 8}" class="${accent}" font-size="${fittedNodeFontSize(c.tag, c.width, componentTextFit.tagPreferred, componentTextFit.tagMinimum)}" text-anchor="middle">${esc(c.tag)}</text>`
     : '';
   const brand = renderBrandMark(c, { x: c.x + c.width - 22, y: c.y + 6 });
   const labelFontSize = fittedNodeFontSize(c.label, brandLabelFitWidth(c, c.width), 11, 8);
-  const passport = { kind: c.type, sublabel: c.sublabel, tag: c.tag, context: componentContext(c), ...brandMetadataFor(c) };
-  return `        <g ${focusNodeAttrs(c.id, c.label, passport, arch.meta.locale)}>
+  const processorAttributes = c.type === 'processor'
+    ? Object.entries({ architecture: c.architecture, vendor: c.vendor, cores: c.cores, threads: c.threads, cache: c.cache, frequency: c.frequency })
+      .filter(([, value]) => value != null)
+      .map(([key, value]) => ` data-processor-${key}="${esc(value)}"`).join('')
+    : '';
+  const passport = { kind: c.type, sublabel: detail || undefined, tag: c.tag, context: componentContext(c), ...brandMetadataFor(c) };
+  return `        <g${processorAttributes} ${focusNodeAttrs(c.id, c.label, passport, arch.meta.locale)}>
           ${focusNodeTitle(c.label, passport)}
           <rect x="${c.x}" y="${c.y}" width="${c.width}" height="${c.height}" rx="6" class="c-mask"/>
           <rect x="${c.x}" y="${c.y}" width="${c.width}" height="${c.height}" rx="6" class="${fill}"${animateAttr(arch.meta, 'node', componentSteps.get(c.id))} stroke-width="1.5"/>

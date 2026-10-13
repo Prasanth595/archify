@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · DCache 数据与一致性总览",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/dcache/dcache.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "Load入口",
+      "sublabel": "new LoadPipe",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1088,
+          "end_line": 1097,
+          "label": "RTL · new LoadPipe"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "Store/原子主流水",
+      "sublabel": "new MainPipe",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 657,
+          "end_line": 666,
+          "label": "RTL · new MainPipe"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "messagebus",
+      "label": "miss条目",
+      "sublabel": "new MissQueue",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1092,
+          "end_line": 1101,
+          "label": "RTL · new MissQueue"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "messagebus",
+      "label": "Probe通路",
+      "sublabel": "new ProbeQueue",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1093,
+          "end_line": 1102,
+          "label": "RTL · new ProbeQueue"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "messagebus",
+      "label": "writeback",
+      "sublabel": "new WritebackQueue",
+      "tag": "硬件实例",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1094,
+          "end_line": 1103,
+          "label": "RTL · new WritebackQueue"
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "type": "backend",
+      "label": "模块内部设计",
+      "sublabel": "dcache",
+      "tag": "结构视图",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/cache/dcache/DCacheWrapper.scala",
+          "line": 1088,
+          "end_line": 1097,
+          "label": "RTL · new LoadPipe"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "dcache-owns-n0",
+      "from": "owner",
+      "to": "n0",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-owns-n1",
+      "from": "owner",
+      "to": "n1",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-owns-n2",
+      "from": "owner",
+      "to": "n2",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-owns-n3",
+      "from": "owner",
+      "to": "n3",
+      "label": "结构角色",
+      "variant": "default"
+    },
+    {
+      "id": "dcache-owns-n4",
+      "from": "owner",
+      "to": "n4",
+      "label": "结构角色",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "DefaultConfig覆盖DCache为64KiB/4-way和2个L1-L2通道。",
+        "LoadPipe、StorePipe与MainPipe分别承担读、预取/查询和写/原子/回填操作。",
+        "Tag/Meta/DataArray、一致性状态、MSHR和Probe/Release并行协作。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "本页按模块结构角色展开，连线表示组成/控制关联；并行子单元之间不串接。实际I/O主路径在父图或相应细节页。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

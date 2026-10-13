@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · StdFreeList 分配回收与回滚",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/free-list/free-list.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "提交回收请求",
+      "sublabel": "val freePtr",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala",
+          "line": 42,
+          "end_line": 51,
+          "label": "RTL · val freePtr"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "尾指针推进",
+      "sublabel": "tailPtrNext",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala",
+          "line": 37,
+          "end_line": 46,
+          "label": "RTL · tailPtrNext"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "剩余数量检查",
+      "sublabel": "io.canAllocate",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala",
+          "line": 66,
+          "end_line": 75,
+          "label": "RTL · io.canAllocate"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "分配候选选择",
+      "sublabel": "val phyRegCandidates",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala",
+          "line": 80,
+          "end_line": 89,
+          "label": "RTL · val phyRegCandidates"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "head/archHead 更新",
+      "sublabel": "val archHeadPtrNext",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala",
+          "line": 90,
+          "end_line": 99,
+          "label": "RTL · val archHeadPtrNext"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "恢复优先级",
+      "sublabel": "val realDoAllocate",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/backend/rename/freelist/StdFreeList.scala",
+          "line": 104,
+          "end_line": 113,
+          "label": "RTL · val realDoAllocate"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "free-list-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "free-list-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "free-list-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "free-list-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "free-list-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "freeList 环形存储待分配物理寄存器，tail 回收、head 分配。",
+        "canAllocate 按 RenameWidth 做余量判断，walk 按自己的有效请求数分配。",
+        "redirect 对普通分配有优先级，并以快照/架构 head 修复指针。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

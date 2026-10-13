@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · WayLookup 元数据队列",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/way-lookup/way-lookup.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "预取结果",
+      "sublabel": "io.write",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 83,
+          "end_line": 92,
+          "label": "RTL · io.write"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "32项队列状态",
+      "sublabel": "private val entries",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 58,
+          "end_line": 67,
+          "label": "RTL · private val entries"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "空闲/有效距离",
+      "sublabel": "numValidEntries",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 66,
+          "end_line": 75,
+          "label": "RTL · numValidEntries"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "回填更新",
+      "sublabel": "entryUpdate",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 115,
+          "end_line": 124,
+          "label": "RTL · entryUpdate"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "双出队条件",
+      "sublabel": "canDeqTwo",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 134,
+          "end_line": 143,
+          "label": "RTL · canDeqTwo"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "MainPipe 输出",
+      "sublabel": "io.toMainPipe.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/icache/ICacheWayLookup.scala",
+          "line": 145,
+          "end_line": 154,
+          "label": "RTL · io.toMainPipe.valid"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "way-lookup-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "way-lookup-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "way-lookup-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "way-lookup-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "way-lookup-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "PrefetchDepth=32，分离 write/read 指针和异常指针。",
+        "MSHR 回填可更新已有项，updateStall 避免消费不稳定状态。",
+        "两项可同时出队取决于有效项数量及回填条件。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

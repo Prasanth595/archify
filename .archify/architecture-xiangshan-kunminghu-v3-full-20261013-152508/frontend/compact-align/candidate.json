@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · IFU 压紧与写 bank 预对齐",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/compact-align/compact-align.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "S0 原始位置",
+      "sublabel": "s0_rawInstrVec",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 151,
+          "end_line": 160,
+          "label": "RTL · s0_rawInstrVec"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "指令压紧",
+      "sublabel": "s1_compactedInstrVec",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 195,
+          "end_line": 204,
+          "label": "RTL · s1_compactedInstrVec"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "按写指针对齐",
+      "sublabel": "s1_baseAlignedInstrVec",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 281,
+          "end_line": 290,
+          "label": "RTL · s1_baseAlignedInstrVec"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "跨块半条拼接",
+      "sublabel": "s1_prevEndHalfRviInfo",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 215,
+          "end_line": 224,
+          "label": "RTL · s1_prevEndHalfRviInfo"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "预译码属性",
+      "sublabel": "s1_alignedPdInfoVec",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/ifu/Ifu.scala",
+          "line": 372,
+          "end_line": 381,
+          "label": "RTL · s1_alignedPdInfoVec"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "compact-align-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "compact-align-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "compact-align-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "compact-align-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "该页描述当前 IFU 内逻辑分组，不把旧 InstrCompact 文件自动当成实际实例。",
+        "压紧后按4写bank预对齐，并生成对齐 PC/taken/invalidTaken 信息。",
+        "跨 fetch block 的 RVI 拼接使用保存的前块半条和本块数据。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

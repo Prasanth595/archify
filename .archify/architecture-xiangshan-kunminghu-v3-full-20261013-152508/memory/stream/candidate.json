@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · Stream 位图与层次预取",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/stream/stream.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "访存训练",
+      "sublabel": "io.train_req.ready",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/L1StreamPrefetcher.scala",
+          "line": 228,
+          "end_line": 237,
+          "label": "RTL · io.train_req.ready"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "database",
+      "label": "位图阵列",
+      "sublabel": "class StreamBitVectorArray",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/L1StreamPrefetcher.scala",
+          "line": 174,
+          "end_line": 183,
+          "label": "RTL · class StreamBitVectorArray"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "活跃流查询",
+      "sublabel": "io.stream_lookup_resp",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/L1StreamPrefetcher.scala",
+          "line": 480,
+          "end_line": 489,
+          "label": "RTL · io.stream_lookup_resp"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "L1请求",
+      "sublabel": "io.l1_prefetch_req.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/L1StreamPrefetcher.scala",
+          "line": 445,
+          "end_line": 454,
+          "label": "RTL · io.l1_prefetch_req.valid"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "L2/L3请求",
+      "sublabel": "io.l3_prefetch_req.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/prefetch/L1StreamPrefetcher.scala",
+          "line": 449,
+          "end_line": 458,
+          "label": "RTL · io.l3_prefetch_req.valid"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "stream-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "stream-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "stream-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "stream-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "按访问区域位图与活跃状态识别stream。",
+        "不同流水结果分别产生L1/L2/L3预取，目标/degree受运行控制约束。",
+        "flush清理错误/旧状态，stream_lookup供Stride协同避免重复。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

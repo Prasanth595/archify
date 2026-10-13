@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · L2 GrantBuffer 多拍返回",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XSCache.git",
+      "revision": "300515bc7b2f65ca988041a984204489d80ec2fb"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/l2-grant/l2-grant.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "D任务接收",
+      "sublabel": "grantQueue.io.enq.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/GrantBuffer.scala",
+          "line": 160,
+          "end_line": 169,
+          "label": "RTL · grantQueue.io.enq.valid"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "messagebus",
+      "label": "任务/数据队列",
+      "sublabel": "val grantQueue",
+      "tag": "内部状态",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/GrantBuffer.scala",
+          "line": 112,
+          "end_line": 121,
+          "label": "RTL · val grantQueue"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "inflight grant身份",
+      "sublabel": "inflight_insertIdx",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/GrantBuffer.scala",
+          "line": 156,
+          "end_line": 165,
+          "label": "RTL · inflight_insertIdx"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "下游ready",
+      "sublabel": "grantQueue.io.deq.ready",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/GrantBuffer.scala",
+          "line": 192,
+          "end_line": 201,
+          "label": "RTL · grantQueue.io.deq.ready"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "D通道返回",
+      "sublabel": "io.d.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/coupledL2/GrantBuffer.scala",
+          "line": 209,
+          "end_line": 218,
+          "label": "RTL · io.d.valid"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "l2-grant-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-grant-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-grant-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "l2-grant-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "任务和两拍data使用同步队列推进，保留grantid用于GrantAck。",
+        "正在发送的GrantBuffer和队列项可流过，实际D.ready控制消耗。",
+        "预取HintAck有独立统计/响应路径，不能当作需要数据的Grant。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xscache @ 300515bc7b2f",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

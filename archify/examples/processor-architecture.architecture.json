@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Processor execution path",
+    "subtitle": "A CPU boundary with descriptive ISA and capacity facts",
+    "output": "processor-architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "Application",
+      "pos": [60, 180],
+      "size": [150, 64]
+    },
+    {
+      "id": "cpu",
+      "type": "processor",
+      "label": "Execution core",
+      "architecture": "arm64",
+      "vendor": "Example Silicon",
+      "cores": 8,
+      "threads": 16,
+      "cache": "L3 16 MB",
+      "frequency": "3.2 GHz",
+      "pos": [310, 180],
+      "size": [190, 72]
+    },
+    {
+      "id": "memory",
+      "type": "database",
+      "label": "Memory",
+      "sublabel": "shared state",
+      "pos": [610, 180],
+      "size": [150, 64]
+    }
+  ],
+  "connections": [
+    { "from": "app", "to": "cpu", "label": "instructions", "variant": "emphasis" },
+    { "from": "cpu", "to": "memory", "label": "loads / stores" }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Compute node", "wraps": ["cpu", "memory"] }
+  ]
+}
+

@@ -1,0 +1,7 @@
+# Preserve local gate receipts and captures without publishing host paths.
+/evidence-*/
+/*-review-*/
+/captures-*/
+/reproduction*/
+*.delivery.json
+*.before-position-review.json

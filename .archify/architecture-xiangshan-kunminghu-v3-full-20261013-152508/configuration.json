@@ -1,0 +1,617 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "class": "top.DefaultConfig",
+    "cores": 1,
+    "llc": "OpenLLC",
+    "runtimeOverrides": [],
+    "note": "Use selected config composition and inherited XSCoreParameters; actual instantiation is traced before asserting per-unit quantities."
+  },
+  "fields": {
+    "DecodeWidth": {
+      "value": 8,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 81
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "RenameWidth": {
+      "value": 8,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 82
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "RobCommitWidth": {
+      "value": 8,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 84
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "RobSize": {
+      "value": 144,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 115
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "RabSize": {
+      "value": 352,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 116
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "VTypeBufferSize": {
+      "value": 64,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 117
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "VirtualLoadQueueSize": {
+      "value": 120,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 102
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "LoadQueueRARSize": {
+      "value": 96,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 103
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "LoadQueueRAWSize": {
+      "value": 56,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 104
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "LoadQueueReplaySize": {
+      "value": 120,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 106
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "StoreQueuePhysicalSize": {
+      "value": 64,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 110
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "StoreQueueMultiple": {
+      "value": 2,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 111
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "LoadUncacheBufferSize": {
+      "value": 16,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 108
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "LoadPipelineWidth": {
+      "value": 3,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 167
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "StorePipelineWidth": {
+      "value": 2,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 168
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "StoreBufferSize": {
+      "value": 16,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 177
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    },
+    "modeStrideBerti": {
+      "value": 1,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 165
+      },
+      "resolution": "Inherited XSCoreParameters; DefaultConfig does not override this field."
+    }
+  },
+  "registerFiles": [
+    {
+      "type": "INT",
+      "entries": 224,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 122
+      }
+    },
+    {
+      "type": "FP",
+      "entries": 256,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 128
+      }
+    },
+    {
+      "type": "VP",
+      "entries": 128,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 134
+      }
+    },
+    {
+      "type": "V0",
+      "entries": 22,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 140
+      }
+    },
+    {
+      "type": "VL",
+      "entries": 32,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 146
+      }
+    }
+  ],
+  "executionUnits": [
+    {
+      "region": "integer",
+      "name": "ALU0",
+      "functions": [
+        "AluCfg",
+        "CsrCfg",
+        "FenceCfg",
+        "LinkCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 346
+      }
+    },
+    {
+      "region": "integer",
+      "name": "BJU0",
+      "functions": [
+        "BrhCfg",
+        "NJmpCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 347
+      }
+    },
+    {
+      "region": "integer",
+      "name": "ALU1",
+      "functions": [
+        "AluCfg",
+        "DivCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 350
+      }
+    },
+    {
+      "region": "integer",
+      "name": "BJU1",
+      "functions": [
+        "BrhCfg",
+        "NJmpCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 351
+      }
+    },
+    {
+      "region": "integer",
+      "name": "ALU2",
+      "functions": [
+        "AluCfg",
+        "I2fCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 355
+      }
+    },
+    {
+      "region": "integer",
+      "name": "BJU2",
+      "functions": [
+        "BrhCfg",
+        "NJmpCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 362
+      }
+    },
+    {
+      "region": "integer",
+      "name": "ALU3",
+      "functions": [
+        "AluCfg",
+        "BkuCfg",
+        "VSetCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 366
+      }
+    },
+    {
+      "region": "integer",
+      "name": "ALU4",
+      "functions": [
+        "AluCfg",
+        "MulCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 377
+      }
+    },
+    {
+      "region": "integer",
+      "name": "ALU5",
+      "functions": [
+        "AluCfg",
+        "MulCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 380
+      }
+    },
+    {
+      "region": "integer",
+      "name": "LDU0",
+      "functions": [
+        "LduCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 384
+      }
+    },
+    {
+      "region": "integer",
+      "name": "LDU1",
+      "functions": [
+        "LduCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 397
+      }
+    },
+    {
+      "region": "integer",
+      "name": "LDU2",
+      "functions": [
+        "LduCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 410
+      }
+    },
+    {
+      "region": "integer",
+      "name": "STA0",
+      "functions": [
+        "StaCfg",
+        "MouCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 423
+      }
+    },
+    {
+      "region": "integer",
+      "name": "STA1",
+      "functions": [
+        "StaCfg",
+        "MouCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 433
+      }
+    },
+    {
+      "region": "integer",
+      "name": "STD0",
+      "functions": [
+        "StdCfg",
+        "MoudCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 442
+      }
+    },
+    {
+      "region": "integer",
+      "name": "STD1",
+      "functions": [
+        "StdCfg",
+        "MoudCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 445
+      }
+    },
+    {
+      "region": "floating",
+      "name": "FEX0",
+      "functions": [
+        "FaluCfg",
+        "FmulCfg",
+        "FcvtCfg",
+        "FcmpCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 461
+      }
+    },
+    {
+      "region": "floating",
+      "name": "FEX1",
+      "functions": [
+        "FaluCfg",
+        "FmulCfg",
+        "FdivCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 468
+      }
+    },
+    {
+      "region": "floating",
+      "name": "FEX2",
+      "functions": [
+        "FaluCfg",
+        "FmulCfg",
+        "FdivCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 471
+      }
+    },
+    {
+      "region": "floating",
+      "name": "FEX3",
+      "functions": [
+        "FaluCfg",
+        "FmulCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 474
+      }
+    },
+    {
+      "region": "vector",
+      "name": "VFEX0",
+      "functions": [
+        "VialuCfg",
+        "VimacCfg",
+        "VmoveCfg",
+        "VfcvtCfg",
+        "VfmacCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 489
+      }
+    },
+    {
+      "region": "vector",
+      "name": "VFEX1",
+      "functions": [
+        "VialuCfg",
+        "VidivCfg",
+        "VfmacCfg",
+        "VfdivCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 500
+      }
+    },
+    {
+      "region": "vector",
+      "name": "VFEX2",
+      "functions": [
+        "VialuCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 511
+      }
+    },
+    {
+      "region": "vector",
+      "name": "VFEX3",
+      "functions": [
+        "VialuCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 522
+      }
+    },
+    {
+      "region": "vector",
+      "name": "VSTD0",
+      "functions": [
+        "VStdCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 533
+      }
+    },
+    {
+      "region": "vector",
+      "name": "VSTD1",
+      "functions": [
+        "VStdCfg"
+      ],
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/Parameters.scala",
+        "line": 541
+      }
+    }
+  ],
+  "caches": [
+    {
+      "name": "ICache",
+      "bytes": 65536,
+      "ways": 4,
+      "lineBytes": 64,
+      "source": {
+        "repository": "xiangshan",
+        "path": "src/main/scala/xiangshan/frontend/icache/Parameters.scala"
+      }
+    },
+    {
+      "name": "DCache",
+      "bytes": 65536,
+      "ways": 4,
+      "numL1L2Channels": 2,
+      "override": "WithNKBL1D(64, ways=4, numMemChannels=2)"
+    },
+    {
+      "name": "CoupledL2",
+      "bytes": 2097152,
+      "ways": 8,
+      "banks": 4,
+      "inclusive": true,
+      "override": "L2CacheConfig(\"2MB\", inclusive=true, banks=4, tp=false)"
+    },
+    {
+      "name": "OpenLLC",
+      "bytes": 33554432,
+      "ways": 16,
+      "banks": 4,
+      "override": "OpenLLCConfig(\"32MB\", ways=16, banks=4)"
+    }
+  ],
+  "configSource": {
+    "repository": "xiangshan",
+    "path": "src/main/scala/top/Configs.scala",
+    "class": "DefaultConfig"
+  },
+  "runtimeControls": [
+    {
+      "module": "Berti",
+      "instantiated": true,
+      "modeStrideBertiDefault": 1,
+      "runningInDefaultMode": false,
+      "note": "CSR and other controls can change execution; presence in RTL alone does not imply enabled."
+    },
+    {
+      "module": "TemporalPrefetch",
+      "instantiatedInDefaultL2": false,
+      "reason": "DefaultConfig tp=false"
+    }
+  ],
+  "differencesFromReferenceImage": [
+    "BTB-based V3 predictor replaces old uFTB/FTB diagram.",
+    "Default DecodeWidth/RenameWidth=8, not 6.",
+    "ROB=144/RAB=352 and FP RF=256.",
+    "L1 DCache 4-way, L2 2MiB, LLC 32MiB.",
+    "NewLoadUnit/NewStoreUnit and updated vector/float regions replace historical block boundaries."
+  ]
+}

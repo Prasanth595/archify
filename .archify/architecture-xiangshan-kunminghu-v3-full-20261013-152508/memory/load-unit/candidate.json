@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · NewLoadUnit 主流水",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/memory/load-unit/load-unit.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "S0 多入口仲裁",
+      "sublabel": "val s0 = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala",
+          "line": 2063,
+          "end_line": 2072,
+          "label": "RTL · val s0 = Module"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "S1 翻译/检查",
+      "sublabel": "val s1 = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala",
+          "line": 2064,
+          "end_line": 2073,
+          "label": "RTL · val s1 = Module"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "S2 Cache/Forward",
+      "sublabel": "val s2 = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala",
+          "line": 2065,
+          "end_line": 2074,
+          "label": "RTL · val s2 = Module"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "S3 结果/重放",
+      "sublabel": "val s3 = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala",
+          "line": 2066,
+          "end_line": 2075,
+          "label": "RTL · val s3 = Module"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "S4 非对齐拼接",
+      "sublabel": "val s4 = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala",
+          "line": 2067,
+          "end_line": 2076,
+          "label": "RTL · val s4 = Module"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "数据选择",
+      "sublabel": "val dataPath = Module",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/mem/pipeline/NewLoadUnit.scala",
+          "line": 2068,
+          "end_line": 2077,
+          "label": "RTL · val dataPath = Module"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "load-unit-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "load-unit-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "load-unit-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "load-unit-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "load-unit-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "当前默认3个NewLoadUnit，S0–S4与LoadUnitDataPath分开实例化。",
+        "高低优先Replay、scalar/vector issue及prefetch共用入口仲裁。",
+        "DTLB、PMP、DCache、SQ/SBuffer/MSHR/TLD Forward参与完成、cancel与replay。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

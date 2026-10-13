@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · 浮点除法规范化与迭代",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/float-div-iterate/float-div-iterate.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "PRE请求ready",
+      "sublabel": "io.start_ready_o := fsm_q",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/FloatDivider.scala",
+          "line": 182,
+          "end_line": 191,
+          "label": "RTL · io.start_ready_o := fsm_q"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "取消状态",
+      "sublabel": "when(io.flush_i)",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/FloatDivider.scala",
+          "line": 153,
+          "end_line": 162,
+          "label": "RTL · when(io.flush_i)"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "尾数规范化",
+      "sublabel": "val U_Left_Shift_opa_f64_0",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/FloatDivider.scala",
+          "line": 399,
+          "end_line": 408,
+          "label": "RTL · val U_Left_Shift_opa_f64_0"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "POST结果有效",
+      "sublabel": "io.finish_valid_o := !isBlock",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/FloatDivider.scala",
+          "line": 198,
+          "end_line": 207,
+          "label": "RTL · io.finish_valid_o := !isBlock"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "提前唤醒条件",
+      "sublabel": "io.outValidAhead3Cycle",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/fpu/FloatDivider.scala",
+          "line": 63,
+          "end_line": 72,
+          "label": "RTL · io.outValidAhead3Cycle"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "float-div-iterate-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "float-div-iterate-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "float-div-iterate-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "float-div-iterate-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "FloatDividerR64使用PRE/迭代/POST处理浮点除法和denormal。",
+        "规范化、迭代商/余数、舍入/打包需保持特殊值判断。",
+        "已报告唤醒后若被阻塞仍需与wakeupSuccess/result握手一致。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

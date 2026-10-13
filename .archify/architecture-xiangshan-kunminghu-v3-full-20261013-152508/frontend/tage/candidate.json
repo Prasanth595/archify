@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · TAGE 方向选择与分配",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "revision": "d48cd2dd79726c2d7a1264b3c7a50679c77461e2"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/frontend/tage/tage.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "PC / 折叠历史",
+      "sublabel": "s0_foldedHist",
+      "tag": "输入接口",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 67,
+          "end_line": 76,
+          "label": "RTL · s0_foldedHist"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "set 查询与 tag",
+      "sublabel": "s0_setIdx",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 68,
+          "end_line": 77,
+          "label": "RTL · s0_setIdx"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "多表命中",
+      "sublabel": "s1_hits",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 100,
+          "end_line": 109,
+          "label": "RTL · s1_hits"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "训练信息",
+      "sublabel": "t2_trainInfoVec",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 333,
+          "end_line": 342,
+          "label": "RTL · t2_trainInfoVec"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "分配表/way",
+      "sublabel": "t3_allocateTableOH",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 538,
+          "end_line": 547,
+          "label": "RTL · t3_allocateTableOH"
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "type": "backend",
+      "label": "表更新",
+      "sublabel": "table.io.writeReq.valid",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        1120
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 611,
+          "end_line": 620,
+          "label": "RTL · table.io.writeReq.valid"
+        }
+      ]
+    },
+    {
+      "id": "b0",
+      "type": "database",
+      "label": "TAGE 表",
+      "sublabel": "new TageTable",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 47,
+          "end_line": 56,
+          "label": "RTL · new TageTable"
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "type": "database",
+      "label": "有用位老化",
+      "sublabel": "usefulResetCtr",
+      "tag": "状态 / 支路",
+      "pos": [
+        560,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/xiangshan/frontend/bpu/tage/Tage.scala",
+          "line": 50,
+          "end_line": 59,
+          "label": "RTL · usefulResetCtr"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "tage-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tage-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tage-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tage-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tage-step-4",
+      "from": "n4",
+      "to": "n5",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tage-branch-0",
+      "from": "b0",
+      "to": "n1",
+      "label": "提供状态",
+      "variant": "default"
+    },
+    {
+      "id": "tage-branch-1",
+      "from": "b1",
+      "to": "n4",
+      "label": "提供状态",
+      "variant": "default"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "预测侧按 PC/折叠历史生成 set/tag，联合 mBTB 分支位置形成多表命中。",
+        "训练侧读取 meta、计数器与有用位，决定更新 provider 或向更长历史分配。",
+        "bank 冲突会拉低 trainReady；useAltOnNa 和 useful reset 参与训练策略。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；xiangshan @ d48cd2dd7972",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

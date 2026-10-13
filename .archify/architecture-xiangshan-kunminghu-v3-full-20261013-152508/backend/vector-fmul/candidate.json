@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · VectorFMUL 中间积与结果",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/vector-fmul/vector-fmul.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "格式与操作输入",
+      "sublabel": "class VectorFMulInput",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vfmul/VectorFMul.scala",
+          "line": 11,
+          "end_line": 20,
+          "label": "RTL · class VectorFMulInput"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "S0格式拆分",
+      "sublabel": "val fmuls_s0",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vfmul/VectorFMul.scala",
+          "line": 73,
+          "end_line": 82,
+          "label": "RTL · val fmuls_s0"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "S1乘积",
+      "sublabel": "val fmuls_s1",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vfmul/VectorFMul.scala",
+          "line": 77,
+          "end_line": 86,
+          "label": "RTL · val fmuls_s1"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "FMA中间数据",
+      "sublabel": "io.outToFADD",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vfmul/VectorFMul.scala",
+          "line": 79,
+          "end_line": 87,
+          "label": "RTL · io.outToFADD"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "S2最终乘法",
+      "sublabel": "val fmuls_s2",
+      "tag": "硬件实例",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vfmul/VectorFMul.scala",
+          "line": 82,
+          "end_line": 87,
+          "label": "RTL · val fmuls_s2"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "vector-fmul-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-fmul-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-fmul-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-fmul-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "VFMacWrapper实际调用VectorFMUL，多lane元素共享格式化乘积。",
+        "S1提供追加位/中间flags到VectorFALU，FMA不能在此独立舍入。",
+        "独立乘法使用S2，结果flag/格式选择保留。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

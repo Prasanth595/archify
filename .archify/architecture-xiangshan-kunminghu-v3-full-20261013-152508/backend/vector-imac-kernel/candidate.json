@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "昆明湖 V3 · VIMac64b Booth与累加",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/OpenXiangShan/YunSuan.git",
+      "revision": "267ff736e7acd8e0fe8d13710581e4902a8a8a6c"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "数据通路 / 控制"
+        },
+        "database": {
+          "label": "内部状态"
+        },
+        "messagebus": {
+          "label": "队列 / 仲裁"
+        },
+        "security": {
+          "label": "检查 / 恢复"
+        },
+        "external": {
+          "label": "输入输出接口"
+        }
+      }
+    },
+    "output": ".archify/architecture-xiangshan-kunminghu-v3-full-20261013-152508/backend/vector-imac-kernel/vector-imac-kernel.html"
+  },
+  "components": [
+    {
+      "id": "n0",
+      "type": "external",
+      "label": "整数乘加输入",
+      "sublabel": "class VIMac64b",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        70
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vectorIMAC/VIMac64b.scala",
+          "line": 9,
+          "end_line": 18,
+          "label": "RTL · class VIMac64b"
+        }
+      ]
+    },
+    {
+      "id": "n1",
+      "type": "backend",
+      "label": "Stage1操作数",
+      "sublabel": "stage1.in.data.vs1",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        280
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vectorIMAC/VIMac64b.scala",
+          "line": 30,
+          "end_line": 39,
+          "label": "RTL · stage1.in.data.vs1"
+        }
+      ]
+    },
+    {
+      "id": "n2",
+      "type": "backend",
+      "label": "乘加控制",
+      "sublabel": "stage1.in.ctrl.isMacc",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        490
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vectorIMAC/VIMac64b.scala",
+          "line": 27,
+          "end_line": 36,
+          "label": "RTL · stage1.in.ctrl.isMacc"
+        }
+      ]
+    },
+    {
+      "id": "n3",
+      "type": "backend",
+      "label": "中间数据",
+      "sublabel": "data",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        700
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vectorIMAC/VIMac64b.scala",
+          "line": 30,
+          "end_line": 39,
+          "label": "RTL · data"
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "type": "backend",
+      "label": "输出结果",
+      "sublabel": "out.ex2.vd",
+      "tag": "逻辑步骤",
+      "pos": [
+        80,
+        910
+      ],
+      "size": [
+        300,
+        92
+      ],
+      "sources": [
+        {
+          "path": "src/main/scala/yunsuan/vector/vectorIMAC/VIMac64b.scala",
+          "line": 75,
+          "end_line": 84,
+          "label": "RTL · out.ex2.vd"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "vector-imac-kernel-step-0",
+      "from": "n0",
+      "to": "n1",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-imac-kernel-step-1",
+      "from": "n1",
+      "to": "n2",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-imac-kernel-step-2",
+      "from": "n2",
+      "to": "n3",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vector-imac-kernel-step-3",
+      "from": "n3",
+      "to": "n4",
+      "label": "数据 / 控制",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计职责",
+      "items": [
+        "yunsuan.vector.mac命名空间对应此固定源码文件，按调用关系记录而非目录名猜测。",
+        "SEW/signed/widen/high-half/fixed-point决定乘加数据路径。",
+        "lane输出与饱和状态供VIMacU按mask/tail合并。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "图中语义",
+      "items": [
+        "节点标注实际 RTL 信号或子模块；标记为“逻辑步骤”的框是组合/寄存器操作分组，并非额外硬件实例。",
+        "沿连线阅读该模块的数据和控制依赖；流水级、同时执行及握手条件以节点和源码为准，图不是周期精确时序。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "版本与配置",
+      "items": [
+        "top.DefaultConfig(1) · OpenLLC；yunsuan @ 267ff736e7ac",
+        "角色、接口和状态根据固定 RTL 核实；多实例的同设计复用本页。",
+        "实例数量由父模块/参数配置决定；本页描绘单实例的设计。"
+      ]
+    }
+  ]
+}

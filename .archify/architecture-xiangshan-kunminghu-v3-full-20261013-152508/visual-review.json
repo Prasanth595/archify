@@ -1,0 +1,2837 @@
+{
+  "schemaVersion": 1,
+  "kind": "atlas-perceptual-review",
+  "checkedOn": "2026-10-13",
+  "method": "214 diagrams / 428 full-page light and dark captures inspected in 27 full-height contact sheets, plus original-size main and complex examples. This records actual image inspection separately from native automated browser receipts.",
+  "inspectedSheetCount": 27,
+  "originalSizeExamples": {
+    "core": [
+      "light",
+      "dark"
+    ],
+    "ubtb": [
+      "light"
+    ],
+    "coupled-l2": [
+      "dark"
+    ],
+    "backend": [
+      "light"
+    ],
+    "memory": [
+      "dark"
+    ],
+    "bpu": [
+      "light"
+    ],
+    "icache": [
+      "dark"
+    ]
+  },
+  "limitation": "联系表用于布局、箭头方向、交叉、图例、卡片和下方区域复核，不能证明全部标签均被逐字审读；字体容纳和可读性另由原生 Edge 浏览器测量。滚动时 Viewer 工具条固定在视口边缘，全页截图中它可能暂时覆盖局部，可正常滚动或聚焦阅读。",
+  "findings": [
+    {
+      "id": "core",
+      "description": "One position-only placement pass reduced resolved crossovers from 11 to 2; final light/dark captures reviewed. Remaining crossovers use the renderer crossover convention."
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "frontend",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "0ae32fa817b7cb9767567185bfe5d3f7116c5b81cf19b4a4ea6ae613830a5987",
+      "captureSha256": {
+        "light": "468c14dc00ed31fb9e9b4973e757669d64baf55ff0238d99d5fba1ab4555764e",
+        "dark": "12e713ceb71481e7a42fc99403d3f97814fb028c9d6829a854fc1214af0cecc6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "bpu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [
+        "light"
+      ],
+      "artifactSha256": "5640304ceeec78d57e0de65b25c339fcb499be1c851ed5b82cb825d1d88eba74",
+      "captureSha256": {
+        "light": "c745eca2662365d1a0819fa78a0750f8b01a1b70b8616d53647093678657d18d",
+        "dark": "fc4f3347d1973ce934ca3dbc2f9b520d12c43277e20e90a8ee87d6e814170fd9"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [
+        "dark"
+      ],
+      "artifactSha256": "4ce91d4f93b29efb4dce3f5bb3407b8a18ff682bf48483872018002f4adc5c70",
+      "captureSha256": {
+        "light": "d8d5888fdcaab5355fed25de7b3f09e789cd32385425b3f7952778a9699db68f",
+        "dark": "3077e6a510ed7aa2ee0d49b53c37454e00cd8879cbe8f05f8d0b1c045bd362c0"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ifu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "9ba2f79ccb927f6bf8b9765f919d35faa849916b0575c7af0fde3f7017f6782e",
+      "captureSha256": {
+        "light": "747dc78033823831b45ebe54fe235d745705d5cb54d3f5bd5a1aab0d60fe5327",
+        "dark": "5083513893c922d96bd28635e639b1263dfaceaa795c47d6d05107b458a4c101"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "core",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [
+        "light",
+        "dark"
+      ],
+      "artifactSha256": "149e702167102d0423c5e944be1fd055e286f5f6ef107c457ea99464a9fb4193",
+      "captureSha256": {
+        "light": "4287a83282441e1041a8ddcd05b436c22860eb22ab59b5e5259b17627da688e4",
+        "dark": "4f9a8924c1fad518e8e84a40d77910b31c657e632290bdf3db6647705af3b521"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "backend",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [
+        "light"
+      ],
+      "artifactSha256": "9dd3979ecc12cfb900a875a994349a5b3d0ca5f2eceb1f69710a1adcef36e478",
+      "captureSha256": {
+        "light": "eab357f431f6f98ff1370caef6e1dff59e54c95f508e4d82b1e6a6c7a86f3652",
+        "dark": "92e8462511deb1e7a6f8a86d3000317995402ba4af06ae7d2745df40e52b8523"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "memory",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [
+        "dark"
+      ],
+      "artifactSha256": "0d490f86129ffb04db077c626dd1c16f866b1613fa9034eb71f3e0c500ce3387",
+      "captureSha256": {
+        "light": "c1f44bcf98e23264d04411fde9e6f0ef7500d259b865fcf53110ad47c7fcfa84",
+        "dark": "3b5adf9b440a5199f5c5a484cb6bb1ab9dc60bd7797df6db018c1ab3b2d7d413"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ubtb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-01.jpg",
+      "additionalOriginalSizeThemes": [
+        "light"
+      ],
+      "artifactSha256": "e69638b3ae0b0708bb666822d1d4d502bd49a35b33ed5d1868169e14dae29bc1",
+      "captureSha256": {
+        "light": "e10f49fec8e6d28c06788440f8dae9766b93a144502e0d6ccea53b1c08a41fda",
+        "dark": "030fb87bb3dfe463e5726c5a47931ab59fdac20fac308fa2902041427f1704f0"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "abtb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "bd74942d82bd56cc967cc1cefc09479ff0e99a07b1a34a945d731015c0a331b0",
+      "captureSha256": {
+        "light": "17ed3e756d97027867274fbe02ec0f270d0074be2888c30114d65205bbc089db",
+        "dark": "2973fe489b2323cd5dd364c173e54d0a4bc8a3cdacfed82bb083507b3129c843"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "utage",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "56dd3fd80a89ae02213587c3bdcc2f744781a69620f8d46f784e5b49abe2ef60",
+      "captureSha256": {
+        "light": "d53192cff3f9b34524168a090e18ab81fe5f89bb91ea9253f956f722c8fcb9aa",
+        "dark": "9a85b83ea0cf492d77fa05373e92fcf5d81bb8d4362ff3d339446a54f50134f2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "mbtb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "132d94d051ffbca7003d30b654b2397bdf00ca58072ae389cd0caab24d6aa8f9",
+      "captureSha256": {
+        "light": "d2ee972ab326b0d07dedc857774d4c5df6cf53821aedfd56a5b1b10f66c7e653",
+        "dark": "c007e547069a6248a167f44057e719b9bb12728b8b382cdbda5e2da81c4e63c1"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "victim-btb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8edf86e765af47eab8417c7bffd280d806604e24a4f908fa1e850137d0a43eb5",
+      "captureSha256": {
+        "light": "f7b0568593ed300f5702548f476bc57edaf0d237ba2bc930e4c35b123f0171b8",
+        "dark": "621166432624d90019c6e852d3b330bd131b87cf7ab35db1159d148a813eb34f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "tage",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "996c700ae07b87888e0cd8203133a0acda44e5728aa17cae56eec52bb7e49280",
+      "captureSha256": {
+        "light": "c3bcc4f1d4928b12b3b387265e85e7e222b587a44536506c44b4ecd9cfdeacb9",
+        "dark": "3d4b2909494f484c5c3d36daf093446c3b237dd420de867525f31609f3426a8c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sc",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "f8720c43ffcb0f9746b823463013f482359072f49f87e31afa03f7f829912b69",
+      "captureSha256": {
+        "light": "50c88e544cf69aaeb35726a919d594ca42907ee961183440d469f75fe6ae4145",
+        "dark": "5693392a780b77226f88d353d84acd76d6a05f5572536a273dde61242f302a6d"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ittage",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c30033201500eeef27c5dc8a48a6acd000d6679029b4c85ae1d4d0d518222c44",
+      "captureSha256": {
+        "light": "e304218538aaf24397f68d6c46aa50bbb8ff4da19180a7ebbb50b17ba1083dd3",
+        "dark": "bdd9f1748797f4843997afe0ff9aa644b23df1939ecd82642220bac38fefb39a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ras",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-02.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "379f758d3e798bd2998c70584b5fe90c4da11f0ee8bbbec19c6f0127eee61769",
+      "captureSha256": {
+        "light": "05bd5dab2bbbf42487dcfb4e8e61e18cbafe4d01e0847e9f50fb2ec728695d7a",
+        "dark": "00ed44fa4432adb8ca4dd85a1097c35d14a0009f51280e57332d7cb7d96ad5bb"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ras-stack",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e8f7a9f35889c10a5e0be738122df00933dd5eb4262ae6c6d3dcf13704f2141a",
+      "captureSha256": {
+        "light": "f2175670412da28de75b702c62ce8f1f066e1879e2f11abfb0db85453ed16ea1",
+        "dark": "f264ed5173d2e3267d90afecb1d18a307610090a4371ee4df8ad318176f303cc"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "micro-ras",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d46954c7c75edcd5cc998e5a26bf518392149ed6bf99dbeac8ab34a4e1768316",
+      "captureSha256": {
+        "light": "55ba4f9550146942b8d6c295b1c0971e5decebcbc62c224f9af04dd3d17a30ad",
+        "dark": "9a006215fe6ee320812aa8d7809968ee99c1dd3b574d2d8fc7a60f219a04c4a3"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "phr",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "b3f83404229cf30dbe9179fd41476324378db497ef9a5e0198f82bff9f1129a3",
+      "captureSha256": {
+        "light": "03cc05c926941b187b78aaeb9cb02204d81ad1192fc5305f98c0801da95dbf20",
+        "dark": "bb6fe8a4bc5c99c06577cbe0445e8e0dc9e7be661829a8cb2425ce3e5cb85f53"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "common-hr",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "9e6f72d8b073ee047fb529d8e234d77f740aa8bffc852ccb009df1a91d6a6bd2",
+      "captureSha256": {
+        "light": "a31580ec0fe2d7f7254b3ffd10a6bd39c1d7a5a68f72b11330654577dc40aaee",
+        "dark": "2e9229e085d5e9335bb5290a96d3f70f0d2724a7910230cde33d3ff323c1cc3f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ftq",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ea2f776e82cf6344ce6e91c58ddbf3b2aa75d9f2ac5306ad81b26803ae02f1b6",
+      "captureSha256": {
+        "light": "7305e6e00cd66931a186b13751f0c7dd73ab57bb46eee3de3b291a6cf30d2906",
+        "dark": "39c94c49c0c4ba52b0515cc4e5a68337bbdf049d2bc7f4aafee77285c30847e6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ftq-meta",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "329ec4f2410bd227efe63c8afbcabb000b609a7cca7eb8fea7c4e49db925ede8",
+      "captureSha256": {
+        "light": "5090743ef22865ca2df8b746c9452b41b57b1d002cc5ca1e6faa9431a704e2f9",
+        "dark": "d0c7be897cf3c587d43082954d0292d2954b18446f3088d58c71b80906a9712f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "resolve-queue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8617ead112dcbd03206ec9322ae6585320e4c329e17cd1fcacf388a0f242af98",
+      "captureSha256": {
+        "light": "af3372ae447d4d63c2ca55bc3690afb62ba0fc62a56d8b8b6cb89ecab206f2d0",
+        "dark": "b0abc2a38a5ce3d27e314d3657872e5f3293b01935cffe790f4317dc21bdfa1c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "commit-queue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-03.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "70f529dc1f0fe548be303c6ca4a588559a091ad0b2a5873a1f392b1b2c9ff375",
+      "captureSha256": {
+        "light": "15909dd39a968f05421b43e3d4e0aeccadac71376db4f050675add0ab8fb1490",
+        "dark": "c26abbd869bb7f2e9eb8098c8512209e16fe1ebae49e797d9664156dfe7f9e4b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ibuffer",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4ac9c210f8bc44471c7800b7e7caa4773f13e1b1320a8347b6a53a60d8fbecb0",
+      "captureSha256": {
+        "light": "294f37f3ae9e2c7cdecc449317fcabe3b9aa7f35d3c4536e43b7ad7ac05fc0b2",
+        "dark": "8d6db227b958cae269d9d328797bc5f2d7d000a9a8f6dc28162d725d3925693b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "instr-boundary",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e184e495449ef7f233e7ba1804caf6aebf8fd4fcee0bbc77b0cabeb9ccf290e3",
+      "captureSha256": {
+        "light": "5ca2c1463ef8aaf5f8528d77c444863aaaf017bbc8476562fac6d03a3b05d1c6",
+        "dark": "b1dca4b2a87ab76d1a56a5d06e2db664d57d349d85225cf7288422e79590af78"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "compact-align",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "a8eee96f4bc970f70a14aec7a255bd66e059ae724d66397f7296d29059c749a0",
+      "captureSha256": {
+        "light": "7065a64738f6ca57031f585556965f454d4d8dc76820a462744c678c7831f1e1",
+        "dark": "348138c0f677b9eacc68314b0a5b508833b94078e16a2d7176b822eb0effcdf4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "pred-checker",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1790be04afabfcd827e91f95d18fe7ff0c2379066c4275b6db40fc0e8eedf943",
+      "captureSha256": {
+        "light": "babf21c80a5d92b2842d4f2dfdad414a715564c17a5dc53aee436c5144cec332",
+        "dark": "0143ac7bef69167dbefce99d7c6e381dd75236a6e3be13ed4ca25327a125e97c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rvc-expander",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6e9353e213174bfddc3440b9dee5022f238e22ea06dcf1ce0a78765818667640",
+      "captureSha256": {
+        "light": "e033a65fa10b1fd93f313e05312224cbd3ea46a27e035d61fb5930eefa548885",
+        "dark": "706fa7a9b2944cff5d694c91aab8b2c08de26b01e33ce46c4e30d54ec0fa0516"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ifu-uncache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "739f023355c19aacc1375adda0720b75bb32abf75e91bbfe379d1c8cec46d418",
+      "captureSha256": {
+        "light": "fe66e460468848e59a6686ab65630b23aee98a24dc5662cf910c46fdcbeffba0",
+        "dark": "6b7a5433515b0a4b9b85c5472451f82691bfbe60da5a53d155ca29af3a91f80b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "instr-uncache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "bb8b72a23bcd025312e4494a037a2bd9338abf16aee19e1120949eb5b698d712",
+      "captureSha256": {
+        "light": "7b2de33cc237d5a8473c50d6de562a7e3bac2c0bd3f0d2d77979855e517802e4",
+        "dark": "c40a4ced7ade767a9e36c63b89bc6bcd38e6e9caa200562b91ed5632339dfa7e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-prefetch",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-04.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4e639eba1ea14fa2645b23cd3162725d5310d3a9c804f4952b0bdc7c01e48d5d",
+      "captureSha256": {
+        "light": "bada0a43ac6e66603c662c6ed83d89b27f4934f1e9ea2db077d2a3bb55423738",
+        "dark": "3f8c15f9eb40b5c38836ba03ff6e0e8c11c9c9dbaf732f173732502aa7ce76d3"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "way-lookup",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d086af71d934de8c8db8b8f4965c2a9aefb061d10600d3d15ccaf1f3b9574869",
+      "captureSha256": {
+        "light": "b2cbc4b2801ac9ed4473e20945b9f6228e50c747dcbd3dbd9bf79100b9f41920",
+        "dark": "d20d1449cd2ddcee8e79dff413237116dea3e419bb858100ef64b5cb08a99280"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-main",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "76738082ba81fb93e16a52a6e0c3526168360d4542be82ae2c6871a4039a2b58",
+      "captureSha256": {
+        "light": "ede1b3336476e403653b05336d4c0c18f4c34c24db9351fd54ddf8876177167f",
+        "dark": "6a20fe9dad36e4a90619c6177db72aa932fddce7872ff7451bb5628413e97e00"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-miss",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "2d975ebd6315bd543557f9c9b51c8dc75239b804f79a3d9026113b78a0d35031",
+      "captureSha256": {
+        "light": "6acf7c240aebb298207cbe2f235528d54cf878000280d070ab92d09eb7471a93",
+        "dark": "1448622fbbe536c6a5e0c60b5fa9b8a760acbeb3973a623c5e00fe5f0949d982"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-mshr",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c261ac11b1932100616636b18d95d6af7d051227d8485cf256eed87f85e09bb9",
+      "captureSha256": {
+        "light": "3c3104a9f4b41af74bd840a953e262b9731c2842ef807173884a4cd01df387f1",
+        "dark": "f2ab4bcf4535d7e67646f1626b2194308bf113c00b74eae3fa21ebf8a00535bb"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-meta-array",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6f0b1e0611734feeadaa260b9a35930f4c1b264ec1101d6aeb6484f6dba3f50e",
+      "captureSha256": {
+        "light": "7c9a730d0ca97bffd63b4a145d1b4989a51ccebdffd976457863b9f46240f53d",
+        "dark": "b4ac0f3f87c408e902d5bd7b83e1fd85a7090a7d56c864b661808c6f98aa81c2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-data-array",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c6bb477e59a99daa69436fb556d57d632b5ab262e35c8d66e286e7fbb77c5ec9",
+      "captureSha256": {
+        "light": "67c21959ca7d094c467c789d8d81fe57589be22dc346df18243d4a83b255a2d4",
+        "dark": "61a1d0cb0c2704caf01b5cf858f9538b7f4944b94a8052ae97649900b4855a57"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-replacer",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d8719c0b64acc13046ad8bec3605a95ffb3fb76faed092d8e7dbe226b7cefa71",
+      "captureSha256": {
+        "light": "3727eebc51bae5f6fad875a63a76c94f46309be05920eea5784002bec996a237",
+        "dark": "98f0d700d4764fb05ece447ccf98d3cadc3cc8fc9bfc21a8b884330574282cf6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "icache-ctrl",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-05.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "367767a10023d459d37bb701593198334b4d734932c3f8a99f96404293a4fe51",
+      "captureSha256": {
+        "light": "9959d48ff5abf9c0abe8bc58f0d3e8c803619bdbf5e9d8d8f67fefe644cf4bde",
+        "dark": "e0adbd9a3057c3e99cb58c3477121ea7ecda17e2b0c230e04c498c5fd44b2707"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "decode",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "368eb5bd87e140679ef4067e4e1e7217662090b79c2fe23c88a763a23a711ab7",
+      "captureSha256": {
+        "light": "fa084ec09ac670d51f5e3811152a7d5fb968d336b107f08c7ae84cfb75f070ff",
+        "dark": "8d6fc922985f41045d7b5b000b343ff2fac2a3477bb426cd53a6602bd9094805"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fusion",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "98d65e1425d6011d3b37c3aebcbbced1f217fd0476b6d5fc894ad4de47695537",
+      "captureSha256": {
+        "light": "0b630a586da8f8cacca44cfdc1e889821fcbbae6154d5f78730439a45020ec74",
+        "dark": "a2016997ca372161e091fbac213b1747e769d939b6166c0fc8fb0c8ea781e418"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-split",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "55cdd406da43dbb7d8764674b20f9d3a283026430a23c9889be589c6b61e8097",
+      "captureSha256": {
+        "light": "733373ecee2b5eefcb49703d3bbcfc983355fb3bb468d6bc5848fcd53fcb1aff",
+        "dark": "2c6a000613a227ab1e381444892f9bbcc75b01915ea0d48561555e93b9ab4647"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "uop-select",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "63a1c7ab67f9b0831304b0616cf4397d65897cf6ef34c5398403151571f62530",
+      "captureSha256": {
+        "light": "1b1a685b0f5d67313fec87479ccb19daa9d865fd0455a6da6bdd35173341f05a",
+        "dark": "85b8e3d72a8abed8a5199b581d902f55c84301f686be82a36bf9bb1f8f5585ca"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rename",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6ab9ffea940599f3f0fefa251f2301239056b83f7636d26e080de93e58e05a3e",
+      "captureSha256": {
+        "light": "7efcb5041b169fd63ec66842bad3f8acadb0626c0ac8b3d7151cdfcaa458dc70",
+        "dark": "c31f2f1ff88b534a517fc2bbbe6f6dd166b73c1232a162247ab99de468ef333e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rename-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5952d3dc58797de8b9892a03855bb3affb56e03cab05350b5ba32707882cbcd0",
+      "captureSha256": {
+        "light": "8077e8a4be9b3942ccd4bc356a7567f3b12a3dac57883c5127d4a1d49721f315",
+        "dark": "ed4e59f492108ae2372984672e0db64edb11533c6d704c41a27c06a4be275018"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "free-list",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4eadb50250f2911bc83e92c1fe94b6775025c1ea9ddd59604d2a1fb2924c74c5",
+      "captureSha256": {
+        "light": "f6351161ada96e751fb2f790f64733e81ce4a72f16ea5f23d02608a87e2e861b",
+        "dark": "2aff2cd8ab25f79d3e9e075ad5f633874557c9ff433a63a2f7a5bf085140ea50"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "snapshot",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-06.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "cba7c33eea51997e73fda27010af38c41544e3be8473437d776d80a06255eb2b",
+      "captureSha256": {
+        "light": "b31a3dffeae26989519aad4dbdd187fd1ffa0fea66203a7c26b16769b01471b4",
+        "dark": "74b6579fdad6558f2aaca1c708dfa536c63bbe2d3f26f34797d35bf4fee3e636"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "busy-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "dbabfdf98a0fcaefe85244c7b861c453752cd746ff0524d323edea131074470f",
+      "captureSha256": {
+        "light": "ee1bb57402a5298d0a2b563db181af1aa82879f4191123c960dfbb7b3839ac96",
+        "dark": "67f2206496fdd9d3afbd70672b8a9dd2eb81eea2881c6050984ae9e6f3fbae53"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rob-compression",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6de46a71a948b4c200515c628ed12cd1ce5c3c4db2b0eb9d7c0a370529f3d298",
+      "captureSha256": {
+        "light": "556b8dd40f9c17bc8c18fd2cd5ad72158584f3fc3e9e60769de2cff100337af3",
+        "dark": "d897238022b267ad444dfd147e05991f221c56ff1c67cf2958d3f1d64ee35477"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "move-elimination",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e7137a69dbc1f1b2ffc2c52fc7727bfd9ed8e609214b90ce49a6b3e922530d6d",
+      "captureSha256": {
+        "light": "99abca97277f92dd2a5e80f0aac97c39b0a5623a66485b404e6861ed1a56ee65",
+        "dark": "44e0d1d47bc471811858d253bc01f2c66f259b13b527f2ef831bca1d45efb376"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dispatch",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "dddf63f0f87fd17dfe443cdeee174b7c4738db7fd95cbc0c7f36c9eb59bd4813",
+      "captureSha256": {
+        "light": "66ba4f18bcd0d142f7bec83444a2ea465f4ba0a8a3a82ce8e88ca12c7944e924",
+        "dark": "137a615476f8461c7e67a2e06e0b87e4eb7e3cf14b30a762cb038d08e63b5fce"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rob",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e36c1e71460336e5c5add30db4f3b2b36d365eba3eb782ef537a449b19cd3e23",
+      "captureSha256": {
+        "light": "4ac1fea5dc425684a0c07837b2dd9e1a5356195797cecc5e0f88f53b109d3444",
+        "dark": "5bd0223afacb2d59e63c33688b27e73f127abe59239a1452079ed867236d6e2d"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rab",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6625bf8b8ff845971cb9187c7fc623e96e782f747e0ac8cc643d12bdff11aa28",
+      "captureSha256": {
+        "light": "b580f3ae972a9db539b17aa946e221d843937f96d413dfaf13452372373bed6c",
+        "dark": "0d950504f70fd02cd415e3aa1b094a06afa0c707e314d2724830c5f58e7ab1a6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rob-exception",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "b5f645727d8c7c80951c29362d3348bfcd9defda1b0126289b08824d04a4da62",
+      "captureSha256": {
+        "light": "87259c1427069924b47ee13ee72a7950950d3164a07c7e52a55586cb1c13c410",
+        "dark": "834af224485026bf083e303d46963c262f443aa793b54d6228d7972b051275b2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vtype-buffer",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-07.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8ac91411654e48dbb247194de06c52510306b53ebfb0d2d1940265b89472cd1c",
+      "captureSha256": {
+        "light": "ee6a9d38982dc8c92fe9fbd2ac526b6d8a0976d549614507f0ca19248807e8fa",
+        "dark": "539c386a0c5fd9d635680f127dff0472edcdf757339c554de4c264a9efe33f0f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "redirect",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5d6c8ef83c036d976ecfdfd07f61d4075b0fc0d807444b475faf838f586e5c8a",
+      "captureSha256": {
+        "light": "9ce733a16fbcb6412efb3d7d1c956eaadf83d18e072527474c1dcf5cba654428",
+        "dark": "fe3c553fddb0a12b7990d5b5c4249d952f4d11cdc5089c992c2b1b7706b61aae"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "integer-region",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "9a3d540ad38e67bbd80bd0d8307bbc24140ce2e17b3151463a742847a3cfde9e",
+      "captureSha256": {
+        "light": "b11670bce765c9d8969fc13576bcb274b2a050e738551b285fefaefa11061df1",
+        "dark": "a7bbcedbb063526d60ddb917853fc8cd4c88be84335bda3a5e749a60508db70a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-region",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "eda80f1387c96a00b498c63f0aaf0c22a4a07b997b606ea651a001da931ca7f3",
+      "captureSha256": {
+        "light": "7f30d470b8ba0b3d850c431a4c2b741b96537d5fa6f94aaa44c1ae4512770e31",
+        "dark": "394e52d562126c8809a5cc6ae8861a981d3e5c614125d23dea6c5d6a7e401746"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-region",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "851d1d2d632d47a99337a0ef4cf73dde645b27804ebee929a9303d76ef11ff9d",
+      "captureSha256": {
+        "light": "e076fc37aed2756c0bceafbb5ee0d7ef1b1527605de93140391ae76e105cf2f1",
+        "dark": "4872132c1946c39841faffc9e73aedcc1c4f3306ee6a84578ef5740749e4d3b1"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "issue-queue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "2d2d909ed661dbe8698aa31ff68ab45954ca51d1a50222e6730a1c5c0914227e",
+      "captureSha256": {
+        "light": "269b20a5cf824d6c97a2f92e3829e6cff954a7d108333746c4f914e461ac7a4a",
+        "dark": "96d4fdc7cdd9f491a05bbd432382141da4449a2c13b534ec3cfad7b834a427c2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-issue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "083d27800374a2f5e3eb11d07f6d9840fc784ae1111e27a0af4583e50286f01c",
+      "captureSha256": {
+        "light": "98bfdd4ec0f0da20af2236abf639833c54f99975ecc6d3fc46d11d53dfb70713",
+        "dark": "ec663a3ddeef8f51667cbda4dcbe2ca77143b2c768c953a4490a67c284f650d3"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-issue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4db21902ee15f2f8afca05855040badf27c1d1358f95134632492f32c67fabc6",
+      "captureSha256": {
+        "light": "fb453b3e8dda423a18b84dd91f80976398fc9d6f9f9883e317d63b4b456b8c3b",
+        "dark": "a54d3efbfa26276e1f662a2325a0248b3ad2a3493030530bce198aef0970d66c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "wakeup-queue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-08.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "05f9e13ea3c0367a86469096c34b127c96f2d1b6d43c84cfca4d1ce5fe5a4a9b",
+      "captureSha256": {
+        "light": "1566825575196db6a280a893e011809b5adbec97be72b56238af5f9f867e3cd7",
+        "dark": "04ed3e33dc86fd581155f3f2182874e7499412eac8d5e50157224f2ce1babc3a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "datapath",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "007fdacf4e1ee9fb272143f69119d5cf83068e3658081dcf9d25e3ff750b8d8b",
+      "captureSha256": {
+        "light": "f4e2b0e48f1f4115aeb333825680e888a77adadd07ef6fddf4c242e3da6778d0",
+        "dark": "e6ac8680566eace03f7b8134abc55fd45818d752472241878333e141b5e7edb2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "rf-read",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "99470eb914d4b94290275d5eb5850227b3d44673b82356b3b01ca074ae8c974e",
+      "captureSha256": {
+        "light": "a9c3dc6c93e1528ecd09e5758f3465e1c525c6ed62539e349870aeb86961955a",
+        "dark": "b61d0f9cbded9bd429869da2b25ea51bd4815087f10efff2291257535167204d"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "writeback",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "420405d35c1a45b6c37bb95bd50c54c5b78d9d83e9fda7103d9bfec9e1dc9341",
+      "captureSha256": {
+        "light": "7b6081e4505d202fcfd2f078cd990c982c5300ebfa1c5a8fb37e65e4fe3a6f6b",
+        "dark": "67432914d896b5cf01876a094ff12fa1d599dc61f373fb0427368063657acf56"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "bypass",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "680d812fbc3c2461321b6c31da64830fe57cc3d6d9116a65c457773586e0b3d3",
+      "captureSha256": {
+        "light": "e8ffd5d802e25eeaddc611986b35965e59c136d0b37a834c7b1c8738f00715ac",
+        "dark": "8893695378b9cf0b474bb25bb698a09482bf197128022d408b909791e29625f9"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "regfile",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "afc99852cbbebb891ada5f4cf8bc56e8600250f976bdc257610d3b1c2b9c0566",
+      "captureSha256": {
+        "light": "78a81f0e2a333107228902ea06ce130c3d2485b45611a95d993dce4cea11bfcb",
+        "dark": "81356ceb8f8bfa31f56a476767da290c4b21c41faf1413cd5cb283eaa2c31ec5"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "regcache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "9ea84cd8dc782eabcd45eabebe813a66d4b80189111ba76dcdfa13d0a8eb7587",
+      "captureSha256": {
+        "light": "29bf2e30f77836301de98b27f8d26380ddd1c159cee093b4aef4ba6dfbf8729b",
+        "dark": "82967286f73a92f31e5b612ae5a75e951988baa46a0ee81b384ce09f08bb3632"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "age-arbiter",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c5d12f1c85acacdbeab021ae6aac2f4fefb506b6629b6fbedd1fbdd9c4d26ce2",
+      "captureSha256": {
+        "light": "731df23127597a949db1825034876c9447d5f496c00b4f613af297a39b4cce14",
+        "dark": "922361acab9daf6cb1c5c5c7144b541e32e78cc303c2b116e5360b3749202606"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "iq-enqueue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-09.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "0a66017f3efad36594530ce655f4169cad4effd2484c65a9459d6583433f26ff",
+      "captureSha256": {
+        "light": "0c8b389c644ed13dc92b56a779668a5ce6e5646163a1f608644dcb82efd38b70",
+        "dark": "49760d109a7a1fd55aad5f919a5399ad26844e5fefdcb23591e1955d471b257a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "iq-dequeue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "2026f10f5d1dcb08661ca72b2b0fb134c8e01356a5f9f9e9af925745844eb250",
+      "captureSha256": {
+        "light": "eb576689cca0b49f0e9aca7b72bf1ab12c70ca4146e620c6fdd260d680b06c26",
+        "dark": "006b0241e9f29bbc94399da2221452511856a7eb67cb5d95f4b16c6658d8b40b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "load-unit",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "3c7d1543bc4629676463a84a11425548fba58a6bfeba96270eb0daac69eb5afe",
+      "captureSha256": {
+        "light": "bc4e11334356b4e3539fccb056b20511d1d1cba80451375cde2a19de8a1d94ad",
+        "dark": "51c9a8da2667aa991abc728dc38d3aa9a3f13a66df768220a331c3095c13621f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "load-forward",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "81cc71577f6ff0b66281ae9f3043e4839fc2057023810c00c41837f87e078ca9",
+      "captureSha256": {
+        "light": "2fa0fc840b5ffe5f2799289112b15c788e1ec8fb5e3f80731605540ce5387bd3",
+        "dark": "6697589ab02d4b1838d42968ad0fa9706efd33a1a7a8bd4582ce5e50bc664bdb"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "load-misalign",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6d366256eb66581f1edc8b08b2e60f17d63250ed5e6b31417fd3c58fa483781d",
+      "captureSha256": {
+        "light": "9fccf7d52c541d1259adf3bfd2afc58417a01593a1b4c1c077b9ad35253b8b18",
+        "dark": "17e892d10d13be7bb0d84ec3356740d91fe0b764b6cd3f4ebe02269c42c46671"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "store-unit",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "098fd70952cca2e611f74a6807d025f3dcb21cd70281eaf6d4b88b442cedd64f",
+      "captureSha256": {
+        "light": "373fd61bb439d71454e83ced13d38503073e130f067fc257af05bed05afb0cc2",
+        "dark": "0a7ef7b060cbce0d0fe5fd1b2b49642177a22ae3851f2793ea2321ec19b16eed"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "store-data",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "98edf7a0eb3cd16ee87ebbcf6bf3ccf9784abda5a25a78547bf91d281038f359",
+      "captureSha256": {
+        "light": "5a5d4d1383fcf8444ca4004932c1c93dbfec03acd67ad7593a45b59d3c690e2e",
+        "dark": "632d56a8b9678f935e133948a8920290359ee2701f42529fc6c9c729e1e882ae"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-memory",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "a2b0cf98fc3fb15e97bf27aaa166d7cf0e7e017e2597dfa9fa5c60b43958e6dd",
+      "captureSha256": {
+        "light": "0a82ab514b1cb0fb64835b24fa3383860ce5171489b77f69ea7cae98b3caf29b",
+        "dark": "f28fc910d47eebca4de84c890c67392240bc9f4f4d79ec0abd382b650f858d61"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "atomics",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-10.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "f3c1b5539114c981ae3116cdb365ab99cc55199c78f209e4ab6b053793a3578f",
+      "captureSha256": {
+        "light": "c4165d04bcdcdaa7f7e5e186f1636beaf7fdccae0329e7b23b49684d28245671",
+        "dark": "0d7f0929a87c20299b2a7818637cca47af10b5f0827d04e3a8baf068f6a8c7ee"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "lsq",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "94c4cc3728d1f62840cf82337024268dcf30b860f115de7a14e93ef09646d54a",
+      "captureSha256": {
+        "light": "1ffb3abbc7363a2e2605aa3c301710b3406a5006bb7812abc6802077554ef99e",
+        "dark": "effdd683eb0fc72eb950c672d1f155abedeb53dad7aed5f69cf486cd396c95d7"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "load-queue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "273fe3fcabbe9a6b1124cff1304e7b17a71c689e58066b8c04531e4866e57c54",
+      "captureSha256": {
+        "light": "b0a42ebf3ad98b511a59a8fa31a6af4bb1cfca43164ca67e3805acf5023a8ebc",
+        "dark": "aa8fa0f748355c7372b4e0ecbeaae5e08ccec10527c4e1dd72f30615517cf640"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "virtual-lq",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ed97df53922ea5112921e3a2c080ee5c71a3f822608634c46849d03c094dd787",
+      "captureSha256": {
+        "light": "150496db8714f0b750f89bb718aa7d69806526dc40690f890cd4469919abceed",
+        "dark": "05a46620f0f558f9dfae658638dc0bb0fb05ed2b90f248bdb639d797de97da37"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "lq-rar",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5c40c302dcbcaeea2cab2c27fea0e5314678f0d5fa3185013d91a13261225ee4",
+      "captureSha256": {
+        "light": "00e41422dce87d7be5348570a852ccbdb6f38ffcfa161d2457ab18ebfc2ff12c",
+        "dark": "22abf563058be663983c68081892bfe5e171f9e04b5477e0ce64d92b0067a116"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "lq-raw",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c443806df2b70d39b3fb0ed3694c6c4d599957608dd18db3ad7b9ca82f1ce100",
+      "captureSha256": {
+        "light": "b2e33f99ba681fc01c509f2d370bc0bc143dad3f121b7def7fc7c8d3b3567e52",
+        "dark": "1476fac2d9de9f326ad6073e5dcbd5a749fc956ebbe1e909f3d13373bf071ace"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "lq-replay",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "19266c33225bbaec02ec18728e5b76a6b99dd2a0d342f52d059facc6be44120a",
+      "captureSha256": {
+        "light": "1afa3610d505ee19cb24236aa238b0750fab64af65280a15f1427e241872a791",
+        "dark": "360149c9d85e4ea0341ba69f0b858ba0c0b8065a05d9b0a03393056d8aad127a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "load-uncache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "36c331ddee174599259255f52054591c345bb9807f6e5a8d57306c95d1df5331",
+      "captureSha256": {
+        "light": "3244ab0d122dc1aced70f47cb2505b0fa1b17a6f0a496e306d10afe541aac546",
+        "dark": "bca4afa3d08092ee936188332c6a8d08f5ab2c3782d76a59fcf6b37b0dea3df8"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "store-queue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-11.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8a92616358ba1eef26d2ead84a98d55ae267a651171ff1758ac9cce24bb08700",
+      "captureSha256": {
+        "light": "848e91f082aa82f0eb42aac3baddcea97e3666e77460350c50fbc1f4acf1c239",
+        "dark": "93945ad8c08b5fd03efdbfd7f7e4cbc72adfd0a7d610a3bb3a8123d688fa449b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sq-forward",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "3e9f931b1e43d0b9b4a38e7c9c27b4fb8ee7fdecd196238d71f6a919445ee177",
+      "captureSha256": {
+        "light": "10db2de01ad411a1d700aa13ba15898b6de263acc98d078020da3ab8878989e9",
+        "dark": "0d59420ce682d784701811e3bde3955735b79d6a94c3aa6fdac074ed0dad68b4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sq-dequeue",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "43834964ad91a89ddbc5d548661b3d24998ec78e7df73580fabef25ef12aa34f",
+      "captureSha256": {
+        "light": "7c0fbf996fd9c229e0f4db2d753ed1a584b3fa7d25d204f877914c2c0f4b5046",
+        "dark": "4d03ed404a7c362b312685c37e4ef91a4d6d55f8b4de6e1365e5ad8ecb7a1f7a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "virtual-sq",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "0bcdf21e576e1dc309b9252544f3128d3a4c9b730f2ca074ca760ca24c7ca3fa",
+      "captureSha256": {
+        "light": "757e3f70d8d9f4fe06c1a9a7f6651f9081e2f49d27732c093398dc0b98821c79",
+        "dark": "733245305dee98386d5233ffcf75e093cad2f87c21bd894b0c509b1ba2efa5e1"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sbuffer",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "629cb46784c6ee92ac173055bcd8aa80cf2450cd7ee8f0ed896791b854fa65a1",
+      "captureSha256": {
+        "light": "034239015352d2483f43e0bd895537f1accd6c547f5d99b6279c3e46cb871387",
+        "dark": "b06624cdafd8c112162991f4486d90086bcd8d4bb05314f8233bb99bbfb0ca8f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "memory-exception",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "b68b6033934c6fc7edaca52ec70ca52c5cc9ed65eaf4b3e0675b692f629e9af3",
+      "captureSha256": {
+        "light": "230ed4fc7a4f078f42132086160b8f73ce92e07019b1aa667dbb063406851fe8",
+        "dark": "330f79fcfb38e4bf253ad98591ceb6d917fda6b60d09ccedd4715a503d2ac654"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "493da4c9f407ecac794f7d76891173ebae5b840989574b92bb5d15582dae8560",
+      "captureSha256": {
+        "light": "6d3131f5bf232bdd5516cc1150132be35091f69e7c2c7e296cd7b162218246a7",
+        "dark": "089ad01646f5e13acaa3d374fa55feda84491cf7f5e5f790ed510fd1c7da76a3"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-load",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8d077c8defceb734e6b3410c2485ccf1cde6ae3ff0296c2dba9cc7af53dae7c9",
+      "captureSha256": {
+        "light": "bb2fd168d7e0e1d786544527710df1c2e02d7ba914695c23bfe4ec07fa10d044",
+        "dark": "edbfadc98b9d515346dfd2d5ebdc955681d1afad1e4326ad60a7ec47acab033c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-store",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-12.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "085c95a2f2b23d8ff54175d9adebdadb6eaf878cc8cb0bca537e8a4128dfb757",
+      "captureSha256": {
+        "light": "0988919ed1499f6706f76c0cf13223c9f378111e25434b09013531f6f35a12e1",
+        "dark": "43676132db1d1c19269f99cccedfe6e0152790eabfa50f8a6fbbc694d0c0f1c5"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-main",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d6ba13759dad163857203bf65b43367878ad8680eadf21ab30c9bd16d076d01a",
+      "captureSha256": {
+        "light": "19ffd79a668ea0b17cee70c9c71d7be3fd0b90f595ab45dedbe100fb5cb1fbb8",
+        "dark": "c0da8ba06474f3c54b5107355e5aac4cef9080ec79fab68d602098de489d7328"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-miss",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "f42f4b103b308435d4bb6970b6cbbecd1892c3cfef439e8a1620c49824b4a765",
+      "captureSha256": {
+        "light": "545a2f55d06e5e6960bc81ffacd04bbcba3778395c64c6fbd8b5f020828a594d",
+        "dark": "c5da0c52482aa400a4aa33f7d42c56149edf2762509df5db59b7598b74c9a593"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-probe",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "49cc11fe7713d530d18b228c7aa5bfc4d11f8a69470aa4fbe542afe1a89d6199",
+      "captureSha256": {
+        "light": "223aeac0e401e0944a8e91ed5858152da59334d190df36adb14ded4abf73b81f",
+        "dark": "b4793a4d08f693c4e8505521a52ae2a575aed17a1d68a00670458df92136ed5e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-writeback",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "186052d10e93083e2dc81e9525efa607476ac0db8c0bdf950605dadef54a4e9f",
+      "captureSha256": {
+        "light": "84c5d13159cc78e23126de9709289f958f7b385f11fa3f344dc8a37e87397b28",
+        "dark": "af1b0676f212c32cd37cef6ffc6877968747549022a43c5c829b14ad3f961487"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "amo-alu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "3d6d98b6f777b8d5606dedfa46bc69ab8c16ae318d6c8770a9a12b5a9877abc9",
+      "captureSha256": {
+        "light": "531664d613ea94a62d3e765fdf2592087cbf9b5b070dc1ff3e7fa8e8d3366dc4",
+        "dark": "773645f94f3752f76e929aa87baa3d23dea1a2cbc90ba17f34ae6117d9394703"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "tlb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "b296a4050ccb61195c44ae83e57ef3afcfecd29d483108e3187e7f75f6e887bc",
+      "captureSha256": {
+        "light": "a0741e82cbfb72713d0dd8ae8a2a07300514d2ecb478ea3e343fcbe86854e7cd",
+        "dark": "19057331f0930efe991574c14e4bd63cbb0c4cde650d68c00056efd016dacff0"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "tlb-storage",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "445f5f99302700de74f1f099fbae930d87861916275d5b3be3ac4e4df8328dd8",
+      "captureSha256": {
+        "light": "3b566413a9ef69e3be05ae4b5f46e420d65d34044371ef6080e19c6bb76b6b2c",
+        "dark": "12e9915100da1350c2f05c158bfcefae367774b8ee145d729246b01e122d4b39"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ptw-repeater",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-13.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "9c47d05138c2a9f7070420220b5bd331c667a86a55264822f1a402e832034a1f",
+      "captureSha256": {
+        "light": "08c5abe05af3ade9c48ca3a0dfa7579ad009badbbd153dac460b1cc85e4609ab",
+        "dark": "e2902c42a3441567baf5fd7ee69120591e6d1b71bd489040c139d99dff3d2317"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2tlb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "35beb4aab9b2af60ac390d49dd4bb22ac2f54b797e7f082ff78113b7d5bb5e63",
+      "captureSha256": {
+        "light": "2b5b7dda22e9784d9006d61ec680dee95c5a1206c4547eb36e15e1d94fe57fcf",
+        "dark": "4b4e77edf8cab57cdf10c329a91b32c10c401014db89f7504a3e6ff273cea545"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "page-cache",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "aa3a3bf87124fe923c644a1dc3b2b632186936fa59ab98ea626bd27a6f842c4f",
+      "captureSha256": {
+        "light": "0ceb6446b351e5ce14f55ac9204d8d4e08dd2a53389319f24c459b116be8cb2c",
+        "dark": "0668d888d7912a7459d56733ab0d28054912c65e88d79dccd23e7f3bacdb8802"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ptw",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e9f20b0831b21d2a7af530f67f38c93e5062bd9b2a79cdd6f1541bc865942ebf",
+      "captureSha256": {
+        "light": "01cc24b79599873ab81188885734376c24dc75b7d4c505dd3147307ef40dd43f",
+        "dark": "894fb65dd0e220b7552588fcde5ce2610cdf257d6b22434ae20a2ea02586863f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2tlb-miss",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e7373c91eab53306b43bdaf52e88181c5dcbe2bfaa83e36916803ecb850b0b16",
+      "captureSha256": {
+        "light": "c09a8825f974fdbb98f5c7aaac10efad6fb6bb9c87694db5c10ff21a8ebd603f",
+        "dark": "1470e11f9c627bb385b5fca7e55a665b8ed0f7c751aa1fdb75b727af50b3c8cc"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "pmp",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c7ef27018b11ec3eac478049b57e8424ee4d1e7108609abb5efd3ea56ae714fe",
+      "captureSha256": {
+        "light": "342d0749602fd428f7dc009cd891fa792aef59cc20d55d554f03e5162ee13630",
+        "dark": "2343232fa5568b990a94969aa37ba907a44a778673e97b61739cba17bec134f9"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "prefetch",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4b65bab07885b454ce61ae074baddf384d89b07b9df1e18fcb2957e912ab4ab8",
+      "captureSha256": {
+        "light": "c639cda4b21b54f457e983582b9982a15dd9cfed9d99d841a4cfdda956eb3147",
+        "dark": "54f5672517a4d86083fa381701bfbf6acd2ad013d37d4e0ab518e6cce71f240d"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "stream",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "fbb04b2ec8712ef384d50aaf41b1b3270a384e3d671423e45912583e3b757166",
+      "captureSha256": {
+        "light": "31d91ef9847fe8a171037b3d9ade1fe0aa54fe23db2a3d04fd101411292d2279",
+        "dark": "2426fdf5c6f722eb0622698117edd4db1d917caca1cb1a1a89319a65509c44a8"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "stride",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-14.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "48e2f880b1e9c0e83279196910df924a5c12c4ddf53f2c06f1d0d3213f2c63f6",
+      "captureSha256": {
+        "light": "f4e8afdcfc6c33f1e7fe49d1162fcf0a6d515613f5504e716e64bfaffb368e47",
+        "dark": "1bcc3c63414fcadc1fe417237ad7d52709f7a22aea1bd824119d7d88149184e2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "berti",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d629623e14fd2de4411c616f8d7d4e355f531d60c736a3f576f943604591913b",
+      "captureSha256": {
+        "light": "997b4ef85dc1df8456f96d8a6fc2c2c68e681e1012ebe74c8d8962b3340318a4",
+        "dark": "80a3ec9fd7aafc4013eabe4fe9ff81a223f0d86e7721251362976ba3b3bba2ef"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sms",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "aa0c89307bf9fb4331dccdd42299e6df478226a9e46a0d1171bbc466bfcc8a00",
+      "captureSha256": {
+        "light": "a2f82c6442749b521f9386b01029cd725074e6884cc95b00ff6f01aac0a6d25b",
+        "dark": "861e1ccce239dbd70a96d2eb8b87027a4301e0741488bd90992319c3b98f8573"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "store-set",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4d77044c37bd50a1f7db47de7048884e6a76be18813a57d9adc37694d60ac89f",
+      "captureSha256": {
+        "light": "53b5ccef850d5bd17b4b969a6251fe87e6e9e7e92785949d625c32e18ebef0cb",
+        "dark": "bf98c220c4eef56cc938d10275b596ddd801427fbb8947ac360ade4db9e0a5cb"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "wait-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1c72f568021e4768838739c30194fafd9d77fe699603f38cb6d67260a218ffc8",
+      "captureSha256": {
+        "light": "19ef5a1247bc623a8c552a46a598e6a4cfa4ab88bdc4dab56bde7616e1c3708e",
+        "dark": "b102f92845dfb619a2c7aa679b13017218f5efd7c729e7e2abcf2d3d7e2a4117"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "coupled-l2",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [
+        "dark"
+      ],
+      "artifactSha256": "beac7850949a53baf6feab0f77c15dc20597141da578784332f747335436acd2",
+      "captureSha256": {
+        "light": "c9485deba8e26cf93c6df98c57a7ed303c43b6349127311a15a81b2653a353e8",
+        "dark": "b15faa1dfa955ad93e8589218465e70df5642968bffc842c7bfd107570d71071"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-arb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "fe47e7002288bb94e51a586c961539dc467b7a21206d347bbdb2b866b2a83457",
+      "captureSha256": {
+        "light": "4e6d1f8c16afacec52966235151ad139bc919e36b02e4d5ea6421007ec353630",
+        "dark": "d921987edfb61367de7ca24727bd23e32dfac99d6d38c7af8869a21070bf905b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-req-buffer",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d78c7b8a77f0e7e066d2c2f9afa55f678bb739d48ca888ecb7652c066d673391",
+      "captureSha256": {
+        "light": "025ce9e2c89245660298563f64798ae50c777bffb10929e9c8c3052a065d8676",
+        "dark": "9c52f6566b6ee1b4b69655955f051856700899db71b21dea2f3b3b8a82bd0ec4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-directory",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-15.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "224bef4c6a68222c3a3c1f6746855c2a4056c7e67decc7c397b6b0851ab44d9a",
+      "captureSha256": {
+        "light": "ba6c401094c07c42ca71104dedec2b6f8c03b9749c9b998b61a04a051c923ce8",
+        "dark": "dd593b78dc4988089380d610c556209c5c90275a06d617ee56e203d186a14d22"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-data",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5fc2a88fc6a25b6260ef40b636a6a96e5d12577b65ffbb207f71d7232ec00fba",
+      "captureSha256": {
+        "light": "d93563a370e9261dff7fce23cac8624393ed243bd57bc162183792bbdbb50097",
+        "dark": "1f2946514a97094dace7462f81f88d0f1099e3d879fdc07775e24a69cb0c1768"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-main",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ac639c5e0b1c3e967bb263e8afae98df80f98a1413eaf81586bb25c3a5bf33fb",
+      "captureSha256": {
+        "light": "03cfc0db076b01c45e3d1473b265e84a5768f07e9baeae726a78a61d5c09709c",
+        "dark": "ba24ea038886907257b7a2fa718ec360259c45b5e18d02888156e9538bef3358"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-mshr-ctl",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "55efb0b39b39d1b8f1f08d24087bcaccec9d6efcbdca1d6f0fa8382f863e1fbc",
+      "captureSha256": {
+        "light": "c5fbe0dd3580f15603f316bd0f8922ff817dc6fa5c6d3de16f9ee403aa45f4db",
+        "dark": "22718613141384c494df75599378e4afca810048695860b2acab43e244a5ad47"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-mshr",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d1a556ffdfd787c33691ad62a0b648e406033ae1fc5e90efe4c30e17cf43ceda",
+      "captureSha256": {
+        "light": "2e768215ec56e8a59689758c50e9aa0b97461344b7ffa38c393849511e9deb6b",
+        "dark": "b06afb0e0cf519cebbab33ab792c39d94e56ba92d8bd8bd733bc1327952b7919"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-grant",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "14399d89cdea7768804ef275be944e2c20beb4244e57609f89c313503a808a6a",
+      "captureSha256": {
+        "light": "e39a0d549bce3b32e56b07c47252874a6c8b9ff462ab1efb5cac707d79fa60da",
+        "dark": "62c9185ad6830a05f269741f1f5b0514cc53cdf40f5ab40b9974a891a4bfdf63"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-sink-a",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "652f9a7e1dc7344dee210f78a07d15c3b009f7011923e8a9a6da31b8ca2d5ccd",
+      "captureSha256": {
+        "light": "873e0705f0f0d8c455c04ef25c2fc947edbdb51c6cb4c00529b1886b8c915b13",
+        "dark": "0f7c264ae7de335cd4ed7a3e1d0e8b1cece0739150b83747ef79757fdba23929"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-sink-c",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8968a64184984051a6852036304440e3f9cf6202f745e7443577700f6654a588",
+      "captureSha256": {
+        "light": "8e728aa2f0037afaa78167d8d5ca4eb9a9250ba2c6ff821a58bef3dcd64e8cf6",
+        "dark": "2762f4a7c20476f02fac86dce108dc408cb1a8d6ca07f245daea2dc36f3ca88f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-source-b",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-16.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "35a0e1f5db30f310f5ec457822dfa8e426a88716d411869867b399c5b352e4cc",
+      "captureSha256": {
+        "light": "c669382f8c3fde35505bd6dba92cc4ca797ce7d2053b32f26703a5fd5c8226d0",
+        "dark": "878d24ba25ca64ea4ec6b189c724c9f33b5edd80fc7ff2e3109f90bd88deb12e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-txreq",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "35e850298155ac0f844d5f0fd9cd8c09b271dcbc8b36232fe81c8bc7cc038081",
+      "captureSha256": {
+        "light": "cf64a0799d07e00bc79d14adcc91faf04627e160ce0437f25b84fbc75b92f671",
+        "dark": "9284fe00ce552e695c5024bc5221cca1edd532ef3975f878dcddac1f6e279fda"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-txdat",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "31a3c61033278fc8aa2d8eadcab6ace6da2f24e3c51e851b1a00a9528e4f2387",
+      "captureSha256": {
+        "light": "294e2d87dedd32ffa2363006a580886d6d220842acdce3987a50da284705fa5e",
+        "dark": "b94129c65e5d6776f6ef51160d604ea999600a3585cfdf6302e25c405941fae6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-rxdat",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "914ea928c76adf85bda381617516d4808c5ea7ce2865ce0c9c6b86d0dbe56066",
+      "captureSha256": {
+        "light": "9e3d9a736ecb29676a5d52ded2ec40dc1845e919a3ef7883ff41627139290a98",
+        "dark": "b8af9db52091c682024e7f226459b08eff019a792aba5f6a3fa5568eb02c22c4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-rxsnp",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8e514189e979cd5a5159e64e6c0d1533035426a537b8b10b039b1d52b49c850e",
+      "captureSha256": {
+        "light": "587d19b65cfa747be64f03aeefe4006397f3bba41fe919b84af5c60eec9ee9ff",
+        "dark": "e2b1917a85c46040285a001438262c4522755f597ecb929bb0dec9aecf41ffa4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-bop",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "fa49555a1b42a1aaca15cd9a2a8949578d4b8125d4dda08bb0316f35549f398a",
+      "captureSha256": {
+        "light": "df42f00960f9d45ce673544727a610b18f59533310bb3e6e6957c01bf78ae142",
+        "dark": "665c1396546bb6acecf73bfdf328a52f10290ae2c91b48c7d42b6b89d0862824"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-cdp",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "69908069d258d94172ea3bf0e5d7abaa4b6fda9f2e85933916c771499db2c939",
+      "captureSha256": {
+        "light": "eb493da43975c51ac97e1d0f9cac1722dc8cf00535e9878b8b4d37ed64bba373",
+        "dark": "12c11571d8bfd1a52d7cc829a53b321e09a73c3a8a97b2b0da16a0db0c9bd3e1"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "l2-prefetch-ctrl",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "f0118bd40f58198d0cbc3cf823a0e982fbdfe2e84f6b3000bbb7e031a709d3c1",
+      "captureSha256": {
+        "light": "cb7e64283f403c248f2174132e3357852188b331e4e34cab768f714e79a61d5d",
+        "dark": "e579a5fccad08263129a37978eefb00bbb873c288728d4df07727ec68cb1b1f4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "open-llc",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-17.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "cee5c30d0b7ebe8f00e1b3f798ee06266035a0e9f5108a3fe17ae5c813d8620e",
+      "captureSha256": {
+        "light": "3656b18bdca6dce8d9836bcc4cc0f32f789789ceacafa33385bfa0f2bf35f882",
+        "dark": "75d56f54fdb9c3c29ca71862b4ab8099a2a7a3a5c8f2ffb61ed9f898a69957ca"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-slice",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e3ede83b4292144e1fa5fbfafe537c4a7a3753959a2e23e4ceedd042edf0ecf6",
+      "captureSha256": {
+        "light": "4ba3aa76798dd4a38eb3d7d3012ae3b7b3f981b5ddee87944f0368587d8784ad",
+        "dark": "a9d3de4410ee033386a14372160858c1adebf7c432459691d1254a5f728a0df5"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-arb",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e1f114a9a001d6d8b742df436fd85fc4fc2f22e976ed7caa7e00e31c4ef21096",
+      "captureSha256": {
+        "light": "79e6a5d1379e4290d376605dfd90b64a7ad624f67f3ae0b20b39711a23538014",
+        "dark": "bc370f428fa509f65f20478305c978ee991eaf754d85ad2668dac518e99b057d"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-directory",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "3626cd7eae6f9ad0e4ada109c912726d991e3a8e1331e251400c3eb4f60879c3",
+      "captureSha256": {
+        "light": "f70ad2c3b8fb0cc2d15826ed9f1b01597b6b93eb628c8df170122f6f8f38a08e",
+        "dark": "739d1d40ab9223872cb24708aa1ea8fe521af40fbf3a7d8b3fceef9cfdbd105e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-data",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e2f7d7a6d45b0d3b8bbd6838ba05c6c680f5d7d6bcac12c2d6682066668d7505",
+      "captureSha256": {
+        "light": "206b872ca8bd38bd559a27236d2b4075bb68f165e138bde1a4f1a6b759ccf6f7",
+        "dark": "b1efd1d86ffc6707da21b4abe4d1bcee4462366b1656e966ee53aea2c4a82fe7"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-main",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "16ad61feb4e5bf34815c5507787d5f747abbd6b24e754a3db94f6a6daf1ccc0e",
+      "captureSha256": {
+        "light": "d44a338a90b0ea9bba95857a74fc7b4e5bad5a779edecdf78ddd574b70cfa675",
+        "dark": "f86f337a89daf8e708a785ff35062884999144115ef7f4ca9b688329830b3cf9"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-response",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "da17d958b7e96cc1479f3c4555cecf2548f11c2bd62df6204e13286b51ba7526",
+      "captureSha256": {
+        "light": "5d4c4235e4d34e2d5da4ca900d3175f0725c23fee668210c279755eccd727ea6",
+        "dark": "20a4fc3d3706a852fdccf8cc77d8515445044989669d352b7c5ecbca7493d0eb"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-snoop",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8739b8901dca246b8ef4fecc3deaebcb8f0299a5ca8e8b45d7a32429e9235316",
+      "captureSha256": {
+        "light": "c520c45154695f1f216595b3e70462cd9fd7eae204c0d10b8eea6023579f228a",
+        "dark": "e0ca9ceabf8075832349481747cfbf08ab34b38677c61091bb9d442907a3bcf2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-memory",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-18.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "aacc2da55a63b90d08136f42bc30b1f963294ab6846555d4d028f4803bd2cb88",
+      "captureSha256": {
+        "light": "f33b71efdc95a8633e9cbb3660cfbf2c30b63e0b50e6ccf04403f86f5fd76ade",
+        "dark": "deb877861f59d7168d5e43b2790a095439b0bad16ee192083ab0533ea75c154c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-refill",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "44e6a94fa1142200c5cf0b35f84ab66e828403cc21e798af62d2959fb6579e0c",
+      "captureSha256": {
+        "light": "8c41449817ddc1378a546440304aac8eb197b33b0911d998c1ca352c3679ee1c",
+        "dark": "770faaaee46023c3b1f9abcd23f2211673cf3ea9d1b9da4123b61b09ec80b6c2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-link",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "731bc3b083d0492cec476bf271f3b1d10039258ed4c3ee6a2c2f2d0dd8f9532c",
+      "captureSha256": {
+        "light": "e1f5497b792e24b4ac240f71fc23f4baa6e6b145129c0c1bc8b75739e61bbb6f",
+        "dark": "daa0b852394bb70246711279a20d503fbb9eeb0bc920b121c6e8d3c9ccd65519"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llc-mmio",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "abead9db0f178c42f7fb09cb6a146a9f2121a133c78fc848285e21f475d39171",
+      "captureSha256": {
+        "light": "575178c5dc97a4a9ddecd89b2cf63dbb3ced8fde52355bd162fea14c9c51a303",
+        "dark": "2e05607aabd13d3df1ab89b12af761d77beb2edd45c4692a0ed095e55722e576"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "alu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "0a0fe1fe199696d18004908f9ac7faa4cc29767123443fa3062c145430d21d33",
+      "captureSha256": {
+        "light": "30e537273a9b669c173383a3ad5b307c812ee619b5c766675293ad0f659726a5",
+        "dark": "cb7bac7364754211ab1ada4a236b49747f4d30ec25620916e865c2dcb73e1eff"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "bit-crypto",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e9af8b15b4780c67bd804f4288e5787df2fce7ce793fa5de5c5fb7a9d3152662",
+      "captureSha256": {
+        "light": "80c932fd5caaecc25b52bda9d2c9aea6abb60ba872dd4b372c3d14c696b8f8bf",
+        "dark": "a59bea0472195b39c4cbbf9bd6b8eadff7937dafa3c7d5e619197724f95f5ff6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "branch",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e78f25eaf810349c36188b392bd8843e39d726c730019a4c9fe285cf219bbe84",
+      "captureSha256": {
+        "light": "523236c501a606afb39a0c26d0d04be4eeb42e3543390874d29f636f414c2b88",
+        "dark": "35ea20fed17b7ede12babff5e437a74f376c30d06b2362a1fb889ad394fb4f32"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "jump",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8ebfe819a9997b2fa1b3ead2b8fc3218dec237cdd44b0b94c65d593d065e9693",
+      "captureSha256": {
+        "light": "41fc264d232c8f2f465265478f22e2127d6f1029619e4879e1deb1c87bd0bd44",
+        "dark": "b975512860730647afd43f5b53fdb5034199d646e1d672cef0f0c6f0e66d3329"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "link",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-19.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e5c47084b65f1a3162e8133ebf5abd686d8fa3a4928125afac5c48971656346a",
+      "captureSha256": {
+        "light": "8b98e92da57264ce978f01d7e99a78d32f4430b1bff84d8171fac8609d64d61c",
+        "dark": "7dca43db59966171402b0455ad440b739bbc39b6f74064933dd927736f447cff"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "multiply",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "577ec90f10238375dfba8ddeccc21abd608168ea600dae42a6892e93acd352e5",
+      "captureSha256": {
+        "light": "3356f481943a08d7c323f503cc8f7a95398577b7efa1fc885ecc7c01679fbd64",
+        "dark": "523d2b74a1fbd73f1adb2a2f313471ac57206ac0c270e9f90deaf869a24933c5"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "int-divider",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "fb91b2c75b46af798b85edada8f18f1bec11c3aecd6824a6356179f2bc6a177d",
+      "captureSha256": {
+        "light": "863da241108cd31c5015518e941d1aac0370dafa7f9023e6c40bd6e08fdeb1c7",
+        "dark": "93d418698c7d07674175da43d28b54fe82713e5c16ceda20b0fb80ea96ce599e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "csr",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1a64f09f477b4ab155ad93b2be33c1366ebbb61c1af8255618bbae841e45c451",
+      "captureSha256": {
+        "light": "57377d9034f96ec757be64f0f10e40c8cb0281cf76a2e37388b97345293ec80a",
+        "dark": "0aa2e616972c55085d1a576c9958fcc89f7ba09adca83a15b7b321cbedc9bd2f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "csr-permit",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "96bd5dd9c232a388a788be2defc5e27eb07377b5081ed48116994de0bc7dafa6",
+      "captureSha256": {
+        "light": "29b899d2623a0e8bac29b70c6ab3284f3a79b39133f6b49fc3ecec0a79e1865e",
+        "dark": "16f9c86bcc9cb9ef0f5f1ae6915c6db47eda8b8171a99646f1394734496354aa"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "interrupt",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5e5cc068899133e52cb49fa9022aa27c80dc3e65c76020fc64690934ece19984",
+      "captureSha256": {
+        "light": "9d7491e225343582b400455fa1c29f00d0a14d87551f611f58b6365e96e4b442",
+        "dark": "04b7416d70e98b655c139f609c107c73e363d880182a9322eeb9b9ae39c68613"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "trap",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "48c343f6eafdb76fa77a6f09ebc367744e87d639442bfffd3d819369f7ce4d9e",
+      "captureSha256": {
+        "light": "84b2786c6abdfa8a9e1762c3d54d640915082aa25a7fdb2c8a1c8aec9ae6fb68",
+        "dark": "7af423c604dcf058754bda027cb75d48220cca35c55384fab41e86628b0c3373"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fence",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d949f2f96b6aac2cfd6f4e18cf77630fb524cc1a6f11a2bdab8087fd65115496",
+      "captureSha256": {
+        "light": "b0e8765c16d7219686de117316778c35849c43658e8e064f51a419b812e72dac",
+        "dark": "3e225fd4f3b528d725b3d672b27e52a6195a51f0b175615ed3422b0af320d351"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fp-alu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-20.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "3539c10a7d8d88fb07d990cbd854398330e5334d7621d7f3ad46103ead803af1",
+      "captureSha256": {
+        "light": "a81765acc62c4aafe57389ff1506c6e4a6434d77de07c1c12a287c222bba42a4",
+        "dark": "5dd1e7b3f6bc0f0de6dd4019d5aab114738567f4aac7e659d832f5a3e161c79e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fp-mul",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "7597bd36b8d81e10d0800f14a785f1d7ad659652d8911c2e17ee013efe92d57b",
+      "captureSha256": {
+        "light": "7fa5e758fada72805f1f85dfe7444796eb951efe9006083d6f35ede46e2efc9f",
+        "dark": "2aaf2bc137f8b4d2d42d759ffbbd406e2bdbc21c493cece5b4eaeb9a668f0603"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fp-div",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "858ad3213c23f679c92c4aaff1f799d94fe13dad0ce46ae065964d584160ecbb",
+      "captureSha256": {
+        "light": "1006d28f70f57d37e04265eae8c9691f1fc154cbcaa4fe4e77852aeaffbe5c2e",
+        "dark": "b1dbafcb3ef2b189dae6f9e18958d63528b89b78e9a9a321814c7d5e17ef8645"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fp-cvt",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "862d2da12ad252df7c7ef636a0bbc5983fa2f9698ec6ce6a18535c43b920408a",
+      "captureSha256": {
+        "light": "2972a12e84dc55d99ae96b6b8b09dc301e0a2021a97ff87418740f8a3eb3a5c2",
+        "dark": "adf97273b8a0532b48cb847a4fd89c20c2abea27550efcd3b769b9d869ac9a03"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fp-compare",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "70cf52a3a7b4c0ab64db8c9b6dabcd78841db43a397211423aca73e435bf6a38",
+      "captureSha256": {
+        "light": "ca01f5226b08eb9d10a4c855654e1ce85756ba34f422ec5ad72ee6d9b5dd1a63",
+        "dark": "9c9fdcf93d687e968a9cda8553679c8c6ffdc3e0902af6375336b376b21e9d7b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-alu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "eace0cf62ac19eb058c63448d59f7005cf916beb71b608d04fd9307b3606e8da",
+      "captureSha256": {
+        "light": "53bb3d5fc31eb42e07b3ab17e0c27428f671a6d422c6fb36eafd8fa1c86b25c1",
+        "dark": "919ca148ebd3c36da90c1a9d5196d7dcce2eb00c5c4542abe537601e50c042d4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-imac",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ad3e6bc814a155fc8f49e965cfdea305a9a0adda45319d5c38a1f32ded5938f4",
+      "captureSha256": {
+        "light": "920bf77d44fa310a20538ef3646d8f57f1899a633c17276b53e46dc51ba6e15a",
+        "dark": "35bbd20522bd0ce6137e9e681d86a55dfa4448d088edbec446dc9bb281d6af33"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-idiv",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ef8e54854952648fe686afb4ed171e6dca85c95dbce556e11c0a8113fc33390e",
+      "captureSha256": {
+        "light": "9e370203de74b95e5bc55ebb5a0c789e5c58d9e9ce785113e9e7481efecdeb9c",
+        "dark": "e90810ea0c8781450798e112ce3151686d99457952d32877ccf586ce21466245"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-fmac",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-21.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "acf67b643a07d379a705bb5123b05e3d1acb12d6079b9697c238b11c92f41eca",
+      "captureSha256": {
+        "light": "39adc40100ff3714598d4501aa5e64cd1251509534fa4f916bb4148c7b4fa103",
+        "dark": "dd16d6d46784a27bde6534fe8b9618b5f854147e0a9b5c77979d09092b2b455e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-fdiv",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "b545cfbe44f46e46b9ae6d822094d4d12596bd612037dfa6a672194e9bd0a3d1",
+      "captureSha256": {
+        "light": "82ec0a018b7b5aead6863ceada9f4f39b69ef6e7c19a2b334855b0cf71a76bd2",
+        "dark": "9e7e1d424948dbcc498de5d46df612bd62cfdb4f33a326618a66a4fddd41f780"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-cvt",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "883da917eb239d2b737870a106dad537d7a39bb46761a06efdf287c3c5cc5382",
+      "captureSha256": {
+        "light": "757a0fb5640b2961860c0f93bb21e6525232c919bd8840e8ad7077a596974717",
+        "dark": "1ccbf13e6053767ef8e320076c6be677597221ec5d08750ab6c141079b06dbd4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-move",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1f519e50cd394a2e3df8e6a3103aae899ff2f4f4ea7bc291a71310bc2517b74f",
+      "captureSha256": {
+        "light": "33e44b491c1fa36b1b247c71e1d1414e42e75b1850ce06fc6bd04e4ac9f6f9a7",
+        "dark": "bac21902137833c5373f8e9a089b181bdad9da6513704fd63957b01f4ff5ef38"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vset",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "fc3ef5181366682d2185d20753f03c49434fccb751a487739c0cffbb1e22160a",
+      "captureSha256": {
+        "light": "978df998ebf439ce13b4b1a8fe01c2a03868bdf5d0031b0e635a98009cedd4fb",
+        "dark": "015db124f59ec522d8eceb7cb48d93e97671e1c53a2c5f172ba951996f715418"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-adder",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "debb2e80ae0f3d203268236b4183c89c4d2fe6e03cdee402e51c2f92fe9de244",
+      "captureSha256": {
+        "light": "65770420edd9a3718c0b65620cf73139bed7511cb9d1ccb1bcc9f387addaa154",
+        "dark": "5dafdd3fee62d28d64357cb08bec7c5cf9bb0d402984a9328c929ec60b94c305"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fadd-s0",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "239840986bdc8daad24449375dc20050d5ee6ab68e172e50876369f082183d30",
+      "captureSha256": {
+        "light": "8821dcf1e3c542444eab3a8327bbdc5daca9e6e7a0d012b554288308c127c063",
+        "dark": "35108e217f2310e6fb70002c7537de4bd299b16e1518759b508897ddae80c851"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fadd-s1",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c155b2efdbe5e5b09aa87cacdcd6da33e1b40a2c0581b27670e865f917370354",
+      "captureSha256": {
+        "light": "3b8f45d89162863d2abbd8feed02c5b52be0b6b9a26163064821bcf0428b38f3",
+        "dark": "9d504eb3ecaf32bdb4bd62ca00756c79db18d6d35359588187a278128293924a"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-mul",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-22.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "405d22f5df2aa745ee4a08895c3f8d9afb0fff81b57076a610aca52ce1d64237",
+      "captureSha256": {
+        "light": "1e08436cb74f32e40d2a48d8ccf261f650f57f37099fca78e5466053704ec93a",
+        "dark": "0fec23c4d7eb4eccece6a078297e107759c31ed06f1ef916b81b7d15ce2a990f"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fmul-s0",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1aae49862e906f252ef4d8043e3c32172142a5ab37d9e595d51b39d75a2cd9d0",
+      "captureSha256": {
+        "light": "1e0e603a9899eda36ae512a7b6af3a6fd451a1945c2834ab22ea8c74f6d966f8",
+        "dark": "1129ea36072f2e4f0ce90d7dc59df1dc3924891bed2bc9aadc2a0da0d6b25e44"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fmul-s1",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c69ae24cdb3b5500e3c88e5f3eb6739210609af134bbe236ea1a27d16de612fa",
+      "captureSha256": {
+        "light": "993dc30d8937a794bdaedaec6a6b12696450b199729b12c5ff3a53fe6c546cba",
+        "dark": "7ce76abb47bffb2369b3cd782d207eef086ff53022f3c2f86bb1878f2c01abc0"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fmul-s2",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "edcc8630fc2f481c471a8a591e51a6ec19cddf2a79651aa6147fbef2b1012c0b",
+      "captureSha256": {
+        "light": "d23504a694a806a6dd6dddd9f31fa1b5cc4fb399da19e4a6eb1ec82bcb1a8998",
+        "dark": "bb7a8ff972feaac7eb89721225d2a7593fc0ab1f90ac06824287c8d6b5fe5fcc"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-divider",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6fc1e826a984772a94fd13b3fbb6615e221540ffcd83f378abc870e22e79a031",
+      "captureSha256": {
+        "light": "6c59076d6b73b3ff336035a231f088b4c6be68b3664007537a690e28c77ea0f9",
+        "dark": "fa0c64ef6d8a44a2dfc9e9e108f2c2217901dfbe5303980108fe9acc9664b4b7"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-div-iterate",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "961ab412a4c0f143a6c3854fe33b90ba76653c83263c23e4a0cba7c2c910799a",
+      "captureSha256": {
+        "light": "221d6a4062222da07b6b1ea85291612efbbbc16bdab87c5398c3367b5577c010",
+        "dark": "080596c16ec3ec5fc9efdb247d9788038fac117ade11aebda321fb46eed2d77b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "fp-convert",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "03deb6100fd73886d2eaa2241e97a7b7cbc59392f7c476e8e81883e4cbd33479",
+      "captureSha256": {
+        "light": "59957116e387787083e6b2720e42d53a7cd37516be84ecb55f8503ca6a033e17",
+        "dark": "e19430612dbda9ef0fa6146a9edcb2e32d4535869983b5272fd7600478ff1250"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-integer-alu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "227f01c44ad60ac54641c5b7357c632206235f7fc4a748c632eb5c1241b4dec2",
+      "captureSha256": {
+        "light": "fccf18e79413c282a6ae518b8942ee061f0256715397072279b85cfeec6e2a18",
+        "dark": "05da53f5a289f9061979027c825ce20a180dd3d454f0d31fe9a9cf5f18f311f7"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-integer-div",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-23.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "0800949ec3c1719e8437e246717a8ef005d7c0ef610ddfd55e7e924e2104682a",
+      "captureSha256": {
+        "light": "fb895f89451760c351a9a1e654683d2020d40ec853df15091413d55bc830f7b4",
+        "dark": "8f7db79989cf209ff9720c1874486c6627a336cdbb2b5ebf52659c16a23cb1a0"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-falu",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "8cfef812388d0caeb91ab4afe44e93585fa3e936b3d82533b3666d1219bb08e1",
+      "captureSha256": {
+        "light": "e13bf8b1f0da7d93cc9940678ead409e149be5533d14a033297b85f985c49206",
+        "dark": "6d1a5abda3d56d49ca025b7c5a7ab86ada5ae2e9909a65d0d11cfdf675c7bc15"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-fdiv-kernel",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "e566f7882bc6c02c206a414524d5d57c85f646f2a2b660d77ff7143aa3a4d60a",
+      "captureSha256": {
+        "light": "4fb43c1fa7ef1cbd00a62e17f5a4f8f13442ea66a90506346c86f973605b96f9",
+        "dark": "ef78c3b490069eafa79defff528c01299cf77ab4f67bc9ebff7eaa109b0192ec"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-perm-legacy",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1b0ed69fbe71f2f90161607ef4c1562059dd43002202f1ff28e6777cd25c241b",
+      "captureSha256": {
+        "light": "5ff92f58cd83090202472a3ce551165ae17e37e0e8470561d9b4f602d40c880a",
+        "dark": "8f7d551e6a4a8a0c4ba7e7f64be86411d0f190c910a93efac81c75b2ed0408a2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "tage-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c026d89f33ba5aec1c08dc3a42ca154dc59fc9d0ca6e5f45ca2c5d747ad9a8e1",
+      "captureSha256": {
+        "light": "44af581ec1cbf9e6d0607b803e24c587b4fb97b7d1c07950af78f59af71cbfaf",
+        "dark": "431cfa14fe2e8ee58bb0467c77621866447d75adabe4ec462ead6e3785013b89"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sc-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "4224f2252ee9b95f99a8f925f35b9713341b79f55dc51710b7692ee74b38d502",
+      "captureSha256": {
+        "light": "5948d2ab17677cdd167e41bcb92bbb5f5312e22751d357a0ca8bc1f917cc4391",
+        "dark": "b6b5347168ab66bd150557fd2bb67f340686f810670ecc84e9fc6aa9226124af"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "ittage-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "f90eb57769a349d456f620844307bae765a5712f411de4f2f9220ea6462eb772",
+      "captureSha256": {
+        "light": "c0ab9f9ef9d853342d9a0e9546e2745590a4daf6e84151c52bc922bc2d79cab3",
+        "dark": "2b86b8b28a316921cda6572cbef194a99e182c682b2a0c5d415faa60dae686de"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "utage-table",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5f0f8101659750279c1f2130299fbc9fc4e4229d5ef497496c6935acccf118e1",
+      "captureSha256": {
+        "light": "86eae0ff0f2135b4ac7c753815548baf8cb9036e171fb11775cdf266990ce9ec",
+        "dark": "ccbea411c3877de5423de2353f118857f72fa2292d1dab9e3633b7520ef75510"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "abtb-bank",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-24.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "a606bd0a12abe2390167536356d6fa3187be3aedd5faecc6943b9ef816579552",
+      "captureSha256": {
+        "light": "10d49d32163729da299775a26dccee2842a0142d5e18136ec7ea88c7f11a33cf",
+        "dark": "6a112000e2819cdf9b76794a7450ff58bb172693719cacd4b638044d7384f320"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "mbtb-align",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "96e2702d69c8a29615a7a5c825c0bc958825647e3e54719ca06a8a0fe67225f6",
+      "captureSha256": {
+        "light": "2971ded3dda25e46b27669249abb3c60523206e946479dedcc9ffa827c5396a4",
+        "dark": "f5ec402305d311395dab9180e26d224cd10397ec298b60819a3daf0222e6cc30"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "mbtb-internal",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "a8fb975271ac62eb65a31ca62cf5a4bcf97072cee1d8406da3ef3e260b900111",
+      "captureSha256": {
+        "light": "faa7ef4faf5ce03707eb52009edc8e374685099a7855f6e5729f55311c345405",
+        "dark": "5aecfc132d931c616d5ebb92f1f215947a04f9deb13825427b7873a71b445607"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "regcache-tag",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "c0d11e27a5f7c5bd73b3a5a2cb6c0d34183c57f757b1006484868631868706cc",
+      "captureSha256": {
+        "light": "2bacaa58b783073f553209a6c01d48cac0b62cf7790a9326de6240a34b0c734f",
+        "dark": "df24dc561f5a3b729cce29d849d8ee706ca8cf7dcc4c442006f2680d6efbb888"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "regcache-data",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ba2d61b08b0c06c8c17e719ff70a9851c081255c8b4832e899aacfce82c4cb65",
+      "captureSha256": {
+        "light": "52e5a3c285469a478c2cdde3e513db9173a22e10caf3b067578c84c45e8ced23",
+        "dark": "378e3e179e0a21cf13b02b7e66f9552015c139c0ab33b0e9217daf8f0f85bcc4"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "regcache-age",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "1aec5ac984e118d31602e090ff49f0d6bf08b1c47f629e9b37bf11702d6ffb6f",
+      "captureSha256": {
+        "light": "759941e6b1b24a788b04e1c278f09dd2274f3f33295bb69a857a54cef68f33dd",
+        "dark": "7d49a6b18b2079b56de4c9193b6814c3594b917172775d3cbaef90e0b47ddbd6"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "wb-busy",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "fdd470ae00d67c0aa4410305d6a20d00c5877c464b243bf01b45fa95f2d56a69",
+      "captureSha256": {
+        "light": "c0667462b6f2d1f1002589c614c025865f105b395efda28bc8dcb66aa1ad9710",
+        "dark": "d5fb4e90c2473eac5efb20f110fa4c28f0b29af0cc856157dff0d272d6f39898"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "new-age",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "543d1b22c2c7f14b41a4c8a1d398c3567d2563206f0d7bb60413eb1e1d2e236a",
+      "captureSha256": {
+        "light": "5568559ada88a2ced38be399ae8cccabc79fc6c8e1c157484ad70135af110792",
+        "dark": "f420044851a4cc27f75b3a5385eb5687f45f666002d8a88c2bf4b61cf97aff1c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "hptw",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-25.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "056f6e23c6662f1192c6d8229ed840df79209b37bfbb85e5990a8a5f0d88ece4",
+      "captureSha256": {
+        "light": "2c76510a8c55753838d886420d0e9640ae4e9b1dd0b341f4e823250096c8eb10",
+        "dark": "cde76bf0848bffcd89af44d9b112845f9fd9aac46011e11e759ce7c37d6a6378"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "llptw",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "05ea1009a4674aa93cfa7fee5d6ace6be197767dd762e9c61bfc89586858b1f9",
+      "captureSha256": {
+        "light": "58fd067499891edf59d2ac8be440f9c7763e628de2dbd600975c791442124b1c",
+        "dark": "a745695e17f02ce0f4b4aee019d384274cded48be0bee5e6541c6ad680fbce72"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "dcache-arrays",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "81eb7d4a3419a62e3f608b0fea622f91d345dc492f44c507d772a15ec20ff52b",
+      "captureSha256": {
+        "light": "93f8a9e7f37f8a26c8ed9dd28454bc7539d98e839a6b7baad558af0779bb9cf8",
+        "dark": "8519f9866ad8578151d4d044568a8e84d23a3bf6d5059aed3f0c3e9ee344f10c"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "berti-history",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5d3adcaca697d9592781c8df5bfc2c913155dc5885ee7e0023aaa49d87c67633",
+      "captureSha256": {
+        "light": "29dd56cc73d83189f50925756b7ff28a62d5c5f4f0719ea4ee728136c931727e",
+        "dark": "428061853ba8770e6dc5e8c93322d8e136bf134a1751d5b80e93d0e8953fcef0"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "berti-delta",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "b0aaa7ecdce475899e983cc2a4e1cd1d5fc7c5b7a992bdf7756f4d344e669917",
+      "captureSha256": {
+        "light": "e9a8a6cb2f8b82cabcd7a6875a392f5a0436d97072c84603325e44441b321c82",
+        "dark": "a7841a563c5284393e7f07e3d562bfe883f7fce677dc03549d9b6a69afc7b50b"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "sms-agt",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "ddf0b90998813a11e31617a7543b43b256e3bc3a93c9870afc1bd1bc54eacc61",
+      "captureSha256": {
+        "light": "52ffafd5104afe87233a2dc65427095bf71d99a1a1e8dacabfba444158ea161f",
+        "dark": "65f6dfe4d453e9d08f08d308592d865ea54048597135058f5b65c393f777ce9e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "float-issue-pipe",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "528e47c4fa85211f28d021455d3c144eee60a15b02d9927a8a88158cc8bb819f",
+      "captureSha256": {
+        "light": "0d7019941966756e5ec12c580c20db7aa0376ae4f10b023114dcfaf8f1b8ab19",
+        "dark": "3d28cfd18212ee9a0d47ae43b14a063ed19773efbe45249ac6c814404ed91deb"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-issue-pipe",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "05634aae26a2e2ee25cd0f9849fa1efbbcbf72b8ae5ea7cad8767b5a76035f14",
+      "captureSha256": {
+        "light": "d4e9acabfae2bea4dc7896c9711b76535134571d7395870ba8ee9a978558ed64",
+        "dark": "1ae66ea1dd881d15619317f6c2534dd7ac43453ee48bd137e35a30077f84e706"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-fmul",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-26.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "d1a7787fc8b15ced93b12bd17799e62e06227815c7c6339426cfe71cdec7a295",
+      "captureSha256": {
+        "light": "72b1f70250ad57e540922f06c66ee58aeee882cd114cff52ccae3506817694db",
+        "dark": "a60a955d0c83681cb4021aa494f2c09bdc7f93b2ee4b67bd2026643fc124474e"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-imac-kernel",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-27.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "811ebfaf4bd686427dfe61c2537d109ea79196f63a08fafbde5345f6226986f1",
+      "captureSha256": {
+        "light": "30cbc9fab218bc487013bd253d20992d4a4db9dd2e92a36f800d3896666e9d8a",
+        "dark": "f0b14a4c77d151c5d1afb9ee8a2ec9144011f4c2da9cec90bd34cbdbb96f9ce2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-cvt-kernel",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-27.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5977d8b8b63fc1f98b1b81f40b7926634c5470939f7091995c9fafd0801e0743",
+      "captureSha256": {
+        "light": "d090453f49be8da85496ae0f6e6cf381edcafce6eee763ecca0c3787a3a93628",
+        "dark": "7e0934be6556d315db7df9f5e5b13421f3a8cd5d429958ae0eaea35fedd63583"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-add-kernel",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-27.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "32b58181f434928992456fbce2eec96206a97dbf8f351672af328636484a6eaa",
+      "captureSha256": {
+        "light": "2d55d68d9bf9616a8949cfef5f2db92c58dab20168e9dde7003e8c925749a110",
+        "dark": "e876f13e4f11af058da3b65c8a2512040648497ef62b645be0dc4d4ee04bc030"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-fixpoint",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-27.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "5bcde6609c5ca2a7c0a0ff4bc65a0eb9a4988d28101e6407d145535979b61de5",
+      "captureSha256": {
+        "light": "f7525fb2479de31043fb3687427c05ef2ada40e430d31f368f746c4205c7d8e2",
+        "dark": "b16819cd60d409726482f0ac24e12bef8b5ec7e80e42b9bccc57c667b2f41669"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-misc",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-27.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "6785e9a8d01fde33a6648751e6679a22d5edbf044ea259e5580fbb0d4c8417eb",
+      "captureSha256": {
+        "light": "ce3b64d1c68b8d918c7e9dd514950b1fb21c42b887aadb0e35f552dcb3247255",
+        "dark": "b1573159b6c67ee5c713893222c6f753c7ba0adfe8a11fff8fb53e218b2cf9b2"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    },
+    {
+      "id": "vector-move-kernel",
+      "status": "layout-reviewed",
+      "scope": "Full-height contact sheet in both themes; main and lower diagram regions and notes.",
+      "sheet": "sheet-27.jpg",
+      "additionalOriginalSizeThemes": [],
+      "artifactSha256": "9b3b5bf943710f926dd72189b6c83a580411fd0d4ed48a835e443cd0370b601f",
+      "captureSha256": {
+        "light": "89d6aa5ddae899062749e8855e444c7607351823b1170ae6351ebf8b6931701d",
+        "dark": "4e48a4926620672e0f6502e3e034d1a21111b84e30eb3f2f9ea3a77664da79bf"
+      },
+      "outcome": "No layout defect requiring repair identified within the inspected scope."
+    }
+  ]
+}
