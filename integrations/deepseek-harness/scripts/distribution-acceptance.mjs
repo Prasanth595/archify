@@ -311,8 +311,8 @@ if (!archifyProvider || extraProviders.length !== 1 || archifyLayer.rows.length 
     layerRows: archifyLayer.rows.map((row) => row.id),
   });
 }
-if (archifyProvider.config.includeDefaultRoots !== false || archifyProvider.config.providerName !== 'archify-plugin') {
-  fail('compose', 'Archify provider config is not isolated', { archifyProvider });
+if (archifyProvider.config.includeDefaultRoots !== true || archifyProvider.config.providerName !== 'archify-plugin') {
+  fail('compose', 'Archify provider config does not retain the profile default Skill roots', { archifyProvider });
 }
 pass('compose', {
   extraIds: archifyLayer.rows.map((row) => row.id),
