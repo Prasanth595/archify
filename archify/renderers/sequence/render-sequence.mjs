@@ -494,13 +494,53 @@ function messageFitsAt(messageIndex, y) {
   const moved = { ...messages[messageIndex], y };
   const [left, right] = span(moved);
   const movedRects = [messageLabelBox(moved), messageRouteBox(moved), noteRect(moved)].filter(Boolean);
-  return messages.every((other, otherIndex) => {
+  const clearsOtherMessages = messages.every((other, otherIndex) => {
     if (otherIndex === messageIndex || typeof other.y !== 'number') return true;
     const [otherLeft, otherRight] = span(other);
     if (Math.abs(other.y - y) < 28 && left < otherRight && otherLeft < right) return false;
     const otherRects = [messageLabelBox(other), messageRouteBox(other), noteRect(other)].filter(Boolean);
     return !movedRects.some((rect) => otherRects.some((otherRect) => rectsOverlap(rect, otherRect, 2)));
   });
+  if (!clearsOtherMessages || !readableMessages) return clearsOtherMessages;
+  // Moving a message changes which rectangles the segment labels step around,
+  // and moving one down can push its own note past the canvas content limit:
+  // the repair must not trade this failure for sequence/segment-label-overlap
+  // or sequence/note-canvas-limit. A segment that is already blocked keeps its
+  // own failure; only a newly blocked one withholds the repair.
+  const message = messages[messageIndex];
+  const segments = asArray(sequence.segments);
+  const currentlyBlocked = segments.map((segment) => Boolean(segmentLabelBlocker(segment)));
+  // An automatic canvas regrows to fit its content, so moving a message down
+  // cannot create the note limit there; only an authored canvas can lose that
+  // trade, matching the y-bound check above.
+  const noteLimitY = layout.lifelineBottom + 20;
+  const currentNoteBottom = noteLayout(message)?.bottom ?? null;
+  const authoredCanvas = Boolean(sequence.meta?.viewBox);
+  return withMessageAtY(message, y, () => {
+    const candidateNote = noteLayout(message);
+    if (authoredCanvas && candidateNote && candidateNote.bottom > noteLimitY
+      && (currentNoteBottom === null || currentNoteBottom <= noteLimitY)) return false;
+    return !segments.some((segment, index) => !currentlyBlocked[index] && Boolean(segmentLabelBlocker(segment)));
+  });
+}
+
+// Runs `read` with the message temporarily at y, binding the candidate on the
+// real object so the label helpers see the same identity as the post-repair
+// pass, and invalidating its memoized note layout so note geometry — which
+// depends on y — is recomputed for the candidate. Both are restored afterwards.
+function withMessageAtY(message, y, read) {
+  const previousY = message.y;
+  const hadCachedNote = noteLayouts.has(message);
+  const cachedNote = noteLayouts.get(message);
+  message.y = y;
+  noteLayouts.delete(message);
+  try {
+    return read();
+  } finally {
+    message.y = previousY;
+    if (hadCachedNote) noteLayouts.set(message, cachedNote);
+    else noteLayouts.delete(message);
+  }
 }
 
 // The first occupant the segment label still covers after its upward steps.

@@ -404,3 +404,95 @@ test('a standard message repair landing exactly on a segment border is withheld'
     'an exact border overlap fails composition/container-border-run in every profile',
   );
 });
+
+test('the message clamp is withheld when the moved message would leave a segment label covering it', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b', 'c'],
+    viewBox: [480, 480],
+    messages: [
+      { from: 'b', to: 'c', y: 450, label: 'late reply' },
+      { from: 'a', to: 'b', y: 375, label: 'first request' },
+      { from: 'a', to: 'b', y: 331, label: 'second request' },
+    ],
+    segments: [{ label: 'Phase title '.repeat(4).trimEnd(), from: 419, to: 430 }],
+  });
+  const diagnostic = failure(t, spec, 'sequence/message-outside-timeline');
+  assert.equal(diagnostic.evidence.maximumY, 397);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'applying the clamp would replace the failure with sequence/segment-label-overlap',
+  );
+});
+
+test('the message clamp stays withheld when the offending message carries a note', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b', 'c'],
+    viewBox: [480, 480],
+    messages: [
+      { from: 'b', to: 'c', y: 450, label: 'late reply', note: 'Keep the retry budget small.' },
+      { from: 'a', to: 'b', y: 375, label: 'first request' },
+      { from: 'a', to: 'b', y: 331, label: 'second request' },
+    ],
+    segments: [{ label: 'Phase title '.repeat(4).trimEnd(), from: 424, to: 430 }],
+  });
+  const diagnostic = failure(t, spec, 'sequence/message-outside-timeline');
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'the note moves with the message, so the clamp would leave the segment label covering it',
+  );
+});
+
+test('the note-overlap clamp is withheld when the blocker would land under a segment label', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b'],
+    viewBox: [560, 480],
+    messages: [
+      { from: 'a', to: 'b', y: 300, label: 'first', note: 'Keep the retry budget small and local.' },
+      { from: 'a', to: 'b', y: 315, label: 'second', note: 'The retry budget stays small because every failed attempt counts against a shared quota that the gateway refreshes on a rolling window.' },
+    ],
+    segments: [{ label: 'Phase title Phase title Phase title Phase t', from: 390, to: 410 }],
+  });
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'moving the blocker down would replace this failure with sequence/segment-label-overlap',
+  );
+});
+
+test('the note-overlap clamp is withheld when the blocker\u2019s own note would pass the canvas limit', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b'],
+    viewBox: [560, 480],
+    messages: [
+      { from: 'a', to: 'b', y: 318, label: 'first', note: 'Keep the retry budget small and local. Every failed attempt counts against a shared quota, and the gateway refreshes that quota on a rolling window, so bursts of retries are especially expensive.' },
+      { from: 'a', to: 'b', y: 370, label: 'second', note: 'The retry budget stays small because every failed attempt counts against a shared quota that the gateway refreshes on a rolling window.' },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.equal(diagnostic.evidence.requiredY, 395);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'the blocker\u2019s own note would end below the canvas content limit after the move',
+  );
+});
+
+test('the note-overlap clamp stays offered on an automatic canvas', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b'],
+    messages: [
+      { from: 'a', to: 'b', y: 318, label: 'first', note: 'Keep the retry budget small and local. Every failed attempt counts against a shared quota, and the gateway refreshes that quota on a rolling window, so bursts of retries are especially expensive.' },
+      { from: 'a', to: 'b', y: 370, label: 'second', note: 'The retry budget stays small because every failed attempt counts against a shared quota that the gateway refreshes on a rolling window.' },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.equal(diagnostic.evidence.requiredY, 395);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    ['set /messages/1/y to 395'],
+    'an automatic canvas regrows, so the moved note stays inside the content limit',
+  );
+});
