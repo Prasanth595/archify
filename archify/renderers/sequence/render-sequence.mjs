@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, renderDefinitions, renderSemanticSigil, textUnits } from '../shared/utils.mjs';
 import { animateAttr, focusEdgeAttrs, focusNodeAttrs, focusNodeTitle, loadDiagramWithBrandMarks, writeDiagram, svgAccessibleText, svgRootAttrs } from '../shared/cli.mjs';
-import { throwDiagnosticProblems } from '../shared/diagnostics.mjs';
+import { throwDiagnosticProblems, withIsolatedDiagnosticRecording } from '../shared/diagnostics.mjs';
 import { legendFootprint, measureLegend, resolveLegend, renderLegend as renderResolvedLegend } from '../shared/legend.mjs';
 import { componentFill, arrowClassMap, rectsOverlap, cleanFlowProblems, cleanCrossingProblems, cleanAmbiguousCorridorProblems, cleanBorderRunProblems, cleanRouteRhythmProblems, cleanLabelRouteClearanceProblems, cleanLabelCanvasContainmentProblems, routePointsValue, asArray, isFinitePoint, edgeLabelAccent } from '../shared/geometry.mjs';
 import { availableNodeTextWidth, fittedNodeFontSize, minimumNodeTextWidth } from '../shared/text-fit.mjs';
@@ -267,19 +267,28 @@ function noteLayout(message) {
   return result;
 }
 
-const contentBottom = Math.max(
-  0,
-  ...asArray(sequence.messages).map((message) => (message.note
-    ? noteLayout(message)?.bottom ?? message.y + 22
-    : message.y + 6)),
-  ...asArray(sequence.activations).map((activation) => activation.to),
-  ...asArray(sequence.segments).map((segment) => segment.to),
-);
-function legendRequiredHeight(width) {
+// The lowest timeline content — messages with their notes, activation bars,
+// segment frames. The legend block is measured from it, so a repair that moves
+// a message down can change it.
+function measureContentBottom() {
+  return Math.max(
+    0,
+    ...asArray(sequence.messages).map((message) => (message.note
+      ? noteLayout(message)?.bottom ?? message.y + 22
+      : message.y + 6)),
+    ...asArray(sequence.activations).map((activation) => activation.to),
+    ...asArray(sequence.segments).map((segment) => segment.to),
+  );
+}
+const contentBottom = measureContentBottom();
+function legendRequiredHeightAt(bottom, width) {
   const entries = legendEntries();
   if (!entries.length) return 0;
-  return Math.ceil(contentBottom + LEGEND_CONTENT_GAP + LEGEND_BLOCK_HEIGHT
+  return Math.ceil(bottom + LEGEND_CONTENT_GAP + LEGEND_BLOCK_HEIGHT
     + legendFootprint(entries, { width: width - 80 }).extraHeight);
+}
+function legendRequiredHeight(width) {
+  return legendRequiredHeightAt(contentBottom, width);
 }
 // A renderer-sized canvas grows to keep the legend clear of late messages and
 // shrinks when the timeline is short. Keep a readable minimum band (lifelineTop
@@ -501,15 +510,54 @@ function messageFitsAt(messageIndex, y) {
     const otherRects = [messageLabelBox(other), messageRouteBox(other), noteRect(other)].filter(Boolean);
     return !movedRects.some((rect) => otherRects.some((otherRect) => rectsOverlap(rect, otherRect, 2)));
   });
-  if (!clearsOtherMessages || !readableMessages) return clearsOtherMessages;
-  // Moving a message changes which rectangles the segment labels step around,
-  // and moving one down can push its own note past the canvas content limit:
-  // the repair must not trade this failure for sequence/segment-label-overlap
-  // or sequence/note-canvas-limit. A segment that is already blocked keeps its
-  // own failure; only a newly blocked one withholds the repair.
+  if (!clearsOtherMessages) return false;
+  // Moving a message changes which rectangles the segment labels step around:
+  // the repair must not trade this failure for sequence/segment-label-overlap,
+  // a pair of titles landing on the same fallback slot (an overlap that fails
+  // in every profile), or sequence/note-canvas-limit. A segment or pair that
+  // is already in that state keeps its own failure; only a newly created
+  // collision withholds the repair.
   const message = messages[messageIndex];
   const segments = asArray(sequence.segments);
-  const currentlyBlocked = segments.map((segment) => Boolean(segmentLabelBlocker(segment)));
+  const currentLabelBoxes = segments.map((segment) => segmentLabelBox(segment));
+  const createsLabelPairOverlap = () => {
+    const boxes = segments.map((segment) => segmentLabelBox(segment));
+    for (let i = 0; i < boxes.length; i += 1) {
+      for (let j = i + 1; j < boxes.length; j += 1) {
+        if (!rectsOverlap(currentLabelBoxes[i], currentLabelBoxes[j], 0)
+          && rectsOverlap(boxes[i], boxes[j], 0)) return true;
+      }
+    }
+    return false;
+  };
+  const currentlyBlocked = readableMessages
+    ? segments.map((segment) => Boolean(segmentLabelBlocker(segment)))
+    : [];
+  // The legend block sits below the content floor; the implicit showcase
+  // legend is reported when it would be silently dropped and an authored one
+  // throws when its band cannot hold it. Measure the fit at both states and
+  // withhold a newly created legend failure; a document that already lacked
+  // legend room keeps its own failure.
+  const legendFits = (bottom) => {
+    const entries = legendEntries();
+    if (!entries.length) return true;
+    // A speculative misfit throws a typed diagnostic; keep that receipt out of
+    // the caller's real failure while we only ask whether the fit holds.
+    let fits = false;
+    try {
+      fits = withIsolatedDiagnosticRecording(
+        () => Boolean(measureLegend(entries, legendLayout(bottom))),
+      );
+    } catch {
+      fits = false;
+    }
+    if (sequence.meta?.legend === undefined) {
+      return !(sequence.meta?.quality_profile === 'showcase'
+        && legendRequiredHeightAt(bottom, viewBox[0]) > viewBox[1] && !fits);
+    }
+    return fits;
+  };
+  const currentLegendFits = legendFits(contentBottom);
   // An automatic canvas regrows to fit its content, so moving a message down
   // cannot create the note limit there; only an authored canvas can lose that
   // trade, matching the y-bound check above.
@@ -517,6 +565,13 @@ function messageFitsAt(messageIndex, y) {
   const currentNoteBottom = noteLayout(message)?.bottom ?? null;
   const authoredCanvas = Boolean(sequence.meta?.viewBox);
   return withMessageAtY(message, y, () => {
+    if (createsLabelPairOverlap()) return false;
+    const candidateBottom = measureContentBottom();
+    // An automatic canvas regrows to hold its legend; only an authored canvas
+    // can lose the room the legend needs, matching the y-bound check above.
+    if (authoredCanvas && candidateBottom > contentBottom
+      && currentLegendFits && !legendFits(candidateBottom)) return false;
+    if (!readableMessages) return true;
     const candidateNote = noteLayout(message);
     if (authoredCanvas && candidateNote && candidateNote.bottom > noteLimitY
       && (currentNoteBottom === null || currentNoteBottom <= noteLimitY)) return false;
@@ -1129,14 +1184,14 @@ ${messageLabel(message, start, end)}${note}
 }
 
 
-function legendLayout() {
+function legendLayout(bottom = contentBottom) {
   return {
     x: 40,
     baselineY: layout.legendY,
     width: viewBox[0] - 80,
     // The same content-based budget as legendRequiredHeight(): a wrapped
     // legend may use any rows it needs as long as it stays below the content.
-    minTitleY: Math.max(layout.lifelineTop, contentBottom + LEGEND_CONTENT_GAP),
+    minTitleY: Math.max(layout.lifelineTop, bottom + LEGEND_CONTENT_GAP),
     unfit: sequence.meta?.legend === undefined ? 'hide' : 'error',
     diagramType: 'sequence',
   };

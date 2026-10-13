@@ -496,3 +496,96 @@ test('the note-overlap clamp stays offered on an automatic canvas', (t) => {
     'an automatic canvas regrows, so the moved note stays inside the content limit',
   );
 });
+
+test('the message clamp is withheld when two segment titles would share the fallback slot', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b', 'c'],
+    viewBox: [480, 480],
+    messages: [{ from: 'b', to: 'c', y: 450, label: 'late reply' }],
+    segments: [
+      { label: 'Phase title '.repeat(4).trimEnd(), from: 419, to: 430 },
+      { label: 'Beta', from: 375, to: 390 },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/message-outside-timeline');
+  assert.equal(diagnostic.evidence.maximumY, 397);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'applying the clamp would land both segment titles on y=353, where they overlap each other',
+  );
+});
+
+test('the two-title clamp guard also holds in the standard profile', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b', 'c'],
+    viewBox: [480, 480],
+    quality: 'standard',
+    messages: [{ from: 'b', to: 'c', y: 450, label: 'late reply' }],
+    segments: [
+      { label: 'Phase title '.repeat(4).trimEnd(), from: 419, to: 430 },
+      { label: 'Beta', from: 375, to: 390 },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/message-outside-timeline');
+  assert.equal(diagnostic.evidence.maximumY, 397);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'the overlapping-label failure is checked in every profile, so the clamp is withheld there too',
+  );
+});
+
+test('the clamp stays offered when the second title keeps clear of the fallback slot', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b', 'c'],
+    viewBox: [480, 480],
+    messages: [{ from: 'b', to: 'c', y: 450, label: 'late reply' }],
+    segments: [
+      { label: 'Phase title '.repeat(4).trimEnd(), from: 419, to: 430 },
+      { label: 'Beta', from: 250, to: 380 },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/message-outside-timeline');
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    ['set /messages/0/y to 397'],
+    'with no second title in the fallback slot the clamp still clears its own diagnostic',
+  );
+});
+
+test('the note-overlap clamp is withheld when the move would empty the implicit legend band', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b'],
+    viewBox: [560, 480],
+    legend: null,
+    messages: [
+      { from: 'a', to: 'b', y: 318, label: 'first', note: Array(24).fill('word').join(' ') },
+      { from: 'a', to: 'b', y: 370, label: 'second' },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.equal(diagnostic.evidence.requiredY, 384);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    [],
+    'moving the blocker down would leave no room for the implicit showcase legend, replacing this failure with sequence/legend-canvas-limit',
+  );
+});
+
+test('the same blocker move stays offered with the legend hidden', (t) => {
+  const spec = sequence({
+    participants: ['a', 'b'],
+    viewBox: [560, 480],
+    messages: [
+      { from: 'a', to: 'b', y: 318, label: 'first', note: Array(24).fill('word').join(' ') },
+      { from: 'a', to: 'b', y: 370, label: 'second' },
+    ],
+  });
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    ['set /messages/1/y to 384'],
+    'without a legend band the moved blocker still clears its own diagnostic',
+  );
+});
