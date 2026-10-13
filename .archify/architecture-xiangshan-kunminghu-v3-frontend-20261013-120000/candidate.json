@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "香山昆明湖 V3 前端架构",
+    "locale": "zh-CN",
+    "output": "xiangshan-kunminghu-v3-frontend.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "backend_control",
+      "type": "external",
+      "label": "后端控制",
+      "sublabel": "redirect · commit · PC read",
+      "pos": [40, 282],
+      "size": [180, 72],
+      "tag": "frontend control"
+    },
+    {
+      "id": "bpu_early",
+      "type": "processor",
+      "label": "BPU · S1 早期预测",
+      "sublabel": "uBTB 32 · aBTB 1K/4-way · uTAGE",
+      "architecture": "Kunminghu-V3 BPU",
+      "vendor": "OpenXiangShan",
+      "pos": [330, 70],
+      "size": [220, 82],
+      "tag": "early target + direction"
+    },
+    {
+      "id": "bpu_late",
+      "type": "processor",
+      "label": "BPU · S3 精确预测",
+      "sublabel": "mBTB 12K/4-way · TAGE-SC · ITTAGE · RAS",
+      "architecture": "Kunminghu-V3 BPU",
+      "vendor": "OpenXiangShan",
+      "pos": [600, 70],
+      "size": [250, 82],
+      "tag": "override + training"
+    },
+    {
+      "id": "ftq",
+      "type": "messagebus",
+      "label": "Fetch Target Queue",
+      "sublabel": "64 entries · 2 fetch blocks · ≤64B total",
+      "pos": [340, 282],
+      "size": [220, 82],
+      "tag": "decoupled frontend supply"
+    },
+    {
+      "id": "ifu",
+      "type": "backend",
+      "label": "Instruction Fetch Unit",
+      "sublabel": "F0–F3 · 4×PreDecode · PredChecker · 16×Expanders",
+      "pos": [700, 282],
+      "size": [230, 86],
+      "tag": "≤32B prediction block"
+    },
+    {
+      "id": "ibuffer",
+      "type": "messagebus",
+      "label": "Instruction Buffer",
+      "sublabel": "valid / enqEnable · FTQ metadata",
+      "pos": [1060, 282],
+      "size": [210, 82],
+      "tag": "instruction queue"
+    },
+    {
+      "id": "decode",
+      "type": "backend",
+      "label": "6-way Decode",
+      "sublabel": "instruction fusion · uOP output",
+      "pos": [1060, 500],
+      "size": [190, 82],
+      "tag": "downstream context"
+    },
+    {
+      "id": "backend_exec",
+      "type": "external",
+      "label": "后端执行与提交",
+      "sublabel": "rename · issue · execute · commit",
+      "pos": [1390, 500],
+      "size": [200, 82],
+      "tag": "backend context"
+    },
+    {
+      "id": "instruction_uncache",
+      "type": "cloud",
+      "label": "Instruction Uncache",
+      "sublabel": "MMIO instruction fetch",
+      "pos": [340, 530],
+      "size": [220, 78],
+      "tag": "commit-serialized"
+    },
+    {
+      "id": "icache",
+      "type": "database",
+      "label": "L1 Instruction Cache",
+      "sublabel": "64KB · 4-way · 64B line · 4 fetch MSHR",
+      "pos": [700, 530],
+      "size": [230, 88],
+      "tag": "FDIP · 2-fetch"
+    },
+    {
+      "id": "itlb",
+      "type": "security",
+      "label": "ITLB / PMP-PMA",
+      "sublabel": "translation · page/access fault",
+      "pos": [1020, 620],
+      "size": [210, 78],
+      "tag": "frontend protection"
+    },
+    {
+      "id": "l2",
+      "type": "database",
+      "label": "L2 / TileLink",
+      "sublabel": "miss request · refill response",
+      "pos": [1250, 760],
+      "size": [190, 78],
+      "tag": "memory system"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "XiangShan Kunminghu-V3 Frontend",
+      "wraps": [
+        "bpu_early",
+        "bpu_late",
+        "ftq",
+        "ifu",
+        "ibuffer",
+        "instruction_uncache",
+        "icache",
+        "itlb"
+      ],
+      "pad": 26
+    }
+  ],
+  "connections": [
+    {
+      "id": "backend-redirect-ftq",
+      "from": "backend_control",
+      "to": "ftq",
+      "label": "redirect / commit",
+      "variant": "security"
+    },
+    {
+      "id": "bpu-early-ftq",
+      "from": "bpu_early",
+      "to": "ftq",
+      "label": "S1 early prediction",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "bpu-late-ftq",
+      "from": "bpu_late",
+      "to": "ftq",
+      "label": "S3 override / train",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "ftq-ifu",
+      "from": "ftq",
+      "to": "ifu",
+      "label": "2 fetch blocks · ≤64B",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ifu-icache",
+      "from": "ifu",
+      "to": "icache",
+      "label": "fetch request ↔ cacheline data",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "ifu-uncache",
+      "from": "ifu",
+      "to": "instruction_uncache",
+      "label": "MMIO fetch",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [[815, 430], [450, 430]]
+    },
+    {
+      "id": "itlb-icache",
+      "from": "itlb",
+      "to": "icache",
+      "label": "VA translation / protection",
+      "variant": "security"
+    },
+    {
+      "id": "ibuffer-decode",
+      "from": "ibuffer",
+      "to": "decode",
+      "label": "instr / valid range",
+      "variant": "emphasis"
+    },
+    {
+      "id": "decode-backend",
+      "from": "decode",
+      "to": "backend_exec",
+      "label": "uOP / fusion",
+      "variant": "emphasis"
+    },
+    {
+      "id": "icache-l2",
+      "from": "icache",
+      "to": "l2",
+      "label": "miss / TileLink refill",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [[815, 740], [1345, 740]]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "BPU V3 组成",
+      "items": [
+        "S1 由 uBTB、aBTB 与 uTAGE 提供早期目标和方向预测",
+        "S3 由 mBTB、TAGE-SC、ITTAGE 与 RAS 完成精确覆盖或纠正",
+        "公开 V3 设计页仍将 TAGE-SC、ITTAGE、RAS 的部分参数标为 TBD"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "取指主路径",
+      "items": [
+        "FTQ 以预测块为单位向 IFU 和 ICache 供给最多两个 fetch block",
+        "IFU F2 并行送入四个 PreDecode，F3 对最多 16 条指令做 32-bit 扩展",
+        "PredChecker 在 F3 检查 JAL、ret、非法预测和目标地址错误，再把修正范围写回 FTQ"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "ICache 与异常路径",
+      "items": [
+        "V3 ICache 使用 64KB、4-way、64B cache line，支持 FDIP、2-fetch 和 4 个 fetch MSHR",
+        "ITLB/PMP-PMA 提供翻译和取指权限检查；miss 通过 TileLink 请求 L2 并回填",
+        "MMIO 取指进入 Instruction Uncache，并等待 commit 后继续推进"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "公开资料",
+      "items": [
+        "XiangShan-Design-Doc · kunminghu-v3 · frontend/BPU、IFU、ICache",
+        "2025 RVSC：香山昆明湖 V3 前端架构总览",
+        "资料状态：BPU 与 ICache 文档仍在 draft；本图保留 TBD 与文档边界"
+      ]
+    }
+  ]
+}
+
