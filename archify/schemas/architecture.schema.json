@@ -79,10 +79,16 @@
         "required": ["id", "type", "label"],
         "properties": {
           "id": { "$ref": "common.schema.json#/$defs/id" },
-          "type": { "$ref": "common.schema.json#/$defs/componentType" },
+          "type": { "$ref": "#/$defs/architectureComponentType" },
           "label": { "type": "string", "minLength": 1 },
           "sublabel": { "type": "string" },
           "tag": { "type": "string" },
+          "architecture": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "vendor": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "cores": { "type": "integer", "minimum": 1 },
+          "threads": { "type": "integer", "minimum": 1 },
+          "cache": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "frequency": { "type": "string", "minLength": 1, "maxLength": 48 },
           "icon": { "$ref": "common.schema.json#/$defs/nodeIcon" },
           "brand": { "$ref": "common.schema.json#/$defs/brandMark" },
           "sources": { "$ref": "common.schema.json#/$defs/sourceReferences" },
@@ -148,5 +154,10 @@
       }
     },
     "cards": { "$ref": "common.schema.json#/$defs/cards" }
+  },
+  "$defs": {
+    "architectureComponentType": {
+      "enum": ["frontend", "backend", "database", "cloud", "security", "messagebus", "external", "processor"]
+    }
   }
 }

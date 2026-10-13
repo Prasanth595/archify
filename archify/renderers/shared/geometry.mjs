@@ -1768,7 +1768,8 @@ export const componentFill = {
   cloud: 'c-cloud',
   security: 'c-security',
   messagebus: 'c-messagebus',
-  external: 'c-external'
+  external: 'c-external',
+  processor: 'c-frontend'
 };
 
 export const componentText = {
@@ -1778,7 +1779,8 @@ export const componentText = {
   cloud: 't-cloud',
   security: 't-security',
   messagebus: 't-messagebus',
-  external: 't-external'
+  external: 't-external',
+  processor: 't-frontend'
 };
 
 export const arrowClassMap = {

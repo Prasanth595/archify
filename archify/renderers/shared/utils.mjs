@@ -42,6 +42,7 @@ const SIGIL_TONE = {
   decision: 'database',
   failure: 'security',
   messagebus: 'messagebus',
+  processor: 'frontend',
   external: 'external',
   neutral: 'external',
 };
@@ -67,6 +68,9 @@ const SIGIL_SHAPE = {
             <circle cx="5" cy="4.5" r="1" class="sigil-fill"/>
             <circle cx="10.5" cy="8" r="1" class="sigil-fill"/>
             <circle cx="7" cy="11.5" r="1" class="sigil-fill"/>`,
+  processor: `<rect x="3" y="3" width="10" height="10" rx="1.5"/>
+            <path d="M5.5 1.5v1.5M8 1.5v1.5M10.5 1.5v1.5M5.5 13v1.5M8 13v1.5M10.5 13v1.5M1.5 5.5H3M1.5 8H3M1.5 10.5H3M13 5.5h1.5M13 8h1.5M13 10.5h1.5"/>
+            <path d="M6 6h4v4H6z" class="sigil-fill"/>`,
   external: `<rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>`,
   start: `<circle cx="8" cy="8" r="5"/>
