@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "diagram_type": "hierarchy",
+  "meta": {
+    "title": "Payment Platform",
+    "subtitle": "Top-level capabilities decomposed by owned runtime",
+    "output": "examples/hierarchy-payment-platform.html",
+    "viewBox": [1040, 640],
+    "quality_profile": "showcase",
+    "allow_view_all": true
+  },
+  "root": "platform",
+  "nodes": [
+    { "id": "platform", "label": "Payment Platform", "description": "Owns authorization, settlement, and merchant operations.", "parent": null },
+    { "id": "orders", "label": "Orders", "description": "Cart-to-capture lifecycle across markets.", "parent": "platform" },
+    { "id": "checkout", "label": "Checkout", "parent": "orders" },
+    { "id": "refunds", "label": "Refunds", "parent": "orders" },
+    { "id": "payments", "label": "Payments", "parent": "platform" },
+    { "id": "auth", "label": "Authorizations", "parent": "payments" },
+    { "id": "settle", "label": "Settlement", "parent": "payments" },
+    { "id": "operations", "label": "Operations", "parent": "platform" },
+    { "id": "support", "label": "Merchant Support", "parent": "operations" },
+    { "id": "reporting", "label": "Reporting", "parent": "operations" }
+  ],
+  "default_expand": ["platform", "orders"]
+}
