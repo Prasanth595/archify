@@ -1482,6 +1482,7 @@ class PipeCdp {
 export function chromeVisualBrowserArgs(profileRoot, {
   env = process.env,
   getuid = typeof process.getuid === 'function' ? () => process.getuid() : null,
+  platform = process.platform,
 } = {}) {
   const args = [
     '--headless=new',
@@ -1505,6 +1506,7 @@ export function chromeVisualBrowserArgs(profileRoot, {
   const rootUser = typeof getuid === 'function' && getuid() === 0;
   const sandboxOptOut = env?.[CHROME_NO_SANDBOX_ENV] === '1';
   if (rootUser || sandboxOptOut) args.unshift('--no-sandbox');
+  if (platform === 'win32') args.unshift('--do-not-de-elevate', '--edge-skip-compat-layer-relaunch');
   return args;
 }
 

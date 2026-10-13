@@ -257,6 +257,19 @@ test('visual-check disables the Chrome sandbox only for root or an explicit envi
   assert.equal(root.includes('--no-sandbox'), true);
 });
 
+test('visual-check keeps the DevTools pipe with its Windows browser process', () => {
+  const profileRoot = path.join(tmp, 'chrome-profile');
+  const windows = chromeVisualBrowserArgs(profileRoot, { env: {}, getuid: () => 1001, platform: 'win32' });
+  const posix = chromeVisualBrowserArgs(profileRoot, { env: {}, getuid: () => 1001, platform: 'linux' });
+
+  assert.deepEqual(windows.slice(0, 3), [
+    '--do-not-de-elevate', '--edge-skip-compat-layer-relaunch', '--headless=new',
+  ]);
+  assert.equal(windows.includes('--remote-debugging-pipe'), true);
+  assert.equal(posix.includes('--do-not-de-elevate'), false);
+  assert.equal(posix.includes('--edge-skip-compat-layer-relaunch'), false);
+});
+
 test('visual-check converts a Chrome DevTools pipe reset and captured stderr into a structured failure', async () => {
   const input = artifact('chrome-pipe-reset.html');
   const child = fakeChromeChild();
