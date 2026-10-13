@@ -17467,6 +17467,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         }
       });
       panel.addEventListener(&#39;keydown&#39;, function (event) {
+        if (event.isComposing) return;
         if (event.key !== &#39;Escape&#39;) return;
         event.preventDefault();
         event.stopPropagation();
@@ -32527,6 +32528,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         }
       });
       panel.addEventListener(&#39;keydown&#39;, function (event) {
+        if (event.isComposing) return;
         if (event.key !== &#39;Escape&#39;) return;
         event.preventDefault();
         event.stopPropagation();

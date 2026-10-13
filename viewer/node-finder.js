@@ -242,6 +242,7 @@
         }
       });
       panel.addEventListener('keydown', function (event) {
+        if (event.isComposing) return;
         if (event.key !== 'Escape') return;
         event.preventDefault();
         event.stopPropagation();
