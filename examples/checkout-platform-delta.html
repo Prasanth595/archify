@@ -17442,6 +17442,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       closeBtn.addEventListener(&#39;click&#39;, function () { close(); });
       input.addEventListener(&#39;input&#39;, function () { render(input.value); });
       input.addEventListener(&#39;keydown&#39;, function (event) {
+        if (event.isComposing) return;
         var buttons = resultButtons();
         if (event.key === &#39;ArrowDown&#39; &amp;&amp; buttons.length) {
           event.preventDefault();
@@ -17486,6 +17487,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         count: items.length
       };
     })();
+
 
     /* ============================================================
        Node Outline — a rail index of the semantic nodes, grouped by their
@@ -32500,6 +32502,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       closeBtn.addEventListener(&#39;click&#39;, function () { close(); });
       input.addEventListener(&#39;input&#39;, function () { render(input.value); });
       input.addEventListener(&#39;keydown&#39;, function (event) {
+        if (event.isComposing) return;
         var buttons = resultButtons();
         if (event.key === &#39;ArrowDown&#39; &amp;&amp; buttons.length) {
           event.preventDefault();
@@ -32544,6 +32547,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         count: items.length
       };
     })();
+
 
     /* ============================================================
        Node Outline — a rail index of the semantic nodes, grouped by their
