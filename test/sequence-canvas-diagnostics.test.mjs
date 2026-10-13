@@ -589,3 +589,47 @@ test('the same blocker move stays offered with the legend hidden', (t) => {
     'without a legend band the moved blocker still clears its own diagnostic',
   );
 });
+
+test('the participant width repair steps past a floating-point-equal width', (t) => {
+  const spec = sequence({
+    participants: Array.from({ length: 12 }, (_, index) => `p${index}`),
+    viewBox: [2059, 480],
+    messages: [{ from: 'p0', to: 'p11', y: 200, label: 'ping' }],
+  });
+  const diagnostic = failure(t, spec, 'sequence/participants-exceed-canvas');
+  assert.equal(diagnostic.evidence.requiredViewBoxWidth, 2060);
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    ['set /meta/viewBox/0 to 2060'],
+    'a fractional column gap must not publish a width equal to the current one',
+  );
+  const repaired = JSON.parse(JSON.stringify(spec));
+  repaired.meta.viewBox[0] = 2060;
+  const codes = (JSON.parse(validate(t, repaired).stdout).diagnostics ?? []).map((entry) => entry.code);
+  assert.deepEqual(
+    codes,
+    ['composition/desktop-readability'],
+    'the bumped width clears its own diagnostic; the only remainder is the documented wide-canvas readability note',
+  );
+});
+
+test('the suggestion re-evaluates the spread row at the widened canvas', (t) => {
+  const spec = sequence({
+    participants: Array.from({ length: 31 }, (_, index) => `p${index}`),
+    viewBox: [4099, 480],
+    messages: [{ from: 'p0', to: 'p30', y: 200, label: 'ping' }],
+  });
+  const diagnostic = failure(t, spec, 'sequence/participants-exceed-canvas');
+  assert.deepEqual(
+    diagnostic.supportedFixes,
+    ['set /meta/viewBox/0 to 4102'],
+    'the offered width must clear the row the wider canvas produces, not just the current one',
+  );
+  const repaired = JSON.parse(JSON.stringify(spec));
+  repaired.meta.viewBox[0] = 4102;
+  const codes = (JSON.parse(validate(t, repaired).stdout).diagnostics ?? []).map((entry) => entry.code);
+  assert.ok(
+    !codes.includes('sequence/participants-exceed-canvas'),
+    'the offered width clears this diagnostic in one application',
+  );
+});

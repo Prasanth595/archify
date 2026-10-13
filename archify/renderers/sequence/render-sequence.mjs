@@ -1015,8 +1015,12 @@ function validateSequence() {
       }
     }
     const availableWidth = Math.max(0, viewBox[0] - 48 - labelBox.x);
-    if (labelBox.x + labelBox.width > viewBox[0] - 48) {
-      const requiredWidth = Math.ceil(labelBox.x + labelBox.width + 48);
+    const labelRight = labelBox.x + labelBox.width;
+    if (labelRight > viewBox[0] - 48) {
+      let requiredWidth = Math.ceil(labelRight + 48);
+      // Same predicate revalidation as the participant width repair: a
+      // rounding artifact must not offer a width that equals the current one.
+      if (labelRight > requiredWidth - 48) requiredWidth += 1;
       report(`Segment "${segment.label}" label (~${Math.round(labelBox.width)}px) exceeds the segment frame's available width (${availableWidth}px) — shorten the label or increase meta.viewBox[0] to at least ${requiredWidth}.`, {
         code: 'sequence/segment-label-overflow',
         subject: { diagramType: 'sequence', segment: segment.label ?? null, collection: 'segments', index: segmentIndex, path: `/segments/${segmentIndex}/label` },
@@ -1063,16 +1067,36 @@ function validateSequence() {
   }
 
   const lastParticipant = asArray(sequence.participants)[asArray(sequence.participants).length - 1];
-  if (lastParticipant && participants.get(lastParticipant.id).cx + layout.participantW / 2 > viewBox[0] - 40) {
-    const requiredWidth = Math.ceil(participants.get(lastParticipant.id).cx + layout.participantW / 2 + 40);
-    report(`Participants exceed viewBox width — set meta.viewBox[0] to at least ${requiredWidth} or remove a participant.`, {
-      code: 'sequence/participants-exceed-canvas',
-      subject: { diagramType: 'sequence', path: '/meta/viewBox/0' },
-      evidence: { viewBoxWidth: viewBox[0], requiredViewBoxWidth: requiredWidth, viewBoxAuthored: Boolean(sequence.meta?.viewBox), lastParticipant: lastParticipant.id, participantWidth: layout.participantW, participantCount, columnFit, rightMargin: 40 },
-      supportedFixes: sequence.meta?.viewBox
-        ? [`set /meta/viewBox/0 to ${requiredWidth}`]
-        : [`set /meta/viewBox to [${requiredWidth}, ${Math.max(MIN_AUTHORED_VIEWBOX, viewBox[1])}]`],
-    });
+  if (lastParticipant) {
+    const rowRight = participants.get(lastParticipant.id).cx + layout.participantW / 2;
+    if (rowRight > viewBox[0] - 40) {
+      let requiredWidth = Math.ceil(rowRight + 40);
+      // The check and the suggested width round separately, and raising the
+      // width also moves the last spread column: re-evaluate the same column
+      // geometry the layout uses at the candidate width and step the
+      // suggestion up until the row it would produce fits, so the advertised
+      // edit clears this diagnostic in one application.
+      if (columnFit === 'spread' && participantCount > 1) {
+        for (let step = 0; step < 64; step += 1) {
+          const candidate = spreadColumnGeometry(requiredWidth);
+          const candidateRight = candidate.margin + candidate.width / 2
+            + (participantCount - 1) * candidate.gap + candidate.width / 2;
+          if (candidateRight <= requiredWidth - 40) break;
+          requiredWidth += 1;
+        }
+      } else if (rowRight > requiredWidth - 40) {
+        // Fixed columns keep their x coordinates, so one step is enough.
+        requiredWidth += 1;
+      }
+      report(`Participants exceed viewBox width — set meta.viewBox[0] to at least ${requiredWidth} or remove a participant.`, {
+        code: 'sequence/participants-exceed-canvas',
+        subject: { diagramType: 'sequence', path: '/meta/viewBox/0' },
+        evidence: { viewBoxWidth: viewBox[0], requiredViewBoxWidth: requiredWidth, viewBoxAuthored: Boolean(sequence.meta?.viewBox), lastParticipant: lastParticipant.id, participantWidth: layout.participantW, participantCount, columnFit, rightMargin: 40 },
+        supportedFixes: sequence.meta?.viewBox
+          ? [`set /meta/viewBox/0 to ${requiredWidth}`]
+          : [`set /meta/viewBox to [${requiredWidth}, ${Math.max(MIN_AUTHORED_VIEWBOX, viewBox[1])}]`],
+      });
+    }
   }
 
   // Showcase must not silently drop the implicit legend because late content
