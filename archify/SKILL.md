@@ -14,7 +14,18 @@ Create an interactive diagram from typed JSON, or render Markdown using any HTML
 
 For Markdown documents or styled answers, read [Document presentation](references/document-presentation.md) for HTML design selection and rendering.
 
-Only when calling native document components, read [Document components](references/document-components.md) for supported presets and paragraph marks. Components use the same document renderer.
+Native document components can present a local relationship or sequence:
+
+| Component | What it presents |
+| --- | --- |
+| `regions` | Connected content across two grouped regions |
+| `converge` | Two paragraphs connect to one shared paragraph |
+| `branch` | Three main steps with a side branch from the second |
+| `lanes` | Four ordered steps alternate across two regions |
+| `decompose` | One paragraph expands into two explanations and four details |
+| `return` | Three short stages, a return path and a wait branch |
+
+When selecting one of these components, read [Document components](references/document-components.md) for placement marks and invocation. Components use the same document renderer; ordinary Markdown rendering does not require this reference.
 
 For standalone diagrams, use the typed JSON workflow below.
 

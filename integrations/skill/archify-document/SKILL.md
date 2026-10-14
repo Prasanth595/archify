@@ -46,7 +46,12 @@ observations, sources and explanations together; reviews follow authored events,
 differences and subsequent actions. Write that order into Markdown. Each family
 has static and dynamic variants and retains its existing figures.
 
-Only when calling native document components, read
+Available native components: `regions` connects two groups; `converge` joins two
+paragraphs to one; `branch` adds a side path to three steps; `lanes` alternates
+four steps across two regions; `decompose` expands one paragraph into two and
+four; `return` shows three short stages with return and wait paths.
+
+When selecting one of these components, read
 `references/document-components.md` in the Archify package containing the CLI.
 It lists presets and paragraph marks; components use the same document renderer.
 
