@@ -1,6 +1,12 @@
 (async () => {
   await document.fonts.ready;
   const recipes=JSON.parse(document.querySelector('#component-recipes').textContent);
+  const displayAnchors=new Map(),titleCounts=new Map();
+  for(const heading of document.querySelector('main').querySelectorAll('h1,h2,h3,h4,h5,h6')){
+    const title=heading.tagName==='H2'?heading.textContent.replace(/^\s*\[(g\w+):([a-z]+)\]\s*/,''):heading.textContent;
+    const slug=title.trim().toLowerCase().replace(/[^\p{L}\p{N}_\s-]/gu,'').replace(/\s/g,'-');
+    const count=titleCounts.get(slug)||0;titleCounts.set(slug,count+1);displayAnchors.set(heading,slug+(count?'-'+count:''));
+  }
   const report=document.querySelector('[data-document-diagnostics]');
   const notice=(body,message)=>{
     const note=document.createElement('aside');note.className='component-warning';note.textContent=message+'。本节保留原文。';body.prepend(note);
@@ -16,6 +22,9 @@
   for(const [index,chapter] of [...document.querySelectorAll('.chapter')].entries()){
     const heading=chapter.querySelector('h2'),body=chapter.querySelector('.chapter-body');if(!heading||!body)continue;
     const decl=heading.textContent.match(/^\s*\[(g\w+):([a-z]+)\]\s*/);if(!decl)continue;
+    // Keep existing section links when a presentation mark is added to its title.
+    const anchorId=displayAnchors.get(heading);
+    if(anchorId&&!document.getElementById(anchorId)){const anchor=document.createElement('span');anchor.id=anchorId;anchor.setAttribute('aria-hidden','true');heading.append(anchor);}
     const preset=recipes.find(recipe=>recipe.id===decl[2]);if(!preset){notice(body,'未支持这个组件');continue;}
     const marked=[...body.children].map(el=>({el,match:el.textContent.match(/^\s*\[(g\w+)\.(\d+)\.(\d+)\]\s*/)})).filter(item=>item.match);
     const assigned=new Map();let invalid=false;
@@ -25,7 +34,7 @@
     const template=document.querySelector('#recipe-'+preset.id);figure.append(template.content.cloneNode(true));const svg=figure.querySelector('svg');svg.setAttribute('role','group');
     svg.querySelectorAll('rect[fill="url(#grid)"]').forEach(el=>el.remove());
     // Every SVG instance owns its IDs, including markers and accessible labels.
-    const renamed=new Map();for(const el of svg.querySelectorAll('[id]')){const old=el.id,next=`component-${index}-${old}`;renamed.set(old,next);el.id=next;}
+    const renamed=new Map(),allocated=new Set();for(const el of svg.querySelectorAll('[id]')){const old=el.id,base=`component-${index}-${old}`;let next=base,suffix=1;while(document.getElementById(next)||allocated.has(next))next=base+'-'+suffix++;allocated.add(next);renamed.set(old,next);el.id=next;}
     for(const el of [svg,...svg.querySelectorAll('*')])for(const attr of [...el.attributes]){let value=attr.value;for(const [old,next] of renamed){value=value.replaceAll(`url(#${old})`,`url(#${next})`);if(['aria-labelledby','aria-describedby'].includes(attr.name))value=value.split(' ').map(token=>token===old?next:token).join(' ');if(value==='#'+old)value='#'+next;}if(value!==attr.value)el.setAttribute(attr.name,value);}
     let fits=true;
     for(const [id,paragraphs] of assigned){

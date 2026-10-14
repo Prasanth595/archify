@@ -52,10 +52,14 @@ test('component marks are opt-in, preserve paragraph boundaries and leave invali
   const load=async source=>{const result=await render(io,design,source);assert.equal(result.report.ok,true,JSON.stringify(result.report));return result;};
   await load('# Normal\n\n## Section\n\nAn ordinary paragraph stays ordinary.');
   assert.equal(await io.run(`document.querySelectorAll('.native-component,[hidden]:not(template [hidden])').length`),0);
-  const repeated='# Example\n\n## [g1:regions] One component\n\n[g1.1.1] First line\ncontinues here.\n\n[g1.1.1] Second paragraph.\n\n[g1.2.1] Another node.\n\n[g1.2.2] Last node.\n';
+  const repeated='# Example\n\n[Read this section](#one-component)\n\n## [g1:regions] One component\n\n[g1.1.1] First line\ncontinues here.\n\n[g1.1.1] Second paragraph.\n\n[g1.2.1] Another node.\n\n[g1.2.2] Last node.\n';
   await load(repeated);
   const paragraphs=await io.run(`({count:document.querySelectorAll('.native-component').length,copy:[...document.querySelector('.native-component [data-node-id="a"]').querySelectorAll('foreignObject p')].map(el=>el.textContent.replace(/\\s+/g,' ').trim())})`);
   assert.equal(paragraphs.count,1);assert.deepEqual(paragraphs.copy,['First line continues here.','Second paragraph.']);
+  assert.equal(await io.run('document.getElementById(document.querySelector(".hero a").getAttribute("href").slice(1)).closest(".chapter")===document.querySelector(".native-component").closest(".chapter")'),true);
+  const reserved=await io.run('"component-0-"+document.querySelector("#recipe-regions").content.querySelector("[id]").id');
+  await load(repeated.replace('# Example','# Example {#'+reserved+'}'));
+  assert.equal(await io.run('new Set([...document.querySelectorAll("[id]")].map(el=>el.id)).size===document.querySelectorAll("[id]").length'),true);
   for(const source of [
     '# Example\n\n## [g1:unknown] Unknown\n\n[g1.1.1] Keep this paragraph.',
     '# Example\n\n## [g1:regions] Missing positions\n\n[g1.1.1] Keep this paragraph.',
