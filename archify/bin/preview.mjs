@@ -111,15 +111,16 @@ function previewPage() {
 
       function render(state) {
         body.dataset.state = state.status;
+        // 首个事件可能已处于检查或失败状态；已验证产物的恢复不依赖当前构建状态。
+        if (state.lastVerified && state.revision !== lastRevision) {
+          lastRevision = state.revision;
+          artifact.src = '/artifact.html?revision=' + encodeURIComponent(state.revision) + '&sha=' + encodeURIComponent(state.lastVerified.sha256.slice(0, 12));
+          body.dataset.hasArtifact = 'true';
+        }
         if (state.status === 'verified') {
           status.textContent = 'Verified · rev ' + state.revision;
           failure.hidden = true;
           failure.open = false;
-          if (state.revision !== lastRevision) {
-            lastRevision = state.revision;
-            artifact.src = '/artifact.html?revision=' + encodeURIComponent(state.revision) + '&sha=' + encodeURIComponent(state.lastVerified.sha256.slice(0, 12));
-            body.dataset.hasArtifact = 'true';
-          }
         } else if (state.status === 'needs-fix') {
           status.textContent = 'Needs fix · ' + (state.revision ? 'showing rev ' + state.revision : 'no verified revision');
           diagnostic.textContent = 'Generation ' + state.generation + ' · ' + state.failure.stage + '\\n\\n' + state.failure.message;

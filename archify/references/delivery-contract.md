@@ -574,6 +574,11 @@ node bin/archify.mjs preview <type> <input>.json <output>.html --quality showcas
 
 Preview watches one explicit input on loopback, binds each stable digest to a private snapshot, and advances only after the existing verified delivery pipeline passes. Invalid, half-written, deleted, or superseded input leaves the previous verified revision on screen and on disk. Identical bytes do not rebuild or reload.
 
+刷新或重新打开预览页时，即使当前候选正在检查或需要修复，也会恢复服务仍持有的
+最后一个已验证版本，并继续显示当前状态与错误诊断。尚无已验证版本时保留等待
+画面；同一版本的状态更新不重载图，保留已有 Viewer 聚焦等交互状态，新的已验证
+版本才会替换画面。
+
 The preview runtime ships inside the zero-dependency Skill ZIP and must work without `node_modules`.
 
 Never start it by default. Do not use it for CI, unattended agents, remote sharing, or mobile use. `--no-open` is only for a user who will open the printed local URL or for loop testing. Stop it with Ctrl-C before handoff. The first Ctrl-C drains the active delivery without publishing it; a second Ctrl-C forces shutdown of both delivery processes and HTTP connections, including incomplete requests. Shutdown preserves the last verified artifact and removes only staging files whose ownership can be verified. If delivery is interrupted before its receipt reaches Preview, unconfirmed files and recovery material may remain in the private staging directory; shutdown does not recursively delete unknown contents. Server state, port, source path, diagnostics, error text, and reload tokens must never enter the generated artifact or any export.
