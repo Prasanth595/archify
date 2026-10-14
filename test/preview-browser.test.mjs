@@ -96,7 +96,13 @@ async function fixture(t, source, { paused = false } = {}) {
     };
   })()`);
   const state = status => waitFor(preview.state, value => value.status === status, `Server did not reach ${status}`);
-  const visibleState = status => waitFor(ui, value => value.state === status, `Preview did not show ${status}`);
+  const visibleState = status => {
+    const generation = preview.state().generation;
+    // 壳页初始就是 checking / generation 1；后续轮次必须等真正的 SSE 状态渲染。
+    return waitFor(ui, value => value.state === status
+      && (status !== 'checking' || value.status === `Checking · generation ${generation}`),
+    `Preview did not show ${status} for generation ${generation}`);
+  };
   const artifact = title => waitFor(ui, value => value.ready && value.title === title, `Preview did not load ${title}`);
   const rememberFocus = () => evaluate(`(() => {
     const frame = document.getElementById('artifact');
