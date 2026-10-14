@@ -1017,9 +1017,14 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
         <!-- Legend -->
 
-      </svg></template><script type="application/json" id="component-recipes">[{"id":"regions","title":"分区连接","type":"architecture","slots":{"1.1":"a","2.1":"b","2.2":"c"}},{"id":"converge","title":"两侧汇合","type":"architecture","slots":{"1.1":"a","1.2":"b","2.1":"c"}},{"id":"branch","title":"主线与分支","type":"workflow","slots":{"0.1":"a","0.2":"b","0.3":"c","1.2":"d"}},{"id":"lanes","title":"跨区域泳道","type":"workflow","slots":{"1.1":"a","2.2":"b","1.3":"c","2.4":"d"}},{"id":"decompose","title":"正文分解树","type":"tree","slots":{"0.1":"a","1.1":"b","1.2":"c","2.1":"d","2.2":"e","2.3":"f","2.4":"g"}},{"id":"return","title":"主线与回流","type":"lifecycle","compact":true,"slots":{"0.1":"a","0.2":"b","0.3":"c","1.2":"d"}}]</script><script>(() => {
+      </svg></template><script type="application/json" id="component-recipes">[{"id":"regions","title":"分区连接","type":"architecture","slots":{"1.1":"a","2.1":"b","2.2":"c"}},{"id":"converge","title":"两侧汇合","type":"architecture","slots":{"1.1":"a","1.2":"b","2.1":"c"}},{"id":"branch","title":"主线与分支","type":"workflow","slots":{"0.1":"a","0.2":"b","0.3":"c","1.2":"d"}},{"id":"lanes","title":"跨区域泳道","type":"workflow","slots":{"1.1":"a","2.2":"b","1.3":"c","2.4":"d"}},{"id":"decompose","title":"正文分解树","type":"tree","slots":{"0.1":"a","1.1":"b","1.2":"c","2.1":"d","2.2":"e","2.3":"f","2.4":"g"}},{"id":"return","title":"主线与回流","type":"lifecycle","compact":true,"slots":{"0.1":"a","0.2":"b","0.3":"c","1.2":"d"}}]</script><script type="application/json" data-document-diagnostics>[]</script><script>(async () => {
+  await document.fonts.ready;
   const recipes=JSON.parse(document.querySelector('#component-recipes').textContent);
-  const notice=(body,message)=>{const note=document.createElement('aside');note.className='component-warning';note.textContent=message+'。本节保留原文。';body.prepend(note);};
+  const report=document.querySelector('[data-document-diagnostics]');
+  const notice=(body,message)=>{
+    const note=document.createElement('aside');note.className='component-warning';note.textContent=message+'。本节保留原文。';body.prepend(note);
+    const rows=JSON.parse(report.textContent);rows.push({code:'document/component-fallback',severity:'warning',message:note.textContent,subject:{heading:body.closest('.chapter').querySelector('h2').textContent}});report.textContent=JSON.stringify(rows);
+  };
   const copy=(source,count)=>{
     const clone=source.cloneNode(true);
     for(const el of [clone,...clone.querySelectorAll('*')])for(const attr of [...el.attributes])if(attr.name==='id'||attr.name.startsWith('data-render-')||attr.name.startsWith('data-source-probe'))el.removeAttribute(attr.name);
@@ -1028,11 +1033,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     return clone;
   };
   for(const [index,chapter] of [...document.querySelectorAll('.chapter')].entries()){
-    const heading=chapter.querySelector('h2'),body=chapter.querySelector('.chapter-body'),decl=heading.textContent.match(/^\s*\[(g\w+):([a-z]+)\]\s*/);if(!decl)continue;
+    const heading=chapter.querySelector('h2'),body=chapter.querySelector('.chapter-body');if(!heading||!body)continue;
+    const decl=heading.textContent.match(/^\s*\[(g\w+):([a-z]+)\]\s*/);if(!decl)continue;
     const preset=recipes.find(recipe=>recipe.id===decl[2]);if(!preset){notice(body,'未支持这个组件');continue;}
     const marked=[...body.children].map(el=>({el,match:el.textContent.match(/^\s*\[(g\w+)\.(\d+)\.(\d+)\]\s*/)})).filter(item=>item.match);
     const assigned=new Map();let invalid=false;
-    for(const item of marked){const slot=item.match[2]+'.'+item.match[3];if(item.match[1]!==decl[1]||!preset.slots[slot]||item.el.tagName!=='P'){invalid=true;break;}const id=preset.slots[slot];if(!assigned.has(id))assigned.set(id,[]);assigned.get(id).push(copy(item.el,item.match[0].length));}
+    for(const item of marked){const slot=item.match[2]+'.'+item.match[3];if(item.match[1]!==decl[1]||!preset.slots[slot]||item.el.tagName!=='P'||item.el.querySelector('img,iframe,video,audio,object')){invalid=true;break;}const id=preset.slots[slot];if(!assigned.has(id))assigned.set(id,[]);assigned.get(id).push(copy(item.el,item.match[0].length));}
     if(invalid||Object.values(preset.slots).some(id=>!assigned.has(id))){notice(body,'组件位置不完整或标号无效');continue;}
     const figure=document.createElement('figure');figure.className='native-component';figure.dataset.nativePreset=preset.id;
     const template=document.querySelector('#recipe-'+preset.id);figure.append(template.content.cloneNode(true));const svg=figure.querySelector('svg');svg.setAttribute('role','group');
@@ -1053,7 +1059,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     svg.querySelectorAll('[data-tree-toggle],[data-tree-expand-all]').forEach(el=>el.remove());
     svg.style.maxWidth=svg.viewBox.baseVal.width+'px';svg.setAttribute('aria-label',heading.textContent.slice(decl[0].length));
     const target=marked[0]?.el;if(target)target.before(figure);else body.append(figure);
-    if([...svg.querySelectorAll('foreignObject')].some(el=>el.firstElementChild.scrollHeight>el.height.baseVal.value+1))fits=false;
+    if([...svg.querySelectorAll('foreignObject')].some(el=>el.firstElementChild.scrollHeight>el.height.baseVal.value+1||el.firstElementChild.scrollWidth>el.width.baseVal.value+1))fits=false;
     if(!fits){figure.remove();notice(body,'该预设的内容区域不足');continue;}
     marked.forEach(({el})=>el.hidden=true);
     const first=document.createTreeWalker(heading,NodeFilter.SHOW_TEXT).nextNode();if(first?.textContent.startsWith(decl[0])){const control=document.createElement('span');control.hidden=true;control.textContent=decl[0];first.textContent=first.textContent.slice(decl[0].length);first.before(control);}

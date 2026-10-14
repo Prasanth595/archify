@@ -16,8 +16,6 @@ const sticky = (re) => new RegExp(re.source, re.flags.replace(/[gy]/g, '') + 'y'
 const tryAt = (re, s, i) => { re.lastIndex = i; return re.exec(s); };
 const ENTITY = sticky(/&(#x[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/);
 const BACKTICKS = sticky(/\x60+/);
-const IMAGE = sticky(/!\[([^\]]*)\]\(([^)]*)\)/);
-const LINK = sticky(/\[([^\]]*)\](?:\(([^)]*)\)|\[([^\]]*)\])?/);
 const AUTOLINK = sticky(/<((?:https?|mailto):[^>\s]+)>/);
 const RAWHTML = sticky(/<\/?[a-zA-Z][^>]*>/);
 const ESCAPABLE = /[!-/:-@\[-\x60{-~]/;
@@ -26,19 +24,76 @@ const ENTITY_MAP = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u
 const decodeEntity = (m) => {
   if (m[1][0] === '#') {
     const code = m[1][1] === 'x' || m[1][1] === 'X' ? parseInt(m[1].slice(2), 16) : parseInt(m[1].slice(1), 10);
-    return Number.isFinite(code) ? String.fromCodePoint(code) : m[0];
+    return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(code) : '\ufffd';
   }
   return ENTITY_MAP[m[1]] !== undefined ? ENTITY_MAP[m[1]] : m[0];
 };
+
+function linkAt(src, at, refs, image = false) {
+  const begin = at + (image ? 1 : 0); if (src[begin] !== '[') return null;
+  let end = begin + 1, depth = 1;
+  for (; end < src.length; end++) {
+    if (src[end] === '\\') { end++; continue; }
+    if (src[end] === '[') depth++;
+    if (src[end] === ']' && --depth === 0) break;
+  }
+  if (depth) return null;
+  const label = src.slice(begin + 1, end); let target, title = '', finish = end + 1;
+  if (src[finish] === '(') {
+    let cursor = finish + 1, nested = 1, angle = false, quote = '';
+    for (; cursor < src.length; cursor++) {
+      const c = src[cursor]; if (c === '\\') { cursor++; continue; }
+      if (quote) { if (c === quote) quote = ''; continue; }
+      if (c === '<') angle = true; else if (c === '>') angle = false;
+      else if (!angle && (c === '"' || c === "'") && /\s/.test(src[cursor - 1])) quote = c;
+      else if (!angle && c === '(') nested++;
+      else if (!angle && c === ')' && --nested === 0) break;
+    }
+    if (nested) return null;
+    const raw = src.slice(finish + 1, cursor).trim();
+    const parts = /^(?:<([^<>]*)>|(\S*?))(?:\s+["']([\s\S]*)["'])?$/.exec(raw);
+    if (!parts) return null;
+    target = (parts[1] ?? parts[2]).replace(/\\([!-/:-@\[-`{-~])/g, '$1'); title = parts[3] || ''; finish = cursor + 1;
+  } else {
+    let key = label;
+    if (src[finish] === '[') { const close = src.indexOf(']', finish + 1); if (close < 0) return null; key = src.slice(finish + 1, close) || label; finish = close + 1; }
+    target = refs.get(key.replace(/\s+/g, ' ').trim().toLowerCase());
+    if (target === undefined) return null;
+  }
+  return {label,target,title,end:finish,labelAt:begin + 1};
+}
 
 // 强调与加粗是同一种写法的两个构造，标记长度不同。合成一个 emitter，各自声明。
 function emphasis(src, i, st, width, construct, tag) {
   const c = src[i];
   if (c !== '*' && c !== '_') return null;
-  const doubled = src.startsWith(c + c, i);
-  if (doubled !== (width === 2)) return null;
-  const marker = c.repeat(width);
-  const close = src.indexOf(marker, i + width);
+  const run = src.slice(i).match(c === '*' ? /^\*+/ : /^_+/)[0].length;
+  if (width === 1 ? run % 2 === 0 : run < 2) return null;
+  const flanks = (at, size) => {
+    const before = src[at - 1] || ' ', after = src[at + size] || ' ';
+    const space = value => /\s/.test(value), punct = value => /[\p{P}\p{S}]/u.test(value);
+    const left = !space(after) && (!punct(after) || space(before) || punct(before));
+    const right = !space(before) && (!punct(before) || space(after) || punct(after));
+    return { open: c === '_' ? left && (!right || punct(before)) : left, close: c === '_' ? right && (!left || punct(after)) : right };
+  };
+  if (!flanks(i, run).open) return null;
+  let close = -1, nested = 0;
+  for (let at = i + run; at < src.length; at++) {
+    if (src[at] === '\\') { at++; continue; }
+    if (src[at] === TICK) {
+      const ticks = src.slice(at).match(/^`+/)[0], end = src.indexOf(ticks, at + ticks.length);
+      if (end >= 0) at = end + ticks.length - 1;
+      continue;
+    }
+    if (src[at] !== c) continue;
+    const size = src.slice(at).match(c === '*' ? /^\*+/ : /^_+/)[0].length;
+    const flank = flanks(at, size);
+    if (size === run && flank.open && !flank.close) { nested++; at += size - 1; continue; }
+    if (size >= run && (width !== 1 || size % 2) && flank.close) {
+      if (nested) nested--; else { close = at + size - width; break; }
+    }
+    at += size - 1;
+  }
   if (close <= i + width) return null;
   st.flush();
   const before = st.shown;
@@ -76,43 +131,40 @@ const INLINES = [
     emit: (src, i, st) => {
       if (src[i] !== TICK) return null;
       const open = tryAt(BACKTICKS, src, i)[0];
-      const close = src.indexOf(open, i + open.length);
+      let close = -1;
+      const runs = /`+/g; runs.lastIndex = i + open.length;
+      for (let found; (found = runs.exec(src));) if (found[0].length === open.length) { close = found.index; break; }
       if (close === -1) return null;
       st.flush();
-      st.raw('codeSpan', i, close + open.length, close - i - open.length,
-        '<code>' + esc(src.slice(i + open.length, close)) + '</code>');
+      let content = src.slice(i + open.length, close).replace(/\n/g, ' ');
+      if (/^ .+ $/.test(content) && /[^ ]/.test(content)) content = content.slice(1, -1);
+      st.raw('codeSpan', i, close + open.length, content.length, '<code>' + esc(content) + '</code>');
       return close + open.length;
     },
   },
   {
     name: 'image', anchor: 'required', why: '括号写法不进渲染',
     emit: (src, i, st) => {
-      const m = tryAt(IMAGE, src, i);
+      if (src[i] !== '!') return null;
+      const m = linkAt(src, i, st.ctx.refs, true);
       if (!m) return null;
       st.flush();
-      st.note('image', i, i + m[0].length, 0);
-      st.out += '<img src="' + esc(m[2]) + '" alt="' + esc(m[1]) + '">';
-      return i + m[0].length;
+      st.note('image', i, m.end, 0);
+      st.out += '<img src="' + esc(m.target) + '" alt="' + esc(m.label) + '"' + (m.title ? ' title="' + esc(m.title) + '"' : '') + '>';
+      return m.end;
     },
   },
   {
     name: 'link', anchor: 'required', why: '四种写法渲染成同一个 a，目标还可能定义在文档别处',
     emit: (src, i, st) => {
-      const m = tryAt(LINK, src, i);
+      const m = linkAt(src, i, st.ctx.refs);
       if (!m) return null;
       st.flush();
-      // 四种写法：行内带目标、完整引用、折叠引用、短路引用。
-      // 后三种都要有对应的定义才算链接 —— 没有定义的 [abc] 就是一对方括号。
-      let target;
-      if (m[2] !== undefined) target = m[2];
-      else if (m[3] !== undefined) target = st.ctx.refs.get((m[3] || m[1]).toLowerCase());
-      else target = st.ctx.refs.get(m[1].toLowerCase());
-      if (target === undefined) return null;
       const before = st.shown;
-      const inner = st.nested(m[1], i + 1);
+      const inner = st.nested(m.label, m.labelAt);
       st.shown += st.ctx.lastLen;
-      st.wrap('link', before, i, i + m[0].length, st.ctx.lastLen, '<a href="' + esc(target) + '">' + inner + '</a>');
-      return i + m[0].length;
+      st.wrap('link', before, i, m.end, st.ctx.lastLen, '<a href="' + esc(m.target) + '"' + (m.title ? ' title="' + esc(m.title) + '"' : '') + '>' + inner + '</a>');
+      return m.end;
     },
   },
   {
@@ -152,7 +204,7 @@ const INLINES = [
       const back = src[i - 1] === '\\';
       const two = /\s\s$/.test(src.slice(0, i));
       if (!back && !two) return null;
-      st.buf = st.buf.replace(/\s+$/, '');
+      st.buf = back ? st.buf.slice(0, -1) : st.buf.replace(/[ \t]+$/, '');
       st.flush();
       st.note('hardBreak', i - (back ? 1 : 2), i + 1, 0);
       st.out += '<br>';
@@ -234,10 +286,12 @@ function splitRow(lineText) {
 // 单元格的文字和它的源范围取自同一次切分。
 function cellsOf(lineText, lineStart) {
   const out = [];
-  for (const [from, to] of splitRow(lineText)) {
+  const parts = splitRow(lineText);
+  if (parts.length > 1 && !lineText.slice(...parts[0]).trim()) parts.shift();
+  if (parts.length > 1 && !lineText.slice(...parts.at(-1)).trim()) parts.pop();
+  for (const [from, to] of parts) {
     const raw = lineText.slice(from, to);
     const text = raw.trim();
-    if (!text) continue;
     const lead = raw.length - raw.trimStart().length;
     out.push({ text, start: lineStart + from + lead, end: lineStart + from + lead + text.length });
   }
@@ -260,6 +314,41 @@ function makeIdentity(authored, construct, text, seen, counters) {
   counters.set(base, n);
   seen.set(id, true);
   return { id, authored: false };
+}
+
+const listMarker = line => /^( *)([-*+]|\d{1,9}[.)])([ \t]+)(.*)$/.exec(line);
+const nestedBlocks = (source, ctx) => compile(source, ctx.refs).html.replace(/\sdata-src="[^"]*"/g, '');
+
+function readList(ctx, start) {
+  const first = listMarker(ctx.lines[start]), indent = first[1].length;
+  const ordered = /^\d/.test(first[2]), delimiter = first[2].at(-1);
+  const items = []; let at = start, loose = false;
+  while (at < ctx.lines.length) {
+    const marker = listMarker(ctx.lines[at]);
+    if (!marker || marker[1].length !== indent || /^\d/.test(marker[2]) !== ordered || marker[2].at(-1) !== delimiter) break;
+    const padding = marker[1].length + marker[2].length + marker[3].length;
+    const body = [marker[4]]; at++;
+    while (at < ctx.lines.length) {
+      const line = ctx.lines[at], next = listMarker(line);
+      if (next && next[1].length <= indent) break;
+      if (!line.trim()) {
+        let following = at + 1; while (following < ctx.lines.length && !ctx.lines[following].trim()) following++;
+        const after = listMarker(ctx.lines[following] || '');
+        if (after && after[1].length === indent) { loose = true; at = following; break; }
+        if (following >= ctx.lines.length || (ctx.lines[following].match(/^ */)[0].length < padding && !(after && after[1].length > indent))) break;
+        loose = true; body.push(''); at++; continue;
+      }
+      const spaces = line.match(/^ */)[0].length;
+      if (spaces > indent) body.push(line.slice(Math.min(spaces, padding)));
+      else {
+        if (/^(#{1,6}(?:\s|$)|>|\s*(?:`{3,}|~{3,})|\s*<)/.test(line) || /^(?:\*\s*){3,}$|^(?:-\s*){3,}$|^(?:_\s*){3,}$/.test(line)) break;
+        body.push(line);
+      }
+      at++;
+    }
+    items.push(body.join('\n'));
+  }
+  return { at, items, loose, ordered, start: ordered ? parseInt(first[2], 10) : 1 };
 }
 
 // emit 返回消费到的下一行；lines 和 i 一起给，因为块级构造要看后面几行。
@@ -338,7 +427,7 @@ const BLOCKS = [
       const inner = [];
       while (i < ctx.lines.length && /^>\s?/.test(ctx.lines[i])) { inner.push(ctx.lines[i].replace(/^>\s?/, '')); i += 1; }
       ctx.block(undefined, 'blockQuote', inner.join(' '), ctx.span(from, i, from + 1), (n) => {
-        ctx.push('<blockquote data-src="' + esc(n) + '">' + inline(inner.join('\n'), ctx) + '</blockquote>');
+        ctx.push('<blockquote data-src="' + esc(n) + '">' + nestedBlocks(inner.join('\n'), ctx) + '</blockquote>');
       });
       return i;
     },
@@ -373,23 +462,17 @@ const BLOCKS = [
   },
   {
     name: 'listItem', anchor: 'required', why: '无序用哪个标记、有序用点还是括号，渲染结果里没有',
-    match: (lines, i) => (/^\s*([-*+]|\d+[.)])\s+/.test(lines[i]) ? { 0: lines[i] } : null),
+    match: (lines, i) => { const marker = listMarker(lines[i]); return marker && marker[1].length < 4 ? marker : null; },
     emit: (m, ctx, i) => {
       const from = i;
-      const ordered = /^\s*\d/.test(ctx.lines[i]);
-      // 起始号进渲染：从 3 起渲染成 <ol start="3">，从 1 起不带 start。两者不是同一样东西。
-      const start = ordered ? Number((ctx.lines[i].match(/^\s*(\d+)/) || [])[1]) : 1;
-      const items = [];
-      while (i < ctx.lines.length && /^\s*([-*+]|\d+[.)])\s+/.test(ctx.lines[i])) {
-        const marker = ctx.lines[i].match(/^(\s*)([-*+]|\d+[.)])\s+(.*)$/);
-        const sub = [];
-        i += 1;
-        while (i < ctx.lines.length && /^\s{2,}[-*+]\s+/.test(ctx.lines[i])) { sub.push(ctx.lines[i].replace(/^\s+[-*+]\s+/, '')); i += 1; }
-        items.push({ text: marker[3], sub });
-      }
+      const {at,items,loose,ordered,start} = readList(ctx, i); i = at;
       const tag = ordered ? 'ol' : 'ul';
-      ctx.block(undefined, 'listItem', items.map((x) => x.text).join(' '), ctx.span(from, i, from + 1), (n) => {
-        const li = items.map((x) => '<li>' + inline(x.text, ctx) + (x.sub.length ? '<ul>' + x.sub.map((s) => '<li>' + inline(s, ctx) + '</li>').join('') + '</ul>' : '') + '</li>').join('');
+      ctx.block(undefined, 'listItem', items.join(' '), ctx.span(from, i, from + 1), (n) => {
+        const li = items.map(text => {
+          let content = nestedBlocks(text, ctx);
+          if (!loose) content = content.replace(/^<p>([\s\S]*?)<\/p>/, '$1');
+          return '<li>' + content + '</li>';
+        }).join('');
         ctx.push('<' + tag + (ordered && start !== 1 ? ' start="' + start + '"' : '') + ' data-src="' + esc(n) + '">' + li + '</' + tag + '>');
       });
       return i;
@@ -430,7 +513,7 @@ const BLOCKS = [
   },
   {
     name: 'htmlBlock', anchor: 'optional', why: '原样输出',
-    match: (lines, i) => (/^\s*</.test(lines[i]) ? { 0: lines[i] } : null),
+    match: (lines, i) => (/^\s*<(?:\/?(?:address|article|aside|base|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|pre|script|section|source|style|summary|svg|table|tbody|td|tfoot|th|thead|title|tr|track|ul)\b|[!?])/i.test(lines[i]) ? { 0: lines[i] } : null),
     emit: (m, ctx, i) => {
       const from = i;
       const body = [];
@@ -451,7 +534,7 @@ const BLOCKS = [
         para.push(ctx.lines[i]); i += 1;
         if (i < ctx.lines.length && /^(=+|-+)\s*$/.test(ctx.lines[i].trim())) break;
       }
-      if (!para.length) return i + 1;
+      if (!para.length) { para.push(ctx.lines[i]); i++; }
       const base = ctx.at(from);
       ctx.block(undefined, 'paragraph', para.join(' '), ctx.span(from, i, from + 1), (n) => {
         ctx.push('<p data-src="' + esc(n) + '">' + inline(para.join('\n'), ctx, base) + '</p>');
@@ -478,14 +561,14 @@ export const TABLE = Object.fromEntries([
   ...DERIVED.map((row) => [row.name, row]),
 ]);;
 
-export function compile(source) {
+export function compile(source, referenceDefinitions = new Map()) {
   const original = String(source);
   const normalized = original.replace(/\r\n?/g, '\n');
   const lines = normalized.split('\n');
   const starts = [];
   { let at = 0; for (const line of lines) { starts.push(at); at += line.length + 1; } }
 
-  const refs = new Map();
+  const refs = new Map(referenceDefinitions);
   const seen = new Map();
   const counters = new Map();
   const map = {};
@@ -530,7 +613,8 @@ export function compile(source) {
   for (let n = 0; n < lines.length; n++) {
     const m = REF_DEF.exec(lines[n]);
     if (!m) continue;
-    refs.set(m[1].toLowerCase(), m[2]);
+    const key = m[1].replace(/\s+/g, ' ').trim().toLowerCase();
+    if (!refs.has(key)) refs.set(key, m[2]);
     ctx.note('refDef');
     untouchable.push({ construct: 'refDef', label: m[1], start: ctx.at(n), end: ctx.at(n) + lines[n].length });
   }

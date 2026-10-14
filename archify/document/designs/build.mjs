@@ -19,6 +19,13 @@ for (const design of designs) {
   const report = `<main class="report"><header class="hero"><div class="eyebrow">${design.label} / ${design.title}</div><h1>文档标题</h1><p class="lede">文档引言</p>${design.name === 'review' ? '<div class="review-cues" aria-hidden="true"><span>回顾结果</span><span>核对偏差</span><span>跟进改进</span></div>' : ''}</header>${design.rail ? '' : navigation}${chapters}</main>`;
   const body = design.rail ? `<div class="reading-layout"><aside class="rail"><div class="rail-label">IN THIS DOCUMENT</div>${navigation}</aside>${report}</div>` : report;
   const html = `<!doctype html>\n<html lang="zh" class="${design.name}" data-report="${design.name}" data-appearance="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${design.title}</title><script type="application/json" data-document-options>{"link_previews":false}</script><style>\n${css}\n</style></head><body><header class="toolbar"><div class="brand" role="img" aria-label="Archify">${mark}<span class="brand-label">DOCUMENT</span></div>${controls}</header>${body}<footer class="footer"><span>${design.label}</span><span>${design.name === 'review' ? '结果 · 差异 · 改进' : '观点 · 证据 · 下一步'}</span></footer><script>\n${js}\n</script><script>\n${resources}\n</script></body></html>\n`;
-  fs.writeFileSync(path.join(directory, design.name + '.html'), html);
+  const output = path.join(directory, design.name + '.html');
+  const normalized = html.replace(/\r\n/g, '\n').replace(/[ \t]+$/gm, '');
+  if (process.argv.includes('--check')) {
+    if (!fs.existsSync(output) || fs.readFileSync(output, 'utf8').replace(/\r\n/g, '\n') !== normalized) {
+      console.error(design.name + '.html is stale; run node archify/document/designs/build.mjs.');
+      process.exitCode = 1;
+    }
+  } else fs.writeFileSync(output, normalized);
 }
-console.log('Built decision.html, analysis.html and review.html.');
+if (!process.exitCode) console.log(process.argv.includes('--check') ? 'Document report HTML is current.' : 'Built decision.html, analysis.html and review.html.');

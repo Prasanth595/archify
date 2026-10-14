@@ -14,13 +14,13 @@ CSS, resources and scripts. Rendering needs a local Chrome installation;
 
 ## Designs and saved templates
 
-The default catalog contains decision, analysis and review, each with static
-and dynamic variants. Selection resolves an ID to an ordinary HTML file; there
+The catalog contains three static templates: decision, analysis and review.
+Selection resolves an ID to an ordinary HTML file; there
 is no family-specific dispatch inside the scanner or mapper.
 
 ```sh
 archify document templates --json
-archify document report.md report.html --template analysis/dynamic --json
+archify document report.md report.html --template analysis/static --json
 archify document report.md report.html --design-url https://example.test/page --json
 archify document scan https://example.test/page --save-template ./templates/new-design --json
 archify document report.md report.html --template-path ./templates/new-design --json
@@ -45,8 +45,7 @@ one root and --exclude-selector CSS to preserve regions inside it. These are
 structural inputs. The scanner does not infer navigation/footer roles from
 class names, nor classify Markdown prose as benefits, causes or actions.
 
-The three static layouts are in [designs](designs/README.md); their distinct
-interactive counterparts are in [dynamic designs](designs/dynamic/README.md).
+The three layouts are in [designs](designs/README.md).
 The packaged [Archify Skill](../SKILL.md) routes document requests to
 [Document presentation](../references/document-presentation.md), including
 optional native components through this same renderer.
@@ -102,12 +101,17 @@ HTML ────── scan.mjs ───── content places ──┘
 | `files.mjs` | Shared file input, browser lifecycle and atomic HTML output |
 | `tool.mjs` | Agent-neutral JSON arguments and structured render results |
 | `default.html` | Isolated browser origin for fetched HTML |
-| `../renderers/document/render-document.mjs` | File input, diagnostics and atomic output |
+| `../renderers/document/render-document.mjs` | CLI adapter to the shared file renderer |
 
-`templates/examples.mjs` generates development examples of the four legacy layouts.
-Its template catalog does not participate in the document CLI or select
-generic rendering rules. Compiler source-range helpers remain available for
-development tools; rendered pages do not receive annotation features.
+Compiler source ranges are available to development tools; rendered pages contain
+only the mapped content and the supplied HTML's own presentation.
+
+An HTML design may declare a JSON array in a script element with
+`type="application/json" data-document-diagnostics`. Its initialization code may
+append objects containing `code`, `severity` (`warning` or `error`) and `message`.
+Warnings are returned in `report.warnings`; errors prevent output replacement.
+The native component design uses warnings when it preserves ordinary paragraphs
+because a requested preset cannot fit or its marks are incomplete.
 
 [Report designs](designs/README.md) supplies three standalone HTML inputs for
 decision briefs, analysis notes and delivery reviews. Their native SVG figures
@@ -121,5 +125,6 @@ Markdown file plus an HTML design path and an output path.
 Run the affected checks from the repository root:
 
 ```sh
-npm run test:focus -- test/document-html-render.test.mjs test/document-templates.test.mjs test/document-tool.test.mjs test/document-report-designs.test.mjs test/document.test.mjs test/document-constructs.test.mjs
+npm run test:focus -- test/document-html-render.test.mjs test/document-templates.test.mjs test/document-tool.test.mjs test/document-report-designs.test.mjs test/document-components.test.mjs test/document-constructs.test.mjs
+npm --prefix archify run check:documents
 ```

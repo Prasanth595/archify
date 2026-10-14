@@ -219,6 +219,41 @@ test('HTML input renders through its own DOM in Chrome', async (t) => {
     assert.equal(thrown.report.unmet[0].code, 'document/runtime-error');
   });
 
+  await t.test('initialization cannot silently change a link destination or image while retaining its label', async () => {
+    for (const action of ['document.querySelector("main a").href="https://example.test/wrong"','document.querySelector("main img").alt="Wrong image"']) {
+      const result=await render(io,'<main><p>Old</p></main><script>'+action+'</script>','[Reference](https://example.test/source) ![Original image](data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E)');
+      assert.equal(result.html,null);assert.equal(result.report.unmet[0].code,'document/runtime-resource-changed');
+    }
+    const added=await render(io,'<main><p title="Old">Old</p></main><script>const p=document.querySelector("p");p.title="Computed hint";const img=document.createElement("img");img.src="data:image/svg+xml,%3Csvg/%3E";img.alt="Generated badge";p.append(img)</script>','[Reference](https://example.test/source)');
+    assert.equal(added.report.ok,true,JSON.stringify(added.report));
+  });
+
+  await t.test('an HTML design can return structured warnings and blocking diagnostics', async () => {
+    const make=(rows)=>'<main><p>Old</p></main><script type="application/json" data-document-diagnostics>'+JSON.stringify(rows)+'</script>';
+    const warning={code:'design/fallback',severity:'warning',message:'The design retained ordinary paragraphs.'};
+    const result=await render(io,make([warning]),'New');
+    assert.equal(result.report.ok,true);assert.deepEqual(result.report.warnings,[warning]);
+    const failure=await render(io,make([{...warning,severity:'error'}]),'New');
+    assert.equal(failure.html,null);assert.equal(failure.report.unmet[0].code,'design/fallback');
+    const invalid=await render(io,make({code:'bad'}),'New');
+    assert.equal(invalid.html,null);assert.equal(invalid.report.unmet[0].code,'document/design-diagnostics-invalid');
+  });
+
+  await t.test('Markdown heading links follow inherited HTML IDs, repeated titles and Unicode fragments', async () => {
+    const source='# Document\n\n[First](#release-notes) [Second](#release-notes-1) [中文](#%E8%BF%9B%E5%B1%95)\n\n## Release notes\n\nFirst.\n\n## Release notes\n\nSecond.\n\n## 进展\n\n正文。';
+    const result=await render(io,page('<main><header><h1>Old</h1><p>Old intro</p></header>'+panel('old1')+panel('old2')+'</main>'),source);
+    assert.equal(result.report.ok,true,JSON.stringify(result.report));
+    assert.deepEqual(await io.run('[...document.querySelectorAll("main header p a")].map(a=>document.getElementById(a.getAttribute("href").slice(1))?.textContent)'),['Release notes','Release notes','进展']);
+    assert.notEqual(await io.run('document.querySelectorAll("main header p a")[0].getAttribute("href")'),await io.run('document.querySelectorAll("main header p a")[1].getAttribute("href")'));
+  });
+
+  await t.test('explicit Markdown IDs cannot collide with preserved HTML controls', async () => {
+    const result=await render(io,'<button id="settings">Settings</button><main><h2>Old</h2><p>Old</p></main>','## Heading {#settings}\n\nBody');
+    assert.equal(result.html,null);assert.equal(result.report.unmet[0].code,'document/heading-id-conflict');
+    const reused=await render(io,'<main><h2 id="settings">Old</h2><p>Old</p></main>','## Heading {#settings}\n\nBody');
+    assert.equal(reused.report.ok,true);
+  });
+
   await t.test('distinct paragraph positions retain their own wrappers and styles', async () => {
     const design = '<main><header><h1>旧标题</h1><p class="lead">旧前言</p></header><div class="content"><p class="body">旧正文</p></div></main>';
     const result = await render(io, design, '# 新标题\n\n新前言\n\n新正文');

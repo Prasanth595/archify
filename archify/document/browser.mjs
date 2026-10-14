@@ -35,7 +35,7 @@ export async function documentBrowser(browser, designPath) {
       loaded = browser.cdp.waitFor('Page.loadEventFired', session); loaded.catch(() => {});
       await browser.cdp.send('Page.setDocumentContent', { frameId: frameTree.frame.id, html }, session);
       await loaded;
-      if (scripts) await run('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+      if (scripts) await run('document.fonts.ready.then(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))))');
     },
   };
 }

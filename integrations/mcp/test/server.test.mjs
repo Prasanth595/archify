@@ -28,7 +28,7 @@ test('a standard MCP client discovers and invokes the document renderer over std
       const tools = await client.listTools();
       assert.deepEqual(tools.tools.map(tool => tool.name), ['render_markdown','scan_html','list_document_templates']);
       const catalog = await client.callTool({name:'list_document_templates',arguments:{}});
-      assert.equal(catalog.structuredContent.templates.length,6);
+      assert.equal(catalog.structuredContent.templates.length,3);
       const capture = await client.callTool({name:'scan_html',arguments:{design_path:design,template_dir:path.join(directory,mode)}});
       assert.equal(capture.structuredContent.ok,true,JSON.stringify(capture));
       const result = await client.callTool({ name: 'render_markdown', arguments: { markdown: '# 标准工具调用\n\n正文。', template_path:path.join(directory,mode), output_path: output, design_options:{density:'compact'} } });

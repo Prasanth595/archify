@@ -49,7 +49,7 @@ test('component marks are opt-in, preserve paragraph boundaries and leave invali
   const browser=desktopBrowser(findChrome());t.after(()=>browser.close());
   const session=await browser.sessionPromise;await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false},session);
   const io=await documentBrowser(browser,fileURLToPath(designURL));
-  const load=async source=>{const result=await render(io,design,source);assert.equal(result.report.ok,true,JSON.stringify(result.report));return io;};
+  const load=async source=>{const result=await render(io,design,source);assert.equal(result.report.ok,true,JSON.stringify(result.report));return result;};
   await load('# Normal\n\n## Section\n\nAn ordinary paragraph stays ordinary.');
   assert.equal(await io.run(`document.querySelectorAll('.native-component,[hidden]:not(template [hidden])').length`),0);
   const repeated='# Example\n\n## [g1:regions] One component\n\n[g1.1.1] First line\ncontinues here.\n\n[g1.1.1] Second paragraph.\n\n[g1.2.1] Another node.\n\n[g1.2.2] Last node.\n';
@@ -60,9 +60,12 @@ test('component marks are opt-in, preserve paragraph boundaries and leave invali
     '# Example\n\n## [g1:unknown] Unknown\n\n[g1.1.1] Keep this paragraph.',
     '# Example\n\n## [g1:regions] Missing positions\n\n[g1.1.1] Keep this paragraph.',
     repeated.replace('[g1.2.2]','[g1.9.2]'),
-    repeated.replace('First line','A much longer paragraph. '.repeat(100))
+    repeated.replace('First line','A much longer paragraph. '.repeat(100)),
+    repeated.replace('First line','![Illustration](image.png)')
   ]){
-    await load(source);
+    const result=await load(source);
+    assert.equal(result.report.warnings.length,1);
+    assert.equal(result.report.warnings[0].code,'document/component-fallback');
     assert.equal(await io.run('document.querySelectorAll(".native-component").length'),0);
     assert.equal(await io.run('document.querySelectorAll(".component-warning").length'),1);
     assert.equal(await io.run('document.querySelectorAll(".chapter-body > p[hidden]").length'),0);

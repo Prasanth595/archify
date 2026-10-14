@@ -25,6 +25,15 @@ export const DOM = function () {
     for (const child of copy.querySelectorAll('script,style,[aria-hidden="true"]')) child.remove();
     return el.matches('pre') ? copy.textContent : copy.textContent.replace(/\s+/g, ' ').trim();
   };
+  const resourcesOf = (el) => {
+    const selector = 'a[href],img,audio,video,source,iframe,object,input[type="checkbox"],pre';
+    return [...(el.matches(selector) ? [el] : []), ...el.querySelectorAll(selector)].flatMap(node => {
+    const attrs = ['href','src','srcset','poster','data','alt','title'].filter(name => node.hasAttribute(name));
+    if (node.matches('input[type="checkbox"]')) return [{tag:'INPUT',checked:node.checked}];
+    if (node.matches('pre')) return [{tag:'PRE',text:textOf(node)}];
+    return attrs.length ? [{tag:node.tagName,...Object.fromEntries(attrs.map(name => [name,node.getAttribute(name)]))}] : [];
+    });
+  };
   const fail = (code, evidence = {}) => ({ ok: false, unmet: [{ code, ...evidence }] });
 
   const excluded = (el, root = document.body) => {
@@ -40,7 +49,7 @@ export const DOM = function () {
     return true;
   });
 
-  return { heading, pathOf, atPath, commonParent, levelOf, roleOf, textOf, fail, excluded, slotsIn };
+  return { heading, pathOf, atPath, commonParent, levelOf, roleOf, textOf, resourcesOf, fail, excluded, slotsIn };
 };
 
 export function inPage(fn, argument = null) {

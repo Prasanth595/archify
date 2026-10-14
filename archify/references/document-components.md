@@ -10,7 +10,7 @@ Use `render_markdown` with `design_path` pointing to the package's
 node /path/archify/bin/archify.mjs document report.md report.html --design /path/archify/document/designs/components/native.html --json
 ```
 
-These marks require HTML that implements them. The six report layouts remain
+These marks require HTML that implements them. The three report layouts remain
 ordinary Markdown designs; `native.html` is an additional HTML input.
 
 ```md
@@ -40,7 +40,8 @@ addresses append paragraphs in source order. Unmarked content stays in the
 document flow; bold, links and inline code are preserved.
 
 Position counts and capacity are fixed; keep `return` text short. Invalid,
-incomplete or oversized input retains readable source with a notice. Choose a
+incomplete or oversized input retains readable source with a notice and a
+`report.warnings` entry. Positions accept text paragraphs, not embedded media. Choose a
 suitable preset or keep prose; do not discard text to force a fit.
 
 [Complete Markdown example](../document/designs/examples/native-components.md).

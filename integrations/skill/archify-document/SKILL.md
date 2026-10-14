@@ -17,8 +17,7 @@ the checkout's absolute path. This skill does not install or configure agents.
 
 Choose one design source: `design_path` for local HTML, `design_url` for HTTP(S),
 `template_path` for a saved directory or manifest, or `template` for a built-in
-ID. IDs are decision/static, decision/dynamic, analysis/static, analysis/dynamic,
-review/static and review/dynamic. Unspecified requests use review/static.
+ID. IDs are decision/static, analysis/static and review/static. Unspecified requests use review/static.
 Choose the presentation requested by the user, not a role inferred from prose.
 
 Supply exactly one of `markdown` and `markdown_path`, and an `output_path`.
@@ -27,7 +26,7 @@ working directory. Any supplied HTML can provide the design. Rendering scans
 the current HTML before filling its content positions.
 
 ```json
-{"tool":"render_markdown","arguments":{"markdown_path":"/path/report.md","template":"analysis/dynamic","output_path":"/path/report.html"}}
+{"tool":"render_markdown","arguments":{"markdown_path":"/path/report.md","template":"analysis/static","output_path":"/path/report.html"}}
 ```
 
 The same envelope works with `node /checkout/archify/bin/document-tool.mjs request.json`.
@@ -36,15 +35,14 @@ Direct CLI examples:
 ```sh
 node /checkout/archify/bin/archify.mjs document templates --json
 node /checkout/archify/bin/archify.mjs document /path/report.md /path/report.html --design /path/design.html --json
-node /checkout/archify/bin/archify.mjs document /path/report.md /path/report.html --template analysis/dynamic --json
+node /checkout/archify/bin/archify.mjs document /path/report.md /path/report.html --template analysis/static --json
 ```
 
 ## Report families and components
 
 Decision briefs lead with a recommendation and its conditions; analysis keeps
 observations, sources and explanations together; reviews follow authored events,
-differences and subsequent actions. Write that order into Markdown. Each family
-has static and dynamic variants and retains its existing figures.
+differences and subsequent actions. Write that order into Markdown. Each template retains its existing figures.
 
 Available native components: `regions` connects two groups; `converge` joins two
 paragraphs to one; `branch` adds a side path to three steps; `lanes` alternates

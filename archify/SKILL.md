@@ -1,6 +1,6 @@
 ---
 name: archify
-description: "Create validated architecture, workflow, sequence, data-flow, lifecycle/state, entity-relationship, class/interface, tree, timeline and execution waterfall diagrams as explorable standalone HTML with SVG and export. Render Markdown using any supplied HTML design or six built-in report layouts, with optional native document components. Use when visualizing systems, code-backed architecture, everyday processes, reviews, analysis, decision briefs or styled Markdown answers. Accept natural language, Mermaid or typed diagram JSON. Document figures use supplied values; this is not a general dashboard builder."
+description: "Create validated architecture, workflow, sequence, data-flow, lifecycle/state, entity-relationship, class/interface, tree, timeline and execution waterfall diagrams as explorable standalone HTML with SVG and export. Render Markdown using any supplied HTML design or three built-in report layouts, with optional native document components. Use when visualizing systems, code-backed architecture, everyday processes, reviews, analysis, decision briefs or styled Markdown answers. Accept natural language, Mermaid or typed diagram JSON. Document figures use supplied values; this is not a general dashboard builder."
 license: MIT
 metadata:
   version: "3.0"

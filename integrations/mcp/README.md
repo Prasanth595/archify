@@ -39,7 +39,7 @@ initialization handshake. It does not require a Skill or a client-specific
 plugin. Setting `ARCHIFY_CHROME` in the launch environment selects an existing
 Chrome executable.
 
-Discover the six default layouts with list_document_templates. Rendering accepts
+Discover the three report layouts with list_document_templates. Rendering accepts
 one design source: design_path, design_url, template or template_path; omitted
 designs use review/static. Capturing a reusable template uses:
 

@@ -9,12 +9,12 @@ import { ChromeVisualBrowser, findChrome } from '../bin/visual-check.mjs';
 import { render } from './render.mjs';
 import { documentBrowser } from './browser.mjs';
 import { resolveDesign } from './templates.mjs';
-import { relocateHTML } from './html-source.mjs';
 
 const renderFixes = (code) => {
-  if (code === 'document/runtime-error' || code === 'document/runtime-content-changed')
+  if (code === 'document/runtime-error' || code === 'document/runtime-content-changed' || code === 'document/runtime-resource-changed')
     return ['repair the HTML initialization script so it reads and preserves the mapped content'];
   if (code === 'document/source-identity-duplicate') return ['give each explicit Markdown heading ID a unique value'];
+  if (code === 'document/heading-id-conflict') return ['choose an explicit heading ID that does not collide with preserved HTML controls'];
   if (code.includes('selector') || code === 'document/content-root-excluded' || code === 'document/unmapped-content-region')
     return ['select one content root with content_selector and preserve unrelated regions with exclude_selector'];
   return ['inspect the reported HTML positions and adjust the design containers or required inputs'];
@@ -26,8 +26,14 @@ export async function renderDocument(request) {
   const inputPath = request.inputPath ? path.resolve(request.inputPath) : null;
   let sourceText;
   try {
-    sourceText = request.markdown ?? fs.readFileSync(inputPath, 'utf8');
+    if (request.markdown !== undefined) sourceText = request.markdown;
+    else {
+      const bytes = fs.readFileSync(inputPath);
+      try { sourceText = new TextDecoder('utf-8', {fatal:true}).decode(bytes); }
+      catch { throwDiagnosticError('The document input is not valid UTF-8 text.', [{code:'document/source-encoding',message:'The document input is not valid UTF-8 text.',subject:{input:inputPath},supportedFixes:['save the draft as UTF-8 and retry']}]); }
+    }
   } catch (error) {
+    if (error.archifyDiagnostics) throw error;
     throwDiagnosticError('The document input could not be read.', [{
       code: 'document/input-unreadable',
       message: 'The document input could not be read.',
@@ -77,13 +83,21 @@ export async function renderDocument(request) {
   let page, report;
   const outputRequest = { requestedOutput: request.outputPath || undefined, defaultOutput: 'document.html', inputPaths: [inputPath, designPath, optionsPath, ...source.protectedInputs].filter(Boolean), inputDescription: 'the document input' };
   const { outputPath } = resolveOutputPath(outputRequest);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  const capture = captureAtomicOutput(outputPath, { requestedEntryPolicy: 'regular-or-absent' });
+  if (capture.status !== 'captured') {
+    throwDiagnosticError('Could not capture the document output safely.', [{
+      code: 'output/target-indeterminate', message: 'Could not capture the document output safely.',
+      subject: { output: outputPath }, evidence: { reason: capture.reason },
+      supportedFixes: ['choose a writable regular-file output destination and retry'],
+    }]);
+  }
   const browser = new ChromeVisualBrowser(findChrome());
   const abort = () => { void browser.close().catch(() => {}); };
   request.signal?.addEventListener('abort', abort, { once: true });
   try {
     const io = await documentBrowser(browser, designPath);
-    const design = source.relocateResources ? (await relocateHTML(io, source.html, source.sourceURL)).html : source.html;
-    const result = await render(io, design, sourceText, {
+    const result = await render(io, source.html, sourceText, {
       sourceURL: pathToFileURL(inputPath || path.join(process.cwd(), 'document.md')).href, designURL: source.sourceURL || pathToFileURL(designPath).href,
       title: request.title ?? (!request.designPath && !request.designURL && !request.template && !request.templatePath && inputPath ? path.basename(inputPath) : undefined),
       designOptions, contentSelector: source.contentSelector, excludeSelector: source.excludeSelector,
@@ -99,18 +113,6 @@ export async function renderDocument(request) {
   } finally {
     request.signal?.removeEventListener('abort', abort);
     await browser.close();
-  }
-
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  const capture = captureAtomicOutput(outputPath, { requestedEntryPolicy: 'regular-or-absent' });
-  if (capture.status !== 'captured') {
-    throwDiagnosticError('Could not capture the document output safely.', [{
-      code: 'output/target-indeterminate',
-      message: 'Could not capture the document output safely.',
-      subject: { output: outputPath },
-      evidence: { reason: capture.reason },
-      supportedFixes: ['choose a writable regular-file output destination and retry'],
-    }]);
   }
 
   request.signal?.throwIfAborted();

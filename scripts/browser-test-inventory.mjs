@@ -43,4 +43,5 @@ export const browserTestFiles = [
   'document-report-designs.test.mjs',
   'document-tool.test.mjs',
   'document-templates.test.mjs',
+  'document-components.test.mjs',
 ];

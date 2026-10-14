@@ -10,7 +10,7 @@ import {removeOwnedRegularFile} from '../renderers/shared/atomic-output.mjs';
 
 export const defaultTemplate='review/static';
 const families=[['decision','决策简报'],['analysis','分析札记'],['review','进展复盘']];
-export const templateCatalog=families.flatMap(([family,title])=>['static','dynamic'].map(variant=>({id:family+'/'+variant,title,variant,path:fileURLToPath(new URL('./designs/'+(variant==='dynamic'?'dynamic/':'')+family+'.html',import.meta.url))})));
+export const templateCatalog=families.map(([family,title])=>({id:family+'/static',title,variant:'static',path:fileURLToPath(new URL('./designs/'+family+'.html',import.meta.url))}));
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 
 export async function resolveDesign(request){

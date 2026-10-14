@@ -3,6 +3,7 @@ import { compile } from './compile.mjs';
 import { scan } from './scan.mjs';
 import { fill, verify } from './fill.mjs';
 import { plan } from './relation.mjs';
+import { relocateHTML } from './html-source.mjs';
 
 /** 标题划分内容范围，无标题的正文也保留。 */
 export function sectionsOf(blocks, level) {
@@ -23,7 +24,8 @@ export async function render(io, pageHtml, md, options = {}) {
   if (new Set(compiled.blocks.map((b) => b.id)).size !== compiled.blocks.length) {
     return { html: null, report: { ok: false, unmet: [{ code: 'document/source-identity-duplicate' }] }, sections: 0 };
   }
-  const place = await scan(io, pageHtml, { contentSelector: options.contentSelector, excludeSelector: options.excludeSelector });
+  const design = options.designURL ? (await relocateHTML(io, pageHtml, options.designURL)).html : pageHtml;
+  const place = await scan(io, design, { contentSelector: options.contentSelector, excludeSelector: options.excludeSelector });
   if (!place.ok) return { html: null, report: place, sections: 0 };
   const requirements = plan(compiled, place.actions);
   if (!requirements.ok) return { html: null, report: requirements, sections: 0 };
@@ -39,9 +41,19 @@ export async function render(io, pageHtml, md, options = {}) {
   if (!output.ok) return { html: null, report: output, sections: sections.length };
   await io.load(output.validationHtml, { scripts: true });
   const execution = await verify(io, { marker, expected: output.expected });
-  const unmet = [...execution.unmet, ...(io.errors ? await io.errors() : []).map((message) => ({ code: 'document/runtime-error', message }))];
+  const declarations = await io.run(`(() => {
+    try {
+      const entries = [...document.querySelectorAll('script[type="application/json"][data-document-diagnostics]')].flatMap(node => {
+        const rows = JSON.parse(node.textContent);
+        if (!Array.isArray(rows) || rows.some(row => !row || typeof row.code !== 'string' || typeof row.message !== 'string' || !['warning','error'].includes(row.severity))) throw Error('Invalid design diagnostics');
+        return rows;
+      });
+      return {entries};
+    } catch (error) { return {entries:[{code:'document/design-diagnostics-invalid',severity:'error',message:error.message}]}; }
+  })()`);
+  const unmet = [...execution.unmet, ...declarations.entries.filter(row => row.severity === 'error'), ...(io.errors ? await io.errors() : []).map((message) => ({ code: 'document/runtime-error', message }))];
   const report = { ok: unmet.length === 0, mode: output.mode, units: output.units, toc: output.toc,
     ...(options.designOptions === undefined ? {} : { designOptionsApplied: output.optionsApplied }),
-    requirements: requirements.rows, unmet };
+    requirements: requirements.rows, warnings: declarations.entries.filter(row => row.severity === 'warning'), unmet };
   return { html: report.ok ? output.html : null, report, sections: sections.length };
 }

@@ -1,7 +1,7 @@
 import { inPage } from './dom.mjs';
 
 function fillPage(dom, request) {
-  const { pathOf, atPath, commonParent, levelOf, roleOf, textOf, fail, slotsIn } = dom;
+  const { pathOf, atPath, commonParent, levelOf, roleOf, textOf, resourcesOf, fail, slotsIn } = dom;
   const { place, blocks, sections, introduction, marker, sourceURL, designURL } = request;
   const root = atPath(place.root);
   if (!root || root.outerHTML !== place.snapshot) return fail('document/design-changed');
@@ -13,6 +13,7 @@ function fillPage(dom, request) {
   const expected = [];
   const headings = [];
   const references = new Map();
+  const markdownTargets = new Map(), headingCounts = new Map();
   const freshId = (id) => {
     let value = id, n = 1;
     while (document.getElementById(value)) value = id + '-' + ++n;
@@ -23,7 +24,7 @@ function fillPage(dom, request) {
     const template = document.createElement('template'); template.innerHTML = b.html;
     const el = template.content.firstElementChild;
     if (!el) return null;
-    for (const node of [el, ...el.querySelectorAll('[data-src]')]) if (node.getAttribute('data-src') === b.id) node.removeAttribute('data-src');
+    for (const node of [el, ...el.querySelectorAll('[data-src]')]) node.removeAttribute('data-src');
     if (b.construct === 'table') for (const cell of el.querySelectorAll('[data-cell]')) cell.removeAttribute('data-cell');
     if (sourceURL) for (const node of [el, ...el.querySelectorAll('[href],[src]')]) for (const attr of ['href', 'src']) {
       const value = node.getAttribute(attr);
@@ -45,17 +46,21 @@ function fillPage(dom, request) {
     }
     const key = b.id;
     el.setAttribute(marker, key);
-    expected.push({ key, id: b.id, text: textOf(el) });
+    expected.push({ key, id: b.id, text: textOf(el), resources: resourcesOf(el) });
     if (levelOf(el)) {
       const oldId = reused?.id;
       if (b.headingId) el.id = b.headingId;
       if (!el.id) el.id = freshId(b.id);
+      const anchor = el.textContent.trim().toLowerCase().replace(/[^\p{L}\p{N}_\s-]/gu, '').replace(/\s/g, '-');
+      const count = headingCounts.get(anchor) || 0; headingCounts.set(anchor, count + 1);
+      markdownTargets.set(anchor + (count ? '-' + count : ''), el.id);
+      if (b.headingId) markdownTargets.set(b.headingId, el.id);
       if (oldId && oldId !== el.id) references.set(oldId, el.id);
       const inheritedHeading = headings.find((rec) => rec.el === prototype);
       const designLevel = inheritedHeading
         ? levelOf(prototype) === levelOf(el) ? inheritedHeading.designLevel : levelOf(el)
         : levelOf(prototype) || levelOf(el);
-      headings.push({ el, designLevel });
+      headings.push({ el, designLevel, authoredId: b.headingId });
     }
     return el;
   };
@@ -117,6 +122,12 @@ function fillPage(dom, request) {
     for (const unit of units.slice(sections.length)) unit.remove();
     fillBlocks(preamble, introduction?.blocks || [], root);
   }
+  for (const block of document.querySelectorAll('[' + marker + ']')) for (const a of block.querySelectorAll('a[href^="#"]')) {
+    const fragment = a.getAttribute('href').slice(1);
+    let target = markdownTargets.get(fragment);
+    if (!target) { try { target = markdownTargets.get(decodeURIComponent(fragment)); } catch {} }
+    if (target) a.setAttribute('href', '#' + target);
+  }
   for (const a of document.querySelectorAll('a[href^="#"]')) {
     const id = references.get(a.getAttribute('href').slice(1));
     if (id) a.setAttribute('href', '#' + id);
@@ -177,24 +188,36 @@ function fillPage(dom, request) {
     }
   }
   const byKey = new Map(expected.map((rec) => [rec.key, rec]));
-  for (const el of document.querySelectorAll('[' + marker + ']')) byKey.get(el.getAttribute(marker)).path = pathOf(el);
+  for (const el of document.querySelectorAll('[' + marker + ']')) {
+    const record = byKey.get(el.getAttribute(marker));
+    record.path = pathOf(el); record.resources = resourcesOf(el);
+  }
   const copy = document.documentElement.cloneNode(true);
   for (const el of copy.querySelectorAll('[' + marker + ']')) el.removeAttribute(marker);
   const placed = new Set(expected.map((rec) => rec.id));
   const missing = blocks.filter((b) => !placed.has(b.id)).map((b) => b.id);
-  return { ok: missing.length === 0, mode: place.mode, units: place.mode === 'flat' ? 1 : sections.length,
+  const ids = new Map(); for (const el of document.querySelectorAll('[id]')) ids.set(el.id, (ids.get(el.id) || 0) + 1);
+  const conflicts = headings.filter(rec => rec.authoredId && ids.get(rec.authoredId) > 1).map(rec => ({code:'document/heading-id-conflict',id:rec.authoredId}));
+  return { ok: missing.length === 0 && conflicts.length === 0, mode: place.mode, units: place.mode === 'flat' ? 1 : sections.length,
     toc: tocCount, optionsApplied, expected, html: '<!doctype html>\n' + copy.outerHTML,
     validationHtml: '<!doctype html>\n' + document.documentElement.outerHTML,
-    unmet: missing.map((id) => ({ code: 'document/source-not-placed', id })) };
+    unmet: [...missing.map((id) => ({ code: 'document/source-not-placed', id })), ...conflicts] };
 }
 
 function verifyPage(dom, request) {
-  const { textOf, atPath } = dom;
+  const { textOf, resourcesOf, atPath } = dom;
   const nodes = new Map([...document.querySelectorAll('[' + request.marker + ']')].map((el) => [el.getAttribute(request.marker), el]));
-  const unmet = request.expected.flatMap(({ key, id, text, path }) => {
+  const unmet = request.expected.flatMap(({ key, id, text, resources, path }) => {
     const node = nodes.get(key) || atPath(path);
     const actual = node ? textOf(node) : null;
-    return actual === text ? [] : [{ code: 'document/runtime-content-changed', id, expected: text.slice(0, 160), actual: actual?.slice(0, 160) ?? null }];
+    if (actual !== text) return [{ code: 'document/runtime-content-changed', id, expected: text.slice(0, 160), actual: actual?.slice(0, 160) ?? null }];
+    const actualResources = resourcesOf(node).map(value => JSON.stringify(value));
+    const preserved = resources.every(value => {
+      const index = actualResources.indexOf(JSON.stringify(value));
+      if (index < 0) return false;
+      actualResources.splice(index, 1); return true;
+    });
+    return preserved ? [] : [{code:'document/runtime-resource-changed',id}];
   });
   return { ok: unmet.length === 0, unmet };
 }

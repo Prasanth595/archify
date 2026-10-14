@@ -19,9 +19,8 @@ requested purpose and arrange the Markdown accordingly:
 | `analysis` | Follow an investigation, evidence and explanation | Keep observations beside their sources; group related objects or measurements; retain code and limitations where they are discussed |
 | `review` | Follow a retrospective, differences and subsequent work | Use the authored order of events or steps; state observations, changes and follow-up actions explicitly; supply dates when a time scale is intended |
 
-Each has `/static` and `/dynamic` variants. These are six ordinary HTML designs,
-not rules for interpreting arbitrary sentences. Use the variant requested by the
-user; `review/static` is the renderer's default when no design is selected.
+Their IDs are `decision/static`, `analysis/static` and `review/static`. These
+are ordinary HTML designs; `review/static` is the default when no design is selected.
 Existing numerical, date, list and text-structure figures remain available in
 these designs. Supply actual values and units for measurements.
 
@@ -43,7 +42,7 @@ HTML design by URL and saved HTML templates; use its advertised input schema.
 With shell access, call the same renderer from the selected Archify package:
 
 ```sh
-node /path/archify/bin/archify.mjs document report.md report.html --template analysis/dynamic --json
+node /path/archify/bin/archify.mjs document report.md report.html --template analysis/static --json
 node /path/archify/bin/archify.mjs document report.md report.html --design design.html --json
 ```
 

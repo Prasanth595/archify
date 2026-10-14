@@ -319,12 +319,12 @@ test('report HTML designs render new Markdown through the shared renderer', asyn
   });
 
   await t.test('flat unordered and nested ordered lists keep their source while zero ordinals remain zero', async () => {
-    const { io } = await load('review', '# 列表边界\n\n## 原文\n\n- 平行条目甲\n- 平行条目乙\n\n1. 第一组\n  - 子条目甲\n  - 子条目乙\n2. 第二组\n\n0. 核对\n1. 交接');
+    const { io } = await load('review', '# 列表边界\n\n## 原文\n\n- 平行条目甲\n- 平行条目乙\n\n1. 第一组\n  - 子条目甲\n  - 子条目乙\n2. 第二组\n\n0) 核对\n1) 交接');
     assert.equal(await io.run('document.querySelectorAll(".hierarchy-viz").length'), 0);
     assert.equal(await io.run('document.querySelectorAll(".sequence-viz").length'), 1);
     assert.deepEqual(await io.run('[...document.querySelectorAll(".step-number")].map(node=>node.textContent)'), ['0','1']);
     assert.deepEqual(await io.run('[...document.querySelectorAll("main ol")].map(list=>list.start)'), [1,0]);
-    assert.match(await io.run('document.querySelector("main ol").textContent'), /第一组子条目甲子条目乙第二组/);
+    assert.match(await io.run('document.querySelector("main ol").textContent.replace(/\\s+/g, "")'), /第一组子条目甲子条目乙第二组/);
   });
 
   await t.test('optional resource views stay bounded and load only selected links while retaining source', async t => {

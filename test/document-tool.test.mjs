@@ -23,6 +23,11 @@ test('document tool exposes the shared renderer without agent-specific inputs', 
   fs.writeFileSync(markdown, '# 文件正文\n\n新段落。');
   const base = { design_path: design, output_path: output };
 
+  await t.test('invalid UTF-8 is rejected before replacing output',async()=>{
+    const invalid=path.join(directory,'invalid.md');fs.writeFileSync(invalid,Buffer.from([0xc3,0x28]));fs.writeFileSync(output,'Preserved output');
+    const result=await callDocumentTool({...base,markdown_path:invalid});assert.equal(result.ok,false);assert.equal(result.diagnostics[0].code,'document/source-encoding');assert.equal(fs.readFileSync(output,'utf8'),'Preserved output');
+  });
+
   await t.test('inline Markdown returns the published file and its actual checksum', async () => {
     const result = await callDocumentTool({ ...base, markdown: '# 直接正文\n\n新段落。' });
     assert.equal(result.ok, true, JSON.stringify(result));

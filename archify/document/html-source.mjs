@@ -4,6 +4,16 @@ import {pathToFileURL} from 'node:url';
 import {throwDiagnosticError} from '../renderers/shared/diagnostics.mjs';
 
 const limit=8*1024*1024;
+function decodeHTML(bytes,type=''){
+  const signature=bytes.subarray(0,3).toString('hex');
+  const bom=signature==='efbbbf'?'utf-8':signature.startsWith('fffe')?'utf-16le':signature.startsWith('feff')?'utf-16be':undefined;
+  const header=/charset\s*=\s*["']?([^;"'\s]+)/i.exec(type)?.[1];
+  const prefix=bytes.subarray(0,1024).toString('latin1').replace(/<!--[\s\S]*?(?:-->|$)/g,'');
+  const meta=/<meta\b[^>]*\bcharset\s*=\s*["']?\s*([a-z0-9_-]+)/i.exec(prefix)?.[1];
+  const encoding=bom||header||meta||'utf-8';
+  try{return new TextDecoder(encoding,{fatal:true}).decode(bytes);}
+  catch{sourceError('document/html-encoding','The HTML encoding could not be decoded.',{encoding},'provide HTML with a supported, correctly declared character encoding');}
+}
 export function sourceError(code,message,evidence={},fix='check the HTML input and retry'){
   throwDiagnosticError(message,[{code,severity:'error',message,subject:{stage:'html-source'},evidence,supportedFixes:[fix]}]);
 }
@@ -39,7 +49,7 @@ export async function relocateHTML(io,html,sourceURL){
 
 export async function readHTML({designPath,designURL,signal}){
   signal?.throwIfAborted();
-  if(!designURL){const file=path.resolve(designPath);const bytes=fs.readFileSync(file);if(bytes.length>limit)sourceError('document/html-too-large','The HTML exceeds the 8 MiB capture limit.',{bytes:bytes.length});return {html:bytes.toString('utf8'),designPath:file,sourceURL:pathToFileURL(file).href,protectedInputs:[file]};}
+  if(!designURL){const file=path.resolve(designPath);const bytes=fs.readFileSync(file);if(bytes.length>limit)sourceError('document/html-too-large','The HTML exceeds the 8 MiB capture limit.',{bytes:bytes.length});return {html:decodeHTML(bytes),designPath:file,sourceURL:pathToFileURL(file).href,protectedInputs:[file]};}
   let url;try{url=new URL(designURL);}catch{sourceError('document/url-invalid','The design URL is invalid.',{url:designURL});}
   if(!['http:','https:'].includes(url.protocol)||url.username||url.password)sourceError('document/url-invalid','Use an HTTP(S) URL without embedded credentials.',{protocol:url.protocol});
   const controller=new AbortController(),abort=()=>controller.abort(signal.reason),timeout=setTimeout(()=>controller.abort(new Error('HTML fetch timed out')),30000);signal?.addEventListener('abort',abort,{once:true});
@@ -50,8 +60,7 @@ export async function readHTML({designPath,designURL,signal}){
     if(type&&!/^(text\/html|application\/xhtml\+xml)(?:\s*;|$)/i.test(type))sourceError('document/content-type','The URL did not return HTML.',{contentType:type});
     const chunks=[];let length=0;
     for await(const chunk of response.body){length+=chunk.length;if(length>limit){controller.abort();sourceError('document/html-too-large','The HTML exceeds the 8 MiB capture limit.',{bytes:length});}chunks.push(chunk);}
-    const encoding=/charset\s*=\s*["']?([^;"'\s]+)/i.exec(type)?.[1]||'utf-8';
-    const html=new TextDecoder(encoding,{fatal:true}).decode(Buffer.concat(chunks));
+    const html=decodeHTML(Buffer.concat(chunks),type);
     return {html,relocateResources:true,sourceURL:response.url,protectedInputs:[]};
   }finally{clearTimeout(timeout);signal?.removeEventListener('abort',abort);}
 }

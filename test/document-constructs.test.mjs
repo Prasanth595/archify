@@ -89,18 +89,37 @@ test('a table cell range survives an escaped pipe and a pipe inside code', () =>
   }
 });
 
-// 已知还不完整的地方。列在这里不是认可它们，是**记名**：
-// 谁被修好了，这条就会失败，提醒把名字划掉。
-const KNOWN_INCOMPLETE = [
-  ['nested blockquote', '> 外层\n> > 内层\n', () => Object.values(compile('> 外层\n> > 内层\n').map).filter((e) => e.construct === 'blockQuote').length === 1],
-  ['deeper list nesting', '- a\n  - b\n    - c\n', () => (compile('- a\n  - b\n    - c\n').html.match(/<li>/g) || []).length === 3],
-  ['nested emphasis', '*a **b** c*\n', () => compile('*a **b** c*\n').html.includes('<em>a </em>')],
-  ['intraword underscore', 'a_b_c\n', () => compile('a_b_c\n').html.includes('<em>')],
-  ['three asterisks', '***x***\n', () => compile('***x***\n').html.includes('<strong>*x</strong>')],
-];
+test('nested Markdown retains its block structure and inline meaning', () => {
+  // CommonMark block nesting and emphasis rules: https://spec.commonmark.org/0.31.2/
+  assert.match(compile('> 外层\n> > 内层\n').html, /<blockquote[^>]*><p>外层<\/p>\s*<blockquote><p>内层<\/p><\/blockquote><\/blockquote>/);
+  assert.match(compile('- a\n  - b\n    - c\n').html, /<li>a\s*<ul><li>b\s*<ul><li>c<\/li><\/ul><\/li><\/ul><\/li>/);
+  assert.match(compile('*a **b** c*\n').html, /<em>a <strong>b<\/strong> c<\/em>/);
+  assert.doesNotMatch(compile('a_b_c\n').html, /<em>/);
+  assert.match(compile('***x***\n').html, /<em><strong>x<\/strong><\/em>/);
+  assert.match(compile('*a *b* c*').html, /<em>a <em>b<\/em> c<\/em>/);
+});
 
-test('the constructs known to still be incomplete are exactly these', () => {
-  const stillWrong = KNOWN_INCOMPLETE.filter(([, , wrong]) => wrong()).map(([name]) => name);
-  assert.deepEqual(stillWrong, KNOWN_INCOMPLETE.map(([name]) => name),
-    '有构造被修好了，把它从 KNOWN_INCOMPLETE 里划掉');
+test('multiline list items keep continuations and mixed nested lists inside their item', () => {
+  const source='3. First line\n   continues with **detail**.\n\n   Second paragraph.\n\n   - Child\n     - Grandchild\n4. Last item\n\nOutside paragraph.';
+  const html=compile(source).html;
+  assert.match(html, /<ol start="3"[^>]*><li><p>First line continues with <strong>detail<\/strong>\.<\/p>\s*<p>Second paragraph\.<\/p>\s*<ul><li>Child\s*<ul><li>Grandchild<\/li><\/ul><\/li><\/ul><\/li><li><p>Last item<\/p><\/li><\/ol>/);
+  assert.match(html, /<\/ol>\s*<p[^>]*>Outside paragraph\.<\/p>/);
+  assert.match(compile('- One\n1. Two').html, /<\/ul>\s*<ol/);
+});
+
+test('empty table cells, invalid numeric entities and code delimiters preserve content', () => {
+  const html=compile('| A | B | C |\n| --- | --- | --- |\n| one | | three |\n| | two | |').html;
+  assert.match(html, /<td>one<\/td><td><\/td><td>three<\/td>/);
+  assert.match(html, /<td><\/td><td>two<\/td><td><\/td>/);
+  assert.match(compile('&#x110000; &#0;').html, /\ufffd \ufffd/);
+  assert.match(compile('`` `code` ``').html, /<code>`code`<\/code>/);
+  assert.match(compile('`a``b`').html, /<code>a``b<\/code>/);
+  assert.match(compile('first\\\nsecond').html, /first<br>second/);
+});
+
+test('linked images, balanced URL parentheses and link titles remain separate fields', () => {
+  assert.match(compile('[![badge](badge.svg)](https://example.test/project)').html, /<a href="https:\/\/example.test\/project"><img src="badge.svg" alt="badge"><\/a>/);
+  assert.match(compile('[page](https://example.test/a_(b) "Reference")').html, /href="https:\/\/example.test\/a_\(b\)" title="Reference">page<\/a>/);
+  assert.match(compile('![badge][icon]\n\n[icon]: badge.svg').html, /<img src="badge.svg" alt="badge">/);
+  assert.match(compile('<https://example.test/page>').html, /<a href="https:\/\/example.test\/page">https:\/\/example.test\/page<\/a>/);
 });
