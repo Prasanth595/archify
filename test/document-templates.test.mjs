@@ -80,6 +80,30 @@ test('HTML capture, saved templates and three report designs use the same render
     fs.writeFileSync(scoped,'<main><p>Preserved main</p><aside><div id="custom"><p>Old selected body</p></div></aside></main>');
     const selected=await callTool('render_markdown',{markdown:'Selected body',design_path:scoped,content_selector:'#custom',output_path:output});assert.equal(selected.ok,true,JSON.stringify(selected));const html=fs.readFileSync(output,'utf8');assert.ok(html.includes('Preserved main'));assert.ok(html.includes('Selected body'));assert.ok(!html.includes('Old selected body'));
   });
+  await t.test('initialization uses the delivered output URL and preserves output on missing runtime scripts',async()=>{
+    const designDirectory=path.join(directory,'runtime-design'),outputDirectory=path.join(directory,'runtime-output');
+    fs.mkdirSync(designDirectory);fs.mkdirSync(outputDirectory);
+    const design=path.join(designDirectory,'design.html'),artifact=path.join(outputDirectory,'artifact.html');
+    fs.writeFileSync(design,'<!doctype html><main><h1>Old title</h1><p>Old body</p></main><script>const script=document.createElement("script");script.src="./runtime.js";document.head.append(script);</script>');
+    fs.writeFileSync(path.join(designDirectory,'runtime.js'),'throw Error("Loaded from design directory");');
+    fs.writeFileSync(path.join(outputDirectory,'runtime.js'),'if(!location.pathname.endsWith("/artifact.html"))throw Error("Wrong artifact URL");document.body.dataset.runtime="output-directory";');
+    const rendered=await callTool('render_markdown',{markdown:'# New title\n\nNew body',design_path:design,output_path:artifact});
+    assert.equal(rendered.ok,true,JSON.stringify(rendered));
+    const browser=new ChromeVisualBrowser(findChrome());
+    try{
+      const io=await documentBrowser(browser,artifact);await io.load(fs.readFileSync(artifact,'utf8'),{scripts:true});
+      assert.equal(await io.run('document.body.dataset.runtime'),'output-directory');
+      assert.deepEqual(await io.errors(),[]);
+    }finally{await browser.close();}
+    const before=fs.readFileSync(artifact);
+    fs.unlinkSync(path.join(outputDirectory,'runtime.js'));
+    fs.writeFileSync(path.join(designDirectory,'runtime.js'),'window.ready=true;');
+    const failed=await callTool('render_markdown',{markdown:'# New title\n\nChanged body',design_path:design,output_path:artifact});
+    assert.equal(failed.ok,false);
+    assert.equal(failed.diagnostics[0].code,'document/runtime-error');
+    assert.match(JSON.stringify(failed.diagnostics),/runtime\.js/);
+    assert.deepEqual(fs.readFileSync(artifact),before);
+  });
   await t.test('fetch relocates assets and encoding while capture leaves scripts unexecuted',async()=>{
     let executed=0;const server=http.createServer((request,response)=>{
       if(request.url==='/executed'){executed++;response.end('ok');return;}

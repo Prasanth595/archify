@@ -2,12 +2,15 @@
 export function locateAt(entry, at) {
   let src = entry.textBase === undefined ? entry.start : entry.textBase;
   let ren = 0;
+  let consumedEnd = -1;
   for (const a of entry.inline || []) {
+    if (a.start < consumedEnd) continue;
     if (at < a.at) break;
     const gap = a.at - ren;
     src += gap; ren += gap;
     if (at < ren + a.len) return { src: a.start, end: a.end, inAnchor: a };
     src += a.end - a.start; ren += a.len;
+    consumedEnd = a.end;
   }
   return { src: src + (at - ren), end: src + (at - ren) + 1, inAnchor: null };
 }

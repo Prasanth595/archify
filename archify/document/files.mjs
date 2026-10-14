@@ -95,7 +95,7 @@ export async function renderDocument(request) {
   const abort = () => { void browser.close().catch(() => {}); };
   request.signal?.addEventListener('abort', abort, { once: true });
   try {
-    const io = await documentBrowser(browser, designPath);
+    const io = await documentBrowser(browser, outputPath);
     const result = await render(io, source.html, sourceText, {
       sourceURL: pathToFileURL(inputPath || path.join(process.cwd(), 'document.md')).href, designURL: source.sourceURL || pathToFileURL(designPath).href,
       title: request.title ?? (!request.designPath && !request.designURL && !request.template && !request.templatePath && inputPath ? path.basename(inputPath) : undefined),

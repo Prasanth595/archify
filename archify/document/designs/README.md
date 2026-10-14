@@ -3,7 +3,6 @@
 Three standalone HTML inputs for the document renderer. Each file includes its
 CSS, JavaScript and SVG drawing code; opening the rendered output requires no
 chart library, network request or asset directory.
-Optional linked-resource previews require those resources to remain available.
 
 | HTML input | Intended use | Reading structure |
 | --- | --- | --- |

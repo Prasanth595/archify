@@ -50,8 +50,37 @@ test('link definitions inside fenced examples do not affect surrounding prose',(
     assert.doesNotMatch(result.blocks.at(-1).html,/<a /);
     assert.deepEqual(result.refs,[]);
   }
-  const forward=compile('[x]\n\n```md\n[x]: https://example.test/wrong\n```\n\n[x]: https://example.test/right');
+  const forward=compile('[x]\n\n```md\n[x]: https://example.test/wrong\n```\n[x]: https://example.test/right');
   assert.match(forward.blocks[0].html,/<a href="https:\/\/example.test\/right">x<\/a>/);
+});
+
+test('reference links retain optional titles without displaying their definitions', () => {
+  for (const title of ['"Docs"', "'Docs'", '(Docs)']) {
+    const result = compile('[Guide][g]\n\n[g]: <https://example.test/guide> ' + title);
+    assert.match(result.html, /<a href="https:\/\/example.test\/guide" title="Docs">Guide<\/a>/);
+    assert.equal(result.blocks.length, 1);
+  }
+  assert.match(compile('[g]\n\n[g]: /first "First"\n[g]: /second "Second"').html, /href="\/first" title="First"/);
+  assert.match(compile('> [g]\n\n[g]: /guide "Docs"').html, /title="Docs"/);
+  assert.match(compile('[g]\n\n[g]: /guide "not closed').html, /\[g\]/);
+});
+
+test('ATX headings remove closing markers while retaining authored text and identity', () => {
+  for (const source of ['# Release notes #', '#\tRelease notes ###  ', '  #   Release notes ## {#release}']) {
+    const result = compile(source);
+    assert.match(result.html, />Release notes<\/h1>/);
+    if (source.includes('{#release}')) assert.equal(result.blocks[0].id, 'release');
+  }
+  assert.match(compile('# Release notes#').html, />Release notes#<\/h1>/);
+  assert.match(compile('# Release notes \\#').html, />Release notes #<\/h1>/);
+  assert.match(compile('#').html, /<h1[^>]*><\/h1>/);
+  assert.match(compile('####### Plain text').html, /<p[^>]*>####### Plain text<\/p>/);
+});
+
+test('numeric references use HTML replacement characters and retain code literals', () => {
+  assert.match(compile('&#128; &#x80; &#X80; &#147; &#148; &#129;').html, />€ € € “ ” \u0081<\/p>/);
+  assert.match(compile('&#0; &#xD800; &#x110000;').html, />\ufffd \ufffd \ufffd<\/p>/);
+  assert.match(compile('`&#128;`').html, /<code>&amp;#128;<\/code>/);
 });
 
 test('every block construct anchors the source range it came from', () => {

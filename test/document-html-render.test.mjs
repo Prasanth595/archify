@@ -55,6 +55,33 @@ test('source ranges retain original CRLF offsets', () => {
   }
 });
 
+test('table and heading inline ranges belong to their actual source blocks', () => {
+  for (const newline of ['\n', '\r\n']) {
+    const source = ['#   *Title*', '', '  **Section**', '=======', '', '| a | **b** |', '| - | - |', '| 1 | *c* |'].join(newline);
+    const compiled = compile(source);
+    const [heading, setext, table] = compiled.blocks;
+    for (const [block, expected] of [[heading, '*Title*'], [setext, '**Section**']]) {
+      const range = resolve(compiled.map, {src:block.id, at:0});
+      assert.equal(source.slice(range.start, range.end), expected);
+      assert.equal(compiled.map[block.id].inline.length, 1);
+    }
+    const anchors = compiled.map[table.id].inline;
+    assert.deepEqual(anchors.map(anchor => source.slice(anchor.start, anchor.end)), ['**b**', '*c*']);
+    for (const anchor of anchors) assert.ok(anchor.start >= table.start && anchor.end <= table.end);
+    const range = resolve(compiled.map, {src:table.id, cell:[0,1]});
+    assert.equal(source.slice(range.start, range.end), '**b**');
+  }
+});
+
+test('trailing text after nested inline constructs resolves to its source character', () => {
+  for (const [source, at] of [['[a*b*](u)c',2], ['*a **b** d*e',5], ['[**a**](u)[b*c*](v)d',3]]) {
+    const compiled = compile(source);
+    const range = resolve(compiled.map, {src:compiled.blocks[0].id, at});
+    assert.equal(source.slice(range.start, range.end), source.at(-1));
+    assert.equal(range.start, source.length - 1);
+  }
+});
+
 test('HTML input renders through its own DOM in Chrome', async (t) => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-html-render-'));
   const file = path.join(directory, 'design.html');

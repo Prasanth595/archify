@@ -277,7 +277,13 @@ test('report HTML designs render new Markdown through the shared renderer', asyn
     await browser.cdp.send('Input.dispatchKeyEvent', { type:'keyUp', key:'Escape', code:'Escape', windowsVirtualKeyCode:27 }, session);
     assert.equal(await io.run('document.querySelectorAll(".hierarchy-node.is-muted").length'), 0);
     assert.deepEqual(await io.run('document.querySelector(".hierarchy-viz ul").textContent'), sourceList);
+    const openSources = await io.run('[...document.querySelectorAll(".viz-source")].map(source=>source.open)');
+    await io.run('dispatchEvent(new Event("beforeprint"));dispatchEvent(new Event("beforeprint"))');
+    assert.equal(await io.run('[...document.querySelectorAll(".viz-source")].every(source=>source.open)'), true);
     await browser.cdp.send('Emulation.setEmulatedMedia', { media: 'print' }, session);
+    const printed = await browser.cdp.send('Page.printToPDF', {printBackground:true}, session);
+    assert.ok(Buffer.from(printed.data,'base64').length > 1000);
+    assert.deepEqual(await io.run('[...document.querySelectorAll(".viz-source")].map(source=>source.open)'), openSources);
     assert.ok(await io.run('document.querySelector(".sequence-viz ol").getBoundingClientRect().height > 0'), 'Print hides the original list');
     assert.equal(await io.run('getComputedStyle(document.querySelector(".hierarchy-viz .chart-controls")).display'), 'none');
     await browser.cdp.send('Emulation.setEmulatedMedia', { media: '' }, session);

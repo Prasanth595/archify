@@ -69,8 +69,10 @@ inputs and fills those positions. Existing positions retain their own wrappers
 and styles. Repeated chapter containers can be reused for additional chapters.
 No page names, class prefixes or component allowlists select mapping rules.
 
-The completed page is loaded separately with scripts enabled to check that its
-mapped content survives initialization. Runtime errors or changed content return
+The completed page is loaded at its eventual output URL with scripts enabled,
+before replacing the output file, to check that mapped content survives
+initialization. URLs created by scripts resolve as they will in the delivered
+page; their dependencies must be available there. Runtime errors, missing scripts or changed content return
 diagnostics and prevent output replacement. This check covers initialization,
 not every possible later interaction or timer. It checks text and resource
 preservation without requiring the design to retain the original DOM tags;

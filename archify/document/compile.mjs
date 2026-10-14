@@ -15,20 +15,35 @@ const TICK = '\x60';
 
 const sticky = (re) => new RegExp(re.source, re.flags.replace(/[gy]/g, '') + 'y');
 const tryAt = (re, s, i) => { re.lastIndex = i; return re.exec(s); };
-const ENTITY = sticky(/&(#x[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/);
+const ENTITY = sticky(/&(#(?:x|X)[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/);
 const BACKTICKS = sticky(/\x60+/);
 const AUTOLINK = sticky(/<((?:https?|mailto):[^>\s]+)>/);
 const EMAIL_AUTOLINK = sticky(/<([a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>/);
 const RAWHTML = sticky(/<\/?[a-zA-Z][^>]*>/);
 const ESCAPABLE = /[!-/:-@\[-\x60{-~]/;
+const numericReplacements = {
+  0x80:0x20ac, 0x82:0x201a, 0x83:0x192, 0x84:0x201e, 0x85:0x2026,
+  0x86:0x2020, 0x87:0x2021, 0x88:0x2c6, 0x89:0x2030, 0x8a:0x160,
+  0x8b:0x2039, 0x8c:0x152, 0x8e:0x17d, 0x91:0x2018, 0x92:0x2019,
+  0x93:0x201c, 0x94:0x201d, 0x95:0x2022, 0x96:0x2013, 0x97:0x2014,
+  0x98:0x2dc, 0x99:0x2122, 0x9a:0x161, 0x9b:0x203a, 0x9c:0x153,
+  0x9e:0x17e, 0x9f:0x178,
+};
 
 const decodeEntity = (m) => {
   if (m[1][0] === '#') {
     const code = m[1][1] === 'x' || m[1][1] === 'X' ? parseInt(m[1].slice(2), 16) : parseInt(m[1].slice(1), 10);
-    return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(code) : '\ufffd';
+    return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(numericReplacements[code] ?? code) : '\ufffd';
   }
   return Object.hasOwn(namedEntities,m[1]) ? namedEntities[m[1]] : m[0];
 };
+
+function linkTarget(raw) {
+  const parts = /^(?:<([^<>]*)>|(\S*?))(?:\s+(?:"((?:\\.|[^"\\])*)"|'((?:\\.|[^'\\])*)'|\(((?:\\.|[^)\\])*)\)))?$/.exec(raw.trim());
+  if (!parts) return null;
+  const unescape = value => value.replace(/\\([!-/:-@\[-`{-~])/g, '$1');
+  return { target: unescape(parts[1] ?? parts[2]), title: unescape(parts[3] ?? parts[4] ?? parts[5] ?? '') };
+}
 
 function linkAt(src, at, refs, image = false) {
   const begin = at + (image ? 1 : 0); if (src[begin] !== '[') return null;
@@ -52,14 +67,15 @@ function linkAt(src, at, refs, image = false) {
     }
     if (nested) return null;
     const raw = src.slice(finish + 1, cursor).trim();
-    const parts = /^(?:<([^<>]*)>|(\S*?))(?:\s+["']([\s\S]*)["'])?$/.exec(raw);
-    if (!parts) return null;
-    target = (parts[1] ?? parts[2]).replace(/\\([!-/:-@\[-`{-~])/g, '$1'); title = parts[3] || ''; finish = cursor + 1;
+    const parsed = linkTarget(raw);
+    if (!parsed) return null;
+    ({ target, title } = parsed); finish = cursor + 1;
   } else {
     let key = label;
     if (src[finish] === '[') { const close = src.indexOf(']', finish + 1); if (close < 0) return null; key = src.slice(finish + 1, close) || label; finish = close + 1; }
-    target = refs.get(key.replace(/\s+/g, ' ').trim().toLowerCase());
-    if (target === undefined) return null;
+    const definition = refs.get(key.replace(/\s+/g, ' ').trim().toLowerCase());
+    if (definition === undefined) return null;
+    ({ target, title } = typeof definition === 'string' ? { target: definition, title: '' } : definition);
   }
   return {label,target,title,end:finish,labelAt:begin + 1};
 }
@@ -356,12 +372,20 @@ function readList(ctx, start) {
 const BLOCKS = [
   {
     name: 'atxHeading', anchor: 'optional', why: '级别和文字都在渲染结果里',
-    match: (lines, i) => /^(#{1,6})\s+(.*?)(?:\s+\{#([^}\s]+)\})?\s*$/.exec(lines[i]),
+    match: (lines, i) => {
+      const prefix = /^ {0,3}(#{1,6})(?:[ \t]+|$)/.exec(lines[i]);
+      if (!prefix) return null;
+      let text = lines[i].slice(prefix[0].length).trimEnd();
+      const identity = /(?:^|[ \t]+)\{#([^}\s]+)\}$/.exec(text);
+      if (identity) text = text.slice(0, identity.index);
+      text = text.replace(/(?:^|[ \t]+)#+[ \t]*$/, '').trimEnd();
+      return { level: prefix[1].length, text, id: identity?.[1], offset: prefix[0].length };
+    },
     emit: (m, ctx, i) => {
-      const level = m[1].length;
-      const base = ctx.at(i) + m[1].length + 1;
-      ctx.block(m[3], 'atxHeading', m[2], ctx.span(i, i + 1, i + 1), (n) => {
-        ctx.push('<h' + level + ' data-src="' + esc(n) + '">' + inline(m[2], ctx, base) + '</h' + level + '>');
+      const level = m.level;
+      const base = ctx.at(i) + m.offset;
+      ctx.block(m.id, 'atxHeading', m.text, ctx.span(i, i + 1, i + 1), (n) => {
+        ctx.push('<h' + level + ' data-src="' + esc(n) + '">' + inline(m.text, ctx, base) + '</h' + level + '>');
         ctx.entry(n).textBase = base;
       });
       return i + 1;
@@ -414,8 +438,10 @@ const BLOCKS = [
     emit: (m, ctx, i) => {
       const level = m.underline[0] === '=' ? 1 : 2;
       const text = ctx.lines[i].trim();
+      const base = ctx.at(i) + ctx.lines[i].length - ctx.lines[i].trimStart().length;
       ctx.block(undefined, 'setextHeading', text, ctx.span(i, i + 2, i + 1), (n) => {
-        ctx.push('<h' + level + ' data-src="' + esc(n) + '">' + inline(text, ctx) + '</h' + level + '>');
+        ctx.push('<h' + level + ' data-src="' + esc(n) + '">' + inline(text, ctx, base) + '</h' + level + '>');
+        ctx.entry(n).textBase = base;
       });
       return i + 2;
     },
@@ -454,8 +480,8 @@ const BLOCKS = [
       const spans = [headLine, ...bodyLines].map((n) => cellsOf(ctx.lines[n], ctx.at(n)));
       ctx.block(undefined, 'table', head.join(' '), ctx.span(from, i, from + 1), (n) => {
         ctx.entry(n).cells = spans;
-        const th = head.map((c, k) => '<th' + (align[k] ? ' style="text-align:' + align[k] + '"' : '') + '>' + inline(c, ctx) + '</th>').join('');
-        const tr = body.map((r) => '<tr>' + r.map((c, k) => '<td' + (align[k] ? ' style="text-align:' + align[k] + '"' : '') + '>' + inline(c, ctx) + '</td>').join('') + '</tr>').join('');
+        const th = head.map((c, k) => '<th' + (align[k] ? ' style="text-align:' + align[k] + '"' : '') + '>' + inline(c, ctx, spans[0][k].start) + '</th>').join('');
+        const tr = body.map((r, row) => '<tr>' + r.map((c, k) => '<td' + (align[k] ? ' style="text-align:' + align[k] + '"' : '') + '>' + inline(c, ctx, spans[row + 1][k].start) + '</td>').join('') + '</tr>').join('');
         ctx.push('<table data-src="' + esc(n) + '"><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table>');
       });
       return i;
@@ -546,7 +572,13 @@ const BLOCKS = [
   },
 ];
 
-const REF_DEF = /^\[([^\]]+)\]:\s*(\S+)\s*$/;
+function referenceDefinition(line) {
+  const match = /^ {0,3}\[([^\]]+)\]:[ \t]*(.*)$/.exec(line);
+  if (!match || !match[1].trim()) return null;
+  const parsed = linkTarget(match[2]);
+  if (!parsed || (!parsed.target && !match[2].trimStart().startsWith('<>'))) return null;
+  return { label: match[1], ...parsed };
+}
 const ATTRIBUTE = /^\{#([A-Za-z][A-Za-z0-9_-]*)\}$/;
 
 // 有声明、但不是由某个 emitter 行产出的构造：纯文本走兜底，引用定义走单独一遍。
@@ -620,12 +652,12 @@ export function compile(source, referenceDefinitions = new Map()) {
       }
       continue;
     }
-    const m = REF_DEF.exec(lines[n]);
+    const m = referenceDefinition(lines[n]);
     if (!m) continue;
-    const key = m[1].replace(/\s+/g, ' ').trim().toLowerCase();
-    if (!refs.has(key)) refs.set(key, m[2]);
+    const key = m.label.replace(/\s+/g, ' ').trim().toLowerCase();
+    if (!refs.has(key)) refs.set(key, m.title ? { target: m.target, title: m.title } : m.target);
     ctx.note('refDef');
-    untouchable.push({ construct: 'refDef', label: m[1], start: ctx.at(n), end: ctx.at(n) + lines[n].length });
+    untouchable.push({ construct: 'refDef', label: m.label, start: ctx.at(n), end: ctx.at(n) + lines[n].length });
   }
 
   let i = 0;
@@ -641,7 +673,7 @@ export function compile(source, referenceDefinitions = new Map()) {
       i += 1; continue;
     }
     // 引用定义那一行已经被第一遍收走了，它不产出任何东西。
-    if (REF_DEF.test(text)) { i += 1; continue; }
+    if (referenceDefinition(lines[i])) { i += 1; continue; }
     let next = null;
     for (const row of BLOCKS) {
       const m = row.match(lines, i, ctx);

@@ -474,6 +474,16 @@
     for (const entry of entries) if (entry.isIntersecting) for (const link of links) link.setAttribute('aria-current', String(link.hash === '#' + entry.target.id));
   }, { rootMargin: '-10% 0px -60% 0px' });
   for (const heading of main.querySelectorAll('h2[id]')) observer.observe(heading);
+  let printSources = null;
+  window.addEventListener('beforeprint', () => {
+    if (printSources) return;
+    printSources = [...main.querySelectorAll('.viz-source')].map(source => [source, source.open]);
+    for (const [source] of printSources) source.open = true;
+  });
+  window.addEventListener('afterprint', () => {
+    for (const [source, open] of printSources || []) source.open = open;
+    printSources = null;
+  });
   document.querySelector('[data-action="appearance"]')?.addEventListener('click', () => { root.dataset.appearance = root.dataset.appearance === 'dark' ? 'light' : 'dark'; });
   document.querySelector('[data-action="print"]')?.addEventListener('click', () => window.print());
 })();
