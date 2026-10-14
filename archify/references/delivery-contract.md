@@ -574,6 +574,12 @@ node bin/archify.mjs preview <type> <input>.json <output>.html --quality showcas
 
 Preview watches one explicit input on loopback, binds each stable digest to a private snapshot, and advances only after the existing verified delivery pipeline passes. Invalid, half-written, deleted, or superseded input leaves the previous verified revision on screen and on disk. Identical bytes do not rebuild or reload.
 
+Refreshing or reopening Preview restores the session's last verified diagram even
+while the current candidate is checking or needs a fix, without hiding its current
+status or diagnostic. A session with no verified revision keeps the waiting view.
+Updates for the same revision preserve the loaded Viewer document and focus; only
+a newly verified revision replaces it.
+
 刷新或重新打开预览页时，即使当前候选正在检查或需要修复，也会恢复服务仍持有的
 最后一个已验证版本，并继续显示当前状态与错误诊断。尚无已验证版本时保留等待
 画面；同一版本的状态更新不重载图，保留已有 Viewer 聚焦等交互状态，新的已验证
