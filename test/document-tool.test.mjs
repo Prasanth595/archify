@@ -127,4 +127,29 @@ test('document tool exposes the shared renderer without agent-specific inputs', 
     assert.equal(JSON.parse(rendered.stdout).ok, true);
     assert.match(fs.readFileSync(output, 'utf8'), /JSON 正文/);
   });
+
+  await t.test('the public document CLI returns JSON diagnostics on failed rendering',()=>{
+    const cli=fileURLToPath(new URL('../archify/bin/archify.mjs',import.meta.url));
+    fs.writeFileSync(output,'Preserved output');
+    for(const html of [null,'<main><p>Old</p></main><script>throw Error("missing inputs")</script>']){
+      const selected=html===null?path.join(directory,'missing.html'):design;
+      if(html!==null)fs.writeFileSync(design,html);
+      const run=spawnSync(process.execPath,[cli,'document',markdown,output,'--design',selected,'--json'],{encoding:'utf8'});
+      assert.equal(run.status,1,run.stderr);const response=JSON.parse(run.stdout);assert.equal(response.ok,false);assert.ok(response.diagnostics.length);
+      assert.equal(fs.readFileSync(output,'utf8'),'Preserved output');
+    }
+    fs.writeFileSync(design,original);
+  });
+
+  await t.test('unavailable Chrome returns diagnostics without allocating profiles for rendering or scanning',()=>{
+    const profiles=path.join(directory,'profiles');fs.mkdirSync(profiles);
+    const env={...process.env,ARCHIFY_CHROME:path.join(directory,'missing-chrome'),TMPDIR:profiles,TMP:profiles,TEMP:profiles};
+    const entry=fileURLToPath(new URL('../archify/bin/document-tool.mjs',import.meta.url));
+    fs.writeFileSync(output,'Preserved output');
+    for(const request of [{tool:'render_markdown',arguments:{...base,markdown:'Body'}},{tool:'scan_html',arguments:{design_path:design}}]){
+      const run=spawnSync(process.execPath,[entry],{input:JSON.stringify(request),encoding:'utf8',env});
+      assert.equal(run.status,1,run.stderr);const response=JSON.parse(run.stdout);assert.equal(response.ok,false);assert.equal(response.diagnostics[0].code,'document/chrome-unavailable');
+      assert.deepEqual(fs.readdirSync(profiles),[]);assert.equal(fs.readFileSync(output,'utf8'),'Preserved output');
+    }
+  });
 });

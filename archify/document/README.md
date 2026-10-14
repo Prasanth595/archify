@@ -72,7 +72,9 @@ No page names, class prefixes or component allowlists select mapping rules.
 The completed page is loaded separately with scripts enabled to check that its
 mapped content survives initialization. Runtime errors or changed content return
 diagnostics and prevent output replacement. This check covers initialization,
-not every possible later interaction or timer. The saved HTML contains no added
+not every possible later interaction or timer. It checks text and resource
+preservation without requiring the design to retain the original DOM tags;
+the HTML owns how emphasis and relationships are presented. The saved HTML contains no added
 source payload, annotation interface or execution probes.
 
 Page controls continue to run the HTML's own code. Controls reading embedded

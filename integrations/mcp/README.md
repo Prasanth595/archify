@@ -76,16 +76,7 @@ design assets resolve from the HTML file's directory.
 `<script type="application/json" data-document-options>` entry. Option names and
 behavior belong to the design. Without a declared entry, the HTML is unchanged
 and `report.designOptionsApplied` is false; with one, supplied fields override
-its existing defaults. Report designs support this optional resource view:
-
-```json
-"design_options": { "link_previews": true }
-```
-
-It is off by default and lives in those templates, rather than the general
-renderer. See [report designs](../../archify/document/designs/README.md) for
-interactions and resource support. The regular document CLI accepts the same
-configuration from a file with `--design-options options.json`.
+its existing defaults. See the [document interface](../../archify/document/README.md) for custom design configuration.
 
 ## JSON command line
 

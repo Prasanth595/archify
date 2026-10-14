@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url';
 const directory = path.dirname(fileURLToPath(import.meta.url));
 const css = ['report.css', 'content-graphs.css', 'purpose-layouts.css'].map(name => fs.readFileSync(path.join(directory, name), 'utf8')).join('\n');
 const js = ['report.js', 'content-graphs.js'].map(name => fs.readFileSync(path.join(directory, name), 'utf8')).join('\n');
-const resources = fs.readFileSync(path.join(directory, 'resources.js'), 'utf8');
 const designs = [
   { name: 'decision', title: '决策简报', label: 'DECISION BRIEF', rail: false },
   { name: 'analysis', title: '分析札记', label: 'ANALYSIS NOTES', rail: true },
@@ -18,7 +17,7 @@ const chapters = '<div class="chapters">' + [1, 2, 3].map((n) => `<section class
 for (const design of designs) {
   const report = `<main class="report"><header class="hero"><div class="eyebrow">${design.label} / ${design.title}</div><h1>文档标题</h1><p class="lede">文档引言</p>${design.name === 'review' ? '<div class="review-cues" aria-hidden="true"><span>回顾结果</span><span>核对偏差</span><span>跟进改进</span></div>' : ''}</header>${design.rail ? '' : navigation}${chapters}</main>`;
   const body = design.rail ? `<div class="reading-layout"><aside class="rail"><div class="rail-label">IN THIS DOCUMENT</div>${navigation}</aside>${report}</div>` : report;
-  const html = `<!doctype html>\n<html lang="zh" class="${design.name}" data-report="${design.name}" data-appearance="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${design.title}</title><script type="application/json" data-document-options>{"link_previews":false}</script><style>\n${css}\n</style></head><body><header class="toolbar"><div class="brand" role="img" aria-label="Archify">${mark}<span class="brand-label">DOCUMENT</span></div>${controls}</header>${body}<footer class="footer"><span>${design.label}</span><span>${design.name === 'review' ? '结果 · 差异 · 改进' : '观点 · 证据 · 下一步'}</span></footer><script>\n${js}\n</script><script>\n${resources}\n</script></body></html>\n`;
+  const html = `<!doctype html>\n<html lang="zh" class="${design.name}" data-report="${design.name}" data-appearance="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${design.title}</title><style>\n${css}\n</style></head><body><header class="toolbar"><div class="brand" role="img" aria-label="Archify">${mark}<span class="brand-label">DOCUMENT</span></div>${controls}</header>${body}<footer class="footer"><span>${design.label}</span><span>${design.name === 'review' ? '结果 · 差异 · 改进' : '观点 · 证据 · 下一步'}</span></footer><script>\n${js}\n</script></body></html>\n`;
   const output = path.join(directory, design.name + '.html');
   const normalized = html.replace(/\r\n/g, '\n').replace(/[ \t]+$/gm, '');
   if (process.argv.includes('--check')) {

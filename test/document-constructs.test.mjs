@@ -32,6 +32,28 @@ const INLINE = [
   ['softBreak', '甲\n乙\n', '\n'],
 ];
 
+test('email autolinks and named entities retain their visible text and source ranges',()=>{
+  const email=compile('Contact <team@example.test>.');
+  assert.match(email.html,/<a href="mailto:team@example.test">team@example.test<\/a>/);
+  const source='&copy; &mdash; &NotEqualTilde; &unknownEntity;';
+  const result=compile(source);
+  assert.match(result.html,/© — ≂̸ &amp;unknownEntity;/);
+  const anchors=Object.values(result.map).flatMap(entry=>entry.inline||[]).filter(entry=>entry.construct==='entity');
+  assert.deepEqual(anchors.slice(0,3).map(entry=>entry.len),[1,1,2]);
+  assert.deepEqual(anchors.map(entry=>source.slice(entry.start,entry.end)),['&copy;','&mdash;','&NotEqualTilde;','&unknownEntity;']);
+});
+
+test('link definitions inside fenced examples do not affect surrounding prose',()=>{
+  for(const fence of ['```','~~~~']){
+    const result=compile(fence+'md\n[x]: https://example.test\n'+fence+'\n\n[x]');
+    assert.match(result.html,/<code[^>]*>\[x\]: https:\/\/example.test<\/code>/);
+    assert.doesNotMatch(result.blocks.at(-1).html,/<a /);
+    assert.deepEqual(result.refs,[]);
+  }
+  const forward=compile('[x]\n\n```md\n[x]: https://example.test/wrong\n```\n\n[x]: https://example.test/right');
+  assert.match(forward.blocks[0].html,/<a href="https:\/\/example.test\/right">x<\/a>/);
+});
+
 test('every block construct anchors the source range it came from', () => {
   for (const [name, source, good] of BLOCK) {
     const entry = Object.values(compile(source).map).find((e) => e.construct === name);

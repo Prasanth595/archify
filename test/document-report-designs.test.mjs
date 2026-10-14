@@ -327,58 +327,20 @@ test('report HTML designs render new Markdown through the shared renderer', asyn
     assert.match(await io.run('document.querySelector("main ol").textContent.replace(/\\s+/g, "")'), /第一组子条目甲子条目乙第二组/);
   });
 
-  await t.test('optional resource views stay bounded and load only selected links while retaining source', async t => {
-    const requests = [];
-    const server = http.createServer((request, response) => {
-      requests.push(request.url);
-      response.setHeader('Content-Type','text/html');
-      if (request.url === '/blocked') response.setHeader('X-Frame-Options','DENY');
-      response.end('<!doctype html><h1>Local preview fixture</h1>');
-    });
+  await t.test('source links remain ordinary clickable links without embedded views', async t => {
+    const requests=[];
+    const server=http.createServer((request,response)=>{requests.push(request.url);response.end('linked content');});
     await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
-    t.after(()=>new Promise(resolve=>{ server.close(resolve); server.closeAllConnections(); }));
-    const base = `http://127.0.0.1:${server.address().port}`;
-    const source = `# 资料\n\n## 来源\n\n[网页](${base}/web)\n\n[禁止内嵌的网页](${base}/blocked)\n\n[图标](../../../../docs/assets/archify-lockup-light.svg)\n\n[源文件](information.md)\n\n[邮件](mailto:example@example.test)`;
-    const options = { sourceURL: new URL('../archify/document/designs/examples/information.md',import.meta.url).href, designURL: designURL('review').href };
-    const disabled = await load('review', source, options);
-    const original = await disabled.io.run('document.querySelector("main").textContent');
-    const links = await disabled.io.run('[...document.querySelectorAll("main a")].map(link=>link.href)');
-    assert.equal(await disabled.io.run('document.querySelectorAll(".resource-link-button,.resource-preview").length'), 0);
-    const { io, result } = await load('review', source, { ...options, designOptions: { link_previews:true } });
-    assert.equal(result.report.designOptionsApplied, true);
-    assert.equal(await io.run('document.querySelectorAll(".resource-link-button").length'), 4);
-    assert.equal(await io.run('document.querySelectorAll("iframe,img").length'), 0);
-    assert.deepEqual(requests, []);
-    assert.equal(await io.run('document.querySelector("main").textContent'), original);
-    assert.deepEqual(await io.run('[...document.querySelectorAll("main a")].map(link=>link.href)'), links);
-    await io.run('document.querySelector(".resource-link-button").click()');
-    assert.equal(await io.run('document.querySelectorAll(".resource-preview").length'), 1);
-    assert.equal(await io.run('document.querySelector(".resource-preview").open'), true);
-    assert.equal(await io.run('document.querySelectorAll("iframe").length'), 0);
-    assert.deepEqual(requests, []);
-    await io.run(`new Promise(resolve=>{document.querySelector('.resource-load').click();document.querySelector('.resource-stage iframe').addEventListener('load',()=>resolve(true),{once:true});})`);
-    assert.ok(requests.includes('/web'));
-    assert.equal(await io.run('document.querySelector(".resource-stage iframe").getAttribute("sandbox")'), 'allow-scripts');
-    await io.run(`{const control=document.querySelector('.resource-picker select');control.value='1';control.dispatchEvent(new Event('change',{bubbles:true}));}`);
-    assert.equal(await io.run('document.querySelectorAll("iframe").length'), 0);
-    await io.run(`new Promise(resolve=>{document.querySelector('.resource-load').click();document.querySelector('.resource-stage iframe').addEventListener('load',()=>resolve(true),{once:true});})`);
-    assert.equal(await io.run('document.querySelector(".resource-open").href'), base + '/blocked');
-    assert.match(await io.run('document.querySelector(".resource-note").textContent'), /单独打开/);
-    await io.run(`new Promise((resolve,reject)=>{
-      const control=document.querySelector('.resource-picker select');control.value='2';control.dispatchEvent(new Event('change',{bubbles:true}));
-      const image=document.querySelector('.resource-stage img');if(image.complete&&image.naturalWidth)resolve(true);else{image.addEventListener('load',()=>resolve(true),{once:true});image.addEventListener('error',()=>reject(Error('Local image did not load')),{once:true});}
-    })`);
-    assert.ok(await io.run('document.querySelector(".resource-stage img").naturalWidth>0'));
-    assert.ok(await io.run('document.querySelector(".resource-preview").getBoundingClientRect().width<=440'));
-    await io.run(`{const control=document.querySelector('.resource-picker select');control.value='3';control.dispatchEvent(new Event('change',{bubbles:true}));}`);
-    assert.equal(await io.run('document.querySelectorAll(".resource-stage iframe,.resource-stage img").length'), 0);
-    assert.match(await io.run('document.querySelector(".resource-card").textContent'), /单独打开/);
-    await browser.cdp.send('Emulation.setEmulatedMedia', { media:'print' },session);
-    assert.equal(await io.run('getComputedStyle(document.querySelector(".resource-preview")).display'), 'none');
-    await browser.cdp.send('Emulation.setEmulatedMedia', { media:'' },session);
-    await io.run('document.querySelector(".resource-close").click()');
-    assert.equal(await io.run('document.querySelector(".resource-preview").open'), false);
-    assert.equal(await io.run('document.querySelector("main").textContent'), original);
+    t.after(()=>new Promise(resolve=>{server.close(resolve);server.closeAllConnections();}));
+    const base='http://127.0.0.1:'+server.address().port;
+    const source='# 资料\n\n## 来源\n\n[网页]('+base+'/web)\n\n[文件](information.md)\n\n[图片链接]('+base+'/photo.png)';
+    const options={sourceURL:new URL('../archify/document/designs/examples/information.md',import.meta.url).href,designOptions:{link_previews:true}};
+    for(const family of ['decision','analysis','review']){
+      const {io}=await load(family,source,{...options,designURL:designURL(family).href});
+      assert.deepEqual(await io.run('[...document.querySelectorAll(".chapter-body p a")].map(link=>[link.textContent,link.href])'),[['网页',base+'/web'],['文件',new URL('information.md',options.sourceURL).href],['图片链接',base+'/photo.png']]);
+      assert.equal(await io.run('document.querySelectorAll(".chapter-body p button,iframe").length'),0);
+    }
+    assert.deepEqual(requests,[]);
   });
 
   await t.test('multiple evidence tables in the lead chapter remain separate and readable', async () => {

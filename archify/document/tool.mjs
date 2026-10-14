@@ -18,7 +18,7 @@ export const documentTool = {
       content_selector: { type:'string', minLength:1, description:'Optional CSS selector naming exactly one content root. This selects structure, not prose meaning.' },
       output_path: { type: 'string', minLength: 1, description: 'HTML output path. Existing regular output may be replaced after successful rendering.' },
       title: { type: 'string', description: 'Fallback browser title when Markdown has no H1.' },
-      design_options: { type: 'object', additionalProperties: true, description: 'Optional JSON configuration for designs declaring a data-document-options entry. Option names and behavior belong to that HTML design. Report designs support link_previews: true. Other HTML files remain unchanged.' },
+      design_options: { type: 'object', additionalProperties: true, description: 'Optional JSON configuration for designs declaring a data-document-options entry. Option names and behavior belong to that HTML design.' },
     },
     required: ['output_path'],
     oneOf: [{ required: ['markdown'] }, { required: ['markdown_path'] }],

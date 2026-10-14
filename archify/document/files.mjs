@@ -5,9 +5,8 @@ import { randomUUID, createHash } from 'node:crypto';
 import { throwDiagnosticError } from '../renderers/shared/diagnostics.mjs';
 import { resolveOutputPath } from '../renderers/shared/output-path.mjs';
 import { captureAtomicOutput, captureRegularFileBinding, publishRegularFileBinding, releaseRegularFileBinding, removeOwnedRegularFile } from '../renderers/shared/atomic-output.mjs';
-import { ChromeVisualBrowser, findChrome } from '../bin/visual-check.mjs';
 import { render } from './render.mjs';
-import { documentBrowser } from './browser.mjs';
+import { documentBrowser, createDocumentBrowser } from './browser.mjs';
 import { resolveDesign } from './templates.mjs';
 
 const renderFixes = (code) => {
@@ -92,7 +91,7 @@ export async function renderDocument(request) {
       supportedFixes: ['choose a writable regular-file output destination and retry'],
     }]);
   }
-  const browser = new ChromeVisualBrowser(findChrome());
+  const browser = createDocumentBrowser();
   const abort = () => { void browser.close().catch(() => {}); };
   request.signal?.addEventListener('abort', abort, { once: true });
   try {

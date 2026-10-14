@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh" class="review" data-report="review" data-appearance="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>进展复盘</title><script type="application/json" data-document-options>{"link_previews":false}</script><style>
+<html lang="zh" class="review" data-report="review" data-appearance="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>进展复盘</title><style>
 :root{color-scheme:light;--paper:#f4f1e9;--surface:#fffdf8;--ink:#202923;--muted:#6c7168;--line:#deddd3;--accent:#b7472b;--soft:#f4e8db;--plot:#ebe5d8;--hero:#23372f;--sans:Inter,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--serif:Georgia,"Noto Serif SC","Songti SC",SimSun,serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 var(--sans)}button,a{-webkit-tap-highlight-color:transparent}a{color:var(--accent);text-underline-offset:4px}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}::selection{background:var(--soft)}
 .toolbar{height:68px;max-width:1320px;margin:auto;padding:0 36px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2px}.brand svg{width:120px;height:34px;color:var(--ink)}.brand-label{padding-left:12px;border-left:1px solid var(--line);font-size:9px;letter-spacing:1.5px;color:var(--muted)}.tools{display:flex;gap:10px}.tool{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:transparent;display:grid;place-items:center}.tool svg{width:17px;height:17px}.tool:hover{background:var(--soft)}.tool-label{font-size:12px;color:var(--muted);margin-right:6px}
@@ -16,9 +16,7 @@
 .comparison-figure{grid-column:1/-1}.comparison-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin:2px 0 8px;font-size:12px;color:var(--muted)}.comparison-key span{display:flex;align-items:center;gap:8px}.comparison-key span:before{content:"";width:9px;height:9px;border-radius:50%;border:2px solid var(--muted);background:var(--surface);flex-shrink:0}.comparison-key .comparison-key-1:before{background:var(--accent);border-color:var(--accent)}.chart-note{font-size:10px;color:var(--muted);margin:0 0 12px}.comparison-link{stroke:var(--plot);stroke-width:5;stroke-linecap:round}.comparison-first{fill:var(--surface);stroke:var(--muted);stroke-width:2}.comparison-second{fill:var(--accent);stroke:var(--surface);stroke-width:1.5}.comparison-delta{fill:var(--accent);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}.comparison-mark:focus .comparison-link,.comparison-mark:hover .comparison-link{stroke:var(--accent);opacity:.6}.sequence-viz,.review .sequence-viz{padding:20px 0;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:none}.step-link{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.step-card,.hierarchy-card{fill:var(--surface);stroke:var(--line);stroke-width:1}.structure-label{fill:var(--ink);font-size:14px}.step-dot,.review .step-dot{fill:var(--soft);stroke:none}.hierarchy-viz figure{overflow:auto;padding-bottom:4px}.hierarchy-parent{fill:var(--soft)}.hierarchy-edge{fill:none;stroke:var(--plot);stroke-width:2}.hierarchy-node:focus,.flow-node:focus{outline:none}.hierarchy-node:focus .hierarchy-card,.hierarchy-node:hover .hierarchy-card,.flow-node:focus .step-card,.flow-node:hover .step-card{stroke:var(--accent);stroke-width:2}.viz-source{margin-top:18px;border-top:1px dashed var(--line);padding-top:10px}.viz-source summary{width:fit-content;cursor:pointer;color:var(--muted);font-size:12px}.viz-source summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.report li.is-highlighted{background:var(--soft)}
 .step-title{font-weight:650}
 .chart-controls[hidden]{display:none}
-.comparison-key.is-difference span:before{display:none}.comparison-key.is-difference:before{content:"原值列序：";color:var(--muted)}.resource-note:empty{display:none}
-.resource-link-button{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;width:24px;height:24px;margin:0 3px;padding:3px;border:0;border-radius:4px;background:none;color:var(--muted)}.resource-link-button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.3}.resource-link-button:hover{color:var(--accent);background:var(--soft)}.resource-launcher{border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--muted);font-size:12px;padding:5px 10px;white-space:nowrap}.resource-preview{position:fixed;inset:90px 24px auto auto;width:min(430px,calc(100vw - 48px));max-height:calc(100vh - 114px);margin:0;padding:18px 20px;overflow:auto;z-index:10;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 60px #26334822;font:13px/1.6 var(--sans)}.resource-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;color:var(--muted);font-size:11px;letter-spacing:1px}.resource-close,.resource-load{font:12px/1.5 var(--sans);border:1px solid var(--line);border-radius:5px;background:var(--soft);color:var(--ink);padding:5px 10px;cursor:pointer}.resource-picker{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:11px}.resource-picker select{max-width:100%;padding:7px;border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--ink);font:12px/1.6 var(--sans)}.resource-picker select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.resource-preview h3{font-size:16px;margin:16px 0 4px;overflow-wrap:anywhere}.resource-location{font-size:11px;color:var(--muted);overflow-wrap:anywhere;margin:0 0 8px}.resource-open{display:inline-block;margin-bottom:14px;font-size:12px}.resource-stage{background:var(--soft);border:1px solid var(--line);border-radius:6px;overflow:hidden}.resource-stage :is(img,video){display:block;width:100%;max-height:320px;object-fit:contain}.resource-stage iframe{display:block;width:100%;height:320px;border:0;background:white}.resource-stage audio{display:block;width:100%;padding:12px}.resource-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px}.resource-kind{font-size:10px;font-weight:650;color:var(--accent)}.resource-card>span:not(.resource-kind){font-size:12px;color:var(--muted);overflow-wrap:anywhere}.resource-card strong{overflow-wrap:anywhere}.resource-note{font-size:11px;color:var(--muted);margin:12px 0 0}.resource-preview .resource-load{margin-top:8px}
-@media print{.resource-preview,.resource-link-button,.resource-launcher{display:none!important}}
+.comparison-key.is-difference span:before{display:none}.comparison-key.is-difference:before{content:"原值列序：";color:var(--muted)}
 .chart-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 12px;margin:10px 0 12px;border:1px solid var(--line);border-radius:6px;background:var(--soft);font-size:12px;color:var(--muted)}.chart-controls label{display:flex;align-items:center;gap:8px;max-width:100%;min-width:0}.chart-controls select,.chart-reset{min-width:0;max-width:240px;border:1px solid var(--line);border-radius:4px;padding:5px 8px;background:var(--surface);color:var(--ink);font:12px/1.5 var(--sans)}.chart-reset{margin-left:auto;cursor:pointer;white-space:nowrap}.chart-controls :is(select,input):focus-visible{outline:2px solid var(--accent);outline-offset:3px}.chart-controls .date-control{flex:1;min-width:0}.date-control input{flex:1;min-width:100px;max-width:460px;accent-color:var(--accent)}.chart-readout{display:block;font-size:12px;line-height:1.7;margin:8px 0;color:var(--ink);overflow-wrap:anywhere}.date-cursor{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 4;pointer-events:none}.chart-mark.is-date-match .chart-bar{opacity:1}.chart-mark.is-date-match .chart-label{fill:var(--accent);font-weight:650}.report tr.is-date-match{background:var(--soft)}.hierarchy-node{cursor:pointer}.hierarchy-node.is-muted,.hierarchy-edge.is-muted{opacity:.22}.hierarchy-node:hover,.hierarchy-node:focus{opacity:1}.hierarchy-node.is-selected .hierarchy-card{stroke:var(--accent);stroke-width:2}.hierarchy-edge.is-related{stroke:var(--accent)}.report li.is-tree-match::marker{color:var(--accent);font-weight:700}
 @media print{.chart-controls{display:none!important}.hierarchy-node.is-muted,.hierarchy-edge.is-muted{opacity:1}.viz-source::details-content{content-visibility:visible}.viz-source>:not(summary){display:block!important}.viz-source summary{display:none}.hierarchy-viz figure{overflow:visible}.hierarchy-viz svg{min-width:0!important}.structure-label{fill:#111}}
 .footer{width:min(1200px,calc(100% - 72px));margin:0 auto;padding:20px 0 36px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:1px}.footer svg{width:16px;height:16px;color:var(--accent)}
@@ -663,94 +661,6 @@ html[data-appearance="dark"]{color-scheme:dark;--paper:#141c22;--surface:#1c2730
     }
     connect(stage, pairs);
   }
-})();
-
-</script><script>
-(() => {
-  const config = JSON.parse(document.querySelector('script[type="application/json"][data-document-options]')?.textContent || '{}');
-  if (config.link_previews !== true) return;
-  const main = document.querySelector('main'), records = [], byURL = new Map();
-  const text = node => node.textContent.replace(/\s+/g, ' ').trim();
-  const element = (tag, className, content) => {
-    const node = document.createElement(tag); if (className) node.className = className;
-    if (content !== undefined) node.textContent = content; return node;
-  };
-  const typeOf = url => {
-    const extension = /\.([a-z0-9]+)$/i.exec(url.pathname)?.[1]?.toLowerCase();
-    if (['png','jpg','jpeg','gif','webp','svg','avif','bmp'].includes(extension)) return ['image', '图片'];
-    if (['mp4','webm','ogg'].includes(extension)) return ['video', '视频'];
-    if (['mp3','wav','m4a','aac','flac','oga'].includes(extension)) return ['audio', '音频'];
-    if (['html','htm','txt','json','pdf'].includes(extension)) return ['frame', extension === 'pdf' ? 'PDF' : extension === 'txt' || extension === 'json' ? '文本文件' : 'HTML 文件'];
-    if (url.protocol !== 'file:' && !['md','zip','7z','rar','exe','doc','docx','xls','xlsx','ppt','pptx'].includes(extension)) return ['web', '网页'];
-    return ['file', '文件'];
-  };
-  for (const link of main.querySelectorAll('a[href]')) {
-    if (link.closest('nav') || link.getAttribute('href').startsWith('#')) continue;
-    let url;
-    try { url = new URL(link.href); } catch { continue; }
-    if (!['http:','https:','file:'].includes(url.protocol)) continue;
-    let record = byURL.get(url.href);
-    if (!record) {
-      const [kind, type] = typeOf(url);
-      record = { url, kind, type, label: text(link) || url.href, index: records.length }; records.push(record); byURL.set(url.href, record);
-    }
-    const button = element('button', 'resource-link-button'); button.type = 'button';
-    button.setAttribute('aria-label', '预览：' + (text(link) || url.href)); button.title = '预览链接';
-    const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); icon.setAttribute('viewBox','0 0 20 20'); icon.setAttribute('aria-hidden','true');
-    const path = document.createElementNS(icon.namespaceURI, 'path'); path.setAttribute('d','M3 4h14v12H3ZM3 8h14M6 6h.1M8 6h.1'); icon.append(path); button.append(icon);
-    button.addEventListener('click', () => open(record, button)); link.after(button);
-  }
-  if (!records.length) return;
-  let panel, picker, stage, heading, location, openLink, note, opener;
-  const clear = () => stage?.replaceChildren();
-  const showContent = record => {
-    clear(); heading.textContent = record.label; location.textContent = record.url.href;
-    openLink.href = record.url.href; note.textContent = record.kind === 'web' || record.kind === 'frame' ? '浏览器或目标网站可能不支持内嵌显示，可使用“单独打开”。' : '';
-    const load = () => {
-      let view;
-      if (record.kind === 'image') {
-        view = element('img'); view.alt = record.label;
-      } else if (record.kind === 'audio' || record.kind === 'video') {
-        view = element(record.kind); view.controls = true; view.preload = 'metadata';
-      } else {
-        view = element('iframe'); view.title = record.label; view.setAttribute('sandbox','allow-scripts'); view.referrerPolicy = 'no-referrer'; view.setAttribute('credentialless','');
-      }
-      view.addEventListener('error', () => { note.textContent = '资源未能显示，请使用“单独打开”。'; });
-      view.src = record.url.href; stage.replaceChildren(view);
-    };
-    const card = element('div', 'resource-card'); card.append(element('span', 'resource-kind', record.type), element('strong', '', record.label));
-    let name = record.url.pathname.split('/').filter(Boolean).at(-1) || record.url.hostname;
-    try { name = decodeURIComponent(name); } catch {}
-    card.append(element('span', '', record.url.protocol === 'file:' ? name : record.url.hostname));
-    if (record.kind === 'web') {
-      const button = element('button', 'resource-load', '加载网页视图'); button.type = 'button'; button.addEventListener('click', load); card.append(button); stage.append(card);
-    } else if (record.kind === 'file') {
-      card.append(element('span', '', '此文件保留链接，可单独打开。')); stage.append(card);
-    } else load();
-    picker.value = String(record.index);
-  };
-  const open = (record, button) => {
-    opener = button;
-    if (!panel) {
-      panel = element('dialog', 'resource-preview'); panel.setAttribute('aria-label','资源预览');
-      const bar = element('div', 'resource-bar'); bar.append(element('span', '', '资料视图'));
-      const close = element('button', 'resource-close', '关闭'); close.type = 'button'; close.addEventListener('click', () => panel.close()); bar.append(close);
-      const label = element('label', 'resource-picker'); label.append(document.createTextNode('选择资料'));
-      picker = element('select');
-      for (const rec of records) { const option = element('option', '', `${rec.type} · ${rec.label}`); option.value = String(rec.index); picker.append(option); }
-      picker.addEventListener('change', () => showContent(records[Number(picker.value)])); label.append(picker);
-      heading = element('h3'); location = element('div','resource-location');
-      openLink = element('a','resource-open','单独打开'); openLink.target = '_blank'; openLink.rel = 'noopener noreferrer';
-      stage = element('div','resource-stage'); note = element('p','resource-note');
-      panel.append(bar, label, heading, location, openLink, stage, note); document.body.append(panel);
-      panel.addEventListener('close', () => { clear(); opener?.focus(); });
-      panel.addEventListener('keydown', event => { if (event.key === 'Escape') { event.preventDefault(); panel.close(); } });
-    }
-    showContent(record); if (!panel.open) panel.show(); picker.focus();
-  };
-  const launcher = element('button','resource-launcher', `资料视图 · ${records.length}`); launcher.type = 'button';
-  launcher.addEventListener('click', () => open(records[0], launcher));
-  (document.querySelector('.tools') || document.body).append(launcher);
 })();
 
 </script></body></html>

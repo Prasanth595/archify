@@ -4,8 +4,7 @@ import os from 'node:os';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 import {readHTML,relocateHTML,sourceError} from './html-source.mjs';
-import {ChromeVisualBrowser,findChrome} from '../bin/visual-check.mjs';
-import {documentBrowser} from './browser.mjs';
+import {documentBrowser,createDocumentBrowser} from './browser.mjs';
 import {scan} from './scan.mjs';
 import {removeOwnedRegularFile} from '../renderers/shared/atomic-output.mjs';
 
@@ -56,7 +55,7 @@ export async function resolveDesign(request){
 
 export async function inspectDesign(request){
   const source=await resolveDesign(request);request.signal?.throwIfAborted();
-  const browser=new ChromeVisualBrowser(findChrome()),abort=()=>{void browser.close().catch(()=>{});};request.signal?.addEventListener('abort',abort,{once:true});
+  const browser=createDocumentBrowser(),abort=()=>{void browser.close().catch(()=>{});};request.signal?.addEventListener('abort',abort,{once:true});
   try{
     // Remote HTML is inspected in an empty local document with rebased assets.
     const location=source.designPath||fileURLToPath(new URL('./default.html',import.meta.url));

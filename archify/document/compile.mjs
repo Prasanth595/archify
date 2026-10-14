@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { namedEntities } from './named-entities.mjs';
 
 // 表驱动的 MD → HTML 编译器。
 //
@@ -17,16 +18,16 @@ const tryAt = (re, s, i) => { re.lastIndex = i; return re.exec(s); };
 const ENTITY = sticky(/&(#x[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/);
 const BACKTICKS = sticky(/\x60+/);
 const AUTOLINK = sticky(/<((?:https?|mailto):[^>\s]+)>/);
+const EMAIL_AUTOLINK = sticky(/<([a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>/);
 const RAWHTML = sticky(/<\/?[a-zA-Z][^>]*>/);
 const ESCAPABLE = /[!-/:-@\[-\x60{-~]/;
-const ENTITY_MAP = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0' };
 
 const decodeEntity = (m) => {
   if (m[1][0] === '#') {
     const code = m[1][1] === 'x' || m[1][1] === 'X' ? parseInt(m[1].slice(2), 16) : parseInt(m[1].slice(1), 10);
     return code > 0 && code <= 0x10ffff && !(code >= 0xd800 && code <= 0xdfff) ? String.fromCodePoint(code) : '\ufffd';
   }
-  return ENTITY_MAP[m[1]] !== undefined ? ENTITY_MAP[m[1]] : m[0];
+  return Object.hasOwn(namedEntities,m[1]) ? namedEntities[m[1]] : m[0];
 };
 
 function linkAt(src, at, refs, image = false) {
@@ -170,11 +171,11 @@ const INLINES = [
   {
     name: 'autolink', anchor: 'required', why: '一个源跨度渲染出两处位置',
     emit: (src, i, st) => {
-      const m = tryAt(AUTOLINK, src, i);
+      const uri = tryAt(AUTOLINK, src, i),m = uri || tryAt(EMAIL_AUTOLINK,src,i);
       if (!m) return null;
       st.flush();
       st.note('autolink', i, i + m[0].length, m[1].length);
-      st.out += '<a href="' + esc(m[1]) + '">' + esc(m[1]) + '</a>';
+      st.out += '<a href="' + esc(uri?m[1]:'mailto:'+m[1]) + '">' + esc(m[1]) + '</a>';
       return i + m[0].length;
     },
   },
@@ -611,6 +612,14 @@ export function compile(source, referenceDefinitions = new Map()) {
 
   // 引用定义的目标可能在文档任何地方，先收一遍。
   for (let n = 0; n < lines.length; n++) {
+    const fence=BLOCKS.find(row=>row.name==='fencedCode').match(lines,n);
+    if(fence){
+      for(n++;n<lines.length;n++){
+        const line=lines[n].trim();
+        if(line.length>=fence[1].length&&line[0]===fence[1][0]&&/^(\x60+|~+)$/.test(line))break;
+      }
+      continue;
+    }
     const m = REF_DEF.exec(lines[n]);
     if (!m) continue;
     const key = m[1].replace(/\s+/g, ' ').trim().toLowerCase();
@@ -683,26 +692,4 @@ export function compile(source, referenceDefinitions = new Map()) {
     inlineCount: all.length,
     untouchable, attributes,
   };
-}
-
-// 把派生身份写回源稿。写回之后它是作者写的，内容怎么改都不动，也能在源稿里直接搜到。
-export function materialize(source, derived) {
-  if (!derived.length) return { source, inserted: 0 };
-  const lines = source.split('\n');
-  const byLine = new Map();
-  for (const d of derived) {
-    if (!d.line) continue;
-    if (!byLine.has(d.line)) byLine.set(d.line, []);
-    byLine.get(d.line).push(d.id);
-  }
-  let inserted = 0;
-  for (const line of [...byLine.keys()].sort((a, b) => b - a)) {
-    const n = line - 1;
-    if (n < 0 || n >= lines.length) continue;
-    const id = byLine.get(line)[0];
-    if (lines[n].trim().startsWith('#')) lines[n] = lines[n].replace(/\s*$/, '') + ' {#' + id + '}';
-    else lines.splice(n, 0, '{#' + id + '}');
-    inserted += byLine.get(line).length;
-  }
-  return { source: lines.join('\n'), inserted };
 }

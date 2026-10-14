@@ -170,42 +170,11 @@ model; the designs do not infer one from prose. Query state resets when reopenin
 the page. Printing hides controls, keeps the current comparison/date readout and
 complete source, and shows the full hierarchy.
 
-## Optional linked-resource views
-
-Resource previews are off by default. With these designs, enable them through
-the tool's optional configuration object:
-
-```json
-"design_options": { "link_previews": true }
-```
-
-Or save `{ "link_previews": true }` as `options.json` and pass it to the CLI:
-
-```sh
-node archify/bin/archify.mjs document report.md report.html --design archify/document/designs/review.html --design-options options.json
-```
-
-The design adds a small preview button beside eligible source links and one
-shared resource window. The original links remain usable. Nothing loads until
-the reader selects a resource. Web pages first show a link card with a separate
-load action. Images and audio/video use their native views; HTML, plain text,
-JSON and PDF request a bounded browser frame. Other files keep a descriptive
-link card. Frame rendering depends on browser support and the target website's
-embedding policy; the independent open link remains available without claiming
-that a frame loaded successfully. Web frames use a sandbox and no-referrer policy.
-
-Selecting a different resource replaces the previous view; closing clears it.
-These views do not change document layout or appear in print. Relative resources
-resolve from the Markdown file, just as normal source links do. No metadata
-scraping, resource bundling or link-content transformation is performed.
-
-`resources.js` owns this behavior. The shared renderer only passes configuration
-to an explicit HTML entry; it neither recognizes `link_previews` nor appends
-resource views to other HTML inputs.
+Linked resources remain ordinary links; the report designs do not expand or embed them.
 
 ## Edit and verify
 
-Edit `report.css`, `report.js`, `resources.js` or the shell in `build.mjs`, then rebuild the three
+Edit `report.css`, `report.js` or the shell in `build.mjs`, then rebuild the three
 self-contained inputs:
 
 ```sh
