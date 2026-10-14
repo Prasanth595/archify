@@ -47,8 +47,9 @@ class names, nor classify Markdown prose as benefits, causes or actions.
 
 The three static layouts are in [designs](designs/README.md); their distinct
 interactive counterparts are in [dynamic designs](designs/dynamic/README.md).
-A portable agent workflow is in
-[archify-document Skill](../../integrations/skill/archify-document/SKILL.md).
+The packaged [Archify Skill](../SKILL.md) routes document requests to
+[Document presentation](../references/document-presentation.md), including
+optional native components through this same renderer.
 
 The scanner reads content positions and navigation relationships from the HTML
 without changing it. A saved scan describes a particular HTML version; it is

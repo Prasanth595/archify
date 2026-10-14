@@ -1,6 +1,6 @@
 ---
 name: archify
-description: "Create validated architecture, workflow, sequence, data-flow, lifecycle/state, entity-relationship, class/interface, tree, timeline, and execution waterfall diagrams as explorable standalone HTML with inline SVG, dark/light themes, optional motion, and image/SVG/WebM export. Accept plain-language requirements or Mermaid; inspect repository evidence for code-backed diagrams. Use when visualizing infrastructure, cloud/security networks, API calls, data pipelines, ETL/ELT, state machines, database schemas, class contracts, module hierarchies, incident/release histories, or request and agent-run timings. Also use for everyday subjects with steps, parts, relationships, or states: leave and travel plans, applications and approvals, renting conversations, money or document flows, and order progress. Not for numeric charts or dashboards."
+description: "Create validated architecture, workflow, sequence, data-flow, lifecycle/state, entity-relationship, class/interface, tree, timeline and execution waterfall diagrams as explorable standalone HTML with SVG and export. Render Markdown using any supplied HTML design or six built-in report layouts, with optional native document components. Use when visualizing systems, code-backed architecture, everyday processes, reviews, analysis, decision briefs or styled Markdown answers. Accept natural language, Mermaid or typed diagram JSON. Document figures use supplied values; this is not a general dashboard builder."
 license: MIT
 metadata:
   version: "3.0"
@@ -10,7 +10,11 @@ metadata:
 
 # Archify
 
-Create an interactive HTML diagram from typed JSON.
+Create an interactive diagram from typed JSON, or render Markdown using any HTML design.
+
+For Markdown documents or styled answers, use [Document presentation](references/document-presentation.md). It covers the three report families, their static/dynamic variants and optional native components. The Skill selects a design and authors Markdown; `render_markdown` or `archify document` performs the mapping. Component labels direct presentation without classifying prose by business meaning.
+
+For standalone diagrams, use the typed JSON workflow below.
 
 Run commands from your working directory. Unless the user names another location, give each new diagram request its own folder `.archify/<type>-<slug>-<YYYYMMDD-HHMMSS>/` there (local time, chosen once when the request starts): keep `candidate.json` and `<slug>.html` in it, set `meta.output` to that HTML path relative to the working directory, and reuse the folder for every repair rerun. A later request gets a new folder, so earlier versions stay intact. Replace `bin/archify.mjs` in the commands below with the installed package's absolute path, or its path relative to your working directory; input and output paths resolve from that working directory.
 

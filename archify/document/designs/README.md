@@ -60,7 +60,10 @@ highlights, while the actual columns and list structure supply diagram inputs.
   Text records show their observations together; explicit date intervals and
   numbered steps keep their existing figures.
 
-No component declarations or new Markdown directives are implemented here.
+These three report designs use ordinary Markdown. The optional
+[native component design](../../references/document-presentation.md#optional-native-document-components)
+supports explicit paragraph placement through the same renderer; its declarations
+do not change the ordinary report layouts.
 
 ## SVG figures
 

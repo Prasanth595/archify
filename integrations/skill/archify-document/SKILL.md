@@ -1,6 +1,6 @@
 ---
 name: archify-document
-description: Render Markdown as HTML using a chosen HTML file, captured web page, saved template or Archify report layout. Also create or adapt a user's HTML template and its configuration interface. Use for styled Markdown reports and HTML answers, not typed diagram JSON.
+description: Render Markdown using any HTML design or Archify report layout, including optional native document components. Also create or adapt a user's HTML design and its configuration interface. Use for styled Markdown reports and HTML answers, not typed diagram JSON.
 ---
 
 # Archify document
@@ -23,9 +23,8 @@ Choose the presentation requested by the user, not a role inferred from prose.
 
 Supply exactly one of `markdown` and `markdown_path`, and an `output_path`.
 File-based links resolve from the Markdown file; inline links use the runtime's
-working directory. For a reusable web design, scan into a new `template_dir`
-first. Stored HTML retains external resource URLs and its checksum-bound scan
-description. Rendering scans the current HTML again.
+working directory. Any supplied HTML can provide the design. Rendering scans
+the current HTML before filling its content positions.
 
 ```json
 {"tool":"render_markdown","arguments":{"markdown_path":"/path/report.md","template":"analysis/dynamic","output_path":"/path/report.html"}}
@@ -36,9 +35,23 @@ Direct CLI examples:
 
 ```sh
 node /checkout/archify/bin/archify.mjs document templates --json
-node /checkout/archify/bin/archify.mjs document scan https://example.test/page --save-template /path/new-template --json
-node /checkout/archify/bin/archify.mjs document /path/report.md /path/report.html --template-path /path/new-template --json
+node /checkout/archify/bin/archify.mjs document /path/report.md /path/report.html --design /path/design.html --json
+node /checkout/archify/bin/archify.mjs document /path/report.md /path/report.html --template analysis/dynamic --json
 ```
+
+## Report families and components
+
+Decision briefs lead with a recommendation and its conditions; analysis keeps
+observations, sources and explanations together; reviews follow authored events,
+differences and subsequent actions. Write that order into Markdown. Each family
+has static and dynamic variants and retains its existing figures.
+
+Optional components use this same renderer. The Skill chooses the preset and
+marks paragraphs; the selected HTML owns their layout and drawing. Read
+`references/document-presentation.md` in the Archify package containing the CLI
+for the native component design, supported addresses and complete example.
+Do not add component marks to HTML that does not implement them, classify prose
+by keywords, or assemble a separate SVG/page instead of calling the renderer.
 
 ## Implement a custom template
 
@@ -52,8 +65,9 @@ Inspect the actual DOM before using `content_selector` for one content root or
 do not classify paragraphs by words such as benefit, cause or action.
 
 Template programs can read actual cells, list nesting and heading order.
-Keep complete text and source values accessible. Do not invent measurements,
-causality, completion status or a private Markdown dialect to fill a visual.
+Keep complete text and source values accessible. Use documented component marks
+only in HTML that implements them. Do not invent measurements, causality or
+completion status to fill a visual.
 
 For user-configurable behavior, declare a JSON entry:
 
@@ -71,8 +85,8 @@ Do not hide failed computations by deleting scripts or fabricating their inputs.
 ## Verify and return
 
 Success needs `ok: true`, an output path and checksum. A failed render preserves
-existing output. A saved template whose HTML changed must be recaptured or used
-directly as an edited HTML file. Its old scan description is not authoritative.
+existing output. If a saved template rejects edited HTML, use the edited HTML
+directly or correct the design reference.
 
 Inspect the rendered page when appearance or interactions matter. Initialization
 checks do not prove every later action or timer. Return the actual artifact,
