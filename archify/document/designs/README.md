@@ -61,7 +61,7 @@ highlights, while the actual columns and list structure supply diagram inputs.
   numbered steps keep their existing figures.
 
 These three report designs use ordinary Markdown. The optional
-[native component design](../../references/document-presentation.md#optional-native-document-components)
+[native component design](../../references/document-components.md)
 supports explicit paragraph placement through the same renderer; its declarations
 do not change the ordinary report layouts.
 

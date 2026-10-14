@@ -46,12 +46,9 @@ observations, sources and explanations together; reviews follow authored events,
 differences and subsequent actions. Write that order into Markdown. Each family
 has static and dynamic variants and retains its existing figures.
 
-Optional components use this same renderer. The Skill chooses the preset and
-marks paragraphs; the selected HTML owns their layout and drawing. Read
-`references/document-presentation.md` in the Archify package containing the CLI
-for the native component design, supported addresses and complete example.
-Do not add component marks to HTML that does not implement them, classify prose
-by keywords, or assemble a separate SVG/page instead of calling the renderer.
+Only when calling native document components, read
+`references/document-components.md` in the Archify package containing the CLI.
+It lists presets and paragraph marks; components use the same document renderer.
 
 ## Implement a custom template
 

@@ -12,7 +12,9 @@ metadata:
 
 Create an interactive diagram from typed JSON, or render Markdown using any HTML design.
 
-For Markdown documents or styled answers, use [Document presentation](references/document-presentation.md). It covers the three report families, their static/dynamic variants and optional native components. The Skill selects a design and authors Markdown; `render_markdown` or `archify document` performs the mapping. Component labels direct presentation without classifying prose by business meaning.
+For Markdown documents or styled answers, read [Document presentation](references/document-presentation.md) for HTML design selection and rendering.
+
+Only when calling native document components, read [Document components](references/document-components.md) for supported presets and paragraph marks. Components use the same document renderer.
 
 For standalone diagrams, use the typed JSON workflow below.
 
