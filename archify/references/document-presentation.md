@@ -54,11 +54,7 @@ No agent installation or client configuration is needed for the command line.
 Read [Document components](document-components.md) only when invoking a native
 component inside the document.
 
-## Return the actual result
+## Deliver
 
-Require `ok: true` and a saved output path and checksum. Inspect meaningful
-component notices and, when appearance matters, the rendered page. Initialization
-checks verify mapped content and script errors, not every later interaction.
-Return the actual HTML and what was checked. The native diagram `finalize`
-workflow applies to standalone typed diagrams; this document path uses the
-document renderer's own report.
+Return `output.path` from a successful renderer response. On failure, report its
+diagnostics and correct the requested input where appropriate.
