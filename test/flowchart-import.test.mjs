@@ -1259,3 +1259,41 @@ test('CLI --json without an output path delivers the imported IR in the payload'
   assert.equal(payload.ir.diagram_type, 'architecture');
   assert.equal(payload.ir.components.length, 4);
 });
+
+test('CLI import failure receipts drain fully to a pipe before exit', () => {
+  // `import/declaration-remainder` quotes the offending remainder, so a long
+  // remainder produces a failure receipt larger than the 64 KiB pipe buffer —
+  // exiting the process before stdout drains would truncate the JSON receipt.
+  const cli = path.join(skillRoot, 'bin', 'archify.mjs');
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-receipt-drain-'));
+  try {
+    const src = path.join(tmpDir, 'decl-remainder.mmd');
+    fs.writeFileSync(src, `flowchart LR ${'x'.repeat(192 * 1024)}\n`);
+
+    const run = (stdio) => spawnSync(process.execPath, [cli, 'import', 'flowchart', src, '--json'], {
+      encoding: 'utf8',
+      stdio,
+    });
+
+    // A regular file gets synchronous writes — the untruncated reference.
+    const reference = path.join(tmpDir, 'receipt.json');
+    const descriptor = fs.openSync(reference, 'w');
+    let fileRun;
+    try {
+      fileRun = run(['ignore', descriptor, 'pipe']);
+    } finally {
+      fs.closeSync(descriptor);
+    }
+    assert.equal(fileRun.status, 1, fileRun.stderr);
+    const expected = fs.readFileSync(reference, 'utf8');
+    assert.ok(Buffer.byteLength(expected) > 64 * 1024, 'fixture must exceed a 64 KiB pipe buffer');
+    assert.equal(JSON.parse(expected).diagnostics[0].code, 'import/declaration-remainder');
+
+    const piped = run('pipe');
+    assert.equal(piped.status, 1, piped.stderr);
+    assert.equal(piped.stdout, expected, 'a piped failure receipt must not truncate');
+    assert.equal(JSON.parse(piped.stdout).diagnostics[0].code, 'import/declaration-remainder');
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
+});

@@ -7063,7 +7063,9 @@ function emitImportFailure(json, receipt, exitCode = 1) {
   } else {
     console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
   }
-  process.exit(exitCode);
+  // Set the exit code rather than calling process.exit() so a receipt piped
+  // to another process drains completely instead of being truncated.
+  process.exitCode = exitCode;
 }
 
 async function commandImport(args) {
@@ -7080,7 +7082,7 @@ async function commandImport(args) {
   for (const arg of args) {
     if (arg === '--json') continue;
     if (arg.startsWith('--')) {
-      emitImportFailure(json, {
+      return emitImportFailure(json, {
         schemaVersion: 1,
         command: 'import',
         source: 'mermaid-flowchart',
@@ -7101,7 +7103,7 @@ async function commandImport(args) {
   const [format, inputPath, outputPath, ...extra] = positional;
 
   if (extra.length > 0) {
-    emitImportFailure(json, {
+    return emitImportFailure(json, {
       schemaVersion: 1,
       command: 'import',
       source: 'mermaid-flowchart',
@@ -7118,7 +7120,7 @@ async function commandImport(args) {
   }
 
   if (!format) {
-    emitImportFailure(json, {
+    return emitImportFailure(json, {
       schemaVersion: 1,
       command: 'import',
       source: 'mermaid-flowchart',
@@ -7135,7 +7137,7 @@ async function commandImport(args) {
   }
 
   if (format !== 'flowchart') {
-    emitImportFailure(json, {
+    return emitImportFailure(json, {
       schemaVersion: 1,
       command: 'import',
       source: 'mermaid-flowchart',
@@ -7152,7 +7154,7 @@ async function commandImport(args) {
   }
 
   if (!inputPath) {
-    emitImportFailure(json, {
+    return emitImportFailure(json, {
       schemaVersion: 1,
       command: 'import',
       source: 'mermaid-flowchart',
@@ -7186,9 +7188,7 @@ async function commandImport(args) {
         supportedFixes: ['provide one readable .mmd input file'],
       })],
     };
-    if (json) console.log(JSON.stringify(receipt, null, 2));
-    else console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
-    process.exit(1);
+    return emitImportFailure(json, receipt);
   }
 
   if (outputPath) {
@@ -7219,9 +7219,7 @@ async function commandImport(args) {
         error: error.message,
         diagnostics,
       };
-      if (json) console.log(JSON.stringify(receipt, null, 2));
-      else console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
-      process.exit(1);
+      return emitImportFailure(json, receipt);
     }
   }
 
@@ -7237,9 +7235,7 @@ async function commandImport(args) {
       error: result.diagnostics[0].message,
       diagnostics: result.diagnostics,
     };
-    if (json) console.log(JSON.stringify(receipt, null, 2));
-    else console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
-    process.exit(1);
+    return emitImportFailure(json, receipt);
   }
 
   const irJson = JSON.stringify(result.ir, null, 2);
@@ -7264,9 +7260,7 @@ async function commandImport(args) {
             supportedFixes: ['choose a different output path so the Mermaid source is preserved'],
           })],
         };
-        if (json) console.log(JSON.stringify(receipt, null, 2));
-        else console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
-        process.exit(1);
+        return emitImportFailure(json, receipt);
       }
     } catch (error) {
       if (error.archifyDiagnostics) {
@@ -7282,9 +7276,7 @@ async function commandImport(args) {
           error: error.message,
           diagnostics: error.archifyDiagnostics,
         };
-        if (json) console.log(JSON.stringify(receipt, null, 2));
-        else console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
-        process.exit(1);
+        return emitImportFailure(json, receipt);
       }
       const receipt = {
         schemaVersion: 1,
@@ -7303,9 +7295,7 @@ async function commandImport(args) {
           supportedFixes: ['choose a writable output file path (the output must not be a directory)'],
         })],
       };
-      if (json) console.log(JSON.stringify(receipt, null, 2));
-      else console.error(formatDiagnostics(receipt.error, receipt.diagnostics));
-      process.exit(1);
+      return emitImportFailure(json, receipt);
     }
     if (!json) console.error(`Imported ${result.ir.components.length} components, ${result.ir.connections.length} connections → ${outputPath}`);
   } else if (!json) {
