@@ -4241,7 +4241,7 @@ async function commandDocument(args) {
   const qualityArgs = extractQualityArgs(args);
   const repoArgs = extractRepoRootArgs(qualityArgs.rest);
   const values = {}, rest = [];
-  const names = {'--design':'designPath','--design-url':'designURL','--template':'template','--template-path':'templatePath','--design-options':'designOptionsPath','--content-selector':'contentSelector','--exclude-selector':'excludeSelector','--save-template':'templateDir'};
+  const names = {'--design':'designPath','--design-url':'designURL','--template':'template','--template-path':'templatePath','--design-options':'designOptionsPath','--content-selector':'contentSelector','--exclude-selector':'excludeSelector','--save-template':'templateDir','--library-path':'libraryPath'};
   let json = false;
   for (let i=0;i<repoArgs.rest.length;i++) {
     const arg=repoArgs.rest[i];
@@ -4252,19 +4252,25 @@ async function commandDocument(args) {
   }
   if(rest.some(arg=>arg.startsWith('--')))fail('Unknown document option.');
   if(rest[0]==='templates') {
-    if(rest.length!==1||Object.keys(values).length)fail('Usage: archify document templates [--json]');
-    const {templateCatalog,defaultTemplate}=await import('../document/templates.mjs');
-    if(json)console.log(JSON.stringify({ok:true,default:defaultTemplate,templates:templateCatalog}));
-    else for(const template of templateCatalog)console.log(template.id+' · '+template.title+' · '+template.path);
+    if(rest.length!==1||Object.keys(values).some(key=>key!=='libraryPath'))fail('Usage: archify document templates [--library-path directory] [--json]');
+    const {callTool}=await import('../document/tool.mjs');
+    const result=await callTool('list_document_templates',values.libraryPath?{library_path:values.libraryPath}:{});
+    if(json||!result.ok)console.log(JSON.stringify(result));
+    else {
+      for(const template of result.templates)console.log(template.id+' · '+template.title+' · '+template.path);
+      for(const template of result.saved_templates)console.log(template.name+' · '+template.path);
+      for(const warning of result.warnings)console.error(warning.message+' '+warning.subject.path);
+    }
+    if(!result.ok)process.exitCode=1;
     return;
   }
   if(rest[0]==='scan') {
-    const input=rest[1];if(!input||rest.length!==2||values.designPath||values.designURL||values.template||values.templatePath||values.designOptionsPath)fail('Usage: archify document scan <HTML path or URL> [--save-template directory] [--content-selector CSS] [--exclude-selector CSS] [--json]');
+    const input=rest[1];if(!input||rest.length!==2||values.designPath||values.designURL||values.template||values.templatePath||values.designOptionsPath||values.libraryPath)fail('Usage: archify document scan <HTML path or URL> [--save-template directory] [--content-selector CSS] [--exclude-selector CSS] [--json]');
     const {callTool}=await import('../document/tool.mjs');
     const result=await callTool('scan_html',{[/^https?:/i.test(input)?'design_url':'design_path']:input,...(values.templateDir?{template_dir:values.templateDir}:{}),...(values.contentSelector?{content_selector:values.contentSelector}:{}),...(values.excludeSelector?{exclude_selector:values.excludeSelector}:{})});
     console.log(JSON.stringify(result));if(!result.ok)process.exitCode=1;return;
   }
-  const [input,output]=rest;if(!input||rest.length>2||values.templateDir)fail(usage());
+  const [input,output]=rest;if(!input||rest.length>2||values.templateDir||values.libraryPath)fail(usage());
   const result=runNode([documentRendererPath(),input,output||'',values.designPath||'',values.designOptionsPath||'',JSON.stringify({template:values.template,templatePath:values.templatePath,designURL:values.designURL,contentSelector:values.contentSelector,excludeSelector:values.excludeSelector,json})],{env:rendererEnv(qualityArgs.quality,repoArgs.repoRoot)});
   if(result.status!==0)exitFrom(result);
 }

@@ -2,6 +2,7 @@
 
 Choose a preset, mark its paragraphs, and call the existing document renderer.
 Marks specify presentation positions; they do not classify the text's meaning.
+The same marks work in a file or an answer passed as the `markdown` string.
 
 Use `render_markdown` with `design_path` pointing to the package's
 `document/designs/components/native.html`, or:

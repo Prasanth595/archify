@@ -31,7 +31,11 @@ test('a standard MCP client discovers and invokes the document renderer over std
       assert.equal(catalog.structuredContent.templates.length,3);
       const capture = await client.callTool({name:'scan_html',arguments:{design_path:design,template_dir:path.join(directory,mode)}});
       assert.equal(capture.structuredContent.ok,true,JSON.stringify(capture));
-      const result = await client.callTool({ name: 'render_markdown', arguments: { markdown: '# 标准工具调用\n\n正文。', template_path:path.join(directory,mode), output_path: output, design_options:{density:'compact'} } });
+      const saved = await client.callTool({name:'list_document_templates',arguments:{library_path:directory}});
+      assert.equal(saved.structuredContent.ok,true,JSON.stringify(saved));
+      const selected = saved.structuredContent.saved_templates.find(template=>template.name===mode);
+      assert.ok(selected,'the captured template should be discoverable through MCP');
+      const result = await client.callTool({ name: 'render_markdown', arguments: { markdown: '# 标准工具调用\n\n正文。', template_path:selected.path, output_path: output, design_options:{density:'compact'} } });
       assert.equal(result.isError, false, JSON.stringify(result));
       assert.equal(result.structuredContent.ok, true);
       assert.equal(result.structuredContent.output.path, output);

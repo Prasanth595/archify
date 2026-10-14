@@ -31,11 +31,15 @@ When `render_markdown` is available, provide exactly one of `markdown` and
 supplied HTML file or `template` for a built-in ID. The tool also accepts any
 HTML design by URL and saved HTML templates; use its advertised input schema.
 
+For an HTML answer, compose the answer in Markdown and pass the text directly
+as `markdown`; no intermediate Markdown file is required. Render the requested
+answer, then deliver the returned HTML path.
+
 ```json
 {
-  "markdown_path": "/path/report.md",
-  "template": "review/static",
-  "output_path": "/path/report.html"
+  "markdown": "# Answer\n\n## Explanation\n\nThe answer's actual content.",
+  "template": "analysis/static",
+  "output_path": "/path/answer.html"
 }
 ```
 
@@ -46,12 +50,36 @@ node /path/archify/bin/archify.mjs document report.md report.html --template ana
 node /path/archify/bin/archify.mjs document report.md report.html --design design.html --json
 ```
 
-The JSON entry point is `node /path/archify/bin/document-tool.mjs request.json`.
+For file input, replace `markdown` with `markdown_path`. The JSON entry point is
+`node /path/archify/bin/document-tool.mjs request.json`; its envelope is
+`{"tool":"render_markdown","arguments":{...}}`.
 Replace `/path/archify` with the actual package path. Local Chrome is required.
 No agent installation or client configuration is needed for the command line.
 
 Read [Document components](document-components.md) only when invoking a native
-component inside the document.
+component in a document or answer. Its Markdown marks need an implementing HTML
+design, such as the packaged `document/designs/components/native.html`.
+
+## Reuse a user template
+
+`list_document_templates` returns built-in `templates`, `saved_templates` with
+`name` and `path`, and `library_path` (default: `.archify/templates` under the
+current user's home). Select a saved entry by name and pass its `path` as
+`template_path`. The optional `library_path` argument selects another library,
+including a project's `.archify/templates`.
+
+When asked to save HTML for later reuse, call `scan_html` with `template_dir`
+set to `<library_path>/<name>`. Use one directory name as the label and resolved
+paths, not a literal `~`. Keep reusable templates outside the installed Skill
+and temporary outputs. Existing folders are preserved; use a new name for revisions.
+
+```json
+{"tool":"scan_html","arguments":{"design_path":"/path/design.html","template_dir":"/path/library/my-report"}}
+```
+
+The saved `design.html` and `template.json` retain the HTML and selected content
+scope. Later renders use that bundle without retrieving the original HTML.
+Linked assets remain dependencies at their original locations.
 
 ## Deliver
 

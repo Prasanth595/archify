@@ -39,7 +39,11 @@ initialization handshake. It does not require a Skill or a client-specific
 plugin. Setting `ARCHIFY_CHROME` in the launch environment selects an existing
 Chrome executable.
 
-Discover the three report layouts with list_document_templates. Rendering accepts
+Discover the three report layouts and saved user designs with list_document_templates.
+Its optional `library_path` selects a library; the default is `.archify/templates`
+under the current user home. Use returned `library_path` when naming a newly saved
+template and a `saved_templates` entry's `path` as `template_path` on later calls.
+Rendering accepts
 one design source: design_path, design_url, template or template_path; omitted
 designs use review/static. Capturing a reusable template uses:
 
@@ -112,8 +116,7 @@ scripts run in a separate Chrome instance to check initialized content; this
 does not validate every later interaction or timer.
 
 The tool shares the current Markdown compiler's capabilities and limitations.
-In particular, multiline list continuations remain a known parser issue. This
-adapter does not add a template-specific workaround or change the Markdown
+This adapter does not add a template-specific workaround or change the Markdown
 input language.
 
 ## Verify

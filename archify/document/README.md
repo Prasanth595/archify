@@ -20,6 +20,7 @@ is no family-specific dispatch inside the scanner or mapper.
 
 ```sh
 archify document templates --json
+archify document templates --library-path /path/library --json
 archify document report.md report.html --template analysis/static --json
 archify document report.md report.html --design-url https://example.test/page --json
 archify document scan https://example.test/page --save-template ./templates/new-design --json
@@ -33,6 +34,17 @@ not duplicate the whole content snapshot or replace the HTML's styles/program.
 Every render scans the current HTML again; changed HTML is rejected against an
 old manifest. Recapture edited HTML into a new directory, or use it directly.
 Capture destinations must be new directories; existing templates are preserved.
+
+The catalog also discovers saved bundles under the current user's
+`~/.archify/templates/<name>/`, or a directory selected with `--library-path`
+(`library_path` in `list_document_templates`). It returns the existing three
+entries in `templates`, the resolved `library_path`, and named `saved_templates`
+whose `path` can be passed as `template_path`. Listing is read-only and loads no
+page scripts. Invalid saved bundles produce warnings while other entries remain
+available. An absent library returns an empty saved list. Save reusable designs
+with `--save-template <library_path>/<name>`; no registry or copied built-in
+designs are required. Keep this library outside temporary outputs and the Skill
+installation so reinstalls do not remove user templates.
 
 HTTP(S) capture follows redirects, limits HTML to 8 MiB and fetching to 30
 seconds, normalizes saved encoding to UTF-8, and resolves resource URLs against

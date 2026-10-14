@@ -26,13 +26,21 @@ test('HTML capture, saved templates and three report designs use the same render
   const design=path.join(directory,'local # design.html');
   fs.writeFileSync(design,'<!doctype html><meta name="viewport" content="width=device-width"><template><img src="thumb.svg"></template><main id="paper"><h1>Old</h1><p>Old paragraph</p></main><footer><p>Fixed footer</p></footer>');
   await t.test('stored HTML and scan metadata remain bound and protect both inputs',async()=>{
-    const folder=path.join(directory,'stored');const scanned=await callTool('scan_html',{design_path:design,template_dir:folder});assert.equal(scanned.ok,true,JSON.stringify(scanned));assert.ok(scanned.template.scan.slots.length);assert.equal(scanned.template.scan.snapshot,undefined);
+    const library=path.join(directory,'library'),folder=path.join(library,'用户报告');const scanned=await callTool('scan_html',{design_path:design,template_dir:folder});assert.equal(scanned.ok,true,JSON.stringify(scanned));assert.ok(scanned.template.scan.slots.length);assert.equal(scanned.template.scan.snapshot,undefined);
     assert.ok(fs.readFileSync(path.join(folder,'design.html'),'utf8').includes(new URL('thumb.svg',pathToFileURL(design)).href));
     const render=await callTool('render_markdown',{markdown_path:markdown,template_path:folder,output_path:output});assert.equal(render.ok,true,JSON.stringify(render));const before=fs.readFileSync(output);
     const manifest=path.join(folder,'template.json'),manifestBytes=fs.readFileSync(manifest);
+    const entriesBefore=fs.readdirSync(library);
+    const listed=await callTool('list_document_templates',{library_path:library});assert.equal(listed.ok,true,JSON.stringify(listed));assert.equal(listed.library_path,library);assert.equal(listed.templates.length,3);assert.deepEqual(listed.saved_templates.map(entry=>({name:entry.name,path:entry.path})),[{name:'用户报告',path:manifest}]);assert.deepEqual(listed.warnings,[]);assert.deepEqual(fs.readdirSync(library),entriesBefore);assert.deepEqual(fs.readFileSync(manifest),manifestBytes);
+    const listing=spawnSync(process.execPath,[cli,'document','templates','--library-path',library,'--json'],{encoding:'utf8'});assert.equal(listing.status,0,listing.stderr);assert.deepEqual(JSON.parse(listing.stdout),listed);
+    const elsewhere=path.join(directory,'another-conversation');fs.mkdirSync(elsewhere);fs.unlinkSync(design);
+    const entry=fileURLToPath(new URL('../archify/bin/document-tool.mjs',import.meta.url)),answer=path.join(elsewhere,'answer.html');
+    const reused=spawnSync(process.execPath,[entry],{cwd:elsewhere,input:JSON.stringify({tool:'render_markdown',arguments:{markdown:'# 直接回答\n\n已保存的模板可以复用。',template_path:listed.saved_templates[0].path,output_path:answer}}),encoding:'utf8'});assert.equal(reused.status,0,reused.stderr||reused.stdout);assert.equal(JSON.parse(reused.stdout).ok,true);assert.ok(fs.readFileSync(answer,'utf8').includes('已保存的模板可以复用。'));
     const conflict=await callTool('render_markdown',{markdown:'正文',template_path:folder,output_path:manifest});assert.equal(conflict.ok,false);assert.deepEqual(fs.readFileSync(manifest),manifestBytes);
-    const duplicate=await callTool('scan_html',{design_path:design,template_dir:folder});assert.equal(duplicate.ok,false);assert.equal(duplicate.diagnostics[0].code,'document/template-destination');assert.deepEqual(fs.readFileSync(manifest),manifestBytes);
+    const duplicate=await callTool('scan_html',{template_path:folder,template_dir:folder});assert.equal(duplicate.ok,false);assert.equal(duplicate.diagnostics[0].code,'document/template-destination');assert.deepEqual(fs.readFileSync(manifest),manifestBytes);
+    const retained=path.join(library,'retained');fs.mkdirSync(retained);for(const name of ['design.html','template.json'])fs.copyFileSync(path.join(folder,name),path.join(retained,name));fs.mkdirSync(path.join(library,'unrelated'));
     fs.appendFileSync(path.join(folder,'design.html'),'<!-- modified -->');const changed=await callTool('render_markdown',{markdown:'正文',template_path:folder,output_path:output});assert.equal(changed.ok,false);assert.equal(changed.diagnostics[0].code,'document/template-changed');assert.deepEqual(fs.readFileSync(output),before);
+    const unavailable=await callTool('list_document_templates',{library_path:library});assert.equal(unavailable.ok,true);assert.deepEqual(unavailable.saved_templates.map(entry=>entry.name),['retained']);assert.equal(unavailable.warnings.length,1);assert.equal(unavailable.warnings[0].subject.path,manifest);assert.equal(unavailable.warnings[0].evidence.reason,'document/template-changed');assert.deepEqual(fs.readFileSync(manifest),manifestBytes);
   });
 
   await t.test('local base URLs, inline CSS and template resources remain bound to the supplied HTML',async()=>{
@@ -87,4 +95,15 @@ test('HTML capture, saved templates and three report designs use the same render
     const rejected=await callTool('scan_html',{design_url:url.replace('/page','/binary')});assert.equal(rejected.ok,false);assert.equal(rejected.diagnostics[0].code,'document/content-type');
     const direct=await callTool('render_markdown',{markdown:'直连正文。',design_url:url,output_path:output});assert.equal(direct.ok,true,JSON.stringify(direct));
   });
+});
+
+test('template library discovery is read-only and reports an unreadable root through tool diagnostics',async t=>{
+  const directory=fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(),'archify-library-')));
+  t.after(()=>{assert.equal(path.dirname(directory),fs.realpathSync(os.tmpdir()));assert.ok(path.basename(directory).startsWith('archify-library-'));fs.rmSync(directory,{recursive:true,force:true});});
+  const missing=path.join(directory,'not-created');
+  const empty=await callTool('list_document_templates',{library_path:missing});assert.equal(empty.ok,true);assert.equal(empty.templates.length,3);assert.deepEqual(empty.saved_templates,[]);assert.deepEqual(empty.warnings,[]);assert.equal(fs.existsSync(missing),false);
+  const file=path.join(directory,'not-a-directory');fs.writeFileSync(file,'Preserved');
+  const rejected=await callTool('list_document_templates',{library_path:file});assert.equal(rejected.ok,false);assert.equal(rejected.diagnostics[0].code,'document/template-library');assert.equal(fs.readFileSync(file,'utf8'),'Preserved');
+  const run=spawnSync(process.execPath,[cli,'document','templates','--library-path',file,'--json'],{encoding:'utf8'});assert.equal(run.status,1,run.stderr);assert.equal(JSON.parse(run.stdout).diagnostics[0].code,'document/template-library');
+  const argumentsRejected=await callTool('list_document_templates',{library_path:123});assert.equal(argumentsRejected.ok,false);
 });

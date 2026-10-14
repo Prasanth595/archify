@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
 import {readHTML,relocateHTML,sourceError} from './html-source.mjs';
@@ -12,6 +13,27 @@ export const defaultTemplate='review/static';
 const families=[['decision','决策简报'],['analysis','分析札记'],['review','进展复盘']];
 export const templateCatalog=families.map(([family,title])=>({id:family+'/static',title,variant:'static',path:fileURLToPath(new URL('./designs/'+family+'.html',import.meta.url))}));
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
+
+export async function listDocumentTemplates({libraryPath=path.join(os.homedir(),'.archify','templates')}={}){
+  const directory=path.resolve(libraryPath),saved=[],warnings=[];
+  let entries;
+  try{entries=fs.readdirSync(directory,{withFileTypes:true});}
+  catch(error){
+    if(error.code==='ENOENT')entries=[];
+    else sourceError('document/template-library','The template library could not be read.',{directory,reason:error.code},'choose a readable template library directory');
+  }
+  for(const entry of entries.filter(entry=>entry.isDirectory()).sort((a,b)=>a.name.localeCompare(b.name))){
+    const manifest=path.join(directory,entry.name,'template.json');
+    try{
+      try{fs.statSync(manifest);}catch(error){if(error.code==='ENOENT')continue;throw error;}
+      const source=await resolveDesign({templatePath:manifest});
+      saved.push({name:entry.name,path:manifest,design_path:source.designPath,source:source.template.source});
+    }catch(error){
+      warnings.push({code:'document/template-unavailable',severity:'warning',message:'A saved template could not be loaded.',subject:{name:entry.name,path:manifest},evidence:{reason:error.archifyDiagnostics?.[0]?.code||error.code||error.name}});
+    }
+  }
+  return {ok:true,default:defaultTemplate,templates:templateCatalog,library_path:directory,saved_templates:saved,warnings};
+}
 
 export async function resolveDesign(request){
   const choices=['designPath','designURL','template','templatePath'].filter(key=>request[key]!==undefined);

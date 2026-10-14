@@ -12,7 +12,7 @@ metadata:
 
 Create an interactive diagram from typed JSON, or render Markdown using any HTML design.
 
-For Markdown documents or styled answers, read [Document presentation](references/document-presentation.md) for HTML design selection and rendering. Deliver the renderer's returned result; rendering checks belong to the renderer.
+For Markdown documents or styled answers, read [Document presentation](references/document-presentation.md). When asked for an HTML answer, pass your answer directly as `markdown` to `render_markdown`, using the user's HTML or a selected template, and return the saved HTML. `list_document_templates` discovers built-in designs and reusable user templates; the reference covers saving and naming them. Deliver the renderer's returned result; rendering checks belong to the renderer.
 
 Native document components can present a local relationship or sequence:
 
