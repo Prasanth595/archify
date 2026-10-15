@@ -17,6 +17,7 @@
   <a href="#start"><strong>Get started</strong></a> &nbsp;·&nbsp;
   <a href="https://archify.si/guide.html"><strong>Scenario guide</strong></a> &nbsp;·&nbsp;
   <a href="#community"><strong>Community</strong></a> &nbsp;·&nbsp;
+  <a href="./README_TR.md"><strong>🇹🇷 Türkçe</strong></a> &nbsp;·&nbsp;
   <a href="./README_ZH.md"><strong>简体中文</strong></a> &nbsp;·&nbsp;
   <a href="./README_JA.md"><strong>日本語</strong></a>
 </p>

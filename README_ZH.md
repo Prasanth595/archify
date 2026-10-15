@@ -17,6 +17,7 @@
   <a href="#start"><strong>开始使用</strong></a> &nbsp;·&nbsp;
   <a href="https://archify.si/zh/guide"><strong>场景指南</strong></a> &nbsp;·&nbsp;
   <a href="#社区交流"><strong>社区交流</strong></a> &nbsp;·&nbsp;
+  <a href="./README_TR.md"><strong>🇹🇷 Türkçe</strong></a> &nbsp;·&nbsp;
   <a href="./README.md"><strong>English</strong></a> &nbsp;·&nbsp;
   <a href="./README_JA.md"><strong>日本語</strong></a>
 </p>

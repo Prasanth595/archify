@@ -17,6 +17,7 @@
   <a href="#start"><strong>Get started</strong></a> &nbsp;·&nbsp;
   <a href="https://archify.si/guide.html"><strong>Scenario guide</strong></a> &nbsp;·&nbsp;
   <a href="#community"><strong>Community</strong></a> &nbsp;·&nbsp;
+  <a href="./README_TR.md"><strong>🇹🇷 Türkçe</strong></a> &nbsp;·&nbsp;
   <a href="./README_ZH.md"><strong>简体中文</strong></a> &nbsp;·&nbsp;
   <a href="./README_JA.md"><strong>日本語</strong></a>
 </p>
@@ -42,6 +43,10 @@
 </p>
 
 <p align="center"><a href="#sponsors"><strong>❤️ Partners & sponsors: Kimi Work · Supercode · OpenLux</strong></a></p>
+
+
+> [!TIP]
+> 🇹🇷 **Türkçe Kullanıcılar İçin**: Kapsamlı Türkçe dokümantasyon, kurulum adımları ve kullanım rehberi için **[Türkçe Dokümantasyonu (README_TR.md)](./README_TR.md)** inceleyebilirsiniz.
 
 ## See Archify in action
 
