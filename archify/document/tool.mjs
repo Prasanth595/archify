@@ -1,4 +1,5 @@
 import { renderDocument } from './files.mjs';
+import { scanFixes } from './scan.mjs';
 import { inspectDesign, templateCatalog, defaultTemplate, listDocumentTemplates } from './templates.mjs';
 
 export const documentTool = {
@@ -71,7 +72,7 @@ export async function callTool(name,args,{signal}={}){
     if(name==='list_document_templates')return await listDocumentTemplates({libraryPath:args.library_path});
     const choices=['design_path','design_url','template','template_path'].filter(key=>args[key]!==undefined);if(choices.length>1)throw Error('Choose one design source.');
     const result=await inspectDesign({designPath:args.design_path,designURL:args.design_url,template:args.template,templatePath:args.template_path,contentSelector:args.content_selector,excludeSelector:args.exclude_selector,templateDir:args.template_dir,signal});
-    if(!result.ok)result.diagnostics=result.report.unmet.map(({code,...evidence})=>({code,severity:'error',message:'The HTML structure could not be scanned.',subject:{stage:'scan'},evidence,supportedFixes:['inspect the HTML and choose one content_selector, or revise its content containers']}));
+    if(!result.ok)result.diagnostics=result.report.unmet.map(({code,...evidence})=>({code,severity:'error',message:'The HTML structure could not be scanned.',subject:{stage:'scan'},evidence,supportedFixes:scanFixes(code)}));
     return result;
   }catch(error){return {ok:false,diagnostics:error.archifyDiagnostics||[{code:signal?.aborted?'document/cancelled':'document/scan-failed',severity:'error',message:error.message,subject:{tool:name},evidence:{errorName:error.name},supportedFixes:['verify the design source, Chrome and template directory, then retry']}]};}
 }

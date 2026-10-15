@@ -8,14 +8,15 @@ import { captureAtomicOutput, captureRegularFileBinding, publishRegularFileBindi
 import { render } from './render.mjs';
 import { documentBrowser, createDocumentBrowser } from './browser.mjs';
 import { resolveDesign } from './templates.mjs';
+import { scanFixes } from './scan.mjs';
 
 const renderFixes = (code) => {
   if (code === 'document/runtime-error' || code === 'document/runtime-content-changed' || code === 'document/runtime-resource-changed')
     return ['repair the HTML initialization script so it reads and preserves the mapped content'];
   if (code === 'document/source-identity-duplicate') return ['give each explicit Markdown heading ID a unique value'];
   if (code === 'document/heading-id-conflict') return ['choose an explicit heading ID that does not collide with preserved HTML controls'];
-  if (code.includes('selector') || code === 'document/content-root-excluded' || code === 'document/unmapped-content-region')
-    return ['select one content root with content_selector and preserve unrelated regions with exclude_selector'];
+  if (code.includes('selector') || code === 'document/content-root-excluded' || code === 'document/unmapped-content-region' || code === 'document/exclusion-crosses-content')
+    return scanFixes(code);
   return ['inspect the reported HTML positions and adjust the design containers or required inputs'];
 };
 

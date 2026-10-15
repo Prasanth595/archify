@@ -4247,12 +4247,13 @@ async function commandDocument(args) {
     const arg=repoArgs.rest[i];
     if(arg==='--json'){json=true;continue;}
     const option=arg.split('=')[0],key=names[option];
-    if(key){const value=arg.includes('=')?arg.slice(option.length+1):repoArgs.rest[++i];if(!value||value.startsWith('--'))rejectCliArgument(option+' requires a value.',{code:'cli/missing-option-value',subject:{option},supportedFixes:['provide a value after '+option]});if(values[key]!==undefined)fail('Duplicate document option '+option);values[key]=value;}
+    if(key){const value=arg.includes('=')?arg.slice(option.length+1):repoArgs.rest[++i];if(!value||value.startsWith('--'))rejectCliArgument(option+' requires a value.',{code:'cli/missing-option-value',subject:{option},supportedFixes:['provide a value after '+option]});if(values[key]!==undefined)rejectCliArgument('Duplicate document option '+option,{code:'cli/duplicate-option',subject:{option}});values[key]=value;}
     else rest.push(arg);
   }
-  if(rest.some(arg=>arg.startsWith('--')))fail('Unknown document option.');
+  const unknown=rest.find(arg=>arg.startsWith('--'));
+  if(unknown)rejectCliArgument('Unknown document option "'+unknown+'".',{code:'cli/unknown-option',subject:{option:unknown}});
   if(rest[0]==='templates') {
-    if(rest.length!==1||Object.keys(values).some(key=>key!=='libraryPath'))fail('Usage: archify document templates [--library-path directory] [--json]');
+    if(rest.length!==1||Object.keys(values).some(key=>key!=='libraryPath'))rejectCliArgument('Usage: archify document templates [--library-path directory] [--json]',{code:'cli/usage'});
     const {callTool}=await import('../document/tool.mjs');
     const result=await callTool('list_document_templates',values.libraryPath?{library_path:values.libraryPath}:{});
     if(json||!result.ok)console.log(JSON.stringify(result));
@@ -4265,12 +4266,12 @@ async function commandDocument(args) {
     return;
   }
   if(rest[0]==='scan') {
-    const input=rest[1];if(!input||rest.length!==2||values.designPath||values.designURL||values.template||values.templatePath||values.designOptionsPath||values.libraryPath)fail('Usage: archify document scan <HTML path or URL> [--save-template directory] [--content-selector CSS] [--exclude-selector CSS] [--json]');
+    const input=rest[1];if(!input||rest.length!==2||values.designPath||values.designURL||values.template||values.templatePath||values.designOptionsPath||values.libraryPath)rejectCliArgument('Usage: archify document scan <HTML path or URL> [--save-template directory] [--content-selector CSS] [--exclude-selector CSS] [--json]',{code:'cli/usage'});
     const {callTool}=await import('../document/tool.mjs');
     const result=await callTool('scan_html',{[/^https?:/i.test(input)?'design_url':'design_path']:input,...(values.templateDir?{template_dir:values.templateDir}:{}),...(values.contentSelector?{content_selector:values.contentSelector}:{}),...(values.excludeSelector?{exclude_selector:values.excludeSelector}:{})});
     console.log(JSON.stringify(result));if(!result.ok)process.exitCode=1;return;
   }
-  const [input,output]=rest;if(!input||rest.length>2||values.templateDir||values.libraryPath)fail(usage());
+  const [input,output]=rest;if(!input||rest.length>2||values.templateDir||values.libraryPath)rejectCliArgument(usage(),{code:'cli/usage'});
   const result=runNode([documentRendererPath(),input,output||'',values.designPath||'',values.designOptionsPath||'',JSON.stringify({template:values.template,templatePath:values.templatePath,designURL:values.designURL,contentSelector:values.contentSelector,excludeSelector:values.excludeSelector,json})],{env:rendererEnv(qualityArgs.quality,repoArgs.repoRoot)});
   if(result.status!==0)exitFrom(result);
 }
@@ -7178,7 +7179,7 @@ try {
   }
 } catch (error) {
   if (!error.archifyArgument) throw error;
-  if (['validate', 'deliver', 'finalize', 'inspect'].includes(command) && args.includes('--json')) {
+  if (['validate', 'deliver', 'finalize', 'inspect', 'document'].includes(command) && args.includes('--json')) {
     reportArtifactArgumentFailure(command, error);
   } else {
     fail(error.message);

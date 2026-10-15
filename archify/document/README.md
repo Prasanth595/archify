@@ -56,6 +56,9 @@ For an explicit custom boundary, use --content-selector CSS to select exactly
 one root and --exclude-selector CSS to preserve regions inside it. These are
 structural inputs. The scanner does not infer navigation/footer roles from
 class names, nor classify Markdown prose as benefits, causes or actions.
+An exclusion nested inside a replaceable content block returns
+`document/exclusion-crosses-content` and preserves the existing output. Move the
+control outside that block, or exclude the entire containing block.
 
 The three layouts are in [designs](designs/README.md).
 The packaged [Archify Skill](../SKILL.md) routes document requests to

@@ -128,6 +128,20 @@ test('HTML capture, saved templates and three report designs use the same render
     assert.match(JSON.stringify(failed.diagnostics),/runtime\.js/);
     assert.deepEqual(fs.readFileSync(artifact),before);
   });
+  await t.test('excluded controls inside replaceable blocks cannot be silently deleted',async()=>{
+    const local=path.join(directory,'crossing-exclusion.html');
+    for(const content of ['<p>Old copy <button id="keep">Keep control</button></p>','<ul><li>Old copy <button id="keep">Keep control</button></li></ul>']){
+      const html='<main>'+content+'</main>';fs.writeFileSync(local,html);fs.writeFileSync(output,'Preserved output');
+      const result=await callTool('render_markdown',{markdown:'Replacement copy',design_path:local,exclude_selector:'#keep',output_path:output});
+      assert.equal(result.ok,false,JSON.stringify(result));
+      assert.equal(result.diagnostics[0].code,'document/exclusion-crosses-content');
+      assert.ok(result.diagnostics[0].supportedFixes.some(fix=>fix.includes('outside')));
+      assert.equal(fs.readFileSync(output,'utf8'),'Preserved output');
+      assert.equal(fs.readFileSync(local,'utf8'),html);
+      const scanned=await callTool('scan_html',{design_path:local,exclude_selector:'#keep'});
+      assert.equal(scanned.ok,false);assert.equal(scanned.diagnostics[0].code,'document/exclusion-crosses-content');
+    }
+  });
   await t.test('fetch relocates assets and encoding while capture leaves scripts unexecuted',async()=>{
     let executed=0;const server=http.createServer((request,response)=>{
       if(request.url==='/executed'){executed++;response.end('ok');return;}

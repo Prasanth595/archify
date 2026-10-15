@@ -136,13 +136,14 @@ test('HTML input renders through its own DOM in Chrome', async (t) => {
   });
 
   await t.test('raw Markdown script, style and pre blocks survive blank lines and initialization', async () => {
-    const source = '<script>\nwindow.rawStarted=true;\n\nwindow.rawFinished=true;\n</script>\n\n<style>\n.raw {\n\ncolor:rgb(12,34,56);\n}\n</style>\n\n<pre>first\n\nsecond</pre>\n\nAfter.';
+    const source = '<script>\nwindow.rawStarted=true;\n\nwindow.rawFinished=true;\n</script>\n\n<style>\n.raw {\n\ncolor:rgb(12,34,56);\n}\n</style>\n\n<pre>first\n\nsecond</pre>\n\n<!-- note --> trailing\n\nAfter.';
     const result = await render(io, page('<main class="raw"><p>Old copy</p></main>'), source);
     assert.equal(result.report.ok, true, JSON.stringify(result.report));
     assert.equal(await io.run('window.rawStarted && window.rawFinished'), true);
     assert.equal(await io.run('document.querySelector("main pre").textContent'), 'first\n\nsecond');
     assert.equal(await io.run('getComputedStyle(document.querySelector("main")).color'), 'rgb(12, 34, 56)');
     assert.equal(await io.run('document.querySelector("main p").textContent'), 'After.');
+    assert.equal(await io.run('document.querySelector("main").textContent.includes("trailing")'), true);
   });
 
   await t.test('title, introduction and every chapter remain present', async () => {

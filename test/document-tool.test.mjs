@@ -141,6 +141,31 @@ test('document tool exposes the shared renderer without agent-specific inputs', 
     fs.writeFileSync(design,original);
   });
 
+  await t.test('document argument errors retain machine-readable JSON and previous output',()=>{
+    const cli=fileURLToPath(new URL('../archify/bin/archify.mjs',import.meta.url));
+    fs.writeFileSync(output,'Preserved output');
+    const cases=[
+      [[markdown,output,'--design','--json'],'cli/missing-option-value'],
+      [[markdown,output,'--design',design,'--design',design,'--json'],'cli/duplicate-option'],
+      [[markdown,output,'--bogus','--json'],'cli/unknown-option'],
+      [['--json'],'cli/usage'],
+      [['templates','extra','--json'],'cli/usage'],
+      [['scan','--json'],'cli/usage'],
+      [[markdown,output,'--quality','hero','--json'],'cli/invalid-option-value'],
+      [[markdown,output,'--repo-root','--json'],'cli/missing-option-value'],
+    ];
+    for(const [args,code] of cases){
+      const run=spawnSync(process.execPath,[cli,'document',...args],{encoding:'utf8'});
+      assert.equal(run.status,2,run.stderr||run.stdout);assert.equal(run.stderr,'');
+      const result=JSON.parse(run.stdout);assert.equal(result.ok,false);assert.equal(result.command,'document');
+      assert.equal(result.stage,'arguments');assert.equal(result.diagnostics[0].code,code);
+      assert.ok(result.diagnostics[0].supportedFixes.length);
+      assert.equal(fs.readFileSync(output,'utf8'),'Preserved output');
+    }
+    const plain=spawnSync(process.execPath,[cli,'document',markdown,output,'--bogus'],{encoding:'utf8'});
+    assert.equal(plain.status,2);assert.equal(plain.stdout,'');assert.match(plain.stderr,/Unknown document option/);
+  });
+
   await t.test('unavailable Chrome returns diagnostics without allocating profiles for rendering or scanning',()=>{
     const profiles=path.join(directory,'profiles');fs.mkdirSync(profiles);
     const env={...process.env,ARCHIFY_CHROME:path.join(directory,'missing-chrome'),TMPDIR:profiles,TMP:profiles,TEMP:profiles};

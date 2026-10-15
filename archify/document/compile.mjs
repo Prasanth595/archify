@@ -345,11 +345,19 @@ function makeIdentity(authored, construct, text, seen, counters) {
 const listMarker = line => /^( *)([-*+]|\d{1,9}[.)])([ \t]+)(.*)$/.exec(line);
 const nestedBlocks = (source, ctx) => compile(source, ctx.refs).html.replace(/\sdata-src="[^"]*"/g, '');
 const thematicBreak = line => /^(\*\s*){3,}$|^(-\s*){3,}$|^(_\s*){3,}$/.test(line.trim());
-function rawHTMLBlockEnd(lines, from) {
-  if (!/^ {0,3}<(?:script|style|pre|textarea)(?=[\t >]|$)/i.test(lines[from])) return null;
+const HTML_BLOCK_START = /^\s*<(?:\/?(?:address|article|aside|base|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|pre|script|section|source|style|summary|svg|table|tbody|td|textarea|tfoot|th|thead|title|tr|track|ul)\b|[!?])/i;
+function htmlBlockEnd(lines, from) {
+  const line = lines[from];
+  if (!HTML_BLOCK_START.test(line)) return null;
+  const ending = /^\s*<!--/.test(line) ? /-->/
+    : /^ {0,3}<(?:script|style|pre|textarea)(?=[\t >]|$)/i.test(line) ? /<\/(?:script|style|pre|textarea)>/i
+    : /^ {0,3}<\?/.test(line) ? /\?>/
+    : /^ {0,3}<!\[CDATA\[/.test(line) ? /\]\]>/
+    : /^ {0,3}<![A-Za-z]/.test(line) ? />/ : null;
   let at = from;
-  while (at < lines.length) {
-    if (/<\/(?:script|style|pre|textarea)>/i.test(lines[at++])) break;
+  while (at < lines.length && (ending || lines[at].trim())) {
+    const current = lines[at++];
+    if (ending?.test(current)) break;
   }
   return at;
 }
@@ -543,27 +551,23 @@ const BLOCKS = [
     match: (lines, i) => (/^\s*<!--/.test(lines[i]) ? { 0: lines[i] } : null),
     emit: (m, ctx, i) => {
       const from = i;
-      const body = [];
-      while (i < ctx.lines.length) {
-        body.push(ctx.lines[i]);
-        const done = /-->\s*$/.test(ctx.lines[i]);
-        i += 1;
-        if (done) break;
-      }
+      i = htmlBlockEnd(ctx.lines, i);
+      const raw = ctx.lines.slice(from, i).join('\n'), close = raw.indexOf('-->');
       ctx.note('htmlComment');
-      ctx.untouchable.push({ construct: 'htmlComment', start: ctx.at(from), end: ctx.at(i - 1) + ctx.lines[i - 1].length });
-      ctx.push(body.join('\n'));
+      ctx.untouchable.push({ construct: 'htmlComment', start: ctx.at(from), end: close < 0 ? ctx.at(i - 1) + ctx.lines[i - 1].length : ctx.at(from) + close + 3 });
+      if (close >= 0 && raw.slice(close + 3).replace(/<!--[\s\S]*?-->/g, '').trim()) {
+        ctx.block(undefined, 'htmlBlock', raw, ctx.span(from, i, from + 1), n => ctx.push('<div data-src="' + esc(n) + '">' + raw + '</div>'));
+      } else ctx.push(raw);
       return i;
     },
   },
   {
     name: 'htmlBlock', anchor: 'optional', why: '原样输出',
-    match: (lines, i) => (/^\s*<(?:\/?(?:address|article|aside|base|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|pre|script|section|source|style|summary|svg|table|tbody|td|textarea|tfoot|th|thead|title|tr|track|ul)\b|[!?])/i.test(lines[i]) ? { 0: lines[i] } : null),
+    match: (lines, i) => (HTML_BLOCK_START.test(lines[i]) ? { 0: lines[i] } : null),
     emit: (m, ctx, i) => {
       const from = i;
-      const end = rawHTMLBlockEnd(ctx.lines, i);
-      const body = [];
-      while (i < ctx.lines.length && (end === null ? ctx.lines[i].trim() : i < end)) { body.push(ctx.lines[i]); i += 1; }
+      i = htmlBlockEnd(ctx.lines, i);
+      const body = ctx.lines.slice(from, i);
       ctx.block(undefined, 'htmlBlock', body[0].slice(0, 20), ctx.span(from, i, from + 1), (n) => {
         ctx.push('<div data-src="' + esc(n) + '">' + body.join('\n') + '</div>');
       });
@@ -663,7 +667,7 @@ export function compile(source, referenceDefinitions = new Map()) {
 
   // 引用定义的目标可能在文档任何地方，先收一遍。
   for (let n = 0; n < lines.length; n++) {
-    const rawEnd = rawHTMLBlockEnd(lines, n);
+    const rawEnd = htmlBlockEnd(lines, n);
     if (rawEnd !== null) { n = rawEnd - 1; continue; }
     const fence=BLOCKS.find(row=>row.name==='fencedCode').match(lines,n);
     if(fence){

@@ -77,6 +77,26 @@ test('raw text HTML blocks retain blank lines through their closing tag', () => 
   }
 });
 
+test('comment closing delimiters retain trailing text and the following Markdown', () => {
+  for (const comment of ['<!-- note --> trailing', '<!-- note\ncontinued --> trailing']) {
+    const result = compile(comment + '\n\nAfter **comment**.');
+    assert.ok(result.blocks.some(block => block.html.includes('trailing')), result.html);
+    assert.match(result.blocks.at(-1).html, /After <strong>comment<\/strong>\./);
+    assert.equal(result.untouchable[0].end, comment.indexOf('-->') + 3);
+  }
+  assert.equal(compile('<!-- one --><!-- two -->\n\nAfter').blocks.length, 1);
+});
+
+test('raw HTML definitions cannot change links outside their block', () => {
+  for (const raw of ['<div>\n[x]: /inside\n</div>', '<table>\n[x]: /inside\n</table>', '<!-- note\n[x]: /inside\n--> trailing', '<?instruction\n[x]: /inside\n?>', '<![CDATA[\n[x]: /inside\n]]>']) {
+    const result = compile(raw + '\n\n[x]');
+    assert.deepEqual(result.refs, []);
+    assert.match(result.blocks.at(-1).html, />\[x\]<\/p>/);
+  }
+  const after = compile('<div>\nRaw body\n\n[x]: /outside\n\n[x]');
+  assert.match(after.blocks.at(-1).html, /href="\/outside">x<\/a>/);
+});
+
 test('link definitions inside fenced examples do not affect surrounding prose',()=>{
   for(const fence of ['```','~~~~']){
     const result=compile(fence+'md\n[x]: https://example.test\n'+fence+'\n\n[x]');

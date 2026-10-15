@@ -22,6 +22,11 @@ function readPage(dom, options = {}) {
   }
   if (ignore(root)) return fail('document/content-root-excluded');
   const slots = slotsIn(root, ignore);
+  const crossing = slots.filter(node => ignored.some(region => node.contains(region)));
+  if (crossing.length) return fail('document/exclusion-crosses-content', {
+    paths: crossing.map(node => pathOf(node)),
+    excluded: ignored.filter(region => crossing.some(node => node.contains(region))).map(node => pathOf(node)),
+  });
   const candidates = [];
   for (const h of slots.filter((el) => levelOf(el))) {
     if (h === root) continue;
@@ -66,6 +71,12 @@ function readPage(dom, options = {}) {
 }
 
 export const SCAN = inPage(readPage);
+
+export function scanFixes(code) {
+  if (code === 'document/exclusion-crosses-content')
+    return ['move excluded controls outside replaceable content blocks, or exclude their entire containing block'];
+  return ['select one content root with content_selector and preserve unrelated regions with exclude_selector'];
+}
 
 export async function scan(io, html, options = {}) {
   await io.load(html, { scripts: false });
