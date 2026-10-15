@@ -3623,7 +3623,7 @@ function sceneLabelObstacles() {
   return cachedSceneLabelObstacles;
 }
 
-function routeClearsSceneLabelObstacles(edge, points) {
+function routeClearsSceneLabelObstacles(edge, points, evidence) {
   // Asking for the cached list also publishes it to the grid.
   sceneLabelObstacles();
   const label = candidateLabelRect(edge, points);
@@ -3641,10 +3641,20 @@ function routeClearsSceneLabelObstacles(edge, points) {
     if (item.kind !== 'scene') continue;
     for (let index = 0; index < points.length - 1; index += 1) {
       if (segmentIntersectsRect({ start: points[index], end: points[index + 1] }, item.obstacle)) {
+        if (evidence) {
+          evidence.segmentIndex = index;
+          evidence.blockedBy = { kind: item.obstacle.kind, id: item.obstacle.id ?? null };
+        }
         return false;
       }
     }
-    if (label && rectsOverlap(label, item.obstacle)) return false;
+    if (label && rectsOverlap(label, item.obstacle)) {
+      if (evidence) {
+        evidence.labelRect = label;
+        evidence.blockedBy = { kind: item.obstacle.kind, id: item.obstacle.id ?? null };
+      }
+      return false;
+    }
   }
   return true;
 }
@@ -3743,6 +3753,11 @@ function readablePresetRejection(edge, points, from, to, fromSide, toSide) {
     const labelRect = candidateLabelRect(edge, points);
     const obstacle = [...nodes.values()].find((node) => rectsOverlap(labelRect, node, -2));
     return { invariant, labelRect, obstacleNode: obstacle?.id };
+  }
+  if (invariant === 'lane/phase/group label clearance') {
+    const evidence = {};
+    routeClearsSceneLabelObstacles(edge, points, evidence);
+    return { invariant, ...evidence };
   }
   return { invariant };
 }
@@ -4276,6 +4291,97 @@ function readablePresetVia(edge, from, to, start, end, fromSide, toSide) {
     delete document.edges[edgeIndex].route;
   })) {
     supportedFixes.push(`remove route from edge "${edgeName}" so readable-v2 can use its verified automatic candidate`);
+  }
+  // A scene label — a group, phase or lane header — can sit across the only
+  // column an authored endpoint side can use. No route-side preset can clear
+  // that, so also offer the placement that does, when one verifies.
+  //
+  // Only spans that still contain every node the group already owns are
+  // candidates. A narrower span silently drops a member out of the group, and
+  // `acceptsFix` cannot see that: it only proves the document compiles.
+  if (discoverFixes && rejection.invariant === 'lane/phase/group label clearance'
+    && rejection.blockedBy && rejection.blockedBy.kind === 'group-label'
+    && rejection.blockedBy.id) {
+    const group = asArray(workflow.groups).find((entry) => entry.id === rejection.blockedBy.id);
+    if (group) {
+      const memberColumns = asArray(workflow.nodes)
+        .filter((node) => node.lane === group.lane
+          && Number.isInteger(node.col)
+          && node.col >= group.fromCol
+          && node.col <= group.toCol)
+        .map((node) => node.col);
+      const minimumFrom = memberColumns.length ? Math.min(...memberColumns) : group.fromCol;
+      const maximumTo = memberColumns.length ? Math.max(...memberColumns) : group.toCol;
+      const candidates = [];
+      for (let fromCol = 0; fromCol <= minimumFrom; fromCol += 1) {
+        for (let toCol = maximumTo; toCol <= Math.max(group.toCol, maximumTo); toCol += 1) {
+          if (fromCol === group.fromCol && toCol === group.toCol) continue;
+          // "Keeping its members" has to hold on two independent axes, and a
+          // compiling result alone proves neither.
+          //
+          // 1. The edited group's own membership must be unchanged. A span that
+          //    reaches past the authored range pulls in a same-lane node that
+          //    was never in the group, expanding its frame to absorb that node.
+          //    An overlapping group can hide this from axis 2 below, because the
+          //    absorbed node keeps resolving to the other group either way.
+          // 2. Every node must keep the same resolved group *identity*.
+          //    `nodeContext()` takes the first group whose range contains the
+          //    node — ordered by lane, then fromCol, then toCol, then id — so
+          //    moving `fromCol` can reorder two overlapping groups and hand a
+          //    node to a different group. Compare ids, not labels: two groups may
+          //    share a label, and a label comparison would miss the swap.
+          const editedMembership = (document) => {
+            const edited = asArray(document.groups).find((entry) => entry.id === group.id) ?? group;
+            return asArray(document.nodes)
+              .filter((node) => node.lane === edited.lane && Number.isInteger(node.col))
+              .filter((node) => node.col >= edited.fromCol && node.col <= edited.toCol)
+              .map((node) => node.id)
+              .sort()
+              .join('\u0000');
+          };
+          const resolvedGroupId = (document, node) => {
+            const candidates = asArray(document.groups)
+              .filter((candidate) => candidate.lane === node.lane)
+              .sort((left, right) => (
+                (laneIndex.get(left.lane) ?? Number.MAX_SAFE_INTEGER) - (laneIndex.get(right.lane) ?? Number.MAX_SAFE_INTEGER)
+                || left.fromCol - right.fromCol || left.toCol - right.toCol
+                || stableCompare(left.id, right.id)
+              ));
+            const owner = candidates.find((candidate) => node.col >= candidate.fromCol && node.col <= candidate.toCol);
+            return owner ? owner.id ?? null : null;
+          };
+          const movedDocument = {
+            ...workflow,
+            groups: asArray(workflow.groups).map((entry) => (
+              entry.id === group.id ? { ...entry, fromCol, toCol } : entry
+            )),
+          };
+          const changesMembership = editedMembership(movedDocument) !== editedMembership(workflow);
+          if (changesMembership) continue;
+          const changesResolvedGroup = asArray(workflow.nodes)
+            .some((node) => resolvedGroupId(movedDocument, node) !== resolvedGroupId(workflow, node));
+          if (changesResolvedGroup) continue;
+          candidates.push({ fromCol, toCol, span: toCol - fromCol, shift: Math.abs(fromCol - group.fromCol) + Math.abs(toCol - group.toCol) });
+        }
+      }
+      candidates.sort((left, right) => left.span - right.span || left.shift - right.shift);
+      for (const { fromCol, toCol } of candidates) {
+        const fix = verifiedEdgeFix(
+          edge,
+          `set group "${group.id}" fromCol to ${fromCol} and toCol to ${toCol} so its label clears the "group label" blocking edge "${edgeName}" while keeping its members`,
+          (_candidateEdge, document) => {
+            const target = asArray(document.groups).find((entry) => entry.id === group.id);
+            if (!target) throw new Error('group is no longer addressable');
+            target.fromCol = fromCol;
+            target.toCol = toCol;
+          },
+        );
+        if (fix) {
+          supportedFixes.push(fix);
+          break;
+        }
+      }
+    }
   }
   throwDiagnosticError(message, [{
     code: 'workflow/route-preset-conflict',
