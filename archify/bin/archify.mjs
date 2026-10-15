@@ -2192,7 +2192,7 @@ const COMMAND_USAGE = {
   render: '<type> <input.json> [output.html] [--quality standard|showcase] [--repo-root path]',
   compare: 'architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path]',
   deliver: '<type> <input.json> [output.html] [--json] [--open] [--quality standard|showcase] [--repo-root path]',
-  finalize: '<type> <input.json> <output.html> [--json] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]',
+  finalize: '<type> <input.json> <output.html> [--json] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]  (--out-dir relocates only the evidence sidecars; the HTML and *.delivery.json at <output.html> are rewritten in place)',
   preview: '<type> <input.json> [output.html] [--no-open] [--quality standard|showcase] [--repo-root path]',
   validate: '<type> <input.json> [--json] [--layout-json] [--quality standard|showcase] [--repo-root path]',
   migrate: 'workflow <old.json> <new.json> --to-schema 2 [--output portable.html] [--json] [--repo-root path]',
