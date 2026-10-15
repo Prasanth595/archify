@@ -13,13 +13,13 @@ test('omitted legend typography keeps the existing rendering and placement', () 
   const measured = measureLegend(entries, layout);
   assert.equal(measured.titleY, 180);
   assert.deepEqual(measured.entries.map(({ x, baseline, width }) => ({ x, baseline, width })), [
-    { x: 20, baseline: 200, width: 53 },
-    { x: 80, baseline: 200, width: 57 },
+    { x: 20, baseline: 200, width: 55 },
+    { x: 82, baseline: 200, width: 60 },
   ]);
   assert.equal(renderLegend({ entries: entries.slice(0, 1), layout, renderSwatch: swatch, locale: 'en' }), [
     '        <g data-legend="">',
     '          <text x="20" y="180" class="t-primary" font-size="12" font-weight="650">Legend</text>',
-    '          <g data-legend-semantic-kind="backend" data-legend-x="20" data-legend-baseline="200" data-legend-width="53">',
+    '          <g data-legend-semantic-kind="backend" data-legend-x="20" data-legend-baseline="200" data-legend-width="55">',
     '            <rect x="20" y="192" width="14" height="9"/>',
     '            <text x="42" y="200" class="t-muted" font-size="7.5" font-weight="500">Backend</text>',
     '          </g>',

@@ -191,6 +191,46 @@ test('cli: help lists commands and diagram types', () => {
   assert.match(result.stdout, /architecture, workflow, sequence, dataflow, lifecycle/);
 });
 
+test('cli: sole subcommand --help returns canonical usage without operations', (t) => {
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-cli-help-'));
+  t.after(() => fs.rmSync(scratch, { recursive: true, force: true }));
+  const global = run(['--help'], { cwd: scratch });
+  assert.equal(global.status, 0, global.stderr);
+  const commands = ['render', 'compare', 'deliver', 'finalize', 'preview', 'validate',
+    'migrate', 'inspect', 'check', 'browser-check', 'visual-check', 'guide', 'brands',
+    'examples', 'doctor', 'demo'];
+  for (const command of commands) {
+    const result = run([command, '--help'], { cwd: scratch });
+    assert.equal(result.status, 0, `${command}: ${result.stderr}`);
+    assert.equal(result.stderr, '', command);
+    assert.equal(result.stdout, global.stdout, `${command} uses canonical help bytes`);
+    assert.deepEqual(fs.readdirSync(scratch), [], `${command} help creates no artifact or evidence`);
+  }
+});
+
+test('cli: subcommand help keeps unknown and mixed arguments failing', () => {
+  const unknown = run(['not-a-command', '--help']);
+  assert.equal(unknown.status, 2);
+  assert.equal(unknown.stdout, '');
+  assert.match(unknown.stderr, /Unknown command "not-a-command"/);
+  const mixed = run(['visual-check', '--help', 'missing.html']);
+  assert.equal(mixed.status, 1);
+  assert.equal(mixed.stdout, '');
+  assert.equal(mixed.stderr, 'Unknown visual-check option "--help".\n');
+  const json = run(['validate', '--help', '--json']);
+  assert.equal(json.status, 2);
+  assert.equal(json.stderr, '');
+  const receipt = JSON.parse(json.stdout);
+  assert.equal(receipt.ok, false);
+  assert.equal(receipt.stage, 'arguments');
+  assert.equal(receipt.diagnostics[0].code, 'cli/unknown-option');
+  assert.equal(receipt.diagnostics[0].subject.option, '--help');
+  const bogus = run(['visual-check', '--bogus']);
+  assert.equal(bogus.status, 1);
+  assert.equal(bogus.stdout, '');
+  assert.equal(bogus.stderr, 'Unknown visual-check option "--bogus".\n');
+});
+
 test('cli: doctor reports a complete installation is ready', () => {
   const result = run(['doctor']);
   assert.equal(result.status, 0, result.stderr);
@@ -1023,6 +1063,82 @@ test('cli: compare reports an output-limit failure with the same diagnostic', ()
   assert.equal(failure.diagnostics[0].code, 'artifact/check-output-limit');
   assert.equal(failure.diagnostics[0].evidence.systemCode, 'ENOBUFS');
 });
+
+for (const command of ['validate', 'deliver', 'migrate', 'compare', 'check']) {
+  test(`cli: ${command} rejects checker ENOBUFS with status zero`, () => {
+    const input = path.join(skillRoot, 'examples/web-app.architecture.json');
+    const out = path.join(tmp, `spawn-error-${command}.html`);
+    const prior = '<!doctype html><title>trusted artifact</title>\n';
+    fs.writeFileSync(out, prior);
+    const args = command === 'validate' ? ['validate', 'architecture', input, '--json']
+      : command === 'deliver' ? ['deliver', 'architecture', input, out, '--json']
+      : command === 'migrate' ? ['migrate', 'workflow', path.join(__dirname, 'fixtures/v1-workflow-700x400.workflow.json'), path.join(tmp, 'spawn-error.workflow.json'), '--to-schema', '2', '--json']
+      : command === 'compare' ? ['compare', 'architecture', input, input, out, '--json']
+      : ['check', out];
+    const wrapper = path.join(tmp, `spawn-error-${command}.mjs`);
+    fs.writeFileSync(wrapper, `
+import childProcess from 'node:child_process';
+import { syncBuiltinESMExports } from 'node:module';
+const original = childProcess.spawnSync;
+childProcess.spawnSync = (executable, args, options) => {
+  if (String(args?.[0]).endsWith('check-render-output.mjs')) {
+    return { status: 0, signal: null, stdout: '{"ok":true}', stderr: '', error: Object.assign(new Error('buffer exceeded'), { code: 'ENOBUFS' }) };
+  }
+  return original(executable, args, options);
+};
+syncBuiltinESMExports();
+process.argv = [process.execPath, ${JSON.stringify(cli)}, ...${JSON.stringify(args)}];
+await import(${JSON.stringify(pathToFileURL(cli).href)});
+`);
+    const result = spawnSync(process.execPath, [wrapper], { cwd: skillRoot, encoding: 'utf8' });
+    assert.equal(result.status, 1, result.stderr || result.stdout);
+    const receipt = JSON.parse(result.stdout);
+    assert.equal(receipt.ok, false);
+    const entry = receipt.diagnostics.find(({ code }) => code === 'artifact/check-output-limit');
+    assert.ok(entry, result.stdout);
+    assert.equal(entry.evidence.systemCode, 'ENOBUFS');
+    assert.equal(entry.evidence.status, 0);
+    assert.equal(entry.evidence.receivedBytes, Buffer.byteLength('{"ok":true}'));
+    if (command === 'deliver' || command === 'compare') assert.equal(fs.readFileSync(out, 'utf8'), prior);
+  });
+}
+
+for (const [command, args] of [
+  ['inspect', ['inspect', 'architecture', path.join(skillRoot, 'examples/web-app.architecture.json'), '--json']],
+  ['validate', ['validate', 'architecture', path.join(skillRoot, 'examples/web-app.architecture.json'), '--layout-json', '--json']],
+]) {
+  test(`cli: ${command} rejects renderer ENOBUFS with status zero in layout mode`, () => {
+    const wrapper = path.join(tmp, `renderer-spawn-error-${command}.mjs`);
+    fs.writeFileSync(wrapper, `
+import childProcess from 'node:child_process';
+import { syncBuiltinESMExports } from 'node:module';
+const original = childProcess.spawnSync;
+childProcess.spawnSync = (executable, childArgs, options) => {
+  if (String(childArgs?.[0]).endsWith('render-architecture.mjs')) {
+    return {
+      status: 0,
+      signal: null,
+      stdout: JSON.stringify({ contract: 'archify.renderer.failure.v1', diagnostics: [] }),
+      stderr: '',
+      error: Object.assign(new Error('buffer exceeded'), { code: 'ENOBUFS' }),
+    };
+  }
+  return original(executable, childArgs, options);
+};
+syncBuiltinESMExports();
+process.argv = [process.execPath, ${JSON.stringify(cli)}, ...${JSON.stringify(args)}];
+await import(${JSON.stringify(pathToFileURL(cli).href)});
+`);
+    const result = spawnSync(process.execPath, [wrapper], { cwd: skillRoot, encoding: 'utf8' });
+    assert.equal(result.status, 1, result.stderr || result.stdout);
+    const receipt = JSON.parse(result.stdout);
+    assert.equal(receipt.ok, false);
+    assert.equal(receipt.command, command);
+    assert.equal(receipt.stage, 'render');
+    assert.equal(receipt.diagnostics[0].code, 'internal/renderer-process');
+    assert.equal(receipt.contract, undefined);
+  });
+}
 
 test('cli: check reports an output-limit failure with a classified receipt', () => {
   const input = path.join(skillRoot, 'examples/web-app.architecture.json');
@@ -4415,9 +4531,10 @@ test('cli: validate rejects unknown flags, layout-json assignment typos, and ext
   }
 });
 
-test('cli: validate and deliver keep argument failures machine-readable with --json', () => {
+test('cli: validate, deliver, and inspect keep argument failures machine-readable with --json', () => {
   const workflow = path.join(skillRoot, 'examples/agent-tool-call.workflow.json');
   const sequence = path.join(skillRoot, 'examples/cache-miss-request.sequence.json');
+  const architecture = path.join(skillRoot, 'examples/web-app.architecture.json');
   const cases = [
     {
       args: ['validate', '--json'],
@@ -4505,6 +4622,30 @@ test('cli: validate and deliver keep argument failures machine-readable with --j
       command: 'deliver',
       code: 'cli/usage',
     },
+    {
+      args: ['inspect', 'architecture', architecture, '--json', '--bogus'],
+      command: 'inspect',
+      code: 'cli/unknown-option',
+      subject: { option: '--bogus' },
+    },
+    {
+      args: ['inspect', 'architecture', '--json'],
+      command: 'inspect',
+      code: 'cli/usage',
+    },
+    {
+      args: ['inspect', 'architecture', architecture, 'extra.json', '--json'],
+      command: 'inspect',
+      code: 'cli/usage',
+    },
+    {
+      // The architecture-only selector guard runs before the delegate, so it
+      // must raise a rejectable argument failure rather than fail() early.
+      args: ['inspect', 'workflow', workflow, '--json'],
+      command: 'inspect',
+      code: 'cli/unsupported-option',
+      subject: { type: 'workflow' },
+    },
   ];
 
   for (const { args, command, code, subject = {} } of cases) {
@@ -4528,6 +4669,31 @@ test('cli: validate and deliver keep argument failures machine-readable with --j
   }
 });
 
+test('cli: inspect argument failures exit 2 with a clean, truthful diagnostic', () => {
+  const architecture = path.join(skillRoot, 'examples/web-app.architecture.json');
+
+  // Without `await`, the delegated async validate call rejects past the
+  // top-level catch: exit 1, a raw Node stack trace, and a "validate" message.
+  const unknown = run(['inspect', 'architecture', architecture, '--bogus']);
+  assert.equal(unknown.status, 2, unknown.stderr);
+  assert.equal(unknown.stdout, '');
+  assert.equal(unknown.stderr.trim(), 'Unknown inspect option "--bogus".');
+  assert.doesNotMatch(unknown.stderr, /^\s+at /m);
+  assert.equal(unknown.stderr.includes('Node.js v'), false);
+
+  for (const args of [
+    ['inspect', 'architecture'],
+    ['inspect', 'architecture', architecture, 'extra.json'],
+  ]) {
+    const result = run(args);
+    assert.equal(result.status, 2, `${args.join(' ')}\n${result.stderr}\n${result.stdout}`);
+    assert.equal(result.stdout, '');
+    assert.match(result.stderr, /^Usage:/m);
+    assert.doesNotMatch(result.stderr, /^\s+at /m);
+    assert.equal(result.stderr.includes('Node.js v'), false);
+  }
+});
+
 test('cli: inspect emits architecture layout json', () => {
   const input = path.resolve(skillRoot, '../examples/archify-repo-grid.architecture.json');
   const result = run(['inspect', 'architecture', input]);
@@ -4546,6 +4712,21 @@ test('cli: inspect remains architecture-only while workflow uses validate --layo
   assert.equal(result.status, 2);
   assert.match(result.stderr, /inspect is currently supported for architecture diagrams only/);
   assert.equal(result.stdout, '');
+  assert.doesNotMatch(result.stderr, /^\s+at /m);
+
+  // `--json` must reach the same machine-readable argument receipt as every
+  // other rejected `inspect` invocation instead of exiting before it.
+  const json = run(['inspect', 'workflow', input, '--json']);
+  assert.equal(json.status, 2, json.stderr || json.stdout);
+  assert.equal(json.stderr, '');
+  const failure = JSON.parse(json.stdout);
+  assert.equal(failure.ok, false);
+  assert.equal(failure.command, 'inspect');
+  assert.equal(failure.stage, 'arguments');
+  assert.equal(failure.diagnostics[0].code, 'cli/unsupported-option');
+  assert.deepEqual(failure.diagnostics[0].subject, { command: 'inspect', type: 'workflow' });
+  assert.ok(failure.diagnostics[0].supportedFixes.length > 0);
+  assert.equal('stack' in failure, false);
 });
 
 test('cli: validate returns renderer errors for bad input', () => {

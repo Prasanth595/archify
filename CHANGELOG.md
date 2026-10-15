@@ -4,17 +4,45 @@ All notable changes are documented here. Format loosely follows [Keep a Changelo
 
 ## [Unreleased]
 
-> Development identity: `v3.0.2-dev.1`. Not a stable release.
+> Development identity: `v3.1.1-dev.1`. Not a stable release.
 
 ### Added
+
 - **Workflow v2 字体与测量布局联动（#631）。** 新增可选 `meta.typography_scale`（1–2），让节点文本、泳道/阶段/分组标题、连线标签及图例共同参与布局测量；固定尺寸不足时返回结构化容量诊断。省略或设为 1 保持原有输出，schema v1 和其他图类型不变。
-- **Traditional Chinese (Taiwan) Viewer catalog.** `meta.locale: "zh-TW"` now selects a bundled catalog covering all 487 Viewer keys with Taiwan terminology (for example 循序圖, 資料流, 匯出, 檢視), instead of falling back to English. Enrollment is data only: `locales/zh-TW.json` plus one manifest entry. `zh-Hant` and `zh-HK` remain distinct, unbundled tags.
-- **GitLab source links.** Repository evidence on gitlab.com, or on a self-managed host declared with `provider: "gitlab"`, now generates revision-pinned web links (`/-/blob/<revision>/<path>#L<a>-<b>`, `/-/tree/<revision>`) instead of requiring `link_mode: "local-only"`. Nested groups are accepted, SSH and HTTPS origins on the same host match, paths compare case-insensitively, and cited Markdown line ranges open the plain view. Verification is unchanged and `local-only` remains available.
 
 ### Fixed
 
 - **Workflow 字体缩放的源码上下文容量检查（#649）。** 自动高度与容量校验共同考虑已验证的源码信息和品牌图标，布局各阶段使用一致尺寸；修复建议保留来源上下文，并通过真实 CLI 重放验证。默认倍率和作者明确指定的尺寸契约保持不变。
 
+- **Timeline 时区刻度（#926）。** 刻度按显示时区在各真实时刻的 UTC 偏移对齐，修复跨夏令时后日刻度漂移到 01:00／23:00、半小时跳变后小时刻度漂移的问题。回拨的重复时刻保持独立，跳过的小时或日期不生成虚构刻度；事件时间、标签精度、时间轴比例与断轴规则保持不变。
+
+### Changed
+- **发布后的开发基线。** 在已发布的 3.1.0 代码和验证产物基础上开启 3.1.1-dev.1 开发周期，同步开发身份与可重现的示例、比较图和网站产物。稳定更新清单继续指向已发布的 3.1.0；本次不创建发布或更改已发布版本。
+
+## [3.1.0] — 2026-10-14
+
+### Release highlights
+- **Ten diagram types.** ERD, Class/interface, Tree, Timeline and Waterfall join Architecture, Workflow, Sequence, Dataflow and Lifecycle, with typed JSON, source evidence and standalone Viewer exports.
+- **Live by default.** Each diagram type uses a matching motion choreography; readers can switch to Still. Motion remains separate from authored topology and export geometry.
+- **Readable authoring and recovery.** Bounded route/label coordination, clearer node cards, wrapped Sequence notes, main-path Lifecycle layouts, long-page radar navigation and executable geometry diagnostics reduce avoidable repair work.
+- **Verified delivery and portability.** Finalize reports input, artifact and browser gates separately; repository evidence, atomic delivery, clipboard/export continuity and Windows path handling fail closed with actionable diagnostics.
+- **Guide and handoff.** Concise artifact-first delivery and a localized optional GitHub link inside the reader-opened Guide.
+
+### Known limitations
+- Large Sequence diagrams may require readable page scrolling; floating controls can overlap content at some initial viewport positions.
+- Some complex Dataflow inputs share visual corridors; long Class generic types can wrap awkwardly. Automatic validation does not establish perceptual quality.
+- Waterfall durations need recorded trace evidence to be called measured; author-supplied illustrative values remain labelled.
+- The independently published DSH plugin remains pinned to Archify 3.0.1. Synchronization requires a separate plugin release and host acceptance; the 3.1.0 Skill release does not update it.
+
+### Added
+- **Traditional Chinese (Taiwan) Viewer catalog.** `meta.locale: "zh-TW"` now selects a bundled catalog covering all 487 Viewer keys with Taiwan terminology (for example 循序圖, 資料流, 匯出, 檢視), instead of falling back to English. Enrollment is data only: `locales/zh-TW.json` plus one manifest entry. `zh-Hant` and `zh-HK` remain distinct, unbundled tags.
+- **GitLab source links.** Repository evidence on gitlab.com, or on a self-managed host declared with `provider: "gitlab"`, now generates revision-pinned web links (`/-/blob/<revision>/<path>#L<a>-<b>`, `/-/tree/<revision>`) instead of requiring `link_mode: "local-only"`. Nested groups are accepted, SSH and HTTPS origins on the same host match, paths compare case-insensitively, and cited Markdown line ranges open the plain view. Verification is unchanged and `local-only` remains available.
+
+### Fixed
+
+- **WebM 录制失败清理 (#622)。** 画布、捕获流、编码器启动、逐帧绘制或停止失败时，录制 Promise 现在会拒绝并释放已创建的流、临时 URL、动画帧和定时器；晚到的编码事件不能再将失败录制报告为成功。正常编码与最佳努力的最终片段 flush 行为保持不变。
+
+- **类图混合关系的主干冲突（#791）。** 自动继承／实现主干会检查组外路线的端口、走廊和交叉；冲突组回退到独立路由，避免依赖箭头被继承三角覆盖或实线覆盖实现虚线。无冲突主干、显式几何及关系语义保持不变；空 `via: []` 与省略路径点统一处理，避免合法输入在回退后产生非法斜线。
 - **SVG 路径检查（#641）。** 统一解析关系线和结构边界的 `M/L/H/V/Q/Z` 路径，正确保留子路径与闭合语义；截断参数、非法数值和不支持的命令现在有限失败并给出定位诊断，避免检查挂起、漏检或虚构跨子路径线段。非共线 `Q` 前后的直线保留真实连续性，避免虚假交叉、标签遮挡和漏检；曲线采样点不会增加微线段预算。普通有效产物的 9 项检查保持不变。
 - **Inactive brand icon declarations.** Capture ignores icon markup in comments, raw text (including `noscript` for `text/html`), quoted attributes and templates, so inactive page edits cannot replace the selected image or break its pinned digest. Complete link attributes keep quoted delimiters and distinguish `href` from `data-href`; XHTML `noscript` discovery and links after empty elements are preserved. Old pins to inactive markup may require inspecting and explicitly recapturing the intended icon; digest checking remains enforced.
 - **Brand ICO data bounds (#585).** Capture and pinned re-fetches reject empty, directory-overlapping or out-of-bounds image ranges in ICO directory entries, while preserving valid PNG/DIB payloads and normal icon fallback.

@@ -14,6 +14,7 @@ import {
   CAPTURE_VIEWPORTS,
   ChromeVisualBrowser,
   findChrome,
+  persistBrowserCheckFailure,
   VISUAL_CHECK_VIEWPORTS,
 } from './visual-check.mjs';
 import { startDeliveryUpdateCheck } from './delivery-update.mjs';
@@ -564,6 +565,9 @@ function placementHints({ crossings = [], detours = [], crowdedSides = [] }) {
   return [...new Set(hints)].slice(0, 8);
 }
 
+// Route failures call for a connected-scene repair; size and text failures do not.
+const ROUTE_DIAGNOSTIC = /^(clean-flow\/|composition\/(proper-crossing|ambiguous-corridor|border-run|container-border-run|excessive-route-detour|route-rhythm|arrowhead-collision))/;
+
 export function compactFinalizeReceipt(receipt) {
   const gates = {};
   for (const stage of FINALIZE_STAGES) gates[stage] = receipt.stages?.[stage]?.status || 'not-run';
@@ -609,6 +613,13 @@ export function compactFinalizeReceipt(receipt) {
     addDiagnostic(entry, index);
   }
   for (const [index, entry] of allDiagnostics.entries()) addDiagnostic(entry, index);
+  const truncated = allDiagnostics.length > selectedDiagnostics.length;
+  const omittedCounts = new Map();
+  if (truncated) {
+    for (const [index, entry] of allDiagnostics.entries()) {
+      omittedCounts.set(entry.code, (omittedCounts.get(entry.code) || 0) + (selectedIndexes.has(index) ? 0 : 1));
+    }
+  }
   const compact = {
     schemaVersion: 1,
     ok: receipt.ok,
@@ -624,7 +635,8 @@ export function compactFinalizeReceipt(receipt) {
     diagnosticSummary: {
       total: allDiagnostics.length,
       shown: selectedDiagnostics.length,
-      truncated: allDiagnostics.length > selectedDiagnostics.length,
+      truncated,
+      ...(truncated ? { omittedByCode: Object.fromEntries([...omittedCounts].filter(([, count]) => count > 0)) } : {}),
     },
     evidence: receipt.evidence,
     ...(receipt.update && receipt.update.status !== 'unavailable'
@@ -641,6 +653,8 @@ export function compactFinalizeReceipt(receipt) {
   if (receipt.ok && Object.keys(reviewSignals).length) {
     const routeReview = receipt.stages?.check?.receipt?.composition?.routeReview;
     const hints = routeReview ? placementHints(routeReview) : [];
+    // Modes without free node placement cannot act on node-move hints.
+    const advisoryOnly = Boolean(receipt.type) && receipt.type !== 'architecture';
     compact.visualReviewRecommendation = {
       action: 'inspect-route-readability',
       signals: reviewSignals,
@@ -651,8 +665,10 @@ export function compactFinalizeReceipt(receipt) {
           detours: routeReview.detours.slice(0, 8),
           truncated: routeReview.crossings.length > 8 || routeReview.detours.length > 8,
         },
-        ...(hints.length ? { hints } : {}),
-        repair: 'Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit.',
+        ...(hints.length && !advisoryOnly ? { hints } : {}),
+        repair: !advisoryOnly
+          ? 'Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit.'
+          : 'Advisory only: this mode places or routes these relationships itself. Report them; do not remove relationships or meaning to reduce crossings.',
       } : {}),
     };
   }
@@ -678,9 +694,9 @@ export function compactFinalizeReceipt(receipt) {
     compact.nextAction = {
       action: 'edit-in-place',
       candidate: receipt.specification?.path,
-      constraint: receipt.type === 'architecture'
+      constraint: receipt.type === 'architecture' && (receipt.diagnostics || []).some((entry) => ROUTE_DIAGNOSTIC.test(entry.code || ''))
         ? 'Preserve all semantics and user-fixed geometry. Use references/architecture-layout-repair.md to choose a local repair or connected-scene reflow; edit the existing candidate.'
-        : 'Preserve unaffected semantics and geometry; do not replace the whole candidate.',
+        : 'Preserve unaffected semantics and geometry; apply each diagnostic\'s supportedFixes, or the fix its message names, and do not replace the whole candidate.',
       then: 'finalize-once',
     };
   }
@@ -775,22 +791,12 @@ export async function runFinalize({
   // update check in parallel instead of timing out on every delivery.
   const updateCheck = startUpdateCheck({ env, deadlineMs: FINALIZE_UPDATE_DEADLINE_MS });
 
-  // Only launch/attach the blank browser here. The normal browser gate still
-  // verifies current delivery provenance before it consumes this one-shot factory.
-  const chromePath = runBrowserCheck ? resolveChrome({ env }) : null;
+  // Resolve and launch Chrome only after delivery and strict artifact checks pass.
+  // Invalid candidates must not start a browser that cannot inspect an artifact.
+  let chromePath = null;
   let browser;
   let browserStartupError;
   let browserTransferred = false;
-  if (chromePath) {
-    try {
-      browser = createBrowser(chromePath, { env });
-      // Deliver/check may fail before inspect() awaits startup. Handle the
-      // rejection now while retaining the same promise for the browser gate.
-      browser.sessionPromise.catch(() => {});
-    } catch (error) {
-      browserStartupError = error;
-    }
-  }
   const browserFactory = () => {
     if (browserStartupError) throw browserStartupError;
     if (browserTransferred || !browser) throw new Error('The finalize browser is unavailable or already consumed.');
@@ -814,13 +820,39 @@ export async function runFinalize({
       const inProcess = stage === 'browser-check' && runBrowserCheck;
       let result;
       if (inProcess) {
-        const checked = await runBrowserCheck({
-          artifactPath: resolvedOutput,
-          outDir: resolvedOutDir,
-          chromePath,
-          resolveChrome: () => chromePath,
-          browserFactory,
-        });
+        try {
+          chromePath = resolveChrome({ env });
+          if (chromePath) {
+            browser = createBrowser(chromePath, { env });
+            // Retain the startup rejection for the browser gate without emitting
+            // an unhandled rejection before inspect() awaits the same promise.
+            browser.sessionPromise.catch(() => {});
+          }
+        } catch (error) {
+          browserStartupError = error;
+        }
+        // Discovery errors have no executable for the browser factory. Record
+        // a failed gate instead of treating them as ordinary Chrome absence.
+        const checked = browserStartupError && !chromePath
+          ? { exitCode: 1, receipt: persistBrowserCheckFailure(resolvedOutput, {
+            schemaVersion: 1, ok: false, command: 'browser-check', status: 'fail',
+            evidenceKind: 'automated-browser', visualReview: 'not-requested',
+            error: browserStartupError.message,
+            diagnostics: [{
+              code: 'viewer/browser-check-runtime', severity: 'error',
+              message: 'browser-check could not discover Chrome.',
+              subject: { artifact: resolvedOutput },
+              evidence: { reason: browserStartupError.message },
+              supportedFixes: ['resolve the reported Chrome discovery error, then rerun browser-check'],
+            }],
+          }, { outDir: resolvedOutDir }) }
+          : await runBrowserCheck({
+            artifactPath: resolvedOutput,
+            outDir: resolvedOutDir,
+            chromePath,
+            resolveChrome: () => chromePath,
+            browserFactory,
+          });
         result = { status: checked.exitCode, stdout: JSON.stringify(checked.receipt) };
       } else {
         result = await runCommand({ stage, cliPath, args, cwd,

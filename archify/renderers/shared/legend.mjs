@@ -52,6 +52,12 @@ export function resolveLegend(config, catalog, presentKinds) {
   });
 }
 
+// Labels render slightly larger than the layout font size; measure the
+// rendered size so a long label cannot run into the next entry.
+function renderedLegendFontSize(fontSize) {
+  return fontSize < 8 ? fontSize + 0.5 : fontSize + 2;
+}
+
 function measuredEntryWidth(entry, fontSize, swatchGap) {
   const swatchWidth = entry.swatchWidth ?? 14;
   return Math.ceil(
@@ -65,15 +71,14 @@ function measuredEntryWidth(entry, fontSize, swatchGap) {
 
 function legendTypography({ fontSize, renderedFontSize, titleFontSize, lineGap }) {
   const explicit = renderedFontSize !== undefined || titleFontSize !== 12;
-  const rendered = renderedFontSize ?? (fontSize < 8 ? fontSize + 0.5 : fontSize + 2);
+  const rendered = renderedFontSize ?? renderedLegendFontSize(fontSize);
   const entryAscent = explicit ? Math.max(10, Math.ceil(rendered * 1.2)) : 10;
   const entryDescent = explicit ? Math.max(4, Math.ceil(rendered * 0.3)) : 4;
   const titleAscent = explicit ? Math.max(10, Math.ceil(titleFontSize * 1.2)) : 10;
   const titleDescent = explicit ? Math.max(4, Math.ceil(titleFontSize * 0.3)) : 4;
   return {
-    // Existing callers intentionally retain their historical measurement and
-    // rendering. An explicit font makes both use the same advance width.
-    measuredFontSize: renderedFontSize ?? fontSize,
+    // Both inherited and explicitly scaled typography measure the rendered font.
+    measuredFontSize: rendered,
     renderedFontSize: rendered,
     entryAscent,
     entryDescent,

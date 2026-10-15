@@ -430,3 +430,25 @@ for (const fixtureCase of [
     assert.deepEqual(JSON.parse(fs.readFileSync(failure.input, 'utf8')), snapshot);
   });
 }
+
+test('scaled layout preserves upstream phase chips, muted edge labels and reusable input sizing', () => {
+  const doc = typographyFixture('ordinary');
+  doc.nodes[0].label = 'Process long operation';
+  const compile = () => {
+    const snapshot = JSON.stringify(doc);
+    const result = compileWorkflow({ workflow: doc, qualityProfile: 'standard' });
+    assert.equal(result.ok, true, JSON.stringify(result.diagnostics));
+    assert.deepEqual(result, compileWorkflow({ workflow: structuredClone(doc), qualityProfile: 'standard' }));
+    assert.equal(JSON.stringify(doc), snapshot);
+    return result;
+  };
+  const base = compile();
+  doc.meta.typography_scale = 1.5;
+  const scaled = compile();
+  assert.match(scaled.svg, /phase-rule/);
+  assert.match(scaled.svg, /phase-chip/);
+  assert.match(scaled.svg, /class="t-muted" font-size="12"[^>]*>/);
+  assert.ok(scaled.receipt.nodes[0].width >= base.receipt.nodes[0].width);
+  doc.meta.typography_scale = 1;
+  assert.equal(compile().svg, base.svg);
+});

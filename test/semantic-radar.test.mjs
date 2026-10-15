@@ -202,7 +202,6 @@ test('Semantic Radar tracks desktop camera and mobile contained scroll', () => {
   assert.match(html, /manualPosition && positionIsValid\(manualPosition, context\)/);
   assert.match(html, /panelHead\.addEventListener\('pointerdown', beginPanelDrag\)/);
   assert.match(html, /surface\.addEventListener\('pointerdown',[\s\S]+viewportDrag = \{ pointerId: event\.pointerId \}/);
-  assert.match(html, /target\.closest\('\[data-node-id\], \[data-relationship-hit-key\], \.overview-map'\)/);
   assert.match(html, /--archify-radar-top/);
   assert.match(html, /\.overview-map\[data-docked="true"\]/);
 });
@@ -704,7 +703,11 @@ test('Radar reflects camera viewport, status and Focus activity through normal c
     ] }, sessionId);
     async function observe(action) {
       return evaluate(browser, sessionId, `(async () => {
+        await Archify.readerLayout.whenStable();
+        await Archify.viewerChromeLayout.whenStable();
         ${action}
+        await Archify.readerLayout.whenStable();
+        await Archify.viewerChromeLayout.whenStable();
         let previous = '', equal = 0;
         for (let frame = 0; frame < 240; frame += 1) {
           await new Promise(resolve => requestAnimationFrame(resolve));

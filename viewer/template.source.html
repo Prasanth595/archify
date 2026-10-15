@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="archify 3.0.2-dev.1">
+  <meta name="generator" content="archify 3.1.1-dev.1">
   <meta name="archify-reader-contract" content="declared-wide-v1">
   <title>[PROJECT NAME] Architecture Diagram</title>
   <script>
@@ -478,6 +478,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
           <span><kbd>E</kbd> {{i18n:viewer.guide.shortcut.export}}</span><span><kbd>T</kbd> {{i18n:viewer.guide.shortcut.theme}}</span><span><kbd>S</kbd> {{i18n:viewer.guide.shortcut.style}}</span><span><kbd>0</kbd> {{i18n:viewer.guide.shortcut.reset}}</span><span><kbd>+</kbd> {{i18n:viewer.guide.shortcut.zoomIn}}</span><span><kbd>-</kbd> {{i18n:viewer.guide.shortcut.zoomOut}}</span><span><kbd>Esc</kbd> {{i18n:viewer.guide.shortcut.close}}</span>
         </div>
         <p class="diagram-guide-feedback" id="diagram-guide-feedback" aria-live="polite"></p>
+        <a class="diagram-guide-credit" href="https://github.com/tt-a1i/archify" target="_blank" rel="noopener noreferrer"><span>{{i18n:viewer.guide.credit}}</span><span class="diagram-guide-credit-link"><span class="diagram-guide-star" aria-hidden="true"></span>{{i18n:viewer.guide.star}} <span aria-hidden="true">&#8599;</span></span></a>
       </div>
       <div class="node-finder no-print" id="node-finder" hidden role="dialog" aria-modal="false" aria-labelledby="node-finder-title">
         <div class="node-finder-head">
@@ -598,7 +599,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <button id="btn-overview-map" type="button" aria-label="{{i18n:viewer.nav.radar}}" aria-expanded="false" aria-controls="overview-map" title="{{i18n:viewer.nav.radar.title}}">{{i18n:viewer.nav.radar.short}}</button>
         <button id="btn-semantic-lens" type="button" aria-label="{{i18n:viewer.nav.lens}}" aria-haspopup="dialog" aria-expanded="false" aria-pressed="false" aria-controls="semantic-lens" title="{{i18n:viewer.nav.lens.title}}">{{i18n:viewer.nav.lens.short}}</button>
         <button id="btn-node-finder" type="button" aria-label="{{i18n:viewer.nav.find}}" aria-haspopup="dialog" aria-expanded="false" aria-controls="node-finder" title="{{i18n:viewer.nav.find.title}}" data-node-finder-trigger><span class="diagram-nav-icon find" aria-hidden="true"></span></button>
-        <button id="btn-diagram-guide" type="button" hidden aria-label="{{i18n:viewer.nav.guide}}" aria-haspopup="dialog" aria-expanded="false" aria-controls="diagram-guide" title="{{i18n:viewer.nav.guide.title}}"><span class="diagram-nav-icon guide" aria-hidden="true"></span></button>
+        <button id="btn-diagram-guide" type="button" aria-label="{{i18n:viewer.nav.guide}}" aria-haspopup="dialog" aria-expanded="false" aria-controls="diagram-guide" title="{{i18n:viewer.nav.guide.title}}"><span class="diagram-nav-icon guide" aria-hidden="true"></span></button>
         <button data-view="out" type="button" aria-label="{{i18n:viewer.nav.zoomOut}}" title="{{i18n:viewer.nav.zoomOut.title}}"><span class="diagram-nav-icon minus" aria-hidden="true"></span></button>
         <button data-view="reset" type="button" aria-label="{{i18n:viewer.nav.reset}}" title="{{i18n:viewer.nav.reset.title}}"><span class="diagram-nav-detail" data-view-detail hidden>{{i18n:viewer.nav.read}}</span><span class="diagram-nav-percent" data-view-percent>100%</span></button>
         <button data-view="in" type="button" aria-label="{{i18n:viewer.nav.zoomIn}}" title="{{i18n:viewer.nav.zoomIn.title}}"><span class="diagram-nav-icon plus" aria-hidden="true"></span></button>
@@ -697,12 +698,47 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         .replace(/\b\w/g, function (letter) { return letter.toUpperCase(); });
     }
 
+    function readerLink(state) {
+      var template = document.documentElement.getAttribute('data-reading-link-template');
+      if (template === null) return location.href.replace(/#.*$/, '') + '#' + state;
+      if (!template || template.length > 4096 || template.split('{state}').length !== 2) return null;
+      try {
+        var url = new URL(template.replace('{state}', encodeURIComponent(state)));
+        if (['http:', 'https:', 'file:'].indexOf(url.protocol) === -1 || url.username || url.password) return null;
+        return url.href;
+      } catch (_) { return null; }
+    }
+
+    function copyReaderText(value) {
+      function fallbackCopy() {
+        var field = document.createElement('textarea');
+        field.value = value;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        var copied = false;
+        try { copied = document.execCommand('copy'); } catch (_) {}
+        field.remove();
+        return copied;
+      }
+      var policy = document.permissionsPolicy || document.featurePolicy;
+      var allowed = !policy || typeof policy.allowsFeature !== 'function' || policy.allowsFeature('clipboard-write');
+      if (allowed && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        try { return Promise.resolve(navigator.clipboard.writeText(value)).then(function () { return true; }).catch(fallbackCopy); }
+        catch (_) {}
+      }
+      return Promise.resolve(fallbackCopy());
+    }
+
     function hasDrawableGeometry(element) {
-      if (!element) return false;
+      if (!element || element.hasAttribute('data-ambient-flow-overlay')) return false;
       var geometries = /^(path|line|polyline)$/i.test(element.tagName)
         ? [element]
         : Array.prototype.slice.call(element.querySelectorAll('path, line, polyline'));
       return geometries.some(function (geometry) {
+        if (geometry.hasAttribute('data-ambient-flow-overlay')) return false;
         var source = geometry.tagName.toLowerCase() === 'path'
           ? geometry.getAttribute('d')
           : geometry.tagName.toLowerCase() === 'polyline'
@@ -1184,7 +1220,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         trigger.setAttribute('aria-label', viewerText('viewer.guide.open'));
         feedback.textContent = '';
         if (options.restoreFocus !== false) {
-          var target = trigger.hidden ? returnFocus : trigger;
+          // Return focus where the reader was when the guide opened; the
+          // trigger itself is only the fallback when that element is gone.
+          var target = returnFocus && returnFocus.isConnected ? returnFocus : trigger;
           if (target && typeof target.focus === 'function') target.focus();
         }
         return false;
@@ -1284,7 +1322,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         execute(action);
       });
       document.addEventListener('click', function (event) {
-        if (!panel.hidden && !panel.contains(event.target) && event.target !== trigger) close({ restoreFocus: false });
+        // Clicks anywhere on the trigger (including its icon span) are the
+        // toggle itself, never an outside dismissal.
+        if (!panel.hidden && !panel.contains(event.target) && !trigger.contains(event.target)) close({ restoreFocus: false });
       });
 
       renderFacts();

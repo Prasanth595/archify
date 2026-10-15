@@ -1871,9 +1871,9 @@ function recordDeliveryFailure(options) {
   return recorded;
 }
 
-// Locale warnings for a successfully rendered candidate. The renderer prints
-// them to stderr; receipts carry the same diagnostics from the same pure
-// resolver so an agent can repair a translation gap from structured output.
+// Locale warnings for a successfully rendered candidate. Diagnostic renderers
+// record them without printing text; validate/deliver disclose them before
+// checking the artifact and reuse the same diagnostics in successful receipts.
 async function specificationLocaleDiagnostics(type, specification) {
   let meta;
   try {
@@ -2188,25 +2188,30 @@ function invalidProvenance(artifactPath, sidecar, reason, evidence = {}) {
   };
 }
 
+const COMMAND_USAGE = {
+  render: '<type> <input.json> [output.html] [--quality standard|showcase] [--repo-root path]',
+  compare: 'architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path]',
+  deliver: '<type> <input.json> [output.html] [--json] [--open] [--quality standard|showcase] [--repo-root path]',
+  finalize: '<type> <input.json> <output.html> [--json] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]',
+  preview: '<type> <input.json> [output.html] [--no-open] [--quality standard|showcase] [--repo-root path]',
+  validate: '<type> <input.json> [--json] [--layout-json] [--quality standard|showcase] [--repo-root path]',
+  migrate: 'workflow <old.json> <new.json> --to-schema 2 [--output portable.html] [--json] [--repo-root path]',
+  inspect: '<type> <input.json>',
+  check: '<output.html> [--json] [--require-provenance]',
+  'browser-check': '<output.html> [--json|--summary] [--require-provenance] [--out-dir <dir>]',
+  'visual-check': '<output.html> [--json|--summary] [--require-provenance] [--out-dir <dir>]',
+  guide: '[scenario or question] [--json] [--lang en|zh]',
+  brands: ['[name, alias, domain, or category] [--json]', 'capture <url> [--json]'],
+  examples: '',
+  doctor: '',
+  demo: '[output-directory]',
+};
+
 function usage() {
+  const commands = Object.entries(COMMAND_USAGE).flatMap(([command, forms]) =>
+    (Array.isArray(forms) ? forms : [forms]).map(form => `  archify ${command}${form ? ` ${form}` : ''}`));
   return `Usage:
-  archify render <type> <input.json> [output.html] [--quality standard|showcase] [--repo-root path]
-  archify compare architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path]
-  archify deliver <type> <input.json> [output.html] [--json] [--open] [--quality standard|showcase] [--repo-root path]
-  archify finalize <type> <input.json> <output.html> [--json] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]
-  archify preview <type> <input.json> [output.html] [--no-open] [--quality standard|showcase] [--repo-root path]
-  archify validate <type> <input.json> [--json] [--layout-json] [--quality standard|showcase] [--repo-root path]
-  archify migrate workflow <old.json> <new.json> --to-schema 2 [--output portable.html] [--json] [--repo-root path]
-  archify inspect <type> <input.json>
-  archify check <output.html> [--json] [--require-provenance]
-  archify browser-check <output.html> [--json|--summary] [--require-provenance] [--out-dir <dir>]
-  archify visual-check <output.html> [--json|--summary] [--require-provenance] [--out-dir <dir>]
-  archify guide [scenario or question] [--json] [--lang en|zh]
-  archify brands [name, alias, domain, or category] [--json]
-  archify brands capture <url> [--json]
-  archify examples
-  archify doctor
-  archify demo [output-directory]
+${commands.join('\n')}
 
 Types:
   architecture, workflow, sequence, dataflow, lifecycle, erd, tree, class, timeline, waterfall
@@ -2253,9 +2258,12 @@ function runNode(args, options = {}) {
     maxBuffer: options.maxBuffer ?? DEFAULT_MAX_BUFFER,
     env: options.env ? { ...process.env, ...options.env } : process.env,
   });
-  // The child can exit before a piped-output overflow is observed. A capture
-  // error still means the operation failed, even when its exit status is zero.
-  if (result.error && result.status === 0) result.status = 1;
+  // spawnSync can report a system failure after a child has exited zero. A
+  // truncated renderer or checker result is never a successful invocation.
+  if (result.error && result.status === 0) {
+    result.archifyRawStatus = result.status;
+    result.status = 1;
+  }
   return result;
 }
 
@@ -2283,7 +2291,7 @@ function checkerOutputLimitDiagnostics(check, limitBytes) {
     evidence: {
       systemCode: check.error.code,
       ...(check.signal ? { signal: check.signal } : {}),
-      status: check.status ?? null,
+      status: check.archifyRawStatus ?? check.status ?? null,
       limitBytes,
       receivedBytes,
     },
@@ -4317,10 +4325,6 @@ function writeDeliveryFailureReceipt(options) {
   return recorded;
 }
 
-function reportValidateFailure(options) {
-  reportArtifactFailure({ ...options, command: 'validate' });
-}
-
 function reportArtifactArgumentFailure(command, error) {
   const details = error.archifyArgument || {};
   reportArtifactFailure({
@@ -4826,6 +4830,8 @@ async function commandDeliver(args) {
       return;
     }
     if (render.stderr) process.stderr.write(render.stderr);
+    const localeWarnings = await specificationLocaleDiagnostics(type, specification);
+    for (const warning of localeWarnings) process.stderr.write(`archify: ${warning.message}\n`);
     try {
       const renderedCandidate = fs.readFileSync(candidatePath);
       if (preparedDeliveryTargets.artifact.mode !== null) {
@@ -4943,7 +4949,6 @@ async function commandDeliver(args) {
       return;
     }
     const engineeringProfile = engineeringProfileFromArtifact(artifact);
-    const localeWarnings = await specificationLocaleDiagnostics(type, specification);
     const receipt = {
       schemaVersion: 1,
       receiptId,
@@ -6814,7 +6819,11 @@ async function commandMigrate(args) {
   }
 }
 
-async function commandValidate(args) {
+// `inspect` delegates here in layout-JSON mode, so argument failures must be
+// attributed to the command the caller actually invoked.
+async function commandValidate(args, invocation = {}) {
+  const invokingCommand = invocation.command || 'validate';
+  const reportFailure = (options) => reportArtifactFailure({ ...options, command: invokingCommand });
   const qualityArgs = extractQualityArgs(args);
   const repoArgs = extractRepoRootArgs(qualityArgs.rest);
   args = repoArgs.rest;
@@ -6822,7 +6831,7 @@ async function commandValidate(args) {
   const repoRoot = repoArgs.repoRoot;
   const knownOptions = new Set(['--json', '--layout-json']);
   const unknown = args.filter((arg) => arg.startsWith('--') && !knownOptions.has(arg));
-  if (unknown.length) rejectCliArgument(`Unknown validate option "${unknown[0]}".`, {
+  if (unknown.length) rejectCliArgument(`Unknown ${invokingCommand} option "${unknown[0]}".`, {
     code: 'cli/unknown-option',
     subject: { option: unknown[0] },
     supportedFixes: ['remove the unknown option and retry'],
@@ -6833,7 +6842,7 @@ async function commandValidate(args) {
   const [type, input] = rest;
   if (!type || !input || rest.length !== 2) rejectCliArgument(usage(), {
     code: 'cli/usage',
-    supportedFixes: ['use: archify validate <type> <input.json> [options]'],
+    supportedFixes: [`use: archify ${invokingCommand} <type> <input.json> [options]`],
   });
   const renderer = rendererPath(type);
 
@@ -6858,7 +6867,7 @@ async function commandValidate(args) {
     else validateAuthoredOutputPath(document.meta.output);
   } catch (error) {
     const diagnostics = error.archifyDiagnostics || [inputDiagnostic(error, inputPath)];
-    reportValidateFailure({
+    reportFailure({
       json,
       stage: diagnostics.some((entry) => entry.code.startsWith('input/')) ? 'input' : 'render',
       type,
@@ -6878,19 +6887,21 @@ async function commandValidate(args) {
       env: rendererEnv(quality, repoRoot, true),
     });
     if (result.status !== 0) {
-      try {
-        const receipt = JSON.parse(result.stdout);
-        if (receipt?.contract && Array.isArray(receipt.diagnostics)) {
-          process.stdout.write(`${JSON.stringify(receipt, null, 2)}\n`);
-          process.exitCode = result.status ?? 1;
-          return;
+      if (!result.error) {
+        try {
+          const receipt = JSON.parse(result.stdout);
+          if (receipt?.contract && Array.isArray(receipt.diagnostics)) {
+            process.stdout.write(`${JSON.stringify(receipt, null, 2)}\n`);
+            process.exitCode = result.status ?? 1;
+            return;
+          }
+        } catch {
+          // Fall through to the renderer failure contract when no compiler
+          // receipt was produced (for example, input JSON could not be read).
         }
-      } catch {
-        // Fall through to the renderer failure contract when no compiler
-        // receipt was produced (for example, input JSON could not be read).
       }
       const failure = rendererFailure(result);
-      reportValidateFailure({
+      reportFailure({
         json,
         stage: failure.diagnostics.some((entry) => entry.code.startsWith('input/')) ? 'input' : 'render',
         type,
@@ -6921,7 +6932,7 @@ async function commandValidate(args) {
     });
     if (render.status !== 0) {
       const failure = rendererFailure(render);
-      report = () => reportValidateFailure({
+      report = () => reportFailure({
         json,
         stage: failure.diagnostics.some((entry) => entry.code.startsWith('input/')) ? 'input' : 'render',
         type,
@@ -6933,6 +6944,8 @@ async function commandValidate(args) {
       exitCode = render.status ?? 1;
     } else {
       if (render.stderr) process.stderr.write(render.stderr);
+      const localeWarnings = await specificationLocaleDiagnostics(type, specification);
+      for (const warning of localeWarnings) process.stderr.write(`archify: ${warning.message}\n`);
       const checkMaxBuffer = artifactCheckMaxBuffer();
       const check = runNode([path.join(skillRoot, 'scripts/check-render-output.mjs'), out], {
         stdio: 'pipe',
@@ -6942,7 +6955,7 @@ async function commandValidate(args) {
         exitCode = check.status ?? 1;
         const outputLimit = checkerOutputLimitDiagnostics(check, checkMaxBuffer);
         if (outputLimit) {
-          report = () => reportValidateFailure({
+          report = () => reportFailure({
             json,
             stage: 'check',
             type,
@@ -6959,7 +6972,7 @@ async function commandValidate(args) {
           } catch {
             checker = { ok: false, diagnostic: 'Artifact checker failed without a parseable receipt.' };
           }
-          report = () => reportValidateFailure({
+          report = () => reportFailure({
             json,
             stage: 'check',
             type,
@@ -6979,7 +6992,6 @@ async function commandValidate(args) {
             ...artifactIdentity(specification),
           };
           const resolvedQuality = quality || result.composition.profile || 'standard';
-          const localeWarnings = await specificationLocaleDiagnostics(type, specification);
           const receipt = {
             schemaVersion: 1,
             ok: true,
@@ -7021,7 +7033,7 @@ async function commandValidate(args) {
       await temporary.cleanup();
     } catch (error) {
       exitCode = 1;
-      report = () => reportValidateFailure({
+      report = () => reportFailure({
         json,
         stage: 'cleanup',
         type,
@@ -7045,9 +7057,13 @@ async function commandValidate(args) {
 }
 
 const [command, ...args] = process.argv.slice(2);
+// Reuse the canonical help metadata rather than a separate help registry.
+// Only the sole --help form bypasses command argument parsing and operations.
+const soleCommandHelp = args.length === 1 && args[0] === '--help'
+  && Object.hasOwn(COMMAND_USAGE, command);
 
 try {
-  switch (command) {
+  switch (soleCommandHelp ? '--help' : command) {
     case undefined:
     case '-h':
     case '--help':
@@ -7077,9 +7093,13 @@ try {
       break;
     case 'inspect':
       if (args[0] !== 'architecture') {
-        fail('inspect is currently supported for architecture diagrams only.');
+        rejectCliArgument('inspect is currently supported for architecture diagrams only.', {
+          code: 'cli/unsupported-option',
+          subject: { command: 'inspect', type: args[0] },
+          supportedFixes: ['use an architecture diagram', 'use validate <type> <input.json> --layout-json for workflow diagrams'],
+        });
       }
-      commandValidate([...args, '--layout-json']);
+      await commandValidate([...args, '--layout-json'], { command: 'inspect' });
       break;
     case 'check':
       await commandCheck(args);
@@ -7110,7 +7130,7 @@ try {
   }
 } catch (error) {
   if (!error.archifyArgument) throw error;
-  if (['validate', 'deliver', 'finalize'].includes(command) && args.includes('--json')) {
+  if (['validate', 'deliver', 'finalize', 'inspect'].includes(command) && args.includes('--json')) {
     reportArtifactArgumentFailure(command, error);
   } else {
     fail(error.message);
