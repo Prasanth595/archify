@@ -43,6 +43,40 @@ test('email autolinks and named entities retain their visible text and source ra
   assert.deepEqual(anchors.map(entry=>source.slice(entry.start,entry.end)),['&copy;','&mdash;','&NotEqualTilde;','&unknownEntity;']);
 });
 
+test('URI autolinks accept generic schemes and preserve their displayed spelling', () => {
+  for (const target of ['HTTP://example.test', 'ftp://example.test/file', 'custom+v1:entry', 'ab:']) {
+    const source = 'Address <' + target + '>.';
+    const result = compile(source);
+    assert.ok(result.html.includes('<a href="' + target + '">' + target + '</a>'), result.html);
+    const anchor = Object.values(result.map)[0].inline.find(entry => entry.construct === 'autolink');
+    assert.equal(source.slice(anchor.start, anchor.end), '<' + target + '>');
+  }
+});
+
+test('thematic breaks interrupt prose without consuming the following paragraph', () => {
+  for (const marker of ['***', '___', '* * *', '_ _ _']) {
+    const result = compile('Before\n' + marker + '\nAfter');
+    assert.deepEqual(result.blocks.map(block => block.construct), ['paragraph', 'thematicBreak', 'paragraph']);
+    assert.match(result.blocks[0].html, />Before<\/p>/);
+    assert.match(result.blocks[2].html, />After<\/p>/);
+  }
+  assert.equal(compile('Title\n---').blocks[0].construct, 'setextHeading');
+});
+
+test('raw text HTML blocks retain blank lines through their closing tag', () => {
+  for (const tag of ['script', 'style', 'pre', 'textarea', 'SCRIPT']) {
+    const raw = '<' + tag + '>\nfirst\n\n[x]: /not-a-definition\n</' + tag + '>';
+    const source = raw + '\nAfter';
+    const result = compile(source);
+    assert.equal(result.blocks[0].construct, 'htmlBlock');
+    assert.ok(result.blocks[0].html.includes(raw), result.html);
+    assert.equal(source.slice(result.blocks[0].start, result.blocks[0].end), raw);
+    assert.deepEqual(result.refs, []);
+    assert.match(result.blocks[1].html, />After<\/p>/);
+    assert.ok(compile('<' + tag + '>\nfirst\n\nlast').html.includes('first\n\nlast'));
+  }
+});
+
 test('link definitions inside fenced examples do not affect surrounding prose',()=>{
   for(const fence of ['```','~~~~']){
     const result=compile(fence+'md\n[x]: https://example.test\n'+fence+'\n\n[x]');
@@ -134,9 +168,15 @@ test('a table cell range survives an escaped pipe and a pipe inside code', () =>
   for (const [source, want] of [
     ['| a \\| b | c |\n| - | - |\n| 1 | 2 |\n', ['a \\| b', 'c']],
     ['| a | `x|y` |\n| - | - |\n| 1 | 2 |\n', ['a', '`x|y`']],
+    ['| a | ``x|y`` |\n| - | - |\n| 1 | 2 |\n', ['a', '``x|y``']],
+    ['| a | ```x|`y``` |\n| - | - |\n| 1 | 2 |\n', ['a', '```x|`y```']],
+    ['| a | `unclosed | c |\n| - | - | - |\n', ['a', '`unclosed', 'c']],
   ]) {
-    const table = Object.values(compile(source).map).find((e) => e.construct === 'table');
+    const result = compile(source);
+    const table = Object.values(result.map).find((e) => e.construct === 'table');
     assert.deepEqual(table.cells[0].map((c) => source.slice(c.start, c.end)), want);
+    assert.equal((result.html.match(/<th(?:>| )/g) || []).length, want.length);
+    if (source.includes('``x|y``')) assert.match(result.html, /<code>x\|y<\/code>/);
   }
 });
 

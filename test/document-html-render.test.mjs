@@ -120,6 +120,31 @@ test('HTML input renders through its own DOM in Chrome', async (t) => {
     assert.equal(await io.run('document.querySelector("main").textContent.includes("旧正文")'), false);
   });
 
+  await t.test('a selected content block is replaced without retaining stale or nested copy', async () => {
+    for (const content of ['<p id="copy" class="copy">Old copy</p>', '<h2 id="copy">Old copy</h2>', '<blockquote id="copy"><p>Old copy</p></blockquote>']) {
+      const result = await render(io, page('<main><p id="fixed">Outside copy</p>' + content + '<p id="tail">Tail copy</p></main>'), 'First paragraph.\n\nSecond paragraph.', {contentSelector:'#copy'});
+      assert.equal(result.report.ok, true, JSON.stringify(result.report));
+      await io.load(result.html, {scripts:true});
+      assert.deepEqual(await io.run('[...document.querySelectorAll("main p")].map(node=>node.textContent)'), ['Outside copy', 'First paragraph.', 'Second paragraph.', 'Tail copy']);
+      assert.equal(await io.run('document.querySelector("main").textContent.includes("Old copy")'), false);
+      assert.equal(await io.run('document.querySelectorAll("p p").length'), 0);
+    }
+    const result = await render(io, page('<main><blockquote id="copy"><p id="fixed">Fixed copy</p><p>Old copy</p></blockquote></main>'), 'New copy', {contentSelector:'#copy',excludeSelector:'#fixed'});
+    assert.equal(result.report.ok, true, JSON.stringify(result.report));
+    assert.equal(await io.run('document.querySelector("#fixed").textContent'), 'Fixed copy');
+    assert.equal(await io.run('document.querySelector("#copy").textContent.includes("Old copy")'), false);
+  });
+
+  await t.test('raw Markdown script, style and pre blocks survive blank lines and initialization', async () => {
+    const source = '<script>\nwindow.rawStarted=true;\n\nwindow.rawFinished=true;\n</script>\n\n<style>\n.raw {\n\ncolor:rgb(12,34,56);\n}\n</style>\n\n<pre>first\n\nsecond</pre>\n\nAfter.';
+    const result = await render(io, page('<main class="raw"><p>Old copy</p></main>'), source);
+    assert.equal(result.report.ok, true, JSON.stringify(result.report));
+    assert.equal(await io.run('window.rawStarted && window.rawFinished'), true);
+    assert.equal(await io.run('document.querySelector("main pre").textContent'), 'first\n\nsecond');
+    assert.equal(await io.run('getComputedStyle(document.querySelector("main")).color'), 'rgb(12, 34, 56)');
+    assert.equal(await io.run('document.querySelector("main p").textContent'), 'After.');
+  });
+
   await t.test('title, introduction and every chapter remain present', async () => {
     const source = '# 新标题\n\n新前言\n\n## 新章一\n\n新正文一\n\n## 新章二\n\n新正文二';
     const result = await render(io, page('<main><header><h1>旧标题</h1></header><div class="intro"><p>旧前言</p></div><div class="panels">' + panel('old1') + panel('old2') + '</div></main>'), source);

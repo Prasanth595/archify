@@ -59,6 +59,30 @@ test('HTML capture, saved templates and three report designs use the same render
     assert.match(fs.readFileSync(output,'utf8'),/Café/);assert.match(fs.readFileSync(output,'utf8'),/charset="utf-8"/);
   });
 
+  await t.test('mixed data and relative srcset candidates survive capture and relocation',async()=>{
+    const source=path.join(directory,'responsive-source');fs.mkdirSync(source);
+    const local=path.join(source,'design.html');
+    const inline='data:image/svg+xml,%3Csvg%20xmlns="http://www.w3.org/2000/svg"%20width="2"%20height="2"%3E%3C/svg%3E'.replaceAll('"','%22');
+    fs.writeFileSync(path.join(source,'large.svg'),'<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"></svg>');
+    fs.writeFileSync(local,'<aside><picture><source srcset="'+inline+' 1x, large.svg 2x"><img id="responsive" src="large.svg" srcset="'+inline+' 1x, large.svg 2x"></picture></aside><template><img srcset="'+inline+', large.svg 2x"><img srcset="small,one.svg 320w,large.svg 640w"></template><main><p>Old copy</p></main>');
+    const folder=path.join(directory,'responsive-saved');
+    const captured=await callTool('scan_html',{design_path:local,template_dir:folder});assert.equal(captured.ok,true,JSON.stringify(captured));
+    const absolute=new URL('large.svg',pathToFileURL(local)).href;
+    const saved=fs.readFileSync(path.join(folder,'design.html'),'utf8');
+    assert.ok(saved.includes(inline+' 1x, '+absolute+' 2x'),saved);
+    assert.ok(saved.includes(inline+', '+absolute+' 2x'),saved);
+    assert.ok(saved.includes(new URL('small,one.svg',pathToFileURL(local)).href+' 320w,'+absolute+' 640w'),saved);
+    const result=await callTool('render_markdown',{markdown:'Responsive body',template_path:folder,output_path:output});assert.equal(result.ok,true,JSON.stringify(result));
+    const browser=new ChromeVisualBrowser(findChrome());
+    try{
+      await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1280,height:800,deviceScaleFactor:2,mobile:false},await browser.sessionPromise);
+      const io=await documentBrowser(browser,output);await io.load(fs.readFileSync(output,'utf8'));
+      assert.deepEqual(await io.run('[...document.querySelectorAll("[srcset]")].map(node=>node.getAttribute("srcset"))'),[inline+' 1x, '+absolute+' 2x',inline+' 1x, '+absolute+' 2x']);
+      assert.equal(await io.run('document.querySelector("#responsive").currentSrc'),absolute);
+      assert.equal(await io.run('document.querySelector("#responsive").naturalWidth>0'),true);
+    }finally{await browser.close();}
+  });
+
   await t.test('output replaced during HTML initialization is preserved instead of overwritten',async()=>{
     fs.writeFileSync(output,'Previous output');
     const server=http.createServer((_request,response)=>{

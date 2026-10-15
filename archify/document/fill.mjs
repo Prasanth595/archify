@@ -67,7 +67,7 @@ function fillPage(dom, request) {
 
   // 标题划分正文范围；额外正文留在该范围原有的包装中。
   const fillBlocks = (old, incoming, container) => {
-    if (!incoming.some((b) => /^<h[1-6]\b/.test(b.html))) {
+    if (!old.includes(container) && !incoming.some((b) => /^<h[1-6]\b/.test(b.html))) {
       for (const el of old.filter((el) => levelOf(el))) el.remove();
       old = old.filter((el) => !levelOf(el));
     }

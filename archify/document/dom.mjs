@@ -43,11 +43,15 @@ export const DOM = function () {
     }
     return false;
   };
-  const slotsIn = (root, ignore = () => false) => [...root.querySelectorAll(block)].filter((el) => {
-    if (excluded(el, root) || ignore(el)) return false;
-    for (let parent = el.parentElement; parent && parent !== root; parent = parent.parentElement) if (parent.matches(block)) return false;
-    return true;
-  });
+  const slotsIn = (root, ignore = () => false) => {
+    const candidates = [...root.querySelectorAll(block)];
+    if (!candidates.length && root.matches(block)) candidates.push(root);
+    return candidates.filter((el) => {
+      if (excluded(el, root) || ignore(el)) return false;
+      for (let parent = el === root ? null : el.parentElement; parent && parent !== root; parent = parent.parentElement) if (parent.matches(block)) return false;
+      return true;
+    });
+  };
 
   return { heading, pathOf, atPath, commonParent, levelOf, roleOf, textOf, resourcesOf, fail, excluded, slotsIn };
 };

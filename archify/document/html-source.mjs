@@ -20,6 +20,29 @@ export function sourceError(code,message,evidence={},fix='check the HTML input a
 function relocatePage({html,sourceURL}) {
   const absolute=(value,base)=>{if(!value||value.startsWith('#')||/^(data|javascript|mailto|tel):/i.test(value))return value;try{return new URL(value,base).href;}catch{return value;}};
   const cssURLs=(css,base)=>css.replace(/url\(\s*(?:(["'])(.*?)\1|([^)]*?))\s*\)/gi,(_all,_quote,quoted,plain)=>'url('+JSON.stringify(absolute((quoted??plain).trim(),base))+')').replace(/(@import\s+)(["'])(.*?)\2/gi,(_all,prefix,_quote,value)=>prefix+JSON.stringify(absolute(value,base)));
+  const srcsetURLs=(value,base)=>{
+    let output='',at=0;
+    const space=character=>/[\t\n\f\r ]/.test(character);
+    while(at<value.length){
+      const separator=at;
+      while(at<value.length&&(space(value[at])||value[at]===','))at++;
+      output+=value.slice(separator,at);
+      const start=at;
+      while(at<value.length&&!space(value[at]))at++;
+      const token=value.slice(start,at),url=token.replace(/,+$/,'');
+      output+=absolute(url,base)+token.slice(url.length);
+      if(token.endsWith(','))continue;
+      const descriptors=at;let parens=false;
+      while(at<value.length){
+        const character=value[at++];
+        if(character==='(')parens=true;
+        else if(character===')')parens=false;
+        else if(character===','&&!parens)break;
+      }
+      output+=value.slice(descriptors,at);
+    }
+    return output;
+  };
   const doc=new DOMParser().parseFromString(html,'text/html'),nodes=[];
   const visit=root=>{for(const node of root.querySelectorAll('*')){nodes.push(node);if(node.localName==='template')visit(node.content);}};visit(doc);
   const bases=nodes.filter(node=>node.localName==='base');
@@ -32,7 +55,7 @@ function relocatePage({html,sourceURL}) {
       if((['src','href','poster'].includes(attr.name)||attr.name==='action'&&node.localName==='form'||attr.name==='data'&&node.localName==='object')&&node.localName!=='base'){
         attr.value=absolute(attr.value,base);if(attr.name!=='href'||node.localName==='link'){if(/^https?:/.test(attr.value))remote++;else if(attr.value.startsWith('file:'))local++;}
       }else if(attr.name==='style')attr.value=cssURLs(attr.value,base);
-      else if(attr.name==='srcset'&&!/data:/i.test(attr.value))attr.value=attr.value.split(',').map(candidate=>{const match=/^(\s*)(\S+)(.*)$/.exec(candidate);return match?match[1]+absolute(match[2],base)+match[3]:candidate;}).join(',');
+      else if(attr.name==='srcset')attr.value=srcsetURLs(attr.value,base);
       if(node.localName==='meta'&&attr.name==='charset')attr.value='utf-8';
     }
     if(node.localName==='meta'&&node.getAttribute('http-equiv')?.toLowerCase()==='content-type')node.setAttribute('content','text/html; charset=utf-8');

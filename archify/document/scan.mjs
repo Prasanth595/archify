@@ -24,6 +24,7 @@ function readPage(dom, options = {}) {
   const slots = slotsIn(root, ignore);
   const candidates = [];
   for (const h of slots.filter((el) => levelOf(el))) {
+    if (h === root) continue;
     for (let el = h.parentElement; el && el !== root; el = el.parentElement) {
       if (!el.matches('section,article,div')) continue;
       const local = slotsIn(el, ignore);

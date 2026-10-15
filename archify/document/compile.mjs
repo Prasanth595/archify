@@ -17,10 +17,19 @@ const sticky = (re) => new RegExp(re.source, re.flags.replace(/[gy]/g, '') + 'y'
 const tryAt = (re, s, i) => { re.lastIndex = i; return re.exec(s); };
 const ENTITY = sticky(/&(#(?:x|X)[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/);
 const BACKTICKS = sticky(/\x60+/);
-const AUTOLINK = sticky(/<((?:https?|mailto):[^>\s]+)>/);
+const AUTOLINK = sticky(/<([A-Za-z][A-Za-z0-9+.-]{1,31}:[^<>\x00-\x20]*)>/);
 const EMAIL_AUTOLINK = sticky(/<([a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>/);
 const RAWHTML = sticky(/<\/?[a-zA-Z][^>]*>/);
 const ESCAPABLE = /[!-/:-@\[-\x60{-~]/;
+
+function codeSpanAt(src, at) {
+  const open = tryAt(BACKTICKS, src, at)[0];
+  const runs = /`+/g; runs.lastIndex = at + open.length;
+  for (let found; (found = runs.exec(src));) {
+    if (found[0].length === open.length) return { start: at + open.length, close: found.index, end: found.index + open.length };
+  }
+  return null;
+}
 const numericReplacements = {
   0x80:0x20ac, 0x82:0x201a, 0x83:0x192, 0x84:0x201e, 0x85:0x2026,
   0x86:0x2020, 0x87:0x2021, 0x88:0x2c6, 0x89:0x2030, 0x8a:0x160,
@@ -147,16 +156,13 @@ const INLINES = [
     name: 'codeSpan', anchor: 'required', why: '用几个反引号包起来，渲染结果里没有',
     emit: (src, i, st) => {
       if (src[i] !== TICK) return null;
-      const open = tryAt(BACKTICKS, src, i)[0];
-      let close = -1;
-      const runs = /`+/g; runs.lastIndex = i + open.length;
-      for (let found; (found = runs.exec(src));) if (found[0].length === open.length) { close = found.index; break; }
-      if (close === -1) return null;
+      const span = codeSpanAt(src, i);
+      if (!span) return null;
       st.flush();
-      let content = src.slice(i + open.length, close).replace(/\n/g, ' ');
+      let content = src.slice(span.start, span.close).replace(/\n/g, ' ');
       if (/^ .+ $/.test(content) && /[^ ]/.test(content)) content = content.slice(1, -1);
-      st.raw('codeSpan', i, close + open.length, content.length, '<code>' + esc(content) + '</code>');
-      return close + open.length;
+      st.raw('codeSpan', i, span.end, content.length, '<code>' + esc(content) + '</code>');
+      return span.end;
     },
   },
   {
@@ -289,12 +295,15 @@ function inline(src, ctx, base = 0) {
 function splitRow(lineText) {
   const parts = [];
   let start = 0;
-  let backticks = false;
   for (let i = 0; i < lineText.length; i++) {
     const c = lineText[i];
     if (c === '\\') { i += 1; continue; }
-    if (c === TICK) { backticks = !backticks; continue; }
-    if (c === '|' && !backticks) { parts.push([start, i]); start = i + 1; }
+    if (c === TICK) {
+      const span = codeSpanAt(lineText, i);
+      i = span ? span.end - 1 : i + tryAt(BACKTICKS, lineText, i)[0].length - 1;
+      continue;
+    }
+    if (c === '|') { parts.push([start, i]); start = i + 1; }
   }
   parts.push([start, lineText.length]);
   return parts;
@@ -335,6 +344,15 @@ function makeIdentity(authored, construct, text, seen, counters) {
 
 const listMarker = line => /^( *)([-*+]|\d{1,9}[.)])([ \t]+)(.*)$/.exec(line);
 const nestedBlocks = (source, ctx) => compile(source, ctx.refs).html.replace(/\sdata-src="[^"]*"/g, '');
+const thematicBreak = line => /^(\*\s*){3,}$|^(-\s*){3,}$|^(_\s*){3,}$/.test(line.trim());
+function rawHTMLBlockEnd(lines, from) {
+  if (!/^ {0,3}<(?:script|style|pre|textarea)(?=[\t >]|$)/i.test(lines[from])) return null;
+  let at = from;
+  while (at < lines.length) {
+    if (/<\/(?:script|style|pre|textarea)>/i.test(lines[at++])) break;
+  }
+  return at;
+}
 
 function readList(ctx, start) {
   const first = listMarker(ctx.lines[start]), indent = first[1].length;
@@ -358,7 +376,7 @@ function readList(ctx, start) {
       const spaces = line.match(/^ */)[0].length;
       if (spaces > indent) body.push(line.slice(Math.min(spaces, padding)));
       else {
-        if (/^(#{1,6}(?:\s|$)|>|\s*(?:`{3,}|~{3,})|\s*<)/.test(line) || /^(?:\*\s*){3,}$|^(?:-\s*){3,}$|^(?:_\s*){3,}$/.test(line)) break;
+        if (/^(#{1,6}(?:\s|$)|>|\s*(?:`{3,}|~{3,})|\s*<)/.test(line) || thematicBreak(line)) break;
         body.push(line);
       }
       at++;
@@ -393,7 +411,7 @@ const BLOCKS = [
   },
   {
     name: 'thematicBreak', anchor: 'required', why: '渲染出来只剩一条线，文字没了',
-    match: (lines, i) => (/^(\*\s*){3,}$|^(-\s*){3,}$|^(_\s*){3,}$/.test(lines[i].trim()) ? { 0: lines[i].trim() } : null),
+    match: (lines, i) => (thematicBreak(lines[i]) ? { 0: lines[i].trim() } : null),
     emit: (m, ctx, i) => {
       ctx.block(undefined, 'thematicBreak', m[0], ctx.span(i, i + 1, i + 1), (n) => ctx.push('<hr data-src="' + esc(n) + '">'));
       return i + 1;
@@ -540,11 +558,12 @@ const BLOCKS = [
   },
   {
     name: 'htmlBlock', anchor: 'optional', why: '原样输出',
-    match: (lines, i) => (/^\s*<(?:\/?(?:address|article|aside|base|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|pre|script|section|source|style|summary|svg|table|tbody|td|tfoot|th|thead|title|tr|track|ul)\b|[!?])/i.test(lines[i]) ? { 0: lines[i] } : null),
+    match: (lines, i) => (/^\s*<(?:\/?(?:address|article|aside|base|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|nav|ol|p|pre|script|section|source|style|summary|svg|table|tbody|td|textarea|tfoot|th|thead|title|tr|track|ul)\b|[!?])/i.test(lines[i]) ? { 0: lines[i] } : null),
     emit: (m, ctx, i) => {
       const from = i;
+      const end = rawHTMLBlockEnd(ctx.lines, i);
       const body = [];
-      while (i < ctx.lines.length && ctx.lines[i].trim()) { body.push(ctx.lines[i]); i += 1; }
+      while (i < ctx.lines.length && (end === null ? ctx.lines[i].trim() : i < end)) { body.push(ctx.lines[i]); i += 1; }
       ctx.block(undefined, 'htmlBlock', body[0].slice(0, 20), ctx.span(from, i, from + 1), (n) => {
         ctx.push('<div data-src="' + esc(n) + '">' + body.join('\n') + '</div>');
       });
@@ -557,7 +576,7 @@ const BLOCKS = [
     emit: (m, ctx, i) => {
       const from = i;
       const para = [];
-      while (i < ctx.lines.length && ctx.lines[i].trim() && !/^(#{1,6}\s|>|\s*([-*+]|\d+[.)])\s|\s*(\x60{3,}|~{3,})|\s*<)/.test(ctx.lines[i])) {
+      while (i < ctx.lines.length && ctx.lines[i].trim() && !thematicBreak(ctx.lines[i]) && !/^(#{1,6}\s|>|\s*([-*+]|\d+[.)])\s|\s*(\x60{3,}|~{3,})|\s*<)/.test(ctx.lines[i])) {
         para.push(ctx.lines[i]); i += 1;
         if (i < ctx.lines.length && /^(=+|-+)\s*$/.test(ctx.lines[i].trim())) break;
       }
@@ -644,6 +663,8 @@ export function compile(source, referenceDefinitions = new Map()) {
 
   // 引用定义的目标可能在文档任何地方，先收一遍。
   for (let n = 0; n < lines.length; n++) {
+    const rawEnd = rawHTMLBlockEnd(lines, n);
+    if (rawEnd !== null) { n = rawEnd - 1; continue; }
     const fence=BLOCKS.find(row=>row.name==='fencedCode').match(lines,n);
     if(fence){
       for(n++;n<lines.length;n++){
