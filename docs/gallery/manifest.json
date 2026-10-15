@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "generator": "scripts/build-gallery.mjs",
   "archifyVersion": "3.1.1-dev.1",
-  "entryCount": 12,
-  "checkCount": 108,
+  "entryCount": 16,
+  "checkCount": 144,
   "entries": [
     {
       "id": "agent-tool-call",
@@ -1670,6 +1670,554 @@
           "minimumSourceTextPx": 9,
           "minimumProjectedTextPx": 8.378378378378379,
           "semanticTextCount": 92
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "payment-processors",
+      "type": "class",
+      "title": "Payment Processor Hierarchy",
+      "subtitle": "",
+      "input": "gallery/sources/payment-processors.class.json",
+      "artifact": "gallery/artifacts/payment-processors.class.html",
+      "focus": "checkout_orchestrator",
+      "schemaVersion": 1,
+      "visualPreset": "classic",
+      "animation": "trace",
+      "engineeringProfile": null,
+      "nodeCount": 11,
+      "edgeCount": 10,
+      "artifactBytes": 852550,
+      "artifactSha256": "7203a2f886b8843e52ae021c582ad7156c2a3d10fbc4edfd05ef064592eb5838",
+      "sourceBytes": 7321,
+      "sourceSha256": "98742b997db4782981460e8110e5fba899d8500c92c086aa867c5c62c3b89222",
+      "checks": [
+        {
+          "name": "single_svg",
+          "ok": true,
+          "details": [
+            "found 1 <svg> block(s)"
+          ]
+        },
+        {
+          "name": "finite_svg",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true,
+          "details": []
+        }
+      ],
+      "composition": {
+        "schemaVersion": 1,
+        "profile": "showcase",
+        "status": "pass",
+        "summary": {
+          "errors": 0,
+          "warnings": 0
+        },
+        "metrics": {
+          "properCrossings": 0,
+          "resolvedCrossovers": 0,
+          "ambiguousCorridors": 0,
+          "arrowheadCollisions": 0,
+          "containerBorderRuns": 0,
+          "labelRouteClearanceIssues": 0,
+          "labelCanvasOverflowIssues": 0,
+          "minLabelRouteClearance": 178.9,
+          "desktopReadabilityIssues": 0,
+          "viewportHeightIssues": 0,
+          "minProjectedNodeTextPx": 7.5,
+          "maxBends": 0,
+          "routesOverSuggestedBends": 0,
+          "maxStretch": 1,
+          "routesOverSuggestedStretch": 0,
+          "minSegmentPx": 104,
+          "minInteriorSegmentPx": null,
+          "shortSegmentCount": 0,
+          "shortEndpointSegmentCount": 0,
+          "shortInteriorSegmentCount": 0,
+          "microSegmentCount": 0
+        },
+        "suggestedLimits": {
+          "bendsPerRelationship": 2,
+          "stretch": 1.35,
+          "segmentPx": 16,
+          "microSegmentPx": 8
+        },
+        "routeReview": {
+          "crossings": [],
+          "detours": []
+        },
+        "leadingSpace": {
+          "measured": false,
+          "reviewSuggested": false
+        },
+        "desktopReadability": {
+          "budgetBasis": "recognized-declared-wide",
+          "readerContract": "declared-wide-v1",
+          "availableDiagramWidth": 1294.7368421052631,
+          "actualBudgetPx": 1294.7368421052631,
+          "actualReaderWidth": 1324.7368421052631,
+          "desiredReaderWidth": 1324.7368421052631,
+          "viewportCap": 1376,
+          "limit": "source-size",
+          "requestedTargetPx": 7.5,
+          "requestedTargetMet": true,
+          "hardFloorPx": 6,
+          "hardFloorMet": true,
+          "minimumOwner": {
+            "kind": "edge",
+            "id": "orchestrator_registry",
+            "from": "checkout_orchestrator",
+            "to": "processor_registry"
+          },
+          "minimumSourceTextPx": 9.5,
+          "minimumProjectedTextPx": 7.5,
+          "semanticTextCount": 118
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "payment-platform",
+      "type": "tree",
+      "title": "Payment Platform Capabilities",
+      "subtitle": "",
+      "input": "gallery/sources/payment-platform.tree.json",
+      "artifact": "gallery/artifacts/payment-platform.tree.html",
+      "focus": "platform",
+      "schemaVersion": 1,
+      "visualPreset": "classic",
+      "animation": "trace",
+      "engineeringProfile": null,
+      "nodeCount": 10,
+      "edgeCount": 9,
+      "artifactBytes": 817233,
+      "artifactSha256": "adde691480d8cb57bb5f700a5060cee73cbf314489d56ddf2e395ea7e4eb44a6",
+      "sourceBytes": 1214,
+      "sourceSha256": "1e99f37b3845d67fa97c9a2ff33109981c23bfdb0d03ba05b7d92944dcdfc61f",
+      "checks": [
+        {
+          "name": "single_svg",
+          "ok": true,
+          "details": [
+            "found 1 <svg> block(s)"
+          ]
+        },
+        {
+          "name": "finite_svg",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true,
+          "details": [
+            "no legend marker found"
+          ]
+        }
+      ],
+      "composition": {
+        "schemaVersion": 1,
+        "profile": "showcase",
+        "status": "pass",
+        "summary": {
+          "errors": 0,
+          "warnings": 0
+        },
+        "metrics": {
+          "properCrossings": 0,
+          "resolvedCrossovers": 0,
+          "ambiguousCorridors": 0,
+          "arrowheadCollisions": 0,
+          "containerBorderRuns": 0,
+          "labelRouteClearanceIssues": 0,
+          "labelCanvasOverflowIssues": 0,
+          "minLabelRouteClearance": null,
+          "desktopReadabilityIssues": 0,
+          "viewportHeightIssues": 0,
+          "minProjectedNodeTextPx": 9.569691300280637,
+          "maxBends": 0,
+          "routesOverSuggestedBends": 0,
+          "maxStretch": null,
+          "routesOverSuggestedStretch": 0,
+          "minSegmentPx": null,
+          "minInteriorSegmentPx": null,
+          "shortSegmentCount": 0,
+          "shortEndpointSegmentCount": 0,
+          "shortInteriorSegmentCount": 0,
+          "microSegmentCount": 0
+        },
+        "suggestedLimits": {
+          "bendsPerRelationship": 2,
+          "stretch": 1.35,
+          "segmentPx": 16,
+          "microSegmentPx": 8
+        },
+        "routeReview": {
+          "crossings": [],
+          "detours": []
+        },
+        "leadingSpace": {
+          "measured": false,
+          "reviewSuggested": false
+        },
+        "desktopReadability": {
+          "budgetBasis": "recognized-declared-wide",
+          "readerContract": "declared-wide-v1",
+          "availableDiagramWidth": 930,
+          "actualBudgetPx": 930,
+          "actualReaderWidth": 960,
+          "desiredReaderWidth": 960,
+          "viewportCap": 1376,
+          "limit": "source-size",
+          "requestedTargetPx": 7.5,
+          "requestedTargetMet": true,
+          "hardFloorPx": 6,
+          "hardFloorMet": true,
+          "minimumOwner": {
+            "kind": "node",
+            "id": "platform"
+          },
+          "minimumSourceTextPx": 11,
+          "minimumProjectedTextPx": 9.569691300280637,
+          "semanticTextCount": 14
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "payment-incident",
+      "type": "timeline",
+      "title": "Payment Failure Incident",
+      "subtitle": "",
+      "input": "gallery/sources/payment-incident.timeline.json",
+      "artifact": "gallery/artifacts/payment-incident.timeline.html",
+      "focus": "rollback",
+      "schemaVersion": 1,
+      "visualPreset": "classic",
+      "animation": "trace",
+      "engineeringProfile": null,
+      "nodeCount": 5,
+      "edgeCount": 4,
+      "artifactBytes": 811611,
+      "artifactSha256": "65f1ca675c8538942b70f77d72c19ceef994751f1c8f6aa916f54e222518cd6d",
+      "sourceBytes": 1445,
+      "sourceSha256": "c1f535b3cc915ddd47ecd7df4e3ef02c441c8c3191daced5cf4422cff8dec95f",
+      "checks": [
+        {
+          "name": "single_svg",
+          "ok": true,
+          "details": [
+            "found 1 <svg> block(s)"
+          ]
+        },
+        {
+          "name": "finite_svg",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true,
+          "details": []
+        }
+      ],
+      "composition": {
+        "schemaVersion": 1,
+        "profile": "showcase",
+        "status": "pass",
+        "summary": {
+          "errors": 0,
+          "warnings": 0
+        },
+        "metrics": {
+          "properCrossings": 0,
+          "resolvedCrossovers": 0,
+          "ambiguousCorridors": 0,
+          "arrowheadCollisions": 0,
+          "containerBorderRuns": 0,
+          "labelRouteClearanceIssues": 0,
+          "labelCanvasOverflowIssues": 0,
+          "minLabelRouteClearance": null,
+          "desktopReadabilityIssues": 0,
+          "viewportHeightIssues": 0,
+          "minProjectedNodeTextPx": 10.35173642030276,
+          "maxBends": 0,
+          "routesOverSuggestedBends": 0,
+          "maxStretch": null,
+          "routesOverSuggestedStretch": 0,
+          "minSegmentPx": null,
+          "minInteriorSegmentPx": null,
+          "shortSegmentCount": 0,
+          "shortEndpointSegmentCount": 0,
+          "shortInteriorSegmentCount": 0,
+          "microSegmentCount": 0
+        },
+        "suggestedLimits": {
+          "bendsPerRelationship": 2,
+          "stretch": 1.35,
+          "segmentPx": 16,
+          "microSegmentPx": 8
+        },
+        "routeReview": {
+          "crossings": [],
+          "detours": []
+        },
+        "leadingSpace": {
+          "measured": false,
+          "reviewSuggested": false
+        },
+        "desktopReadability": {
+          "budgetBasis": "recognized-declared-wide",
+          "readerContract": "declared-wide-v1",
+          "availableDiagramWidth": 930,
+          "actualBudgetPx": 930,
+          "actualReaderWidth": 960,
+          "desiredReaderWidth": 960,
+          "viewportCap": 1376,
+          "limit": "source-size",
+          "requestedTargetPx": 7.5,
+          "requestedTargetMet": true,
+          "hardFloorPx": 6,
+          "hardFloorMet": true,
+          "minimumOwner": {
+            "kind": "node",
+            "id": "deploy"
+          },
+          "minimumSourceTextPx": 12.5,
+          "minimumProjectedTextPx": 10.35173642030276,
+          "semanticTextCount": 5
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "checkout-request",
+      "type": "waterfall",
+      "title": "Checkout Request Execution",
+      "subtitle": "",
+      "input": "gallery/sources/checkout-request.waterfall.json",
+      "artifact": "gallery/artifacts/checkout-request.waterfall.html",
+      "focus": "payment",
+      "schemaVersion": 1,
+      "visualPreset": "classic",
+      "animation": "trace",
+      "engineeringProfile": null,
+      "nodeCount": 6,
+      "edgeCount": 5,
+      "artifactBytes": 810900,
+      "artifactSha256": "f4184ed617fe18f8edf434f78081ac8e05b57c487c2167678150961a1ebf7ed2",
+      "sourceBytes": 1209,
+      "sourceSha256": "55a5f74699a0f0e44018a4a000556d43c90430b95f39accac6141af8318b5133",
+      "checks": [
+        {
+          "name": "single_svg",
+          "ok": true,
+          "details": [
+            "found 1 <svg> block(s)"
+          ]
+        },
+        {
+          "name": "finite_svg",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "orthogonal_arrows",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "label_route_clearance",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_crossings",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "relationship_corridors",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "container_border_runs",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "route_rhythm",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "legend_clearance",
+          "ok": true,
+          "details": []
+        }
+      ],
+      "composition": {
+        "schemaVersion": 1,
+        "profile": "showcase",
+        "status": "pass",
+        "summary": {
+          "errors": 0,
+          "warnings": 0
+        },
+        "metrics": {
+          "properCrossings": 0,
+          "resolvedCrossovers": 0,
+          "ambiguousCorridors": 0,
+          "arrowheadCollisions": 0,
+          "containerBorderRuns": 0,
+          "labelRouteClearanceIssues": 0,
+          "labelCanvasOverflowIssues": 0,
+          "minLabelRouteClearance": null,
+          "desktopReadabilityIssues": 0,
+          "viewportHeightIssues": 0,
+          "minProjectedNodeTextPx": 10.674931129476583,
+          "maxBends": 0,
+          "routesOverSuggestedBends": 0,
+          "maxStretch": null,
+          "routesOverSuggestedStretch": 0,
+          "minSegmentPx": null,
+          "minInteriorSegmentPx": null,
+          "shortSegmentCount": 0,
+          "shortEndpointSegmentCount": 0,
+          "shortInteriorSegmentCount": 0,
+          "microSegmentCount": 0
+        },
+        "suggestedLimits": {
+          "bendsPerRelationship": 2,
+          "stretch": 1.35,
+          "segmentPx": 16,
+          "microSegmentPx": 8
+        },
+        "routeReview": {
+          "crossings": [],
+          "detours": []
+        },
+        "leadingSpace": {
+          "measured": false,
+          "reviewSuggested": false
+        },
+        "desktopReadability": {
+          "budgetBasis": "recognized-declared-wide",
+          "readerContract": "declared-wide-v1",
+          "availableDiagramWidth": 930,
+          "actualBudgetPx": 930,
+          "actualReaderWidth": 960,
+          "desiredReaderWidth": 960,
+          "viewportCap": 1376,
+          "limit": "source-size",
+          "requestedTargetPx": 7.5,
+          "requestedTargetMet": true,
+          "hardFloorPx": 6,
+          "hardFloorMet": true,
+          "minimumOwner": {
+            "kind": "node",
+            "id": "request"
+          },
+          "minimumSourceTextPx": 12.5,
+          "minimumProjectedTextPx": 10.674931129476583,
+          "semanticTextCount": 6
         },
         "issues": []
       }
