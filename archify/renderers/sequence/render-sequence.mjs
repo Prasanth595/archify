@@ -526,7 +526,7 @@ function noteOverlapRepair(messageIndex, blockerIndex, requiredY) {
   if (shift <= 0) return null;
   const updates = messages
     .map((message, index) => ({ message, index }))
-    .filter(({ message }) => typeof message.y === 'number' && message.y >= blocker.y)
+    .filter(({ message }) => typeof message.y === 'number' && message.y >= blocker.y && message.y < blocker.y + shift)
     .map(({ message, index }) => ({ index, y: message.y + shift }));
   const projected = messages.map((message, index) => {
     const update = updates.find((entry) => entry.index === index);
