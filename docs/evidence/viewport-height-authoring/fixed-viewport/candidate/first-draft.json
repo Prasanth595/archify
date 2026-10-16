@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Northstar image processing: upload, queue, transformation and notification",
+    "locale": "en",
+    "output": "northstar.html",
+    "quality_profile": "showcase",
+    "viewBox": [1100, 460]
+  },
+  "components": [
+    {"id":"browser","type":"external","label":"Browser","pos":[40,40],"size":[130,60]},
+    {"id":"upload-api","type":"backend","label":"Upload API","pos":[350,40],"size":[170,60]},
+    {"id":"original-store","type":"database","label":"Object Store","pos":[350,210],"size":[170,60]},
+    {"id":"job-queue","type":"messagebus","label":"Job Queue","pos":[650,40],"size":[175,60]},
+    {"id":"transform-worker","type":"backend","label":"Transform Worker","pos":[650,210],"size":[175,60]},
+    {"id":"result-store","type":"database","label":"Result Store","pos":[900,210],"size":[150,60]},
+    {"id":"notification-service","type":"backend","label":"Notification Service","pos":[40,350],"size":[190,60]}
+  ],
+  "connections": [
+    {"id":"upload-request","from":"browser","to":"upload-api","label":"HTTPS upload","variant":"emphasis"},
+    {"id":"save-original","from":"upload-api","to":"original-store","label":"original"},
+    {"id":"enqueue-job","from":"upload-api","to":"job-queue","label":"enqueue","variant":"dashed"},
+    {"id":"dispatch-job","from":"job-queue","to":"transform-worker","label":"dispatch","variant":"dashed"},
+    {"id":"read-original","from":"transform-worker","to":"original-store","label":"read"},
+    {"id":"save-result","from":"transform-worker","to":"result-store","label":"result"},
+    {"id":"publish-completion","from":"transform-worker","to":"notification-service","label":"complete","variant":"dashed","fromSide":"bottom","toSide":"right"},
+    {"id":"notify-browser","from":"notification-service","to":"browser","label":"result URL","fromSide":"top","toSide":"bottom"}
+  ],
+  "cards": [
+    {"dot":"amber","title":"Queue retries","items":["A failed job is retried at most three times.","Exhausted jobs enter the dead-letter queue for operator review."]},
+    {"dot":"emerald","title":"Storage policy","items":["Originals expire after seven days; transformed results after thirty days.","Completion notifications contain a result URL and no image bytes."]}
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "sessionId": "base-fixed-viewport",
+  "skillRevision": "744d8e10bda445ef1aebbf63d72ceca7445b069b",
+  "firstDraftSha256": "48ac40a5d36b2a81963802f7ba5675e2f3e9152084a565183a0106d8ed0d9ad4",
+  "finalDraftSha256": "48ac40a5d36b2a81963802f7ba5675e2f3e9152084a565183a0106d8ed0d9ad4",
+  "artifactSha256": "576ef2c5352dc44da37df245cf2e7c16cb5d0be865e4c832041c6e6b6be9467f",
+  "finalizeAttempts": 1,
+  "finalizeExitCode": 0,
+  "contentGeometryRepairs": 0,
+  "preAuthoringEnvironmentRetries": 1,
+  "command": "$env:ARCHIFY_CHROME='C:/Program Files/Google/Chrome/Application/chrome.exe'\n& '<NODE22>/node.exe' '<BASE_WORKTREE>/archify/bin/archify.mjs' finalize architecture candidate.json northstar.html --quality showcase --json 1> attempt-1.stdout.txt 2> attempt-1.stderr.txt\n$LASTEXITCODE | Set-Content -LiteralPath 'attempt-1.exit-code.txt'\nGet-Content -LiteralPath 'attempt-1.stdout.txt'\nGet-Content -LiteralPath 'attempt-1.stderr.txt'\n",
+  "actions": [
+    {
+      "kind": "exec",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "command": "Read task-fixed-viewport.md and selected SKILL.md using prescribed PowerShell",
+      "retainedOutput": "environment-1.error.txt",
+      "outcome": "environment failure before shell execution",
+      "index": 1,
+      "sandbox": "use_default"
+    },
+    {
+      "kind": "read",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "paths": [
+        "<EXPERIMENT_ROOT>/task-fixed-viewport.md",
+        "<BASE_WORKTREE>/archify/SKILL.md"
+      ],
+      "method": "Get-Content",
+      "outcome": "pass",
+      "index": 2,
+      "sandbox": "require_escalated"
+    },
+    {
+      "kind": "read",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "paths": [
+        "<BASE_WORKTREE>/archify/references/authoring-defaults.md",
+        "<BASE_WORKTREE>/archify/examples/web-app.architecture.json"
+      ],
+      "method": "Get-Content bounded batch",
+      "outcome": "pass",
+      "index": 3
+    },
+    {
+      "kind": "read",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "paths": [
+        "<BASE_WORKTREE>/archify/schemas/architecture.schema.json",
+        "<BASE_WORKTREE>/archify/schemas/common.schema.json"
+      ],
+      "method": "Get-Content bounded batch",
+      "outcome": "pass",
+      "index": 4
+    },
+    {
+      "kind": "write",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "paths": [
+        "candidate.json",
+        "first-draft.json",
+        "attempt-1.candidate.json",
+        "attempt-1.command.ps1"
+      ],
+      "index": 5,
+      "description": "Complete first candidate authored directly; first-draft frozen and attempt candidate copied before finalize."
+    },
+    {
+      "stderr": "attempt-1.stderr.txt",
+      "index": 6,
+      "outcome": "pass",
+      "diagnostics": [],
+      "environment": {
+        "ARCHIFY_CHROME": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+      },
+      "stdout": "attempt-1.stdout.txt",
+      "exitCode": 0,
+      "commandFile": "attempt-1.command.ps1",
+      "kind": "exec",
+      "startedAt": "2026-10-11T10:18:11.568Z",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport"
+    },
+    {
+      "kind": "read",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "paths": [
+        "northstar.finalize.json",
+        "northstar.browser-check.json",
+        "<BASE_WORKTREE>/archify/package.json"
+      ],
+      "description": "Read retained receipts and package identity; tool display truncated, retained files complete.",
+      "method": "Get-Content",
+      "index": 7
+    },
+    {
+      "kind": "exec",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "command": "Get-FileHash selected SKILL.md; Get-ChildItem output directory",
+      "description": "Identity and retained artifact inventory.",
+      "outcome": "pass",
+      "index": 8
+    },
+    {
+      "kind": "write",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "paths": [
+        "first-draft.html",
+        "attempt-1.finalize.json",
+        "attempt-1.finalize-summary.json",
+        "attempt-1.browser-check.json",
+        "environment-1.error.txt",
+        "session.json",
+        "author-notes.md"
+      ],
+      "index": 9,
+      "description": "Freeze successful first artifact and receipts; record session and author notes."
+    },
+    {
+      "index": 10,
+      "kind": "exec",
+      "command": "Parse saved session.json; compare SHA256 of first-draft.json, candidate.json and attempt-1.candidate.json; read attempt-1.exit-code.txt",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "outcome": "pass",
+      "description": "Session parsed correctly. All three candidate hashes equal 48ac40a5d36b2a81963802f7ba5675e2f3e9152084a565183a0106d8ed0d9ad4; finalize exit code 0."
+    },
+    {
+      "index": 11,
+      "kind": "write",
+      "paths": [
+        "session.json"
+      ],
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\fixed-viewport",
+      "description": "Append final metadata verification action."
+    }
+  ],
+  "metadataSupportFailures": null,
+  "publicationNote": "Agent-recorded action log and retained original command, not a host-private-history export. Local paths replaced by placeholders."
+}

@@ -1,0 +1,285 @@
+{
+  "sessionId": "base-readable-scroll",
+  "skillRevision": "744d8e10bda445ef1aebbf63d72ceca7445b069b",
+  "firstDraftSha256": "2db2e738f64395ba370e878ea90dbba0e9825a25cc72cab9de9185c002e3ce4e",
+  "finalDraftSha256": "2db2e738f64395ba370e878ea90dbba0e9825a25cc72cab9de9185c002e3ce4e",
+  "artifactSha256": "c2438de7a1933fb3c3f9a7a54da5cd6fd5191a7d31ea12d3f57b34496bb75a20",
+  "finalizeAttempts": 1,
+  "finalizeExitCode": 0,
+  "contentGeometryRepairs": 0,
+  "preAuthoringEnvironmentRetries": {
+    "count": 1,
+    "phase": "initial-read",
+    "error": "exec_command failed: CreateProcess { message: \"Rejected(\\\"Failed to create unified exec process: pin C:\\\\\\\")\" }",
+    "successfulRetry": "require_escalated",
+    "finalizeEnvironmentRetries": 0
+  },
+  "command": "{\n  \"executable\": \"<NODE22>/node.exe\",\n  \"args\": [\n    \"<BASE_WORKTREE>/archify/bin/archify.mjs\",\n    \"finalize\",\n    \"sequence\",\n    \"candidate.json\",\n    \"ledger-batch-reconciliation.html\",\n    \"--quality\",\n    \"showcase\",\n    \"--json\"\n  ],\n  \"cwd\": \"<EXPERIMENT_ROOT>\\\\runs\\\\base\\\\readable-scroll\",\n  \"environment\": {\n    \"ARCHIFY_CHROME\": \"C:/Program Files/Google/Chrome/Application/chrome.exe\"\n  },\n  \"startedAt\": \"2026-10-11T10:18:39.626Z\"\n}",
+  "actions": [
+    {
+      "sequence": 1,
+      "kind": "exec",
+      "command": "Get-Content -LiteralPath '<BASE_WORKTREE>/archify/SKILL.md' -Raw; Get-Content -LiteralPath '<EXPERIMENT_ROOT>/task-readable-scroll.md' -Raw",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "shell": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+      "sandbox": "use_default",
+      "result": "process-creation-failed",
+      "error": "exec_command failed: CreateProcess { message: \"Rejected(\\\"Failed to create unified exec process: pin C:\\\\\\\")\" }",
+      "contentRead": false
+    },
+    {
+      "sequence": 2,
+      "kind": "exec",
+      "command": "Retry the same read command with require_escalated",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "exitCode": 0,
+      "toolChunkId": "46e54d"
+    },
+    {
+      "sequence": 3,
+      "kind": "read",
+      "paths": [
+        "<BASE_WORKTREE>/archify/SKILL.md",
+        "<EXPERIMENT_ROOT>/task-readable-scroll.md"
+      ],
+      "purpose": "Select Sequence and read unchanged supplied task",
+      "phase": "before-first-draft"
+    },
+    {
+      "sequence": 4,
+      "kind": "exec",
+      "command": "Get-Content -LiteralPath '<BASE_WORKTREE>/archify/references/authoring-defaults.md' -Raw; Get-Content -LiteralPath '<BASE_WORKTREE>/archify/examples/cache-miss-request.sequence.json' -Raw",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "exitCode": 0,
+      "toolChunkId": "a92065"
+    },
+    {
+      "sequence": 5,
+      "kind": "read",
+      "paths": [
+        "<BASE_WORKTREE>/archify/references/authoring-defaults.md",
+        "<BASE_WORKTREE>/archify/examples/cache-miss-request.sequence.json"
+      ],
+      "purpose": "Required defaults and mode example, separate bounded batch",
+      "phase": "before-first-draft"
+    },
+    {
+      "sequence": 6,
+      "kind": "exec",
+      "command": "Get-Content -LiteralPath '<BASE_WORKTREE>/archify/schemas/sequence.schema.json' -Raw; Get-Content -LiteralPath '<BASE_WORKTREE>/archify/schemas/common.schema.json' -Raw",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "exitCode": 0,
+      "toolChunkId": "186642"
+    },
+    {
+      "sequence": 7,
+      "kind": "read",
+      "paths": [
+        "<BASE_WORKTREE>/archify/schemas/sequence.schema.json",
+        "<BASE_WORKTREE>/archify/schemas/common.schema.json"
+      ],
+      "purpose": "Required complete mode/common schemas",
+      "phase": "before-first-draft"
+    },
+    {
+      "sequence": 8,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\candidate.json"
+      ],
+      "purpose": "Complete first candidate; 18 exact labels/notes, three ordered participants, y starts at 160 with 100px spacing"
+    },
+    {
+      "sequence": 9,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\first-draft.json"
+      ],
+      "purpose": "Frozen first draft copied before any finalize call",
+      "sha256": "2db2e738f64395ba370e878ea90dbba0e9825a25cc72cab9de9185c002e3ce4e"
+    },
+    {
+      "sequence": 10,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\run-attempt.mjs"
+      ],
+      "purpose": "Capture genuine CLI stdout/stderr bytes, exact command, result, and candidate/HTML snapshots"
+    },
+    {
+      "sequence": 11,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.candidate.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.command.json"
+      ],
+      "purpose": "Snapshot attempt candidate and exact invocation before finalize"
+    },
+    {
+      "sequence": 12,
+      "kind": "exec",
+      "executable": "<NODE22>/node.exe",
+      "args": [
+        "<BASE_WORKTREE>/archify/bin/archify.mjs",
+        "finalize",
+        "sequence",
+        "candidate.json",
+        "ledger-batch-reconciliation.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "environment": {
+        "ARCHIFY_CHROME": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+      },
+      "startedAt": "2026-10-11T10:18:39.626Z",
+      "finishedAt": "2026-10-11T10:18:42.584Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "command": [
+        "<NODE22>/node.exe",
+        "<BASE_WORKTREE>/archify/bin/archify.mjs",
+        "finalize",
+        "sequence",
+        "candidate.json",
+        "ledger-batch-reconciliation.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "stdoutPath": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.stdout.txt",
+      "stderrPath": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.stderr.txt",
+      "toolChunkId": "f44139",
+      "status": "pass"
+    },
+    {
+      "sequence": 13,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.stdout.txt",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.stderr.txt",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.result.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.ledger-batch-reconciliation.html",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.ledger-batch-reconciliation.finalize-summary.json"
+      ],
+      "purpose": "Actual retained CLI outputs and attempt artifacts"
+    },
+    {
+      "sequence": 14,
+      "kind": "exec",
+      "command": "Get-Content -LiteralPath 'ledger-batch-reconciliation.finalize.json' -Raw; Get-Content -LiteralPath 'ledger-batch-reconciliation.browser-check.json' -Raw; Get-Content -LiteralPath '<BASE_WORKTREE>/archify/package.json' -Raw",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "exitCode": 0,
+      "toolChunkId": "5d2523",
+      "displayTruncated": true
+    },
+    {
+      "sequence": 15,
+      "kind": "read",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\ledger-batch-reconciliation.finalize.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\ledger-batch-reconciliation.browser-check.json",
+        "<BASE_WORKTREE>/archify/package.json"
+      ],
+      "purpose": "Review pass and viewport evidence, package identity; underlying receipts retained whole"
+    },
+    {
+      "sequence": 16,
+      "kind": "read",
+      "paths": [
+        "<EXPERIMENT_ROOT>/task-readable-scroll.md",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\first-draft.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\candidate.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.stdout.txt",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.command.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\attempt-1.result.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\ledger-batch-reconciliation.finalize.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\ledger-batch-reconciliation.browser-check.json",
+        "<BASE_WORKTREE>/archify/SKILL.md",
+        "<BASE_WORKTREE>/archify/references/authoring-defaults.md",
+        "<BASE_WORKTREE>/archify/examples/cache-miss-request.sequence.json",
+        "<BASE_WORKTREE>/archify/schemas/sequence.schema.json",
+        "<BASE_WORKTREE>/archify/schemas/common.schema.json"
+      ],
+      "purpose": "Record content identity and verify semantics directly against trace; inspect recommendations without truncated receipt output"
+    },
+    {
+      "sequence": 17,
+      "kind": "exec",
+      "command": "Write record-session.mjs and run it with the official Node executable",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "exitCode": 1,
+      "toolChunkId": "9f3251",
+      "error": "SyntaxError: Unexpected token ]",
+      "retainedScript": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\record-session-failed-v1.mjs",
+      "classification": "metadata-support-script-failure; not a finalize or content/geometry repair"
+    },
+    {
+      "sequence": 18,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\record-session.mjs"
+      ],
+      "purpose": "Fix missing sessions object closing brace in metadata script"
+    },
+    {
+      "sequence": 19,
+      "kind": "exec",
+      "command": "Run record-session.mjs with the official Node executable",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "purpose": "Write session metadata and semantic comparison after metadata-only syntax correction"
+    },
+    {
+      "sequence": 20,
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\semantic-preservation.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\author-notes.md",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\session.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll\\environment-retry.json"
+      ],
+      "purpose": "Retain semantic comparison, chronology, environment failure, and authoring notes"
+    },
+    {
+      "kind": "exec",
+      "command": "record-session.mjs",
+      "executable": "<NODE22>/node.exe",
+      "cwd": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll",
+      "exitCode": 0,
+      "toolChunkId": "0ed122",
+      "result": "Session metadata and semantic preservation files written successfully",
+      "sequence": 21
+    },
+    {
+      "kind": "read",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll/session.json"
+      ],
+      "purpose": "Complete chronology after metadata script result",
+      "sequence": 22
+    },
+    {
+      "kind": "write",
+      "paths": [
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll/session.json",
+        "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll/author-notes.md"
+      ],
+      "purpose": "Record separate metadata script failure and its completed correction",
+      "sequence": 23
+    }
+  ],
+  "metadataSupportFailures": [
+    {
+      "exitCode": 1,
+      "toolChunkId": "9f3251",
+      "error": "SyntaxError: Unexpected token ']'",
+      "script": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll/record-session-failed-v1.mjs",
+      "receipt": "<EXPERIMENT_ROOT>\\runs\\base\\readable-scroll/metadata-support-failure.json",
+      "repairedByToolChunkId": "0ed122",
+      "finalizeAttempt": false
+    }
+  ],
+  "publicationNote": "Agent-recorded action log and retained original command, not a host-private-history export. Local paths replaced by placeholders."
+}

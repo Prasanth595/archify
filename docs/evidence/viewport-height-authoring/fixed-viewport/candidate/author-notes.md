@@ -1,0 +1,9 @@
+# Author notes
+
+SKILL.md supplied the direct candidate-to-finalize workflow and showcase quality. Authoring defaults supplied connected placement, main-path/branch/return classification, label-gap budgeting, English locale, and omission of a subtitle and explicit classic preset. The web-app example informed JSON shape only; every fact came from the supplied Northstar task. Architecture and common schemas verified types, component geometry, route sides, cards, locale, quality, and viewBox fields.
+
+The Viewport height budget and worked example in authoring-contract.md informed the explicit 1100 x 460 SVG-unit canvas. I kept upload and queue in the top row, placed Object Store and Result Store with their owners, and used the lower/left return corridor for Notification Service. Required side pins protect the completion/notification return; all routes otherwise remain automatic. No role was regrouped.
+
+The first finalize passed with no diagnostics, no crossing recommendation, and no repair. Its real-browser light-theme 1440 x 900 evidence is contained (scrollHeight 900, innerHeight 900), with 8px minimum projected edge text and 11px minimum other diagram text. No screenshots or perceptual inspection were performed. The browser gate excludes bottom reading rail material from its page-composition cardsPx measurement; therefore cardsPx=0 is not a claim that the supplied cards were omitted or separately perceptually reviewed.
+
+No instructions required clarification. The initial sandbox process creation failed before reading; the explicitly allowed escalated retry succeeded. There were no CLI environment failures and no content or geometry repair rounds. Supporting policy facts remain in exactly two cards, including all retry/dead-letter, expiry, URL, and no-image-bytes facts. The HTTPS upload label states the supplied first relationship; the remaining seven labels are verbatim.

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "<EXPERIMENT_ROOT>\\runs\\candidate\\fixed-viewport\\candidate.json",
+    "sha256": "e633435a13a38276e2b62b72a621b93834af1ff533f8238a49183a04f9617ff8",
+    "bytes": 2290
+  },
+  "artifact": {
+    "path": "<EXPERIMENT_ROOT>\\runs\\candidate\\fixed-viewport\\northstar.html",
+    "sha256": "648f93056d2db13addfa3abba74e1ebd8adf9d4b807f2a678ac67d76f14d038f",
+    "bytes": 793430
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "<EXPERIMENT_ROOT>\\runs\\candidate\\fixed-viewport\\northstar.finalize.json",
+    "summaryReceipt": "<EXPERIMENT_ROOT>\\runs\\candidate\\fixed-viewport\\northstar.finalize-summary.json",
+    "browserCheckReceipt": "<EXPERIMENT_ROOT>\\runs\\candidate\\fixed-viewport\\northstar.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.2-dev.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-11T10:18:11.879Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2660,
+  "publicationNote": "Informational copy; local paths redacted. Use first-draft.json and rerun finalize for fresh bound evidence."
+}

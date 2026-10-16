@@ -1,0 +1,11 @@
+# Author notes
+
+Used SKILL.md's system-description fast path and Sequence router. Read authoring-defaults.md and cache-miss-request.sequence.json as shape guidance, then complete sequence.schema.json and common.schema.json. No example facts were copied. Read authoring-contract.md's viewport-height budget and Sequence placement section, and delivery-contract.md for finalize, readable vertical scrolling, evidence ownership, and repair limits. Recovered the bounded guidance after an initial truncated delivery read.
+
+Authored the exact title, ordered Operator / Reconciler / Ledger participants, and all 18 labels and notes verbatim. Used external / backend / database types and return variants for replies. Kept 90 SVG units between messages because every message carries a required note. Omitted viewBox and column_fit for intrinsic Sequence sizing, animation for default motion, and visual_preset for the requested classic default. No segments, activation bars, cards, or repository sources were needed by the supplied facts.
+
+The schema has no authored theme field. I followed the documented browser contract that checks light theme in default Reader at 1440 x 900, and did not invent a theme field. The browser receipt confirms light and readable page-level vertical scrolling, width-first Reader, no horizontal overflow, and minimum projected semantic text of 11px. The user explicitly allows scrolling, so the 2890px measured page height is accepted rather than compressed.
+
+First finalize passed validate, deliver, strict check, and real-browser check with zero diagnostics, 9/9 showcase checks, zero errors and warnings. No content/geometry repairs, captures, or perceptual review. One pre-authoring environment retry followed a sandbox process-path failure; it is not a repair round. Every finalize stream, command, exit code, frozen candidate, and full receipt is retained. PowerShell retained CLI stdout/stderr text using its redirect encoding.
+
+Semantic comparison against the unchanged task confirms all 18 message directions, exact labels, and exact notes; participant order and lack of self messages are preserved. First and final candidate hashes are equal. No ambiguous authoring instruction prevented completion.
