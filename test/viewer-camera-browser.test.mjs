@@ -117,6 +117,21 @@ test('Camera preserves transactions, rendered state and real caller handoffs', {
   files.mobileWide = path.join(scratch, 'mobile-wide.html');
   execFileSync(process.execPath, [path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'),
     path.join(scratch, 'mobile-wide.json'), files.mobileWide]);
+  // A deep, right-growing tree is height-limited: its stage is much narrower
+  // than the reader container that centres it.
+  const tallNarrow = {
+    schema_version: 1, diagram_type: 'tree',
+    meta: { title: 'Tall narrow tree', output: 'tall-narrow.html' }, layout: { direction: 'right' },
+    nodes: [{ id: 'root', label: 'repository/' }],
+  };
+  for (let d = 0; d < 4; d++) {
+    tallNarrow.nodes.push({ id: `dir-${d}`, label: `dir-${d}/`, parent: 'root' });
+    for (let f = 0; f < 12; f++) tallNarrow.nodes.push({ id: `file-${d}-${f}`, label: `file-${f}.js`, parent: `dir-${d}` });
+  }
+  fs.writeFileSync(path.join(scratch, 'tall-narrow.json'), JSON.stringify(tallNarrow));
+  files.tallNarrow = path.join(scratch, 'tall-narrow.html');
+  execFileSync(process.execPath, [path.join(skillRoot, 'renderers/tree/render-tree.mjs'),
+    path.join(scratch, 'tall-narrow.json'), files.tallNarrow]);
   const browser = new ChromeVisualBrowser(chrome);
   t.after(() => browser.close());
   const session = await browser.sessionPromise;
@@ -441,6 +456,38 @@ test('Camera preserves transactions, rendered state and real caller handoffs', {
       await snapshot(`mobile-wide-360-25-${scrolled ? 'scrolled' : 'initial'}`);
       await screenshot(`mobile-wide-360-25-${scrolled ? 'scrolled' : 'initial'}`);
     }
+  });
+
+  await t.test('a height-limited narrow stage zooms and pans across the wider container', async () => {
+    await load('tallNarrow', { reduced: true });
+    const measure = `(() => {
+      const c = document.querySelector('.diagram-container'), s = c.querySelector(':scope > svg');
+      const box = c.getBoundingClientRect(), r = s.getBoundingClientRect(), style = getComputedStyle(c);
+      const inset = (s.style.clipPath.match(/inset\\(([^)]*)\\)/) || [, '0px'])[1].split(/\\s+/).map(parseFloat);
+      const [top, right = top, , left = right] = inset;
+      const scale = Archify.view.state().scale;
+      return { scale, stageWidth: s.clientWidth, clip: s.style.clipPath,
+        contentLeft: box.left + c.clientLeft + parseFloat(style.paddingLeft),
+        contentRight: box.left + c.clientLeft + c.clientWidth - parseFloat(style.paddingRight),
+        visibleLeft: r.left + left * scale, visibleRight: r.right - right * scale };
+    })()`;
+    const initial = await run(measure);
+    assert.ok(initial.contentRight - initial.contentLeft > initial.stageWidth + 200, JSON.stringify(initial));
+    for (const [steps, scale] of [[3, 1.75], [5, 2.25], [8, 3]]) {
+      await run(`Archify.view.reset({ instant: true }); for (let i = 0; i < ${steps}; i++) Archify.view.zoomIn()`);
+      await stable();
+      const zoomed = await run(measure);
+      assert.equal(zoomed.scale, scale);
+      // The visible region is bounded by the container, not by the narrower
+      // centred stage: a fitting zoom shows the whole stage, a larger one fills
+      // the container.
+      const span = zoomed.stageWidth * scale, view = zoomed.contentRight - zoomed.contentLeft;
+      assert.ok(zoomed.visibleRight - zoomed.visibleLeft >= Math.min(span, view) - 2, JSON.stringify(zoomed));
+      assert.ok(zoomed.visibleLeft >= zoomed.contentLeft - 2 && zoomed.visibleRight <= zoomed.contentRight + 2,
+        JSON.stringify(zoomed));
+      await snapshot(`tall-narrow-${scale * 100}`);
+    }
+    await screenshot('tall-narrow-175');
   });
 
   await t.test('pointer cancellation ends dragging and controls do not begin a pan', async () => {
