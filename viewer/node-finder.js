@@ -245,7 +245,7 @@
         }
       });
       panel.addEventListener('keydown', function (event) {
-        if (event.isComposing) return;
+        if (event.isComposing || event.keyCode === 229) return;
         if (event.key !== 'Escape') return;
         event.preventDefault();
         event.stopPropagation();
