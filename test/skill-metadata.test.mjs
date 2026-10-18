@@ -31,7 +31,7 @@ test('skill description is portable across 1024-character runtimes and remains s
 });
 
 test('literal packaged-skill path references resolve inside the installed skill root', () => {
-  const references = [...skill.matchAll(/`((?:assets|bin|examples|recipes|references|renderers|schemas|scripts)\/[^`\s]+)`/g)]
+  const references = [...skill.matchAll(/`((?:assets|bin|examples|explainer|recipes|references|renderers|schemas|scripts)\/[^`\s]+)`/g)]
     .map((match) => match[1])
     .filter((reference) => !/[<>{}*\[\]]/.test(reference));
 
@@ -61,7 +61,7 @@ test('update awareness is notification-only and never replaces the requested wor
   assert.match(skill + updateAwareness, /information, not permission/i);
   assert.match(skill, /Snooze or ignore a reminder only when the user explicitly asks/);
   assert.match(updateAwareness, /explicitly asks to pause or stop[\s\S]*--snooze "<eventKey>"[\s\S]*--ignore "<eventKey>"[\s\S]*Never run them on your own initiative/);
-  assert.match(skill + updateAwareness, /installed Skill has not changed/i);
+  assert.match(updateAwareness, /Keep the installed version unchanged/i);
   assert.doesNotMatch(skill, /npx skills update|gh skill update/i);
 });
 
