@@ -185,12 +185,12 @@ test('Finder preserves search, keyboard, contextual Route selection and cleanup'
     await key('/', 'Slash', 191); assert.equal(await run(`document.getElementById('node-finder-input').value`), 'API Server');
     const composing = await run(`(() => {
       const input = document.getElementById('node-finder-input');
-      const results = ['Enter', 'Escape'].map(key => {
+      const panel = document.getElementById('node-finder');
+      return ['Enter', 'Escape'].map(key => {
         const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true, isComposing: true });
-        input.dispatchEvent(event);
+        (key === 'Enter' ? input : panel).dispatchEvent(event);
         return { key, open: Archify.finder.isOpen(), focused: document.activeElement === input, prevented: event.defaultPrevented };
       });
-      return results;
     })()`);
     assert.deepEqual(composing, [
       { key: 'Enter', open: true, focused: true, prevented: false },
