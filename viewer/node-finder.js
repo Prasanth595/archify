@@ -229,6 +229,7 @@
         }
       });
       results.addEventListener('keydown', function (event) {
+        if (event.isComposing || event.keyCode === 229) return;
         if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
         var buttons = resultButtons();
         var index = buttons.indexOf(document.activeElement);
