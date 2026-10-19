@@ -22,7 +22,7 @@
     // A diagram needs enough width for its smallest label to reach the reading floor.
     const readableWidth = svg => {
       const viewWidth = svg.viewBox.baseVal?.width || svg.getBoundingClientRect().width;
-      const smallest = Math.min(...all('text',svg).filter(text=>text.textContent.trim() && !text.closest('[data-legend]')).map(text=>(parseFloat(text.getAttribute('font-size')) || parseFloat(getComputedStyle(text).fontSize)) / secondary(text)));
+      const smallest = Math.min(...all('text',svg).filter(text=>text.textContent.trim() && !text.closest('[data-legend]')).map(text=>(parseFloat(getComputedStyle(text).fontSize) || parseFloat(text.getAttribute('font-size'))) / secondary(text)));
       return Number.isFinite(smallest) && smallest > 0 ? viewWidth * floor / smallest : 0;
     };
     // Beside its steps, the diagram column is exactly that wide; without room for both, it wraps above them.
@@ -84,8 +84,13 @@
         const bottom = Math.max(...heights) - gap;
         if (bottom <= 0) return;
         template.forEach((span,c)=>{
-          waste += px(span) * (heights[c] ? bottom - (heights[c] - gap) : bottom * 1.6);
-          if (last[c]) last[c].height = cursor + bottom - last[c].top;
+          const slack = heights[c] ? bottom - (heights[c] - gap) : bottom;
+          waste += px(span) * (heights[c] ? slack : bottom * 1.6);
+          if (last[c]) {
+            const ratio = slack / Math.max(1,last[c].height);
+            if (ratio > .35) waste += px(span) * (slack - last[c].height * .35) * .85;
+            last[c].height = cursor + bottom - last[c].top;
+          }
         });
         cursor += bottom + gap;
         open();
@@ -261,8 +266,7 @@
     const shell = document.querySelector('.shell'), width = document.documentElement.clientWidth, height = Math.ceil(shell.getBoundingClientRect().height + 48);
     const clone = root.cloneNode(true);
     clone.querySelectorAll('script,dialog,#toast,.skip-link,.tools,.ask-button,.ask-floating,.walk-bar,.walk-start,.interactive,.diagram-fit-status').forEach(element=>element.remove());
-    clone.querySelectorAll('.reader-highlight').forEach(element=>element.classList.remove('reader-highlight'));
-    clone.querySelectorAll('.focusing').forEach(element=>element.classList.remove('focusing'));
+    clone.querySelectorAll('.reader-highlight,.focusing,.step-locked,.walk-current,.panel-linked-hover,.panel-pulse,.source-pulse').forEach(element=>element.classList.remove('reader-highlight','focusing','step-locked','walk-current','panel-linked-hover','panel-pulse','source-pulse'));
     // Inside a foreignObject the page's <html> is not :root, so theme and style rules would drop out;
     // the root's own attribute selects the same element with the same specificity.
     const sheet = clone.querySelector('head>style'); if (sheet) sheet.textContent = sheet.textContent.replace(/:root\b/g,'[data-archify-artifact]');
@@ -396,14 +400,119 @@
     let edges = []; try { edges = JSON.parse(link.dataset.diagramEdges || '[]'); } catch {}
     return {preview:previewOf(link.dataset.diagramLink),nodes:hash.startsWith('focus=') ? [decodeURIComponent(hash.slice(6))] : hash.startsWith('route=') ? hash.slice(6).split('~').map(decodeURIComponent) : [],edges};
   };
+  let lockedStep = null;
+  function restoreLockedStep() {
+    if (!lockedStep) { all('.diagram-preview').forEach(preview=>spotlight(preview)); return; }
+    const link = lockedStep.querySelector('[data-diagram-link]');
+    if (!link) return;
+    const {preview,nodes,edges} = targetOf(link);
+    spotlight(preview,nodes,edges);
+  }
+  function clearLockedStep() {
+    if (!lockedStep) return;
+    lockedStep.classList.remove('step-locked','walk-current');
+    lockedStep = null;
+    all('.diagram-preview').forEach(preview=>spotlight(preview));
+  }
   all('[data-diagram-link]').forEach(link=>{
     link.addEventListener('click',event=>{ event.preventDefault(); openViewer(link.dataset.diagramLink,link.dataset.diagramHash || '',link); });
-    // A walk-through owns the highlight while it runs.
-    const highlight = active => { if (walking) return; const {preview,nodes,edges} = targetOf(link); spotlight(preview,active ? nodes : [],active ? edges : []); };
+    // A walk-through owns the highlight while it runs; otherwise a locked step stays lit on mouseleave.
+    const highlight = active => {
+      if (walking) return;
+      if (!active && lockedStep) { restoreLockedStep(); return; }
+      const {preview,nodes,edges} = targetOf(link);
+      spotlight(preview,active ? nodes : [],active ? edges : []);
+    };
     // A step lights its part of the diagram from anywhere in it, its description included.
     const hover = link.closest('.steps>li') || link;
     hover.addEventListener('mouseenter',()=>highlight(true)); hover.addEventListener('mouseleave',()=>highlight(false)); link.addEventListener('focus',()=>highlight(true)); link.addEventListener('blur',()=>highlight(false));
+    const stepRow = link.closest('.steps>li');
+    if (stepRow) {
+      stepRow.addEventListener('click',event=>{
+        if (event.target.closest('a,button') || walking) return;
+        if (lockedStep === stepRow) { clearLockedStep(); return; }
+        if (lockedStep) lockedStep.classList.remove('step-locked','walk-current');
+        lockedStep = stepRow;
+        stepRow.classList.add('step-locked','walk-current');
+        restoreLockedStep();
+      });
+    }
   });
+  document.addEventListener('keydown',event=>{ if (event.key === 'Escape' && lockedStep && !walking && !viewerDialog.open) clearLockedStep(); });
+  // Connect conclusion reasons in #answer to the question panels that substantiate them.
+  function setupReasonLinks() {
+    const reasons = all('#answer .reasons>li');
+    const panels = all('.board>.panel:not(#answer)');
+    if (!reasons.length || !panels.length) return;
+    let pulseTimer;
+    const pulsePanel = panel => {
+      all('.panel-pulse').forEach(el=>el.classList.remove('panel-pulse'));
+      panel.classList.add('panel-pulse');
+      clearTimeout(pulseTimer);
+      pulseTimer = setTimeout(()=>panel.classList.remove('panel-pulse'),1500);
+    };
+    const tokensOf = text => {
+      const words = [...String(text || '').toLowerCase().matchAll(/[a-z0-9_.-]{3,}/gu)].map(m=>m[0]);
+      const han = [];
+      for (const m of String(text || '').matchAll(/\p{Script=Han}{2,}/gu)) {
+        const chunk = m[0];
+        if (chunk.length <= 4) han.push(chunk);
+        for (let i = 0; i < chunk.length - 1; i++) han.push(chunk.slice(i,i + 2));
+      }
+      return [...new Set([...words,...han])];
+    };
+    const panelTokens = new Map(panels.map(panel=>[panel,new Set(tokensOf(`${panel.dataset.title || ''} ${panel.textContent || ''}`))]));
+    const panelTitleTokens = new Map(panels.map(panel=>[panel,new Set(tokensOf(panel.dataset.title || panel.querySelector('h2')?.textContent || ''))]));
+    reasons.forEach((li,index)=>{
+      let targetPanel = null;
+      // 1. Explicit in-page block/panel link inside the reason
+      for (const a of all('a[href^="#"]:not([href^="#source-"])',li)) {
+        const found = byId(decodeURIComponent(a.getAttribute('href').slice(1)))?.closest('.panel:not(#answer)');
+        if (found) { targetPanel = found; break; }
+      }
+      // 2. Linked diagram term inside the reason
+      if (!targetPanel) {
+        const termDiagram = li.querySelector('.term[data-diagram]')?.dataset.diagram;
+        if (termDiagram) targetPanel = byId(termDiagram)?.closest('.panel:not(#answer)') || null;
+      }
+      // 3. Shared source citation between the reason and a question panel
+      if (!targetPanel) {
+        const cites = all('.cite a[href^="#source-"]',li).map(a=>a.getAttribute('href'));
+        if (cites.length) {
+          let bestScore = 0;
+          for (const panel of panels) {
+            const score = cites.filter(href=>panel.querySelector(`a[href="${CSS.escape(href)}"]`)).length;
+            if (score > bestScore) { bestScore = score; targetPanel = panel; }
+          }
+        }
+      }
+      // 4. Semantic token overlap between the reason and each panel's title/body
+      if (!targetPanel) {
+        const rTokens = tokensOf(li.textContent);
+        let bestScore = 0;
+        for (const panel of panels) {
+          const pSet = panelTokens.get(panel), tSet = panelTitleTokens.get(panel);
+          const score = rTokens.reduce((sum,tok)=>sum + (tSet.has(tok) ? 3 : 0) + (pSet.has(tok) ? 1 : 0),0);
+          if (score > bestScore) { bestScore = score; targetPanel = panel; }
+        }
+      }
+      // 5. Positional fallback
+      if (!targetPanel && index < panels.length) targetPanel = panels[index];
+      if (!targetPanel) return;
+      const num = targetPanel.querySelector('.panel-id')?.textContent.trim() || String(panels.indexOf(targetPanel) + 1);
+      const title = targetPanel.dataset.title || targetPanel.querySelector('h2')?.textContent.trim() || '';
+      li.dataset.targetPanel = targetPanel.id;
+      li.title = `${say('Jump to Panel ','跳至面板 ')}${num}${title ? ` · ${title}` : ''}`;
+      const setHover = on => targetPanel.classList.toggle('panel-linked-hover',on);
+      li.addEventListener('mouseenter',()=>setHover(true));
+      li.addEventListener('mouseleave',()=>setHover(false));
+      li.addEventListener('click',event=>{
+        if (event.target.closest('a,button')) return;
+        targetPanel.scrollIntoView({behavior:'smooth',block:'nearest'});
+        pulsePanel(targetPanel);
+      });
+    });
+  }
   // A name in the text that is also a node label is linked to that node, once per panel, both ways:
   // hovering the word lights the node, hovering the node lights the word.
   function linkTerms() {
@@ -450,6 +559,7 @@
     const stop = () => { walking?.end(); };
     if (walking?.control === control) { stop(); return; }
     stop();
+    clearLockedStep();
     let index = 0;
     const bar = document.createElement('div'); bar.className = 'walk-bar';
     bar.innerHTML = `<button type="button" data-walk="prev">← ${words.prev}</button><span class="walk-count"></span><button type="button" data-walk="next">${words.next} →</button><span class="walk-text" aria-live="polite"></span><button type="button" data-walk="end">${words.end}</button>`;
@@ -603,7 +713,7 @@
     let hideTimer;
     const hide = () => { hideTimer = setTimeout(()=>{ card.hidden = true; },160); };
     card.addEventListener('mouseenter',()=>clearTimeout(hideTimer)); card.addEventListener('mouseleave',hide);
-    const show = (link, id = decodeURIComponent(link.getAttribute('href').slice('#source-'.length))) => {
+    const show = (link, id = decodeURIComponent(link.getAttribute('href').slice('#source-'.length)), expanded = false) => {
       const source = sources[id] || prepared.document?.sources?.find(entry=>entry.id === id);
       if (!source) return;
       clearTimeout(hideTimer);
@@ -614,20 +724,46 @@
       const kind = source.path ? 'code' : source.url ? 'web' : 'note';
       const lines = source.path && typeof source.text === 'string' ? source.text.split('\n') : [];
       const first = source.lines?.[0] || 1;
-      const excerpt = lines.length ? `<pre><code>${lines.slice(0,14).map((line,index)=>`<span class="line"><i>${first + index}</i>${escapeText(line) || ' '}</span>`).join('')}${lines.length > 14 ? `<span class="line more"><i></i>…</span>` : ''}</code></pre>` : '';
+      const focus = source.focus;
+      const maxLines = expanded ? lines.length : 14;
+      const startOffset = !expanded && Array.isArray(focus) && lines.length > maxLines ? Math.max(0,Math.min(lines.length - maxLines,focus[0] - first - 4)) : 0;
+      const visible = lines.slice(startOffset,startOffset + maxLines);
+      const hiddenCount = lines.length - visible.length;
+      const excerpt = visible.length ? `<pre><code>${startOffset > 0 ? `<span class="line more"><i></i>…</span>` : ''}${visible.map((line,index)=>{ const num = first + startOffset + index; const isFocus = Array.isArray(focus) && num >= focus[0] && num <= focus[1]; return `<span class="line${isFocus ? ' line-focus' : ''}"><i>${num}</i>${escapeText(line) || ' '}</span>`; }).join('')}${startOffset + maxLines < lines.length ? `<span class="line more"><i></i>…</span>` : ''}</code></pre>` : '';
       const note = !source.path && (source.text || source.method) ? `<p class="source-note">${escapeText(source.text || '')}${source.method ? `<span>${escapeText(source.method)}</span>` : ''}</p>` : '';
       const number = /^\d+$/.test(link.textContent.trim()) ? link.textContent.trim() : '';
-      card.innerHTML = `<header><span class="source-icon" data-kind="${kind}" aria-hidden="true">${sourceIcons[kind]}</span><span class="source-head"><b>${escapeText(source.title || source.path || id)}</b>${where ? `<span class="source-where">${escapeText(where)}</span>` : ''}</span>${number ? `<span class="source-number">${number}</span>` : ''}</header>${excerpt}${note}${source.revision || source.url ? `<footer>${source.revision ? `<span class="source-pin">${say('Pinned at','固定在')} <code>${escapeText(String(source.revision).slice(0,7))}</code></span>` : '<span></span>'}${source.url ? `<a href="${escapeText(source.url)}" target="_blank" rel="noopener noreferrer">${say('Open source','打开原文')} ↗</a>` : ''}</footer>` : ''}`;
+      const expandControl = hiddenCount > 0 ? `<button type="button" class="text-button source-expand" data-source-expand>${say(`Show all ${lines.length} lines`,`展开全部 ${lines.length} 行`)}</button>` : '';
+      const copyControl = lines.length ? `<button type="button" class="text-button source-copy" data-source-copy>${words.copy}</button>` : '';
+      const hasFooter = Boolean(source.revision || source.url || expandControl || copyControl);
+      card.innerHTML = `<header><span class="source-icon" data-kind="${kind}" aria-hidden="true">${sourceIcons[kind]}</span><span class="source-head"><b>${escapeText(source.title || source.path || id)}</b>${where ? `<span class="source-where">${escapeText(where)}</span>` : ''}</span>${number ? `<span class="source-number">${number}</span>` : ''}</header>${excerpt}${note}${hasFooter ? `<footer><span class="source-footer-left">${source.revision ? `<span class="source-pin">${say('Pinned at','固定在')} <code>${escapeText(String(source.revision).slice(0,7))}</code></span>` : ''}${expandControl}</span><span class="source-footer-right">${copyControl}${source.url ? `<a href="${escapeText(source.url)}" target="_blank" rel="noopener noreferrer">${say('Open source','打开原文')} ↗</a>` : ''}</span></footer>` : ''}`;
+      card.querySelector('[data-source-expand]')?.addEventListener('click',()=>show(link,id,true));
+      card.querySelector('[data-source-copy]')?.addEventListener('click',event=>{
+        const btn = event.currentTarget;
+        Promise.resolve(navigator.clipboard?.writeText(source.text || '')).then(()=>{ btn.textContent = words.copied; setTimeout(()=>{ btn.textContent = words.copy; },1500); },()=>notify(say('Copy failed.','复制失败。')));
+      });
       card.hidden = false;
-      const box = link.getBoundingClientRect(), width = Math.min(520,innerWidth - 24);
+      const box = link.getBoundingClientRect(), width = Math.min(540,innerWidth - 24);
       card.style.width = `${width}px`;
       card.style.left = `${Math.max(12,Math.min(innerWidth - width - 12,box.left - 24)) + scrollX}px`;
       const below = box.bottom + 8 + card.offsetHeight < innerHeight;
-      card.style.top = `${(below ? box.bottom + 8 : box.top - 8 - card.offsetHeight) + scrollY}px`;
+      card.style.top = `${Math.max(8 + scrollY,(below ? box.bottom + 8 : box.top - 8 - card.offsetHeight) + scrollY)}px`;
     };
+    let sourcePulseTimer;
     all('.cite a[href^="#source-"]').forEach(link=>{
-      link.addEventListener('mouseenter',()=>show(link)); link.addEventListener('focus',()=>show(link));
+      const id = decodeURIComponent(link.getAttribute('href').slice('#source-'.length));
+      link.addEventListener('mouseenter',()=>show(link,id)); link.addEventListener('focus',()=>show(link,id));
       link.addEventListener('mouseleave',hide); link.addEventListener('blur',hide);
+      link.addEventListener('click',event=>{
+        const target = byId(`source-${id}`);
+        if (!target) return;
+        event.preventDefault();
+        card.hidden = true;
+        target.scrollIntoView({behavior:'smooth',block:'nearest'});
+        all('.source-pulse').forEach(el=>el.classList.remove('source-pulse'));
+        target.classList.add('source-pulse');
+        clearTimeout(sourcePulseTimer);
+        sourcePulseTimer = setTimeout(()=>target.classList.remove('source-pulse'),1600);
+      });
     });
     // A diagram node tied to a source opens the same card, so a code diagram doubles as a code tour.
     all('.diagram-preview[data-node-sources]').forEach(preview=>{
@@ -646,6 +782,38 @@
     let saved = []; try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch {}
     boxes.forEach((box,index)=>{ box.checked = saved[index] === 1; box.addEventListener('change',()=>{ try { localStorage.setItem(key,JSON.stringify(boxes.map(b=>b.checked ? 1 : 0))); } catch {} }); });
   });
+  // Chart series and slice hover spotlighting
+  all('.chart>svg').forEach(svg=>{
+    const groups = all('[data-id]',svg);
+    if (groups.length < 2) return;
+    const focusSeries = id => {
+      svg.classList.toggle('chart-focusing',Boolean(id));
+      groups.forEach(g=>g.classList.toggle('series-active',Boolean(id) && g.dataset.id === id));
+    };
+    groups.forEach(g=>{
+      g.addEventListener('mouseenter',()=>focusSeries(g.dataset.id));
+      g.addEventListener('mouseleave',()=>focusSeries(''));
+    });
+  });
+  // Panel anchor link copy feedback
+  all('a.panel-id[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',event=>{
+      const hash = anchor.getAttribute('href');
+      if (!hash) return;
+      try { history.replaceState(null,'',hash); } catch {}
+      const url = `${location.href.split('#')[0]}${hash}`;
+      if (navigator.clipboard?.writeText) {
+        event.preventDefault();
+        const panel = anchor.closest('.panel');
+        if (panel) {
+          panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+          panel.classList.add('panel-pulse');
+          setTimeout(()=>panel.classList.remove('panel-pulse'),1500);
+        }
+        Promise.resolve(navigator.clipboard.writeText(url)).then(()=>notify(say(`Copied link to Panel ${anchor.textContent.trim()}`,`已复制面板 ${anchor.textContent.trim()} 链接`)),()=>{});
+      }
+    });
+  });
   // Native dialogs supply Escape, focus trapping and the accessible modal semantics.
   const printDetails = new Map();
   all('.diagram-semantics').forEach(details=>details.open = false);
@@ -655,6 +823,7 @@
   applyTheme();
   cropDiagramPreviews();
   linkTerms();
+  setupReasonLinks();
   setupWalks();
   setupAsk();
   setupSourceCards();
