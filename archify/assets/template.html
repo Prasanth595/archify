@@ -12648,20 +12648,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       panel.addEventListener('keydown', function (event) {
         if (event.isComposing || event.keyCode === 229) return;
         if (event.key !== 'Escape') return;
-        var index = buttons.indexOf(document.activeElement);
-        if (index < 0 || !buttons.length) return;
-        var next = null;
-        if (event.key === 'ArrowDown') next = (index + 1) % buttons.length;
-        else if (event.key === 'ArrowUp') next = (index - 1 + buttons.length) % buttons.length;
-        else if (event.key === 'Home') next = 0;
-        else if (event.key === 'End') next = buttons.length - 1;
-        if (next !== null) {
-          event.preventDefault();
-          buttons[next].focus();
-        }
-      });
-      panel.addEventListener('keydown', function (event) {
-        if (event.key !== 'Escape') return;
         event.preventDefault();
         event.stopPropagation();
         close();
