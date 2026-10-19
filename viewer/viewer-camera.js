@@ -23,6 +23,39 @@
 
       var viewBox = svg.viewBox && svg.viewBox.baseVal;
 
+      // The camera viewport is the container's content box in the SVG's untransformed
+      // layout coordinates, never smaller than the SVG's own box. A height-limited SVG
+      // can be much narrower than its container; treating the SVG box as the viewport
+      // clipped zoomed content to that narrow column and stopped panning at its edges.
+      function viewportBox() {
+        var width = svg.clientWidth || 1;
+        var height = svg.clientHeight || 1;
+        var svgRect = svg.getBoundingClientRect();
+        var boxRect = container.getBoundingClientRect();
+        var painted = sampleRenderedState();
+        // Content box, not padding box: the padding reserves room for the Dock.
+        var style = getComputedStyle(container);
+        var pad = function (key) { return parseFloat(style[key]) || 0; };
+        // transform-origin is 0 0, so the painted left/top edge is layout edge + translate.
+        var left = boxRect.left + container.clientLeft + pad('paddingLeft') - (svgRect.left - painted.x);
+        var top = boxRect.top + container.clientTop + pad('paddingTop') - (svgRect.top - painted.y);
+        var innerWidth = container.clientWidth - pad('paddingLeft') - pad('paddingRight');
+        var innerHeight = container.clientHeight - pad('paddingTop') - pad('paddingBottom');
+        return {
+          left: Math.min(0, left),
+          top: Math.min(0, top),
+          right: Math.max(width, left + innerWidth),
+          bottom: Math.max(height, top + innerHeight)
+        };
+      }
+      function clampAxis(position, size, scale, start, end) {
+        // At 100% the SVG sits exactly where layout put it.
+        if (scale <= 1) return 0;
+        var span = size * scale;
+        var view = end - start;
+        if (span <= view) return start + (view - span) / 2;
+        return Math.min(start, Math.max(end - span, position));
+      }
       function clamp() {
         var width = svg.clientWidth || 1;
         var height = svg.clientHeight || 1;
@@ -36,8 +69,9 @@
           state.y = height > window.innerHeight ? 0 : height * (1 - state.scale) / 2;
           return;
         }
-        state.x = Math.min(0, Math.max(width - width * state.scale, state.x));
-        state.y = Math.min(0, Math.max(height - height * state.scale, state.y));
+        var view = viewportBox();
+        state.x = clampAxis(state.x, width, state.scale, view.left, view.right);
+        state.y = clampAxis(state.y, height, state.scale, view.top, view.bottom);
       }
       function reducedMotion() {
         return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -132,10 +166,11 @@
         var width = svg.clientWidth || 1;
         var height = svg.clientHeight || 1;
         var scale = camera.scale;
-        var top = Math.max(0, Math.min(height, -camera.y / scale));
-        var left = Math.max(0, Math.min(width, -camera.x / scale));
-        var right = Math.max(0, Math.min(width, width - (width - camera.x) / scale));
-        var bottom = Math.max(0, Math.min(height, height - (height - camera.y) / scale));
+        var view = viewportBox();
+        var top = Math.max(0, Math.min(height, (view.top - camera.y) / scale));
+        var left = Math.max(0, Math.min(width, (view.left - camera.x) / scale));
+        var right = Math.max(0, Math.min(width, width - (view.right - camera.x) / scale));
+        var bottom = Math.max(0, Math.min(height, height - (view.bottom - camera.y) / scale));
         svg.style.clipPath = 'inset(' + [top, right, bottom, left].map(function (value) {
           return Math.round(value * 1000) / 1000 + 'px';
         }).join(' ') + ')';
