@@ -147,10 +147,17 @@ const multiDay = (() => {
   const b = wall(last);
   return a.y !== b.y || a.mo !== b.mo || a.d !== b.d;
 })();
-function clockLabel(ms, { seconds = showSeconds, date = multiDay } = {}) {
+// A multi-day span that crosses a year boundary needs the year in every date
+// it prints; otherwise two instants a year apart share the same label (#1019).
+const multiYear = wall(first).y !== wall(last).y;
+// wall() returns the raw numeric year; pad it so every printed date is
+// YYYY-MM-DD (BC years keep their sign, e.g. -0001).
+const dateYear = (w) => `${w.y.startsWith('-') ? '-' : ''}${w.y.replace(/^[-+]/, '').padStart(4, '0')}`;
+function clockLabel(ms, { seconds = showSeconds, date = multiDay, year = multiYear } = {}) {
   const w = wall(ms);
   const fraction = new Date(ms).getUTCMilliseconds();
-  return `${date ? `${w.mo}-${w.d} ` : ''}${w.h}:${w.mi}${seconds ? `:${w.s}${fraction ? `.${String(fraction).padStart(3, '0')}` : ''}` : ''}`;
+  const day = year ? `${dateYear(w)}-${w.mo}-${w.d}` : `${w.mo}-${w.d}`;
+  return `${date ? `${day} ` : ''}${w.h}:${w.mi}${seconds ? `:${w.s}${fraction ? `.${String(fraction).padStart(3, '0')}` : ''}` : ''}`;
 }
 
 function durationLabel(ms) {
@@ -385,7 +392,28 @@ const legendEntries = resolveLegend(undefined,
   .filter((entry, _, all) => all.length > 1);
 
 const contentBottom = laneLayout.at(-1).y + laneLayout.at(-1).height;
-const width = Math.ceil(axisX1 + layout.margin);
+// The header is left-anchored and unmeasured, so the canvas reserves its width.
+// At the narrowest axis a long IANA zone would otherwise clip the date/range.
+function headerText() {
+  const evidence = i18nText(locale, `timeline.evidence.${tl.meta.evidence}`);
+  const evidenceW = Math.ceil(textUnits(evidence) * 10.5 * ADVANCE + 24);
+  const date = multiYear
+    // A dense multi-year axis can suppress individual tick labels, so the
+    // header states the year range once (#1019).
+    ? ` · ${dateYear(wall(first))}–${dateYear(wall(last))}`
+    : multiDay ? '' : ` · ${dateYear(wall(first))}-${wall(first).mo}-${wall(first).d}`;
+  const zone = `${timezone === 'UTC' ? 'UTC' : `${timezone} (${offsetLabel(first)})`}${date}`;
+  const disclosure = breaks.length ? ` · ${i18nText(locale, 'timeline.compressed', { count: breaks.length })}` : '';
+  return { evidence, evidenceW, caption: `${i18nText(locale, 'timeline.axis')}: ${zone}${disclosure}` };
+}
+const header = headerText();
+const canvasWidth = axisX1 + layout.margin;
+const captionRight = layout.margin + header.evidenceW + 14 + textUnits(header.caption) * 11.5 * ADVANCE;
+// Keep the authored canvas whenever the caption fits with a small inset, so
+// existing output never moves; a clipped caption earns the trailing margin.
+// The inset absorbs fallback-font variance (the bundled mono face has no
+// Arabic/CJK glyphs, so those captions are laid out in a system fallback).
+const width = Math.ceil(captionRight > canvasWidth - 4 ? captionRight + layout.margin : canvasWidth);
 const footprint = legendFootprint(legendEntries, { width: width - layout.margin * 2, fontSize: 11 });
 const height = Math.ceil(contentBottom + layout.margin + (legendEntries.length ? 34 + footprint.extraHeight : 0));
 const viewBox = [width, height];
@@ -406,7 +434,7 @@ function renderAxis() {
   let lastDate = null;
   const shown = ticks.flatMap((tick) => {
     const w = wall(tick.t);
-    const date = `${w.mo}-${w.d}`;
+    const date = multiYear ? `${w.y}-${w.mo}-${w.d}` : `${w.mo}-${w.d}`;
     const label = clockLabel(tick.t, { seconds: tickSeconds, date: multiDay && date !== lastDate });
     const half = textUnits(label) * 10.5 * ADVANCE / 2 + 5;
     const box = [tick.x - half, tick.x + half];
@@ -438,12 +466,7 @@ function renderAxis() {
 }
 
 function renderHeader() {
-  const evidence = i18nText(locale, `timeline.evidence.${tl.meta.evidence}`);
-  const evidenceW = Math.ceil(textUnits(evidence) * 10.5 * ADVANCE + 24);
-  const date = multiDay ? '' : ` · ${wall(first).y}-${wall(first).mo}-${wall(first).d}`;
-  const zone = `${timezone === 'UTC' ? 'UTC' : `${timezone} (${offsetLabel(first)})`}${date}`;
-  const disclosure = breaks.length ? ` · ${i18nText(locale, 'timeline.compressed', { count: breaks.length })}` : '';
-  const caption = `${i18nText(locale, 'timeline.axis')}: ${zone}${disclosure}`;
+  const { evidence, evidenceW, caption } = header;
   const tone = tl.meta.evidence === 'observed' ? 'backend' : 'messagebus';
   return `        <g data-timeline-evidence="${esc(tl.meta.evidence)}">
           <rect x="${layout.margin}" y="14" width="${evidenceW}" height="22" rx="11" class="c-${tone}" stroke-width="1"/>

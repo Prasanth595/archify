@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { textUnits } from '../archify/renderers/shared/utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const skillRoot = path.resolve(__dirname, '..', 'archify');
@@ -135,6 +136,120 @@ test('timeline: long quiet periods become disclosed breaks, proportional inside 
   const flat = clone(large);
   flat.layout = { breaks: 'none' };
   assert.equal(layoutOf(flat).breaks.length, 0);
+});
+
+test('timeline: multi-year spans keep the year in cards, ticks, and context', () => {
+  const diagram = {
+    schema_version: 1,
+    diagram_type: 'timeline',
+    meta: { title: 'Two launches', evidence: 'observed' },
+    events: [
+      { id: 'a', at: '2025-03-01T10:00:00Z', title: 'First launch' },
+      { id: 'b', at: '2026-03-01T10:00:00Z', title: 'Second launch' },
+    ],
+  };
+  const result = run(diagram);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  assert.match(html, />2025-03-01 10:00</, 'first card states its year');
+  assert.match(html, />2026-03-01 10:00</, 'second card states its year');
+  assert.match(html, /data-node-context="2025-03-01 10:00:00 UTC\+00:00"/);
+  assert.match(html, /data-node-context="2026-03-01 10:00:00 UTC\+00:00"/);
+  // The axis dates carry the year, so the year boundary no longer reads backwards.
+  assert.match(html, /2025-\d{2}-\d{2} 00:00/);
+  assert.match(html, /2026-\d{2}-\d{2} 00:00/);
+  // A dense axis can suppress individual tick labels; the header still states
+  // the range.
+  assert.match(html, /UTC · 2025–2026/);
+});
+
+test('timeline: a same-year multi-day span keeps its short date labels', () => {
+  const diagram = {
+    schema_version: 1,
+    diagram_type: 'timeline',
+    meta: { title: 'Same year', evidence: 'observed' },
+    events: [
+      { id: 'a', at: '2026-10-01T10:00:00Z', title: 'A' },
+      { id: 'b', at: '2026-10-05T10:00:00Z', title: 'B' },
+    ],
+  };
+  const result = run(diagram);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  assert.match(html, />10-01 10:00</);
+  assert.match(html, />10-05 10:00</);
+  assert.doesNotMatch(html, />2026-10-0/, 'the year is only added when the span crosses one');
+});
+
+test('timeline: the header range stays inside the canvas at the narrowest axis', () => {
+  const diagram = {
+    schema_version: 1,
+    diagram_type: 'timeline',
+    meta: { title: 'Long zone', evidence: 'illustrative', timezone: 'America/Argentina/Buenos_Aires' },
+    layout: { width: 480 },
+    events: [
+      { id: 'a', at: '2024-01-01T00:00:00Z', title: 'A' },
+      { id: 'b', at: '2026-01-01T00:00:00Z', title: 'B' },
+    ],
+  };
+  const result = run(diagram);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  // Display-zone years: the UTC instants fall on 2023-12-31 and 2025-12-31 there.
+  assert.match(html, /America\/Argentina\/Buenos_Aires \(UTC-03:00\) · 2023–2025/);
+  const viewWidth = Number(html.match(/<svg viewBox="0 0 ([\d.]+)/)[1]);
+  const [, x, caption] = html.match(/<text data-timeline-axis-caption="" x="([\d.]+)"[^>]*>([^<]*)<\/text>/);
+  // The renderer's own metric for header text (font 11.5, widthFactor 0.6).
+  const right = Number(x) + textUnits(caption) * 11.5 * 0.6;
+  assert.ok(right <= viewWidth, `caption ends at ${right}px, beyond the ${viewWidth}px canvas`);
+  assert.equal(viewWidth, Math.ceil(right + 28), 'the clipped caption earns one trailing margin');
+  // A caption that already fits the authored canvas must not move it. This
+  // zone's caption ends at 519px: inside the 536px canvas, but past its right
+  // margin, so an unconditional reservation would widen the canvas to 547.
+  const sameYear = clone(diagram);
+  sameYear.meta.timezone = 'America/Argentina/ComodRivadavia';
+  sameYear.events = [
+    { id: 'a', at: '2024-06-01T00:00:00Z', title: 'A' },
+    { id: 'b', at: '2024-06-02T00:00:00Z', title: 'B' },
+  ];
+  const control = run(sameYear);
+  assert.equal(control.status, 0, control.stderr);
+  assert.match(fs.readFileSync(control.output, 'utf8'), /<svg viewBox="0 0 536 /);
+  // A caption that clears the canvas by less than the 4px fallback inset still
+  // earns the margin; this one ends at 532.8px inside the 536px canvas.
+  const nearEdge = clone(diagram);
+  nearEdge.meta.timezone = 'America/Cambridge_Bay';
+  nearEdge.events = [
+    { id: 'a', at: '2024-06-01T10:00:00Z', title: 'A' },
+    { id: 'b', at: '2024-06-01T11:00:00Z', title: 'B' },
+  ];
+  const near = run(nearEdge);
+  assert.equal(near.status, 0, near.stderr);
+  const nearHtml = fs.readFileSync(near.output, 'utf8');
+  const [, nearX, nearCaption] = nearHtml.match(/<text data-timeline-axis-caption="" x="([\d.]+)"[^>]*>([^<]*)<\/text>/);
+  const nearRight = Number(nearX) + textUnits(nearCaption) * 11.5 * 0.6;
+  assert.ok(nearRight > 532 && nearRight <= 536, `fixture sits in the inset band (${nearRight}px)`);
+  const nearWidth = Number(nearHtml.match(/<svg viewBox="0 0 ([\d.]+)/)[1]);
+  assert.equal(nearWidth, Math.ceil(nearRight + 28));
+});
+
+test('timeline: display-zone years outside 0000-9999 keep at least four digits', () => {
+  const diagram = {
+    schema_version: 1,
+    diagram_type: 'timeline',
+    meta: { title: 'BC shift', evidence: 'observed', timezone: 'America/New_York' },
+    events: [
+      { id: 'a', at: '0000-01-01T01:00:00Z', title: 'A' },
+      { id: 'b', at: '0000-01-02T01:00:00Z', title: 'B' },
+    ],
+  };
+  const result = run(diagram);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  // The negative offset moves both instants into 2 BC (year -1).
+  assert.match(html, />-0001-12-31 20:0/);
+  assert.match(html, />0000-01-01 20:0/);
+  assert.match(html, /UTC-04:56\) · -0001–0000/);
 });
 
 test('timeline: simultaneous and close events stack instead of overprinting', () => {
