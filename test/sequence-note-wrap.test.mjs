@@ -767,10 +767,10 @@ test('the ordered adjustment keeps the last integer slot below fractional rows',
   assert.equal(repaired.status, 0, repaired.stdout);
 });
 
-// A reached row can own a note taller than any fixed scan window allows for:
-// the joint allowance derives from the moved notes' computed heights, so the
-// search reaches the stacked slots instead of withholding the whole repair.
-test('the ordered adjustment reaches past a moved note taller than the fixed window', (t) => {
+// A reached row can own a note taller than the bounded scan window: the repair
+// is withheld honestly at the bound instead of extending the search for
+// pathological notes (#923 review).
+test('the ordered adjustment withholds past its bounded scan window', (t) => {
   const spec = sequence({
     participants: ['client', 'api'],
     messages: [
@@ -781,14 +781,14 @@ test('the ordered adjustment reaches past a moved note taller than the fixed win
   });
   const diagnostic = failure(t, spec, 'sequence/note-overlap');
   assert.equal(diagnostic.evidence.requiredY, 399);
-  assert.deepEqual(diagnostic.supportedFixes, ['set /messages/1/y to 399', 'set /messages/2/y to 1059']);
-  const repaired = diagnostic.supportedFixes.reduce(applyFix, spec);
-  assert.equal(run(t, 'validate', repaired).result.status, 0, 'the whole adjustment must hold');
+  assert.equal(diagnostic.evidence.reached.length, 2);
+  assert.deepEqual(diagnostic.supportedFixes, [], 'the bounded scan withholds rather than reach past a pathological note');
 });
 
-// A segment frame edge rejects every integer within 4px, but the quarter-snapped
-// boundary just outside the exclusion can still hold: offer it before withholding.
-test('the single repair offers the subpixel slot beside a segment edge', (t) => {
+// A segment frame edge rejects every integer slot within 4px; the repair is
+// withheld honestly instead of searching subpixel positions for one (#923
+// review).
+test('the single repair withholds when only a subpixel slot would clear a segment edge', (t) => {
   const spec = sequence({
     messages: [
       { from: 'client', to: 'api', y: 300, label: 'owner', note: Array(60).fill('word').join(' ') },
@@ -799,7 +799,68 @@ test('the single repair offers the subpixel slot beside a segment edge', (t) => 
   spec.segments = [{ label: 'Phase', from: 200, to: 439.2 }];
   const diagnostic = failure(t, spec, 'sequence/note-overlap');
   assert.equal(diagnostic.evidence.requiredY, 443);
-  assert.deepEqual(diagnostic.supportedFixes, ['set /messages/1/y to 443.25']);
-  const repaired = run(t, 'validate', applyFix(spec, diagnostic.supportedFixes[0])).result;
-  assert.equal(repaired.status, 0, repaired.stdout);
+  assert.deepEqual(diagnostic.supportedFixes, [], 'no subpixel search is required; honest refusal');
+});
+
+// An explicitly configured legend that is over-wide fails on apply for a
+// reason the note cannot fix; the repair is withheld rather than claimed
+// verified (#923 review).
+test('the ordered adjustment withholds when the explicit legend cannot fit the canvas width', (t) => {
+  const spec = {
+    ...sequence({
+      participants: ['client', 'api'],
+      messages: [
+        { from: 'client', to: 'api', y: 300, label: 'owner', note: Array(60).fill('word').join(' ') },
+        { from: 'client', to: 'api', y: 330, label: 'first blocker' },
+        { from: 'client', to: 'api', y: 366, label: 'second blocker' },
+      ],
+    }),
+    meta: {
+      title: 'Note wrap', output: 'note.html', quality_profile: 'showcase', column_fit: 'spread',
+      viewBox: [560, 700], legend: { mode: 'all', entries: { default: { label: 'x'.repeat(75) } } },
+    },
+  };
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.equal(diagnostic.evidence.reached.length, 2);
+  assert.deepEqual(diagnostic.supportedFixes, [], 'an over-wide explicit legend cannot take a claimed verified repair');
+});
+// Activations and segment frames set the legend floor too; an explicit legend
+// already stranded by those constant terms must not take a claimed verified
+// repair either (#923 review).
+test('the ordered adjustment withholds when static content already strands the explicit legend', (t) => {
+  const spec = {
+    ...sequence({
+      participants: ['client', 'api'],
+      messages: [
+        { from: 'client', to: 'api', y: 300, label: 'owner', note: Array(60).fill('word').join(' ') },
+        { from: 'client', to: 'api', y: 330, label: 'first blocker' },
+        { from: 'client', to: 'api', y: 366, label: 'second blocker' },
+      ],
+    }),
+    meta: { title: 'Note wrap', output: 'note.html', quality_profile: 'showcase', column_fit: 'spread', viewBox: [560, 700], legend: { mode: 'all' } },
+  };
+  spec.segments = [{ label: 'Late', from: 500, to: 600 }];
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.equal(diagnostic.evidence.reached.length, 2);
+  assert.deepEqual(diagnostic.supportedFixes, [], 'a legend already stranded by the phase cannot take a claimed verified repair');
+});
+
+// An explicitly configured visible legend is a hard error when it cannot fit,
+// so a move that strands it must withhold exactly like the implicit case; the
+// hidden-mode bypass only applies when nothing is visible (#923 review).
+test('the ordered adjustment withholds a move that strands an explicit visible legend', (t) => {
+  const spec = {
+    ...sequence({
+      participants: ['client', 'api'],
+      messages: [
+        { from: 'client', to: 'api', y: 300, label: 'owner', note: Array(60).fill('word').join(' ') },
+        { from: 'client', to: 'api', y: 330, label: 'first blocker' },
+        { from: 'client', to: 'api', y: 366, label: 'second blocker' },
+      ],
+    }),
+    meta: { title: 'Note wrap', output: 'note.html', quality_profile: 'showcase', column_fit: 'spread', viewBox: [560, 520], legend: { mode: 'all' } },
+  };
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.equal(diagnostic.evidence.reached.length, 2);
+  assert.deepEqual(diagnostic.supportedFixes, [], 'the move fails on apply with an unfixable legend diagnostic');
 });

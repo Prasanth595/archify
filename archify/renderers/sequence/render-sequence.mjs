@@ -570,61 +570,53 @@ function rawRowBound(reached, entry) {
   return below.length ? Math.min(...below) : Infinity;
 }
 
-// How far the joint scan may look past requiredY: the adjustment stacks the
-// reached rows, and a reached row can own a note taller than any fixed window
-// allows for. Note height does not depend on y, so derive the allowance from
-// the moved notes' computed heights instead of a constant (#923 review).
-function jointScanAllowance(reached) {
-  let stacked = 0;
-  for (const entry of reached) {
-    const rect = noteRect(entry.message);
-    if (rect) stacked += rect.height + 28;
-  }
-  return Math.max(600, stacked);
-}
+// The joint scan stays deliberately bounded: a reached note taller than this
+// window withholds the whole repair (an honest refusal) instead of letting
+// pathological input stall validation (#923 review).
+const JOINT_SCAN_ALLOWANCE = 600;
 
-// Subpixel slots the integer scan cannot name: a segment frame edge rejects
-// every y within 4px, but the boundary just outside the exclusion can still
-// hold (y=443.25 clears an edge at 439.2 below a row at 443.5). Candidates
-// snap outward to whole quarters so they stay exactly representable and keep
-// a real margin outside the exclusion; they may sit past the integer ceiling
-// as long as they stay strictly below the next unreached row. Tried only
-// after the integer scan misses, so integer receipts never change.
-function segmentEdgeCandidates(minimum, ceiling, rawBound) {
-  const candidates = [];
-  for (const segment of asArray(sequence.segments)) {
-    for (const border of [segment.from, segment.to]) {
-      if (typeof border !== 'number') continue;
-      for (const y of [Math.floor((border - 4) * 4) / 4, Math.ceil((border + 4) * 4) / 4]) {
-        if (y >= minimum && (y <= ceiling || y < rawBound) && !Number.isInteger(y)) candidates.push(y);
-      }
-    }
-  }
-  return [...new Set(candidates)].sort((a, b) => a - b);
-}
+// A whole joint adjustment may evaluate at most this many candidates. The
+// per-entry window already scales with the reached count, so a document that
+// reaches a pathological number of messages must still refuse honestly at a
+// constant budget instead of stalling (#923 review).
+const MAX_ADJUSTMENT_CANDIDATES = 4096;
 
-// Whether a fully assigned joint or single move keeps the implicit legend budget
-// on an authored showcase canvas: content pushed into the legend band leaves a
-// repair that fails on apply (layout/constraint offers no fix), so withhold it
-// instead. Call with every moved message already placed; the caller restores
-// positions afterwards. Mirrors the layout/constraint predicate exactly.
+// Whether a fully assigned joint or single move keeps the visible legend on an
+// authored showcase canvas: content pushed into the legend band leaves a repair
+// that fails on apply (an implicit legend can only hide, which showcase rejects,
+// and an explicit legend is a hard error), so withhold it instead. Call with
+// every moved message already placed; the caller restores positions afterwards.
+// Mirrors the layout/constraint predicate exactly.
 function assignedLegendBudgetHolds() {
-  if (sequence.meta?.quality_profile !== 'showcase' || sequence.meta?.legend !== undefined) return true;
+  if (sequence.meta?.quality_profile !== 'showcase') return true;
+  // An explicit `{ mode: 'hidden' }` config resolves to no entries; only a
+  // visible legend (implicit or explicitly configured) can be stranded.
+  const entries = legendEntries();
+  if (!entries.length) return true;
   // An automatic canvas regrows around the moved content (its height already
   // reserves the legend), so only an authored viewBox can strand the legend.
   if (!sequence.meta?.viewBox) return true;
-  const bottom = Math.max(0, ...asArray(sequence.messages).map((message) => (message.note
-    ? noteLayout(message)?.bottom ?? message.y + 22
-    : message.y + 6)));
-  const entries = legendEntries();
-  if (!entries.length) return true;
-  const height = Math.ceil(bottom + LEGEND_CONTENT_GAP + LEGEND_BLOCK_HEIGHT
-    + legendFootprint(entries, { width: viewBox[0] - 80 }).extraHeight);
+  // Mirror contentBottom() with the moved notes: activations and segment
+  // frames set the legend floor too, and those terms do not move (#923 review).
+  const bottom = Math.max(
+    0,
+    ...asArray(sequence.messages).map((message) => (message.note
+      ? noteLayout(message)?.bottom ?? message.y + 22
+      : message.y + 6)),
+    ...asArray(sequence.activations).map((activation) => activation.to),
+    ...asArray(sequence.segments).map((segment) => segment.to),
+  );
   // legendLayout() closes over the pre-move content bottom, so re-anchor its
   // title floor to the simulated bottom: otherwise the fit check would read
-  // stale rows and approve content standing in the legend band.
-  const simulated = { ...legendLayout(), minTitleY: Math.max(layout.lifelineTop, bottom + LEGEND_CONTENT_GAP) };
-  return height <= viewBox[1] || measureLegend(entries, simulated);
+  // stale rows and approve content standing in the legend band. The probe must
+  // not throw for an explicitly configured legend, and it also reports an
+  // over-wide entry, which an explicit legend treats as a hard error on apply.
+  const simulated = {
+    ...legendLayout(),
+    minTitleY: Math.max(layout.lifelineTop, bottom + LEGEND_CONTENT_GAP),
+    unfit: 'hide',
+  };
+  return Boolean(measureLegend(entries, simulated));
 }
 
 // The single-message case keeps the one-slot spirit: prefer requiredY, then
@@ -645,10 +637,6 @@ function noteSingleAdjustment(blocker, requiredY) {
     const hit = attempt(y);
     if (hit) return hit;
   }
-  for (const y of segmentEdgeCandidates(requiredY, ceiling, rawRowBound([blocker], blocker))) {
-    const hit = attempt(y);
-    if (hit) return hit;
-  }
   return [];
 }
 
@@ -666,6 +654,7 @@ function noteSingleAdjustment(blocker, requiredY) {
 function noteOverlapAdjustment(reached, requiredY) {
   const previousY = reached.map((entry) => entry.message.y);
   const assigned = [];
+  let budget = MAX_ADJUSTMENT_CANDIDATES;
   // Entries placed later still sit on the rows this same adjustment vacates,
   // so they must not veto the current scan — only bound earlier placements
   // and unrelated messages are obstacles. Every pair is still verified: when
@@ -679,21 +668,13 @@ function noteOverlapAdjustment(reached, requiredY) {
   try {
     for (const [order, entry] of reached.entries()) {
       const minimum = assigned.length === 0 ? requiredY : assigned[assigned.length - 1] + 1;
-      const ceiling = Math.min(moveCeiling(reached, entry), requiredY + 28 * reached.length + jointScanAllowance(reached));
+      const ceiling = Math.min(moveCeiling(reached, entry), requiredY + 28 * reached.length + JOINT_SCAN_ALLOWANCE);
       let chosen = null;
       const floating = new Set(reached.slice(order + 1).map((later) => later.index));
       for (let y = minimum; y <= ceiling && chosen === null; y += 1) {
+        if (budget-- <= 0) return [];
         place(entry, y);
         if (messageFitsAt(entry.index, y, floating)) chosen = y;
-      }
-      if (chosen === null) {
-        for (const y of segmentEdgeCandidates(minimum, ceiling, rawRowBound(reached, entry))) {
-          place(entry, y);
-          if (messageFitsAt(entry.index, y, floating)) {
-            chosen = y;
-            break;
-          }
-        }
       }
       if (chosen === null) return [];
       place(entry, chosen);
