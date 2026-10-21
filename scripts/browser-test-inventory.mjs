@@ -44,4 +44,9 @@ export const browserTestFiles = [
   'toolbar-keyboard-browser.test.mjs',
   'bottom-node-index-browser.test.mjs',
   'explainer-browser.test.mjs',
+  'code-analysis-browser.test.mjs',
+  'code-analysis-boundary-browser.test.mjs',
+  'code-analysis-complexity-browser.test.mjs',
+  'code-analysis-review-browser.test.mjs',
+  'code-analysis-task-browser.test.mjs',
 ];

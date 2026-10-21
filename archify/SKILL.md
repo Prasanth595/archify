@@ -102,6 +102,12 @@ For workflow viewport overflow, read [Workflow viewport repair](references/autho
 
 When reporting verification details, distinguish artifact checks, browser evidence, captures, and actual perceptual review. For an explicitly requested immediate preview or active desktop loop, see [Optional opening](references/delivery-contract.md#optional-opening).
 
+## Code Analysis (architecture diagrams that must reflect real code)
+
+For coupling, circular dependencies, and hub modules, use Code Analysis on a validated architecture candidate: `node bin/archify.mjs code-analysis serve <repo-root> --ir <candidate.json> --out <dir> [--language ts|py]`. It delivers first, installs its dependencies on first use, and analyzes only after the reader opens the printed URL and clicks **Code Analysis**. For a terminal or CI run without a diagram, use `node bin/archify.mjs code-analysis check <repo-root> [--baseline baseline.json] [--fail-on warning]`; it exits 1 when an open finding reaches the gate.
+
+Analysis describes the working tree, not a committed snapshot. Keep authored commit evidence separate; never pin uncommitted content to HEAD. Use verified `sources` or an explicit `--map` to associate components with modules. Source panels retain the extracted text. If the architecture JSON changes, regenerate the diagram before analysis. Findings describe static evidence, not proven runtime failures. Read `modules/code-analysis/docs/USAGE.md` for the workflow and `modules/code-analysis/README.md` for options.
+
 ## Optional viewer capabilities
 
 Live motion is enabled by default for every rendered diagram; omit `meta.animation`. The Viewer’s Live/Still button controls playback.
