@@ -81,6 +81,28 @@ function provenanceFixture() {
   return { root, basePath, headPath, baseRevision, headRevision };
 }
 
+function gitRefSnapshotFixture() {
+  const root = fs.mkdtempSync(path.join(tmp, 'git-ref-repo-'));
+  const snapshotDirectory = path.join(root, 'docs');
+  fs.mkdirSync(snapshotDirectory);
+  git(root, 'init');
+  git(root, 'config', 'user.name', 'Archify Tests');
+  git(root, 'config', 'user.email', 'archify@example.test');
+  const base = read(baseFixture);
+  const head = read(headFixture);
+  fs.writeFileSync(path.join(snapshotDirectory, 'architecture.json'), JSON.stringify(base));
+  git(root, 'add', 'docs/architecture.json');
+  git(root, 'commit', '-m', 'base architecture');
+  const baseRevision = git(root, 'rev-parse', 'HEAD');
+  git(root, 'tag', '-a', 'v1.0.0', '-m', 'v1.0.0');
+  fs.writeFileSync(path.join(snapshotDirectory, 'architecture.json'), JSON.stringify(head));
+  git(root, 'add', 'docs/architecture.json');
+  git(root, 'commit', '-m', 'head architecture');
+  const headRevision = git(root, 'rev-parse', 'HEAD');
+  git(root, 'tag', '-a', 'v2.0.0', '-m', 'v2.0.0');
+  return { root, baseRevision, headRevision };
+}
+
 const renderDelta = (receipt) => renderArchitectureDeltaHtml({
   receipt,
   baseSvg: '<svg xmlns="http://www.w3.org/2000/svg"></svg>',
@@ -522,6 +544,73 @@ test('public compare keeps a revision-only provenance change out of graph identi
   const deltaSvg = html.match(/<section class="canvas" data-view="delta">([\s\S]*?)<\/section>/)?.[1] || '';
   assert.doesNotMatch(deltaSvg, /data-delta-state="(?:added|removed|changed|moved|moved-from|rerouted|geometry-changed|evidence-changed)"/);
   assert.deepEqual(validateArchitectureDeltaHtml(html, receipt), { ok: true, checksPassed: 10, checkCount: 10 });
+});
+
+test('compare reads the same Architecture snapshot from two annotated Git refs', () => {
+  const data = gitRefSnapshotFixture();
+  const output = path.join(data.root, 'git-ref-delta.html');
+  const result = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/architecture.json',
+    output,
+    '--json',
+  ]);
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const receipt = JSON.parse(result.stdout);
+  assert.deepEqual(receipt.gitRefs, {
+    snapshot: 'docs/architecture.json',
+    base: { ref: 'v1.0.0', revision: data.baseRevision },
+    head: { ref: 'v2.0.0', revision: data.headRevision },
+  });
+  assert.deepEqual(receipt.summary.components, {
+    added: 1,
+    changed: 1,
+    evidenceChanged: 0,
+    removed: 1,
+    moved: 1,
+  });
+  assert.equal(receipt.validation.checksPassed, 28);
+  assert.equal(receipt.validation.checkCount, 28);
+  assert.equal(fs.existsSync(output), true);
+});
+
+test('Git ref compare reports missing snapshots and rejects escaping paths', () => {
+  const data = gitRefSnapshotFixture();
+  const missing = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/missing.json',
+    '--json',
+  ]);
+  assert.notEqual(missing.status, 0);
+  assert.equal(JSON.parse(missing.stdout).diagnostics[0].code, 'delta/git-snapshot-missing');
+
+  const invalidRef = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'does-not-exist',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/architecture.json',
+    '--json',
+  ]);
+  assert.notEqual(invalidRef.status, 0);
+  assert.equal(JSON.parse(invalidRef.stdout).diagnostics[0].code, 'delta/git-ref');
+
+  const escaping = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', '../architecture.json',
+    '--json',
+  ]);
+  assert.notEqual(escaping.status, 0);
+  assert.equal(JSON.parse(escaping.stdout).diagnostics[0].code, 'delta/git-snapshot-path');
 });
 
 test('unchanged provenance preserves the ordinary empty graph state', () => {

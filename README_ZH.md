@@ -298,6 +298,16 @@ DeepSeek Harness（社区集成、显式启用）：运行 `dsh plugin --profile
 
 `node archify/bin/archify.mjs compare architecture base.json head.json architecture-delta.html --json`
 
+如果两个版本都提交了同一路径的 Architecture 快照，可以直接比较 Git ref：
+
+```bash
+node archify/bin/archify.mjs compare architecture \
+  --repo-root /path/to/repository --base-ref v1.0.0 --head-ref v2.0.0 \
+  --snapshot docs/architecture.json architecture-delta.html --json
+```
+
+命令只读取已提交的快照字节，并在回执中记录解析后的 commit；它不会从代码自动生成快照。只有代码时，先让 Agent 为两个版本生成固定版本的快照。
+
 [![Architecture Delta：展示作者明确写出的新增、删除、变化和移动](docs/assets/architecture-delta-proof.jpg)](examples/checkout-platform-delta.html)
 
 不知道选哪一种？打开[交互式场景指南](https://archify.si/zh/guide)，或直接询问零依赖 CLI：

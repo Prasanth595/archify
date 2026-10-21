@@ -297,6 +297,16 @@ For design or PR review, Architecture Delta compares validated Before / Delta / 
 
 `node archify/bin/archify.mjs compare architecture base.json head.json architecture-delta.html --json`
 
+When both versions commit the same Architecture snapshot, compare Git refs directly:
+
+```bash
+node archify/bin/archify.mjs compare architecture \
+  --repo-root /path/to/repository --base-ref v1.0.0 --head-ref v2.0.0 \
+  --snapshot docs/architecture.json architecture-delta.html --json
+```
+
+The command reads committed snapshot bytes and records the resolved commits. It does not generate a snapshot from code; ask the Agent to create version-pinned snapshots first when the refs contain code only.
+
 [![Architecture Delta showing added, removed, changed, and moved authored facts](docs/assets/architecture-delta-proof.jpg)](examples/checkout-platform-delta.html)
 
 Not sure which one fits? Use the [interactive scenario guide](https://archify.si/guide.html), or ask the zero-dependency CLI:
