@@ -2849,7 +2849,12 @@ function extractCompareOptions(args) {
     }
     if (arg === '--base-ref' || arg === '--head-ref' || arg === '--snapshot') {
       const value = args[index + 1];
-      if (!value || value.startsWith('--')) fail(`${arg} requires a value.`);
+      if (!value || value.startsWith('--')) {
+        if (arg === '--base-ref') baseRef = '';
+        else if (arg === '--head-ref') headRef = '';
+        else snapshot = '';
+        continue;
+      }
       if (arg === '--base-ref') baseRef = value;
       else if (arg === '--head-ref') headRef = value;
       else snapshot = value;
@@ -2858,17 +2863,14 @@ function extractCompareOptions(args) {
     }
     if (arg.startsWith('--base-ref=')) {
       baseRef = arg.slice('--base-ref='.length);
-      if (!baseRef) fail('--base-ref requires a Git ref.');
       continue;
     }
     if (arg.startsWith('--head-ref=')) {
       headRef = arg.slice('--head-ref='.length);
-      if (!headRef) fail('--head-ref requires a Git ref.');
       continue;
     }
     if (arg.startsWith('--snapshot=')) {
       snapshot = arg.slice('--snapshot='.length);
-      if (!snapshot) fail('--snapshot requires a repository-relative JSON path.');
       continue;
     }
     if (arg.startsWith('--')) fail(`Unknown compare option "${arg}".`);
@@ -2885,7 +2887,7 @@ function compareGitInputFailure(code, message, details = {}) {
 
 function validateCompareSnapshotPath(value) {
   const snapshot = String(value || '');
-  if (!snapshot || snapshot.startsWith('/') || snapshot.includes('\\') || snapshot.includes('\u0000')) {
+  if (!snapshot || snapshot.startsWith('/') || path.win32.isAbsolute(snapshot) || snapshot.includes('\\') || snapshot.includes('\u0000')) {
     throw compareGitInputFailure(
       'delta/git-snapshot-path',
       'The Git snapshot path must be a non-empty repository-relative POSIX path.',

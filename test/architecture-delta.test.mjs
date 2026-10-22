@@ -583,6 +583,38 @@ test('compare reads the same Architecture snapshot from two annotated Git refs',
   assert.equal(fs.existsSync(output), true);
 });
 
+test('Git ref compare preserves the legacy local-JSON Delta result', () => {
+  const data = gitRefSnapshotFixture();
+  const basePath = path.join(tmp, 'git-equivalent-base.json');
+  const headPath = path.join(tmp, 'git-equivalent-head.json');
+  fs.writeFileSync(basePath, git(data.root, 'show', `${data.baseRevision}:docs/architecture.json`));
+  fs.writeFileSync(headPath, git(data.root, 'show', `${data.headRevision}:docs/architecture.json`));
+  const legacyOutput = path.join(tmp, 'git-equivalent-legacy.html');
+  const gitOutput = path.join(tmp, 'git-equivalent-ref.html');
+  const legacy = run(['compare', 'architecture', basePath, headPath, legacyOutput, '--json']);
+  const fromGit = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/architecture.json',
+    gitOutput,
+    '--json',
+  ]);
+  assert.equal(legacy.status, 0, legacy.stderr || legacy.stdout);
+  assert.equal(fromGit.status, 0, fromGit.stderr || fromGit.stdout);
+  const legacyReceipt = JSON.parse(legacy.stdout);
+  const gitReceipt = JSON.parse(fromGit.stdout);
+  assert.deepEqual(gitReceipt.summary, legacyReceipt.summary);
+  assert.deepEqual(gitReceipt.changes, legacyReceipt.changes);
+  assert.equal(gitReceipt.base.semanticSha256, legacyReceipt.base.semanticSha256);
+  assert.equal(gitReceipt.head.semanticSha256, legacyReceipt.head.semanticSha256);
+  assert.equal(gitReceipt.validation.checksPassed, legacyReceipt.validation.checksPassed);
+  assert.equal(gitReceipt.validation.checkCount, legacyReceipt.validation.checkCount);
+  const deltaCanvas = (file) => fs.readFileSync(file, 'utf8').match(/<section class="canvas" data-view="delta">[\s\S]*?<\/section>/)?.[0];
+  assert.equal(deltaCanvas(gitOutput), deltaCanvas(legacyOutput));
+});
+
 test('compare resolves lightweight tags and commit refs without inheriting Git selectors', () => {
   const data = gitRefSnapshotFixture();
   git(data.root, 'tag', 'lightweight-v1.0.0', data.baseRevision);
@@ -625,6 +657,7 @@ test('Git ref compare failures publish no artifact or receipt', () => {
     ['invalid-ref', { baseRef: 'does-not-exist', snapshot: 'docs/architecture.json' }, 'delta/git-ref'],
     ['parent', { snapshot: '../architecture.json' }, 'delta/git-snapshot-path'],
     ['absolute', { snapshot: path.join(data.root, 'docs/architecture.json') }, 'delta/git-snapshot-path'],
+    ['drive-absolute', { snapshot: 'C:/repo/docs/architecture.json' }, 'delta/git-snapshot-path'],
     ['dot', { snapshot: './docs/architecture.json' }, 'delta/git-snapshot-path'],
     ['backslash', { snapshot: 'docs\\architecture.json' }, 'delta/git-snapshot-path'],
     ['git-path', { snapshot: '.git/config' }, 'delta/git-snapshot-path'],
@@ -647,18 +680,25 @@ test('Git ref compare failures publish no artifact or receipt', () => {
     assert.equal(fs.existsSync(receiptFor(output)), false, `${name} must not publish a receipt`);
   }
 
-  const incompleteOutput = path.join(data.root, 'failed', 'incomplete.html');
-  const incomplete = run([
-    'compare', 'architecture',
-    '--repo-root', data.root,
-    '--base-ref', 'v1.0.0',
-    incompleteOutput,
-    '--json',
-  ]);
-  assert.notEqual(incomplete.status, 0);
-  assert.equal(JSON.parse(incomplete.stdout).diagnostics[0].code, 'delta/git-options-incomplete');
-  assert.equal(fs.existsSync(incompleteOutput), false);
-  assert.equal(fs.existsSync(receiptFor(incompleteOutput)), false);
+  const incompleteCases = [
+    ['missing-head', ['--base-ref', 'v1.0.0']],
+    ['dangling-base', ['--base-ref', '--head-ref', 'v2.0.0', '--snapshot', 'docs/architecture.json']],
+    ['empty-snapshot', ['--base-ref=v1.0.0', '--head-ref=v2.0.0', '--snapshot=']],
+  ];
+  for (const [name, options] of incompleteCases) {
+    const output = path.join(data.root, 'failed', `${name}.html`);
+    const incomplete = run([
+      'compare', 'architecture',
+      '--repo-root', data.root,
+      ...options,
+      output,
+      '--json',
+    ]);
+    assert.notEqual(incomplete.status, 0, name);
+    assert.equal(JSON.parse(incomplete.stdout).diagnostics[0].code, 'delta/git-options-incomplete', name);
+    assert.equal(fs.existsSync(output), false, name);
+    assert.equal(fs.existsSync(receiptFor(output)), false, name);
+  }
 });
 
 test('Git ref compare protects the committed snapshot from receipt output', () => {
