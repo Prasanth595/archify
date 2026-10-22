@@ -9,7 +9,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { ChromeVisualBrowser, findChrome } from '../archify/bin/visual-check.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const chrome = process.env.ARCHIFY_CHROME ? findChrome() : null;
+const chromeConfigured = Object.prototype.hasOwnProperty.call(process.env, 'ARCHIFY_CHROME');
+const chrome = chromeConfigured ? findChrome() : null;
+if (chromeConfigured && !chrome) throw new Error(`ARCHIFY_CHROME does not resolve to an executable browser: ${process.env.ARCHIFY_CHROME}`);
 
 test('Print hides navigation without retaining screen dock clearance', {
   skip: chrome ? false : 'Set ARCHIFY_CHROME for the real Chrome print-media check.',
