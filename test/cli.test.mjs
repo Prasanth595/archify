@@ -1477,6 +1477,22 @@ test('cli: evidence classifies absent, stale, and malformed delivery provenance'
   assert.equal(failedDelivery.outcome, 'fail');
   assert.equal(failedDelivery.diagnostics[0].code, 'delivery/provenance-failed');
 
+  const recordedFailure = path.join(directory, 'recorded-failure.html');
+  assert.equal(run(['deliver', 'workflow', input, recordedFailure, '--json']).status, 0);
+  const recordedFailureSidecar = deliveryProvenancePath(recordedFailure);
+  const recordedFailureReceipt = JSON.parse(fs.readFileSync(recordedFailureSidecar, 'utf8'));
+  fs.writeFileSync(recordedFailureSidecar, `${JSON.stringify({
+    ...recordedFailureReceipt,
+    status: 'failed',
+    stage: 'test-fixture',
+  })}\n`);
+  const recordedFailureResult = run(['evidence', recordedFailure, '--json']);
+  assert.equal(recordedFailureResult.status, 0, recordedFailureResult.stderr);
+  const recordedFailureDelivery = JSON.parse(recordedFailureResult.stdout).dimensions.delivery;
+  assert.equal(recordedFailureDelivery.status, 'stale');
+  assert.equal(recordedFailureDelivery.outcome, 'fail');
+  assert.equal(recordedFailureDelivery.diagnostics[0].code, 'delivery/provenance-failed');
+
   const locked = path.join(directory, 'locked.html');
   assert.equal(run(['render', 'workflow', input, locked]).status, 0);
   fs.writeFileSync(deliveryLockPath(locked), '{"schemaVersion":1}\n');
