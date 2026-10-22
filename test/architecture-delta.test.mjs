@@ -26,6 +26,12 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-delta-'));
 
 const read = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const run = (args) => spawnSync(process.execPath, [cli, ...args], { cwd: skillRoot, encoding: 'utf8' });
+const runWithEnv = (args, env) => spawnSync(process.execPath, [cli, ...args], {
+  cwd: skillRoot,
+  encoding: 'utf8',
+  env: { ...process.env, ...env },
+});
+const receiptFor = (output) => output.replace(/\.html$/i, '.receipt.json');
 
 function git(repo, ...args) {
   return execFileSync('git', ['-C', repo, ...args], {
@@ -577,40 +583,101 @@ test('compare reads the same Architecture snapshot from two annotated Git refs',
   assert.equal(fs.existsSync(output), true);
 });
 
-test('Git ref compare reports missing snapshots and rejects escaping paths', () => {
+test('compare resolves lightweight tags and commit refs without inheriting Git selectors', () => {
   const data = gitRefSnapshotFixture();
-  const missing = run([
+  git(data.root, 'tag', 'lightweight-v1.0.0', data.baseRevision);
+  const output = path.join(tmp, 'git-ref-lightweight.html');
+  const beforeHead = git(data.root, 'rev-parse', 'HEAD');
+  const beforeStatus = git(data.root, 'status', '--porcelain');
+  const result = runWithEnv([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'lightweight-v1.0.0',
+    '--head-ref', data.headRevision,
+    '--snapshot', 'docs/architecture.json',
+    output,
+    '--json',
+  ], {
+    GIT_DIR: path.join(data.root, 'unrelated.git'),
+    GIT_WORK_TREE: path.join(data.root, 'unrelated-worktree'),
+    GIT_NAMESPACE: 'unrelated',
+  });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const receipt = JSON.parse(result.stdout);
+  assert.deepEqual(receipt.gitRefs.base, {
+    ref: 'lightweight-v1.0.0',
+    revision: data.baseRevision,
+  });
+  assert.deepEqual(receipt.gitRefs.head, {
+    ref: data.headRevision,
+    revision: data.headRevision,
+  });
+  assert.equal(git(data.root, 'rev-parse', 'HEAD'), beforeHead);
+  assert.equal(git(data.root, 'status', '--porcelain'), beforeStatus);
+});
+
+test('Git ref compare failures publish no artifact or receipt', () => {
+  const data = gitRefSnapshotFixture();
+  const cases = [
+    ['missing', { snapshot: 'docs/missing.json' }, 'delta/git-snapshot-missing'],
+    ['invalid-ref', { baseRef: 'does-not-exist', snapshot: 'docs/architecture.json' }, 'delta/git-ref'],
+    ['parent', { snapshot: '../architecture.json' }, 'delta/git-snapshot-path'],
+    ['absolute', { snapshot: path.join(data.root, 'docs/architecture.json') }, 'delta/git-snapshot-path'],
+    ['dot', { snapshot: './docs/architecture.json' }, 'delta/git-snapshot-path'],
+    ['backslash', { snapshot: 'docs\\architecture.json' }, 'delta/git-snapshot-path'],
+    ['git-path', { snapshot: '.git/config' }, 'delta/git-snapshot-path'],
+    ['tree', { snapshot: 'docs' }, 'delta/git-snapshot-missing'],
+  ];
+  for (const [name, input, code] of cases) {
+    const output = path.join(data.root, 'failed', `${name}.html`);
+    const result = run([
+      'compare', 'architecture',
+      '--repo-root', data.root,
+      '--base-ref', input.baseRef || 'v1.0.0',
+      '--head-ref', 'v2.0.0',
+      '--snapshot', input.snapshot,
+      output,
+      '--json',
+    ]);
+    assert.notEqual(result.status, 0, name);
+    assert.equal(JSON.parse(result.stdout).diagnostics[0].code, code, name);
+    assert.equal(fs.existsSync(output), false, `${name} must not publish HTML`);
+    assert.equal(fs.existsSync(receiptFor(output)), false, `${name} must not publish a receipt`);
+  }
+
+  const incompleteOutput = path.join(data.root, 'failed', 'incomplete.html');
+  const incomplete = run([
     'compare', 'architecture',
     '--repo-root', data.root,
     '--base-ref', 'v1.0.0',
-    '--head-ref', 'v2.0.0',
-    '--snapshot', 'docs/missing.json',
+    incompleteOutput,
     '--json',
   ]);
-  assert.notEqual(missing.status, 0);
-  assert.equal(JSON.parse(missing.stdout).diagnostics[0].code, 'delta/git-snapshot-missing');
+  assert.notEqual(incomplete.status, 0);
+  assert.equal(JSON.parse(incomplete.stdout).diagnostics[0].code, 'delta/git-options-incomplete');
+  assert.equal(fs.existsSync(incompleteOutput), false);
+  assert.equal(fs.existsSync(receiptFor(incompleteOutput)), false);
+});
 
-  const invalidRef = run([
+test('Git ref compare protects the committed snapshot from receipt output', () => {
+  const data = gitRefSnapshotFixture();
+  const snapshotPath = path.join(data.root, 'docs/architecture.json');
+  const before = fs.readFileSync(snapshotPath);
+  const output = path.join(data.root, 'protected', 'delta.html');
+  const result = run([
     'compare', 'architecture',
     '--repo-root', data.root,
-    '--base-ref', 'does-not-exist',
+    '--base-ref', 'v1.0.0',
     '--head-ref', 'v2.0.0',
     '--snapshot', 'docs/architecture.json',
+    output,
+    '--receipt', snapshotPath,
     '--json',
   ]);
-  assert.notEqual(invalidRef.status, 0);
-  assert.equal(JSON.parse(invalidRef.stdout).diagnostics[0].code, 'delta/git-ref');
-
-  const escaping = run([
-    'compare', 'architecture',
-    '--repo-root', data.root,
-    '--base-ref', 'v1.0.0',
-    '--head-ref', 'v2.0.0',
-    '--snapshot', '../architecture.json',
-    '--json',
-  ]);
-  assert.notEqual(escaping.status, 0);
-  assert.equal(JSON.parse(escaping.stdout).diagnostics[0].code, 'delta/git-snapshot-path');
+  assert.notEqual(result.status, 0);
+  assert.equal(fs.readFileSync(snapshotPath).equals(before), true);
+  assert.equal(fs.existsSync(output), false);
+  assert.equal(fs.existsSync(receiptFor(output)), false);
 });
 
 test('unchanged provenance preserves the ordinary empty graph state', () => {

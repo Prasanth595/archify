@@ -2903,11 +2903,24 @@ function validateCompareSnapshotPath(value) {
   return snapshot;
 }
 
+const compareGitInheritedEnvironment = [
+  'GIT_DIR',
+  'GIT_WORK_TREE',
+  'GIT_INDEX_FILE',
+  'GIT_OBJECT_DIRECTORY',
+  'GIT_ALTERNATE_OBJECT_DIRECTORIES',
+  'GIT_COMMON_DIR',
+  'GIT_NAMESPACE',
+  'GIT_CEILING_DIRECTORIES',
+];
+
 function runCompareGit(repoRoot, args) {
+  const env = { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_ALLOW_PROTOCOL: '' };
+  for (const key of compareGitInheritedEnvironment) delete env[key];
   return spawnSync('git', ['--no-replace-objects', '-C', repoRoot, ...args], {
     encoding: 'buffer',
     maxBuffer: 64 * 1024 * 1024,
-    env: { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_ALLOW_PROTOCOL: '' },
+    env,
   });
 }
 
@@ -2943,8 +2956,8 @@ function readCompareGitSnapshot({ repoRoot, ref, snapshot, side }) {
     });
   }
   const object = `${commit}:${snapshot}`;
-  const shown = runCompareGit(repoRoot, ['show', '--no-ext-diff', '--no-textconv', '--format=', object]);
-  if (shown.error || shown.status !== 0) {
+  const blob = runCompareGit(repoRoot, ['cat-file', 'blob', object]);
+  if (blob.error || blob.status !== 0) {
     throw compareGitInputFailure(
       'delta/git-snapshot-missing',
       `The ${side} ref ${JSON.stringify(ref)} does not provide the Architecture snapshot ${JSON.stringify(snapshot)}.`,
@@ -2953,8 +2966,8 @@ function readCompareGitSnapshot({ repoRoot, ref, snapshot, side }) {
         ref,
         commit,
         snapshot,
-        systemCode: shown.error?.code,
-        reason: shown.error?.message || shown.stderr?.toString('utf8').trim(),
+        systemCode: blob.error?.code,
+        reason: blob.error?.message || blob.stderr?.toString('utf8').trim(),
         supportedFixes: [
           `commit ${JSON.stringify(snapshot)} at the ${side} version`,
           'ask the Agent to generate a version-pinned Architecture snapshot before comparing code-only refs',
@@ -2962,7 +2975,7 @@ function readCompareGitSnapshot({ repoRoot, ref, snapshot, side }) {
       },
     );
   }
-  return { ref, commit, buffer: shown.stdout };
+  return { ref, commit, buffer: blob.stdout };
 }
 
 function compareReceiptPath(outputPath) {
@@ -3924,6 +3937,9 @@ async function commandCompare(args) {
 
   const basePath = path.resolve(baseInput);
   const headPath = path.resolve(headInput);
+  const compareInputPaths = gitRefMode
+    ? [path.resolve(repoArgs.repoRoot, gitRefs.snapshot)]
+    : [basePath, headPath];
   const explicitReceiptTarget = options.receipt ? path.resolve(options.receipt) : undefined;
   const rawOutputTarget = requestedOutput || 'architecture-delta.html';
   const rawOutputExtension = path.extname(rawOutputTarget);
@@ -3941,7 +3957,7 @@ async function commandCompare(args) {
     ({ outputPath } = resolveOutputPath({
       requestedOutput,
       defaultOutput: 'architecture-delta.html',
-      inputPaths: [basePath, headPath],
+      inputPaths: compareInputPaths,
       otherOutputPaths: explicitReceiptTarget
         ? [explicitReceiptTarget]
         : (invalidOutputAliasPreflight ? [invalidOutputAliasPreflight] : []),
@@ -3970,7 +3986,7 @@ async function commandCompare(args) {
         requestedOutput: options.receipt,
         defaultOutput: options.receipt,
         requiredExtension: '.json',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [outputPath],
       }));
       requestedReceiptPath = receiptPath;
@@ -4096,7 +4112,7 @@ async function commandCompare(args) {
         requestedOutput: defaultReceiptPath,
         defaultOutput: defaultReceiptPath,
         requiredExtension: '.json',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [outputPath],
       }));
       requestedReceiptPath = receiptPath;
@@ -4389,14 +4405,14 @@ async function commandCompare(args) {
       const currentOutput = resolveOutputPath({
         requestedOutput,
         defaultOutput: 'architecture-delta.html',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [requestedReceiptPath],
       }).outputPath;
       resolveOutputPath({
         requestedOutput: options.receipt || compareReceiptPath(currentOutput),
         defaultOutput: compareReceiptPath(currentOutput),
         requiredExtension: '.json',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [currentOutput],
       });
     } catch (error) {
