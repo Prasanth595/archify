@@ -665,7 +665,7 @@ test('Git ref compare protects the committed snapshot from receipt output', () =
   const data = gitRefSnapshotFixture();
   const snapshotPath = path.join(data.root, 'docs/architecture.json');
   const before = fs.readFileSync(snapshotPath);
-  const output = path.join(data.root, 'protected', 'delta.html');
+  const output = path.join(data.root, 'docs', 'delta.html');
   const result = run([
     'compare', 'architecture',
     '--repo-root', data.root,
