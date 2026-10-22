@@ -137,6 +137,29 @@ test('timeline: long quiet periods become disclosed breaks, proportional inside 
   assert.equal(layoutOf(flat).breaks.length, 0);
 });
 
+test('timeline: a sub-second quiet period states its real duration', () => {
+  const diagram = {
+    schema_version: 1,
+    diagram_type: 'timeline',
+    meta: { title: 'Sub-second gap', evidence: 'observed' },
+    events: [
+      { id: 'a', at: '2026-01-01T00:00:00.000Z', title: 'A' },
+      { id: 'b', at: '2026-01-01T00:00:00.001Z', title: 'B' },
+      { id: 'c', at: '2026-01-01T00:00:00.002Z', title: 'C' },
+      { id: 'd', at: '2026-01-01T00:00:00.003Z', title: 'D' },
+      { id: 'e', at: '2026-01-01T00:00:00.400Z', title: 'E' },
+    ],
+  };
+  const result = run(diagram);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  assert.match(html, /data-break-ms="397"/);
+  assert.match(html, /≈ 397 ms/);
+  assert.match(html, /aria-label="Axis break: 397 ms without events omitted"/);
+  assert.doesNotMatch(html, /≈ 0 s/);
+  assert.doesNotMatch(html, /0 s without events omitted/);
+});
+
 test('timeline: simultaneous and close events stack instead of overprinting', () => {
   const diagram = clone(small);
   diagram.events.push(

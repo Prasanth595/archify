@@ -153,7 +153,15 @@ function clockLabel(ms, { seconds = showSeconds, date = multiDay } = {}) {
   return `${date ? `${w.mo}-${w.d} ` : ''}${w.h}:${w.mi}${seconds ? `:${w.s}${fraction ? `.${String(fraction).padStart(3, '0')}` : ''}` : ''}`;
 }
 
+// A quiet period shorter than one second is still a duration. Rendering it
+// as "0 s" claims a zero-length gap that the axis does not have, so the
+// sub-second value is stated in milliseconds instead.
+function subSecondDuration(ms) {
+  return ms >= 1 ? `${Math.round(ms)} ms` : '0 s';
+}
+
 function durationLabel(ms) {
+  if (ms < 1000) return subSecondDuration(ms);
   const units = [['d', DAY], ['h', HOUR], ['min', MINUTE], ['s', 1000]];
   const parts = [];
   let rest = ms;
@@ -169,6 +177,7 @@ function durationLabel(ms) {
 // The visible break label is approximate (it carries ≈), so it rounds to the
 // two most significant adjacent units: "15 h", never "15 h 3 s".
 function approximateDuration(ms) {
+  if (ms < 1000) return subSecondDuration(ms);
   const units = [['d', DAY], ['h', HOUR], ['min', MINUTE], ['s', 1000]];
   const index = units.findIndex(([, size]) => ms >= size);
   if (index === -1) return '0 s';
