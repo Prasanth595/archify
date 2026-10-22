@@ -586,6 +586,7 @@ test('compare reads the same Architecture snapshot from two annotated Git refs',
 test('compare resolves lightweight tags and commit refs without inheriting Git selectors', () => {
   const data = gitRefSnapshotFixture();
   git(data.root, 'tag', 'lightweight-v1.0.0', data.baseRevision);
+  git(data.root, 'remote', 'add', 'origin', 'http://127.0.0.1:1/no-fetch.git');
   const output = path.join(tmp, 'git-ref-lightweight.html');
   const beforeHead = git(data.root, 'rev-parse', 'HEAD');
   const beforeStatus = git(data.root, 'status', '--porcelain');
@@ -601,6 +602,7 @@ test('compare resolves lightweight tags and commit refs without inheriting Git s
     GIT_DIR: path.join(data.root, 'unrelated.git'),
     GIT_WORK_TREE: path.join(data.root, 'unrelated-worktree'),
     GIT_NAMESPACE: 'unrelated',
+    GIT_TERMINAL_PROMPT: '0',
   });
   assert.equal(result.status, 0, result.stderr || result.stdout);
   const receipt = JSON.parse(result.stdout);
