@@ -95,6 +95,24 @@ node bin/archify.mjs compare architecture base.json head.json \
   architecture-delta.html --quality showcase --json
 ```
 
+When both Git versions already contain the same Architecture snapshot, compare
+them directly without checking out either ref. Archify resolves each ref to a
+commit, reads the same repository-relative JSON path, and records the resolved
+refs in the sidecar receipt:
+
+```bash
+node bin/archify.mjs compare architecture \
+  --repo-root /path/to/repository \
+  --base-ref v1.0.0 --head-ref v2.0.0 \
+  --snapshot docs/architecture.json \
+  architecture-delta.html --quality showcase --json
+```
+
+This mode reads committed bytes only and does not generate a snapshot from
+code. If a ref has no snapshot at that path, generate a version-pinned
+Architecture candidate with the Agent first, preserving stable IDs for shared
+components and relationships, then compare the two files.
+
 Repository revision, provider, link mode, or location representation changes are reported separately from component, relationship, and boundary changes. The Delta page never marks a graph entity as changed for provenance alone, and it does not expose repository URLs in the provenance summary.
 
 ## 6. Inspect the exact final file

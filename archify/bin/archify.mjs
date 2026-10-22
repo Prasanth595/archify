@@ -2192,7 +2192,7 @@ function invalidProvenance(artifactPath, sidecar, reason, evidence = {}) {
 const COMMAND_USAGE = {
   story: ['scan <native.html> [--json]', 'draft <native.html> <brief.json> [--json]', 'attach <native.html> <brief.json> <enhanced.html> [--json] [--repo-root path]'],
   render: '<type> <input.json> [output.html] [--quality standard|showcase] [--repo-root path]',
-  compare: 'architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path]',
+  compare: 'architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path] | architecture --repo-root path --base-ref ref --head-ref ref --snapshot path [output.html] [--receipt path] [--json] [--quality standard|showcase]',
   deliver: '<type> <input.json> [output.html] [--json] [--open] [--quality standard|showcase] [--repo-root path]',
   patch: 'explainer <artifact.html> <panel-id> <replacement-file> <output.html> [--json] [--quality standard|showcase] [--repo-root path]',
   finalize: '<type> <input.json> <output.html> [--json] [--browser-check] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]',
@@ -2827,6 +2827,9 @@ function extractCompareOptions(args) {
   const positional = [];
   let receipt;
   let json = false;
+  let baseRef;
+  let headRef;
+  let snapshot;
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     if (arg === '--json') {
@@ -2844,10 +2847,137 @@ function extractCompareOptions(args) {
       if (!receipt) fail('--receipt requires a JSON output path.');
       continue;
     }
+    if (arg === '--base-ref' || arg === '--head-ref' || arg === '--snapshot') {
+      const value = args[index + 1];
+      if (!value || value.startsWith('--')) {
+        if (arg === '--base-ref') baseRef = '';
+        else if (arg === '--head-ref') headRef = '';
+        else snapshot = '';
+        continue;
+      }
+      if (arg === '--base-ref') baseRef = value;
+      else if (arg === '--head-ref') headRef = value;
+      else snapshot = value;
+      index += 1;
+      continue;
+    }
+    if (arg.startsWith('--base-ref=')) {
+      baseRef = arg.slice('--base-ref='.length);
+      continue;
+    }
+    if (arg.startsWith('--head-ref=')) {
+      headRef = arg.slice('--head-ref='.length);
+      continue;
+    }
+    if (arg.startsWith('--snapshot=')) {
+      snapshot = arg.slice('--snapshot='.length);
+      continue;
+    }
     if (arg.startsWith('--')) fail(`Unknown compare option "${arg}".`);
     positional.push(arg);
   }
-  return { positional, receipt, json };
+  return { positional, receipt, json, baseRef, headRef, snapshot };
+}
+
+function compareGitInputFailure(code, message, details = {}) {
+  const error = new Error(message);
+  error.compareInput = { code, details };
+  return error;
+}
+
+function validateCompareSnapshotPath(value) {
+  const snapshot = String(value || '');
+  if (!snapshot || snapshot.startsWith('/') || path.win32.isAbsolute(snapshot) || snapshot.includes('\\') || snapshot.includes('\u0000')) {
+    throw compareGitInputFailure(
+      'delta/git-snapshot-path',
+      'The Git snapshot path must be a non-empty repository-relative POSIX path.',
+      { snapshot, supportedFixes: ['use a path such as docs/architecture.json'] },
+    );
+  }
+  const segments = snapshot.split('/');
+  if (segments.some((segment) => !segment || segment === '.' || segment === '..' || segment === '.git')) {
+    throw compareGitInputFailure(
+      'delta/git-snapshot-path',
+      'The Git snapshot path must stay inside the repository and may not address .git.',
+      { snapshot, supportedFixes: ['remove empty, dot, parent, or .git path segments'] },
+    );
+  }
+  return snapshot;
+}
+
+const compareGitInheritedEnvironment = [
+  'GIT_DIR',
+  'GIT_WORK_TREE',
+  'GIT_INDEX_FILE',
+  'GIT_OBJECT_DIRECTORY',
+  'GIT_ALTERNATE_OBJECT_DIRECTORIES',
+  'GIT_COMMON_DIR',
+  'GIT_NAMESPACE',
+  'GIT_CEILING_DIRECTORIES',
+];
+
+function runCompareGit(repoRoot, args) {
+  const env = { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_ALLOW_PROTOCOL: '' };
+  for (const key of compareGitInheritedEnvironment) delete env[key];
+  return spawnSync('git', ['--no-replace-objects', '-C', repoRoot, ...args], {
+    encoding: 'buffer',
+    maxBuffer: 64 * 1024 * 1024,
+    env,
+  });
+}
+
+function readCompareGitSnapshot({ repoRoot, ref, snapshot, side }) {
+  if (!ref || ref.includes('\u0000')) {
+    throw compareGitInputFailure('delta/git-ref', `The ${side} Git ref is empty or contains a control character.`, {
+      side,
+      ref,
+      supportedFixes: [`provide a valid ${side} ref such as a tag, branch, or commit`],
+    });
+  }
+  const resolved = runCompareGit(repoRoot, ['rev-parse', '--verify', '--end-of-options', `${ref}^{commit}`]);
+  if (resolved.error || resolved.status !== 0) {
+    throw compareGitInputFailure(
+      'delta/git-ref',
+      `Could not resolve ${side} Git ref ${JSON.stringify(ref)} as a commit.`,
+      {
+        side,
+        ref,
+        systemCode: resolved.error?.code,
+        reason: resolved.error?.message || resolved.stderr?.toString('utf8').trim(),
+        supportedFixes: [`fetch or correct the ${side} ref ${JSON.stringify(ref)}`],
+      },
+    );
+  }
+  const commit = resolved.stdout.toString('utf8').trim();
+  if (!/^[a-f0-9]{40}$/i.test(commit)) {
+    throw compareGitInputFailure('delta/git-ref', `Git returned an invalid ${side} commit identity.`, {
+      side,
+      ref,
+      commit,
+      supportedFixes: ['use a ref that resolves to one commit'],
+    });
+  }
+  const object = `${commit}:${snapshot}`;
+  const blob = runCompareGit(repoRoot, ['cat-file', 'blob', object]);
+  if (blob.error || blob.status !== 0) {
+    throw compareGitInputFailure(
+      'delta/git-snapshot-missing',
+      `The ${side} ref ${JSON.stringify(ref)} does not provide the Architecture snapshot ${JSON.stringify(snapshot)}.`,
+      {
+        side,
+        ref,
+        commit,
+        snapshot,
+        systemCode: blob.error?.code,
+        reason: blob.error?.message || blob.stderr?.toString('utf8').trim(),
+        supportedFixes: [
+          `commit ${JSON.stringify(snapshot)} at the ${side} version`,
+          'ask the Agent to generate a version-pinned Architecture snapshot before comparing code-only refs',
+        ],
+      },
+    );
+  }
+  return { ref, commit, buffer: blob.stdout };
 }
 
 function compareReceiptPath(outputPath) {
@@ -3704,8 +3834,89 @@ async function commandCompare(args) {
   const qualityArgs = extractQualityArgs(args);
   const repoArgs = extractRepoRootArgs(qualityArgs.rest);
   const options = extractCompareOptions(repoArgs.rest);
-  const [type, baseInput, headInput, requestedOutput] = options.positional;
-  if (type !== 'architecture' || !baseInput || !headInput || options.positional.length > 4) fail(usage());
+  const [type, ...comparePositionals] = options.positional;
+  const gitRefMode = options.baseRef !== undefined || options.headRef !== undefined || options.snapshot !== undefined;
+  let baseInput;
+  let headInput;
+  let requestedOutput;
+  let gitRefs;
+  let gitBaseBuffer;
+  let gitHeadBuffer;
+  if (gitRefMode) {
+    if (type !== 'architecture' || comparePositionals.length > 1) fail(usage());
+    if (!repoArgs.repoRoot) {
+      reportCompareFailure({
+        json: options.json,
+        stage: 'prepare',
+        error: 'Git ref comparison requires --repo-root.',
+        code: 'delta/git-repo-root-required',
+        details: {
+          supportedFixes: ['provide --repo-root for the local repository containing both refs'],
+        },
+      });
+      return;
+    }
+    if (!options.baseRef || !options.headRef || !options.snapshot) {
+      reportCompareFailure({
+        json: options.json,
+        stage: 'prepare',
+        error: 'Git ref comparison requires --base-ref, --head-ref, and --snapshot together.',
+        code: 'delta/git-options-incomplete',
+        details: {
+          present: {
+            baseRef: Boolean(options.baseRef),
+            headRef: Boolean(options.headRef),
+            snapshot: Boolean(options.snapshot),
+          },
+          supportedFixes: ['provide all three Git comparison options'],
+        },
+      });
+      return;
+    }
+    requestedOutput = comparePositionals[0];
+    try {
+      const snapshot = validateCompareSnapshotPath(options.snapshot);
+      const baseSnapshot = readCompareGitSnapshot({
+        repoRoot: repoArgs.repoRoot,
+        ref: options.baseRef,
+        snapshot,
+        side: 'base',
+      });
+      const headSnapshot = readCompareGitSnapshot({
+        repoRoot: repoArgs.repoRoot,
+        ref: options.headRef,
+        snapshot,
+        side: 'head',
+      });
+      gitBaseBuffer = baseSnapshot.buffer;
+      gitHeadBuffer = headSnapshot.buffer;
+      gitRefs = {
+        snapshot,
+        base: { ref: baseSnapshot.ref, revision: baseSnapshot.commit },
+        head: { ref: headSnapshot.ref, revision: headSnapshot.commit },
+      };
+      // These are only identity-safe placeholders for output-path checks. The
+      // actual input bytes come directly from Git objects above.
+      baseInput = path.join(os.tmpdir(), `archify-git-compare-${randomUUID()}-base.json`);
+      headInput = path.join(os.tmpdir(), `archify-git-compare-${randomUUID()}-head.json`);
+    } catch (error) {
+      const failure = error.compareInput || {
+        code: 'delta/git-input',
+        details: { reason: error.message },
+      };
+      reportCompareFailure({
+        json: options.json,
+        stage: 'input',
+        error: error.message,
+        code: failure.code,
+        details: failure.details,
+      });
+      return;
+    }
+  } else {
+    [baseInput, headInput, requestedOutput] = comparePositionals;
+    if (type !== 'architecture' || !baseInput || !headInput || comparePositionals.length > 3) fail(usage());
+  }
   let deltaRuntime;
   try {
     deltaRuntime = await import(pathToFileURL(path.join(skillRoot, 'delta/architecture-delta.mjs')).href);
@@ -3728,6 +3939,9 @@ async function commandCompare(args) {
 
   const basePath = path.resolve(baseInput);
   const headPath = path.resolve(headInput);
+  const compareInputPaths = gitRefMode
+    ? [path.resolve(repoArgs.repoRoot, gitRefs.snapshot)]
+    : [basePath, headPath];
   const explicitReceiptTarget = options.receipt ? path.resolve(options.receipt) : undefined;
   const rawOutputTarget = requestedOutput || 'architecture-delta.html';
   const rawOutputExtension = path.extname(rawOutputTarget);
@@ -3745,7 +3959,7 @@ async function commandCompare(args) {
     ({ outputPath } = resolveOutputPath({
       requestedOutput,
       defaultOutput: 'architecture-delta.html',
-      inputPaths: [basePath, headPath],
+      inputPaths: compareInputPaths,
       otherOutputPaths: explicitReceiptTarget
         ? [explicitReceiptTarget]
         : (invalidOutputAliasPreflight ? [invalidOutputAliasPreflight] : []),
@@ -3774,7 +3988,7 @@ async function commandCompare(args) {
         requestedOutput: options.receipt,
         defaultOutput: options.receipt,
         requiredExtension: '.json',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [outputPath],
       }));
       requestedReceiptPath = receiptPath;
@@ -3812,19 +4026,19 @@ async function commandCompare(args) {
     });
     return;
   }
-  let baseBuffer;
-  let headBuffer;
   let base;
   let head;
+  let baseBuffer;
+  let headBuffer;
   try {
-    baseBuffer = fs.readFileSync(basePath);
+    baseBuffer = gitBaseBuffer || fs.readFileSync(basePath);
     base = JSON.parse(baseBuffer.toString('utf8'));
   } catch (error) {
     reportCompareFailure({ json: options.json, stage: 'input', error: `Could not read base input: ${error.message}`, code: 'delta/base-input', details: { side: 'base', reason: error.message } });
     return;
   }
   try {
-    headBuffer = fs.readFileSync(headPath);
+    headBuffer = gitHeadBuffer || fs.readFileSync(headPath);
     head = JSON.parse(headBuffer.toString('utf8'));
   } catch (error) {
     reportCompareFailure({ json: options.json, stage: 'input', error: `Could not read head input: ${error.message}`, code: 'delta/head-input', details: { side: 'head', reason: error.message } });
@@ -3900,7 +4114,7 @@ async function commandCompare(args) {
         requestedOutput: defaultReceiptPath,
         defaultOutput: defaultReceiptPath,
         requiredExtension: '.json',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [outputPath],
       }));
       requestedReceiptPath = receiptPath;
@@ -4138,6 +4352,7 @@ async function commandCompare(args) {
         baseVerified: Boolean(baseResult.sourceEvidence),
         headVerified: Boolean(headResult.sourceEvidence),
       });
+      if (gitRefs) compareIr.gitRefs = gitRefs;
     } catch (error) {
       if (!(error instanceof ArchitectureDeltaError)) throw error;
       reportCompareFailure({ json: options.json, stage: 'compare', error: error.message, code: error.code, details: error.details });
@@ -4192,14 +4407,14 @@ async function commandCompare(args) {
       const currentOutput = resolveOutputPath({
         requestedOutput,
         defaultOutput: 'architecture-delta.html',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [requestedReceiptPath],
       }).outputPath;
       resolveOutputPath({
         requestedOutput: options.receipt || compareReceiptPath(currentOutput),
         defaultOutput: compareReceiptPath(currentOutput),
         requiredExtension: '.json',
-        inputPaths: [basePath, headPath],
+        inputPaths: compareInputPaths,
         otherOutputPaths: [currentOutput],
       });
     } catch (error) {

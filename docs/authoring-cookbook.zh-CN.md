@@ -95,6 +95,22 @@ node bin/archify.mjs compare architecture base.json head.json \
   architecture-delta.html --quality showcase --json
 ```
 
+如果两个 Git 版本都已经提交了同一路径的 Architecture 快照，可以直接比较，
+无需切换工作区。Archify 会把两个 ref 固定为 commit，读取相同的仓库相对 JSON
+路径，并在 sidecar 回执中记录解析后的 ref：
+
+```bash
+node bin/archify.mjs compare architecture \
+  --repo-root /path/to/repository \
+  --base-ref v1.0.0 --head-ref v2.0.0 \
+  --snapshot docs/architecture.json \
+  architecture-delta.html --quality showcase --json
+```
+
+这个模式只读取已提交的字节，不会从代码自动生成快照。如果某个版本没有该路径，
+先让 Agent 为两个版本分别生成固定版本的 Architecture 快照，保留共同组件和关系的
+稳定 ID，再比较两份 JSON。
+
 仓库 revision、provider、链接模式或地址表达方式的变化会与组件、关系和边界变化分开报告。仅来源发生变化时，Delta 页面不会把任何图实体标为已变化，来源摘要也不会暴露仓库 URL。
 
 `compare` 首次读取两份输入后，会使用捕获的原始字节进行校验、计算回执哈希并生成差异；之后原文件的变化不会影响本次比较。非法原始字段仍会在规范化之前被拒绝。

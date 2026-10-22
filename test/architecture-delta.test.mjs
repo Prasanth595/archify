@@ -26,6 +26,12 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-delta-'));
 
 const read = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const run = (args) => spawnSync(process.execPath, [cli, ...args], { cwd: skillRoot, encoding: 'utf8' });
+const runWithEnv = (args, env) => spawnSync(process.execPath, [cli, ...args], {
+  cwd: skillRoot,
+  encoding: 'utf8',
+  env: { ...process.env, ...env },
+});
+const receiptFor = (output) => output.replace(/\.html$/i, '.receipt.json');
 
 function git(repo, ...args) {
   return execFileSync('git', ['-C', repo, ...args], {
@@ -79,6 +85,28 @@ function provenanceFixture() {
   fs.writeFileSync(basePath, JSON.stringify(base));
   fs.writeFileSync(headPath, JSON.stringify(head));
   return { root, basePath, headPath, baseRevision, headRevision };
+}
+
+function gitRefSnapshotFixture() {
+  const root = fs.mkdtempSync(path.join(tmp, 'git-ref-repo-'));
+  const snapshotDirectory = path.join(root, 'docs');
+  fs.mkdirSync(snapshotDirectory);
+  git(root, 'init');
+  git(root, 'config', 'user.name', 'Archify Tests');
+  git(root, 'config', 'user.email', 'archify@example.test');
+  const base = read(baseFixture);
+  const head = read(headFixture);
+  fs.writeFileSync(path.join(snapshotDirectory, 'architecture.json'), JSON.stringify(base));
+  git(root, 'add', 'docs/architecture.json');
+  git(root, 'commit', '-m', 'base architecture');
+  const baseRevision = git(root, 'rev-parse', 'HEAD');
+  git(root, 'tag', '-a', 'v1.0.0', '-m', 'v1.0.0');
+  fs.writeFileSync(path.join(snapshotDirectory, 'architecture.json'), JSON.stringify(head));
+  git(root, 'add', 'docs/architecture.json');
+  git(root, 'commit', '-m', 'head architecture');
+  const headRevision = git(root, 'rev-parse', 'HEAD');
+  git(root, 'tag', '-a', 'v2.0.0', '-m', 'v2.0.0');
+  return { root, baseRevision, headRevision };
 }
 
 const renderDelta = (receipt) => renderArchitectureDeltaHtml({
@@ -522,6 +550,176 @@ test('public compare keeps a revision-only provenance change out of graph identi
   const deltaSvg = html.match(/<section class="canvas" data-view="delta">([\s\S]*?)<\/section>/)?.[1] || '';
   assert.doesNotMatch(deltaSvg, /data-delta-state="(?:added|removed|changed|moved|moved-from|rerouted|geometry-changed|evidence-changed)"/);
   assert.deepEqual(validateArchitectureDeltaHtml(html, receipt), { ok: true, checksPassed: 10, checkCount: 10 });
+});
+
+test('compare reads the same Architecture snapshot from two annotated Git refs', () => {
+  const data = gitRefSnapshotFixture();
+  const output = path.join(data.root, 'git-ref-delta.html');
+  const result = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/architecture.json',
+    output,
+    '--json',
+  ]);
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const receipt = JSON.parse(result.stdout);
+  assert.deepEqual(receipt.gitRefs, {
+    snapshot: 'docs/architecture.json',
+    base: { ref: 'v1.0.0', revision: data.baseRevision },
+    head: { ref: 'v2.0.0', revision: data.headRevision },
+  });
+  assert.deepEqual(receipt.summary.components, {
+    added: 1,
+    changed: 1,
+    evidenceChanged: 0,
+    removed: 1,
+    moved: 1,
+  });
+  assert.equal(receipt.validation.checksPassed, 28);
+  assert.equal(receipt.validation.checkCount, 28);
+  assert.equal(fs.existsSync(output), true);
+});
+
+test('Git ref compare preserves the legacy local-JSON Delta result', () => {
+  const data = gitRefSnapshotFixture();
+  const basePath = path.join(tmp, 'git-equivalent-base.json');
+  const headPath = path.join(tmp, 'git-equivalent-head.json');
+  fs.writeFileSync(basePath, git(data.root, 'show', `${data.baseRevision}:docs/architecture.json`));
+  fs.writeFileSync(headPath, git(data.root, 'show', `${data.headRevision}:docs/architecture.json`));
+  const legacyOutput = path.join(tmp, 'git-equivalent-legacy.html');
+  const gitOutput = path.join(tmp, 'git-equivalent-ref.html');
+  const legacy = run(['compare', 'architecture', basePath, headPath, legacyOutput, '--json']);
+  const fromGit = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/architecture.json',
+    gitOutput,
+    '--json',
+  ]);
+  assert.equal(legacy.status, 0, legacy.stderr || legacy.stdout);
+  assert.equal(fromGit.status, 0, fromGit.stderr || fromGit.stdout);
+  const legacyReceipt = JSON.parse(legacy.stdout);
+  const gitReceipt = JSON.parse(fromGit.stdout);
+  assert.deepEqual(gitReceipt.summary, legacyReceipt.summary);
+  assert.deepEqual(gitReceipt.changes, legacyReceipt.changes);
+  assert.equal(gitReceipt.base.semanticSha256, legacyReceipt.base.semanticSha256);
+  assert.equal(gitReceipt.head.semanticSha256, legacyReceipt.head.semanticSha256);
+  assert.equal(gitReceipt.validation.checksPassed, legacyReceipt.validation.checksPassed);
+  assert.equal(gitReceipt.validation.checkCount, legacyReceipt.validation.checkCount);
+  const deltaCanvas = (file) => fs.readFileSync(file, 'utf8').match(/<section class="canvas" data-view="delta">[\s\S]*?<\/section>/)?.[0];
+  assert.equal(deltaCanvas(gitOutput), deltaCanvas(legacyOutput));
+});
+
+test('compare resolves lightweight tags and commit refs without inheriting Git selectors', () => {
+  const data = gitRefSnapshotFixture();
+  git(data.root, 'tag', 'lightweight-v1.0.0', data.baseRevision);
+  git(data.root, 'remote', 'add', 'origin', 'http://127.0.0.1:1/no-fetch.git');
+  const output = path.join(tmp, 'git-ref-lightweight.html');
+  const beforeHead = git(data.root, 'rev-parse', 'HEAD');
+  const beforeStatus = git(data.root, 'status', '--porcelain');
+  const result = runWithEnv([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'lightweight-v1.0.0',
+    '--head-ref', data.headRevision,
+    '--snapshot', 'docs/architecture.json',
+    output,
+    '--json',
+  ], {
+    GIT_DIR: path.join(data.root, 'unrelated.git'),
+    GIT_WORK_TREE: path.join(data.root, 'unrelated-worktree'),
+    GIT_NAMESPACE: 'unrelated',
+    GIT_TERMINAL_PROMPT: '0',
+  });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const receipt = JSON.parse(result.stdout);
+  assert.deepEqual(receipt.gitRefs.base, {
+    ref: 'lightweight-v1.0.0',
+    revision: data.baseRevision,
+  });
+  assert.deepEqual(receipt.gitRefs.head, {
+    ref: data.headRevision,
+    revision: data.headRevision,
+  });
+  assert.equal(git(data.root, 'rev-parse', 'HEAD'), beforeHead);
+  assert.equal(git(data.root, 'status', '--porcelain'), beforeStatus);
+});
+
+test('Git ref compare failures publish no artifact or receipt', () => {
+  const data = gitRefSnapshotFixture();
+  const cases = [
+    ['missing', { snapshot: 'docs/missing.json' }, 'delta/git-snapshot-missing'],
+    ['invalid-ref', { baseRef: 'does-not-exist', snapshot: 'docs/architecture.json' }, 'delta/git-ref'],
+    ['parent', { snapshot: '../architecture.json' }, 'delta/git-snapshot-path'],
+    ['absolute', { snapshot: path.join(data.root, 'docs/architecture.json') }, 'delta/git-snapshot-path'],
+    ['drive-absolute', { snapshot: 'C:/repo/docs/architecture.json' }, 'delta/git-snapshot-path'],
+    ['dot', { snapshot: './docs/architecture.json' }, 'delta/git-snapshot-path'],
+    ['backslash', { snapshot: 'docs\\architecture.json' }, 'delta/git-snapshot-path'],
+    ['git-path', { snapshot: '.git/config' }, 'delta/git-snapshot-path'],
+    ['tree', { snapshot: 'docs' }, 'delta/git-snapshot-missing'],
+  ];
+  for (const [name, input, code] of cases) {
+    const output = path.join(data.root, 'failed', `${name}.html`);
+    const result = run([
+      'compare', 'architecture',
+      '--repo-root', data.root,
+      '--base-ref', input.baseRef || 'v1.0.0',
+      '--head-ref', 'v2.0.0',
+      '--snapshot', input.snapshot,
+      output,
+      '--json',
+    ]);
+    assert.notEqual(result.status, 0, name);
+    assert.equal(JSON.parse(result.stdout).diagnostics[0].code, code, name);
+    assert.equal(fs.existsSync(output), false, `${name} must not publish HTML`);
+    assert.equal(fs.existsSync(receiptFor(output)), false, `${name} must not publish a receipt`);
+  }
+
+  const incompleteCases = [
+    ['missing-head', ['--base-ref', 'v1.0.0']],
+    ['dangling-base', ['--base-ref', '--head-ref', 'v2.0.0', '--snapshot', 'docs/architecture.json']],
+    ['empty-snapshot', ['--base-ref=v1.0.0', '--head-ref=v2.0.0', '--snapshot=']],
+  ];
+  for (const [name, options] of incompleteCases) {
+    const output = path.join(data.root, 'failed', `${name}.html`);
+    const incomplete = run([
+      'compare', 'architecture',
+      '--repo-root', data.root,
+      ...options,
+      output,
+      '--json',
+    ]);
+    assert.notEqual(incomplete.status, 0, name);
+    assert.equal(JSON.parse(incomplete.stdout).diagnostics[0].code, 'delta/git-options-incomplete', name);
+    assert.equal(fs.existsSync(output), false, name);
+    assert.equal(fs.existsSync(receiptFor(output)), false, name);
+  }
+});
+
+test('Git ref compare protects the committed snapshot from receipt output', () => {
+  const data = gitRefSnapshotFixture();
+  const snapshotPath = path.join(data.root, 'docs/architecture.json');
+  const before = fs.readFileSync(snapshotPath);
+  const output = path.join(data.root, 'docs', 'delta.html');
+  const result = run([
+    'compare', 'architecture',
+    '--repo-root', data.root,
+    '--base-ref', 'v1.0.0',
+    '--head-ref', 'v2.0.0',
+    '--snapshot', 'docs/architecture.json',
+    output,
+    '--receipt', snapshotPath,
+    '--json',
+  ]);
+  assert.notEqual(result.status, 0);
+  assert.equal(fs.readFileSync(snapshotPath).equals(before), true);
+  assert.equal(fs.existsSync(output), false);
+  assert.equal(fs.existsSync(receiptFor(output)), false);
 });
 
 test('unchanged provenance preserves the ordinary empty graph state', () => {
