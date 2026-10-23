@@ -1,0 +1,4930 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "startedAt": "2026-10-23T16:38:39.955Z",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/flask/candidate/01-draft.workflow.json",
+    "sha256": "91067d14a5f5d8fdaecabde88db20fdac9f703676e8980caa007a222234552cb",
+    "bytes": 7505
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/flask/candidate/replay-of-draft-01.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": null,
+      "command": [
+        "/Users/hermes/.hermes/node/bin/node",
+        "/private/tmp/archify-960/archify/bin/archify.mjs",
+        "deliver",
+        "workflow",
+        "/private/tmp/archify-960/evidence/projects/flask/candidate/01-draft.workflow.json",
+        "/private/tmp/archify-960/evidence/projects/flask/candidate/replay-of-draft-01.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/tmp/archify-960/evidence/projects/flask/src-flask",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "deliver",
+        "receiptId": "1096b293-fe66-4fd9-bbc5-c6233be21e8c",
+        "stage": "render",
+        "type": "workflow",
+        "input": "/private/tmp/archify-960/evidence/projects/flask/candidate/01-draft.workflow.json",
+        "output": "/private/tmp/archify-960/evidence/projects/flask/candidate/replay-of-draft-01.html",
+        "error": "Workflow layout validation failed:\n- [composition/ambiguous-corridor] showcase workflow edges[0] id \"wsgi-call\" \"wsgi-server\" -> \"wsgi-app\" shares a 35px corridor with edges[10] id \"unhandled-exception\" \"dispatch\" -> \"user-exception\" at [199, 201] -> [234, 201] (segments 3 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+        "diagnostics": [
+          {
+            "code": "composition/ambiguous-corridor",
+            "severity": "error",
+            "message": "[composition/ambiguous-corridor] showcase workflow edges[0] id \"wsgi-call\" \"wsgi-server\" -> \"wsgi-app\" shares a 35px corridor with edges[10] id \"unhandled-exception\" \"dispatch\" -> \"user-exception\" at [199, 201] -> [234, 201] (segments 3 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+            "subject": {
+              "diagramType": "workflow",
+              "collection": "edges",
+              "index": 0,
+              "id": "wsgi-call",
+              "from": "wsgi-server",
+              "to": "wsgi-app"
+            },
+            "evidence": {
+              "otherRelationship": {
+                "diagramType": "workflow",
+                "collection": "edges",
+                "index": 10,
+                "id": "unhandled-exception",
+                "from": "dispatch",
+                "to": "user-exception"
+              },
+              "overlapLengthPx": 35,
+              "minimumPx": 8,
+              "from": [
+                199,
+                201
+              ],
+              "to": [
+                234,
+                201
+              ],
+              "segmentIndex": 3,
+              "otherSegmentIndex": 1
+            },
+            "supportedFixes": [
+              "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+            ]
+          }
+        ],
+        "provenance": "absent",
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        },
+        "partialLayout": {
+          "partial": true,
+          "columns": [
+            134,
+            254,
+            399.6,
+            559.6,
+            794.4000000000001,
+            990.8000000000001
+          ],
+          "nodes": [
+            {
+              "id": "wsgi-server",
+              "lane": "server",
+              "col": 0,
+              "x": 48,
+              "y": 93,
+              "width": 172,
+              "height": 52
+            },
+            {
+              "id": "wsgi-response",
+              "lane": "server",
+              "col": 5,
+              "x": 934.8000000000001,
+              "y": 93,
+              "width": 112,
+              "height": 52
+            },
+            {
+              "id": "wsgi-app",
+              "lane": "flask",
+              "col": 1,
+              "x": 208,
+              "y": 217,
+              "width": 92,
+              "height": 52
+            },
+            {
+              "id": "request-ctx",
+              "lane": "flask",
+              "col": 2,
+              "x": 351.6,
+              "y": 217,
+              "width": 96,
+              "height": 52
+            },
+            {
+              "id": "ctx-push",
+              "lane": "flask",
+              "col": 3,
+              "x": 513.6,
+              "y": 217,
+              "width": 92,
+              "height": 52
+            },
+            {
+              "id": "dispatch",
+              "lane": "flask",
+              "col": 4,
+              "x": 724.4000000000001,
+              "y": 217,
+              "width": 140,
+              "height": 52
+            },
+            {
+              "id": "finalize",
+              "lane": "flask",
+              "col": 5,
+              "x": 908.8000000000001,
+              "y": 217,
+              "width": 164,
+              "height": 52
+            },
+            {
+              "id": "url-match",
+              "lane": "routing",
+              "col": 3,
+              "x": 497.6,
+              "y": 341,
+              "width": 124,
+              "height": 52
+            },
+            {
+              "id": "view-call",
+              "lane": "view",
+              "col": 4,
+              "x": 732.4000000000001,
+              "y": 465,
+              "width": 124,
+              "height": 52
+            },
+            {
+              "id": "user-exception",
+              "lane": "error",
+              "col": 4,
+              "x": 724.4000000000001,
+              "y": 589,
+              "width": 140,
+              "height": 52
+            },
+            {
+              "id": "fatal-exception",
+              "lane": "error",
+              "col": 5,
+              "x": 920.8000000000001,
+              "y": 589,
+              "width": 140,
+              "height": 52
+            },
+            {
+              "id": "ctx-pop",
+              "lane": "teardown",
+              "col": 5,
+              "x": 910.8000000000001,
+              "y": 713,
+              "width": 160,
+              "height": 52
+            }
+          ],
+          "edges": [
+            {
+              "id": "build-context",
+              "from": "wsgi-app",
+              "to": "request-ctx",
+              "points": [
+                [
+                  300,
+                  243
+                ],
+                [
+                  351.6,
+                  243
+                ]
+              ]
+            },
+            {
+              "id": "call-view",
+              "from": "dispatch",
+              "to": "view-call",
+              "points": [
+                [
+                  794.4000000000001,
+                  269
+                ],
+                [
+                  794.4000000000001,
+                  465
+                ]
+              ]
+            },
+            {
+              "id": "full-dispatch",
+              "from": "ctx-push",
+              "to": "dispatch",
+              "points": [
+                [
+                  605.6,
+                  243
+                ],
+                [
+                  724.4000000000001,
+                  243
+                ]
+              ]
+            },
+            {
+              "id": "handler-response",
+              "from": "user-exception",
+              "to": "finalize",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      966.8000000000001,
+                      615
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      217
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      414
+                    ],
+                    [
+                      966.8000000000001,
+                      414
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      845.6000000000001,
+                      615
+                    ],
+                    [
+                      845.6000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      20,
+                      615
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      1093,
+                      615
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      160
+                    ],
+                    [
+                      966.8000000000001,
+                      160
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      668
+                    ],
+                    [
+                      966.8000000000001,
+                      668
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      402
+                    ],
+                    [
+                      966.8000000000001,
+                      402
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      833.6000000000001,
+                      615
+                    ],
+                    [
+                      833.6000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      426
+                    ],
+                    [
+                      966.8000000000001,
+                      426
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      857.6000000000001,
+                      615
+                    ],
+                    [
+                      857.6000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      390
+                    ],
+                    [
+                      966.8000000000001,
+                      390
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      821.6000000000001,
+                      615
+                    ],
+                    [
+                      821.6000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      438
+                    ],
+                    [
+                      966.8000000000001,
+                      438
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      724.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      869.6000000000001,
+                      615
+                    ],
+                    [
+                      869.6000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      201
+                    ],
+                    [
+                      966.8000000000001,
+                      217
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  794.4000000000001,
+                  589
+                ],
+                [
+                  794.4000000000001,
+                  573
+                ],
+                [
+                  875.6000000000001,
+                  573
+                ],
+                [
+                  875.6000000000001,
+                  243
+                ],
+                [
+                  908.8000000000001,
+                  243
+                ]
+              ]
+            },
+            {
+              "id": "match-url",
+              "from": "ctx-push",
+              "to": "url-match",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      621.6,
+                      217
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      559.6,
+                      290
+                    ],
+                    [
+                      637.6,
+                      290
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      590.6,
+                      201
+                    ],
+                    [
+                      590.6,
+                      367
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      20,
+                      367
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      1093,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      160
+                    ],
+                    [
+                      637.6,
+                      160
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      559.6,
+                      420
+                    ],
+                    [
+                      637.6,
+                      420
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      559.6,
+                      278
+                    ],
+                    [
+                      637.6,
+                      278
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      578.6,
+                      201
+                    ],
+                    [
+                      578.6,
+                      367
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      559.6,
+                      302
+                    ],
+                    [
+                      637.6,
+                      302
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      602.6,
+                      201
+                    ],
+                    [
+                      602.6,
+                      367
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      559.6,
+                      266
+                    ],
+                    [
+                      637.6,
+                      266
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      566.6,
+                      201
+                    ],
+                    [
+                      566.6,
+                      367
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      559.6,
+                      314
+                    ],
+                    [
+                      637.6,
+                      314
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      559.6,
+                      217
+                    ],
+                    [
+                      559.6,
+                      201
+                    ],
+                    [
+                      614.6,
+                      201
+                    ],
+                    [
+                      614.6,
+                      367
+                    ],
+                    [
+                      637.6,
+                      367
+                    ],
+                    [
+                      621.6,
+                      367
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  559.6,
+                  269
+                ],
+                [
+                  559.6,
+                  341
+                ]
+              ]
+            },
+            {
+              "id": "pop-context",
+              "from": "finalize",
+              "to": "ctx-pop",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      910.8000000000001,
+                      217
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      476
+                    ],
+                    [
+                      894.8000000000001,
+                      476
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      962.8000000000001,
+                      201
+                    ],
+                    [
+                      962.8000000000001,
+                      739
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      20,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      1093,
+                      739
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      160
+                    ],
+                    [
+                      894.8000000000001,
+                      160
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      792
+                    ],
+                    [
+                      894.8000000000001,
+                      792
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      464
+                    ],
+                    [
+                      894.8000000000001,
+                      464
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      950.8000000000001,
+                      201
+                    ],
+                    [
+                      950.8000000000001,
+                      739
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      488
+                    ],
+                    [
+                      894.8000000000001,
+                      488
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      974.8000000000001,
+                      201
+                    ],
+                    [
+                      974.8000000000001,
+                      739
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      452
+                    ],
+                    [
+                      894.8000000000001,
+                      452
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      938.8000000000001,
+                      201
+                    ],
+                    [
+                      938.8000000000001,
+                      739
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      500
+                    ],
+                    [
+                      894.8000000000001,
+                      500
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      1014.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      986.8000000000001,
+                      201
+                    ],
+                    [
+                      986.8000000000001,
+                      739
+                    ],
+                    [
+                      894.8000000000001,
+                      739
+                    ],
+                    [
+                      910.8000000000001,
+                      739
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  1072.8000000000002,
+                  243
+                ],
+                [
+                  1187.2,
+                  243
+                ],
+                [
+                  1187.2,
+                  739
+                ],
+                [
+                  1070.8000000000002,
+                  739
+                ]
+              ]
+            },
+            {
+              "id": "push-context",
+              "from": "request-ctx",
+              "to": "ctx-push",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      605.6,
+                      217
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      160
+                    ],
+                    [
+                      621.6,
+                      160
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      502.6,
+                      201
+                    ],
+                    [
+                      502.6,
+                      243
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      20,
+                      243
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      1093,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      160
+                    ],
+                    [
+                      621.6,
+                      160
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      399.6,
+                      296
+                    ],
+                    [
+                      621.6,
+                      296
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      148
+                    ],
+                    [
+                      621.6,
+                      148
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      490.6,
+                      201
+                    ],
+                    [
+                      490.6,
+                      243
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      172
+                    ],
+                    [
+                      621.6,
+                      172
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      514.6,
+                      201
+                    ],
+                    [
+                      514.6,
+                      243
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      136
+                    ],
+                    [
+                      621.6,
+                      136
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      478.6,
+                      201
+                    ],
+                    [
+                      478.6,
+                      243
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      184
+                    ],
+                    [
+                      621.6,
+                      184
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      399.6,
+                      217
+                    ],
+                    [
+                      399.6,
+                      201
+                    ],
+                    [
+                      526.6,
+                      201
+                    ],
+                    [
+                      526.6,
+                      243
+                    ],
+                    [
+                      621.6,
+                      243
+                    ],
+                    [
+                      605.6,
+                      243
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  447.6,
+                  243
+                ],
+                [
+                  513.6,
+                  243
+                ]
+              ]
+            },
+            {
+              "id": "reraise",
+              "from": "user-exception",
+              "to": "fatal-exception",
+              "points": [
+                [
+                  864.4000000000001,
+                  615
+                ],
+                [
+                  920.8000000000001,
+                  615
+                ]
+              ]
+            },
+            {
+              "id": "return-response",
+              "from": "finalize",
+              "to": "wsgi-response",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      934.8000000000001,
+                      269
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      990.8000000000001,
+                      166
+                    ],
+                    [
+                      918.8000000000001,
+                      166
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      962.8000000000001,
+                      285
+                    ],
+                    [
+                      962.8000000000001,
+                      119
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      20,
+                      285
+                    ],
+                    [
+                      20,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      1093,
+                      285
+                    ],
+                    [
+                      1093,
+                      119
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      990.8000000000001,
+                      36
+                    ],
+                    [
+                      918.8000000000001,
+                      36
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      296
+                    ],
+                    [
+                      918.8000000000001,
+                      296
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      990.8000000000001,
+                      154
+                    ],
+                    [
+                      918.8000000000001,
+                      154
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      950.8000000000001,
+                      285
+                    ],
+                    [
+                      950.8000000000001,
+                      119
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      990.8000000000001,
+                      178
+                    ],
+                    [
+                      918.8000000000001,
+                      178
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      974.8000000000001,
+                      285
+                    ],
+                    [
+                      974.8000000000001,
+                      119
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      990.8000000000001,
+                      142
+                    ],
+                    [
+                      918.8000000000001,
+                      142
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      938.8000000000001,
+                      285
+                    ],
+                    [
+                      938.8000000000001,
+                      119
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      990.8000000000001,
+                      190
+                    ],
+                    [
+                      918.8000000000001,
+                      190
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      990.8000000000001,
+                      269
+                    ],
+                    [
+                      990.8000000000001,
+                      285
+                    ],
+                    [
+                      986.8000000000001,
+                      285
+                    ],
+                    [
+                      986.8000000000001,
+                      119
+                    ],
+                    [
+                      918.8000000000001,
+                      119
+                    ],
+                    [
+                      934.8000000000001,
+                      119
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  990.8000000000001,
+                  217
+                ],
+                [
+                  990.8000000000001,
+                  145
+                ]
+              ]
+            },
+            {
+              "id": "routing-result",
+              "from": "url-match",
+              "to": "dispatch",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      724.4000000000001,
+                      341
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      290
+                    ],
+                    [
+                      708.4000000000001,
+                      290
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      654,
+                      325
+                    ],
+                    [
+                      654,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      20,
+                      325
+                    ],
+                    [
+                      20,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      1093,
+                      325
+                    ],
+                    [
+                      1093,
+                      243
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      160
+                    ],
+                    [
+                      708.4000000000001,
+                      160
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      583.6,
+                      420
+                    ],
+                    [
+                      708.4000000000001,
+                      420
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      278
+                    ],
+                    [
+                      708.4000000000001,
+                      278
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      642,
+                      325
+                    ],
+                    [
+                      642,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      302
+                    ],
+                    [
+                      708.4000000000001,
+                      302
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      666,
+                      325
+                    ],
+                    [
+                      666,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      266
+                    ],
+                    [
+                      708.4000000000001,
+                      266
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      630,
+                      325
+                    ],
+                    [
+                      630,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      314
+                    ],
+                    [
+                      708.4000000000001,
+                      314
+                    ],
+                    [
+                      708.4000000000001,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      583.6,
+                      341
+                    ],
+                    [
+                      583.6,
+                      325
+                    ],
+                    [
+                      678,
+                      325
+                    ],
+                    [
+                      678,
+                      243
+                    ],
+                    [
+                      724.4000000000001,
+                      243
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  621.6,
+                  367
+                ],
+                [
+                  637.6,
+                  367
+                ],
+                [
+                  637.6,
+                  290
+                ],
+                [
+                  770.4000000000001,
+                  290
+                ],
+                [
+                  770.4000000000001,
+                  269
+                ]
+              ]
+            },
+            {
+              "id": "server-error",
+              "from": "fatal-exception",
+              "to": "finalize",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      1014.8000000000001,
+                      615
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      920.8000000000001,
+                      217
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      414
+                    ],
+                    [
+                      1014.8000000000001,
+                      414
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      967.8000000000001,
+                      615
+                    ],
+                    [
+                      967.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      20,
+                      615
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      1093,
+                      615
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      160
+                    ],
+                    [
+                      1014.8000000000001,
+                      160
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      668
+                    ],
+                    [
+                      1014.8000000000001,
+                      668
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      402
+                    ],
+                    [
+                      1014.8000000000001,
+                      402
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      955.8000000000001,
+                      615
+                    ],
+                    [
+                      955.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      426
+                    ],
+                    [
+                      1014.8000000000001,
+                      426
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      979.8000000000001,
+                      615
+                    ],
+                    [
+                      979.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      390
+                    ],
+                    [
+                      1014.8000000000001,
+                      390
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      943.8000000000001,
+                      615
+                    ],
+                    [
+                      943.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      438
+                    ],
+                    [
+                      1014.8000000000001,
+                      438
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      920.8000000000001,
+                      615
+                    ],
+                    [
+                      904.8000000000001,
+                      615
+                    ],
+                    [
+                      991.8000000000001,
+                      615
+                    ],
+                    [
+                      991.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      201
+                    ],
+                    [
+                      1014.8000000000001,
+                      217
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  990.8000000000001,
+                  589
+                ],
+                [
+                  990.8000000000001,
+                  269
+                ]
+              ]
+            },
+            {
+              "id": "unhandled-exception",
+              "from": "dispatch",
+              "to": "user-exception",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      724.4000000000001,
+                      217
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      794.4000000000001,
+                      414
+                    ],
+                    [
+                      708.4000000000001,
+                      414
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      759.4000000000001,
+                      201
+                    ],
+                    [
+                      759.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      20,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      1093,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      160
+                    ],
+                    [
+                      708.4000000000001,
+                      160
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      794.4000000000001,
+                      668
+                    ],
+                    [
+                      708.4000000000001,
+                      668
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      794.4000000000001,
+                      402
+                    ],
+                    [
+                      708.4000000000001,
+                      402
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      747.4000000000001,
+                      201
+                    ],
+                    [
+                      747.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      794.4000000000001,
+                      426
+                    ],
+                    [
+                      708.4000000000001,
+                      426
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      771.4000000000001,
+                      201
+                    ],
+                    [
+                      771.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      794.4000000000001,
+                      390
+                    ],
+                    [
+                      708.4000000000001,
+                      390
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      735.4000000000001,
+                      201
+                    ],
+                    [
+                      735.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      794.4000000000001,
+                      438
+                    ],
+                    [
+                      708.4000000000001,
+                      438
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      794.4000000000001,
+                      217
+                    ],
+                    [
+                      794.4000000000001,
+                      201
+                    ],
+                    [
+                      783.4000000000001,
+                      201
+                    ],
+                    [
+                      783.4000000000001,
+                      615
+                    ],
+                    [
+                      708.4000000000001,
+                      615
+                    ],
+                    [
+                      724.4000000000001,
+                      615
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  794.4000000000001,
+                  217
+                ],
+                [
+                  794.4000000000001,
+                  201
+                ],
+                [
+                  199,
+                  201
+                ],
+                [
+                  199,
+                  657
+                ],
+                [
+                  794.4000000000001,
+                  657
+                ],
+                [
+                  794.4000000000001,
+                  641
+                ]
+              ]
+            },
+            {
+              "id": "view-returns",
+              "from": "view-call",
+              "to": "finalize",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      908.8000000000001,
+                      465
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      352
+                    ],
+                    [
+                      892.8000000000001,
+                      352
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      863.6000000000001,
+                      449
+                    ],
+                    [
+                      863.6000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      20,
+                      449
+                    ],
+                    [
+                      20,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      1093,
+                      449
+                    ],
+                    [
+                      1093,
+                      243
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      160
+                    ],
+                    [
+                      892.8000000000001,
+                      160
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      818.4000000000001,
+                      544
+                    ],
+                    [
+                      892.8000000000001,
+                      544
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      340
+                    ],
+                    [
+                      892.8000000000001,
+                      340
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      851.6000000000001,
+                      449
+                    ],
+                    [
+                      851.6000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      364
+                    ],
+                    [
+                      892.8000000000001,
+                      364
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      875.6000000000001,
+                      449
+                    ],
+                    [
+                      875.6000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      328
+                    ],
+                    [
+                      892.8000000000001,
+                      328
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      839.6000000000001,
+                      449
+                    ],
+                    [
+                      839.6000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      376
+                    ],
+                    [
+                      892.8000000000001,
+                      376
+                    ],
+                    [
+                      892.8000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      818.4000000000001,
+                      465
+                    ],
+                    [
+                      818.4000000000001,
+                      449
+                    ],
+                    [
+                      887.6000000000001,
+                      449
+                    ],
+                    [
+                      887.6000000000001,
+                      243
+                    ],
+                    [
+                      908.8000000000001,
+                      243
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  856.4000000000001,
+                  491
+                ],
+                [
+                  872.4000000000001,
+                  491
+                ],
+                [
+                  872.4000000000001,
+                  160
+                ],
+                [
+                  892.8000000000001,
+                  160
+                ],
+                [
+                  892.8000000000001,
+                  233
+                ],
+                [
+                  908.8000000000001,
+                  233
+                ]
+              ]
+            },
+            {
+              "id": "wsgi-call",
+              "from": "wsgi-server",
+              "to": "wsgi-app",
+              "attemptedCandidateFamilies": [
+                {
+                  "family": "facing-straight",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "horizontal-then-vertical",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      254,
+                      93
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "vertical-then-horizontal",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      217
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      134,
+                      166
+                    ],
+                    [
+                      254,
+                      166
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      194,
+                      77
+                    ],
+                    [
+                      194,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-left",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      20,
+                      77
+                    ],
+                    [
+                      20,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "outside-right",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      1093,
+                      77
+                    ],
+                    [
+                      1093,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "top-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      36
+                    ],
+                    [
+                      254,
+                      36
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "bottom-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      134,
+                      296
+                    ],
+                    [
+                      254,
+                      296
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      134,
+                      154
+                    ],
+                    [
+                      254,
+                      154
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      182,
+                      77
+                    ],
+                    [
+                      182,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      134,
+                      178
+                    ],
+                    [
+                      254,
+                      178
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      206,
+                      77
+                    ],
+                    [
+                      206,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      134,
+                      142
+                    ],
+                    [
+                      254,
+                      142
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      170,
+                      77
+                    ],
+                    [
+                      170,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "lane-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      134,
+                      190
+                    ],
+                    [
+                      254,
+                      190
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                },
+                {
+                  "family": "column-gap-corridor",
+                  "points": [
+                    [
+                      134,
+                      93
+                    ],
+                    [
+                      134,
+                      77
+                    ],
+                    [
+                      218,
+                      77
+                    ],
+                    [
+                      218,
+                      201
+                    ],
+                    [
+                      254,
+                      201
+                    ],
+                    [
+                      254,
+                      217
+                    ]
+                  ]
+                }
+              ],
+              "points": [
+                [
+                  134,
+                  145
+                ],
+                [
+                  134,
+                  177
+                ],
+                [
+                  194,
+                  177
+                ],
+                [
+                  194,
+                  201
+                ],
+                [
+                  234,
+                  201
+                ],
+                [
+                  234,
+                  217
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "not-run",
+      "execution": "blocked-by-validate"
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "error",
+      "message": "[composition/ambiguous-corridor] showcase workflow edges[0] id \"wsgi-call\" \"wsgi-server\" -> \"wsgi-app\" shares a 35px corridor with edges[10] id \"unhandled-exception\" \"dispatch\" -> \"user-exception\" at [199, 201] -> [234, 201] (segments 3 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 0,
+        "id": "wsgi-call",
+        "from": "wsgi-server",
+        "to": "wsgi-app"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 10,
+          "id": "unhandled-exception",
+          "from": "dispatch",
+          "to": "user-exception"
+        },
+        "overlapLengthPx": 35,
+        "minimumPx": 8,
+        "from": [
+          199,
+          201
+        ],
+        "to": [
+          234,
+          201
+        ],
+        "segmentIndex": 3,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/flask/candidate/replay-of-draft-01.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/flask/candidate/replay-of-draft-01.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "validate",
+  "finishedAt": "2026-10-23T16:38:40.665Z",
+  "durationMs": 710,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

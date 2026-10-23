@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "startedAt": "2026-10-23T16:05:51.402Z",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/express/base/01-draft.workflow.json",
+    "sha256": "70fac3d903c3b8090c01d038acf08861ae6a7e1f8f0e364573c83721912b18b5",
+    "bytes": 5404
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/express/base/01-draft.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": null,
+      "command": [
+        "/Users/hermes/.hermes/node/bin/node",
+        "/private/tmp/archify-base/archify/bin/archify.mjs",
+        "deliver",
+        "workflow",
+        "/private/tmp/archify-960/evidence/projects/express/base/01-draft.workflow.json",
+        "/private/tmp/archify-960/evidence/projects/express/base/01-draft.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/tmp/archify-960/evidence/projects/express/src-express",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "deliver",
+        "receiptId": "73a4f479-18e9-4e06-ace9-b88e78498e8d",
+        "stage": "render",
+        "type": "workflow",
+        "input": "/private/tmp/archify-960/evidence/projects/express/base/01-draft.workflow.json",
+        "output": "/private/tmp/archify-960/evidence/projects/express/base/01-draft.html",
+        "error": "Workflow layout validation failed:\n- [composition/ambiguous-corridor] showcase workflow edges[6] id \"route-send\" \"route\" -> \"send\" shares a 26px corridor with edges[7] id \"mw-final\" \"mw\" -> \"final\" at [737.6, 302] -> [737.6, 328] (segments 2 and 0; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.\n- mainPath step \"route\" -> \"send\" moves backward from col 5 to 4 — use a return edge outside mainPath for loops.",
+        "diagnostics": [
+          {
+            "code": "composition/ambiguous-corridor",
+            "severity": "error",
+            "message": "[composition/ambiguous-corridor] showcase workflow edges[6] id \"route-send\" \"route\" -> \"send\" shares a 26px corridor with edges[7] id \"mw-final\" \"mw\" -> \"final\" at [737.6, 302] -> [737.6, 328] (segments 2 and 0; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+            "subject": {
+              "diagramType": "workflow",
+              "collection": "edges",
+              "index": 6,
+              "id": "route-send",
+              "from": "route",
+              "to": "send"
+            },
+            "evidence": {
+              "otherRelationship": {
+                "diagramType": "workflow",
+                "collection": "edges",
+                "index": 7,
+                "id": "mw-final",
+                "from": "mw",
+                "to": "final"
+              },
+              "overlapLengthPx": 26,
+              "minimumPx": 8,
+              "from": [
+                737.6,
+                302
+              ],
+              "to": [
+                737.6,
+                328
+              ],
+              "segmentIndex": 2,
+              "otherSegmentIndex": 0
+            },
+            "supportedFixes": [
+              "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+            ]
+          },
+          {
+            "code": "layout/constraint",
+            "severity": "error",
+            "message": "mainPath step \"route\" -> \"send\" moves backward from col 5 to 4 — use a return edge outside mainPath for loops.",
+            "subject": {
+              "diagramType": "workflow"
+            },
+            "evidence": {},
+            "supportedFixes": []
+          }
+        ],
+        "provenance": "absent",
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "not-run",
+      "execution": "blocked-by-validate"
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "error",
+      "message": "[composition/ambiguous-corridor] showcase workflow edges[6] id \"route-send\" \"route\" -> \"send\" shares a 26px corridor with edges[7] id \"mw-final\" \"mw\" -> \"final\" at [737.6, 302] -> [737.6, 328] (segments 2 and 0; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 6,
+        "id": "route-send",
+        "from": "route",
+        "to": "send"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 7,
+          "id": "mw-final",
+          "from": "mw",
+          "to": "final"
+        },
+        "overlapLengthPx": 26,
+        "minimumPx": 8,
+        "from": [
+          737.6,
+          302
+        ],
+        "to": [
+          737.6,
+          328
+        ],
+        "segmentIndex": 2,
+        "otherSegmentIndex": 0
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    },
+    {
+      "code": "layout/constraint",
+      "severity": "error",
+      "message": "mainPath step \"route\" -> \"send\" moves backward from col 5 to 4 — use a return edge outside mainPath for loops.",
+      "subject": {
+        "diagramType": "workflow"
+      },
+      "evidence": {},
+      "supportedFixes": []
+    }
+  ],
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/express/base/01-draft.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/express/base/01-draft.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "validate",
+  "finishedAt": "2026-10-23T16:05:51.707Z",
+  "durationMs": 304,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:03:41.479Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

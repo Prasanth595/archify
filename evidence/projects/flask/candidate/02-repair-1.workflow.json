@@ -1,0 +1,384 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flask Request Lifecycle",
+    "output": "flask-request-lifecycle.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/pallets/flask",
+      "provider": "github",
+      "revision": "d086db856be187255b8ec61ef409357393020f32"
+    }
+  },
+  "lanes": [
+    {
+      "id": "server",
+      "label": "WSGI Server"
+    },
+    {
+      "id": "flask",
+      "label": "Flask Application"
+    },
+    {
+      "id": "routing",
+      "label": "URL Routing"
+    },
+    {
+      "id": "view",
+      "label": "View Function"
+    },
+    {
+      "id": "error",
+      "label": "Error Handling",
+      "variant": "exception"
+    },
+    {
+      "id": "teardown",
+      "label": "Context Teardown"
+    }
+  ],
+  "mainPath": [
+    "wsgi-server",
+    "wsgi-app",
+    "request-ctx",
+    "ctx-push",
+    "dispatch",
+    "view-call",
+    "finalize",
+    "wsgi-response"
+  ],
+  "nodes": [
+    {
+      "id": "wsgi-server",
+      "lane": "server",
+      "col": 0,
+      "type": "external",
+      "label": "WSGI server",
+      "sublabel": "calls app(environ, start_response)",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 1618,
+          "end_line": 1625
+        }
+      ]
+    },
+    {
+      "id": "wsgi-response",
+      "lane": "server",
+      "col": 5,
+      "type": "external",
+      "label": "Response returned",
+      "sublabel": "status + body iterable",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 1604,
+          "end_line": 1604
+        }
+      ]
+    },
+    {
+      "id": "wsgi-app",
+      "lane": "flask",
+      "col": 1,
+      "type": "backend",
+      "label": "Flask.__call__",
+      "sublabel": "→ wsgi_app",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 1618,
+          "end_line": 1625
+        },
+        {
+          "path": "src/flask/app.py",
+          "line": 1566,
+          "end_line": 1592
+        }
+      ]
+    },
+    {
+      "id": "request-ctx",
+      "lane": "flask",
+      "col": 2,
+      "type": "backend",
+      "label": "request_context",
+      "sublabel": "AppContext.from_environ",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 1501,
+          "end_line": 1515
+        },
+        {
+          "path": "src/flask/ctx.py",
+          "line": 300,
+          "end_line": 330
+        }
+      ]
+    },
+    {
+      "id": "ctx-push",
+      "lane": "flask",
+      "col": 3,
+      "type": "backend",
+      "label": "ctx.push()",
+      "sublabel": "session + URL match",
+      "sources": [
+        {
+          "path": "src/flask/ctx.py",
+          "line": 416,
+          "end_line": 444
+        }
+      ]
+    },
+    {
+      "id": "dispatch",
+      "lane": "flask",
+      "col": 4,
+      "type": "backend",
+      "label": "full_dispatch_request",
+      "sublabel": "preprocess → dispatch",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 992,
+          "end_line": 1019
+        },
+        {
+          "path": "src/flask/app.py",
+          "line": 1366,
+          "end_line": 1392
+        }
+      ]
+    },
+    {
+      "id": "finalize",
+      "lane": "flask",
+      "col": 5,
+      "type": "backend",
+      "label": "finalize_request",
+      "sublabel": "make_response → process_response",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 1021,
+          "end_line": 1051
+        },
+        {
+          "path": "src/flask/app.py",
+          "line": 1394,
+          "end_line": 1418
+        }
+      ]
+    },
+    {
+      "id": "url-match",
+      "lane": "routing",
+      "col": 3,
+      "type": "backend",
+      "label": "url_adapter.match()",
+      "sublabel": "url_rule + view_args",
+      "sources": [
+        {
+          "path": "src/flask/ctx.py",
+          "line": 405,
+          "end_line": 414
+        }
+      ]
+    },
+    {
+      "id": "view-call",
+      "lane": "view",
+      "col": 4,
+      "type": "backend",
+      "label": "view function",
+      "sublabel": "view_functions[endpoint]",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 989,
+          "end_line": 990
+        },
+        {
+          "path": "src/flask/app.py",
+          "line": 1065,
+          "end_line": 1077
+        }
+      ]
+    },
+    {
+      "id": "user-exception",
+      "lane": "error",
+      "col": 4,
+      "type": "backend",
+      "label": "handle_user_exception",
+      "sublabel": "HTTPException or registered handler",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 865,
+          "end_line": 895
+        }
+      ]
+    },
+    {
+      "id": "fatal-exception",
+      "lane": "error",
+      "col": 5,
+      "type": "backend",
+      "label": "handle_exception",
+      "sublabel": "500 or PROPAGATE_EXCEPTIONS",
+      "sources": [
+        {
+          "path": "src/flask/app.py",
+          "line": 897,
+          "end_line": 948
+        }
+      ]
+    },
+    {
+      "id": "ctx-pop",
+      "lane": "teardown",
+      "col": 5,
+      "type": "backend",
+      "label": "ctx.pop(error)",
+      "sublabel": "teardown_request → app teardown",
+      "sources": [
+        {
+          "path": "src/flask/ctx.py",
+          "line": 446,
+          "end_line": 480
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "wsgi-call",
+      "from": "wsgi-server",
+      "to": "wsgi-app",
+      "label": "WSGI call",
+      "role": "main"
+    },
+    {
+      "id": "build-context",
+      "from": "wsgi-app",
+      "to": "request-ctx",
+      "label": "environ",
+      "role": "main"
+    },
+    {
+      "id": "push-context",
+      "from": "request-ctx",
+      "to": "ctx-push",
+      "label": "ctx.push()",
+      "role": "main"
+    },
+    {
+      "id": "full-dispatch",
+      "from": "ctx-push",
+      "to": "dispatch",
+      "label": "full_dispatch_request",
+      "role": "main"
+    },
+    {
+      "id": "call-view",
+      "from": "dispatch",
+      "to": "view-call",
+      "label": "ensure_sync",
+      "role": "main"
+    },
+    {
+      "id": "view-returns",
+      "from": "view-call",
+      "to": "finalize",
+      "label": "return value",
+      "role": "main"
+    },
+    {
+      "id": "return-response",
+      "from": "finalize",
+      "to": "wsgi-response",
+      "label": "response + start_response",
+      "role": "main"
+    },
+    {
+      "id": "pop-context",
+      "from": "finalize",
+      "to": "ctx-pop",
+      "label": "finally: ctx.pop(error)",
+      "role": "branch"
+    },
+    {
+      "id": "match-url",
+      "from": "ctx-push",
+      "to": "url-match",
+      "label": "match_request()",
+      "role": "branch"
+    },
+    {
+      "id": "routing-result",
+      "from": "url-match",
+      "to": "dispatch",
+      "label": "url_rule, view_args",
+      "role": "branch"
+    },
+    {
+      "id": "unhandled-exception",
+      "from": "dispatch",
+      "to": "user-exception",
+      "label": "unhandled exception",
+      "role": "error",
+      "via": [
+        [
+          708.4,
+          414
+        ]
+      ]
+    },
+    {
+      "id": "handler-response",
+      "from": "user-exception",
+      "to": "finalize",
+      "label": "handler response",
+      "role": "error"
+    },
+    {
+      "id": "reraise",
+      "from": "user-exception",
+      "to": "fatal-exception",
+      "label": "re-raise",
+      "role": "error"
+    },
+    {
+      "id": "server-error",
+      "from": "fatal-exception",
+      "to": "finalize",
+      "label": "from_error_handler=True",
+      "role": "error"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Hook order (src/flask/app.py)",
+      "items": [
+        "before_request: app-level first, then blueprints outermost to innermost (app.py:1377)",
+        "after_request: blueprints innermost to outermost, then app-level (app.py:1410)",
+        "process_response also saves the session (app.py:1415)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Ordering details",
+      "items": [
+        "response(environ, start_response) runs before ctx.pop(error) (app.py:1604, app.py:1616)",
+        "handle_exception ends in finalize_request(from_error_handler=True) (app.py:948)",
+        "handle_user_exception re-raises when no handler is registered (app.py:892)"
+      ]
+    }
+  ]
+}

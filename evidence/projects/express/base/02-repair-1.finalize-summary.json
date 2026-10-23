@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/express/base/02-repair-1.workflow.json",
+    "sha256": "5c5f01309e6bbb4e9ee316d3c642614b261b32013164c32d136993d49c6372de",
+    "bytes": 5431
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/express/base/02-repair-1.html",
+    "sha256": "ca3eaf41fb2350bccfebcdcbf3d8e17bbd740d1a1e1b9f9957e6def54a9d1cea",
+    "bytes": 826672
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/express/base/02-repair-1.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/express/base/02-repair-1.finalize-summary.json",
+    "browserCheckReceipt": "/private/tmp/archify-960/evidence/projects/express/base/02-repair-1.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:03:41.479Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2121,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

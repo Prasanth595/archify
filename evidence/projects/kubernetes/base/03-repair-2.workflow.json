@@ -1,0 +1,250 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Kubernetes Deployment controller reconcile loop",
+    "locale": "en",
+    "output": "kubernetes-deployment-reconcile-loop.html",
+    "repository": {
+      "url": "https://github.com/kubernetes/kubernetes.git",
+      "provider": "github",
+      "revision": "95f9a388b709638838f78bba3ab1f6c8aaf7a39f"
+    }
+  },
+  "lanes": [
+    { "id": "apiserver", "label": "kube-apiserver" },
+    { "id": "cache", "label": "client-go informer cache" },
+    { "id": "controller", "label": "deployment-controller" },
+    { "id": "retry", "label": "retry & backoff", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "observe", "label": "Observe", "fromCol": 0, "toCol": 2 },
+    { "id": "reconcile", "label": "Reconcile", "fromCol": 3, "toCol": 5 }
+  ],
+  "mainPath": [
+    "api",
+    "reflector",
+    "informer",
+    "handler",
+    "queue",
+    "worker",
+    "sync",
+    "write"
+  ],
+  "nodes": [
+    {
+      "id": "api",
+      "lane": "apiserver",
+      "col": 0,
+      "type": "database",
+      "label": "kube-apiserver",
+      "sublabel": "authoritative Deployment/ReplicaSet store",
+      "sources": [
+        {
+          "path": "staging/src/k8s.io/client-go/tools/cache/listwatch.go",
+          "line": 235,
+          "end_line": 262,
+          "label": "list and watch the resource"
+        }
+      ]
+    },
+    {
+      "id": "reflector",
+      "lane": "cache",
+      "col": 1,
+      "type": "backend",
+      "label": "Reflector",
+      "sublabel": "LIST then WATCH",
+      "sources": [
+        {
+          "path": "staging/src/k8s.io/client-go/tools/cache/reflector.go",
+          "line": 470,
+          "end_line": 509,
+          "label": "ListAndWatchWithContext"
+        }
+      ]
+    },
+    {
+      "id": "informer",
+      "lane": "cache",
+      "col": 2,
+      "type": "backend",
+      "label": "sharedIndexInformer",
+      "sublabel": "DeltaFIFO to local cache store",
+      "sources": [
+        {
+          "path": "staging/src/k8s.io/client-go/tools/cache/delta_fifo.go",
+          "line": 562,
+          "end_line": 575,
+          "label": "DeltaFIFO.Pop blocks until enqueued"
+        },
+        {
+          "path": "staging/src/k8s.io/client-go/tools/cache/shared_informer.go",
+          "line": 1106,
+          "end_line": 1141,
+          "label": "distributes add/update/delete to listeners"
+        }
+      ]
+    },
+    {
+      "id": "handler",
+      "lane": "controller",
+      "col": 3,
+      "type": "backend",
+      "label": "Event handler",
+      "sublabel": "KeyFunc to namespace/name key",
+      "sources": [
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 124,
+          "end_line": 135,
+          "label": "registers add/update/delete handlers"
+        },
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 202,
+          "end_line": 206,
+          "label": "addDeployment enqueues the object"
+        },
+        {
+          "path": "pkg/controller/controller_utils.go",
+          "line": 109,
+          "end_line": 112,
+          "label": "KeyFunc = DeletionHandlingMetaNamespaceKeyFunc"
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "lane": "controller",
+      "col": 4,
+      "type": "messagebus",
+      "label": "Rate-limiting workqueue",
+      "sublabel": "exponential backoff, max 15 requeues",
+      "sources": [
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 111,
+          "end_line": 117,
+          "label": "queue uses the default controller rate limiter"
+        },
+        {
+          "path": "staging/src/k8s.io/client-go/util/workqueue/default_rate_limiters.go",
+          "line": 48,
+          "end_line": 56,
+          "label": "per-item exponential failure rate limiter"
+        },
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 54,
+          "end_line": 59,
+          "label": "maxRetries = 15"
+        }
+      ]
+    },
+    {
+      "id": "worker",
+      "lane": "controller",
+      "col": 5,
+      "type": "backend",
+      "label": "worker",
+      "sublabel": "processNextWorkItem to syncHandler",
+      "yOffset": -90,
+      "sources": [
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 480,
+          "end_line": 498,
+          "label": "worker dequeues a key and calls the sync handler"
+        }
+      ]
+    },
+    {
+      "id": "sync",
+      "lane": "controller",
+      "col": 5,
+      "type": "backend",
+      "label": "syncDeployment",
+      "sublabel": "read cache, claim ReplicaSets",
+      "yOffset": 0,
+      "sources": [
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 575,
+          "end_line": 627,
+          "label": "reads the Deployment from the informer cache"
+        }
+      ]
+    },
+    {
+      "id": "write",
+      "lane": "controller",
+      "col": 5,
+      "type": "backend",
+      "label": "scale + status",
+      "sublabel": "Update ReplicaSet, UpdateStatus",
+      "yOffset": 90,
+      "sources": [
+        {
+          "path": "pkg/controller/deployment/sync.go",
+          "line": 407,
+          "end_line": 434,
+          "label": "scaleReplicaSet updates the ReplicaSet"
+        },
+        {
+          "path": "pkg/controller/deployment/sync.go",
+          "line": 479,
+          "end_line": 490,
+          "label": "syncDeploymentStatus updates status"
+        }
+      ]
+    },
+    {
+      "id": "retry",
+      "lane": "retry",
+      "col": 4,
+      "type": "backend",
+      "label": "handleErr",
+      "sublabel": "AddRateLimited, then Forget",
+      "sources": [
+        {
+          "path": "pkg/controller/deployment/deployment_controller.go",
+          "line": 500,
+          "end_line": 520,
+          "label": "requeues or drops the key after maxRetries"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "api", "to": "reflector", "label": "list / watch", "role": "main" },
+    { "from": "reflector", "to": "informer", "label": "object deltas", "role": "main" },
+    { "from": "informer", "to": "handler", "label": "add, update, delete", "role": "main" },
+    { "from": "handler", "to": "queue", "label": "queue.Add(key)", "role": "main" },
+    { "from": "queue", "to": "worker", "label": "queue.Get()", "role": "main" },
+    { "from": "worker", "to": "sync", "label": "syncHandler(ctx, key)", "role": "main" },
+    { "from": "sync", "to": "write", "label": "desired state applied", "role": "main" },
+    { "from": "write", "to": "api", "label": "Update ReplicaSet / UpdateStatus", "role": "return", "route": "return-left" },
+    { "from": "sync", "to": "retry", "label": "sync error", "role": "error" },
+    { "from": "retry", "to": "queue", "label": "requeue with backoff", "role": "return" }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "Retry budget",
+      "items": [
+        "maxRetries = 15 per key, then the key is dropped (deployment_controller.go:59)",
+        "Per-item delay doubles from a 5ms base, capped at 1000s (default_rate_limiters.go:52)",
+        "A successful sync calls Forget, so the backoff counter resets"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Reads come from the cache",
+      "items": [
+        "syncDeployment reads Deployments through the informer lister, not the API server",
+        "Only adoption checks and writes go straight to the API server"
+      ]
+    }
+  ]
+}

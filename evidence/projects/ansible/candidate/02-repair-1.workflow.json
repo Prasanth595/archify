@@ -1,0 +1,320 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Ansible playbook task execution",
+    "locale": "en",
+    "output": "ansible-task-execution.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/ansible/ansible",
+      "provider": "github",
+      "revision": "ba22fe441408f1ffc943950e0ceec8ad624514da"
+    }
+  },
+  "lanes": [
+    {
+      "id": "control",
+      "label": "Controller process"
+    },
+    {
+      "id": "worker",
+      "label": "Worker process (forked)"
+    },
+    {
+      "id": "target",
+      "label": "Managed host"
+    },
+    {
+      "id": "failure",
+      "label": "Failure path",
+      "variant": "exception"
+    }
+  ],
+  "mainPath": [
+    "pb",
+    "compile",
+    "tqm",
+    "strat",
+    "queue",
+    "texec",
+    "results"
+  ],
+  "nodes": [
+    {
+      "id": "pb",
+      "lane": "control",
+      "col": 0,
+      "type": "backend",
+      "label": "PlaybookExecutor.run()",
+      "sublabel": "loads the playbook, iterates its plays",
+      "sources": [
+        {
+          "path": "lib/ansible/executor/playbook_executor.py",
+          "line": 100,
+          "end_line": 115,
+          "label": "Playbook.load and the play loop"
+        }
+      ]
+    },
+    {
+      "id": "compile",
+      "lane": "control",
+      "col": 1,
+      "type": "backend",
+      "label": "Play.compile()",
+      "sublabel": "roles + tasks become a flat block list",
+      "sources": [
+        {
+          "path": "lib/ansible/playbook/play.py",
+          "line": 287,
+          "end_line": 306,
+          "label": "compile flattens roles and tasks"
+        }
+      ]
+    },
+    {
+      "id": "tqm",
+      "lane": "control",
+      "col": 2,
+      "type": "backend",
+      "label": "TaskQueueManager.run()",
+      "sublabel": "builds the PlayIterator, loads the strategy",
+      "sources": [
+        {
+          "path": "lib/ansible/executor/task_queue_manager.py",
+          "line": 401,
+          "end_line": 439,
+          "label": "PlayIterator, strategy plugin, strategy.run"
+        }
+      ]
+    },
+    {
+      "id": "strat",
+      "lane": "control",
+      "col": 3,
+      "type": "backend",
+      "label": "linear StrategyModule.run()",
+      "sublabel": "lockstep loop, one task per host batch",
+      "sources": [
+        {
+          "path": "lib/ansible/plugins/strategy/linear.py",
+          "line": 98,
+          "end_line": 122,
+          "label": "the linear strategy lockstep loop"
+        },
+        {
+          "path": "lib/ansible/plugins/strategy/linear.py",
+          "line": 191,
+          "end_line": 191,
+          "label": "the task is queued for each host"
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "lane": "control",
+      "col": 5,
+      "type": "backend",
+      "label": "_process_pending_results()",
+      "sublabel": "host state, stats, callbacks",
+      "sources": [
+        {
+          "path": "lib/ansible/plugins/strategy/__init__.py",
+          "line": 532,
+          "end_line": 603,
+          "label": "results drive host state and callbacks"
+        }
+      ]
+    },
+    {
+      "id": "flush",
+      "lane": "worker",
+      "col": 3,
+      "type": "backend",
+      "label": "notified handler task",
+      "sublabel": "runs at meta: flush_handlers",
+      "sources": [
+        {
+          "path": "lib/ansible/plugins/strategy/__init__.py",
+          "line": 638,
+          "end_line": 651,
+          "label": "the notification is recorded on the host"
+        },
+        {
+          "path": "lib/ansible/plugins/strategy/linear.py",
+          "line": 93,
+          "end_line": 94,
+          "label": "flush_handlers splices the handlers in"
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "lane": "worker",
+      "col": 4,
+      "type": "backend",
+      "label": "_queue_task()",
+      "sublabel": "forks or reuses a WorkerProcess",
+      "sources": [
+        {
+          "path": "lib/ansible/plugins/strategy/__init__.py",
+          "line": 347,
+          "end_line": 432,
+          "label": "_queue_task forks or reuses a worker"
+        }
+      ]
+    },
+    {
+      "id": "texec",
+      "lane": "worker",
+      "col": 5,
+      "type": "backend",
+      "label": "TaskExecutor.run()",
+      "sublabel": "templating, connection, retries",
+      "sources": [
+        {
+          "path": "lib/ansible/executor/task_executor.py",
+          "line": 514,
+          "end_line": 538,
+          "label": "_execute_internal calls the action handler"
+        },
+        {
+          "path": "lib/ansible/executor/process/worker.py",
+          "line": 225,
+          "end_line": 234,
+          "label": "the worker builds a TaskExecutor"
+        }
+      ]
+    },
+    {
+      "id": "module",
+      "lane": "target",
+      "col": 4,
+      "type": "external",
+      "label": "Action plugin and module",
+      "sublabel": "executes on the managed host",
+      "sources": [
+        {
+          "path": "lib/ansible/executor/task_executor.py",
+          "line": 538,
+          "end_line": 539,
+          "label": "self._handler.run executes the module"
+        }
+      ]
+    },
+    {
+      "id": "failed",
+      "lane": "failure",
+      "col": 4,
+      "type": "backend",
+      "label": "task failed",
+      "sublabel": "the host is marked failed",
+      "sources": [
+        {
+          "path": "lib/ansible/plugins/strategy/__init__.py",
+          "line": 561,
+          "end_line": 577,
+          "label": "a failed task marks its host failed"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "pb-compile",
+      "from": "pb",
+      "to": "compile",
+      "role": "main"
+    },
+    {
+      "id": "compile-tqm",
+      "from": "compile",
+      "to": "tqm",
+      "role": "main"
+    },
+    {
+      "id": "tqm-strat",
+      "from": "tqm",
+      "to": "strat",
+      "role": "main"
+    },
+    {
+      "id": "strat-queue",
+      "from": "strat",
+      "to": "queue",
+      "label": "next task for this host",
+      "role": "main"
+    },
+    {
+      "id": "strat-flush",
+      "from": "strat",
+      "to": "flush",
+      "label": "meta: flush_handlers",
+      "role": "branch"
+    },
+    {
+      "id": "flush-queue",
+      "from": "flush",
+      "to": "queue",
+      "label": "handler task queued",
+      "role": "branch"
+    },
+    {
+      "id": "queue-texec",
+      "from": "queue",
+      "to": "texec",
+      "label": "worker_prc.start()",
+      "role": "main"
+    },
+    {
+      "id": "texec-module",
+      "from": "texec",
+      "to": "module",
+      "label": "self._handler.run()",
+      "role": "main"
+    },
+    {
+      "id": "texec-results",
+      "from": "texec",
+      "to": "results",
+      "label": "module output to UnifiedTaskResult, then final_q",
+      "role": "main"
+    },
+    {
+      "id": "results-strat",
+      "from": "results",
+      "to": "strat",
+      "label": "next task in lockstep",
+      "role": "return"
+    },
+    {
+      "id": "module-failed",
+      "from": "module",
+      "to": "failed",
+      "label": "module raises",
+      "role": "error"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "When a task fails",
+      "items": [
+        "A failed result marks its host failed inside _process_pending_results, via iterator.mark_host_failed",
+        "The failed host leaves the lockstep batch; the rescue and always sections of its block still run",
+        "max_fail_percentage can end the whole play early, with the no-hosts-remaining callback"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "The lockstep loop",
+      "items": [
+        "The linear strategy keeps every host on the same task: no host moves on until the current task is done",
+        "TaskExecutor.run() delegates to _execute_internal(), which templates the task, sets up the connection and calls the action plugin",
+        "A meta: flush_handlers task is inserted by Play.compile so handlers run at section boundaries",
+        "Each task is a separate forked worker process; the controller keeps the shared result queue"
+      ]
+    }
+  ]
+}

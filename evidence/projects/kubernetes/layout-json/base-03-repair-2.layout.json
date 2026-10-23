@@ -1,0 +1,48 @@
+{
+  "contract": "readable-v2",
+  "diagnostics": [
+    {
+      "code": "workflow/route-preset-conflict",
+      "severity": "error",
+      "message": "Workflow edge \"write->api\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+      "subject": {
+        "diagramType": "workflow",
+        "edge": null,
+        "from": "write",
+        "to": "api",
+        "route": "return-left"
+      },
+      "evidence": {
+        "invariant": "perpendicular endpoint-side direction",
+        "attemptedCandidateFamily": "return-left",
+        "points": [
+          [
+            913.5999999999999,
+            540
+          ],
+          [
+            20,
+            540
+          ],
+          [
+            20,
+            119
+          ],
+          [
+            248,
+            119
+          ]
+        ],
+        "fromSide": "left",
+        "toSide": "right",
+        "requiredEndpointStubPx": 8,
+        "requiredInteriorSegmentPx": 16,
+        "requiredDirectClearancePx": 28
+      },
+      "supportedFixes": [
+        "set edge \"write->api\" route to verified preset \"outside-right\"",
+        "remove route from edge \"write->api\" so readable-v2 can use its verified automatic candidate"
+      ]
+    }
+  ]
+}

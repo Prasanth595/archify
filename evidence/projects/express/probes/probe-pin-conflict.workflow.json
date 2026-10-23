@@ -1,0 +1,315 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Express 5 Request Lifecycle",
+    "locale": "en",
+    "output": "express-request-lifecycle.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/expressjs/express",
+      "provider": "github",
+      "revision": "0dee2c52c7c873498f8ed7d8ee4ddd0a04d3ada8"
+    }
+  },
+  "lanes": [
+    {
+      "id": "net",
+      "label": "Network Boundary"
+    },
+    {
+      "id": "app",
+      "label": "Express Application"
+    },
+    {
+      "id": "objs",
+      "label": "Request / Response Objects"
+    },
+    {
+      "id": "err",
+      "label": "Error Handling",
+      "variant": "exception"
+    }
+  ],
+  "phases": [
+    {
+      "id": "intake",
+      "label": "Receive",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "dispatch",
+      "label": "Dispatch",
+      "fromCol": 2,
+      "toCol": 3,
+      "variant": "emphasis"
+    },
+    {
+      "id": "respond",
+      "label": "Respond",
+      "fromCol": 4,
+      "toCol": 5
+    }
+  ],
+  "groups": [
+    {
+      "id": "app_core",
+      "label": "Application core",
+      "lane": "app",
+      "fromCol": 2,
+      "toCol": 5
+    },
+    {
+      "id": "error_path",
+      "label": "Error propagation",
+      "lane": "err",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "security"
+    }
+  ],
+  "mainPath": [
+    "client",
+    "server",
+    "handle",
+    "router",
+    "mw",
+    "route",
+    "send"
+  ],
+  "nodes": [
+    {
+      "id": "client",
+      "lane": "net",
+      "col": 0,
+      "type": "external",
+      "label": "HTTP Client",
+      "sublabel": "GET /users/42"
+    },
+    {
+      "id": "server",
+      "lane": "net",
+      "col": 1,
+      "type": "backend",
+      "label": "Node HTTP Server",
+      "sublabel": "http.createServer(app)",
+      "sources": [
+        {
+          "path": "lib/application.js",
+          "line": 598,
+          "end_line": 606,
+          "label": "app.listen()"
+        }
+      ]
+    },
+    {
+      "id": "handle",
+      "lane": "app",
+      "col": 2,
+      "type": "backend",
+      "label": "app.handle()",
+      "sublabel": "binds req and res",
+      "sources": [
+        {
+          "path": "lib/application.js",
+          "line": 152,
+          "end_line": 178,
+          "label": "app.handle()"
+        }
+      ]
+    },
+    {
+      "id": "router",
+      "lane": "app",
+      "col": 3,
+      "type": "backend",
+      "label": "Router Dispatch",
+      "sublabel": "matches path and method",
+      "sources": [
+        {
+          "path": "lib/application.js",
+          "line": 69,
+          "end_line": 82,
+          "label": "lazy router getter"
+        },
+        {
+          "path": "package.json",
+          "line": 57,
+          "end_line": 57,
+          "label": "router dependency"
+        }
+      ]
+    },
+    {
+      "id": "mw",
+      "lane": "app",
+      "col": 4,
+      "type": "backend",
+      "label": "Middleware Stack",
+      "sublabel": "app.use() order",
+      "sources": [
+        {
+          "path": "lib/application.js",
+          "line": 190,
+          "end_line": 244,
+          "label": "app.use()"
+        }
+      ]
+    },
+    {
+      "id": "route",
+      "lane": "app",
+      "col": 5,
+      "type": "backend",
+      "label": "Route Handler",
+      "sublabel": "app.get(path, fn)",
+      "sources": [
+        {
+          "path": "lib/application.js",
+          "line": 471,
+          "end_line": 482,
+          "label": "app[method]()"
+        }
+      ]
+    },
+    {
+      "id": "req",
+      "lane": "objs",
+      "col": 2,
+      "type": "backend",
+      "label": "Request Object",
+      "sublabel": "req and res prototypes",
+      "sources": [
+        {
+          "path": "lib/express.js",
+          "line": 44,
+          "end_line": 52,
+          "label": "app.request / app.response"
+        }
+      ]
+    },
+    {
+      "id": "send",
+      "lane": "objs",
+      "col": 4,
+      "type": "backend",
+      "label": "res.send() / res.json()",
+      "sublabel": "Content-Type, ETag, length",
+      "sources": [
+        {
+          "path": "lib/response.js",
+          "line": 126,
+          "end_line": 222,
+          "label": "res.send()"
+        }
+      ]
+    },
+    {
+      "id": "final",
+      "lane": "err",
+      "col": 5,
+      "type": "backend",
+      "label": "finalhandler",
+      "sublabel": "default error response",
+      "sources": [
+        {
+          "path": "lib/application.js",
+          "line": 152,
+          "end_line": 157,
+          "label": "done = finalhandler(...)"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-server",
+      "from": "client",
+      "to": "server",
+      "label": "HTTP request",
+      "variant": "default"
+    },
+    {
+      "id": "server-handle",
+      "from": "server",
+      "to": "handle",
+      "label": "app(req, res)",
+      "variant": "default"
+    },
+    {
+      "id": "handle-router",
+      "from": "handle",
+      "to": "router",
+      "label": "router.handle()",
+      "variant": "emphasis"
+    },
+    {
+      "id": "handle-req",
+      "from": "handle",
+      "to": "req",
+      "label": "req / res",
+      "variant": "default"
+    },
+    {
+      "id": "router-mw",
+      "from": "router",
+      "to": "mw",
+      "label": "next layer",
+      "variant": "default"
+    },
+    {
+      "id": "mw-route",
+      "from": "mw",
+      "to": "route",
+      "label": "next()",
+      "variant": "default"
+    },
+    {
+      "id": "route-send",
+      "from": "route",
+      "to": "send",
+      "label": "res.send()",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mw-final",
+      "from": "mw",
+      "to": "final",
+      "label": "next(err)",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "route-final",
+      "from": "route",
+      "to": "final",
+      "label": "next(err)",
+      "variant": "security",
+      "role": "error",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "route": "bottom-channel"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Where matching happens",
+      "items": [
+        "Express 5 has no lib/router: path matching is the npm router package",
+        "app.init() creates the Router lazily on first access",
+        "app.route() and app.get() register isolated Route stacks"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Error propagation",
+      "items": [
+        "next(err) skips the remaining handlers and reaches done",
+        "done is the finalhandler built in app.handle()",
+        "logerror prints the error unless NODE_ENV is test"
+      ]
+    }
+  ]
+}

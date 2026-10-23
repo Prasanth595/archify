@@ -1,0 +1,37 @@
+{
+  "project": "kubernetes",
+  "repo": "https://github.com/kubernetes/kubernetes.git",
+  "revision": "95f9a388b709638838f78bba3ab1f6c8aaf7a39f",
+  "taskPrompt": "Using the Kubernetes source in this repository, produce a workflow diagram that explains the Deployment controller's reconcile loop end to end.\n\nThe diagram must show:\n\n1. How a change reaches the controller. How a Deployment object change in the API server is observed, cached locally, and turned into a unit of controller work (watch -> local cache -> event handler -> workqueue).\n2. How work is scheduled and retried. How a queued key is picked up by a worker, and what happens when the sync step fails - the rate-limited requeue and what becomes of the key once the retry budget is exhausted.\n3. How the reconcile writes back. How the reconcile step reads the desired state, works out the desired ReplicaSet set, and writes the result back to the API server - closing the loop, since the write is itself a change the controller observes.\n\nRequirements:\n\n- Ground every step in real source files from this repository and cite them on the diagram.\n- Show the retry/backoff path as a distinct branch, not inline in the happy path.\n- Use a workflow diagram (not a generic architecture overview): lanes for ownership/runtime boundaries, a left-to-right happy path, and the write-back as a return edge that closes the loop.",
+  "model": "MiniMax-M3 (minimax-M3)",
+  "settings": "quality=showcase (CLI --quality showcase); schema_version=2 (readable-v2); meta.viewBox omitted (implicit measured canvas); no explicit node widths; no explicit via/labelAt/channelX/channelY pins; automatic routes except one repaired fromSide pin; --repo-root <src-repo-k8s> so sources are verified against the pinned checkout",
+  "base": {
+    "repairRounds": 3,
+    "finalizeInvocations": 4,
+    "delivered": true,
+    "totalElapsedSec": 243.7,
+    "cliExecSec": 8.076
+  },
+  "candidate": {
+    "repairRounds": 3,
+    "finalizeInvocations": 4,
+    "delivered": true,
+    "totalElapsedSec": 98.5,
+    "cliExecSec": 8.158
+  },
+  "measurements": {
+    "totalElapsedSecDefinition": "wall-clock authoring loop per side, measured from the side's draft JSON mtime to its passing finalize receipt mtime (base 00:03:14->00:07:18, candidate 00:08:02->00:09:41). The candidate side reused the already-formed understanding of the diagnostic vocabulary, so its wall clock is lower for a learning/ordering reason, not a tool reason.",
+    "cliExecSecDefinition": "sum of every elapsed= value in that side's commands.log (4 finalize + 1 replay-of-candidate-final + 1 visual-check)",
+    "cliExecSecFinalizeOnly": {
+      "base": 4.248,
+      "candidate": 4.433
+    },
+    "draftSha256": "4a79c5aaa31d522711d2929a5ffaa61d3741fd0fe3164784b69ce3107d02e463",
+    "finalCandidateSha256": "4262bb0cd14fd3e07b2f138b0c76714b0e2d93dc5c361461c547ce585f174e9f",
+    "finalJsonIdenticalBothSides": true,
+    "finalizeReceiptDiagnosticsIdenticalBothSides": true,
+    "partialLayoutInFinalizeReceipt": false,
+    "partialLayoutReachableVia": "validate workflow <input> --layout-json (candidate CLI only)",
+    "screenshotsIdenticalBothSides": true
+  }
+}

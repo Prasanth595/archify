@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/03-repair-2.workflow.json",
+    "sha256": "e671bef09557b32555eb482560ed2a293aadaba6fa4f80fc18854bece6caabae",
+    "bytes": 7520
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/out-03.html"
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "workflow/route-preset-conflict",
+      "severity": "error",
+      "message": "Workflow edge \"write->api\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+      "subject": {
+        "diagramType": "workflow",
+        "edge": null,
+        "from": "write",
+        "to": "api",
+        "route": "return-left"
+      },
+      "evidence": {
+        "invariant": "perpendicular endpoint-side direction",
+        "attemptedCandidateFamily": "return-left",
+        "points": [
+          [
+            913.5999999999999,
+            540
+          ],
+          [
+            20,
+            540
+          ],
+          [
+            20,
+            119
+          ],
+          [
+            248,
+            119
+          ]
+        ],
+        "fromSide": "left",
+        "toSide": "right",
+        "requiredEndpointStubPx": 8,
+        "requiredInteriorSegmentPx": 16,
+        "requiredDirectClearancePx": 28
+      }
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/out-03.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/out-03.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 959,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/03-repair-2.workflow.json",
+    "constraint": "Preserve unaffected semantics and geometry; apply each diagnostic's supportedFixes, or the fix its message names, and do not replace the whole candidate.",
+    "then": "finalize-once"
+  }
+}

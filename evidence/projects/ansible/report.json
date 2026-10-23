@@ -1,0 +1,61 @@
+{
+  "project": "ansible",
+  "repo": "https://github.com/ansible/ansible",
+  "revision": "ba22fe441408f1ffc943950e0ceec8ad624514da",
+  "taskPrompt": "How does an Ansible playbook actually execute one task in this codebase? Walk the reader from the playbook file, through play compilation and the strategy loop, out to the forked worker process that runs the task, onto the managed host where the module runs, and back to the controller with the result. Also show where a failed task goes, and how a notified handler is eventually triggered. Scope: stay inside the task-execution path; inventory parsing, module packaging and the connection back ends are out of scope except where the execution path calls into them. Ground every node and every claim in the source under lib/ansible/ at the pinned revision and attach the repository-relative sources ranges actually inspected. Name the real call sites (PlaybookExecutor.run, Play.compile, TaskQueueManager.run, the linear StrategyModule.run, _queue_task, WorkerProcess.run, TaskExecutor._execute_internal, _process_pending_results) rather than inventing generic stages. The controller process, the forked worker process and the managed host are different runtime boundaries: show them as separate lanes, with the failure path in a visibly distinct lane. The result has to come back to the controller: show the return, not just the outbound call. A handler notification is only recorded while the result is processed; the handler itself runs later, at the implicit meta: flush_handlers task.",
+  "model": "MiniMax-M3",
+  "settings": "quality=showcase; schema_version=2 (readable-v2); meta.viewBox omitted (implicit measured canvas); node width omitted (auto-grown to the 200px cap); automatic routes; --repo-root <src-ansible> so sources are verified against the pinned checkout",
+  "base": {
+    "repairRounds": 2,
+    "finalizeInvocations": 3,
+    "delivered": true,
+    "totalElapsedSec": 260.0,
+    "cliExecSec": 6.366,
+    "finalArtifact": "base/03-repair-2.html",
+    "finalCandidate": "base/03-repair-2.workflow.json",
+    "note": "totalElapsedSec is the author-side wall clock for this side including source reading and draft authoring; it is an estimate. cliExecSec is the exact sum of the elapsed= values in base/commands.log (3 finalize runs + 1 frozen replay)."
+  },
+  "candidate": {
+    "repairRounds": 2,
+    "finalizeInvocations": 3,
+    "delivered": true,
+    "totalElapsedSec": 190.0,
+    "cliExecSec": 5.403,
+    "finalArtifact": "candidate/03-repair-2.html",
+    "finalCandidate": "candidate/03-repair-2.workflow.json",
+    "note": "This chain ran after the base chain in the same authoring session, so the source reading and the draft were already understood. The lower wall clock is a learning/ordering effect, not a tool effect; the CLI time itself is 5.403s against the base's 6.366s for the same four commands."
+  },
+  "failureClasses": [
+    "layout/constraint (label wider than the measured node width)",
+    "workflow/sublabel-readability (implicit canvas 1458px over the 1240px the text row needs)"
+  ],
+  "replay": {
+    "frozenCandidateFinal": {
+      "base": "base/replay-of-candidate-final.json",
+      "candidate": "candidate/replay-of-candidate-final.json",
+      "result": "Both CLIs pass the candidate side's final JSON: validate pass / deliver pass / check pass / browser-check pass, diagnostics []."
+    }
+  },
+  "partialLayoutInFinalizeReceipt": {
+    "base": false,
+    "candidate": true,
+    "note": "The candidate's 01-draft finalize receipt carries the payload at the top level of the stdout JSON and in the sidecar receipt. The base receipt has no partialLayout key at all."
+  },
+  "partialLayoutContents": {
+    "columns": [144, 368, 596, 818, 1077.2, 1361.6],
+    "nodeFrames": 10,
+    "edges": 11,
+    "edgesWithRejectedCandidateGeometry": 8,
+    "edgesWithCachedRoutePoints": 11,
+    "note": "Every edge carries its cached route points. Eight of them also carry the 17 router candidate families with their rejected point sets."
+  },
+  "screenshots": {
+    "tool": "node /tmp/archify-960/archify/bin/archify.mjs visual-check <out.html> --json --out-dir screenshots/<side>",
+    "base": "screenshots/base/",
+    "candidate": "screenshots/candidate/",
+    "viewports": ["1440x900", "2048x1320"],
+    "themes": ["light", "dark"],
+    "note": "Same capture tool, same viewports and same themes on both sides. The PNGs differ only by a handful of bytes, consistent with the two sides converging on the same final candidate."
+  },
+  "verdict": "equal — same repair rounds, same finalize invocations, same delivered outcome, same final bytes"
+}

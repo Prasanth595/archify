@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/vite/candidate/01-draft.workflow.json",
+    "sha256": "72d3e63f8b3a5f23005a6cca5457476e7e39cccdab3bdf1b11905e4a4ef7b2d7",
+    "bytes": 9043
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/vite/candidate/out-01.html"
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "workflow/unexpected-root",
+      "severity": "error",
+      "message": "Workflow node \"depsOptimizer\" has no incoming edge and is not declared in semanticChecks.allowedRoots.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "depsOptimizer",
+        "path": "/semanticChecks/allowedRoots"
+      },
+      "evidence": {
+        "incomingEdges": 0,
+        "allowedRoots": [
+          "browser",
+          "buildEntry"
+        ]
+      },
+      "supportedFixes": [
+        "add the missing incoming edge to \"depsOptimizer\"",
+        "declare \"depsOptimizer\" in semanticChecks.allowedRoots if it is an intentional source"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/vite/candidate/out-01.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/vite/candidate/out-01.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 239,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/private/tmp/archify-960/evidence/projects/vite/candidate/01-draft.workflow.json",
+    "constraint": "Preserve unaffected semantics and geometry; apply each diagnostic's supportedFixes, or the fix its message names, and do not replace the whole candidate.",
+    "then": "finalize-once"
+  }
+}

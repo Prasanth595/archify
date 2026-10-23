@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "startedAt": "2026-10-23T16:38:39.073Z",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/flask/base/01-draft.workflow.json",
+    "sha256": "91067d14a5f5d8fdaecabde88db20fdac9f703676e8980caa007a222234552cb",
+    "bytes": 7505
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/flask/base/replay-of-draft-01.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": null,
+      "command": [
+        "/Users/hermes/.hermes/node/bin/node",
+        "/private/tmp/archify-base/archify/bin/archify.mjs",
+        "deliver",
+        "workflow",
+        "/private/tmp/archify-960/evidence/projects/flask/base/01-draft.workflow.json",
+        "/private/tmp/archify-960/evidence/projects/flask/base/replay-of-draft-01.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/tmp/archify-960/evidence/projects/flask/src-flask",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "deliver",
+        "receiptId": "1a1b4af3-c3f7-4187-8e92-85b979edc8d3",
+        "stage": "render",
+        "type": "workflow",
+        "input": "/private/tmp/archify-960/evidence/projects/flask/base/01-draft.workflow.json",
+        "output": "/private/tmp/archify-960/evidence/projects/flask/base/replay-of-draft-01.html",
+        "error": "Workflow layout validation failed:\n- [composition/ambiguous-corridor] showcase workflow edges[0] id \"wsgi-call\" \"wsgi-server\" -> \"wsgi-app\" shares a 35px corridor with edges[10] id \"unhandled-exception\" \"dispatch\" -> \"user-exception\" at [199, 201] -> [234, 201] (segments 3 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+        "diagnostics": [
+          {
+            "code": "composition/ambiguous-corridor",
+            "severity": "error",
+            "message": "[composition/ambiguous-corridor] showcase workflow edges[0] id \"wsgi-call\" \"wsgi-server\" -> \"wsgi-app\" shares a 35px corridor with edges[10] id \"unhandled-exception\" \"dispatch\" -> \"user-exception\" at [199, 201] -> [234, 201] (segments 3 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+            "subject": {
+              "diagramType": "workflow",
+              "collection": "edges",
+              "index": 0,
+              "id": "wsgi-call",
+              "from": "wsgi-server",
+              "to": "wsgi-app"
+            },
+            "evidence": {
+              "otherRelationship": {
+                "diagramType": "workflow",
+                "collection": "edges",
+                "index": 10,
+                "id": "unhandled-exception",
+                "from": "dispatch",
+                "to": "user-exception"
+              },
+              "overlapLengthPx": 35,
+              "minimumPx": 8,
+              "from": [
+                199,
+                201
+              ],
+              "to": [
+                234,
+                201
+              ],
+              "segmentIndex": 3,
+              "otherSegmentIndex": 1
+            },
+            "supportedFixes": [
+              "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+            ]
+          }
+        ],
+        "provenance": "absent",
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "not-run",
+      "execution": "blocked-by-validate"
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "error",
+      "message": "[composition/ambiguous-corridor] showcase workflow edges[0] id \"wsgi-call\" \"wsgi-server\" -> \"wsgi-app\" shares a 35px corridor with edges[10] id \"unhandled-exception\" \"dispatch\" -> \"user-exception\" at [199, 201] -> [234, 201] (segments 3 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 0,
+        "id": "wsgi-call",
+        "from": "wsgi-server",
+        "to": "wsgi-app"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 10,
+          "id": "unhandled-exception",
+          "from": "dispatch",
+          "to": "user-exception"
+        },
+        "overlapLengthPx": 35,
+        "minimumPx": 8,
+        "from": [
+          199,
+          201
+        ],
+        "to": [
+          234,
+          201
+        ],
+        "segmentIndex": 3,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/flask/base/replay-of-draft-01.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/flask/base/replay-of-draft-01.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "validate",
+  "finishedAt": "2026-10-23T16:38:39.799Z",
+  "durationMs": 726,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:03:41.479Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

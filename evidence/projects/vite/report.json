@@ -1,0 +1,29 @@
+{
+  "project": "vite",
+  "repo": "https://github.com/vitejs/vite",
+  "revision": "82e7aa0374a15e1c67594557ab5893c91578f897",
+  "taskPrompt": "# Authoring task prompt (vite)\n\nExplain how Vite's dev server and its production build pipeline actually work in this codebase.\n\nConcretely, I want one diagram that answers:\n\n1. **Dev request path** — what happens end to end when the browser asks the dev server for a\n   module during `vite dev`: from the HTTP request, through the Connect middleware stack, the\n   module graph, and the plugin pipeline, to the response that is sent back to the browser.\n2. **Build path** — what happens when `vite build` produces the production bundle: from config\n   resolution through the build plugins and the bundler to the files that end up in the output\n   directory.\n3. **Where the plugin pipeline sits in each path** — the `resolveId` / `load` / `transform` hooks,\n   the `pre` / `normal` / `post` plugin ordering, and the dependency optimizer that pre-bundles\n   dependencies for dev.\n4. **Where the module graph, the dependency optimizer, and the emitted build output live**, so it\n   is visible that the dev path and the build path are two separate runtime paths that share one\n   plugin list.\n\nUse the real source under `packages/vite/src/node/` as the authority — in particular\n`server/index.ts`, `server/middlewares/transform.ts`, `server/transformRequest.ts`,\n`server/pluginContainer.ts`, `plugins/index.ts`, `build.ts` and `optimizer/index.ts` — and attach\nthe source locations you relied on to the nodes whose claims they support.\n\nShow the two flows as separate lanes, with the shared plugin pipeline visible as its own lane.",
+  "model": "MiniMax-M3 (minimax-M3), worker session mvs_228fa65fa117404fbee9efca82856295",
+  "settings": "schema_version 2 (readable-v2 contract), meta.quality_profile=showcase, finalize --quality showcase --json --repo-root <clone>, meta.locale=en, meta.repository pinned to the 40-char HEAD, no meta.viewBox (intrinsic canvas)",
+  "base": {
+    "repairRounds": 1,
+    "finalizeInvocations": 2,
+    "delivered": true,
+    "totalElapsedSec": 24.7,
+    "cliExecSec": 4.226
+  },
+  "candidate": {
+    "repairRounds": 1,
+    "finalizeInvocations": 2,
+    "delivered": true,
+    "totalElapsedSec": 235.0,
+    "cliExecSec": 6.517
+  },
+  "notes": {
+    "cliTreeMutation": "The candidate tree /tmp/archify-960/archify changed at 2026-10-24 00:30:22 (uncommitted #934 edits to archify/bin/archify.mjs, archify/renderers/shared/diagnostics.mjs, archify/renderers/workflow/render-workflow.mjs; NOT made by this worker). The candidate authoring loop ran at 00:12-00:16 (pre-mutation tree) and was re-measured at 00:31 (post-mutation tree). Both runs give the same first diagnostic, the same repair and the same delivered result. The base tree /tmp/archify-base is git-clean and unchanged.",
+    "cliExecSecComposition": "cliExecSec is the literal sum of elapsed= over that side's commands.log. base = 4.226s over 3 invocations (2 finalize + 1 replay). candidate = 6.517s over 6 invocations (2 finalize + 1 replay, then 1 re-measurement finalize of the draft + 1 replay2 + 1 probe finalize after the CLI mutation). Authoring-loop-only finalize time: base 2.362s, candidate 2.423s.",
+    "totalElapsedSecDefinition": "Wall-clock from that side's first failed finalize to its passing finalize. base 24.7s. candidate 235.0s = 145.1s original window + 95s post-mutation re-measurement window; ~120s of the candidate window was cross-CLI compiler-diff investigation (comparison analysis, not authoring), so the candidate's authoring-only window is ~25s, the same as base's.",
+    "partialLayoutSurfaces": "With the post-00:30 candidate tree, partialLayout appears in 'deliver workflow <json> --json' and 'validate workflow <json> --layout-json' receipts (base: absent in both). It does NOT appear in 'finalize workflow <json> --json' on either side, because finalize fails at the validate stage and does not forward the payload. This slice's authoring loop therefore never surfaces the payload to the author.",
+    "probe": "probe/ holds a supplementary layout-failure probe (an explicit via pin on edge graph-lookup) used only to measure what partialLayout would carry. It is not part of either authoring loop."
+  }
+}
