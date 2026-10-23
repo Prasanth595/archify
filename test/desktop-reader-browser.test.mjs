@@ -631,6 +631,7 @@ test('authored Architecture canvas keeps its scale and accepts readable document
   assert.match(wfHtml, /data-reader-fit="authored-height"/);
   const wfResult = await runVisualCheck({ artifactPath: wfArtifact, chromePath });
   assert.equal(wfResult.exitCode, 0, JSON.stringify(wfResult.receipt.diagnostics));
+  assert.ok(wfResult.receipt.containment.viewports.some((viewport) => viewport.overflowY));
   for (const viewport of wfResult.receipt.containment.viewports) {
     assert.equal(viewport.readerFit, 'authored-height');
     assert.equal(viewport.overflowX, false);
