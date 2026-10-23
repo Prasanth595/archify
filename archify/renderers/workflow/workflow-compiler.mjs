@@ -5182,6 +5182,12 @@ function readableControlledRoute(edge, from, to) {
 let obstacleSequence = 0;
 function registerRouted(edge, routed) {
   pathCache.set(edge, routed);
+  // A relationship that now has a route no longer carries rejected router
+  // candidates. Without this, a later failure on a *different* relationship
+  // would report the earlier relationship's stale attempts as if they
+  // belonged to the failing edge.
+  partialLayoutFailedCandidates.delete(edge);
+  partialLayoutFailingEdges.delete(edge);
   const sequence = obstacleSequence++;
   const routeExtent = routeBounds(routed.points);
   obstacleGrid.insert(routeExtent, { kind: 'route', edge, routed, sequence, bounds: routeExtent });

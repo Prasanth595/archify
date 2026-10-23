@@ -362,18 +362,28 @@ test('a failing edge that already routed keeps its cached route geometry', () =>
     `expected an explicit-pin-conflict: ${JSON.stringify(receipt.diagnostics)}`);
   assert.ok(receipt.partialLayout,
     'partialLayout must be present: ' + JSON.stringify(receipt, null, 2));
-  const routedAndFailing = receipt.partialLayout.edges.filter((edge) => (
-    Array.isArray(edge.attemptedCandidateFamilies)
-      && edge.attemptedCandidateFamilies.length > 0
-      && Array.isArray(edge.points) && edge.points.length > 0
-  ));
-  assert.ok(routedAndFailing.length > 0,
-    `the edge that routed before the later check failed must keep its points: ${JSON.stringify(receipt.partialLayout.edges)}`);
-  for (const edge of routedAndFailing) {
+  const edges = receipt.partialLayout.edges;
+  // The relationship that routed before the later check failed must still
+  // carry its route points. Its rejected candidate list is legitimately
+  // empty now: a relationship with a route never failed the router.
+  const routed = edges.filter((edge) => Array.isArray(edge.points) && edge.points.length > 0);
+  assert.ok(routed.length > 0,
+    `the edge that routed before the later check failed must keep its points: ${JSON.stringify(edges)}`);
+  for (const edge of routed) {
     for (const point of edge.points) {
       assert.ok(Array.isArray(point) && point.length === 2 && point.every(Number.isFinite),
         `route points must stay finite coordinate pairs: ${JSON.stringify(edge.points)}`);
     }
+  }
+  // And a relationship that never routed must not claim another
+  // relationship's rejected candidates.
+  const withRejectedGeometry = edges.filter((edge) => (
+    Array.isArray(edge.attemptedCandidateFamilies)
+      && edge.attemptedCandidateFamilies.some((entry) => Array.isArray(entry.points) && entry.points.length > 0)
+  ));
+  for (const edge of withRejectedGeometry) {
+    assert.equal(Array.isArray(edge.points) && edge.points.length > 0, true,
+      `a relationship that routed must not also carry rejected router attempts: ${JSON.stringify(edge)}`);
   }
 });
 
