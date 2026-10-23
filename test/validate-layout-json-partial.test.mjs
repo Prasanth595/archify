@@ -68,6 +68,113 @@ function explicitPinConflictWorkflow() {
   };
 }
 
+function parallelEdgePinConflictWorkflow() {
+  // Two parallel edges between the same pair of nodes, neither authored with
+  // an id. The second one carries an infeasible pinned side pair, so the
+  // failing relationship cannot be resolved from from/to alone.
+  return {
+    schema_version: 2,
+    diagram_type: 'workflow',
+    meta: {
+      title: 'Parallel edge pin conflict workflow',
+      output: 'layout-json-parallel.html',
+      legend: { mode: 'hidden' },
+      quality_profile: 'showcase',
+    },
+    lanes: [{ id: 'l0', label: 'L0' }, { id: 'l1', label: 'L1' }],
+    nodes: [
+      { id: 'a', lane: 'l0', col: 0, type: 'backend', label: 'A' },
+      { id: 'b', lane: 'l1', col: 0, type: 'backend', label: 'B' },
+    ],
+    edges: [
+      { from: 'a', to: 'b' },
+      { from: 'a', to: 'b', fromSide: 'bottom', toSide: 'top' },
+    ],
+  };
+}
+
+function threeParallelEdgeWorkflow() {
+  // Three parallel edges between the same pair of nodes, none authored with
+  // an id. A from/to match would resolve to whichever edge sorts first, so
+  // every edge must be attributed by its own exact identity.
+  return {
+    schema_version: 2,
+    diagram_type: 'workflow',
+    meta: {
+      title: 'Three parallel edge workflow',
+      output: 'layout-json-three-parallel.html',
+      legend: { mode: 'hidden' },
+      quality_profile: 'showcase',
+    },
+    lanes: [{ id: 'l0', label: 'L0' }, { id: 'l1', label: 'L1' }],
+    nodes: [
+      { id: 'a', lane: 'l0', col: 0, type: 'backend', label: 'A' },
+      { id: 'b', lane: 'l1', col: 0, type: 'backend', label: 'B' },
+    ],
+    edges: [
+      { from: 'a', to: 'b' },
+      { from: 'a', to: 'b', fromSide: 'bottom', toSide: 'top' },
+      { from: 'a', to: 'b', label: 'third' },
+    ],
+  };
+}
+
+function nonRouteConstraintFailureWorkflow() {
+  // A measured layout constraint fails after the edge already routed. The
+  // failure code is not one of the route codes, so a partial layout that is
+  // gated on those codes would be omitted entirely.
+  return {
+    schema_version: 2,
+    diagram_type: 'workflow',
+    meta: {
+      title: 'Non-route constraint failure workflow',
+      output: 'layout-json-constraint.html',
+      legend: { mode: 'hidden' },
+      quality_profile: 'showcase',
+    },
+    lanes: [{ id: 'main', label: 'Main' }],
+    nodes: [
+      {
+        id: 'a', lane: 'main', col: 0, type: 'backend',
+        label: 'A node with an extremely long label that measures very wide indeed',
+      },
+      {
+        id: 'b', lane: 'main', col: 1, type: 'backend',
+        label: 'B node with an extremely long label that measures very wide indeed',
+      },
+    ],
+    edges: [{ id: 'ab', from: 'a', to: 'b' }],
+  };
+}
+
+function routedThenFailedWorkflow() {
+  // The edge routes successfully, and only afterwards does the label-over-node
+  // clearance check fail. Its cached route points are usable evidence, so the
+  // failing-edge branch must not skip them.
+  return {
+    schema_version: 2,
+    diagram_type: 'workflow',
+    meta: {
+      title: 'Routed then failed workflow',
+      output: 'layout-json-routed-then-failed.html',
+      legend: { mode: 'hidden' },
+      quality_profile: 'showcase',
+    },
+    lanes: [{ id: 'main', label: 'Main' }],
+    nodes: [
+      { id: 'a', lane: 'main', col: 0, type: 'backend', label: 'A' },
+      { id: 'b', lane: 'main', col: 3, type: 'backend', label: 'B' },
+      { id: 'c', lane: 'main', col: 1, type: 'backend', label: 'C' },
+    ],
+    edges: [{
+      from: 'a',
+      to: 'b',
+      label: 'a very long label that will certainly overlap node C',
+      labelAt: [140, 120],
+    }],
+  };
+}
+
 function runValidate(workflow, { quality } = {}) {
   const input = path.join(tmp, `fixture-${Math.random().toString(36).slice(2)}.workflow.json`);
   fs.writeFileSync(input, JSON.stringify(workflow));
@@ -176,6 +283,85 @@ test('compileWorkflow exposes a partialLayout field on the result object (not in
   assert.ok(Array.isArray(result.partialLayout.columns) && result.partialLayout.columns.length > 0);
   assert.ok(Array.isArray(result.partialLayout.nodes) && result.partialLayout.nodes.length > 0);
   assert.ok(Array.isArray(result.partialLayout.edges) && result.partialLayout.edges.length > 0);
+});
+
+test('partialLayout survives a failure whose diagnostic is not a route code', () => {
+  // The measured constraint failure is reported as layout/constraint, which is
+  // not one of the route codes. Gating the payload on those codes would omit
+  // the partial layout even though the compiler already measured the grid,
+  // the node frames, and the routed edge geometry.
+  const result = runValidate(nonRouteConstraintFailureWorkflow(), { quality: 'showcase' });
+  assert.equal(result.status, 1, result.stderr);
+  const receipt = JSON.parse(result.stdout);
+  assert.ok(receipt.diagnostics.length > 0);
+  assert.equal(
+    receipt.diagnostics.some(({ code }) => code === 'workflow/explicit-pin-conflict'
+      || code === 'workflow/solver-budget-exhausted'),
+    false,
+    'this fixture must fail on a non-route code',
+  );
+  assert.ok(receipt.partialLayout,
+    'partialLayout must survive a non-route failure: '
+      + JSON.stringify(receipt, null, 2));
+  assert.equal(receipt.partialLayout.partial, true);
+  assert.ok(Array.isArray(receipt.partialLayout.columns) && receipt.partialLayout.columns.length > 0,
+    'partialLayout.columns must keep the measured column grid');
+  assert.ok(receipt.partialLayout.nodes.length > 0,
+    'partialLayout.nodes must keep the measured node frames');
+  assert.ok(receipt.partialLayout.edges.length > 0,
+    'partialLayout.edges must keep the routed edge geometry');
+  const routed = receipt.partialLayout.edges.find((edge) => edge.id === 'ab');
+  assert.ok(routed, 'the routed edge must be reported: '
+    + JSON.stringify(receipt.partialLayout.edges));
+  assert.ok(Array.isArray(routed.points) && routed.points.length > 0,
+    `the routed edge must keep its cached route points: ${JSON.stringify(routed)}`);
+});
+
+test('parallel edges are attributed to the relationship that actually failed', () => {
+  // Three parallel edges share from/to and carry no authored id, so a from/to
+  // match resolves to whichever edge sorts first. Every failing relationship
+  // must be reported with its own evidence, and none may be dropped.
+  const result = runValidate(threeParallelEdgeWorkflow(), { quality: 'showcase' });
+  assert.equal(result.status, 1, result.stderr);
+  const receipt = JSON.parse(result.stdout);
+  assert.ok(receipt.partialLayout,
+    'partialLayout must be present: ' + JSON.stringify(receipt, null, 2));
+  const edges = receipt.partialLayout.edges;
+  assert.equal(edges.length, 3,
+    `every parallel relationship must be reported, none dropped: ${JSON.stringify(edges)}`);
+  // Each exhausted router carries its own rejected candidate geometry. A
+  // relationship resolved by from/to alone would not get its own.
+  const withRejectedGeometry = edges.filter((edge) => (
+    Array.isArray(edge.attemptedCandidateFamilies)
+      && edge.attemptedCandidateFamilies.some((entry) => Array.isArray(entry.points) && entry.points.length > 0)
+  ));
+  assert.equal(withRejectedGeometry.length, 2,
+    `the two exhausted routers must each carry their own rejected geometry: ${JSON.stringify(edges)}`);
+});
+
+test('a failing edge that already routed keeps its cached route geometry', () => {
+  // The clearance check fails after the edge routed, so the cached route
+  // points are usable evidence. The failing-edge branch must not skip them.
+  const result = runValidate(routedThenFailedWorkflow(), { quality: 'showcase' });
+  assert.equal(result.status, 1, result.stderr);
+  const receipt = JSON.parse(result.stdout);
+  assert.ok(receipt.diagnostics.some(({ code }) => code === 'workflow/explicit-pin-conflict'),
+    `expected an explicit-pin-conflict: ${JSON.stringify(receipt.diagnostics)}`);
+  assert.ok(receipt.partialLayout,
+    'partialLayout must be present: ' + JSON.stringify(receipt, null, 2));
+  const routedAndFailing = receipt.partialLayout.edges.filter((edge) => (
+    Array.isArray(edge.attemptedCandidateFamilies)
+      && edge.attemptedCandidateFamilies.length > 0
+      && Array.isArray(edge.points) && edge.points.length > 0
+  ));
+  assert.ok(routedAndFailing.length > 0,
+    `the edge that routed before the later check failed must keep its points: ${JSON.stringify(receipt.partialLayout.edges)}`);
+  for (const edge of routedAndFailing) {
+    for (const point of edge.points) {
+      assert.ok(Array.isArray(point) && point.length === 2 && point.every(Number.isFinite),
+        `route points must stay finite coordinate pairs: ${JSON.stringify(edge.points)}`);
+    }
+  }
 });
 
 process.on('exit', () => {

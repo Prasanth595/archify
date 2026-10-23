@@ -675,20 +675,36 @@ function compilerFailure(contract, diagnostics, error = diagnostics.map(({ messa
 // decided column grid, the placed node frames, and the best-attempt geometry
 // the router tried for the failing edge. Returns null when the failure has no
 // matching diagnostic or no compiled geometry is available.
-function buildPartialLayoutPayload(workflow, layout, nodes, pathCache, partialLayoutFailedCandidates, routeDiagnostics) {
+// Match a route diagnostic to the exact authored relationship. Two parallel
+// edges between the same pair of nodes are distinct relationships, so a
+// from/to match alone cannot resolve which one failed. The failing edges
+// recorded during compilation carry exact identity; the diagnostic subject is
+// used only as a fallback, and only when it is unambiguous.
+function diagnosticMatchesEdge(diagnostic, edge, workflow, failingEdges) {
+  if (failingEdges && failingEdges.has(edge)) return true;
+  const subject = diagnostic.subject || {};
+  if (subject.edge) return edge.id === subject.edge;
+  const matches = workflow.edges.filter((candidate) => (
+    candidate.from === subject.from && candidate.to === subject.to
+  ));
+  return matches.length === 1 && matches[0] === edge;
+}
+
+function buildPartialLayoutPayload(
+  workflow, layout, nodes, pathCache, partialLayoutFailedCandidates, routeDiagnostics, partialLayoutFailingEdges,
+) {
   if (!layout || !Array.isArray(layout.colXs) || !layout.colXs.every(Number.isFinite)) return null;
   if (!workflow || !Array.isArray(workflow.edges)) return null;
+  const capturedCandidates = partialLayoutFailedCandidates instanceof Map ? partialLayoutFailedCandidates : new Map();
+  const failingEdges = partialLayoutFailingEdges instanceof Set ? partialLayoutFailingEdges : new Set();
   const filteredRouteDiagnostics = (Array.isArray(routeDiagnostics) ? routeDiagnostics : [])
     .filter(({ code }) => (
       code === 'workflow/explicit-pin-conflict' || code === 'workflow/solver-budget-exhausted'
     ));
-  if (!filteredRouteDiagnostics.length) return null;
-  const failingEdge = workflow.edges.find((edge) => filteredRouteDiagnostics.some((diagnostic) => {
-    const subject = diagnostic.subject || {};
-    if (subject.edge && edge.id === subject.edge) return true;
-    if (!subject.edge && edge.from === subject.from && edge.to === subject.to) return true;
-    return false;
-  }));
+  // The diagnostic filter must not gate the payload. On the non-diagnostic
+  // path the solver-budget diagnostic is created after this call, so
+  // filtering on it alone would drop a partial layout that is otherwise
+  // fully measurable.
   const columnGrid = [...layout.colXs];
   const nodeFrames = (nodes && typeof nodes.values === 'function'
     ? [...nodes.values()]
@@ -703,40 +719,43 @@ function buildPartialLayoutPayload(workflow, layout, nodes, pathCache, partialLa
     }));
   const edges = [];
   for (const edge of workflow.edges) {
-    if (failingEdge && edge === failingEdge) {
-      const captured = partialLayoutFailedCandidates ? partialLayoutFailedCandidates.get(edge) : null;
-      const fallbackNames = (failingEdge && filteredRouteDiagnostics
-        .find((diagnostic) => {
-          const subject = diagnostic.subject || {};
-          return (subject.edge && edge.id === subject.edge)
-            || (!subject.edge && edge.from === subject.from && edge.to === subject.to);
-        })
-        ?.evidence?.attemptedCandidateFamilies) || [];
-      const attemptedCandidateFamilies = (captured && captured.length
-        ? captured
-        : fallbackNames.map((family) => ({ family, points: [] }))
-      ).map((entry) => ({
-        family: entry.family,
-        points: Array.isArray(entry.points) ? entry.points.map((point) => [...point]) : [],
-      }));
-      edges.push({
-        id: edge.id ?? null,
-        from: edge.from,
-        to: edge.to,
-        attemptedCandidateFamilies,
-      });
+    const captured = capturedCandidates.get(edge) || null;
+    const diagnostic = filteredRouteDiagnostics.find((entry) => (
+      diagnosticMatchesEdge(entry, edge, workflow, failingEdges)
+    ));
+    const routed = pathCache && pathCache.has(edge) ? pathCache.get(edge) : null;
+    const routedPoints = routed && Array.isArray(routed.points)
+      ? routed.points.filter((point) => Array.isArray(point)).map((point) => [...point])
+      : [];
+    if (!captured && !diagnostic) {
+      if (routedPoints.length) {
+        edges.push({
+          id: edge.id ?? null,
+          from: edge.from,
+          to: edge.to,
+          points: routedPoints,
+        });
+      }
       continue;
     }
-    if (pathCache && pathCache.has(edge)) {
-      const routed = pathCache.get(edge);
-      edges.push({
-        id: edge.id ?? null,
-        from: edge.from,
-        to: edge.to,
-        points: routed.points.map((point) => [...point]),
-      });
-      continue;
-    }
+    const fallbackNames = diagnostic?.evidence?.attemptedCandidateFamilies || [];
+    const attemptedCandidateFamilies = (captured && captured.length
+      ? captured
+      : fallbackNames.map((family) => ({ family, points: [] }))
+    ).map((entry) => ({
+      family: entry.family,
+      points: Array.isArray(entry.points) ? entry.points.map((point) => [...point]) : [],
+    }));
+    const entry = {
+      id: edge.id ?? null,
+      from: edge.from,
+      to: edge.to,
+      attemptedCandidateFamilies,
+    };
+    // An edge that already routed keeps that geometry even when a later pin,
+    // label, or boundary check is what failed.
+    if (routedPoints.length) entry.points = routedPoints;
+    edges.push(entry);
   }
   return {
     partial: true,
@@ -745,7 +764,6 @@ function buildPartialLayoutPayload(workflow, layout, nodes, pathCache, partialLa
     edges,
   };
 }
-
 function workflowEdgeName(edge) {
   return edge.id || `${edge.from}->${edge.to}`;
 }
@@ -1448,6 +1466,11 @@ function compileWorkflowInternal({
   // rejected candidate geometry. Populated again right before each router throw
   // that reaches the compileWorkflowInternal catch.
   let partialLayoutFailedCandidates = new Map();
+  // Exact identity of every relationship that failed during compilation.
+  // The diagnostic subject cannot always resolve it: two parallel edges
+  // between the same nodes share from/to, and an edge without an authored
+  // id carries a null subject.edge.
+  const partialLayoutFailingEdges = new Set();
   function capturePartialLayoutFailedCandidates(edge, rawCandidates) {
     if (!edge || !Array.isArray(rawCandidates) || !rawCandidates.length) return;
     const snapshot = rawCandidates.map((candidate) => ({
@@ -1457,6 +1480,7 @@ function compileWorkflowInternal({
         : [],
     }));
     partialLayoutFailedCandidates.set(edge, snapshot);
+    partialLayoutFailingEdges.add(edge);
   }
   if (!inputWorkflow || typeof inputWorkflow !== 'object' || Array.isArray(inputWorkflow)) {
     const diagnostics = [{
@@ -1936,6 +1960,7 @@ function verifiedRepairsWithLabelNudges(alternatives) {
 }
 
 function throwExplicitPinConflict(edge, invariant, evidence, supportedFixes = []) {
+  partialLayoutFailingEdges.add(edge);
   const message = `Workflow edge "${workflowEdgeName(edge)}" has explicit geometry that violates ${invariant}.`;
   const [onlyPin] = asArray(evidence?.conflictingPins);
   const authoredEdgeIndex = sourceIndexes.edges.get(edge);
@@ -1953,6 +1978,9 @@ function throwExplicitPinConflict(edge, invariant, evidence, supportedFixes = []
       edge: edge.id ?? null,
       from: edge.from,
       to: edge.to,
+      // The authored array index identifies the exact relationship. Two
+      // parallel edges between the same nodes are distinct, so from/to
+      // alone cannot resolve the failing one.
       ...(pinPath ? { path: pinPath } : {}),
     },
     evidence: { invariant, ...evidence },
@@ -5717,6 +5745,7 @@ function absoluteGeometrySizingDiagnostic() {
       // decided so feedbackFailure can attach it to the returned failure.
       const partialLayout = buildPartialLayoutPayload(
         workflow, layout, nodes, pathCache, partialLayoutFailedCandidates, workflowDiagnostics,
+        partialLayoutFailingEdges,
       );
       if (partialLayout) error.partialLayout = partialLayout;
       throw error;
@@ -5747,6 +5776,7 @@ function absoluteGeometrySizingDiagnostic() {
     // and the best-attempt router candidates for the failing edge.
     const partialLayout = buildPartialLayoutPayload(
       workflow, layout, nodes, pathCache, partialLayoutFailedCandidates, diagnostics,
+      partialLayoutFailingEdges,
     );
     if (partialLayout) failure.partialLayout = partialLayout;
     return failure;
@@ -5762,6 +5792,8 @@ function feedbackFailure(request, partialLayout) {
     subject: {
       diagramType: 'workflow',
       edge: request.edge,
+      // The authored array index identifies the exact relationship when two
+      // parallel edges connect the same pair of nodes.
       from: request.from,
       to: request.to,
     },
