@@ -654,6 +654,7 @@ export function compactFinalizeReceipt(receipt) {
       ...(truncated ? { omittedByCode: Object.fromEntries([...omittedCounts].filter(([, count]) => count > 0)) } : {}),
     },
     evidence: receipt.evidence,
+    ...(receipt.partialLayout?.partial ? { partialLayout: receipt.partialLayout } : {}),
     ...(receipt.update && receipt.update.status !== 'unavailable'
       ? { update: receipt.update }
       : {}),
@@ -782,6 +783,8 @@ export async function runFinalize({
   let receiptCapture = captureReceipt(resolvedReceipt);
   let summaryCapture = captureReceipt(resolvedSummary);
 
+  // The first stage that produced a measured partial layout owns it.
+  let partialLayout = null;
   const receipt = {
     schemaVersion: 1,
     ok: false,
@@ -797,6 +800,9 @@ export async function runFinalize({
     diagnostics: [],
     evidence: { receipt: resolvedReceipt, summaryReceipt: resolvedSummary },
     visualReview: 'not-requested',
+    // Additive: the measured partial layout a failed stage produced, when it
+    // has one. Existing receipt fields are untouched.
+    ...(partialLayout?.partial ? { partialLayout } : {}),
   };
   const persistReceipts = () => {
     if (type === 'explainer') receipt.diagnostics = (receipt.diagnostics || []).map(entry => {
@@ -1000,6 +1006,10 @@ export async function runFinalize({
         receipt.diagnostics = consolidateDiagnostics(
           stageDiagnostics || failureDiagnostics(stage, result, stageReceipt, quality),
         );
+        if (!partialLayout && stageReceipt?.partialLayout?.partial) {
+          partialLayout = stageReceipt.partialLayout;
+          receipt.partialLayout = partialLayout;
+        }
         receipt.failedStage = stage === 'deliver'
           && receipt.stages.validate.status === 'fail' ? 'validate' : stage;
         break;

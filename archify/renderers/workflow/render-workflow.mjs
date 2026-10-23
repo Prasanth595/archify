@@ -40,7 +40,15 @@ if (layoutJson) {
   process.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
   if (!compiled.ok) process.exitCode = 1;
 } else if (!compiled.ok) {
-  throwDiagnosticError(compiled.error || 'Workflow compilation failed.', compiled.diagnostics);
+  try {
+    throwDiagnosticError(compiled.error || 'Workflow compilation failed.', compiled.diagnostics);
+  } catch (error) {
+    // Additive: carry the measured partial layout out of the renderer so the
+    // CLI failure receipt can hand the author the geometry the compiler
+    // already decided, not only the route diagnostics.
+    if (compiled.partialLayout?.partial) error.partialLayout = compiled.partialLayout;
+    throw error;
+  }
 } else {
   writeDiagram({
     outPath,

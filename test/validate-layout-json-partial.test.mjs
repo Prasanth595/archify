@@ -187,6 +187,19 @@ function runValidate(workflow, { quality } = {}) {
   return { status: result.status, stdout: result.stdout, stderr: result.stderr };
 }
 
+function runFinalize(workflow, { quality } = {}) {
+  const input = path.join(tmp, `finalize-${Math.random().toString(36).slice(2)}.workflow.json`);
+  const out = path.join(tmp, `finalize-${Math.random().toString(36).slice(2)}.html`);
+  fs.writeFileSync(input, JSON.stringify(workflow));
+  const args = ['finalize', 'workflow', input, out, '--json'];
+  if (quality) args.push('--quality', quality);
+  const result = spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8' });
+  if (result.status !== 0 && result.status !== 1) {
+    throw new Error(`finalize exited with ${result.status}\n${result.stderr}\n${result.stdout}`);
+  }
+  return { status: result.status, stdout: result.stdout, stderr: result.stderr };
+}
+
 test('validate workflow --layout-json with a feasible pin returns the existing full layout (no partialLayout)', () => {
   const result = runValidate(feasibleWorkflow());
   assert.equal(result.status, 0, result.stderr);
@@ -362,6 +375,28 @@ test('a failing edge that already routed keeps its cached route geometry', () =>
         `route points must stay finite coordinate pairs: ${JSON.stringify(edge.points)}`);
     }
   }
+});
+
+test('the finalize failure receipt carries the partial layout', () => {
+  // finalize is the command the Skill tells authors to run. If the measured
+  // geometry only reached `validate --layout-json`, the authoring agent would
+  // never see it on the path it actually uses.
+  const result = runFinalize(nonRouteConstraintFailureWorkflow());
+  assert.equal(result.status, 1, result.stderr);
+  const receipt = JSON.parse(result.stdout);
+  assert.equal(receipt.ok, false);
+  assert.equal(receipt.failedStage, 'validate');
+  assert.ok(receipt.partialLayout,
+    'the finalize receipt must carry the partial layout: ' + JSON.stringify(receipt, null, 2));
+  assert.equal(receipt.partialLayout.partial, true);
+  assert.ok(Array.isArray(receipt.partialLayout.columns) && receipt.partialLayout.columns.length > 0);
+  assert.ok(receipt.partialLayout.nodes.length > 0);
+  assert.ok(receipt.partialLayout.edges.length > 0);
+  const routed = receipt.partialLayout.edges.find((edge) => edge.id === 'ab');
+  assert.ok(routed, 'the routed edge must be reported: '
+    + JSON.stringify(receipt.partialLayout.edges));
+  assert.ok(Array.isArray(routed.points) && routed.points.length > 0,
+    `the routed edge must keep its cached route points: ${JSON.stringify(routed)}`);
 });
 
 process.on('exit', () => {
