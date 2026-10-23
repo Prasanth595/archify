@@ -1,0 +1,400 @@
+{
+  "contract": "readable-v2",
+  "viewBox": [
+    957,
+    652
+  ],
+  "requiredViewBox": [
+    1033,
+    652
+  ],
+  "columns": [
+    94,
+    267.6,
+    387.6,
+    571.6,
+    737.6,
+    882.4000000000001
+  ],
+  "nodes": [
+    {
+      "id": "client",
+      "lane": "net",
+      "col": 0,
+      "x": 48,
+      "y": 93,
+      "width": 92,
+      "height": 52
+    },
+    {
+      "id": "server",
+      "lane": "net",
+      "col": 1,
+      "x": 215.60000000000002,
+      "y": 93,
+      "width": 104,
+      "height": 52
+    },
+    {
+      "id": "handle",
+      "lane": "app",
+      "col": 2,
+      "x": 341.6,
+      "y": 217,
+      "width": 92,
+      "height": 52
+    },
+    {
+      "id": "router",
+      "lane": "app",
+      "col": 3,
+      "x": 523.6,
+      "y": 217,
+      "width": 96,
+      "height": 52
+    },
+    {
+      "id": "mw",
+      "lane": "app",
+      "col": 4,
+      "x": 685.6,
+      "y": 217,
+      "width": 104,
+      "height": 52
+    },
+    {
+      "id": "route",
+      "lane": "app",
+      "col": 5,
+      "x": 836.4000000000001,
+      "y": 217,
+      "width": 92,
+      "height": 52
+    },
+    {
+      "id": "req",
+      "lane": "objs",
+      "col": 2,
+      "x": 341.6,
+      "y": 341,
+      "width": 92,
+      "height": 52
+    },
+    {
+      "id": "send",
+      "lane": "objs",
+      "col": 4,
+      "x": 661.6,
+      "y": 341,
+      "width": 152,
+      "height": 52
+    },
+    {
+      "id": "final",
+      "lane": "err",
+      "col": 5,
+      "x": 836.4000000000001,
+      "y": 465,
+      "width": 92,
+      "height": 52
+    }
+  ],
+  "edges": [
+    {
+      "id": "client-server",
+      "from": "client",
+      "to": "server",
+      "points": [
+        [
+          140,
+          119
+        ],
+        [
+          215.60000000000002,
+          119
+        ]
+      ]
+    },
+    {
+      "id": "handle-req",
+      "from": "handle",
+      "to": "req",
+      "points": [
+        [
+          387.6,
+          269
+        ],
+        [
+          387.6,
+          341
+        ]
+      ]
+    },
+    {
+      "id": "handle-router",
+      "from": "handle",
+      "to": "router",
+      "points": [
+        [
+          433.6,
+          243
+        ],
+        [
+          523.6,
+          243
+        ]
+      ]
+    },
+    {
+      "id": "mw-final",
+      "from": "mw",
+      "to": "final",
+      "points": [
+        [
+          737.6,
+          269
+        ],
+        [
+          737.6,
+          328
+        ],
+        [
+          875.4000000000001,
+          328
+        ],
+        [
+          875.4000000000001,
+          465
+        ]
+      ]
+    },
+    {
+      "id": "mw-route",
+      "from": "mw",
+      "to": "route",
+      "points": [
+        [
+          789.6,
+          243
+        ],
+        [
+          836.4000000000001,
+          243
+        ]
+      ]
+    },
+    {
+      "id": "route-final",
+      "from": "route",
+      "to": "final",
+      "points": [
+        [
+          889.4000000000001,
+          269
+        ],
+        [
+          889.4000000000001,
+          285
+        ],
+        [
+          1016.6,
+          285
+        ],
+        [
+          1016.6,
+          449
+        ],
+        [
+          889.4000000000001,
+          449
+        ],
+        [
+          889.4000000000001,
+          465
+        ]
+      ]
+    },
+    {
+      "id": "route-send",
+      "from": "route",
+      "to": "send",
+      "points": [
+        [
+          858.4000000000001,
+          269
+        ],
+        [
+          858.4000000000001,
+          302
+        ],
+        [
+          737.6,
+          302
+        ],
+        [
+          737.6,
+          341
+        ]
+      ]
+    },
+    {
+      "id": "router-mw",
+      "from": "router",
+      "to": "mw",
+      "points": [
+        [
+          619.6,
+          243
+        ],
+        [
+          685.6,
+          243
+        ]
+      ]
+    },
+    {
+      "id": "server-handle",
+      "from": "server",
+      "to": "handle",
+      "points": [
+        [
+          267.6,
+          145
+        ],
+        [
+          267.6,
+          243
+        ],
+        [
+          341.6,
+          243
+        ]
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "edge": "client-server",
+      "label": "HTTP request",
+      "x": 177.8,
+      "y": 109,
+      "width": 67.6,
+      "height": 14
+    },
+    {
+      "edge": "handle-req",
+      "label": "req / res",
+      "x": 387.6,
+      "y": 305,
+      "width": 53.199999999999996,
+      "height": 14
+    },
+    {
+      "edge": "handle-router",
+      "label": "router.handle()",
+      "x": 478.6,
+      "y": 233,
+      "width": 82,
+      "height": 14
+    },
+    {
+      "edge": "mw-final",
+      "label": "next(err)",
+      "x": 806.5,
+      "y": 318,
+      "width": 53.199999999999996,
+      "height": 14
+    },
+    {
+      "edge": "mw-route",
+      "label": "next()",
+      "x": 813,
+      "y": 233,
+      "width": 38.8,
+      "height": 14
+    },
+    {
+      "edge": "route-final",
+      "label": "next(err)",
+      "x": 953,
+      "y": 275,
+      "width": 53.199999999999996,
+      "height": 14
+    },
+    {
+      "edge": "route-send",
+      "label": "res.send()",
+      "x": 798,
+      "y": 292,
+      "width": 58,
+      "height": 14
+    },
+    {
+      "edge": "router-mw",
+      "label": "next layer",
+      "x": 652.6,
+      "y": 233,
+      "width": 58,
+      "height": 14
+    },
+    {
+      "edge": "server-handle",
+      "label": "app(req, res)",
+      "x": 304.6,
+      "y": 233,
+      "width": 72.4,
+      "height": 14
+    }
+  ],
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "error",
+      "message": "[composition/ambiguous-corridor] showcase workflow edges[6] id \"route-send\" \"route\" -> \"send\" shares a 26px corridor with edges[7] id \"mw-final\" \"mw\" -> \"final\" at [737.6, 302] -> [737.6, 328] (segments 2 and 0; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 6,
+        "id": "route-send",
+        "from": "route",
+        "to": "send"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 7,
+          "id": "mw-final",
+          "from": "mw",
+          "to": "final"
+        },
+        "overlapLengthPx": 26,
+        "minimumPx": 8,
+        "from": [
+          737.6,
+          302
+        ],
+        "to": [
+          737.6,
+          328
+        ],
+        "segmentIndex": 2,
+        "otherSegmentIndex": 0
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    },
+    {
+      "code": "layout/constraint",
+      "severity": "error",
+      "message": "mainPath step \"route\" -> \"send\" moves backward from col 5 to 4 — use a return edge outside mainPath for loops.",
+      "subject": {
+        "diagramType": "workflow"
+      },
+      "evidence": {},
+      "supportedFixes": []
+    }
+  ],
+  "ok": false
+}

@@ -1,0 +1,40 @@
+docs(evidence): add the #934 Workflow authoring comparison
+
+The maintainer asked for an end-to-end comparison across 5-10
+representative real projects, to establish whether the new partial
+layout feedback actually reduces rework.
+
+This adds the evidence set for five real repositories: express,
+flask, kubernetes, vite and ansible. Each slice ran its own repair
+chain against the base CLI and the candidate CLI from the same task
+prompt and the same pinned source checkout, recorded every command
+with its exit status and elapsed time, kept the unsuccessful runs,
+replayed the candidate side's final JSON against both CLIs, and
+captured before/after screenshots at 1440x900 and 2048x1320 in light
+and dark with the project's own visual-check.
+
+The headline finding is negative and is reported as such: across all
+five projects the change reduced rework by **zero** repair rounds. Both
+sides needed 9 repair rounds, both delivered 5/5, and the failure
+diagnostics were byte-identical. The 1841s -> 1169s author-side wall
+clock difference is a learning and ordering artifact, not a tool
+effect; CLI execution was a wash at 26.08s vs 27.03s for the same
+twenty commands.
+
+The comparison also found two real defects, both fixed in this
+branch:
+
+- The payload never reached the `finalize` receipt, which is the command
+  the Skill tells authors to run. It was reachable only through
+  `validate --layout-json`. The delivery-path work in this branch
+  closes that gap.
+- A relationship that had routed successfully still carried the
+  rejected candidate families captured during an earlier solver
+  iteration, so a later failure on a different relationship appeared
+  to report those attempts as the failing edge's. `registerRouted` now
+  clears the capture.
+
+The pinned source checkouts under projects/*/src-* are inputs rather
+than evidence and are excluded by evidence/.gitignore.
+
+Refs #934

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/express/candidate/01-draft.workflow.json",
+    "sha256": "70fac3d903c3b8090c01d038acf08861ae6a7e1f8f0e364573c83721912b18b5",
+    "bytes": 5404
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/express/candidate/01-draft.html"
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "error",
+      "message": "[composition/ambiguous-corridor] showcase workflow edges[6] id \"route-send\" \"route\" -> \"send\" shares a 26px corridor with edges[7] id \"mw-final\" \"mw\" -> \"final\" at [737.6, 302] -> [737.6, 328] (segments 2 and 0; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 6,
+        "id": "route-send",
+        "from": "route",
+        "to": "send"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 7,
+          "id": "mw-final",
+          "from": "mw",
+          "to": "final"
+        },
+        "overlapLengthPx": 26,
+        "minimumPx": 8,
+        "from": [
+          737.6,
+          302
+        ],
+        "to": [
+          737.6,
+          328
+        ],
+        "segmentIndex": 2,
+        "otherSegmentIndex": 0
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    },
+    {
+      "code": "layout/constraint",
+      "severity": "error",
+      "message": "mainPath step \"route\" -> \"send\" moves backward from col 5 to 4 — use a return edge outside mainPath for loops.",
+      "subject": {
+        "diagramType": "workflow"
+      }
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 2,
+    "shown": 2,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/express/candidate/01-draft.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/express/candidate/01-draft.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 347,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/private/tmp/archify-960/evidence/projects/express/candidate/01-draft.workflow.json",
+    "constraint": "Preserve unaffected semantics and geometry; apply each diagnostic's supportedFixes, or the fix its message names, and do not replace the whole candidate.",
+    "then": "finalize-once"
+  }
+}

@@ -2679,6 +2679,7 @@ function rendererFailure(result) {
       return {
         error: payload.error || payload.diagnostics[0].message,
         diagnostics: payload.diagnostics,
+        ...(payload.partialLayout?.partial ? { partialLayout: payload.partialLayout } : {}),
       };
     }
   } catch {
@@ -4287,7 +4288,7 @@ function commandRender(args) {
   if (result.status !== 0) exitFrom(result);
 }
 
-function reportArtifactFailure({ command, json, stage, type, input, output, error, diagnostics = [], status = 1, checker, receiptId, provenance, update }) {
+function reportArtifactFailure({ command, json, stage, type, input, output, error, diagnostics = [], status = 1, checker, receiptId, provenance, update, partialLayout }) {
   const receipt = {
     schemaVersion: 1,
     ok: false,
@@ -4302,6 +4303,9 @@ function reportArtifactFailure({ command, json, stage, type, input, output, erro
     ...(provenance ? { provenance } : {}),
     ...(checker ? { checker } : {}),
     ...(update ? { update } : {}),
+    // Additive: the measured partial layout the renderer decided, when it has
+    // one. Existing receipt fields are untouched.
+    ...(partialLayout?.partial ? { partialLayout } : {}),
   };
   if (json) console.log(JSON.stringify(receipt, null, 2));
   else {
@@ -4883,6 +4887,7 @@ async function commandDeliver(args) {
         output: outputPath,
         error: failure.error,
         diagnostics: failure.diagnostics,
+        ...(failure.partialLayout ? { partialLayout: failure.partialLayout } : {}),
         status: render.status ?? 1,
       });
       return;
@@ -7055,6 +7060,7 @@ async function commandValidate(args, invocation = {}) {
         input: path.resolve(input),
         error: failure.error,
         diagnostics: failure.diagnostics,
+        ...(failure.partialLayout ? { partialLayout: failure.partialLayout } : {}),
         status: result.status ?? 1,
       });
       return;
@@ -7091,6 +7097,7 @@ async function commandValidate(args, invocation = {}) {
         input: path.resolve(input),
         error: failure.error,
         diagnostics: failure.diagnostics,
+        ...(failure.partialLayout ? { partialLayout: failure.partialLayout } : {}),
         status: render.status ?? 1,
       });
       exitCode = render.status ?? 1;

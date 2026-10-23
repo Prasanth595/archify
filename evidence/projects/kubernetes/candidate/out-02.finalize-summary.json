@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/02-repair-1.workflow.json",
+    "sha256": "34e2d684f3fd5104c7f8499bb8c1493ec2388f19a3bac6997bb34d92345bfe29",
+    "bytes": 7496
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/out-02.html"
+  },
+  "gates": {
+    "validate": "fail",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "validate",
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "error",
+      "message": "[composition/ambiguous-corridor] showcase workflow edges[7] \"write\" -> \"api\" shares a 80px corridor with edges[8] \"sync\" -> \"retry\" at [1100, 450] -> [1100, 530] (segments 1 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 7,
+        "from": "write",
+        "to": "api"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 8,
+          "from": "sync",
+          "to": "retry"
+        },
+        "overlapLengthPx": 80,
+        "minimumPx": 8,
+        "from": [
+          1100,
+          450
+        ],
+        "to": [
+          1100,
+          530
+        ],
+        "segmentIndex": 1,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/out-02.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/out-02.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 648,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "nextAction": {
+    "action": "edit-in-place",
+    "candidate": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/02-repair-1.workflow.json",
+    "constraint": "Preserve unaffected semantics and geometry; apply each diagnostic's supportedFixes, or the fix its message names, and do not replace the whole candidate.",
+    "then": "finalize-once"
+  }
+}

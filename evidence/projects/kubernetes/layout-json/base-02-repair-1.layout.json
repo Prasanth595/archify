@@ -1,0 +1,406 @@
+{
+  "contract": "readable-v2",
+  "viewBox": [
+    1116,
+    818
+  ],
+  "requiredViewBox": [
+    1116,
+    818
+  ],
+  "columns": [
+    148,
+    268,
+    456.4,
+    576.4,
+    811.5999999999999,
+    993.5999999999999
+  ],
+  "nodes": [
+    {
+      "id": "api",
+      "lane": "apiserver",
+      "col": 0,
+      "x": 48,
+      "y": 93,
+      "width": 200,
+      "height": 52
+    },
+    {
+      "id": "reflector",
+      "lane": "cache",
+      "col": 1,
+      "x": 222,
+      "y": 217,
+      "width": 92,
+      "height": 52
+    },
+    {
+      "id": "informer",
+      "lane": "cache",
+      "col": 2,
+      "x": 394.4,
+      "y": 217,
+      "width": 124,
+      "height": 52
+    },
+    {
+      "id": "handler",
+      "lane": "controller",
+      "col": 3,
+      "x": 502.4,
+      "y": 424,
+      "width": 148,
+      "height": 52
+    },
+    {
+      "id": "queue",
+      "lane": "controller",
+      "col": 4,
+      "x": 735.5999999999999,
+      "y": 424,
+      "width": 152,
+      "height": 52
+    },
+    {
+      "id": "sync",
+      "lane": "controller",
+      "col": 5,
+      "x": 919.5999999999999,
+      "y": 424,
+      "width": 148,
+      "height": 52
+    },
+    {
+      "id": "worker",
+      "lane": "controller",
+      "col": 5,
+      "x": 907.5999999999999,
+      "y": 334,
+      "width": 172,
+      "height": 52
+    },
+    {
+      "id": "write",
+      "lane": "controller",
+      "col": 5,
+      "x": 913.5999999999999,
+      "y": 514,
+      "width": 160,
+      "height": 52
+    },
+    {
+      "id": "retry",
+      "lane": "retry",
+      "col": 4,
+      "x": 741.5999999999999,
+      "y": 631,
+      "width": 140,
+      "height": 52
+    }
+  ],
+  "edges": [
+    {
+      "id": null,
+      "from": "api",
+      "to": "reflector",
+      "points": [
+        [
+          148,
+          145
+        ],
+        [
+          148,
+          166
+        ],
+        [
+          268,
+          166
+        ],
+        [
+          268,
+          217
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "handler",
+      "to": "queue",
+      "points": [
+        [
+          650.4,
+          450
+        ],
+        [
+          735.5999999999999,
+          450
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "informer",
+      "to": "handler",
+      "points": [
+        [
+          456.4,
+          269
+        ],
+        [
+          456.4,
+          450
+        ],
+        [
+          502.4,
+          450
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "queue",
+      "to": "worker",
+      "points": [
+        [
+          811.5999999999999,
+          424
+        ],
+        [
+          811.5999999999999,
+          360
+        ],
+        [
+          907.5999999999999,
+          360
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "reflector",
+      "to": "informer",
+      "points": [
+        [
+          314,
+          243
+        ],
+        [
+          394.4,
+          243
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "retry",
+      "to": "queue",
+      "points": [
+        [
+          811.5999999999999,
+          631
+        ],
+        [
+          811.5999999999999,
+          476
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "sync",
+      "to": "retry",
+      "points": [
+        [
+          1067.6,
+          450
+        ],
+        [
+          1100,
+          450
+        ],
+        [
+          1100,
+          657
+        ],
+        [
+          881.5999999999999,
+          657
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "sync",
+      "to": "write",
+      "points": [
+        [
+          993.5999999999999,
+          476
+        ],
+        [
+          993.5999999999999,
+          514
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "worker",
+      "to": "sync",
+      "points": [
+        [
+          993.5999999999999,
+          386
+        ],
+        [
+          993.5999999999999,
+          424
+        ]
+      ]
+    },
+    {
+      "id": null,
+      "from": "write",
+      "to": "api",
+      "points": [
+        [
+          1073.6,
+          530
+        ],
+        [
+          1100,
+          530
+        ],
+        [
+          1100,
+          119
+        ],
+        [
+          248,
+          119
+        ]
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "edge": null,
+      "label": "list / watch",
+      "x": 208,
+      "y": 156,
+      "width": 67.6,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "queue.Add(key)",
+      "x": 693,
+      "y": 440,
+      "width": 77.2,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "add, update, delete",
+      "x": 456.4,
+      "y": 359.5,
+      "width": 101.2,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "queue.Get()",
+      "x": 859.5999999999999,
+      "y": 350,
+      "width": 62.8,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "object deltas",
+      "x": 354.2,
+      "y": 233,
+      "width": 72.4,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "requeue with backoff",
+      "x": 811.5999999999999,
+      "y": 553.5,
+      "width": 106,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "sync error",
+      "x": 990.8,
+      "y": 647,
+      "width": 58,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "desired state applied",
+      "x": 993.5999999999999,
+      "y": 495,
+      "width": 110.8,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "syncHandler(ctx, key)",
+      "x": 993.5999999999999,
+      "y": 405,
+      "width": 110.8,
+      "height": 14
+    },
+    {
+      "edge": null,
+      "label": "Update ReplicaSet / UpdateStatus",
+      "x": 674,
+      "y": 109,
+      "width": 163.6,
+      "height": 14
+    }
+  ],
+  "diagnostics": [
+    {
+      "code": "composition/ambiguous-corridor",
+      "severity": "warning",
+      "message": "[composition/ambiguous-corridor] standard workflow edges[7] \"write\" -> \"api\" shares a 80px corridor with edges[8] \"sync\" -> \"retry\" at [1100, 450] -> [1100, 530] (segments 1 and 1; minimum 8px) — adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge.",
+      "subject": {
+        "diagramType": "workflow",
+        "collection": "edges",
+        "index": 7,
+        "from": "write",
+        "to": "api"
+      },
+      "evidence": {
+        "otherRelationship": {
+          "diagramType": "workflow",
+          "collection": "edges",
+          "index": 8,
+          "from": "sync",
+          "to": "retry"
+        },
+        "overlapLengthPx": 80,
+        "minimumPx": 8,
+        "from": [
+          1100,
+          450
+        ],
+        "to": [
+          1100,
+          530
+        ],
+        "segmentIndex": 1,
+        "otherSegmentIndex": 1
+      },
+      "supportedFixes": [
+        "adjust route/via, bias, or channel coordinates so unrelated edges do not visually merge"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1083 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "startedAt": "2026-10-23T23:48:20.156Z",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.workflow.json",
+    "sha256": "8fc59b6636e7c01df45936561ef823298bdd191bbe0bd9e17f5adca9442f4823",
+    "bytes": 8000
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": null,
+      "command": [
+        "/Users/hermes/.hermes/node/bin/node",
+        "/private/tmp/archify-960/archify/bin/archify.mjs",
+        "deliver",
+        "workflow",
+        "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.workflow.json",
+        "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/tmp/archify-960/evidence/projects/ansible/src-ansible",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "deliver",
+        "receiptId": "e065fc14-d4dd-417f-9529-56ac5982265a",
+        "stage": "render",
+        "type": "workflow",
+        "input": "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.workflow.json",
+        "output": "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.html",
+        "error": "Workflow layout validation failed",
+        "diagnostics": [
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"loads the playbook, iterates its plays\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "pb",
+              "path": "/nodes/0/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 216.6,
+              "availableTextWidthPx": 184
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"roles + tasks become a flat block list\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "compile",
+              "path": "/nodes/1/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 216.6,
+              "availableTextWidthPx": 184
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"builds the PlayIterator, loads the strategy\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "tqm",
+              "path": "/nodes/2/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 245.1,
+              "availableTextWidthPx": 192
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"lockstep loop, one task per host batch\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "strat",
+              "path": "/nodes/3/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 216.6,
+              "availableTextWidthPx": 172
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"host state, stats, callbacks\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "results",
+              "path": "/nodes/4/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 159.6,
+              "availableTextWidthPx": 164
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"runs at meta: flush_handlers\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "flush",
+              "path": "/nodes/5/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 159.6,
+              "availableTextWidthPx": 132
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"forks or reuses a WorkerProcess\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "queue",
+              "path": "/nodes/6/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 176.7,
+              "availableTextWidthPx": 152
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"templating, connection, retries\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "texec",
+              "path": "/nodes/7/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 176.7,
+              "availableTextWidthPx": 112
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"executes on the managed host\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "module",
+              "path": "/nodes/8/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 159.6,
+              "availableTextWidthPx": 152
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          },
+          {
+            "code": "workflow/sublabel-readability",
+            "severity": "error",
+            "message": "Sublabel \"the host is marked failed\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+            "subject": {
+              "diagramType": "workflow",
+              "node": "failed",
+              "path": "/nodes/9/sublabel"
+            },
+            "evidence": {
+              "requiredFontPx": 9.5,
+              "maximumSlotFontPx": 8,
+              "canvasWidthPx": 1458,
+              "maximumCanvasWidthPx": 1240,
+              "requiredTextWidthPx": 142.5,
+              "availableTextWidthPx": 120
+            },
+            "supportedFixes": [
+              "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+            ]
+          }
+        ],
+        "provenance": "absent",
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        },
+        "partialLayout": {
+          "partial": true,
+          "columns": [
+            144,
+            368,
+            596,
+            818,
+            1077.2,
+            1321.6
+          ],
+          "nodes": [
+            {
+              "id": "pb",
+              "lane": "control",
+              "col": 0,
+              "x": 48,
+              "y": 93,
+              "width": 192,
+              "height": 52
+            },
+            {
+              "id": "compile",
+              "lane": "control",
+              "col": 1,
+              "x": 272,
+              "y": 93,
+              "width": 192,
+              "height": 52
+            },
+            {
+              "id": "tqm",
+              "lane": "control",
+              "col": 2,
+              "x": 496,
+              "y": 93,
+              "width": 200,
+              "height": 52
+            },
+            {
+              "id": "strat",
+              "lane": "control",
+              "col": 3,
+              "x": 728,
+              "y": 93,
+              "width": 180,
+              "height": 52
+            },
+            {
+              "id": "results",
+              "lane": "control",
+              "col": 5,
+              "x": 1235.6,
+              "y": 93,
+              "width": 172,
+              "height": 52
+            },
+            {
+              "id": "flush",
+              "lane": "worker",
+              "col": 3,
+              "x": 748,
+              "y": 217,
+              "width": 140,
+              "height": 52
+            },
+            {
+              "id": "queue",
+              "lane": "worker",
+              "col": 4,
+              "x": 997.2,
+              "y": 217,
+              "width": 160,
+              "height": 52
+            },
+            {
+              "id": "texec",
+              "lane": "worker",
+              "col": 5,
+              "x": 1261.6,
+              "y": 217,
+              "width": 120,
+              "height": 52
+            },
+            {
+              "id": "module",
+              "lane": "target",
+              "col": 4,
+              "x": 997.2,
+              "y": 341,
+              "width": 160,
+              "height": 52
+            },
+            {
+              "id": "failed",
+              "lane": "failure",
+              "col": 4,
+              "x": 1013.2,
+              "y": 465,
+              "width": 128,
+              "height": 52
+            }
+          ],
+          "edges": [
+            {
+              "id": "compile-tqm",
+              "from": "compile",
+              "to": "tqm",
+              "points": [
+                [
+                  464,
+                  119
+                ],
+                [
+                  496,
+                  119
+                ]
+              ]
+            },
+            {
+              "id": "flush-queue",
+              "from": "flush",
+              "to": "queue",
+              "points": [
+                [
+                  888,
+                  243
+                ],
+                [
+                  997.2,
+                  243
+                ]
+              ]
+            },
+            {
+              "id": "module-failed",
+              "from": "module",
+              "to": "failed",
+              "points": [
+                [
+                  1077.2,
+                  393
+                ],
+                [
+                  1077.2,
+                  465
+                ]
+              ]
+            },
+            {
+              "id": "pb-compile",
+              "from": "pb",
+              "to": "compile",
+              "points": [
+                [
+                  240,
+                  119
+                ],
+                [
+                  272,
+                  119
+                ]
+              ]
+            },
+            {
+              "id": "queue-texec",
+              "from": "queue",
+              "to": "texec",
+              "points": [
+                [
+                  1157.2,
+                  243
+                ],
+                [
+                  1261.6,
+                  243
+                ]
+              ]
+            },
+            {
+              "id": "results-strat",
+              "from": "results",
+              "to": "strat",
+              "points": [
+                [
+                  1235.6,
+                  119
+                ],
+                [
+                  908,
+                  119
+                ]
+              ]
+            },
+            {
+              "id": "strat-flush",
+              "from": "strat",
+              "to": "flush",
+              "points": [
+                [
+                  818,
+                  145
+                ],
+                [
+                  818,
+                  217
+                ]
+              ]
+            },
+            {
+              "id": "strat-queue",
+              "from": "strat",
+              "to": "queue",
+              "points": [
+                [
+                  908,
+                  126
+                ],
+                [
+                  924,
+                  126
+                ],
+                [
+                  924,
+                  166
+                ],
+                [
+                  1077.2,
+                  166
+                ],
+                [
+                  1077.2,
+                  217
+                ]
+              ]
+            },
+            {
+              "id": "texec-module",
+              "from": "texec",
+              "to": "module",
+              "points": [
+                [
+                  1321.6,
+                  269
+                ],
+                [
+                  1321.6,
+                  367
+                ],
+                [
+                  1157.2,
+                  367
+                ]
+              ]
+            },
+            {
+              "id": "texec-results",
+              "from": "texec",
+              "to": "results",
+              "points": [
+                [
+                  1321.6,
+                  217
+                ],
+                [
+                  1321.6,
+                  145
+                ]
+              ]
+            },
+            {
+              "id": "tqm-strat",
+              "from": "tqm",
+              "to": "strat",
+              "points": [
+                [
+                  696,
+                  119
+                ],
+                [
+                  728,
+                  119
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "not-run",
+      "execution": "blocked-by-validate"
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"loads the playbook, iterates its plays\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "pb",
+        "path": "/nodes/0/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 216.6,
+        "availableTextWidthPx": 184
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"roles + tasks become a flat block list\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "compile",
+        "path": "/nodes/1/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 216.6,
+        "availableTextWidthPx": 184
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"builds the PlayIterator, loads the strategy\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "tqm",
+        "path": "/nodes/2/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 245.1,
+        "availableTextWidthPx": 192
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"lockstep loop, one task per host batch\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "strat",
+        "path": "/nodes/3/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 216.6,
+        "availableTextWidthPx": 172
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"host state, stats, callbacks\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "results",
+        "path": "/nodes/4/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 159.6,
+        "availableTextWidthPx": 164
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"runs at meta: flush_handlers\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "flush",
+        "path": "/nodes/5/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 159.6,
+        "availableTextWidthPx": 132
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"forks or reuses a WorkerProcess\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "queue",
+        "path": "/nodes/6/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 176.7,
+        "availableTextWidthPx": 152
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"templating, connection, retries\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "texec",
+        "path": "/nodes/7/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 176.7,
+        "availableTextWidthPx": 112
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"executes on the managed host\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "module",
+        "path": "/nodes/8/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 159.6,
+        "availableTextWidthPx": 152
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    },
+    {
+      "code": "workflow/sublabel-readability",
+      "severity": "error",
+      "message": "Sublabel \"the host is marked failed\" needs a 9.5px minimum that stays readable on this 1458px canvas, above the supported 8px text row — compact the column spacing or node widths so the canvas is at most 1240px wide; preserve the sublabel's role or protocol.",
+      "subject": {
+        "diagramType": "workflow",
+        "node": "failed",
+        "path": "/nodes/9/sublabel"
+      },
+      "evidence": {
+        "requiredFontPx": 9.5,
+        "maximumSlotFontPx": 8,
+        "canvasWidthPx": 1458,
+        "maximumCanvasWidthPx": 1240,
+        "requiredTextWidthPx": 142.5,
+        "availableTextWidthPx": 120
+      },
+      "supportedFixes": [
+        "compact column spacing or node widths until the implicit canvas is at most 1240px wide, preserving every node and relationship"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/ansible/candidate/02-repair-1.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "partialLayout": {
+    "partial": true,
+    "columns": [
+      144,
+      368,
+      596,
+      818,
+      1077.2,
+      1321.6
+    ],
+    "nodes": [
+      {
+        "id": "pb",
+        "lane": "control",
+        "col": 0,
+        "x": 48,
+        "y": 93,
+        "width": 192,
+        "height": 52
+      },
+      {
+        "id": "compile",
+        "lane": "control",
+        "col": 1,
+        "x": 272,
+        "y": 93,
+        "width": 192,
+        "height": 52
+      },
+      {
+        "id": "tqm",
+        "lane": "control",
+        "col": 2,
+        "x": 496,
+        "y": 93,
+        "width": 200,
+        "height": 52
+      },
+      {
+        "id": "strat",
+        "lane": "control",
+        "col": 3,
+        "x": 728,
+        "y": 93,
+        "width": 180,
+        "height": 52
+      },
+      {
+        "id": "results",
+        "lane": "control",
+        "col": 5,
+        "x": 1235.6,
+        "y": 93,
+        "width": 172,
+        "height": 52
+      },
+      {
+        "id": "flush",
+        "lane": "worker",
+        "col": 3,
+        "x": 748,
+        "y": 217,
+        "width": 140,
+        "height": 52
+      },
+      {
+        "id": "queue",
+        "lane": "worker",
+        "col": 4,
+        "x": 997.2,
+        "y": 217,
+        "width": 160,
+        "height": 52
+      },
+      {
+        "id": "texec",
+        "lane": "worker",
+        "col": 5,
+        "x": 1261.6,
+        "y": 217,
+        "width": 120,
+        "height": 52
+      },
+      {
+        "id": "module",
+        "lane": "target",
+        "col": 4,
+        "x": 997.2,
+        "y": 341,
+        "width": 160,
+        "height": 52
+      },
+      {
+        "id": "failed",
+        "lane": "failure",
+        "col": 4,
+        "x": 1013.2,
+        "y": 465,
+        "width": 128,
+        "height": 52
+      }
+    ],
+    "edges": [
+      {
+        "id": "compile-tqm",
+        "from": "compile",
+        "to": "tqm",
+        "points": [
+          [
+            464,
+            119
+          ],
+          [
+            496,
+            119
+          ]
+        ]
+      },
+      {
+        "id": "flush-queue",
+        "from": "flush",
+        "to": "queue",
+        "points": [
+          [
+            888,
+            243
+          ],
+          [
+            997.2,
+            243
+          ]
+        ]
+      },
+      {
+        "id": "module-failed",
+        "from": "module",
+        "to": "failed",
+        "points": [
+          [
+            1077.2,
+            393
+          ],
+          [
+            1077.2,
+            465
+          ]
+        ]
+      },
+      {
+        "id": "pb-compile",
+        "from": "pb",
+        "to": "compile",
+        "points": [
+          [
+            240,
+            119
+          ],
+          [
+            272,
+            119
+          ]
+        ]
+      },
+      {
+        "id": "queue-texec",
+        "from": "queue",
+        "to": "texec",
+        "points": [
+          [
+            1157.2,
+            243
+          ],
+          [
+            1261.6,
+            243
+          ]
+        ]
+      },
+      {
+        "id": "results-strat",
+        "from": "results",
+        "to": "strat",
+        "points": [
+          [
+            1235.6,
+            119
+          ],
+          [
+            908,
+            119
+          ]
+        ]
+      },
+      {
+        "id": "strat-flush",
+        "from": "strat",
+        "to": "flush",
+        "points": [
+          [
+            818,
+            145
+          ],
+          [
+            818,
+            217
+          ]
+        ]
+      },
+      {
+        "id": "strat-queue",
+        "from": "strat",
+        "to": "queue",
+        "points": [
+          [
+            908,
+            126
+          ],
+          [
+            924,
+            126
+          ],
+          [
+            924,
+            166
+          ],
+          [
+            1077.2,
+            166
+          ],
+          [
+            1077.2,
+            217
+          ]
+        ]
+      },
+      {
+        "id": "texec-module",
+        "from": "texec",
+        "to": "module",
+        "points": [
+          [
+            1321.6,
+            269
+          ],
+          [
+            1321.6,
+            367
+          ],
+          [
+            1157.2,
+            367
+          ]
+        ]
+      },
+      {
+        "id": "texec-results",
+        "from": "texec",
+        "to": "results",
+        "points": [
+          [
+            1321.6,
+            217
+          ],
+          [
+            1321.6,
+            145
+          ]
+        ]
+      },
+      {
+        "id": "tqm-strat",
+        "from": "tqm",
+        "to": "strat",
+        "points": [
+          [
+            696,
+            119
+          ],
+          [
+            728,
+            119
+          ]
+        ]
+      }
+    ]
+  },
+  "failedStage": "validate",
+  "finishedAt": "2026-10-23T23:48:20.468Z",
+  "durationMs": 312,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

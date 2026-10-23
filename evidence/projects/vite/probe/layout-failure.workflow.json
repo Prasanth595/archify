@@ -1,0 +1,406 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Vite Dev Server and Build Pipeline",
+    "locale": "en",
+    "output": "vite-dev-build-pipeline.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/vitejs/vite",
+      "revision": "82e7aa0374a15e1c67594557ab5893c91578f897",
+      "provider": "github",
+      "link_mode": "web"
+    },
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "Browser"
+        },
+        "backend": {
+          "label": "Node runtime"
+        },
+        "database": {
+          "label": "Emitted output"
+        }
+      }
+    }
+  },
+  "lanes": [
+    {
+      "id": "client",
+      "label": "Browser"
+    },
+    {
+      "id": "dev",
+      "label": "Dev Server (Node)"
+    },
+    {
+      "id": "plugins",
+      "label": "Plugin Pipeline"
+    },
+    {
+      "id": "build",
+      "label": "Production Build"
+    }
+  ],
+  "mainPath": [
+    "browser",
+    "middlewares",
+    "transformReq",
+    "moduleGraph",
+    "pluginHooks",
+    "respond",
+    "browserEval"
+  ],
+  "semanticChecks": {
+    "allowedRoots": [
+      "browser",
+      "buildEntry",
+      "depsOptimizer"
+    ],
+    "allowedTerminals": [
+      "browserEval",
+      "distOut"
+    ],
+    "requiredPaths": [
+      {
+        "from": "buildEntry",
+        "to": "distOut"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "browser",
+      "lane": "client",
+      "col": 0,
+      "type": "frontend",
+      "label": "Browser request",
+      "sublabel": "GET /src/main.ts",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/server/middlewares/transform.ts",
+          "line": 116,
+          "label": "transformMiddleware serves module requests"
+        }
+      ]
+    },
+    {
+      "id": "browserEval",
+      "lane": "client",
+      "col": 5,
+      "type": "frontend",
+      "label": "Browser evaluates",
+      "sublabel": "module graph updated",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/plugins/clientInjections.ts",
+          "line": 30,
+          "label": "client runtime injected into the page"
+        }
+      ]
+    },
+    {
+      "id": "middlewares",
+      "lane": "dev",
+      "col": 1,
+      "type": "backend",
+      "label": "Connect middlewares",
+      "sublabel": "transform · indexHtml",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/server/index.ts",
+          "line": 1077,
+          "label": "transformMiddleware registered"
+        },
+        {
+          "path": "packages/vite/src/node/server/index.ts",
+          "line": 1004,
+          "end_line": 1110,
+          "label": "middleware order"
+        }
+      ]
+    },
+    {
+      "id": "transformReq",
+      "lane": "dev",
+      "col": 2,
+      "type": "backend",
+      "label": "transformRequest",
+      "sublabel": "doTransform · cache",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/server/transformRequest.ts",
+          "line": 150,
+          "label": "doTransform entry"
+        }
+      ]
+    },
+    {
+      "id": "moduleGraph",
+      "lane": "dev",
+      "col": 3,
+      "type": "backend",
+      "label": "Module graph",
+      "sublabel": "url to id · etag",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/server/transformRequest.ts",
+          "line": 354,
+          "label": "entry ensured in the module graph"
+        },
+        {
+          "path": "packages/vite/src/node/server/moduleGraph.ts",
+          "line": 343,
+          "label": "_ensureEntryFromUrl"
+        }
+      ]
+    },
+    {
+      "id": "respond",
+      "lane": "dev",
+      "col": 5,
+      "type": "backend",
+      "label": "send() response",
+      "sublabel": "JS + inline map",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/server/send.ts",
+          "line": 32,
+          "label": "send() writes the response"
+        },
+        {
+          "path": "packages/vite/src/node/server/transformRequest.ts",
+          "line": 358,
+          "label": "transform result produced"
+        }
+      ]
+    },
+    {
+      "id": "depsOptimizer",
+      "lane": "plugins",
+      "col": 1,
+      "type": "backend",
+      "label": "Deps optimizer",
+      "sublabel": "scan · pre-bundle",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/optimizer/index.ts",
+          "line": 463,
+          "label": "discoverProjectDependencies"
+        },
+        {
+          "path": "packages/vite/src/node/optimizer/index.ts",
+          "line": 523,
+          "label": "runOptimizeDeps"
+        }
+      ]
+    },
+    {
+      "id": "pluginHooks",
+      "lane": "plugins",
+      "col": 3,
+      "type": "backend",
+      "label": "Plugin pipeline",
+      "sublabel": "resolve · load · transform",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/server/pluginContainer.ts",
+          "line": 350,
+          "label": "resolveId hook loop"
+        },
+        {
+          "path": "packages/vite/src/node/server/pluginContainer.ts",
+          "line": 476,
+          "label": "load hook loop"
+        },
+        {
+          "path": "packages/vite/src/node/server/pluginContainer.ts",
+          "line": 527,
+          "label": "transform hook loop"
+        }
+      ]
+    },
+    {
+      "id": "buildEntry",
+      "lane": "build",
+      "col": 0,
+      "type": "backend",
+      "label": "vite build",
+      "sublabel": "createBuilder",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 574,
+          "label": "build() entry"
+        },
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 1837,
+          "label": "createBuilder"
+        }
+      ]
+    },
+    {
+      "id": "resolvePlugins",
+      "lane": "build",
+      "col": 1,
+      "type": "backend",
+      "label": "resolvePlugins",
+      "sublabel": "pre · normal · post",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/plugins/index.ts",
+          "line": 45,
+          "label": "resolvePlugins builds the list"
+        },
+        {
+          "path": "packages/vite/src/node/plugins/index.ts",
+          "line": 185,
+          "label": "getSortedPluginsByHook"
+        }
+      ]
+    },
+    {
+      "id": "rolldown",
+      "lane": "build",
+      "col": 2,
+      "type": "backend",
+      "label": "rolldown build",
+      "sublabel": "chunk · assets",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 843,
+          "label": "buildEnvironment"
+        },
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 599,
+          "label": "resolveRolldownOptions"
+        }
+      ]
+    },
+    {
+      "id": "emitBundle",
+      "lane": "build",
+      "col": 3,
+      "type": "backend",
+      "label": "write bundle",
+      "sublabel": "manifest · reporter",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 1492,
+          "label": "generateBundle / writeBundle hooks"
+        },
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 759,
+          "label": "output.dir"
+        }
+      ]
+    },
+    {
+      "id": "distOut",
+      "lane": "build",
+      "col": 4,
+      "type": "database",
+      "label": "dist/ output",
+      "sublabel": "hashed files",
+      "sources": [
+        {
+          "path": "packages/vite/src/node/build.ts",
+          "line": 394,
+          "label": "outDir default"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "request",
+      "from": "browser",
+      "to": "middlewares",
+      "label": "HTTP request"
+    },
+    {
+      "id": "transform-url",
+      "from": "middlewares",
+      "to": "transformReq"
+    },
+    {
+      "id": "graph-lookup",
+      "from": "transformReq",
+      "to": "moduleGraph",
+      "via": [
+        [
+          400,
+          400
+        ]
+      ]
+    },
+    {
+      "id": "plugin-hooks",
+      "from": "moduleGraph",
+      "to": "pluginHooks"
+    },
+    {
+      "id": "transformed-code",
+      "from": "pluginHooks",
+      "to": "respond",
+      "label": "transformed code"
+    },
+    {
+      "id": "serve",
+      "from": "respond",
+      "to": "browserEval",
+      "label": "200 + JS"
+    },
+    {
+      "id": "optimized-deps",
+      "from": "depsOptimizer",
+      "to": "pluginHooks",
+      "label": "pre-bundled deps"
+    },
+    {
+      "id": "build-plugins",
+      "from": "buildEntry",
+      "to": "resolvePlugins"
+    },
+    {
+      "id": "build-bundle",
+      "from": "resolvePlugins",
+      "to": "rolldown"
+    },
+    {
+      "id": "build-write",
+      "from": "rolldown",
+      "to": "emitBundle"
+    },
+    {
+      "id": "build-output",
+      "from": "emitBundle",
+      "to": "distOut"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Dev request path",
+      "items": [
+        "transformMiddleware serves module URLs; indexHtmlMiddleware serves the document",
+        "doTransform consults the module graph, then runs resolveId, load and transform"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Build path",
+      "items": [
+        "build() -> createBuilder -> resolveConfig('build') -> rolldown bundle",
+        "prepareOutDirPlugin empties the outDir before write; manifest and reporter run last"
+      ]
+    }
+  ]
+}

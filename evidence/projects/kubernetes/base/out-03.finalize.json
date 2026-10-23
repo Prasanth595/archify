@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "workflow",
+  "quality": "showcase",
+  "startedAt": "2026-10-23T16:05:40.956Z",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/base/03-repair-2.workflow.json",
+    "sha256": "e671bef09557b32555eb482560ed2a293aadaba6fa4f80fc18854bece6caabae",
+    "bytes": 7520
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/base/out-03.html"
+  },
+  "stages": {
+    "validate": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": null,
+      "command": [
+        "/Users/hermes/.hermes/node/bin/node",
+        "/private/tmp/archify-base/archify/bin/archify.mjs",
+        "deliver",
+        "workflow",
+        "/private/tmp/archify-960/evidence/projects/kubernetes/base/03-repair-2.workflow.json",
+        "/private/tmp/archify-960/evidence/projects/kubernetes/base/out-03.html",
+        "--quality",
+        "showcase",
+        "--repo-root",
+        "/tmp/archify-960/evidence/projects/kubernetes/src-repo-k8s",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "deliver",
+        "receiptId": "dc056d0c-36b0-452f-b3a1-d05c2788ab5b",
+        "stage": "render",
+        "type": "workflow",
+        "input": "/private/tmp/archify-960/evidence/projects/kubernetes/base/03-repair-2.workflow.json",
+        "output": "/private/tmp/archify-960/evidence/projects/kubernetes/base/out-03.html",
+        "error": "Workflow edge \"write->api\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+        "diagnostics": [
+          {
+            "code": "workflow/route-preset-conflict",
+            "severity": "error",
+            "message": "Workflow edge \"write->api\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+            "subject": {
+              "diagramType": "workflow",
+              "edge": null,
+              "from": "write",
+              "to": "api",
+              "route": "return-left"
+            },
+            "evidence": {
+              "invariant": "perpendicular endpoint-side direction",
+              "attemptedCandidateFamily": "return-left",
+              "points": [
+                [
+                  913.5999999999999,
+                  540
+                ],
+                [
+                  20,
+                  540
+                ],
+                [
+                  20,
+                  119
+                ],
+                [
+                  248,
+                  119
+                ]
+              ],
+              "fromSide": "left",
+              "toSide": "right",
+              "requiredEndpointStubPx": 8,
+              "requiredInteriorSegmentPx": 16,
+              "requiredDirectClearancePx": 28
+            },
+            "supportedFixes": []
+          }
+        ],
+        "provenance": "absent",
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "execution": "embedded-in-deliver"
+    },
+    "deliver": {
+      "status": "not-run",
+      "execution": "blocked-by-validate"
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "workflow/route-preset-conflict",
+      "severity": "error",
+      "message": "Workflow edge \"write->api\" cannot satisfy route preset \"return-left\": candidate violates perpendicular endpoint-side direction.",
+      "subject": {
+        "diagramType": "workflow",
+        "edge": null,
+        "from": "write",
+        "to": "api",
+        "route": "return-left"
+      },
+      "evidence": {
+        "invariant": "perpendicular endpoint-side direction",
+        "attemptedCandidateFamily": "return-left",
+        "points": [
+          [
+            913.5999999999999,
+            540
+          ],
+          [
+            20,
+            540
+          ],
+          [
+            20,
+            119
+          ],
+          [
+            248,
+            119
+          ]
+        ],
+        "fromSide": "left",
+        "toSide": "right",
+        "requiredEndpointStubPx": 8,
+        "requiredInteriorSegmentPx": 16,
+        "requiredDirectClearancePx": 28
+      },
+      "supportedFixes": []
+    }
+  ],
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/kubernetes/base/out-03.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/kubernetes/base/out-03.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "validate",
+  "finishedAt": "2026-10-23T16:05:41.565Z",
+  "durationMs": 609,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:03:41.479Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

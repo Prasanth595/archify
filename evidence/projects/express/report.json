@@ -1,0 +1,61 @@
+{
+  "project": "express",
+  "repo": "https://github.com/expressjs/express",
+  "revision": "0dee2c52c7c873498f8ed7d8ee4ddd0a04d3ada8",
+  "taskPrompt": "How does an HTTP request actually flow through this codebase? Walk the reader from the Node HTTP server, through app.handle(), into the router and the middleware stack, out to a route handler, and back out through the response helpers. Also show the error path: when a middleware or handler calls next(err), how does the request reach the default final handler instead of a normal response? Scope: stay inside the request lifecycle (view rendering, static serving and body-parser internals are out of scope except where the request lifecycle calls into them); ground every claim in source under lib/ at the pinned revision and attach inspected sources ranges; Express 5 has no lib/router any more, so say where path matching actually happens; show both the success path and the error path, with the error path visually distinct. Deliverable: a schema v2 Workflow candidate JSON that passes archify finalize workflow.",
+  "model": "MiniMax-M3",
+  "settings": "quality=showcase; schema_version=2; CLI invocation: node <cli>/archify/bin/archify.mjs finalize workflow <candidate.json> <out.html> --quality showcase --json --repo-root <src-express>; repository evidence verified against the pinned checkout; visual-check at 1440x900 and 2048x1320, light and dark",
+  "base": {
+    "repairRounds": 1,
+    "finalizeInvocations": 2,
+    "delivered": true,
+    "totalElapsedSec": 213.0,
+    "cliExecSec": 2.716,
+    "cliExecSecBreakdown": {
+      "authoringLoop": 2.716,
+      "replays": 2.873
+    },
+    "repairLoopWallClockSec": 201.0,
+    "finalArtifact": "base/02-repair-1.html",
+    "finalCandidate": "base/02-repair-1.workflow.json",
+    "note": "totalElapsedSec spans the first finalize to delivery and therefore also absorbs the one-time shared cost of reading the express source, writing task-prompt.md and authoring the first draft. repairLoopWallClockSec is the agent-side diagnosis+edit time between the first failure receipt and the repaired candidate."
+  },
+  "candidate": {
+    "repairRounds": 1,
+    "finalizeInvocations": 2,
+    "delivered": true,
+    "totalElapsedSec": 15.1,
+    "cliExecSec": 2.581,
+    "cliExecSecBreakdown": {
+      "authoringLoop": 2.581,
+      "replays": 2.859
+    },
+    "repairLoopWallClockSec": 14.0,
+    "finalArtifact": "candidate/02-repair-1.html",
+    "finalCandidate": "candidate/02-repair-1.workflow.json",
+    "note": "This chain ran second, so its shorter wall clock reflects my having already analysed byte-identical diagnostics on the base side, not a difference in feedback quality. See comparison.md."
+  },
+  "replay": {
+    "frozenCandidateFinal": {
+      "base": "base/replay-of-candidate-final.json",
+      "candidate": "candidate/replay-of-candidate-final.json",
+      "result": "Both CLIs pass the candidate side's final JSON. gates on both: validate pass / deliver pass / check pass / browser-check pass, diagnostics []."
+    },
+    "frozenSharedDraftFinalize": {
+      "base": "base/replay-of-shared-draft-finalize.json",
+      "candidate": "candidate/replay-of-shared-draft-finalize.json",
+      "result": "Both CLIs fail with byte-identical diagnostics. Neither receipt carries partialLayout."
+    },
+    "frozenSharedDraftLayoutJson": {
+      "base": "base/replay-of-shared-draft-layout-json.json",
+      "candidate": "candidate/replay-of-shared-draft-layout-json.json",
+      "result": "Only the candidate receipt carries partialLayout. Its columns and nodes duplicate the base receipt's top-level columns/nodes byte-for-byte; the only new data is edges[].attemptedCandidateFamilies."
+    }
+  },
+  "screenshots": {
+    "tool": "node /tmp/archify-960/archify/bin/archify.mjs visual-check <out.html> --json --out-dir screenshots/<side>",
+    "base": "screenshots/base/",
+    "candidate": "screenshots/candidate/",
+    "note": "Same capture tool, same viewports (1440x900, 2048x1320) and same themes (light, dark) on both sides. The four PNG captures are byte-identical on both sides."
+  }
+}

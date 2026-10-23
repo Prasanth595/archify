@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "deliver",
+  "receiptId": "29aecfb3-b5b1-4d3f-9888-8af68b584c6f",
+  "stage": "render",
+  "type": "workflow",
+  "input": "/private/tmp/archify-960/evidence/projects/vite/probe/layout-failure.workflow.json",
+  "output": "/private/tmp/archify-960/evidence/projects/vite/probe/deliver-base.html",
+  "error": "Workflow edge \"graph-lookup\" has explicit geometry that violates orthogonal route segments.\nPreserving absolute workflow geometry disables automatic node widening: 6 node(s) with omitted widths also have text-fit problems. Explicit widths can preserve their full text, but changing widths moves endpoints, so route coordinates must be remeasured. The reported automatic widths resolve these intrinsic text checks only; they are not a verified whole-diagram repair.",
+  "diagnostics": [
+    {
+      "code": "workflow/explicit-pin-conflict",
+      "severity": "error",
+      "message": "Workflow edge \"graph-lookup\" has explicit geometry that violates orthogonal route segments.",
+      "subject": {
+        "diagramType": "workflow",
+        "edge": "graph-lookup",
+        "from": "transformReq",
+        "to": "moduleGraph",
+        "path": "/edges/2/via"
+      },
+      "evidence": {
+        "invariant": "orthogonal route segments",
+        "conflictingPins": [
+          {
+            "edge": "graph-lookup",
+            "field": "via",
+            "path": "/edges/2/via",
+            "value": [
+              [
+                400,
+                400
+              ]
+            ]
+          }
+        ],
+        "segmentIndex": 0,
+        "from": [
+          380,
+          243
+        ],
+        "to": [
+          400,
+          400
+        ]
+      },
+      "supportedFixes": [
+        "remove via from edge \"graph-lookup\" so readable-v2 can replan the remaining explicit route assertions"
+      ]
+    },
+    {
+      "code": "workflow/absolute-geometry-sizing",
+      "severity": "warning",
+      "message": "Preserving absolute workflow geometry disables automatic node widening: 6 node(s) with omitted widths also have text-fit problems. Explicit widths can preserve their full text, but changing widths moves endpoints, so route coordinates must be remeasured. The reported automatic widths resolve these intrinsic text checks only; they are not a verified whole-diagram repair.",
+      "subject": {
+        "diagramType": "workflow"
+      },
+      "evidence": {
+        "absoluteConstraints": [
+          {
+            "path": "/edges/2/via",
+            "value": [
+              [
+                400,
+                400
+              ]
+            ]
+          }
+        ],
+        "affectedNodes": [
+          {
+            "node": "browser",
+            "path": "/nodes/0/width",
+            "currentWidthPx": 92,
+            "automaticWidthPx": 96,
+            "problems": [
+              "Label \"Browser request\" (~102px) is wider than component \"browser\" (92px) — shorten the label or increase node.width."
+            ]
+          },
+          {
+            "node": "browserEval",
+            "path": "/nodes/1/width",
+            "currentWidthPx": 92,
+            "automaticWidthPx": 112,
+            "problems": [
+              "Label \"Browser evaluates\" (~116px) is wider than component \"browserEval\" (92px) — shorten the label or increase node.width."
+            ]
+          },
+          {
+            "node": "middlewares",
+            "path": "/nodes/2/width",
+            "currentWidthPx": 92,
+            "automaticWidthPx": 124,
+            "problems": [
+              "Label \"Connect middlewares\" (~129px) is wider than component \"middlewares\" (92px) — shorten the label or increase node.width."
+            ]
+          },
+          {
+            "node": "transformReq",
+            "path": "/nodes/3/width",
+            "currentWidthPx": 92,
+            "automaticWidthPx": 104,
+            "problems": [
+              "Label \"transformRequest\" (~109px) is wider than component \"transformReq\" (92px) — shorten the label or increase node.width."
+            ]
+          },
+          {
+            "node": "respond",
+            "path": "/nodes/5/width",
+            "currentWidthPx": 92,
+            "automaticWidthPx": 96,
+            "problems": [
+              "Label \"send() response\" (~102px) is wider than component \"respond\" (92px) — shorten the label or increase node.width."
+            ]
+          },
+          {
+            "node": "pluginHooks",
+            "path": "/nodes/7/width",
+            "currentWidthPx": 92,
+            "automaticWidthPx": 136,
+            "problems": [
+              "Label \"Plugin pipeline\" (~102px) is wider than component \"pluginHooks\" (92px) — shorten the label or increase node.width.",
+              "Sublabel \"resolve · load · transform\" needs ~94px at the 6px legible minimum, but node \"pluginHooks\" provides 84px — shorten the sublabel or increase node.width."
+            ]
+          }
+        ]
+      },
+      "supportedFixes": []
+    }
+  ],
+  "provenance": "absent",
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:03:41.479Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

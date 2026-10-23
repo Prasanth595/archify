@@ -1,0 +1,3 @@
+workflow schema validation failed:
+  /nodes/4/sources/0/label (id/label: "queue built with the default controller rate limiter") must NOT have more than 48 characters {"limit":48}
+[schema/maxLength] /nodes/4/sources/0/label (id/label: "queue built with the default controller rate limiter") must NOT have more than 48 characters Fix: provide at most 48 character(s).

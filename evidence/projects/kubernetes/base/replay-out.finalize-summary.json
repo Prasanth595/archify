@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/candidate/04-repair-3.workflow.json",
+    "sha256": "4262bb0cd14fd3e07b2f138b0c76714b0e2d93dc5c361461c547ce585f174e9f",
+    "bytes": 7516
+  },
+  "artifact": {
+    "path": "/private/tmp/archify-960/evidence/projects/kubernetes/base/replay-out.html",
+    "sha256": "e652703bafc6f79aa3c651b0b9051d372dd60717187fdc0327e2d07b54ca5e7a",
+    "bytes": 830131
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/kubernetes/base/replay-out.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/kubernetes/base/replay-out.finalize-summary.json",
+    "browserCheckReceipt": "/private/tmp/archify-960/evidence/projects/kubernetes/base/replay-out.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:03:41.479Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2206,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/tmp/archify-960/evidence/projects/ansible/candidate/03-repair-2.workflow.json",
+    "sha256": "1186b42c9ed53fab1096e484cdfcc78c50f94dfd8a8f9d64e7efddd4bfab8143",
+    "bytes": 7933
+  },
+  "artifact": {
+    "path": "/tmp/archify-960/evidence/projects/ansible/candidate/replay-of-candidate-final.html",
+    "sha256": "14f8493f3ced6c7cb3f75863b515984fae35f6dbf02ae4e79496f98c3514c45c",
+    "bytes": 830862
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/private/tmp/archify-960/evidence/projects/ansible/candidate/replay-of-candidate-final.finalize.json",
+    "summaryReceipt": "/private/tmp/archify-960/evidence/projects/ansible/candidate/replay-of-candidate-final.finalize-summary.json",
+    "browserCheckReceipt": "/tmp/archify-960/evidence/projects/ansible/candidate/replay-of-candidate-final.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-23T16:08:07.852Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2206,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

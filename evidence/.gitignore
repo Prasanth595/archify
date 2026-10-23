@@ -1,0 +1,7 @@
+# The pinned source checkouts used for --repo-root verification are inputs,
+# not evidence. They are large and reproducible from the pinned revision.
+src-*/
+src-*/
+src-repo*/
+*.visual-check.html
+*.visual-check.json

@@ -30,10 +30,25 @@ try {
 const layoutJson = process.argv.includes('--layout-json');
 
 if (layoutJson) {
-  process.stdout.write(`${JSON.stringify(compiled.receipt, null, 2)}\n`);
+  // Additive: when the compiler could not produce a measured receipt (the
+  // existing fields stay byte-identical), surface the partial-layout payload
+  // it did manage to compute so the author can see what was decided and what
+  // candidates the router tried.
+  const payload = (!compiled.ok && compiled.partialLayout)
+    ? { ...compiled.receipt, partialLayout: compiled.partialLayout }
+    : compiled.receipt;
+  process.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
   if (!compiled.ok) process.exitCode = 1;
 } else if (!compiled.ok) {
-  throwDiagnosticError(compiled.error || 'Workflow compilation failed.', compiled.diagnostics);
+  try {
+    throwDiagnosticError(compiled.error || 'Workflow compilation failed.', compiled.diagnostics);
+  } catch (error) {
+    // Additive: carry the measured partial layout out of the renderer so the
+    // CLI failure receipt can hand the author the geometry the compiler
+    // already decided, not only the route diagnostics.
+    if (compiled.partialLayout?.partial) error.partialLayout = compiled.partialLayout;
+    throw error;
+  }
 } else {
   writeDiagram({
     outPath,
