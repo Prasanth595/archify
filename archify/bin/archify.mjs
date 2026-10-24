@@ -5778,7 +5778,7 @@ async function commandBrowserEvidence(rawArgs, { command, capture }) {
       if (json) await printJson(failure);
       else {
         console.error(formatDiagnostics(`automated browser evidence failed: ${failure.error}`, failure.diagnostics));
-        console.error('perceptual visual review pending');
+        console.error(capture ? 'perceptual visual review pending' : 'perceptual visual review not requested');
       }
       process.exitCode = 1;
       return;
