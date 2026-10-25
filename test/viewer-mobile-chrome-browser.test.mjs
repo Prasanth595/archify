@@ -207,3 +207,144 @@ test('Mobile Viewer chrome stays reachable, clear of the dock, and the stage scr
   assert.equal(desktop.present, 'true', 'the stage must still be in presentation at 1280px');
   assert.ok(desktop.centreDelta < 1, `a scene that fits must stay centred (delta ${desktop.centreDelta})`);
 });
+
+test('320×300 composition keeps parent Back and the explained Passport clear of the wrapped dock', {
+  skip: chrome ? false : 'Set ARCHIFY_CHROME to run the real-browser mobile composition check.',
+}, async (t) => {
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-mobile-composition-'));
+  t.after(() => fs.rmSync(scratch, { recursive: true, force: true }));
+  const diagram = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples/web-app.architecture.json'), 'utf8'));
+  diagram.meta.parentHref = 'grandparent.html';
+  const explained = diagram.components.find((component) => component.id === 'users');
+  explained.explanation = 'The signed-in reader.\n\nThe explanation stays readable when the passport shares a short viewport with the dock.';
+  const input = path.join(scratch, 'composition.json');
+  const artifact = path.join(scratch, 'composition.html');
+  fs.writeFileSync(input, JSON.stringify(diagram));
+  execFileSync(process.execPath, [path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'), input, artifact]);
+
+  const browser = new ChromeVisualBrowser(chrome);
+  t.after(() => browser.close());
+  const session = await browser.sessionPromise;
+  const send = (method, params = {}) => browser.cdp.send(method, params, session);
+  await send('Browser.setDownloadBehavior', { behavior: 'deny' });
+  const run = async (expression) => {
+    const result = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+    assert.equal(result.exceptionDetails, undefined, result.exceptionDetails?.exception?.description);
+    return result.result?.value;
+  };
+  const settle = async () => {
+    await run('Archify.readerLayout.whenStable()');
+    await run('Archify.viewerChromeLayout.whenStable()');
+    await run('new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+  };
+  const click = async (id) => {
+    await run(`document.getElementById(${JSON.stringify(id)}).scrollIntoView({ block: 'nearest' })`);
+    await settle();
+    const point = await run(`(() => { const rect = document.getElementById(${JSON.stringify(id)}).getBoundingClientRect(); return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }; })()`);
+    await send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...point });
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', buttons: 1, clickCount: 1 });
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', buttons: 0, clickCount: 1 });
+    await settle();
+  };
+
+  await send('Emulation.setFocusEmulationEnabled', { enabled: true });
+  await send('Emulation.setDeviceMetricsOverride', { width: 320, height: 300, deviceScaleFactor: 1, mobile: true });
+  await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
+  await send('Page.navigate', { url: pathToFileURL(artifact).href + '?theme=light' });
+  await loaded;
+  await run('document.fonts.ready');
+  await settle();
+  const top = await run(`(() => {
+    const button = document.getElementById('btn-parent-back');
+    const rect = button.getBoundingClientRect();
+    const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    return {
+      parentBarHidden: document.getElementById('parent-back-bar').hidden,
+      parentBackHittable: Boolean(hit && (hit === button || button.contains(hit))),
+    };
+  })()`);
+  assert.equal(await run(`Archify.focus.set('users')`), true);
+  await settle();
+  await click('btn-focus-explain');
+  await run(`document.querySelector('.diagram-nav').scrollIntoView({ block: 'end' })`);
+  await settle();
+
+  const state = await run(`(() => {
+    const container = document.querySelector('.diagram-container');
+    const nav = document.querySelector('.diagram-nav');
+    const navRect = nav.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const navStyle = getComputedStyle(nav);
+    const buttons = [...nav.querySelectorAll('button')].filter((button) => button.getBoundingClientRect().width > 0);
+    const buttonHeight = Math.max(...buttons.map((button) => button.getBoundingClientRect().height));
+    const hit = (element) => {
+      if (!element || element.hidden) return { visible: false, hittable: false };
+      const rect = element.getBoundingClientRect();
+      const centre = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      return { visible: rect.height > 0, hittable: Boolean(centre && (centre === element || element.contains(centre))), rect: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom } };
+    };
+    const title = document.getElementById('focus-explanation-title');
+    const titleRect = title.getBoundingClientRect();
+    const titleCentre = document.elementFromPoint(titleRect.left + titleRect.width / 2, titleRect.top + titleRect.height / 2);
+    const body = document.getElementById('focus-explanation-body');
+    const back = document.getElementById('focus-explanation-back');
+    const explain = document.getElementById('btn-focus-explain');
+    return {
+      viewport: { width: innerWidth, height: innerHeight },
+      nav: { wrap: navStyle.flexWrap, height: navRect.height, top: navRect.top, bottom: navRect.bottom },
+      buttons: buttons.map((button) => {
+        const rect = button.getBoundingClientRect();
+        const centre = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        return {
+          label: (button.getAttribute('aria-label') || button.textContent || '').trim(),
+          inside: rect.left >= containerRect.left - 0.5 && rect.right <= containerRect.right + 0.5 && rect.top >= containerRect.top - 0.5 && rect.bottom <= containerRect.bottom + 0.5,
+          hittable: Boolean(centre && (centre === button || button.contains(centre))),
+        };
+      }),
+      buttonHeight,
+      dock: parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0,
+      title: { hit: Boolean(titleCentre && (titleCentre === title || title.contains(titleCentre))), bottom: titleRect.bottom, navTop: navRect.top },
+      prose: { text: body.textContent.trim(), scrollHeight: body.scrollHeight, clientHeight: body.clientHeight, scrollTop: body.scrollTop },
+      parentBack: hit(document.getElementById('btn-parent-back')),
+      parentBarHidden: document.getElementById('parent-back-bar').hidden,
+      back: hit(back),
+      explain: hit(explain),
+      focused: document.activeElement && document.activeElement.id,
+    };
+  })()`);
+
+  assert.ok(state.viewport.width === 320 && state.viewport.height === 300, JSON.stringify(state));
+  assert.equal(state.nav.wrap, 'wrap', 'the mobile dock must opt into wrapping');
+  assert.ok(state.nav.height > state.buttonHeight * 1.5, `the dock must actually wrap at 320px: ${JSON.stringify(state.nav)}`);
+  assert.ok(state.buttons.length > 0, 'the dock must render actions');
+  assert.deepEqual(state.buttons.filter((button) => !button.inside || !button.hittable), [], 'every wrapped dock action must stay inside the stage and be hit-testable');
+  assert.ok(state.dock > 0 && state.dock >= state.nav.height - 1, `the measured dock height must cover the wrapped dock: ${JSON.stringify(state)}`);
+  assert.equal(top.parentBarHidden, false, 'parent navigation must be visible on the sibling page');
+  assert.equal(top.parentBackHittable, true, 'parent Back must be hit-testable before the Passport covers the header');
+  assert.equal(state.title.hit, true, 'the explanation title must be unobscured');
+  assert.ok(state.title.bottom <= state.nav.top + 0.5, `the explanation title must stay above the dock: ${JSON.stringify(state.title)}`);
+  assert.ok(state.prose.text.length > 0, 'the authored explanation must be rendered');
+  assert.ok(state.prose.clientHeight > 0, 'the explanation prose must have a readable box');
+  assert.equal(state.focused, 'focus-explanation-back', 'opening the explained Passport must focus its Back control');
+  assert.equal(state.back.hittable, true, 'the explanation Back must be hit-testable');
+
+  await click('focus-explanation-back');
+  const restored = await run(`(() => {
+    const explain = document.getElementById('btn-focus-explain');
+    const rect = explain.getBoundingClientRect();
+    const nav = document.querySelector('.diagram-nav').getBoundingClientRect();
+    const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    return {
+      focused: document.activeElement && document.activeElement.id,
+      hittable: Boolean(hit && (hit === explain || explain.contains(hit))),
+      overlapsDock: !(rect.right <= nav.left || rect.left >= nav.right || rect.bottom <= nav.top || rect.top >= nav.bottom),
+      explaining: Archify.focus.explaining(),
+    };
+  })()`);
+  assert.equal(restored.explaining, false);
+  assert.equal(restored.focused, 'btn-focus-explain', 'closing the explanation must restore Explain focus');
+  assert.equal(restored.hittable, true, 'the restored Explain action must be hit-testable');
+  assert.equal(restored.overlapsDock, false, 'the restored Explain action must not sit under the dock');
+});
+
