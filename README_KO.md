@@ -36,13 +36,38 @@ https://github.com/user-attachments/assets/78570807-ba1d-4737-953f-55504a378a87
 
 <a id="start"></a>
 
-### 설치한 뒤 아이디어 설명하기
+## 빠른 시작
 
-Cursor, Claude Code, Codex CLI, OpenCode에서 사용할 수 있습니다.
+**현재 개발 버전:** `v3.2.1-dev.1` (안정 릴리스가 아닙니다). [변경 이력](CHANGELOG.md#unreleased)을 확인하세요.
+
+### 1. 설치
+
+Cursor, Claude Code, Codex CLI, OpenCode에서 사용할 수 있습니다. 다른 연동은 [설치 옵션](#설치-옵션)을 참고하세요.
 
 ```bash
 npx skills add tt-a1i/archify -g
 ```
+
+<details>
+<summary>다른 설치 방법과 업데이트 확인 동작</summary>
+
+비대화형 Cursor 설치:
+
+```bash
+npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
+```
+
+설치하지 않고 사용해 보기:
+
+```bash
+npx skills use tt-a1i/archify@archify --agent codex
+```
+
+Archify는 선택적 업데이트 알림을 위해 고정된 stable manifest를 GET할 수 있지만, 업데이트를 다운로드하거나 설치하지는 않습니다. `ARCHIFY_UPDATE_CHECK_DISABLED=1`을 설정하면 네트워크 요청과 알림 상태 저장을 모두 끌 수 있습니다.
+
+</details>
+
+### 2. 아이디어 설명하기 — 저장소는 필요하지 않습니다
 
 에이전트에게 다음과 같이 요청하세요.
 
@@ -51,7 +76,7 @@ Archify로 웹 요청을 다이어그램으로 그려 줘. 브라우저가 API�
 API는 Redis를 확인해. 캐시 미스면 PostgreSQL을 조회하고 캐시를 채워 줘.
 ```
 
-그다음 “인증 추가해 줘”, “캐시 미스 경로를 강조해 줘”, “라이트 테마로 바꿔 줘”처럼 이어서 다듬을 수 있습니다. 저장소 없이 설명만으로 시작할 수도 있고, 코드 근거가 필요하면 에이전트에게 저장소를 분석하게 할 수도 있습니다.
+코드 근거가 필요하면 저장소를 연 뒤 이렇게 요청하세요.
 
 ```text
 이 저장소를 분석한 뒤 Archify로 높은 수준의 런타임 아키텍처 다이어그램을 만들어 줘.
@@ -59,7 +84,11 @@ API는 Redis를 확인해. 캐시 미스면 PostgreSQL을 조회하고 캐시를
 연결선을 더 늘리는 대신 보조 세부 정보는 카드에 넣어 줘.
 ```
 
-[에이전트 선택하기](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture) · [설치와 업데이트 확인 상세](#빠른-시작)
+어디서 시작할지 모르겠다면 [에이전트와 다이어그램 유형을 선택하세요](https://tt-a1i.github.io/archify/start.html?agent=cursor&type=architecture).
+
+### 3. 대화로 다듬기
+
+“인증 추가해 줘”, “캐시 미스 경로를 강조해 줘”, “라이트 테마로 바꿔 줘”처럼 이어서 요청하세요. Archify는 typed source를 유지하므로 관련된 부분만 바뀝니다.
 
 ## 질문하면 한 페이지로 답합니다
 
@@ -87,45 +116,6 @@ Archify로 한 페이지로 답해 줘: API P99가 80 ms에서 600 ms로 올랐�
 | 한 단계 이후의 흐름을 모두 따라갑니다. | 웹 앱부터 데이터베이스까지의 경로를 강조합니다. | 작성된 백엔드와 데이터베이스 연결에 집중합니다. |
 
 [Proof Lab](https://tt-a1i.github.io/archify/gallery.html)에는 저장소에 포함된 시나리오와 JSON 소스, 검증 결과가 있습니다.
-
-## 빠른 시작
-
-**현재 개발 버전:** `v3.2.1-dev.1` (안정 릴리스가 아닙니다). [변경 이력](CHANGELOG.md#unreleased)을 확인하세요.
-
-### 1. 설치
-
-```bash
-npx skills add tt-a1i/archify -g
-```
-
-<details>
-<summary>다른 설치 방법과 업데이트 확인 동작</summary>
-
-비대화형 Cursor 설치:
-
-```bash
-npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
-```
-
-설치하지 않고 사용해 보기:
-
-```bash
-npx skills use tt-a1i/archify@archify --agent codex
-```
-
-Archify는 선택적 업데이트 알림을 위해 고정된 stable manifest를 GET할 수 있지만, 업데이트를 다운로드하거나 설치하지는 않습니다. `ARCHIFY_UPDATE_CHECK_DISABLED=1`을 설정하면 네트워크 요청과 알림 상태 저장을 모두 끌 수 있습니다.
-
-</details>
-
-### 2. 설명으로 시작하기 — 저장소는 필요하지 않습니다
-
-```text
-Archify로 그려 줘: Browser -> API -> Redis cache -> PostgreSQL fallback.
-```
-
-### 3. 대화로 다듬기
-
-`Redis 추가`, `인증을 왼쪽으로 이동`, `롤백 경로 강조`처럼 구체적인 요청을 이어 가세요. Archify는 선택적 수정을 위해 typed source를 유지합니다.
 
 ## 적합한 다이어그램 고르기
 

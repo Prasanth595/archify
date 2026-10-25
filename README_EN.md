@@ -8,11 +8,7 @@
 
 <p align="center"><img src="docs/assets/archify-readme-hero.png" alt="Archify — interactive diagrams" width="960" /></p>
 
-<p align="center"><strong>Official channels：</strong> <a href="https://archify.si">archify.si</a> · <a href="https://github.com/tt-a1i/archify">GitHub</a><br/>Archify is free and open source. Third-party online services and paid plans are operated by their respective providers and do not represent Archify. <a href="#official-services">Service details →</a></p>
-
 <p align="center">Start with an idea, a question, or a plan. Describe it to your AI agent, and Archify turns it into an interactive HTML you can explore, customize, and share. From travel itineraries and learning maps to complex systems—make it your own.</p>
-
-<p align="center">See what the community is creating—and imagine what you could make next.</p>
 
 <p align="center">
   <a href="https://archify.si/gallery.html"><strong>Live demos</strong></a> &nbsp;·&nbsp;
@@ -34,17 +30,13 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-22c55e?style=flat-square" alt="Apache License 2.0" /></a>
   <a href="#installation-options"><img src="https://img.shields.io/badge/works_with-Claude_Code_%7C_Codex_%7C_Cursor_%7C_OpenCode-7C3AED?style=flat-square" alt="Works with Claude Code, Codex, Cursor, and OpenCode" /></a>
   <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.2.1--dev.1-0891b2?style=flat-square" alt="Development version 3.2.1-dev.1" /></a>
-</p>
-
-<p align="center">
-  <a href="https://archify.si/"><img src="https://img.shields.io/badge/Website-0891B2?style=for-the-badge" alt="Archify website" /></a>
-  <a href="https://discord.gg/6xWMjgCeUq"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Join Archify on Discord" /></a>
-  <a href="#community"><img src="https://img.shields.io/badge/WeChat-07C160?style=for-the-badge&amp;logo=wechat&amp;logoColor=white" alt="Archify WeChat group" /></a>
-  <a href="#community"><img src="https://img.shields.io/badge/QQ-1688D8?style=for-the-badge&amp;logo=qq&amp;logoColor=white" alt="Archify QQ group" /></a>
-  <a href="https://x.com/t20000622yy"><img src="https://img.shields.io/badge/Creator_on_X-181717?style=for-the-badge&amp;logo=x&amp;logoColor=white" alt="Follow the creator on X" /></a>
+  <a href="https://discord.gg/6xWMjgCeUq"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat-square&amp;logo=discord&amp;logoColor=white" alt="Join Archify on Discord" /></a>
+  <a href="https://x.com/t20000622yy"><img src="https://img.shields.io/badge/Creator_on_X-181717?style=flat-square&amp;logo=x&amp;logoColor=white" alt="Follow the creator on X" /></a>
 </p>
 
 <p align="center"><a href="#sponsors"><strong>❤️ Partners & sponsors: Kimi Work · Supercode · OpenLux</strong></a></p>
+
+<p align="center"><sub>Official: <a href="https://archify.si">archify.si</a> · <a href="https://github.com/tt-a1i/archify">GitHub</a>. Archify is free and open source; third-party paid services do not represent Archify. <a href="#official-services">Details →</a></sub></p>
 
 ## See Archify in action
 
@@ -54,28 +46,96 @@ https://github.com/user-attachments/assets/78570807-ba1d-4737-953f-55504a378a87
 
 **One sentence. Your repo, mapped.** Watch the 35-second demo: explore the diagram, follow source links, and trace a path. [Try the interactive examples ↗](https://archify.si/gallery.html)
 
+## Preview
+
+<details>
+<summary>Themes, exports, and share cards</summary>
+
+Same diagram, two themes, one click to switch:
+
+| Dark | Light |
+|---|---|
+| ![Dark theme](docs/assets/archify-dark.png) | ![Light theme](docs/assets/archify-light.png) |
+
+The Export menu copies PNG to the clipboard and downloads static or motion formats:
+
+![Export menu](docs/assets/archify-menu.png)
+
+After tracing a route, **Export → Route Share Card** downloads that authored path as a 1200×630 PNG with the full diagram retained for context.
+
+![Route Share Card showing the exact Users to API Server path with the full architecture retained as context](docs/assets/archify-route-share-card.png)
+
+After tracing authored `Upstream` or `Downstream` reach, **Export → Reach Share Card** captures that exact reading without claiming runtime impact.
+
+![MCO downstream Reach Share Card showing authored relationships from Command Router](docs/assets/mco-runtime-reach-share-card.png)
+
+Open [`examples/web-app.html`](examples/web-app.html) locally to try the complete viewer.
+
+</details>
+
 <a id="start"></a>
 
-### Install, then describe your idea
+## Quick start
 
-Works with Cursor, Claude Code, Codex CLI, and OpenCode. See installation options below for additional integrations.
+**Current development version:** `v3.2.1-dev.1`. See [Changelog](CHANGELOG.md#unreleased).
+
+### 1. Install
+
+Works with Cursor, Claude Code, Codex CLI, and OpenCode. See [installation options](#installation-options) for additional integrations.
 
 ```bash
 npx skills add tt-a1i/archify -g
 ```
 
-Send this to your agent:
+<details>
+<summary>More installation options and update-check details</summary>
+
+For an explicit, non-interactive Cursor install:
+
+```bash
+npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
+```
+
+To try without installing:
+
+```bash
+npx skills use tt-a1i/archify@archify --agent codex
+```
+
+[DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@1.0.0`
+
+The [agent switcher](https://archify.si/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`.
+
+Archify may GET the fixed stable manifest solely to show an optional reminder; it never downloads or installs updates. Successful checks wait about 24 hours (±20%); active use retries failures after 6, then 24 hours. The server sees normal HTTP metadata (IP and time), but receives no version, Agent, project data, prompts, account/device ID, or ETag. You decide whether and when to update. Set `ARCHIFY_UPDATE_CHECK_DISABLED=1` to disable networking and reminder-state writes.
+
+</details>
+
+### 2. Describe your idea
+
+**No repository is required.** Send this to your agent:
 
 ```text
 Use Archify to diagram a web request: Browser calls the API,
 the API checks Redis, and a cache miss queries PostgreSQL and fills the cache.
 ```
 
-Then continue: “Add authentication”, “Highlight the cache-miss path”, or “Switch to the light theme”.
+For a source-backed diagram, open a repository and ask:
 
-**No repository is required:** start with a description, or ask your agent to read a repository for a source-backed architecture diagram.
+```text
+Analyze this repository, then use archify to create a high-level runtime architecture diagram.
+Show 8–12 core components, one primary path, external dependencies, and trust boundaries.
+Put supporting detail in cards instead of adding more edges.
+```
 
-[Choose your agent](https://archify.si/start.html?agent=cursor&type=architecture) · [Installation details and update checks](#quick-start)
+Not sure where to start? [Choose your agent and diagram type](https://archify.si/start.html?agent=cursor&type=architecture).
+
+### 3. Refine in chat
+
+Continue with focused requests such as “Add authentication”, “Highlight the cache-miss path”, or “Switch to the light theme”. Archify keeps the typed source available, so each change touches only the relevant part.
+
+### Stay updated
+
+Select **Watch → Custom → Releases** on this repository for release notifications (starring does not subscribe you), or follow the [release notes](https://github.com/tt-a1i/archify/releases) and [release feed](https://github.com/tt-a1i/archify/releases.atom). Installations with the update checker can also show a reminder when a newer stable release exists; Archify never installs updates automatically.
 
 ## Ask a question, get a one-page answer
 
@@ -94,6 +154,47 @@ while the mean barely moved. What is the likely cause, and how should we investi
 ```
 
 Live examples: [First HTTPS visit](https://archify.si/cases/explainer/tls-first-visit.html) · [P99 latency (Chinese)](https://archify.si/cases/explainer/p99-tail-latency.html) · [How Archify finalize keeps the last good file, read from this repository (Chinese)](https://archify.si/cases/explainer/finalize-delivery.html) · [First rental checklist (Chinese)](https://archify.si/cases/explainer/first-rental.html)
+
+## Show what matters
+
+| Explain an agent workflow | Follow a cache miss | Explore service relationships |
+|---|---|---|
+| [![Agent workflow tracing everything the planner drives](docs/assets/archify-demo-reach.png)](https://archify.si/gallery/artifacts/agent-tool-call.workflow.html?theme=dark&present=1#focus=planner&reach=downstream) | [![Cache-miss sequence showing the Web App to Postgres route](docs/assets/archify-demo-route.png)](https://archify.si/gallery/artifacts/cache-miss.sequence.html?theme=dark&present=1#route=web~db) | [![Production architecture comparing backend and database roles](docs/assets/archify-demo-lens.png)](https://archify.si/gallery/artifacts/production-deployment.architecture.html?theme=dark&present=1#lens=backend~database) |
+| Trace everything downstream of one step. | Highlight the path from web app to database. | Focus on authored backend and database connections. |
+
+The [Proof Lab](https://archify.si/gallery.html) contains every checked-in scenario with its JSON source and validation receipt.
+
+### Understand a real repository
+
+<sub>CODE → DIAGRAM · A source-backed system map</sub>
+
+[![MCO runtime architecture generated from the public mco-org/mco repository](docs/assets/mco-runtime-share-card.png)](https://archify.si/cases/mco-runtime.architecture.html?theme=dark&present=1)
+
+Archify traced [`mco-org/mco`](https://github.com/mco-org/mco) at `9f1a1cf` and produced this checked map. **[Open it ↗](https://archify.si/cases/mco-runtime.architecture.html?theme=dark&present=1)** · [trace reach ↗](https://archify.si/cases/mco-runtime.architecture.html?theme=dark#focus=router&reach=downstream) · [typed source](docs/cases/mco-runtime.architecture.json)
+
+### Easy to extend. More ways to make it yours.
+
+<sub>COMMUNITY STORIES · Selected examples shared by users</sub>
+
+**Keep building after the diagram is generated.** Archify is open source and its output is standalone HTML. Ask your agent to adapt it, connect useful links, or add interactions for your own workflow. Community creations already span team collaboration, travel planning, legal citation checks, contract review, and incident retrospectives. These are just a few examples.
+
+One user started with a hand-drawn multi-agent architecture, turned it into an interactive diagram, then added a Kimi execution pool through conversation. Others asked their agent to read a project and brought the resulting architecture into Feishu or DingTalk for team discussion.
+
+Another user turned a Shanghai CityWalk guide into a four-day itinerary: switch between days, inspect a stop, and jump to Amap, Xiaohongshu, or Dianping. The author also added arrival check-ins and stop notes, turning the itinerary into a small tool to use during the trip. These extensions were added by the community author for this particular artifact.
+
+[![A community-created four-day Shanghai CityWalk itinerary](docs/assets/community/shanghai-citywalk.png)](https://archify.si/cases/community/shanghai-citywalk.html)
+
+**[▶ Explore the interactive Shanghai CityWalk](https://archify.si/cases/community/shanghai-citywalk.html)** · **[Download HTML ↓](https://github.com/tt-a1i/archify/raw/refs/heads/main/docs/cases/community/shanghai-citywalk.html)**
+
+<sub>The output is one self-contained HTML file: open it in any browser, no Archify installation needed, and the interactions travel with it. External map links need a network connection; times and places reflect the author's original itinerary.</sub>
+
+## Community and recognition
+
+- **#1 on GitHub Trending's weekly, all-language repository list.** [Ranking screenshot published by the creator on September 1, 2026](https://x.com/t20000622yy/status/2094656813576880285), with all languages and “This week” selected.
+- **Featured and interviewed by QbitAI.** [Project feature](https://www.qbitai.com/2026/09/482469.html) · [The developer's story](https://www.qbitai.com/2026/09/488519.html).
+- **Shared with developer communities.** [midudev's post](https://x.com/midudev/status/2094425974406320207).
+
+<sub>A selection of public coverage, community shares, and historical milestones. Follow the links for dates and sources.</sub>
 
 <a id="sponsors"></a>
 
@@ -134,143 +235,6 @@ Live examples: [First HTTPS visit](https://archify.si/cases/explainer/tls-first-
 </table>
 
 > Want to sponsor Archify? [Contact us by email.](mailto:2801884530@qq.com)
-
-## Show what matters
-
-| Explain an agent workflow | Follow a cache miss | Explore service relationships |
-|---|---|---|
-| [![Agent workflow tracing everything the planner drives](docs/assets/archify-demo-reach.png)](https://archify.si/gallery/artifacts/agent-tool-call.workflow.html?theme=dark&present=1#focus=planner&reach=downstream) | [![Cache-miss sequence showing the Web App to Postgres route](docs/assets/archify-demo-route.png)](https://archify.si/gallery/artifacts/cache-miss.sequence.html?theme=dark&present=1#route=web~db) | [![Production architecture comparing backend and database roles](docs/assets/archify-demo-lens.png)](https://archify.si/gallery/artifacts/production-deployment.architecture.html?theme=dark&present=1#lens=backend~database) |
-| Trace everything downstream of one step. | Highlight the path from web app to database. | Focus on authored backend and database connections. |
-
-The [Proof Lab](https://archify.si/gallery.html) contains all 11 checked-in scenarios, their JSON sources, and validation receipts.
-
-### Understand a real repository
-
-<sub>CODE → DIAGRAM · A source-backed system map</sub>
-
-[![MCO runtime architecture generated from the public mco-org/mco repository](docs/assets/mco-runtime-share-card.png)](https://archify.si/cases/mco-runtime.architecture.html?theme=dark&present=1)
-
-Archify traced [`mco-org/mco`](https://github.com/mco-org/mco) at `9f1a1cf` and produced this checked map. **[Open it ↗](https://archify.si/cases/mco-runtime.architecture.html?theme=dark&present=1)** · [trace reach ↗](https://archify.si/cases/mco-runtime.architecture.html?theme=dark#focus=router&reach=downstream) · [typed source](docs/cases/mco-runtime.architecture.json)
-
-### Easy to extend. More ways to make it yours.
-
-<sub>COMMUNITY STORIES · Selected examples shared by users</sub>
-
-**Keep building after the diagram is generated.** Archify is open source and its output is standalone HTML. Ask your agent to adapt it, connect useful links, or add interactions for your own workflow. Community creations already span team collaboration, travel planning, legal citation checks, contract review, and incident retrospectives. These are just a few examples.
-
-One user started with a hand-drawn multi-agent architecture, turned it into an interactive diagram, then added a Kimi execution pool through conversation. Others asked their agent to read a project and brought the resulting architecture into Feishu or DingTalk for team discussion.
-
-Another user turned a Shanghai CityWalk guide into a four-day itinerary: switch between days, inspect a stop, and jump to Amap, Xiaohongshu, or Dianping. The author also added arrival check-ins and stop notes, turning the itinerary into a small tool to use during the trip. These extensions were added by the community author for this particular artifact.
-
-**[▶ Explore the interactive Shanghai CityWalk](https://archify.si/cases/community/shanghai-citywalk.html)**
-
-[![A community-created four-day Shanghai CityWalk itinerary](docs/assets/community/shanghai-citywalk.png)](https://archify.si/cases/community/shanghai-citywalk.html)
-
-**[▶ Try the interactive version](https://archify.si/cases/community/shanghai-citywalk.html)** · Switch between D1–D4 and click a place to explore.
-
-<sub>Community artifact · Shanghai CityWalk · Four days of routes and place links</sub>
-
-### Download it. Open it. Explore it.
-
-The output is a self-contained HTML file. Download it and open it in your browser to use the node details and path exploration included in that artifact. No Archify installation is needed to view it. Send the HTML to someone else and the interactions go with it; external websites and map links need a network connection.
-
-**[Explore the Shanghai CityWalk ↗](https://archify.si/cases/community/shanghai-citywalk.html)** · **[Download HTML ↓](https://github.com/tt-a1i/archify/raw/refs/heads/main/docs/cases/community/shanghai-citywalk.html)**
-
-<sub>Try switching between D1–D4, opening a place card, or following a map link. Times and place information reflect the author's original itinerary.</sub>
-
-## Community and recognition
-
-- **#1 on GitHub Trending's weekly, all-language repository list.** [Ranking screenshot published by the creator on September 1, 2026](https://x.com/t20000622yy/status/2094656813576880285), with all languages and “This week” selected.
-- **Featured and interviewed by QbitAI.** [Project feature](https://www.qbitai.com/2026/09/482469.html) · [The developer's story](https://www.qbitai.com/2026/09/488519.html).
-- **Shared with developer communities.** [midudev's post](https://x.com/midudev/status/2094425974406320207).
-
-<sub>A selection of public coverage, community shares, and historical milestones. Follow the links for dates and sources.</sub>
-
-## Preview
-
-<details>
-<summary>Themes, exports, and share cards</summary>
-
-Same diagram, two themes, one click to switch:
-
-| Dark | Light |
-|---|---|
-| ![Dark theme](docs/assets/archify-dark.png) | ![Light theme](docs/assets/archify-light.png) |
-
-The Export menu copies PNG to the clipboard and downloads static or motion formats:
-
-![Export menu](docs/assets/archify-menu.png)
-
-After tracing a route, **Export → Route Share Card** downloads that authored path as a 1200×630 PNG with the full diagram retained for context.
-
-![Route Share Card showing the exact Users to API Server path with the full architecture retained as context](docs/assets/archify-route-share-card.png)
-
-After tracing authored `Upstream` or `Downstream` reach, **Export → Reach Share Card** captures that exact reading without claiming runtime impact.
-
-![MCO downstream Reach Share Card showing authored relationships from Command Router](docs/assets/mco-runtime-reach-share-card.png)
-
-Open [`examples/web-app.html`](examples/web-app.html) locally to try the complete viewer.
-
-</details>
-
-## Quick start
-
-**Current development version:** `v3.2.1-dev.1`. See [Changelog](CHANGELOG.md#unreleased).
-
-### 1. Install
-
-```bash
-npx skills add tt-a1i/archify -g
-```
-
-<details>
-<summary>More installation options and update-check details</summary>
-
-For an explicit, non-interactive Cursor install:
-
-```bash
-npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
-```
-
-To try without installing:
-
-```bash
-npx skills use tt-a1i/archify@archify --agent codex
-```
-
-[DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@1.0.0`
-
-The [agent switcher](https://archify.si/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`.
-
-Archify may GET the fixed stable manifest solely to show an optional reminder; it never downloads or installs updates. Successful checks wait about 24 hours (±20%); active use retries failures after 6, then 24 hours. The server sees normal HTTP metadata (IP and time), but receives no version, Agent, project data, prompts, account/device ID, or ETag. You decide whether and when to update. Set `ARCHIFY_UPDATE_CHECK_DISABLED=1` to disable networking and reminder-state writes.
-
-</details>
-
-### Stay updated
-
-- **Get release notifications:** select **Watch → Custom → Releases** at the top of this GitHub repository. Starring the project does not subscribe you to release notifications.
-- **See what changed:** [Release notes](https://github.com/tt-a1i/archify/releases).
-- **Use a feed reader:** [Subscribe to the release feed](https://github.com/tt-a1i/archify/releases.atom).
-
-Installations with the update checker also check for newer stable releases during diagram delivery and can show a reminder. Older installations without the checker need a manual update to gain this feature. You choose whether and when to upgrade; Archify never installs updates automatically.
-
-### 2. Start from a description — no repository required
-
-```text
-Use Archify to draw: Browser -> API -> Redis cache -> PostgreSQL fallback.
-```
-
-For source evidence, open a repository and ask:
-
-```text
-Analyze this repository, then use archify to create a high-level runtime architecture diagram.
-Show 8–12 core components, one primary path, external dependencies, and trust boundaries.
-Put supporting detail in cards instead of adding more edges.
-```
-
-### 3. Refine in chat
-
-Continue with focused requests such as `add Redis`, `move auth to the left`, or `highlight the rollback path`. Archify keeps the typed source available for targeted iteration.
 
 ## Choose the right diagram
 
@@ -321,8 +285,6 @@ Data Flow makes movement and sensitivity boundaries explicit:
 Lifecycle separates progress, waits, retries, and terminal outcomes:
 
 ![Lifecycle example](docs/assets/archify-lifecycle.png)
-
-New in 3.1: ERD, Class, Tree, Timeline and Waterfall.
 
 ERD keeps tables, every column and key, and relationship cardinality together:
 
@@ -402,9 +364,7 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 
 `preview` is an explicit loopback-only desktop mode: it watches one JSON file on a random `127.0.0.1` port, keeps the last verified output through failures, stops with Ctrl-C, and adds no generated-HTML runtime. Use `--no-open` for tests or manual URL opening.
 
-`deliver --open` is an opt-in one-shot handoff after commit. Opener failure preserves success; JSON remains on stdout and the absolute fallback path goes to stderr.
-
-On failure, `validate --json` and `deliver --json` emit one JSON object. Apply only each `diagnostics[]` subject's `supportedFixes`, within the Skill's two correction rounds; visual review remains separate.
+`deliver --open` is an opt-in one-shot handoff after commit. Opener failure preserves success; JSON remains on stdout and the absolute fallback path goes to stderr. Failure receipts and repair rules are defined in the [delivery contract](archify/references/delivery-contract.md).
 
 Settings:
 
@@ -418,7 +378,7 @@ Settings:
 }
 ```
 
-`meta.locale` localizes page title, Legend, states/errors, a11y, HTML/SVG `lang`—never authored content. `en`, `zh-CN`, `zh-TW`, `es`, `ko`, and `ar` are bundled and need only `meta.locale`; `meta.translations` (canonical message key → translated string) overrides individual keys and keeps the rest of the language. Other languages supply their catalog there (see `archify/examples/locales/`), or the renderer falls back to English and discloses it. Static omits `animation`; `classic` defaults.
+Omit `animation` for a static result; `classic` is the default preset. `meta.locale` localizes the fixed viewer UI, never authored content; `en`, `zh-CN`, `zh-TW`, `es`, `ko`, and `ar` are bundled. See [locales](archify/locales/README.md) for overrides and other languages.
 
 </details>
 
