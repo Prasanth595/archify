@@ -387,4 +387,31 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
   assert.equal(restored.focused, 'btn-focus-explain', 'closing the explanation must restore Explain focus');
   assert.equal(restored.hittable, true, 'the restored Explain action must be hit-testable');
   assert.equal(restored.overlapsDock, false, 'the restored Explain action must not sit under the dock');
+
+  // Collapsed Passport: CSS, not an inline explanation height, governs here.
+  await run('window.scrollTo(0, 440)');
+  await settle();
+  const collapsed = await run(`(() => {
+    const nav = document.querySelector('.diagram-nav').getBoundingClientRect();
+    const chip = document.getElementById('focus-chip').getBoundingClientRect();
+    const summary = document.getElementById('focus-summary');
+    const rect = summary.getBoundingClientRect();
+    const centre = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    return {
+      nav: { top: nav.top, bottom: nav.bottom },
+      chip: { top: chip.top, bottom: chip.bottom, height: chip.height },
+      summary: { hit: Boolean(centre && (centre === summary || summary.contains(centre))), top: rect.top, bottom: rect.bottom },
+      separated: chip.bottom <= nav.top + 0.5 || chip.top >= nav.bottom - 0.5,
+    };
+  })()`);
+  assert.equal(collapsed.summary.hit, true, `the collapsed Passport summary must stay hit-testable: ${JSON.stringify(collapsed)}`);
+  assert.equal(collapsed.separated, true, `the collapsed Passport must not overlap the dock: ${JSON.stringify(collapsed)}`);
+
+  await run('window.scrollTo(0, 760)');
+  await settle();
+  const deep = await run(`(() => {
+    const chip = document.getElementById('focus-chip').getBoundingClientRect();
+    return { scrollY: window.scrollY, top: chip.top, bottom: chip.bottom, height: chip.height };
+  })()`);
+  assert.ok(deep.top >= 0, `the compact Passport must not be placed above the viewport at deep scroll: ${JSON.stringify(deep)}`);
 });
