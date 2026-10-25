@@ -81,9 +81,9 @@ test('Mobile Viewer chrome stays reachable, clear of the dock, and the stage scr
     const nav = document.querySelector('.diagram-nav').getBoundingClientRect();
     const svg = document.querySelector('.diagram-container svg').getBoundingClientRect();
     const container = document.querySelector('.diagram-container');
-    return { navTop: nav.top, svgBottom: svg.bottom, dockH: getComputedStyle(container).getPropertyValue('--archify-dock-h').trim() };
+    return { navTop: nav.top, navHeight: nav.height, svgBottom: svg.bottom, dockH: getComputedStyle(container).getPropertyValue('--archify-dock-h').trim() };
   })()`);
-  assert.ok(dock.dockH, 'the chrome layout must publish the measured dock height');
+  assert.ok(parseFloat(dock.dockH) >= dock.navHeight - 1, 'the chrome layout must publish the measured dock height');
   assert.ok(dock.svgBottom <= dock.navTop + 0.5, `scene bottom ${dock.svgBottom} must clear dock top ${dock.navTop}`);
 
   // 3. An overlay opened from the dock must clear the dock and leave its
@@ -187,11 +187,12 @@ test('Mobile Viewer chrome stays reachable, clear of the dock, and the stage scr
     return {
       present: document.documentElement.getAttribute('data-present'),
       scrollWidth: container.scrollWidth,
+      clientWidth: container.clientWidth,
       svgWidth: svg.width,
     };
   })()`);
   assert.equal(stage.present, 'true', 'the presentation stage must activate');
-  assert.equal(await run(`document.documentElement.getAttribute('data-present')`), 'true');
+  assert.ok(stage.svgWidth > stage.clientWidth + 100, 'the stage fixture must overflow before scroll coverage is asserted');
   assert.ok(stage.scrollWidth >= stage.svgWidth - 2, `stage scroll width ${stage.scrollWidth} must cover the ${stage.svgWidth}px scene`);
 
   // 5. A scene that fits must stay centred: start alignment plus auto inline
@@ -216,7 +217,9 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
   const diagram = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples/web-app.architecture.json'), 'utf8'));
   diagram.meta.parentHref = 'grandparent.html';
   const explained = diagram.components.find((component) => component.id === 'users');
-  explained.explanation = 'The signed-in reader.\n\nThe explanation stays readable when the passport shares a short viewport with the dock.';
+  const paragraph = 'The signed-in reader opens this explained node and expects the Passport to stay above the wrapped dock while its prose scrolls instead of being clipped.';
+  explained.explanation = Array.from({ length: 7 }, (_, index) => `${paragraph} Part ${index + 1}.`).join('\n\n');
+  assert.ok(explained.explanation.length <= 1200, 'the fixture must stay within the schema explanation limit');
   const input = path.join(scratch, 'composition.json');
   const artifact = path.join(scratch, 'composition.html');
   fs.writeFileSync(input, JSON.stringify(diagram));
@@ -305,7 +308,7 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
       buttonHeight,
       dock: parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0,
       title: { hit: Boolean(titleCentre && (titleCentre === title || title.contains(titleCentre))), bottom: titleRect.bottom, navTop: navRect.top },
-      prose: { text: body.textContent.trim(), scrollHeight: body.scrollHeight, clientHeight: body.clientHeight, scrollTop: body.scrollTop },
+      prose: (() => { const rect = body.getBoundingClientRect(); return { text: body.textContent.trim(), scrollHeight: body.scrollHeight, clientHeight: body.clientHeight, scrollTop: body.scrollTop, top: rect.top, bottom: rect.bottom }; })(),
       parentBack: hit(document.getElementById('btn-parent-back')),
       parentBarHidden: document.getElementById('parent-back-bar').hidden,
       back: hit(back),
@@ -325,7 +328,9 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
   assert.equal(state.title.hit, true, 'the explanation title must be unobscured');
   assert.ok(state.title.bottom <= state.nav.top + 0.5, `the explanation title must stay above the dock: ${JSON.stringify(state.title)}`);
   assert.ok(state.prose.text.length > 0, 'the authored explanation must be rendered');
-  assert.ok(state.prose.clientHeight > 0, 'the explanation prose must have a readable box');
+  assert.ok(state.prose.scrollHeight > state.prose.clientHeight, 'a schema-maximum explanation must scroll inside the capped Passport');
+  assert.ok(state.prose.bottom <= state.nav.top + 0.5, `the explanation prose must stay above the dock: ${JSON.stringify(state.prose)}`);
+  assert.ok(state.back.rect.bottom <= state.nav.top + 0.5, `the explanation Back must stay above the dock: ${JSON.stringify(state.back.rect)}`);
   assert.equal(state.focused, 'focus-explanation-back', 'opening the explained Passport must focus its Back control');
   assert.equal(state.back.hittable, true, 'the explanation Back must be hit-testable');
 

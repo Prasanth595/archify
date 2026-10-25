@@ -393,8 +393,9 @@
       function compactPassportHeight() {
         var toolbar = document.querySelector('.toolbar');
         var top = Math.max(8, toolbar ? toolbar.getBoundingClientRect().bottom + 8 : 8);
+        var dock = parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0;
         chip.style.setProperty('--passport-viewport-top', top + 'px');
-        return Math.max(0, window.innerHeight - top - 8);
+        return Math.max(0, window.innerHeight - top - 8 - dock);
       }
       function closeExplanation(options) {
         options = options || {};
@@ -420,8 +421,14 @@
         if (chip.getAttribute('data-explaining') !== 'true') return;
         var rect = container.getBoundingClientRect();
         var padding = window.innerWidth <= 720 ? 8 : 16;
-        var available = Math.max(0, Math.min(rect.bottom - padding, window.innerHeight - padding)
-          - Math.max(rect.top + padding, padding));
+        var dock = parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0;
+        var nav = document.querySelector('.diagram-nav');
+        var dockTop = nav && !nav.hidden
+          ? nav.getBoundingClientRect().top
+          : Math.min(rect.bottom, window.innerHeight) - dock;
+        var chipTop = chip.getBoundingClientRect().top;
+        var available = Math.max(0, Math.min(dockTop - padding, window.innerHeight - padding)
+          - Math.max(chipTop + padding, padding));
         if (compactPassportViewport()) available = compactPassportHeight();
         var needed = explanationFace.scrollHeight - explanationBody.clientHeight + explanationBody.scrollHeight + 2;
         chip.style.height = Math.ceil(Math.min(available, Math.max(explanationBaseHeight, needed))) + 'px';
@@ -1473,6 +1480,7 @@
           if (valid.length) top = valid[0];
         }
         chip.style.top = Math.round(top) + 'px';
+        fitExplanation();
         if (Archify.radar && typeof Archify.radar.sync === 'function') Archify.radar.sync();
       }
       function requestLensPlacement() {

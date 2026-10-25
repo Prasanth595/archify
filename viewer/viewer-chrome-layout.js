@@ -81,8 +81,8 @@
       }
       /* The mobile dock can wrap to more than one row, so its height is a
          measured value, not a constant. Publish it before the desktop-only
-         stage-rail gate so every phone surface (stage pad, probe, lens, finder)
-         can clear the real dock instead of guessing a row count. */
+         stage-rail gate so the stage pad, probe, lens, overview map and radar
+         feedback can clear the real dock instead of guessing a row count. */
       var dockHeight = -1;
       function publishDockHeight() {
         if (!nav || !container) return;
