@@ -9028,15 +9028,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         var toolbar = document.querySelector('.toolbar');
         var dockRect = measuredDockRect();
         var top = Math.max(8, toolbar ? toolbar.getBoundingClientRect().bottom + 8 : 8);
-        var belowTop = Math.min(window.innerHeight - 8, dockRect.bottom + 8);
+        var belowTop = Math.max(top, Math.min(window.innerHeight - 8, dockRect.bottom + 8));
         var aboveSpace = dockRect.top - 8 - top;
         var belowSpace = window.innerHeight - 8 - belowTop;
         var minimum = Math.min(120, explanationBaseHeight || 120);
         if (aboveSpace < minimum && belowSpace > aboveSpace) top = belowTop;
-        var reserve = top < dockRect.top ? dockRect.height : 0;
+        var limit = top < dockRect.top ? dockRect.top : window.innerHeight;
+        var reserve = Math.max(0, window.innerHeight - limit);
         chip.style.setProperty('--passport-viewport-top', top + 'px');
         chip.style.setProperty('--archify-passport-reserve', reserve + 'px');
-        var limit = top < dockRect.top ? dockRect.top : window.innerHeight;
         return Math.max(0, Math.min(window.innerHeight - 8, limit - 8) - top);
       }
       function closeExplanation(options) {

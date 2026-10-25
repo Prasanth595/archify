@@ -14268,15 +14268,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         var toolbar = document.querySelector(&#39;.toolbar&#39;);
         var dockRect = measuredDockRect();
         var top = Math.max(8, toolbar ? toolbar.getBoundingClientRect().bottom + 8 : 8);
-        var belowTop = Math.min(window.innerHeight - 8, dockRect.bottom + 8);
+        var belowTop = Math.max(top, Math.min(window.innerHeight - 8, dockRect.bottom + 8));
         var aboveSpace = dockRect.top - 8 - top;
         var belowSpace = window.innerHeight - 8 - belowTop;
         var minimum = Math.min(120, explanationBaseHeight || 120);
         if (aboveSpace &lt; minimum &amp;&amp; belowSpace &gt; aboveSpace) top = belowTop;
-        var reserve = top &lt; dockRect.top ? dockRect.height : 0;
+        var limit = top &lt; dockRect.top ? dockRect.top : window.innerHeight;
+        var reserve = Math.max(0, window.innerHeight - limit);
         chip.style.setProperty(&#39;--passport-viewport-top&#39;, top + &#39;px&#39;);
         chip.style.setProperty(&#39;--archify-passport-reserve&#39;, reserve + &#39;px&#39;);
-        var limit = top &lt; dockRect.top ? dockRect.top : window.innerHeight;
         return Math.max(0, Math.min(window.innerHeight - 8, limit - 8) - top);
       }
       function closeExplanation(options) {
@@ -30069,15 +30069,15 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         var toolbar = document.querySelector(&#39;.toolbar&#39;);
         var dockRect = measuredDockRect();
         var top = Math.max(8, toolbar ? toolbar.getBoundingClientRect().bottom + 8 : 8);
-        var belowTop = Math.min(window.innerHeight - 8, dockRect.bottom + 8);
+        var belowTop = Math.max(top, Math.min(window.innerHeight - 8, dockRect.bottom + 8));
         var aboveSpace = dockRect.top - 8 - top;
         var belowSpace = window.innerHeight - 8 - belowTop;
         var minimum = Math.min(120, explanationBaseHeight || 120);
         if (aboveSpace &lt; minimum &amp;&amp; belowSpace &gt; aboveSpace) top = belowTop;
-        var reserve = top &lt; dockRect.top ? dockRect.height : 0;
+        var limit = top &lt; dockRect.top ? dockRect.top : window.innerHeight;
+        var reserve = Math.max(0, window.innerHeight - limit);
         chip.style.setProperty(&#39;--passport-viewport-top&#39;, top + &#39;px&#39;);
         chip.style.setProperty(&#39;--archify-passport-reserve&#39;, reserve + &#39;px&#39;);
-        var limit = top &lt; dockRect.top ? dockRect.top : window.innerHeight;
         return Math.max(0, Math.min(window.innerHeight - 8, limit - 8) - top);
       }
       function closeExplanation(options) {
