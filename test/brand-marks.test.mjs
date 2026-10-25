@@ -211,6 +211,47 @@ test('architecture uses a 22px upper-right badge', () => {
   assert.doesNotMatch(block, /c-icon-first|brand-mark-icon-first/);
 });
 
+test('compact architecture components keep a usable brand badge inside their frame', () => {
+  const input = writeFixture('architecture', 'compact-brand-badge', 'openai', (_diagram, node) => {
+    node.size = [120, 24];
+  });
+  const { result, html } = renderSync('architecture', input, 'compact-brand-badge');
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const id = JSON.parse(fs.readFileSync(input, 'utf8')).components[0].id;
+  const block = nodeBlock(html, id);
+  const frame = block.match(/<rect x="([-\d.]+)" y="([-\d.]+)" width="([-\d.]+)" height="([-\d.]+)" rx="[^"]+" class="c-mask"\/>/);
+  const brand = block.match(/data-brand-mark="openai"[^>]+translate\(([-\d.]+) ([-\d.]+)\)">\s*<rect width="([-\d.]+)" height="([-\d.]+)"/);
+  assert.ok(frame && brand, block);
+  const [frameX, frameY, frameWidth, frameHeight] = frame.slice(1, 5).map(Number);
+  const [brandX, brandY, brandWidth, brandHeight] = brand.slice(1, 5).map(Number);
+  assert.equal(brandWidth, 12);
+  assert.equal(brandHeight, 12);
+  assert.ok(brandX >= frameX && brandY >= frameY);
+  assert.ok(brandX + brandWidth <= frameX + frameWidth);
+  assert.ok(brandY + brandHeight <= frameY + frameHeight);
+});
+
+test('architecture omits a brand badge when the component cannot fit a 12px mark', () => {
+  const input = writeFixture('architecture', 'too-short-brand-badge', 'openai', (_diagram, node) => {
+    node.size = [120, 23];
+  });
+  const { result, html } = renderSync('architecture', input, 'too-short-brand-badge');
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const id = JSON.parse(fs.readFileSync(input, 'utf8')).components[0].id;
+  assert.doesNotMatch(nodeBlock(html, id), /data-brand-mark="openai"/);
+});
+
+test('architecture brand top rail accounts for fitted text padding', () => {
+  const input = writeFixture('architecture', 'brand-padding-boundary', 'openai', (_diagram, node) => {
+    node.label = 'ABCDEFGHIJKLMN';
+    node.size = [120, 60];
+  });
+  const { result, html } = renderSync('architecture', input, 'brand-padding-boundary');
+  assert.equal(result.status, 1, result.stderr || result.stdout);
+  assert.match(result.stderr, /brand top rail/i);
+  assert.equal(html, '');
+});
+
 test('a larger upper-right badge keeps the type fill, semantic icon, and text', () => {
   const input = writeFixture('architecture', 'larger-badge', 'postgresql', (diagram, node) => {
     node.label = 'PostgreSQL';
