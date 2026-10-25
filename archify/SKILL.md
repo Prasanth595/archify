@@ -1,7 +1,7 @@
 ---
 name: archify
 description: "Create validated architecture, workflow, sequence, data-flow, lifecycle/state, ERD, class, tree, timeline, and waterfall diagrams as explorable standalone HTML with dark/light themes, motion and image/SVG/WebM export. Accept requirements or Mermaid; inspect repository evidence for code-backed diagrams. Use when visualizing systems, API calls, pipelines, schemas, histories, timings, or everyday steps, parts, relationships and states. Also turn an answer into a one-page explainer, with the conclusion first, structured panels, native diagrams and charts, when the user asks for a page, an explainer or an answer to share (做成一页, 用页面讲), or proactively when the user's rules opt in with an [archify explainer: ...] line. Optionally add a guided story and video export to an existing native diagram. Not for dashboards."
-license: MIT
+license: Apache-2.0
 metadata:
   version: "3.2"
   author: tt-a1i
@@ -105,7 +105,20 @@ When reporting verification details, distinguish artifact checks, browser eviden
 
 ## Optional viewer capabilities
 
+Architecture, Workflow, Sequence, Dataflow and Lifecycle nodes may carry optional plain-text `explanation` (1–1200 characters). The focused Semantic Passport offers Explain; prose stays outside canonical SVG and visual exports. Omit the field when the existing label, sublabel and sources are sufficient.
+
 Live motion is enabled by default for every rendered diagram; omit `meta.animation`. The Viewer’s Live/Still button controls playback.
+
+### Cross-diagram navigation
+
+When the user wants overview → module → detail navigation across multiple HTML artifacts:
+
+- Targets are same-directory `filename.html` only (optional `?` / `#`). No `../`, `/`, or schemes.
+- Node `href` is sugar for a one-entry list (label defaults to the node label). `drilldowns` wins if both are present.
+- One child: native SVG `<a>` + corner mark; click follows the link; Alt-click focuses Passport.
+- Several children: Passport lists every target; click focuses; Ctrl+click / double-click opens the first entry.
+- Child diagrams may set `meta.parentHref`. The header Back control appears when `parentHref` or URL `?from=` is present.
+- Examples: sibling pair `examples/drilldown-platform.architecture.json` ↔ `examples/drilldown-integrations.architecture.json`; multi-child `examples/drilldown-overview.architecture.json`.
 
 Read `references/viewer-runtime.md` only when the user explicitly asks for Share Cards, Route/Reach cards, motion, deep links, presentation, search/focus, or another Viewer Runtime feature.
 
