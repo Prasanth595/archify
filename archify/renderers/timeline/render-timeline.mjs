@@ -404,8 +404,9 @@ function headerText() {
     ? ` · ${dateYear(wall(first))}–${dateYear(wall(last))}`
     : multiDay ? '' : ` · ${dateYear(wall(first))}-${wall(first).mo}-${wall(first).d}`;
   const zone = `${timezone === 'UTC' ? 'UTC' : `${timezone} (${offsetLabel(first)})`}${date}`;
-  const disclosure = breaks.length ? ` · ${i18nText(locale, 'timeline.compressed', { count: breaks.length })}` : '';
-  return { evidence, axis, suffix: `${zone}${disclosure}`, caption: `${axis}: ${zone}${disclosure}` };
+  const disclosureText = breaks.length ? i18nText(locale, 'timeline.compressed', { count: breaks.length }) : '';
+  const disclosure = disclosureText ? ` · ${disclosureText}` : '';
+  return { evidence, axis, zone, disclosureText, disclosure, suffix: `${zone}${disclosure}`, caption: `${axis}: ${zone}${disclosure}` };
 }
 const header = headerText();
 const canvasWidth = axisX1 + layout.margin;
@@ -474,8 +475,29 @@ const headerView = (() => {
     const axis = ellipsize(header.axis, Math.max(0, (captionBudgetPx - suffixW - separatorW) * captionUnitsPerPx / captionAdvance));
     caption = axis ? `${axis}: ${header.suffix}` : header.suffix;
   } else {
-    caption = ellipsize(header.caption, Math.max(0, captionBudgetPx * captionUnitsPerPx / captionAdvance));
+    // Both localized strings (the axis label and the compression disclosure)
+    // can overflow the cap together. The renderer-owned zone and year stay
+    // visible, and the two localized strings are ellipsized around it: the
+    // disclosure keeps a floor (96px keeps roughly ten characters plus the
+    // separator, mirroring the evidence chip's floor above) because it
+    // explains the compressed axis, and the axis label takes the remaining
+    // slack.
+    const zoneNaturalW = textUnits(header.zone) * 11.5 * ADVANCE * captionAdvance;
+    const zoneW = Math.min(zoneNaturalW, captionBudgetPx);
+    const zone = zoneW < zoneNaturalW ? ellipsize(header.zone, zoneW * captionUnitsPerPx / captionAdvance) : header.zone;
+    const leftAfterZone = captionBudgetPx - zoneW;
+    const discSepW = header.disclosure ? textUnits(' · ') * 11.5 * ADVANCE * captionAdvance : 0;
+    const disclosureNaturalW = textUnits(header.disclosureText) * 11.5 * ADVANCE * captionAdvance;
+    const axisNaturalW = textUnits(header.axis) * 11.5 * ADVANCE * captionAdvance;
+    const disclosureFloor = Math.min(disclosureNaturalW, Math.max(96, leftAfterZone * 0.2), leftAfterZone);
+    const disclosureBudgetPx = Math.min(Math.max(disclosureFloor, leftAfterZone - separatorW - axisNaturalW), leftAfterZone);
+    const disclosureUsedW = Math.min(disclosureNaturalW, Math.max(0, disclosureBudgetPx - discSepW));
+    const disclosure = disclosureUsedW > 0 ? ` · ${ellipsize(header.disclosureText, disclosureUsedW * captionUnitsPerPx / captionAdvance)}` : '';
+    const axisBudgetPx = Math.max(0, leftAfterZone - separatorW - (disclosureUsedW ? disclosureUsedW + discSepW : 0));
+    const axis = axisBudgetPx > 0 ? ellipsize(header.axis, axisBudgetPx * captionUnitsPerPx / captionAdvance) : '';
+    caption = axis ? `${axis}: ${zone}${disclosure}` : `${zone}${disclosure}`;
   }
+
   return { evidence, evidenceW, caption, fullEvidence: header.evidence, fullCaption: header.caption, truncated: true };
 })();
 const footprint = legendFootprint(legendEntries, { width: width - layout.margin * 2, fontSize: 11, textAdvance: legendAdvance });

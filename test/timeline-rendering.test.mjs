@@ -288,6 +288,29 @@ test('timeline: extreme translations cannot stretch the canvas past the reader p
   const [, evidenceX, evidenceVisible] = html.match(/<text x="([\d.]+)" y="29"[^>]*aria-label="([^"]*)"/);
   assert.match(evidenceVisible, /^E+…$/);
   assert.ok(Number(evidenceX) + textUnits(evidenceVisible) * 10.5 * 0.6 / 2 <= 28 + Number(pillWidth), 'the visible evidence stays inside its pill');
+
+  // The fallback used to truncate the whole caption from its start when both
+  // localized strings overflowed together, so an oversized compression
+  // disclosure also hid the renderer-owned zone/year. A 2025 burst followed by
+  // a 2026 event drives the disclosure through the same fallback.
+  const compressed = `${'C'.repeat(390)} {count}`;
+  const burst = Array.from({ length: 6 }, (_, index) => ({
+    id: `b${index}`, at: `2025-03-01T10:0${index}:00Z`, title: `Burst ${index}`,
+  }));
+  const both = clone(diagram);
+  both.meta.translations['timeline.compressed'] = compressed;
+  both.events = [...burst, { id: 'later', at: '2026-03-01T10:00:00Z', title: 'A year later' }];
+  const combined = run(both);
+  assert.equal(combined.status, 0, combined.stderr);
+  const combinedHtml = fs.readFileSync(combined.output, 'utf8');
+  assert.equal(Number(combinedHtml.match(/<svg viewBox="0 0 ([\d.]+)/)[1]), 1920, 'header growth stops at the reader pane width');
+  // The full strings survive as the description, while the visible caption
+  // keeps the renderer-owned zone/year and truncated forms of both localized
+  // strings around it.
+  assert.match(combinedHtml, new RegExp(`<title>${axis}: UTC · 2025–2026 · ${'C'.repeat(390)} 1</title>`));
+  const [, combinedX, combinedVisible] = combinedHtml.match(/data-timeline-axis-caption="" x="([\d.]+)"[^>]*aria-label="([^"]*)"/);
+  assert.match(combinedVisible, /^A+…: UTC · 2025–2026 · C+…$/, 'the zone/year and a truncated disclosure stay visible');
+  assert.ok(Number(combinedX) + textUnits(combinedVisible) * 11.5 * 0.6 <= viewWidth - 28, 'the visible caption stays in frame');
 });
 
 test('timeline: a long evidence override uses the header slack', () => {
