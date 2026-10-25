@@ -194,8 +194,8 @@ test('Mobile Viewer chrome stays reachable, clear of the dock, and the stage scr
   assert.equal(await run(`document.documentElement.getAttribute('data-present')`), 'true');
   assert.ok(stage.scrollWidth >= stage.svgWidth - 2, `stage scroll width ${stage.scrollWidth} must cover the ${stage.svgWidth}px scene`);
 
-  // 5. A scene that fits must stay centred: `safe center` must not degrade the
-  //    fitting case while making overflow reachable.
+  // 5. A scene that fits must stay centred: start alignment plus auto inline
+  //    margins must not degrade the fitting case while making overflow reachable.
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
   await settle();
   const desktop = await run(`(() => {
