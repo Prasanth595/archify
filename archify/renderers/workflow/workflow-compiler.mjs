@@ -4493,6 +4493,9 @@ function automaticPortCandidates(edge, node, side, preferred, counterpart) {
   const extent = verticalSide ? node.height : node.width;
   const direction = (verticalSide ? counterpart.cy : counterpart.cx) >= center[axis] ? 1 : -1;
   for (let offset = 0; offset <= extent / 2 - 16; offset += 12) {
+    // Stop when this spacing cannot produce a distinct floating-point coordinate.
+    if (offset > 0 && center[axis] + offset === center[axis] && center[axis] - offset === center[axis]) break;
+    if (offset + 12 === offset) break;
     for (const sign of [direction, -direction]) {
       const point = [...center];
       point[axis] += sign * offset;
