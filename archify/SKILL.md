@@ -107,6 +107,8 @@ When reporting verification details, distinguish artifact checks, browser eviden
 
 Architecture, Workflow, Sequence, Dataflow and Lifecycle nodes may carry optional plain-text `explanation` (1–1200 characters). The focused Semantic Passport offers Explain; prose stays outside canonical SVG and visual exports. Omit the field when the existing label, sublabel and sources are sufficient.
 
+The same nodes may carry an optional `task_checklist` (1–12 tasks with `title`, `status` and optional `criteria` and `sources`) when the user wants implementation progress on the diagram; the focused Semantic Passport lists it read-only, outside canonical SVG and visual exports. Mark a task `implemented` only when its cited code satisfies the criteria, `needs-review` for partial or unverified work, and `pending` otherwise. Implemented tasks cite at least one source and pending tasks none; task sources are verified like node sources (`meta.repository` and `--repo-root`). Unlike an Explainer task list of reader to-dos, it records authored status.
+
 Live motion is enabled by default for every rendered diagram; omit `meta.animation`. The Viewer’s Live/Still button controls playback.
 
 ### Cross-diagram navigation

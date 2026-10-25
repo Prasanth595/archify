@@ -243,6 +243,7 @@ export function writeDiagram({ outPath, template, diagramType, meta, svg, cards,
     visualPreset: meta.visual_preset || 'classic',
     sourceEvidence,
     explanations: diagram ? collectExplanations(diagramType, diagram) : null,
+    taskChecklists: diagram ? collectTaskChecklists(diagramType, diagram) : null,
   });
   let candidatePath;
   let candidateIdentity;
@@ -328,6 +329,20 @@ export function collectExplanations(diagramType, diagram) {
     explanations[node.id] = node.explanation.trim();
   });
   return Object.keys(explanations).length ? explanations : null;
+}
+
+// An authored `task_checklist` is passport-only reader context like `explanation`:
+// task titles, statuses and criteria ride in one JSON block keyed by stable
+// node id, while task sources are verified with the node's own sources.
+export function collectTaskChecklists(diagramType, diagram) {
+  const collection = SEMANTIC_COLLECTIONS[diagramType];
+  const nodes = collection && Array.isArray(diagram?.[collection]) ? diagram[collection] : [];
+  const taskChecklists = {};
+  nodes.forEach((node) => {
+    if (!Array.isArray(node?.task_checklist) || node.task_checklist.length === 0) return;
+    taskChecklists[node.id] = node.task_checklist.map(({ title, status, criteria }) => ({ title, status, criteria }));
+  });
+  return Object.keys(taskChecklists).length ? taskChecklists : null;
 }
 
 const RELATIONSHIP_COLLECTIONS = {

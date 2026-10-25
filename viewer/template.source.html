@@ -291,6 +291,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     </div>
 
     <!-- ARCHIFY:EXPLANATIONS_DATA -->
+    <!-- ARCHIFY:TASK_CHECKLISTS_DATA -->
     <!-- ARCHIFY:SOURCE_EVIDENCE_DATA -->
     <!-- ARCHIFY:I18N_DATA -->
     <!-- Main Diagram -->
@@ -528,6 +529,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
               <small class="semantic-passport-drilldowns-hint">{{i18n:viewer.passport.drilldowns.hint}}</small>
             </div>
             <span class="relationship-lens-summary" id="focus-summary" aria-live="polite"></span>
+            <details class="semantic-passport-task-checklist" id="focus-task-checklist" hidden>
+              <summary><span class="semantic-passport-task-checklist-label">{{i18n:viewer.passport.taskChecklist}}</span> <span class="semantic-passport-task-checklist-count" id="focus-task-checklist-count"></span></summary>
+              <ul class="semantic-passport-task-checklist-tasks" id="focus-task-checklist-tasks"></ul>
+            </details>
             <div class="semantic-passport-reach" id="focus-reach" hidden>
               <span class="semantic-passport-reach-label">{{i18n:viewer.passport.reach}}</span>
               <div class="semantic-passport-reach-actions" role="group" aria-label="{{i18n:viewer.passport.reach.trace}}">
@@ -1012,6 +1017,24 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         count: function () { return payload ? Object.keys(payload).length : 0; }
       };
     })();
+    /* Authored node task checklists: passport-only, like explanations. Their task
+       sources are verified and read through Archify.sourceEvidence.task(). */
+    Archify.taskChecklists = (function () {
+      var element = document.getElementById('archify-task-checklists-data');
+      var payload = null;
+      if (element) {
+        try {
+          var parsed = JSON.parse(element.textContent || 'null');
+          if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) payload = parsed;
+        } catch (_) {}
+      }
+      return {
+        node: function (id) {
+          var tasks = payload && Object.prototype.hasOwnProperty.call(payload, id) ? payload[id] : null;
+          return Array.isArray(tasks) ? tasks.slice() : [];
+        }
+      };
+    })();
     /* Verified repository evidence is emitted only after the renderer checks
        the authored GitHub revision, source blobs, and optional line ranges
        against the explicit --repo-root. It remains outside the SVG so every
@@ -1050,6 +1073,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         repository: function () { return payload ? payload.repository : null; },
         node: function (id) {
           var sources = payload && payload.nodes ? payload.nodes[id] : null;
+          return Array.isArray(sources) ? sources.slice() : [];
+        },
+        task: function (id, index) {
+          var tasks = payload && payload.taskChecklists ? payload.taskChecklists[id] : null;
+          var sources = Array.isArray(tasks) ? tasks[index] : null;
           return Array.isArray(sources) ? sources.slice() : [];
         }
       };
