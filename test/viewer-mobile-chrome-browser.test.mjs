@@ -363,6 +363,7 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
       separated: chip.bottom <= nav.top + 0.5 || chip.top >= nav.bottom - 0.5,
     };
   })()`);
+  assert.equal(mid.scrollY, 520, `the mid-scroll check must reach its requested offset: ${JSON.stringify(mid)}`);
   assert.equal(mid.title.hit, true, `the explanation title must stay visible at the mid-scroll dock: ${JSON.stringify(mid)}`);
   assert.ok(mid.prose.clientHeight > 0, `the explanation prose must stay readable at the mid-scroll dock: ${JSON.stringify(mid)}`);
   assert.equal(mid.back.hit, true, `the explanation Back must stay hit-testable at the mid-scroll dock: ${JSON.stringify(mid)}`);
@@ -413,5 +414,6 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
     const chip = document.getElementById('focus-chip').getBoundingClientRect();
     return { scrollY: window.scrollY, top: chip.top, bottom: chip.bottom, height: chip.height };
   })()`);
+  assert.ok(deep.scrollY > mid.scrollY, `the deep-scroll check must scroll past the mid-scroll position: ${JSON.stringify(deep)}`);
   assert.ok(deep.top >= 0, `the compact Passport must not be placed above the viewport at deep scroll: ${JSON.stringify(deep)}`);
 });
