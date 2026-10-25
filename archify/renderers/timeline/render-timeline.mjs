@@ -259,16 +259,16 @@ const TICKS = [1000, 2000, 5000, 10_000, 15_000, 30_000, MINUTE, 2 * MINUTE, 5 *
   HOUR, 2 * HOUR, 3 * HOUR, 6 * HOUR, 12 * HOUR, DAY, 2 * DAY, 7 * DAY];
 
 function wallClockTicks(start, end, interval) {
-  // 日探测只收集时区偏移，不把一天当成固定长度的当地日历日。
-  // 即使时间段两端的偏移相同，也不能漏掉段内先进入、再退出的夏令时。
+  // Daily probes only collect timezone offsets; a local calendar day is not assumed to have a fixed length.
+  // Even when both ends of the span share an offset, do not miss a DST period that starts and ends inside it.
   const offsets = new Set([zoneOffset(start), zoneOffset(end)]);
   for (let probe = start + DAY; probe < end; probe += DAY) offsets.add(zoneOffset(probe));
   const candidates = new Set();
   for (const offset of offsets) {
     const firstTick = Math.ceil((start + offset) / interval) * interval - offset;
     for (let t = firstTick; t <= end; t += interval) {
-      // 同一个墙钟时刻可能对应两个真实瞬间，也可能不存在。按实际偏移回查，
-      // 保留回拨小时的两个刻度，并排除跳时或跳日期产生的虚构时刻。
+      // One wall-clock time may map to two real instants, or to none. Look it up by the actual offsets,
+      // keep both ticks of a repeated hour, and drop invented times from skipped hours or dates.
       if (offsets.size === 1 || zoneOffset(t) === offset) candidates.add(t);
     }
   }

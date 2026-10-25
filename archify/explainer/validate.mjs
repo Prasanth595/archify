@@ -133,6 +133,6 @@ export function validateExplainer(document, {sourceMap = {}, inputPath, writingM
       }
     }
   }
-  diagnostics.push(...lintExplainerWriting(entries,{mode:writingMode,locale:document.meta.locale||'auto'}).map(entry=>({...entry,subject:{...entry.subject,...(inputPath?{input:inputPath}:{})}})));
+  diagnostics.push(...lintExplainerWriting(entries,{mode:writingMode}).map(entry=>({...entry,subject:{...entry.subject,...(inputPath?{input:inputPath}:{})}})));
   return {ok:!diagnostics.some(entry=>entry.severity==='error'),diagnostics};
 }
