@@ -191,6 +191,20 @@ test('waterfall: epoch-sized starts keep end and duration agreement in floating 
   const rejected = run(wrong);
   assert.notEqual(rejected.status, 0);
   assert.match(rejected.stderr, /disagree/);
+  // 1e16 and 1e16 + 2 are adjacent binary64 values, so end - start is exactly
+  // the recorded duration and the epoch-sized pair stays valid.
+  const agreeing = clone(small);
+  agreeing.spans = [{ id: 'job', name: 'Nightly job', start: 1e16, end: 1e16 + 2, duration: 2 }];
+  const layout = layoutOf(agreeing);
+  assert.equal(layout.wall, 2);
+  assert.equal(layout.rows[0].label, '2 ms');
+  // end - start is 0 while the duration records 2 ms: the magnitude-scaled
+  // window must not absorb that contradiction into a zero-length bar.
+  const collapsed = clone(small);
+  collapsed.spans = [{ id: 'job', name: 'Nightly job', start: 1e16, end: 1e16, duration: 2 }];
+  const refused = run(collapsed);
+  assert.notEqual(refused.status, 0);
+  assert.match(refused.stderr, /disagree/);
 });
 
 test('waterfall: services past the five colours share a legend entry instead of a duplicated colour', () => {
