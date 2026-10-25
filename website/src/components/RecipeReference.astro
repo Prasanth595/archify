@@ -7,7 +7,7 @@ interface RecipeCopy {
 interface Props {
   recipes: { id: string; type: string; proof?: string;
     presentation: { preset: string; motion: string };
-    en: RecipeCopy; zh: RecipeCopy }[];
+    en: RecipeCopy }[];
 }
 const { recipes } = Astro.props;
 const labels = {
@@ -21,24 +21,24 @@ const labels = {
     <p data-en="These recipes come directly from this build's CLI source. Follow the source and proof links to inspect what each recommendation means." data-zh="这些配方直接来自当前构建的 CLI 源码。通过源码和成品链接，可以检查每条推荐的具体含义。">These recipes come directly from this build's CLI source. Follow the source and proof links to inspect what each recommendation means.</p>
   </div>
   <nav class="recipe-index" aria-label="Recipe reference">
-    {recipes.map(recipe => <a href={`#recipe-${recipe.id}`} data-en={recipe.en.title} data-zh={recipe.zh.title}>{recipe.en.title}</a>)}
+    {recipes.map(recipe => <a href={`#recipe-${recipe.id}`} data-en={recipe.en.title}>{recipe.en.title}</a>)}
   </nav>
   <div class="recipe-reference-grid">
     {recipes.map(recipe => <article class="recipe-entry" id={`recipe-${recipe.id}`}>
       <span class="recipe-mode">{recipe.type} · {recipe.presentation.preset}</span>
-      <h3><a href={`#recipe-${recipe.id}`} data-en={recipe.en.title} data-zh={recipe.zh.title}>{recipe.en.title}</a></h3>
-      <p class="recipe-question" data-en={recipe.en.question} data-zh={recipe.zh.question}>{recipe.en.question}</p>
-      <p data-en={recipe.en.summary} data-zh={recipe.zh.summary}>{recipe.en.summary}</p>
+      <h3><a href={`#recipe-${recipe.id}`} data-en={recipe.en.title}>{recipe.en.title}</a></h3>
+      <p class="recipe-question" data-en={recipe.en.question}>{recipe.en.question}</p>
+      <p data-en={recipe.en.summary}>{recipe.en.summary}</p>
       <dl>
         <dt data-en={labels.use[0]} data-zh={labels.use[1]}>{labels.use[0]}</dt>
-        <dd data-en={recipe.en.useWhen} data-zh={recipe.zh.useWhen}>{recipe.en.useWhen}</dd>
+        <dd data-en={recipe.en.useWhen}>{recipe.en.useWhen}</dd>
         <dt data-en={labels.avoid[0]} data-zh={labels.avoid[1]}>{labels.avoid[0]}</dt>
-        <dd data-en={recipe.en.avoidWhen} data-zh={recipe.zh.avoidWhen}>{recipe.en.avoidWhen}</dd>
+        <dd data-en={recipe.en.avoidWhen}>{recipe.en.avoidWhen}</dd>
       </dl>
       <h4 data-en={labels.evidence[0]} data-zh={labels.evidence[1]}>{labels.evidence[0]}</h4>
-      <ul>{recipe.en.include.map((item, index) => <li data-en={item} data-zh={recipe.zh.include[index]}>{item}</li>)}</ul>
+      <ul>{recipe.en.include.map((item, index) => <li data-en={item}>{item}</li>)}</ul>
       <h4 data-en={labels.prompt[0]} data-zh={labels.prompt[1]}>{labels.prompt[0]}</h4>
-      <p class="recipe-reference-prompt" data-en={recipe.en.prompt} data-zh={recipe.zh.prompt}>{recipe.en.prompt}</p>
+      <p class="recipe-reference-prompt" data-en={recipe.en.prompt}>{recipe.en.prompt}</p>
       <div class="recipe-reference-links">
         <a href={recipeSourceUrl} data-en={`${productChannel === 'development' ? 'Development' : 'Stable'} recipe source ↗`} data-zh={`${productChannel === 'development' ? '开发版' : '稳定版'}配方源码 ↗`}>{productChannel === 'development' ? 'Development' : 'Stable'} recipe source ↗</a>
         {recipe.proof && <a href={`gallery.html#proof-${recipe.proof}`} data-en="Inspect generated proof ↗" data-zh="检查生成成品 ↗">Inspect generated proof ↗</a>}

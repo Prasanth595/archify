@@ -332,20 +332,20 @@ test('cli: guide recommends a scenario as structured json', () => {
   assert.equal(result.status, 0, result.stderr);
   const parsed = JSON.parse(result.stdout);
   assert.equal(parsed.ok, true);
-  assert.equal(parsed.lang, 'en');
+  assert.equal(parsed.lang, undefined);
   assert.equal(parsed.confidence, 'high');
   assert.equal(parsed.recommendation.id, 'api-request');
   assert.equal(parsed.recommendation.type, 'sequence');
 });
 
-test('cli: guide detects Chinese and explains the recommendation boundary', () => {
-  const result = run(['guide', '展示 Kafka topic 消费者组和死信队列']);
+test('cli: guide explains the recommendation boundary', () => {
+  const result = run(['guide', 'Show Kafka topics, consumer groups and a dead-letter queue']);
 
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /推荐: 事件流拓扑  \[dataflow\]/);
-  assert.match(result.stdout, /不要这样用:/);
-  assert.match(result.stdout, /必须包含:/);
-  assert.match(result.stdout, /可直接复制的提示词:/);
+  assert.match(result.stdout, /Recommendation: .+  \[dataflow\]/);
+  assert.match(result.stdout, /Avoid when:/);
+  assert.match(result.stdout, /Must include:/);
+  assert.match(result.stdout, /Copy-ready prompt:/);
 });
 
 test('cli: guide works from an installed skill without node_modules', () => {
@@ -379,19 +379,16 @@ test('cli: guide returns repair steps, via semantics, and viewport checks as JSO
   assert.match(prompt, /validate.*diagnostics\[\].*supportedFixes/);
 });
 
-test('cli: guide prints localized repair advice, including an explicit language override', () => {
-  for (const args of [
-    ['guide', '视口溢出，标签重叠，修复顺序'],
-    ['guide', 'how do via waypoints work', '--lang', 'zh'],
-  ]) {
-    const result = run(args);
-    assert.equal(result.status, 0, result.stderr);
-    assert.match(result.stdout, /推荐: 布局修复/);
-    assert.match(result.stdout, /schema.*重叠.*方向.*交叉.*标签/s);
-    assert.match(result.stdout, /\[start, \.\.\.via, end\]/);
-    assert.match(result.stdout, /Reader 已达到投影文字下限并接受可读的页面纵向滚动/);
-    assert.match(result.stdout, /validate/);
-  }
+test('cli: guide prints repair advice and rejects the removed language option', () => {
+  const result = run(['guide', 'how do via waypoints work']);
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /Recommendation: Layout repair/);
+  assert.match(result.stdout, /\[start, \.\.\.via, end\]/);
+  assert.match(result.stdout, /validate/);
+
+  const removed = run(['guide', 'layout-repair', '--lang', 'zh']);
+  assert.notEqual(removed.status, 0);
+  assert.match(removed.stderr, /Unknown guide option "--lang"/);
 });
 
 test('cli: demo creates a ready-to-open diagram in a chosen directory', () => {

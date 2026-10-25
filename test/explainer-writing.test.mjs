@@ -3,70 +3,76 @@ import assert from 'node:assert/strict';
 import {lintExplainerWriting} from '../archify/explainer/writing.mjs';
 const entry = (text, extra = {}) => ({text, line: 1, component: 'prose', ...extra});
 
-test('writing: independently authored bilingual hints give concrete repairs without failing by default', () => {
+test('writing: independently authored hints give concrete repairs without failing by default', () => {
   const result = lintExplainerWriting([
-    entry('进行分析，赋能业务，很多用户会使用。提前预先检查。'),
     entry('Perform an analysis of the cache. At the end of the day, many users need each and every result.'),
   ]);
   assert.deepEqual(new Set(result.map(d => d.evidence.rule)), new Set(['light-verb', 'cliche', 'vague-quantity', 'redundancy']));
   assert.ok(result.every(d => d.severity === 'warning' && d.code.startsWith('explainer/writing-')));
   assert.ok(result.every(d => d.evidence.reason && d.evidence.example && d.supportedFixes.length));
   assert.ok(result.some(d => d.evidence.matched === 'Perform an analysis of'));
-  assert.ok(result.some(d => d.evidence.matched === '很多用户'));
+  assert.ok(result.some(d => d.evidence.matched === 'many users'));
+});
+
+test('writing: hints, reasons and examples are English-only', () => {
+  const result = lintExplainerWriting([
+    entry('Perform an analysis of the cache. In summary, many users need each and every result. This is illustrative.'),
+    entry('One. Two. Three. Four. Five.'),
+  ]);
+  assert.ok(result.length > 0);
+  assert.doesNotMatch(JSON.stringify(result), /[㐀-鿿]/u);
 });
 
 test('writing: direct technical prose and quoted URL bodies do not trigger phrase hints', () => {
   assert.deepEqual(lintExplainerWriting([
-    entry('接口检查缓存。实测 3.5 ms，样本为 120 次请求。'),
     entry('Analyze the cache. The limit is 32 requests per second. Read https://example.test/many-users/future-plans.'),
-    entry('当前计划与未来计划分别覆盖两个时间段。Make a request to the API.'),
+    entry('Measured 3.5 ms over 120 requests. Make a request to the API.'),
   ]), []);
 });
 
-test('writing: long sentences count Han and English words, not punctuation or decimal dots', () => {
+test('writing: long sentences count words, not punctuation or decimal dots', () => {
   const result = lintExplainerWriting([
-    entry('缓存读取返回空值后接口等待数据库再写回缓存。', {line: 4}),
+    entry('The cache returns nil and the endpoint waits for the database.', {line: 4}),
     entry('Latency is 3.5 ms and the database returns the result before the cache is updated.'),
-  ], {sentenceLimits: {zh: 12, en: 8}});
+  ], {sentenceLimit: 8});
   assert.equal(result.length, 2);
   assert.ok(result.every(d => d.code === 'explainer/writing-sentence-length'));
   assert.equal(result[0].subject.line, 4);
   assert.equal(result[1].evidence.units, 15);
-  assert.deepEqual(lintExplainerWriting([entry('缓存读取返回空值。接口等待数据库。然后写回缓存。')], {sentenceLimits: {zh: 12}}), []);
+  assert.equal(result[1].evidence.limit, 8);
+  assert.deepEqual(lintExplainerWriting([entry('The cache returns nil. The endpoint waits. Then it writes back.')], {sentenceLimit: 8}), []);
 });
 
 test('writing: strict and off mode preserve explicit severity control', () => {
-  assert.ok(lintExplainerWriting([entry('很多用户。')], {mode: 'strict'}).every(d => d.severity === 'error'));
-  assert.deepEqual(lintExplainerWriting([entry('很多用户。')], {mode: 'off'}), []);
+  assert.ok(lintExplainerWriting([entry('Many users.')], {mode: 'strict'}).every(d => d.severity === 'error'));
+  assert.deepEqual(lintExplainerWriting([entry('Many users.')], {mode: 'off'}), []);
   assert.throws(() => lintExplainerWriting([], {mode: 'silent'}), /mode/);
-  assert.throws(() => lintExplainerWriting([], {sentenceLimits: {en: 0}}), /positive integers/);
+  assert.throws(() => lintExplainerWriting([], {sentenceLimit: 0}), /positive integer/);
 });
 
 test('writing: source line offsets, component targets and diagnostic order survive repeated calls', () => {
-  const entries = [entry('接口读取缓存。\n\n进行检查。\n很多用户。', {line: 20, component: 'answer', panelId: 'recommendation'})];
+  const entries = [entry('The endpoint reads the cache.\n\nMake a decision.\nMany users.', {line: 20, component: 'answer', panelId: 'recommendation'})];
   const first = lintExplainerWriting(entries);
   assert.deepEqual(first.map(d => d.subject.line), [22, 23]);
   assert.ok(first.every(d => d.subject.component === 'answer' && d.subject.panelId === 'recommendation'));
   assert.deepEqual(lintExplainerWriting(entries), first);
-  assert.equal(entries[0].text, '接口读取缓存。\n\n进行检查。\n很多用户。');
+  assert.equal(entries[0].text, 'The endpoint reads the cache.\n\nMake a decision.\nMany users.');
 });
 
 test('writing: a URL with sentence punctuation is excluded from length but leaves the next sentence measurable', () => {
   const entries = [entry('Read https://example.test/a.b?q=3.5. Then read the measured result before changing the cache behavior.')];
-  const result = lintExplainerWriting(entries, {sentenceLimits: {en: 5}, locale: 'en-US'});
+  const result = lintExplainerWriting(entries, {sentenceLimit: 5});
   assert.equal(result.length, 1);
   assert.equal(result[0].evidence.units, 10);
 });
 
-test('writing: URL masking preserves Chinese prose after bare and Markdown links', () => {
+test('writing: URL masking preserves prose after bare and Markdown links', () => {
   for (const text of [
-    '[依据](https://example.com)。很多用户进行分析。',
-    '[依据](https://example.com)很多用户进行分析。',
-    '[依据](https://example.com).很多用户进行分析。',
-    'https://example.com。很多用户进行分析。',
-    'https://example.com，很多用户进行分析。',
-    'https://example.com！很多用户进行分析。',
-    '[依据](https://example.com/topic_(one))。\n很多用户进行分析。',
+    '[Source](https://example.com). Many users make a decision.',
+    '[Source](https://example.com) many users make a decision.',
+    'https://example.com. Many users make a decision.',
+    'https://example.com, many users make a decision.',
+    '[Source](https://example.com/topic_(one)).\nMany users make a decision.',
   ]) {
     const result = lintExplainerWriting([entry(text, {line: 10})], {mode: 'strict'});
     assert.deepEqual(new Set(result.map(d => d.evidence.rule)), new Set(['vague-quantity', 'light-verb']), text);
@@ -77,29 +83,27 @@ test('writing: URL masking preserves Chinese prose after bare and Markdown links
 
 test('writing: English URL paths and balanced URL parentheses stay masked', () => {
   assert.deepEqual(lintExplainerWriting([
-    entry('[依据](https://example.com/future%20plans/many-users/topic_(choose-a-path))。检查缓存。'),
+    entry('[Source](https://example.com/future%20plans/many-users/topic_(choose-a-path)). Check the cache.'),
     entry('Read https://example.com/(future-plans)/many-users?q=3.5. Check the cache.'),
-    entry('[资料](https://example.com/资料)。检查缓存。'),
   ], {mode: 'strict'}), []);
 });
 
 test('writing: long paragraphs, an all-bold conclusion and a disclaimer-style scope get structural hints', () => {
   const rules = entries => lintExplainerWriting(entries).map(item => item.evidence.rule);
-  assert.deepEqual(rules([entry('一。二。三。四。五。')]), ['paragraph-length']);
-  assert.deepEqual(rules([entry('一。二。三。', {component: 'list'})]), []);
-  const summary = '先做模块化单体，等模块边界稳定后再拆分服务。';
+  assert.deepEqual(rules([entry('One. Two. Three. Four. Five.')]), ['paragraph-length']);
+  assert.deepEqual(rules([entry('One. Two. Three.', {component: 'list'})]), []);
+  const summary = 'Keep a modular monolith until the module boundaries settle, then split the services.';
   assert.deepEqual(rules([entry(summary, {component: 'answer', pointer: '/answer/summary', raw: `**${summary}**`})]), ['verdict-emphasis']);
-  assert.deepEqual(rules([entry(summary, {component: 'answer', pointer: '/answer/summary', raw: '先做**模块化单体**，等模块边界稳定后再拆分服务。'})]), []);
-  assert.deepEqual(rules([entry('本页讨论功能方向，尚未实现。依据用户陈述，本次没有核对历史记录。页面只是阅读体验样例，不构成任何法律审查意见，也没有经过实际运行验证。', {component: 'scope'})]), ['scope-length']);
-  assert.deepEqual(rules([entry('示例 · 8 人团队', {component: 'scope'})]), []);
+  assert.deepEqual(rules([entry(summary, {component: 'answer', pointer: '/answer/summary', raw: 'Keep a **modular monolith** until the module boundaries settle, then split the services.'})]), []);
+  const disclaimer = 'This page discusses a feature direction that is not implemented yet. It relies on what the user said and did not check the history. The page is only a reading sample, is not a legal review, and was never verified by running it against a real deployment, a staging copy, or any recorded production traffic.';
+  assert.deepEqual(rules([entry(disclaimer, {component: 'scope'})]), ['scope-length']);
+  assert.deepEqual(rules([entry('Illustrative · eight people', {component: 'scope'})]), []);
 });
 
-test('writing: Chinese and English controlled-language hints stay precise', () => {
+test('writing: controlled-language hints stay precise', () => {
   const rules = text => lintExplainerWriting([entry(text)]).map(item => item.evidence.rule);
-  assert.deepEqual(rules('综上所述，先做出决定再加以验证。'), ['filler', 'light-verb', 'light-verb']);
-  assert.deepEqual(rules('重试 3 次以上会放大延迟。'), ['number-boundary']);
-  assert.deepEqual(rules('负责处理用户提交的订单的服务的日志很大。'), ['de-chain']);
   assert.deepEqual(rules('In order to utilize the cache, read it first.'), ['plain-word', 'plain-word']);
   assert.deepEqual(rules('In summary, this cutting-edge design is seamless.'), ['filler', 'cliche', 'cliche']);
-  assert.deepEqual(lintExplainerWriting(['任务进行中。', '目的的确清楚。', '重试超过 3 次。', '服务以下游为准。', 'Use the cache before the database.'].map(text => entry(text))), []);
+  assert.deepEqual(rules('We make a decision after we give consideration to the logs.'), ['light-verb', 'light-verb']);
+  assert.deepEqual(lintExplainerWriting(['Use the cache before the database.', 'Retry more than 3 times.'].map(text => entry(text))), []);
 });

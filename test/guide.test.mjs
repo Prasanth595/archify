@@ -2,7 +2,6 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   SCENARIO_RECIPES,
-  detectGuideLanguage,
   listScenarioRecipes,
   publicGuideData,
   recommendScenario,
@@ -15,31 +14,29 @@ test('guide: exposes unique recipes across the supported guide diagram types', (
   }
 });
 
-test('guide: every recipe has complete English and Chinese decision copy', () => {
+test('guide: every recipe has complete decision copy', () => {
   for (const recipe of SCENARIO_RECIPES) {
     assert.match(recipe.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
     assert.ok(recipe.signals.length > 0, recipe.id);
     assert.ok(['classic', 'signal-flow', 'blueprint', 'editorial'].includes(recipe.presentation.preset), recipe.id);
-    for (const lang of ['en', 'zh']) {
-      const copy = recipe[lang];
-      assert.ok(copy.title.trim(), `${recipe.id}.${lang}.title`);
-      for (const field of ['question', 'summary', 'useWhen', 'avoidWhen', 'prompt']) {
-        assert.ok(copy[field].trim(), `${recipe.id}.${lang}.${field}`);
-      }
-      assert.ok(copy.include.length > 0 && copy.include.every((entry) => entry.trim()), `${recipe.id}.${lang}.include`);
+    const copy = recipe.en;
+    assert.ok(copy.title.trim(), `${recipe.id}.title`);
+    for (const field of ['question', 'summary', 'useWhen', 'avoidWhen', 'prompt']) {
+      assert.ok(copy[field].trim(), `${recipe.id}.${field}`);
     }
+    assert.ok(copy.include.length > 0 && copy.include.every((entry) => entry.trim()), `${recipe.id}.include`);
+    assert.equal(recipe.zh, undefined, recipe.id);
   }
 });
 
-test('guide: language detection and localization are deterministic', () => {
-  assert.equal(detectGuideLanguage('show an API request'), 'en');
-  assert.equal(detectGuideLanguage('展示 API 请求'), 'zh');
-  for (const lang of ['en', 'zh']) {
-    const localized = listScenarioRecipes(lang);
-    assert.equal(localized.length, SCENARIO_RECIPES.length);
-    for (const recipe of SCENARIO_RECIPES) {
-      assert.equal(localized.find((entry) => entry.id === recipe.id)?.title, recipe[lang].title);
-    }
+test('guide: listing is deterministic and English-only', () => {
+  const listed = listScenarioRecipes();
+  assert.equal(listed.length, SCENARIO_RECIPES.length);
+  for (const recipe of SCENARIO_RECIPES) {
+    assert.equal(listed.find((entry) => entry.id === recipe.id)?.title, recipe.en.title);
+  }
+  for (const recipe of SCENARIO_RECIPES) {
+    assert.doesNotMatch(JSON.stringify(recipe), /[\u3400-\u9fff]/u, recipe.id);
   }
 });
 
@@ -47,8 +44,8 @@ test('guide: representative scenarios map to specialized recipes', () => {
   const cases = [
     ['Show an API request with Redis cache miss', 'api-request'],
     ['Show CI/CD build deploy rollback', 'delivery-workflow'],
-    ['展示 Kafka topic 消费者组和死信队列', 'event-stream'],
-    ['梳理 ETL 数仓 PII 数据血缘', 'data-lineage'],
+    ['Show Kafka topics, consumer groups and a dead-letter queue', 'event-stream'],
+    ['Trace ETL warehouse PII data lineage', 'data-lineage'],
     ['deployment lifecycle approval rollback state', 'deployment-lifecycle'],
     ['agent tool call approval gate MCP', 'agent-tool-call'],
     ['Show a system overview via an architecture diagram', 'system-overview'],
@@ -61,15 +58,13 @@ test('guide: representative scenarios map to specialized recipes', () => {
   }
 });
 
-test('guide: repair questions select actionable repair guidance in both languages', () => {
+test('guide: repair questions select actionable repair guidance', () => {
   const queries = [
     'viewport overflow', 'why does it still overflow', 'scrollHeight', 'scrollWidth',
     'overlap', 'label overlap', 'edge through node', 'crossing', 'via',
     'how do via waypoints work', 'layout repair', 'which fix order', 'repair order',
     'architecture label overlap', 'workflow layout repair', 'sequence viewport overflow',
     'dataflow edge through node', 'lifecycle layout repair',
-    '视口溢出', '为什么还是溢出', '滚动高度', '滚动宽度', '节点重叠', '标签重叠',
-    '连线穿过节点', '连线交叉', '途经点', '布局修复', '修复顺序', '架构图标签重叠',
   ];
   for (const query of queries) {
     const result = recommendScenario(query);
@@ -79,15 +74,12 @@ test('guide: repair questions select actionable repair guidance in both language
   }
 });
 
-test('guide: repair recipe supports exact selection and explicit language overrides', () => {
-  for (const lang of ['en', 'zh']) {
-    const exact = recommendScenario('layout-repair', { lang });
-    assert.equal(exact.recommendation.id, 'layout-repair');
-    assert.equal(exact.confidence, 'high');
-    assert.equal(exact.lang, lang);
-    assert.equal(recommendScenario('viewport overflow', { lang }).recommendation.prompt, exact.recommendation.prompt);
-    assert.equal(recommendScenario('视口溢出', { lang }).recommendation.prompt, exact.recommendation.prompt);
-  }
+test('guide: repair recipe supports exact selection', () => {
+  const exact = recommendScenario('layout-repair');
+  assert.equal(exact.recommendation.id, 'layout-repair');
+  assert.equal(exact.confidence, 'high');
+  assert.equal(exact.lang, undefined);
+  assert.equal(recommendScenario('viewport overflow').recommendation.prompt, exact.recommendation.prompt);
 });
 
 test('guide: exact ids win and unknown questions fall back honestly', () => {
@@ -101,11 +93,11 @@ test('guide: exact ids win and unknown questions fall back honestly', () => {
   assert.deepEqual(unknown.matchedSignals, []);
 });
 
-test('guide: public data includes both languages and weighted signals', () => {
+test('guide: public data includes English copy and weighted signals', () => {
   const data = publicGuideData();
   for (const recipe of data) {
     assert.ok(recipe.en.title);
-    assert.ok(recipe.zh.title);
+    assert.equal(recipe.zh, undefined);
     assert.ok(recipe.proof, `${recipe.id}: verified proof is required`);
     assert.ok(recipe.signals.every(([signal, weight]) => typeof signal === 'string' && weight > 0));
   }
