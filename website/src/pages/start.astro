@@ -81,10 +81,10 @@ const { lang = 'en' } = Astro.props;
 
       <article class="panel" aria-live="polite">
         <div class="panel-kicker"><b>02</b><span data-en="Ask one bounded question" data-zh="只问一个有边界的问题">Ask one bounded question</span></div>
-        <h2 id="recipe-title" data-en={starts.architecture.en.title} data-zh={starts.architecture.zh.title}>{starts.architecture.en.title}</h2>
-        <p class="question" id="recipe-question" data-en={starts.architecture.en.question} data-zh={starts.architecture.zh.question}>{starts.architecture.en.question}</p>
-        <ul class="include-list" id="include-list" aria-label="Required evidence">{starts.architecture.en.include.map((item, index) => <li data-en={item} data-zh={starts.architecture.zh.include[index]}>{item}</li>)}</ul>
-        <p class="prompt-box" id="recipe-prompt" data-en={starts.architecture.en.descriptionPrompt} data-zh={starts.architecture.zh.descriptionPrompt}>{starts.architecture.en.descriptionPrompt}</p>
+        <h2 id="recipe-title" data-en={starts.architecture.en.title}>{starts.architecture.en.title}</h2>
+        <p class="question" id="recipe-question" data-en={starts.architecture.en.question}>{starts.architecture.en.question}</p>
+        <ul class="include-list" id="include-list" aria-label="Required evidence">{starts.architecture.en.include.map((item, index) => <li data-en={item}>{item}</li>)}</ul>
+        <p class="prompt-box" id="recipe-prompt" data-en={starts.architecture.en.descriptionPrompt}>{starts.architecture.en.descriptionPrompt}</p>
         <div class="actions">
           <button class="action action-primary" id="copy-starter" aria-describedby="copy-status" type="button" data-en="Copy install + prompt" data-zh="复制安装命令 + 提示词">Copy install + prompt</button>
           <button class="action" id="copy-prompt" aria-describedby="copy-status" type="button" data-en="Prompt only" data-zh="仅复制提示词">Prompt only</button>

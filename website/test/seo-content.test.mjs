@@ -41,8 +41,9 @@ for (const lang of ['en', 'zh']) {
       const article = find(reference, `recipe-${recipe.id}`);
       assert.ok(article, `stable recipe anchor ${recipe.id}`);
       const content = clean(text(article));
-      for (const value of [recipe[lang].title, recipe[lang].question, recipe[lang].summary,
-        recipe[lang].useWhen, recipe[lang].avoidWhen, recipe[lang].prompt, ...recipe[lang].include]) {
+      // Recipe copy is English-only; the zh page keeps its bilingual shell around it.
+      for (const value of [recipe.en.title, recipe.en.question, recipe.en.summary,
+        recipe.en.useWhen, recipe.en.avoidWhen, recipe.en.prompt, ...recipe.en.include]) {
         assert.ok(content.includes(clean(value)), `${recipe.id}: missing initial ${lang} copy: ${value}`);
       }
       assert.ok(links(article).some(link => /github\.com\/tt-a1i\/archify\/blob\/(?:dev|main)\/archify\/recipes\/scenarios\.mjs$/.test(attr(link, 'href'))));
@@ -64,9 +65,9 @@ for (const lang of ['en', 'zh']) {
     const data = JSON.parse(find(page, 'start-data').childNodes.map(node => node.value || '').join(''));
     const count = Object.keys(data).length;
     assert.equal(clean(text(byTag(find(page, 'type-label'), 'strong'))), lang === 'zh' ? `${count} 个入门配方` : `${count} starting recipes`);
-    assert.equal(clean(text(find(page, 'recipe-question'))), clean(recipe[lang].question));
-    assert.equal(clean(text(find(page, 'recipe-prompt'))), clean(startPromptsFor(recipe, lang).descriptionPrompt));
-    for (const evidence of recipe[lang].include) assert.ok(clean(text(find(page, 'include-list'))).includes(clean(evidence)));
+    assert.equal(clean(text(find(page, 'recipe-question'))), clean(recipe.en.question));
+    assert.equal(clean(text(find(page, 'recipe-prompt'))), clean(startPromptsFor(recipe).descriptionPrompt));
+    for (const evidence of recipe.en.include) assert.ok(clean(text(find(page, 'include-list'))).includes(clean(evidence)));
     assert.match(text(find(page, 'install-command')), /npx -y skills add tt-a1i\/archify --skill archify --agent codex --global --copy --yes/);
     assertProofLink(page, find(page, 'proof-link'), lang, recipe.proof);
   });
