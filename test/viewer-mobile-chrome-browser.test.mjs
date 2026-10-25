@@ -347,4 +347,3 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
   assert.equal(restored.hittable, true, 'the restored Explain action must be hit-testable');
   assert.equal(restored.overlapsDock, false, 'the restored Explain action must not sit under the dock');
 });
-
