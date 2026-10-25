@@ -6,8 +6,16 @@ import path from 'node:path';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {ChromeVisualBrowser,findChrome} from '../archify/bin/visual-check.mjs';
+import {audioIsComplete,decodeDiagnostics,ffmpegVersion,isFfmpeg80} from './ffmpeg-diagnostics.mjs';
 
 const skill=fileURLToPath(new URL('../archify/',import.meta.url)),chrome=process.env.ARCHIFY_CHROME?findChrome():null;
+// FFmpeg 8.0.x logs one spurious EOF flush line (upstream issue 20954); decodeDiagnostics only drops a trailing occurrence on 8.0, and a repeat or any other decoder line still fails.
+const ffmpegBin=process.env.ARCHIFY_FFMPEG||'';
+let ffmpegProbe;
+const ffmpegInfo=()=>{if(!ffmpegProbe){let version='',allow=false;if(ffmpegBin){try{const banner=execFileSync(ffmpegBin,['-version'],{encoding:'utf8',timeout:5000});version=ffmpegVersion(banner);allow=isFfmpeg80(banner);}catch{}}ffmpegProbe={version,allow};}return ffmpegProbe;};
+const ffprobeBin=process.env.ARCHIFY_FFPROBE||'ffprobe';
+const audioPackets=file=>{const probe=spawnSync(ffprobeBin,['-v','error','-select_streams','a:0','-count_packets','-show_entries','stream=nb_read_packets','-of','default=nw=1:nk=1',file],{encoding:'utf8',timeout:5000});if(probe.error||probe.status!==0)return {count:NaN,error:probe.stderr?.trim()||probe.error?.message||`ffprobe exited ${probe.status}`};const count=Number.parseInt(probe.stdout?.trim(),10);return {count,error:Number.isInteger(count)?'':`unexpected ffprobe output: ${probe.stdout?.trim()||'<empty>'}`};};
+const decodeAudio=(file,seconds,label,tolerance)=>{const decoded=spawnSync(ffmpegBin,['-v','error','-i',file,'-map','0:a:0','-f','f32le','-ac','2','-ar','48000','-'],{timeout:15000}),info=ffmpegInfo(),log=decodeDiagnostics(decoded.stderr,{allowFlushNoise:info.allow});assert.ok(!decoded.error,`${label} decoder could not run: ${decoded.error?.message||decoded.error}`);assert.equal(decoded.status,0,decoded.stderr?.toString());assert.equal(log.text,'',`${label} decodes without timestamp errors (ffmpeg ${info.version||'unknown'}, tolerated ${log.tolerated})`);const frames=decoded.stdout.length/(2*4),probed=audioPackets(file),packets=probed.count;assert.ok(audioIsComplete(frames,packets),`${label} has ${frames} decoded samples from ${packets} Opus packets (ffmpeg ${info.version||'unknown'})${probed.error?`; ${probed.error}`:''}`);assert.ok(Math.abs(frames/48000-seconds)<tolerance,`${label} decodes for the requested interval (${tolerance}s)`);assert.ok(decoded.stdout.some(byte=>byte!==0),`${label} contains sound`);};
 test('attachment preserves localized native state labels and localizes the Story transition',{
   skip:chrome?false:'Set ARCHIFY_CHROME for the real-browser story check.',
 },async t=>{
@@ -105,12 +113,9 @@ test('a public story attaches once, follows native appearance and retains source
   })()`,true);
   assert.equal(video.width,1920);assert.equal(video.height,1080);assert.ok(Math.abs(video.duration-.5)<.05,'export contains the requested video interval');
   assert.equal(video.audioTracks,1,'the playable video retains its audio track');
-  if(process.env.ARCHIFY_FFMPEG){
+  if(ffmpegBin){
     const file=path.join(dir,'story.webm');fs.writeFileSync(file,Buffer.from(video.base64,'base64'));
-    const decoded=spawnSync(process.env.ARCHIFY_FFMPEG,['-v','error','-i',file,'-map','0:a:0','-f','f32le','-ac','2','-ar','48000','-'],{timeout:15000});
-    assert.equal(decoded.status,0,decoded.stderr?.toString());assert.equal(decoded.stderr.toString(),'','the audio timeline decodes without timestamp errors');const sound=decoded.stdout;
-    assert.ok(Math.abs(sound.length/(48000*2*4)-.5)<.05,'the exported stereo audio decodes for the requested interval');
-    assert.ok(sound.some(byte=>byte!==0),'the exported soundtrack contains sound');
+    decodeAudio(file,.5,'the audio timeline',.05);
   }
   await evaluate('Archify.exportMenu.run("svg")',true);assert.equal(await evaluate('document.documentElement.dataset.lastExportCanonical'),'true');
   assert.deepEqual(await evaluate('[...document.querySelectorAll("#export-menu [data-format]")].map(button=>[button.dataset.format,button.textContent,button.hidden,button.disabled])'),exportsBefore);
@@ -210,10 +215,46 @@ test('a public story attaches once, follows native appearance and retains source
   })()`,true);
   assert.ok(lateVideo.bytes>0);assert.ok(lateVideo.peak<=48000*30,'late exports keep the fixed music bed and requested audio window bounded');
   assert.equal(lateVideo.comparedSamples,4800*2);assert.ok(lateVideo.maxSampleError<=1e-6,'partial export preserves the preview soundtrack instead of fading at the clip boundary: '+lateVideo.maxSampleError);
-  if(process.env.ARCHIFY_FFMPEG){
+  if(ffmpegBin){
     const file=path.join(dir,'late-story.webm');fs.writeFileSync(file,Buffer.from(lateVideo.base64,'base64'));
-    const decoded=spawnSync(process.env.ARCHIFY_FFMPEG,['-v','error','-i',file,'-map','0:a:0','-f','f32le','-ac','2','-ar','48000','-'],{timeout:15000});
-    assert.equal(decoded.status,0,decoded.stderr?.toString());assert.equal(decoded.stderr.toString(),'');assert.ok(Math.abs(decoded.stdout.length/(48000*2*4)-.1)<.03);assert.ok(decoded.stdout.some(byte=>byte!==0));
+    decodeAudio(file,.1,'the late audio timeline',.03);
   }
+  assert.deepEqual(errors,[]);
+});
+
+test('flowless guides stay out of the story opening clock',{
+  skip:chrome?false:'Set ARCHIFY_CHROME for the real-browser story check.',
+},async t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-story-opening-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const cli=path.join(skill,'bin/archify.mjs');
+  const waterfall=fs.readFileSync(path.join(skill,'examples/waterfall-checkout-request-rendered.html'),'utf8');
+  const svgEnd=waterfall.indexOf('</svg>',waterfall.indexOf('data-waterfall-ui'));
+  // A late card plus one long unanimated guide crosses the 6s opening only when that guide is counted.
+  const extended=waterfall.slice(0,svgEnd)+'<g id="node-late" data-node-id="late" data-node-label="Late span"><rect x="20" y="250" width="40" height="14" data-animate="node" style="--step:20"/></g><path data-edge-from="request" data-edge-to="late" data-edge-key="9" d="M 20 260 H 620" fill="none" stroke="#888"/>'+waterfall.slice(svgEnd);
+  const browser=new ChromeVisualBrowser(chrome);t.after(()=>browser.close());const session=await browser.sessionPromise,errors=[];
+  browser.cdp.subscribe(event=>{if(event.method==='Runtime.exceptionThrown')errors.push(event.params.exceptionDetails.exception?.description||event.params.exceptionDetails.text);});
+  const send=(method,params={})=>browser.cdp.send(method,params,session,30000);
+  const evaluate=async expression=>{const result=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true,userGesture:true});assert.equal(result.exceptionDetails,undefined,result.exceptionDetails?.exception?.description);return result.result?.value;};
+  await send('Network.enable');await send('Network.setBlockedURLs',{urls:['http://*','https://*','ws://*','wss://*']});
+  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:800,deviceScaleFactor:1,mobile:false});
+  await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  async function attach(name,html){
+    const source=path.join(dir,name+'.html'),plan=path.join(dir,name+'.json'),output=path.join(dir,name+'-story.html');
+    fs.writeFileSync(source,html);execFileSync(process.execPath,[cli,'story','draft',source,plan,'--json']);
+    const brief=JSON.parse(fs.readFileSync(plan,'utf8'));brief.intro='Open the diagram.';brief.outro='Return to the whole diagram.';brief.opening='fit';
+    for(const scene of brief.scenes)for(const point of scene.points)point.text='Explain this source point.';
+    fs.writeFileSync(plan,JSON.stringify(brief));execFileSync(process.execPath,[cli,'story','attach',source,plan,output,'--json']);
+    const loaded=browser.cdp.waitFor('Page.loadEventFired',session);await send('Page.navigate',{url:pathToFileURL(output).href});await loaded;
+    return evaluate(`(async()=>{await Archify.story.setView('story');const win=document.querySelector('.story-panel iframe').contentWindow;if(!win.storyReady)throw Error('Story did not initialize');const opening=win.Story.shots[0].motion.opening;return {rate:opening.rate,span:opening.span,wireStart:opening.wireStart};})()`);
+  }
+  const bundled=await attach('waterfall',waterfall);
+  assert.equal(bundled.rate,1,'the bundled waterfall opening stays on the node clock');
+  assert.equal(bundled.span,bundled.wireStart,'waterfall guides without a transfer do not extend the opening');
+  const stretched=await attach('stretched',extended);
+  assert.equal(stretched.rate,1,'a long flowless guide does not speed up the opening');
+  assert.equal(stretched.span,stretched.wireStart);
+  const traced=await attach('workflow',fs.readFileSync(path.join(skill,'examples/workflow-agent-tool-call-rendered.html'),'utf8'));
+  assert.ok(Number.isFinite(traced.rate)&&traced.rate>=1,'native transfers keep a finite opening rate');
+  assert.ok(traced.span>traced.wireStart,'native transfers still extend the opening clock');
   assert.deepEqual(errors,[]);
 });
