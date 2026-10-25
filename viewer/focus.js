@@ -390,12 +390,36 @@
       function compactPassportViewport() {
         return window.innerWidth <= 720 && window.innerHeight <= 480;
       }
+      function measuredDockRect() {
+        var nav = container.querySelector('.diagram-nav');
+        var dock = parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0;
+        if (nav) {
+          var style = getComputedStyle(nav);
+          var rect = nav.getBoundingClientRect();
+          if (!nav.hidden && style.display !== 'none' && style.visibility !== 'hidden' && rect.height > 0) {
+            return { top: rect.top, bottom: rect.bottom, height: rect.height };
+          }
+        }
+        var bottom = Math.min(container.getBoundingClientRect().bottom, window.innerHeight);
+        return { top: bottom - dock, bottom: bottom, height: dock };
+      }
+      function measuredDockTop() {
+        return measuredDockRect().top;
+      }
       function compactPassportHeight() {
         var toolbar = document.querySelector('.toolbar');
+        var dockRect = measuredDockRect();
         var top = Math.max(8, toolbar ? toolbar.getBoundingClientRect().bottom + 8 : 8);
-        var dock = parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0;
+        var belowTop = Math.min(window.innerHeight - 8, dockRect.bottom + 8);
+        var aboveSpace = dockRect.top - 8 - top;
+        var belowSpace = window.innerHeight - 8 - belowTop;
+        var minimum = Math.min(120, explanationBaseHeight || 120);
+        if (aboveSpace < minimum && belowSpace > aboveSpace) top = belowTop;
+        var reserve = top < dockRect.top ? dockRect.height : 0;
         chip.style.setProperty('--passport-viewport-top', top + 'px');
-        return Math.max(0, window.innerHeight - top - 8 - dock);
+        chip.style.setProperty('--archify-passport-reserve', reserve + 'px');
+        var limit = top < dockRect.top ? dockRect.top : window.innerHeight;
+        return Math.max(0, Math.min(window.innerHeight - 8, limit - 8) - top);
       }
       function closeExplanation(options) {
         options = options || {};
@@ -421,11 +445,7 @@
         if (chip.getAttribute('data-explaining') !== 'true') return;
         var rect = container.getBoundingClientRect();
         var padding = window.innerWidth <= 720 ? 8 : 16;
-        var dock = parseFloat(getComputedStyle(container).getPropertyValue('--archify-dock-h')) || 0;
-        var nav = document.querySelector('.diagram-nav');
-        var dockTop = nav && !nav.hidden
-          ? nav.getBoundingClientRect().top
-          : Math.min(rect.bottom, window.innerHeight) - dock;
+        var dockTop = measuredDockTop();
         var chipTop = chip.getBoundingClientRect().top;
         var available = Math.max(0, Math.min(dockTop - padding, window.innerHeight - padding)
           - Math.max(chipTop + padding, padding));

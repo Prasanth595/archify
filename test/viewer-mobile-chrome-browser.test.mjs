@@ -295,7 +295,9 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
     const explain = document.getElementById('btn-focus-explain');
     return {
       viewport: { width: innerWidth, height: innerHeight },
+      scrollY: window.scrollY,
       nav: { wrap: navStyle.flexWrap, height: navRect.height, top: navRect.top, bottom: navRect.bottom },
+      chip: (() => { const rect = document.getElementById('focus-chip').getBoundingClientRect(); return { top: rect.top, bottom: rect.bottom, height: rect.height }; })(),
       buttons: buttons.map((button) => {
         const rect = button.getBoundingClientRect();
         const centre = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
@@ -334,6 +336,40 @@ test('320×300 composition keeps parent Back and the explained Passport clear of
   assert.equal(state.focused, 'focus-explanation-back', 'opening the explained Passport must focus its Back control');
   assert.equal(state.back.hittable, true, 'the explanation Back must be hit-testable');
 
+  // The dock is absolutely positioned inside the scrolling container, not a
+  // fixed viewport band. Re-check the Passport at a mid-viewport dock offset:
+  // it may move below the dock, but it must not be painted over by it.
+  await run('window.scrollTo(0, 520)');
+  await settle();
+  const mid = await run(`(() => {
+    const nav = document.querySelector('.diagram-nav').getBoundingClientRect();
+    const chip = document.getElementById('focus-chip').getBoundingClientRect();
+    const title = document.getElementById('focus-explanation-title').getBoundingClientRect();
+    const body = document.getElementById('focus-explanation-body');
+    const prose = body.getBoundingClientRect();
+    const back = document.getElementById('focus-explanation-back').getBoundingClientRect();
+    const hit = (element) => {
+      const rect = element.getBoundingClientRect();
+      const centre = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      return Boolean(centre && (centre === element || element.contains(centre)));
+    };
+    return {
+      scrollY: window.scrollY,
+      nav: { top: nav.top, bottom: nav.bottom },
+      chip: { top: chip.top, bottom: chip.bottom },
+      title: { top: title.top, bottom: title.bottom, hit: hit(document.getElementById('focus-explanation-title')) },
+      prose: { top: prose.top, bottom: prose.bottom, clientHeight: body.clientHeight, scrollHeight: body.scrollHeight },
+      back: { top: back.top, bottom: back.bottom, hit: hit(document.getElementById('focus-explanation-back')) },
+      separated: chip.bottom <= nav.top + 0.5 || chip.top >= nav.bottom - 0.5,
+    };
+  })()`);
+  assert.equal(mid.title.hit, true, `the explanation title must stay visible at the mid-scroll dock: ${JSON.stringify(mid)}`);
+  assert.ok(mid.prose.clientHeight > 0, `the explanation prose must stay readable at the mid-scroll dock: ${JSON.stringify(mid)}`);
+  assert.equal(mid.back.hit, true, `the explanation Back must stay hit-testable at the mid-scroll dock: ${JSON.stringify(mid)}`);
+  assert.equal(mid.separated, true, `the Passport must not overlap the dock at the mid-scroll position: ${JSON.stringify(mid)}`);
+
+  await run(`window.scrollTo(0, ${state.scrollY})`);
+  await settle();
   await click('focus-explanation-back');
   const restored = await run(`(() => {
     const explain = document.getElementById('btn-focus-explain');
