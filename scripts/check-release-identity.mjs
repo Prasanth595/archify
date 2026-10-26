@@ -4,8 +4,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { parseSemver, validateLocalRelease } from '../archify/scripts/update-contract.mjs';
-
 const scriptRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rootFlag = process.argv.indexOf('--root');
 const repoRoot = rootFlag === -1 ? scriptRoot : path.resolve(process.argv[rootFlag + 1] || '');
@@ -35,15 +33,14 @@ function readJson(relativePath) {
   }
 }
 
-function checkSkillRelease(value, version, isDevelopment) {
-  const expectedChannel = isDevelopment ? 'development' : 'stable';
-  try {
-    const release = validateLocalRelease(value);
-    if (release.version === version && release.channel === expectedChannel) return;
-  } catch {
-    // Report the repository-specific cross-artifact requirement below.
-  }
-  fail(`archify/skill-release.json must identify archify ${version} as ${expectedChannel}, use the official repository, and pin the trusted update manifest URL.`);
+function parseSemver(value) {
+  const match = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([0-9A-Za-z.-]+))?(?:\+([0-9A-Za-z.-]+))?$/.exec(String(value));
+  if (!match) throw new Error(`invalid SemVer: ${value}`);
+  return {
+    core: match.slice(1, 4).map(Number),
+    prerelease: match[4] ? match[4].split('.') : null,
+    build: match[5] ? match[5].split('.') : null,
+  };
 }
 
 const packageJson = readJson('archify/package.json');
@@ -59,13 +56,10 @@ const supportedPrerelease = parsedVersion?.prerelease === null
     && parsedVersion.prerelease[0] === 'dev'
     && /^\d+$/.test(parsedVersion.prerelease[1]));
 const hasSupportedVersion = Boolean(parsedVersion && parsedVersion.build === null && supportedPrerelease);
-const isDevelopment = Boolean(hasSupportedVersion && parsedVersion.prerelease);
 
 if (!hasSupportedVersion) {
   fail(`package version is not a supported SemVer identity: ${JSON.stringify(version)}`);
 } else {
-  checkSkillRelease(readJson('archify/skill-release.json'), version, isDevelopment);
-
   const lock = readJson('archify/package-lock.json');
   if (lock.version !== version || lock.packages?.['']?.version !== version) {
     fail(`archify/package-lock.json must match ${version} at the root and packages[""].`);

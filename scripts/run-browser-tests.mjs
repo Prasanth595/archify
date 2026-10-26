@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 import { spawnSync } from 'node:child_process';
-import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { findChrome } from '../archify/bin/visual-check.mjs';
@@ -34,19 +32,11 @@ if (!chrome) {
 }
 
 console.error(`Browser tests: ${options.files.length} files, concurrency ${options.concurrency}${options.shard ? `, shard ${options.shard.index}/${options.shard.count}` : ''}`);
-// Browser fixtures also deliver artifacts and check for updates. Give each
-// invocation its own cache, just like the ordinary repository test runner.
-const updateCache = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'archify-browser-update-')));
-let result;
-try {
-  result = spawnSync(process.execPath, options.args, {
-    cwd: repoRoot,
-    env: { ...process.env, ARCHIFY_CHROME: chrome, ARCHIFY_UPDATE_CACHE_DIRECTORY: updateCache },
-    stdio: 'inherit',
-  });
-} finally {
-  fs.rmSync(updateCache, { recursive: true, force: true });
-}
+const result = spawnSync(process.execPath, options.args, {
+  cwd: repoRoot,
+  env: { ...process.env, ARCHIFY_CHROME: chrome },
+  stdio: 'inherit',
+});
 if (result.error) throw result.error;
 if (result.signal) console.error(`browser test runner terminated by ${result.signal}`);
 process.exitCode = result.signal ? 1 : (result.status ?? 1);

@@ -38,9 +38,6 @@ function repositoryFixture() {
     devDependencies: { ajv: '1.0.0' },
   }));
   write(root, 'archify/package-lock.json', '{}\n');
-  write(root, 'archify/skill-release.json', '{}\n');
-  write(root, 'archify/scripts/check-update.mjs', 'export {};\n');
-  write(root, 'archify/scripts/update-contract.mjs', 'export {};\n');
   write(root, 'archify/renderers/shared/generated-validators.mjs', 'export {};\n');
   write(root, 'archify/renderers/shared/path-semantics.mjs', 'export {};\n');
   write(root, 'archify/renderers/shared/portable-path.mjs', 'export {};\n');
@@ -100,9 +97,6 @@ test('clean staging rejects untracked required release inputs before creating ou
       'THIRD_PARTY_NOTICES.md',
       'archify/LICENSE',
       'archify/THIRD_PARTY_NOTICES.md',
-      'archify/skill-release.json',
-      'archify/scripts/check-update.mjs',
-      'archify/scripts/update-contract.mjs',
       'archify/renderers/shared/generated-validators.mjs',
     ]) {
       git(root, ['rm', '--cached', '-f', relative]);

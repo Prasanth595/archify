@@ -23,14 +23,6 @@ function fixture(t, version, overrides = {}) {
   const files = {
     'archify/package.json': JSON.stringify({ name: 'archify', version }),
     'archify/package-lock.json': JSON.stringify({ version, packages: { '': { version } } }),
-    'archify/skill-release.json': JSON.stringify({
-      schemaVersion: 1,
-      skillId: 'archify',
-      channel: version.includes('-dev.') ? 'development' : 'stable',
-      version,
-      source: { repository: 'https://github.com/tt-a1i/archify' },
-      updateManifestUrl: 'https://tt-a1i.github.io/archify/skill-updates/archify/stable.json',
-    }),
     'archify/SKILL.md': `---\nmetadata:\n  version: "${major}.${minor}"\n---\n`,
     'archify/assets/template.html': `<meta name="generator" content="archify ${version}">`,
     ...overrides,
@@ -71,7 +63,6 @@ test('mismatched release artifacts are each reported', (t) => {
     ['archify/package-lock.json', JSON.stringify({ version: '2.12.0', packages: { '': { version: '2.12.0' } } }), /package-lock\.json must match 2\.13\.0/],
     ['archify/SKILL.md', '---\nmetadata:\n  version: "2.12"\n---\n', /SKILL\.md metadata version 2\.12 must map to package 2\.13\.0 as 2\.13/],
     ['archify/assets/template.html', '<meta name="generator" content="archify 2.12.0">', /template\.html generator must be archify 2\.13\.0/],
-    ['archify/skill-release.json', JSON.stringify({ schemaVersion: 1, skillId: 'archify', channel: 'development', version: '2.13.0' }), /skill-release\.json must identify archify 2\.13\.0 as stable/],
   ];
   for (const [file, content, expected] of cases) {
     const result = runCheck(fixture(t, '2.13.0', { [file]: content }));

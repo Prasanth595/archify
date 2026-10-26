@@ -113,7 +113,7 @@ test('real Skills CLI keeps source and ZIP installs scoped to the requested Skil
         assert.equal(fs.lstatSync(installed).isSymbolicLink(), false);
         const doctor = spawnSync(process.execPath, [path.join(installed, 'bin', 'archify.mjs'), 'doctor'], {
           cwd: installed, encoding: 'utf8', timeout: 30_000,
-          env: { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' },
+          env: { ...process.env },
         });
         assert.equal(doctor.status, 0, doctor.stderr);
         assert.match(doctor.stdout, /Archify is ready\./);

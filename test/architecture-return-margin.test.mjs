@@ -100,7 +100,7 @@ test('the architecture renderer reserves extra room only for an automatic canvas
     const bytes = JSON.stringify(diagram);
     fs.writeFileSync(input, bytes);
     const result = spawnSync(process.execPath, [cli, 'validate', 'architecture', input, '--layout-json'], {
-      encoding: 'utf8', env: { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' },
+      encoding: 'utf8', env: { ...process.env },
     });
     assert.equal(result.status, 0, result.stdout + result.stderr);
     assert.equal(fs.readFileSync(input, 'utf8'), bytes);

@@ -32,16 +32,11 @@ test('browser gate rejects an unavailable explicit browser instead of skipping',
 function interceptedRun(t, outcome, args = []) {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-browser-gate-'));
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
-  const userCache = path.join(directory, 'user-cache');
-  fs.mkdirSync(userCache);
-  fs.writeFileSync(path.join(userCache, 'preserved'), 'existing cache');
   const preload = path.join(directory, 'capture-runner.cjs');
   fs.writeFileSync(preload, `
 const childProcess = require('node:child_process');
 childProcess.spawnSync = (command, args, options) => {
-  const updateCache = options.env.ARCHIFY_UPDATE_CACHE_DIRECTORY;
-  require('node:fs').writeFileSync(require('node:path').join(updateCache, 'fixture-update'), 'test receipt');
-  console.log(JSON.stringify({ command, args, cwd: options.cwd, chrome: options.env.ARCHIFY_CHROME, updateCache }));
+  console.log(JSON.stringify({ command, args, cwd: options.cwd, chrome: options.env.ARCHIFY_CHROME }));
   return ${JSON.stringify(outcome)};
 };
 require('node:module').syncBuiltinESMExports();
@@ -49,15 +44,8 @@ require('node:module').syncBuiltinESMExports();
   const result = spawnSync(process.execPath, ['--require', preload, runner, ...args], {
     cwd: directory,
     encoding: 'utf8',
-    env: { ...process.env, ARCHIFY_CHROME: process.execPath, ARCHIFY_UPDATE_CACHE_DIRECTORY: userCache },
+    env: { ...process.env, ARCHIFY_CHROME: process.execPath },
   });
-  assert.equal(fs.readFileSync(path.join(userCache, 'preserved'), 'utf8'), 'existing cache');
-  assert.deepEqual(fs.readdirSync(userCache), ['preserved']);
-  if (result.stdout.startsWith('{')) {
-    const call = JSON.parse(result.stdout);
-    assert.notEqual(call.updateCache, userCache, 'the browser gate must isolate update state');
-    assert.equal(fs.existsSync(call.updateCache), false, 'temporary cache must be cleaned on success, failure and child termination');
-  }
   return result;
 }
 

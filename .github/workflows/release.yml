@@ -84,8 +84,7 @@ jobs:
         shell: bash
         run: |
           version="${GITHUB_REF_NAME#v}"
-          channel="$(node --input-type=module -e 'import fs from "node:fs"; import { validateLocalRelease } from "./archify/scripts/update-contract.mjs"; const release = validateLocalRelease(JSON.parse(fs.readFileSync("./archify/skill-release.json", "utf8"))); if (release.version !== process.argv[1]) process.exit(1); process.stdout.write(release.channel);' "$version")"
-          if [[ "$channel" == "development" ]]; then
+          if [[ "$version" == *-* ]]; then
             echo "prerelease=true" >> "$GITHUB_OUTPUT"
             echo "make_latest=false" >> "$GITHUB_OUTPUT"
           else

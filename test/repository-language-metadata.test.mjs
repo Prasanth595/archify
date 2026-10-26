@@ -20,11 +20,6 @@ test('repository language metadata separates generated artifacts from implementa
     'archify/assets/template.html',
     'archify/examples/web-app-rendered.html',
     'examples/web-app.html',
-    'docs/cases/mco-runtime.architecture.html',
-    'docs/gallery.html',
-    'docs/gallery/artifacts/web-app.architecture.html',
-    'docs/guide.html',
-    'docs/start.html',
     'experiments/mco-showcase/mco-runtime.html',
     'archify/renderers/shared/generated-brand-marks.mjs',
     'archify/renderers/shared/generated-validators.mjs',
@@ -52,10 +47,6 @@ test('repository language metadata separates generated artifacts from implementa
     'viewer/export.js',
     'viewer/export-cleanup.js',
     'scripts/generate-viewer.mjs',
-    'scripts/gallery-template.html',
-    'scripts/guide-template.html',
-    'scripts/start-template.html',
-    'docs/index.html',
     'archify/renderers/shared/geometry.mjs',
   ]) {
     assert.equal(

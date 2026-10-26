@@ -41,6 +41,17 @@ node archify/bin/archify.mjs check out.html
 node archify/bin/archify.mjs --help
 ```
 
+## Examples
+
+Open these self-contained renders in a browser:
+
+- Architecture: [this repository](examples/archify-repo.html), [this repository on a grid](examples/archify-repo-grid.html), [Maka](examples/maka-architecture.html), [a sample web app](examples/web-app.html)
+- Architecture change review: [checkout platform delta](examples/checkout-platform-delta.html)
+- Class: [payment module](examples/class-payments-rendered.html)
+- Tree: [payment platform capabilities](examples/tree-payment-platform-rendered.html)
+- Timeline: [payment incident](examples/timeline-payment-incident-rendered.html)
+- Waterfall: [checkout request](examples/waterfall-checkout-request-rendered.html)
+
 ## Repository layout
 
 | Path | Purpose |

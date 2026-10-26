@@ -10,7 +10,6 @@ import {
   sameLocation,
   sidecarNamespaceComponentKey,
 } from '../archify/renderers/shared/path-semantics.mjs';
-import { checkForUpdate } from '../archify/scripts/check-update.mjs';
 import { stageCleanSkill } from './stage-clean-skill.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -332,31 +331,6 @@ async function runControlledWindowsPathE2E() {
     stageCleanSkill({ repoRoot: driveCaseRepoRoot, destination: stagedSkill });
     assert.ok(fs.existsSync(path.join(stagedSkill, 'renderers', 'shared', 'sidecar-path.mjs')));
 
-    const localRelease = JSON.parse(fs.readFileSync(path.join(skillRoot, 'skill-release.json'), 'utf8'));
-    localRelease.channel = 'stable';
-    localRelease.version = '2.15.0';
-    const releasePath = path.join(caseRoot, `${token}-skill-release.json`);
-    fs.writeFileSync(releasePath, `${JSON.stringify(localRelease)}\n`);
-    const stableManifest = fs.readFileSync(
-      path.join(repoRoot, 'docs', 'skill-updates', 'archify', 'stable.json'),
-      'utf8',
-    );
-    const updateCache = path.win32.join(eightDotThreeShortRoot, `${token}-update-cache`);
-    const update = await checkForUpdate({
-      releasePath,
-      cacheDirectory: updateCache,
-      fetchImpl: async () => new Response(stableManifest, {
-        status: 200,
-        headers: {
-          'content-type': 'application/json',
-          etag: `"${token}"`,
-        },
-      }),
-      now: () => Date.parse('2026-09-18T12:00:00Z'),
-      random: () => 0.5,
-    });
-    assert.equal(update.status, 'update_available');
-
     let ordinaryLongDirectory = uncRoot;
     for (let index = 0; ordinaryLongDirectory.length <= 320; index += 1) {
       ordinaryLongDirectory = path.win32.join(
@@ -567,13 +541,11 @@ const portabilitySuites = [
   'test/cli.test.mjs',
   'test/preview.test.mjs',
   'test/visual-check.test.mjs',
-  'test/update-notifier.test.mjs',
 ];
 
 const portabilityPattern = [
   'Git checkout preserves',
   'Windows Git Bash discovery ignores GIT_EXEC_PATH',
-  'Star History publishing advances',
   'clean staging preserves index modes',
   'entry detection',
   'workflow migration cleanup failure',
@@ -596,9 +568,6 @@ const portabilityPattern = [
   'preview: a concurrently claimed absent output',
   'preview: a concurrent replacement of an existing output',
   'preview: a hardlinked existing output',
-  'updater rejects a case-only alias',
-  'symlink cache root',
-  'symlink cache ancestor',
   'authored symlink is rejected|trusted directory through a symlink',
   'findChrome',
   'visual-check',

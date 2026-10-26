@@ -46,7 +46,7 @@ node benchmarks/repair-rounds/benchmark.mjs run --manifest benchmarks/repair-rou
 node benchmarks/repair-rounds/benchmark.mjs report --results results.jsonl --manifest benchmarks/repair-rounds/manifest.json
 ```
 
-`run` sets `ARCHIFY_UPDATE_CHECK_DISABLED=1` so receipts are not perturbed by the update check. `browser-check` needs local Chrome; without it the late-discovery cases report the gate truthfully as skipped rather than passed.
+`browser-check` needs local Chrome; without it the late-discovery cases report the gate truthfully as skipped rather than passed.
 
 Reports require one command and repair mode per input file; mixed configurations are rejected. Coverage compares unique case IDs against the manifest, so repeated cases cannot fill missing cases.
 

@@ -8,7 +8,6 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parse } from 'yaml';
 
 import { stageCleanSkill } from '../scripts/stage-clean-skill.mjs';
-import { verifyPackagedUpdateChecker } from '../scripts/package-update-smoke.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -180,10 +179,7 @@ test('release tags with a SemVer prerelease are marked prerelease and never beco
 
   assert.ok(workflow.indexOf(classifier) < workflow.indexOf(upload), 'release kind must be known before upload');
   assert.match(classifier, /version="\$\{GITHUB_REF_NAME#v\}"/);
-  assert.match(classifier, /validateLocalRelease/);
-  assert.match(classifier, /update-contract\.mjs/);
-  assert.match(classifier, /release\.version !== process\.argv\[1\]/);
-  assert.match(classifier, /if \[\[ "\$channel" == "development" \]\]/);
+  assert.match(classifier, /if \[\[ "\$version" == \*-\* \]\]/);
   assert.match(classifier, /echo "prerelease=true" >> "\$GITHUB_OUTPUT"/);
   assert.match(classifier, /echo "make_latest=false" >> "\$GITHUB_OUTPUT"/);
   assert.match(classifier, /echo "prerelease=false" >> "\$GITHUB_OUTPUT"/);
@@ -306,32 +302,6 @@ test('package smoke rejects missing, modified, or incomplete third-party notices
     );
   } finally {
     fs.rmSync(fixture, { recursive: true, force: true });
-  }
-});
-
-test('package smoke increments an arbitrary-precision SemVer patch without Number coercion', async () => {
-  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-package-bigint-version-'));
-  const skillRoot = path.join(scratch, 'archify');
-  try {
-    stageCleanSkill({ repoRoot, destination: skillRoot });
-    const packagePath = path.join(skillRoot, 'package.json');
-    const releasePath = path.join(skillRoot, 'skill-release.json');
-    const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
-    const release = JSON.parse(fs.readFileSync(releasePath, 'utf8'));
-    const version = '2.16.9007199254740993';
-    packageJson.version = version;
-    release.version = version;
-    release.channel = 'stable';
-    fs.writeFileSync(packagePath, `${JSON.stringify(packageJson, null, 2)}\n`);
-    fs.writeFileSync(releasePath, `${JSON.stringify(release, null, 2)}\n`);
-
-    // The ordinary archive smoke owns renderer/distribution coverage. This
-    // version edge case needs only its real packaged notifier gate.
-    const smoke = await verifyPackagedUpdateChecker(skillRoot, path.join(scratch, 'update-cache'));
-    assert.equal(smoke.candidateVersion, '2.16.9007199254740994');
-    assert.equal(smoke.notifierReceipt.status, 'update_available');
-  } finally {
-    fs.rmSync(scratch, { recursive: true, force: true });
   }
 });
 
@@ -515,8 +485,8 @@ canonicalZipTest('package smoke rejects every dependency metadata field in a bui
   }
 });
 
-canonicalZipTest('built archives contain the embedded notifier runtime', () => {
-  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-notifier-package-gate-'));
+canonicalZipTest('built archives contain the shared output runtime and no update notifier', () => {
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-runtime-package-gate-'));
   try {
     const archive = path.join(fixture, 'archify.zip');
     const build = spawnBuildZip(archive);
@@ -525,11 +495,9 @@ canonicalZipTest('built archives contain the embedded notifier runtime', () => {
     const listing = spawnSync('unzip', ['-Z1', archive], { encoding: 'utf8' });
     assert.equal(listing.status, 0, `${listing.stdout}\n${listing.stderr}`);
     const entries = new Set(listing.stdout.trim().split('\n'));
-    assert.ok(entries.has('archify/skill-release.json'));
-    assert.ok(entries.has('archify/scripts/check-update.mjs'));
-    assert.ok(entries.has('archify/scripts/delivery-update-child.mjs'));
-    assert.ok(entries.has('archify/bin/delivery-update.mjs'));
-    assert.ok(entries.has('archify/scripts/update-contract.mjs'));
+    for (const removed of ['archify/skill-release.json', 'archify/scripts/check-update.mjs', 'archify/bin/delivery-update.mjs']) {
+      assert.equal(entries.has(removed), false, removed);
+    }
     assert.ok(entries.has('archify/renderers/shared/atomic-output.mjs'));
     assert.ok(entries.has('archify/renderers/shared/sidecar-path.mjs'));
   } finally {
@@ -612,9 +580,6 @@ canonicalZipTest('archive build rejects an unmerged index and preserves an exist
       path.join(skill, 'renderers', 'shared', 'atomic-output.mjs'),
     );
     fs.writeFileSync(path.join(skill, 'renderers', 'shared', 'generated-validators.mjs'), 'export default {};\n');
-    fs.writeFileSync(path.join(skill, 'scripts', 'check-update.mjs'), 'export {};\n');
-    fs.writeFileSync(path.join(skill, 'scripts', 'update-contract.mjs'), 'export {};\n');
-    fs.writeFileSync(path.join(skill, 'skill-release.json'), '{}\n');
     fs.writeFileSync(path.join(skill, 'package.json'), '{"name":"archify"}\n');
     fs.writeFileSync(license, 'base\n');
     assert.equal(git(['init']).status, 0);
@@ -1436,7 +1401,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
     'test/workflow-migration.test.mjs',
     'test/cli.test.mjs',
     'test/preview.test.mjs',
-    'test/update-notifier.test.mjs',
     'test/visual-check.test.mjs',
   ]) {
     assert.ok(runner.includes(`'${fixture}'`), `shared runner must execute ${fixture}`);
@@ -1450,9 +1414,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
   assert.match(runner, /preview: publishing through an existing output symlink/);
   assert.match(runner, /preview: a hardlinked existing output/);
   assert.match(runner, /'visual-check'/);
-  assert.match(runner, /updater rejects a case-only alias/);
-  assert.match(runner, /symlink cache root/);
-  assert.match(runner, /symlink cache ancestor/);
   assert.match(runner, /authored symlink is rejected/);
   assert.match(runner, /trusted directory through a symlink/);
   assert.match(runner, /preview runs from an installed skill/);
@@ -1478,7 +1439,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
   assert.match(runner, /architecture compare to extended UNC/);
   assert.match(runner, /repository root through drive-letter case alias/);
   assert.match(runner, /stageCleanSkill\(\{ repoRoot: driveCaseRepoRoot/);
-  assert.match(runner, /checkForUpdate\(\{/);
   assert.match(runner, /let ordinaryLongDirectory = uncRoot/);
   assert.match(runner, /ordinary UNC delivery beyond traditional MAX_PATH/);
   assert.match(runner, /ordinary UNC visual-check beyond traditional MAX_PATH/);

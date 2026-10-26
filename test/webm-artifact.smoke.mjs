@@ -67,6 +67,13 @@ execFileSync(process.execPath, [
   sequenceOutput,
 ], { stdio: ['ignore', 'ignore', 'pipe'] });
 
+const passportOutput = path.join(tmp, 'production-deployment.html');
+execFileSync(process.execPath, [
+  path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'),
+  path.join(skillRoot, 'examples/production-deployment.architecture.json'),
+  passportOutput,
+], { stdio: ['ignore', 'ignore', 'pipe'] });
+
 const routeOutputs = {
   architecture: output,
   sequence: sequenceOutput,
@@ -1636,7 +1643,7 @@ try {
   }
 
   await verifyResolvedLegendContract(legendOutputs);
-  await verifySemanticPassportDismissal(path.resolve(skillRoot, '../docs/gallery/artifacts/production-deployment.architecture.html'));
+  await verifySemanticPassportDismissal(passportOutput);
   await verifyArchitectureDeltaNavigator(path.resolve(skillRoot, '../examples/checkout-platform-delta.html'));
   await captureRouteShareCard(routeOutputs.architecture, 'architecture-route', 'users', 'api', { journeyInvariance: true });
   await captureRouteShareCard(routeOutputs.workflow, 'workflow-route', 'user', 'approval');
