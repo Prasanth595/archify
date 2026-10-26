@@ -141,7 +141,8 @@ test('start page: every gallery case type resolves to a start entry', () => {
   for (const type of galleryTypes) {
     assert.ok(known.has(type), `gallery type "${type}" is not in the start page allow-list`);
     assert.ok(starts[type], `gallery type "${type}" has no start entry`);
-    assert.ok(starts[type].en.descriptionPrompt && starts[type].zh.descriptionPrompt, `${type}: start prompts are bilingual`);
+    assert.ok(starts[type].en.descriptionPrompt, `${type}: start prompt exists`);
+    assert.equal(starts[type].zh, undefined, `${type}: recipe copy is English-only`);
     // The chooser is the reader's way in: a type the page can render but the
     // buttons cannot reach is unreachable by click and skipped by keyboard walk.
     assert.match(html, new RegExp(`data-type="${type}"`), `gallery type "${type}" has no chooser button`);
@@ -155,7 +156,7 @@ test('start page: every gallery case type resolves to a start entry', () => {
   assert.equal(buttons, Object.keys(starts).length, 'every start entry has a chooser button');
 });
 
-test('start page: offers six bounded bilingual starts without ingesting source content', () => {
+test('start page: offers six bounded starts with a bilingual page shell without ingesting source content', () => {
   const html = fs.readFileSync(path.join(repoRoot, 'docs/start.html'), 'utf8');
   assert.doesNotMatch(html, /\[\[[A-Z0-9_]+\]\]/);
   assert.match(html, /npx -y skills add tt-a1i\/archify --skill archify --agent codex --global --copy --yes/);
@@ -179,7 +180,7 @@ test('start page: offers six bounded bilingual starts without ingesting source c
   assert.ok(dataMatch);
   const data = JSON.parse(dataMatch[1]);
   assert.deepEqual(Object.keys(data), ['architecture', 'workflow', 'sequence', 'dataflow', 'lifecycle', 'erd']);
-  assert.ok(Object.values(data).every((entry) => entry.en.prompt && entry.zh.prompt && entry.en.descriptionPrompt && entry.zh.descriptionPrompt && entry.en.repositoryPrompt && entry.zh.repositoryPrompt && entry.proof));
+  assert.ok(Object.values(data).every((entry) => entry.en.prompt && entry.en.descriptionPrompt && entry.en.repositoryPrompt && entry.zh === undefined && entry.proof));
 
   const scriptMatch = html.match(/<script>\n([\s\S]*?)\n  <\/script>\n<\/body>/);
   assert.ok(scriptMatch);
@@ -214,11 +215,9 @@ test('start page: canonical recipes own description and repository prompt varian
   for (const [type, id] of selected) {
     const recipe = SCENARIO_RECIPES.find((candidate) => candidate.id === id);
     assert.equal(recipe?.type, type);
-    for (const language of ['en', 'zh']) {
-      const prompts = startPromptsFor(recipe, language);
-      assert.equal(prompts.descriptionPrompt, recipe.start[language].descriptionPrompt);
-      assert.ok(prompts.repositoryPrompt.toLowerCase().includes(recipe[language].prompt.toLowerCase()));
-    }
+    const prompts = startPromptsFor(recipe);
+    assert.equal(prompts.descriptionPrompt, recipe.start.en.descriptionPrompt);
+    assert.ok(prompts.repositoryPrompt.toLowerCase().includes(recipe.en.prompt.toLowerCase()));
   }
 });
 

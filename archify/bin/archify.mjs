@@ -2202,7 +2202,7 @@ const COMMAND_USAGE = {
   check: '<output.html> [--json] [--require-provenance]',
   'browser-check': '<output.html> [--json|--summary] [--require-provenance] [--out-dir <dir>]',
   'visual-check': '<output.html> [--json|--summary] [--require-provenance] [--out-dir <dir>]',
-  guide: '[scenario or question] [--json] [--lang en|zh]',
+  guide: '[scenario or question] [--json]',
   brands: ['[name, alias, domain, or category] [--json]', 'capture <url> [--json]'],
   examples: '',
   doctor: '',
@@ -6191,23 +6191,12 @@ async function commandDoctor(args) {
 }
 
 async function commandGuide(args) {
-  let lang;
   let json = false;
   const queryParts = [];
 
-  for (let index = 0; index < args.length; index += 1) {
-    const arg = args[index];
+  for (const arg of args) {
     if (arg === '--json') {
       json = true;
-    } else if (arg === '--lang') {
-      const value = args[index + 1];
-      if (value !== 'en' && value !== 'zh') fail('--lang must be "en" or "zh".');
-      lang = value;
-      index += 1;
-    } else if (arg.startsWith('--lang=')) {
-      const value = arg.slice('--lang='.length);
-      if (value !== 'en' && value !== 'zh') fail('--lang must be "en" or "zh".');
-      lang = value;
     } else if (arg.startsWith('--')) {
       fail(`Unknown guide option "${arg}".`);
     } else {
@@ -6225,21 +6214,19 @@ async function commandGuide(args) {
 
   const query = queryParts.join(' ').trim();
   if (!query) {
-    const selectedLang = lang || 'en';
     if (json) {
       console.log(JSON.stringify({
         ok: true,
         mode: 'list',
-        lang: selectedLang,
-        recipes: guide.listScenarioRecipes(selectedLang),
+        recipes: guide.listScenarioRecipes(),
       }, null, 2));
     } else {
-      console.log(guide.formatScenarioList(selectedLang));
+      console.log(guide.formatScenarioList());
     }
     return;
   }
 
-  const result = guide.recommendScenario(query, lang ? { lang } : {});
+  const result = guide.recommendScenario(query);
   console.log(json ? JSON.stringify(result, null, 2) : guide.formatScenarioRecommendation(result));
 }
 

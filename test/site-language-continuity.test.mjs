@@ -678,7 +678,7 @@ test('real Chrome preserves language through entry, navigation, selection, refre
       await evaluate(browser, sessionId, `history.replaceState(null, '', location.pathname + ${JSON.stringify(suffix)})`);
       const workflowRecipes = SCENARIO_RECIPES.filter(recipe => recipe.type === 'workflow');
       assert.ok(workflowRecipes.length > 0, 'canonical inventory includes workflow recipes');
-      const selectedRecipe = { id: workflowRecipes[0].id, en: workflowRecipes[0].en.title, zh: workflowRecipes[0].zh.title };
+      const selectedRecipe = { id: workflowRecipes[0].id, en: workflowRecipes[0].en.title, zh: workflowRecipes[0].en.title };
       assert.equal(await evaluate(browser, sessionId, `(function () {
         document.getElementById('scenario').value = ${JSON.stringify(question)};
         document.querySelector('#filters [data-filter="workflow"]').click();

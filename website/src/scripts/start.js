@@ -83,8 +83,8 @@
 
       function currentPrompt() {
         return input === 'description'
-          ? DATA[type][language].descriptionPrompt
-          : DATA[type][language].repositoryPrompt;
+          ? (DATA[type][language] || DATA[type].en).descriptionPrompt
+          : (DATA[type][language] || DATA[type].en).repositoryPrompt;
       }
 
       var copyAttempt = 0;
@@ -92,7 +92,7 @@
         copyAttempt++;
         language = ArchifySiteLanguage.write(language);
         var recipe = DATA[type];
-        var copy = recipe[language];
+        var copy = recipe[language] || recipe.en;
         updateStaticCopy();
         document.querySelectorAll('[data-type]').forEach(function (button) {
           var active = button.dataset.type === type;

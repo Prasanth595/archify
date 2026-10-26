@@ -25,7 +25,7 @@ test('guide page: checked-in HTML is reproducible from the shared recipe source'
   }
 });
 
-test('guide page: ships bilingual recipes and syntactically valid interaction code', () => {
+test('guide page: ships English recipes and syntactically valid interaction code', () => {
   const html = fs.readFileSync(path.join(repoRoot, 'docs/guide.html'), 'utf8');
   const packageVersion = JSON.parse(
     fs.readFileSync(path.join(skillRoot, 'package.json'), 'utf8'),
@@ -43,7 +43,7 @@ test('guide page: ships bilingual recipes and syntactically valid interaction co
   const dataMatch = html.match(/<script id="guide-data" type="application\/json">([\s\S]*?)<\/script>/);
   assert.ok(dataMatch);
   const data = JSON.parse(dataMatch[1]);
-  assert.ok(data.every((recipe) => recipe.en.prompt && recipe.zh.prompt && recipe.proof));
+  assert.ok(data.every((recipe) => recipe.en.prompt && recipe.zh === undefined && recipe.proof));
   assert.ok(data.some((recipe) => recipe.id === 'layout-repair'));
   assert.match(html, /gallery\.html#proof-/);
 

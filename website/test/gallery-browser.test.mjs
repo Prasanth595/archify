@@ -114,7 +114,7 @@ test('real Chrome: gallery evidence limits and life-card entry points stay reada
         await loadedAction(async () => {
           for (const eventType of ['mousePressed', 'mouseReleased']) await browser.cdp.send('Input.dispatchMouseEvent', { type:eventType, ...point, button:'left', clickCount:1 }, session);
         });
-        const receipt = await evaluate(`(() => ({ lang:document.documentElement.lang, path:location.pathname, query:Object.fromEntries(new URL(location.href).searchParams), type:document.querySelector('[data-type][aria-selected="true"]').dataset.type, input:document.querySelector('[data-input][aria-selected="true"]').dataset.input, prompt:document.getElementById('recipe-prompt').innerText, expected:JSON.parse(document.getElementById('start-data').textContent)[${JSON.stringify(type)}][${JSON.stringify(lang)}].descriptionPrompt }))()`);
+        const receipt = await evaluate(`(() => ({ lang:document.documentElement.lang, path:location.pathname, query:Object.fromEntries(new URL(location.href).searchParams), type:document.querySelector('[data-type][aria-selected="true"]').dataset.type, input:document.querySelector('[data-input][aria-selected="true"]').dataset.input, prompt:document.getElementById('recipe-prompt').innerText, expected:JSON.parse(document.getElementById('start-data').textContent)[${JSON.stringify(type)}].en.descriptionPrompt }))()`);
         manifest.navigation.push({ width, lang, type, receipt }); saveManifest();
         assert.equal(receipt.lang, lang === 'zh' ? 'zh-Hans' : 'en');
         assert.equal(receipt.path, `${mount}/${lang === 'zh' ? 'zh/' : ''}start${mount ? '.html' : ''}`);

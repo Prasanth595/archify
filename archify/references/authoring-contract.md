@@ -344,7 +344,7 @@ schema has more than 8 tables or 50 fields, it is a dense full-schema map: start
 with `meta.quality_profile: "standard"` so complete field visibility is not
 traded away for repeated showcase route repairs. Include every physical column in
 `attributes`, keep the source SQL type, and preserve the
-field's Chinese comment in the type string as `SQL_TYPE｜中文备注` because the
+field's source comment in the type string as `SQL_TYPE｜source comment` because the
 schema has no separate comment property. The default viewer shows these rows at
 the `read` level; do not rely on hover/focus or cards to reveal physical fields.
 Cards may explain constraints, inferred relationships, or domain rules, but never
@@ -638,7 +638,7 @@ renderer-owned and export with the diagram; URLs and raw SVG are not accepted.
 Icon selection changes only the corner symbol. The node's type still determines
 color and semantic grouping; brand marks remain independent. For a holiday
 workflow, pair `type: "backend", icon: "calendar"` with
-`meta.legend.entries.backend.label: "假期"`, and use `icon: "briefcase"` plus
+`meta.legend.entries.backend.label: "Holiday"`, and use `icon: "briefcase"` plus
 an appropriate legend label for make-up work. Keep the node label meaningful:
 icons are decorative and are hidden from assistive technology.
 

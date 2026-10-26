@@ -20,8 +20,7 @@ export const starts = Object.fromEntries(Object.entries(startRecipeIds).map(([ty
   if (!recipe || recipe.type !== type) throw new Error(`Missing start recipe: ${id}`);
   return [type, {
     id: recipe.id, type: recipe.type, proof: recipe.proof, presentation: recipe.presentation,
-    en: { ...recipe.en, ...startPromptsFor(recipe, 'en') },
-    zh: { ...recipe.zh, ...startPromptsFor(recipe, 'zh') },
+    en: { ...recipe.en, ...startPromptsFor(recipe) },
   }];
 }));
 export function jsonScript(value: unknown, pretty = false): string {

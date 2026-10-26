@@ -254,9 +254,14 @@ async function runControlledWindowsPathE2E() {
       encoding: 'utf8',
     });
     requireSuccess('repository revision discovery', revision);
+    // Forks check out under their own origin, so author the evidence against it.
+    const origin = spawnSync('git', ['-C', repoRoot, 'remote', 'get-url', 'origin'], {
+      encoding: 'utf8',
+    });
+    requireSuccess('repository origin discovery', origin);
     const evidenceDiagram = JSON.parse(fs.readFileSync(architectureInput, 'utf8'));
     evidenceDiagram.meta.repository = {
-      url: 'https://github.com/tt-a1i/archify',
+      url: origin.stdout.trim().replace(/\.git$/, ''),
       revision: revision.stdout.trim(),
     };
     evidenceDiagram.components[0].sources = [{

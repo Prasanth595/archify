@@ -159,7 +159,7 @@ test('real Chrome: Guide native keyboard activation retains focus and exposes se
         const expected = await evaluate(`(() => {
           const e = document.querySelector('[data-alt]');
           const r = JSON.parse(document.getElementById('guide-data').textContent).find(r => r.id === e.dataset.alt);
-          return { title:r[${JSON.stringify(lang)}].title, prompt:r[${JSON.stringify(lang)}].prompt, next:r.proof ? 'proof-link' : 'copy-prompt' };
+          return { title:r.en.title, prompt:r.en.prompt, next:r.proof ? 'proof-link' : 'copy-prompt' };
         })()`);
         await focus('[data-alt]'); await press(key);
         assert.equal(await active(), 'result-title', 'replaced alternative transfers focus to its new result heading');
