@@ -1,6 +1,6 @@
 # Explainer authoring
 
-An explainer turns an answer with a conclusion and some structure (an explanation, comparison, decision, diagnosis, review or plan) into one page. The page leads with the conclusion and shows the reasoning as panels: diagrams, tables, steps and short text. When to make one, and the opt-in modes, are in the Skill under “Choose the artifact”. A request to draw a system uses a native diagram type.
+An explainer turns an answer with a conclusion and some structure (an explanation, comparison, decision, diagnosis, review or plan) into one page. The page leads with the conclusion and shows the reasoning as panels: diagrams, tables, steps and short text. When to make one is in the Skill under “Choose the artifact”; the opt-in modes are in [Explainer modes](#explainer-modes). A request to draw a system uses a native diagram type.
 
 This guide is the complete draft language. Write the draft from it directly.
 
@@ -257,11 +257,31 @@ Prefer a specific question as each panel title. `{#id}` gives a stable ID for li
 node archify/bin/archify.mjs finalize explainer candidate.archify.md answer.html --json
 ```
 
-After a pass, reply in two or three lines: the conclusion, then a Markdown link to the page with a descriptive title. Do not list gates. When the user asked for this page and no `[archify explainer: ...]` rules line is in context, end with the one-line mode offer from the Skill's Output section.
+After a pass, reply in two or three lines: the conclusion, then a Markdown link to the page with a descriptive title. Do not list gates. When the user asked for this page and no `[archify explainer: ...]` rules line is in context, end with the one-line mode offer from [Explainer modes](#explainer-modes).
 
 Add `--repo-root <path>` when the draft uses `@code`. Finalize validates, atomically delivers and checks the HTML; it does not launch a browser, and its receipt records the browser gate as not run. A failure names the line, component, reason and a repair example; fix the draft and rerun to the same output path.
 
 Writing warnings apply the [Writing](#writing) rules: sentences over 28 words, paragraphs over four sentences or 120 words, light verbs, set phrases, openers and sign-offs, unbounded quantities, long words with a common equivalent, qualifiers such as “illustrative” or “not measured” outside scope, a mostly bold conclusion and a scope over 50 words. Each warning names the matched text and a repair; fix it when the repair keeps the meaning. `--writing warn|strict|off` sets the severity.
+
+## Explainer modes
+
+A rules line in context changes when to make a page:
+
+- `[archify explainer: proactive]`: also make a page, unasked, for an explanation, comparison, trade-off, decision, diagnosis, review or plan that needs a table, steps or several sections.
+- `[archify explainer: always-on]`: every reply that reaches a conclusion also gets a compact page of at most four panels, delivered without opening it, its link closing the reply.
+- `[archify explainer: on-demand]`: only when asked, and never offer a mode.
+
+In every mode a page needs a conclusion with some structure behind it: chat, one-line answers, raw command output and text-only requests get none.
+
+After an explainer made on request, when no `[archify explainer: ...]` line is in context, end the reply with one optional line offering the proactive mode, once per conversation, for example: “If you like, I can turn future explanations, comparisons and diagnoses into pages like this without being asked. Turn it on?”
+
+Write to a rules file only after the user explicitly accepts:
+
+1. Ask which file holds the current agent's global rules if it is not already known; never guess a path for another agent.
+2. Append `[archify explainer: proactive] Make an Archify explainer page, unasked, for explanations, comparisons, decisions, diagnoses, reviews and plans that need a table, steps or several sections.` to that file. Change nothing else in it.
+3. Name the file in the reply and say that deleting the line turns the mode off.
+
+If the user declines, offer to add `[archify explainer: on-demand]` the same way so the question does not return.
 
 ## Panel replacement
 

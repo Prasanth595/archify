@@ -30,6 +30,14 @@ For a real repository, follow [Repository authoring](repository-authoring.md) wh
 
 Examples show field shape, not legal values or source facts. They are finished showcases, so their optional presentation fields (`meta.subtitle`, `meta.viewBox`, `meta.column_fit`, `via`, `labelAt`) are not defaults; these defaults win. Read the mode schema and shared definition before adding a field, enum, or constrained text. In particular, inspect Architecture boundary kinds. Keep longer evidence in a card while retaining the fact. See [Schema lookup](authoring-contract.md#schema-lookup) for details.
 
+## ERD layout
+
+Use a table-first layout: show every physical column in `entities[].attributes`, keep its SQL type and source comment, state every key role a column carries (`key` takes a role or a list, so a junction column is `["pk", "fk"]`, and every `fk` column also needs `references` like `"orders.id"`), and never move columns into cards as a substitute for the table.
+
+Classify tables into functional domains before placement, give each domain a concise `tag`, and place its members in one solid rectangle of grid cells — a single row, a single column, or a filled rectangular block, not an L or diagonal. A tagged table always needs `row`/`col`, because absolute coordinates have no grid cells and a domain whose tables do not fill one rectangle cannot be drawn as a band: the renderer reports `erd/domain-not-drawn` instead of publishing a diagram that cannot name the domain. A multi-domain schema reads best as one domain per column — each `tag` a vertical run — because the reader scales a wide canvas up to the reader width and shrinks a tall one until the page fits, so the wide arrangement is the one that stays complete and legible inside a laptop viewport.
+
+A schema-first ERD over roughly 8 tables or 50 fields is itself a dense map: author its first complete-field pass at `standard` and upgrade only once the layout still reads.
+
 ## Presentation and modes
 
 Motion is enabled automatically. Omit `meta.animation`; use the Viewer’s Live/Still button to pause or resume playback.

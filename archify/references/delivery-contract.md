@@ -467,6 +467,10 @@ cannot be written, the diagnostic names that incomplete evidence.
 
 Both browser commands inspect the exact delivered HTML without modifying or rerendering it.
 
+## Architecture crossover review
+
+When a passing Architecture receipt reports `visualReviewRecommendation.signals.resolvedCrossovers`, copy the candidate aside and apply the hints in one edit that changes only node positions and sizes: every node, relationship (including its `from` and `to`), label, and source stays as it was. Rerun the complete `finalize` once with `--out-dir <folder>/review-2`, because the previous HTML already owns its browser evidence. `--out-dir` relocates the new browser-check and default finalize receipts, not the HTML or its delivery receipt. Successful delivery rewrites that pair at the requested output path; earlier review evidence remains bound to its original artifact bytes. See [review evidence paths](#a-new-candidate-at-an-existing-output-path). If that run fails, reports more crossings, or reports the same crossings with more `signals.routesOverSuggestedBends`, restore the copy and finalize it with `--out-dir <folder>/review-3`. Do not start a second placement round. Hints about extra bends alone are optional.
+
 ## Sequence width review
 
 A passing `finalize` may report `layoutReviewRecommendation.action: "inspect-sequence-width"`. Its `evidence` measures the fixed participant columns' unused right-hand space after accounting for message labels, notes and segment titles. This advice adds no warning, failure, screenshot requirement or automatic geometry change.
@@ -615,6 +619,10 @@ is not requested, use `correction_rounds: 0`. Never report
 `visual_review: passed` without inspecting the artifact. If perceptual review
 changes the candidate, rerun `finalize` because the previous specification and
 artifact receipts are no longer current.
+
+## No-shell fallback
+
+For native diagrams, when shell access is unavailable, hand-place architecture SVG into `../assets/template.html`, use CSS semantic classes rather than inline colors, and follow the [visual review contract](#perceptual-review). Explainers require their renderer and real delivery gates; if those are unavailable, report the limitation and give a text answer when useful, without claiming HTML delivery.
 
 ## Handoff receipt
 
