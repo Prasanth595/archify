@@ -8,7 +8,6 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parse } from 'yaml';
 
 import { stageCleanSkill } from '../scripts/stage-clean-skill.mjs';
-import { verifyPackagedUpdateChecker } from '../scripts/package-update-smoke.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -98,27 +97,22 @@ function assertPinnedAction(section, action, sha, version) {
   );
 }
 
-test('release prevents manifest preannouncement and smokes the exact archive before upload', () => {
+test('release smokes the exact archive before upload', () => {
   const workflow = fs.readFileSync(path.join(repoRoot, '.github', 'workflows', 'release.yml'), 'utf8');
   const tagFetch = workflowStep(workflow, 'Fetch exact tag object');
   const tagGate = workflowStep(workflow, 'Tag must match package.json version');
   const annotatedTagGate = workflowStep(workflow, 'Stable release tag must be annotated');
-  const publicationOrder = workflowStep(workflow, 'Stable notifier manifest must remain on the previous release');
   const build = workflowStep(workflow, 'Build skill archive');
   const smoke = workflowStep(workflow, 'Validate the exact release archive without installing dependencies');
   const freshness = workflowStep(workflow, 'Committed zip must match the build (same gate as CI)');
   const upload = workflowStep(workflow, 'Create GitHub Release with the zip attached');
-  const followUp = workflowStep(workflow, 'Record stable notifier publication follow-up');
 
   assert.ok(workflow.indexOf(tagFetch) < workflow.indexOf(tagGate), 'the real tag object must be fetched before release identity checks');
-  assert.ok(workflow.indexOf(tagGate) < workflow.indexOf(publicationOrder), 'tag/version gate must precede the publication-order gate');
   assert.ok(workflow.indexOf(tagGate) < workflow.indexOf(annotatedTagGate), 'tag/version gate must precede the annotated-tag gate');
-  assert.ok(workflow.indexOf(annotatedTagGate) < workflow.indexOf(publicationOrder), 'annotated-tag gate must precede the publication-order gate');
-  assert.ok(workflow.indexOf(publicationOrder) < workflow.indexOf(build), 'manifest preannouncement must fail before the release build');
+  assert.ok(workflow.indexOf(annotatedTagGate) < workflow.indexOf(build), 'annotated-tag gate must precede the release build');
   assert.ok(workflow.indexOf(build) < workflow.indexOf(smoke), 'release smoke must follow the archive build');
   assert.ok(workflow.indexOf(smoke) < workflow.indexOf(freshness), 'release smoke must inspect the built archive before comparison');
   assert.ok(workflow.indexOf(freshness) < workflow.indexOf(upload), 'freshness must pass before release upload');
-  assert.ok(workflow.indexOf(upload) < workflow.indexOf(followUp), 'manifest follow-up must be recorded only after Release creation');
 
   assert.match(tagFetch, /git fetch --force --no-tags origin/);
   assert.match(tagFetch, /refs\/tags\/\$\{GITHUB_REF_NAME\}:refs\/tags\/\$\{GITHUB_REF_NAME\}/);
@@ -127,8 +121,6 @@ test('release prevents manifest preannouncement and smokes the exact archive bef
   assert.match(annotatedTagGate, /steps\.release-kind\.outputs\.prerelease == 'false'/);
   assert.match(annotatedTagGate, /git cat-file -t "refs\/tags\/\$\{GITHUB_REF_NAME\}"/);
   assert.match(annotatedTagGate, /stable releases require an annotated tag/);
-  assert.match(publicationOrder, /compareSemver\(published\.version, releasing\) >= 0/);
-  assert.match(publicationOrder, /publish the manifest in a follow-up commit/);
   assert.match(build, /run: scripts\/build-zip\.sh \/tmp\/archify-built\.zip/);
   assert.match(smoke, /unzip -q \/tmp\/archify-built\.zip -d "\$package_root"/);
   assert.match(smoke, /node scripts\/package-smoke\.mjs "\$package_root\/archify"/);
@@ -141,7 +133,6 @@ test('release prevents manifest preannouncement and smokes the exact archive bef
     'v3.0.3',
   );
   assert.match(upload, /files: archify\.zip/);
-  assert.match(followUp, /docs\/skill-updates\/archify\/stable\.json/);
 });
 
 test('an exact tag fetch restores an annotated object after a SHA-only checkout', () => {
@@ -181,112 +172,6 @@ test('an exact tag fetch restores an annotated object after a SHA-only checkout'
   }
 });
 
-test('CI binds a public notifier manifest to the Release asset, tagged archive, and tag tree build', () => {
-  const workflow = fs.readFileSync(path.join(repoRoot, '.github', 'workflows', 'ci.yml'), 'utf8');
-  const job = workflowJob(workflow, 'published-update-manifest');
-  assert.match(job, /validateStableUpdateManifest/);
-  assert.match(job, /releases\/latest/);
-  assert.match(job, /latest_stable_tag" != "v\$\{manifest_version\}"/);
-  assert.match(job, /releases\/tags\/v\$\{manifest_version\}/);
-  assert.match(job, /select\(\.draft == false and \.prerelease == false\)/);
-  assert.match(job, /select\(\.name == "archify\.zip"\)/);
-  assert.match(job, /releases\/assets\/\$\{release_asset_id\}/);
-  assert.match(job, /Accept: application\/octet-stream/);
-  assert.match(job, /refs\/tags\/v\$\{manifest_version\}:refs\/tags\/v\$\{manifest_version\}/);
-  assert.match(job, /git show "v\$\{manifest_version\}:archify\.zip" > "\$tagged_archive"/);
-  assert.match(job, /cmp -s "\$published_archive" "\$tagged_archive"/);
-  assert.match(job, /check-stable-update-manifest\.mjs/);
-  assert.match(job, /--archive "\$published_archive"/);
-  assert.match(job, /--tag "v\$\{manifest_version\}"/);
-  assert.match(job, /--source-ref "v\$\{manifest_version\}"/);
-  assert.match(job, /git worktree add --detach "\$tag_checkout" "v\$\{manifest_version\}"/);
-  assert.match(job, /"\$tag_checkout\/scripts\/build-zip\.sh" "\$rebuilt_archive"/);
-  assert.match(job, /cmp -s "\$rebuilt_archive" "\$tagged_archive"/);
-  assert.match(job, /manifest_version" == "2\.15\.0"/);
-  assert.match(job, /missing the deterministic archive builder/);
-});
-
-test('release docs disclose that mutable Release assets are verified only at deployment time', () => {
-  const design = fs.readFileSync(
-    path.join(repoRoot, 'docs', 'skill-embedded-optional-update-notifier-design.md'),
-    'utf8',
-  );
-  assert.match(design, /部署时点/);
-  assert.match(design, /部署后替换[^。]*不会自动触发复验/);
-  assert.match(design, /immutable release/i);
-  assert.doesNotMatch(design, /即使 Release 资产后来可被替换，也不能脱离/);
-});
-
-test('GitHub Pages deploys the verified website artifact only after every repository gate succeeds', () => {
-  const workflow = fs.readFileSync(path.join(repoRoot, '.github', 'workflows', 'ci.yml'), 'utf8');
-  const job = workflowJob(workflow, 'deploy-pages');
-  assert.match(workflow, /push:\n    branches: \[main, dev\]/);
-  assert.match(job, /if: github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/);
-  const jobs = parse(workflow).jobs;
-  const dependencies = jobs['deploy-pages'].needs;
-  for (const gate of ['test', 'canonical-test', 'webm-artifact', 'zip-freshness', 'published-update-manifest', 'package-smoke', 'windows-test-portability', 'website']) {
-    assert.ok(dependencies.includes(gate), `Pages deployment must require ${gate}`);
-  }
-  assert.match(job, /pages: write/);
-  assert.match(job, /id-token: write/);
-  assert.match(job, /repos\/\$\{GITHUB_REPOSITORY\}\/git\/ref\/heads\/main/);
-  assert.match(job, /current_main" == "\$GITHUB_SHA"/);
-  assert.match(job, /Skipping obsolete Pages deployment/);
-  assert.match(job, /if: steps\.deployment-head\.outputs\.current == 'true'/);
-  assertPinnedAction(
-    job,
-    'actions/configure-pages',
-    '45bfe0192ca1faeb007ade9deae92b16b8254a0d',
-    'v6.0.0',
-  );
-  // v5 delegates to upload-artifact v7 (Node 24); v4 still embeds Node 20.
-  assertPinnedAction(
-    job,
-    'actions/upload-pages-artifact',
-    'fc324d3547104276b827a68afc52ff2a11cc49c9',
-    'v5.0.0',
-  );
-  assertPinnedAction(
-    job,
-    'actions/download-artifact',
-    'd3f86a106a0bac45b974a628896c90dbdf5c8093',
-    'v4.3.0',
-  );
-  assert.match(job, /name: website-dist/);
-  assert.match(job, /path: website\/dist/);
-  assertPinnedAction(
-    job,
-    'actions/deploy-pages',
-    'cd2ce8fcbc39b97be8ca5fce6e763baed58fa128',
-    'v5.0.0',
-  );
-  const website = workflowJob(workflow, 'website');
-  assert.match(website, /npm run check && npm run build && npm test/);
-  assert.match(website, /ARCHIFY_SITE_ROOT:.*website\/dist/);
-  assertPinnedAction(
-    website,
-    'actions/upload-artifact',
-    '65462800fd760344b1a7b4382951275a0abb4808',
-    'v4.3.3',
-  );
-  assert.match(website, /name: website-dist/);
-  const browser = workflowJob(workflow, 'browser-regression');
-  assert.match(browser, /Run shared browser regression gate/);
-  assert.match(browser, /npm run test:browser -- --shard=\$\{\{ matrix\.shard \}\}\/2/);
-  const media = workflowJob(workflow, 'webm-artifact');
-  assert.match(media, /needs: \[scope, browser-regression, webm-decode\]/);
-  assert.match(media, /test "\$BROWSER_RESULT" = success/);
-  assert.match(media, /test "\$WEBM_RESULT" = success/);
-  assert.ok(jobs['canonical-test'].needs.includes('full-regression'), 'Pages must wait for the complete regression and adapter checks');
-  const packageSmoke = workflowJob(workflow, 'package-smoke');
-  assert.match(packageSmoke, /Verify delivery-lock ownership with real subprocesses/);
-  assert.match(packageSmoke, /Verify macOS opener stays behind delivery-lock release/);
-  const windows = workflowJob(workflow, 'windows-test-portability');
-  assert.match(windows, /node-version: \[22, 24\]/);
-  assert.match(windows, /Verify maintained Windows path contracts/);
-  assert.match(windows, /ARCHIFY_REQUIRE_WINDOWS_REAL_PATHS: '1'/);
-});
-
 test('release tags with a SemVer prerelease are marked prerelease and never become latest', () => {
   const workflow = fs.readFileSync(path.join(repoRoot, '.github', 'workflows', 'release.yml'), 'utf8');
   const classifier = workflowStep(workflow, 'Classify stable and prerelease tags');
@@ -294,10 +179,7 @@ test('release tags with a SemVer prerelease are marked prerelease and never beco
 
   assert.ok(workflow.indexOf(classifier) < workflow.indexOf(upload), 'release kind must be known before upload');
   assert.match(classifier, /version="\$\{GITHUB_REF_NAME#v\}"/);
-  assert.match(classifier, /validateLocalRelease/);
-  assert.match(classifier, /update-contract\.mjs/);
-  assert.match(classifier, /release\.version !== process\.argv\[1\]/);
-  assert.match(classifier, /if \[\[ "\$channel" == "development" \]\]/);
+  assert.match(classifier, /if \[\[ "\$version" == \*-\* \]\]/);
   assert.match(classifier, /echo "prerelease=true" >> "\$GITHUB_OUTPUT"/);
   assert.match(classifier, /echo "make_latest=false" >> "\$GITHUB_OUTPUT"/);
   assert.match(classifier, /echo "prerelease=false" >> "\$GITHUB_OUTPUT"/);
@@ -420,32 +302,6 @@ test('package smoke rejects missing, modified, or incomplete third-party notices
     );
   } finally {
     fs.rmSync(fixture, { recursive: true, force: true });
-  }
-});
-
-test('package smoke increments an arbitrary-precision SemVer patch without Number coercion', async () => {
-  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-package-bigint-version-'));
-  const skillRoot = path.join(scratch, 'archify');
-  try {
-    stageCleanSkill({ repoRoot, destination: skillRoot });
-    const packagePath = path.join(skillRoot, 'package.json');
-    const releasePath = path.join(skillRoot, 'skill-release.json');
-    const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
-    const release = JSON.parse(fs.readFileSync(releasePath, 'utf8'));
-    const version = '2.16.9007199254740993';
-    packageJson.version = version;
-    release.version = version;
-    release.channel = 'stable';
-    fs.writeFileSync(packagePath, `${JSON.stringify(packageJson, null, 2)}\n`);
-    fs.writeFileSync(releasePath, `${JSON.stringify(release, null, 2)}\n`);
-
-    // The ordinary archive smoke owns renderer/distribution coverage. This
-    // version edge case needs only its real packaged notifier gate.
-    const smoke = await verifyPackagedUpdateChecker(skillRoot, path.join(scratch, 'update-cache'));
-    assert.equal(smoke.candidateVersion, '2.16.9007199254740994');
-    assert.equal(smoke.notifierReceipt.status, 'update_available');
-  } finally {
-    fs.rmSync(scratch, { recursive: true, force: true });
   }
 });
 
@@ -629,8 +485,8 @@ canonicalZipTest('package smoke rejects every dependency metadata field in a bui
   }
 });
 
-canonicalZipTest('built archives contain the embedded notifier runtime', () => {
-  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-notifier-package-gate-'));
+canonicalZipTest('built archives contain the shared output runtime and no update notifier', () => {
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-runtime-package-gate-'));
   try {
     const archive = path.join(fixture, 'archify.zip');
     const build = spawnBuildZip(archive);
@@ -639,11 +495,9 @@ canonicalZipTest('built archives contain the embedded notifier runtime', () => {
     const listing = spawnSync('unzip', ['-Z1', archive], { encoding: 'utf8' });
     assert.equal(listing.status, 0, `${listing.stdout}\n${listing.stderr}`);
     const entries = new Set(listing.stdout.trim().split('\n'));
-    assert.ok(entries.has('archify/skill-release.json'));
-    assert.ok(entries.has('archify/scripts/check-update.mjs'));
-    assert.ok(entries.has('archify/scripts/delivery-update-child.mjs'));
-    assert.ok(entries.has('archify/bin/delivery-update.mjs'));
-    assert.ok(entries.has('archify/scripts/update-contract.mjs'));
+    for (const removed of ['archify/skill-release.json', 'archify/scripts/check-update.mjs', 'archify/bin/delivery-update.mjs']) {
+      assert.equal(entries.has(removed), false, removed);
+    }
     assert.ok(entries.has('archify/renderers/shared/atomic-output.mjs'));
     assert.ok(entries.has('archify/renderers/shared/sidecar-path.mjs'));
   } finally {
@@ -726,9 +580,6 @@ canonicalZipTest('archive build rejects an unmerged index and preserves an exist
       path.join(skill, 'renderers', 'shared', 'atomic-output.mjs'),
     );
     fs.writeFileSync(path.join(skill, 'renderers', 'shared', 'generated-validators.mjs'), 'export default {};\n');
-    fs.writeFileSync(path.join(skill, 'scripts', 'check-update.mjs'), 'export {};\n');
-    fs.writeFileSync(path.join(skill, 'scripts', 'update-contract.mjs'), 'export {};\n');
-    fs.writeFileSync(path.join(skill, 'skill-release.json'), '{}\n');
     fs.writeFileSync(path.join(skill, 'package.json'), '{"name":"archify"}\n');
     fs.writeFileSync(license, 'base\n');
     assert.equal(git(['init']).status, 0);
@@ -1527,7 +1378,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
   }
   const fullSuites = [
     'test/release-package-gates.test.mjs',
-    'test/copy-site-assets.test.mjs',
     'test/path-boundary-contract.test.mjs',
     'test/path-semantics.test.mjs',
     'test/portable-path.test.mjs',
@@ -1551,7 +1401,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
     'test/workflow-migration.test.mjs',
     'test/cli.test.mjs',
     'test/preview.test.mjs',
-    'test/update-notifier.test.mjs',
     'test/visual-check.test.mjs',
   ]) {
     assert.ok(runner.includes(`'${fixture}'`), `shared runner must execute ${fixture}`);
@@ -1565,9 +1414,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
   assert.match(runner, /preview: publishing through an existing output symlink/);
   assert.match(runner, /preview: a hardlinked existing output/);
   assert.match(runner, /'visual-check'/);
-  assert.match(runner, /updater rejects a case-only alias/);
-  assert.match(runner, /symlink cache root/);
-  assert.match(runner, /symlink cache ancestor/);
   assert.match(runner, /authored symlink is rejected/);
   assert.match(runner, /trusted directory through a symlink/);
   assert.match(runner, /preview runs from an installed skill/);
@@ -1593,7 +1439,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
   assert.match(runner, /architecture compare to extended UNC/);
   assert.match(runner, /repository root through drive-letter case alias/);
   assert.match(runner, /stageCleanSkill\(\{ repoRoot: driveCaseRepoRoot/);
-  assert.match(runner, /checkForUpdate\(\{/);
   assert.match(runner, /let ordinaryLongDirectory = uncRoot/);
   assert.match(runner, /ordinary UNC delivery beyond traditional MAX_PATH/);
   assert.match(runner, /ordinary UNC visual-check beyond traditional MAX_PATH/);
@@ -1706,10 +1551,6 @@ test('CI and tagged releases keep real Windows paths on both Nodes and detailed 
       assert.equal(job.includes(suite), false, `${label} must get ${suite} from the shared runner`);
     }
   }
-
-  const ci = workflows[0][1];
-  const deploy = workflowJob(ci, 'deploy-pages');
-  assert.match(deploy, /needs: \[[^\]]*windows-test-portability[^\]]*\]/);
 
   const releaseWorkflow = workflows[1][1];
   const release = workflowJob(releaseWorkflow, 'release');

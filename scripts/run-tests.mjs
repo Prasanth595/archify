@@ -31,18 +31,10 @@ if (options.list) {
 }
 console.error(`Repository tests: ${options.files.length} files, concurrency ${options.concurrency}${options.shard ? `, shard ${options.shard.index}/${options.shard.count}` : ''}`);
 
-// Delivery commands check for updates; keep that state out of the user's cache.
-const updateCache = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'archify-test-update-')));
-let result;
-try {
-  result = spawnSync(process.execPath, options.args, {
-    cwd: repoRoot,
-    stdio: 'inherit',
-    env: { ...process.env, ARCHIFY_UPDATE_CACHE_DIRECTORY: updateCache },
-  });
-} finally {
-  fs.rmSync(updateCache, { recursive: true, force: true });
-}
+const result = spawnSync(process.execPath, options.args, {
+  cwd: repoRoot,
+  stdio: 'inherit',
+});
 
 if (result.error) throw result.error;
 if (result.signal) {

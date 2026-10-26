@@ -16,7 +16,7 @@ function render(t, diagram) {
   const output = path.join(directory, 'diagram.html');
   const source = JSON.stringify(diagram);
   fs.writeFileSync(input, source);
-  const env = { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' };
+  const env = { ...process.env };
   delete env.ARCHIFY_QUALITY_PROFILE;
   const result = spawnSync(process.execPath, [cli, 'render', 'dataflow', input, output], { encoding: 'utf8', env });
   assert.equal(result.status, 0, result.stdout + result.stderr);

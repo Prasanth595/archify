@@ -23,19 +23,18 @@ const fs = require('node:fs');
 ${runtime.parallelism === undefined ? '' : `require('node:os').availableParallelism = () => ${runtime.parallelism};`}
 Object.defineProperty(process.versions, 'node', { value: ${JSON.stringify(nodeVersion)} });
 childProcess.spawnSync = (command, args, options) => {
-  const cache = options.env.ARCHIFY_UPDATE_CACHE_DIRECTORY;
-  console.log(JSON.stringify({ command, args, cwd: options.cwd, cache, cacheExists: fs.existsSync(cache) }));
+  console.log(JSON.stringify({ command, args, cwd: options.cwd }));
   return ${JSON.stringify(outcome)};
 };
 require('node:module').syncBuiltinESMExports();
 `);
   return spawnSync(process.execPath, ['--require', preload, runner, ...args], {
     cwd: directory, encoding: 'utf8',
-    env: { ...process.env, ...(runtime.chrome === undefined ? {} : { ARCHIFY_CHROME: runtime.chrome }), ARCHIFY_UPDATE_CACHE_DIRECTORY: path.join(directory, 'user-cache') },
+    env: { ...process.env, ...(runtime.chrome === undefined ? {} : { ARCHIFY_CHROME: runtime.chrome }) },
   });
 }
 
-test('focused runner selects exact files from an unrelated cwd and cleans isolated cache', (t) => {
+test('focused runner selects exact files from an unrelated cwd', (t) => {
   const files = ['test/repository-test-runner.test.mjs', 'test/browser-gate.test.mjs'];
   const result = interceptedRun(t, ['--require-files', files[0], path.join(repoRoot, files[1]), files[0],
     ...(supportsConcurrency ? ['--concurrency=3'] : [])]);
@@ -43,9 +42,6 @@ test('focused runner selects exact files from an unrelated cwd and cleans isolat
   const call = JSON.parse(result.stdout);
   assert.deepEqual(call.args, ['--test', ...(supportsConcurrency ? ['--test-concurrency=3'] : []), ...files]);
   assert.equal(fs.realpathSync(call.cwd), fs.realpathSync(repoRoot));
-  assert.equal(call.cacheExists, true);
-  assert.match(path.basename(call.cache), /^archify-test-update-/);
-  assert.equal(fs.existsSync(call.cache), false);
   assert.match(result.stderr, supportsConcurrency ? /2 files, concurrency 3/ : /2 files, concurrency Node default/);
 });
 
@@ -97,7 +93,7 @@ test('test name selection fails clearly before Node 18.11 and works from that ve
   ]);
 });
 
-test('runner lists inventory without launching or allocating a cache', (t) => {
+test('runner lists inventory without launching', (t) => {
   const result = interceptedRun(t, ['--list']);
   assert.equal(result.status, 0, result.stderr);
   const files = fs.readdirSync(path.join(repoRoot, 'test'))
@@ -163,16 +159,13 @@ test('repository shards reject invalid or partial coverage before launching test
   }
   const failed = interceptedRun(t, ['--shard=2/2'], { status: 7 });
   assert.equal(failed.status, 7, failed.stderr);
-  assert.equal(fs.existsSync(JSON.parse(failed.stdout).cache), false);
 });
 
 for (const outcome of [{ status: 7 }, { status: null, signal: 'SIGTERM' }, { error: { message: 'spawn failed' } }]) {
-  test(`repository runner cleans cache and propagates child failure (${outcome.signal || outcome.status || 'error'})`, (t) => {
+  test(`repository runner propagates child failure (${outcome.signal || outcome.status || 'error'})`, (t) => {
     const result = interceptedRun(t, ['test/repository-test-runner.test.mjs'], outcome);
     assert.equal(result.status, outcome.status ?? 1);
-    const call = JSON.parse(result.stdout);
-    assert.equal(call.cacheExists, true);
-    assert.equal(fs.existsSync(call.cache), false);
+    JSON.parse(result.stdout);
     if (outcome.signal) assert.match(result.stderr, /terminated by SIGTERM/);
     if (outcome.error) assert.match(result.stderr, /spawn failed/);
   });

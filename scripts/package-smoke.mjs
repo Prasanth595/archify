@@ -7,7 +7,6 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { assertThirdPartyNotices } from './third-party-notices-contract.mjs';
-import { verifyPackagedUpdateChecker } from './package-update-smoke.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -19,8 +18,6 @@ const defaultPackageRoot = process.env.RUNNER_TEMP
   : path.join(repoRoot, 'archify');
 const skillRoot = path.resolve(process.argv[2] || defaultPackageRoot);
 const cli = path.join(skillRoot, 'bin', 'archify.mjs');
-const updateChecker = path.join(skillRoot, 'scripts', 'check-update.mjs');
-const updateContract = path.join(skillRoot, 'scripts', 'update-contract.mjs');
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-package-smoke-'));
 
 function requireAbsent(relative) {
@@ -65,7 +62,7 @@ async function verifyPackagedExplainer() {
     + '@sequence id=request\n| actor api | API | backend |\n| actor redis | Redis | database |\n| api | redis | GET key |\n\n'
     + '## What can change? {#notes}\n\nThis panel can be revised independently.\n';
   fs.writeFileSync(explainerInput, explainerText);
-  const explainerOptions = { cwd: scratch, env: { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' } };
+  const explainerOptions = { cwd: scratch, env: { ...process.env } };
   const validateExplainer = JSON.parse(run(['validate', 'explainer', explainerInput, '--json'], explainerOptions));
   if (!validateExplainer.ok || validateExplainer.type !== 'explainer' || !validateExplainer.candidate?.sha256) {
     throw new Error('packaged explainer did not validate the authored parser input');
@@ -163,13 +160,6 @@ async function verifyPackage() {
     throw new Error('packaged THIRD_PARTY_NOTICES.md must byte-match the repository notice');
   }
 
-  if (!fs.existsSync(updateChecker)) {
-    throw new Error(`packaged update checker not found at ${updateChecker}`);
-  }
-  if (!fs.existsSync(updateContract)) {
-    throw new Error(`packaged update contract not found at ${updateContract}`);
-  }
-
   const packageJson = JSON.parse(fs.readFileSync(path.join(skillRoot, 'package.json'), 'utf8'));
   const dependencyFields = [
     'dependencies',
@@ -185,20 +175,6 @@ async function verifyPackage() {
   if (declaredDependencyField) {
     throw new Error(`packaged skill must not declare dependency metadata: ${declaredDependencyField}`);
   }
-
-  const skillRelease = JSON.parse(fs.readFileSync(path.join(skillRoot, 'skill-release.json'), 'utf8'));
-  const contract = await import(pathToFileURL(updateContract).href);
-  let validatedRelease;
-  try {
-    validatedRelease = contract.validateLocalRelease(skillRelease);
-  } catch {
-    throw new Error('packaged skill-release.json violates the shared update contract');
-  }
-  if (validatedRelease.version !== packageJson.version) {
-    throw new Error('packaged skill-release.json does not match the package release identity');
-  }
-
-  await verifyPackagedUpdateChecker(skillRoot, path.join(scratch, 'update-cache'));
 
   const skill = fs.readFileSync(path.join(skillRoot, 'SKILL.md'), 'utf8');
   const skillReferences = [...skill.matchAll(

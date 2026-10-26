@@ -2528,7 +2528,6 @@ test('public visual-check CLI reports a committed cleanup warning', (t) => {
   const baseEnv = {
     ...process.env,
     ARCHIFY_CHROME: missingChrome,
-    ARCHIFY_UPDATE_CHECK_DISABLED: '1',
   };
   const first = spawnSync(process.execPath, [cli, 'visual-check', input, '--json'], {
     encoding: 'utf8',

@@ -67,7 +67,7 @@ function manifestPaths(manifestFile, manifest) {
 }
 
 function invokeCli(command, type, candidateFile, quality, roundDir) {
-  const env = { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' };
+  const env = { ...process.env };
   if (command === 'finalize') {
     fs.mkdirSync(roundDir, { recursive: true });
     const output = path.join(roundDir, 'candidate.html');

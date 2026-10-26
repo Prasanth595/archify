@@ -19,7 +19,7 @@ function run(args) {
   return spawnSync(process.execPath, [benchmark, ...args], {
     cwd: repoRoot,
     encoding: 'utf8',
-    env: { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' },
+    env: { ...process.env },
   });
 }
 

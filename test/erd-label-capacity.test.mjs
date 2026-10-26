@@ -47,7 +47,7 @@ function invoke(t, document, command = 'render') {
   const output = path.join(folder, 'output.html');
   fs.writeFileSync(input, JSON.stringify(document));
   const result = spawnSync(process.execPath, [cli, command, 'erd', input, ...(command === 'render' ? [output] : ['--json'])], {
-    encoding: 'utf8', env: { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' },
+    encoding: 'utf8', env: { ...process.env },
   });
   return { ...result, input, output, html: fs.existsSync(output) ? fs.readFileSync(output, 'utf8') : '' };
 }

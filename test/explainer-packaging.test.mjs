@@ -27,7 +27,7 @@ test('tracked scratch package runs public explainer without dependencies and mis
     fs.copyFileSync(path.join(repository, name), path.join(source, name));
   }
   const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith('GIT_')
-    && !key.startsWith('ARCHIFY_UPDATE_') && key !== 'ARCHIFY_EXPLAINER_PREPARED' && key !== 'NODE_PATH'));
+    && key !== 'ARCHIFY_EXPLAINER_PREPARED' && key !== 'NODE_PATH'));
   for (const args of [['init'], ['add', '--force', '--', 'archify', 'THIRD_PARTY_NOTICES.md', 'LICENSE', 'LICENSE-MIT', 'NOTICE']]) {
     const result = spawnSync('git', ['-C', source, ...args], { env, encoding: 'utf8' });
     assert.equal(result.status, 0, result.stderr);
@@ -52,7 +52,7 @@ test('tracked scratch package runs public explainer without dependencies and mis
   fs.writeFileSync(output, 'last good artifact');
   fs.unlinkSync(path.join(packaged, 'explainer/parse.mjs'));
   const failed = spawnSync(process.execPath, [path.join(packaged, 'bin/archify.mjs'), 'deliver', 'explainer', input, output, '--json'], {
-    cwd: outside, env: { ...env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' }, encoding: 'utf8', timeout: 15_000, maxBuffer: 4 * 1024 * 1024,
+    cwd: outside, env: { ...env }, encoding: 'utf8', timeout: 15_000, maxBuffer: 4 * 1024 * 1024,
   });
   assert.ifError(failed.error);
   assert.notEqual(failed.status, 0, 'an incomplete packaged runtime cannot report successful delivery');

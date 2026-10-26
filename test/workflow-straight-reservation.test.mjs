@@ -41,7 +41,7 @@ test('public validation and rendered SVG preserve the mixed fan-out without a la
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-straight-reservation-'));
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
   const run = args => spawnSync(process.execPath, [cli, ...args], {
-    encoding: 'utf8', env: { ...process.env, ARCHIFY_UPDATE_CHECK_DISABLED: '1' },
+    encoding: 'utf8', env: { ...process.env },
   });
   const validated = run(['validate', 'workflow', fixture, '--quality', 'showcase', '--json']);
   assert.equal(validated.status, 0, validated.stdout + validated.stderr);
