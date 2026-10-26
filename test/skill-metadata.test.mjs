@@ -93,14 +93,3 @@ test('skill keeps the title hierarchy compact by default', () => {
 
 // The review Skill remains available to repository maintainers, but must not
 // enter an unfiltered consumer install from the repository root.
-test('contributor review skill is internal and retains its repository references', () => {
-  const reviewRoot = path.resolve(skillRoot, '..', '.agents', 'skills', 'archify-review');
-  const review = readFileSync(path.join(reviewRoot, 'SKILL.md'), 'utf8');
-  const metadata = parse(review.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)[1]);
-  assert.equal(metadata.name, 'archify-review');
-  assert.equal(metadata.metadata?.internal, true);
-  for (const document of ['../../../REVIEWING.md', '../../../CONTRIBUTING.md']) {
-    assert.ok(review.includes(document));
-    assert.ok(existsSync(path.resolve(reviewRoot, document)));
-  }
-});

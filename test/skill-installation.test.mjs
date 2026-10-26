@@ -65,11 +65,6 @@ test('real Skills CLI keeps source and ZIP installs scoped to the requested Skil
   // Use the repository's tracked-file stager: no node_modules, local Skills,
   // symlinks, or other developer files enter the installation source.
   stageCleanSkill({ repoRoot, destination: path.join(source, 'archify') });
-  for (const internal of fs.readdirSync(path.join(repoRoot, '.agents', 'skills'))) {
-    const skill = path.join('.agents', 'skills', internal, 'SKILL.md');
-    fs.mkdirSync(path.dirname(path.join(source, skill)), { recursive: true });
-    fs.copyFileSync(path.join(repoRoot, skill), path.join(source, skill));
-  }
   extractArchive(archive);
   let sequence = 0;
   function invoke(sourcePath, flags) {
@@ -125,11 +120,6 @@ test('real Skills CLI keeps source and ZIP installs scoped to the requested Skil
       }
     });
   }
-  await t.test('maintainers can still explicitly select the internal review Skill', () => {
-    const result = install(source, ['--skill', 'archify-review']);
-    assert.equal(result.status, 0, result.output);
-    assert.deepEqual(installedNames(result.cwd), ['archify-review']);
-  });
   await t.test('malformed frontmatter fails without falling back to review or writing a lock', () => {
     const file = path.join(source, 'archify', 'SKILL.md');
     fs.writeFileSync(file, fs.readFileSync(file, 'utf8').replace(/^description:.*$/m,

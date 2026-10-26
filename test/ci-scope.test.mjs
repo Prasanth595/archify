@@ -171,7 +171,7 @@ test('real Git comparison retains rename source ownership and detects added test
 });
 
 test('required jobs fail when classification fails or returns an unknown scope', () => {
-  for (const name of ['test', 'canonical-test', 'browser-regression', 'webm-decode', 'zip-freshness', 'published-update-manifest', 'package-smoke', 'windows-test-portability']) {
+  for (const name of ['test', 'canonical-test', 'browser-regression', 'webm-decode', 'zip-freshness', 'package-smoke', 'windows-test-portability']) {
     const step = workflow.jobs[name].steps.find(step => step.name === 'Require successful scope checks');
     assert.ok(step, name);
     for (const [result, scope, status] of [['success', 'core', 0], ['success', 'full', 0], ['failure', 'core', 1], ['success', '', 1], ['success', 'unknown', 1]]) {

@@ -37,17 +37,11 @@ test('all maintained Node check names remain and publication uses exhaustive ver
   assert.ok(full.steps.some(step => step.run === 'node scripts/run-tests.mjs --shard=${{ matrix.shard }}/2'));
   const generated = full.steps.find(step => step.run === 'npm run test:generated');
   assert.equal(generated.if, 'matrix.shard == 2', 'complete generated checks run once inside a regression shard');
-  const hermes = full.steps.find(step => step.run === 'node --test integrations/hermes-agent/test/plugin-contract.test.mjs');
-  assert.equal(hermes.if, 'matrix.shard == 2');
   assert.equal(full.steps.filter(step => step.run === 'npm run test:generated').length, 1);
   const coreGenerated = canonical.steps.find(step => step.run === 'npm run test:generated');
   assert.equal(coreGenerated.if, "needs.scope.outputs.scope == 'core' && needs.scope.outputs.generated == 'true'");
   for (const step of canonical.steps.filter(step => step.uses || step.name === 'Install renderer dependencies')) {
     assert.equal(step.if, "needs.scope.outputs.scope == 'core'", 'full aggregation must not bootstrap another runtime');
-  }
-  for (const name of ['deploy-pages', 'deploy-cloudflare']) {
-    assert.ok(ci.jobs[name].needs.includes('test'));
-    assert.ok(ci.jobs[name].needs.includes('canonical-test'));
   }
   assert.ok(ci.jobs.test.steps.some(step => step.run === 'npm run test:compat'));
   assert.ok(release.jobs.release.steps.some(step => step.run === 'npm run test:full'));

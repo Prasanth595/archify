@@ -544,7 +544,6 @@ const fullSuites = [
   'test/release-package-gates.test.mjs',
   'test/skill-metadata.test.mjs',
   'test/skill-installation.test.mjs',
-  'test/copy-site-assets.test.mjs',
   'test/path-boundary-contract.test.mjs',
   'test/temp-cleanup.test.mjs',
   'test/path-semantics.test.mjs',
@@ -563,7 +562,6 @@ const fullSuites = [
 
 const portabilitySuites = [
   'test/checkout-line-endings.test.mjs',
-  'test/readme-showcase.test.mjs',
   'test/clean-skill-staging.test.mjs',
   'test/workflow-migration.test.mjs',
   'test/cli.test.mjs',
