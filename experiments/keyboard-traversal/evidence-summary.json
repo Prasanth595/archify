@@ -1,0 +1,801 @@
+{
+  "kind": "portable-derived-evidence",
+  "baseRevision": "82c7e0f089a02a4d514714adf37dc2061682da5f",
+  "finalSource": {
+    "path": "archify/explainer/browser-check.mjs",
+    "bytes": 34100,
+    "sha256": "b4bdcd216e0436033ab892ebbb67ed091c7d735d33e2cdb48ff904cbd904a647"
+  },
+  "finalTests": {
+    "path": "test/explainer-browser.test.mjs",
+    "bytes": 44685,
+    "sha256": "fe3a86e27d8ede1d25e18bce6c8116619f6db88d3f7b21ea5b0d48d312a1266e"
+  },
+  "fixedInputs": [
+    {
+      "path": "fixed-inputs/native-scrollers.html",
+      "bytes": 441,
+      "sha256": "ad2aa91a87e16194df190b398a669839f8746043f6a19714db1e083d70e6ec69"
+    },
+    {
+      "path": "fixed-inputs/pr1097-authored-layout.html",
+      "bytes": 625151,
+      "sha256": "bf30fb5bda006c2d4a961bae4a0677c26aba91ec42379a816e5b7ffff15f28e6"
+    },
+    {
+      "path": "fixed-inputs/tab-trap.html",
+      "bytes": 386,
+      "sha256": "a83b4233d3fb71294481bac5b8aba1f63f9340ca09b9c3dd3ce7e86738e9733f"
+    }
+  ],
+  "baseBrowser": {
+    "status": "fail",
+    "diagnosticCount": 30,
+    "diagnosticCodes": [
+      "explainer/browser-keyboard-traversal"
+    ],
+    "artifactSha256": "bf30fb5bda006c2d4a961bae4a0677c26aba91ec42379a816e5b7ffff15f28e6",
+    "observations": [
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 42,
+          "missing": [
+            {
+              "key": "42",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(4) > p:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "查看固定 revision 的源码",
+              "href": "https://github.com/tt-a1i/archify/blob/82c7e0f089a02a4d514714adf37dc2061682da5f/test/explainer-browser.test.mjs#L101-L101",
+              "tag": "A",
+              "component": "link-before-close",
+              "label": "查看固定 revision 的源码",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "43",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "7",
+              "href": "#node-await-close",
+              "tag": "A",
+              "component": "node-await-close",
+              "label": "测试同步：等待 close 事件",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "44",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "node-await-close",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "45",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(3) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "复制",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "code-await-close",
+              "label": "复制",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "46",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(4) > p:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "查看固定 revision 的源码",
+              "href": "https://github.com/tt-a1i/archify/blob/5f012ab74911781e4a2a38fba791801d6e5afef7/test/explainer-browser.test.mjs#L99-L109",
+              "tag": "A",
+              "component": "link-await-close",
+              "label": "查看固定 revision 的源码",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "47",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "8",
+              "href": "#unexplained",
+              "tag": "A",
+              "component": "unexplained",
+              "label": "尚未解释 · 0 个 hunk",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "48",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "unexplained",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "49",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "href": "https://github.com/tt-a1i/archify",
+              "tag": "A",
+              "component": "a",
+              "label": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            }
+          ],
+          "ok": false
+        }
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 43,
+          "missing": [
+            {
+              "key": "43",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "7",
+              "href": "#node-await-close",
+              "tag": "A",
+              "component": "node-await-close",
+              "label": "测试同步：等待 close 事件",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "44",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "node-await-close",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "45",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(3) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "复制",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "code-await-close",
+              "label": "复制",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "46",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(4) > p:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "查看固定 revision 的源码",
+              "href": "https://github.com/tt-a1i/archify/blob/5f012ab74911781e4a2a38fba791801d6e5afef7/test/explainer-browser.test.mjs#L99-L109",
+              "tag": "A",
+              "component": "link-await-close",
+              "label": "查看固定 revision 的源码",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "47",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "8",
+              "href": "#unexplained",
+              "tag": "A",
+              "component": "unexplained",
+              "label": "尚未解释 · 0 个 hunk",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "48",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "unexplained",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "49",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "href": "https://github.com/tt-a1i/archify",
+              "tag": "A",
+              "component": "a",
+              "label": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            }
+          ],
+          "ok": false
+        }
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 42,
+          "missing": [
+            {
+              "key": "42",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(4) > p:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "查看固定 revision 的源码",
+              "href": "https://github.com/tt-a1i/archify/blob/82c7e0f089a02a4d514714adf37dc2061682da5f/test/explainer-browser.test.mjs#L101-L101",
+              "tag": "A",
+              "component": "link-before-close",
+              "label": "查看固定 revision 的源码",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "43",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "7",
+              "href": "#node-await-close",
+              "tag": "A",
+              "component": "node-await-close",
+              "label": "测试同步：等待 close 事件",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "44",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "node-await-close",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "45",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(3) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "复制",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "code-await-close",
+              "label": "复制",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "46",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(4) > p:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "查看固定 revision 的源码",
+              "href": "https://github.com/tt-a1i/archify/blob/5f012ab74911781e4a2a38fba791801d6e5afef7/test/explainer-browser.test.mjs#L99-L109",
+              "tag": "A",
+              "component": "link-await-close",
+              "label": "查看固定 revision 的源码",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "47",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "8",
+              "href": "#unexplained",
+              "tag": "A",
+              "component": "unexplained",
+              "label": "尚未解释 · 0 个 hunk",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "48",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "unexplained",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "49",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "href": "https://github.com/tt-a1i/archify",
+              "tag": "A",
+              "component": "a",
+              "label": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            }
+          ],
+          "ok": false
+        }
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 43,
+          "missing": [
+            {
+              "key": "43",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "7",
+              "href": "#node-await-close",
+              "tag": "A",
+              "component": "node-await-close",
+              "label": "测试同步：等待 close 事件",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "44",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "node-await-close",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "45",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(3) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "复制",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "code-await-close",
+              "label": "复制",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "46",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(4) > p:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "查看固定 revision 的源码",
+              "href": "https://github.com/tt-a1i/archify/blob/5f012ab74911781e4a2a38fba791801d6e5afef7/test/explainer-browser.test.mjs#L99-L109",
+              "tag": "A",
+              "component": "link-await-close",
+              "label": "查看固定 revision 的源码",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "47",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "8",
+              "href": "#unexplained",
+              "tag": "A",
+              "component": "unexplained",
+              "label": "尚未解释 · 0 个 hunk",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "48",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(9) > header:nth-of-type(1) > button:nth-of-type(1)",
+              "text": "追问",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "unexplained",
+              "label": "追问",
+              "tabIndex": 0,
+              "type": "button",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            },
+            {
+              "key": "49",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+              "text": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "href": "https://github.com/tt-a1i/archify",
+              "tag": "A",
+              "component": "a",
+              "label": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+              "tabIndex": 0,
+              "type": "",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            }
+          ],
+          "ok": false
+        }
+      }
+    ]
+  },
+  "candidateBrowser": {
+    "status": "pass",
+    "diagnostics": [],
+    "artifactSha256": "bf30fb5bda006c2d4a961bae4a0677c26aba91ec42379a816e5b7ffff15f28e6",
+    "observations": [
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 50,
+          "missing": [],
+          "ok": true,
+          "steps": 65,
+          "stepLimit": 995,
+          "termination": "complete"
+        }
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 50,
+          "missing": [],
+          "ok": true,
+          "steps": 64,
+          "stepLimit": 995,
+          "termination": "complete"
+        }
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 50,
+          "missing": [],
+          "ok": true,
+          "steps": 65,
+          "stepLimit": 995,
+          "termination": "complete"
+        }
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "keyboardTraversal": {
+          "count": 50,
+          "reached": 50,
+          "missing": [],
+          "ok": true,
+          "steps": 64,
+          "stepLimit": 995,
+          "termination": "complete"
+        }
+      }
+    ],
+    "deliveryProvenance": "Not newly verified; runBrowserCheck observes the same retained HTML without re-delivery",
+    "reuse": "v3 traversal evidence; final refinement changes only failed-budget diagnostic projection, covered by exact final focused assertions"
+  },
+  "minimal": {
+    "base": [
+      {
+        "name": "unmarked",
+        "gate": {
+          "count": 2,
+          "reached": 1,
+          "missing": [
+            {
+              "key": "1",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+              "text": "Last",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "last",
+              "label": "Last",
+              "tabIndex": 0,
+              "type": "submit",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            }
+          ],
+          "ok": false
+        },
+        "lastReachedAt": 6
+      },
+      {
+        "name": "marked",
+        "gate": {
+          "count": 6,
+          "reached": 6,
+          "missing": [],
+          "ok": true
+        },
+        "lastReachedAt": 6
+      },
+      {
+        "name": "trapped",
+        "gate": {
+          "count": 2,
+          "reached": 1,
+          "missing": [
+            {
+              "key": "1",
+              "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+              "text": "Last",
+              "href": null,
+              "tag": "BUTTON",
+              "component": "last",
+              "label": "Last",
+              "tabIndex": 0,
+              "type": "submit",
+              "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+            }
+          ],
+          "ok": false
+        },
+        "lastReachedAt": null
+      }
+    ],
+    "finalPackaged": {
+      "ok": true,
+      "results": [
+        {
+          "name": "native-scrollers",
+          "keyboardTraversal": {
+            "count": 2,
+            "reached": 2,
+            "missing": [],
+            "ok": true,
+            "steps": 6,
+            "stepLimit": 15,
+            "termination": "complete"
+          }
+        },
+        {
+          "name": "tab-trap",
+          "keyboardTraversal": {
+            "count": 2,
+            "reached": 1,
+            "missing": [
+              {
+                "key": "1",
+                "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+                "text": "Last",
+                "href": null,
+                "tag": "BUTTON",
+                "component": "last",
+                "label": "Last",
+                "tabIndex": 0,
+                "type": "submit",
+                "reason": "This active control was not reached before keyboard focus repeated without progress."
+              }
+            ],
+            "ok": false,
+            "steps": 2,
+            "stepLimit": 12,
+            "termination": "focus-cycle"
+          }
+        }
+      ]
+    }
+  },
+  "checks": {
+    "finalFocused": {
+      "pass": 11,
+      "fail": 0,
+      "skip": 0,
+      "sourceSha256": "b4bdcd216e0436033ab892ebbb67ed091c7d735d33e2cdb48ff904cbd904a647",
+      "testSha256": "fe3a86e27d8ede1d25e18bce6c8116619f6db88d3f7b21ea5b0d48d312a1266e"
+    },
+    "independentFinalFocused": {
+      "pass": 11,
+      "fail": 0,
+      "skip": 0,
+      "sourceSha256": "b4bdcd216e0436033ab892ebbb67ed091c7d735d33e2cdb48ff904cbd904a647",
+      "testSha256": "fe3a86e27d8ede1d25e18bce6c8116619f6db88d3f7b21ea5b0d48d312a1266e"
+    },
+    "fullRelatedBrowserFile": {
+      "pass": 19,
+      "fail": 0,
+      "skip": 0,
+      "sourceSha256": "d5a0ca0849848c1ea33c5e59e03e7d3b08f83a9317c3209c3ab2469f3d08fea7",
+      "testSha256": "7c6c3e0085ed444ef12f5f40d7b58173129a24d999d9a436eb7ed7c6ec85b004",
+      "reuse": "Before final diagnostic text/measurement-only refinement; not an exact-final full-file claim"
+    },
+    "coreSmoke": {
+      "initial": "failed to collect: parse5 missing",
+      "afterSameLockDependencyReuse": {
+        "pass": 19,
+        "fail": 0,
+        "skip": 0
+      },
+      "dependencyChanges": "No install/lock changes; temporary dependency symlink removed"
+    },
+    "canonicalToolchain": {
+      "node": "22.23.2",
+      "zlib": "1.3.1-e00f703"
+    }
+  },
+  "package": {
+    "path": "archify.zip",
+    "sha256": "bb5299bc670d1192e1a8c4c1c7fb6a05b27384d2ae1877b0a07a80ce97322021",
+    "bytes": 5426433,
+    "doubleBuildEqual": true,
+    "inventorySameAsBase": true,
+    "members": 221,
+    "changedEntries": [
+      "archify/explainer/browser-check.mjs"
+    ],
+    "embeddedSourceSha256": "b4bdcd216e0436033ab892ebbb67ed091c7d735d33e2cdb48ff904cbd904a647"
+  },
+  "reviewCorrections": [
+    "First cycle attempt falsely stopped on an IFRAME parent while child focus advanced; conservative host handling and regression added",
+    "INPUT date fields also reuse the same parent activeElement; removed INPUT and other composite hosts from early-cycle assertion; real probe and regression added",
+    "Budget exhaustion remains failure with unconfirmed reachability and concrete traversal measurement; generic native-control repair removed"
+  ],
+  "unchangedReviewScope": {
+    "mappingExitCode": 1,
+    "mappingComplete": false,
+    "summary": {
+      "files": 4,
+      "hunks": 5,
+      "referenceMatches": 6,
+      "invalidReferences": 0,
+      "unexplainedHunks": 0,
+      "unresolvedFiles": 1
+    },
+    "unresolvedFiles": [
+      {
+        "path": "archify.zip",
+        "reason": "Blob exceeds 1 MiB experiment limit"
+      }
+    ],
+    "testExecution": "not-run"
+  },
+  "visualEvidence": {
+    "kind": "actual-Ego-Chromium-keyboard-observation",
+    "artifact": "fixed-inputs/pr1097-authored-layout.html",
+    "artifactSha256": "bf30fb5bda006c2d4a961bae4a0677c26aba91ec42379a816e5b7ffff15f28e6",
+    "screenshot": {
+      "path": "screenshots/tab-65-footer.png",
+      "bytes": 170185,
+      "sha256": "60fe988a4ea6b6b273a82cfad6465a911eed1d979fccbf4283f37e3724016535"
+    },
+    "trace": {
+      "path": "screenshots/actual-tab-trace.json",
+      "bytes": 11377,
+      "sha256": "2d64b466221a741cb43c52383906d80dc7b0bafc8962f63fe55a42ddf9c7bb79"
+    },
+    "capturedAt": "2026-10-25T06:47:58.799Z",
+    "viewport": {
+      "width": 1280,
+      "height": 1000,
+      "theme": "light"
+    },
+    "action": "65 real Tab presses in existing EgoSpace4; no programmatic focus and no PR code execution",
+    "visualReview": "coordinator inspected; footer reached; artifact appearance unchanged",
+    "limitations": "No human acceptance, reader-efficiency claim or PR validation"
+  },
+  "retainedPrivateEvidence": [
+    {
+      "kind": "initial core dependency failure",
+      "file": "core.stdout.txt",
+      "bytes": 1405,
+      "sha256": "8a01e26cc2ba04ec92f1387f608228ee9ca361d39e956b7d65bd492d94a88b8d"
+    },
+    {
+      "kind": "core after same-lock dependency reuse",
+      "file": "core-final.stdout.txt",
+      "bytes": 4235,
+      "sha256": "840550294a8fe7b848c25a97bd61bbbacce484d5aa61e8e332d5d64eae31ed6c"
+    },
+    {
+      "kind": "full related browser file before diagnostic-copy refinement",
+      "file": "explainer-browser-v3.stdout.txt",
+      "bytes": 4660,
+      "sha256": "592a741980cdb1e6e5d5c11776e81bd738a5d06e55c49fde162d7f6c43d81ca6"
+    },
+    {
+      "kind": "exact final focused behavior and diagnostic checks",
+      "file": "focused-final.stdout.txt",
+      "bytes": 2499,
+      "sha256": "21d3c634474398964d549297f31a311d619e1d8698969cae435771a04c2b619c"
+    },
+    {
+      "kind": "independent exact final focused checks",
+      "file": "archify-keyboard-independent-frozen-focused.log",
+      "bytes": 2503,
+      "sha256": "8dd8adbf779ea658138e1a298652cef17530b779226044de85803a9184961331"
+    },
+    {
+      "kind": "new original HTML browser receipt",
+      "file": "review.browser-check.json",
+      "bytes": 3577802,
+      "sha256": "f00fb5965c27985b46ae6fd50891a800323d7d1d3b7e95d2f8ec47801b727bf8"
+    },
+    {
+      "kind": "retained original base receipt",
+      "file": "review.browser-check.json",
+      "bytes": 3667522,
+      "sha256": "1a1f5649d00d8addf4aaef87d0fac1065b24693109cf76ba6d9ef382b13aec55"
+    },
+    {
+      "kind": "base minimal Chrome probes",
+      "file": "minimal-results.json",
+      "bytes": 9504,
+      "sha256": "f64ceb36a4f946d765421f9a196654a36a51eb0eca7b69df3a1e811aa2919788"
+    },
+    {
+      "kind": "actual extended base Tab trace",
+      "file": "actual-tab-trace.json",
+      "bytes": 16282,
+      "sha256": "4444e1c38e32cc39ce559fb20452ad4b87fa546e147a3f1babbafe8d273838b1"
+    },
+    {
+      "kind": "independent host probes",
+      "file": "archify-keyboard-independent-final-host-probes.json",
+      "bytes": 467,
+      "sha256": "f5f43ccc7e3a1ae089bee37aaa74ed29c476ebb8e3a099846f7513a3d021e4f0"
+    },
+    {
+      "kind": "extracted canonical ZIP probes",
+      "file": "package-probe.json",
+      "bytes": 995,
+      "sha256": "c5196573eab65bcf9e9c818c342245cadcef5e2c0ae29b8cbcc2316b1943fc43"
+    }
+  ],
+  "privateEvidenceNote": "Original receipts/logs retained outside checkout. This is a derived summary, not a current delivery receipt. Local filesystem paths are omitted.",
+  "limits": [
+    "No PR source/test/build execution",
+    "No changes to old task-review-map artifacts or mapping facts",
+    "No full repository/Windows/remote CI conclusion",
+    "No generated renderer/Viewer/gallery changes; original HTML bytes are unchanged",
+    "Gate repair does not prove the PR or mapping complete"
+  ],
+  "documentation": [
+    {
+      "path": "README.md",
+      "bytes": 7530,
+      "sha256": "640a37dd60a5436ab11eec474645a67aa27a239f074c00c917736f17cab816f7"
+    },
+    {
+      "path": "screenshots/capture.json",
+      "bytes": 943,
+      "sha256": "e08c02d6133abdb6559d3083d02c4a307ed35529f5351487589bce5095002ac3"
+    }
+  ]
+}

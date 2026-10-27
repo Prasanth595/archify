@@ -1,0 +1,24 @@
+{
+  "kind": "actual-Ego-Chromium-keyboard-observation",
+  "artifact": "fixed-inputs/pr1097-authored-layout.html",
+  "artifactSha256": "bf30fb5bda006c2d4a961bae4a0677c26aba91ec42379a816e5b7ffff15f28e6",
+  "screenshot": {
+    "path": "screenshots/tab-65-footer.png",
+    "bytes": 170185,
+    "sha256": "60fe988a4ea6b6b273a82cfad6465a911eed1d979fccbf4283f37e3724016535"
+  },
+  "trace": {
+    "path": "screenshots/actual-tab-trace.json",
+    "bytes": 11377,
+    "sha256": "2d64b466221a741cb43c52383906d80dc7b0bafc8962f63fe55a42ddf9c7bb79"
+  },
+  "capturedAt": "2026-10-25T06:47:58.799Z",
+  "viewport": {
+    "width": 1280,
+    "height": 1000,
+    "theme": "light"
+  },
+  "action": "65 real Tab presses in existing EgoSpace4; no programmatic focus and no PR code execution",
+  "visualReview": "coordinator inspected; footer reached; artifact appearance unchanged",
+  "limitations": "No human acceptance, reader-efficiency claim or PR validation"
+}

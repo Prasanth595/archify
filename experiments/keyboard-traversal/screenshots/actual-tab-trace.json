@@ -1,0 +1,529 @@
+{
+  "capturedAt": "2026-10-25T06:47:58.799Z",
+  "viewport": [
+    1280,
+    1000
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "跳至正文",
+      "documentFocused": true
+    },
+    {
+      "step": 2,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "系统",
+      "documentFocused": true
+    },
+    {
+      "step": 3,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "浅色",
+      "documentFocused": true
+    },
+    {
+      "step": 4,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "深色",
+      "documentFocused": true
+    },
+    {
+      "step": 5,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "样式",
+      "documentFocused": true
+    },
+    {
+      "step": 6,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "导出",
+      "documentFocused": true
+    },
+    {
+      "step": 7,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 8,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "先看这次改动，再看尚未解释的部分",
+      "documentFocused": true
+    },
+    {
+      "step": 9,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 10,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "打开交互图",
+      "documentFocused": true
+    },
+    {
+      "step": 11,
+      "tag": "g",
+      "id": "preview-change-map-node-before-normalization",
+      "role": "button",
+      "label": "原逻辑：换行被正规化消耗",
+      "documentFocused": true
+    },
+    {
+      "step": 12,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "阅读这段 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 13,
+      "tag": "g",
+      "id": "preview-change-map-node-preserve-lines",
+      "role": "button",
+      "label": "修复：保留已接受换行",
+      "documentFocused": true
+    },
+    {
+      "step": 14,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "阅读这段 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 15,
+      "tag": "g",
+      "id": "preview-change-map-node-finalize-regression",
+      "role": "button",
+      "label": "公开 finalize 诊断回归",
+      "documentFocused": true
+    },
+    {
+      "step": 16,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "阅读这段 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 17,
+      "tag": "g",
+      "id": "preview-change-map-node-compile-regression",
+      "role": "button",
+      "label": "编译诊断与有效 SVG 对照",
+      "documentFocused": true
+    },
+    {
+      "step": 18,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "阅读这段 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 19,
+      "tag": "g",
+      "id": "preview-change-map-node-before-close",
+      "role": "button",
+      "label": "原测试：关闭后立即切换",
+      "documentFocused": true
+    },
+    {
+      "step": 20,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "阅读这段 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 21,
+      "tag": "g",
+      "id": "preview-change-map-node-await-close",
+      "role": "button",
+      "label": "测试同步：等待 close 事件",
+      "documentFocused": true
+    },
+    {
+      "step": 22,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "阅读这段 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 23,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "▶ 逐步看",
+      "documentFocused": true
+    },
+    {
+      "step": 24,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "原逻辑：换行被正规化消耗 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 25,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "修复：保留已接受换行 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 26,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "公开 finalize 诊断回归 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 27,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "编译诊断与有效 SVG 对照 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 28,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "原测试：关闭后立即切换 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 29,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "测试同步：等待 close 事件 ↗",
+      "documentFocused": true
+    },
+    {
+      "step": 30,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "原逻辑：换行被正规化消耗",
+      "documentFocused": true
+    },
+    {
+      "step": 31,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 32,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "复制",
+      "documentFocused": true
+    },
+    {
+      "step": 33,
+      "tag": "PRE",
+      "id": "",
+      "role": null,
+      "label": "return text.replace(/^(\\s*pie)\\s+showData\\b/u, '$1').replace(slice, (_, indent, label, value) => { c",
+      "documentFocused": true
+    },
+    {
+      "step": 34,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "查看固定 revision 的源码",
+      "documentFocused": true
+    },
+    {
+      "step": 35,
+      "tag": "DIV",
+      "id": "",
+      "role": null,
+      "label": "原行新行改动@@ -20 +20,6 @@ function pieLegend(text) {20-  return text.replace(/^(\\s*pie)\\s+showData\\b/u, ",
+      "documentFocused": true
+    },
+    {
+      "step": 36,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "修复：保留已接受换行",
+      "documentFocused": true
+    },
+    {
+      "step": 37,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 38,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "复制",
+      "documentFocused": true
+    },
+    {
+      "step": 39,
+      "tag": "PRE",
+      "id": "",
+      "role": null,
+      "label": "return text.replace(/^(\\s*pie)(\\s+)showData\\b/u, (_, pie, gap) => pie + gap.replace(/[^\\r\\n]/g, ''))",
+      "documentFocused": true
+    },
+    {
+      "step": 40,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "查看固定 revision 的源码",
+      "documentFocused": true
+    },
+    {
+      "step": 41,
+      "tag": "DIV",
+      "id": "",
+      "role": null,
+      "label": "原行新行改动@@ -20 +20,6 @@ function pieLegend(text) {20-  return text.replace(/^(\\s*pie)\\s+showData\\b/u, ",
+      "documentFocused": true
+    },
+    {
+      "step": 42,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "公开 finalize 诊断回归",
+      "documentFocused": true
+    },
+    {
+      "step": 43,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 44,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "复制",
+      "documentFocused": true
+    },
+    {
+      "step": 45,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "查看固定 revision 的源码",
+      "documentFocused": true
+    },
+    {
+      "step": 46,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "编译诊断与有效 SVG 对照",
+      "documentFocused": true
+    },
+    {
+      "step": 47,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 48,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "复制",
+      "documentFocused": true
+    },
+    {
+      "step": 49,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "查看固定 revision 的源码",
+      "documentFocused": true
+    },
+    {
+      "step": 50,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "原测试：关闭后立即切换",
+      "documentFocused": true
+    },
+    {
+      "step": 51,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 52,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "复制",
+      "documentFocused": true
+    },
+    {
+      "step": 53,
+      "tag": "PRE",
+      "id": "",
+      "role": null,
+      "label": "const first=await focusStep(1,['api'],['api-to-redis-1']);await keyboardActivate(browser,'[data-clos",
+      "documentFocused": true
+    },
+    {
+      "step": 54,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "查看固定 revision 的源码",
+      "documentFocused": true
+    },
+    {
+      "step": 55,
+      "tag": "DIV",
+      "id": "",
+      "role": null,
+      "label": "原行新行改动@@ -101 +109 @@ test('native step opens the complete Viewer and focuses exact nodes and edges ",
+      "documentFocused": true
+    },
+    {
+      "step": 56,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "测试同步：等待 close 事件",
+      "documentFocused": true
+    },
+    {
+      "step": 57,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 58,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "复制",
+      "documentFocused": true
+    },
+    {
+      "step": 59,
+      "tag": "PRE",
+      "id": "",
+      "role": null,
+      "label": "const closeStep=async()=>{\n   // dialog.close() queues close; the reader restores opener focus in th",
+      "documentFocused": true
+    },
+    {
+      "step": 60,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "查看固定 revision 的源码",
+      "documentFocused": true
+    },
+    {
+      "step": 61,
+      "tag": "DIV",
+      "id": "",
+      "role": null,
+      "label": "原行新行改动@@ -98,0 +99,8 @@ test('native step opens the complete Viewer and focuses exact nodes and edge",
+      "documentFocused": true
+    },
+    {
+      "step": 62,
+      "tag": "DIV",
+      "id": "",
+      "role": null,
+      "label": "原行新行改动@@ -101 +109 @@ test('native step opens the complete Viewer and focuses exact nodes and edges ",
+      "documentFocused": true
+    },
+    {
+      "step": 63,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "尚未解释 · 0 个 hunk",
+      "documentFocused": true
+    },
+    {
+      "step": 64,
+      "tag": "BUTTON",
+      "id": "",
+      "role": null,
+      "label": "追问",
+      "documentFocused": true
+    },
+    {
+      "step": 65,
+      "tag": "A",
+      "id": "",
+      "role": null,
+      "label": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+      "documentFocused": true
+    }
+  ]
+}

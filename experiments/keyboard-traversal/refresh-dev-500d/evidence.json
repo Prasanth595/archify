@@ -1,0 +1,92 @@
+{
+  "previousHead": "9601c9b6e4b6addc2f348677d1c198bc6bc74192",
+  "dev": "500d4a65211ffe607fde6b3ce7505027b45bb59e",
+  "testedMerge": "48eaf689801a7a48ba052db87a028c47b07d794c",
+  "node": "22.23.2",
+  "zlib": "1.3.1-e00f703",
+  "focused": {
+    "files": [
+      "test/render-output-checks.test.mjs",
+      "test/explainer-check.test.mjs"
+    ],
+    "pass": 96,
+    "fail": 0,
+    "skip": 0
+  },
+  "coreSmoke": {
+    "pass": 19,
+    "fail": 0,
+    "skip": 0
+  },
+  "zipSha256": "712de2a5db70e88ba6cbab82b2810978da6ac4afc74ac61eecf2471499de4cf9",
+  "zipComparison": {
+    "inventoryEqual": true,
+    "entryCount": 235,
+    "onlyInBuild": [],
+    "onlyInDev": [],
+    "differentContent": [
+      "archify/explainer/browser-check.mjs"
+    ],
+    "crcError": null,
+    "sourceEntries": {
+      "archify/explainer/browser-check.mjs": {
+        "matchesSource": true,
+        "sha256": "b4bdcd216e0436033ab892ebbb67ed091c7d735d33e2cdb48ff904cbd904a647"
+      },
+      "archify/scripts/check-render-output.mjs": {
+        "matchesSource": true,
+        "sha256": "b73a0f13e3f1cf6ca1826280fe5f04ab36bb7270a70dc9af63720293d06f92b4"
+      }
+    }
+  },
+  "rawFiles": {
+    "merge.log": {
+      "bytes": 211,
+      "sha256": "34eb9c4e576a63a35a5df81cc1f959ba3084b74ca8b8bf803392f2a40b260814"
+    },
+    "merge-build.log": {
+      "bytes": 113,
+      "sha256": "44abaa0b1ff68deeb8223eb528bee833b95b52cdd6922b2fa27bb9f5c4c57edb"
+    },
+    "focused.log": {
+      "bytes": 22321,
+      "sha256": "691dba1dc0eb41f96d1a7cbfcd2d900a491dafc7a018d43267033979b3be07e3"
+    },
+    "smoke.log": {
+      "bytes": 4273,
+      "sha256": "0ca7f5066b6a87dcb014e2764dbc0a7c3360b087702828af0d478c3c5a68fd9f"
+    },
+    "build-first.log": {
+      "bytes": 98,
+      "sha256": "57273b798f27a091b03472e999824bbd8e7fd8ca0a6c7bc2f1106e4d5879748f"
+    },
+    "build-second.log": {
+      "bytes": 100,
+      "sha256": "90cc02d5f83565ac7b43aecad7c9f1d247ebc9f9bb9594fcdfcfa9e592b68591"
+    },
+    "zip-hashes.log": {
+      "bytes": 285,
+      "sha256": "1e2e6e3ff93a19f2f8c6b0c87e58e820393d37a2db6156092853c9d9b2a9a53d"
+    },
+    "zip-comparison.json": {
+      "bytes": 538,
+      "sha256": "3d11c246963033556354ec135b5814d2b5d2e20165193223694a1665dfb70340"
+    },
+    "first.zip": {
+      "bytes": 6993290,
+      "sha256": "712de2a5db70e88ba6cbab82b2810978da6ac4afc74ac61eecf2471499de4cf9"
+    },
+    "second.zip": {
+      "bytes": 6993290,
+      "sha256": "712de2a5db70e88ba6cbab82b2810978da6ac4afc74ac61eecf2471499de4cf9"
+    },
+    "dev.zip": {
+      "bytes": 6991879,
+      "sha256": "b631046d92e569f2d7e2937dab215bf93391bd0e536f103e302af3e492d741d7"
+    }
+  },
+  "failedAttempts": [
+    "Merge stopped on the expected archify.zip conflict; merged source was rebuilt and committed."
+  ],
+  "browserEvidence": "Reused at previous tested merge 49413625; no browser rerun."
+}

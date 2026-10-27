@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {ChromeVisualBrowser,findChrome} from './extracted/archify/bin/visual-check.mjs';
+import {inspectPublicHtml} from './extracted/archify/explainer/browser-check.mjs';
+const style='<style>body{font:16px/1.5 sans-serif;margin:20px;color:#171717;background:white}button{font:inherit}:focus-visible{outline:2px solid blue}</style>';
+const scrollers=Array.from({length:4},(_,i)=>`<pre style="width:300px;height:40px;overflow:auto">Region ${i}\nline 2\nline 3\nline 4</pre>`).join('');
+const cases=[['native',`<button>First</button>${scrollers}<button>Last</button>`],['trap','<button id="first">First</button><button id="last">Last</button><script>document.addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();document.querySelector("#first").focus()}})</script>']];
+const browser=new ChromeVisualBrowser(findChrome());try{for(const [name,body] of cases){const file=`/tmp/keyboard-refresh-e837/${name}.html`;fs.writeFileSync(file,`<!doctype html><html><head>${style}</head><body>${body}</body></html>`);const r=await inspectPublicHtml(browser,{artifactPath:file,width:1280,theme:'light'});if(name==='native'){assert.equal(r.keyboardTraversal.ok,true);assert.deepEqual(r.keyboardTraversal.missing,[])}else{assert.equal(r.keyboardTraversal.ok,false);assert.ok(r.keyboardTraversal.missing.some(m=>m.component==='last'));assert.equal(r.keyboardTraversal.termination,'focus-cycle');assert.ok(r.keyboardTraversal.steps<=r.keyboardTraversal.stepLimit)}console.log(JSON.stringify({case:name,traversal:r.keyboardTraversal}));}}finally{await browser.close()}

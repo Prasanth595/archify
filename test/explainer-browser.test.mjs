@@ -223,3 +223,90 @@ test('text names light their diagram nodes and walk-throughs step through steps 
   assert.equal(image.type,'image/png');assert.ok(image.size>20000,'the long image carries the rendered page');
  }finally{await browser.close();}
 });
+
+test('keyboard traversal follows real focus stops and keeps unreachable targets failing',{skip:!chrome},async(t)=>{
+ const browser=new ChromeVisualBrowser(chrome);
+ const scrollers=(marked=false)=>Array.from({length:4},(_,i)=>`<pre ${marked?'tabindex="0"':''} style="width:300px;height:40px;overflow:auto">Region ${i}\nline 2\nline 3\nline 4</pre>`).join('');
+ const page=body=>`<!doctype html><html><head>${style}</head><body>${body}</body></html>`;
+ const measured=async(name,body)=>inspectPublicHtml(browser,{artifactPath:artifact(name,page(body)),width:1280,theme:'light'});
+ try {
+  await t.test('native scrolling regions do not hide the final button from the gate',async()=>{
+   for(const marked of [false,true]){
+    const result=await measured(`native-stops-${marked}`,`<button>First</button>${scrollers(marked)}<button>Last</button>`);
+    assert.equal(result.keyboardTraversal.ok,true,JSON.stringify(result.keyboardTraversal));
+    assert.deepEqual(result.keyboardTraversal.missing,[]);
+   }
+  });
+  await t.test('real SourceCard links can add transient Tab stops',async()=>{
+   const {renderExplainer}=await import('../archify/explainer/render.mjs');
+   const doc=formalDocument();doc.meta.id='source-tab-stops';
+   doc.sources=Array.from({length:6},(_,i)=>({id:`reference-${i}`,title:`Reference ${i}`,url:`https://example.invalid/reference-${i}`}));
+   doc.panels[0].blocks=[{id:'references',type:'prose',text:doc.sources.map(s=>`A claim.[](source:${s.id})`).join(' ')}];
+   const file=artifact('source-tab-stops',renderExplainer(doc,{preparedSources:{sources:Object.fromEntries(doc.sources.map(s=>[s.id,s]))},sourceText:JSON.stringify(doc)}));
+   const result=await inspectPublicHtml(browser,{artifactPath:file,width:1280,theme:'light'});
+   assert.equal(result.keyboardTraversal.ok,true,JSON.stringify(result.keyboardTraversal));
+   assert.equal(result.keyboardTraversal.reached,result.controlCount);
+  });
+  await t.test('a reused floating link is allowed after a new required opener',async()=>{
+   const body='<button id="a">A</button><button id="b">B</button><button id="last">Last</button><a id="popover" href="#last" hidden>Floating link</a><script>let opener;const link=document.querySelector("#popover");for(const id of ["a","b"]){document.getElementById(id).addEventListener("focus",e=>{opener=e.target;link.hidden=false;})}document.addEventListener("keydown",e=>{if(e.key!=="Tab")return;if(e.target===opener){e.preventDefault();link.focus()}else if(e.target===link){e.preventDefault();const next=opener.id==="a"?document.querySelector("#b"):document.querySelector("#last");link.hidden=true;opener=null;next.focus()}})</script>';
+   const result=await measured('reused-popover',body);
+   assert.equal(result.keyboardTraversal.ok,true,JSON.stringify(result.keyboardTraversal));
+  });
+  await t.test('frame and closed-shadow hosts may contain advancing focus stops',async()=>{
+   const frames='<button>First</button><iframe srcdoc="<button>Child 1</button><button>Child 2</button>"></iframe><button>Last</button>';
+   const shadow='<button>First</button><div id="host"></div><button>Last</button><script>document.querySelector("#host").attachShadow({mode:"closed"}).innerHTML="<button>Child 1</button><button>Child 2</button>"</script>';
+   for(const [name,body] of [['frame-host',frames],['shadow-host',shadow]]){
+    const result=await measured(name,body);
+    assert.equal(result.keyboardTraversal.ok,true,JSON.stringify(result.keyboardTraversal));
+    assert.equal(result.keyboardTraversal.reached,2);
+   }
+  });
+  await t.test('native date subfields do not become a false focus cycle',async()=>{
+   const result=await measured('native-date-stops','<button>First</button><input type="date" value="2026-10-25"><button>Last</button>');
+   assert.equal(result.keyboardTraversal.ok,true,JSON.stringify(result.keyboardTraversal));
+   assert.equal(result.keyboardTraversal.reached,3);
+  });
+  await t.test('a negative tabindex target remains missing',async()=>{
+   const result=await measured('negative-tabindex','<button>First</button><div id="missing" role="button" tabindex="-1">Missing</div>');
+   assert.equal(result.keyboardTraversal.ok,false);
+   assert.ok(result.keyboardTraversal.missing.some(m=>m.component==='missing'));
+   assert.ok(result.keyboardIssues.some(m=>m.component==='missing'));
+  });
+  await t.test('a real Tab trap stays a bounded failure',async()=>{
+   const result=await measured('real-tab-trap','<button id="first">First</button><button id="last">Last</button><script>document.addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();document.querySelector("#first").focus()}})</script>');
+   assert.equal(result.keyboardTraversal.ok,false);
+   assert.ok(result.keyboardTraversal.missing.some(m=>m.component==='last'));
+   assert.equal(result.keyboardTraversal.termination,'focus-cycle');
+   assert.ok(result.keyboardTraversal.steps<=result.keyboardTraversal.stepLimit);
+  });
+  await t.test('hiding or cloning an initial target does not shrink or replace the requirement',async()=>{
+   for(const action of ['last.hidden=true','last.replaceWith(last.cloneNode(true))']){
+    const result=await measured(`changed-target-${action.startsWith('last.hidden')?'hidden':'clone'}`,`<button id="first">First</button><button id="last">Last</button><script>document.querySelector('#first').addEventListener('focus',()=>{const last=document.querySelector('#last');${action}},{once:true})</script>`);
+    assert.equal(result.keyboardTraversal.count,2);
+    assert.equal(result.keyboardTraversal.ok,false);
+    assert.ok(result.keyboardTraversal.missing.some(m=>m.component==='last'));
+   }
+  });
+  await t.test('an endless stream of new focus stops exhausts finite work',async()=>{
+   const result=await measured('infinite-tab-stops','<button id="first">First</button><button id="last">Last</button><script>document.addEventListener("keydown",e=>{if(e.key==="Tab"){e.preventDefault();const b=document.createElement("button");b.textContent="New stop";document.body.append(b);b.focus()}})</script>');
+   assert.equal(result.keyboardTraversal.ok,false);
+   assert.equal(result.keyboardTraversal.termination,'budget-exhausted');
+   assert.equal(result.keyboardTraversal.steps,result.keyboardTraversal.stepLimit);
+   assert.ok(result.keyboardTraversal.missing.some(m=>m.component==='last'));
+   const diagnostics=explainerObservationDiagnostics({artifact:artifact('bounded-diagnostics',page('')),
+    allObservations:[{...result,width:1280,height:900,theme:'light',noJavaScript:[],print:{ok:true}}]});
+   const diagnostic=diagnostics.find(d=>d.code==='explainer/browser-keyboard-traversal');
+   assert.equal(diagnostic.evidence.measurement.termination,'budget-exhausted');
+   assert.equal(diagnostic.evidence.measurement.steps,result.keyboardTraversal.steps);
+   assert.equal(diagnostic.evidence.measurement.stepLimit,result.keyboardTraversal.stepLimit);
+   assert.match(diagnostic.supportedFixes.join(' '),/unconfirmed/);
+   assert.doesNotMatch(diagnostic.supportedFixes.join(' '),/Use a native button/);
+  });
+  await t.test('native radio ArrowRight still reaches siblings within the work bound',async()=>{
+   const result=await measured('native-radio-stops','<button>First</button><input type="radio" name="choice" checked><input type="radio" name="choice"><input type="radio" name="choice"><button>Last</button>');
+   assert.equal(result.keyboardTraversal.ok,true,JSON.stringify(result.keyboardTraversal));
+   assert.equal(result.keyboardTraversal.reached,5);
+   assert.ok(result.keyboardTraversal.steps<=result.keyboardTraversal.stepLimit);
+  });
+ } finally {await browser.close();}
+});

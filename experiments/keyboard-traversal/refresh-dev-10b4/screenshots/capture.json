@@ -1,0 +1,116 @@
+{
+  "kind": "derived root real-Tab capture binding; not browser-check or finalize receipt",
+  "artifacts": {
+    "pr1097": {
+      "path": "../fixed-inputs/pr1097-authored-layout.html",
+      "bytes": 625151,
+      "sha256": "bf30fb5bda006c2d4a961bae4a0677c26aba91ec42379a816e5b7ffff15f28e6",
+      "sourceCommit": "dcedd53856b82d3e403a9651dca0e15840496942",
+      "scope": "historical PR reading artifact; no PR code or tests executed; mapping incomplete and ZIP unresolved unchanged"
+    },
+    "task": {
+      "path": "fixed-inputs/task-occurrences.html",
+      "bytes": 682434,
+      "sha256": "d10eeda28faccc4c8f95bed699e5e4c67b259006d7f3a2d66af92122aa9a3b48",
+      "sourceCommit": "caffb4aabb13b04a77bb9475866ad65465d79b20",
+      "sourcePath": "experiments/task-occurrences/output/explanation.html",
+      "scope": "published authored content from upstream committed expected output; not Gradle run or production workload"
+    }
+  },
+  "pictures": [
+    {
+      "path": "screenshots/task-last-source.png",
+      "sha256": "a3d21ab06debfbc91dcd124f830a93718e43c38c1dfe825bc808cffb6a36e2f7",
+      "bytes": 154127,
+      "pngDimensions": [
+        1440,
+        900
+      ],
+      "viewportCssPixels": [
+        1440,
+        900
+      ],
+      "theme": "light",
+      "page": "task",
+      "rootViewed": true,
+      "originalBytesUnchanged": true
+    },
+    {
+      "path": "screenshots/task-footer-tab.png",
+      "sha256": "3a92c04ac869dc1e6d3fb37deda6db491b6f2ca7090ea9398a8de592d6e4c6ee",
+      "bytes": 154222,
+      "pngDimensions": [
+        1440,
+        900
+      ],
+      "viewportCssPixels": [
+        1440,
+        900
+      ],
+      "theme": "light",
+      "page": "task",
+      "rootViewed": true,
+      "originalBytesUnchanged": true
+    },
+    {
+      "path": "screenshots/pr-footer-tab.png",
+      "sha256": "bcfb79529d6d26eb9b02f907bc0f51438ad8dd02e9e7904f544fda8813a77284",
+      "bytes": 148422,
+      "pngDimensions": [
+        1440,
+        900
+      ],
+      "viewportCssPixels": [
+        1440,
+        900
+      ],
+      "theme": "light",
+      "page": "pr1097",
+      "rootViewed": true,
+      "originalBytesUnchanged": true
+    }
+  ],
+  "observations": {
+    "path": "screenshots/tab-observations.json",
+    "sha256": "da9497bea173e5ccc7c8e2beb5dc81a0a0c28c0039dceaa404beacef909315ee",
+    "bytes": 40474
+  },
+  "rawTraces": [
+    {
+      "basename": "task-tab-trace.json",
+      "sha256": "13b261b270a43347951c63d65f18b8b09172d39e01be5550ae13c3df13b0e7ec",
+      "bytes": 15953
+    },
+    {
+      "basename": "pr-tab-trace.json",
+      "sha256": "55fcbd5ef126cdf7847c4012e969648b3ea361714db8c237fbf14299bc707272",
+      "bytes": 17987
+    }
+  ],
+  "actions": "Pointer click heading setup, initial BODY, then actual Tab only. No programmatic focus, ArrowRight, external activation, or checker run.",
+  "results": {
+    "task": {
+      "tabPressesToBrand": 47,
+      "footerSourceSteps": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "pr1097": {
+      "tabPressesToBrand": 63
+    }
+  },
+  "separateCheckerResults": {
+    "task1440": 48,
+    "pr1097_1440": 64
+  },
+  "limits": [
+    "Same immutable HTML, no visual redesign.",
+    "Root traces use different setup/actions from checker and do not replace checker measurements.",
+    "Historical PR screenshot retains pre-existing wrapped diff line numbers; not introduced or fixed here.",
+    "1440×900 light only; not physical assistive technology or human acceptance."
+  ]
+}

@@ -64,25 +64,88 @@ async function measurePublicHtml(nativeClipping=true) {
   return {measurementMethod:{version:'public-html-qa-v2',clipping:nativeClipping?'native-intersection-observer-expanded-root':'not-measured-script-execution-disabled',clippingMeasured:nativeClipping,clipCoverage:nativeClipping?'native-clip-chain':'not-measured-script-disabled',documentExtentMeasured:true,rootMargin:nativeClipping?extent:null,limits:['Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.','Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate.']},staticReading,innerWidth,innerHeight,scrollWidth:Math.ceil(document.documentElement.scrollWidth),scrollHeight:Math.ceil(document.documentElement.scrollHeight),overflowElements:overflows,localClipping,references:refs,duplicateIds,keyboardIssues,controlCount:controls.length,occluded,smallText,bodyText:document.body.innerText,background,resolvedTheme:document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'),panels:Array.from(document.querySelectorAll('.panel,[data-block-type]')).map(e=>({id:e.id,visible:visible(e),text:e.innerText})),interactiveVisible:document.querySelectorAll('.interactive').length ? Array.from(document.querySelectorAll('.interactive')).filter(visible).map(owner):[]};
 }
 
-async function keyboardTraversal(browser, controlCount) {
-  const session=await browser.sessionPromise;
-  await evaluate(browser,"(function(){document.activeElement.blur();window.scrollTo(0,0);})()");
-  const reached=new Set();
-  // Radio groups intentionally expose one tab stop; Arrow keys reach siblings.
-  const record=async()=>{const state=await evaluate(browser,"({key:document.activeElement?.dataset.qaKey,radio:document.activeElement?.type==='radio',name:document.activeElement?.name})");if(state?.key!==undefined)reached.add(state.key);return state;};
-  const arrowGroups=new Set();
-  for(let i=0;i<controlCount+3;i++) {
-    await browser.cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9},session);
-    await browser.cdp.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9},session);
-    const state=await record();
-    if(state.radio&&!arrowGroups.has(state.name)) {
-      arrowGroups.add(state.name);
-      const siblings=await evaluate(browser,`document.querySelectorAll('input[type=radio][name="${state.name}"][data-qa-key]').length`);
-      for(let step=0;step<siblings;step++) {for(const type of ['keyDown','keyUp'])await browser.cdp.send('Input.dispatchKeyEvent',{type,key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39},session);await record();}
+function createKeyboardTraversalState() {
+  // Keep the actual initial elements: a later clone carrying the same qaKey is
+  // not evidence that its predecessor was reached.
+  const targets = new Map(Array.from(document.querySelectorAll('[data-qa-key]'), e => [e, e.dataset.qaKey]));
+  const focusIds = new WeakMap(); let nextId = 0;
+  return {
+    limits: () => ({ count: targets.size, elements: document.querySelectorAll('*').length }),
+    record() {
+      const active = document.activeElement;
+      if (!focusIds.has(active)) focusIds.set(active, nextId++);
+      return { key: targets.get(active), focus: `${document.hasFocus()}:${focusIds.get(active)}`,
+        nativeLeaf: active.matches('a[href],button,summary') && !active.shadowRoot, radio: active?.type === 'radio',
+        radioCount: active?.type === 'radio' ? Array.from(targets.keys()).filter(e => e.type === 'radio' && e.name === active.name).length : 0,
+        name: active?.name };
+    },
+    missing(reached, reason) {
+      return Array.from(targets).filter(([, key]) => !reached.includes(key)).map(([e, key]) => ({key,
+        stableComponent:e.dataset.qaPath,text:e.textContent.trim().slice(0,160),href:e.getAttribute('href')||null,
+        tag:e.tagName,component:e.closest('[data-block-type],.panel')?.id||e.id||e.tagName.toLowerCase(),
+        label:e.getAttribute('aria-label')||e.textContent.trim()||e.name,tabIndex:e.tabIndex,type:e.type,reason}));
+    },
+  };
+}
+
+async function keyboardTraversal(browser) {
+  const session = await browser.sessionPromise;
+  // A remote closure gives focus stops DOM identity without adding page globals
+  // or attributes to transient source-card links and native scroll containers.
+  const created = await browser.cdp.send('Runtime.evaluate', {expression:expression(createKeyboardTraversalState)}, session);
+  if (created.exceptionDetails || !created.result?.objectId) throw new Error('Could not initialize keyboard traversal.');
+  const objectId = created.result.objectId;
+  const call = async (method, ...args) => {
+    const result = await browser.cdp.send('Runtime.callFunctionOn', {objectId,
+      functionDeclaration:`function(...args) { return this[${JSON.stringify(method)}](...args); }`,
+      arguments:args.map(value => ({value})),returnByValue:true}, session);
+    if (result.exceptionDetails) throw new Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
+    return result.result?.value;
+  };
+  try {
+    const {count, elements} = await call('limits');
+    // Static non-controls may be native Tab stops; focus handlers can add more.
+    // Reserve work from initial document size, capped at 1024 extra stops. An
+    // exhausted bound stays a failure, rather than asserting unreachability.
+    const stepLimit = count + Math.min(elements, 1024) + 3;
+    const reached = new Set(), seenSinceProgress = new Set(), arrowGroups = new Set();
+    let steps = 0, termination = 'budget-exhausted';
+    await evaluate(browser,"(function(){document.activeElement.blur();window.scrollTo(0,0);})()");
+    const press = async key => {
+      const code = key === 'Tab' ? 9 : 39;
+      for (const type of ['keyDown','keyUp']) await browser.cdp.send('Input.dispatchKeyEvent',{type,key,code:key,windowsVirtualKeyCode:code},session);
+      steps++;
+    };
+    const record = async () => {
+      const state = await call('record');
+      if (state.key !== undefined && !reached.has(state.key)) { reached.add(state.key); seenSinceProgress.clear(); }
+      return state;
+    };
+    while (reached.size < count && steps < stepLimit) {
+      await press('Tab'); const state = await record();
+      if (reached.size === count) break;
+      // Source-card links can be reused after a new opener is reached. Only a
+      // repeated native leaf without required-target progress closes a cycle.
+      // Input/select UA editors and frame/shadow/container hosts can hide
+      // advancing internal focus stops;
+      // keep exploring them under the same bound instead of claiming a cycle.
+      if (state.nativeLeaf && seenSinceProgress.has(state.focus)) { termination = 'focus-cycle'; break; }
+      seenSinceProgress.add(state.focus);
+      if (state.radio && !arrowGroups.has(state.name)) {
+        arrowGroups.add(state.name);
+        for (let step=0;step<state.radioCount && steps<stepLimit && reached.size<count;step++) {
+          await press('ArrowRight'); await record();
+        }
+      }
     }
-  }
-  const missing=await evaluate(browser,`Array.from(document.querySelectorAll('[data-qa-key]')).filter(e=>!${JSON.stringify([...reached])}.includes(e.dataset.qaKey)).map(e=>({key:e.dataset.qaKey,stableComponent:e.dataset.qaPath,text:e.textContent.trim().slice(0,160),href:e.getAttribute('href')||null,tag:e.tagName,component:e.closest('[data-block-type],.panel')?.id||e.id||e.tagName.toLowerCase(),label:e.getAttribute('aria-label')||e.textContent.trim()||e.name,tabIndex:e.tabIndex,type:e.type,reason:'This active control was not reached by Tab or native radio ArrowRight navigation.'}))`);
-  return {count:controlCount,reached:reached.size,missing,ok:reached.size===controlCount};
+    const ok = reached.size === count;
+    if (ok) termination = 'complete';
+    const reason = termination === 'focus-cycle'
+      ? 'This active control was not reached before keyboard focus repeated without progress.'
+      : "Bounded keyboard traversal did not complete within its work budget; this control's reachability is unconfirmed.";
+    const missing = await call('missing', [...reached], reason);
+    return {count,reached:reached.size,missing,ok,steps,stepLimit,termination};
+  } finally { await browser.cdp.send('Runtime.releaseObject',{objectId},session); }
 }
 
 export async function inspectPublicHtml(browser,{artifactPath,width=1440,height=900,theme='light',themeControl='query',javascript=true,media='screen',keyboard=true,screenshotPath,writeScreenshot}={}) {
@@ -114,7 +177,7 @@ export async function inspectPublicHtml(browser,{artifactPath,width=1440,height=
     await new Promise(resolve=>setTimeout(resolve,50));
     const metrics=await evaluate(browser,`(${measurePublicHtml.toString()})(${javascript})`,true);
     metrics.fontReadiness=fontReadiness;metrics.themeControl=themeControl;metrics.navigationUrl=url.href;
-    if(javascript&&keyboard)metrics.keyboardTraversal=await keyboardTraversal(browser,metrics.controlCount);
+    if(javascript&&keyboard)metrics.keyboardTraversal=await keyboardTraversal(browser);
     metrics.consoleErrors=errors;
     if(screenshotPath) {
       await evaluate(browser,'window.scrollTo(0,0)');
@@ -199,10 +262,10 @@ export function explainerObservationDiagnostics({artifact,allObservations}) {
     if(payload) {const bundle=JSON.parse(payload.text);sourceInput=bundle.sourcePath;bundle.document.panels.forEach((panel,index)=>{locations.set(panel.id,bundle.sourceMap?.[`/panels/${index}`]?.line||locations.get(panel.id)||1);panel.blocks.forEach((block,j)=>locations.set(block.id,bundle.sourceMap?.[`/panels/${index}/blocks/${j}`]?.line||locations.get(block.id)||1));});}
   }catch{}
   for(const entry of allObservations) {
-    const failures=[...(entry.overflowX?[{name:'horizontal-overflow',reason:'Rendered content exceeds the horizontal viewport.',component:entry.overflowElements[0]?.component || 'document'}]:[]),...entry.keyboardIssues.map(x=>({name:'keyboard',...x})),...(entry.keyboardTraversal&&!entry.keyboardTraversal.ok?entry.keyboardTraversal.missing.map(m=>({name:'keyboard-traversal',reason:`${m.reason} ${m.tag} ${m.label}`,component:m.component})):[]),...entry.consoleErrors.map(reason=>({name:'console-error',reason,component:'reader'})),...entry.references.map(x=>({name:'reference',reason:`Unresolved reference ${x.href}.`,component:x.component})),...entry.duplicateIds.map(id=>({name:'duplicate-id',reason:`Duplicate DOM ID ${id}.`,component:'document'})),...entry.smallText.map(x=>({name:'readability',reason:`Rendered text is ${x.fontSize}px, below 10px.`,component:x.component})),...entry.occluded.map(x=>({name:'control-occluded',reason:'Another element covers an active control.',component:x.component})),...(entry.interactionFailures || []),...entry.noJavaScript.filter(x=>!x.ok).map(x=>({name:'no-javascript',reason:`Static reading content or inactive controls fail with JavaScript disabled (${x.theme}).`,component:'document'})),...(!entry.print.ok?[{name:'print',reason:'Print hides necessary reading content or displays inactive controls.',component:'document'}]:[])];
+    const failures=[...(entry.overflowX?[{name:'horizontal-overflow',reason:'Rendered content exceeds the horizontal viewport.',component:entry.overflowElements[0]?.component || 'document'}]:[]),...entry.keyboardIssues.map(x=>({name:'keyboard',...x})),...(entry.keyboardTraversal&&!entry.keyboardTraversal.ok?entry.keyboardTraversal.missing.map(m=>({name:'keyboard-traversal',reason:`${m.reason} ${m.tag} ${m.label}`,component:m.component,measurement:{termination:entry.keyboardTraversal.termination,steps:entry.keyboardTraversal.steps,stepLimit:entry.keyboardTraversal.stepLimit,count:entry.keyboardTraversal.count,reached:entry.keyboardTraversal.reached}})):[]),...entry.consoleErrors.map(reason=>({name:'console-error',reason,component:'reader'})),...entry.references.map(x=>({name:'reference',reason:`Unresolved reference ${x.href}.`,component:x.component})),...entry.duplicateIds.map(id=>({name:'duplicate-id',reason:`Duplicate DOM ID ${id}.`,component:'document'})),...entry.smallText.map(x=>({name:'readability',reason:`Rendered text is ${x.fontSize}px, below 10px.`,component:x.component})),...entry.occluded.map(x=>({name:'control-occluded',reason:'Another element covers an active control.',component:x.component})),...(entry.interactionFailures || []),...entry.noJavaScript.filter(x=>!x.ok).map(x=>({name:'no-javascript',reason:`Static reading content or inactive controls fail with JavaScript disabled (${x.theme}).`,component:'document'})),...(!entry.print.ok?[{name:'print',reason:'Print hides necessary reading content or displays inactive controls.',component:'document'}]:[])];
     if(entry.resolvedTheme!==entry.theme)failures.push({name:'theme',reason:`Requested ${entry.theme}; resolved ${entry.resolvedTheme}.`,component:'theme'});
-    for(const fail of failures)diagnostics.push({code:`explainer/browser-${fail.name}`,severity:'error',message:fail.reason,subject:{artifact,...(sourceInput?{input:sourceInput}:{}),line:locations.get(fail.component)||1,component:fail.component,viewport:{width:entry.width,height:entry.height,theme:entry.theme}},evidence:{reason:fail.reason,example:repairExample(fail.name),...(fail.measurement?{measurement:fail.measurement}:{})},supportedFixes:[repairExample(fail.name)]});
+    for(const fail of failures)diagnostics.push({code:`explainer/browser-${fail.name}`,severity:'error',message:fail.reason,subject:{artifact,...(sourceInput?{input:sourceInput}:{}),line:locations.get(fail.component)||1,component:fail.component,viewport:{width:entry.width,height:entry.height,theme:entry.theme}},evidence:{reason:fail.reason,example:repairExample(fail.name,fail.measurement),...(fail.measurement?{measurement:fail.measurement}:{})},supportedFixes:[repairExample(fail.name,fail.measurement)]});
   }
   return diagnostics;
 }
-function repairExample(name) {return name==='horizontal-overflow'?'Use min-width:0 and bounded horizontal scrolling for tables or code.':name.startsWith('keyboard')?'Use a native button/link/input with visible focus and keyboard activation.':name==='no-javascript'||name==='print'?'Keep canonical content visible and hide interactive controls in no-JavaScript and print styles.':name==='diagram-text'?'Increase the diagram panel span until projected node text reaches 75% of body text.':'Repair the reported component and re-render the source.';}
+function repairExample(name,measurement) {return name==='keyboard-traversal'&&measurement?.termination==='budget-exhausted'?"Reachability is unconfirmed. Inspect the actual keyboard order and focus handling, then verify again.":name==='horizontal-overflow'?'Use min-width:0 and bounded horizontal scrolling for tables or code.':name.startsWith('keyboard')?'Use a native button/link/input with visible focus and keyboard activation.':name==='no-javascript'||name==='print'?'Keep canonical content visible and hide interactive controls in no-JavaScript and print styles.':name==='diagram-text'?'Increase the diagram panel span until projected node text reaches 75% of body text.':'Repair the reported component and re-render the source.';}

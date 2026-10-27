@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "candidate": "c96e8aa74ff5e309cdab07a1b70d0242f33bed75",
+  "dev": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+  "testedMerge": "49413625",
+  "runtime": {
+    "node": "22.23.2",
+    "zlib": "1.3.1-e00f703",
+    "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "browserTest": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coreSmoke": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  },
+  "cli": {
+    "exitCode": 0,
+    "status": "pass",
+    "provenance": "current",
+    "deliveryReceiptId": "c81d0864-2647-4db0-9dc8-38aac0ed5c80",
+    "artifact": {
+      "path": "/Users/tsk/.codex/worktrees/lab-trace-flow-evidence/archify/experiments/trace-flow-evidence/final/review.html",
+      "sha256": "4cc2274999e58b9f75b717c053528a85964e3545b3cb0a8fe638b8cdf246dff1",
+      "bytes": 545470
+    },
+    "diagnosticCount": 0,
+    "containmentStatus": "pass",
+    "viewportCount": 4
+  },
+  "zip": {
+    "sha256": "307dde31eae4c66f518dcd022dcc7843bc17b0afd0b0f469bd594963cc1cd0ea",
+    "secondSha256": "307dde31eae4c66f518dcd022dcc7843bc17b0afd0b0f469bd594963cc1cd0ea",
+    "committedSha256": "307dde31eae4c66f518dcd022dcc7843bc17b0afd0b0f469bd594963cc1cd0ea",
+    "inventoryMatchesDev": true,
+    "entryCount": 235,
+    "crcError": null,
+    "entriesDifferentFromDev": [
+      "archify/explainer/browser-check.mjs"
+    ],
+    "sourceComparisons": [
+      "archify/explainer/browser-check.mjs",
+      "archify/bin/archify.mjs",
+      "archify/scripts/check-render-output.mjs"
+    ]
+  },
+  "packedCases": [
+    {
+      "case": "native",
+      "traversal": {
+        "count": 2,
+        "reached": 2,
+        "missing": [],
+        "ok": true,
+        "steps": 6,
+        "stepLimit": 15,
+        "termination": "complete"
+      }
+    },
+    {
+      "case": "trap",
+      "traversal": {
+        "count": 2,
+        "reached": 1,
+        "missing": [
+          {
+            "key": "1",
+            "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+            "text": "Last",
+            "href": null,
+            "tag": "BUTTON",
+            "component": "last",
+            "label": "Last",
+            "tabIndex": 0,
+            "type": "submit",
+            "reason": "This active control was not reached before keyboard focus repeated without progress."
+          }
+        ],
+        "ok": false,
+        "steps": 2,
+        "stepLimit": 12,
+        "termination": "focus-cycle"
+      }
+    }
+  ],
+  "attempts": {
+    "failed": [
+      "Initial shell toolchain probe used an unmatched zsh glob and aborted before branch creation or merge; no raw log was saved."
+    ],
+    "limitations": [
+      "ZIP inventory and source comparisons were printed during the session; no separate raw log was saved.",
+      "Before-run receipt hash was not recorded; the authentic receipt was read in place and not intentionally modified."
+    ]
+  },
+  "rawFiles": {
+    "browser.log": {
+      "bytes": 4691,
+      "sha256": "7915e87ab849307e207d1d12bcddda819b70801bd2e70094e7c2cc93edb1ff8b"
+    },
+    "smoke.log": {
+      "bytes": 4273,
+      "sha256": "e3ef2129c9004124adb4d5f17cd88f6c435f3132c6ebdcd12b48378a0dba38b5"
+    },
+    "cli.json": {
+      "bytes": 864138,
+      "sha256": "a9acc910ad3d7cd917c83a8a925637111f96cda0418d8a09e5c1d043f0cb943b"
+    },
+    "cli.err": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cli-output/review.browser-check.json": {
+      "bytes": 864138,
+      "sha256": "a9acc910ad3d7cd917c83a8a925637111f96cda0418d8a09e5c1d043f0cb943b"
+    },
+    "packed.log": {
+      "bytes": 553,
+      "sha256": "271d4dbeb6240d5d5991bd9fbc29546425bbb657d74976773be71ba472993e47"
+    },
+    "packed.mjs": {
+      "bytes": 1631,
+      "sha256": "b2042cff71ccd01cf6ed13a30ed91d821d644ad4f66db8325b26823f1f8b88ca"
+    },
+    "native.html": {
+      "bytes": 587,
+      "sha256": "83c6389fa6213bb13881c7ec6d1ffa99c7d2abc2081c10023ce06ccb8119b0d0"
+    },
+    "trap.html": {
+      "bytes": 401,
+      "sha256": "769b697365ef79d65e4d9a42ba0c825c141d93bca47d341558ff6b0f5fcf3556"
+    },
+    "npm-root.log": {
+      "bytes": 28,
+      "sha256": "2ecd70d79057f34c1ac7ed3e1d556d9c6fbec9954eb8a52cdc0c1cb976d7a684"
+    },
+    "npm-archify.log": {
+      "bytes": 27,
+      "sha256": "60d96237a60857a44fc21572b00d1bf343d6a3f866cc3d1fd99dd0cbbc4f4908"
+    },
+    "first.zip": {
+      "bytes": 6989655,
+      "sha256": "307dde31eae4c66f518dcd022dcc7843bc17b0afd0b0f469bd594963cc1cd0ea"
+    },
+    "second.zip": {
+      "bytes": 6989655,
+      "sha256": "307dde31eae4c66f518dcd022dcc7843bc17b0afd0b0f469bd594963cc1cd0ea"
+    },
+    "dev.zip": {
+      "bytes": 6988244,
+      "sha256": "261fdaeec8f559f051762f141492b1bb11b091bb49bc7421f462aea34343a5f6"
+    }
+  }
+}
