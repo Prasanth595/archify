@@ -1,0 +1,41 @@
+{
+  "verifiedAtUtc": "2026-10-27T16:46:54Z",
+  "experiment": {
+    "branch": "codex/lab-tree-roles",
+    "localHead": "a15fbd6e6b68df387bdf37f0c155509d3c3242ad",
+    "remoteHead": "a15fbd6e6b68df387bdf37f0c155509d3c3242ad",
+    "worktreeClean": true,
+    "url": "https://github.com/tt-a1i/archify/tree/a15fbd6e6b68df387bdf37f0c155509d3c3242ad/experiments/tree-roles"
+  },
+  "devHead": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "previousExperiment": {
+    "branch": "codex/lab-conflict-explanation",
+    "remoteHead": "4805f166d0c3078f06e7b309f1594c788b79ee5f",
+    "changedThisBatch": false
+  },
+  "hubHeadBeforeThisLedger": "6769a2a06935c95bdfe04bbe065f6f4678159411",
+  "cleanSourceZip": "round11-clean-build.json",
+  "verification": {
+    "focusedPass": 80,
+    "corePass": 19,
+    "skipped": 0,
+    "generated": "pass",
+    "hostedCI": "not claimed",
+    "acceptedScreenshots": 14,
+    "excludedCaptureScreenshots": 3,
+    "rawPublicHashPairs": 66
+  },
+  "independentDeliveryAudit": {
+    "agent": "GPT-6.1-Terra medium, packet_identity_scout",
+    "result": "No delivery blocker found. Verified all 66 public/raw pairs, 17 PNG hashes/dimensions, HTML/input/ZIP identities and final log/exit counts.",
+    "boundary": "Read-only artifact/log check; did not rerun tests/browser, independently verify historical interactions/visual conclusions, or assess hosted CI."
+  },
+  "policy": {
+    "newPRs": 0,
+    "merge": false,
+    "publish": false,
+    "deploy": false,
+    "install": false
+  },
+  "goal": "active"
+}

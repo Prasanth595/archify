@@ -294,3 +294,36 @@ D 按现有领域命名合同统一采用 backend/icon:none，再把图例、Pas
 ![D 实际依赖声明图：四个包名与三条分组箭头](https://raw.githubusercontent.com/tt-a1i/archify/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model/root-review/declarations-overview-light.png)
 
 [收尾远端记录](audit/round10-delivery.json)核对实验精确 head。AI 辅助由 Terra 研究/作者、Sol 独立诊断与复核、root 页面检查及收尾完成；作者最后包装任务因 capacity 不可用，由 root 接手后再独立复核。用户仅远程分支的规则持续有效，没有新建 PR、合并、发布、部署或安装。研究总目标继续 active。
+
+
+## 第十一批：合法包含树的类型应来自结构
+
+开始先核对并保存 [311 条远程 head](audit/remote-branches-round11.txt)，dev 仍为 d5d979493bba650b3995836afd379cd249f2d0dd；对照历史研究汇编及相关 Tree 分支。[有界 issue/PR 查询](audit/round11-dedup.json)没有找到本次同范围修正，但不是全局无重复证明。task-view 已在此前批次研究，本批没有重复制图或再次把它当新方向。上一批 PubGrub 模型修正分支保持 4805f166；下面是合法包含树也存在的独立默认语义问题。
+
+新远程 [`codex/lab-tree-roles@a15fbd6e`](https://github.com/tt-a1i/archify/tree/a15fbd6e6b68df387bdf37f0c155509d3c3242ad/experiments/tree-roles) 从冻结 dev 隔离实现。固定官方仓库树31节点、30包含边，只改 Viewer locale 和输出文件名作为相同输入。原 `focus.js` 的 Passport/Finder 显示“外部系统”，根节点显示“前端”；源码证明 Tree 把配色 tone 写成 kind，来源没有这些领域类型。候选采用既有根、分支、叶角色，Lens 也改称层级角色和包含关系。它不改变 Tree 的包含合同，不让依赖图变成合法 Tree。
+
+### 价值、代价和兼容边界
+
+真实键盘 Finder 输入后 Enter，等待同一目标相机矩形稳定：两臂坐标完全相同，“外部系统”变为“叶节点”。原生 SVG 删除唯一变化的 kind 属性后原字节相同；颜色、布局、边和折叠方式未改。输入含1根、6分支、24叶，折叠分支仍显示分支节点。候选 HTML 908519 bytes，比基线增加990。中文实际页面可直接观察到默认假类型消失；这不是读者速度、理解正确率或所有语言人工验收。
+
+实现无新依赖、schema 字段、解析器或通用分类框架。成本是少量 Viewer/CSS 映射、六种内置和六份示例 locale 的六项文案、既有消费者回归覆盖，以及共享模板导致的生成物刷新。旧 Tree Lens URL 能恢复对应结构组，显式旧 kind/Lens 翻译仍被尊重，新键优先；其他图模式不套该映射。raw kind 和 Finder raw 搜索词有意改变，未承诺任意旧 token API 兼容。源启发和许可仍保留在 [D3/Cytoscape 研究](scouts/hierarchy-role-reading.md)，未复制第三方实现。
+
+### 失败、实图和验证
+
+[实验说明](https://github.com/tt-a1i/archify/tree/a15fbd6e6b68df387bdf37f0c155509d3c3242ad/experiments/tree-roles)保留首个实现补丁、翻译键/schema 和示例 locale 失败、新测试 API 错误、独立审查发现的旧 Lens 翻译兼容失败及修复。首个生成候选与最终默认候选字节相同，因为固定输入没有自定义旧翻译；兼容回归另有修前失败和修后通过。没有将首稿丢掉后只展示最终绿灯。
+
+17张实图有14张有效、3张明确排除验收；每张有 SHA、尺寸和产物身份。匹配图片用于前后比较，其他图片仅支持各自状态观察。同页并行导航中断、错误DOM等待及错误尺寸等采集失误另行保留，并串行重做。390×844 的查找能揭开折叠目标、页面无水平溢出，但总览文字仍小、卡片占用较大空间，不能据此宣称移动端、触摸或 AT 验收。
+
+首次完整生成物检查的32项失败均为 stale 示例/模板；最终源刷新15对示例、旧 web-app 模板、Gallery 和 ZIP 后通过。15份原生示例逐一对照：13个非Tree SVG完全一致，2个Tree仅kind元数据变动，开发和打包副本相同。最终官方 Node22.23.2 / zlib1.3.1-e00f703 / Chrome156 下相关测试80/80、core19/19、零skip，生成物检查通过。基线、首候选和最终 HTML 的 finalize 三静态gate与browser-check也通过，使用Node26，visualReview=not-requested；实际视觉检查独立进行，没有hosted CI结论。
+
+[干净提交后的打包复验](audit/round11-clean-build.json)在工作树前后均干净时生成相同 ZIP：SHA256 `46b6b131a6bee934487bd02c66f3026583b787b2dcdcba715c63303a469b7ef9`，7000654 bytes；235个归档成员对应工作源码（package.json按原打包规则去除scripts/devDependencies），不含实验或node_modules。此前连续两次构建也相同。独立交付审计核对66组raw/public哈希、17图尺寸/哈希、HTML/ZIP身份与测试日志，未发现阻塞；它没有重跑历史交互或替代root视觉判断。完整空白告警保留在证据中，仅涉及冻结HTML、日志和统一补丁上下文，实际源码检查通过。借用依赖软链接已清理。
+
+![同一仓库包含树的实际 Lens 页面：结构角色与包含关系](https://raw.githubusercontent.com/tt-a1i/archify/a15fbd6e6b68df387bdf37f0c155509d3c3242ad/experiments/tree-roles/root-review/candidate-lens-paired.png)
+
+### 继续筛选，未证明收益的方向暂缓
+
+[Wireshark包身份与重组阅读](scouts/packet-identity-reading.md)固定官方文档的六段抽象反例，区分捕获到达、流顺序、PDU完成和界面归属。原生已提供相关帧、重组字节和Follow Stream；没有取得并运行对应完整capture，不能把文档字母当抓包或证明产品差距。发现的上游pcap未下载，不推断其单独许可；未安装tshark。
+
+[diffoscope产物差异阅读](scouts/artifact-diff-reading.md)固定镜像版本的两份tar及listing/text/symlink预期，区分元数据、内容和链接目标差异；diffoci的嵌套例另保留出处。没有完整原生HTML执行对照，无法证明另造图表的收益。两项仅保留来源、许可、问题与下一证据门槛，不增加导入器、共享runtime或同义实验分支。
+
+[交付记录](audit/round11-delivery.json)确认实验精确远端head。AI辅助由Terra研究/生成物/交付审计、Sol实现与独立源码复核、root比较与实际页面检查完成。本批只推送远程分支，没有新PR、合并、发布、部署或安装；总目标继续active。
