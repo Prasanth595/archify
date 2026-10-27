@@ -73,8 +73,8 @@
       border-radius: 14px;
       background: var(--paper-raised);
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(18px);
+      opacity: 1;
+      transform: none;
       transition: opacity .5s var(--ease-out), transform .5s var(--ease-out), border-color .2s var(--ease-out), box-shadow .2s var(--ease-out);
       transition-delay: calc(var(--stagger, 0) * 60ms), calc(var(--stagger, 0) * 60ms), 0s, 0s;
     }
@@ -217,3 +217,5 @@
     @media (max-width:640px) { .method-code pre { padding:1.25rem; font-size:.75rem; } }
     .method-link { align-self:flex-start; margin:0 1.9rem 1.9rem; border-color:var(--line-hi); color:var(--text); }
     .method-link:hover { border-color:var(--accent); color:var(--accent); }
+
+    .submission-link { margin-top: 1.25rem; }

@@ -7,6 +7,7 @@ import { validateSchema } from '../shared/validator.mjs';
 import { verifyRepositoryEvidence } from '../shared/repository-evidence.mjs';
 import { prepareDiagramBrandMarks } from '../shared/brand-marks.mjs';
 import { withDiagnosticRecordingSuppressed } from '../shared/diagnostics.mjs';
+import { softwareNoticesHtml } from '../shared/software-notices.mjs';
 import { compileWorkflow } from './workflow-compiler.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -15,7 +16,10 @@ let cachedTemplate;
 
 function readTemplate() {
   if (cachedTemplate === undefined) {
-    cachedTemplate = fs.readFileSync(path.join(skillRoot, 'assets/template.html'), 'utf8');
+    // Same template the CLI's loadDiagram builds, notices included, so API and
+    // CLI HTML stay byte-identical.
+    cachedTemplate = fs.readFileSync(path.join(skillRoot, 'assets/template.html'), 'utf8')
+      .replace('</head>', `${softwareNoticesHtml}\n</head>`);
   }
   return cachedTemplate;
 }
@@ -79,6 +83,7 @@ async function renderWorkflowInternal({
     svg: compiled.svg,
     cards: diagram.cards,
     sourceEvidence,
+    diagram,
     template: readTemplate(),
   });
 
