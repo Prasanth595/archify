@@ -1,0 +1,77 @@
+{
+  "previousTurn": "progress",
+  "remoteHeadCountAtStart": 315,
+  "currentDev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "candidateChecker": "f9fc38cbc19f5bb2725fd54d957e182831eb1eb9",
+  "updatedExperimentHead": "3254fda4fcd61a101cc09e6b68fbdbb4d2779604",
+  "runtimeCombination": "current dev archify tree; only existing candidate checker substituted; not Git merged",
+  "sourceFiles": 238,
+  "runtimeChangedPaths": [
+    "archify/explainer/browser-check.mjs"
+  ],
+  "experimentProductTestsZipUnchangedFromF9": true,
+  "kconfigBranchUnchanged": "6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f",
+  "baseBrowserDiagnostics": [
+    28,
+    52
+  ],
+  "candidateBrowserDiagnostics": [
+    0,
+    0
+  ],
+  "candidateReached": [
+    "42/42",
+    "55/55"
+  ],
+  "candidateSteps": [
+    52,
+    74
+  ],
+  "candidateLimits": [
+    329,
+    428
+  ],
+  "viewportThemeCases": [
+    "1280x900 light",
+    "1440x900 light",
+    "1280x900 dark",
+    "1440x900 dark"
+  ],
+  "tabTrapCandidate": {
+    "reached": "1/2",
+    "termination": "focus-cycle",
+    "steps": 2,
+    "limit": 12
+  },
+  "egoSourcePath": {
+    "viewport": [
+      1440,
+      390
+    ],
+    "tabsToCitation": [
+      20,
+      21
+    ],
+    "cardLinkReached": true,
+    "escapeToSameOpener": true,
+    "scrollPreserved": true,
+    "nextMetCitation": true
+  },
+  "manifestEntries": 27,
+  "copyMapEntries": 19,
+  "gzip": 8,
+  "pathRedactions": 1,
+  "independentAudit": "saved bytes and source/results; no reruns; completed before outer README entry/license clarification",
+  "portableWrapper": "syntax and static review only; exact executed harness retained",
+  "temporaryRuntimeDependencyLinksRemoved": true,
+  "newPr": false,
+  "contributorBranchEdited": false,
+  "productCodeChangedThisBatch": false,
+  "fullSuiteRun": false,
+  "finalizeRerun": false,
+  "nativeKconfigRerun": false,
+  "zipBuilt": false,
+  "installed": false,
+  "hostedCiForNewHead": "not inspected",
+  "goal": "active"
+}

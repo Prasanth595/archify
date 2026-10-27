@@ -551,3 +551,25 @@ Lifecycle 的 `reviewing` 可达 `completed/blocked/expired`；回到 reviewing 
 两次有界内容修订、最初的 HTML/输入/截图及所有失败回执均保留。首次浏览器脚本只重定向 stdout，而 Ego 将控制台记录写到 stderr，导致六份 JSONL 为空；已保留空文件和先前截图，再用双流采集记录最终检查，未将后来结果归给空日志。旧研究空间消失后按已有用户授权重建为 28。大 JSON 用确定性 gzip 保存，路径脱敏有原始/公开/存储哈希映射；[独立打包审计](audit/round20-kconfig-package-audit.md)核对 131 项清单、102 项映射与最终 HTML。审计后仅修 README 末尾空行并更新相应清单摘要，root 再次核对全部 131 项。
 
 [最终范围记录](audit/round20-validation.json)区分原生执行、内容静态检查、自动浏览器失败、实际 UI 观察及未做的人类实验。270 个 producer 文件字节未变，临时借用的依赖链接已移除；作者脚本/文档 diff 检查通过，原生文本和生成 HTML 中原有的混合缩进按原样保留。没有安装、合并、发布或新增 PR，持续目标保持 active。
+
+## 第二十一批：把新案例接回已有修复
+
+上一批是有效进展。本批先刷新并保存 [315 个远程 head](audit/remote-branches-round21.txt)，dev 仍为 `d5d97949`。[定向去重](audit/round21-reader-dedup.md)确认三种不同责任：已有 `lab-keyboard-traversal` / 历史 Draft #1124 修检查器早停；`lab-source-keyboard` 修 source-only 图节点的 Enter/Space；BlueboxC 的 #1076 / #1068 处理窄屏工具栏。没有新建平行修复，也没有编辑贡献者分支。
+
+[源码诊断](audit/round21-keyboard-diagnosis.md)把上批 28/52 条失败对应到具体预算：原检查器只走初始目标数加三步，动态 SourceCard 链接和浏览器原生滚动焦点会消耗额外步数。原生说明页只有 35/42 初始目标被观察到，对照页为 42/55；缺少的是预算末尾的控件。仅凭手动到达页脚仍不能证明所有诊断误报，因此进行了固定完整 HTML 的独立运行。
+
+[新增证据已推至原实验分支](https://github.com/tt-a1i/archify/tree/3254fda4fcd61a101cc09e6b68fbdbb4d2779604/experiments/keyboard-traversal/kconfig-transfer-d5)，`codex/lab-keyboard-traversal` 从 `f9fc38cb` 正常推进到 `3254fda4fcd61a101cc09e6b68fbdbb4d2779604`。本次只加证据与文档，checker、产品测试和 ZIP 未变；没有新 PR。两个临时运行时都取当前 dev 的完整 `archify/` 树，候选侧仅换入既有 f9 checker，238 项文件前后哈希核对。这是明确记录的派生组合，不是假称已合并 dev 或重建了候选包。
+
+| 完整固定输入 | 当前 dev | 只替换既有 checker |
+| --- | --- | --- |
+| Kconfig 原生证据页 | 35/42 到达，四组共 28 条诊断，exit 1 | 42/42，52 步 / 329 上限，四组均 complete，exit 0 |
+| Kconfig 解释页 | 42/55 到达，四组共 52 条诊断，exit 1 | 55/55，74 步 / 428 上限，四组均 complete，exit 0 |
+| 既有真实 Tab trap | Last 未达 | 仍 1/2、focus-cycle，2 步 / 12 上限，保持失败 |
+
+两个完整页在 1280×900、1440×900 的明暗四组通过 browser-check；HTML 的完整内容和字节未变。trap 使用普通 HTML inspector，是不同范围的负例，不冒称完整图交付。Node 22.23.2、Chrome 156.0.8078.48 串行执行；原始结果、固定输入、复现脚本、gzip 回执及失败保留。没有重新执行 Kconfig、渲染页面、运行完整 finalize、全套测试或构建 ZIP。原 Kconfig 分支 `6cf0b813` 的旧失败回执保持原状，不能用这次派生运行时结果回填旧记录。
+
+[Quarto / Code Hike 调研](audit/round21-source-popover-reading.md)提供了更具体的检查思路。固定 Quarto `eb1c5db2` 的 MIT 源码和官方回归样例区分触发器、卡内链接、Escape、离焦和延迟；390px 回归不等于全几何验收。Code Hike `cd81d8af` 的 MIT 示例以 token 关联注释，但使用 Radix，不能仅由 demo 推断所有键盘合同。没有引入这些依赖或复制它们的实现。
+
+root 在原 Kconfig 页面上用真实 Tab 进一步核实动态动作：1440×900 和 390×844 下分别第 20/21 步到达 unmet 引用，再 Tab 进入卡内 Open source；Escape 返回同一引用且保留滚动位置，下一个 Tab 到相邻 met 引用。[桌面实际焦点图](https://github.com/tt-a1i/archify/blob/3254fda4fcd61a101cc09e6b68fbdbb4d2779604/experiments/keyboard-traversal/kconfig-transfer-d5/screenshots/card-desktop.png)及[窄屏图](https://github.com/tt-a1i/archify/blob/3254fda4fcd61a101cc09e6b68fbdbb4d2779604/experiments/keyboard-traversal/kconfig-transfer-d5/screenshots/card-mobile.png)均已实际检查。这覆盖一个有来源的具体路径，不是所有动态控件、AT、触摸或人的阅读效率证明；原工具栏溢出和表格断词仍在独立范围。
+
+[独立审计](audit/round21-transfer-audit.md)核对 27 项清单、19 项原始/公开映射、八个压缩回执、238 项 Git 源字节、原 HTML 及结果；未重跑。复现 wrapper 只增加目录参数与哈希预检，通过语法及静态复核，原实际执行脚本另存。审计后仅补了外层 README 入口，并区分最早 82c 基线的 MIT / tt-a1i 与 Cocoon AI 署名、当前根 Apache-2.0 及内嵌 Kconfig ISC，没有反称旧许可证。四个临时依赖链接已清理。[最终范围记录](audit/round21-validation.json)将旧 CI、当前 browser-check、实际 UI 和未运行项分开；新 head 的 hosted CI 未作结论。持续目标 active，交付仍仅为远程分支，无安装、合并或发布。
