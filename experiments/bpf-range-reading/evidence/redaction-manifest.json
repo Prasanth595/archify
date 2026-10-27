@@ -1,0 +1,98 @@
+{
+  "description": "Redacted derived copies; they are not original full receipts. Original files are retained locally under /tmp/archify-bpf-private-originals/ and are not part of this publication.",
+  "replacement_rules": [
+    {
+      "original": "local worktree absolute path",
+      "replacement": "<WORKTREE>"
+    }
+  ],
+  "files": [
+    {
+      "file": "baseline.delivery.json",
+      "original_sha256": "b04c49b1872db35031dd456930c7fd061ae527c0b0683c11b58f23fc7a9cbea2",
+      "public_sha256": "55e47c493eae6bfd008c5f1d6abf93cf3077b8acb7b7b43a899e414a4738de28"
+    },
+    {
+      "file": "baseline.finalize-summary.json",
+      "original_sha256": "cfc1e0b12b3ee84b21d0c30a028fd596b6c5f75c229e2b7453418fd060a0f7dc",
+      "public_sha256": "a67f2c8dd1ae463d36a6f8284c3c7a5a6d189a244580248ef45068cfa3dbfd0e"
+    },
+    {
+      "file": "baseline.finalize.json",
+      "original_sha256": "7c7d67a0c4144aa37bccd692001d91385e565224165045693b9871b5b0826527",
+      "public_sha256": "fdd264774d1b4e0df9e4b5325dd55aa6fa09e9605e99a01c51b41ed29ec3663f"
+    },
+    {
+      "file": "candidate.delivery.json",
+      "original_sha256": "c9b024b8558a0da7ebbd8d4397f061a1aeedd7945de21985c658e7f022d9b789",
+      "public_sha256": "00dd123052be06f0ac648b613181eb40002d3f7feb4cf86f2be1502f4c5fdf39"
+    },
+    {
+      "file": "candidate.finalize-summary.json",
+      "original_sha256": "f689e009699b776382911016eda65c0bd66d9d45f7cf7ceb00ad88d214739fd1",
+      "public_sha256": "8607d6b0b120e30206d60241350e96176787b6119fdd182edd1a5c2deb2cd3f2"
+    },
+    {
+      "file": "candidate.finalize.json",
+      "original_sha256": "dcc868551ca694124b7d1afeb2898538d9aabdc55358c9986ea84e124b37dee4",
+      "public_sha256": "5926a33b38ebf054c2fc6911f078b4ae0925d4c5c4d21cee5176b313bf531b27"
+    },
+    {
+      "file": "draft-1/audit-failure.txt",
+      "original_sha256": "715cc789e9d4fbc358daf44cfad206504ab3fc440524c8f992ca5ea785276d7b",
+      "public_sha256": "c28855a905a050990c86ee86765e3d8f8549cd818d84c128cf9c685e1707dfab"
+    },
+    {
+      "file": "draft-1/finalize-failure.json",
+      "original_sha256": "f8b5535bb9d6ebefad528d87fa72231ee386f9bf5fb2a21efb487cea2944102f",
+      "public_sha256": "6f12bb5735cb06cd1a4eee629853ef2e09937b4b7ef4f952d7579b150815f249"
+    },
+    {
+      "file": "evidence/audit-stdout.txt",
+      "original_sha256": "84aa858f4a712a725a5bccb12923df9761f912189579ceba32ac899eb05fb95b",
+      "public_sha256": "84aa858f4a712a725a5bccb12923df9761f912189579ceba32ac899eb05fb95b"
+    },
+    {
+      "file": "evidence/baseline-finalize.json",
+      "original_sha256": "de6b0759bec79d23d80c921d37c6cb3d09bb6de64a05b4f1c1238079c783a1e9",
+      "public_sha256": "f4b9a2bd8801096e957ff525ab0838b462a02649f292dc443103fde51941e07f"
+    },
+    {
+      "file": "evidence/baseline-finalize.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "evidence/browser-check-selected.json",
+      "original_sha256": "02e18b7902a92ced242b4aa8be73bdbb7ba75d37206cba6a68424bafd21d08ec",
+      "public_sha256": "02e18b7902a92ced242b4aa8be73bdbb7ba75d37206cba6a68424bafd21d08ec"
+    },
+    {
+      "file": "evidence/candidate-finalize.json",
+      "original_sha256": "98dfa93c1cc0069ff3b6da4425098428f8cd7a456339c2653efdfd5df364b6a1",
+      "public_sha256": "01beb980c8496ae7db37685f35fba33b95dafb38b3a9b2daf4cbc128ace8300b"
+    },
+    {
+      "file": "evidence/candidate-finalize.stderr",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "evidence/model-stdout.txt",
+      "original_sha256": "7a88aef5fb074129026d504b5a6e76ab59d90137bc5bb9c29f382744792deaf6",
+      "public_sha256": "7a88aef5fb074129026d504b5a6e76ab59d90137bc5bb9c29f382744792deaf6"
+    },
+    {
+      "file": "evidence/browser-baseline-receipt.redacted.json",
+      "original_sha256": "e43fd92c34d5bd332cb5197beaccaf2cf8244aafda435fb577f0e7b39fc0859b",
+      "public_sha256": "46a360c18bc0428e8be7064ede5e41f27eb1b54a1d122e5efdc0213e0635b017",
+      "original_source": "browser machine receipt; identical to stdout"
+    },
+    {
+      "file": "evidence/browser-candidate-receipt.redacted.json",
+      "original_sha256": "616aa5519d3215b16adb18a983fe4c95eecbd8b1bfd033ffb7162e31b385eef7",
+      "public_sha256": "a63544925dada36cb9eb4f50f68f510db90234c00fd58275c3be57fcda0c82fa",
+      "original_source": "browser machine receipt; identical to stdout"
+    }
+  ]
+}

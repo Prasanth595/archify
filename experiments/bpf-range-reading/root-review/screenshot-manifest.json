@@ -1,0 +1,75 @@
+{
+  "kind": "actual Ego screenshots; no image generation or compositing",
+  "product_base": "500d4a65211ffe607fde6b3ce7505027b45bb59e",
+  "prepublication_local_content_commit": "12f3c1858bf75f5e3822dd1a4f46102cd719cb46",
+  "prepublication_local_browser_metadata_commit": "3194a54434333072a50a797c5933807e7b4a6b6f",
+  "identity_note": "Local prepublication commits are retained locally only; publication squashes them to avoid publishing unredacted local paths. HTML bytes are unchanged.",
+  "artifacts": {
+    "baseline": {
+      "sha256": "52701f3011450eea283827f2284328a28a174d34532ebdabb2c30a3f034be46b",
+      "bytes": 158004
+    },
+    "candidate": {
+      "sha256": "c9ffd60d394fbf15bfdab9b8231cc360eec58221387d06722a478c93d6fb91de",
+      "bytes": 168195
+    }
+  },
+  "screenshots": [
+    {
+      "file": "baseline-evidence-light.png",
+      "sha256": "0835fc1faaea68d0beea131ccfd4e5311a244884c8d787e5a4a1f722966ef0fd",
+      "bytes": 163791,
+      "width": 1440,
+      "height": 900,
+      "inspected_by": "Codex root, actual pixels"
+    },
+    {
+      "file": "baseline-mobile-dark.png",
+      "sha256": "b8b31f562306263f02d1d3cc0b1f34047132e7b9973fe862356b554b80d95a96",
+      "bytes": 104823,
+      "width": 390,
+      "height": 844,
+      "inspected_by": "Codex root, actual pixels"
+    },
+    {
+      "file": "baseline-overview-light.png",
+      "sha256": "4a2de5f95a3d4d7f7122f0104440cada4d12fd1a19181169fa687d806282f458",
+      "bytes": 141195,
+      "width": 1440,
+      "height": 900,
+      "inspected_by": "Codex root, actual pixels"
+    },
+    {
+      "file": "candidate-compare-dark.png",
+      "sha256": "a4af2ac17b16bcdc85a5e7c0fba2b881a0d7da1f6257e9b9296d23f0e7acfa07",
+      "bytes": 155515,
+      "width": 1440,
+      "height": 900,
+      "inspected_by": "Codex root, actual pixels"
+    },
+    {
+      "file": "candidate-compare-light.png",
+      "sha256": "a4740bfc26ff92cef85f40a555ce706eb660014a9dc510487146d3f89caabc06",
+      "bytes": 157591,
+      "width": 1440,
+      "height": 900,
+      "inspected_by": "Codex root, actual pixels"
+    },
+    {
+      "file": "candidate-mobile-dark.png",
+      "sha256": "e49eda7c50649f3844df7a09f391695d54e79b8b810db2a992162ac71bf7c210",
+      "bytes": 75640,
+      "width": 390,
+      "height": 844,
+      "inspected_by": "Codex root, actual pixels"
+    },
+    {
+      "file": "candidate-source-mobile-scrolled.png",
+      "sha256": "cb00e8f792feb1f6dd074b9f9bb1ecd687cf593a2fbfd3973a5d4886fb19524e",
+      "bytes": 27709,
+      "width": 390,
+      "height": 844,
+      "inspected_by": "Codex root, actual pixels"
+    }
+  ]
+}

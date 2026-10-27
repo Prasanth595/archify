@@ -1,0 +1,134 @@
+{
+  "source_revision": "500d4a65211ffe607fde6b3ce7505027b45bb59e",
+  "artifact_commit": "12f3c1858bf75f5e3822dd1a4f46102cd719cb46",
+  "node": "v26.12.0",
+  "archify": "3.2.1-dev.1",
+  "chrome": "156.0.8078.48",
+  "visual_review": "not-requested",
+  "runs": {
+    "baseline": {
+      "command": "node archify/bin/archify.mjs browser-check experiments/bpf-range-reading/baseline.html --json --require-provenance --out-dir /tmp/archify-bpf-browser-baseline",
+      "exit": 0,
+      "stdout": "/tmp/archify-bpf-browser-baseline/stdout.json",
+      "receipt": "/tmp/archify-bpf-browser-baseline/baseline.browser-check.json",
+      "stderr": "/tmp/archify-bpf-browser-baseline/stderr.txt",
+      "raw_sha256": "e43fd92c34d5bd332cb5197beaccaf2cf8244aafda435fb577f0e7b39fc0859b",
+      "html_sha256_before_and_after": "52701f3011450eea283827f2284328a28a174d34532ebdabb2c30a3f034be46b",
+      "status": "pass",
+      "provenance": "current",
+      "diagnostics": [],
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 900,
+          "theme": "light",
+          "keyboard": {
+            "count": 21,
+            "reached": 21,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "theme": "light",
+          "keyboard": {
+            "count": 21,
+            "reached": 21,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        },
+        {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark",
+          "keyboard": {
+            "count": 21,
+            "reached": 21,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark",
+          "keyboard": {
+            "count": 21,
+            "reached": 21,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        }
+      ]
+    },
+    "candidate": {
+      "command": "node archify/bin/archify.mjs browser-check experiments/bpf-range-reading/candidate.html --json --require-provenance --out-dir /tmp/archify-bpf-browser-candidate",
+      "exit": 0,
+      "stdout": "/tmp/archify-bpf-browser-candidate/stdout.json",
+      "receipt": "/tmp/archify-bpf-browser-candidate/candidate.browser-check.json",
+      "stderr": "/tmp/archify-bpf-browser-candidate/stderr.txt",
+      "raw_sha256": "616aa5519d3215b16adb18a983fe4c95eecbd8b1bfd033ffb7162e31b385eef7",
+      "html_sha256_before_and_after": "c9ffd60d394fbf15bfdab9b8231cc360eec58221387d06722a478c93d6fb91de",
+      "status": "pass",
+      "provenance": "current",
+      "diagnostics": [],
+      "viewports": [
+        {
+          "width": 1280,
+          "height": 900,
+          "theme": "light",
+          "keyboard": {
+            "count": 23,
+            "reached": 23,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "theme": "light",
+          "keyboard": {
+            "count": 23,
+            "reached": 23,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        },
+        {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark",
+          "keyboard": {
+            "count": 23,
+            "reached": 23,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark",
+          "keyboard": {
+            "count": 23,
+            "reached": 23,
+            "missing": [],
+            "ok": true
+          },
+          "keyboardIssues": []
+        }
+      ]
+    }
+  }
+}
