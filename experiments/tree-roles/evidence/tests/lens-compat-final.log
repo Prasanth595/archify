@@ -1,0 +1,21 @@
+✔ Tree branches collapse in place, follow the keyboard, reveal selections, and export complete (4310.304083ms)
+✔ tree: small example renders and passes the showcase artifact checks (259.54975ms)
+✔ tree: small layout keeps generations aligned and nodes apart (123.878792ms)
+✔ tree: large example renders and passes the showcase artifact checks (287.974125ms)
+✔ tree: large layout keeps generations aligned and nodes apart (128.135625ms)
+✔ tree: an unbalanced tree places a parent over its own children only (123.615458ms)
+✔ tree: three or more sibling leaves going down become one stacked list (248.173458ms)
+✔ tree: every descendant and link carries its ancestors, and toggles count what they hide (141.224792ms)
+✔ tree: authored collapsed state is a Viewer default, not a removal from the SVG (148.4065ms)
+✔ tree: long labels wrap between words instead of overflowing (129.576042ms)
+✔ tree: structural errors are refused instead of inventing a hierarchy (632.0985ms)
+✔ tree: semantic kinds describe containment roles while paint and topology stay intact (393.7385ms)
+✔ tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence (311.644542ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4428.87825

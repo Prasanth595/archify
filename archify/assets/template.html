@@ -1314,6 +1314,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       cursor: pointer;
       transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
     }
+    .overview-map-node[data-kind="tree-root"],
     .overview-map-node[data-kind="frontend"],
     .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
     .overview-map-node[data-kind="database"],
@@ -1324,6 +1325,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     .overview-map-node[data-kind="security"],
     .overview-map-node[data-kind="decision"],
     .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
+    .overview-map-node[data-kind="tree-leaf"],
     .overview-map-node[data-kind="external"],
     .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
     .overview-map-node[data-radar-active="true"],
@@ -1479,8 +1481,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
     }
     html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
+    .semantic-lens-kind[data-kind="tree-root"],
     .semantic-lens-kind[data-kind="frontend"],
     .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
+    .semantic-lens-kind[data-kind="tree-branch"],
     .semantic-lens-kind[data-kind="backend"],
     .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
     .semantic-lens-kind[data-kind="database"],
@@ -5833,7 +5837,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
     function viewerKindLabel(value) {
       var normalized = String(value || 'node').toLowerCase();
-      var knownKey = 'viewer.kind.' + normalized;
+      var knownKey = 'viewer.kind.' + normalized.replace(/^tree-(root|branch|leaf)$/, 'tree.$1');
       var known = viewerText(knownKey);
       if (known !== knownKey) return known;
       return normalized
@@ -14969,7 +14973,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             return;
           }
           var available = collectKinds().map(function (kind) { return kind.id; });
-          var requested = value.split('~').filter(function (kind, index, list) {
+          // Older Tree links used paint names for these same structural groups.
+          var legacyTreeKinds = { frontend: 'tree-root', backend: 'tree-branch', external: 'tree-leaf' };
+          var requested = value.split('~').map(function (kind) {
+            return svg.hasAttribute('data-tree-ui') ? (legacyTreeKinds[kind] || kind) : kind;
+          }).filter(function (kind, index, list) {
             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
           }).slice(0, 2);
           if (!requested.length) return;

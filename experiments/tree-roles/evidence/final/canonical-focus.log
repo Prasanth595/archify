@@ -1,0 +1,491 @@
+TAP version 13
+# Subtest: zh-CN localizes renderer-owned output across all five modes without translating authored content
+ok 1 - zh-CN localizes renderer-owned output across all five modes without translating authored content
+  ---
+  duration_ms: 1208.252916
+  type: 'test'
+  ...
+# Subtest: explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+ok 2 - explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+  ---
+  duration_ms: 5420.245333
+  type: 'test'
+  ...
+# Subtest: omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+ok 3 - omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+  ---
+  duration_ms: 1085.256083
+  type: 'test'
+  ...
+# Subtest: checked-in Korean fixture validates and delivers a ko architecture artifact
+ok 4 - checked-in Korean fixture validates and delivers a ko architecture artifact
+  ---
+  duration_ms: 736.563833
+  type: 'test'
+  ...
+# Subtest: checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+ok 5 - checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+  ---
+  duration_ms: 664.164208
+  type: 'test'
+  ...
+# Subtest: malformed locale tags fail schema validation in every mode
+ok 6 - malformed locale tags fail schema validation in every mode
+  ---
+  duration_ms: 872.595083
+  type: 'test'
+  ...
+# Subtest: a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+ok 7 - a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+  ---
+  duration_ms: 4651.599958
+  type: 'test'
+  ...
+# Subtest: a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+ok 8 - a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+  ---
+  duration_ms: 1016.486792
+  type: 'test'
+  ...
+# Subtest: translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+ok 9 - translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+  ---
+  duration_ms: 192.910541
+  type: 'test'
+  ...
+# Subtest: bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+ok 10 - bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+  ---
+  duration_ms: 6034.657541
+  type: 'test'
+  ...
+# Subtest: a partial override replaces only its keys and keeps the rest of the selected bundled language
+ok 11 - a partial override replaces only its keys and keeps the rest of the selected bundled language
+  ---
+  duration_ms: 1013.91725
+  type: 'test'
+  ...
+# Subtest: empty translations and equivalent tag casing select the same bundled catalog
+ok 12 - empty translations and equivalent tag casing select the same bundled catalog
+  ---
+  duration_ms: 3378.539625
+  type: 'test'
+  ...
+# Subtest: rejected overrides keep the bundled message and are reported apart from English fallback gaps
+ok 13 - rejected overrides keep the bundled message and are reported apart from English fallback gaps
+  ---
+  duration_ms: 182.854958
+  type: 'test'
+  ...
+# Subtest: an unbundled tag with only unusable translations falls back to English UI and language metadata
+ok 14 - an unbundled tag with only unusable translations falls back to English UI and language metadata
+  ---
+  duration_ms: 181.750125
+  type: 'test'
+  ...
+# Subtest: coverage reports the final resolved catalog with the English source of each gap
+ok 15 - coverage reports the final resolved catalog with the English source of each gap
+  ---
+  duration_ms: 2.296041
+  type: 'test'
+  ...
+# Subtest: a document override never mutates the reusable bundled catalog
+ok 16 - a document override never mutates the reusable bundled catalog
+  ---
+  duration_ms: 0.560583
+  type: 'test'
+  ...
+# Subtest: validate and deliver receipts carry locale warnings as structured diagnostics without failing
+ok 17 - validate and deliver receipts carry locale warnings as structured diagnostics without failing
+  ---
+  duration_ms: 1912.201625
+  type: 'test'
+  ...
+# Subtest: the manifest enrolls exactly the bundled catalogs, and each is complete
+ok 18 - the manifest enrolls exactly the bundled catalogs, and each is complete
+  ---
+  duration_ms: 6.244166
+  type: 'test'
+  ...
+# Subtest: enrolling a catalog is a data-only change and works from an unrelated working directory
+ok 19 - enrolling a catalog is a data-only change and works from an unrelated working directory
+  ---
+  duration_ms: 502.959667
+  type: 'test'
+  ...
+# Subtest: every Viewer message reference resolves through the shared catalog
+ok 20 - every Viewer message reference resolves through the shared catalog
+  ---
+  duration_ms: 2.406959
+  type: 'test'
+  ...
+# Subtest: every supported catalog is complete and preserves interpolation variables
+ok 21 - every supported catalog is complete and preserves interpolation variables
+  ---
+  duration_ms: 7.727167
+  type: 'test'
+  ...
+# Subtest: the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+ok 22 - the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+  ---
+  duration_ms: 0.594333
+  type: 'test'
+  ...
+# Subtest: the checked-in fr example catalog validates reusable translations and discloses historical gaps
+ok 23 - the checked-in fr example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 1.122666
+  type: 'test'
+  ...
+# Subtest: fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 24 - fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 200.168291
+  type: 'test'
+  ...
+# Subtest: the checked-in pt example catalog validates reusable translations and discloses historical gaps
+ok 25 - the checked-in pt example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.856917
+  type: 'test'
+  ...
+# Subtest: pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 26 - pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 186.519834
+  type: 'test'
+  ...
+# Subtest: the checked-in ja example catalog validates reusable translations and discloses historical gaps
+ok 27 - the checked-in ja example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.875667
+  type: 'test'
+  ...
+# Subtest: ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 28 - ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 187.342209
+  type: 'test'
+  ...
+# Subtest: the checked-in de example catalog validates reusable translations and discloses historical gaps
+ok 29 - the checked-in de example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.818333
+  type: 'test'
+  ...
+# Subtest: de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 30 - de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 186.678625
+  type: 'test'
+  ...
+# Subtest: the checked-in it example catalog validates reusable translations and discloses historical gaps
+ok 31 - the checked-in it example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.858708
+  type: 'test'
+  ...
+# Subtest: it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 32 - it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 193.397875
+  type: 'test'
+  ...
+# Subtest: the checked-in ru example catalog validates reusable translations and discloses historical gaps
+ok 33 - the checked-in ru example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 1.005042
+  type: 'test'
+  ...
+# Subtest: ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 34 - ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 221.647083
+  type: 'test'
+  ...
+# Subtest: runtime labels stay localized after composition
+ok 35 - runtime labels stay localized after composition
+  ---
+  duration_ms: 0.222333
+  type: 'test'
+  ...
+# Subtest: Share Card and export failures use catalog messages instead of fixed English
+ok 36 - Share Card and export failures use catalog messages instead of fixed English
+  ---
+  duration_ms: 2.808875
+  type: 'test'
+  ...
+# Subtest: Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+ok 37 - Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+  ---
+  duration_ms: 0.653166
+  type: 'test'
+  ...
+# Subtest: tree: shared Viewer translation overrides work through the public CLI
+ok 38 - tree: shared Viewer translation overrides work through the public CLI
+  ---
+  duration_ms: 786.053334
+  type: 'test'
+  ...
+# Subtest: class: shared Viewer translation overrides work through the public CLI
+ok 39 - class: shared Viewer translation overrides work through the public CLI
+  ---
+  duration_ms: 920.414958
+  type: 'test'
+  ...
+# Subtest: timeline: shared Viewer translation overrides work through the public CLI
+ok 40 - timeline: shared Viewer translation overrides work through the public CLI
+  ---
+  duration_ms: 1225.44975
+  type: 'test'
+  ...
+# Subtest: waterfall: shared Viewer translation overrides work through the public CLI
+ok 41 - waterfall: shared Viewer translation overrides work through the public CLI
+  ---
+  duration_ms: 1558.12975
+  type: 'test'
+  ...
+# Subtest: Semantic Lens preserves selection, legend preview and panel contracts
+    # Subtest: five modes and optional legend initialization preserve counts, roles and embed boundaries
+    ok 1 - five modes and optional legend initialization preserve counts, roles and embed boundaries
+      ---
+      duration_ms: 2001.630625
+      type: 'test'
+      ...
+    # Subtest: trusted buttons, selection transitions, return values and three cleanup operations stay distinct
+    ok 2 - trusted buttons, selection transitions, return values and three cleanup operations stay distinct
+      ---
+      duration_ms: 629.536625
+      type: 'test'
+      ...
+    # Subtest: native legend focus, pointer transitions, keyboard activation and opener restoration
+    ok 3 - native legend focus, pointer transitions, keyboard activation and opener restoration
+      ---
+      duration_ms: 818.155334
+      type: 'test'
+      ...
+    # Subtest: minimal SVG fixtures preserve node indexing, grouped directions, first-member geometry and 24/25 threshold
+    ok 4 - minimal SVG fixtures preserve node indexing, grouped directions, first-member geometry and 24/25 threshold
+      ---
+      duration_ms: 177.928167
+      type: 'test'
+      ...
+    # Subtest: initial URL, hashchange and controlled clipboard boundaries retain normalization and feedback
+    ok 5 - initial URL, hashchange and controlled clipboard boundaries retain normalization and feedback
+      ---
+      duration_ms: 8254.517292
+      type: 'test'
+      ...
+    # Subtest: actual capability handoffs and blocked previews preserve existing ownership
+    ok 6 - actual capability handoffs and blocked previews preserve existing ownership
+      ---
+      duration_ms: 601.33625
+      type: 'test'
+      ...
+    # Subtest: panel events, pending frames and controlled docking geometry preserve responsive branches
+    ok 7 - panel events, pending frames and controlled docking geometry preserve responsive branches
+      ---
+      duration_ms: 730.013167
+      type: 'test'
+      ...
+    # Subtest: themes, reduced motion, Still and real SVG export retain selection and preview rendering
+    ok 8 - themes, reduced motion, Still and real SVG export retain selection and preview rendering
+      ---
+      duration_ms: 2202.180042
+      type: 'test'
+      ...
+    1..8
+ok 42 - Semantic Lens preserves selection, legend preview and panel contracts
+  ---
+  duration_ms: 17323.154041
+  type: 'test'
+  ...
+# Subtest: all typed renderers emit details-on-demand metadata and native SVG titles
+ok 43 - all typed renderers emit details-on-demand metadata and native SVG titles
+  ---
+  duration_ms: 944.361375
+  type: 'test'
+  ...
+# Subtest: renderer-owned structure supplies truthful Semantic Passport context
+ok 44 - renderer-owned structure supplies truthful Semantic Passport context
+  ---
+  duration_ms: 1417.296833
+  type: 'test'
+  ...
+# Subtest: Relationship Lens renders one Semantic Passport and copyable stable focus link
+ok 45 - Relationship Lens renders one Semantic Passport and copyable stable focus link
+  ---
+  duration_ms: 724.622916
+  type: 'test'
+  ...
+# Subtest: semantic passport computes and applies target top synchronously on open and switch without a 1-frame snap
+ok 46 - semantic passport computes and applies target top synchronously on open and switch without a 1-frame snap
+  ---
+  duration_ms: 1958.31325
+  type: 'test'
+  ...
+# Subtest: Semantic Passport exposes one localized, bounded move affordance outside canonical export
+ok 47 - Semantic Passport exposes one localized, bounded move affordance outside canonical export
+  ---
+  duration_ms: 310.691833
+  type: 'test'
+  ...
+# Subtest: Node Finder searches and presents the same passport facts
+ok 48 - Node Finder searches and presents the same passport facts
+  ---
+  duration_ms: 191.250875
+  type: 'test'
+  ...
+# Subtest: all typed renderers inherit one viewer-only Semantic Radar
+ok 49 - all typed renderers inherit one viewer-only Semantic Radar
+  ---
+  duration_ms: 912.9905
+  type: 'test'
+  ...
+# Subtest: Semantic Radar derives semantic node bounds and focuses stable IDs
+ok 50 - Semantic Radar derives semantic node bounds and focuses stable IDs
+  ---
+  duration_ms: 307.250875
+  type: 'test'
+  ...
+# Subtest: Semantic Radar tracks desktop camera and mobile contained scroll
+ok 51 - Semantic Radar tracks desktop camera and mobile contained scroll
+  ---
+  duration_ms: 227.7985
+  type: 'test'
+  ...
+# Subtest: Semantic Radar keeps redundant accessible navigation and clean exports
+ok 52 - Semantic Radar keeps redundant accessible navigation and clean exports
+  ---
+  duration_ms: 231.853
+  type: 'test'
+  ...
+# Subtest: Semantic Radar stays above the measured MAP control strip
+ok 53 - Semantic Radar stays above the measured MAP control strip
+  ---
+  duration_ms: 1613.704
+  type: 'test'
+  ...
+# Subtest: Semantic Radar avoids an expanded mobile Passport without hiding a collision
+ok 54 - Semantic Radar avoids an expanded mobile Passport without hiding a collision
+  ---
+  duration_ms: 2135.426834
+  type: 'test'
+  ...
+# Subtest: Semantic Radar reports a consistent unavailable state and recovers when space returns
+ok 55 - Semantic Radar reports a consistent unavailable state and recovers when space returns
+  ---
+  duration_ms: 1370.452584
+  type: 'test'
+  ...
+# Subtest: Semantic Radar automatically avoids a tall Semantic Passport
+ok 56 - Semantic Radar automatically avoids a tall Semantic Passport
+  ---
+  duration_ms: 915.211875
+  type: 'test'
+  ...
+# Subtest: Semantic Radar titlebar drag persists while surface drag still pans the diagram
+ok 57 - Semantic Radar titlebar drag persists while surface drag still pans the diagram
+  ---
+  duration_ms: 1208.461
+  type: 'test'
+  ...
+# Subtest: closing a pending Radar request prevents retry and reflow from reopening it
+ok 58 - closing a pending Radar request prevents retry and reflow from reopening it
+  ---
+  duration_ms: 1315.845166
+  type: 'test'
+  ...
+# Subtest: Radar reflects camera viewport, status and Focus activity through normal callers
+ok 59 - Radar reflects camera viewport, status and Focus activity through normal callers
+  ---
+  duration_ms: 3295.586959
+  type: 'test'
+  ...
+# Subtest: Tree branches collapse in place, follow the keyboard, reveal selections, and export complete
+ok 60 - Tree branches collapse in place, follow the keyboard, reveal selections, and export complete
+  ---
+  duration_ms: 5533.620417
+  type: 'test'
+  ...
+# Subtest: tree: small example renders and passes the showcase artifact checks
+ok 61 - tree: small example renders and passes the showcase artifact checks
+  ---
+  duration_ms: 228.117416
+  type: 'test'
+  ...
+# Subtest: tree: small layout keeps generations aligned and nodes apart
+ok 62 - tree: small layout keeps generations aligned and nodes apart
+  ---
+  duration_ms: 106.459292
+  type: 'test'
+  ...
+# Subtest: tree: large example renders and passes the showcase artifact checks
+ok 63 - tree: large example renders and passes the showcase artifact checks
+  ---
+  duration_ms: 301.388667
+  type: 'test'
+  ...
+# Subtest: tree: large layout keeps generations aligned and nodes apart
+ok 64 - tree: large layout keeps generations aligned and nodes apart
+  ---
+  duration_ms: 104.358125
+  type: 'test'
+  ...
+# Subtest: tree: an unbalanced tree places a parent over its own children only
+ok 65 - tree: an unbalanced tree places a parent over its own children only
+  ---
+  duration_ms: 106.698
+  type: 'test'
+  ...
+# Subtest: tree: three or more sibling leaves going down become one stacked list
+ok 66 - tree: three or more sibling leaves going down become one stacked list
+  ---
+  duration_ms: 212.484875
+  type: 'test'
+  ...
+# Subtest: tree: every descendant and link carries its ancestors, and toggles count what they hide
+ok 67 - tree: every descendant and link carries its ancestors, and toggles count what they hide
+  ---
+  duration_ms: 172.900834
+  type: 'test'
+  ...
+# Subtest: tree: authored collapsed state is a Viewer default, not a removal from the SVG
+ok 68 - tree: authored collapsed state is a Viewer default, not a removal from the SVG
+  ---
+  duration_ms: 158.482167
+  type: 'test'
+  ...
+# Subtest: tree: long labels wrap between words instead of overflowing
+ok 69 - tree: long labels wrap between words instead of overflowing
+  ---
+  duration_ms: 169.241958
+  type: 'test'
+  ...
+# Subtest: tree: structural errors are refused instead of inventing a hierarchy
+ok 70 - tree: structural errors are refused instead of inventing a hierarchy
+  ---
+  duration_ms: 713.001083
+  type: 'test'
+  ...
+# Subtest: tree: semantic kinds describe containment roles while paint and topology stay intact
+ok 71 - tree: semantic kinds describe containment roles while paint and topology stay intact
+  ---
+  duration_ms: 730.454375
+  type: 'test'
+  ...
+# Subtest: tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence
+ok 72 - tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence
+  ---
+  duration_ms: 439.695708
+  type: 'test'
+  ...
+1..72
+# tests 80
+# suites 0
+# pass 80
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30407.936333

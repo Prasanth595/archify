@@ -1,0 +1,13 @@
+{
+  "recordedAtUtc": "2026-10-27T16:09:12.276645+00:00",
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "source": "archify/examples/archify-repository.tree.json",
+  "sourceEdits": [
+    "meta.locale=zh-CN",
+    "meta.output=repository.html"
+  ],
+  "comparison": "Same authored JSON, source-backed existing selected repository containment. Structural kind/UI wording correction only; no fresh-author speed claim.",
+  "generationBenchmark": "Bounded same-input metadata/wording change; use shipped repository example plus regression contrasts, not fresh-generation cohort.",
+  "attemptBudget": "Two repair rounds after first implementation; actual desktop/narrow UI and independent review.",
+  "prPolicy": "Remote branch only; no PR, merge, release, deployment or installation."
+}

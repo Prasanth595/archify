@@ -1,0 +1,22 @@
+{
+  "ok": false,
+  "command": "story",
+  "action": "inspect",
+  "diagnostics": [
+    {
+      "code": "story/invalid-input",
+      "severity": "error",
+      "message": "Use story scan <native.html>, story draft <native.html> <brief.json>, or story attach <native.html> <brief.json> <enhanced.html>.",
+      "subject": {
+        "action": "inspect",
+        "input": "<USER_HOME>/.codex/worktrees/lab-tree-roles/archify/experiments/tree-roles/candidate/repository.html"
+      },
+      "evidence": {
+        "reason": "Use story scan <native.html>, story draft <native.html> <brief.json>, or story attach <native.html> <brief.json> <enhanced.html>."
+      },
+      "supportedFixes": [
+        "Use the original native Archify HTML, valid source IDs and a distinct output path; read references/story-authoring.md."
+      ]
+    }
+  ]
+}

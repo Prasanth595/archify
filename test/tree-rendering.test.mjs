@@ -1,4 +1,5 @@
 import { test } from 'node:test';
+import { scanStory } from '../archify/story/tool.mjs';
 import { createScratchDirectory } from './helpers/scratch-directory.mjs';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
@@ -147,4 +148,48 @@ test('tree: structural errors are refused instead of inventing a hierarchy', () 
   assert.match(cycle, /tree\/cycle/);
   assert.match(cycle, /"orders" -> "create_order" -> "orders"|"create_order" -> "orders" -> "create_order"/);
   assert.match(failure((d) => { d.nodes[5].id = d.nodes[4].id; }), /tree\/duplicate-id/);
+});
+
+
+test('tree: semantic kinds describe containment roles while paint and topology stay intact', () => {
+  const result = run(small);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  for (const [id, role, tone] of [['platform', 'root', 'frontend'], ['payments', 'branch', 'backend'], ['card_payment', 'leaf', 'external']]) {
+    assert.match(html, new RegExp(`data-node-id="${id}"[^>]*data-node-kind="tree-${role}"`));
+    assert.match(html, new RegExp(`class="c-${tone} tree-${role}"`));
+  }
+  assert.match(html, /data-edge-from="payments" data-edge-to="card_payment"/);
+  assert.match(html, /Compare hierarchy roles/);
+  assert.deepEqual(scanStory(result.output).nodes.filter(node => ['platform', 'payments', 'card_payment'].includes(node.id)).map(node => node.kind), ['tree-root', 'tree-branch', 'tree-leaf']);
+  const singleton = clone(small);
+  singleton.nodes = [{ id: 'only', label: 'Only' }];
+  const single = run(singleton);
+  assert.equal(single.status, 0, single.stderr);
+  assert.match(fs.readFileSync(single.output, 'utf8'), /data-node-id="only"[^>]*data-node-kind="tree-root"/);
+});
+
+
+test('tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence', () => {
+  const legacy = {
+    'viewer.lens.title': 'Authored Lens title',
+    'viewer.lens.instruction': 'Authored Lens instruction',
+    'viewer.guide.lens.hint': 'Authored Lens guide',
+  };
+  for (const preferred of [false, true]) {
+    const diagram = clone(small);
+    const expected = ['title', 'instruction', 'guide'].map(part => `${preferred ? 'Preferred' : 'Authored'} Lens ${part}`);
+    diagram.meta.locale = 'en';
+    diagram.meta.translations = { ...legacy, ...(preferred ? {
+      'viewer.tree.lens.title': expected[0],
+      'viewer.tree.lens.instruction': expected[1],
+      'viewer.tree.guide.lens.hint': expected[2],
+    } : {}) };
+    const result = run(diagram);
+    assert.equal(result.status, 0, result.stderr);
+    const html = fs.readFileSync(result.output, 'utf8');
+    assert.equal(html.match(/id="semantic-lens-title">([^<]+)/)?.[1], expected[0]);
+    assert.equal(html.match(/class="semantic-lens-instruction">([^<]+)/)?.[1], expected[1]);
+    assert.ok(html.includes(`<small>${expected[2]}</small>`));
+  }
 });

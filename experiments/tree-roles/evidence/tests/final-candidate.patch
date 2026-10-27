@@ -1,0 +1,533 @@
+diff --git a/archify/assets/template.html b/archify/assets/template.html
+index f44341a9..3647e2e1 100644
+--- a/archify/assets/template.html
++++ b/archify/assets/template.html
+@@ -1314,6 +1314,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+       cursor: pointer;
+       transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
+     }
++    .overview-map-node[data-kind="tree-root"],
+     .overview-map-node[data-kind="frontend"],
+     .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
+     .overview-map-node[data-kind="database"],
+@@ -1324,6 +1325,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+     .overview-map-node[data-kind="security"],
+     .overview-map-node[data-kind="decision"],
+     .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
++    .overview-map-node[data-kind="tree-leaf"],
+     .overview-map-node[data-kind="external"],
+     .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
+     .overview-map-node[data-radar-active="true"],
+@@ -1479,8 +1481,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+       transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
+     }
+     html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
++    .semantic-lens-kind[data-kind="tree-root"],
+     .semantic-lens-kind[data-kind="frontend"],
+     .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
++    .semantic-lens-kind[data-kind="tree-branch"],
+     .semantic-lens-kind[data-kind="backend"],
+     .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
+     .semantic-lens-kind[data-kind="database"],
+@@ -5833,7 +5837,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+ 
+     function viewerKindLabel(value) {
+       var normalized = String(value || 'node').toLowerCase();
+-      var knownKey = 'viewer.kind.' + normalized;
++      var knownKey = 'viewer.kind.' + normalized.replace(/^tree-(root|branch|leaf)$/, 'tree.$1');
+       var known = viewerText(knownKey);
+       if (known !== knownKey) return known;
+       return normalized
+@@ -14969,7 +14973,11 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+             return;
+           }
+           var available = collectKinds().map(function (kind) { return kind.id; });
+-          var requested = value.split('~').filter(function (kind, index, list) {
++          // Older Tree links used paint names for these same structural groups.
++          var legacyTreeKinds = { frontend: 'tree-root', backend: 'tree-branch', external: 'tree-leaf' };
++          var requested = value.split('~').map(function (kind) {
++            return svg.hasAttribute('data-tree-ui') ? (legacyTreeKinds[kind] || kind) : kind;
++          }).filter(function (kind, index, list) {
+             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
+           }).slice(0, 2);
+           if (!requested.length) return;
+diff --git a/archify/examples/locales/de.json b/archify/examples/locales/de.json
+index 7fdebf22..66e0c86f 100644
+--- a/archify/examples/locales/de.json
++++ b/archify/examples/locales/de.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "neutral",
+   "legend.lifecycle.external": "extern",
+   "legend.lifecycle.final": "Endzustand",
++  "viewer.kind.tree.root": "Wurzel",
++  "viewer.kind.tree.branch": "Zweig",
++  "viewer.kind.tree.leaf": "Blatt",
++  "viewer.tree.lens.title": "Hierarchierollen vergleichen",
++  "viewer.tree.lens.instruction": "Wählen Sie bis zu zwei Hierarchierollen. Eine zeigt ihre Eltern-Kind-Beziehungen; zwei vergleichen nur direkte Verbindungen zwischen den gewählten Rollen.",
++  "viewer.tree.guide.lens.hint": "Hierarchierollen zählen und direkte Eltern-Kind-Beziehungen vergleichen.",
+   "viewer.kind.frontend": "Frontend",
+   "viewer.kind.backend": "Backend",
+   "viewer.kind.database": "Datenbank",
+diff --git a/archify/examples/locales/fr.json b/archify/examples/locales/fr.json
+index f2ff1aa1..d0a4abdb 100644
+--- a/archify/examples/locales/fr.json
++++ b/archify/examples/locales/fr.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "neutre",
+   "legend.lifecycle.external": "externe",
+   "legend.lifecycle.final": "état final",
++  "viewer.kind.tree.root": "Racine",
++  "viewer.kind.tree.branch": "Branche",
++  "viewer.kind.tree.leaf": "Feuille",
++  "viewer.tree.lens.title": "Comparer les rôles hiérarchiques",
++  "viewer.tree.lens.instruction": "Choisissez au plus deux rôles hiérarchiques. Un rôle montre ses liens de contenance ; deux comparent uniquement les liens directs parent-enfant.",
++  "viewer.tree.guide.lens.hint": "Comptez les rôles hiérarchiques et comparez les liens directs parent-enfant.",
+   "viewer.kind.frontend": "Frontend",
+   "viewer.kind.backend": "Backend",
+   "viewer.kind.database": "Base de données",
+diff --git a/archify/examples/locales/it.json b/archify/examples/locales/it.json
+index 57df42ad..f3b2c4d7 100644
+--- a/archify/examples/locales/it.json
++++ b/archify/examples/locales/it.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "neutro",
+   "legend.lifecycle.external": "esterno",
+   "legend.lifecycle.final": "stato finale",
++  "viewer.kind.tree.root": "Radice",
++  "viewer.kind.tree.branch": "Ramo",
++  "viewer.kind.tree.leaf": "Foglia",
++  "viewer.tree.lens.title": "Confronta i ruoli gerarchici",
++  "viewer.tree.lens.instruction": "Scegli fino a due ruoli gerarchici. Uno mostra i suoi collegamenti di contenimento; due confrontano solo i collegamenti diretti tra genitori e figli.",
++  "viewer.tree.guide.lens.hint": "Conta i ruoli gerarchici e confronta i collegamenti diretti tra genitori e figli.",
+   "viewer.kind.frontend": "Frontend",
+   "viewer.kind.backend": "Backend",
+   "viewer.kind.database": "Database",
+diff --git a/archify/examples/locales/ja.json b/archify/examples/locales/ja.json
+index d49ce3a2..17ce8b0e 100644
+--- a/archify/examples/locales/ja.json
++++ b/archify/examples/locales/ja.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "中立",
+   "legend.lifecycle.external": "外部",
+   "legend.lifecycle.final": "終了状態",
++  "viewer.kind.tree.root": "ルート",
++  "viewer.kind.tree.branch": "ブランチ",
++  "viewer.kind.tree.leaf": "リーフ",
++  "viewer.tree.lens.title": "階層の役割を比較",
++  "viewer.tree.lens.instruction": "階層の役割を最大2つ選択します。1つ選ぶと包含関係を表示し、2つ選ぶと直接の親子関係のみを比較します。",
++  "viewer.tree.guide.lens.hint": "階層の役割を集計し、直接の親子関係を比較します。",
+   "viewer.kind.frontend": "フロントエンド",
+   "viewer.kind.backend": "バックエンド",
+   "viewer.kind.database": "データベース",
+diff --git a/archify/examples/locales/pt.json b/archify/examples/locales/pt.json
+index 166c3089..8cc68f13 100644
+--- a/archify/examples/locales/pt.json
++++ b/archify/examples/locales/pt.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "neutro",
+   "legend.lifecycle.external": "externo",
+   "legend.lifecycle.final": "estado final",
++  "viewer.kind.tree.root": "Raiz",
++  "viewer.kind.tree.branch": "Ramo",
++  "viewer.kind.tree.leaf": "Folha",
++  "viewer.tree.lens.title": "Comparar papéis hierárquicos",
++  "viewer.tree.lens.instruction": "Escolha até dois papéis hierárquicos. Um revela seus vínculos de contenção; dois comparam apenas vínculos diretos entre pais e filhos.",
++  "viewer.tree.guide.lens.hint": "Conte papéis hierárquicos e compare vínculos diretos entre pais e filhos.",
+   "viewer.kind.frontend": "Frontend",
+   "viewer.kind.backend": "Backend",
+   "viewer.kind.database": "Banco de dados",
+diff --git a/archify/examples/locales/ru.json b/archify/examples/locales/ru.json
+index 8fab5fff..3d47653b 100644
+--- a/archify/examples/locales/ru.json
++++ b/archify/examples/locales/ru.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "нейтральное",
+   "legend.lifecycle.external": "внешнее",
+   "legend.lifecycle.final": "конечное состояние",
++  "viewer.kind.tree.root": "Корень",
++  "viewer.kind.tree.branch": "Ветвь",
++  "viewer.kind.tree.leaf": "Лист",
++  "viewer.tree.lens.title": "Сравнить роли иерархии",
++  "viewer.tree.lens.instruction": "Выберите до двух ролей иерархии. Одна показывает связи вложенности; две сравнивают только прямые связи родитель-потомок.",
++  "viewer.tree.guide.lens.hint": "Подсчитайте роли иерархии и сравните прямые связи родитель-потомок.",
+   "viewer.kind.frontend": "Фронтенд",
+   "viewer.kind.backend": "Бэкенд",
+   "viewer.kind.database": "База данных",
+diff --git a/archify/locales/ar.json b/archify/locales/ar.json
+index 14ddc6ed..836f194a 100644
+--- a/archify/locales/ar.json
++++ b/archify/locales/ar.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "محايد",
+   "legend.lifecycle.external": "خارجي",
+   "legend.lifecycle.final": "حالةٌ نهائية",
++  "viewer.kind.tree.root": "الجذر",
++  "viewer.kind.tree.branch": "الفرع",
++  "viewer.kind.tree.leaf": "الورقة",
++  "viewer.tree.lens.title": "مقارنة أدوار التسلسل الهرمي",
++  "viewer.tree.lens.instruction": "اختر دورين هرميين كحد أقصى. يُظهر دور واحد روابط الاحتواء الخاصة به؛ ويقارن دوران الروابط المباشرة بين الآباء والأبناء فقط.",
++  "viewer.tree.guide.lens.hint": "احسب الأدوار الهرمية وقارن الروابط المباشرة بين الآباء والأبناء.",
+   "viewer.kind.frontend": "واجهة",
+   "viewer.kind.backend": "خدمة",
+   "viewer.kind.database": "قاعدة بيانات",
+diff --git a/archify/locales/en.json b/archify/locales/en.json
+index b8481764..df872baa 100644
+--- a/archify/locales/en.json
++++ b/archify/locales/en.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "neutral",
+   "legend.lifecycle.external": "external",
+   "legend.lifecycle.final": "final state",
++  "viewer.kind.tree.root": "Root",
++  "viewer.kind.tree.branch": "Branch",
++  "viewer.kind.tree.leaf": "Leaf",
++  "viewer.tree.lens.title": "Compare hierarchy roles",
++  "viewer.tree.lens.instruction": "Choose up to two hierarchy roles. One reveals its containment links; two compare only direct parent-child links.",
++  "viewer.tree.guide.lens.hint": "Count hierarchy roles and compare direct parent-child links.",
+   "viewer.kind.frontend": "Frontend",
+   "viewer.kind.backend": "Backend",
+   "viewer.kind.database": "Database",
+diff --git a/archify/locales/es.json b/archify/locales/es.json
+index d171960f..21138a90 100644
+--- a/archify/locales/es.json
++++ b/archify/locales/es.json
+@@ -54,6 +54,12 @@
+   "legend.erd.one": "Uno",
+   "legend.erd.many": "Muchos",
+   "legend.erd.optional": "Opcional",
++  "viewer.kind.tree.root": "Raíz",
++  "viewer.kind.tree.branch": "Rama",
++  "viewer.kind.tree.leaf": "Hoja",
++  "viewer.tree.lens.title": "Comparar roles de jerarquía",
++  "viewer.tree.lens.instruction": "Elige hasta dos roles de jerarquía. Uno muestra sus enlaces de contención; dos comparan solo enlaces directos entre padres e hijos.",
++  "viewer.tree.guide.lens.hint": "Cuenta roles de jerarquía y compara enlaces directos entre padres e hijos.",
+   "viewer.kind.frontend": "Frontend",
+   "viewer.kind.backend": "Backend",
+   "viewer.kind.database": "Base de datos",
+diff --git a/archify/locales/ko.json b/archify/locales/ko.json
+index a3cf4dda..d5a29e80 100644
+--- a/archify/locales/ko.json
++++ b/archify/locales/ko.json
+@@ -54,6 +54,12 @@
+   "legend.erd.one": "하나",
+   "legend.erd.many": "다수",
+   "legend.erd.optional": "선택 사항",
++  "viewer.kind.tree.root": "루트",
++  "viewer.kind.tree.branch": "가지",
++  "viewer.kind.tree.leaf": "잎",
++  "viewer.tree.lens.title": "계층 역할 비교",
++  "viewer.tree.lens.instruction": "계층 역할을 최대 두 개 선택하세요. 하나는 포함 관계를 표시하고, 두 개는 직접적인 부모-자식 관계만 비교합니다.",
++  "viewer.tree.guide.lens.hint": "계층 역할 수를 확인하고 직접적인 부모-자식 관계를 비교합니다.",
+   "viewer.kind.frontend": "프런트엔드",
+   "viewer.kind.backend": "백엔드",
+   "viewer.kind.database": "데이터베이스",
+diff --git a/archify/locales/zh-CN.json b/archify/locales/zh-CN.json
+index eb7fa452..91c5c2c7 100644
+--- a/archify/locales/zh-CN.json
++++ b/archify/locales/zh-CN.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "中性状态",
+   "legend.lifecycle.external": "外部状态",
+   "legend.lifecycle.final": "终态",
++  "viewer.kind.tree.root": "根节点",
++  "viewer.kind.tree.branch": "分支节点",
++  "viewer.kind.tree.leaf": "叶节点",
++  "viewer.tree.lens.title": "比较层级角色",
++  "viewer.tree.lens.instruction": "最多选择两种层级角色。选择一种可查看其包含关系；选择两种只比较直接的父子关系。",
++  "viewer.tree.guide.lens.hint": "统计层级角色，比较直接的父子关系。",
+   "viewer.kind.frontend": "前端",
+   "viewer.kind.backend": "后端",
+   "viewer.kind.database": "数据库",
+diff --git a/archify/locales/zh-TW.json b/archify/locales/zh-TW.json
+index 6ed434dc..9689c8f2 100644
+--- a/archify/locales/zh-TW.json
++++ b/archify/locales/zh-TW.json
+@@ -46,6 +46,12 @@
+   "legend.lifecycle.neutral": "中性狀態",
+   "legend.lifecycle.external": "外部狀態",
+   "legend.lifecycle.final": "最終狀態",
++  "viewer.kind.tree.root": "根節點",
++  "viewer.kind.tree.branch": "分支節點",
++  "viewer.kind.tree.leaf": "葉節點",
++  "viewer.tree.lens.title": "比較階層角色",
++  "viewer.tree.lens.instruction": "最多選擇兩種階層角色。選擇一種可查看其包含關係；選擇兩種只比較直接的父子關係。",
++  "viewer.tree.guide.lens.hint": "統計階層角色，比較直接的父子關係。",
+   "viewer.kind.frontend": "前端",
+   "viewer.kind.backend": "後端",
+   "viewer.kind.database": "資料庫",
+diff --git a/archify/renderers/tree/render-tree.mjs b/archify/renderers/tree/render-tree.mjs
+index 72b10002..0e2b3a20 100644
+--- a/archify/renderers/tree/render-tree.mjs
++++ b/archify/renderers/tree/render-tree.mjs
+@@ -13,7 +13,7 @@ import {
+ } from '../shared/cli.mjs';
+ import { throwDiagnosticProblems } from '../shared/diagnostics.mjs';
+ import { nodeTextFit } from '../shared/text-fit.mjs';
+-import { translateMessage as i18nText } from '../shared/i18n.mjs';
++import { translateMessage as i18nText, registerLocale } from '../shared/i18n.mjs';
+ import { asArray, roundedPath, routePointsValue } from '../shared/geometry.mjs';
+ 
+ const __dirname = path.dirname(fileURLToPath(import.meta.url));
+@@ -26,6 +26,22 @@ const { diagram: tree, template, outPath, sourceEvidence } = loadDiagram({
+   argv: cliArgs,
+ });
+ const locale = tree.meta.locale;
++// Preserve explicit document wording from Trees rendered before roles had their
++// own kind keys. New structural overrides take precedence; bundled paint labels
++// are never copied into Tree semantics.
++const translations = { ...tree.meta.translations };
++for (const [paint, role] of [['frontend', 'root'], ['backend', 'branch'], ['external', 'leaf']]) {
++  const oldKey = `viewer.kind.${paint}`;
++  const roleKey = `viewer.kind.tree.${role}`;
++  if (translations[roleKey] === undefined && translations[oldKey] !== undefined) translations[roleKey] = translations[oldKey];
++}
++// The Tree-specific Lens defaults must also retain explicit older document copy.
++for (const key of ['lens.title', 'lens.instruction', 'guide.lens.hint']) {
++  const oldKey = `viewer.${key}`;
++  const treeKey = `viewer.tree.${key}`;
++  if (translations[treeKey] === undefined && translations[oldKey] !== undefined) translations[treeKey] = translations[oldKey];
++}
++registerLocale(locale, translations);
+ const direction = tree.layout?.direction === 'right' ? 'right' : 'down';
+ const down = direction === 'down';
+ 
+@@ -424,7 +440,7 @@ function renderNode(node) {
+   const tone = node.isRoot ? 'frontend' : leaf ? 'external' : 'backend';
+   const role = node.isRoot ? 'tree-root' : leaf ? 'tree-leaf' : 'tree-branch';
+   const context = i18nText(locale, node.isRoot ? 'node.context.tree.root' : childrenOf.get(node.id).length ? 'node.context.tree.branch' : 'node.context.tree.leaf');
+-  const passport = { kind: tone, sublabel: node.sublabel, context };
++  const passport = { kind: role, sublabel: node.sublabel, context };
+   // A stacked list reads left-aligned, like a directory listing; a node in a
+   // row is centred under its link.
+   const cx = node.stacked ? node.x + layout.padX + 2 : node.x + node.width / 2;
+@@ -565,7 +581,7 @@ if (layoutJsonMode) {
+ } else {
+   writeDiagram({
+     outPath,
+-    template,
++    template: template.replace(/\{\{i18n:viewer\.(lens\.title|lens\.instruction|guide\.lens\.hint)\}\}/g, (_match, key) => `{{i18n:viewer.tree.${key}}}`),
+     diagramType: 'tree',
+     meta: tree.meta,
+     svg: renderSvg(),
+diff --git a/test/tree-branches-browser.test.mjs b/test/tree-branches-browser.test.mjs
+index 2e0c7526..08053d36 100644
+--- a/test/tree-branches-browser.test.mjs
++++ b/test/tree-branches-browser.test.mjs
+@@ -29,9 +29,10 @@ test('Tree branches collapse in place, follow the keyboard, reveal selections, a
+   git('add', 'source.js');
+   git('commit', '-m', 'source fixture');
+   git('remote', 'add', 'origin', 'https://github.com/example/evidence-repo');
+-  const render = (example, name) => {
++  const render = (example, name, meta = {}) => {
+     const output = path.join(scratch, name);
+     const diagram = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples', example), 'utf8'));
++    Object.assign(diagram.meta, meta);
+     diagram.meta.repository = { url: 'https://github.com/example/evidence-repo', revision: git('rev-parse', 'HEAD') };
+     diagram.nodes.forEach((node) => { node.sources = [{ path: 'source.js', line: 1 }]; });
+     const input = path.join(scratch, name + '.json');
+@@ -40,6 +41,10 @@ test('Tree branches collapse in place, follow the keyboard, reveal selections, a
+     return output;
+   };
+   const small = render('payment-platform.tree.json', 'small.html');
++  const chinese = render('payment-platform.tree.json', 'zh.html', { locale: 'zh-CN' });
++  const legacyLens = { 'viewer.lens.title': 'Authored Lens title', 'viewer.lens.instruction': 'Authored Lens instruction', 'viewer.guide.lens.hint': 'Authored Lens guide' };
++  const preferredLens = render('payment-platform.tree.json', 'preferred-lens.html', { locale: 'en', translations: { ...legacyLens, 'viewer.tree.lens.title': 'Preferred Lens title', 'viewer.tree.lens.instruction': 'Preferred Lens instruction', 'viewer.tree.guide.lens.hint': 'Preferred Lens guide' } });
++  const custom = render('payment-platform.tree.json', 'custom.html', { locale: 'en', translations: { ...legacyLens, 'viewer.kind.frontend': 'Authored root', 'viewer.kind.backend': 'Old branch', 'viewer.kind.tree.branch': 'Preferred branch' } });
+   const large = render('archify-repository.tree.json', 'large.html');
+   // Private export hook in this disposable copy only, as in export-cleanup-browser.
+   const html = fs.readFileSync(small, 'utf8');
+@@ -81,6 +86,31 @@ test('Tree branches collapse in place, follow the keyboard, reveal selections, a
+     assert.deepEqual(await run(`['platform', 'payments', 'card_payment'].map(id => document.querySelector('[data-node-id="' + id + '"]').getAttribute('data-source-evidence-count'))`), ['1', '1', '1']);
+   }
+   await checkSources();
++  async function checkRoles(labels) {
++    for (const [id, label] of [['platform', labels[0]], ['payments', labels[1]], ['card_payment', labels[2]]]) {
++      await run(`Archify.focus.set('${id}')`);
++      assert.equal(await run(`document.getElementById('focus-kind').textContent`), label);
++    }
++    await run('Archify.finder.open()');
++    for (const [id, label] of [['platform', labels[0]], ['payments', labels[1]], ['card_payment', labels[2]]]) {
++      assert.equal(await run(`document.querySelector('#node-finder-results [data-node-id="${id}"] small').textContent.startsWith(${JSON.stringify(label)} + ' · ')`), true);
++    }
++    await run('Archify.finder.close(); Archify.semanticLens.open()');
++    assert.deepEqual(await run('Archify.semanticLens.kinds().sort((a,b) => a.id.localeCompare(b.id))'), [
++      { id: 'tree-branch', count: 3 }, { id: 'tree-leaf', count: 6 }, { id: 'tree-root', count: 1 },
++    ]);
++    for (const [role, label, tone] of [['root', labels[0], 'frontend'], ['branch', labels[1], 'backend'], ['leaf', labels[2], 'external']]) {
++      assert.equal(await run(`document.querySelector('.semantic-lens-kind[data-kind="tree-${role}"] strong').textContent`), label);
++      assert.equal(await run(`(() => { const swatch = document.querySelector('.semantic-lens-kind[data-kind="tree-${role}"] .semantic-lens-swatch'); const probe = document.createElement('span'); probe.style.color = 'var(--${tone}-stroke)'; document.body.append(probe); const expected = getComputedStyle(probe).color; probe.remove(); return getComputedStyle(swatch).backgroundColor === expected; })()`), true);
++    }
++    await run('Archify.semanticLens.clear(); Archify.semanticLens.close(); Archify.focus.clear()');
++  }
++  await checkRoles(['Root', 'Branch', 'Leaf']);
++  await run('Archify.radar.open()');
++  for (const [id, tone] of [['platform', 'frontend'], ['payments', 'backend'], ['card_payment', 'external']]) {
++    assert.equal(await run(`(() => { const node = document.querySelector('[data-radar-node-id="${id}"]'); const probe = document.createElement('span'); probe.style.color = 'var(--${tone}-stroke)'; document.body.append(probe); const expected = getComputedStyle(probe).color; probe.remove(); return getComputedStyle(node).fill === expected && getComputedStyle(node).stroke === expected; })()`), true);
++  }
++  await run('Archify.radar.close()');
+   const before = await run(box('operations'));
+   const started = await run('performance.now()');
+   await run(`document.querySelector('[data-tree-toggle="payments"]').dispatchEvent(new MouseEvent('click', { bubbles: true }))`);
+@@ -98,6 +128,7 @@ test('Tree branches collapse in place, follow the keyboard, reveal selections, a
+   assert.equal(collapsed.expanded, 'false');
+   assert.equal(collapsed.label, 'Expand Payments (2 hidden)');
+   assert.equal(collapsed.stacked, true);
++  assert.equal(await run(`document.querySelector('[data-node-id="payments"]').getAttribute('data-node-kind')`), 'tree-branch');
+   assert.notEqual(collapsed.expandAll, 'none');
+   // Collapsing never moves what stays visible.
+   assert.deepEqual(await run(box('operations')), before);
+@@ -130,9 +161,9 @@ test('Tree branches collapse in place, follow the keyboard, reveal selections, a
+     return { clean, hidden: clone.querySelectorAll('[data-tree-hidden], [data-tree-collapsed]').length,
+       any: clone.hasAttribute('data-tree-any-collapsed'),
+       collapsedToggles: clone.querySelectorAll('[data-tree-toggle][aria-expanded="false"]').length,
+-      nodes: clone.querySelectorAll('[data-node-id]').length };
++      nodes: clone.querySelectorAll('[data-node-id]').length, kinds: [...new Set([...clone.querySelectorAll('[data-node-kind]')].map(node => node.dataset.nodeKind))].sort() };
+   })()`);
+-  assert.deepEqual(exported, { clean: true, hidden: 0, any: false, collapsedToggles: 0, nodes: 10 });
++  assert.deepEqual(exported, { clean: true, hidden: 0, any: false, collapsedToggles: 0, nodes: 10, kinds: ['tree-branch', 'tree-leaf', 'tree-root'] });
+   assert.deepEqual((await run('Archify.treeBranches.collapsedIds()')).sort(), ['operations', 'platform']);
+ 
+   // Expand all restores the authored hierarchy.
+@@ -159,6 +190,23 @@ test('Tree branches collapse in place, follow the keyboard, reveal selections, a
+   await run(`Archify.treeBranches.collapse('viewer'); Archify.focus.setMany(['v_tree', 'v_focus'])`);
+   assert.deepEqual(await run('Archify.treeBranches.collapsedIds()'), []);
+ 
++  // Old paint-name links keep their original one-to-one structural groups.
++  await load(small, '#lens=frontend~external');
++  assert.deepEqual(await run('Archify.semanticLens.active()'), ['tree-root', 'tree-leaf']);
++  assert.equal(await run(`document.querySelector('.diagram-container > svg').getAttribute('data-lens-active')`), 'tree-root tree-leaf');
++  await run(`Archify.semanticLens.select('tree-leaf')`);
++  assert.equal(await run('location.hash'), '#lens=tree-root');
++  await load(chinese);
++  await checkRoles(['根节点', '分支节点', '叶节点']);
++  assert.equal(await run(`document.getElementById('semantic-lens-title').textContent`), '比较层级角色');
++  await load(custom);
++  await checkRoles(['Authored root', 'Preferred branch', 'Leaf']);
++  for (const [file, prefix] of [[custom, 'Authored'], [preferredLens, 'Preferred']]) {
++    await load(file);
++    assert.equal(await run(`document.getElementById('semantic-lens-title').textContent`), prefix + ' Lens title');
++    assert.equal(await run(`document.querySelector('.semantic-lens-instruction').textContent`), prefix + ' Lens instruction');
++    assert.equal(await run(`document.querySelector('[data-guide-action="lens"] small').textContent`), prefix + ' Lens guide');
++  }
+   await load(small, '', 'dark');
+   await checkSources();
+ });
+diff --git a/test/tree-rendering.test.mjs b/test/tree-rendering.test.mjs
+index 65b87c86..763bdda0 100644
+--- a/test/tree-rendering.test.mjs
++++ b/test/tree-rendering.test.mjs
+@@ -1,4 +1,5 @@
+ import { test } from 'node:test';
++import { scanStory } from '../archify/story/tool.mjs';
+ import { createScratchDirectory } from './helpers/scratch-directory.mjs';
+ import assert from 'node:assert/strict';
+ import { spawnSync } from 'node:child_process';
+@@ -148,3 +149,47 @@ test('tree: structural errors are refused instead of inventing a hierarchy', ()
+   assert.match(cycle, /"orders" -> "create_order" -> "orders"|"create_order" -> "orders" -> "create_order"/);
+   assert.match(failure((d) => { d.nodes[5].id = d.nodes[4].id; }), /tree\/duplicate-id/);
+ });
++
++
++test('tree: semantic kinds describe containment roles while paint and topology stay intact', () => {
++  const result = run(small);
++  assert.equal(result.status, 0, result.stderr);
++  const html = fs.readFileSync(result.output, 'utf8');
++  for (const [id, role, tone] of [['platform', 'root', 'frontend'], ['payments', 'branch', 'backend'], ['card_payment', 'leaf', 'external']]) {
++    assert.match(html, new RegExp(`data-node-id="${id}"[^>]*data-node-kind="tree-${role}"`));
++    assert.match(html, new RegExp(`class="c-${tone} tree-${role}"`));
++  }
++  assert.match(html, /data-edge-from="payments" data-edge-to="card_payment"/);
++  assert.match(html, /Compare hierarchy roles/);
++  assert.deepEqual(scanStory(result.output).nodes.filter(node => ['platform', 'payments', 'card_payment'].includes(node.id)).map(node => node.kind), ['tree-root', 'tree-branch', 'tree-leaf']);
++  const singleton = clone(small);
++  singleton.nodes = [{ id: 'only', label: 'Only' }];
++  const single = run(singleton);
++  assert.equal(single.status, 0, single.stderr);
++  assert.match(fs.readFileSync(single.output, 'utf8'), /data-node-id="only"[^>]*data-node-kind="tree-root"/);
++});
++
++
++test('tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence', () => {
++  const legacy = {
++    'viewer.lens.title': 'Authored Lens title',
++    'viewer.lens.instruction': 'Authored Lens instruction',
++    'viewer.guide.lens.hint': 'Authored Lens guide',
++  };
++  for (const preferred of [false, true]) {
++    const diagram = clone(small);
++    const expected = ['title', 'instruction', 'guide'].map(part => `${preferred ? 'Preferred' : 'Authored'} Lens ${part}`);
++    diagram.meta.locale = 'en';
++    diagram.meta.translations = { ...legacy, ...(preferred ? {
++      'viewer.tree.lens.title': expected[0],
++      'viewer.tree.lens.instruction': expected[1],
++      'viewer.tree.guide.lens.hint': expected[2],
++    } : {}) };
++    const result = run(diagram);
++    assert.equal(result.status, 0, result.stderr);
++    const html = fs.readFileSync(result.output, 'utf8');
++    assert.equal(html.match(/id="semantic-lens-title">([^<]+)/)?.[1], expected[0]);
++    assert.equal(html.match(/class="semantic-lens-instruction">([^<]+)/)?.[1], expected[1]);
++    assert.ok(html.includes(`<small>${expected[2]}</small>`));
++  }
++});
+diff --git a/viewer/semantic-lens.js b/viewer/semantic-lens.js
+index 09fe1a19..2995244f 100644
+--- a/viewer/semantic-lens.js
++++ b/viewer/semantic-lens.js
+@@ -541,7 +541,11 @@
+             return;
+           }
+           var available = collectKinds().map(function (kind) { return kind.id; });
+-          var requested = value.split('~').filter(function (kind, index, list) {
++          // Older Tree links used paint names for these same structural groups.
++          var legacyTreeKinds = { frontend: 'tree-root', backend: 'tree-branch', external: 'tree-leaf' };
++          var requested = value.split('~').map(function (kind) {
++            return svg.hasAttribute('data-tree-ui') ? (legacyTreeKinds[kind] || kind) : kind;
++          }).filter(function (kind, index, list) {
+             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
+           }).slice(0, 2);
+           if (!requested.length) return;
+diff --git a/viewer/template.source.html b/viewer/template.source.html
+index c014621b..14d1020f 100644
+--- a/viewer/template.source.html
++++ b/viewer/template.source.html
+@@ -708,7 +708,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+ 
+     function viewerKindLabel(value) {
+       var normalized = String(value || 'node').toLowerCase();
+-      var knownKey = 'viewer.kind.' + normalized;
++      var knownKey = 'viewer.kind.' + normalized.replace(/^tree-(root|branch|leaf)$/, 'tree.$1');
+       var known = viewerText(knownKey);
+       if (known !== knownKey) return known;
+       return normalized
+diff --git a/viewer/viewer.css b/viewer/viewer.css
+index 2b147f8a..00adf471 100644
+--- a/viewer/viewer.css
++++ b/viewer/viewer.css
+@@ -1145,6 +1145,7 @@ html[data-preset="blueprint"] .overview-map-surface { border-radius: 0.1rem; }
+   cursor: pointer;
+   transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
+ }
++.overview-map-node[data-kind="tree-root"],
+ .overview-map-node[data-kind="frontend"],
+ .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
+ .overview-map-node[data-kind="database"],
+@@ -1155,6 +1156,7 @@ html[data-preset="blueprint"] .overview-map-surface { border-radius: 0.1rem; }
+ .overview-map-node[data-kind="security"],
+ .overview-map-node[data-kind="decision"],
+ .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
++.overview-map-node[data-kind="tree-leaf"],
+ .overview-map-node[data-kind="external"],
+ .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
+ .overview-map-node[data-radar-active="true"],
+@@ -1310,8 +1312,10 @@ html[data-preset="blueprint"] .semantic-lens { border-radius: 0.28rem; }
+   transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
+ }
+ html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
++.semantic-lens-kind[data-kind="tree-root"],
+ .semantic-lens-kind[data-kind="frontend"],
+ .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
++.semantic-lens-kind[data-kind="tree-branch"],
+ .semantic-lens-kind[data-kind="backend"],
+ .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
+ .semantic-lens-kind[data-kind="database"],

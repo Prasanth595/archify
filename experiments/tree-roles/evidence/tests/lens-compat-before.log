@@ -1,0 +1,32 @@
+✖ tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence (149.893708ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 255.684666
+
+✖ failing tests:
+
+test at test/tree-rendering.test.mjs:173:1
+✖ tree: explicit legacy Lens wording survives and Tree-specific wording takes precedence (149.893708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Compare hierarchy roles'
+  - 'Authored Lens title'
+  
+      at TestContext.<anonymous> (file://<USER_HOME>/.codex/worktrees/lab-tree-roles/archify/test/tree-rendering.test.mjs:191:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Compare hierarchy roles',
+    expected: 'Authored Lens title',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

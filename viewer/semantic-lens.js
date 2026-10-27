@@ -541,7 +541,11 @@
             return;
           }
           var available = collectKinds().map(function (kind) { return kind.id; });
-          var requested = value.split('~').filter(function (kind, index, list) {
+          // Older Tree links used paint names for these same structural groups.
+          var legacyTreeKinds = { frontend: 'tree-root', backend: 'tree-branch', external: 'tree-leaf' };
+          var requested = value.split('~').map(function (kind) {
+            return svg.hasAttribute('data-tree-ui') ? (legacyTreeKinds[kind] || kind) : kind;
+          }).filter(function (kind, index, list) {
             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
           }).slice(0, 2);
           if (!requested.length) return;

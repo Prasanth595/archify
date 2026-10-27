@@ -1,0 +1,179 @@
+✖ tree: semantic kinds describe containment roles while paint and topology stay intact (155.176791ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 262.39575
+
+✖ failing tests:
+
+test at test/tree-rendering.test.mjs:153:1
+✖ tree: semantic kinds describe containment roles while paint and topology stay intact (155.176791ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /data-node-id="platform"[^>]*data-node-kind="tree-root"/. Input:
+  
+  '<!DOCTYPE html>\n' +
+    '<html lang="en" data-theme="dark" data-preset="classic">\n' +
+    '<head>\n' +
+    '  <meta charset="UTF-8">\n' +
+    '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+    '  <meta name="generator" content="archify 3.2.1-dev.1">\n' +
+    '  <meta name="archify-reader-contract" content="declared-wide-v1">\n' +
+    '  <title>Payment platform capabilities Diagram</title>\n' +
+    '  <script>\n' +
+    "    // Resolve the theme before first paint so light-preference users don't\n" +
+    '    // see a dark flash. The toolbar script below re-applies with UI state.\n' +
+    '    (function () {\n' +
+    '      try {\n' +
+    '        var theme = null;\n' +
+    '        try {\n' +
+    "          var param = new URLSearchParams(window.location.search).get('theme');\n" +
+    "          if (param === 'light' || param === 'dark') theme = param;\n" +
+    "          if (new URLSearchParams(window.location.search).get('embed') === '1') {\n" +
+    "            document.documentElement.setAttribute('data-embed', 'true');\n" +
+    '          }\n' +
+    "          if (new URLSearchParams(window.location.search).get('present') === '1') {\n" +
+    "            document.documentElement.setAttribute('data-present', 'true');\n" +
+    '          }\n' +
+    '        } catch (_) {}\n' +
+    '        if (!theme) {\n' +
+    "          try { theme = localStorage.getItem('archify-theme'); } catch (_) {}\n" +
+    '        }\n' +
+    "        if (theme !== 'light' && theme !== 'dark') {\n" +
+    "          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';\n" +
+    '        }\n' +
+    "        document.documentElement.setAttribute('data-theme', theme);\n" +
+    '      } catch (_) {}\n' +
+    '    })();\n' +
+    '  </script>\n' +
+    '  <style id="archify-fonts">\n' +
+    '/*\n' +
+    'JetBrains Mono variable WOFF2 subsets from Google Fonts service revision v24.\n' +
+    'These fixed bytes are shared by the viewer and its SVG/raster exports.\n' +
+    'No local() source: an installed copy must not override the bundled font.\n' +
+    'Uncovered characters (including CJK) still use the system fallback stack.\n' +
+    'Upstream: https://github.com/JetBrains/JetBrainsMono\n' +
+    '\n' +
+    'cyrillic-ext    1664 bytes  sha256 9343de2ca5d9549f792e7962375af8efb0f320c7643bfd36c884b5a30e5c396f\n' +
+    'cyrillic        8892 bytes  sha256 4995a9a43ac659ec32fcd8b463755cd6a07b31a6e6b3894a6a153b661cf490e2\n' +
+    'greek           6800 bytes  sha256 49c3da6c9a2b279b0f1f860f5cfb1f5dc38d88a5c7be9c9b1837bbc4e3db6111\n' +
+    'vietnamese      5872 bytes  sha256 d44eb1936043a56038eb02dd70b243f379bef65783f94ec12f277550720411f1\n' +
+    'latin-ext      11596 bytes  sha256 9c38cb2d0d2d93c1ee6e21fa78db76f13ea7e15e15cc64214c7ca89b6aaa35c4\n' +
+    'latin          31340 bytes  sha256 2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4\n' +
+    '\n' +
+    'Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)\n' +
+    '\n' +
+    'This Font Software is licensed under the SIL Open Font License, Version 1.1.\n' +
+    'This license is copied below, and is also available with a FAQ at:\n' +
+    'https://openfontlicense.org\n' +
+    '\n' +
+    '\n' +
+    '-----------------------------------------------------------\n' +
+    'SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n' +
+    '-----------------------------------------------------------\n' +
+    '\n' +
+    'PREAMBLE\n' +
+    'The goals of the Open Font License (OFL) are to stimulate worldwide\n' +
+    'development of collaborative font projects, to support the font creation\n' +
+    'efforts of academic and linguistic communities, and to provide a free and\n' +
+    'open framework in which fonts may be shared and improved in partnership\n' +
+    'with others.\n' +
+    '\n' +
+    'The OFL allows the licensed fonts to be used, studied, modified and\n' +
+    'redistributed freely as long as they are not sold by themselves. The\n' +
+    'fonts, including any derivative works, can be bundled, embedded,\n' +
+    'redistributed and/or sold with any software provided that any reserved\n' +
+    'names are not used by derivative works. The fonts and derivatives,\n' +
+    'however, cannot be released under any other type of license. The\n' +
+    'requirement for fonts to remain under this license does not apply\n' +
+    'to any document created using the fonts or their derivatives.\n' +
+    '\n' +
+    'DEFINITIONS\n' +
+    '"Font Software" refers to the set of files released by the Copyright\n' +
+    'Holder(s) under this license and clearly marked as such. This may\n' +
+    'include source files, build scripts and documentation.\n' +
+    '\n' +
+    '"Reserved Font Name" refers to any names specified as such after the\n' +
+    'copyright statement(s).\n' +
+    '\n' +
+    '"Original Version" refers to the collection of Font Software components as\n' +
+    'distributed by the Copyright Holder(s).\n' +
+    '\n' +
+    '"Modified Version" refers to any derivative made by adding to, deleting,\n' +
+    'or substituting -- in part or in whole -- any of the components of the\n' +
+    'Original Version, by changing formats or by porting the Font Software to a\n' +
+    'new environment.\n' +
+    '\n' +
+    '"Author" refers to any designer, engineer, programmer, technical\n' +
+    'writer or other person who contributed to the Font Software.\n' +
+    '\n' +
+    'PERMISSION & CONDITIONS\n' +
+    'Permission is hereby granted, free of charge, to any person obtaining\n' +
+    'a copy of the Font Software, to use, study, copy, merge, embed, modify,\n' +
+    'redistribute, and sell modified and unmodified copies of the Font\n' +
+    'Software, subject to the following conditions:\n' +
+    '\n' +
+    '1) Neither the Font Software nor any of its individual components,\n' +
+    'in Original or Modified Versions, may be sold by itself.\n' +
+    '\n' +
+    '2) Original or Modified Versions of the Font Software may be bundled,\n' +
+    'redistributed and/or sold with any software, provided that each copy\n' +
+    'contains the above copyright notice and this license. These can be\n' +
+    'included either as stand-alone text files, human-readable headers or\n' +
+    'in the appropriate machine-readable metadata fields within text or\n' +
+    'binary files as long as those fields can be easily viewed by the user.\n' +
+    '\n' +
+    '3) No Modified Version of the Font Software may use the Reserved Font\n' +
+    'Name(s) unless explicit written permission is granted by the corresponding\n' +
+    'Copyright Holder. This restriction only applies to the primary font name as\n' +
+    'presented to the users.\n' +
+    '\n' +
+    '4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\n' +
+    'Software shall not be used to promote, endorse or advertise any\n' +
+    'Modified Version, except to acknowledge the contribution(s) of the\n' +
+    'Copyright Holder(s) and the Author(s) or with their explicit written\n' +
+    'permission.\n' +
+    '\n' +
+    '5) The Font Software, modified or unmodified, in part or in whole,\n' +
+    'must be distributed entirely under this license, and must not be\n' +
+    'distributed under any other license. The requirement for fonts to\n' +
+    'remain under this license does not apply to any document created\n' +
+    'using the Font Software.\n' +
+    '\n' +
+    'TERMINATION\n' +
+    'This license becomes null and void if any of the above conditions are\n' +
+    'not met.\n' +
+    '\n' +
+    'DISCLAIMER\n' +
+    'THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,\n' +
+    'EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\n' +
+    'MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\n' +
+    'OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\n' +
+    'COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n' +
+    'INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\n' +
+    'DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n' +
+    'FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\n' +
+    'OTHER DEALINGS IN THE FONT SOFTWARE.\n' +
+    '*/\n' +
+    '    /* cyrillic-ext */\n' +
+    "    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 800; font-display: swap;\n" +
+    "      src: url(data:font/woff2;base64,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) format('woff2');\n" +
+    '      unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }\n' +
+    '    /* cyrillic */\n' +
+    "    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 800; font-display: swap;\n" +
+    '      src: url(data:font/woff2;base64,d09GMgABAAAAACK8ABIAAAAARmAAACJTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGoE1G4JgHIFaBmA/U1RBVIEgJx4AgkwvTBEICrporgMLggoAMKw6ATYCJAOEBAQgBYdGB4kHG7Q9RQdy2DiAAS7vZkS1alhU/18T1IqxA6flgFcrUbKj5VbNnlXLwaeDwbp1QnuC56gjzYrVYUfM09q5suLaHUkQV50dVYOIj26jU47IlZS6HX26O7S6VQJNqV6RcRcvsUAQII6oCK8Iu2mJiGj0lbNNfv915sno33zICElmoYK1snoO9x4ZgoQycWQEkjCsiF3igH/+3aw/UUIgZoRc8CIaKNsy7I6Id8U6+0QMmicmH98m2lGjQsWg7fC4rX/GRXlV6hVOVBAYeQzG3oA5QhhREzZSDsy8ai/KX1lexQ/5fdfe77h/t2zmAwnMQNS8XJNTe71'... 859745 more characters
+  
+      at TestContext.<anonymous> (file://<USER_HOME>/.codex/worktrees/lab-tree-roles/archify/test/tree-rendering.test.mjs:158:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: `<!DOCTYPE html>\n<html lang="en" data-theme="dark" data-preset="classic">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <meta name="generator" content="archify 3.2.1-dev.1">\n  <meta name="archify-reader-contract" content="declared-wide-v1">\n  <title>Payment platform capabilities Diagram</title>\n  <script>\n    // Resolve the theme before first paint so light-preference users don't\n    // see a dark flash. The toolbar script below re-applies with UI state.\n    (function () {\n      try {\n        var theme = null;\n        try {\n          var param = new URLSearchParams(window.location.search).get('theme');\n          if (param === 'light' || param === 'dark') theme = param;\n          if (new URLSearchParams(window.location.search).get('embed') === '1') {\n            document.documentElement.setAttribute('data-embed', 'true');\n          }\n          if (new URLSearchParams(window.location.search).get('present') === '1') {\n            document.documentElement.setAttribute('data-present', 'true');\n          }\n        } catch (_) {}\n        if (!theme) {\n          try { theme = localStorage.getItem('archify-theme'); } catch (_) {}\n        }\n        if (theme !== 'light' && theme !== 'dark') {\n          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';\n        }\n        document.documentElement.setAttribute('data-theme', theme);\n      } catch (_) {}\n    })();\n  </script>\n  <style id="archify-fonts">\n/*\nJetBrains Mono variable WOFF2 subsets from Google Fonts service revision v24.\nThese fixed bytes are shared by the viewer and its SVG/raster exports.\nNo local() source: an installed copy must not override the bundled font.\nUncovered characters (including CJK) still use the system fallback stack.\nUpstream: https://github.com/JetBrains/JetBrainsMono\n\ncyrillic-ext    1664 bytes  sha256 9343de2ca5d9549f792e7962375af8efb0f320c7643bfd36c884b5a30e5c396f\ncyrillic        8892 bytes  sha256 4995a9a43ac659ec32fcd8b463755cd6a07b31a6e6b3894a6a153b661cf490e2\ngreek           6800 bytes  sha256 49c3da6c9a2b279b0f1f860f5cfb1f5dc38d88a5c7be9c9b1837bbc4e3db6111\nvietnamese      5872 bytes  sha256 d44eb1936043a56038eb02dd70b243f379bef65783f94ec12f277550720411f1\nlatin-ext      11596 bytes  sha256 9c38cb2d0d2d93c1ee6e21fa78db76f13ea7e15e15cc64214c7ca89b6aaa35c4\nlatin          31340 bytes  sha256 2c32b9b3ee358c119e210f6f5195f9bd34894d78a785ff2e95d60e718e400af4\n\nCopyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttps://openfontlicense.org\n\n\n-----------------------------------------------------------\nSIL OPEN FONT LICENSE Version 1.1 - 26 February 2007\n-----------------------------------------------------------\n\nPREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate worldwide\ndevelopment of collaborative font projects, to support the font creation\nefforts of academic and linguistic communities, and to provide a free and\nopen framework in which fonts may be shared and improved in partnership\nwith others.\n\nThe OFL allows the licensed fonts to be used, studied, modified and\nredistributed freely as long as they are not sold by themselves. The\nfonts, including any derivative works, can be bundled, embedded,\nredistributed and/or sold with any software provided that any reserved\nnames are not used by derivative works. The fonts and derivatives,\nhowever, cannot be released under any other type of license. The\nrequirement for fonts to remain under this license does not apply\nto any document created using the fonts or their derivatives.\n\nDEFINITIONS\n"Font Software" refers to the set of files released by the Copyright\nHolder(s) under this license and clearly marked as such. This may\ninclude source files, build scripts and documentation.\n\n"Reserved Font Name" refers to any names specified as such after the\ncopyright statement(s).\n\n"Original Version" refers to the collection of Font Software components as\ndistributed by the Copyright Holder(s).\n\n"Modified Version" refers to any derivative made by adding to, deleting,\nor substituting -- in part or in whole -- any of the components of the\nOriginal Version, by changing formats or by porting the Font Software to a\nnew environment.\n\n"Author" refers to any designer, engineer, programmer, technical\nwriter or other person who contributed to the Font Software.\n\nPERMISSION & CONDITIONS\nPermission is hereby granted, free of charge, to any person obtaining\na copy of the Font Software, to use, study, copy, merge, embed, modify,\nredistribute, and sell modified and unmodified copies of the Font\nSoftware, subject to the following conditions:\n\n1) Neither the Font Software nor any of its individual components,\nin Original or Modified Versions, may be sold by itself.\n\n2) Original or Modified Versions of the Font Software may be bundled,\nredistributed and/or sold with any software, provided that each copy\ncontains the above copyright notice and this license. These can be\nincluded either as stand-alone text files, human-readable headers or\nin the appropriate machine-readable metadata fields within text or\nbinary files as long as those fields can be easily viewed by the user.\n\n3) No Modified Version of the Font Software may use the Reserved Font\nName(s) unless explicit written permission is granted by the corresponding\nCopyright Holder. This restriction only applies to the primary font name as\npresented to the users.\n\n4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font\nSoftware shall not be used to promote, endorse or advertise any\nModified Version, except to acknowledge the contribution(s) of the\nCopyright Holder(s) and the Author(s) or with their explicit written\npermission.\n\n5) The Font Software, modified or unmodified, in part or in whole,\nmust be distributed entirely under this license, and must not be\ndistributed under any other license. The requirement for fonts to\nremain under this license does not apply to any document created\nusing the Font Software.\n\nTERMINATION\nThis license becomes null and void if any of the above conditions are\nnot met.\n\nDISCLAIMER\nTHE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT\nOF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE\nCOPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nINCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL\nDAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM\nOTHER DEALINGS IN THE FONT SOFTWARE.\n*/\n    /* cyrillic-ext */\n    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 800; font-display: swap;\n      src: url(data:font/woff2;base64,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) format('woff2');\n      unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }\n    /* cyrillic */\n    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 800; font-display: swap;\n      src: url(data:font/woff2;base64,d09GMgABAAAAACK8ABIAAAAARmAAACJTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGoE1G4JgHIFaBmA/U1RBVIEgJx4AgkwvTBEICrporgMLggoAMKw6ATYCJAOEBAQgBYdGB4kHG7Q9RQdy2DiAAS7vZkS1alhU/18T1IqxA6flgFcrUbKj5VbNnlXLwaeDwbp1QnuC56gjzYrVYUfM09q5suLaHUkQV50dVYOIj26jU47IlZS6HX26O7S6VQJNqV6RcRcvsUAQII6oCK8Iu2mJiGj0lbNNfv915sno33zICElmoYK1snoO9x4ZgoQycWQEkjCsiF3igH/+3aw/UUIgZoRc8CIaKNsy7I6Id8U6+0QMmicmH98m2lGjQsWg7fC4rX/GRXlV6hVOVBAYeQzG3oA5QhhREzZSDsy8ai/KX1lexQ/5fdfe77h/t2zmAwnMQNS8XJNTe71`... 859745 more characters,
+    expected: /data-node-id="platform"[^>]*data-node-kind="tree-root"/,
+    operator: 'match',
+    diff: 'simple'
+  }

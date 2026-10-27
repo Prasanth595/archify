@@ -1,0 +1,752 @@
+{
+  "ok": true,
+  "command": "story",
+  "action": "scan",
+  "title": "Archify repository layout",
+  "viewBox": "0 0 1841 926",
+  "sequence": false,
+  "choreography": "relay",
+  "defaultAction": "relation",
+  "nodes": [
+    {
+      "id": "repo",
+      "label": "archify repository",
+      "kind": "tree-root",
+      "sublabel": "Skill, viewer, and site",
+      "context": "根节点",
+      "details": [
+        "archify repository",
+        "Skill, viewer, and site"
+      ],
+      "incoming": [],
+      "outgoing": [
+        "edge:0",
+        "edge:1",
+        "edge:2",
+        "edge:3"
+      ],
+      "sources": []
+    },
+    {
+      "id": "skill",
+      "label": "archify/",
+      "kind": "tree-branch",
+      "sublabel": "Installable Skill package",
+      "context": "分支",
+      "details": [
+        "archify/",
+        "Installable Skill package"
+      ],
+      "incoming": [
+        "edge:0"
+      ],
+      "outgoing": [
+        "edge:4",
+        "edge:5",
+        "edge:6",
+        "edge:7"
+      ],
+      "sources": []
+    },
+    {
+      "id": "viewer",
+      "label": "viewer/",
+      "kind": "tree-branch",
+      "sublabel": "Inlined into the template",
+      "context": "分支",
+      "details": [
+        "viewer/",
+        "Inlined into the template"
+      ],
+      "incoming": [
+        "edge:1"
+      ],
+      "outgoing": [
+        "edge:23",
+        "edge:24",
+        "edge:25",
+        "edge:26"
+      ],
+      "sources": []
+    },
+    {
+      "id": "site",
+      "label": "website/",
+      "kind": "tree-leaf",
+      "sublabel": "Astro project site",
+      "context": "叶子节点",
+      "details": [
+        "website/",
+        "Astro project site"
+      ],
+      "incoming": [
+        "edge:2"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "scripts",
+      "label": "scripts/",
+      "kind": "tree-branch",
+      "sublabel": "Build and freshness tools",
+      "context": "分支",
+      "details": [
+        "scripts/",
+        "Build and freshness tools"
+      ],
+      "incoming": [
+        "edge:3"
+      ],
+      "outgoing": [
+        "edge:27",
+        "edge:28",
+        "edge:29"
+      ],
+      "sources": []
+    },
+    {
+      "id": "renderers",
+      "label": "renderers/",
+      "kind": "tree-branch",
+      "sublabel": "One per diagram type",
+      "context": "分支",
+      "details": [
+        "renderers/",
+        "One per diagram type"
+      ],
+      "incoming": [
+        "edge:4"
+      ],
+      "outgoing": [
+        "edge:8",
+        "edge:9",
+        "edge:10",
+        "edge:11",
+        "edge:12",
+        "edge:13",
+        "edge:14",
+        "edge:15"
+      ],
+      "sources": []
+    },
+    {
+      "id": "schemas",
+      "label": "schemas/",
+      "kind": "tree-leaf",
+      "sublabel": "Typed JSON contracts",
+      "context": "叶子节点",
+      "details": [
+        "schemas/",
+        "Typed JSON contracts"
+      ],
+      "incoming": [
+        "edge:5"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "bin",
+      "label": "bin/",
+      "kind": "tree-branch",
+      "sublabel": "CLI entry points",
+      "context": "分支",
+      "details": [
+        "bin/",
+        "CLI entry points"
+      ],
+      "incoming": [
+        "edge:6"
+      ],
+      "outgoing": [
+        "edge:20",
+        "edge:21",
+        "edge:22"
+      ],
+      "sources": []
+    },
+    {
+      "id": "references",
+      "label": "references/",
+      "kind": "tree-leaf",
+      "sublabel": "Authoring contracts",
+      "context": "叶子节点",
+      "details": [
+        "references/",
+        "Authoring contracts"
+      ],
+      "incoming": [
+        "edge:7"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_arch",
+      "label": "architecture/",
+      "kind": "tree-leaf",
+      "sublabel": "Boundaries and router",
+      "context": "叶子节点",
+      "details": [
+        "architecture/",
+        "Boundaries and router"
+      ],
+      "incoming": [
+        "edge:8"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_workflow",
+      "label": "workflow/",
+      "kind": "tree-leaf",
+      "sublabel": "Workflow compiler",
+      "context": "叶子节点",
+      "details": [
+        "workflow/",
+        "Workflow compiler"
+      ],
+      "incoming": [
+        "edge:9"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_sequence",
+      "label": "sequence/",
+      "kind": "tree-leaf",
+      "context": "叶子节点",
+      "details": [
+        "sequence/"
+      ],
+      "incoming": [
+        "edge:10"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_dataflow",
+      "label": "dataflow/",
+      "kind": "tree-leaf",
+      "context": "叶子节点",
+      "details": [
+        "dataflow/"
+      ],
+      "incoming": [
+        "edge:11"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_lifecycle",
+      "label": "lifecycle/",
+      "kind": "tree-leaf",
+      "context": "叶子节点",
+      "details": [
+        "lifecycle/"
+      ],
+      "incoming": [
+        "edge:12"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_erd",
+      "label": "erd/",
+      "kind": "tree-leaf",
+      "sublabel": "Crow's foot markers",
+      "context": "叶子节点",
+      "details": [
+        "erd/",
+        "Crow's foot markers"
+      ],
+      "incoming": [
+        "edge:13"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_tree",
+      "label": "tree/",
+      "kind": "tree-leaf",
+      "sublabel": "This renderer",
+      "context": "叶子节点",
+      "details": [
+        "tree/",
+        "This renderer"
+      ],
+      "incoming": [
+        "edge:14"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "r_shared",
+      "label": "shared/",
+      "kind": "tree-branch",
+      "sublabel": "Shared helpers",
+      "context": "分支",
+      "details": [
+        "shared/",
+        "Shared helpers"
+      ],
+      "incoming": [
+        "edge:15"
+      ],
+      "outgoing": [
+        "edge:16",
+        "edge:17",
+        "edge:18",
+        "edge:19"
+      ],
+      "sources": []
+    },
+    {
+      "id": "s_cli",
+      "label": "cli.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Load, validate, write",
+      "context": "叶子节点",
+      "details": [
+        "cli.mjs",
+        "Load, validate, write"
+      ],
+      "incoming": [
+        "edge:16"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "s_geometry",
+      "label": "geometry.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Composition gates",
+      "context": "叶子节点",
+      "details": [
+        "geometry.mjs",
+        "Composition gates"
+      ],
+      "incoming": [
+        "edge:17"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "s_i18n",
+      "label": "i18n.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Locale catalogs",
+      "context": "叶子节点",
+      "details": [
+        "i18n.mjs",
+        "Locale catalogs"
+      ],
+      "incoming": [
+        "edge:18"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "s_validators",
+      "label": "generated-validators.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Schema validators",
+      "context": "叶子节点",
+      "details": [
+        "generated-validators.mjs",
+        "Schema validators"
+      ],
+      "incoming": [
+        "edge:19"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "b_archify",
+      "label": "archify.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "CLI: validate, finalize",
+      "context": "叶子节点",
+      "details": [
+        "archify.mjs",
+        "CLI: validate, finalize"
+      ],
+      "incoming": [
+        "edge:20"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "b_finalize",
+      "label": "finalize.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Render, check, deliver",
+      "context": "叶子节点",
+      "details": [
+        "finalize.mjs",
+        "Render, check, deliver"
+      ],
+      "incoming": [
+        "edge:21"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "b_preview",
+      "label": "preview.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Live preview server",
+      "context": "叶子节点",
+      "details": [
+        "preview.mjs",
+        "Live preview server"
+      ],
+      "incoming": [
+        "edge:22"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "v_focus",
+      "label": "focus.js",
+      "kind": "tree-leaf",
+      "sublabel": "Semantic passport",
+      "context": "叶子节点",
+      "details": [
+        "focus.js",
+        "Semantic passport"
+      ],
+      "incoming": [
+        "edge:23"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "v_export",
+      "label": "export.js",
+      "kind": "tree-leaf",
+      "sublabel": "SVG, PNG, WebM export",
+      "context": "叶子节点",
+      "details": [
+        "export.js",
+        "SVG, PNG, WebM export"
+      ],
+      "incoming": [
+        "edge:24"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "v_tree",
+      "label": "tree-branches.js",
+      "kind": "tree-leaf",
+      "sublabel": "Expand and collapse",
+      "context": "叶子节点",
+      "details": [
+        "tree-branches.js",
+        "Expand and collapse"
+      ],
+      "incoming": [
+        "edge:25"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "v_camera",
+      "label": "viewer-camera.js",
+      "kind": "tree-leaf",
+      "sublabel": "Pan, zoom, reveal",
+      "context": "叶子节点",
+      "details": [
+        "viewer-camera.js",
+        "Pan, zoom, reveal"
+      ],
+      "incoming": [
+        "edge:26"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "sc_viewer",
+      "label": "generate-viewer.mjs",
+      "kind": "tree-leaf",
+      "sublabel": "Inlines viewer/",
+      "context": "叶子节点",
+      "details": [
+        "generate-viewer.mjs",
+        "Inlines viewer/"
+      ],
+      "incoming": [
+        "edge:27"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "sc_zip",
+      "label": "build-zip.sh",
+      "kind": "tree-leaf",
+      "sublabel": "Deterministic archive",
+      "context": "叶子节点",
+      "details": [
+        "build-zip.sh",
+        "Deterministic archive"
+      ],
+      "incoming": [
+        "edge:28"
+      ],
+      "outgoing": [],
+      "sources": []
+    },
+    {
+      "id": "sc_gallery",
+      "label": "build-gallery.mjs",
+      "kind": "tree-leaf",
+      "context": "叶子节点",
+      "details": [
+        "build-gallery.mjs"
+      ],
+      "incoming": [
+        "edge:29"
+      ],
+      "outgoing": [],
+      "sources": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:0",
+      "key": "0",
+      "from": "repo",
+      "to": "skill",
+      "animated": true
+    },
+    {
+      "id": "edge:1",
+      "key": "1",
+      "from": "repo",
+      "to": "viewer",
+      "animated": true
+    },
+    {
+      "id": "edge:2",
+      "key": "2",
+      "from": "repo",
+      "to": "site",
+      "animated": true
+    },
+    {
+      "id": "edge:3",
+      "key": "3",
+      "from": "repo",
+      "to": "scripts",
+      "animated": true
+    },
+    {
+      "id": "edge:4",
+      "key": "4",
+      "from": "skill",
+      "to": "renderers",
+      "animated": true
+    },
+    {
+      "id": "edge:5",
+      "key": "5",
+      "from": "skill",
+      "to": "schemas",
+      "animated": true
+    },
+    {
+      "id": "edge:6",
+      "key": "6",
+      "from": "skill",
+      "to": "bin",
+      "animated": true
+    },
+    {
+      "id": "edge:7",
+      "key": "7",
+      "from": "skill",
+      "to": "references",
+      "animated": true
+    },
+    {
+      "id": "edge:8",
+      "key": "8",
+      "from": "renderers",
+      "to": "r_arch",
+      "animated": true
+    },
+    {
+      "id": "edge:9",
+      "key": "9",
+      "from": "renderers",
+      "to": "r_workflow",
+      "animated": true
+    },
+    {
+      "id": "edge:10",
+      "key": "10",
+      "from": "renderers",
+      "to": "r_sequence",
+      "animated": true
+    },
+    {
+      "id": "edge:11",
+      "key": "11",
+      "from": "renderers",
+      "to": "r_dataflow",
+      "animated": true
+    },
+    {
+      "id": "edge:12",
+      "key": "12",
+      "from": "renderers",
+      "to": "r_lifecycle",
+      "animated": true
+    },
+    {
+      "id": "edge:13",
+      "key": "13",
+      "from": "renderers",
+      "to": "r_erd",
+      "animated": true
+    },
+    {
+      "id": "edge:14",
+      "key": "14",
+      "from": "renderers",
+      "to": "r_tree",
+      "animated": true
+    },
+    {
+      "id": "edge:15",
+      "key": "15",
+      "from": "renderers",
+      "to": "r_shared",
+      "animated": true
+    },
+    {
+      "id": "edge:16",
+      "key": "16",
+      "from": "r_shared",
+      "to": "s_cli",
+      "animated": true
+    },
+    {
+      "id": "edge:17",
+      "key": "17",
+      "from": "r_shared",
+      "to": "s_geometry",
+      "animated": true
+    },
+    {
+      "id": "edge:18",
+      "key": "18",
+      "from": "r_shared",
+      "to": "s_i18n",
+      "animated": true
+    },
+    {
+      "id": "edge:19",
+      "key": "19",
+      "from": "r_shared",
+      "to": "s_validators",
+      "animated": true
+    },
+    {
+      "id": "edge:20",
+      "key": "20",
+      "from": "bin",
+      "to": "b_archify",
+      "animated": true
+    },
+    {
+      "id": "edge:21",
+      "key": "21",
+      "from": "bin",
+      "to": "b_finalize",
+      "animated": true
+    },
+    {
+      "id": "edge:22",
+      "key": "22",
+      "from": "bin",
+      "to": "b_preview",
+      "animated": true
+    },
+    {
+      "id": "edge:23",
+      "key": "23",
+      "from": "viewer",
+      "to": "v_focus",
+      "animated": true
+    },
+    {
+      "id": "edge:24",
+      "key": "24",
+      "from": "viewer",
+      "to": "v_export",
+      "animated": true
+    },
+    {
+      "id": "edge:25",
+      "key": "25",
+      "from": "viewer",
+      "to": "v_tree",
+      "animated": true
+    },
+    {
+      "id": "edge:26",
+      "key": "26",
+      "from": "viewer",
+      "to": "v_camera",
+      "animated": true
+    },
+    {
+      "id": "edge:27",
+      "key": "27",
+      "from": "scripts",
+      "to": "sc_viewer",
+      "animated": true
+    },
+    {
+      "id": "edge:28",
+      "key": "28",
+      "from": "scripts",
+      "to": "sc_zip",
+      "animated": true
+    },
+    {
+      "id": "edge:29",
+      "key": "29",
+      "from": "scripts",
+      "to": "sc_gallery",
+      "animated": true
+    }
+  ],
+  "lanes": [],
+  "frames": [],
+  "phases": [],
+  "legend": [],
+  "repository": null
+}

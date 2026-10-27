@@ -1,0 +1,113 @@
+✔ zh-CN localizes renderer-owned output across all five modes without translating authored content (1306.336584ms)
+✔ explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes (4122.369625ms)
+✔ omitted locale preserves non-English authored content and the English Viewer contract in all five modes (1301.959042ms)
+✔ checked-in Korean fixture validates and delivers a ko architecture artifact (871.627291ms)
+✔ checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact (1030.360584ms)
+✔ malformed locale tags fail schema validation in every mode (1419.719916ms)
+✔ a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback (6362.270958ms)
+✔ a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key (1291.628167ms)
+✔ translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key (249.783959ms)
+✔ bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog (7924.418959ms)
+✔ a partial override replaces only its keys and keeps the rest of the selected bundled language (1303.621ms)
+✔ empty translations and equivalent tag casing select the same bundled catalog (4348.335917ms)
+✔ rejected overrides keep the bundled message and are reported apart from English fallback gaps (250.245792ms)
+✔ an unbundled tag with only unusable translations falls back to English UI and language metadata (251.492334ms)
+✔ coverage reports the final resolved catalog with the English source of each gap (2.193375ms)
+✔ a document override never mutates the reusable bundled catalog (0.476917ms)
+✔ validate and deliver receipts carry locale warnings as structured diagnostics without failing (2477.536041ms)
+✔ the manifest enrolls exactly the bundled catalogs, and each is complete (4.171084ms)
+✔ enrolling a catalog is a data-only change and works from an unrelated working directory (625.546667ms)
+✔ every Viewer message reference resolves through the shared catalog (1.591542ms)
+✔ every supported catalog is complete and preserves interpolation variables (6.313333ms)
+✔ the bundled Korean catalog is complete and preserves interpolation variables for every canonical key (0.53975ms)
+✔ the checked-in fr example catalog validates reusable translations and discloses historical gaps (0.975667ms)
+✔ fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind (253.732917ms)
+✔ the checked-in pt example catalog validates reusable translations and discloses historical gaps (0.857209ms)
+✔ pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind (249.297042ms)
+✔ the checked-in ja example catalog validates reusable translations and discloses historical gaps (0.828292ms)
+✔ ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind (245.9885ms)
+✔ the checked-in de example catalog validates reusable translations and discloses historical gaps (0.8115ms)
+✔ de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind (244.879625ms)
+✔ the checked-in it example catalog validates reusable translations and discloses historical gaps (0.809292ms)
+✔ it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind (246.435291ms)
+✔ the checked-in ru example catalog validates reusable translations and discloses historical gaps (0.876125ms)
+✔ ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind (254.662208ms)
+✔ runtime labels stay localized after composition (0.216084ms)
+✔ Share Card and export failures use catalog messages instead of fixed English (2.040916ms)
+✔ Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth (0.340958ms)
+✔ all typed renderers emit details-on-demand metadata and native SVG titles (887.500958ms)
+✔ renderer-owned structure supplies truthful Semantic Passport context (984.755625ms)
+✔ Relationship Lens renders one Semantic Passport and copyable stable focus link (338.843708ms)
+✔ semantic passport computes and applies target top synchronously on open and switch without a 1-frame snap (961.187625ms)
+✔ Semantic Passport exposes one localized, bounded move affordance outside canonical export (251.642916ms)
+✔ Node Finder searches and presents the same passport facts (172.949125ms)
+✖ Tree branches collapse in place, follow the keyboard, reveal selections, and export complete (2418.418666ms)
+✔ tree: small example renders and passes the showcase artifact checks (266.842708ms)
+✔ tree: small layout keeps generations aligned and nodes apart (126.375875ms)
+✔ tree: large example renders and passes the showcase artifact checks (269.754459ms)
+✔ tree: large layout keeps generations aligned and nodes apart (124.909125ms)
+✔ tree: an unbalanced tree places a parent over its own children only (128.955125ms)
+✔ tree: three or more sibling leaves going down become one stacked list (247.295625ms)
+✔ tree: every descendant and link carries its ancestors, and toggles count what they hide (153.038ms)
+✔ tree: authored collapsed state is a Viewer default, not a removal from the SVG (153.041291ms)
+✔ tree: long labels wrap between words instead of overflowing (131.666667ms)
+✔ tree: structural errors are refused instead of inventing a hierarchy (742.21625ms)
+✔ tree: semantic kinds describe containment roles while paint and topology stay intact (379.001583ms)
+ℹ tests 55
+ℹ suites 0
+ℹ pass 54
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36823.864083
+
+✖ failing tests:
+
+test at test/tree-branches-browser.test.mjs:17:1
+✖ Tree branches collapse in place, follow the keyboard, reveal selections, and export complete (2418.418666ms)
+  AssertionError [ERR_ASSERTION]: TypeError: Cannot read properties of undefined (reading 'open')
+      at <anonymous>:1:20
+  + actual - expected
+  
+  + {
+  +   columnNumber: 19,
+  +   exception: {
+  +     className: 'TypeError',
+  +     description: "TypeError: Cannot read properties of undefined (reading 'open')\n" +
+  +       '    at <anonymous>:1:20',
+  +     objectId: '2217447974576630795.2.2',
+  +     subtype: 'error',
+  +     type: 'object'
+  +   },
+  +   exceptionId: 1,
+  +   lineNumber: 0,
+  +   scriptId: '15',
+  +   stackTrace: {
+  +     callFrames: [
+  +       {
+  +         columnNumber: 19,
+  +         functionName: '',
+  +         lineNumber: 0,
+  +         scriptId: '15',
+  +         url: ''
+  +       }
+  +     ]
+  +   },
+  +   text: 'Uncaught'
+  + }
+  - undefined
+  
+      at run (file://<USER_HOME>/.codex/worktrees/lab-tree-roles/archify/test/tree-branches-browser.test.mjs:61:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async checkRoles (file://<USER_HOME>/.codex/worktrees/lab-tree-roles/archify/test/tree-branches-browser.test.mjs:92:5)
+      at async TestContext.<anonymous> (file://<USER_HOME>/.codex/worktrees/lab-tree-roles/archify/test/tree-branches-browser.test.mjs:106:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { exceptionId: 1, text: 'Uncaught', lineNumber: 0, columnNumber: 19, scriptId: '15', stackTrace: { callFrames: [Array] }, exception: { type: 'object', subtype: 'error', className: 'TypeError', description: "TypeError: Cannot read properties of undefined (reading 'open')\n    at <anonymous>:1:20", objectId: '2217447974576630795.2.2' } },
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

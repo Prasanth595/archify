@@ -13,7 +13,7 @@ import {
 } from '../shared/cli.mjs';
 import { throwDiagnosticProblems } from '../shared/diagnostics.mjs';
 import { nodeTextFit } from '../shared/text-fit.mjs';
-import { translateMessage as i18nText } from '../shared/i18n.mjs';
+import { translateMessage as i18nText, registerLocale } from '../shared/i18n.mjs';
 import { asArray, roundedPath, routePointsValue } from '../shared/geometry.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,6 +26,22 @@ const { diagram: tree, template, outPath, sourceEvidence } = loadDiagram({
   argv: cliArgs,
 });
 const locale = tree.meta.locale;
+// Preserve explicit document wording from Trees rendered before roles had their
+// own kind keys. New structural overrides take precedence; bundled paint labels
+// are never copied into Tree semantics.
+const translations = { ...tree.meta.translations };
+for (const [paint, role] of [['frontend', 'root'], ['backend', 'branch'], ['external', 'leaf']]) {
+  const oldKey = `viewer.kind.${paint}`;
+  const roleKey = `viewer.kind.tree.${role}`;
+  if (translations[roleKey] === undefined && translations[oldKey] !== undefined) translations[roleKey] = translations[oldKey];
+}
+// The Tree-specific Lens defaults must also retain explicit older document copy.
+for (const key of ['lens.title', 'lens.instruction', 'guide.lens.hint']) {
+  const oldKey = `viewer.${key}`;
+  const treeKey = `viewer.tree.${key}`;
+  if (translations[treeKey] === undefined && translations[oldKey] !== undefined) translations[treeKey] = translations[oldKey];
+}
+registerLocale(locale, translations);
 const direction = tree.layout?.direction === 'right' ? 'right' : 'down';
 const down = direction === 'down';
 
@@ -424,7 +440,7 @@ function renderNode(node) {
   const tone = node.isRoot ? 'frontend' : leaf ? 'external' : 'backend';
   const role = node.isRoot ? 'tree-root' : leaf ? 'tree-leaf' : 'tree-branch';
   const context = i18nText(locale, node.isRoot ? 'node.context.tree.root' : childrenOf.get(node.id).length ? 'node.context.tree.branch' : 'node.context.tree.leaf');
-  const passport = { kind: tone, sublabel: node.sublabel, context };
+  const passport = { kind: role, sublabel: node.sublabel, context };
   // A stacked list reads left-aligned, like a directory listing; a node in a
   // row is centred under its link.
   const cx = node.stacked ? node.x + layout.padX + 2 : node.x + node.width / 2;
@@ -565,7 +581,7 @@ if (layoutJsonMode) {
 } else {
   writeDiagram({
     outPath,
-    template,
+    template: template.replace(/\{\{i18n:viewer\.(lens\.title|lens\.instruction|guide\.lens\.hint)\}\}/g, (_match, key) => `{{i18n:viewer.tree.${key}}}`),
     diagramType: 'tree',
     meta: tree.meta,
     svg: renderSvg(),

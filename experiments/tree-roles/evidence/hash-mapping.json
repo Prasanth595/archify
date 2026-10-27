@@ -1,0 +1,530 @@
+[
+  {
+    "sourceLocal": "/tmp/archify-round11-base-finalize/repository.browser-check.json",
+    "public": "evidence/baseline/repository.browser-check.json",
+    "rawSha256": "3b42c20b25d8c4015be9e520762ded8ff6e9be39c3dad51d9ee434dc358d5bf9",
+    "publicSha256": "a71eb00a7787174126d5924e928965675fafaf1c802d420bbb590f27873b22de",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/baseline/repository.browser-check.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-base-finalize/repository.finalize.json",
+    "public": "evidence/baseline/repository.finalize.json",
+    "rawSha256": "9443a2c95bc6d76b1a44d4764016eb3ced7b9239b79c898779b5237321b1caec",
+    "publicSha256": "d852543a89013adc7f9e7b727455fb6baafa57941653ad4f31740a391e44cd76",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/baseline/repository.finalize.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-base-finalize/repository.finalize-summary.json",
+    "public": "evidence/baseline/repository.finalize-summary.json",
+    "rawSha256": "448b2b24ac463efa61a64b0c9024b1ff126cac7e40626a99524666c9eb64a20a",
+    "publicSha256": "67378ac62cd1ee45da0111b144534d39036bec55f8e59867351d0934cb1d6b78",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/baseline/repository.finalize-summary.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-base-finalize.stdout.json",
+    "public": "evidence/baseline/finalize.stdout.json",
+    "rawSha256": "d01e88152fd06292219219e048099cf3eeff4d102681f8d9f53bc9c34d464808",
+    "publicSha256": "a31a63d6568baea43f3cbab068c0087e094b17d2b8c6b2f22ea98af1953c5612",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/baseline/finalize.stdout.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-candidate-finalize/repository.browser-check.json",
+    "public": "evidence/first-candidate/repository.browser-check.json",
+    "rawSha256": "770320884a37156dc41d559074bafb4ae12203417a3441bdbd119e5985f1ec4b",
+    "publicSha256": "322d9e6e41533956feb6c871d2f9a02d5932dce56e108986b8bd55677959863e",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/first-candidate/repository.browser-check.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-candidate-finalize/repository.finalize.json",
+    "public": "evidence/first-candidate/repository.finalize.json",
+    "rawSha256": "f5918cdf8954f60692d52bff98605b4bbfb0637ad2fc31c34f429caccc258dec",
+    "publicSha256": "53deb2c41a51792a1ad74a8a16a9cbca0d09da1bff36147787db44698ab6e5e5",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/first-candidate/repository.finalize.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-candidate-finalize/repository.finalize-summary.json",
+    "public": "evidence/first-candidate/repository.finalize-summary.json",
+    "rawSha256": "7a3a7cde112160fa3dbf64e3cdb18f6d1d8d9b620b72e0e9710fd486530f6021",
+    "publicSha256": "4d6e622e11c54e68c944fe1937ed661d574f48399c2461c3720e40b3a4d0c41a",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/first-candidate/repository.finalize-summary.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-candidate-finalize.stdout.json",
+    "public": "evidence/first-candidate/finalize.stdout.json",
+    "rawSha256": "8bb2f337b07cc454e8ab32775fc1a75961dbbac85dd6d479b53bbc49105e1247",
+    "publicSha256": "dc2925aef99023ffba23a9e031d2a53943d6f01bc5bbd3ab504a58a30970eeff",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/first-candidate/finalize.stdout.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-final-finalize/repository.browser-check.json",
+    "public": "evidence/candidate/repository.browser-check.json",
+    "rawSha256": "987918361537c6736f7ea555cc7101314eccd42eaad7807480929170154a81d5",
+    "publicSha256": "ba7bea4e26dc4bbf3b2057082eec2c1856768af1c49ce5a06c90a27538d47d56",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/candidate/repository.browser-check.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-final-finalize/repository.finalize.json",
+    "public": "evidence/candidate/repository.finalize.json",
+    "rawSha256": "d7529ddc86fd78de0bb2d2e29fb52d33cfca1ea200894a1bc97300e7d93aa032",
+    "publicSha256": "7afae34c22dd1b765867623d9eb11d63665bcc844a9a7896af7b3657526ea527",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/candidate/repository.finalize.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-final-finalize/repository.finalize-summary.json",
+    "public": "evidence/candidate/repository.finalize-summary.json",
+    "rawSha256": "d702d90ba1c1e12d05de49420e149e2532089f9d9d8acb0799897e2fcd6e5dbd",
+    "publicSha256": "6e4242a71c26af59bbbb3ac57fa807d0c2d3ee7972630eab98b3be2440bee21b",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/candidate/repository.finalize-summary.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-final-finalize.stdout.json",
+    "public": "evidence/candidate/finalize.stdout.json",
+    "rawSha256": "529b9c4c97c1c7b8fa4be0fc444701fb1e29bdcfe7270a66ac3f89ced32bcfd7",
+    "publicSha256": "98fd9a092bdfc30fe40087b289066a0ffb2363a49da6ae00165ab2c84810638f",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/candidate/finalize.stdout.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/lens-compat-before.log",
+    "public": "evidence/tests/lens-compat-before.log",
+    "rawSha256": "336d6cc4bceac53620297704320499abdbc8fa4eb606023a497f961b7f1ec20f",
+    "publicSha256": "90103a65962186465ad603d61d7a2694d3b174d5e833912b771fe316d5757b76",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/lens-compat-before.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/receipt.md",
+    "public": "evidence/tests/receipt.md",
+    "rawSha256": "134b5a2deaedd2be3e76e107a7e0c4c6edfe1f7ecd51d842a1184fff9d4c6345",
+    "publicSha256": "945fcca5c71bf0aa4f3e8fb225d78057f639f0e70247073c2ea6d455635c4f1d",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/receipt.md",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/template-check.log",
+    "public": "evidence/tests/template-check.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/template-check.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/lens-compat-final.log",
+    "public": "evidence/tests/lens-compat-final.log",
+    "rawSha256": "d41049f876883d3d97c57f3bbf84bd80db31f8317bb4ef27aa3e19c57e738a8d",
+    "publicSha256": "d41049f876883d3d97c57f3bbf84bd80db31f8317bb4ef27aa3e19c57e738a8d",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/lens-compat-final.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/lens-compat-template-check.log",
+    "public": "evidence/tests/lens-compat-template-check.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/lens-compat-template-check.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/first-implementation.patch",
+    "public": "evidence/tests/first-implementation.patch",
+    "rawSha256": "49a1951d0d1396df5d5eab50aec05833a55c6688abce1e71fd0f045f7349902d",
+    "publicSha256": "49a1951d0d1396df5d5eab50aec05833a55c6688abce1e71fd0f045f7349902d",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/first-implementation.patch",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/lens-compat-de-catalog.log",
+    "public": "evidence/tests/lens-compat-de-catalog.log",
+    "rawSha256": "dcca19e322b1e4c9f55e112476a6a87ff6c4b10ee15376bac9411c34d9c082c1",
+    "publicSha256": "dcca19e322b1e4c9f55e112476a6a87ff6c4b10ee15376bac9411c34d9c082c1",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/lens-compat-de-catalog.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/diff-check.log",
+    "public": "evidence/tests/diff-check.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/diff-check.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/before-lens-compat.patch",
+    "public": "evidence/tests/before-lens-compat.patch",
+    "rawSha256": "aaa1bd5907cbd318d44a979c82b09e38d51be02643e5b97ec8097238ce17b871",
+    "publicSha256": "aaa1bd5907cbd318d44a979c82b09e38d51be02643e5b97ec8097238ce17b871",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/before-lens-compat.patch",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/semantic-browser.log",
+    "public": "evidence/tests/semantic-browser.log",
+    "rawSha256": "a6319839515ef881b66011c168d589d55bfd99989059d480eeb4d35143345be0",
+    "publicSha256": "a6319839515ef881b66011c168d589d55bfd99989059d480eeb4d35143345be0",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/semantic-browser.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/base-regression.log",
+    "public": "evidence/tests/base-regression.log",
+    "rawSha256": "9b2a7d6865d3d6547577a6d1af2ff8b4bc95ef8f265071ca58e5b0d64aca43c8",
+    "publicSha256": "9c6b3f972b847cea7f92c43aeccff677ca5ccd6461e444fc21ddcc763228d847",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/base-regression.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/focused-2.log",
+    "public": "evidence/tests/focused-2.log",
+    "rawSha256": "e2dd42c865d4ff86bca9274eef287d41624e94cdd14e81b4aff3621bed3d142c",
+    "publicSha256": "11bb7d3472e88f794f623ead53bf0f6398d71fe4a37d7dfeda6ec662004207ba",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/focused-2.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/lens-compat-diff-check.log",
+    "public": "evidence/tests/lens-compat-diff-check.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/lens-compat-diff-check.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/template-final-check.log",
+    "public": "evidence/tests/template-final-check.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/template-final-check.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/base-sha.txt",
+    "public": "evidence/tests/base-sha.txt",
+    "rawSha256": "6f36524dddce085f6ee61c271434a90c53e627b5400d6f39ae583941b5940e0b",
+    "publicSha256": "6f36524dddce085f6ee61c271434a90c53e627b5400d6f39ae583941b5940e0b",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/base-sha.txt",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/final-candidate.patch",
+    "public": "evidence/tests/final-candidate.patch",
+    "rawSha256": "44cd68933390899e0ea33f1e1a51fffc6ba1753386934cabd33df03972632fa6",
+    "publicSha256": "44cd68933390899e0ea33f1e1a51fffc6ba1753386934cabd33df03972632fa6",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/final-candidate.patch",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/focused-1.log",
+    "public": "evidence/tests/focused-1.log",
+    "rawSha256": "a20c94b51745ccc5dbffd7a5e57e76c9d188ec654edccca05ae6435f10fe0fe8",
+    "publicSha256": "03c06dcdc2d7a3151499ecd670aeddeb8508633f8ba9412970b08764a2614044",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/focused-1.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-tree-tests/tree-browser-final.log",
+    "public": "evidence/tests/tree-browser-final.log",
+    "rawSha256": "d6d240654e1817eb1b42323d702680c3fbeb90c4c94dd1e7675acc31f4f59a14",
+    "publicSha256": "d6d240654e1817eb1b42323d702680c3fbeb90c4c94dd1e7675acc31f4f59a14",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/tests/tree-browser-final.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-independent-review.md",
+    "public": "evidence/independent-review.md",
+    "rawSha256": "74e0e9f242e1744694a17be748732109cc776b3d6cc50237af64498e060bca56",
+    "publicSha256": "7225f50577f553d8e28b6d0e7bfd6ef10ea07f7ea593fabdb4028afbd817e834",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/independent-review.md",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-story.json",
+    "public": "evidence/story-invalid-action.json",
+    "rawSha256": "5cf6699c575d81b5591008fb87a10815889fe580a728c181f03fcab78c196ef1",
+    "publicSha256": "6825ec3ae27423abc5a3571ba36896a9e20e18c668029a2b3545acfbd986372e",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/story-invalid-action.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-story-scan.json",
+    "public": "evidence/story-scan.json",
+    "rawSha256": "6b89aa9296aff7d53ac7a21c56d8dd641331d080e30703248d3a78649eab5271",
+    "publicSha256": "6b89aa9296aff7d53ac7a21c56d8dd641331d080e30703248d3a78649eab5271",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/story-scan.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "experiments/tree-roles/baseline/repository.delivery.json",
+    "public": "evidence/baseline/repository.delivery.json",
+    "rawSha256": "83ead7b153fc08f1947130b31ecc8fd80b46e1786fd01a2fa4720ca4e3c11f19",
+    "publicSha256": "6f9f71911f1e060b9eb5bd20c38b50fbe3a0e3d6d1f8811cef085a7590a7ed4f",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/baseline/repository.delivery.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "experiments/tree-roles/candidate/repository.delivery.json",
+    "public": "evidence/candidate/repository.delivery.json",
+    "rawSha256": "0f4892eee421ed8d2bfb0fb5a145300349d4b8b6b8e55a245c15ff5bb53ba15e",
+    "publicSha256": "215a1a1b2d8cff13a693cdcc21c22ee5befab08e63d059c5856bc97c25a6755f",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/candidate/repository.delivery.json",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/diff-stat.txt",
+    "public": "evidence/generated/diff-stat.txt",
+    "rawSha256": "670cae336a139e80776368e25b770ed4a3266328a3b90a75d14001dde5768aee",
+    "publicSha256": "670cae336a139e80776368e25b770ed4a3266328a3b90a75d14001dde5768aee",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/diff-stat.txt",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/cmp.exit",
+    "public": "evidence/generated/cmp.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/cmp.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/sha256.txt",
+    "public": "evidence/generated/sha256.txt",
+    "rawSha256": "9a3f207f844d000b066c7441bf4001f227d69b3d68b786a4ec618d4f7494dc3f",
+    "publicSha256": "9a3f207f844d000b066c7441bf4001f227d69b3d68b786a4ec618d4f7494dc3f",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/sha256.txt",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/zip-2.exit",
+    "public": "evidence/generated/zip-2.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/zip-2.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/zip-inventory.txt",
+    "public": "evidence/generated/zip-inventory.txt",
+    "rawSha256": "b35eeb9b5c231e0f54f4f91cfb798e17785e04e453b6d5fb46291b21ff487400",
+    "publicSha256": "b35eeb9b5c231e0f54f4f91cfb798e17785e04e453b6d5fb46291b21ff487400",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/zip-inventory.txt",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/gallery.exit",
+    "public": "evidence/generated/gallery.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/gallery.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/packaged-examples.exit",
+    "public": "evidence/generated/packaged-examples.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/packaged-examples.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/examples.exit",
+    "public": "evidence/generated/examples.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/examples.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/cmp.log",
+    "public": "evidence/generated/cmp.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/cmp.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/zip-1.log",
+    "public": "evidence/generated/zip-1.log",
+    "rawSha256": "993db89accb1a3dcb0df4bd3e2561d6eb1f2460f2f147932f1496bb5d44dab80",
+    "publicSha256": "993db89accb1a3dcb0df4bd3e2561d6eb1f2460f2f147932f1496bb5d44dab80",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/zip-1.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/exclusions-rg.exit",
+    "public": "evidence/generated/exclusions-rg.exit",
+    "rawSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "publicSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/exclusions-rg.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/zip-1.exit",
+    "public": "evidence/generated/zip-1.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/zip-1.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/web-app.log",
+    "public": "evidence/generated/web-app.log",
+    "rawSha256": "8939e0c68c66ae9878a572c90656c891c642fa294f767132b45db12bd067333d",
+    "publicSha256": "8939e0c68c66ae9878a572c90656c891c642fa294f767132b45db12bd067333d",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/web-app.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/test-generated.log",
+    "public": "evidence/generated/test-generated.log",
+    "rawSha256": "cc9722741c3f0751bb498fa20a10fa378e75647b33d7e6096a8f2bedd518e814",
+    "publicSha256": "cc9722741c3f0751bb498fa20a10fa378e75647b33d7e6096a8f2bedd518e814",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/test-generated.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/zip-2.log",
+    "public": "evidence/generated/zip-2.log",
+    "rawSha256": "2795d2418945733cef53e6fe31228845fed27e0788745a9c03aa9820f366a3e6",
+    "publicSha256": "2795d2418945733cef53e6fe31228845fed27e0788745a9c03aa9820f366a3e6",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/zip-2.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/examples.log",
+    "public": "evidence/generated/examples.log",
+    "rawSha256": "2d91d456dc7fdb015de89be7b20a4269de51437cddeae50a6c2c7a19e53f334b",
+    "publicSha256": "ddee79fdf04a10d42edccb2a36b6371650403c63c2095e3427218673ecf432eb",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/examples.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/web-app.exit",
+    "public": "evidence/generated/web-app.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/web-app.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/packaged-examples.log",
+    "public": "evidence/generated/packaged-examples.log",
+    "rawSha256": "98e5d2e5ff12664aad7e798f9debe10aa4ac3d63c40cd4c922e0aba50715be7c",
+    "publicSha256": "c154b54bb8dc4f04609cce57c7c07fcef1acd172f680efad0c8f38cc830eef18",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/packaged-examples.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/status.txt",
+    "public": "evidence/generated/status.txt",
+    "rawSha256": "1129012d0311978a3aa0c1c7e8d182958bdc0fcf771f48c0721db4ed180c25a2",
+    "publicSha256": "1129012d0311978a3aa0c1c7e8d182958bdc0fcf771f48c0721db4ed180c25a2",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/status.txt",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/test-generated.exit",
+    "public": "evidence/generated/test-generated.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/test-generated.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/exclusions.log",
+    "public": "evidence/generated/exclusions.log",
+    "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "publicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/exclusions.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated-final/gallery.log",
+    "public": "evidence/generated/gallery.log",
+    "rawSha256": "c86ac2d382e748255e3cb4204ba3a25e773719bf5c658bacd86685e9154463b1",
+    "publicSha256": "77d050bce3022f246aaa4c4fcfeeade417c404dec3fb1d8ad154caf27466b58a",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/generated/gallery.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-generated.log",
+    "public": "evidence/final/generated.log",
+    "rawSha256": "714150e6c16ae8b9b81c301df128d25357185ffba5124dcfb5a51e64789d95fb",
+    "publicSha256": "714150e6c16ae8b9b81c301df128d25357185ffba5124dcfb5a51e64789d95fb",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/generated.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-canonical-runner-rejection.log",
+    "public": "evidence/final/canonical-runner-rejection.log",
+    "rawSha256": "505106615599a39c0e1439ab2a665ebec680339c7a58b9d693d468e124e5383a",
+    "publicSha256": "505106615599a39c0e1439ab2a665ebec680339c7a58b9d693d468e124e5383a",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/canonical-runner-rejection.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-canonical-runner-rejection.exit",
+    "public": "evidence/final/canonical-runner-rejection.exit",
+    "rawSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "publicSha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/canonical-runner-rejection.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-canonical-focus.log",
+    "public": "evidence/final/canonical-focus.log",
+    "rawSha256": "12f4bef11f85b10d05d0d5c62f4d9e12dfe07b9db9d641ea571e5188502a60eb",
+    "publicSha256": "12f4bef11f85b10d05d0d5c62f4d9e12dfe07b9db9d641ea571e5188502a60eb",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/canonical-focus.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-canonical-focus.exit",
+    "public": "evidence/final/canonical-focus.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/canonical-focus.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-core.log",
+    "public": "evidence/final/core.log",
+    "rawSha256": "ddc0aadc5000f1a75966b91252cc0fa5704276b05defb9372aee4a35d7cd3a17",
+    "publicSha256": "ddc0aadc5000f1a75966b91252cc0fa5704276b05defb9372aee4a35d7cd3a17",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/core.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-core.exit",
+    "public": "evidence/final/core.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/core.exit",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-canonical-generated.log",
+    "public": "evidence/final/canonical-generated.log",
+    "rawSha256": "cc9722741c3f0751bb498fa20a10fa378e75647b33d7e6096a8f2bedd518e814",
+    "publicSha256": "cc9722741c3f0751bb498fa20a10fa378e75647b33d7e6096a8f2bedd518e814",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/canonical-generated.log",
+    "rawArchiveVerified": true
+  },
+  {
+    "sourceLocal": "/tmp/archify-round11-canonical-generated.exit",
+    "public": "evidence/final/canonical-generated.exit",
+    "rawSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "publicSha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rawArchive": "/tmp/archify-round11-raw-records/evidence/final/canonical-generated.exit",
+    "rawArchiveVerified": true
+  }
+]
