@@ -489,6 +489,21 @@ function segmentLabelBox(segment) {
   return label;
 }
 
+// The authored phases a position sits in, as a stable membership key. Nested
+// phases contribute every containing index, so moving a message out of a
+// nested phase into its parent still counts as a membership change.
+function phasesAt(position) {
+  return asArray(sequence.segments)
+    .map((segment, index) => (typeof position === 'number' && segment.from <= position && position <= segment.to ? index : -1))
+    .filter((index) => index !== -1)
+    .join(',');
+}
+
+// Captured before any repair scan rewrites a candidate `y`: the joint scan
+// mutates the message in place before calling messageFitsAt, so the authored
+// membership cannot be read back from the message itself.
+const AUTHORED_PHASES = new Map(asArray(sequence.messages).map((message, index) => [index, phasesAt(message.y)]));
+
 // Whether moving one message to `y` keeps it readable: inside the timeline,
 // 28px from messages sharing its horizontal span, and clear of every other
 // label, route and note. Used to offer only repairs that hold.
@@ -518,6 +533,11 @@ function messageFitsAt(messageIndex, y, ignore = null) {
   // A note on the moved message must still end above the content limit; an
   // automatic canvas regrows for it but an authored one cannot.
   if (sequence.meta?.viewBox && movedNote && movedNote.y + movedNote.height > layout.lifelineBottom + 20) return false;
+  // Applying the edit would silently reassign the authored scenario when it
+  // slides a message into or out of a phase, or to a different nested
+  // membership, even if the geometry is valid, so such an adjustment is
+  // withheld instead (#923 review).
+  if (phasesAt(y) !== AUTHORED_PHASES.get(messageIndex)) return false;
   return messages.every((other, otherIndex) => {
     if (otherIndex === messageIndex || typeof other.y !== 'number') return true;
     if (ignore !== null && ignore.has(otherIndex)) return true;

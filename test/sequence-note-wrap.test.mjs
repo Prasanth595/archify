@@ -453,7 +453,7 @@ test('a note on the moved message that cannot clear the content limit withholds 
   assert.deepEqual(diagnostic.supportedFixes, []);
 });
 
-test('the ordered adjustment keeps off a segment frame edge', (t) => {
+test('the ordered adjustment withholds when it would move a message into a phase', (t) => {
   const spec = {
     ...sequence({
       participants: ['client', 'api'],
@@ -467,14 +467,33 @@ test('the ordered adjustment keeps off a segment frame edge', (t) => {
   };
   spec.segments = [{ label: 'Phase', from: 402, to: 540 }];
   const diagnostic = failure(t, spec, 'sequence/note-overlap');
-  // requiredY 399 is inside the edge's 4px clearance (402); the first clear
-  // slot is 406, and the next message follows 28px later on the same lane.
-  assert.deepEqual(diagnostic.supportedFixes, [
-    'set /messages/1/y to 406',
-    'set /messages/2/y to 434',
-  ]);
-  let repaired = spec;
-  for (const fix of diagnostic.supportedFixes) repaired = applyFix(repaired, fix);
+  // requiredY 399 is inside the frame edge's 4px clearance (402), and every
+  // clear slot below the edge (406, then 434 on the same lane) would move the
+  // messages from outside the authored phase into it. Applying those edits
+  // validates, but it reassigns the authored scenario, so the adjustment is
+  // withheld instead (#923 review).
+  assert.equal(diagnostic.evidence.reached.length, 2, 'the joint path is the one refusing');
+  assert.deepEqual(diagnostic.supportedFixes, [], 'a move that changes authored phase membership is withheld');
+});
+
+test('a single move still repairs inside an authored phase', (t) => {
+  const spec = {
+    ...sequence({
+      participants: ['client', 'api'],
+      messages: [
+        { from: 'client', to: 'api', y: 300, label: 'owner', note: Array(60).fill('word').join(' ') },
+        { from: 'client', to: 'api', y: 330, label: 'blocker' },
+      ],
+    }),
+    meta: { title: 'Note wrap', output: 'note.html', quality_profile: 'showcase', column_fit: 'spread', viewBox: [560, 600], legend: { mode: 'hidden' } },
+  };
+  // Both the authored row and the first clear slot (22px below the note's
+  // bottom edge) stay inside the phase, so the membership rule leaves the move
+  // available.
+  spec.segments = [{ label: 'Phase', from: 200, to: 500 }];
+  const diagnostic = failure(t, spec, 'sequence/note-overlap');
+  assert.deepEqual(diagnostic.supportedFixes, ['set /messages/1/y to 399']);
+  const repaired = applyFix(spec, diagnostic.supportedFixes[0]);
   const after = run(t, 'validate', repaired).result;
   assert.equal(after.status, 0, after.stdout + after.stderr);
 });
@@ -504,7 +523,7 @@ test('disjoint lanes may keep a closer row in the ordered adjustment', (t) => {
   assert.equal(after.status, 0, after.stdout + after.stderr);
 });
 
-test('a single move steps past a segment edge but not past a message', (t) => {
+test('a single move withholds at a phase boundary and does not cross a message', (t) => {
   const spec = {
     ...sequence({
       participants: ['client', 'api'],
@@ -517,12 +536,11 @@ test('a single move steps past a segment edge but not past a message', (t) => {
   };
   spec.segments = [{ label: 'Phase', from: 401, to: 520 }];
   const diagnostic = failure(t, spec, 'sequence/note-overlap');
-  // requiredY 399 is inside the edge's 4px clearance (401); 405 is the first
-  // slot that clears it, and nothing sits below the blocker to cross.
-  assert.deepEqual(diagnostic.supportedFixes, ['set /messages/1/y to 405']);
-  const repaired = applyFix(spec, diagnostic.supportedFixes[0]);
-  const after = run(t, 'validate', repaired).result;
-  assert.equal(after.status, 0, after.stdout + after.stderr);
+  // requiredY 399 is inside the edge's 4px clearance (401), and 405 — the
+  // first slot that clears it — sits inside the authored phase while the
+  // blocker is authored outside it. Sliding it in would reassign the authored
+  // scenario, so the single move is withheld (#923 review).
+  assert.deepEqual(diagnostic.supportedFixes, [], 'a single move that changes authored phase membership is withheld');
 
   const blocked = {
     ...sequence({
