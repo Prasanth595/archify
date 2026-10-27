@@ -1,0 +1,1 @@
+首个已生成 D，HTML SHA-256 `9191f10724258e770f8e808df89ffaff10920a74d6234a574f76776bd3de129c`。其中 Lens 仍显示“真实流量”，失败观察见 ../root-review/first-lens-runtime-wording.png；最终版仅在原生 JSON 添加两项 Lens 翻译后重新生成。首版收据位于上级目录 first-*.redacted.json，live sidecar 未复制到这里。

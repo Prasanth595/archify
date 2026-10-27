@@ -19,3 +19,7 @@ node archify/bin/archify.mjs browser-check experiments/conflict-explanation/term
 保留当前生成的 HTML 与其原始 receipt 的区别；复制或脱敏的 HTML 不自动继承 live provenance。未运行广泛测试、CI 或真实用户研究。
 
 实际键盘与页面复核已完成，见 [root-review/review.md](root-review/review.md)：两处直达行为成立，但原生详情遮挡与泛化类型标签仍限制阅读质量；保留研究样例，不升级为共享功能建议。
+
+## 第十批补充更正
+
+C 保留为原样历史交互实验。源码审查确认 Tree 只表达包含关系；它用于本例依赖声明的模型选择不成立。“外部系统”也不是缺失元数据后的 fallback，而是 Tree 主动把配色 tone 写入 kind。先前键盘进入/返回观察仍有效，但不构成模型语义正确的证据。当前候选及独立诊断见 [D](../dependency-model/README.md)；通用 Tree 类型缺陷未在本批修复。

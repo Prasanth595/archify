@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "输入依赖声明：foo 候选合并显示",
+    "locale": "zh-CN",
+    "output": "declared.html",
+    "translations": {
+      "viewer.kind.backend": "包名"
+    },
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "包名"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "root",
+      "type": "backend",
+      "icon": "none",
+      "label": "root 1",
+      "sublabel": "登记版本 1",
+      "pos": [
+        40,
+        150
+      ],
+      "size": [
+        170,
+        76
+      ]
+    },
+    {
+      "id": "foo",
+      "type": "backend",
+      "icon": "none",
+      "label": "foo {1,2,3,4,5}",
+      "sublabel": "已登记候选合并；未选定",
+      "pos": [
+        360,
+        80
+      ],
+      "size": [
+        210,
+        76
+      ]
+    },
+    {
+      "id": "bar",
+      "type": "backend",
+      "icon": "none",
+      "label": "bar",
+      "sublabel": "被引用；未提供版本",
+      "pos": [
+        720,
+        80
+      ],
+      "size": [
+        190,
+        76
+      ]
+    },
+    {
+      "id": "baz",
+      "type": "backend",
+      "icon": "none",
+      "label": "baz 1",
+      "sublabel": "已登记；无依赖",
+      "pos": [
+        360,
+        240
+      ],
+      "size": [
+        210,
+        76
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "root",
+      "to": "foo",
+      "label": "声明依赖 · 任意版本"
+    },
+    {
+      "from": "root",
+      "to": "baz",
+      "label": "声明依赖 · 任意版本"
+    },
+    {
+      "from": "foo",
+      "to": "bar",
+      "label": "每个候选声明依赖 · 任意版本"
+    }
+  ]
+}

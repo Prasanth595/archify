@@ -1,0 +1,95 @@
+{
+  "verifiedAtUtc": "2026-10-27T15:54:47.684876+00:00",
+  "reviewer": "root after delegated author became unavailable",
+  "finalHtml": {
+    "sha256": "09ec711ed24370ea330fe614e0541adf6a5ce621d0324cfdfa66c2676100cd96",
+    "bytes": 541872
+  },
+  "receiptMappings": [
+    {
+      "public": "first-d.delivery.redacted.json",
+      "raw_relative": "attempt1/d.delivery.json",
+      "raw_sha256": "753bcf46ec0dd9a1763d895cfca6e3b6c1e3987ba7fd3048b548de52d67324dc",
+      "public_sha256": "1d8298ffa288f4935019fda6dd3343e177169eb1c3ad3da1b7b32ee5f2ccf69c",
+      "verified": true
+    },
+    {
+      "public": "first-finalize.stdout.redacted.json",
+      "raw_relative": "attempt1/finalize.stdout.json",
+      "raw_sha256": "96fdce7c9214d9617816b52083dd0245b63684a7237d1e75ba9e25fa0ac52fe2",
+      "public_sha256": "b69d61bdee0441a5acf13a82821ab637eca478322d42e4640b4dfc85fae6f1fc",
+      "verified": true
+    },
+    {
+      "public": "first-finalize-d.finalize.redacted.json",
+      "raw_relative": "attempt1/finalize/d.finalize.json",
+      "raw_sha256": "4920c10d4980b1505147ef453ad90b3522c6aca43c02f6010a68f954b1a3e078",
+      "public_sha256": "e221da5a7cc258471809c8d79336d6257f629d2b952a74c94ee438adddc13599",
+      "verified": true
+    },
+    {
+      "public": "first-finalize-d.finalize-summary.redacted.json",
+      "raw_relative": "attempt1/finalize/d.finalize-summary.json",
+      "raw_sha256": "14dcdc5cacf4bb5dc77e54d9342c9e6f7e01e25afa0c29d5afe02b6faf400631",
+      "public_sha256": "9220d6a5e67d31ac71bd81f253754fce45be1141a9d845af063d9876e7873450",
+      "verified": true
+    },
+    {
+      "public": "first-browser.stdout.redacted.json",
+      "raw_relative": "attempt1/browser.stdout.json",
+      "raw_sha256": "1dfe952f5e1d0fae7dfade77adf62d8ba1b0964a36b8a9e8e4ba70fe1dce46b2",
+      "public_sha256": "2fddd21db518042cff7d56203b6d20d4df07c7bd655da8bcce5d6564c11645c9",
+      "verified": true
+    },
+    {
+      "public": "first-browser-d.browser-check.redacted.json",
+      "raw_relative": "attempt1/browser/d.browser-check.json",
+      "raw_sha256": "1dfe952f5e1d0fae7dfade77adf62d8ba1b0964a36b8a9e8e4ba70fe1dce46b2",
+      "public_sha256": "2fddd21db518042cff7d56203b6d20d4df07c7bd655da8bcce5d6564c11645c9",
+      "verified": true
+    },
+    {
+      "public": "d.delivery.redacted.json",
+      "raw_relative": "attempt2/d.delivery.json",
+      "raw_sha256": "aba679dc20466601660ab09b67fa175a206df18d28babecf3144489bdf84eb0b",
+      "public_sha256": "d5a067e07d67b2e950b836aedae38e1ffd150e7012bb2847d450802c951db225",
+      "verified": true
+    },
+    {
+      "public": "finalize.stdout.redacted.json",
+      "raw_relative": "attempt2/finalize.stdout.json",
+      "raw_sha256": "c461491ed695cee630cd9fa17bd220fd85e37308ae933b8475905403ee32a974",
+      "public_sha256": "4bd217f0bb8eb23e73f173db454704d098911bab1df604da3cb1ad0e6b3df72c",
+      "verified": true
+    },
+    {
+      "public": "finalize-d.finalize.redacted.json",
+      "raw_relative": "attempt2/finalize/d.finalize.json",
+      "raw_sha256": "e3d68519d72d4cb96c312aaad7f1b82fe0234f7ed9614c39f4f8d2b81d32c2a1",
+      "public_sha256": "a304216196e8488318a7c1274a8c7eda4ca34f38e21ab56a3d88548629de12ef",
+      "verified": true
+    },
+    {
+      "public": "finalize-d.finalize-summary.redacted.json",
+      "raw_relative": "attempt2/finalize/d.finalize-summary.json",
+      "raw_sha256": "2f3b57233b10e22b361a056e2b7581407ee4fa370228b228e40690d7a8b6360e",
+      "public_sha256": "4ea2cfb94fd096442e45793fe8e45963aac5d9ea28b0a87e0bdac4ca38dece46",
+      "verified": true
+    },
+    {
+      "public": "browser.stdout.redacted.json",
+      "raw_relative": "attempt2/browser.stdout.json",
+      "raw_sha256": "4314b68cb0640a2e226f5a2d3e88cefc46b6725c7904e7430b87632cff6b772d",
+      "public_sha256": "5565affac774b6d5c0c44424a97b0a3a740bdae08d22c498b1a436f65da6c642",
+      "verified": true
+    },
+    {
+      "public": "browser-d.browser-check.redacted.json",
+      "raw_relative": "attempt2/browser/d.browser-check.json",
+      "raw_sha256": "4314b68cb0640a2e226f5a2d3e88cefc46b6725c7904e7430b87632cff6b772d",
+      "public_sha256": "5565affac774b6d5c0c44424a97b0a3a740bdae08d22c498b1a436f65da6c642",
+      "verified": true
+    }
+  ],
+  "boundary": "Raw receipts retained locally; redacted copies are historical evidence, not live provenance. No browser rerun against copies."
+}
