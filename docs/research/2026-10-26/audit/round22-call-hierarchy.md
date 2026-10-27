@@ -1,0 +1,31 @@
+# LSP 调用层级：多调用点归属已研究，暂不另做图
+
+2026-10-28，先做源码研究，再完成下述本机 clangd incoming/outgoing 请求探针；**结论：暂不建立新图或 LSP 适配器**。调用者到目标的单条关系可能对应多个调用位置，且位置属于 caller；这一阅读问题已由历史 code-navigation scout 精确识别。固定 gopls fixture 提供同一 caller 两次调用，但上游该 marker 只断言符号位置，未断言 `fromRanges`；本轮后半补上另一实现 clangd 的实际响应；它不替代 gopls 执行、原生编辑器导航或用户收益证据。
+
+## 排重与现有能力
+
+历史 [code-navigation-round5](https://github.com/tt-a1i/archify/blob/60342aa9e40618aeb7c33bdb8d65889fea3a588e/docs/research/2026-10-25/scouts/code-navigation-round5.md) 已深读 litee calltree：同一 item 的 location 与多个 `fromRanges` 分开、可遍历引用；navigator 则使用 selectionRange，测试中的自比较不能证明关系正确。报告明确建议把多个调用点列为正文引用，而不扩 schema 或做 LSP 平台。[dependency-map](https://github.com/tt-a1i/archify/tree/2be2ab55cc9134876158e557e5287ec1912ca718/experiments/dependency-map) 是 import 依赖；[static-uses](https://github.com/tt-a1i/archify/tree/7be0711d/experiments/static-uses) 是单一源码 occurrence 的静态 use 链，不能当动态调用；[source-question-tour](https://github.com/tt-a1i/archify/tree/codex/lab-source-question-tour) 是固定来源的作者阅读顺序，不等于调用顺序。它们不等同 LSP 请求，但对已有 authored 跳转/逐点证据是强相邻基线。关键词查询当前与历史 scouts，非全历史穷尽。
+
+## 官方合同
+
+固定 [LSP 3.18 callHierarchy.md@112d978951f2223a962bf19516637862f587bf55](https://github.com/microsoft/language-server-protocol/blob/112d978951f2223a962bf19516637862f587bf55/_specifications/lsp/3.18/language/callHierarchy.md)，完整文件 SHA-256 `3c40a4715e48b3123d2844159d5a7396bc01c3ea80bfcfea676eae1582187d52`；[文档 CC BY 4.0](https://github.com/microsoft/language-server-protocol/blob/112d978951f2223a962bf19516637862f587bf55/License.txt)，代码另 [MIT](https://github.com/microsoft/language-server-protocol/blob/112d978951f2223a962bf19516637862f587bf55/License-code.txt)。`textDocument/prepareCallHierarchy` 返回 item，item 的 URI/range 是符号范围、selectionRange 是应选中的其中一段，`data` 可在后续请求间保留。`callHierarchy/incomingCalls` 每个结果含 caller `from` 与相对该 caller 的 `fromRanges[]`；`outgoingCalls` 每个结果含 callee `to`，但 `fromRanges[]` 仍相对**请求的 caller item**，不能定位到 `to.uri`。协议类型允许多范围，范围使用协议的 position 编码与会话约定；不要把 range 混成未经转换的一基行列或稳定跨修订 ID。它是 server 返回静态导航信息，不是运行调用轨迹或动态执行覆盖。
+
+## 固定实现与完整上游测试
+
+[golang/tools@c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639](https://github.com/golang/tools/tree/c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639)，2026-10-27 默认分支，[BSD-style LICENSE](https://github.com/golang/tools/blob/c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639/LICENSE)。完整 marker fixture [callhierarchy.txt](https://github.com/golang/tools/blob/c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639/gopls/internal/test/marker/testdata/callhierarchy/callhierarchy.txt) 1617 bytes，SHA-256 `9041a99fb2e3d74ca26e8ff88fc710a62d40d93d2a74933bb86520031a14b1d1`：包含完整虚拟 go.mod 与三个 Go 文件；`hierarchy.go` 的 `C` 连续两次调用 `D()`，`D` 的 incoming marker 期望 `hC` 等五个 caller。它不是本轮 gopls 执行，不省略跨包、闭包、接口与泛型例子。
+
+[完整 marker consumer](https://github.com/golang/tools/blob/c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639/gopls/internal/test/marker/marker_test.go#L2477-L2507) 对 incoming 提取 `call.From.URI.Location(call.From.Range)`、outgoing 提取 `call.To.URI.Location(call.To.Range)`，所以这个测试**不比较 `fromRanges` 数组**，不能把两次源码调用说成上游断言返回恰好两个范围。[实现](https://github.com/golang/tools/blob/c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639/gopls/internal/golang/call_hierarchy.go#L55-L94) 的 incoming 按 enclosing function location 分组并 append reference range；[outgoing](https://github.com/golang/tools/blob/c1193aca3e6b6c4b236d9fdfe2ab4f5fa8b0b639/gopls/internal/golang/call_hierarchy.go#L216-L274) 对已知 function/method 的 AST call，按 callee location 分组并 append caller 的 identifier range。代码注释明确包括 interface method；不把静态方法项升级为实际 concrete dispatch、唯一执行目标或完整程序 call graph。源码机制与 fixture 相符，但不替代服务端真实返回和 workspace/build 配置核验。
+
+## 源码调研阶段的判断（随后补上本机探针）
+
+协议定义符号准备与 incoming/outgoing 请求；具体实现支持须核验。历史 litee 支持逐个调用点与符号跳转。可具体问「同一 caller 的两处调用分别在哪，目标定义在哪里」；现有 Archify 可把两行源码各标来源，但未自动枚举服务器 ranges。若未来有自然交接任务，先固定同一源码、server/version、position encoding、build tags/workspace、完整 JSON response 与 client 的全部调用点导航，逐项核对输入/目标 URI 和所有范围；用同一事实的现有 SourceCard 对照。不要把 gopls marker 结果伪造成 range golden，更不为自动生成 graph 引入 LSP 生命周期、缓存、重命名身份或跨 workspace 索引。这个阶段未执行服务器；下节为随后取得的本机响应。已有响应仍未证明新图的用途，暂不新增实现。
+
+## 本机 clangd 实际响应补充（2026-10-28）
+
+本轮仅在 `/tmp/archify-round22-clangd` 的新隔离目录启动本机 `/usr/bin/clangd`，无构建、无执行样例代码或安装。Apple clangd 17.0.0 (`clang-1700.6.3.2`)、arm64，启动器 `/usr/bin/clangd` SHA-256 `61e77a2d557f8677a9da3b403c054c8b6e2d2ba5f6389bce100b55b65977df2e`；Python 3.9.6。参数 `--background-index=false --offset-encoding=utf-16 --log=verbose`，显式 workspace root 与 UTF-16 client capability；初始化响应 `callHierarchyProvider=true`。argv/env、已发送和已读取的逐字节 LSP 帧、解码消息、stderr、准备结果、原始 source 和历史脚本均保存在 [原生证据包](round22-clangd-native/README.md)。接收记录截至 shutdown 响应，没有退出后的显式 stdout drain，不能称全部可能输出。harness exit 0，clangd 正常 exit 0。
+
+固定完整上游 [LLVM CallHierarchyTests.cpp@679fd35aa02e1a55371f47815a9601ed8432937c](https://github.com/llvm/llvm-project/blob/679fd35aa02e1a55371f47815a9601ed8432937c/clang-tools-extra/clangd/unittests/CallHierarchyTests.cpp) SHA-256 `5009ce2a92322ddc35dd6976cbc556b859b4582da04550cbcb26ee5ad4189f6d`，保留完整文件与 [LLVM LICENSE.TXT](https://github.com/llvm/llvm-project/blob/679fd35aa02e1a55371f47815a9601ed8432937c/llvm/LICENSE.TXT)（Apache-2.0 with LLVM exceptions 及文件内说明）。从其 `IncomingOneFileCpp` 的完整 raw-string translation unit 只去掉 `^` 和 `$NAME[[...]]` 测试标记，保留其他文本；输出 `fixture.cpp` SHA-256 `0777b17a729966fd10c4fe87b2c121933547734b87e3e213846f9f01788c1e30`。上游测试也断言 caller2 的两处 incoming ranges；它不是本机版本的上游测试运行。
+
+本机请求在 `caller1` 上 prepare 并请求 incoming：响应包含 `caller2` 定义 selectionRange 为零基 line 5、character 9–16；同一项的两个 `fromRanges` 为 **line 6、character 6–13** 与 **line 7、character 6–13**，URI 均是 caller2 所在 `fixture.cpp`。另返回 caller3 的一处范围（line 10、character 6–13）。请求在 `caller2` 上 prepare 后发 outgoing，服务器返回 JSON-RPC `-32601 method not found`；虽然它声明 callHierarchyProvider，不因此声称 outgoing 可用。此响应只证明该环境该次请求的静态索引结果，不证明一般版本、完整跨文件覆盖、运行路径或 native 编辑器逐点跳转。收到的两个位置与上游 fixture 的 caller2 两个标记相符；完整 native client 导航仍未验证。
+
+根复核修正：运行时 stderr 的 argv[0] 为 `/Library/Developer/CommandLineTools/usr/bin/clangd`；运行后 `xcrun --find clangd` 解析到同一路径，读取的二进制 SHA-256 为 `aeaae3d9e5567dfdfe54ec327d2c3afb243b8790a5a381c76d51bb2a0197183e`，不是运行前指纹。完整 TU 为上游构造测试，ASCII 位置不能证明代理对 Unicode 位置的处理；没有编译数据库，使用记录中的 fallback command。原始 harness 的 child env 在当次运行把 HOME 指向临时目录，这项历史事实保留在归档脚本；未修改用户设置，也未再次运行该脚本。详见[独立核对](round22-native-audit.md)。

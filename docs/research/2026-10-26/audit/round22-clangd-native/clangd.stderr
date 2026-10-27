@@ -1,0 +1,81 @@
+I[05:31:42.070] Apple clangd version 17.0.0 (clang-1700.6.3.2)
+I[05:31:42.071] Features: mac+xpc
+I[05:31:42.071] PID: 88885
+I[05:31:42.071] Working directory: /private/tmp/archify-round22-clangd
+I[05:31:42.071] argv[0]: /Library/Developer/CommandLineTools/usr/bin/clangd
+I[05:31:42.071] argv[1]: --background-index=false
+I[05:31:42.071] argv[2]: --offset-encoding=utf-16
+I[05:31:42.071] argv[3]: --log=verbose
+V[05:31:42.071] User config file is /tmp/archify-round22-clangd/Library/Preferences/clangd/config.yaml
+I[05:31:42.071] Starting LSP over stdin/stdout
+V[05:31:42.071] <<< {"id":1,"jsonrpc":"2.0","method":"initialize","params":{"capabilities":{"general":{"positionEncodings":["utf-16"]}},"processId":null,"rootUri":"file:///tmp/archify-round22-clangd","workspaceFolders":[{"name":"probe","uri":"file:///tmp/archify-round22-clangd"}]}}
+
+I[05:31:42.071] <-- initialize(1)
+V[05:31:42.073] Invoking /usr/bin/xcrun to find clang installation
+I[05:31:42.080] --> reply:initialize(1) 9 ms
+V[05:31:42.080] >>> {"id":1,"jsonrpc":"2.0","result":{"capabilities":{"astProvider":true,"callHierarchyProvider":true,"clangdInlayHintsProvider":true,"codeActionProvider":true,"compilationDatabase":{"automaticReload":true},"completionProvider":{"resolveProvider":false,"triggerCharacters":[".","<",">",":","\"","/","*"]},"declarationProvider":true,"definitionProvider":true,"documentFormattingProvider":true,"documentHighlightProvider":true,"documentLinkProvider":{"resolveProvider":false},"documentOnTypeFormattingProvider":{"firstTriggerCharacter":"\n","moreTriggerCharacter":[]},"documentRangeFormattingProvider":true,"documentSymbolProvider":true,"executeCommandProvider":{"commands":["clangd.applyFix","clangd.applyRename","clangd.applyTweak"]},"foldingRangeProvider":true,"hoverProvider":true,"implementationProvider":true,"inactiveRegionsProvider":true,"inlayHintProvider":true,"memoryUsageProvider":true,"referencesProvider":true,"renameProvider":true,"selectionRangeProvider":true,"semanticTokensProvider":{"full":{"delta":true},"legend":{"tokenModifiers":["declaration","definition","deprecated","deduced","readonly","static","abstract","virtual","dependentName","defaultLibrary","usedAsMutableReference","usedAsMutablePointer","constructorOrDestructor","userDefined","functionScope","classScope","fileScope","globalScope"],"tokenTypes":["variable","variable","parameter","function","method","function","property","variable","class","interface","enum","enumMember","type","type","unknown","namespace","typeParameter","concept","type","macro","modifier","operator","bracket","label","comment"]},"range":false},"signatureHelpProvider":{"triggerCharacters":["(",")","{","}","<",">",","]},"standardTypeHierarchyProvider":true,"textDocumentSync":{"change":2,"openClose":true,"save":true},"typeDefinitionProvider":true,"typeHierarchyProvider":true,"workspaceSymbolProvider":true},"offsetEncoding":"utf-16","serverInfo":{"name":"clangd","version":"Apple clangd version 17.0.0 (clang-1700.6.3.2) mac+xpc arm64-apple-darwin25.6.0"}}}
+
+V[05:31:42.080] <<< {"jsonrpc":"2.0","method":"initialized","params":{}}
+
+I[05:31:42.081] <-- initialized
+V[05:31:42.081] <<< {"jsonrpc":"2.0","method":"textDocument/didOpen","params":{"textDocument":{"languageId":"cpp","text":"\n    void callee(int);\n    void caller1() {\n      callee(42);\n    }\n    void caller2() {\n      caller1();\n      caller1();\n    }\n    void caller3() {\n      caller1();\n      caller2();\n    }\n  ","uri":"file:///tmp/archify-round22-clangd/fixture.cpp","version":1}}}
+
+I[05:31:42.081] <-- textDocument/didOpen
+V[05:31:42.081] <<< {"id":2,"jsonrpc":"2.0","method":"textDocument/prepareCallHierarchy","params":{"position":{"character":9,"line":2},"textDocument":{"uri":"file:///tmp/archify-round22-clangd/fixture.cpp"}}}
+
+I[05:31:42.081] <-- textDocument/prepareCallHierarchy(2)
+I[05:31:42.081] Failed to find compilation database for /tmp/archify-round22-clangd/fixture.cpp
+I[05:31:42.081] ASTWorker building file /tmp/archify-round22-clangd/fixture.cpp version 1 with command clangd fallback
+[/tmp/archify-round22-clangd]
+/Library/Developer/CommandLineTools/usr/bin/clang -resource-dir=/Library/Developer/CommandLineTools/usr/lib/clang/17 -- /tmp/archify-round22-clangd/fixture.cpp
+V[05:31:42.085] Driver produced command: cc1 -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -fsyntax-only -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name fixture.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.2 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/tmp/archify-round22-clangd -target-linker-version 1230.1 -fcoverage-compilation-dir=/tmp/archify-round22-clangd -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -no-round-trip-args -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -x c++ /tmp/archify-round22-clangd/fixture.cpp
+V[05:31:42.085] Building first preamble for /tmp/archify-round22-clangd/fixture.cpp version 1
+I[05:31:42.100] Built preamble of size 706488 for file /tmp/archify-round22-clangd/fixture.cpp version 1 in 0.01 seconds
+V[05:31:42.101] indexed preamble AST for /tmp/archify-round22-clangd/fixture.cpp version 1:
+  symbol slab: 0 symbols, 120 bytes
+  ref slab: 0 symbols, 0 refs, 128 bytes
+  relations slab: 0 relations, 24 bytes
+I[05:31:42.102] Indexing c++14 standard library in the context of /tmp/archify-round22-clangd/fixture.cpp
+V[05:31:42.110] indexed file AST for /tmp/archify-round22-clangd/fixture.cpp version 1:
+  symbol slab: 4 symbols, 5144 bytes
+  ref slab: 4 symbols, 9 refs, 4320 bytes
+  relations slab: 0 relations, 24 bytes
+V[05:31:42.110] Build dynamic index for main-file symbols with estimated memory usage of 13240 bytes
+I[05:31:42.110] --> textDocument/publishDiagnostics
+V[05:31:42.110] >>> {"jsonrpc":"2.0","method":"textDocument/publishDiagnostics","params":{"diagnostics":[],"uri":"file:///tmp/archify-round22-clangd/fixture.cpp","version":1}}
+
+V[05:31:42.110] ASTWorker running CallHierarchy on version 1 of /tmp/archify-round22-clangd/fixture.cpp
+I[05:31:42.111] --> reply:textDocument/prepareCallHierarchy(2) 29 ms
+V[05:31:42.111] >>> {"id":2,"jsonrpc":"2.0","result":[{"data":"3455CD75A68B8B8F","kind":12,"name":"caller1","range":{"end":{"character":5,"line":4},"start":{"character":4,"line":2}},"selectionRange":{"end":{"character":16,"line":2},"start":{"character":9,"line":2}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"}]}
+
+V[05:31:42.111] <<< {"id":4,"jsonrpc":"2.0","method":"callHierarchy/incomingCalls","params":{"item":{"data":"3455CD75A68B8B8F","kind":12,"name":"caller1","range":{"end":{"character":5,"line":4},"start":{"character":4,"line":2}},"selectionRange":{"end":{"character":16,"line":2},"start":{"character":9,"line":2}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"}}}
+
+I[05:31:42.111] <-- callHierarchy/incomingCalls(4)
+I[05:31:42.111] --> reply:callHierarchy/incomingCalls(4) 0 ms
+V[05:31:42.111] >>> {"id":4,"jsonrpc":"2.0","result":[{"from":{"data":"C296049087D5B6A7","kind":12,"name":"caller2","range":{"end":{"character":16,"line":5},"start":{"character":9,"line":5}},"selectionRange":{"end":{"character":16,"line":5},"start":{"character":9,"line":5}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"},"fromRanges":[{"end":{"character":13,"line":6},"start":{"character":6,"line":6}},{"end":{"character":13,"line":7},"start":{"character":6,"line":7}}]},{"from":{"data":"211B936CF29122E2","kind":12,"name":"caller3","range":{"end":{"character":16,"line":9},"start":{"character":9,"line":9}},"selectionRange":{"end":{"character":16,"line":9},"start":{"character":9,"line":9}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"},"fromRanges":[{"end":{"character":13,"line":10},"start":{"character":6,"line":10}}]}]}
+
+V[05:31:42.112] <<< {"id":3,"jsonrpc":"2.0","method":"textDocument/prepareCallHierarchy","params":{"position":{"character":9,"line":5},"textDocument":{"uri":"file:///tmp/archify-round22-clangd/fixture.cpp"}}}
+
+I[05:31:42.112] <-- textDocument/prepareCallHierarchy(3)
+V[05:31:42.112] ASTWorker running CallHierarchy on version 1 of /tmp/archify-round22-clangd/fixture.cpp
+I[05:31:42.112] --> reply:textDocument/prepareCallHierarchy(3) 0 ms
+V[05:31:42.112] >>> {"id":3,"jsonrpc":"2.0","result":[{"data":"C296049087D5B6A7","kind":12,"name":"caller2","range":{"end":{"character":5,"line":8},"start":{"character":4,"line":5}},"selectionRange":{"end":{"character":16,"line":5},"start":{"character":9,"line":5}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"}]}
+
+V[05:31:42.112] <<< {"id":5,"jsonrpc":"2.0","method":"callHierarchy/outgoingCalls","params":{"item":{"data":"C296049087D5B6A7","kind":12,"name":"caller2","range":{"end":{"character":5,"line":8},"start":{"character":4,"line":5}},"selectionRange":{"end":{"character":16,"line":5},"start":{"character":9,"line":5}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"}}}
+
+I[05:31:42.112] <-- callHierarchy/outgoingCalls(5)
+I[05:31:42.112] --> reply:callHierarchy/outgoingCalls(5) 0 ms, error: -32601: method not found
+V[05:31:42.112] >>> {"error":{"code":-32601,"message":"method not found"},"id":5,"jsonrpc":"2.0"}
+
+V[05:31:42.112] <<< {"id":9,"jsonrpc":"2.0","method":"shutdown","params":null}
+
+I[05:31:42.112] <-- shutdown(9)
+I[05:31:42.112] --> reply:shutdown(9) 0 ms
+V[05:31:42.112] >>> {"id":9,"jsonrpc":"2.0","result":null}
+
+V[05:31:42.112] <<< {"jsonrpc":"2.0","method":"exit","params":null}
+
+I[05:31:42.112] <-- exit
+I[05:31:42.112] LSP finished, exiting with status 0
+I[05:31:42.863] Indexed c++14 standard library: 9458 symbols, 2687 filtered
+V[05:31:42.885] Build dynamic index for header symbols with estimated memory usage of 6942376 bytes

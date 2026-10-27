@@ -1,0 +1,163 @@
+[
+  {
+    "source": "/tmp/archify-round22-clangd/CallHierarchyTests.cpp",
+    "destination": "round22-clangd-native/CallHierarchyTests.cpp",
+    "sha256": "5009ce2a92322ddc35dd6976cbc556b859b4582da04550cbcb26ee5ad4189f6d",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/LICENSE.TXT",
+    "destination": "round22-clangd-native/LICENSE.TXT",
+    "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/caller1-calls.json",
+    "destination": "round22-clangd-native/caller1-calls.json",
+    "sha256": "389bf8c40d964a6deccfcaefee6878c1c5ac17367ed7b89e593f5f73336939d5",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/caller1-prepare.json",
+    "destination": "round22-clangd-native/caller1-prepare.json",
+    "sha256": "b869559d5ed478853dd8c7987078c2459d9b3fec718ae61bae0e8bc4d657a96d",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/caller2-calls.json",
+    "destination": "round22-clangd-native/caller2-calls.json",
+    "sha256": "73923922ba8359484244b6435383352c2d3a40791c1f3dcc09dece2949180bdf",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/caller2-prepare.json",
+    "destination": "round22-clangd-native/caller2-prepare.json",
+    "sha256": "5800510098dfc559b0839f37a5d6ddcc25402d301049f02b7f8a57615f52ad04",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/clangd-version.txt",
+    "destination": "round22-clangd-native/clangd-version.txt",
+    "sha256": "9f42dd84085622bad4a5a38790822b97d4bc05c415fa083118b5dd12162efd11",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/clangd.stderr",
+    "destination": "round22-clangd-native/clangd.stderr",
+    "sha256": "c7fb49475482f65dccc02d137413aab5d2580f78d589c9430a9912cc5355e071",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/client-to-server.raw",
+    "destination": "round22-clangd-native/client-to-server.raw",
+    "sha256": "63d70721ce9790e1ed6adea2867911f11e26800e7af602af9fa378d11a1ac469",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/decoded.jsonl",
+    "destination": "round22-clangd-native/decoded.jsonl",
+    "sha256": "fe40ee02e1232fc8eaa7b6cfb2d971f3787df303aa3d245f20d672088af0f769",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/fixture.cpp",
+    "destination": "round22-clangd-native/fixture.cpp",
+    "sha256": "0777b17a729966fd10c4fe87b2c121933547734b87e3e213846f9f01788c1e30",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/harness.exit",
+    "destination": "round22-clangd-native/harness.exit",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/harness.stderr",
+    "destination": "round22-clangd-native/harness.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/harness.stdout",
+    "destination": "round22-clangd-native/harness.stdout",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/identity.txt",
+    "destination": "round22-clangd-native/identity.txt",
+    "sha256": "4be2296967b0f9a769c3857cb9ff83c9073e6e32500252016a44147979d23fc2",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/probe.py",
+    "destination": "round22-clangd-native/probe.py.txt",
+    "sha256": "4f090a7961c2698d50ff9f859fb25f9af419466ce651ac9aaa642cd3629aeb56",
+    "transform": "archival .txt suffix only"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/python-version.txt",
+    "destination": "round22-clangd-native/python-version.txt",
+    "sha256": "fd0fd4290ad100adc37e4a82e45f821faeacbecae70f4d3eba08e85be138c632",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/result.txt",
+    "destination": "round22-clangd-native/result.txt",
+    "sha256": "a1a05e12466391add72435a510249f61ddf96953df895b2b926d2c477f06e030",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/server-to-client.raw",
+    "destination": "round22-clangd-native/server-to-client.raw",
+    "sha256": "160f2737fbc87059d494d80a332b54f71dc1dc1f7a2c296b2cdf3b1b565794ce",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/sha256.txt",
+    "destination": "round22-clangd-native/sha256.txt",
+    "sha256": "9be1e6bca78d751fda66b4dea858dae8669a18efde6d5c425626df822db20f18",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd/transformation.txt",
+    "destination": "round22-clangd-native/transformation.txt",
+    "sha256": "80d6a8807148ff4fd4c37e49af82eca40f25304aaaa52d3b4de68340d51ea43d",
+    "transform": "byte-exact copy"
+  },
+  {
+    "source": "/tmp/archify-round22-exception-reading.md",
+    "destination": "round22-exception-reading.md",
+    "sourceSha256": "75829294a9b76770cf737af022d7171897960cca32eb32dc1549f0a9241ad199",
+    "publicSha256": "75829294a9b76770cf737af022d7171897960cca32eb32dc1549f0a9241ad199",
+    "transform": "local report references made repository-relative"
+  },
+  {
+    "source": "/tmp/archify-round22-cmake-origins.md",
+    "destination": "round22-cmake-origins.md",
+    "sourceSha256": "626a10727818663f527c1793287139109b524cd47c7a8e52db4ee23e36a10cee",
+    "publicSha256": "626a10727818663f527c1793287139109b524cd47c7a8e52db4ee23e36a10cee",
+    "transform": "local report references made repository-relative"
+  },
+  {
+    "source": "/tmp/archify-round22-native-audit.md",
+    "destination": "round22-native-audit.md",
+    "sourceSha256": "0bec82bf753f19a0f959c7cfaf5ec18c7d3ecac068c3a520a8c4da7b51481219",
+    "publicSha256": "57a70c6cb047814fe013090d349132847ed8e462983ed1a9c50c5433e7e56148",
+    "transform": "local report references made repository-relative"
+  },
+  {
+    "source": "/tmp/archify-round22-call-hierarchy.md",
+    "destination": "round22-call-hierarchy.md",
+    "sourceSha256": "82e7568f8379d4a3c3156ac444e1659cfe37d654e0fd9e4e372f03600565f8fe",
+    "publicSha256": "db38062b9256025fc7f57ffdac88575efa2bc33c319f1e66ea8bcab43ac74739",
+    "transform": "curated current-state/scope/runtime-identity corrections"
+  },
+  {
+    "source": "/tmp/archify-round22-clangd-resolved.json",
+    "destination": "round22-clangd-native/resolved-executable.json",
+    "sourceSha256": "0d1075d594fbea18d1bf0dcd47a28912c393a747116e6d4e6d49faa99dd7416b",
+    "publicSha256": "e96de0c41afb12e441217cd248dece66260a9ec2b1911cdabf8bbed417ecd6c2",
+    "transform": "Correct the corroborating stderr field name from InstalledDir to argv[0]."
+  }
+]

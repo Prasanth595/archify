@@ -1,0 +1,19 @@
+Content-Length: 262
+
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"processId":null,"rootUri":"file:///tmp/archify-round22-clangd","capabilities":{"general":{"positionEncodings":["utf-16"]}},"workspaceFolders":[{"uri":"file:///tmp/archify-round22-clangd","name":"probe"}]}}Content-Length: 52
+
+{"jsonrpc":"2.0","method":"initialized","params":{}}Content-Length: 378
+
+{"jsonrpc":"2.0","method":"textDocument/didOpen","params":{"textDocument":{"uri":"file:///tmp/archify-round22-clangd/fixture.cpp","languageId":"cpp","version":1,"text":"\n    void callee(int);\n    void caller1() {\n      callee(42);\n    }\n    void caller2() {\n      caller1();\n      caller1();\n    }\n    void caller3() {\n      caller1();\n      caller2();\n    }\n  "}}}Content-Length: 188
+
+{"jsonrpc":"2.0","id":2,"method":"textDocument/prepareCallHierarchy","params":{"textDocument":{"uri":"file:///tmp/archify-round22-clangd/fixture.cpp"},"position":{"line":2,"character":9}}}Content-Length: 357
+
+{"jsonrpc":"2.0","id":4,"method":"callHierarchy/incomingCalls","params":{"item":{"data":"3455CD75A68B8B8F","kind":12,"name":"caller1","range":{"end":{"character":5,"line":4},"start":{"character":4,"line":2}},"selectionRange":{"end":{"character":16,"line":2},"start":{"character":9,"line":2}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"}}}Content-Length: 188
+
+{"jsonrpc":"2.0","id":3,"method":"textDocument/prepareCallHierarchy","params":{"textDocument":{"uri":"file:///tmp/archify-round22-clangd/fixture.cpp"},"position":{"line":5,"character":9}}}Content-Length: 357
+
+{"jsonrpc":"2.0","id":5,"method":"callHierarchy/outgoingCalls","params":{"item":{"data":"C296049087D5B6A7","kind":12,"name":"caller2","range":{"end":{"character":5,"line":8},"start":{"character":4,"line":5}},"selectionRange":{"end":{"character":16,"line":5},"start":{"character":9,"line":5}},"uri":"file:///private/tmp/archify-round22-clangd/fixture.cpp"}}}Content-Length: 58
+
+{"jsonrpc":"2.0","id":9,"method":"shutdown","params":null}Content-Length: 47
+
+{"jsonrpc":"2.0","method":"exit","params":null}

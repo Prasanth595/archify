@@ -1,0 +1,32 @@
+{
+  "id": 2,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "data": "3455CD75A68B8B8F",
+      "kind": 12,
+      "name": "caller1",
+      "range": {
+        "end": {
+          "character": 5,
+          "line": 4
+        },
+        "start": {
+          "character": 4,
+          "line": 2
+        }
+      },
+      "selectionRange": {
+        "end": {
+          "character": 16,
+          "line": 2
+        },
+        "start": {
+          "character": 9,
+          "line": 2
+        }
+      },
+      "uri": "file:///private/tmp/archify-round22-clangd/fixture.cpp"
+    }
+  ]
+}

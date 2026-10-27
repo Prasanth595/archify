@@ -1,0 +1,604 @@
+{
+  "observedAt": "2026-10-28",
+  "scope": "Keyword issue queries plus most recent 100 open PR search results; not exhaustive. Null item state is connector metadata, request filter supplies open scope.",
+  "remoteHeadCount": 315,
+  "hubBase": "1c3f899c50e3a0925ffcb4878974829348cc4c75",
+  "dev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "results": [
+    {
+      "request": {
+        "kind": "issues",
+        "query": "repo:tt-a1i/archify CMake",
+        "topn": 15
+      },
+      "isError": false,
+      "items": []
+    },
+    {
+      "request": {
+        "kind": "issues",
+        "query": "repo:tt-a1i/archify exception",
+        "topn": 15
+      },
+      "isError": false,
+      "items": [
+        {
+          "title": "[Bug]: A declared group label makes an explicit vertical handoff uncompilable under schema v2, blocking v1 migration for shipped examples",
+          "url": "https://github.com/tt-a1i/archify/issues/821",
+          "state": null
+        },
+        {
+          "title": "feat: guide agents from process notes to as-is and to-be workflow diagrams",
+          "url": "https://github.com/tt-a1i/archify/issues/512",
+          "state": null
+        },
+        {
+          "title": "[Feature]: configurable caption legibility floor / font scale — downstream 9px floor unreachable above 930px viewBox",
+          "url": "https://github.com/tt-a1i/archify/issues/631",
+          "state": null
+        },
+        {
+          "title": "[Bug]: `archify inspect` throws an uncaught exception on invalid arguments — exit 1 with a raw stack trace and a message misattributed to `validate`",
+          "url": "https://github.com/tt-a1i/archify/issues/785",
+          "state": null
+        },
+        {
+          "title": "[Feature] Add semantic coverage for repository-grounded workflow gates and recovery",
+          "url": "https://github.com/tt-a1i/archify/issues/251",
+          "state": null
+        },
+        {
+          "title": "[Bug]: WebM recording errors can leave exports pending or return a false success",
+          "url": "https://github.com/tt-a1i/archify/issues/622",
+          "state": null
+        },
+        {
+          "title": "Feature: plan-first mode for manual edge routing in skill instructions",
+          "url": "https://github.com/tt-a1i/archify/issues/336",
+          "state": null
+        },
+        {
+          "title": "[Proposal] Cognition capacity: multi-node cells, variable lane height, and flat subgraphs",
+          "url": "https://github.com/tt-a1i/archify/issues/937",
+          "state": null
+        },
+        {
+          "title": "[Showcase]:  I made an extension",
+          "url": "https://github.com/tt-a1i/archify/issues/326",
+          "state": null
+        },
+        {
+          "title": "check / browser-check / visual-check crash with a stack trace instead of a receipt when the sidecar namespace cannot be probed",
+          "url": "https://github.com/tt-a1i/archify/issues/1071",
+          "state": null
+        },
+        {
+          "title": "[Bug]: SVG path parsing can hang check and invent connections between subpaths",
+          "url": "https://github.com/tt-a1i/archify/issues/641",
+          "state": null
+        },
+        {
+          "title": "Expose renderers as an importable library API, not just a CLI entrypoint",
+          "url": "https://github.com/tt-a1i/archify/issues/222",
+          "state": null
+        },
+        {
+          "title": "workflow: edge length between adjacent columns is non-uniform, so identical specs pass or fail depending on which column pair you picked",
+          "url": "https://github.com/tt-a1i/archify/issues/126",
+          "state": null
+        }
+      ]
+    },
+    {
+      "request": {
+        "kind": "prs",
+        "query": "repo:tt-a1i/archify",
+        "topn": 100,
+        "state": "open"
+      },
+      "isError": false,
+      "items": [
+        {
+          "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+          "url": "https://github.com/tt-a1i/archify/pull/1124",
+          "state": null
+        },
+        {
+          "title": "fix(viewer): declare unavailable relationship queries honestly",
+          "url": "https://github.com/tt-a1i/archify/pull/795",
+          "state": null
+        },
+        {
+          "title": "修复 Workflow 受限分叉导致的路由交付失败",
+          "url": "https://github.com/tt-a1i/archify/pull/1086",
+          "state": null
+        },
+        {
+          "title": "chore: add scoped PR review and ZIP integration tools",
+          "url": "https://github.com/tt-a1i/archify/pull/1138",
+          "state": null
+        },
+        {
+          "title": "fix(sequence): emit the whole ordered adjustment when a note reaches several messages",
+          "url": "https://github.com/tt-a1i/archify/pull/923",
+          "state": null
+        },
+        {
+          "title": "fix(timeline): keep the year on multi-year labels and the header in frame",
+          "url": "https://github.com/tt-a1i/archify/pull/1032",
+          "state": null
+        },
+        {
+          "title": "fix(waterfall): key the incomplete legend only to open bars",
+          "url": "https://github.com/tt-a1i/archify/pull/1030",
+          "state": null
+        },
+        {
+          "title": "fix(timeline): state sub-second break durations in milliseconds",
+          "url": "https://github.com/tt-a1i/archify/pull/1029",
+          "state": null
+        },
+        {
+          "title": "fix(waterfall): scale the timing tolerance to the value magnitude",
+          "url": "https://github.com/tt-a1i/archify/pull/1028",
+          "state": null
+        },
+        {
+          "title": "fix(check): flush the explainer receipt before exiting so a piped stdout is not truncated",
+          "url": "https://github.com/tt-a1i/archify/pull/1131",
+          "state": null
+        },
+        {
+          "title": "fix: hide classic grid in SVG exports",
+          "url": "https://github.com/tt-a1i/archify/pull/1117",
+          "state": null
+        },
+        {
+          "title": "在语义护照中只读展示节点的任务清单（Task checklist）",
+          "url": "https://github.com/tt-a1i/archify/pull/1119",
+          "state": null
+        },
+        {
+          "title": "feat(sequence): support self-messages",
+          "url": "https://github.com/tt-a1i/archify/pull/571",
+          "state": null
+        },
+        {
+          "title": "feat(packaging): prepare scoped @tt-a1i/archify CLI package",
+          "url": "https://github.com/tt-a1i/archify/pull/533",
+          "state": null
+        },
+        {
+          "title": "feat(workflow): add in-memory renderWorkflow() library entrypoint",
+          "url": "https://github.com/tt-a1i/archify/pull/482",
+          "state": null
+        },
+        {
+          "title": "Draft: add experimental Architecture Atlas navigation",
+          "url": "https://github.com/tt-a1i/archify/pull/413",
+          "state": null
+        },
+        {
+          "title": "feat: GitHub Enterprise source links for repository evidence",
+          "url": "https://github.com/tt-a1i/archify/pull/1063",
+          "state": null
+        },
+        {
+          "title": "experiment: read authored behavior paths with explicit test associations",
+          "url": "https://github.com/tt-a1i/archify/pull/1121",
+          "state": null
+        },
+        {
+          "title": "experiment: explain OCI whiteouts and same-layer visibility",
+          "url": "https://github.com/tt-a1i/archify/pull/1123",
+          "state": null
+        },
+        {
+          "title": "experiment: distinguish recorded trace flows from timing and nesting",
+          "url": "https://github.com/tt-a1i/archify/pull/1122",
+          "state": null
+        },
+        {
+          "title": "experiment: distinguish exception group identity from repeated traceback text",
+          "url": "https://github.com/tt-a1i/archify/pull/1120",
+          "state": null
+        },
+        {
+          "title": "test(labels): protect fallback association with its own route",
+          "url": "https://github.com/tt-a1i/archify/pull/843",
+          "state": null
+        },
+        {
+          "title": "test(text): protect the readable shrink-to-fit floor",
+          "url": "https://github.com/tt-a1i/archify/pull/848",
+          "state": null
+        },
+        {
+          "title": "test(geometry): retain exact grid-boundary contact candidates",
+          "url": "https://github.com/tt-a1i/archify/pull/835",
+          "state": null
+        },
+        {
+          "title": "test(geometry): assert rounded route containment on short segments",
+          "url": "https://github.com/tt-a1i/archify/pull/853",
+          "state": null
+        },
+        {
+          "title": "fix(text): ignore supplementary variation selector advance",
+          "url": "https://github.com/tt-a1i/archify/pull/845",
+          "state": null
+        },
+        {
+          "title": "test: protect card publisher truncated-tree boundary",
+          "url": "https://github.com/tt-a1i/archify/pull/854",
+          "state": null
+        },
+        {
+          "title": "test(update): cover bounded checker output transport",
+          "url": "https://github.com/tt-a1i/archify/pull/834",
+          "state": null
+        },
+        {
+          "title": "fix(cards): retry interrupted public image verification reads",
+          "url": "https://github.com/tt-a1i/archify/pull/861",
+          "state": null
+        },
+        {
+          "title": "fix(tooling): clean completed star history snapshots",
+          "url": "https://github.com/tt-a1i/archify/pull/837",
+          "state": null
+        },
+        {
+          "title": "fix(tooling): stop star history publication on remote lookup errors",
+          "url": "https://github.com/tt-a1i/archify/pull/839",
+          "state": null
+        },
+        {
+          "title": "fix(dsh): resolve command shims from child environment",
+          "url": "https://github.com/tt-a1i/archify/pull/825",
+          "state": null
+        },
+        {
+          "title": "fix(dsh): do not retry terminated distribution commands",
+          "url": "https://github.com/tt-a1i/archify/pull/830",
+          "state": null
+        },
+        {
+          "title": "fix(dsh): reject invalid transient retry budgets",
+          "url": "https://github.com/tt-a1i/archify/pull/840",
+          "state": null
+        },
+        {
+          "title": "fix(dsh): match complete transient network error codes",
+          "url": "https://github.com/tt-a1i/archify/pull/842",
+          "state": null
+        },
+        {
+          "title": "fix(dsh): reject missing pack output values before staging",
+          "url": "https://github.com/tt-a1i/archify/pull/855",
+          "state": null
+        },
+        {
+          "title": "fix(site): inspect parsed robots metadata before sitemap publication",
+          "url": "https://github.com/tt-a1i/archify/pull/851",
+          "state": null
+        },
+        {
+          "title": "fix(site): verify live canonical link metadata from parsed HTML",
+          "url": "https://github.com/tt-a1i/archify/pull/852",
+          "state": null
+        },
+        {
+          "title": "fix(site): verify local assets inside deferred HTML templates",
+          "url": "https://github.com/tt-a1i/archify/pull/859",
+          "state": null
+        },
+        {
+          "title": "fix(site): require regular files for Cloudflare static assets",
+          "url": "https://github.com/tt-a1i/archify/pull/860",
+          "state": null
+        },
+        {
+          "title": "fix(cli): preserve browser-check review mode on directory failure",
+          "url": "https://github.com/tt-a1i/archify/pull/832",
+          "state": null
+        },
+        {
+          "title": "fix(doctor): require regular installation files",
+          "url": "https://github.com/tt-a1i/archify/pull/844",
+          "state": null
+        },
+        {
+          "title": "fix(cli): parse inspect options before checking diagram type",
+          "url": "https://github.com/tt-a1i/archify/pull/829",
+          "state": null
+        },
+        {
+          "title": "fix(tooling): reject missing repository checker option values",
+          "url": "https://github.com/tt-a1i/archify/pull/841",
+          "state": null
+        },
+        {
+          "title": "test(timeline): protect repeated DST hour interpretation",
+          "url": "https://github.com/tt-a1i/archify/pull/831",
+          "state": null
+        },
+        {
+          "title": "test(opener): protect complete preview URL restrictions",
+          "url": "https://github.com/tt-a1i/archify/pull/856",
+          "state": null
+        },
+        {
+          "title": "test(recovery): preserve publication on invalid CLI arguments",
+          "url": "https://github.com/tt-a1i/archify/pull/858",
+          "state": null
+        },
+        {
+          "title": "fix(explainer): keep mobile toolbar and Style/Export menus in view",
+          "url": "https://github.com/tt-a1i/archify/pull/1076",
+          "state": null
+        },
+        {
+          "title": "fix(workflow): terminate finite port probing without floating-point progress",
+          "url": "https://github.com/tt-a1i/archify/pull/1110",
+          "state": null
+        },
+        {
+          "title": "perf(explainer): index outgoing shorthand edges",
+          "url": "https://github.com/tt-a1i/archify/pull/1108",
+          "state": null
+        },
+        {
+          "title": "perf(dataflow): avoid repeated flow index scans",
+          "url": "https://github.com/tt-a1i/archify/pull/1109",
+          "state": null
+        },
+        {
+          "title": "Improve workflow compilation performance",
+          "url": "https://github.com/tt-a1i/archify/pull/1106",
+          "state": null
+        },
+        {
+          "title": "fix(viewer): mobile nav reachability, dock clearance and presentation scroll",
+          "url": "https://github.com/tt-a1i/archify/pull/1027",
+          "state": null
+        },
+        {
+          "title": "fix(workflow): declare authored-height contract for explicit viewBox swimlanes (#616)",
+          "url": "https://github.com/tt-a1i/archify/pull/652",
+          "state": null
+        },
+        {
+          "title": "Add an Atlas view to Code Analysis",
+          "url": "https://github.com/tt-a1i/archify/pull/1103",
+          "state": null
+        },
+        {
+          "title": "fix(viewer): camera viewport follows the container, not the narrower SVG box",
+          "url": "https://github.com/tt-a1i/archify/pull/1001",
+          "state": null
+        },
+        {
+          "title": "docs(readme): put install before showcase and trim agent-facing detail",
+          "url": "https://github.com/tt-a1i/archify/pull/1101",
+          "state": null
+        },
+        {
+          "title": "Code analysis Main branch",
+          "url": "https://github.com/tt-a1i/archify/pull/998",
+          "state": null
+        },
+        {
+          "title": "fix(check): retain collinear quadratic route reversals",
+          "url": "https://github.com/tt-a1i/archify/pull/822",
+          "state": null
+        },
+        {
+          "title": "fix(viewer): save exports through Artifact host",
+          "url": "https://github.com/tt-a1i/archify/pull/874",
+          "state": null
+        },
+        {
+          "title": "fix(site): preserve literal replacement tokens in recipe builds",
+          "url": "https://github.com/tt-a1i/archify/pull/828",
+          "state": null
+        },
+        {
+          "title": "fix(ci): classify Japanese README as repository prose",
+          "url": "https://github.com/tt-a1i/archify/pull/827",
+          "state": null
+        },
+        {
+          "title": "test(waterfall): protect nested service attribution",
+          "url": "https://github.com/tt-a1i/archify/pull/824",
+          "state": null
+        },
+        {
+          "title": "feat(workflow): surface partialLayout on --layout-json when validation fails (#934)",
+          "url": "https://github.com/tt-a1i/archify/pull/960",
+          "state": null
+        },
+        {
+          "title": "feat: add standalone artifact update notice",
+          "url": "https://github.com/tt-a1i/archify/pull/1066",
+          "state": null
+        },
+        {
+          "title": "feat(architecture): allow connections to named boundaries",
+          "url": "https://github.com/tt-a1i/archify/pull/317",
+          "state": null
+        },
+        {
+          "title": "docs(license): relicense to AGPL-3.0 starting with 4.0.0 (draft)",
+          "url": "https://github.com/tt-a1i/archify/pull/963",
+          "state": null
+        },
+        {
+          "title": "feat(compare): read Architecture snapshots from Git refs",
+          "url": "https://github.com/tt-a1i/archify/pull/1049",
+          "state": null
+        },
+        {
+          "title": "Add before after example",
+          "url": "https://github.com/tt-a1i/archify/pull/1018",
+          "state": null
+        },
+        {
+          "title": "fix(workflow): offer a member-preserving group placement for blocked routes",
+          "url": "https://github.com/tt-a1i/archify/pull/838",
+          "state": null
+        },
+        {
+          "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+          "url": "https://github.com/tt-a1i/archify/pull/1015",
+          "state": null
+        },
+        {
+          "title": "ci: add npmscan dependency security check",
+          "url": "https://github.com/tt-a1i/archify/pull/955",
+          "state": null
+        },
+        {
+          "title": "community: add archify-index listing",
+          "url": "https://github.com/tt-a1i/archify/pull/884",
+          "state": null
+        },
+        {
+          "title": "fix(browser): preserve DevTools pipes during Windows browser startup",
+          "url": "https://github.com/tt-a1i/archify/pull/863",
+          "state": null
+        },
+        {
+          "title": "fix(sequence): report canvas-level failures as typed diagnostics",
+          "url": "https://github.com/tt-a1i/archify/pull/891",
+          "state": null
+        },
+        {
+          "title": "fix(checker): preserve endpoint identity around quadratic curves",
+          "url": "https://github.com/tt-a1i/archify/pull/875",
+          "state": null
+        },
+        {
+          "title": "docs(authoring): explain measured viewport height budgets",
+          "url": "https://github.com/tt-a1i/archify/pull/804",
+          "state": null
+        },
+        {
+          "title": "feat(workflow): add configurable typography with measured layout",
+          "url": "https://github.com/tt-a1i/archify/pull/649",
+          "state": null
+        },
+        {
+          "title": "feat(import): add Mermaid flowchart importer for typed architecture IR",
+          "url": "https://github.com/tt-a1i/archify/pull/140",
+          "state": null
+        },
+        {
+          "title": "feat: add processor architecture components",
+          "url": "https://github.com/tt-a1i/archify/pull/895",
+          "state": null
+        },
+        {
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "url": "https://github.com/tt-a1i/archify/pull/653",
+          "state": null
+        },
+        {
+          "title": "fix: detect coincident routes in anti-parallel connections with labelAt",
+          "url": "https://github.com/tt-a1i/archify/pull/260",
+          "state": null
+        },
+        {
+          "title": "prototype(workflow): narrower single-column canvases (#747)",
+          "url": "https://github.com/tt-a1i/archify/pull/809",
+          "state": null
+        },
+        {
+          "title": "fix: tolerate Win32 link-count inflation in post-publication checks",
+          "url": "https://github.com/tt-a1i/archify/pull/765",
+          "state": null
+        },
+        {
+          "title": "fix(output): require explicit replacement for unrelated HTML",
+          "url": "https://github.com/tt-a1i/archify/pull/722",
+          "state": null
+        },
+        {
+          "title": "feat(viewer): add GIF motion export alongside WebM",
+          "url": "https://github.com/tt-a1i/archify/pull/732",
+          "state": null
+        },
+        {
+          "title": "feat: add Tracks shared-axis interval canvas",
+          "url": "https://github.com/tt-a1i/archify/pull/730",
+          "state": null
+        },
+        {
+          "title": "Authors: follow ",
+          "url": "https://github.com/tt-a1i/archify/pull/659",
+          "state": null
+        },
+        {
+          "title": "fix(architecture): prefer straight routes over unnecessary Port Spread doglegs",
+          "url": "https://github.com/tt-a1i/archify/pull/172",
+          "state": null
+        },
+        {
+          "title": "fix(workflow): make phase ownership visible without hover (#81)",
+          "url": "https://github.com/tt-a1i/archify/pull/197",
+          "state": null
+        },
+        {
+          "title": "feat(check): reject boundary frames that enclose non-members",
+          "url": "https://github.com/tt-a1i/archify/pull/501",
+          "state": null
+        },
+        {
+          "title": "feat(cognition): add cognition diagram type for reasoning-route diagrams",
+          "url": "https://github.com/tt-a1i/archify/pull/150",
+          "state": null
+        },
+        {
+          "title": "feat(validate): expose informational viewport projection",
+          "url": "https://github.com/tt-a1i/archify/pull/569",
+          "state": null
+        },
+        {
+          "title": "fix(sequence): keep segment headings clear of participant headers",
+          "url": "https://github.com/tt-a1i/archify/pull/568",
+          "state": null
+        },
+        {
+          "title": "fix(workflow): reserve heading clearance for inferred straight ports",
+          "url": "https://github.com/tt-a1i/archify/pull/567",
+          "state": null
+        },
+        {
+          "title": "feat: support nested boundaries via wraps referencing boundary id",
+          "url": "https://github.com/tt-a1i/archify/pull/539",
+          "state": null
+        },
+        {
+          "title": "feat(icons): add monitoring and alert role symbols",
+          "url": "https://github.com/tt-a1i/archify/pull/563",
+          "state": null
+        },
+        {
+          "title": "Claude/repository explanation 4iapi2",
+          "url": "https://github.com/tt-a1i/archify/pull/573",
+          "state": null
+        },
+        {
+          "title": "fix(architecture): preserve semantics and reject perimeter detours",
+          "url": "https://github.com/tt-a1i/archify/pull/551",
+          "state": null
+        },
+        {
+          "title": "feat(architecture): allow right-aligned boundary titles",
+          "url": "https://github.com/tt-a1i/archify/pull/535",
+          "state": null
+        }
+      ]
+    }
+  ]
+}

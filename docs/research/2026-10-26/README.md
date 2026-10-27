@@ -573,3 +573,17 @@ Lifecycle 的 `reviewing` 可达 `completed/blocked/expired`；回到 reviewing 
 root 在原 Kconfig 页面上用真实 Tab 进一步核实动态动作：1440×900 和 390×844 下分别第 20/21 步到达 unmet 引用，再 Tab 进入卡内 Open source；Escape 返回同一引用且保留滚动位置，下一个 Tab 到相邻 met 引用。[桌面实际焦点图](https://github.com/tt-a1i/archify/blob/3254fda4fcd61a101cc09e6b68fbdbb4d2779604/experiments/keyboard-traversal/kconfig-transfer-d5/screenshots/card-desktop.png)及[窄屏图](https://github.com/tt-a1i/archify/blob/3254fda4fcd61a101cc09e6b68fbdbb4d2779604/experiments/keyboard-traversal/kconfig-transfer-d5/screenshots/card-mobile.png)均已实际检查。这覆盖一个有来源的具体路径，不是所有动态控件、AT、触摸或人的阅读效率证明；原工具栏溢出和表格断词仍在独立范围。
 
 [独立审计](audit/round21-transfer-audit.md)核对 27 项清单、19 项原始/公开映射、八个压缩回执、238 项 Git 源字节、原 HTML 及结果；未重跑。复现 wrapper 只增加目录参数与哈希预检，通过语法及静态复核，原实际执行脚本另存。审计后仅补了外层 README 入口，并区分最早 82c 基线的 MIT / tt-a1i 与 Cocoon AI 署名、当前根 Apache-2.0 及内嵌 Kconfig ISC，没有反称旧许可证。四个临时依赖链接已清理。[最终范围记录](audit/round21-validation.json)将旧 CI、当前 browser-check、实际 UI 和未运行项分开；新 head 的 hosted CI 未作结论。持续目标 active，交付仍仅为远程分支，无安装、合并或发布。
+
+## 第二十二批：先取得原生响应，再判断是否值得导入
+
+开始前再次核对 [315 个远程 heads](audit/remote-branches-round22.txt)，dev 仍为 `d5d97949`、研究总账为 `1c3f899c`；按关键词查询 issue，并查看最近 100 个开放 PR 的搜索结果（[范围与列表](audit/round22-issue-pr-scan.json)，不是穷尽清单）。已有 exception-identity `daf243ae`、dependency-map、static-uses、source-question-tour 及历史 LSP scout 进入排重。用户最新交付要求继续生效：只推分支，不创建 PR。
+
+| 方向 | 新证据与判断 | 本批产出 |
+| --- | --- | --- |
+| [LSP 调用位置](audit/round22-call-hierarchy.md) | gopls 的既有 marker 只比较符号位置，不能代替 fromRanges 的断言。用本机 clangd 解析完整 LLVM 测试 TU，实际得到一个 caller 的两个调用范围；outgoing 返回 -32601。调用范围、符号定义和服务器能力需要分别核验。 | [原生协议包](audit/round22-clangd-native/README.md)：完整上游源、许可、192B 派生 TU、原始帧、失败响应、版本与独立审计。暂不新建图或 LSP 适配器。 |
+| [异常处理位置](audit/round22-exception-reading.md) | CPython 用户有定位处理帧的具体问题，但提议实现未合并；Rich 已加入 group 支持，旧版缺失不能充当现行基线。 | 保留自然案例与版本固定来源；可靠数据取得仍先于图形表达，避免重复现有身份实验。 |
+| [CMake 属性来源](audit/round22-cmake-origins.md) | 完整官方 expected 已列出候选、来源、Dominant/Ignored；它是测试正则预期，未在本机运行。File API 可选 backtrace 不证明含完整数值兼容性求值。 | 固定完整输入/expected 与原生能力，暂不做导入器。 |
+
+clangd 探针的 harness/进程 exit 0 不覆盖 outgoing 方法失败。实际 9 条发送、7 条已读取消息经过[独立核对](audit/round22-native-audit.md)；记录只覆盖读到 shutdown 的帧，没有退出后的 stdout drain。初稿把启动器 SHA 写成 binary 身份，整理时已分开 `/usr/bin/clangd` 和运行后解析的 CLT 二进制；源记录不重写。仅有构造测试 TU 的程序化客户端观察，不含样例程序执行、原生编辑器导航、完整跨文件覆盖或读者收益。
+
+本批三个方向均未通过新增实现筛选，没有新图片或新实验分支；不以重复绘图填补证据缺口。可审查的研究、原始协议与失败记录推到现有研究总账分支。产品代码及以前实验不变，未运行无关产品测试、安装、合并或发布，持续目标保持进行中。

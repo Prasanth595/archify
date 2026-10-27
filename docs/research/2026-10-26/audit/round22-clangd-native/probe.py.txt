@@ -1,0 +1,37 @@
+import json, os, re, subprocess, time, select, hashlib
+from pathlib import Path
+p=Path('/tmp/archify-round22-clangd'); source=(p/'CallHierarchyTests.cpp').read_text(); fragment=source.split('TEST(CallHierarchy, IncomingOneFileCpp) {',1)[1].split('Annotations Source(R"cpp(',1)[1].split(')cpp");',1)[0]
+text=re.sub(r'\$[A-Za-z0-9]+\[\[(.*?)\]\]',r'\1',fragment).replace('^','')
+(p/'fixture.cpp').write_text(text)
+(p/'transformation.txt').write_text('Full IncomingOneFileCpp raw string content only; remove annotation ^ and replace $NAME[[TEXT]] with TEXT. No other text edits.\n')
+(p/'identity.txt').write_text('source sha256 '+hashlib.sha256(text.encode()).hexdigest()+'\nargv /usr/bin/clangd --background-index=false --offset-encoding=utf-16 --log=verbose\ncwd '+str(p)+'\nencoding utf-16\n')
+uri=(p/'fixture.cpp').as_uri(); proc=subprocess.Popen(['/usr/bin/clangd','--background-index=false','--offset-encoding=utf-16','--log=verbose'],cwd=p,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=open(p/'clangd.stderr','wb'),env={'PATH':'/usr/bin:/bin','HOME':str(p)})
+wire_in=open(p/'client-to-server.raw','wb'); wire_out=open(p/'server-to-client.raw','wb'); messages=open(p/'decoded.jsonl','w')
+def send(o):
+ b=json.dumps(o,separators=(',',':')).encode(); frame=b'Content-Length: '+str(len(b)).encode()+b'\r\n\r\n'+b; wire_in.write(frame); wire_in.flush(); proc.stdin.write(frame); proc.stdin.flush()
+def recv(target):
+ deadline=time.monotonic()+20
+ while time.monotonic()<deadline:
+  if not select.select([proc.stdout],[],[],max(0,deadline-time.monotonic()))[0]: break
+  h=b''
+  while not h.endswith(b'\r\n\r\n'):
+   c=proc.stdout.read(1)
+   if not c: raise RuntimeError('EOF header')
+   h+=c
+  n=int(re.search(br'Content-Length:\s*(\d+)',h,re.I).group(1)); body=proc.stdout.read(n); wire_out.write(h+body); wire_out.flush(); o=json.loads(body); messages.write(json.dumps(o,ensure_ascii=False)+'\n'); messages.flush()
+  if o.get('id')==target: return o
+ raise TimeoutError('response '+str(target))
+def pos(s):
+ idx=text.index(s); pre=text[:idx]; return {'line':pre.count('\n'),'character':len(pre.rsplit('\n',1)[-1])}
+try:
+ send({'jsonrpc':'2.0','id':1,'method':'initialize','params':{'processId':None,'rootUri':p.as_uri(),'capabilities':{'general':{'positionEncodings':['utf-16']}},'workspaceFolders':[{'uri':p.as_uri(),'name':'probe'}]}}); init=recv(1)
+ send({'jsonrpc':'2.0','method':'initialized','params':{}}); send({'jsonrpc':'2.0','method':'textDocument/didOpen','params':{'textDocument':{'uri':uri,'languageId':'cpp','version':1,'text':text}}})
+ for ident,name,search in [(2,'caller1','caller1()'),(3,'caller2','caller2()')]:
+  send({'jsonrpc':'2.0','id':ident,'method':'textDocument/prepareCallHierarchy','params':{'textDocument':{'uri':uri},'position':pos(search)}}); o=recv(ident); (p/(name+'-prepare.json')).write_text(json.dumps(o,indent=2)+'\n')
+  if not o.get('result'): raise RuntimeError(name+' prepare empty')
+  item=o['result'][0]; callid=ident+2; method='callHierarchy/incomingCalls' if name=='caller1' else 'callHierarchy/outgoingCalls'; send({'jsonrpc':'2.0','id':callid,'method':method,'params':{'item':item}}); r=recv(callid); (p/(name+'-calls.json')).write_text(json.dumps(r,indent=2)+'\n')
+ send({'jsonrpc':'2.0','id':9,'method':'shutdown','params':None}); recv(9); send({'jsonrpc':'2.0','method':'exit','params':None}); proc.stdin.close(); code=proc.wait(timeout=10); (p/'result.txt').write_text('completed; clangd exit '+str(code)+'\n')
+except Exception as e:
+ (p/'result.txt').write_text('failure '+repr(e)+'\n'); proc.kill(); proc.wait(); raise
+finally:
+ wire_in.close(); wire_out.close(); messages.close()

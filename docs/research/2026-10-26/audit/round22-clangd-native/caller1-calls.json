@@ -1,0 +1,96 @@
+{
+  "id": 4,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "from": {
+        "data": "C296049087D5B6A7",
+        "kind": 12,
+        "name": "caller2",
+        "range": {
+          "end": {
+            "character": 16,
+            "line": 5
+          },
+          "start": {
+            "character": 9,
+            "line": 5
+          }
+        },
+        "selectionRange": {
+          "end": {
+            "character": 16,
+            "line": 5
+          },
+          "start": {
+            "character": 9,
+            "line": 5
+          }
+        },
+        "uri": "file:///private/tmp/archify-round22-clangd/fixture.cpp"
+      },
+      "fromRanges": [
+        {
+          "end": {
+            "character": 13,
+            "line": 6
+          },
+          "start": {
+            "character": 6,
+            "line": 6
+          }
+        },
+        {
+          "end": {
+            "character": 13,
+            "line": 7
+          },
+          "start": {
+            "character": 6,
+            "line": 7
+          }
+        }
+      ]
+    },
+    {
+      "from": {
+        "data": "211B936CF29122E2",
+        "kind": 12,
+        "name": "caller3",
+        "range": {
+          "end": {
+            "character": 16,
+            "line": 9
+          },
+          "start": {
+            "character": 9,
+            "line": 9
+          }
+        },
+        "selectionRange": {
+          "end": {
+            "character": 16,
+            "line": 9
+          },
+          "start": {
+            "character": 9,
+            "line": 9
+          }
+        },
+        "uri": "file:///private/tmp/archify-round22-clangd/fixture.cpp"
+      },
+      "fromRanges": [
+        {
+          "end": {
+            "character": 13,
+            "line": 10
+          },
+          "start": {
+            "character": 6,
+            "line": 10
+          }
+        }
+      ]
+    }
+  ]
+}
