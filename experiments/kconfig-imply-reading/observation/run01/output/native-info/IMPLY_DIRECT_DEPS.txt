@@ -1,0 +1,23 @@
+Name: IMPLY_DIRECT_DEPS
+Type: tristate
+Value: y
+
+Default:
+  - y
+
+Kconfig definition, with parent deps. propagated to 'depends on'
+================================================================
+
+At tests/Kimply:9
+Menu path: (Top)
+
+  config IMPLY_DIRECT_DEPS
+  	tristate
+  	default y
+  	imply UNMET_DIRECT_1(=n)
+  	imply UNMET_DIRECT_2(=n)
+  	imply UNMET_DIRECT_3(=n)
+  	imply MET_DIRECT_1(=y)
+  	imply MET_DIRECT_2(=y)
+  	imply MET_DIRECT_3(=y)
+  	imply MET_DIRECT_4(=y)

@@ -1,0 +1,69 @@
+Python: 3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]
+Source commit: 061e71f7d78cb057762d88de088055361863deff
+Input: tests/Kimply; no .config loaded or values assigned
+
+=== Native menuconfig information formatter: IMPLY_DIRECT_DEPS ===
+Name: IMPLY_DIRECT_DEPS
+Type: tristate
+Value: y
+
+Default:
+  - y
+
+Kconfig definition, with parent deps. propagated to 'depends on'
+================================================================
+
+At tests/Kimply:9
+Menu path: (Top)
+
+  config IMPLY_DIRECT_DEPS
+  	tristate
+  	default y
+  	imply UNMET_DIRECT_1(=n)
+  	imply UNMET_DIRECT_2(=n)
+  	imply UNMET_DIRECT_3(=n)
+  	imply MET_DIRECT_1(=y)
+  	imply MET_DIRECT_2(=y)
+  	imply MET_DIRECT_3(=y)
+  	imply MET_DIRECT_4(=y)
+
+=== Native menuconfig information formatter: UNMET_DIRECT_1 ===
+Name: UNMET_DIRECT_1
+Type: tristate
+Value: n
+
+Direct dependencies (=n):
+     n
+
+Symbols currently y-implying this symbol:
+  - IMPLY_DIRECT_DEPS
+
+Kconfig definition, with parent deps. propagated to 'depends on'
+================================================================
+
+At tests/Kimply:19
+Menu path: (Top)
+
+  config UNMET_DIRECT_1
+  	tristate
+  	depends on n
+
+=== Native menuconfig information formatter: MET_DIRECT_1 ===
+Name: MET_DIRECT_1
+Type: tristate
+Value: y
+
+Symbols currently y-implying this symbol:
+  - IMPLY_DIRECT_DEPS
+
+Kconfig definition, with parent deps. propagated to 'depends on'
+================================================================
+
+At tests/Kimply:36
+Menu path: (Top)
+
+  config MET_DIRECT_1
+  	tristate
+
+=== Complete generated configuration ===
+Configuration saved to '/private/tmp/archify-round20-kconfig-run01/output/generated.config'

@@ -1,0 +1,444 @@
+[
+  {
+    "name": "MODULES",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 1
+      }
+    ]
+  },
+  {
+    "name": "IMPLY_DIRECT_DEPS",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 9
+      }
+    ]
+  },
+  {
+    "name": "UNMET_DIRECT_1",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "n",
+    "direct_dependency_value": "n",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 19
+      }
+    ]
+  },
+  {
+    "name": "UNMET_DIRECT_2",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "n",
+    "direct_dependency_value": "n",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 24
+      }
+    ]
+  },
+  {
+    "name": "UNMET_DIRECT_3",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "n",
+    "direct_dependency_value": "n",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 31
+      }
+    ]
+  },
+  {
+    "name": "MET_DIRECT_1",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 36
+      }
+    ]
+  },
+  {
+    "name": "MET_DIRECT_2",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 39
+      }
+    ]
+  },
+  {
+    "name": "MET_DIRECT_3",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 44
+      }
+    ]
+  },
+  {
+    "name": "MET_DIRECT_4",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_DIRECT_DEPS",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 51
+      }
+    ]
+  },
+  {
+    "name": "IMPLY_COND",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 60
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_N_COND",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 67
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_M_COND",
+    "value": "m",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_COND && m && MODULES",
+    "weak_reverse_dependency_value": "m",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 70
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_Y_COND",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_COND",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 73
+      }
+    ]
+  },
+  {
+    "name": "IMPLY_N_1",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 81
+      }
+    ]
+  },
+  {
+    "name": "IMPLY_N_2",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "n",
+    "direct_dependency_value": "n",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 87
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_FROM_N_1",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_N_1",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 92
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_FROM_N_2",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 95
+      }
+    ]
+  },
+  {
+    "name": "IMPLY_M",
+    "value": "m",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 102
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_M",
+    "value": "m",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_M",
+    "weak_reverse_dependency_value": "m",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 108
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_M_BOOL",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_M",
+    "weak_reverse_dependency_value": "m",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 111
+      }
+    ]
+  },
+  {
+    "name": "IMPLY_M_TO_Y",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 118
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_M_TO_Y",
+    "value": "y",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "IMPLY_M_TO_Y",
+    "weak_reverse_dependency_value": "y",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 123
+      }
+    ]
+  },
+  {
+    "name": "DIRECT_DEP",
+    "value": "n",
+    "user_value": null,
+    "visibility": "y",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 131
+      }
+    ]
+  },
+  {
+    "name": "IMPLY",
+    "value": "n",
+    "user_value": null,
+    "visibility": "y",
+    "direct_dependency": "y",
+    "direct_dependency_value": "y",
+    "weak_reverse_dependency": "n",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 134
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_TRISTATE",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "DIRECT_DEP",
+    "direct_dependency_value": "n",
+    "weak_reverse_dependency": "IMPLY",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 139
+      }
+    ]
+  },
+  {
+    "name": "IMPLIED_BOOL",
+    "value": "n",
+    "user_value": null,
+    "visibility": "n",
+    "direct_dependency": "DIRECT_DEP",
+    "direct_dependency_value": "n",
+    "weak_reverse_dependency": "IMPLY",
+    "weak_reverse_dependency_value": "n",
+    "reverse_dependency": "n",
+    "locations": [
+      {
+        "file": "tests/Kimply",
+        "line": 143
+      }
+    ]
+  }
+]

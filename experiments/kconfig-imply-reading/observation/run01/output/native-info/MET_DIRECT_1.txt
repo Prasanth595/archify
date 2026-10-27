@@ -1,0 +1,15 @@
+Name: MET_DIRECT_1
+Type: tristate
+Value: y
+
+Symbols currently y-implying this symbol:
+  - IMPLY_DIRECT_DEPS
+
+Kconfig definition, with parent deps. propagated to 'depends on'
+================================================================
+
+At tests/Kimply:36
+Menu path: (Top)
+
+  config MET_DIRECT_1
+  	tristate

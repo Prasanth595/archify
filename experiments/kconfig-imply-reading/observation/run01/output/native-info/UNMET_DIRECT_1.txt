@@ -1,0 +1,19 @@
+Name: UNMET_DIRECT_1
+Type: tristate
+Value: n
+
+Direct dependencies (=n):
+     n
+
+Symbols currently y-implying this symbol:
+  - IMPLY_DIRECT_DEPS
+
+Kconfig definition, with parent deps. propagated to 'depends on'
+================================================================
+
+At tests/Kimply:19
+Menu path: (Top)
+
+  config UNMET_DIRECT_1
+  	tristate
+  	depends on n
