@@ -1,0 +1,131 @@
+[p1 "Rebuilding the bundled examples Diagram" | space "Archify research 20261028"(18): 1 managed, 0 untracked — p1* "Rebuilding the bundled examples Diagram"]
+root
+  toolbar "Diagram actions"
+    container
+      button "Toggle color theme" [ref=76, loc=css:button[aria-label="Toggle color theme"]]
+      button "Visual style: Classic. Choose visual style" [ref=77, loc=css:button[aria-label="Visual style: Classic. Choose visual style"]]
+        text "Classic"
+      button "Resume motion" [ref=78, loc=css:button[aria-label="Resume motion"]]
+        text "Still"
+      button "Enter presentation stage" [ref=79]
+    button "Export diagram" [ref=80, loc=css:button[aria-label="Export diagram"]]
+      text "Export"
+  container
+    container
+      heading
+        text "Rebuilding the bundled examples"
+      paragraph
+        text "Measured on one local run: render and artifact check of eight examples across three concurrent workers (process start to exit, ms from batch start)."
+    container
+      image "Measured timing Wall-clock 1,286.2 ms0 → 1,286.2 ms Operation 0 ms 200 ms 400 ms 600 ms 800 ms 1,000 ms 1,200 ms Rebuild bundled examples (3 workers) 1,286.2 ms web-app.architecture 429.5 ms render-..." [ref=81]
+        text "Measured timing"
+        text "Wall-clock 1,286.2 ms"
+        text "0 → 1,286.2 ms"
+        text "Operation"
+        text "0 ms"
+        text "200 ms"
+        text "400 ms"
+        text "600 ms"
+        text "800 ms"
+        text "1,000 ms"
+        text "1,200 ms"
+        text "Rebuild bundled examples (3 workers)"
+        text "1,286.2 ms"
+        text "web-app.architecture"
+        text "429.5 ms"
+        text "render-architecture.mjs"
+        text "263.1 ms"
+        text "check-render-output.mjs"
+        text "166.4 ms"
+        text "agent-tool-call.workflow"
+        text "443.6 ms"
+        text "render-workflow.mjs"
+        text "296.9 ms"
+        text "check-render-output.mjs"
+        text "146.7 ms"
+        text "cache-miss-request.sequence"
+        text "396.2 ms"
+        text "render-sequence.mjs"
+        text "222.2 ms"
+        text "check-render-output.mjs"
+        text "174 ms"
+        text "product-analytics.dataflow"
+        text "432.3 ms"
+        text "render-dataflow.mjs"
+        text "195 ms"
+        text "check-render-output.mjs"
+        text "237.3 ms"
+        text "agent-run.lifecycle"
+        text "433 ms"
+        text "render-lifecycle.mjs"
+        text "213.9 ms"
+        text "check-render-output.mjs"
+        text "219.1 ms"
+        text "orders.erd"
+        text "423.1 ms"
+        text "render-erd.mjs"
+        text "200.7 ms"
+        text "check-render-output.mjs"
+        text "222.4 ms"
+        text "subscription-billing.erd"
+        text "400.6 ms"
+        text "render-erd.mjs"
+        text "191.5 ms"
+        text "check-render-output.mjs"
+        text "209.1 ms"
+        text "checkout-request.waterfall"
+        text "423.4 ms"
+        text "render-waterfall.mjs"
+        text "219.7 ms"
+        text "check-render-output.mjs"
+        text "203.7 ms"
+      dialog "Find a node"
+        container
+          text "FIND A NODE"
+          button "Close node finder" [ref=89, loc=css:button[aria-label="Close node finder"]]
+            text "×"
+        container
+          text "⌕"
+          searchbox "Search diagram nodes" [ref=90, loc=css:input[placeholder="Search labels or IDs"]]
+            text "worker 1"
+          text "/"
+        group "Diagram nodes" [ref=91, loc=role:group[name="Diagram nodes"]]
+          button "Focus web-app.architecture, 3 related connections" [ref=92, loc=css:button[aria-label="Focus web-app.architecture, 3 related connections"]]
+            text "web-app.architecture"
+            text "3 links"
+            text "Frontend · ex0 · 0.2–429.7 ms · 429.5 ms · 33% of 1,286.2 ms wall-clock"
+          button "Focus render-architecture.mjs, 1 related connection" [ref=93, loc=css:button[aria-label="Focus render-architecture.mjs, 1 related connection"]]
+            text "render-architecture.mjs"
+            text "1 link"
+            text "Frontend · ex0_render · 0.2–263.3 ms · 263.1 ms · 20% of 1,286.2 ms wall-clock"
+          button "Focus check-render-output.mjs, 1 related connection" [ref=94]
+            text "check-render-output.mjs"
+            text "1 link"
+            text "Frontend · ex0_check · 263.3–429.7 ms · 166.4 ms · 13% of 1,286.2 ms wall-clock"
+          button "Focus agent-run.lifecycle, 3 related connections" [ref=95, loc=css:button[aria-label="Focus agent-run.lifecycle, 3 related connections"]]
+            text "agent-run.lifecycle"
+            text "3 links"
+            text "Frontend · ex4 · 429.8–862.8 ms · 433 ms · 34% of 1,286.2 ms wall-clock"
+          button "Focus render-lifecycle.mjs, 1 related connection" [ref=96, loc=css:button[aria-label="Focus render-lifecycle.mjs, 1 related connection"]]
+            text "render-lifecycle.mjs"
+            text "1 link"
+            text "Frontend · ex4_render · 429.8–643.7 ms · 213.9 ms · 17% of 1,286.2 ms wall-clock"
+          button "Focus check-render-output.mjs, 1 related connection" [ref=97]
+            text "check-render-output.mjs"
+            text "1 link"
+            text "Frontend · ex4_check · 643.7–862.8 ms · 219.1 ms · 17% of 1,286.2 ms wall-clock"
+        paragraph
+          text "9 of 25 nodes"
+      toolbar "Diagram view controls"
+        button "Trace a directed route" [ref=82]
+          text "ROUTE"
+        button "Open semantic lens" [ref=83, loc=css:button[aria-label="Open semantic lens"]]
+          text "LENS"
+        button "Find a node" [ref=84, loc=css:button[aria-label="Find a node"]]
+        button "Open diagram guide" [ref=85, loc=css:button[aria-label="Open diagram guide"]]
+        button "Zoom out" [ref=86, loc=css:button[aria-label="Zoom out"]]
+        button "100% · Zoom in again to reveal tags and annotations. Reset diagram view" [ref=87, loc=css:button[aria-label="100% · Zoom in again to reveal tags and annotations. Reset diagram view"]]
+          text "100%"
+        button "Zoom in" [ref=88, loc=css:button[aria-label="Zoom in"]]
+
+

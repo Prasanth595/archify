@@ -1,0 +1,121 @@
+{"finderCount":9,"passport":{"id":"ex0","kind":"Frontend","context":"worker 1 › Rebuild bundled examples (3 workers)","width":1440,"height":900,"theme":"light"},"lens":{"buttons":[{"kind":"database","text":"Database9"},{"kind":"frontend","text":"Frontend9"},{"kind":"backend","text":"Backend6"},{"kind":"external","text":"External1"}],"legendBridgeItems":0}}
+[p1 "Rebuilding the bundled examples Diagram" | space "Archify research 20261028"(18): 1 managed, 0 untracked — p1* "Rebuilding the bundled examples Diagram"]
+root
+  toolbar "Diagram actions"
+    container
+      button "Toggle color theme" [ref=76, loc=css:button[aria-label="Toggle color theme"]]
+      button "Visual style: Classic. Choose visual style" [ref=77, loc=css:button[aria-label="Visual style: Classic. Choose visual style"]]
+        text "Classic"
+      button "Resume motion" [ref=78, loc=css:button[aria-label="Resume motion"]]
+        text "Still"
+      button "Enter presentation stage" [ref=79]
+    button "Export diagram" [ref=80, loc=css:button[aria-label="Export diagram"]]
+      text "Export"
+  container
+    container
+      heading
+        text "Rebuilding the bundled examples"
+      paragraph
+        text "Measured on one local run: render and artifact check of eight examples across three concurrent workers (process start to exit, ms from batch start)."
+    container
+      image "Measured timing Wall-clock 1,286.2 ms0 → 1,286.2 ms Operation 0 ms 200 ms 400 ms 600 ms 800 ms 1,000 ms 1,200 ms Rebuild bundled examples (3 workers) 1,286.2 ms web-app.architecture 429.5 ms render-..." [ref=81]
+        text "Measured timing"
+        text "Wall-clock 1,286.2 ms"
+        text "0 → 1,286.2 ms"
+        text "Operation"
+        text "0 ms"
+        text "200 ms"
+        text "400 ms"
+        text "600 ms"
+        text "800 ms"
+        text "1,000 ms"
+        text "1,200 ms"
+        text "Rebuild bundled examples (3 workers)"
+        text "1,286.2 ms"
+        text "web-app.architecture"
+        text "429.5 ms"
+        text "render-architecture.mjs"
+        text "263.1 ms"
+        text "check-render-output.mjs"
+        text "166.4 ms"
+        text "agent-tool-call.workflow"
+        text "443.6 ms"
+        text "render-workflow.mjs"
+        text "296.9 ms"
+        text "check-render-output.mjs"
+        text "146.7 ms"
+        text "cache-miss-request.sequence"
+        text "396.2 ms"
+        text "render-sequence.mjs"
+        text "222.2 ms"
+        text "check-render-output.mjs"
+        text "174 ms"
+        text "product-analytics.dataflow"
+        text "432.3 ms"
+        text "render-dataflow.mjs"
+        text "195 ms"
+        text "check-render-output.mjs"
+        text "237.3 ms"
+        text "agent-run.lifecycle"
+        text "433 ms"
+        text "render-lifecycle.mjs"
+        text "213.9 ms"
+        text "check-render-output.mjs"
+        text "219.1 ms"
+        text "orders.erd"
+        text "423.1 ms"
+        text "render-erd.mjs"
+        text "200.7 ms"
+        text "check-render-output.mjs"
+        text "222.4 ms"
+        text "subscription-billing.erd"
+        text "400.6 ms"
+        text "render-erd.mjs"
+        text "191.5 ms"
+        text "check-render-output.mjs"
+        text "209.1 ms"
+        text "checkout-request.waterfall"
+        text "423.4 ms"
+        text "render-waterfall.mjs"
+        text "219.7 ms"
+        text "check-render-output.mjs"
+        text "203.7 ms"
+      dialog "Compare system roles"
+        container
+          container
+            text "SEMANTIC LENS"
+            text "Compare system roles"
+          button "Close semantic lens" [ref=98, loc=css:button[aria-label="Close semantic lens"]]
+            text "×"
+        paragraph
+          text "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships."
+        group "Semantic kinds"
+          button "Database, 9 nodes" [ref=99, loc=css:button[aria-label="Database, 9 nodes"]]
+            text "Database"
+            text "9"
+          button "Frontend, 9 nodes" [ref=100, loc=css:button[aria-label="Frontend, 9 nodes"]]
+            text "Frontend"
+            text "9"
+          button "Backend, 6 nodes" [ref=101, loc=css:button[aria-label="Backend, 6 nodes"]]
+            text "Backend"
+            text "6"
+          button "External, 1 node" [ref=102, loc=css:button[aria-label="External, 1 node"]]
+            text "External"
+            text "1"
+        paragraph
+          text "Choose a kind to inspect its nodes and touching relationships."
+        button "Clear semantic lens" [ref=103, loc=css:button[aria-label="Clear semantic lens"]]
+          text "Clear"
+      toolbar "Diagram view controls"
+        button "Trace a directed route" [ref=82]
+          text "ROUTE"
+        button "Open semantic lens" [ref=83, loc=css:button[aria-label="Open semantic lens"]]
+          text "LENS"
+        button "Find a node" [ref=84, loc=css:button[aria-label="Find a node"]]
+        button "Open diagram guide" [ref=85, loc=css:button[aria-label="Open diagram guide"]]
+        button "Zoom out" [ref=86, loc=css:button[aria-label="Zoom out"]]
+        button "100% · Zoom in again to reveal tags and annotations. Reset diagram view" [ref=87, loc=css:button[aria-label="100% · Zoom in again to reveal tags and annotations. Reset diagram view"]]
+          text "100%"
+        button "Zoom in" [ref=88, loc=css:button[aria-label="Zoom in"]]
+
+

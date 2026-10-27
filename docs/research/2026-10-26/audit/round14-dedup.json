@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-28",
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remoteHeads": 313,
+  "issues": [
+    {
+      "number": 1022,
+      "title": "[Bug]: Waterfall legend shows \"Incomplete (no recorded end)\" when no bar is drawn as incomplete",
+      "url": "https://github.com/tt-a1i/archify/issues/1022"
+    },
+    {
+      "number": 1021,
+      "title": "[Bug]: Waterfall rejects an end and a duration that agree once start is large (fixed 1e-9 tolerance)",
+      "url": "https://github.com/tt-a1i/archify/issues/1021"
+    },
+    {
+      "number": 918,
+      "title": "feat(website): expose all ten diagram types across homepage, Start, Guide and Proof Lab",
+      "url": "https://github.com/tt-a1i/archify/issues/918"
+    },
+    {
+      "number": 917,
+      "title": "docs: expand README discovery and previews to all ten released diagram types",
+      "url": "https://github.com/tt-a1i/archify/issues/917"
+    },
+    {
+      "number": 1019,
+      "title": "[Bug]: Timeline drops the year, so events in different years get identical labels",
+      "url": "https://github.com/tt-a1i/archify/issues/1019"
+    },
+    {
+      "number": 1023,
+      "title": "[Bug]: Timeline compresses a sub-second quiet period and labels it \"≈ 0 s\"",
+      "url": "https://github.com/tt-a1i/archify/issues/1023"
+    },
+    {
+      "number": 1017,
+      "title": "[Bug][Viewer] Default relationship labels lack contrast in light mode",
+      "url": "https://github.com/tt-a1i/archify/issues/1017"
+    },
+    {
+      "number": 1026,
+      "title": "[Viewer] Mobile: nav actions overflow, route probe hides under the nav, presentation stage clips the scene start",
+      "url": "https://github.com/tt-a1i/archify/issues/1026"
+    },
+    {
+      "number": 935,
+      "title": "[Scope] Right-to-left locales: scene geometry and Arabic reading order",
+      "url": "https://github.com/tt-a1i/archify/issues/935"
+    },
+    {
+      "number": 1024,
+      "title": "[Bug]: Viewer export filenames drop non-Latin diagram titles (every zh/ko/ru export is \"diagram.png\")",
+      "url": "https://github.com/tt-a1i/archify/issues/1024"
+    },
+    {
+      "number": 1010,
+      "title": "feat(render): 在渲染产物页面内呈现更新提示与安装版本（update notice inside the artifact）",
+      "url": "https://github.com/tt-a1i/archify/issues/1010"
+    },
+    {
+      "number": 1114,
+      "title": "[提案]：Task_Checklist",
+      "url": "https://github.com/tt-a1i/archify/issues/1114"
+    }
+  ],
+  "prs": [
+    {
+      "number": 824,
+      "title": "test(waterfall): protect nested service attribution",
+      "head": "test/waterfall-inherited-service",
+      "headSha": "f5fcf4cc8cc5488d8346eb78adece5f79d47e2bc",
+      "url": "https://github.com/tt-a1i/archify/pull/824",
+      "state": "open",
+      "scope": "Service inheritance test only"
+    },
+    {
+      "number": 1028,
+      "title": "fix(waterfall): scale the timing tolerance to the value magnitude",
+      "head": "fix/1021-waterfall-timing-tolerance",
+      "headSha": "33c703a6e65524386cb7783f1c7277c5555aec6f",
+      "url": "https://github.com/tt-a1i/archify/pull/1028",
+      "state": "open",
+      "scope": "Numeric timing tolerance and contradiction cap"
+    },
+    {
+      "number": 1030,
+      "title": "fix(waterfall): key the incomplete legend only to open bars",
+      "head": "fix/1022-waterfall-legend-status",
+      "headSha": "c35777a7ee5e95bb4d639c68cf1148e009a965f0",
+      "url": "https://github.com/tt-a1i/archify/pull/1030",
+      "state": "open",
+      "scope": "Incomplete legend predicate"
+    }
+  ],
+  "bounded": true,
+  "policy": "Remote branches only; no new PR"
+}

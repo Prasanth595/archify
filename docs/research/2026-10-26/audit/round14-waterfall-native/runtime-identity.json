@@ -1,0 +1,964 @@
+{
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "checkedSourceFiles": 238,
+  "toolchain": {
+    "node": "22.23.2",
+    "zlib": "1.3.1-e00f703"
+  },
+  "frozenRuntime": "/tmp/archify-round13-base",
+  "allTrackedArchifyFilesMatch": true,
+  "files": [
+    {
+      "path": "archify/LICENSE",
+      "gitBlob": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    {
+      "path": "archify/LICENSE-MIT",
+      "gitBlob": "0f9f9397a0496ef63c7d555d36b40c3f932aff84"
+    },
+    {
+      "path": "archify/NOTICE",
+      "gitBlob": "c9e0c0446c91b02c49e2b9c5479878ae24b0a052"
+    },
+    {
+      "path": "archify/SKILL.md",
+      "gitBlob": "0175a177c065cd378c8dba9cca9242259944886d"
+    },
+    {
+      "path": "archify/THIRD_PARTY_NOTICES.md",
+      "gitBlob": "27891363f71aa6776c1d94bcfcbe1859652c4058"
+    },
+    {
+      "path": "archify/assets/JetBrainsMono-OFL.txt",
+      "gitBlob": "675d198b74b6f10b5ca149e6a21cf06dcc46b676"
+    },
+    {
+      "path": "archify/assets/template.html",
+      "gitBlob": "f44341a992213adc1c3ec5c24ad4fd3241701273"
+    },
+    {
+      "path": "archify/bin/archify.mjs",
+      "gitBlob": "dc9ae00dbfc3fbd2e769cc63cc8c277259f57a43"
+    },
+    {
+      "path": "archify/bin/delivery-update.mjs",
+      "gitBlob": "bb516f5b5e4779db24072d321882e7daca3e7542"
+    },
+    {
+      "path": "archify/bin/finalize.mjs",
+      "gitBlob": "a135f950b70b885d2864704da4c9627a35aebdc4"
+    },
+    {
+      "path": "archify/bin/open-artifact.mjs",
+      "gitBlob": "5a042b73919bc59c90dcdf6653317a8d9ee55e03"
+    },
+    {
+      "path": "archify/bin/preview.mjs",
+      "gitBlob": "944413f60de826638b0b12b5249f018bf0e7f1f5"
+    },
+    {
+      "path": "archify/bin/recover-output.mjs",
+      "gitBlob": "9b8426136d86bb42f35ae849a0559359cc99f0b9"
+    },
+    {
+      "path": "archify/bin/visual-check.mjs",
+      "gitBlob": "e6b762a4cf5d6c7f54fd44b17f949b033f6ae1f1"
+    },
+    {
+      "path": "archify/brand-marks/README.md",
+      "gitBlob": "83578f6f6cb3d10bc48c3044c46c7b7d46e84be7"
+    },
+    {
+      "path": "archify/brand-marks/catalog.json",
+      "gitBlob": "ac5698939b0baba2582e3b65556b1ebdbeea8fe6"
+    },
+    {
+      "path": "archify/delta/architecture-delta.mjs",
+      "gitBlob": "fdf2661122d0ddf816693962ab7dc619f91f3510"
+    },
+    {
+      "path": "archify/examples/agent-run.lifecycle.json",
+      "gitBlob": "f2fd14d71fe6f6fde3fdc66ca10f372beffa788d"
+    },
+    {
+      "path": "archify/examples/agent-tool-call.workflow.json",
+      "gitBlob": "a46254951451bbef8fca90ef209862929c890958"
+    },
+    {
+      "path": "archify/examples/archify-dev-activity.timeline.json",
+      "gitBlob": "d799c85e6c305670fb9307fa3b1fca3c62ccb9b2"
+    },
+    {
+      "path": "archify/examples/archify-repository.tree.json",
+      "gitBlob": "923b8ad43b7c346a7c07b2338567f90588151dae"
+    },
+    {
+      "path": "archify/examples/async-job-roundtrip.sequence.json",
+      "gitBlob": "d124c700af31c64cef02942114d769e3dc9b1ac8"
+    },
+    {
+      "path": "archify/examples/brand-aware-delivery.architecture.json",
+      "gitBlob": "9d841f43732e9f9a448a7aeb61ce245fffe3fddb"
+    },
+    {
+      "path": "archify/examples/cache-miss-request.sequence.json",
+      "gitBlob": "4ef2fab5ef81ac82081a6c5a8735806d5380bcbd"
+    },
+    {
+      "path": "archify/examples/checkout-platform.base.architecture.json",
+      "gitBlob": "0f4537f43472b92d54a4ccf54845928fdc1e2642"
+    },
+    {
+      "path": "archify/examples/checkout-platform.head.architecture.json",
+      "gitBlob": "ba384386eb0d0296cdee8ad5b61f36dc4d50c104"
+    },
+    {
+      "path": "archify/examples/checkout-request.waterfall.json",
+      "gitBlob": "d3cb44167b36e4112fa3c1e28f309dca4cd08303"
+    },
+    {
+      "path": "archify/examples/class-payment-processors-rendered.html",
+      "gitBlob": "16285813f862bc8f827e33770aa36d7460932982"
+    },
+    {
+      "path": "archify/examples/class-payments-rendered.html",
+      "gitBlob": "e48b4893783d5215bf6a7635ea720575d8c6c306"
+    },
+    {
+      "path": "archify/examples/dataflow-product-analytics.html",
+      "gitBlob": "2ad31b7b6b529fb39d9cfc04f7ea3f86484aeb98"
+    },
+    {
+      "path": "archify/examples/delivery.explainer.json",
+      "gitBlob": "48eb24564d0c45a09640884238737bf65bd8bc69"
+    },
+    {
+      "path": "archify/examples/deployment-release.lifecycle.json",
+      "gitBlob": "db659ccf3d458d21f1f075d784f5139e43bb686b"
+    },
+    {
+      "path": "archify/examples/drilldown-api-dataflow.html",
+      "gitBlob": "fed860d2066d3dc939fd42b451e7ae175d35610f"
+    },
+    {
+      "path": "archify/examples/drilldown-api-sequence.html",
+      "gitBlob": "f909c36ba25dda923db7c4bbfaacf563e65a25d0"
+    },
+    {
+      "path": "archify/examples/drilldown-api.dataflow.json",
+      "gitBlob": "63adfced275b2f72df07e332bba418a6b81ece8b"
+    },
+    {
+      "path": "archify/examples/drilldown-api.sequence.json",
+      "gitBlob": "cc8a79e53945d06733a5a33ff029408d3a8610e8"
+    },
+    {
+      "path": "archify/examples/drilldown-integrations.architecture.json",
+      "gitBlob": "75a71159da487d4a0f574a8818f8008b0cf3654c"
+    },
+    {
+      "path": "archify/examples/drilldown-integrations.html",
+      "gitBlob": "73ab952a2da0bc5d35249c81781abdd5fb626341"
+    },
+    {
+      "path": "archify/examples/drilldown-overview.architecture.json",
+      "gitBlob": "27339c0b64220ffe9d56557263355f7f8dc617ab"
+    },
+    {
+      "path": "archify/examples/drilldown-overview.html",
+      "gitBlob": "16666102326d99a4e1516c9faefc0e7a74edb37a"
+    },
+    {
+      "path": "archify/examples/drilldown-platform.architecture.json",
+      "gitBlob": "a6211bc93de0cc51a916a66bb89683658c852653"
+    },
+    {
+      "path": "archify/examples/drilldown-platform.html",
+      "gitBlob": "fdcfc98c336c08fc6493fa942e750e77590e5bdc"
+    },
+    {
+      "path": "archify/examples/erd-orders-rendered.html",
+      "gitBlob": "5a6c7c660a163c4a72d8a2910fb3ed09da15c2aa"
+    },
+    {
+      "path": "archify/examples/event-stream.dataflow.json",
+      "gitBlob": "3f653daa207f4c80081977239ef4d4198a677961"
+    },
+    {
+      "path": "archify/examples/example-rebuild.waterfall.json",
+      "gitBlob": "56f2fdc2c1d9a043841513e1c971cbd54f4e1c76"
+    },
+    {
+      "path": "archify/examples/holiday-planning.workflow.json",
+      "gitBlob": "60dd6417704fd1ee67bc943a8bf78ca8b0d5b1f2"
+    },
+    {
+      "path": "archify/examples/incident-response.workflow.json",
+      "gitBlob": "dac074f3f1be45068098a8c8746a79302e53cd7b"
+    },
+    {
+      "path": "archify/examples/lifecycle-agent-run.html",
+      "gitBlob": "749cfed55c3c7ab8461baa61b1e9d5ad6d0dd18c"
+    },
+    {
+      "path": "archify/examples/locales/de.json",
+      "gitBlob": "7fdebf22b389bc652741ee45966fd88585ed758a"
+    },
+    {
+      "path": "archify/examples/locales/fr.json",
+      "gitBlob": "f2ff1aa14378f03c92369633af33c321529de417"
+    },
+    {
+      "path": "archify/examples/locales/fr.partial.json",
+      "gitBlob": "4a442c8faba5c12056d02de9fd69e0283f552df3"
+    },
+    {
+      "path": "archify/examples/locales/it.json",
+      "gitBlob": "57df42adc9408540e7e3d95a9ec15b2a2ce3b7f2"
+    },
+    {
+      "path": "archify/examples/locales/ja.json",
+      "gitBlob": "d49ce3a201d7188ccceeb3599e3edc63d9ea4869"
+    },
+    {
+      "path": "archify/examples/locales/pt.json",
+      "gitBlob": "166c308917214c4d0428304442eac8fecae443df"
+    },
+    {
+      "path": "archify/examples/locales/ru.json",
+      "gitBlob": "8fab5fff47010adc19d311043d81c3c6a15e7b6f"
+    },
+    {
+      "path": "archify/examples/orders.erd.json",
+      "gitBlob": "f79065f37029898d5cc88ff68010d12b460a9485"
+    },
+    {
+      "path": "archify/examples/payment-incident.timeline.json",
+      "gitBlob": "29d77a08337a9ef89a8f39282883f63e6dd037e4"
+    },
+    {
+      "path": "archify/examples/payment-platform.tree.json",
+      "gitBlob": "8eaa590c483b40e67bf152a25db5bdbbc8039d6d"
+    },
+    {
+      "path": "archify/examples/payment-processors.class.json",
+      "gitBlob": "3368f6f67ca795154a13037feb677b1a34801a6d"
+    },
+    {
+      "path": "archify/examples/payments.class.json",
+      "gitBlob": "9c9daf19d5476f9ee2af884a4b924e8a5c8ee4b8"
+    },
+    {
+      "path": "archify/examples/product-analytics.dataflow.json",
+      "gitBlob": "6cc4db67730b242b30d612451824ca4924572f03"
+    },
+    {
+      "path": "archify/examples/production-deployment.architecture.json",
+      "gitBlob": "0e4e7ef8533e19d6e840a16774e402f165550212"
+    },
+    {
+      "path": "archify/examples/release-delivery.workflow.json",
+      "gitBlob": "09dc8ccf130cc6a313b79e9cff88172e4e492e0f"
+    },
+    {
+      "path": "archify/examples/sequence-cache-miss-request.html",
+      "gitBlob": "ca2c15a7d3fb48c7936fb98ebd43f1acc2c158f0"
+    },
+    {
+      "path": "archify/examples/subscription-billing-rendered.html",
+      "gitBlob": "ae73ac94fb84eb6ba60ecbb1e28bbd5c520219cc"
+    },
+    {
+      "path": "archify/examples/subscription-billing.erd.json",
+      "gitBlob": "ac75e30e94db67bfee8eedab9095e7ba8c18e6b0"
+    },
+    {
+      "path": "archify/examples/timeline-archify-dev-activity-rendered.html",
+      "gitBlob": "b836cc7dfa50680f6f36b696532400b5d636ba0f"
+    },
+    {
+      "path": "archify/examples/timeline-payment-incident-rendered.html",
+      "gitBlob": "40383dda294bbc9f244921388e1a56ac329da9ce"
+    },
+    {
+      "path": "archify/examples/tree-archify-repository-rendered.html",
+      "gitBlob": "75b0c2d7b23f0129a40292de1bdf4ecbf3cd351c"
+    },
+    {
+      "path": "archify/examples/tree-payment-platform-rendered.html",
+      "gitBlob": "1d577f720564327fd93294808268fef7b14419d1"
+    },
+    {
+      "path": "archify/examples/waterfall-checkout-request-rendered.html",
+      "gitBlob": "48fa4422394466cad3fcc7d457ffff3947c828f5"
+    },
+    {
+      "path": "archify/examples/waterfall-example-rebuild-rendered.html",
+      "gitBlob": "19a31ecef70c7556fe13a84cf41cacb032cf8f2d"
+    },
+    {
+      "path": "archify/examples/web-app-rendered.html",
+      "gitBlob": "80ebaad1bff75b4c73cc74561f846701d65fa587"
+    },
+    {
+      "path": "archify/examples/web-app.architecture.json",
+      "gitBlob": "f370a41262113cdce1d1376efc0b32235c16f58f"
+    },
+    {
+      "path": "archify/examples/workflow-agent-tool-call-rendered.html",
+      "gitBlob": "13358b85a66c05f3ee28afe2ca990fd669b39bfa"
+    },
+    {
+      "path": "archify/explainer/browser-check.mjs",
+      "gitBlob": "72f8f8b07a7bbb585463d8b7995e83b434d79427"
+    },
+    {
+      "path": "archify/explainer/charts.mjs",
+      "gitBlob": "c067c0f50a3ef606890fb2ecccf684586d48cb90"
+    },
+    {
+      "path": "archify/explainer/check.mjs",
+      "gitBlob": "e4e45cd22a9377d16725c2f4796bcb79754c1e01"
+    },
+    {
+      "path": "archify/explainer/diagrams.mjs",
+      "gitBlob": "65537d1c52d79d669d3e40cec5c4553572620fd6"
+    },
+    {
+      "path": "archify/explainer/diff.mjs",
+      "gitBlob": "02679b14d6f386bb2c42b84be87389cf4e9e1586"
+    },
+    {
+      "path": "archify/explainer/inline.mjs",
+      "gitBlob": "cdaa58c7408ecc0668e7490442bc84000bc82a2c"
+    },
+    {
+      "path": "archify/explainer/layout.mjs",
+      "gitBlob": "dddc7095478019d737b942844fbe91e5695edba3"
+    },
+    {
+      "path": "archify/explainer/page-bundle.mjs",
+      "gitBlob": "32bb7c7b29d041bd28559652f5741a7e28d71198"
+    },
+    {
+      "path": "archify/explainer/parse.mjs",
+      "gitBlob": "11b8f7beeabb423eaa2401ec7946eea4017feb38"
+    },
+    {
+      "path": "archify/explainer/patch.mjs",
+      "gitBlob": "a07d0df6991b39416ac7e32d1362962e126f16d8"
+    },
+    {
+      "path": "archify/explainer/prepare.mjs",
+      "gitBlob": "a5edf3d70cb072fcdaba04b2fd714d8db3d043d7"
+    },
+    {
+      "path": "archify/explainer/reader.css",
+      "gitBlob": "cc5a78320071bef10fc4e3c7799a91160562b86e"
+    },
+    {
+      "path": "archify/explainer/reader.js",
+      "gitBlob": "7cabf7bcd59b389a31c43c53174bddccac4eee0e"
+    },
+    {
+      "path": "archify/explainer/render.mjs",
+      "gitBlob": "9eebbb264665fb99984789822cd9ab98d6f684d5"
+    },
+    {
+      "path": "archify/explainer/revision.mjs",
+      "gitBlob": "cef50adc22bef429e9212978df2c98e2920eeaa6"
+    },
+    {
+      "path": "archify/explainer/sources.mjs",
+      "gitBlob": "3caff3488e17cbaccd1e05e9f481ab2ee30768ab"
+    },
+    {
+      "path": "archify/explainer/validate.mjs",
+      "gitBlob": "c7ae478a618cce19d42bc628379881d487343e85"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/LICENSE",
+      "gitBlob": "fd6f9c893d2feb140f6d1e853a8bc0908b3bdf5b"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/README.md",
+      "gitBlob": "99da26a8e41ad97c057c5eabebc7b963e7ce1ba3"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/3DKXF73K.js",
+      "gitBlob": "a34e6786c15219957d1506fa6f1b2bc337b1a28e"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/42UTT654.js",
+      "gitBlob": "f65681462b318b300eca567878c9e1c00e58d9c4"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/DKTLEL5E.js",
+      "gitBlob": "d0f45a9f876a042df5e99a28ff4736380c3983fb"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/EEIX5ZYH.js",
+      "gitBlob": "a0ebc5679c427c46d83a6367b47c7eec6c2b1ec9"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/EJ5KOXYD.js",
+      "gitBlob": "a424acd6d1d7655fe8eb9e6c668b365c6a816a6f"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/GUJTEFZK.js",
+      "gitBlob": "e63fb1b2009159c77683824f6d62ee58a5ec2a2c"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/IZOKQ2GT.js",
+      "gitBlob": "e33d93ea9589ec190514ccaff232086bdba5ca07"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/L4LY553T.js",
+      "gitBlob": "0ca62840c100fb9e72143484550636ad0d6edd81"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/MSKIJHB2.js",
+      "gitBlob": "4d965a60feaf9661aa3bd9cacacc722faf075b6a"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/RVARI57O.js",
+      "gitBlob": "e068f148a2dbe605027324c0d5f62578a28f9b28"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/UKSIWDDN.js",
+      "gitBlob": "bbb8b563223a87fc85db6f74833e955bacf8ee2f"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/UPTXNAXN.js",
+      "gitBlob": "729d0cebd568a0701756a568c46a27f5d8a574a5"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/XTDUIGUI.js",
+      "gitBlob": "d734d0fc9209b01429b3ff03da99ca621d15c672"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/chunks/YAYTP6L5.js",
+      "gitBlob": "f3d641cd77eff30a82f98d058a6be5cf3991adba"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/core.js",
+      "gitBlob": "24938e1a76196890cb80fde599f07e9878e167c0"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/diagrams/pie.js",
+      "gitBlob": "79d1511756b87826c07c3408c12e67179559618a"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/diagrams/quadrantChart.js",
+      "gitBlob": "d9b1f52c4d15c5c77fa09952db621fd1ce665455"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/diagrams/radar.js",
+      "gitBlob": "6699fbba898a49b1ffa8d2cf25db9c8686a9afd4"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/diagrams/sankey.js",
+      "gitBlob": "41d33a4a0e8ca22c0daad4d45bb5b43cdd885158"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/diagrams/venn.js",
+      "gitBlob": "3cb40deec5c8364871a05fdb967e5dd83de6f5da"
+    },
+    {
+      "path": "archify/explainer/vendor/pele/diagrams/xychart.js",
+      "gitBlob": "8a62c964ed2482d4d9879f5fb507b99953b20a70"
+    },
+    {
+      "path": "archify/explainer/writing.mjs",
+      "gitBlob": "a534249fd1eefa5cbf20a2b005eeef08562a361b"
+    },
+    {
+      "path": "archify/locales/README.md",
+      "gitBlob": "07941272af11d7d49750a134bdbc26b588d2fc47"
+    },
+    {
+      "path": "archify/locales/ar.json",
+      "gitBlob": "14ddc6edfe055bb9518d15c4209240490e732820"
+    },
+    {
+      "path": "archify/locales/en.json",
+      "gitBlob": "b84817649ecfad6a46f5f33eee23d40738fa6dfc"
+    },
+    {
+      "path": "archify/locales/es.json",
+      "gitBlob": "d171960f396c155c080d08f2a47fae9ef31a98d7"
+    },
+    {
+      "path": "archify/locales/ko.json",
+      "gitBlob": "a3cf4dda7897b04ba4f37631413396a5f9ab8454"
+    },
+    {
+      "path": "archify/locales/manifest.json",
+      "gitBlob": "34080e03359e03ce46cae8fde4b7a8732bf14ac1"
+    },
+    {
+      "path": "archify/locales/zh-CN.json",
+      "gitBlob": "eb7fa452845e4030ad6b1e31363cfb9890e07715"
+    },
+    {
+      "path": "archify/locales/zh-TW.json",
+      "gitBlob": "6ed434dce9c5d8e7479332dcf3a9392e0f05c7e9"
+    },
+    {
+      "path": "archify/migrations/workflow-v2.mjs",
+      "gitBlob": "e9731fcd4c94d9217c4945980ca808dc40938c59"
+    },
+    {
+      "path": "archify/package-lock.json",
+      "gitBlob": "75ad233b45bf0c0d2d621d2c4ea1c7b805100f6d"
+    },
+    {
+      "path": "archify/package.json",
+      "gitBlob": "45c071e55098086843aa76c66ee41d37f0e379d8"
+    },
+    {
+      "path": "archify/recipes/scenarios.mjs",
+      "gitBlob": "bfa764d3cd0dcafb466c7447b0ce7578e9e06871"
+    },
+    {
+      "path": "archify/references/architecture-layout-repair.md",
+      "gitBlob": "d7792cff9de3b6b462b1feab78347f97c2d45e2d"
+    },
+    {
+      "path": "archify/references/authoring-contract.md",
+      "gitBlob": "2fbf25ebfce66bd542fd8c9ee405fdb67b3236a0"
+    },
+    {
+      "path": "archify/references/authoring-defaults.md",
+      "gitBlob": "4e7f30d6c684b7d1737854c29a645448771f4ca1"
+    },
+    {
+      "path": "archify/references/brand-marks.md",
+      "gitBlob": "46c64f82cac359128d9c519a5178b584c7c3e0bc"
+    },
+    {
+      "path": "archify/references/delivery-contract.md",
+      "gitBlob": "c0734fd93c071c51bfbe82533737a311dfd8de35"
+    },
+    {
+      "path": "archify/references/explainer-authoring.md",
+      "gitBlob": "a11d087078037474a1900f47ad49bcea8e92273d"
+    },
+    {
+      "path": "archify/references/repository-authoring.md",
+      "gitBlob": "38d06a6173042da3557e4d447330a7c3a56ad60c"
+    },
+    {
+      "path": "archify/references/story-authoring.md",
+      "gitBlob": "ad97d4a7e52d6b41a48480b99532c302c823df3a"
+    },
+    {
+      "path": "archify/references/update-awareness.md",
+      "gitBlob": "50e6bdeb6980b00f6b50359e9b4f805592dcf875"
+    },
+    {
+      "path": "archify/references/viewer-runtime.md",
+      "gitBlob": "7a23e09888c39ff2771364d525fd06a7a8e042d8"
+    },
+    {
+      "path": "archify/renderers/architecture/grid.mjs",
+      "gitBlob": "807a1b860f531bab0ee217af19e6887fbbade398"
+    },
+    {
+      "path": "archify/renderers/architecture/labels.mjs",
+      "gitBlob": "6f0076b10c1d7163d215f3c0f1ebff8e671bf6e2"
+    },
+    {
+      "path": "archify/renderers/architecture/render-architecture.mjs",
+      "gitBlob": "a84b47e0beaae0d9125d25a01a661274a1938bbb"
+    },
+    {
+      "path": "archify/renderers/architecture/routing.mjs",
+      "gitBlob": "93c22606ecb657b8faa6f642b4b5546d5264271b"
+    },
+    {
+      "path": "archify/renderers/class/README.md",
+      "gitBlob": "efaea675ab7fb46b9042b63c9f25274bc1325a23"
+    },
+    {
+      "path": "archify/renderers/class/render-class.mjs",
+      "gitBlob": "b791da46b6a9494b6a8747f9b82f983ba1484f24"
+    },
+    {
+      "path": "archify/renderers/dataflow/README.md",
+      "gitBlob": "6388fcbbb1b51ea2628d62eeee31a633885b905b"
+    },
+    {
+      "path": "archify/renderers/dataflow/dataflow-compiler.mjs",
+      "gitBlob": "5c58edd98c76e6ee507dafa49c9d564d06bb09a3"
+    },
+    {
+      "path": "archify/renderers/dataflow/joint-label-routing.mjs",
+      "gitBlob": "1954204aa1bcdff97837b09a0c7ce534bb35f445"
+    },
+    {
+      "path": "archify/renderers/dataflow/label-capacity.mjs",
+      "gitBlob": "a7d4246e181e4cfbbc09cb77fa291d65ef2a72e7"
+    },
+    {
+      "path": "archify/renderers/dataflow/render-dataflow.mjs",
+      "gitBlob": "573b96980a9b7993dfa3aad2af70fe89c8927c92"
+    },
+    {
+      "path": "archify/renderers/erd/README.md",
+      "gitBlob": "1713bd684bec22235c401a2d02972a103d9501e3"
+    },
+    {
+      "path": "archify/renderers/erd/grid.mjs",
+      "gitBlob": "3233d2934aaccb7c5b7bb02ad8908f39069cf541"
+    },
+    {
+      "path": "archify/renderers/erd/render-erd.mjs",
+      "gitBlob": "252ae347252c1e234ff13504d84bc6f8a36897fb"
+    },
+    {
+      "path": "archify/renderers/explainer/render-explainer.mjs",
+      "gitBlob": "c83ace5f6f2b8dd7cc1151c94e2ffed91fa50e9f"
+    },
+    {
+      "path": "archify/renderers/lifecycle/README.md",
+      "gitBlob": "397d169c86ddeee00fc8b790b552cf6b3d4ec956"
+    },
+    {
+      "path": "archify/renderers/lifecycle/render-lifecycle.mjs",
+      "gitBlob": "0b4af6171a1b937dda79c3e14715b50f38a08912"
+    },
+    {
+      "path": "archify/renderers/sequence/README.md",
+      "gitBlob": "27f778eb3694bb5780deb94419f81bd4fc177465"
+    },
+    {
+      "path": "archify/renderers/sequence/render-sequence.mjs",
+      "gitBlob": "2192e3a643c1cc3f60442339a93c20a3d1db98ac"
+    },
+    {
+      "path": "archify/renderers/shared/atomic-output.md",
+      "gitBlob": "67aac906ba5fca0452d23ac060a51b907fd453d1"
+    },
+    {
+      "path": "archify/renderers/shared/atomic-output.mjs",
+      "gitBlob": "a45ae5b13cebed3450d8b21532e034f379a90483"
+    },
+    {
+      "path": "archify/renderers/shared/automatic-labels.mjs",
+      "gitBlob": "85b1bd17f4b1cb0fd759bf40d0ed1022210167eb"
+    },
+    {
+      "path": "archify/renderers/shared/brand-marks.mjs",
+      "gitBlob": "671def2f357435a8a065af2fb9cff7cc845158cf"
+    },
+    {
+      "path": "archify/renderers/shared/cli.mjs",
+      "gitBlob": "27172b7567dd52faa5133f2118978314284d9f35"
+    },
+    {
+      "path": "archify/renderers/shared/desktop-readability.mjs",
+      "gitBlob": "d4d1d0ec5bee5c4b1062c7a108c6bbab41ac74bf"
+    },
+    {
+      "path": "archify/renderers/shared/diagnostics.mjs",
+      "gitBlob": "9fbd25d557f47f64b142b2d5393ee921d6f337cd"
+    },
+    {
+      "path": "archify/renderers/shared/engineering-profiles.mjs",
+      "gitBlob": "76e3166aa19cbd23cc2187f16b0c120280ef4d48"
+    },
+    {
+      "path": "archify/renderers/shared/generated-brand-marks.mjs",
+      "gitBlob": "69dbb7c1c290f28620705486ecacba4d2184f634"
+    },
+    {
+      "path": "archify/renderers/shared/generated-validators.mjs",
+      "gitBlob": "3a75210e020eb8f58324929fd11f5a6338e134d6"
+    },
+    {
+      "path": "archify/renderers/shared/geometry.mjs",
+      "gitBlob": "2568540140f1964307d7dbe3a1619c3f6d315339"
+    },
+    {
+      "path": "archify/renderers/shared/i18n.mjs",
+      "gitBlob": "6eee0b506c4c05f5ec144b24d56c1ea557fcf812"
+    },
+    {
+      "path": "archify/renderers/shared/layout-report.mjs",
+      "gitBlob": "6043316d5e4a6754d0af6975db7bf55e7d0a197d"
+    },
+    {
+      "path": "archify/renderers/shared/legend.mjs",
+      "gitBlob": "13bf15e9eb8335e3c053ee4b30d7f348e49ec34d"
+    },
+    {
+      "path": "archify/renderers/shared/node-card-style.mjs",
+      "gitBlob": "f3446ad0d7e2036e1671e9734a748c7ae1faad29"
+    },
+    {
+      "path": "archify/renderers/shared/output-path.mjs",
+      "gitBlob": "372249d628f400a76951d0178cc88a20c062687c"
+    },
+    {
+      "path": "archify/renderers/shared/owned-temp-directory.mjs",
+      "gitBlob": "cc910f094828fac6beb150d40f6af4a3bdf71ebd"
+    },
+    {
+      "path": "archify/renderers/shared/path-semantics.mjs",
+      "gitBlob": "59dc039c1737122b0fd116f40a51155cf267ffd8"
+    },
+    {
+      "path": "archify/renderers/shared/portable-path.mjs",
+      "gitBlob": "e9f8df9dbf097a165cdde67cba9d60b96553294d"
+    },
+    {
+      "path": "archify/renderers/shared/repository-evidence.mjs",
+      "gitBlob": "fb3a385285f85b6ea5e90bc0317e57652fce6d12"
+    },
+    {
+      "path": "archify/renderers/shared/repository-location.mjs",
+      "gitBlob": "7a36226d2144cdbe0ded72e2bfb192c0e209771f"
+    },
+    {
+      "path": "archify/renderers/shared/route-quality.mjs",
+      "gitBlob": "01f585f7c3b9f71285172ab8dc02305c6b04798c"
+    },
+    {
+      "path": "archify/renderers/shared/sidecar-path.mjs",
+      "gitBlob": "32e73601f9f05d4ff0e5fbd432dd5ebabfe8a0c4"
+    },
+    {
+      "path": "archify/renderers/shared/software-notices.mjs",
+      "gitBlob": "4e2802fe332b5a9660c8576ccac3f487332fc86b"
+    },
+    {
+      "path": "archify/renderers/shared/spatial-grid.mjs",
+      "gitBlob": "d2eb43961110be72a34d92804299de60e6d03126"
+    },
+    {
+      "path": "archify/renderers/shared/svg-path-analysis.mjs",
+      "gitBlob": "e77c2b691a86850e8bdad3c4c01070fd46822ed3"
+    },
+    {
+      "path": "archify/renderers/shared/text-fit.mjs",
+      "gitBlob": "860356a4c9709af3175e4f6e51393c772b0e8616"
+    },
+    {
+      "path": "archify/renderers/shared/utils.mjs",
+      "gitBlob": "f10d89bef79a15e8db49a7ec3e6b4150e64392c0"
+    },
+    {
+      "path": "archify/renderers/shared/validator.mjs",
+      "gitBlob": "ad0a331c3d69024096ecf77a3a2baf1c569ce9ce"
+    },
+    {
+      "path": "archify/renderers/timeline/README.md",
+      "gitBlob": "7718ced3fa6db0129513d368f291c1688602fe74"
+    },
+    {
+      "path": "archify/renderers/timeline/render-timeline.mjs",
+      "gitBlob": "2bf4934abfefe1bc2e5ccf07b63a424f97954421"
+    },
+    {
+      "path": "archify/renderers/tree/README.md",
+      "gitBlob": "87b1b9ade6baf73bbb03ab3dfd3f697aaf4dd9a8"
+    },
+    {
+      "path": "archify/renderers/tree/render-tree.mjs",
+      "gitBlob": "72b10002051fd2dc5bc4ee9ae58dbd54ef89f5b2"
+    },
+    {
+      "path": "archify/renderers/waterfall/README.md",
+      "gitBlob": "410f9bf6f8b2c780cb7c5f7c4a5a3b3824f1d871"
+    },
+    {
+      "path": "archify/renderers/waterfall/render-waterfall.mjs",
+      "gitBlob": "e0428d19dd9e767cade8bd624d7d42115aec3e0f"
+    },
+    {
+      "path": "archify/renderers/workflow/README.md",
+      "gitBlob": "cd20dc8a2d22725c6cc10ce320717c0871fbcdca"
+    },
+    {
+      "path": "archify/renderers/workflow/render-workflow.mjs",
+      "gitBlob": "05f025ee166ad5da9822ae811bd907c8022c7738"
+    },
+    {
+      "path": "archify/renderers/workflow/workflow-compiler.mjs",
+      "gitBlob": "3e73783bf5eb4664504a6ed6c20bfd68f110b3e5"
+    },
+    {
+      "path": "archify/renderers/workflow/workflow-migration-geometry.mjs",
+      "gitBlob": "0a4bb2e1f0ad36dd140bcb822ad13d6293b2544c"
+    },
+    {
+      "path": "archify/renderers/workflow/workflow-placement-repair.mjs",
+      "gitBlob": "ff43b50d0666fb434d75058fcddfdc9552e0da74"
+    },
+    {
+      "path": "archify/schemas/README.md",
+      "gitBlob": "ce10b0af2990b51092fe00c6fa15b50aae01dd45"
+    },
+    {
+      "path": "archify/schemas/architecture.schema.json",
+      "gitBlob": "1f94e5837fd6a2ec52b4938a84d27fb8d1d75032"
+    },
+    {
+      "path": "archify/schemas/class.schema.json",
+      "gitBlob": "2ef8b84266fe98dc4b1b1a04b828cf343f7a18bf"
+    },
+    {
+      "path": "archify/schemas/common.schema.json",
+      "gitBlob": "572496a4476dfcc08eebd73347cc771253d7039b"
+    },
+    {
+      "path": "archify/schemas/dataflow.schema.json",
+      "gitBlob": "81d6922bfb81bcc2bab367924c59c69220fedddd"
+    },
+    {
+      "path": "archify/schemas/erd.schema.json",
+      "gitBlob": "0153501ebb7f8032c67e4fe65c060c7f6a55404e"
+    },
+    {
+      "path": "archify/schemas/explainer.schema.json",
+      "gitBlob": "03deceab6b3a0e82598fb42fbbd95865a6a62af5"
+    },
+    {
+      "path": "archify/schemas/lifecycle.schema.json",
+      "gitBlob": "541ed703d2addf5224af1705745e58a5cecffe6b"
+    },
+    {
+      "path": "archify/schemas/sequence.schema.json",
+      "gitBlob": "79410675e940605a5177c96e81be7c69e294cb90"
+    },
+    {
+      "path": "archify/schemas/timeline.schema.json",
+      "gitBlob": "7cc4b7ce168ac7ee5e058d22383a5a4388b94db4"
+    },
+    {
+      "path": "archify/schemas/tree.schema.json",
+      "gitBlob": "05106a1c2f945c44c15111fb0994f912f0bf865c"
+    },
+    {
+      "path": "archify/schemas/waterfall.schema.json",
+      "gitBlob": "f6a37397d83dba739b273f6ffba0f1df3129203c"
+    },
+    {
+      "path": "archify/schemas/workflow.schema.json",
+      "gitBlob": "71886133dca7bb6e6df7a102d4286e9cd31c1df6"
+    },
+    {
+      "path": "archify/scripts/check-render-output.mjs",
+      "gitBlob": "6b4c46f9ac5e65c50b772dcfb70e8f971f84c9a8"
+    },
+    {
+      "path": "archify/scripts/check-update.mjs",
+      "gitBlob": "24f54f2988cb4072054de6f7f7bf726ad1301380"
+    },
+    {
+      "path": "archify/scripts/delivery-update-child.mjs",
+      "gitBlob": "7c998f0ab32dd0720cb92ea60a81050481b15043"
+    },
+    {
+      "path": "archify/scripts/generate-brand-marks.mjs",
+      "gitBlob": "73490babbbbde02ffd6f657ab9edb5538bee5cca"
+    },
+    {
+      "path": "archify/scripts/generate-validators.mjs",
+      "gitBlob": "72a0120ec0d060056101730fb68e65ca2f47ac41"
+    },
+    {
+      "path": "archify/scripts/render-examples.mjs",
+      "gitBlob": "78b7ef1bc1c7909429ddb31520d5fa4ea0050488"
+    },
+    {
+      "path": "archify/scripts/update-contract.mjs",
+      "gitBlob": "b35d0f8d6b5308250adedbce837f1a174ec1e505"
+    },
+    {
+      "path": "archify/skill-release.json",
+      "gitBlob": "48df2b8f31a3d87e5cbe1a239957da860697ebf1"
+    },
+    {
+      "path": "archify/story/brand.svg",
+      "gitBlob": "77268223a66446f25cd75b20d219117213065149"
+    },
+    {
+      "path": "archify/story/cli.mjs",
+      "gitBlob": "51e398ead280fb0cc6914bf1f0cc286da3dde6f1"
+    },
+    {
+      "path": "archify/story/messages.json",
+      "gitBlob": "6faf9bbc8c7ba350f209cbeeb6ddafa9681549c4"
+    },
+    {
+      "path": "archify/story/native-motion.js",
+      "gitBlob": "f57b3a8ca26eba4717b1365549754ce43fb3a892"
+    },
+    {
+      "path": "archify/story/output.mjs",
+      "gitBlob": "7ec3f7853eaeb9080c50132f53209d219243d21c"
+    },
+    {
+      "path": "archify/story/scope-field.js",
+      "gitBlob": "341e941065505ae16259f4d99e5eb46dbe4b6d77"
+    },
+    {
+      "path": "archify/story/story-attachment.css",
+      "gitBlob": "44a2e22644b40265fd9dd1d8458e20d2b1960f2b"
+    },
+    {
+      "path": "archify/story/story-attachment.js",
+      "gitBlob": "e6624f9ac4c3e26cfa99b2d5c1f0ec01fad23703"
+    },
+    {
+      "path": "archify/story/story-attachment.mjs",
+      "gitBlob": "3e668404ee56a4647b53642475afbed07f75bc20"
+    },
+    {
+      "path": "archify/story/story-audio.js",
+      "gitBlob": "2a49302fec201fd2e80242b44e81b36374aeaec2"
+    },
+    {
+      "path": "archify/story/story-export.js",
+      "gitBlob": "b49b7b7c27072fe6d2e1d3e847654c15f9a270d9"
+    },
+    {
+      "path": "archify/story/story-plan.mjs",
+      "gitBlob": "e243b8b1be355db2c62a6e425b661c3ca2918d14"
+    },
+    {
+      "path": "archify/story/story-webm.js",
+      "gitBlob": "45baac6eab9b5664770810bb5c4d5cb4c5e8b366"
+    },
+    {
+      "path": "archify/story/story.css",
+      "gitBlob": "8cc5258aa5573acd2b0fd6c39a7a4c2bc5d1d2d2"
+    },
+    {
+      "path": "archify/story/story.js",
+      "gitBlob": "3f720d9e2bbfc9df379af372e46512541050fe39"
+    },
+    {
+      "path": "archify/story/tool.mjs",
+      "gitBlob": "a560fe48175c6e79b63fc47084f58319034f166c"
+    },
+    {
+      "path": "archify/story/vendor/README.md",
+      "gitBlob": "60f645c711a11cfe4c3f3fed393663b57c4eedfe"
+    },
+    {
+      "path": "archify/story/vendor/entities-LICENSE.txt",
+      "gitBlob": "c464f863ea2b18a15ca3883bc5d98065ed5d039a"
+    },
+    {
+      "path": "archify/story/vendor/html-parser.mjs",
+      "gitBlob": "8c20db5504baf4e675ba83d481664ae63e3972eb"
+    },
+    {
+      "path": "archify/story/vendor/parse5-LICENSE.txt",
+      "gitBlob": "f3265d4b88f7aac271ec21679195adff8446855e"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "finder": {
+    "query": "worker 1",
+    "ids": [
+      "ex0",
+      "ex0_render",
+      "ex0_check",
+      "ex4",
+      "ex4_render",
+      "ex4_check",
+      "ex7",
+      "ex7_render",
+      "ex7_check"
+    ],
+    "nodes": [
+      {
+        "id": "batch",
+        "kind": "external"
+      },
+      {
+        "id": "ex0",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex0_render",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › web-app.architecture"
+      },
+      {
+        "id": "ex0_check",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › web-app.architecture"
+      },
+      {
+        "id": "ex1",
+        "kind": "backend",
+        "service": "worker 2",
+        "context": "worker 2 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex1_render",
+        "kind": "backend",
+        "service": "worker 2",
+        "context": "worker 2 › agent-tool-call.workflow"
+      },
+      {
+        "id": "ex1_check",
+        "kind": "backend",
+        "service": "worker 2",
+        "context": "worker 2 › agent-tool-call.workflow"
+      },
+      {
+        "id": "ex2",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex2_render",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › cache-miss-request.sequence"
+      },
+      {
+        "id": "ex2_check",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › cache-miss-request.sequence"
+      },
+      {
+        "id": "ex3",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex3_render",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › product-analytics.dataflow"
+      },
+      {
+        "id": "ex3_check",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › product-analytics.dataflow"
+      },
+      {
+        "id": "ex4",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex4_render",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › agent-run.lifecycle"
+      },
+      {
+        "id": "ex4_check",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › agent-run.lifecycle"
+      },
+      {
+        "id": "ex5",
+        "kind": "backend",
+        "service": "worker 2",
+        "context": "worker 2 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex5_render",
+        "kind": "backend",
+        "service": "worker 2",
+        "context": "worker 2 › orders.erd"
+      },
+      {
+        "id": "ex5_check",
+        "kind": "backend",
+        "service": "worker 2",
+        "context": "worker 2 › orders.erd"
+      },
+      {
+        "id": "ex6",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex6_render",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › subscription-billing.erd"
+      },
+      {
+        "id": "ex6_check",
+        "kind": "database",
+        "service": "worker 3",
+        "context": "worker 3 › subscription-billing.erd"
+      },
+      {
+        "id": "ex7",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › Rebuild bundled examples (3 workers)"
+      },
+      {
+        "id": "ex7_render",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › checkout-request.waterfall"
+      },
+      {
+        "id": "ex7_check",
+        "kind": "frontend",
+        "service": "worker 1",
+        "context": "worker 1 › checkout-request.waterfall"
+      }
+    ]
+  },
+  "passport": {
+    "id": "ex0",
+    "kind": "Frontend",
+    "context": "worker 1 › Rebuild bundled examples (3 workers)",
+    "width": 1440,
+    "height": 900,
+    "theme": "light"
+  },
+  "lens": {
+    "buttons": [
+      {
+        "kind": "database",
+        "text": "Database9"
+      },
+      {
+        "kind": "frontend",
+        "text": "Frontend9"
+      },
+      {
+        "kind": "backend",
+        "text": "Backend6"
+      },
+      {
+        "kind": "external",
+        "text": "External1"
+      }
+    ],
+    "legendBridgeItems": 0
+  }
+}

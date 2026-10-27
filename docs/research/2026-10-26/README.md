@@ -369,3 +369,26 @@ Waterfall存在同类色调进入类型的机制，但服务、错误状态与sp
 [ASan工具链缺口](scouts/asan-toolchain-gap-round13.md)确认旧空程序阻塞发生在main前初始化路径；现有Xcode21只是本地可用替代工具链，没有新运行证据。子代理的新探针执行请求被自动安全检查拦截，提示可能涉及网络安全风险；没有绕过、重试或把准备文件当结果。[原ASan分支状态更新](https://github.com/tt-a1i/archify/tree/9f8d640e2ea5f413560821517e4573738f45aee8/experiments/asan-provenance/toolchain21)仅提交README与JSON，未提交新runner或二进制。旧第二轮运行缺少原始PID/wait记录，当前进程清单不补足历史证据。自然LLVM问题沿用旧笔记，本轮未重新固定全文。
 
 [本批远端交付记录](audit/round13-delivery.json)保存精确head和验证边界。AI辅助由Terra源码/自然问题侦察、生成物和交付核对，Sol实现、独立代码审查和ASan只读缺口分析，root固定输入比较、实际页面、证据修正与远端交付完成。只推送独立实验和研究记录；没有新PR、合并、发布、部署或安装。总目标继续active。
+
+
+## 第十四批：Waterfall 的兼容取舍与原生工具基线
+
+上一批完成Timeline源码、实物验证和远端交付，属于有效进展。本批先fetch/prune并保存[313条远端head](audit/remote-branches-round14.txt)，dev仍为d5d97949，历史汇编仍为60342aa9。[有界去重](audit/round14-dedup.json)进一步读取Waterfall PR #824/#1028/#1030的固定head与diff：分别涉及服务继承测试、数值时间容差、未结束图例；不重做或修改这些贡献者工作。继续只推远程分支，不创建PR。
+
+### Waterfall：问题真实，修正不等于复制Timeline的映射
+
+[源码决策报告](scouts/waterfall-role-decision.md)核实：自带example-rebuild示例中的25个span分属worker1/2/3和未归属根节点，却按配色成为Frontend9、Backend6、Database9、External1。服务身份仍在context与data-waterfall-service中。原生图例是非交互色键，超过五个服务还会合并同色项，不存在可直接保留的精确service Lens。
+
+root在固定d5 runtime重新生成该输入并完成[实际页面复现](audit/round14-waterfall-native/README.md)：Finder查询worker 1准确返回对应9个ID，真实Enter定位ex0，Passport仍显示Frontend但context保留worker 1；Lens确实显示四个技术色桶，还使用real traffic说明。声明的parent嵌套不因此成为流量或因果。三张1440×900浅色截图、完整HTML、原始输入、CLI回执和浏览器记录已保留。输入数据来自项目已有measured示例，本轮只重新渲染，没有重新计量其中工作负载，也没有人类误读或频次证据。
+
+全部238个冻结archify/文件与d5 git blob匹配。Node22.23.2/zlib1.3.1-e00f703下，finalize的validate/deliver/check/browser-check均通过、零诊断；visualReview=not-requested，实际截图另由root观察。GUI脚本exit0，Ego日志写stderr；独立Browser.getVersion元数据查询不支持并失败，未冒称取得其精确版本。[独立交付核对](audit/round14-delivery-audit.md)确认23项manifest哈希、输入/HTML回执、3图尺寸、原始服务继承与UI节点/查询集合一致。没有新产品源码、全测试套件或hosted CI验收。
+
+统一Span可以消除虚构的系统身份，但会将Lens收敛为一组；旧tone hash可能横跨多个服务和状态，不能一对一映射，更不能静默扩大到所有Span。Radar也按kind着色，需要另保留视觉tone。新增精确service projection则增加选择、标签、URL、兼容和配色合同。现有Finder服务搜索已能完成此固定任务，Outline按context分组是额外源码证据，不冒称GUI验证。本轮判断尚不值得为保留错误色桶新增通用筛选框架，也不先交付有隐性行为损失的role-only修正；暂缓实现是成本判断，并非等待再次授权。
+
+### 外部方向：完整原生能力必须进入对照
+
+[rr/Pernosco逆向调试](scouts/reverse-debugger-reading.md)固定rr5.10.0和wiki版本、许可与官方案例。Pernosco的Node race walkthrough已展示Dataflow追值、栈跳转、notebook，不能重新包装成Archify缺口。rr逆向watchpoint的New value指写入前值，是具体可检验的方向语义，但官方说明已经解释；未取得完整自然会话及接手者误读，暂缓图或导入器。没有安装、录制或执行目标程序。
+
+[Speedscope/Perfetto选区阅读](scouts/profile-window-reading.md)补充旧profile研究：Speedscope #512用户确有按窗口聚合需求，但关闭是因重复#39/PR#366，本次后二者仍open，不能称问题已修复。问题未附完整profile、窗口与预期数字；固定公开Firefox递归fixture虽完整、哈希已记录，却不是同一问题输入，不能拼接成复现。Speedscope原生三视图、self/total、递归折叠与Perfetto区域flamegraph都应进入对照。未运行这些UI或证明Archify额外收益，不再建立同义parser分支。来源与许可保留。
+
+本批新增的是缺陷复现和改变实施决定的证据，没有通过筛选的新实现，因此没有新增实验分支；研究总账远程交付后继续筛选。AI分工为Terra外部研究/交付核对、Sol源码与兼容判断、root固定输入运行/实际页面/取舍与交付。没有新PR、合并、发布、部署或安装；持续目标保持active。
