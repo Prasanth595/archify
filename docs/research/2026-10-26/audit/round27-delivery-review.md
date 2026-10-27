@@ -1,0 +1,11 @@
+# Round 27 delivery review
+
+**Scoped pass.** The seven-branch index presents a review order, not an integration or merge recommendation; it separates content experiments from shared product changes and retains the branch-only/no-new-PR policy. Historical results are not presented as tests rerun this round. No runtime, browser, build or CI was rerun for this review.
+
+Independently compared all seven local remote-tracking head SHAs, merge bases and ahead/behind counts with `round27-branch-inventory.json`: all match its fixed d5 snapshot. Checked all 33 selected artifacts' Git blob identities, byte counts and SHA-256 against their fixed commits, and all 27 indexed fixed-link Git objects and object types: no mismatches. The three inline PNG paths correspond to their pinned branch artifacts; their captions identify them as historical captures. This is Git object/provenance verification, not a new visual or HTTP acceptance check.
+
+The index preserves the original Kconfig 28/52 browser failures while identifying the separate four-arm d5 checker-only transfer, including the 238-file runtime boundary; it does not rewrite original finalize receipts as passes. Task-flow's 16 original failures and later 40/40 old-candidate checker result are distinct, with the latter expressly not d5 integration. Task occurrences' own 16 keyboard diagnostics are not confused with task-flow. Source-question-tour's browser gate remains unrun. No human reading benefit is claimed. The content matrix and source branch READMEs support these distinctions; no new observation was inferred from their screenshots.
+
+The README top names the current curation and branch-only rule; its final batch section explicitly keeps old evidence historical. The mutation scout remains a source-only deferral. Source and licenses are linked at fixed commits or in the respective experiment packets; existing external project observations are context, not Archify runtime proof. Selected HTML availability and historical screenshots do not prove accessibility, current CI or readiness to integrate.
+
+At review time `round27-validation.json` still marked independent delivery review, diff check and local links pending. Root owns finalization of those fields and checks; do not report them passed until their actual results exist. No further curation correction identified within this scope.

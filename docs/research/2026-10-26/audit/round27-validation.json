@@ -1,0 +1,28 @@
+{
+  "scope": "Documentation/branch portfolio only. No runtime, browser, CI, build, merge, install or PR actions.",
+  "selectedBranches": 7,
+  "selectedArtifactCount": 33,
+  "fixedGitLinkObjects": 27,
+  "remoteHeadCount": 316,
+  "objectAudit": "passed; executed script archived as round27-executed-inventory.py",
+  "contentBranchesOutsideOwnExperiment": 0,
+  "independentDeliveryReview": {
+    "status": "pass within scope",
+    "file": "docs/research/2026-10-26/audit/round27-delivery-review.md",
+    "sha256": "c787cc4c00c3ea7b592da84ce326ae98d405cf355fc56177f2d4f5b875ea420d"
+  },
+  "diffCheck": {
+    "command": "git diff --cached --check",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "localLinks": {
+    "status": "pass",
+    "count": 9,
+    "scope": "Five new Markdown report/index files; historical whole-hub links not exhaustively rechecked."
+  },
+  "copyMapCount": 6,
+  "copyMapCheck": "6 byte-identical copies passed",
+  "finalizedAt": "2026-10-27T23:26:59.302173+00:00"
+}

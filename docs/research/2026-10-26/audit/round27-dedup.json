@@ -1,0 +1,450 @@
+{
+  "note": "2026-10-28 bounded open-item keyword refresh; per query limit 10, not exhaustive semantic or ownership inventory. Read-only. Initial six mixed-type queries failed with 422 because the connector requires is:issue or is:pull-request; corrected queries below succeeded.",
+  "failed": [
+    {
+      "query": "source aria-label",
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+    },
+    {
+      "query": "keyboard traversal",
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+    },
+    {
+      "query": "tree kind",
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+    },
+    {
+      "query": "task-view",
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+    },
+    {
+      "query": "kconfig",
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+    },
+    {
+      "query": "mutation",
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+    }
+  ],
+  "corrected": [
+    {
+      "query": "source aria-label",
+      "kind": "issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Aissue%20source%20aria-label&per_page=10&sort=updated",
+      "total_count": 0,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": []
+    },
+    {
+      "query": "source aria-label",
+      "kind": "pull-request",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Apull-request%20source%20aria-label&per_page=10&sort=updated",
+      "total_count": 4,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1032,
+          "title": "fix(timeline): keep the year on multi-year labels and the header in frame",
+          "url": "https://github.com/tt-a1i/archify/pull/1032",
+          "state": "open",
+          "updated_at": "2026-10-27T13:49:30Z"
+        },
+        {
+          "number": 1027,
+          "title": "fix(viewer): mobile nav reachability, dock clearance and presentation scroll",
+          "url": "https://github.com/tt-a1i/archify/pull/1027",
+          "state": "open",
+          "updated_at": "2026-10-26T12:29:15Z"
+        },
+        {
+          "number": 653,
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "url": "https://github.com/tt-a1i/archify/pull/653",
+          "state": "open",
+          "updated_at": "2026-10-13T04:02:18Z"
+        },
+        {
+          "number": 480,
+          "title": "feat: open the renderer without changing a single existing artifact",
+          "url": "https://github.com/tt-a1i/archify/pull/480",
+          "state": "open",
+          "updated_at": "2026-09-20T02:01:35Z"
+        }
+      ]
+    },
+    {
+      "query": "keyboard traversal",
+      "kind": "issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Aissue%20keyboard%20traversal&per_page=10&sort=updated",
+      "total_count": 1,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1068,
+          "title": "feat(artifacts): polish standalone page reading and interaction experience",
+          "url": "https://github.com/tt-a1i/archify/issues/1068",
+          "state": "open",
+          "updated_at": "2026-10-24T12:03:41Z"
+        }
+      ]
+    },
+    {
+      "query": "keyboard traversal",
+      "kind": "pull-request",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Apull-request%20keyboard%20traversal&per_page=10&sort=updated",
+      "total_count": 6,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1124,
+          "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+          "url": "https://github.com/tt-a1i/archify/pull/1124",
+          "state": "open",
+          "updated_at": "2026-10-27T21:23:18Z"
+        },
+        {
+          "number": 1121,
+          "title": "experiment: read authored behavior paths with explicit test associations",
+          "url": "https://github.com/tt-a1i/archify/pull/1121",
+          "state": "open",
+          "updated_at": "2026-10-27T00:40:42Z"
+        },
+        {
+          "number": 1123,
+          "title": "experiment: explain OCI whiteouts and same-layer visibility",
+          "url": "https://github.com/tt-a1i/archify/pull/1123",
+          "state": "open",
+          "updated_at": "2026-10-27T00:24:54Z"
+        },
+        {
+          "number": 1122,
+          "title": "experiment: distinguish recorded trace flows from timing and nesting",
+          "url": "https://github.com/tt-a1i/archify/pull/1122",
+          "state": "open",
+          "updated_at": "2026-10-27T00:24:53Z"
+        },
+        {
+          "number": 653,
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "url": "https://github.com/tt-a1i/archify/pull/653",
+          "state": "open",
+          "updated_at": "2026-10-13T04:02:18Z"
+        },
+        {
+          "number": 225,
+          "title": "fix(viewer): stabilize relationship exploration",
+          "url": "https://github.com/tt-a1i/archify/pull/225",
+          "state": "open",
+          "updated_at": "2026-09-16T18:42:40Z"
+        }
+      ]
+    },
+    {
+      "query": "tree kind",
+      "kind": "issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Aissue%20tree%20kind&per_page=10&sort=updated",
+      "total_count": 4,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1114,
+          "title": "[\u63d0\u6848]\uff1aTask_Checklist",
+          "url": "https://github.com/tt-a1i/archify/issues/1114",
+          "state": "open",
+          "updated_at": "2026-10-26T06:43:49Z"
+        },
+        {
+          "number": 248,
+          "title": "[Bug]: Two anti-parallel labelAt connections render as one line, and delivery passes 9/9",
+          "url": "https://github.com/tt-a1i/archify/issues/248",
+          "state": "open",
+          "updated_at": "2026-10-14T20:08:02Z"
+        },
+        {
+          "number": 395,
+          "title": "[Bug]: A non-member component renders inside a boundary frame; showcase and deployment-ownership both pass",
+          "url": "https://github.com/tt-a1i/archify/issues/395",
+          "state": "open",
+          "updated_at": "2026-10-14T20:07:41Z"
+        },
+        {
+          "number": 937,
+          "title": "[Proposal] Cognition capacity: multi-node cells, variable lane height, and flat subgraphs",
+          "url": "https://github.com/tt-a1i/archify/issues/937",
+          "state": "open",
+          "updated_at": "2026-10-14T06:37:50Z"
+        }
+      ]
+    },
+    {
+      "query": "tree kind",
+      "kind": "pull-request",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Apull-request%20tree%20kind&per_page=10&sort=updated",
+      "total_count": 33,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 795,
+          "title": "fix(viewer): declare unavailable relationship queries honestly",
+          "url": "https://github.com/tt-a1i/archify/pull/795",
+          "state": "open",
+          "updated_at": "2026-10-27T15:23:42Z"
+        },
+        {
+          "number": 1086,
+          "title": "\u4fee\u590d Workflow \u53d7\u9650\u5206\u53c9\u5bfc\u81f4\u7684\u8def\u7531\u4ea4\u4ed8\u5931\u8d25",
+          "url": "https://github.com/tt-a1i/archify/pull/1086",
+          "state": "open",
+          "updated_at": "2026-10-27T14:46:29Z"
+        },
+        {
+          "number": 923,
+          "title": "fix(sequence): emit the whole ordered adjustment when a note reaches several messages",
+          "url": "https://github.com/tt-a1i/archify/pull/923",
+          "state": "open",
+          "updated_at": "2026-10-27T13:56:29Z"
+        },
+        {
+          "number": 1032,
+          "title": "fix(timeline): keep the year on multi-year labels and the header in frame",
+          "url": "https://github.com/tt-a1i/archify/pull/1032",
+          "state": "open",
+          "updated_at": "2026-10-27T13:49:30Z"
+        },
+        {
+          "number": 1030,
+          "title": "fix(waterfall): key the incomplete legend only to open bars",
+          "url": "https://github.com/tt-a1i/archify/pull/1030",
+          "state": "open",
+          "updated_at": "2026-10-27T13:49:28Z"
+        },
+        {
+          "number": 1029,
+          "title": "fix(timeline): state sub-second break durations in milliseconds",
+          "url": "https://github.com/tt-a1i/archify/pull/1029",
+          "state": "open",
+          "updated_at": "2026-10-27T13:49:27Z"
+        },
+        {
+          "number": 1028,
+          "title": "fix(waterfall): scale the timing tolerance to the value magnitude",
+          "url": "https://github.com/tt-a1i/archify/pull/1028",
+          "state": "open",
+          "updated_at": "2026-10-27T13:49:25Z"
+        },
+        {
+          "number": 1117,
+          "title": "fix: hide classic grid in SVG exports",
+          "url": "https://github.com/tt-a1i/archify/pull/1117",
+          "state": "open",
+          "updated_at": "2026-10-27T13:48:05Z"
+        },
+        {
+          "number": 1119,
+          "title": "\u5728\u8bed\u4e49\u62a4\u7167\u4e2d\u53ea\u8bfb\u5c55\u793a\u8282\u70b9\u7684\u4efb\u52a1\u6e05\u5355\uff08Task checklist\uff09",
+          "url": "https://github.com/tt-a1i/archify/pull/1119",
+          "state": "open",
+          "updated_at": "2026-10-27T13:56:26Z"
+        },
+        {
+          "number": 482,
+          "title": "feat(workflow): add in-memory renderWorkflow() library entrypoint",
+          "url": "https://github.com/tt-a1i/archify/pull/482",
+          "state": "open",
+          "updated_at": "2026-10-27T10:47:10Z"
+        }
+      ]
+    },
+    {
+      "query": "task-view",
+      "kind": "issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Aissue%20task-view&per_page=10&sort=updated",
+      "total_count": 2,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 401,
+          "title": "Feature request: \u8282\u70b9\u53ef\u5c55\u5f00\u7ed3\u6784\u5b50\u56fe\uff08\u6a21\u5757\u76ee\u5f55\u4e0e\u72b6\u6001\u5b57\u6bb5\u4e24\u4e2a\u6982\u5ff5 demo\uff09",
+          "url": "https://github.com/tt-a1i/archify/issues/401",
+          "state": "open",
+          "updated_at": "2026-09-19T17:02:54Z"
+        },
+        {
+          "number": 83,
+          "title": "[Feature][Viewer] Support broader comparison and consistent hover previews",
+          "url": "https://github.com/tt-a1i/archify/issues/83",
+          "state": "open",
+          "updated_at": "2026-08-17T00:52:54Z"
+        }
+      ]
+    },
+    {
+      "query": "task-view",
+      "kind": "pull-request",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Apull-request%20task-view&per_page=10&sort=updated",
+      "total_count": 4,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1121,
+          "title": "experiment: read authored behavior paths with explicit test associations",
+          "url": "https://github.com/tt-a1i/archify/pull/1121",
+          "state": "open",
+          "updated_at": "2026-10-27T00:40:42Z"
+        },
+        {
+          "number": 1103,
+          "title": "Add an Atlas view to Code Analysis",
+          "url": "https://github.com/tt-a1i/archify/pull/1103",
+          "state": "open",
+          "updated_at": "2026-10-25T16:06:30Z"
+        },
+        {
+          "number": 960,
+          "title": "feat(workflow): surface partialLayout on --layout-json when validation fails (#934)",
+          "url": "https://github.com/tt-a1i/archify/pull/960",
+          "state": "open",
+          "updated_at": "2026-10-24T03:44:08Z"
+        },
+        {
+          "number": 804,
+          "title": "docs(authoring): explain measured viewport height budgets",
+          "url": "https://github.com/tt-a1i/archify/pull/804",
+          "state": "open",
+          "updated_at": "2026-10-16T09:43:03Z"
+        }
+      ]
+    },
+    {
+      "query": "kconfig",
+      "kind": "issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Aissue%20kconfig&per_page=10&sort=updated",
+      "total_count": 0,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": []
+    },
+    {
+      "query": "kconfig",
+      "kind": "pull-request",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Apull-request%20kconfig&per_page=10&sort=updated",
+      "total_count": 0,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": []
+    },
+    {
+      "query": "mutation",
+      "kind": "issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Aissue%20mutation&per_page=10&sort=updated",
+      "total_count": 2,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1054,
+          "title": "ticket: implement read-only delivery provenance evidence index (M1)",
+          "url": "https://github.com/tt-a1i/archify/issues/1054",
+          "state": "open",
+          "updated_at": "2026-10-21T15:36:06Z"
+        },
+        {
+          "number": 1053,
+          "title": "spec: read-only delivery provenance evidence index (M1)",
+          "url": "https://github.com/tt-a1i/archify/issues/1053",
+          "state": "open",
+          "updated_at": "2026-10-21T13:12:36Z"
+        }
+      ]
+    },
+    {
+      "query": "mutation",
+      "kind": "pull-request",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aopen%20is%3Apull-request%20mutation&per_page=10&sort=updated",
+      "total_count": 16,
+      "incomplete_results": false,
+      "limit": 10,
+      "items": [
+        {
+          "number": 1138,
+          "title": "chore: add scoped PR review and ZIP integration tools",
+          "url": "https://github.com/tt-a1i/archify/pull/1138",
+          "state": "open",
+          "updated_at": "2026-10-27T14:28:10Z"
+        },
+        {
+          "number": 482,
+          "title": "feat(workflow): add in-memory renderWorkflow() library entrypoint",
+          "url": "https://github.com/tt-a1i/archify/pull/482",
+          "state": "open",
+          "updated_at": "2026-10-27T10:47:10Z"
+        },
+        {
+          "number": 843,
+          "title": "test(labels): protect fallback association with its own route",
+          "url": "https://github.com/tt-a1i/archify/pull/843",
+          "state": "open",
+          "updated_at": "2026-10-27T00:06:49Z"
+        },
+        {
+          "number": 848,
+          "title": "test(text): protect the readable shrink-to-fit floor",
+          "url": "https://github.com/tt-a1i/archify/pull/848",
+          "state": "open",
+          "updated_at": "2026-10-27T00:06:47Z"
+        },
+        {
+          "number": 835,
+          "title": "test(geometry): retain exact grid-boundary contact candidates",
+          "url": "https://github.com/tt-a1i/archify/pull/835",
+          "state": "open",
+          "updated_at": "2026-10-27T00:06:44Z"
+        },
+        {
+          "number": 853,
+          "title": "test(geometry): assert rounded route containment on short segments",
+          "url": "https://github.com/tt-a1i/archify/pull/853",
+          "state": "open",
+          "updated_at": "2026-10-27T00:06:42Z"
+        },
+        {
+          "number": 854,
+          "title": "test: protect card publisher truncated-tree boundary",
+          "url": "https://github.com/tt-a1i/archify/pull/854",
+          "state": "open",
+          "updated_at": "2026-10-27T00:05:56Z"
+        },
+        {
+          "number": 834,
+          "title": "test(update): cover bounded checker output transport",
+          "url": "https://github.com/tt-a1i/archify/pull/834",
+          "state": "open",
+          "updated_at": "2026-10-27T00:05:54Z"
+        },
+        {
+          "number": 855,
+          "title": "fix(dsh): reject missing pack output values before staging",
+          "url": "https://github.com/tt-a1i/archify/pull/855",
+          "state": "open",
+          "updated_at": "2026-10-27T00:05:34Z"
+        },
+        {
+          "number": 832,
+          "title": "fix(cli): preserve browser-check review mode on directory failure",
+          "url": "https://github.com/tt-a1i/archify/pull/832",
+          "state": "open",
+          "updated_at": "2026-10-27T00:03:56Z"
+        }
+      ]
+    }
+  ],
+  "projection": "Metadata-only projection of corrected search responses; bodies omitted, not a raw API receipt."
+}
