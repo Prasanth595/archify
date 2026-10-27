@@ -131,3 +131,121 @@ test('Semantic Passport lists an authored task checklist read-only with verified
   assert.equal(await run(`document.getElementById('focus-task-checklist').open`), false, 'the next node starts collapsed');
   assert.deepEqual(await run('pageErrors'), []);
 });
+
+test('a twelve-task checklist stays reachable beside a parent link and long explanation at 320×300', {
+  skip: chrome ? false : 'Set ARCHIFY_CHROME to run real-browser passport task checklist checks.',
+}, async (t) => {
+  const data = fixture();
+  data.diagram.meta.parentHref = 'grandparent.html';
+  const users = data.diagram.components[0];
+  users.explanation = ('A reader needs the complete explanation, with every paragraph available.\n\n').repeat(20).slice(0, 1190);
+  users.task_checklist = Array.from({ length: 12 }, (_, index) => ({
+    title: `Task ${index + 1} with a title long enough to wrap in a narrow passport`,
+    status: index % 2 ? 'needs-review' : 'implemented',
+    criteria: 'A full-sentence acceptance criterion that wraps onto a second line.',
+    sources: [{ path: index % 2 ? 'src/store.js' : 'src/router.js', line: 1 }],
+  }));
+  data.diagram.components.find((component) => component.id === 'api').task_checklist = [{ title: 'Serve requests', status: 'pending' }];
+  fs.writeFileSync(data.input, JSON.stringify(data.diagram));
+  const output = path.join(data.root, 'short-viewport.html');
+  const rendered = cli(['render', 'architecture', data.input, output, '--repo-root', data.root]);
+  assert.equal(rendered.status, 0, rendered.stderr || rendered.stdout);
+
+  const browser = desktopBrowser(chrome);
+  t.after(() => browser.close());
+  const session = await browser.sessionPromise;
+  const send = (method, params = {}) => browser.cdp.send(method, params, session);
+  async function run(expression) {
+    const r = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+    assert.equal(r.exceptionDetails, undefined, r.exceptionDetails?.exception?.description);
+    return r.result?.value;
+  }
+  const settle = () => run('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+  const key = async (name, code, windowsVirtualKeyCode, modifiers = 0) => {
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: name, code, windowsVirtualKeyCode, modifiers, ...(name === 'Enter' ? { text: '\r' } : {}) });
+    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: name, code, windowsVirtualKeyCode, modifiers });
+    await settle();
+  };
+  const click = await createViewerClick({ send, run, timeout: 10000 });
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: `window.pageErrors=[];addEventListener('error',e=>pageErrors.push(e.message));` });
+  await send('Emulation.setFocusEmulationEnabled', { enabled: true });
+  await send('Emulation.setDeviceMetricsOverride', { width: 320, height: 300, deviceScaleFactor: 1, mobile: false });
+  await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
+  const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
+  await send('Page.navigate', { url: pathToFileURL(output).href + '?theme=light' });
+  await loaded;
+  await run('document.fonts.ready');
+  await run('Archify.readerLayout.whenStable()');
+
+  // "Visible" means inside the viewport and inside every scrolling ancestor.
+  const state = () => run(`(() => { const chip = document.getElementById('focus-chip'), section = document.getElementById('focus-task-checklist'), active = document.activeElement;
+    const visible = (el) => { const r = el.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight + 1) return false;
+      for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+        if (p.scrollHeight > p.clientHeight && /auto|scroll/.test(getComputedStyle(p).overflowY)) { const b = p.getBoundingClientRect(); if (r.top < b.top - 1 || r.bottom > b.bottom + 1) return false; }
+      }
+      return true; };
+    const back = document.getElementById('btn-parent-back').getBoundingClientRect(), hit = document.elementFromPoint(back.left + back.width / 2, back.top + back.height / 2);
+    return { chipShown: !chip.hidden, chipFits: !chip.hidden && chip.getBoundingClientRect().top >= 0 && chip.getBoundingClientRect().bottom <= innerHeight + 1,
+      hidden: section.hidden, open: section.open, explaining: Archify.focus.explaining(), focused: active.id || active.tagName, focusedVisible: visible(active),
+      links: section.querySelectorAll('a.semantic-passport-source').length, linkIndex: [...section.querySelectorAll('a.semantic-passport-source')].indexOf(active),
+      parentBackShown: !document.querySelector('.parent-back-bar').hidden, parentBackClickable: !!hit && document.getElementById('btn-parent-back').contains(hit), errors: pageErrors }; })()`);
+
+  assert.equal(await run(`Archify.focus.set('users')`), true);
+  await settle();
+  let s = await state();
+  assert.equal(s.parentBackShown, true, 'the page keeps its parent return link');
+  assert.equal(s.chipFits, true, 'the passport fits the short viewport');
+  assert.equal(s.open, false, 'the task checklist starts collapsed');
+
+  await click('#focus-task-checklist > summary');
+  s = await state();
+  assert.equal(s.open, true, 'clicking the counted line expands the tasks');
+  assert.equal(s.links, 12);
+  for (let index = 0; index < s.links; index += 1) {
+    await key('Tab', 'Tab', 9);
+    const step = await state();
+    assert.equal(step.linkIndex, index, `Tab reaches task link ${index + 1}`);
+    assert.equal(step.focusedVisible, true, `task link ${index + 1} is scrolled into view`);
+  }
+  if (process.env.ARCHIFY_TEST_EVIDENCE_DIR) {
+    fs.mkdirSync(process.env.ARCHIFY_TEST_EVIDENCE_DIR, { recursive: true });
+    const capture = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+    fs.writeFileSync(path.join(process.env.ARCHIFY_TEST_EVIDENCE_DIR, 'task-checklist-320x300.png'), Buffer.from(capture.data, 'base64'));
+  }
+  for (let index = 0; index < s.links; index += 1) await key('Tab', 'Tab', 9, 8);
+  s = await state();
+  assert.equal(s.focused, 'SUMMARY', 'Shift+Tab walks back to the counted line');
+  assert.equal(s.focusedVisible, true);
+  await key('Enter', 'Enter', 13);
+  assert.equal((await state()).open, false, 'Enter collapses the tasks');
+  await key('Enter', 'Enter', 13);
+  assert.equal((await state()).open, true, 'Enter expands them again');
+
+  await click('#btn-focus-explain');
+  s = await state();
+  assert.equal(s.explaining, true);
+  assert.equal(s.focused, 'focus-explanation-back');
+  assert.equal(s.focusedVisible, true, 'Back to passport is visible');
+  await key('Escape', 'Escape', 27);
+  s = await state();
+  assert.equal(s.explaining, false);
+  assert.equal(s.focused, 'btn-focus-explain');
+  assert.equal(s.focusedVisible, true);
+  assert.equal(s.open, true, 'returning from the explanation keeps the expanded tasks');
+
+  await click('#btn-focus-clear');
+  s = await state();
+  assert.equal(s.chipShown, false, 'the close control hides the passport');
+  assert.equal(s.parentBackClickable, true, 'the parent return link is clickable once the passport closes');
+
+  assert.equal(await run(`Archify.focus.set('users')`), true);
+  await settle();
+  assert.equal((await state()).open, false, 'refocusing the node starts collapsed');
+  await click('#focus-task-checklist > summary');
+  assert.equal(await run(`Archify.focus.set('api')`), true);
+  await settle();
+  s = await state();
+  assert.equal(s.hidden, false);
+  assert.equal(s.open, false, 'switching nodes starts collapsed');
+  assert.deepEqual(s.errors, []);
+});
