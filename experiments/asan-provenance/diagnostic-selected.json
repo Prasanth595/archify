@@ -1,0 +1,169 @@
+{
+  "kind": "derived-selected-local-probe-evidence-not-raw-log",
+  "compiler": {
+    "version": "Apple clang 17.0.0 (clang-1700.6.3.2)",
+    "target": "arm64-apple-darwin25.6.0",
+    "launcher": "/usr/bin/clang"
+  },
+  "osVersionFromSample": "macOS26.7.2 (25G330), ARM64",
+  "source": "int main(void) { return 0; }\n",
+  "records": [
+    {
+      "command": [
+        "/usr/bin/clang",
+        "-O0",
+        "-g",
+        "-fno-omit-frame-pointer",
+        "empty.c",
+        "-o",
+        "empty-control"
+      ],
+      "returnCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "elapsedSeconds": 0.03644,
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    },
+    {
+      "command": [
+        "/usr/bin/clang",
+        "-O0",
+        "-g",
+        "-fsanitize=address",
+        "-fno-omit-frame-pointer",
+        "empty.c",
+        "-o",
+        "empty-asan"
+      ],
+      "returnCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "elapsedSeconds": 0.035859,
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    },
+    {
+      "command": [
+        "./empty-control"
+      ],
+      "returnCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "elapsedSeconds": 0.537955,
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    },
+    {
+      "command": [
+        "./empty-asan"
+      ],
+      "returnCode": -15,
+      "timedOut": true,
+      "timeoutSeconds": 5,
+      "elapsedSeconds": 5.002453,
+      "stdoutBytes": 0,
+      "stderrBytes": 0
+    },
+    {
+      "command": [
+        "/usr/bin/sample",
+        "<owned-pid>",
+        "1",
+        "10",
+        "-file",
+        "sample-asan.txt"
+      ],
+      "returnCode": 0,
+      "timedOut": false,
+      "timeoutSeconds": 2,
+      "elapsedSeconds": 1.089162,
+      "stdoutBytes": 0,
+      "stderrBytes": 229
+    }
+  ],
+  "termination": "Only the instrumented owned process was terminated with SIGTERM at its5-second deadline; returnCode -15. It was reaped.",
+  "sampledFrames": [
+    "dyld4::APIs::runAllInitializersForMain",
+    "libSystem_initializer",
+    "__malloc_init",
+    "__asan::AsanInitInternal",
+    "__asan::InitializeShadowMemory",
+    "__sanitizer::MemoryRangeIsAvailable",
+    "__sanitizer::get_dyld_hdr",
+    "dyld_shared_cache_iterate_text_swift",
+    "_Block_copy",
+    "__sanitizer_mz_malloc",
+    "__asan::AsanInitFromRtl",
+    "__sanitizer::StaticSpinMutex::LockSlow"
+  ],
+  "interpretation": "Minimal instrumented empty main reproduces the no-output hang, so the original UAF fixture is unnecessary. Sample observes ASan initialization and reentrant allocation path; exact OS/runtime root cause, deadlock classification and repair are not established.",
+  "initialLauncherAttempt": "Using the direct xcrun-selected driver path first failed to link both controls with library System not found; normal launcher builds then succeeded. This link failure is separate from the runtime evidence.",
+  "rawFileHashes": {
+    "empty.c": {
+      "bytes": 29,
+      "sha256": "2ad75d95660563887d8d3f1d0ae1dcf18c2379cbd83a5c72f5ab276351ee6949"
+    },
+    "empty-control": {
+      "bytes": 17120,
+      "sha256": "67c0e43bdf164f5e2bec1e4ffd6c174c9d6a7a4d1af7e027fd32b19d2da13159"
+    },
+    "empty-asan": {
+      "bytes": 33944,
+      "sha256": "196d997a6ca465421207b0ef5a2f7711182bd4348d9759fc9f8723cc4ab65b15"
+    },
+    "compiler-version.stdout": {
+      "bytes": 157,
+      "sha256": "d9587438c5eeff51a0df422d7c0bb084c0edfc54fe98258036d37334f4cfb5b2"
+    },
+    "compile-control.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compile-control.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compile-asan.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compile-asan.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run-control.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run-control.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run-asan.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run-asan.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sample-asan.txt": {
+      "bytes": 6350,
+      "sha256": "f4343f147d37876b65097550f95015ac986be3ed9d4909146e9a792d37ddbce2"
+    },
+    "sample-asan.stderr": {
+      "bytes": 229,
+      "sha256": "cce8ae2a913953a8dc6c084e0cfa9bd62cc67cedab924a72d36475cc79c64581"
+    },
+    "asan-linked-libraries.stdout": {
+      "bytes": 229,
+      "sha256": "a0e15a771d8c0e4a67220cf5780b07564d38edcab7b95f7b528c59b4c49205ee"
+    },
+    "results.json": {
+      "bytes": 3795,
+      "sha256": "8b73e8e619eae248f370b9228ff2e2f674ebbea774dca779c29223f75cca3d92"
+    }
+  },
+  "scope": "Original raw logs remain local; no upstream execution, tool install, global change, ASAN_OPTIONS override, fixture edit, report fabrication, or additional run."
+}
