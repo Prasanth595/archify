@@ -1,0 +1,25 @@
+git version 2.50.1 (Apple Git-155)
+* 1c1d70f D parents=759253c
+*   759253c M parents=6eba258 506377f
+|\  
+| * 506377f C parents=d0ecc67
+* | 6eba258 B parents=d0ecc67
+|/  
+* d0ecc67 A parents=
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[759253ccb8e2dd7584dca677ee0a8480aca20ee2] M
+
+visualize --first-parent --oneline --graph:
+* 1c1d70f D
+* 759253c M
+* 6eba258 B
+
+rev-list --first-parent bad --not good:
+1c1d70f D
+759253c M
+6eba258 B
+
+bisect log:
+# bad: [1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7] D
+# good: [d0ecc67e1a3a4a4523137c89a3ad8a62f44b3537] A
+git bisect start '--no-checkout' '--first-parent' '1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7' 'd0ecc67e1a3a4a4523137c89a3ad8a62f44b3537'

@@ -1,0 +1,7 @@
+{
+  "fullExit": 2,
+  "fullOutput": "docs/research/2026-10-26/audit/round12-bisect-native/fixture-stdout.txt:9: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/fixture-stdout.txt:12: trailing whitespace.\n+|/  \ndocs/research/2026-10-26/audit/round12-bisect-native/fixture-stdout.txt:22: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/fixture-stdout.txt:61: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/fixture-stdout.txt:70: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/root-reproduce.stdout:10: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/root-reproduce.stdout:13: trailing whitespace.\n+|/  \ndocs/research/2026-10-26/audit/round12-bisect-native/root-reproduce.stdout:23: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/root-reproduce.stdout:62: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/root-reproduce.stdout:71: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/stdout.txt:4: trailing whitespace.\n+|\\  \ndocs/research/2026-10-26/audit/round12-bisect-native/stdout.txt:7: trailing whitespace.\n+|/  \n",
+  "sourceAndNotesExit": 0,
+  "sourceAndNotesOutput": "",
+  "excluded": "Native Git text graph stdout files retain their original trailing spaces; all other staged files checked."
+}

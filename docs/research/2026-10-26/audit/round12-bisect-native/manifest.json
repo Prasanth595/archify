@@ -1,0 +1,92 @@
+{
+  "capturedAtLocal": "2026-10-28",
+  "runtime": "git version 2.50.1 (Apple Git-155)",
+  "fixture": "Synthetic empty-tree commit DAG, not an actual defect history. Dates and commit identity explicitly fixed. States are declared, no project test was run.",
+  "recordings": [
+    {
+      "path": "fixture.sh",
+      "sha256": "1de1f6557e1b8c57b1da1b528ecf4ce8780fc559e77b5a4c47f490cbe68a2a31",
+      "bytes": 1558,
+      "source": "/tmp/archify-round12-bisect-records/fixture.sh",
+      "transform": "none"
+    },
+    {
+      "path": "fixture-stdout.txt",
+      "sha256": "9172b1ddacc0a87254ee5e87ddb0eaef78ff5540c5131152aea9da87ffacd264",
+      "bytes": 2665,
+      "source": "/tmp/archify-round12-bisect-records/fixture-stdout.txt",
+      "transform": "none"
+    },
+    {
+      "path": "fixture-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source": "/tmp/archify-round12-bisect-records/fixture-stderr.txt",
+      "transform": "none"
+    },
+    {
+      "path": "probe.sh",
+      "sha256": "d91eabcd09b03cc87383c29335e6aa6253b7f70f46ad9828abcb9cac13056835",
+      "bytes": 595,
+      "source": "/tmp/archify-round12-bisect-records/probe.sh",
+      "transform": "none"
+    },
+    {
+      "path": "stdout.txt",
+      "sha256": "f4cbadc9e836348c8c6511afa91f61c2b50d9edc48e714ec7513303a2043ed27",
+      "bytes": 707,
+      "source": "/tmp/archify-round12-bisect-records/stdout.txt",
+      "transform": "none"
+    },
+    {
+      "path": "stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source": "/tmp/archify-round12-bisect-records/stderr.txt",
+      "transform": "none"
+    },
+    {
+      "path": "root-reproduce.stdout",
+      "sha256": "feac4b1798baaf8530b6564c5a1b1a2cdb8bfa2f6737744c4b6208a766252b48",
+      "bytes": 2828,
+      "source": "/tmp/archify-round12-root-reproduce.stdout",
+      "transform": "none"
+    },
+    {
+      "path": "root-reproduce.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source": "/tmp/archify-round12-root-reproduce.stderr",
+      "transform": "none"
+    },
+    {
+      "path": "root-reproduce.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "source": "/tmp/archify-round12-root-reproduce.exit",
+      "transform": "none"
+    }
+  ],
+  "identityBoundary": "Original fixture and probe records came from different temporary repository directories with the same five full commit IDs; not one continuous shell session.",
+  "reproduction": "reproduce.sh combines the original fixture and explicit first-parent probe into a new temporary SHA-1 repository; original scripts/logs retained unchanged.",
+  "safetyScope": "No real repository was bisected or checked out. No GUI or reader-value claim.",
+  "rootVerification": {
+    "scriptExit": 0,
+    "expectedBisectAmbiguityExit": 2,
+    "stderrBytes": 0,
+    "ambiguousCandidates": [
+      "C",
+      "B",
+      "M"
+    ],
+    "explicitFirstParentDisplay": [
+      "D",
+      "M",
+      "B"
+    ],
+    "revisionRangeMatches": true,
+    "reproduceScriptSha256": "737abb4722827ca7c4bd84d46b969fd56c33599c78dbe10b0a595414968ff09a",
+    "runtime": "git version 2.50.1 (Apple Git-155)",
+    "scope": "One additional complete synthetic reproduction; no real project bug test, GUI or user-reading evaluation."
+  }
+}

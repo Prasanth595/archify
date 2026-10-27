@@ -1,0 +1,72 @@
+fixture=/tmp/archify-bisect.RkhSi6
+A=d0ecc67e1a3a4a4523137c89a3ad8a62f44b3537
+B=6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca
+C=506377f179dfbbcfb268ddcfb3b74f1922413f12
+M=759253ccb8e2dd7584dca677ee0a8480aca20ee2
+D=1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7
+* 1c1d70f D parents=759253c
+*   759253c M parents=6eba258 506377f
+|\  
+| * 506377f C parents=d0ecc67
+* | 6eba258 B parents=d0ecc67
+|/  
+* d0ecc67 A parents=
+Bisecting: 2 revisions left to test after this (roughly 1 step)
+[506377f179dfbbcfb268ddcfb3b74f1922413f12] C
+Bisecting: 2 revisions left to test after this (roughly 1 step)
+[759253ccb8e2dd7584dca677ee0a8480aca20ee2] M
+
+VISUALIZE:
+* 1c1d70f D parents=759253c
+*   759253c M parents=6eba258 506377f
+|\  
+| * 506377f C parents=d0ecc67
+* 6eba258 B parents=d0ecc67
+
+LOG:
+# bad: [1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7] D
+# good: [d0ecc67e1a3a4a4523137c89a3ad8a62f44b3537] A
+git bisect start '--no-checkout' '1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7' 'd0ecc67e1a3a4a4523137c89a3ad8a62f44b3537'
+# skip: [6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca] B
+git bisect skip 6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca
+# skip: [506377f179dfbbcfb268ddcfb3b74f1922413f12] C
+git bisect skip 506377f179dfbbcfb268ddcfb3b74f1922413f12
+
+MARK MERGE BAD:
+There are only 'skip'ped commits left to test.
+The first bad commit could be any of:
+506377f179dfbbcfb268ddcfb3b74f1922413f12
+6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca
+759253ccb8e2dd7584dca677ee0a8480aca20ee2
+We cannot bisect more!
+exit=2
+
+LOG AFTER:
+# bad: [1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7] D
+# good: [d0ecc67e1a3a4a4523137c89a3ad8a62f44b3537] A
+git bisect start '--no-checkout' '1c1d70f2ce05768d7d1a6876e8baec1cf5f6bda7' 'd0ecc67e1a3a4a4523137c89a3ad8a62f44b3537'
+# skip: [6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca] B
+git bisect skip 6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca
+# skip: [506377f179dfbbcfb268ddcfb3b74f1922413f12] C
+git bisect skip 506377f179dfbbcfb268ddcfb3b74f1922413f12
+# bad: [759253ccb8e2dd7584dca677ee0a8480aca20ee2] M
+git bisect bad 759253ccb8e2dd7584dca677ee0a8480aca20ee2
+# only skipped commits left to test
+# possible first bad commit: [759253ccb8e2dd7584dca677ee0a8480aca20ee2] M
+# possible first bad commit: [6eba25809cf01bdf3c0e4822cdac1702d9e1b3ca] B
+# possible first bad commit: [506377f179dfbbcfb268ddcfb3b74f1922413f12] C
+
+VISUALIZE AFTER:
+*   759253c M parents=6eba258 506377f
+|\  
+| * 506377f C parents=d0ecc67
+* 6eba258 B parents=d0ecc67
+
+FIRST PARENT:
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[759253ccb8e2dd7584dca677ee0a8480aca20ee2] M
+* 1c1d70f D parents=759253c
+*   759253c M parents=6eba258 506377f
+|\  
+| * 506377f C parents=d0ecc67
+* 6eba258 B parents=d0ecc67

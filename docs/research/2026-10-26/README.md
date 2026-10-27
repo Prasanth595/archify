@@ -327,3 +327,16 @@ D 按现有领域命名合同统一采用 backend/icon:none，再把图例、Pas
 [diffoscope产物差异阅读](scouts/artifact-diff-reading.md)固定镜像版本的两份tar及listing/text/symlink预期，区分元数据、内容和链接目标差异；diffoci的嵌套例另保留出处。没有完整原生HTML执行对照，无法证明另造图表的收益。两项仅保留来源、许可、问题与下一证据门槛，不增加导入器、共享runtime或同义实验分支。
 
 [交付记录](audit/round11-delivery.json)确认实验精确远端head。AI辅助由Terra研究/生成物/交付审计、Sol实现与独立源码复核、root比较与实际页面检查完成。本批只推送远程分支，没有新PR、合并、发布、部署或安装；总目标继续active。
+
+
+## 第十二批：原生能力足够时，停止新增可视化
+
+上一批已完成源修正、实物验证和远端交付，是有效进展。本批先 fetch/prune，保存 [312 条远程 head](audit/remote-branches-round12.txt)；dev 仍为 d5d979493bba650b3995836afd379cd249f2d0dd，历史汇编仍为60342aa9。[有界查询](audit/round12-dedup.json)与两份研究笔记说明现有覆盖和关键词误命中，不宣称全局没有同义工作。用户仅远程分支的规则继续有效。
+
+[egg 等式重写解释](scouts/equivalence-explanation-reading.md)固定官方源码73975c98与MIT署名。完整教程的原生flat输出已标出规则、子表达式位置和方向；tree/let形式也已有共享表达能力。解释是给定规则下的推导，不是完整执行日志，错误规则甚至可推出错误等价。本批额外识别教程推荐的 `explain_existance` 与同版本changelog已移除该API之间的不一致，避免把旧文案当现有能力。没有运行egg、真实长解释或独立读者收益证据，暂缓parser与图形实验。
+
+[Git bisect 合并DAG阅读](scouts/bisect-reading.md)补充已有线性skip研究。实际Apple Git2.50.1在独立合成空树DAG上运行：A good、D bad、B/C skip、M bad时，退出2并列C/B/M为可能first bad；因此bad标记不排除该节点仍是候选，skip也不是good或bad。默认first-parent visualize仍画出侧支C，但再给原生显示命令传 `--first-parent`，就得到与对应revision查询一致的D/M/B。现有flag已经解决这个显示范围疑问，不能据默认画面另造需求。
+
+[公开原生证据](audit/round12-bisect-native/README.md)保存作者两轮脚本与完整输出，以及root的一次独立可复现运行；9份文件有SHA/字节数。整体exit0、stderr为空，中间歧义exit2符合预期。两轮原始录制来自不同临时目录、五个commit身份一致；原脚本保留，另提供从新临时仓库开始的脚本。空树状态均由命令声明，不是真实bug历史、gitk GUI观察、用户研究或新产品测试。未把原生命令输出改造成Archify图。
+
+两方向均暂缓；重新考虑需完整自然任务及原生强基线上的可重复阅读障碍。缺少这类证据时，新增解释格式维护、关系映射或版本兼容成本没有得到收益支持。本批仅研究与原生复现记录进入总分支，没有通过筛选的实现方向，因此没有新增实验分支或图片，也没有PR、合并、发布、部署、安装。AI辅助由Terra两项研究与原生探针、root补充复现和事实/交付检查完成。总目标继续active。

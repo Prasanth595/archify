@@ -1,0 +1,58 @@
+{
+  "remoteSnapshot": "remote-branches-round12.txt",
+  "headCount": 312,
+  "dev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "historicalHub": "60342aa9e40618aeb7c33bdb8d65889fea3a588e",
+  "currentHubBeforeBatch": "de2e81fbf5a4ff81fe633c9f88c36885b6634cff",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:open bisect",
+      "scope": "issues",
+      "topn": 20,
+      "results": [
+        {
+          "number": 821,
+          "url": "https://github.com/tt-a1i/archify/issues/821",
+          "relevance": "Workflow group-label route migration; uses bisect as debugging language, not Git history reading."
+        },
+        {
+          "number": 214,
+          "url": "https://github.com/tt-a1i/archify/issues/214",
+          "relevance": "Showcase routing convergence; keyword-only hit."
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify egraph OR bisect",
+      "scope": "open PRs",
+      "topn": 20,
+      "results": [
+        {
+          "number": 482,
+          "url": "https://github.com/tt-a1i/archify/pull/482",
+          "relevance": "Workflow in-memory library API; no scope overlap established by this broad query."
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open egraph",
+      "scope": "issue",
+      "topn": 20,
+      "results": []
+    },
+    {
+      "query": "repo:tt-a1i/archify bisect in:title",
+      "scope": "pr",
+      "topn": 20,
+      "results": []
+    },
+    {
+      "query": "repo:tt-a1i/archify egraph in:title",
+      "scope": "pr",
+      "topn": 20,
+      "results": []
+    }
+  ],
+  "scope": "Bounded query results, branch names and historical/current notes, not proof of globally absent related work. Current git-history-reading already covers linear skip ambiguity; this batch adds merge and first-parent native behavior. Neither direction passed the implementation gate.",
+  "policy": "Remote branches only. No new PR, merge, release, deploy or install."
+}
