@@ -1,0 +1,2 @@
+[1/2] cp oo.h.in oo.h && printf '%s\n' oo.h >> actions.log
+[2/2] cp foo.c foo.o && printf '%s\n' foo.o >> actions.log

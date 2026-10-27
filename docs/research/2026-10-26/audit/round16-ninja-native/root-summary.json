@@ -1,0 +1,28 @@
+{
+  "overallExit": 0,
+  "overallStderrEmpty": true,
+  "nativeExits": 11,
+  "nativeExitsAllZero": true,
+  "queryOrderOnlyMarked": true,
+  "graphThisFixtureOrderOnlyDotted": true,
+  "actualActionLog": [
+    "oo.h",
+    "foo.o",
+    "oo.h",
+    "oo.h"
+  ],
+  "fooUnchangedAcrossCleanMissingUpdated": true,
+  "updatedInputContentUnchanged": true,
+  "updatedHeaderMtimeGreaterThanFoo": true,
+  "sourceCommit": "3ccb2270e8ef5a84bb31c4651c0df84440f30362",
+  "binarySha256": "a4c40a9d58270a9ee6162b043b954a412ee6ed49ecd30e190abdb40d6d9bd5cf",
+  "harnessSha256": "e516240f63dfe23220312644f3b68f31606138a219d393789c0ebcd4768ef7ca",
+  "runReportPath": "/tmp/archify-ninja-run.sb52wev1",
+  "noSourceCommitInferenceFromVersion": true,
+  "limitations": [
+    "constructed filesystem with explicit historical mtimes",
+    "copy actions, not compilation of foo.o",
+    "no depfile/dyndep or full Android build",
+    "native explain diagnostics on stderr are expected even on exit0"
+  ]
+}

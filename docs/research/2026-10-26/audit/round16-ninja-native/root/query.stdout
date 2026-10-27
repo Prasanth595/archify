@@ -1,0 +1,5 @@
+foo.o:
+  input: copy
+    foo.c
+    || oo.h
+  outputs:

@@ -423,3 +423,26 @@ root在固定d5 runtime重新生成该输入并完成[实际页面复现](audit/
 既有notebook occurrences实验不含ID，不能替代这次机制判断；但目前也没有必须审计ID的完整真实交接任务，不能把选择隐藏身份字段直接认定为产品缺陷。暂缓导入器或新页面，保留来源、许可和明确重新考虑门槛。
 
 本批交付研究判断、既有实现审计与原生可复现证据，没有通过筛选的新实现，因此没有新增实验分支或产物图片。只修改研究文档和原生回执，未运行无关产品套件；[本地记录检查](audit/round15-validation.json)通过；完整空白检查只有三份冻结Git graph原始输出中的尾随空白，排除这三份记录后通过。检查不等于hosted CI。AI分工为Terra外部研究/Radar/原生探针/交付核对，Sol ERD判断，root补充源码查询、可移植复现与交付。没有新PR、合并、发布、部署或安装，总目标继续active。
+
+
+## 第十六批：用完整原生结果筛掉重复图示
+
+上一批已推送研究与原生复现证据，是有效进展。本批先fetch/prune并保存[313条远程head](audit/remote-branches-round16.txt)；dev仍为d5d97949，研究hub从021bdf4b继续。[分别查询开放issue与PR](audit/round16-dedup.json)，Ninja/Difftastic/GumTree无关键词命中；order-only返回的正文属于几何、CLI等相邻词误命中，不当作构建依赖需求，也不宣称全局无重复。历史研究总账与相关dependency-map/static-uses/diff-line-numbers分支已对照，task-view沿用已有独立实验与上批版本核对，不重新包装同一方向。
+
+### Ninja：先完成与何时重建是两个问题
+
+[研究笔记](scouts/build-dependency-reading-round16.md)追到固定Ninja源码的完整RebuildOrderOnlyDeps测试，及Android官方关于大段explain难读的自然需求。二者保持分开：上游测试是fake filesystem/runner；Android示例有省略号、没有完整构建状态，不能拼成真实问题复现。
+
+本机没有Ninja后，读取bootstrap并用已有Python/clang在临时目录编译固定源码，没有安装。195个Git blob在构建后与固定上游树一致，源码身份、版本1.14.0.git和二进制SHA分别记录；未发布源码archive或二进制。[实际原生对照](audit/round16-ninja-native/README.md)使用文件复制替代编译，在明确构造的过去mtime下运行query、graph、dry-run explain和真实构建。初次生成oo.h与foo.o，clean无工作，缺失oo.h及推进其输入mtime时各只生成oo.h；三阶段foo.o的hash/mtime/大小均不变。输入内容未修改，阶段时间经过重置，不是自然连续工作流。
+
+原生query已标`|| oo.h`，**本例DOT也已经用dotted边表达order-only**。旧报告的一般类型损失不能扩大成这份图没有类型；DOT地址式ID也不能作稳定身份。已有原生结果已能解释固定问题，尚无理由另造依赖图或parser。
+
+作者首稿会覆盖固定报告路径，原始脚本与回执保留；便携版每次创建独立报告/fixture，root实际复跑一次。11次原生命令含版本查询全部exit0，解释写入各自stderr是正常行为；没有将dry-run说成真实执行。[独立交付审计](audit/round16-delivery-audit.md)核对124份文件的hash/字节、195源blob、许可、binary/harness身份与前后状态。完整输入、脚本、失败边界和复现命令均已归档；没有真人阅读、原生UI或Archify产品测试结论。
+
+### Difftastic / GumTree：原生视图已经很强
+
+[结构化diff研究](scouts/structural-diff-reading-round16.md)固定Difftastic与GumTree源码、MIT/LGPL许可，并找到Difftastic #999完整Java方法提取例。新版本将相同两条println写入新增方法，旧方法改成调用，同时banner和注释另有修改；不能说整个变更保持行为。报告者描述了错误匹配，但没有工具版本或完整输出，评论查询为空，本轮未运行两工具。
+
+补查发现，固定GumTree仓库的官方截图已经展示相同AccountManager示例，对应语句、方法和字符串变化可见；截图hash、尺寸和路径已记录。它是上游图片，不是本轮产物；图例/参数未展开，不能凭颜色宣称特定机器action，图中文字也不能证明与issue字节完全一致。该证据增强了原生基线，暂缓新页面/匹配器；不把AST对应当语义等价，也不为已覆盖的结构差异换一张图。
+
+本批交付改变筛选依据的研究与原生证据，尚无新实现方向通过筛选，因此没有新增实验分支或产物图片。[记录验证](audit/round16-validation.json)覆盖原生探针、JSON、相对链接、脚本语法、全部清单成员已暂存和空白检查；未跑无关产品套件，未宣称hosted CI。AI分工为Terra来源研究/临时bootstrap/首稿探针/独立归档核对，root补查原生基线、修正泛化结论、便携复现和远端交付。只推远程分支；没有新PR、合并、发布、部署或安装，持续目标保持active。

@@ -1,0 +1,14 @@
+digraph ninja {
+rankdir="LR"
+node [fontsize=10, shape=box, height=0.25]
+edge [fontsize=10]
+"0x102f86770" [label="foo.o"]
+"0x102f866d0" [label="copy", shape=ellipse]
+"0x102f866d0" -> "0x102f86770"
+"0x102f867e0" -> "0x102f866d0" [arrowhead=none]
+"0x102f86570" -> "0x102f866d0" [arrowhead=none style=dotted]
+"0x102f867e0" [label="foo.c"]
+"0x102f86570" [label="oo.h"]
+"0x102f865f0" -> "0x102f86570" [label=" copy"]
+"0x102f865f0" [label="oo.h.in"]
+}

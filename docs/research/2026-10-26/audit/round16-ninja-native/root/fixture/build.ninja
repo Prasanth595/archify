@@ -1,0 +1,5 @@
+rule copy
+  command = cp $in $out && printf '%s\n' $out >> actions.log
+build oo.h: copy oo.h.in
+build foo.o: copy foo.c || oo.h
+default foo.o

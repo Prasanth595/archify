@@ -1,0 +1,127 @@
+{
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:open \"ninja\"",
+      "status": "fulfilled",
+      "issues": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"difftastic\"",
+      "status": "fulfilled",
+      "issues": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"order-only\"",
+      "status": "fulfilled",
+      "issues": [
+        {
+          "number": 1112,
+          "title": "[Proposal]: A long text description without a visible subtitle",
+          "url": "https://github.com/tt-a1i/archify/issues/1112"
+        },
+        {
+          "number": 137,
+          "title": "[Bug]: Prefer straight routes over unnecessary Port Spread doglegs",
+          "url": "https://github.com/tt-a1i/archify/issues/137"
+        },
+        {
+          "number": 821,
+          "title": "[Bug]: A declared group label makes an explicit vertical handoff uncompilable under schema v2, blocking v1 migration for shipped examples",
+          "url": "https://github.com/tt-a1i/archify/issues/821"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"GumTree\"",
+      "status": "fulfilled",
+      "issues": []
+    }
+  ],
+  "scope": "Bounded keyword search over open issues/PRs. order-only hits 1112,137,821 were inspected and are unrelated to Ninja build dependency semantics; no exhaustive absence claim.",
+  "difftasticIssue": {
+    "url": "https://github.com/Wilfred/difftastic/issues/999",
+    "state": "open",
+    "updated_at": "2026-06-23T08:55:00Z",
+    "comments": 0,
+    "author": "GoldsteinE",
+    "sourceKind": "public refactoring example attributed by issue to GumTree; not a natural production commit",
+    "nativeToolVersion": "not reported",
+    "javaBlocks": [
+      {
+        "label": "old",
+        "utf8Bytes": 388,
+        "sha256": "d159358057a966ee8b4839a01490325b17d4e759342422b268d1227f61de08c0",
+        "lineCount": 16,
+        "extraction": "fenced java block text, including terminal newline"
+      },
+      {
+        "label": "new",
+        "utf8Bytes": 443,
+        "sha256": "fe088852d2284e3190091bb4323d5deb5eac1aa7d7e3e71677b9d525b8a56016",
+        "lineCount": 19,
+        "extraction": "fenced java block text, including terminal newline"
+      }
+    ]
+  },
+  "separatePullRequestQueries": [
+    {
+      "query": "ninja",
+      "repository": "tt-a1i/archify",
+      "state": "open",
+      "topn": 30,
+      "resultStatus": "fulfilled",
+      "matches": []
+    },
+    {
+      "query": "difftastic",
+      "repository": "tt-a1i/archify",
+      "state": "open",
+      "topn": 30,
+      "resultStatus": "fulfilled",
+      "matches": []
+    },
+    {
+      "query": "GumTree",
+      "repository": "tt-a1i/archify",
+      "state": "open",
+      "topn": 30,
+      "resultStatus": "fulfilled",
+      "matches": []
+    },
+    {
+      "query": "\"order-only\"",
+      "repository": "tt-a1i/archify",
+      "state": "open",
+      "topn": 30,
+      "resultStatus": "fulfilled",
+      "matches": [
+        {
+          "number": 835,
+          "title": "test(geometry): retain exact grid-boundary contact candidates",
+          "url": "https://github.com/tt-a1i/archify/pull/835"
+        },
+        {
+          "number": 923,
+          "title": "fix(sequence): emit the whole ordered adjustment when a note reaches several messages",
+          "url": "https://github.com/tt-a1i/archify/pull/923"
+        },
+        {
+          "number": 172,
+          "title": "fix(architecture): prefer straight routes over unnecessary Port Spread doglegs",
+          "url": "https://github.com/tt-a1i/archify/pull/172"
+        },
+        {
+          "number": 829,
+          "title": "fix(cli): parse inspect options before checking diagram type",
+          "url": "https://github.com/tt-a1i/archify/pull/829"
+        },
+        {
+          "number": 649,
+          "title": "feat(workflow): add configurable typography with measured layout",
+          "url": "https://github.com/tt-a1i/archify/pull/649"
+        }
+      ]
+    }
+  ],
+  "pullRequestInterpretation": "order-only keyword returned 835,923,172,829,649; inspected bodies concern geometry, sequence, CLI or typography, not Ninja semantics. Other three queries returned no matches. Bounded search only."
+}
