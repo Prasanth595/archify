@@ -1,0 +1,48 @@
+2026-10-27T01:19:31.0327462Z       ...
+2026-10-27T01:19:36.0005654Z     # Subtest: compact automatic Sequence fits the initial desktop stage without shrinking source text
+2026-10-27T01:19:36.0007590Z     not ok 11 - compact automatic Sequence fits the initial desktop stage without shrinking source text
+2026-10-27T01:19:36.0009613Z       ---
+2026-10-27T01:19:36.0010897Z       duration_ms: 4967.15237
+2026-10-27T01:19:36.0011574Z       type: 'test'
+2026-10-27T01:19:36.0013199Z       location: '/home/runner/work/archify/archify/test/reader-layout-browser.test.mjs:657:13'
+2026-10-27T01:19:36.0014435Z       failureType: 'testCodeFailure'
+2026-10-27T01:19:36.0017891Z       error: '{"svg":{"top":67,"bottom":557.5,"left":278,"right":1118},"stage":{"top":58,"bottom":626.5,"left":32,"right":1364},"controls":{"top":421.5,"bottom":463.5,"left":986.890625,"right":1347},"legend":{"corner":true,"bounds":{"top":504.5,"bottom":557.5,"left":47,"right":174.515625},"originalSvg":true,"count":1,"leftGap":0,"bottomGap":0,"navOverlap":0},"width":840,"sourceWidth":560,"minimumTextScale":1.5,"viewportWidth":1396,"viewportHeight":480,"geometry":["0 0 560 327",null,null]}'
+2026-10-27T01:19:36.0021205Z       code: 'ERR_ASSERTION'
+2026-10-27T01:19:36.0021906Z       name: 'AssertionError'
+2026-10-27T01:19:36.0022487Z       expected: true
+2026-10-27T01:19:36.0023047Z       actual: false
+2026-10-27T01:19:36.0023588Z       operator: '=='
+2026-10-27T01:19:36.0024258Z       stack: |-
+2026-10-27T01:19:36.0025311Z         fits (file:///home/runner/work/archify/archify/test/reader-layout-browser.test.mjs:705:18)
+2026-10-27T01:19:36.0026848Z         TestContext.<anonymous> (file:///home/runner/work/archify/archify/test/reader-layout-browser.test.mjs:811:7)
+2026-10-27T01:19:36.0029164Z         process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-10-27T01:19:36.0030682Z         async Test.run (node:internal/test_runner/test:1054:7)
+2026-10-27T01:19:36.0032024Z         async TestContext.<anonymous> (file:///home/runner/work/archify/archify/test/reader-layout-browser.test.mjs:657:5)
+2026-10-27T01:19:36.0033374Z         async Test.run (node:internal/test_runner/test:1054:7)
+2026-10-27T01:19:36.0034494Z         async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+2026-10-27T01:19:36.0035482Z       ...
+2026-10-27T01:19:42.3371038Z     # Subtest: public renderers declare automatic reading width while undeclared canvases retain their fit
+2026-10-27T01:19:42.3372683Z     ok 12 - public renderers declare automatic reading width while undeclared canvases retain their fit
+2026-10-27T01:19:42.3373626Z       ---
+2026-10-27T01:19:42.3374023Z       duration_ms: 6565.696625
+2026-10-27T01:19:42.3374294Z       type: 'test'
+2026-10-27T01:19:42.3374512Z       ...
+2026-10-27T01:19:45.6369062Z     # Subtest: desktop budgets, extreme content and limited horizontal space preserve geometry
+2026-10-27T01:19:45.6370761Z     ok 13 - desktop budgets, extreme content and limited horizontal space preserve geometry
+2026-10-27T01:19:45.6372096Z       ---
+2026-10-27T01:19:45.6372495Z       duration_ms: 3299.49897
+2026-10-27T01:19:45.6373017Z       type: 'test'
+2026-10-27T01:19:45.6373357Z       ...
+2026-10-27T01:19:52.3194614Z     # Subtest: embed, presentation and print return to ordinary layout without clearing shape
+2026-10-27T01:19:52.3243832Z     ok 14 - embed, presentation and print return to ordinary layout without clearing shape
+2026-10-27T01:19:52.3251130Z       ---
+2026-10-27T01:19:52.3271197Z       duration_ms: 6682.473211
+2026-10-27T01:19:52.3291205Z       type: 'test'
+2026-10-27T01:19:52.3291611Z       ...
+2026-10-27T01:19:53.8817204Z     # Subtest: content observers and burst scheduling converge while camera state remains usable
+2026-10-27T01:19:53.8826420Z     ok 15 - content observers and burst scheduling converge while camera state remains usable
+2026-10-27T01:19:53.8829941Z       ---
+2026-10-27T01:19:53.8830848Z       duration_ms: 1552.222706
+2026-10-27T01:19:53.8831501Z       type: 'test'
+2026-10-27T01:19:53.8832094Z       ...
+

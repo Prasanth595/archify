@@ -1,0 +1,123 @@
+1125	[Proposal]: explainer: `@meta locale=zh-TW` renders the page chrome in Simplified Chinese
+1114	[提案]：Task_Checklist
+1112	[Proposal]: A long text description without a visible subtitle
+1111	[Bug]: SVG export draws background grid that Viewer/PNG export hide in classic preset
+1107	[Proposal]: Index outgoing edges in explainer shorthand placement
+1104	[Proposal]: Declare a slide or print medium and check text size at its final size
+1073	[Bug]: Windows restricted sandbox rejects readable ancestor via realpathSync.native (EPERM)
+1072	validate hangs (effectively forever) on a workflow node with a very large width
+1068	feat(artifacts): polish standalone page reading and interaction experience
+1067	[Bug]: Wrapped CJK text can start a line with closing punctuation (Tree, Timeline, Sequence notes)
+1064	feat(reader): voluntary feedback and update awareness for standalone artifacts
+1058	[Proposal]: 迭代现有 benchmark，补齐绘图质量计分、可选人评与真实 AI 对照
+1054	ticket: implement read-only delivery provenance evidence index (M1)
+1053	spec: read-only delivery provenance evidence index (M1)
+1052	initiative: add a read-only artifact evidence index for reproducible review
+1044	feat(compare): read Architecture snapshots from two Git refs
+1038	docs: track Round 34 relationship test link correction
+1034	[Proposal]: Source links for GitHub Enterprise hosts (GHE.com / GHES), like provider: "gitlab" for self-managed GitLab
+1026	[Viewer] Mobile: nav actions overflow, route probe hides under the nav, presentation stage clips the scene start
+1025	[Bug]: check cuts the root <svg> at the first </svg>, so content after a nested <svg> is never checked
+1024	[Bug]: Viewer export filenames drop non-Latin diagram titles (every zh/ko/ru export is "diagram.png")
+1023	[Bug]: Timeline compresses a sub-second quiet period and labels it "≈ 0 s"
+1022	[Bug]: Waterfall legend shows "Incomplete (no recorded end)" when no bar is drawn as incomplete
+1021	[Bug]: Waterfall rejects an end and a duration that agree once start is large (fixed 1e-9 tolerance)
+1019	[Bug]: Timeline drops the year, so events in different years get identical labels
+1017	[Bug][Viewer] Default relationship labels lack contrast in light mode
+1012	[Bug]: Every delivery fails with output/target-changed on Windows 11 24H2+: lstat reports dev 0
+1010	feat(render): 在渲染产物页面内呈现更新提示与安装版本（update notice inside the artifact）
+1000	[Bug]: Viewer camera clips zoomed content to a narrow height-limited stage
+983	[Proposal]: Add first-class Google Antigravity onboarding and Start switcher tab
+980	[Showcase]:  编制初步介绍的一些图
+974	[Proposal]: Add CLI command to export standalone PNG / image (headless raster export)
+954	Skill reference docs far exceed progressive-disclosure budgets (645/644 lines); inconsistent bin exit codes
+937	[Proposal] Cognition capacity: multi-node cells, variable lane height, and flat subgraphs
+935	[Scope] Right-to-left locales: scene geometry and Arabic reading order
+934	[Feature] validate --layout-json omits all geometry exactly when authored pins are infeasible
+921	[Docs]: finalize --out-dir moves only evidence; HTML is rewritten in place and old sidecars become stale
+918	feat(website): expose all ten diagram types across homepage, Start, Guide and Proof Lab
+917	docs: expand README discovery and previews to all ten released diagram types
+906	[Bug]: archify-dsh mounts the profile's only live skill provider, so every other skill becomes unloadable
+903	[Bug]: Note-overlap repair dead-ends when a wrapped note reaches several messages
+900	test: cover Viewer template downstream artifacts in generated freshness checks
+894	Feature Request: Desktop Software
+890	[Bug]: Sequence canvas-level failures report untyped diagnostics with no executable repair
+868	feat(brand): add the bundled Codeberg mark
+866	feat(evidence): support revision-pinned Codeberg source links
+864	feat(evidence): support revision-pinned source links for public gitea.com
+821	[Bug]: A declared group label makes an explicit vertical handoff uncompilable under schema v2, blocking v1 migration for shipped examples
+816	[Bug]: Distinguish unavailable graph queries from zero relationships
+790	[Bug]: browser-check fails on Windows from an elevated shell: Chrome/Edge relaunch and drop the DevTools pipe
+747	[Proposal]: Measure a narrower automatic canvas for single-column Workflow stacks
+733	Viewer exports do nothing when the HTML is hosted as a claude.ai Artifact
+731	Feature: GIF motion export in the Viewer
+716	archify-dsh 1.0.0：宿主契约声明为 dsh 0.1.2-rc.1（当前桌面端已是 0.2.0-rc.2）+ 一处更新受阻与安全闸门 BLOCK 的信息同步
+683	[Proposal]: Add measured work budgets and cancellation for expensive CLI operations
+680	[Proposal]: Require explicit intent before replacing unrelated HTML output
+666	Explore Viewer component boundaries with matched AI evaluations and standalone HTML
+663	Community package registry — PR-submitted catalog of standalone Archify packages
+661	Direct-edge clearance fails with vertical node stacking offset
+660	Shared ports/corridors between edges cause routing conflicts
+631	[Feature]: configurable caption legibility floor / font scale — downstream 9px floor unreachable above 930px viewBox
+618	Question: desktop-readability width budget vs preferred text floor — intended headroom at 1440×900?
+616	workflow with explicit meta.viewBox gets no vertical-scroll contract — tall swimlane diagrams always fail containment
+614	[architecture] Repository-backed diagrams can show unreachable modules as live components
+588	Make localization agent-native: resolve bundled catalogs by locale with optional overrides
+570	[Bug]: Sequence diagrams reject self-messages
+565	[Bug]: Workflow inferred top endpoints omit lane-header clearance for straight routes
+564	[Bug]: Sequence segment headings are obscured by participant headers without a diagnostic
+554	Improve role-specific node icons and authoring guidance for monitoring and alerts
+546	Feature request: icon-first node rendering mode + broader/pinned icon support (no AWS/cloud-provider icons in bundled library)
+534	Architecture: allow right-aligned boundary titles (labelAlign)
+527	Add an in-process renderWorkflow() library API for the workflow renderer
+526	Extend the in-process render API to the remaining four diagram types
+512	feat: guide agents from process notes to as-is and to-be workflow diagrams
+477	feat(canvas): 五类图内容自适应画布与大图浏览（由 Workflow 试点扩展）
+474	[Bug]: Unify Windows path identity, portable-path contracts, and release gates
+469	Exported SVG follows prefers-color-scheme, and the geometry envelope is tighter than the contract implies
+468	validate and visual-check give opposite guidance on viewBox height, with no way to learn the feasible band
+452	Feature request — author-ordered relationships: highlight a node's outgoing calls in call order
+432	[Bug][#367]: Locate uses cross-filesystem rename when output and system temp are on different volumes
+431	[Bug][#367]: Failed bundle rebuild corrupts previously valid output
+410	Add ability for containerization or hierarchy components
+408	Publish archify to the npm registry
+407	pls add erDiagram mermaid style
+401	Feature request: 节点可展开结构子图（模块目录与状态字段两个概念 demo）
+395	[Bug]: A non-member component renders inside a boundary frame; showcase and deployment-ownership both pass
+391	Feature request --  Language selection --
+359	Feature request — layer-band layout mode (rows) for architecture
+358	Feature request — estimate rendered page height in validate output
+356	Docs — validate passes but visual-check overflows: document a viewport height budget
+344	Tracking: improve first-diagram reliability, readability, and maintenance focus
+342	Discussion: how to scope a draw.io export follow-up to #72
+340	架构图中字体太小，看起来费眼睛
+326	[Showcase]:  I made an extension
+312	[Proposal] Formal logical operators for workflow: decision node + edge conditions (AND/OR)
+284	Allow connections to bind to a boundary (region/security-group), not just a component
+282	[Feature][Architecture] Add an authored typography scale for wide presentation diagrams
+262	【需求建议】关于详情页、模块/节点下钻、更多图的建议
+252	[Feature] Per-edge attach-point offset (fromOffset/toOffset, both axes) for straight-line alignment when the facing side isn't spread
+251	[Feature] Add semantic coverage for repository-grounded workflow gates and recovery
+250	workflow: per-lane height / tall lanes for a vertically-stacked group (one container, N stacked stages)
+248	[Bug]: Two anti-parallel labelAt connections render as one line, and delivery passes 9/9
+244	[Bug]: Lifecycle rail appears as a false direct edge during semantic interactions
+241	No CLI path to an SVG — `deliver` produces the HTML viewer, and SVG export lives inside it
+230	关于嵌套架构图的建议
+229	[Change] Retire Share Card exports and keep Copy diagram only
+221	fix(viewer): keep explored relationships visible outside the semantic passport
+214	Showcase validation convergence is very slow for modestly dense diagrams (~25 rounds for an 8-node architecture map)
+211	[Showcase]: Guts - Privacy-First Local AI Assistant (Python & Ollama)
+196	[architecture] Support revision-verified evidence from multiple repositories
+179	Add a 'Full diagram page' export: title + diagram + cards in one PNG, without viewer chrome
+175	perf: reduce multi-diagram generation latency without weakening quality gates
+149	New diagram type proposal: cognition — render how a reasoning system routed one question through its own knowledge
+137	[Bug]: Prefer straight routes over unnecessary Port Spread doglegs
+94	Import Mermaid stateDiagram sources as Archify lifecycle artifacts
+93	Import Mermaid sequenceDiagram sources as Archify sequence artifacts
+92	Import Mermaid flowcharts into validated Archify typed IR
+88	Add Claude, Grok, Codex, and Pi plugin marketplaces without changing Skill ZIP distribution
+84	[Feature][Workflow] Preserve critical approval details within the first-screen constraint
+83	[Feature][Viewer] Support broader comparison and consistent hover previews
+81	[UX][Workflow] Make phase ownership visible without requiring hover
+74	[Bug]: Architecture 边界重合与近轴折线未被 showcase 约束
+57	autoplay dwell

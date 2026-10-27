@@ -1,0 +1,165 @@
+{
+  "checkedAt": "2026-10-27 13:20:16 UTC",
+  "headRevision": "f9fc38cbc19f5bb2725fd54d957e182831eb1eb9",
+  "run": 40431526745,
+  "attempt": 2,
+  "checks": [
+    {
+      "id": 121955854313,
+      "name": "deploy-pages",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121955854313"
+    },
+    {
+      "id": 121955854184,
+      "name": "deploy-cloudflare",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121955854184"
+    },
+    {
+      "id": 121955819960,
+      "name": "webm-artifact",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121955819960"
+    },
+    {
+      "id": 121954356233,
+      "name": "Windows test portability (Node 22)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954356233"
+    },
+    {
+      "id": 121954353052,
+      "name": "package smoke (macos-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954353052"
+    },
+    {
+      "id": 121954352517,
+      "name": "package smoke (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954352517"
+    },
+    {
+      "id": 121954348250,
+      "name": "published-update-manifest",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954348250"
+    },
+    {
+      "id": 121954343568,
+      "name": "Windows test portability (Node 24)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954343568"
+    },
+    {
+      "id": 121954341883,
+      "name": "scope",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954341883"
+    },
+    {
+      "id": 121954341807,
+      "name": "test (18)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954341807"
+    },
+    {
+      "id": 121954341750,
+      "name": "browser-regression (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954341750"
+    },
+    {
+      "id": 121954340871,
+      "name": "full-regression (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954340871"
+    },
+    {
+      "id": 121954333249,
+      "name": "zip-freshness",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954333249"
+    },
+    {
+      "id": 121954331125,
+      "name": "test (24)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954331125"
+    },
+    {
+      "id": 121954303139,
+      "name": "test (20)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954303139"
+    },
+    {
+      "id": 121954303080,
+      "name": "website",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954303080"
+    },
+    {
+      "id": 121954302796,
+      "name": "test (22)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954302796"
+    },
+    {
+      "id": 121954302621,
+      "name": "package smoke (windows-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954302621"
+    },
+    {
+      "id": 121954302567,
+      "name": "full-regression (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954302567"
+    },
+    {
+      "id": 121954301842,
+      "name": "webm-decode",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954301842"
+    },
+    {
+      "id": 121954300681,
+      "name": "browser-regression (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tt-a1i/archify/actions/runs/40431526745/job/121954300681"
+    }
+  ],
+  "statuses": [
+    {
+      "context": "CodeRabbit",
+      "state": "success",
+      "description": "Review skipped",
+      "target_url": null
+    }
+  ],
+  "hasMore": false,
+  "note": "Only failed browser job was requested for rerun; dependent aggregate followed. Other successful checks retain attempt-1 execution."
+}

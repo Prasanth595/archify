@@ -1,6 +1,6 @@
 # Archify research continuation · 2026-10-26–27
 
-本批从远程现状开始去重，再为有明确阅读价值的剩余问题制作小实验。用户已授权持续调研、隔离实现、独立 `codex/` 远程分支和适当的 Draft PR；不自动合并、发布版本、部署或安装。此前研究记录中的暂停属于上一轮历史，本次明确继续。
+本批从远程现状开始去重，再为有明确阅读价值的剩余问题制作小实验。用户已授权持续调研、隔离实现和独立 `codex/` 远程分支。**2026-10-27 用户更新交付要求：完成的实验只推送远程分支，附产物、图片和验证记录，后续不新建 PR。** 下方已创建的 Draft 属于此前交付历史。不自动合并、发布版本、部署或安装。此前研究记录中的暂停属于上一轮历史，本次明确继续。
 
 ## 开始前核对
 
@@ -142,5 +142,31 @@ Task-view 确认为 [`gtindo/task-view@f27b8bef63ec336b8e3487e90ccd484a2fa7a235`
 [#1124](https://github.com/tt-a1i/archify/pull/1124) 的最终 head `9601c9b6e4b6addc2f348677d1c198bc6bc74192` 已完成 [run 40427641788](https://github.com/tt-a1i/archify/actions/runs/40427641788)：[00:52:06 UTC 精确快照](audit/keyboard-final-ci.json)记录 19 success、2 deployment skipped，无分页遗漏。PR 说明已从 pending 更新为这一结果。CodeRabbit 的独立 status 只是 Draft 跳过通知，不计作实质审查或人类接受。没有合并、发布、部署或安装。
 
 收尾 `ls-remote` 发现 dev 已推进到 `500d4a65211ffe607fde6b3ce7505027b45bb59e`，随后只 fetch dev 复核：合入 #1031 的 SVG 块扫描修复，净变更为 `archify/scripts/check-render-output.mjs`、`test/render-output-checks.test.mjs`、`archify.zip`，键盘专用路径未变。本批起始基线记录不改写；#1124 的绿灯仍只绑定基于 `e837dc4c` 的 `9601c9b6`，不能证明与新 dev 组合后通过。已在 PR 披露此边界，最终集成前须更新组合并核验；本轮未再次 merge、rebase 或无差别重跑。
+
+## 27 日第六批：补完实际观察，跟进新基线
+
+开始先 fetch/prune，dev 为 `500d4a65211ffe607fde6b3ce7505027b45bb59e`。保存了 [307 条远程 ref](audit/remote-branches-round6.txt)、[124 个开放 PR](audit/open-prs-round6.tsv)、[123 个开放 issue](audit/open-issues-round6.tsv) 的本轮快照；新 #1125 是 zh-TW 页面文字提案，不复制其工作。下面的来源复核先查历史实验与 scout，未新增重复分支。
+
+| 来源复核 | 本轮判断 |
+| --- | --- |
+| [Aquascope / RustViz](scouts/rust-ownership-reading.md) | 历史研究已覆盖相邻的静态权限与生命周期。当前完整原生工具有源码、所有权时间线及运行时模式；保留 reference 移动与 referent 身份问题，但不把静态输出或存在 expected/actual 差异的快照当运行事实，暂缓新图。 |
+| [SQLGlot](scouts/sql-lineage-reading.md) | 补核完整原生 HTML、tooltip、UNION 分支与 schema 星号边界；列来源/筛选影响已有历史研究。没有新的对照证据，不新增 parser 或重复实验。 |
+| [Automerge](scouts/automerge-register-reading.md) | 当前可见值、活跃冲突集和历史是不同层次；官方资料已提供完整解释。有限 issue/PR 组合搜索未找到可核查的自然困惑，不能当作需求不存在。暂缓运行探针，保留固定版本、actor、操作和三阶段记录合同。 |
+
+### 图例新版本的实际浏览器观察
+
+用户明确允许重建研究浏览器空间后，恢复本目标唯一空间，返回 id 4。实际打开图版、查看明暗交互图，并按 Escape 返回；“操作”图例和三条约束均可见，关闭后焦点回到打开按钮。三张 1440×900 原始截图逐张查看，新页面实际宽 1440px、高 1805px。原 HTML SHA 仍为 `65f0b87b6b230600971af7e2895f65cc227bfe875d972cc158c350ce8a84b3b2`，历史八张图片不改绑定。
+
+原分支已推进到 [`bc6cb7cde3d11b2f9e3fe65035cc04829e5f2194`](https://github.com/tt-a1i/archify/tree/bc6cb7cde3d11b2f9e3fe65035cc04829e5f2194/experiments/operation-order/legend-label-review)，含图片与实际操作记录。只补证据，没有新产品代码或新阅读效率结论；继续保留研究分支，不创建 Draft PR。Ego 未升级。
+
+![修正图例后的实际交互图](https://raw.githubusercontent.com/tt-a1i/archify/bc6cb7cde3d11b2f9e3fe65035cc04829e5f2194/experiments/operation-order/legend-label-review/modal-light.png)
+
+### Keyboard 候选与 CI 的完整状态
+
+原分支 `codex/lab-keyboard-traversal` 已推进到 [`f9fc38cbc19f5bb2725fd54d957e182831eb1eb9`](https://github.com/tt-a1i/archify/tree/f9fc38cbc19f5bb2725fd54d957e182831eb1eb9/experiments/keyboard-traversal/refresh-dev-500d)，历史关联为 [Draft #1124](https://github.com/tt-a1i/archify/pull/1124)。组合新 dev 后唯一冲突为 ZIP，以组合源码规范重建；候选键盘行为没有再改。新的相关静态检查与 Explainer caller 共 96/0/0，core 19/0/0；两次构包与提交 ZIP 相同，235 个成员保留新 dev，只有键盘 checker 内容不同。两个打包 checker 均等于源码。[独立复核](audit/keyboard-draft-readiness.md)核实原始日志、全部摘要哈希、祖先与 ZIP。旧 Chrome、三产物 API、Trace CLI 和解包交互证据保留原 revision；新记录不冒称重跑它们。
+
+新 head 的 [run 40431526745](https://github.com/tt-a1i/archify/actions/runs/40431526745) attempt 1 为 [17 success、2 failure、2 skipped](audit/keyboard-ci-attempt1.json)：browser shard 2 在 1396×480 compact Sequence 首屏失败；webm-artifact 只汇总 browser 失败，实际 WebM 成功。首次[日志摘录](audit/keyboard-current-ci-failure.log)和[只读诊断](audit/keyboard-current-ci-diagnosis.md)保留。两次不同 PR 的完整几何 JSON 相等，相关源码一致，而且该用例没有调用改动的 Explainer 键盘遍历；这仍不证明根因、flakiness 或误报。
+
+确认整个 workflow 已终止后，只请求重跑失败 browser job，依赖汇总随之重跑；attempt 2 workflow 成功，[最终精确快照](audit/keyboard-ci-attempt2.json)为 19 success、2 deployment skipped。其他成功项复用 attempt 1 的执行结果。首次失败没有被删除或解释成已经修复，PR 说明同步两次状态。本批没有合入产品分支、发布、部署或安装，目标仍 active。
 
 AI assistance：Codex（GPT-6.1-Terra 与 GPT-6.1-Sol 子代理）参与调研、实验实现、验证和文档；本记录不声称维护者已完成个人审查或验收。
