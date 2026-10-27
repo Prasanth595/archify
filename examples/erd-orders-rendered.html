@@ -9352,18 +9352,22 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         sources.forEach(function (source) {
           var link = document.createElement(source.href ? 'a' : 'div');
           link.className = 'semantic-passport-source';
+          var sourceName = source.label || source.path.split('/').pop() || source.path;
+          var sourceRange = source.line
+            ? 'L' + source.line + (source.endLine && source.endLine !== source.line ? '–' + source.endLine : '')
+            : '';
           if (source.href) {
             link.href = source.href;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
             link.referrerPolicy = 'no-referrer';
-            link.setAttribute('aria-label', viewerText('viewer.passport.source.open', { path: source.path, revision: repository.shortRevision }));
+            link.setAttribute('aria-label', [sourceName, sourceRange, viewerText('viewer.passport.source.open', { path: source.path, revision: repository.shortRevision })].filter(Boolean).join(', '));
           }
           var name = document.createElement('strong');
-          name.textContent = source.label || source.path.split('/').pop() || source.path;
+          name.textContent = sourceName;
           var location = document.createElement('code');
-          location.textContent = source.line
-            ? 'L' + source.line + (source.endLine && source.endLine !== source.line ? '–' + source.endLine : '') + (source.href ? ' ↗' : '')
+          location.textContent = sourceRange
+            ? sourceRange + (source.href ? ' ↗' : '')
             : source.href ? viewerText('viewer.passport.source.openLink') : '';
           var sourcePath = document.createElement('small');
           sourcePath.textContent = source.path;

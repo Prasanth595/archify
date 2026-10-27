@@ -1,0 +1,11 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(32);const page=task.page('p1');const root='/Users/tsk/.codex/worktrees/lab-source-link-context/archify/experiments/source-link-context';
+for(const [name,width,height,theme] of [['base-en',1440,900,'light'],['candidate-en',1440,900,'light'],['base-zh-CN',390,844,'dark'],['candidate-zh-CN',390,844,'dark']]){
+ await page.goto('file://'+root+'/artifacts/'+name+'.html');await page.cdp('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});await page.cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+ await page.waitForFunction(()=>!!window.Archify?.focus?.set);await page.evaluate(()=>document.fonts.ready.then(()=>true));if(await page.evaluate(()=>document.documentElement.dataset.theme)!==theme)await page.click('#btn-theme',{label:'Set comparison theme'});
+ await page.keyboard.press('/');await page.fill('#node-finder-input','Users');await page.keyboard.press('Enter');await page.waitForTimeout(400);
+ await page.click('button[aria-label*="Reset diagram view"],button[aria-label*="重置图表视图"]',{label:'Reset comparison camera'});await page.waitForTimeout(400);
+ let reached=false;let presses=0;for(;presses<50;presses++){if(await page.evaluate(()=>document.activeElement?.classList?.contains('semantic-passport-source'))){reached=true;break;}await page.keyboard.press('Tab');}if(!reached)throw Error(name+' source focus absent');
+ const state=await page.evaluate(()=>({innerWidth,innerHeight,scrollX,scrollY,theme:document.documentElement.dataset.theme,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches,zoom:[...document.querySelectorAll('button')].find(b=>/Reset diagram view|重置图表视图/.test(b.getAttribute('aria-label')||''))?.getAttribute('aria-label'),sourceRows:[...document.querySelectorAll('.semantic-passport-source')].map(a=>({text:a.textContent,name:a.getAttribute('aria-label'),href:a.href,focused:a===document.activeElement}))}));
+ await page.screenshot({path:root+'/screenshots/'+name+'-matched.png'});await fs.writeFile('/tmp/archify-round23-browser/'+name+'-matched.json',JSON.stringify({state,presses,artifact:name+'.html'},null,2)+'\n');console.log({name,state,presses});
+}
+await page.cdp('Emulation.setEmulatedMedia',{features:[]});

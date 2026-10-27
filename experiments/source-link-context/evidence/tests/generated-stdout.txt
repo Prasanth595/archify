@@ -1,0 +1,62 @@
+
+> test:generated
+> npm --prefix archify run check:viewer && npm --prefix archify run check:brand-marks && npm --prefix archify run check:validators && npm --prefix archify run check:release-identity && node test/golden.mjs
+
+
+> archify@3.2.1-dev.1 check:viewer
+> node ../scripts/generate-viewer.mjs --check
+
+
+> archify@3.2.1-dev.1 check:brand-marks
+> node scripts/generate-brand-marks.mjs --check
+
+
+> archify@3.2.1-dev.1 check:validators
+> node scripts/generate-validators.mjs --check
+
+
+> archify@3.2.1-dev.1 check:release-identity
+> node ../scripts/check-release-identity.mjs
+
+release identity ok: 3.2.1-dev.1
+golden renders (renderer output must match checked-in examples)
+schema enforcement (invalid JSON must fail with a path-prefixed message)
+  ok    card dot outside enum
+  ok    node id starting with a digit
+  ok    extra property rejected
+  ok    legacy meta.views accepted and ignored
+  ok    column beyond layout maximum
+  ok    missing schema_version
+  ok    main-path step without a transition
+  ok    zero component width rejected by schema
+  ok    zero component height rejected by schema
+  ok    negative component width rejected by schema
+  ok    unknown attribute key rejected by schema
+  ok    key role outside the list enum rejected by schema
+  ok    fk role inside a key list without a target rejected by schema
+  ok    identifying false with a contradicting variant rejected by schema
+  ok    entity without a label rejected by schema
+  ok    unknown relationship cardinality rejected by schema
+  ok    unstated relationship cardinality rejected by schema
+  ok    fk attribute without a target rejected by schema
+  ok    tree node without a label rejected by schema
+  ok    unknown tree direction rejected by schema
+  ok    type without a kind rejected by schema
+  ok    unknown relationship kind rejected by schema
+  ok    unknown member visibility rejected by schema
+  ok    timeline timestamp without an offset rejected by schema
+  ok    timeline without evidence status rejected by schema
+  ok    negative span start rejected by schema
+  ok    waterfall without evidence status rejected by schema
+  ok    references outside entity.attribute rejected by schema
+template freshness (architecture example must carry the current template)
+  ok    web-app.html style blocks match template
+version sync
+  ok    template generator meta matches package.json version
+  ok    package-lock.json version matches package.json
+  ok    SKILL.md metadata version matches package.json major.minor
+  ok    README.md badge matches package.json version
+  ok    README_EN.md badge matches package.json version
+  ok    README_ZH.md badge matches package.json version
+  ok    README_JA.md badge matches package.json version
+  ok    GitHub Pages version labels match package.json

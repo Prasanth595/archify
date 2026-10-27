@@ -1,0 +1,269 @@
+{
+  "artifact": "base-en.html",
+  "viewport": [
+    1440,
+    900
+  ],
+  "theme": "light",
+  "steps": [
+    {
+      "tag": "g",
+      "id": "node-users",
+      "cls": "svg",
+      "name": "Focus Users, Browser / Mobile, Architecture component, 2 verified source references"
+    },
+    {
+      "tag": "g",
+      "id": "node-auth",
+      "cls": "svg",
+      "name": "Focus Auth Provider, OAuth 2.0, Architecture component"
+    },
+    {
+      "tag": "g",
+      "id": "node-cdn",
+      "cls": "svg",
+      "name": "Focus CloudFront, CDN, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-lb",
+      "cls": "svg",
+      "name": "Focus Load Balancer, HTTPS :443, AWS Region: us-west-2 › sg-api :443/:8000"
+    },
+    {
+      "tag": "g",
+      "id": "node-api",
+      "cls": "svg",
+      "name": "Focus API Server, FastAPI :8000, AWS Region: us-west-2 › sg-api :443/:8000"
+    },
+    {
+      "tag": "g",
+      "id": "node-cache",
+      "cls": "svg",
+      "name": "Focus Redis, cache :6379, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-db",
+      "cls": "svg",
+      "name": "Focus PostgreSQL, primary :5432, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-s3",
+      "cls": "svg",
+      "name": "Focus S3, static assets, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-queue",
+      "cls": "svg",
+      "name": "Focus SQS, job queue, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-worker",
+      "cls": "svg",
+      "name": "Focus Worker, async jobs, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "",
+      "cls": "svg",
+      "name": "Semantic legend"
+    },
+    {
+      "tag": "g",
+      "id": "",
+      "cls": "svg",
+      "name": "Inspect Backend, 2 nodes"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "btn-focus-move",
+      "cls": "relationship-lens-drag-handle",
+      "name": "Move semantic passport. Drag, use arrow keys, or press Home to reset."
+    },
+    {
+      "tag": "A",
+      "id": "focus-repository",
+      "cls": "semantic-passport-repository",
+      "name": "Open verified repository revision d5d979493bba650b3995836afd379cd249f2d0dd"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "semantic-passport-source",
+      "name": "Open verified source viewer/focus.js at revision d5d9794"
+    }
+  ],
+  "rows": [
+    {
+      "text": "Accessible link nameL370 ↗viewer/focus.js",
+      "name": "Open verified source viewer/focus.js at revision d5d9794",
+      "href": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L370",
+      "focused": true
+    },
+    {
+      "text": "Visible source identityL372–381 ↗viewer/focus.js",
+      "name": "Open verified source viewer/focus.js at revision d5d9794",
+      "href": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L372-L381",
+      "focused": false
+    }
+  ],
+  "second": {
+    "name": "Open verified source viewer/focus.js at revision d5d9794",
+    "href": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L372-L381"
+  },
+  "sourceAX": [
+    {
+      "nodeId": "2630",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "link"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 110
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Open verified source viewer/focus.js at revision d5d9794",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "type": "computedString",
+              "value": "Open verified source viewer/focus.js at revision d5d9794"
+            },
+            "attribute": "aria-label",
+            "attributeValue": {
+              "type": "string",
+              "value": "Open verified source viewer/focus.js at revision d5d9794"
+            }
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Accessible link name L370 ↗ viewer/focus.js"
+            },
+            "superseded": true
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "focused",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L370"
+          }
+        }
+      ],
+      "parentId": "2109",
+      "childIds": [
+        "2627",
+        "2628",
+        "2629"
+      ],
+      "backendDOMNodeId": 2630
+    },
+    {
+      "nodeId": "2634",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "link"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 110
+      },
+      "name": {
+        "type": "computedString",
+        "value": "Open verified source viewer/focus.js at revision d5d9794",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "type": "computedString",
+              "value": "Open verified source viewer/focus.js at revision d5d9794"
+            },
+            "attribute": "aria-label",
+            "attributeValue": {
+              "type": "string",
+              "value": "Open verified source viewer/focus.js at revision d5d9794"
+            }
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Visible source identity L372–381 ↗ viewer/focus.js"
+            },
+            "superseded": true
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L372-L381"
+          }
+        }
+      ],
+      "parentId": "2109",
+      "childIds": [
+        "2631",
+        "2632",
+        "2633"
+      ],
+      "backendDOMNodeId": 2634
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "screenshot": "base-en-desktop.png"
+}

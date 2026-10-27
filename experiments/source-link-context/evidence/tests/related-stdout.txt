@@ -1,0 +1,56 @@
+
+> test:focus
+> node scripts/run-tests.mjs --require-files test/repository-evidence-types-browser.test.mjs test/semantic-passport.test.mjs
+
+TAP version 13
+# Subtest: verified sources remain in Focus and Finder with accessible counts and no node badges
+ok 1 - verified sources remain in Focus and Finder with accessible counts and no node badges
+  ---
+  duration_ms: 14701.054667
+  type: 'test'
+  ...
+# Subtest: all typed renderers emit details-on-demand metadata and native SVG titles
+ok 2 - all typed renderers emit details-on-demand metadata and native SVG titles
+  ---
+  duration_ms: 1189.41375
+  type: 'test'
+  ...
+# Subtest: renderer-owned structure supplies truthful Semantic Passport context
+ok 3 - renderer-owned structure supplies truthful Semantic Passport context
+  ---
+  duration_ms: 1228.464959
+  type: 'test'
+  ...
+# Subtest: Relationship Lens renders one Semantic Passport and copyable stable focus link
+ok 4 - Relationship Lens renders one Semantic Passport and copyable stable focus link
+  ---
+  duration_ms: 338.956333
+  type: 'test'
+  ...
+# Subtest: semantic passport computes and applies target top synchronously on open and switch without a 1-frame snap
+ok 5 - semantic passport computes and applies target top synchronously on open and switch without a 1-frame snap
+  ---
+  duration_ms: 988.755708
+  type: 'test'
+  ...
+# Subtest: Semantic Passport exposes one localized, bounded move affordance outside canonical export
+ok 6 - Semantic Passport exposes one localized, bounded move affordance outside canonical export
+  ---
+  duration_ms: 308.603625
+  type: 'test'
+  ...
+# Subtest: Node Finder searches and presents the same passport facts
+ok 7 - Node Finder searches and presents the same passport facts
+  ---
+  duration_ms: 207.619875
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14832.402084

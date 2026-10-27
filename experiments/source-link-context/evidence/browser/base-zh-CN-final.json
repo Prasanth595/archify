@@ -1,0 +1,263 @@
+{
+  "artifact": "base-zh-CN.html",
+  "viewport": [
+    390,
+    844
+  ],
+  "theme": "dark",
+  "steps": [
+    {
+      "tag": "g",
+      "id": "node-users",
+      "cls": "svg",
+      "name": "聚焦Users，Browser / Mobile, 架构组件, 2 个已验证来源引用"
+    },
+    {
+      "tag": "g",
+      "id": "node-auth",
+      "cls": "svg",
+      "name": "聚焦Auth Provider，OAuth 2.0, 架构组件"
+    },
+    {
+      "tag": "g",
+      "id": "node-cdn",
+      "cls": "svg",
+      "name": "聚焦CloudFront，CDN, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-lb",
+      "cls": "svg",
+      "name": "聚焦Load Balancer，HTTPS :443, AWS Region: us-west-2 › sg-api :443/:8000"
+    },
+    {
+      "tag": "g",
+      "id": "node-api",
+      "cls": "svg",
+      "name": "聚焦API Server，FastAPI :8000, AWS Region: us-west-2 › sg-api :443/:8000"
+    },
+    {
+      "tag": "g",
+      "id": "node-cache",
+      "cls": "svg",
+      "name": "聚焦Redis，cache :6379, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-db",
+      "cls": "svg",
+      "name": "聚焦PostgreSQL，primary :5432, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-s3",
+      "cls": "svg",
+      "name": "聚焦S3，static assets, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-queue",
+      "cls": "svg",
+      "name": "聚焦SQS，job queue, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "node-worker",
+      "cls": "svg",
+      "name": "聚焦Worker，async jobs, AWS Region: us-west-2"
+    },
+    {
+      "tag": "g",
+      "id": "",
+      "cls": "svg",
+      "name": "语义图例"
+    },
+    {
+      "tag": "g",
+      "id": "",
+      "cls": "svg",
+      "name": "检查后端，2 个节点"
+    },
+    {
+      "tag": "A",
+      "id": "focus-repository",
+      "cls": "semantic-passport-repository",
+      "name": "打开已验证的仓库修订版本 d5d979493bba650b3995836afd379cd249f2d0dd"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "semantic-passport-source",
+      "name": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js"
+    }
+  ],
+  "rows": [
+    {
+      "text": "Accessible link nameL370 ↗viewer/focus.js",
+      "name": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js",
+      "href": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L370",
+      "focused": true
+    },
+    {
+      "text": "Visible source identityL372–381 ↗viewer/focus.js",
+      "name": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js",
+      "href": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L372-L381",
+      "focused": false
+    }
+  ],
+  "second": {
+    "name": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js",
+    "href": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L372-L381"
+  },
+  "sourceAX": [
+    {
+      "nodeId": "5241",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "link"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 110
+      },
+      "name": {
+        "type": "computedString",
+        "value": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "type": "computedString",
+              "value": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js"
+            },
+            "attribute": "aria-label",
+            "attributeValue": {
+              "type": "string",
+              "value": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js"
+            }
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Accessible link name L370 ↗ viewer/focus.js"
+            },
+            "superseded": true
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "focused",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L370"
+          }
+        }
+      ],
+      "parentId": "4683",
+      "childIds": [
+        "5238",
+        "5239",
+        "5240"
+      ],
+      "backendDOMNodeId": 5241
+    },
+    {
+      "nodeId": "5245",
+      "ignored": false,
+      "role": {
+        "type": "role",
+        "value": "link"
+      },
+      "chromeRole": {
+        "type": "internalRole",
+        "value": 110
+      },
+      "name": {
+        "type": "computedString",
+        "value": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js",
+        "sources": [
+          {
+            "type": "relatedElement",
+            "attribute": "aria-labelledby"
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "type": "computedString",
+              "value": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js"
+            },
+            "attribute": "aria-label",
+            "attributeValue": {
+              "type": "string",
+              "value": "打开修订版本 d5d9794 中已验证的来源 viewer/focus.js"
+            }
+          },
+          {
+            "type": "contents",
+            "value": {
+              "type": "computedString",
+              "value": "Visible source identity L372–381 ↗ viewer/focus.js"
+            },
+            "superseded": true
+          },
+          {
+            "type": "attribute",
+            "attribute": "title",
+            "superseded": true
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "url",
+          "value": {
+            "type": "string",
+            "value": "https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/focus.js#L372-L381"
+          }
+        }
+      ],
+      "parentId": "4683",
+      "childIds": [
+        "5242",
+        "5243",
+        "5244"
+      ],
+      "backendDOMNodeId": 5245
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "screenshot": "base-zh-CN-mobile.png"
+}

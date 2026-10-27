@@ -1,0 +1,25 @@
+{
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "productHashes": {
+    "viewer/focus.js": "61c3a45995a4c204a3623784f2a58312b7250fba7c29d269713e2baea1ce6770",
+    "archify/assets/template.html": "565b29ead1c3b08d91c25f28637dd1e30054e1bf1188489f67c4998465606376",
+    "test/repository-evidence-browser.test.mjs": "e238c5108c855b53f2caedfbe09d26f13960dfc3c3ca2dd545c92d6a7dc2c0d8",
+    "archify.zip": "e5909e4147f3f5e23a11add8737980057d3cca389eefcd7490a09ab8b548cbb6"
+  },
+  "sourceBrowserPassed": 3,
+  "relatedPassed": 7,
+  "baseRegression": "failed as expected: duplicate computed names",
+  "firstGeneratedFailures": 31,
+  "finalGeneratedExit": 0,
+  "freshHtmlReproductions": 4,
+  "replayNode": "22.23.3",
+  "zipNode": "22.23.2",
+  "generatedHtmlSvgListsUnchanged": 32,
+  "newPRs": 0,
+  "limits": [
+    "No full suite or hosted CI result",
+    "No physical screen reader or touch test",
+    "Screenshots have different camera states; no pixel parity claim"
+  ],
+  "copyMapEntries": 64
+}

@@ -1,0 +1,1 @@
+PATH=/opt/homebrew/opt/node@22/bin:$PATH npm --prefix archify run render:examples; PATH=/opt/homebrew/opt/node@22/bin:$PATH node archify/scripts/render-examples.mjs; cp examples/web-app-rendered.html examples/web-app.html

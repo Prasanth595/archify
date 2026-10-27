@@ -1,0 +1,1 @@
+PATH=/opt/homebrew/opt/node@22/bin:$PATH ARCHIFY_CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" npm run test:focus -- test/repository-evidence-types-browser.test.mjs test/semantic-passport.test.mjs

@@ -1,0 +1,82 @@
+[
+  {
+    "arm": "base",
+    "locale": "en",
+    "argv": [
+      "/opt/homebrew/opt/node@22/bin/node",
+      "/tmp/archify-round23-base-runtime/archify/bin/archify.mjs",
+      "deliver",
+      "architecture",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/experiments/source-link-context/inputs/en.architecture.json",
+      "/tmp/archify-round23-node22/base-en.html",
+      "--repo-root",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify",
+      "--json"
+    ],
+    "exit": 0,
+    "node": "v22.23.3",
+    "freshHtmlSha256": "bd14ad5c0b7417a09c1ff510fea35aadaf9d4214d8cb42e5a1fef88c177c0740",
+    "originalHtmlSha256": "bd14ad5c0b7417a09c1ff510fea35aadaf9d4214d8cb42e5a1fef88c177c0740",
+    "identical": true
+  },
+  {
+    "arm": "base",
+    "locale": "zh-CN",
+    "argv": [
+      "/opt/homebrew/opt/node@22/bin/node",
+      "/tmp/archify-round23-base-runtime/archify/bin/archify.mjs",
+      "deliver",
+      "architecture",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/experiments/source-link-context/inputs/zh-CN.architecture.json",
+      "/tmp/archify-round23-node22/base-zh-CN.html",
+      "--repo-root",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify",
+      "--json"
+    ],
+    "exit": 0,
+    "node": "v22.23.3",
+    "freshHtmlSha256": "a194912f055964e61abcac2e1675698543388943109d836bae52ce6a7651fd18",
+    "originalHtmlSha256": "a194912f055964e61abcac2e1675698543388943109d836bae52ce6a7651fd18",
+    "identical": true
+  },
+  {
+    "arm": "candidate",
+    "locale": "en",
+    "argv": [
+      "/opt/homebrew/opt/node@22/bin/node",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/archify/bin/archify.mjs",
+      "deliver",
+      "architecture",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/experiments/source-link-context/inputs/en.architecture.json",
+      "/tmp/archify-round23-node22/candidate-en.html",
+      "--repo-root",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify",
+      "--json"
+    ],
+    "exit": 0,
+    "node": "v22.23.3",
+    "freshHtmlSha256": "dc574f6d3bbb97d83fe57fa04ca8722b2c61fedf799f193fdd7565eb50926752",
+    "originalHtmlSha256": "dc574f6d3bbb97d83fe57fa04ca8722b2c61fedf799f193fdd7565eb50926752",
+    "identical": true
+  },
+  {
+    "arm": "candidate",
+    "locale": "zh-CN",
+    "argv": [
+      "/opt/homebrew/opt/node@22/bin/node",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/archify/bin/archify.mjs",
+      "deliver",
+      "architecture",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/experiments/source-link-context/inputs/zh-CN.architecture.json",
+      "/tmp/archify-round23-node22/candidate-zh-CN.html",
+      "--repo-root",
+      "/Users/tsk/.codex/worktrees/lab-source-link-context/archify",
+      "--json"
+    ],
+    "exit": 0,
+    "node": "v22.23.3",
+    "freshHtmlSha256": "ef5311070a15a8850e43ef464b3cb21864b9c3a8d2b0e7e0938f2306e9f059e7",
+    "originalHtmlSha256": "ef5311070a15a8850e43ef464b3cb21864b9c3a8d2b0e7e0938f2306e9f059e7",
+    "identical": true
+  }
+]

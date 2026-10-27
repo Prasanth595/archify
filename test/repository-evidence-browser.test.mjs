@@ -5,6 +5,71 @@ import test from 'node:test';
 import { ChromeVisualBrowser, findChrome } from '../archify/bin/visual-check.mjs';
 import { git, fixture, run } from './helpers/repository-evidence-fixture.mjs';
 
+test('source link accessible names distinguish labels and locations', {
+  skip: process.env.ARCHIFY_CHROME ? false : 'Set ARCHIFY_CHROME to run evidence browser checks.',
+  timeout: 60000,
+}, async () => {
+  const data = fixture();
+  data.diagram.components[0].sources = [
+    { path: 'src/router.js', line: 1, label: 'Entry point' },
+    { path: 'src/router.js', line: 2, end_line: 3, label: 'Route body' },
+    { path: 'src/store.js' },
+  ];
+  const browser = new ChromeVisualBrowser(findChrome());
+  try {
+    for (const locale of ['en', 'zh-CN']) {
+      for (const local of [false, true]) {
+        const url = local ? 'http://git.internal/Team/repo' : 'https://github.com/example/evidence-repo';
+        data.diagram.meta.locale = locale;
+        data.diagram.meta.repository = { url, revision: data.revision, ...(local ? { link_mode: 'local-only' } : {}) };
+        git(data.root, 'remote', 'set-url', 'origin', url);
+        fs.writeFileSync(data.input, JSON.stringify(data.diagram));
+        const artifactPath = path.join(data.root, `names-${locale}-${local}.html`);
+        const result = run(['deliver', 'architecture', data.input, artifactPath, '--repo-root', data.root, '--json']);
+        assert.equal(result.status, 0, result.stderr || result.stdout);
+        await browser.inspect({ artifactPath, width: 1440, height: 900, theme: 'light' });
+        const sessionId = await browser.sessionPromise;
+        const rows = await browser.cdp.send('Runtime.evaluate', {
+          expression: `(() => {
+            Archify.focus.set('users', { toggle: false });
+            return [...document.querySelectorAll('#focus-evidence .semantic-passport-source')].map(row => ({
+              tag: row.tagName, href: row.getAttribute('href'), text: row.textContent
+            }));
+          })()`, returnByValue: true,
+        }, sessionId);
+        assert.equal(rows.exceptionDetails, undefined);
+        const observed = rows.result.value;
+        assert.equal(observed.length, 3);
+        if (local) {
+          assert.deepEqual(observed.map(row => row.tag), ['DIV', 'DIV', 'DIV']);
+          assert.deepEqual(observed.map(row => row.href), [null, null, null]);
+          assert.match(observed[0].text, /Entry pointL1/);
+          assert.match(observed[1].text, /Route bodyL2–3/);
+          continue;
+        }
+        const base = `${url}/blob/${data.revision}`;
+        assert.deepEqual(observed.map(row => row.href), [`${base}/src/router.js#L1`, `${base}/src/router.js#L2-L3`, `${base}/src/store.js`]);
+        const names = [];
+        for (let index = 0; index < 3; index++) {
+          const remote = await browser.cdp.send('Runtime.evaluate', {
+            expression: `document.querySelectorAll('#focus-evidence .semantic-passport-source')[${index}]`,
+          }, sessionId);
+          const tree = await browser.cdp.send('Accessibility.getPartialAXTree', { objectId: remote.result.objectId, fetchRelatives: false }, sessionId);
+          names.push(tree.nodes.find(node => !node.ignored)?.name?.value);
+        }
+        assert.notEqual(names[0], names[1]);
+        for (const [index, label, location, sourcePath] of [[0, 'Entry point', 'L1', 'src/router.js'], [1, 'Route body', 'L2–3', 'src/router.js'], [2, 'store.js', '', 'src/store.js']]) {
+          assert.ok(names[index].includes(label), names[index]);
+          if (location) assert.ok(names[index].includes(location), names[index]);
+          assert.ok(names[index].includes(sourcePath), names[index]);
+          assert.ok(names[index].includes(data.revision.slice(0, 7)), names[index]);
+          assert.match(names[index], locale === 'en' ? /Open/ : /打开/);
+        }
+      }
+    }
+  } finally { await browser.close(); }
+});
+
 test('browser renders local-only sources as searchable text and web sources as links', {
   skip: process.env.ARCHIFY_CHROME ? false : 'Set ARCHIFY_CHROME to run evidence browser checks.',
   timeout: 60000,

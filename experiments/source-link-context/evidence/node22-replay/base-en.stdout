@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "bc8ba59e-b03c-4697-83f1-b4da851135a4",
+  "ok": true,
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/tsk/.codex/worktrees/lab-source-link-context/archify/experiments/source-link-context/inputs/en.architecture.json",
+  "output": "/private/tmp/archify-round23-node22/base-en.html",
+  "specification": {
+    "sha256": "8dc9d05fca9bc40b7265490b98718a0104b7b8ab16312d45fdcaf05067a8e268",
+    "bytes": 5434
+  },
+  "artifact": {
+    "sha256": "bd14ad5c0b7417a09c1ff510fea35aadaf9d4214d8cb42e5a1fef88c177c0740",
+    "bytes": 877088
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "errors": 0,
+    "warnings": 0
+  },
+  "evidence": {
+    "verified": true,
+    "repository": "https://github.com/tt-a1i/archify",
+    "revision": "d5d979493bba650b3995836afd379cd249f2d0dd",
+    "references": 2
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T23:50:51.017Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

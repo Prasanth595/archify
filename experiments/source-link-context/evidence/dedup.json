@@ -1,0 +1,167 @@
+{
+  "remoteHeadCount": 315,
+  "scanScope": "Keyword queries, not exhaustive; existing experiment review in source-excerpt-audit.",
+  "scans": [
+    {
+      "query": "repo:tt-a1i/archify \"source\" \"accessible\"",
+      "isError": false,
+      "items": [
+        {
+          "title": "[Proposal]: A long text description without a visible subtitle",
+          "url": "https://github.com/tt-a1i/archify/issues/1112"
+        },
+        {
+          "title": "feat(website): expose all ten diagram types across homepage, Start, Guide and Proof Lab",
+          "url": "https://github.com/tt-a1i/archify/issues/918"
+        },
+        {
+          "title": "[Accessibility]: Viewer menus should preserve modified navigation keys",
+          "url": "https://github.com/tt-a1i/archify/issues/907"
+        },
+        {
+          "title": "fix(viewer): keep explored relationships visible outside the semantic passport",
+          "url": "https://github.com/tt-a1i/archify/issues/221"
+        },
+        {
+          "title": "feat(reader): voluntary feedback and update awareness for standalone artifacts",
+          "url": "https://github.com/tt-a1i/archify/issues/1064"
+        },
+        {
+          "title": "[Feature][Workflow] Preserve critical approval details within the first-screen constraint",
+          "url": "https://github.com/tt-a1i/archify/issues/84"
+        },
+        {
+          "title": "feat(artifacts): polish standalone page reading and interaction experience",
+          "url": "https://github.com/tt-a1i/archify/issues/1068"
+        },
+        {
+          "title": "explainer: workflow shorthand writes the Chinese lane label \"分支 N\" on non-Chinese pages",
+          "url": "https://github.com/tt-a1i/archify/issues/1082"
+        },
+        {
+          "title": "Make localization agent-native: resolve bundled catalogs by locale with optional overrides",
+          "url": "https://github.com/tt-a1i/archify/issues/588"
+        },
+        {
+          "title": "[Bug]: Historical Timeline years produce impossible UTC offsets",
+          "url": "https://github.com/tt-a1i/archify/issues/753"
+        },
+        {
+          "title": "[Bug][Viewer] Passport and Finder text lacks contrast in light presets",
+          "url": "https://github.com/tt-a1i/archify/issues/1040"
+        },
+        {
+          "title": "Improve bottom Node index with grouped rows and wrapping items",
+          "url": "https://github.com/tt-a1i/archify/issues/664"
+        },
+        {
+          "title": "Make Semantic Passport manually movable with bounded pointer and keyboard controls",
+          "url": "https://github.com/tt-a1i/archify/issues/245"
+        },
+        {
+          "title": "Allow per-diagram legend labels and visibility",
+          "url": "https://github.com/tt-a1i/archify/issues/52"
+        },
+        {
+          "title": "[architecture] Dashed connection labels render in messagebus color (orange) instead of matching the dashed variant color (violet)",
+          "url": "https://github.com/tt-a1i/archify/issues/142"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify \"source\" \"aria-label\"",
+      "isError": false,
+      "items": [
+        {
+          "title": "explainer: workflow shorthand writes the Chinese lane label \"分支 N\" on non-Chinese pages",
+          "url": "https://github.com/tt-a1i/archify/issues/1082"
+        },
+        {
+          "title": "[Bug]: Historical Timeline years produce impossible UTC offsets",
+          "url": "https://github.com/tt-a1i/archify/issues/753"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify \"source\" \"line\"",
+      "isError": false,
+      "items": [
+        {
+          "title": "[Bug]: GitHub Markdown source citations omit plain view for line anchors",
+          "url": "https://github.com/tt-a1i/archify/issues/1128"
+        },
+        {
+          "title": "Add Verifiable Source Evidence to Architecture Relationships",
+          "url": "https://github.com/tt-a1i/archify/issues/1132"
+        },
+        {
+          "title": "feat(evidence): support revision-pinned source links for public gitea.com",
+          "url": "https://github.com/tt-a1i/archify/issues/864"
+        },
+        {
+          "title": "[Bug]: Wrapped CJK text can start a line with closing punctuation (Tree, Timeline, Sequence notes)",
+          "url": "https://github.com/tt-a1i/archify/issues/1067"
+        },
+        {
+          "title": "[Proposal]: Source links for GitHub Enterprise hosts (GHE.com / GHES), like provider: \"gitlab\" for self-managed GitLab",
+          "url": "https://github.com/tt-a1i/archify/issues/1034"
+        },
+        {
+          "title": "[Bug]: Two anti-parallel labelAt connections render as one line, and delivery passes 9/9",
+          "url": "https://github.com/tt-a1i/archify/issues/248"
+        },
+        {
+          "title": "[Feature] Per-edge attach-point offset (fromOffset/toOffset, both axes) for straight-line alignment when the facing side isn't spread",
+          "url": "https://github.com/tt-a1i/archify/issues/252"
+        },
+        {
+          "title": "[architecture] Support revision-verified evidence from multiple repositories",
+          "url": "https://github.com/tt-a1i/archify/issues/196"
+        },
+        {
+          "title": "[Bug]: Repository evidence accepts annotated tag object IDs as commit SHAs",
+          "url": "https://github.com/tt-a1i/archify/issues/1129"
+        },
+        {
+          "title": "[Bug]: Class rendering changes commas inside quoted parameter literals",
+          "url": "https://github.com/tt-a1i/archify/issues/1127"
+        },
+        {
+          "title": "docs: expand README discovery and previews to all ten released diagram types",
+          "url": "https://github.com/tt-a1i/archify/issues/917"
+        },
+        {
+          "title": "[提案]：Task_Checklist",
+          "url": "https://github.com/tt-a1i/archify/issues/1114"
+        },
+        {
+          "title": "explainer: parser crashes (TypeError) on a heading line holding a lone CR or U+2028",
+          "url": "https://github.com/tt-a1i/archify/issues/1083"
+        },
+        {
+          "title": "[Proposal]: explainer: `@meta locale=zh-TW` renders the page chrome in Simplified Chinese",
+          "url": "https://github.com/tt-a1i/archify/issues/1125"
+        },
+        {
+          "title": "[Proposal]: Per-connection direction (both / none) for reference and two-way links",
+          "url": "https://github.com/tt-a1i/archify/issues/1139"
+        }
+      ]
+    }
+  ],
+  "owners": [
+    {
+      "number": 1063,
+      "title": "feat: GitHub Enterprise source links for repository evidence",
+      "state": "open",
+      "head": "b06593763f5c3a041c3dde0391e89594b40d4788",
+      "scope": "## Problem and value\n\nCloses #1034.\n\nA repository-backed diagram on a GitHub Enterprise host (GHE.com or a\nself-managed GHES) cannot publish source links today. Web links are only built\nfor github.com, gitee.com and gitlab.com, or for a self-managed GitLab host\ndeclared with `provider: \"gitlab\"` (#662). For any other host,\n`provider: \"github\"` fails with `repository-evidence/provider-invalid`, so the\nonly way through is `link_mode: \"local-only\"`: verification still runs, but the\nsources render as plain text instead of revision-pinned links.\n\nGitHub Enterprise Server and GHE.com serve exactly the github.com URL layout\n(`/<owner>/<repo>/blob/<rev>/<path>#L<a>-L<b>`, `/<owner>/<repo>/tree/<rev>`),\nso no new link builder is needed — the declaration only has to be accepted, the\nsame way the accepted GitLab precedent accepts a declared self-managed host.\n\n## What changed\n\n- `archify/renderers/shared/repository-location.mjs`\n  - `parseRepositoryRemote` now honours a `provider: \"github\"` hint on a host\n    that is not github.com, mirroring the existing `provider: \"gitlab\"` hint.\n    A public host still selects its provider automatically, and a declared\n    provider that disagrees with a public host still fails\n    `repository-evidence/provider-invalid`.\n  - The returned location gained `publicHost` (whether the host is one of the\n    known public forge hosts), so callers do not have to repeat the host table.\n- `archify/renderers/shared/repository-evidence.mjs`\n  - The evidence label keeps the host name for a declared GitHub Enterprise\n    host (`ghe.example.com/Platform/evidence-repo`) instead of abbreviating to\n    an owner/repository path that would read as a github.com repository. The\n    label is rendered into every artifact, so github.com, gitee.com,\n    gitlab.com, self-managed GitLab and `local-only` keep byte-identical\n    labels.\n  - The `provider-invalid` and `links-unsupported` diagnostics and their\n    `supportedFixes` now name the GitHub Enterprise option, and state the two\n    conditions that still reject such a host: a GitHub-family path is\n    `owner/repository` on the standard HTTPS port (only GitLab names nested\n    groups).\n- `archify/references/authoring-contract.md` and\n  `archify/references/repository-authoring.md` — the declaration, the\n  `owner/repository` rule, the `#L<a>-L<b>` anchor and the `provider: \"github\"`\n  entry in the local-only identity paragraph.\n- `CHANGELOG.md` — an `### Added` entry under `## [Unreleased]`.\n- `test/repository-evidence.test.mjs` — two new tests mirroring the\n  self-managed GitLab tests: the accepted host (HTTPS, Git SSH, SSH URL and a\n  case-variant path all match one repository, with the github.com link layout)\n  and the guards that still apply (no declaration, a provider that disagrees\n  with a public host, plain HTTP, a nested path, a non-standard port, and\n  origins on another host or port). The existing github.com, gitee.com,\n  gitlab.com and self-managed GitLab tests now pin the label bytes.\n- `archify.zip` — rebuilt with the canonical Node 22 toolchain; two builds are\n  byte-identical (sha256\n  `76a6fe5048f8769a1fcae75826757c2fec8d8a1865908a6277eb2cad48001bb6`).\n\n## Verification\n\n- `node scripts/run-tests.mjs test/repository-evidence.test.mjs` — 34 pass,\n  0 fail, 1 pre-existing platform skip.\n- Red proof: with the provider hint reverted, exactly the two new tests fail\n  (`repository-evidence/provider-invalid`); the 32 pre-existing tests still\n  pass. Restored, the file is green again.\n- `npm run test:generated` — all checks pass (viewer, brand marks, generated\n  validators, release identity, goldens).\n- Full `node scripts/run-tests.mjs` run on this branch: 3141 pass, 44 fail.\n  The same suite on the same tree with these changes stashed gives 3140 pass,\n  43 fail, and the two failure sets are identical except for one\n  load-sensitive update-notifier lease test that passes when it is re-run in\n  isolation. The shared failures are pre-existing Windows-environment ones\n  (symlink/EPERM, path separators) and do not touch repository evidence.\n- Two independent reviews of the diff; the findings about the invalid example\n  path, the contradicting paragraph, the missing changelog entry, the message\n  wording, the missing negative cases and the duplicated host table were\n  applied.\n\n## Scope and limits\n\n- The declaration is trusted exactly as the accepted GitLab precedent trusts\n  it: Archify never contacts the host to detect its forge. A wrong\n  declaration can only produce broken links; verification still runs against\n  the local checkout, and a web link is only built for a revision, path and\n  line range that were verified there.\n- A GitHub-family repository path is `owner/repository`; nested groups remain\n  GitLab-only, and a host on a non-standard HTTPS port still has no web links.\n- The explainer still derives `link_mode: \"local-only\"` for an unrecognised\n  origin, because it does not pass a provider hint — unchanged behaviour, the\n  same gap the self-managed GitLab case has today. An explainer document that\n  declares `meta.repository.provider` explicitly does get links.\n\n## Refresh onto the current `dev`\n\n- Rebased onto `dev` @ `7b4ebba9`; the only conflict was the packaged archive `archify.zip`, rebuilt from the merged tree with the canonical Node 22 toolchain (two builds, byte-identical, sha256 `76a6fe5048f8769a1fcae75826757c2fec8d8a1865908a6277eb2cad48001bb6`).\n- New head `ade96ef7`. The focused suite and `npm run test:generated` are green on the refreshed branch.\n"
+    },
+    {
+      "number": 1132,
+      "title": "Add Verifiable Source Evidence to Architecture Relationships",
+      "state": "open",
+      "scope": "## Problem\n\nArchitecture diagrams can identify repository-backed components, but component-level source evidence does not necessarily explain why a particular relationship exists.\n\nAt development baseline `500d4a65211ffe607fde6b3ce7505027b45bb59e`, the Architecture connection schema rejects a `sources` property, while the shared repository-evidence collector enumerates Architecture components rather than connections.\n\nA minimal CLI reproduction confirms that adding `sources` to `/connections/0` fails with `schema/additionalProperties`. As a result, an authored relationship can be displayed without a first-class, verifiable source reference attached to that relationship.\n\n## Proposed solution\n\nExtend the existing revision-pinned repository-evidence contract to support optional source evidence on Architecture connections.\n\nReuse the existing evidence representation, repository identity, pinned-commit validation, path-safety checks, and line-range validation wherever possible. Expose verified relationship evidence through the standalone Viewer without changing the authored topology or canonical diagram geometry.\n\nCoordinate with PR #1063 before modifying the shared repository-evidence pipeline.\n\n## Scope\n\n- Add an optional, backward-compatible connection evidence representation.\n- Validate connection evidence through the existing repository-evidence pipeline.\n- Expose verified evidence in relationship inspection.\n- Distinguish verified, missing, and invalid evidence.\n- Preserve existing node evidence behavior and other renderer contracts.\n\n## Non-goals\n\n- Automatically inferring relationships.\n- Treating source references as proof of runtime execution or causality.\n- Automatically crawling repositories.\n- Introducing runtime network requests.\n- Requiring evidence on existing diagrams.\n- Building a parallel source-verification implementation.\n\n## Acceptance criteria\n\n- A valid connection source resolves to the declared repository revision, file, and permitted line range.\n- Invalid revisions, paths, and line ranges produce actionable diagnostics.\n- Existing diagrams without connection evidence continue to validate and render.\n- Adding evidence does not change relationship endpoints, direction, topology, routing, or canonical SVG geometry.\n- Existing Architecture node evidence remains compatible.\n- Other supported renderer types retain their existing evidence behavior.\n- No runtime network request is introduced.\n- A real standalone HTML example, negative fixtures, and concise browser evidence are provided.\n- Automated results and human visual acceptance are reported separately.\n\n## Implementation checklist\n\n- [ ] Coordinate the schema and shared-validator boundary with PR #1063.\n- [ ] Agree on the smallest compatible connection evidence representation.\n- [ ] Extend evidence validation and verified payload collection.\n- [ ] Add relationship-level evidence inspection in the Viewer.\n- [ ] Add invalid-evidence and legacy-input regression fixtures.\n- [ ] Run the required test suite and cross-renderer regression checks.\n- [ ] Attach reproducible HTML and concise review evidence.\n\n## Open design question\n\nShould connection evidence reuse the existing source-reference structure unchanged, or does the current payload require a minimal extension? Prefer reuse unless a concrete incompatibility is demonstrated."
+    }
+  ]
+}
