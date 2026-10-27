@@ -622,3 +622,25 @@ clangd 探针的 harness/进程 exit 0 不覆盖 outgoing 方法失败。实际 
 该观察把上游测试 registry 改成本地 path 依赖，显式声明 edition/resolver，并用空库文件提供本地 package target；**不是上游测试原样复现**，也不是当前 Cargo 最新版本验证。两个 scout 文件保留的是观察前的只读筛选记录，其中“未运行”仅指该阶段；实际运行以观察包为准。没有运行 Bazel、nightly unit graph、Archify 测试或人类理解对照。本批没有方向通过新增产品实验的门槛，因此只推研究总账，不制作无依据的示意截图，也不新增 PR。
 
 [独立交付审计](audit/round24-delivery-review.md)与[验证范围](audit/round24-validation.json)分开记录源码预期、派生实测和未知项。目标保持进行中；下次遇到同类候选，先要求完整原生证据和明确阅读任务，再判断现有 Explainer 是否已足够。
+
+## 第二十五批：完整诊断与失败尝试的原生阅读
+
+开始前核对 [316 个远程 head](audit/remote-branches-round25.txt)：相对第24批开头只更新研究总账到 `ae0768dd`，实验分支和 dev 未变。结合历史 diagnostic-locations、source-navigation、grammar-reading、matching-reading 及[本轮 issue/PR 检索](audit/round25-dedup.json)排重；没有把又一个类型/正则/语法工具当作新增实现方向。Aquascope 与 RustViz 的候选直接被既有完整记录排除。
+
+| 阅读问题 | 完成的证据与决定 |
+| --- | --- |
+| [TypeScript 嵌套类型失配](scouts/type-mismatch-round25.md) | 完整官方 fixture 与诊断已经逐层解释四层回调返回类型。进一步用现有 TypeScript5.8.3 / Node22.23.3 实跑完整输入，明确启用 strict、pretty、noErrorTruncation、noEmit；退出2并给出完整TS2322，叶子为 number 对 string，不增加类型解析器或同义层级图。 |
+| [正则跨次调用状态](scouts/regex-call-state-round25.md) | 自然问题是 global exec 的零宽匹配让 lastIndex 不前进；固定 MDN 例子已解释这一状态。没有执行题主的无界循环、运行网页或复制 GPL 工具实现，暂缓专用状态阅读器。 |
+| [Ohm 源码语义](scouts/ohm-source-round25.md)及[真实原生观察](audit/round25-ohm-native/README.md) | 对 #254 完整 grammar 与 ab 输入实际检查原例及讨论中的两种改法。原生 UI 和完整 trace 已能区别局部成功、整串失败，以及被默认过滤的失败尝试。暂缓另一个解析可视化器。 |
+
+[TypeScript 原始观察包](audit/round25-ts-native/README.md)保留384字节原始fixture、1501字节expected、Apache-2.0许可、完整ANSI输出、时间/命令/源码和工具哈希。原件来自5.9.3固定提交，实际运行的是已安装5.8.3；不是同版本上游suite运行或字节相等对照。CLI实际位置是原文件第7行，上游harness baseline是第6行，不能把其行号直接套回原件。stderr空，未生成JavaScript。上游目录的局部 `.gitattributes` 保留原始CRLF，避免仓库行尾规范化改变输入身份。复现时在该观察包目录，用现有匹配工具运行 `node /existing/typescript/bin/tsc --strict --noEmit --pretty true --noErrorTruncation upstream/fixture.ts`，预期退出2；`run.py` 是本次环境的原始执行脚本。
+
+Ohm页面报告引擎 **17.5.0**，编辑器部署commit未知，与固定编辑器源码 `2ff2a072` 分开。原例 `A | B` 在A消费a之后，整串end遇到余下b而失败；`B | A` 与作者提出的 `A end | B end` 在这个小例里都成功。作者明确指出其真实应用不是前缀关系，因此不把重排当作通用修复。
+
+成功时默认关闭 Explain parse；打开后可看到 `A end` 的失败尝试，并能悬停A联动源码。四张实际截图、三个完整原生trace、每次输入/结果/UI状态及操作日志均保留。截图是不同原生状态，不是像素对照，也不证明人类理解效率。首次操作因示例编辑器隐藏而失败；检查现状后通过 Add example 完成输入，失败日志未删除。任务结束时移除自己添加的ab示例、恢复原Arithmetic内容与原首个示例；目标研究空间仍保留。
+
+![Ohm 原生 Explain parse 显示失败尝试并联动源码](audit/round25-ohm-native/scoped-end-explained.png)
+
+[复制记录](audit/round25-copy-map.json)绑定63份原始材料；[独立审计](audit/round25-delivery-review.md)与[验证范围](audit/round25-validation.json)分别核对原始输入、实际输出及文案边界。三个scout文件保留筛选阶段的只读结论，后续实测以原生观察包为准。本批无产品改动、Archify测试或新实验分支；只推研究总账，未创建PR、发布、合并或安装。目标保持进行中。
+
+首次 staged whitespace 检查将原始CRLF、expected中的空白与终端日志末尾空行报为错误，[原始输出](audit/round25-whitespace-before.stdout)保留。最终仅对这些原始来源/输出设置局部Git属性，保持字节身份；文稿和脚本仍正常检查，没有清洗原始记录。

@@ -1,0 +1,6 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(34);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+const state=await page.evaluate(()=>{const grammar=document.querySelector('.cm-s-light-owl').CodeMirror.getValue();const input=document.querySelector('.cm-s-default').CodeMirror.getValue();const g=window.ohm.grammar(grammar);const r=g.match(input);return {grammar,input,version:window.ohm.version,succeeded:r.succeeded(),message:r.message||null,trace:g.trace(input).toString(),parseHTML:document.querySelector('#expandedInputWrapper')?.parentElement.outerHTML,checks:[...document.querySelectorAll('input[type=checkbox]')].map(e=>({name:e.name,checked:e.checked})),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},ua:navigator.userAgent,url:location.href,capturedAt:new Date().toISOString()};});
+await fs.writeFile('/tmp/archify-round25-ohm/original-native.json',JSON.stringify(state,null,2));
+await fs.writeFile('/tmp/archify-round25-ohm/original.trace.txt',state.trace);
+console.log({succeeded:state.succeeded,message:state.message,version:state.version,trace:state.trace,parseHTML:state.parseHTML?.slice(0,1500)});

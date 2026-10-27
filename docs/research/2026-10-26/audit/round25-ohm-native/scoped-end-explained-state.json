@@ -1,0 +1,86 @@
+{
+  "grammar": "X {\n  X = A end | B end\n  A = \"a\"\n  B = \"a\" \"b\"\n}",
+  "input": "ab",
+  "version": "17.5.0",
+  "parseHTML": "<div id=\"visualizerBody\"><div id=\"expandedInputWrapper\"><div id=\"sizer\">&nbsp;</div> <canvas id=\"expandedInput\" width=\"720\" height=\"19\" style=\"width: 720px; height: 19px;\"></canvas></div> <div id=\"parseResults\"><div id=\"node-0\" class=\"pexpr undecided\"><!----> <div class=\"children\"><div id=\"node-43\" class=\"pexpr labeled\"><div class=\"self\"><div class=\"label\" style=\"min-width: 19.2656px;\">\n  X<!----> <!----></div></div> <div class=\"children\"><div id=\"node-45\" class=\"pexpr\"><!----> <div class=\"children vbox\"><div id=\"node-46\" class=\"pexpr failed\"><!----> <div class=\"children\"><div id=\"node-48\" class=\"pexpr labeled\"><div class=\"self\"><div class=\"label\" style=\"min-width: 9.63281px;\">\n  A<!----> <!----></div></div> <div class=\"children\"><div id=\"node-50\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 9.63281px;\">\n  \"a\"<!----> <!----></div></div> <!----></div></div></div><div id=\"node-49\" class=\"pexpr failed labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 0px;\">\n  end<!----> <!----></div></div> <!----></div></div></div><div id=\"node-47\" class=\"pexpr\"><!----> <div class=\"children\"><div id=\"node-51\" class=\"pexpr labeled\"><div class=\"self\"><div class=\"label\" style=\"min-width: 19.2656px;\">\n  B<!----> <!----></div></div> <div class=\"children\"><div id=\"node-53\" class=\"pexpr\"><!----> <div class=\"children\"><div id=\"node-54\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 9.63281px;\">\n  \"a\"<!----> <!----></div></div> <!----></div><div id=\"node-55\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 9.63281px;\">\n  \"b\"<!----> <!----></div></div> <!----></div></div></div></div></div><div id=\"node-52\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 0px;\">\n  end<!----> <!----></div></div> <!----></div></div></div></div></div></div></div><div id=\"node-44\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 0px;\">\n  end<!----> <!----></div></div> <!----></div></div></div></div></div>",
+  "checks": [
+    {
+      "name": "showFailures",
+      "checked": true
+    },
+    {
+      "name": "showSpaces",
+      "checked": false
+    }
+  ],
+  "labels": [
+    {
+      "text": "X",
+      "nodeClass": "pexpr labeled"
+    },
+    {
+      "text": "A",
+      "nodeClass": "pexpr labeled"
+    },
+    {
+      "text": "\"a\"",
+      "nodeClass": "pexpr labeled leaf"
+    },
+    {
+      "text": "end",
+      "nodeClass": "pexpr failed labeled leaf"
+    },
+    {
+      "text": "B",
+      "nodeClass": "pexpr labeled"
+    },
+    {
+      "text": "\"a\"",
+      "nodeClass": "pexpr labeled leaf"
+    },
+    {
+      "text": "\"b\"",
+      "nodeClass": "pexpr labeled leaf"
+    },
+    {
+      "text": "end",
+      "nodeClass": "pexpr labeled leaf"
+    },
+    {
+      "text": "end",
+      "nodeClass": "pexpr labeled leaf"
+    }
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1
+  },
+  "capturedAt": "2026-10-27T22:38:37.691Z",
+  "exampleRows": [
+    {
+      "text": "👍",
+      "html": "<li id=\"example0\" class=\"example flex-row fail\"><code></code> <div class=\"startRule\"></div> <div title=\"Example should match\" role=\"switch\" class=\"thumbsUpButton\"><span>👍</span></div> <div class=\"delete\"><span>✕</span></div></li>"
+    },
+    {
+      "text": "1+2*3\n👍",
+      "html": "<li id=\"example1\" class=\"example flex-row fail\"><code>1+2*3</code> <div class=\"startRule\"></div> <div title=\"Example should match\" role=\"switch\" class=\"thumbsUpButton\"><span>👍</span></div> <div class=\"delete\"><span>✕</span></div></li>"
+    },
+    {
+      "text": "oh no\n👍",
+      "html": "<li id=\"example2\" class=\"example flex-row fail\"><code>oh no</code> <div class=\"startRule\"></div> <div title=\"Example should match\" role=\"switch\" class=\"thumbsUpButton\"><span>👍</span></div> <div class=\"delete\"><span>✕</span></div></li>"
+    },
+    {
+      "text": "( 123 )\n👍",
+      "html": "<li id=\"example3\" class=\"example flex-row fail\"><code> (  \t123   ) </code> <div class=\"startRule\"></div> <div title=\"Example should match\" role=\"switch\" class=\"thumbsUpButton\"><span>👍</span></div> <div class=\"delete\"><span>✕</span></div></li>"
+    },
+    {
+      "text": "(2+4)*7\n👍",
+      "html": "<li id=\"example4\" class=\"example flex-row fail\"><code>(2+4)*7</code> <div class=\"startRule\"></div> <div title=\"Example should match\" role=\"switch\" class=\"thumbsUpButton\"><span>👍</span></div> <div class=\"delete\"><span>✕</span></div></li>"
+    },
+    {
+      "text": "ab\nX ▸ (default)\n👍",
+      "html": "<li id=\"example5\" class=\"example selected flex-row pass\"><code>ab</code> <div class=\"startRule\">X ▸ (default)</div> <div title=\"Example should match\" role=\"switch\" class=\"thumbsUpButton\"><span>👍</span></div> <div class=\"delete\"><span>✕</span></div></li>"
+    }
+  ]
+}

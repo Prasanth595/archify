@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "exit": 2,
+  "scope": "First staged check before raw-only whitespace attributes; failures are captured terminal blank lines and upstream CRLF/trailing spaces. Original bytes retained."
+}

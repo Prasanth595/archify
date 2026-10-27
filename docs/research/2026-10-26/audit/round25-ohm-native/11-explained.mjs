@@ -1,0 +1,7 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(34);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.hover('loc=css:#parseResults .label:text-is("A")',{label:'Inspect matched rule A'});
+const state=await page.evaluate(()=>({grammar:document.querySelector('.cm-s-light-owl').CodeMirror.getValue(),input:document.querySelector('.cm-s-default').CodeMirror.getValue(),version:window.ohm.version,parseHTML:document.querySelector('#visualizerBody').outerHTML,checks:[...document.querySelectorAll('input[type=checkbox]')].map(e=>({name:e.name,checked:e.checked})),labels:[...document.querySelectorAll('#parseResults .label')].map(e=>({text:e.textContent.trim(),nodeClass:e.closest('.pexpr').className})),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},capturedAt:new Date().toISOString(),exampleRows:[...document.querySelectorAll('[aria-label="Examples"] li')].map(e=>({text:e.innerText,html:e.outerHTML}))}));
+await fs.writeFile('/tmp/archify-round25-ohm/scoped-end-explained-state.json',JSON.stringify(state,null,2));
+const snapshot=await page.snapshot();await fs.writeFile('/tmp/archify-round25-ohm/scoped-end-explained-snapshot.json',JSON.stringify(snapshot,null,2));
+await page.screenshot({path:'/tmp/archify-round25-ohm/scoped-end-explained.png'});console.log({checks:state.checks,labels:state.labels,exampleRows:state.exampleRows.slice(-1)});console.log(snapshot);

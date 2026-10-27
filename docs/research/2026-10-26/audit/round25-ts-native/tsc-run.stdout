@@ -1,0 +1,12 @@
+[96mupstream/fixture.ts[0m:[93m7[0m:[93m1[0m - [91merror[0m[90m TS2322: [0mType '() => () => () => () => number' is not assignable to type '() => () => () => () => string'.
+  Call signature return types '() => () => () => number' and '() => () => () => string' are incompatible.
+    Call signature return types '() => () => number' and '() => () => string' are incompatible.
+      Call signature return types '() => number' and '() => string' are incompatible.
+        Type 'number' is not assignable to type 'string'.
+
+[7m7[0m y = x;
+[7m [0m [91m~[0m
+
+
+Found 1 error in upstream/fixture.ts[90m:7[0m
+

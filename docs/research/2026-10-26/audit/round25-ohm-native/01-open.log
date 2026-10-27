@@ -1,0 +1,173 @@
+{ spaceId: 34 }
+[p1 "Ohm Editor" | space "Archify research 20261026"(34): 1 managed, 0 untracked — p1* "Ohm Editor"]
+root
+  container
+    container
+      container
+        heading
+          text "Grammar"
+        container
+          combobox "Selected grammar" [ref=1, loc=css:select[aria-label="Selected grammar"]]
+            text "[local storage]"
+          button [ref=2]
+            text "Save"
+            text "d"
+          button [ref=3]
+            text "⋮"
+      container
+        container [ref=4]
+        container [ref=5]
+          container
+            container
+              text "Arithmetic"
+              text "{"
+            text "Exp"
+            container
+              text "="
+              text "AddExp"
+            text "AddExp"
+            container
+              text "="
+              text "AddExp"
+              text ""+""
+              text "MulExp"
+              text "-- plus"
+            container
+              text "|"
+              text "AddExp"
+              text ""-""
+              text "MulExp"
+              text "-- minus"
+            container
+              text "|"
+              text "MulExp"
+            text "MulExp"
+            container
+              text "="
+              text "MulExp"
+              text ""*""
+              text "ExpExp"
+              text "-- times"
+            container
+              text "|"
+              text "MulExp"
+              text ""/""
+              text "ExpExp"
+              text "-- divide"
+            container
+              text "|"
+              text "ExpExp"
+            text "ExpExp"
+            container
+              text "="
+              text "PriExp"
+              text ""^""
+              text "ExpExp"
+              text "-- power"
+            container
+              text "|"
+              text "PriExp"
+            text "PriExp"
+            container
+              text "="
+              text ""(""
+              text "Exp"
+              text "")""
+              text "-- paren"
+            container
+              text "|"
+              text ""+""
+              text "PriExp"
+              text "-- pos"
+            container
+              text "|"
+              text ""-""
+              text "PriExp"
+              text "-- neg"
+            container
+              text "|"
+              text "ident"
+            container
+              text "|"
+              text "number"
+            container
+              text "ident"
+              text "(an identifier)"
+            container
+              text "="
+              text "letter"
+              text "alnum"
+              text "*"
+            container
+              text "number"
+              text "(a number)"
+            container
+              text "="
+              text "digit"
+              text "*"
+              text "".""
+              text "digit"
+              text "+"
+              text "-- fract"
+            container
+              text "|"
+              text "digit"
+              text "+"
+              text "-- whole"
+            container
+              text "}"
+              container
+                text "alnum (an alpha-numeric character) = letter | digit"
+                text "digit (a digit) = "0".."9""
+    container
+      container
+        heading
+          text "EXAMPLES"
+        button "Add example" [ref=6, loc=css:button[aria-label="Add example"]]
+          text "+"
+        button "Collapse" [ref=7, loc=css:button[aria-label="Collapse"]]
+      unordered_list "Examples"
+        list_item
+          switch [ref=8]
+            text "👍"
+        list_item
+          text "1+2*3"
+          switch [ref=9]
+            text "👍"
+        list_item
+          text "oh no"
+          switch [ref=10]
+            text "👍"
+        list_item
+          text "( 123 )"
+          switch [ref=11]
+            text "👍"
+        list_item
+          text "(2+4)*7"
+          switch [ref=12]
+            text "👍"
+    container
+      heading
+        text "Parse"
+      container
+        canvas
+        text "Exp"
+  container
+    unordered_list
+      list_item
+        checkbox [ref=13, loc=css:input[name="showFailures"]]
+        text "Explain parse"
+      list_item
+        checkbox [ref=14, loc=css:input[name="showSpaces"]]
+        text "Show spaces"
+    container
+      button [ref=15]
+        image
+      button [ref=16]
+        image
+      button [ref=17]
+        image
+      button [ref=18]
+        image
+
+

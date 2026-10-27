@@ -1,0 +1,395 @@
+{
+  "scope": "Batch25 raw source/native observations, source scouts, scoped formatting attributes and current audit; excludes this manifest and evolving shared README",
+  "files": [
+    {
+      "path": "audit/.gitattributes",
+      "sha256": "f757a834d559604ed509cadaa03ee0ead5def058acbc2e75d7f5cbf7fea69177",
+      "bytes": 176
+    },
+    {
+      "path": "audit/remote-branches-round25.txt",
+      "sha256": "1413d362527f32ce517cd19731609420be42cdac7b268b067d3825c15746869c",
+      "bytes": 25360
+    },
+    {
+      "path": "audit/round25-copy-map.json",
+      "sha256": "de3e5186e001343bb0410b05113dee2f158c2987f0636db2f96abf0c2a11e1d4",
+      "bytes": 15214
+    },
+    {
+      "path": "audit/round25-dedup.json",
+      "sha256": "3211385a88278533b006707e180af3426c35239e8fdadf670f994367d72583a9",
+      "bytes": 5163
+    },
+    {
+      "path": "audit/round25-delivery-review.md",
+      "sha256": "777dd6c07ab3cc417599a784135ca938cafd86e89544946458a91ef609fc4cad",
+      "bytes": 8438
+    },
+    {
+      "path": "audit/round25-ohm-native/.gitattributes",
+      "sha256": "c85f38d364111814e2ec9ff2e827738169fac5a49127fbbc002d729f2caca886",
+      "bytes": 94
+    },
+    {
+      "path": "audit/round25-ohm-native/01-open.log",
+      "sha256": "6178675528cdab6b11ef2369ac910b0ac35d6a7b2ba4f797a9bef6ae748c0da3",
+      "bytes": 4401
+    },
+    {
+      "path": "audit/round25-ohm-native/01-open.mjs",
+      "sha256": "ef3ab94e159006c2938f18bb9709fe8a05b8cdb5f26cea18b0b104f6cef718b8",
+      "bytes": 493
+    },
+    {
+      "path": "audit/round25-ohm-native/02-menu.log",
+      "sha256": "4220013b8b78817883fcd4493d2346b55dab0e440c265912893b3632992c2334",
+      "bytes": 6797
+    },
+    {
+      "path": "audit/round25-ohm-native/02-menu.mjs",
+      "sha256": "e58c3da2aa7ba7e94a756ff5cf955cff7ac48b838a630fcf951f534ae9c52cda",
+      "bytes": 971
+    },
+    {
+      "path": "audit/round25-ohm-native/03-controls.log",
+      "sha256": "6ea1a77b98a69be8342c659c4b2f6d71183ef50bc9926279c53433d479658dab",
+      "bytes": 6061
+    },
+    {
+      "path": "audit/round25-ohm-native/03-controls.mjs",
+      "sha256": "1b6efde5af992cbd1633455f8302c248a37d1b3ef75ecc9918225fab6cf637f0",
+      "bytes": 651
+    },
+    {
+      "path": "audit/round25-ohm-native/04-original.log",
+      "sha256": "d54d4c3c14ba931922b42e31fe9e54ca61ffb6ea0e3f39b3280e3b0773a0ceec",
+      "bytes": 361
+    },
+    {
+      "path": "audit/round25-ohm-native/04-original.mjs",
+      "sha256": "7d8d071bb1436dc4bd95508c9c32899f10f7ed40f565a1d44f9bd50fbd480427",
+      "bytes": 1353
+    },
+    {
+      "path": "audit/round25-ohm-native/05-after-focus-failure.log",
+      "sha256": "5b1e97e267617a1b49ad5abd4d5064a45ed169685600268e68db002dbec3dae5",
+      "bytes": 2341
+    },
+    {
+      "path": "audit/round25-ohm-native/05-after-focus-failure.mjs",
+      "sha256": "525f7e8e0d9edd3d2db4099350be6ab167c855cdafc709757ff38dddb2467c5a",
+      "bytes": 689
+    },
+    {
+      "path": "audit/round25-ohm-native/06-add-example.log",
+      "sha256": "e4b3aec824f6f9db17b56a03e9b0ac5dc3f1c8c9061c694d956f42915768590a",
+      "bytes": 2846
+    },
+    {
+      "path": "audit/round25-ohm-native/06-add-example.mjs",
+      "sha256": "0177df3d0d1dffd5c12cb2507c9fef12f23466f7ac38d13d58ed19877c28f8e8",
+      "bytes": 515
+    },
+    {
+      "path": "audit/round25-ohm-native/07-input.log",
+      "sha256": "f5c895ab84bc93e9616db218f2a24054602c25be6ac0eb406705fb786b1f3321",
+      "bytes": 2815
+    },
+    {
+      "path": "audit/round25-ohm-native/07-input.mjs",
+      "sha256": "2710ffa46b6127cefebc85b1eb8b143dc8189bec09fafea567721780e8410ef3",
+      "bytes": 1077
+    },
+    {
+      "path": "audit/round25-ohm-native/08-original-trace.log",
+      "sha256": "ffb8c2279b911492646905ff4ac94c8f596853e179ef3dc5cd1d5daa5afebc4d",
+      "bytes": 1884
+    },
+    {
+      "path": "audit/round25-ohm-native/08-original-trace.mjs",
+      "sha256": "7612f29ee94e77e898f101aa39b95bdc3f2a9d708eb72e4b85f64f225157a4f0",
+      "bytes": 1248
+    },
+    {
+      "path": "audit/round25-ohm-native/09-reordered.log",
+      "sha256": "47fba2de6d464ce80d50b67e805d11c9c8a8b25235526a2ad4883057cd1a26e0",
+      "bytes": 2431
+    },
+    {
+      "path": "audit/round25-ohm-native/09-reordered.mjs",
+      "sha256": "d03e4eda0d81003d97642483b0a3a870d7d0f2a3498f0154922526916690fde6",
+      "bytes": 1783
+    },
+    {
+      "path": "audit/round25-ohm-native/10-scoped-end.log",
+      "sha256": "fb51e7e84c172e62acbcd360efc1f6a0d097118f2c222b4c4b7a7e8648797382",
+      "bytes": 2765
+    },
+    {
+      "path": "audit/round25-ohm-native/10-scoped-end.mjs",
+      "sha256": "f3394909dcf54e2f97dab363e82a7b43fb56bf2d9b5f1770a811405f5b5773bf",
+      "bytes": 1878
+    },
+    {
+      "path": "audit/round25-ohm-native/11-explained.log",
+      "sha256": "4ede17140eee2ec7b47e5b7c74759bcf061b9317926cc1a4c9aa6a53048d8b9c",
+      "bytes": 3635
+    },
+    {
+      "path": "audit/round25-ohm-native/11-explained.mjs",
+      "sha256": "ece96d7df67633a81ba5d4c421e9b6f41592c9d1b675b6ffbac22234b20c9af8",
+      "bytes": 1507
+    },
+    {
+      "path": "audit/round25-ohm-native/12-restore.log",
+      "sha256": "14fa4ee9a37615a6c7f00007aaf63f748a8992c22381ac6825a98f994b1bccfd",
+      "bytes": 5140
+    },
+    {
+      "path": "audit/round25-ohm-native/12-restore.mjs",
+      "sha256": "1f76175ddf455c02aff00a01426208d2d3e53a13d960137d90b3dd535b8bae8e",
+      "bytes": 1436
+    },
+    {
+      "path": "audit/round25-ohm-native/LICENSE-ohm-editor-MIT",
+      "sha256": "7e82a114365cb190f131fecb45a41ea27442403cb353ed531166f3eb552f659e",
+      "bytes": 1105
+    },
+    {
+      "path": "audit/round25-ohm-native/README.md",
+      "sha256": "2d7a4a164dc431287eeee663ce85c61023dc554c3f9e9b8df680cd458459066e",
+      "bytes": 5360
+    },
+    {
+      "path": "audit/round25-ohm-native/after-focus-failure.json",
+      "sha256": "f183f61035af0c4f01f84d0fd00d932638276ead088efd228e2d6078d1f90619",
+      "bytes": 367
+    },
+    {
+      "path": "audit/round25-ohm-native/initial-dom.json",
+      "sha256": "df6c804f49c956f110d700ee7cc65950e564bd7d48e79f1d251c556ef847c46c",
+      "bytes": 4077
+    },
+    {
+      "path": "audit/round25-ohm-native/initial-editors.json",
+      "sha256": "fba8eb42f7bfea0c4088020ad023d876c2d2fb2753d80b8509458e8b52c726bf",
+      "bytes": 1926
+    },
+    {
+      "path": "audit/round25-ohm-native/initial-snapshot.json",
+      "sha256": "0df5ec5c1939e191301c1d6ce4f40337f45d598795cab4faea231fbccf1b6dc0",
+      "bytes": 4801
+    },
+    {
+      "path": "audit/round25-ohm-native/input.txt",
+      "sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+      "bytes": 2
+    },
+    {
+      "path": "audit/round25-ohm-native/original-native.json",
+      "sha256": "4e684b0b1baf9afa57cd93e5e58a4aeee2567c7ed1f35761a1edc2a1bbd671f2",
+      "bytes": 2533
+    },
+    {
+      "path": "audit/round25-ohm-native/original-snapshot.json",
+      "sha256": "48732c8ee33a713c0053393c03db4cc4478e401d8e4b1c427b1f19202ac934e6",
+      "bytes": 3056
+    },
+    {
+      "path": "audit/round25-ohm-native/original-state.json",
+      "sha256": "8b375144fe3dc0edb41ab5221803ffb3fea65ee52b1c30f32cd59dd217ffc157",
+      "bytes": 620
+    },
+    {
+      "path": "audit/round25-ohm-native/original.ohm",
+      "sha256": "57af58cbca18d92cc7efd16b66cf86ad0c0dae5e05a01b4b8a9445fe2916b103",
+      "bytes": 42
+    },
+    {
+      "path": "audit/round25-ohm-native/original.png",
+      "sha256": "2e57ae027f549736a54d4681f50fa2ff29a47bf7eac04010c80914c3a79c272a",
+      "bytes": 34234
+    },
+    {
+      "path": "audit/round25-ohm-native/original.trace.txt",
+      "sha256": "338e1fc536cff99462682977dfe157dec62405b1806ac5afb3c87f3ef5e48c61",
+      "bytes": 669
+    },
+    {
+      "path": "audit/round25-ohm-native/reordered-native.json",
+      "sha256": "07e7ee2a0074ec9bdb051d02edac78a7e1c7fc45c2d05f8665ee593f31550e0f",
+      "bytes": 2996
+    },
+    {
+      "path": "audit/round25-ohm-native/reordered-snapshot.json",
+      "sha256": "6441d53aad1e732bbdf746d999733a6ca3c01c0bd70f4b526a9a953df61ab7c6",
+      "bytes": 2651
+    },
+    {
+      "path": "audit/round25-ohm-native/reordered.ohm",
+      "sha256": "5721c7794941e28ed1fe29f1713dfe5af0b34fecbbed034dacd62aded8b1adb9",
+      "bytes": 42
+    },
+    {
+      "path": "audit/round25-ohm-native/reordered.png",
+      "sha256": "58192d5db2348bf46088d0222bfcbd679f7abcbe8a3c0b42998b6e0beaacb477",
+      "bytes": 31470
+    },
+    {
+      "path": "audit/round25-ohm-native/reordered.trace.txt",
+      "sha256": "d7d5148ac6d2ee07b538f699bdd8d9ee1ea5c7349f96a965ae6b16ad0d6f0c3d",
+      "bytes": 919
+    },
+    {
+      "path": "audit/round25-ohm-native/restored-state.json",
+      "sha256": "eb1e42177158fe9fa9b8ecd4f235598cc399f94cfb6f1828fccf19243966b626",
+      "bytes": 1229
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end-default-snapshot.json",
+      "sha256": "5c67df35e0dc4fe001c17daa333131281f24965720ebf1bd8ab95070d2623cd9",
+      "bytes": 2679
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end-default.png",
+      "sha256": "a1c4da6db55bb550843b28df9ecaf1748ae60187b9beb1a3dc8ce083d13de020",
+      "bytes": 35913
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end-explained-snapshot.json",
+      "sha256": "de162fa3c6c0d4804732ad864ef5038cf92191c143d3b4f622c88365d57b9784",
+      "bytes": 3010
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end-explained-state.json",
+      "sha256": "6cb51b29d51cb4ed441ccbefaa281d0d66c1f0668eee427e5dfcd1bc7c8e3d04",
+      "bytes": 5242
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end-explained.png",
+      "sha256": "332845ba9eb54ab14ffb8a280a6400c4a86f93a5ec7532e808674beeb4260d42",
+      "bytes": 36418
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end-native.json",
+      "sha256": "7689f19c72cb9ea0931508d5efcc8484334f3f2338a4c21a108720864ec69a01",
+      "bytes": 3957
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end.ohm",
+      "sha256": "5a489b646cc6231518a0615237c8a44f8b09c0085a8a7c3b2d4b4d02811959b0",
+      "bytes": 50
+    },
+    {
+      "path": "audit/round25-ohm-native/scoped-end.trace.txt",
+      "sha256": "bfc18b52c393a31622337ced38cb762d756958b0e7905c412323f63328d03692",
+      "bytes": 1799
+    },
+    {
+      "path": "audit/round25-ts-native/.gitattributes",
+      "sha256": "4b068b4c50517ab6ccf82e38980a394f0821b3cbfbf4f306af9db6f81cf154cf",
+      "bytes": 113
+    },
+    {
+      "path": "audit/round25-ts-native/README.md",
+      "sha256": "5f612a06250c6601ec7ee4474e35327455fe1313d6aaed4d68a12e756672484e",
+      "bytes": 2257
+    },
+    {
+      "path": "audit/round25-ts-native/node-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audit/round25-ts-native/node-version.stdout",
+      "sha256": "33e26f35db6e57ce0c486ddc815fe966867e4f649e418eaf323f75f4720eb8e9",
+      "bytes": 9
+    },
+    {
+      "path": "audit/round25-ts-native/observation.json",
+      "sha256": "1d5d66af723c59888fa9dee655f965bbd11ec948391348789defc8b558ed8a7e",
+      "bytes": 5163
+    },
+    {
+      "path": "audit/round25-ts-native/run.py",
+      "sha256": "dbe90eb3ef369de5b170ff71f4b47cccd96988847b34ee5b410cd69eae8787b3",
+      "bytes": 1682
+    },
+    {
+      "path": "audit/round25-ts-native/tsc-run.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audit/round25-ts-native/tsc-run.stdout",
+      "sha256": "cbafbe788182625f712db24933a79561b7b45e2b3c8f6f130eb49adcf2b1679b",
+      "bytes": 619
+    },
+    {
+      "path": "audit/round25-ts-native/tsc-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audit/round25-ts-native/tsc-version.stdout",
+      "sha256": "9265ac58ff367868abd52fc852ecff28622facad715e3c3a0fcf92c4ca2d86e2",
+      "bytes": 14
+    },
+    {
+      "path": "audit/round25-ts-native/upstream/.gitattributes",
+      "sha256": "35f3d74adca69246f9b2e63070848cd8b221119d7fe9d967484a16704546448a",
+      "bytes": 100
+    },
+    {
+      "path": "audit/round25-ts-native/upstream/LICENSE.txt",
+      "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+      "bytes": 9197
+    },
+    {
+      "path": "audit/round25-ts-native/upstream/expected.errors.txt",
+      "sha256": "36f432bcd2e4b2b8b165aee9161b1e4d25475ecb1c7a7dca0c3c89b40f22e8e1",
+      "bytes": 1501
+    },
+    {
+      "path": "audit/round25-ts-native/upstream/fixture.ts",
+      "sha256": "04facf23005537ea74db93bb9f2a7fce89ac9526d7e87306263f8c06b8bd6362",
+      "bytes": 384
+    },
+    {
+      "path": "audit/round25-validation.json",
+      "sha256": "10d1e442d2694615f5542c148d156e1a5aaf8bd3d23a2aa299a7bf8051cfba4a",
+      "bytes": 3423
+    },
+    {
+      "path": "audit/round25-whitespace-before.json",
+      "sha256": "8ffbeda3514264a1193a895bb26f298b6a08d6003d6a269b26ec515ffeffa31c",
+      "bytes": 261
+    },
+    {
+      "path": "audit/round25-whitespace-before.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audit/round25-whitespace-before.stdout",
+      "sha256": "2fe0ab1fce10fce17455a1b3fe4130609f85270a54260679ea70c358fd45a8e7",
+      "bytes": 19937
+    },
+    {
+      "path": "scouts/ohm-source-round25.md",
+      "sha256": "861afefc60781589eed5fd3e07a0420d2fe1d37a9b5be933b92f7705ace6d79b",
+      "bytes": 4580
+    },
+    {
+      "path": "scouts/regex-call-state-round25.md",
+      "sha256": "af5c3e2447b09e8677b5d8ef6d68285126ff4af8a1daf9bc0131995e082df778",
+      "bytes": 5608
+    },
+    {
+      "path": "scouts/type-mismatch-round25.md",
+      "sha256": "a883b5a7204fa8abceb38babdb1d1f24a8bf14edfaee778ecb1fc7af35731693",
+      "bytes": 5309
+    }
+  ]
+}

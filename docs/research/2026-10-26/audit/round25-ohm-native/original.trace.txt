@@ -1,0 +1,21 @@
+ab         ✓ spaces ⇒  ""
+ab           ✓ space* ⇒  ""
+ab             ✗ space
+ab               ✗ "\u0000".." "
+ab         ✓ X ⇒  "a"
+ab           ✓ A | B ⇒  "a"
+ab             ✓ spaces ⇒  ""
+ab               ✓ space* ⇒  ""
+ab                 ✗ space
+ab                   ✗ "\u0000".." "
+ab             ✓ A ⇒  "a"
+ab               ✓ spaces ⇒  ""
+ab                 ✓ space* ⇒  ""
+ab                   ✗ space
+ab                     ✗ "\u0000".." "
+ab               ✓ "a" ⇒  "a"
+b          ✓ spaces ⇒  ""
+b            ✓ space* ⇒  ""
+b              ✗ space
+b                ✗ "\u0000".." "
+b          ✗ end

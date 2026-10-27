@@ -1,0 +1,10 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(34);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.hover('loc=css:#example5',{label:'Locate temporary example'});
+await page.click('loc=css:#example5 .delete',{label:'Remove temporary example'});
+const initial=JSON.parse(await fs.readFile('/tmp/archify-round25-ohm/initial-editors.json','utf8')).editors[0].value;
+await page.focus('loc=css:.CodeMirror.cm-s-light-owl');await page.keyboard.press('ControlOrMeta+A');await page.keyboard.paste(initial);
+await page.click('loc=css:[aria-label="Examples"] li:first-child',{label:'Restore initial example'});
+const state=await page.evaluate(()=>({grammar:document.querySelector('.cm-s-light-owl').CodeMirror.getValue(),examples:[...document.querySelectorAll('[aria-label="Examples"] li')].map(e=>({id:e.id,code:e.querySelector('code')?.textContent,selected:e.classList.contains('selected')})),checks:[...document.querySelectorAll('input[type=checkbox]')].map(e=>({name:e.name,checked:e.checked})),capturedAt:new Date().toISOString()}));
+if(state.grammar!==initial||state.examples.length!==5||state.examples.some(e=>e.id==='example5'))throw Error('restoration differs');
+await fs.writeFile('/tmp/archify-round25-ohm/restored-state.json',JSON.stringify(state,null,2));console.log(state);console.log(await page.snapshot());

@@ -1,0 +1,10 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(34);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+const grammar='X {\n  X = A end | B end\n  A = "a"\n  B = "a" "b"\n}';await fs.writeFile('/tmp/archify-round25-ohm/scoped-end.ohm',grammar+'\n');
+await page.focus('loc=css:.CodeMirror.cm-s-light-owl');await page.keyboard.press('ControlOrMeta+A');await page.keyboard.paste(grammar);
+await page.waitForFunction(g=>document.querySelector('.cm-s-light-owl').CodeMirror.getValue()===g && !document.querySelector('input[name="showFailures"]').checked,grammar,{timeout:10000});
+const snapshot=await page.snapshot();await fs.writeFile('/tmp/archify-round25-ohm/scoped-end-default-snapshot.json',JSON.stringify(snapshot,null,2));
+const state=await page.evaluate(()=>{const grammar=document.querySelector('.cm-s-light-owl').CodeMirror.getValue();const input=document.querySelector('.cm-s-default').CodeMirror.getValue();const g=window.ohm.grammar(grammar);const r=g.match(input);return {grammar,input,version:window.ohm.version,succeeded:r.succeeded(),message:r.message||null,trace:g.trace(input).toString(),parseHTML:document.querySelector('#visualizerBody').outerHTML,checks:[...document.querySelectorAll('input[type=checkbox]')].map(e=>({name:e.name,checked:e.checked})),viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},ua:navigator.userAgent,url:location.href,capturedAt:new Date().toISOString()};});
+await fs.writeFile('/tmp/archify-round25-ohm/scoped-end-native.json',JSON.stringify(state,null,2));await fs.writeFile('/tmp/archify-round25-ohm/scoped-end.trace.txt',state.trace);
+await page.screenshot({path:'/tmp/archify-round25-ohm/scoped-end-default.png'});
+await page.click('loc=css:input[name="showFailures"]');console.log(await page.snapshot());

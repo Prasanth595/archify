@@ -1,0 +1,20 @@
+{
+  "editors": [
+    "X {\n  X = A | B\n  A = \"a\"\n  B = \"a\" \"b\"\n}",
+    "ab"
+  ],
+  "checks": [
+    {
+      "name": "showFailures",
+      "checked": true
+    },
+    {
+      "name": "showSpaces",
+      "checked": false
+    }
+  ],
+  "parseHTML": "<div id=\"expandedInputWrapper\"><div id=\"sizer\">&nbsp;</div> <canvas id=\"expandedInput\" width=\"720\" height=\"19\" style=\"width: 720px; height: 19px;\"></canvas></div>",
+  "version": "17.5.0",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "url": "https://ohmjs.org/editor/"
+}

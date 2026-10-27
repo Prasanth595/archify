@@ -1,0 +1,129 @@
+{
+  "at": "2026-10-27T22:42:22.390Z",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify \"type\" \"diagnostic\"",
+      "topn": 10,
+      "status": "fulfilled",
+      "results": [
+        {
+          "title": "[Bug]: Sequence canvas-level failures report untyped diagnostics with no executable repair",
+          "url": "https://github.com/tt-a1i/archify/issues/890"
+        },
+        {
+          "title": "[Bug]: Sequence segment headings are obscured by participant headers without a diagnostic",
+          "url": "https://github.com/tt-a1i/archify/issues/564"
+        },
+        {
+          "title": "Extend the in-process render API to the remaining four diagram types",
+          "url": "https://github.com/tt-a1i/archify/issues/526"
+        },
+        {
+          "title": "Import Mermaid flowcharts into validated Archify typed IR",
+          "url": "https://github.com/tt-a1i/archify/issues/92"
+        },
+        {
+          "title": "[Bug]: Note-overlap repair dead-ends when a wrapped note reaches several messages",
+          "url": "https://github.com/tt-a1i/archify/issues/903"
+        },
+        {
+          "title": "validate hangs (effectively forever) on a workflow node with a very large width",
+          "url": "https://github.com/tt-a1i/archify/issues/1072"
+        },
+        {
+          "title": "Add Dependency-Aware Preview for Explainer Drafts",
+          "url": "https://github.com/tt-a1i/archify/issues/1135"
+        },
+        {
+          "title": "[Proposal] Add Explicit Cross-Artifact Consistency Checks for Related Diagrams",
+          "url": "https://github.com/tt-a1i/archify/issues/1136"
+        },
+        {
+          "title": "[Proposal]: Add first-class Google Antigravity onboarding and Start switcher tab",
+          "url": "https://github.com/tt-a1i/archify/issues/983"
+        },
+        {
+          "title": "[Scope] Right-to-left locales: scene geometry and Arabic reading order",
+          "url": "https://github.com/tt-a1i/archify/issues/935"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify regex",
+      "topn": 10,
+      "status": "fulfilled",
+      "results": [
+        {
+          "title": "[Bug]: check cuts the root <svg> at the first </svg>, so content after a nested <svg> is never checked",
+          "url": "https://github.com/tt-a1i/archify/issues/1025"
+        },
+        {
+          "title": "explainer charts: pie errors report the line above the real one (pieLegend removes line breaks)",
+          "url": "https://github.com/tt-a1i/archify/issues/1074"
+        },
+        {
+          "title": "explainer: parser crashes (TypeError) on a heading line holding a lone CR or U+2028",
+          "url": "https://github.com/tt-a1i/archify/issues/1083"
+        },
+        {
+          "title": "[Showcase]: Astron Agent runtime architecture (revision-verified)",
+          "url": "https://github.com/tt-a1i/archify/issues/187"
+        },
+        {
+          "title": "repository-evidence: identity binding is hard-coded to github.com, blocking self-hosted Git (Gitea/GitLab/Forgejo)",
+          "url": "https://github.com/tt-a1i/archify/issues/301"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify parser",
+      "topn": 10,
+      "state": "open",
+      "kind": "pull_requests",
+      "status": "fulfilled",
+      "results": [
+        {
+          "title": "fix(tooling): reject missing repository checker option values",
+          "url": "https://github.com/tt-a1i/archify/pull/841"
+        },
+        {
+          "title": "fix(cli): parse inspect options before checking diagram type",
+          "url": "https://github.com/tt-a1i/archify/pull/829"
+        },
+        {
+          "title": "fix(checker): preserve endpoint identity around quadratic curves",
+          "url": "https://github.com/tt-a1i/archify/pull/875"
+        },
+        {
+          "title": "test(geometry): assert rounded route containment on short segments",
+          "url": "https://github.com/tt-a1i/archify/pull/853"
+        },
+        {
+          "title": "test(recovery): preserve publication on invalid CLI arguments",
+          "url": "https://github.com/tt-a1i/archify/pull/858"
+        },
+        {
+          "title": "fix(dsh): match complete transient network error codes",
+          "url": "https://github.com/tt-a1i/archify/pull/842"
+        },
+        {
+          "title": "fix(dsh): reject missing pack output values before staging",
+          "url": "https://github.com/tt-a1i/archify/pull/855"
+        },
+        {
+          "title": "experiment: distinguish exception group identity from repeated traceback text",
+          "url": "https://github.com/tt-a1i/archify/pull/1120"
+        },
+        {
+          "title": "feat(import): add Mermaid sequenceDiagram importer for typed sequence IR",
+          "url": "https://github.com/tt-a1i/archify/pull/387"
+        },
+        {
+          "title": "feat(import): add Mermaid flowchart importer for typed architecture IR",
+          "url": "https://github.com/tt-a1i/archify/pull/140"
+        }
+      ]
+    }
+  ],
+  "coverage": "Keyword searches, capped; titles alone are not verified current states or exhaustive ownership."
+}

@@ -1,0 +1,113 @@
+{
+  "batch": 25,
+  "date": "2026-10-28",
+  "base": "ae0768ddcb51559114bda52ed9acb167c723abae",
+  "dev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remote_heads": 316,
+  "decisions": {
+    "TypeScript": "defer extra type reader; complete actual native diagnostic carries nested cause",
+    "Regex": "source-only defer; prior matching coverage plus native lastIndex docs",
+    "Ohm": "defer extra parser visualizer; native Explain parse reveals failed attempt and source association"
+  },
+  "copy_files": 63,
+  "copies_verified": true,
+  "ts": {
+    "source_commit": "c63de15a992d37f0d6cec03ac7631872838602cb",
+    "source_tag": "5.9.3",
+    "installed_compiler": "5.8.3",
+    "node": "22.23.3",
+    "exit": 2,
+    "diagnostic": "TS2322",
+    "raw_source_line": 7,
+    "baseline_harness_line": 6,
+    "emitted_js": [],
+    "fixture_blob": "76a1fabdf6ed391e7cb0382f521ec28c95b131c0",
+    "expected_blob": "4daa8b176ed8c6ef3c455f7b04b6e5bfeb960b77",
+    "upstream_suite_run": false
+  },
+  "ohm": {
+    "source_editor_commit": "2ff2a07225031ead520ad22c2bc19bac7ce75ff2",
+    "observed_engine_version": "17.5.0",
+    "deployed_editor_commit": null,
+    "space": 34,
+    "cases": [
+      {
+        "name": "original",
+        "success": false,
+        "showFailures": true,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        }
+      },
+      {
+        "name": "reordered",
+        "success": true,
+        "showFailures": false,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        }
+      },
+      {
+        "name": "scoped-end",
+        "success": true,
+        "showFailures": false,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1
+        }
+      }
+    ],
+    "images": [
+      {
+        "file": "original.png",
+        "width": 1440,
+        "height": 900,
+        "sha256": "2e57ae027f549736a54d4681f50fa2ff29a47bf7eac04010c80914c3a79c272a"
+      },
+      {
+        "file": "reordered.png",
+        "width": 1440,
+        "height": 900,
+        "sha256": "58192d5db2348bf46088d0222bfcbd679f7abcbe8a3c0b42998b6e0beaacb477"
+      },
+      {
+        "file": "scoped-end-default.png",
+        "width": 1440,
+        "height": 900,
+        "sha256": "a1c4da6db55bb550843b28df9ecaf1748ae60187b9beb1a3dc8ce083d13de020"
+      },
+      {
+        "file": "scoped-end-explained.png",
+        "width": 1440,
+        "height": 900,
+        "sha256": "332845ba9eb54ab14ffb8a280a6400c4a86f93a5ec7532e808674beeb4260d42"
+      }
+    ],
+    "root_images_viewed": true,
+    "original_grammar_and_examples_restored": true,
+    "first_hidden_editor_failure_retained": true,
+    "native_api_calls": "g.match and g.trace on currently entered grammar/input; separate from UI observation"
+  },
+  "not_run": [
+    "regex loop or tools",
+    "TS translator",
+    "Archify suite/browser/CI",
+    "human reading comparison",
+    "Ohm timeline/mobile/keyboard/export acceptance"
+  ],
+  "new_product_changes": false,
+  "new_experiment_branch": false,
+  "new_pr": false,
+  "merge_release_install": false,
+  "goal_status": "active",
+  "raw_formatting": {
+    "initial_staged_diff_check_exit": 2,
+    "original_bytes_unchanged": true,
+    "scope": "Only raw .log/.stdout/.stderr and TypeScript upstream snapshots opt out of whitespace warnings and text normalization; authored Markdown/scripts remain checked."
+  }
+}

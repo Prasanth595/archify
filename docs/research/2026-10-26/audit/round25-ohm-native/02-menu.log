@@ -1,0 +1,171 @@
+{ selects: [ { label: 'Selected grammar', options: [ { text: '[local storage]', value: '', selected: true }, { text: 'JavaScript (ES5)', value: '0a9a649c3c630fd0a470ba6cb75393fe', selected: false }, { text: 'Arithmetic', value: '30325d346a6e803cc35344ca218d8636', selected: false }, { text: '[Log into GitHub...]', value: '!login', selected: false } ] }, { label: null, options: [ { text: '(default)', value: '.', selected: true }, { text: '(default)', value: 'Arithmetic.', selected: false }, { text: 'Exp', value: 'Arithmetic.Exp', selected: false }, { text: 'AddExp_plus', value: 'Arithmetic.AddExp_plus', selected: false }, { text: 'AddExp_minus', value: 'Arithmetic.AddExp_minus', selected: false }, { text: 'AddExp', value: 'Arithmetic.AddExp', selected: false }, { text: 'MulExp_times', value: 'Arithmetic.MulExp_times', selected: false }, { text: 'MulExp_divide', value: 'Arithmetic.MulExp_divide', selected: false }, { text: 'MulExp', value: 'Arithmetic.MulExp', selected: false }, { text: 'ExpExp_power', value: 'Arithmetic.ExpExp_power', selected: false }, { text: 'ExpExp', value: 'Arithmetic.ExpExp', selected: false }, { text: 'PriExp_paren', value: 'Arithmetic.PriExp_paren', selected: false }, { text: 'PriExp_pos', value: 'Arithmetic.PriExp_pos', selected: false }, { text: 'PriExp_neg', value: 'Arithmetic.PriExp_neg', selected: false }, { text: 'PriExp', value: 'Arithmetic.PriExp', selected: false }, { text: 'ident', value: 'Arithmetic.ident', selected: false }, { text: 'number_fract', value: 'Arithmetic.number_fract', selected: false }, { text: 'number_whole', value: 'Arithmetic.number_whole', selected: false }, { text: 'number', value: 'Arithmetic.number', selected: false } ] } ], editables: [ { tag: 'TEXTAREA', id: '', class: '', label: null, role: null }, { tag: 'TEXTAREA', id: '', class: '', label: null, role: null } ], scripts: [ 'https://thirteen-six.ohmjs.org/script.js', 'https://unpkg.com/ohm-js@17/dist/ohm.min.js', 'https://unpkg.com/ohm-js@17/dist/ohm-extras.js', 'https://ohmjs.org/editor/third_party/d3.min.js', 'https://ohmjs.org/editor/third_party/codemirror-5.65.12/codemirror.min.js', 'https://ohmjs.org/editor/third_party/codemirror-5.65.12/placeholder.min.js', 'https://ohmjs.org/editor/third_party/codemirror-5.65.12/search.min.js', 'https://ohmjs.org/editor/third_party/codemirror-5.65.12/searchcursor.min.js', 'https://ohmjs.org/editor/third_party/autosize.min.js', 'https://ohmjs.org/editor/assets/visualizer-bundle.js', 'https://ohmjs.org/editor/assets/persistence-bundle.js' ], ua: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36' }
+[p1 "Ohm Editor" | space "Archify research 20261026"(34): 1 managed, 0 untracked — p1* "Ohm Editor"]
+root
+  container
+    container
+      container
+        heading
+          text "Grammar"
+        container
+          combobox "Selected grammar" [ref=1, loc=css:select[aria-label="Selected grammar"]]
+            text "[local storage]"
+          button [ref=2]
+            text "Save"
+            text "d"
+          button [ref=3]
+            text "⋮"
+      container [ref=5]
+        container
+          container
+            text "Arithmetic"
+            text "{"
+          text "Exp"
+          container
+            text "="
+            text "AddExp"
+          text "AddExp"
+          container
+            text "="
+            text "AddExp"
+            text ""+""
+            text "MulExp"
+            text "-- plus"
+          container
+            text "|"
+            text "AddExp"
+            text ""-""
+            text "MulExp"
+            text "-- minus"
+          container
+            text "|"
+            text "MulExp"
+          text "MulExp"
+          container
+            text "="
+            text "MulExp"
+            text ""*""
+            text "ExpExp"
+            text "-- times"
+          container
+            text "|"
+            text "MulExp"
+            text ""/""
+            text "ExpExp"
+            text "-- divide"
+          container
+            text "|"
+            text "ExpExp"
+          text "ExpExp"
+          container
+            text "="
+            text "PriExp"
+            text ""^""
+            text "ExpExp"
+            text "-- power"
+          container
+            text "|"
+            text "PriExp"
+          text "PriExp"
+          container
+            text "="
+            text ""(""
+            text "Exp"
+            text "")""
+            text "-- paren"
+          container
+            text "|"
+            text ""+""
+            text "PriExp"
+            text "-- pos"
+          container
+            text "|"
+            text ""-""
+            text "PriExp"
+            text "-- neg"
+          container
+            text "|"
+            text "ident"
+          container
+            text "|"
+            text "number"
+          container
+            text "ident"
+            text "(an identifier)"
+          container
+            text "="
+            text "letter"
+            text "alnum"
+            text "*"
+          container
+            text "number"
+            text "(a number)"
+          container
+            text "="
+            text "digit"
+            text "*"
+            text "".""
+            text "digit"
+            text "+"
+            text "-- fract"
+          container
+            text "|"
+            text "digit"
+            text "+"
+            text "-- whole"
+          container
+            text "}"
+            container
+              text "alnum (an alpha-numeric character) = letter | digit"
+              text "digit (a digit) = "0".."9""
+    container
+      container
+        heading
+          text "EXAMPLES"
+        button "Add example" [ref=6, loc=css:button[aria-label="Add example"]]
+          text "+"
+        button "Collapse" [ref=7, loc=css:button[aria-label="Collapse"]]
+      unordered_list "Examples"
+        list_item
+          switch [ref=8]
+            text "👍"
+        list_item
+          text "1+2*3"
+          switch [ref=9]
+            text "👍"
+        list_item
+          text "oh no"
+          switch [ref=10]
+            text "👍"
+        list_item
+          text "( 123 )"
+          switch [ref=11]
+            text "👍"
+        list_item
+          text "(2+4)*7"
+          switch [ref=12]
+            text "👍"
+    container
+      heading
+        text "Parse"
+      container
+        canvas
+        text "Exp"
+  container
+    unordered_list
+      list_item
+        checkbox [ref=13, loc=css:input[name="showFailures"]]
+        text "Explain parse"
+      list_item
+        checkbox [ref=14, loc=css:input[name="showSpaces"]]
+        text "Show spaces"
+    container
+      button [ref=15]
+        image
+      button [ref=16]
+        image
+      button [ref=17]
+        image
+      button [ref=18]
+        image
+
+

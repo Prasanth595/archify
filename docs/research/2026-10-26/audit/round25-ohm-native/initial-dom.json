@@ -1,0 +1,159 @@
+{
+  "selects": [
+    {
+      "label": "Selected grammar",
+      "options": [
+        {
+          "text": "[local storage]",
+          "value": "",
+          "selected": true
+        },
+        {
+          "text": "JavaScript (ES5)",
+          "value": "0a9a649c3c630fd0a470ba6cb75393fe",
+          "selected": false
+        },
+        {
+          "text": "Arithmetic",
+          "value": "30325d346a6e803cc35344ca218d8636",
+          "selected": false
+        },
+        {
+          "text": "[Log into GitHub...]",
+          "value": "!login",
+          "selected": false
+        }
+      ]
+    },
+    {
+      "label": null,
+      "options": [
+        {
+          "text": "(default)",
+          "value": ".",
+          "selected": true
+        },
+        {
+          "text": "(default)",
+          "value": "Arithmetic.",
+          "selected": false
+        },
+        {
+          "text": "Exp",
+          "value": "Arithmetic.Exp",
+          "selected": false
+        },
+        {
+          "text": "AddExp_plus",
+          "value": "Arithmetic.AddExp_plus",
+          "selected": false
+        },
+        {
+          "text": "AddExp_minus",
+          "value": "Arithmetic.AddExp_minus",
+          "selected": false
+        },
+        {
+          "text": "AddExp",
+          "value": "Arithmetic.AddExp",
+          "selected": false
+        },
+        {
+          "text": "MulExp_times",
+          "value": "Arithmetic.MulExp_times",
+          "selected": false
+        },
+        {
+          "text": "MulExp_divide",
+          "value": "Arithmetic.MulExp_divide",
+          "selected": false
+        },
+        {
+          "text": "MulExp",
+          "value": "Arithmetic.MulExp",
+          "selected": false
+        },
+        {
+          "text": "ExpExp_power",
+          "value": "Arithmetic.ExpExp_power",
+          "selected": false
+        },
+        {
+          "text": "ExpExp",
+          "value": "Arithmetic.ExpExp",
+          "selected": false
+        },
+        {
+          "text": "PriExp_paren",
+          "value": "Arithmetic.PriExp_paren",
+          "selected": false
+        },
+        {
+          "text": "PriExp_pos",
+          "value": "Arithmetic.PriExp_pos",
+          "selected": false
+        },
+        {
+          "text": "PriExp_neg",
+          "value": "Arithmetic.PriExp_neg",
+          "selected": false
+        },
+        {
+          "text": "PriExp",
+          "value": "Arithmetic.PriExp",
+          "selected": false
+        },
+        {
+          "text": "ident",
+          "value": "Arithmetic.ident",
+          "selected": false
+        },
+        {
+          "text": "number_fract",
+          "value": "Arithmetic.number_fract",
+          "selected": false
+        },
+        {
+          "text": "number_whole",
+          "value": "Arithmetic.number_whole",
+          "selected": false
+        },
+        {
+          "text": "number",
+          "value": "Arithmetic.number",
+          "selected": false
+        }
+      ]
+    }
+  ],
+  "editables": [
+    {
+      "tag": "TEXTAREA",
+      "id": "",
+      "class": "",
+      "label": null,
+      "role": null
+    },
+    {
+      "tag": "TEXTAREA",
+      "id": "",
+      "class": "",
+      "label": null,
+      "role": null
+    }
+  ],
+  "scripts": [
+    "https://thirteen-six.ohmjs.org/script.js",
+    "https://unpkg.com/ohm-js@17/dist/ohm.min.js",
+    "https://unpkg.com/ohm-js@17/dist/ohm-extras.js",
+    "https://ohmjs.org/editor/third_party/d3.min.js",
+    "https://ohmjs.org/editor/third_party/codemirror-5.65.12/codemirror.min.js",
+    "https://ohmjs.org/editor/third_party/codemirror-5.65.12/placeholder.min.js",
+    "https://ohmjs.org/editor/third_party/codemirror-5.65.12/search.min.js",
+    "https://ohmjs.org/editor/third_party/codemirror-5.65.12/searchcursor.min.js",
+    "https://ohmjs.org/editor/third_party/autosize.min.js",
+    "https://ohmjs.org/editor/assets/visualizer-bundle.js",
+    "https://ohmjs.org/editor/assets/persistence-bundle.js"
+  ],
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+}

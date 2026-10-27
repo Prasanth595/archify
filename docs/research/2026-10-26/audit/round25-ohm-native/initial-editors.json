@@ -1,0 +1,19 @@
+{
+  "version": "17.5.0",
+  "editors": [
+    {
+      "id": "",
+      "parent": "",
+      "class": "CodeMirror cm-s-light-owl",
+      "value": "Arithmetic {\n  Exp\n    = AddExp\n\n  AddExp\n    = AddExp \"+\" MulExp  -- plus\n    | AddExp \"-\" MulExp  -- minus\n    | MulExp\n\n  MulExp\n    = MulExp \"*\" ExpExp  -- times\n    | MulExp \"/\" ExpExp  -- divide\n    | ExpExp\n\n  ExpExp\n    = PriExp \"^\" ExpExp  -- power\n    | PriExp\n\n  PriExp\n    = \"(\" Exp \")\"  -- paren\n    | \"+\" PriExp   -- pos\n    | \"-\" PriExp   -- neg\n    | ident\n    | number\n\n  ident  (an identifier)\n    = letter alnum*\n\n  number  (a number)\n    = digit* \".\" digit+  -- fract\n    | digit+             -- whole\n}",
+      "html": "<div class=\"CodeMirror cm-s-light-owl\" translate=\"no\" style=\"clip-path: inset(0px);\"><div style=\"overflow: hidden; position: relative; width: 3px; height: 0px; top: 8px; left: 20px;\"><textarea autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" style=\"position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;\" tabindex=\"0\"></textarea></div><div class=\"CodeMirror-vscrollbar\" tabindex=\"-1\" cm-not-content=\"true\" style=\"width: 18px; display: blo"
+    },
+    {
+      "id": "",
+      "parent": "",
+      "class": "CodeMirror cm-s-default",
+      "value": "",
+      "html": "<div class=\"CodeMirror cm-s-default\" translate=\"no\" style=\"clip-path: inset(0px);\"><div style=\"overflow: hidden; position: relative; width: 3px; height: 0px;\"><textarea autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" tabindex=\"0\" style=\"position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; min-height: 1em; outline: none;\"></textarea></div><div class=\"CodeMirror-vscrollbar\" tabindex=\"-1\" cm-not-content=\"true\"><div style=\"min-width: 1px;\"></div></div><div class=\"Cod"
+    }
+  ]
+}

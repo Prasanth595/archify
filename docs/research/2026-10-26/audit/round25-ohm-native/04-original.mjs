@@ -1,0 +1,17 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(34);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('text="⋮"');
+const grammar='X {\n  X = A | B\n  A = "a"\n  B = "a" "b"\n}';
+await fs.writeFile('/tmp/archify-round25-ohm/original.ohm',grammar+'\n');
+await fs.writeFile('/tmp/archify-round25-ohm/input.txt','ab');
+await page.focus('loc=css:.CodeMirror.cm-s-light-owl');
+await page.keyboard.press('ControlOrMeta+A');
+await page.keyboard.paste(grammar);
+await page.focus('loc=css:.CodeMirror.cm-s-default');
+await page.keyboard.press('ControlOrMeta+A');
+await page.keyboard.paste('ab');
+await page.waitForFunction(g=>document.querySelector('.cm-s-light-owl').CodeMirror.getValue()===g && document.querySelector('.cm-s-default').CodeMirror.getValue()==='ab',grammar,{timeout:10000});
+console.log(await page.snapshot());
+const state=await page.evaluate(()=>({editors:[...document.querySelectorAll('.CodeMirror')].map(e=>e.CodeMirror.getValue()),checks:[...document.querySelectorAll('input[type=checkbox]')].map(e=>({name:e.name,checked:e.checked})),parseHTML:document.querySelector('canvas')?.parentElement.outerHTML}));
+await fs.writeFile('/tmp/archify-round25-ohm/original-initial-state.json',JSON.stringify(state,null,2));

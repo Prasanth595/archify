@@ -1,0 +1,27 @@
+{
+  "grammar": "X {\n  X = B | A\n  A = \"a\"\n  B = \"a\" \"b\"\n}",
+  "input": "ab",
+  "version": "17.5.0",
+  "succeeded": true,
+  "message": null,
+  "trace": "ab         ✓ spaces ⇒  \"\"\nab           ✓ space* ⇒  \"\"\nab             ✗ space\nab               ✗ \"\\u0000\"..\" \"\nab         ✓ X ⇒  \"ab\"\nab           ✓ B | A ⇒  \"ab\"\nab             ✓ spaces ⇒  \"\"\nab               ✓ space* ⇒  \"\"\nab                 ✗ space\nab                   ✗ \"\\u0000\"..\" \"\nab             ✓ B ⇒  \"ab\"\nab               ✓ \"a\" \"b\" ⇒  \"ab\"\nab                 ✓ spaces ⇒  \"\"\nab                   ✓ space* ⇒  \"\"\nab                     ✗ space\nab                       ✗ \"\\u0000\"..\" \"\nab                 ✓ \"a\" ⇒  \"a\"\nb                  ✓ spaces ⇒  \"\"\nb                    ✓ space* ⇒  \"\"\nb                      ✗ space\nb                        ✗ \"\\u0000\"..\" \"\nb                  ✓ \"b\" ⇒  \"b\"\n           ✓ spaces ⇒  \"\"\n             ✓ space* ⇒  \"\"\n               ✗ space\n                 ✗ \"\\u0000\"..\" \"\n           ✓ end ⇒  \"\"\n",
+  "parseHTML": "<div id=\"visualizerBody\"><div id=\"expandedInputWrapper\"><div id=\"sizer\">&nbsp;</div> <canvas id=\"expandedInput\" width=\"720\" height=\"19\" style=\"width: 720px; height: 19px;\"></canvas></div> <div id=\"parseResults\"><div id=\"node-0\" class=\"pexpr undecided\"><!----> <div class=\"children\"><div id=\"node-18\" class=\"pexpr labeled\"><div class=\"self\"><div class=\"label\" style=\"min-width: 19.2656px;\">\n  X<!----> <!----></div></div> <div class=\"children\"><div id=\"node-20\" class=\"pexpr\"><!----> <div class=\"children\"><div id=\"node-21\" class=\"pexpr labeled\"><div class=\"self\"><div class=\"label\" style=\"min-width: 19.2656px;\">\n  B<!----> <!----></div></div> <div class=\"children\"><div id=\"node-22\" class=\"pexpr\"><!----> <div class=\"children\"><div id=\"node-23\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 9.63281px;\">\n  \"a\"<!----> <!----></div></div> <!----></div><div id=\"node-24\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 9.63281px;\">\n  \"b\"<!----> <!----></div></div> <!----></div></div></div></div></div></div></div></div></div><div id=\"node-19\" class=\"pexpr labeled leaf\"><div class=\"self\"><div class=\"label\" style=\"min-width: 0px;\">\n  end<!----> <!----></div></div> <!----></div></div></div></div></div>",
+  "checks": [
+    {
+      "name": "showFailures",
+      "checked": false
+    },
+    {
+      "name": "showSpaces",
+      "checked": false
+    }
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1
+  },
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "url": "https://ohmjs.org/editor/",
+  "capturedAt": "2026-10-27T22:36:44.861Z"
+}

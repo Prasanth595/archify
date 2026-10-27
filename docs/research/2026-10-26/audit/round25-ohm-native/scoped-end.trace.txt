@@ -1,0 +1,51 @@
+ab         ✓ spaces ⇒  ""
+ab           ✓ space* ⇒  ""
+ab             ✗ space
+ab               ✗ "\u0000".." "
+ab         ✓ X ⇒  "ab"
+ab           ✓ A end | B end ⇒  "ab"
+ab             ✗ A end
+ab               ✓ spaces ⇒  ""
+ab                 ✓ space* ⇒  ""
+ab                   ✗ space
+ab                     ✗ "\u0000".." "
+ab               ✓ A ⇒  "a"
+ab                 ✓ spaces ⇒  ""
+ab                   ✓ space* ⇒  ""
+ab                     ✗ space
+ab                       ✗ "\u0000".." "
+ab                 ✓ "a" ⇒  "a"
+b                ✓ spaces ⇒  ""
+b                  ✓ space* ⇒  ""
+b                    ✗ space
+b                      ✗ "\u0000".." "
+b                ✗ end
+b                  ✗ end
+ab             ✓ B end ⇒  "ab"
+ab               ✓ spaces ⇒  ""
+ab                 ✓ space* ⇒  ""
+ab                   ✗ space
+ab                     ✗ "\u0000".." "
+ab               ✓ B ⇒  "ab"
+ab                 ✓ "a" "b" ⇒  "ab"
+ab                   ✓ spaces ⇒  ""
+ab                     ✓ space* ⇒  ""
+ab                       ✗ space
+ab                         ✗ "\u0000".." "
+ab                   ✓ "a" ⇒  "a"
+b                    ✓ spaces ⇒  ""
+b                      ✓ space* ⇒  ""
+b                        ✗ space
+b                          ✗ "\u0000".." "
+b                    ✓ "b" ⇒  "b"
+                 ✓ spaces ⇒  ""
+                   ✓ space* ⇒  ""
+                     ✗ space
+                       ✗ "\u0000".." "
+                 ✓ end ⇒  ""
+                   ✓ end ⇒  ""
+           ✓ spaces ⇒  ""
+             ✓ space* ⇒  ""
+               ✗ space
+                 ✗ "\u0000".." "
+           ✓ end ⇒  ""

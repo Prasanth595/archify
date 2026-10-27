@@ -1,0 +1,89 @@
+{ editors: [ { value: 'X {\n  X = A | B\n  A = "a"\n  B = "a" "b"\n}', width: 719.5, height: 563.09375 }, { value: '', width: 0, height: 0 } ], checks: [ { name: 'showFailures', checked: true }, { name: 'showSpaces', checked: false } ] }
+[p1 "Ohm Editor" | space "Archify research 20261026"(34): 1 managed, 0 untracked — p1* "Ohm Editor"]
+root
+  container
+    container
+      container
+        heading
+          text "Grammar"
+        container
+          combobox "Selected grammar" [ref=1, loc=css:select[aria-label="Selected grammar"]]
+            text "[local storage]"
+          button [ref=2]
+            text "Save"
+            text "d"
+          button [ref=3]
+            text "⋮"
+      container [ref=5]
+        container
+          container
+            text "X"
+            text "{"
+          container
+            text "X"
+            text "="
+            text "A"
+            text "|"
+            text "B"
+          container
+            text "A"
+            text "="
+            text ""a""
+          container
+            text "B"
+            text "="
+            text ""a""
+            text ""b""
+          text "}"
+    container
+      container
+        heading
+          text "EXAMPLES"
+        button "Add example" [ref=6, loc=css:button[aria-label="Add example"]]
+          text "+"
+        button "Collapse" [ref=7, loc=css:button[aria-label="Collapse"]]
+      unordered_list "Examples"
+        list_item
+          switch [ref=8]
+            text "👍"
+        list_item
+          text "1+2*3"
+          switch [ref=9]
+            text "👍"
+        list_item
+          text "oh no"
+          switch [ref=10]
+            text "👍"
+        list_item
+          text "( 123 )"
+          switch [ref=11]
+            text "👍"
+        list_item
+          text "(2+4)*7"
+          switch [ref=12]
+            text "👍"
+    container
+      heading
+        text "Parse"
+      container
+        canvas
+        text "X"
+  container
+    unordered_list
+      list_item
+        checkbox [ref=13, loc=css:input[name="showFailures"]]
+        text "Explain parse"
+      list_item
+        checkbox [ref=14, loc=css:input[name="showSpaces"]]
+        text "Show spaces"
+    container
+      button [ref=15]
+        image
+      button [ref=16]
+        image
+      button [ref=17]
+        image
+      button [ref=18]
+        image
+
+

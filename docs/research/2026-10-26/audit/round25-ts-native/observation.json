@@ -1,0 +1,147 @@
+{
+  "node": {
+    "path": "/opt/homebrew/Cellar/node@22/22.23.3_3/bin/node",
+    "bytes": 67024,
+    "sha256": "219a4eab89913fd4366307d951a682c124a5ca998ba1f1e4fd666e6beacd4b11"
+  },
+  "tsc": {
+    "path": "/usr/local/lib/node_modules/typescript/bin/tsc",
+    "bytes": 45,
+    "sha256": "8d5fa5bd883fec0979fc2004f1fe1d99aef40570155d550eadc0b03b55513bf0"
+  },
+  "typescript_package": {
+    "path": "/usr/local/lib/node_modules/typescript/package.json",
+    "bytes": 3615,
+    "sha256": "ebb0ce176c85ac13ce82f5be7e6f15114732ba0f064ccc893fd9051426d35d3a"
+  },
+  "typescript_version": "5.8.3",
+  "before": {
+    "run.py": {
+      "path": "/tmp/archify-round25-ts-native/run.py",
+      "bytes": 1682,
+      "sha256": "dbe90eb3ef369de5b170ff71f4b47cccd96988847b34ee5b410cd69eae8787b3"
+    },
+    "upstream/expected.errors.txt": {
+      "path": "/tmp/archify-round25-ts-native/upstream/expected.errors.txt",
+      "bytes": 1501,
+      "sha256": "36f432bcd2e4b2b8b165aee9161b1e4d25475ecb1c7a7dca0c3c89b40f22e8e1"
+    },
+    "upstream/LICENSE.txt": {
+      "path": "/tmp/archify-round25-ts-native/upstream/LICENSE.txt",
+      "bytes": 9197,
+      "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+    },
+    "upstream/fixture.ts": {
+      "path": "/tmp/archify-round25-ts-native/upstream/fixture.ts",
+      "bytes": 384,
+      "sha256": "04facf23005537ea74db93bb9f2a7fce89ac9526d7e87306263f8c06b8bd6362"
+    }
+  },
+  "after": {
+    "tsc-run.stdout": {
+      "path": "/tmp/archify-round25-ts-native/tsc-run.stdout",
+      "bytes": 619,
+      "sha256": "cbafbe788182625f712db24933a79561b7b45e2b3c8f6f130eb49adcf2b1679b"
+    },
+    "run.py": {
+      "path": "/tmp/archify-round25-ts-native/run.py",
+      "bytes": 1682,
+      "sha256": "dbe90eb3ef369de5b170ff71f4b47cccd96988847b34ee5b410cd69eae8787b3"
+    },
+    "tsc-version.stdout": {
+      "path": "/tmp/archify-round25-ts-native/tsc-version.stdout",
+      "bytes": 14,
+      "sha256": "9265ac58ff367868abd52fc852ecff28622facad715e3c3a0fcf92c4ca2d86e2"
+    },
+    "tsc-version.stderr": {
+      "path": "/tmp/archify-round25-ts-native/tsc-version.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tsc-run.stderr": {
+      "path": "/tmp/archify-round25-ts-native/tsc-run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "node-version.stdout": {
+      "path": "/tmp/archify-round25-ts-native/node-version.stdout",
+      "bytes": 9,
+      "sha256": "33e26f35db6e57ce0c486ddc815fe966867e4f649e418eaf323f75f4720eb8e9"
+    },
+    "node-version.stderr": {
+      "path": "/tmp/archify-round25-ts-native/node-version.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "upstream/expected.errors.txt": {
+      "path": "/tmp/archify-round25-ts-native/upstream/expected.errors.txt",
+      "bytes": 1501,
+      "sha256": "36f432bcd2e4b2b8b165aee9161b1e4d25475ecb1c7a7dca0c3c89b40f22e8e1"
+    },
+    "upstream/LICENSE.txt": {
+      "path": "/tmp/archify-round25-ts-native/upstream/LICENSE.txt",
+      "bytes": 9197,
+      "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+    },
+    "upstream/fixture.ts": {
+      "path": "/tmp/archify-round25-ts-native/upstream/fixture.ts",
+      "bytes": 384,
+      "sha256": "04facf23005537ea74db93bb9f2a7fce89ac9526d7e87306263f8c06b8bd6362"
+    }
+  },
+  "versions": [
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node@22/22.23.3_3/bin/node",
+        "--version"
+      ],
+      "cwd": "/tmp/archify-round25-ts-native",
+      "started_utc": "2026-10-27T22:31:25.779481+00:00",
+      "ended_utc": "2026-10-27T22:31:25.801550+00:00",
+      "duration_seconds": 0.021869749994948506,
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/opt/homebrew/Cellar/node@22/22.23.3_3/bin/node",
+        "/usr/local/lib/node_modules/typescript/bin/tsc",
+        "--version"
+      ],
+      "cwd": "/tmp/archify-round25-ts-native",
+      "started_utc": "2026-10-27T22:31:25.801942+00:00",
+      "ended_utc": "2026-10-27T22:31:25.904759+00:00",
+      "duration_seconds": 0.10284529099590145,
+      "exit": 0
+    }
+  ],
+  "run": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.3_3/bin/node",
+      "/usr/local/lib/node_modules/typescript/bin/tsc",
+      "--strict",
+      "--noEmit",
+      "--pretty",
+      "true",
+      "--noErrorTruncation",
+      "upstream/fixture.ts"
+    ],
+    "cwd": "/tmp/archify-round25-ts-native",
+    "started_utc": "2026-10-27T22:31:25.905160+00:00",
+    "ended_utc": "2026-10-27T22:31:26.452362+00:00",
+    "duration_seconds": 0.5472259999951348,
+    "exit": 2
+  },
+  "emitted_javascript": [],
+  "typescript_runtime_files": [
+    {
+      "path": "/usr/local/lib/node_modules/typescript/lib/tsc.js",
+      "bytes": 267,
+      "sha256": "2cffde0b8c6760dfb0b5b0382bbb7e00ba6a8b2d981b9205b256a700a481d983"
+    },
+    {
+      "path": "/usr/local/lib/node_modules/typescript/lib/_tsc.js",
+      "bytes": 6172356,
+      "sha256": "1f62c69e832fbbbd05a6dac950f152937f594a4d0b88087be5406ace348efcb5"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "grammar": "Arithmetic {\n  Exp\n    = AddExp\n\n  AddExp\n    = AddExp \"+\" MulExp  -- plus\n    | AddExp \"-\" MulExp  -- minus\n    | MulExp\n\n  MulExp\n    = MulExp \"*\" ExpExp  -- times\n    | MulExp \"/\" ExpExp  -- divide\n    | ExpExp\n\n  ExpExp\n    = PriExp \"^\" ExpExp  -- power\n    | PriExp\n\n  PriExp\n    = \"(\" Exp \")\"  -- paren\n    | \"+\" PriExp   -- pos\n    | \"-\" PriExp   -- neg\n    | ident\n    | number\n\n  ident  (an identifier)\n    = letter alnum*\n\n  number  (a number)\n    = digit* \".\" digit+  -- fract\n    | digit+             -- whole\n}",
+  "examples": [
+    {
+      "id": "example0",
+      "code": "",
+      "selected": true
+    },
+    {
+      "id": "example1",
+      "code": "1+2*3",
+      "selected": false
+    },
+    {
+      "id": "example2",
+      "code": "oh no",
+      "selected": false
+    },
+    {
+      "id": "example3",
+      "code": " (  \t123   ) ",
+      "selected": false
+    },
+    {
+      "id": "example4",
+      "code": "(2+4)*7",
+      "selected": false
+    }
+  ],
+  "checks": [
+    {
+      "name": "showFailures",
+      "checked": true
+    },
+    {
+      "name": "showSpaces",
+      "checked": false
+    }
+  ],
+  "capturedAt": "2026-10-27T22:40:00.162Z"
+}
