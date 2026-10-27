@@ -1,0 +1,16 @@
+# Reproduce the native Compiler Explorer observation
+
+The goal is to inspect the original linked case, not to rebuild historical LLVM or modify Archify. No local compiler, package installation, shared-link publication or program execution is needed. Opening the public permalink may trigger CE's ordinary remote compilation.
+
+1. Open `https://godbolt.org/z/41Yxvcsn9`. Dismiss the informational privacy-policy modal with Close if present. Do not create a new Share link or upload local source.
+2. Record the actual compiler selection, compiler flags and saved Opt Viewer filter state. In this observation the compiler was `clang_trunk`, and flags were `-Wall -Wextra -O3 -std=c++20 -march=znver3 `.
+3. Check the complete source against 468 UTF-8 bytes, 19 lines, SHA-256 `82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78`. Two in-page Monaco models represented the same source (editor/Opt Viewer). Do not treat only the visible scrolled fragment as the complete input.
+4. At 1440×900, view Opt Viewer. The original saved state in this run enabled all three categories and showed the floating-point reordering explanation beside the loop. Record the current state rather than assuming template defaults.
+5. Open Filters, switch off only Show analysis opt-remarks, then Escape. Wait until the generic missed-vectorization text is present and the specific reordering explanation is absent. Record UI, selected flags, source/model hashes and observable compile request count.
+6. Open Filters, restore Analysis, then Escape. Wait until the specific explanation is present. Confirm source/assembly model hashes and other filter choices did not change. Leave the saved-link code/options untouched.
+
+Current `clang_trunk` can change. On 2026-10-28 a follow-up GET to `https://api.compiler-explorer.com/get_deployed_exe_version?id=clang_trunk`, discovered in this page's native resource entries, returned clang 24.0.0git at LLVM `817f121cfed0f95442f1da8d72a8b49ee220a0ee`, with a 2026-10-26 deployment directory. This was not the captured original compile response; do not reuse it to certify a future run. The live CE deployment source revision was unknown. No raw YAML was captured, so this workflow does not independently identify its raw remark tag or reproduce the 2025 report.
+
+Local raw evidence is at `/Users/tsk/.local/share/archify-tuning/evidence/round28-ce-20261028/`. `09-settled-filter-control.mjs`, its log/JSON and the two `*-settled.png` files are the final control. Earlier scripts/logs/images remain, including the invalid subtree-root error and the premature empty DOM read. Five actual PNGs were visually inspected by root; they are native CE screenshots, not Archify output. User snippet license was not established, so the raw packet is local-only. Public hashes are in `round28-local-evidence-manifest.json`.
+
+The ongoing goal's Ego space 34 was absent from inventory. Prior user permission to recreate its research space was reused; space 38, `Archify research 20261026`, was created. No user-owned unrelated space was claimed. Space 38 remains active for the ongoing goal, with Analysis restored and the dropdown closed. No cookies/storage were cleared and no browser or live Archify installation was changed.

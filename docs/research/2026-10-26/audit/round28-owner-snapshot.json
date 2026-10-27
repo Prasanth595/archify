@@ -1,0 +1,108 @@
+{
+  "note": "Read-only ownership check, 2026-10-28. Search metadata projection, not a complete repository audit; PR body validation claims were not rerun or refreshed from CI.",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:open is:pull-request explainer toolbar",
+      "total": 1,
+      "incomplete": false,
+      "limit": 100,
+      "items": [
+        {
+          "number": 1076,
+          "title": "fix(explainer): keep mobile toolbar and Style/Export menus in view",
+          "url": "https://github.com/tt-a1i/archify/pull/1076",
+          "state": "open"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open is:issue explainer toolbar",
+      "total": 2,
+      "incomplete": false,
+      "limit": 100,
+      "items": [
+        {
+          "number": 1068,
+          "title": "feat(artifacts): polish standalone page reading and interaction experience",
+          "url": "https://github.com/tt-a1i/archify/issues/1068",
+          "state": "open"
+        },
+        {
+          "number": 1026,
+          "title": "[Viewer] Mobile: nav actions overflow, route probe hides under the nav, presentation stage clips the scene start",
+          "url": "https://github.com/tt-a1i/archify/issues/1026",
+          "state": "open"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open is:pull-request explainer overflow",
+      "total": 2,
+      "incomplete": false,
+      "limit": 100,
+      "items": [
+        {
+          "number": 1066,
+          "title": "feat: add standalone artifact update notice",
+          "url": "https://github.com/tt-a1i/archify/pull/1066",
+          "state": "open"
+        },
+        {
+          "number": 1076,
+          "title": "fix(explainer): keep mobile toolbar and Style/Export menus in view",
+          "url": "https://github.com/tt-a1i/archify/pull/1076",
+          "state": "open"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open is:issue explainer overflow",
+      "total": 2,
+      "incomplete": false,
+      "limit": 100,
+      "items": [
+        {
+          "number": 1068,
+          "title": "feat(artifacts): polish standalone page reading and interaction experience",
+          "url": "https://github.com/tt-a1i/archify/issues/1068",
+          "state": "open"
+        },
+        {
+          "number": 1026,
+          "title": "[Viewer] Mobile: nav actions overflow, route probe hides under the nav, presentation stage clips the scene start",
+          "url": "https://github.com/tt-a1i/archify/issues/1026",
+          "state": "open"
+        }
+      ]
+    }
+  ],
+  "pr": {
+    "url": "https://github.com/tt-a1i/archify/pull/1076",
+    "number": 1076,
+    "title": "fix(explainer): keep mobile toolbar and Style/Export menus in view",
+    "state": "open",
+    "draft": true,
+    "author": "BlueboxC",
+    "head": "cd50794b794fc9f6ec4c9914dee78df0b7fddde3",
+    "sourceRepo": "BlueboxC/archify",
+    "sourceBranch": "codex/1068-upstream-p0",
+    "baseRef": "dev",
+    "baseAsReportedByApi": "10b4dd5c5f2264baa315ee65a9b4cc23c13ea5f0",
+    "currentDevFromGit": "d5d979493bba650b3995836afd379cd249f2d0dd",
+    "files": [
+      {
+        "path": "archify.zip",
+        "changes": 0
+      },
+      {
+        "path": "archify/explainer/reader.css",
+        "changes": 2
+      },
+      {
+        "path": "test/explainer-browser.test.mjs",
+        "changes": 36
+      }
+    ],
+    "action": "No duplicate implementation, contributor edits, comments, PR, rebase, package rebuild or CI rerun."
+  }
+}

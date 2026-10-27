@@ -672,3 +672,11 @@ Ohm页面报告引擎 **17.5.0**，编辑器部署commit未知，与固定编辑
 [独立产品审阅](audit/round27-runtime-review.md)、[独立内容审阅](audit/round27-content-review.md)和[task-view 复核](audit/round27-task-flow-review.md)支持此索引。此轮只做只读资料核查，没有新 runtime 测试、截图或性能结论，也不把旧绿灯／旧红灯改写。七个实验远程 head 不变；[316 个远程分支](audit/remote-branches-round27.txt)相较上批只多了研究总账自己的新提交。没有新建 PR。
 
 [变异测试阅读候选](scouts/mutation-reading-round27.md)因已有完整原生报告覆盖、自然问题缺少独立同次运行证据而不实施。后续继续寻找原生工具尚未回答、且现有 Archify 表达能低成本验证的问题，不把项目名单增长算作产品收益。
+
+## 28 日第二十八批：原生过滤已回答真实 LLVM 问题
+
+[本批筛选记录](scouts/reading-decisions-round28.md)补开 LLVM #158499 原帖的 Compiler Explorer 链接：当前保存状态已经显示浮点重排原因。实际关闭 Analysis 后原因消失，通用 Missed 保留；恢复后原因重现，源码／汇编模型哈希不变，观察到的 compile 请求数始终为 1。可变 clang trunk 与跟进版本查询不能复现 2025 年 compiler；没有取原始 YAML、绑定原始 compile response 或推断性能收益。
+
+三态记录、五张真实图片和原始失败保存在本地；因用户片段许可未明，远程仅收录[派生身份与状态](audit/round28-native-summary.json)、[清单](audit/round28-local-evidence-manifest.json)、来源许可和[复现步骤](audit/round28-native-reproduction.md)。没有将同一个原生开关包装成新的 Archify 功能。
+
+[远程316分支](audit/remote-branches-round28.txt)与[issue／PR归属](audit/round28-owner-snapshot.json)已刷新：窄屏工具栏有 #1076，不重复实现；Sequence 类型本来由作者声明；profile 上下文没有新的同输入问题。本批不新建实验分支或 PR，不修改贡献者分支、合并、发布或安装。

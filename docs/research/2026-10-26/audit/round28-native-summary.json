@@ -1,0 +1,251 @@
+{
+  "observedAt": "2026-10-27T23:49:29.965556+00:00",
+  "nativeUrl": "https://godbolt.org/z/41Yxvcsn9",
+  "case": "LLVM issue158499 original permalink only; two other comment permalinks not opened.",
+  "viewport": [
+    1440,
+    900
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "flags": [
+    "-Wall -Wextra -O3 -std=c++20 -march=znver3 "
+  ],
+  "models": [
+    {
+      "uri": "inmemory://model/1",
+      "language": "plaintext",
+      "bytes": 0,
+      "lines": 1,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "uri": "inmemory://model/2",
+      "language": "cppp",
+      "bytes": 468,
+      "lines": 19,
+      "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+    },
+    {
+      "uri": "inmemory://model/3",
+      "language": "asm",
+      "bytes": 1497,
+      "lines": 48,
+      "sha256": "847bc4e73f7ba4d7df7b23adf1499f7715a02780bd53f7ad900a56f1436133b4"
+    },
+    {
+      "uri": "inmemory://model/4",
+      "language": "cpp",
+      "bytes": 468,
+      "lines": 19,
+      "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+    }
+  ],
+  "versionLookup": {
+    "url": "https://api.compiler-explorer.com/get_deployed_exe_version?id=clang_trunk",
+    "status": 200,
+    "body": "{\"version\": \"clang version 24.0.0git (https://github.com/llvm/llvm-project.git 817f121cfed0f95442f1da8d72a8b49ee220a0ee)\", \"full_version\": \"clang version 24.0.0git (https://github.com/llvm/llvm-project.git 817f121cfed0f95442f1da8d72a8b49ee220a0ee)\\nTarget: x86_64-unknown-linux-gnu\\nThread model: posix\\nInstalledDir: /cefs/b2/b2866508f767b33b55c3729c_clang-trunk-20261026/bin\\n\", \"modified\": \"2026-10-26T03:42:55\"}",
+    "note": "Follow-up GET to endpoint observed in native resource entries; not the captured original compile response."
+  },
+  "deploymentSourceSha": "unknown; fixed CE source audit is separate",
+  "controls": {
+    "before": {
+      "compileRequests": 1,
+      "filters": [
+        {
+          "key": "filter-missed",
+          "pressed": "true",
+          "active": true,
+          "checked": true
+        },
+        {
+          "key": "filter-passed",
+          "pressed": "false",
+          "active": true,
+          "checked": true
+        },
+        {
+          "key": "filter-analysis",
+          "pressed": "false",
+          "active": true,
+          "checked": true
+        }
+      ],
+      "models": [
+        {
+          "uri": "inmemory://model/1",
+          "language": "plaintext",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "uri": "inmemory://model/2",
+          "language": "cppp",
+          "bytes": 468,
+          "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+        },
+        {
+          "uri": "inmemory://model/3",
+          "language": "asm",
+          "bytes": 1497,
+          "sha256": "847bc4e73f7ba4d7df7b23adf1499f7715a02780bd53f7ad900a56f1436133b4"
+        },
+        {
+          "uri": "inmemory://model/4",
+          "language": "cpp",
+          "bytes": 468,
+          "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+        }
+      ],
+      "hasMissed": true,
+      "hasReason": true
+    },
+    "off": {
+      "compileRequests": 1,
+      "filters": [
+        {
+          "key": "filter-missed",
+          "pressed": "true",
+          "active": true,
+          "checked": true
+        },
+        {
+          "key": "filter-passed",
+          "pressed": "false",
+          "active": true,
+          "checked": true
+        },
+        {
+          "key": "filter-analysis",
+          "pressed": "false",
+          "active": false,
+          "checked": false
+        }
+      ],
+      "models": [
+        {
+          "uri": "inmemory://model/1",
+          "language": "plaintext",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "uri": "inmemory://model/2",
+          "language": "cppp",
+          "bytes": 468,
+          "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+        },
+        {
+          "uri": "inmemory://model/3",
+          "language": "asm",
+          "bytes": 1497,
+          "sha256": "847bc4e73f7ba4d7df7b23adf1499f7715a02780bd53f7ad900a56f1436133b4"
+        },
+        {
+          "uri": "inmemory://model/4",
+          "language": "cpp",
+          "bytes": 468,
+          "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+        }
+      ],
+      "hasMissed": true,
+      "hasReason": false
+    },
+    "restored": {
+      "compileRequests": 1,
+      "filters": [
+        {
+          "key": "filter-missed",
+          "pressed": "true",
+          "active": true,
+          "checked": true
+        },
+        {
+          "key": "filter-passed",
+          "pressed": "false",
+          "active": true,
+          "checked": true
+        },
+        {
+          "key": "filter-analysis",
+          "pressed": "false",
+          "active": true,
+          "checked": true
+        }
+      ],
+      "models": [
+        {
+          "uri": "inmemory://model/1",
+          "language": "plaintext",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "uri": "inmemory://model/2",
+          "language": "cppp",
+          "bytes": 468,
+          "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+        },
+        {
+          "uri": "inmemory://model/3",
+          "language": "asm",
+          "bytes": 1497,
+          "sha256": "847bc4e73f7ba4d7df7b23adf1499f7715a02780bd53f7ad900a56f1436133b4"
+        },
+        {
+          "uri": "inmemory://model/4",
+          "language": "cpp",
+          "bytes": 468,
+          "sha256": "82efdbb7af2e3c9a1975256b368b976f80e219fa74e222f6aff1c4e8c1a1bf78"
+        }
+      ],
+      "hasMissed": true,
+      "hasReason": true
+    }
+  },
+  "boundaries": [
+    "No raw YAML or original compile response was captured.",
+    "Current trunk alias is not historical 2025 compiler reproduction.",
+    "No new shared link, upload, local compiler installation, program execution or product test.",
+    "get_deployed_exe_version is a follow-up native endpoint query, not original compile-response identity.",
+    "Complete user snippet license was not established; raw source/models, UI screenshots and raw browser logs are retained locally only.",
+    "Source hash retained for exact comparison; source text was unchanged.",
+    "Native reason visibility does not prove a raw AnalysisFPCommute YAML tag in this run."
+  ],
+  "failedOrEarlyObservations": [
+    "05: snapshot subtree root was a CSS locator; API requires snapshot ref. Prior metadata collection and menu opening succeeded; 06 inspected before further actions.",
+    "07: early DOM remarks array was empty while later screenshot showed Missed/Passed. Not treated as complete settled output. 09 waited for Missed present and reason absent, then restored."
+  ],
+  "localEvidenceDirectory": "/Users/tsk/.local/share/archify-tuning/evidence/round28-ce-20261028",
+  "images": [
+    {
+      "file": "analysis-off-settled.png",
+      "bytes": 167054,
+      "sha256": "558398233fb92686d55d258a0fcf29795c449f31ab8a215aa78a7e5f7da80bb6",
+      "publication": "local-only"
+    },
+    {
+      "file": "analysis-off.png",
+      "bytes": 166626,
+      "sha256": "4fbdf6c267575b99a82c73a14c0491f267c6b4b5705a8527d40813ba1cc9140c",
+      "publication": "local-only"
+    },
+    {
+      "file": "analysis-restored-settled.png",
+      "bytes": 259198,
+      "sha256": "5d1a409c529be6806ed961e4f734fd89684ef74dff918b2ad7ff3361e64907a1",
+      "publication": "local-only"
+    },
+    {
+      "file": "analysis-restored.png",
+      "bytes": 259238,
+      "sha256": "75affc2b356cf418ed6ad4d7d32d61867aea7b5334964b376b2b912b81129be0",
+      "publication": "local-only"
+    },
+    {
+      "file": "original-default.png",
+      "bytes": 258990,
+      "sha256": "d00b540b97525b0452c2c873a33db6505abed255126456928e7296567e7833df",
+      "publication": "local-only"
+    }
+  ]
+}

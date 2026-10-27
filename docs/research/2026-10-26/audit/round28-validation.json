@@ -1,0 +1,29 @@
+{
+  "scope": "Research documentation and recorded native CE observation; no Archify product tests/build/browser-check/CI rerun.",
+  "nativeControl": "Recorded actual before/off/restored UI; all source/assembly model hashes unchanged, observed compile resource count 1. Raw first compile response and YAML absent.",
+  "localManifest": {
+    "verifiedFiles": 33,
+    "publicRawFiles": 0
+  },
+  "publicCopyMap": {
+    "verifiedCopies": 3
+  },
+  "localMarkdownLinks": {
+    "checked": 8,
+    "status": "pass"
+  },
+  "independentReview": {
+    "file": "docs/research/2026-10-26/audit/round28-delivery-review.md",
+    "result": "One broken historical profile URL; all other reviewed evidence scoped pass.",
+    "resolution": "Root changed to existing same-directory profile-window-reading.md and validated existence.",
+    "resolvedPath": "docs/research/2026-10-26/scouts/profile-window-reading.md",
+    "resolvedGitBlob": "13ab7fcc6af93229dddcfbf4cb79e758a34fd9ab"
+  },
+  "diffCheck": {
+    "command": "git diff --cached --check",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "profileScopeClarification": "README-level native capabilities and complete fixture read, not importer/UI execution."
+}
