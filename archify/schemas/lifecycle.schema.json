@@ -124,6 +124,7 @@
             "minLength": 1
           },
           "explanation": { "type": "string", "minLength": 1, "maxLength": 1200 },
+          "task_checklist": { "$ref": "common.schema.json#/$defs/taskChecklist" },
           "sublabel": {
             "type": "string"
           },

@@ -146,10 +146,29 @@ function evidenceNodes(diagramType, diagram) {
   return { collection, nodes: Array.isArray(diagram?.[collection]) ? diagram[collection] : [] };
 }
 
+// Node sources and task checklist sources are verified identically; a group
+// only records where its citations are authored and where the verified list
+// belongs in the payload.
+function citationGroups(collection, authoredNodes) {
+  const groups = [];
+  authoredNodes.forEach((node, nodeIndex) => {
+    if (Array.isArray(node?.sources) && node.sources.length) {
+      groups.push({ node, at: `/${collection}/${nodeIndex}/sources`, sources: node.sources });
+    }
+    if (!Array.isArray(node?.task_checklist)) return;
+    node.task_checklist.forEach((task, taskIndex) => {
+      if (Array.isArray(task?.sources) && task.sources.length) {
+        groups.push({ node, taskIndex, at: `/${collection}/${nodeIndex}/task_checklist/${taskIndex}/sources`, sources: task.sources });
+      }
+    });
+  });
+  return groups;
+}
+
 export function hasRepositoryEvidence(diagramType, diagram) {
   const authored = evidenceNodes(diagramType, diagram);
   if (!authored) return false;
-  return Boolean(diagram?.meta?.repository) || authored.nodes.some((node) => Array.isArray(node?.sources) && node.sources.length);
+  return Boolean(diagram?.meta?.repository) || citationGroups(authored.collection, authored.nodes).length > 0;
 }
 
 export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
@@ -252,11 +271,11 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
   // The batch is an optimization only: every path, line-range, file and line
   // check still runs in source order in the verification loop below, so a
   // citation the batch cannot answer for never reorders the diagnostics.
+  const groups = citationGroups(collection, authoredNodes);
   const citedObjects = new Map();
-  for (const [nodeIndex, node] of authoredNodes.entries()) {
-    if (!Array.isArray(node.sources) || node.sources.length === 0) continue;
-    for (const [sourceIndex, authored] of node.sources.entries()) {
-      const at = `/${collection}/${nodeIndex}/sources/${sourceIndex}`;
+  for (const group of groups) {
+    for (const [sourceIndex, authored] of group.sources.entries()) {
+      const at = `${group.at}/${sourceIndex}`;
       let sourcePath;
       try {
         sourcePath = withDiagnosticRecordingSuppressed(() => verifiedSourcePath(authored.path, `${at}/path`));
@@ -270,18 +289,19 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
   const prefetchedBlobs = prefetchBlobs(realRoot, citedObjects);
 
   const nodes = Object.create(null);
+  const taskChecklists = Object.create(null);
   const sourceDiagnostics = [];
   let referenceCount = 0;
-  for (const [nodeIndex, node] of authoredNodes.entries()) {
-    if (!Array.isArray(node.sources) || node.sources.length === 0) continue;
+  for (const group of groups) {
+    const { node } = group;
     // `componentId` shipped with the architecture-only path; keep it beside the
     // type-neutral `nodeId` so existing agent handling stays valid.
     const nodeSubject = collection === 'components'
       ? { diagramType, collection, nodeId: node.id, componentId: node.id }
       : { diagramType, collection, nodeId: node.id };
     const verified = [];
-    for (const [sourceIndex, authored] of node.sources.entries()) {
-      const at = `/${collection}/${nodeIndex}/sources/${sourceIndex}`;
+    for (const [sourceIndex, authored] of group.sources.entries()) {
+      const at = `${group.at}/${sourceIndex}`;
       const where = `${at}/path`;
       try {
         const source = {
@@ -368,7 +388,12 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
         }
       }
     }
-    nodes[node.id] = verified;
+    if (group.taskIndex === undefined) {
+      nodes[node.id] = verified;
+    } else {
+      taskChecklists[node.id] ||= node.task_checklist.map(() => []);
+      taskChecklists[node.id][group.taskIndex] = verified;
+    }
   }
   if (sourceDiagnostics.length) {
     throwDiagnosticError(sourceDiagnostics[0].message, sourceDiagnostics);
@@ -376,7 +401,7 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
   if (referenceCount === 0) {
     evidenceFailure('repository-evidence/source-required', `/meta/repository requires at least one /${collection} source reference.`, {
       subject: { path: '/meta/repository', diagramType, collection },
-      supportedFixes: [`add at least one verified /${collection} source or remove repository metadata`],
+      supportedFixes: [`add at least one verified /${collection} source or task checklist source, or remove repository metadata`],
     });
   }
 
@@ -392,5 +417,6 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
     },
     referenceCount,
     nodes,
+    ...(Object.keys(taskChecklists).length ? { taskChecklists } : {}),
   };
 }

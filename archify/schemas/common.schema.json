@@ -161,6 +161,33 @@
         }
       }
     },
+    "taskChecklist": {
+      "description": "Optional task checklist shown read-only in the Semantic Passport. An implemented task cites at least one verified source; a pending task cites none.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "status"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "status": { "enum": ["implemented", "needs-review", "pending"] },
+          "criteria": { "type": "string", "minLength": 1, "maxLength": 280 },
+          "sources": { "$ref": "#/$defs/sourceReferences" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "implemented" } } },
+            "then": { "properties": { "sources": true }, "required": ["sources"] }
+          },
+          {
+            "if": { "properties": { "status": { "const": "pending" } } },
+            "then": { "properties": { "sources": false } }
+          }
+        ]
+      }
+    },
     "cards": {
       "type": "array",
       "items": {

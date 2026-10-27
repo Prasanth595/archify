@@ -158,4 +158,8 @@ test('reader accent override is wired to the failing selectors', () => {
     /\.node-finder-result em[\s\S]{0,400}var\(--reader-accent/.test(css),
     'finder count does not resolve --reader-accent',
   );
+  assert.ok(
+    /\.semantic-passport-task-checklist-task\[data-status="implemented"\] \.semantic-passport-task-checklist-mark[\s\S]{0,400}var\(--reader-accent/.test(css),
+    'task checklist done mark does not resolve --reader-accent',
+  );
 });

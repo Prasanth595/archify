@@ -1909,6 +1909,55 @@ a.semantic-passport-source:focus-visible {
   color: var(--text-faint);
   font-size: 0.5625rem;
 }
+/* Authored task checklist: read-only, collapsed to one counted line. */
+.semantic-passport-task-checklist {
+  margin-top: 0.52rem;
+  padding-top: 0.48rem;
+  border-top: 1px solid color-mix(in srgb, var(--toolbar-border) 76%, transparent);
+}
+.semantic-passport-task-checklist > summary { cursor: pointer; }
+.semantic-passport-task-checklist-count {
+  color: var(--text-muted);
+  font-size: 0.5625rem;
+}
+.semantic-passport-task-checklist-tasks {
+  display: grid;
+  gap: 0.32rem;
+  max-height: min(16rem, 40vh);
+  margin: 0.45rem 0 0;
+  padding: 0.15rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--frontend-stroke) transparent;
+  list-style: none;
+}
+.semantic-passport-task-checklist-task {
+  display: grid;
+  grid-template-columns: 0.9rem minmax(0, 1fr);
+  gap: 0.12rem 0.3rem;
+}
+.semantic-passport-task-checklist-mark {
+  color: var(--text-faint);
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-align: center;
+}
+.semantic-passport-task-checklist-task[data-status="implemented"] .semantic-passport-task-checklist-mark { color: var(--frontend-stroke); }
+.semantic-passport-task-checklist-task[data-status="needs-review"] .semantic-passport-task-checklist-mark { color: var(--text-muted); }
+.semantic-passport-task-checklist-task > strong {
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+  overflow-wrap: anywhere;
+}
+.semantic-passport-task-checklist-task p,
+.semantic-passport-task-checklist-task .semantic-passport-source { grid-column: 2; }
+.semantic-passport-task-checklist-task p {
+  margin: 0;
+  color: var(--text-faint);
+  font-size: 0.5625rem;
+  overflow-wrap: anywhere;
+}
 .semantic-passport-reach {
   display: grid;
   gap: 0.28rem;
@@ -1917,7 +1966,8 @@ a.semantic-passport-source:focus-visible {
   border-top: 1px solid color-mix(in srgb, var(--toolbar-border) 76%, transparent);
 }
 .semantic-passport-reach[hidden] { display: none; }
-.semantic-passport-reach-label {
+.semantic-passport-reach-label,
+.semantic-passport-task-checklist-label {
   color: var(--text-faint);
   font-size: 0.5rem;
   font-weight: 800;
@@ -1985,8 +2035,10 @@ a.semantic-passport-source:focus-visible {
   scrollbar-width: thin;
   scrollbar-color: var(--frontend-stroke) transparent;
 }
-.relationship-lens-list::-webkit-scrollbar { width: 4px; }
-.relationship-lens-list::-webkit-scrollbar-thumb {
+.relationship-lens-list::-webkit-scrollbar,
+.semantic-passport-task-checklist-tasks::-webkit-scrollbar { width: 4px; }
+.relationship-lens-list::-webkit-scrollbar-thumb,
+.semantic-passport-task-checklist-tasks::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: color-mix(in srgb, var(--frontend-stroke) 68%, transparent);
 }
@@ -2488,8 +2540,9 @@ html[data-preset="blueprint"] .node-finder-results { border-radius: 0.18rem; }
    as are dark themes and presets that already pass. Zero counts stay faint
    on purpose, so they are excluded from the darker rule. Route-target
    finders keep their --security-stroke status color, so they are excluded
-   too. */
+   too. Task checklist done marks are the same kind of text. */
 html[data-theme="light"] .semantic-passport-meta [data-passport="kind"],
+html[data-theme="light"] .semantic-passport-task-checklist-task[data-status="implemented"] .semantic-passport-task-checklist-mark,
 html[data-theme="light"] .node-finder:not([data-context="route-target"]) .node-finder-result em:not([data-zero]) {
   color: var(--reader-accent, var(--frontend-stroke));
 }

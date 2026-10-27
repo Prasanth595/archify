@@ -38,6 +38,9 @@
       var parentBackBtn = document.getElementById('btn-parent-back');
       var drilldownsSection = document.getElementById('focus-drilldowns');
       var drilldownsList = document.getElementById('focus-drilldowns-list');
+      var taskChecklistSection = document.getElementById('focus-task-checklist');
+      var taskChecklistCount = document.getElementById('focus-task-checklist-count');
+      var taskChecklistTasks = document.getElementById('focus-task-checklist-tasks');
       var moveBtn = document.getElementById('btn-focus-move');
       var activeIds = [];
       var hoveredRelationship = null;
@@ -359,30 +362,71 @@
           repositoryLink.setAttribute('aria-label', viewerText('viewer.passport.repository.open', { revision: repository.revision }));
         }
         evidence.title = viewerText('viewer.passport.verificationScope');
-        sources.forEach(function (source) {
-          var link = document.createElement(source.href ? 'a' : 'div');
-          link.className = 'semantic-passport-source';
-          if (source.href) {
-            link.href = source.href;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            link.referrerPolicy = 'no-referrer';
-            link.setAttribute('aria-label', viewerText('viewer.passport.source.open', { path: source.path, revision: repository.shortRevision }));
-          }
-          var name = document.createElement('strong');
-          name.textContent = source.label || source.path.split('/').pop() || source.path;
-          var location = document.createElement('code');
-          location.textContent = source.line
-            ? 'L' + source.line + (source.endLine && source.endLine !== source.line ? '–' + source.endLine : '') + (source.href ? ' ↗' : '')
-            : source.href ? viewerText('viewer.passport.source.openLink') : '';
-          var sourcePath = document.createElement('small');
-          sourcePath.textContent = source.path;
-          link.appendChild(name);
-          link.appendChild(location);
-          link.appendChild(sourcePath);
-          evidenceLinks.appendChild(link);
-        });
+        sources.forEach(function (source) { evidenceLinks.appendChild(sourceLink(source, repository)); });
         evidence.hidden = false;
+      }
+      function sourceLink(source, repository) {
+        var link = document.createElement(source.href ? 'a' : 'div');
+        link.className = 'semantic-passport-source';
+        if (source.href) {
+          link.href = source.href;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.referrerPolicy = 'no-referrer';
+          link.setAttribute('aria-label', viewerText('viewer.passport.source.open', { path: source.path, revision: repository.shortRevision }));
+        }
+        var name = document.createElement('strong');
+        name.textContent = source.label || source.path.split('/').pop() || source.path;
+        var location = document.createElement('code');
+        location.textContent = source.line
+          ? 'L' + source.line + (source.endLine && source.endLine !== source.line ? '–' + source.endLine : '') + (source.href ? ' ↗' : '')
+          : source.href ? viewerText('viewer.passport.source.openLink') : '';
+        var sourcePath = document.createElement('small');
+        sourcePath.textContent = source.path;
+        link.appendChild(name);
+        link.appendChild(location);
+        link.appendChild(sourcePath);
+        return link;
+      }
+      var TASK_CHECKLIST_STATUS = {
+        implemented: ['✓', 'viewer.passport.taskChecklist.status.implemented'],
+        'needs-review': ['?', 'viewer.passport.taskChecklist.status.needsReview'],
+        pending: ['○', 'viewer.passport.taskChecklist.status.pending']
+      };
+      // Read-only: authored statuses and verified task sources, never edited here.
+      function renderTaskChecklist(id) {
+        if (!taskChecklistSection) return;
+        taskChecklistSection.open = false;
+        taskChecklistTasks.textContent = '';
+        var tasks = Archify.taskChecklists ? Archify.taskChecklists.node(id) : [];
+        var repository = Archify.sourceEvidence.repository();
+        taskChecklistSection.hidden = !tasks.length;
+        tasks.forEach(function (task, index) {
+          var item = document.createElement('li');
+          item.className = 'semantic-passport-task-checklist-task';
+          item.setAttribute('data-status', task.status);
+          var status = TASK_CHECKLIST_STATUS[task.status] || TASK_CHECKLIST_STATUS.pending;
+          var mark = document.createElement('span');
+          mark.className = 'semantic-passport-task-checklist-mark';
+          mark.setAttribute('role', 'img');
+          mark.setAttribute('aria-label', viewerText(status[1]));
+          mark.textContent = status[0];
+          var title = document.createElement('strong');
+          title.textContent = task.title;
+          item.appendChild(mark);
+          item.appendChild(title);
+          if (task.criteria) {
+            var criteria = document.createElement('p');
+            criteria.textContent = task.criteria;
+            item.appendChild(criteria);
+          }
+          Archify.sourceEvidence.task(id, index).forEach(function (source) { item.appendChild(sourceLink(source, repository)); });
+          taskChecklistTasks.appendChild(item);
+        });
+        taskChecklistCount.textContent = viewerText('viewer.passport.taskChecklist.count', {
+          implemented: tasks.filter(function (task) { return task.status === 'implemented'; }).length,
+          total: tasks.length
+        });
       }
       function explanationFor(id) {
         return Archify.explanations && typeof Archify.explanations.node === 'function' ? Archify.explanations.node(id) : null;
@@ -465,6 +509,7 @@
         semanticId.hidden = false;
         renderDrilldowns(node);
         renderSourceEvidence(id);
+        renderTaskChecklist(id);
       }
       /**
        * 仅允许同目录文件名.html（可选 ?query / #fragment）。
@@ -1523,6 +1568,10 @@
         evidenceLinks.textContent = '';
         repositoryLink.removeAttribute('href');
         repositoryLink.textContent = '';
+        if (taskChecklistSection) {
+          taskChecklistSection.hidden = true;
+          taskChecklistTasks.textContent = '';
+        }
         summary.textContent = '';
         reachSection.hidden = true;
         upstreamCount.textContent = '0';
@@ -1705,6 +1754,7 @@
       clearBtn.addEventListener('click', function () { clear({ restoreFocus: true }); });
       copyBtn.addEventListener('click', copyFocusLink);
       if (explainBtn) explainBtn.addEventListener('click', function (event) { event.stopPropagation(); toggleExplanation(); });
+      if (taskChecklistSection) taskChecklistSection.addEventListener('toggle', function () { if (!chip.hidden) requestLensPlacement(); });
       if (explanationBack) {
         explanationBack.addEventListener('click', function (event) { event.stopPropagation(); closeExplanation(); });
       }
