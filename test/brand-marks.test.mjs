@@ -211,54 +211,34 @@ test('architecture uses a 22px upper-right badge', () => {
   assert.doesNotMatch(block, /c-icon-first|brand-mark-icon-first/);
 });
 
-for (const height of [22, 23, 24]) {
-  test(`compact architecture height ${height} keeps a legible brand inside its authored frame`, () => {
-    const name = `compact-brand-${height}`;
-    const input = writeFixture('architecture', name, 'openai', (_diagram, node) => {
-      node.size = [120, height];
-      delete node.sublabel;
-      delete node.tag;
-    });
-    const { result, html } = renderSync('architecture', input, name);
-    assert.equal(result.status, 0, result.stderr || result.stdout);
-    const id = JSON.parse(fs.readFileSync(input, 'utf8')).components[0].id;
-    const block = nodeBlock(html, id);
-    const frame = block.match(/<rect x="([-\d.]+)" y="([-\d.]+)" width="([-\d.]+)" height="([-\d.]+)" rx="[^"]+" class="c-mask"\/>/);
-    const brand = block.match(/data-brand-mark="openai"[^>]+translate\(([-\d.]+) ([-\d.]+)\)">\s*<rect width="([-\d.]+)" height="([-\d.]+)"/);
-    assert.ok(frame && brand, block);
-    const [frameX, frameY, frameWidth, frameHeight] = frame.slice(1, 5).map(Number);
-    const [brandX, brandY, brandWidth, brandHeight] = brand.slice(1, 5).map(Number);
-    assert.equal(frameWidth, 120, 'preserve authored width');
-    assert.equal(frameHeight, height, 'preserve authored height');
-    assert.equal(brandWidth, 22, 'do not shrink the recognizable mark');
-    assert.equal(brandHeight, 22);
-    assert.ok(brandX >= frameX && brandY >= frameY);
-    assert.ok(brandX + brandWidth <= frameX + frameWidth);
-    assert.ok(brandY + brandHeight <= frameY + frameHeight);
-    assert.match(block, /class="semantic-sigil /);
-    assert.match(block, /data-node-label=""/);
+test('compact architecture components keep a usable brand badge inside their frame', () => {
+  const input = writeFixture('architecture', 'compact-brand-badge', 'openai', (_diagram, node) => {
+    node.size = [120, 24];
   });
-}
+  const { result, html } = renderSync('architecture', input, 'compact-brand-badge');
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const id = JSON.parse(fs.readFileSync(input, 'utf8')).components[0].id;
+  const block = nodeBlock(html, id);
+  const frame = block.match(/<rect x="([-\d.]+)" y="([-\d.]+)" width="([-\d.]+)" height="([-\d.]+)" rx="[^"]+" class="c-mask"\/>/);
+  const brand = block.match(/data-brand-mark="openai"[^>]+translate\(([-\d.]+) ([-\d.]+)\)">\s*<rect width="([-\d.]+)" height="([-\d.]+)"/);
+  assert.ok(frame && brand, block);
+  const [frameX, frameY, frameWidth, frameHeight] = frame.slice(1, 5).map(Number);
+  const [brandX, brandY, brandWidth, brandHeight] = brand.slice(1, 5).map(Number);
+  assert.equal(brandWidth, 12);
+  assert.equal(brandHeight, 12);
+  assert.ok(brandX >= frameX && brandY >= frameY);
+  assert.ok(brandX + brandWidth <= frameX + frameWidth);
+  assert.ok(brandY + brandHeight <= frameY + frameHeight);
+});
 
-test('an impossible brand height reports a repair instead of silently dropping the mark', () => {
+test('architecture omits a brand badge when the component cannot fit a 12px mark', () => {
   const input = writeFixture('architecture', 'too-short-brand-badge', 'openai', (_diagram, node) => {
-    node.size = [120, 21];
-    delete node.sublabel;
-    delete node.tag;
+    node.size = [120, 23];
   });
-  const rendered = renderSync('architecture', input, 'too-short-brand-badge');
-  assert.equal(rendered.result.status, 1);
-  assert.equal(rendered.html, '');
-  const result = spawnSync(process.execPath, [cli, 'validate', 'architecture', input, '--json'], {
-    cwd: skillRoot, encoding: 'utf8',
-  });
-  assert.equal(result.status, 1, result.stderr || result.stdout);
-  const receipt = JSON.parse(result.stdout);
-  const diagnostic = receipt.diagnostics.find((entry) => entry.code === 'architecture/brand-badge-height');
-  assert.ok(diagnostic, result.stdout);
-  assert.equal(diagnostic.subject.nodeId, JSON.parse(fs.readFileSync(input, 'utf8')).components[0].id);
-  assert.equal(diagnostic.evidence.minimumHeightPx, 22);
-  assert.ok(diagnostic.supportedFixes.some((fix) => fix.includes('at least 22px')));
+  const { result, html } = renderSync('architecture', input, 'too-short-brand-badge');
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  const id = JSON.parse(fs.readFileSync(input, 'utf8')).components[0].id;
+  assert.doesNotMatch(nodeBlock(html, id), /data-brand-mark="openai"/);
 });
 
 test('architecture brand top rail accounts for fitted text padding', () => {

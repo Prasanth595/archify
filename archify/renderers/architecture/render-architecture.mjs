@@ -7,7 +7,7 @@ import { componentBox, boundaryBox, connectionPath } from '../shared/layout-repo
 import { rendererFailure, throwDiagnosticProblems } from '../shared/diagnostics.mjs';
 import { legendFootprint, relationshipLegendObstacles, resolveLegend, renderLegend as renderResolvedLegend } from '../shared/legend.mjs';
 import { availableNodeTextWidth, fittedNodeFontSize, minimumNodeTextWidth, nodeTextFit } from '../shared/text-fit.mjs';
-import { brandLabelFitWidth, brandMarkFor, brandMetadataFor, brandTopRailProblem, renderBrandMark } from '../shared/brand-marks.mjs';
+import { brandLabelFitWidth, brandMetadataFor, brandTopRailProblem, renderBrandMark } from '../shared/brand-marks.mjs';
 import { minimumReadableSourceTextPx } from '../shared/desktop-readability.mjs';
 import { translateMessage as i18nText } from '../shared/i18n.mjs';
 import { gridLayout, resolveComponentPos, validateGridPlacement } from './grid.mjs';
@@ -89,8 +89,6 @@ const LEGEND_CATALOG = [
 ].map((kind) => ({ kind, label: i18nText(arch.meta.locale, `legend.architecture.${kind}`) }));
 
 // ---- Measure components from free coordinates --------------------------------
-const architectureBrandSize = 22;
-
 function measureComponent(c) {
   const [x, y] = resolveComponentPos(c, grid);
   const [w, h] = Array.isArray(c.size) ? c.size : [layout.defaultW, layout.defaultH];
@@ -568,16 +566,6 @@ function validateArchitecture() {
     // Other renderers retain the shared rail's established accepted-width boundary.
     const brandRailProblem = brandTopRailProblem(c, c.width - nodeTextFit.horizontalPadding, 8, 'Component');
     if (brandRailProblem) problems.push(brandRailProblem);
-    if (brandMarkFor(c) && c.height < architectureBrandSize) {
-      const message = `Component "${c.id}" is ${c.height}px tall, too short for its ${architectureBrandSize}px brand badge — increase its height instead of shrinking or hiding the brand.`;
-      diagnostics.push({
-        code: 'architecture/brand-badge-height', severity: 'error', message,
-        subject: { diagramType: 'architecture', nodeId: c.id },
-        evidence: { heightPx: c.height, minimumHeightPx: architectureBrandSize },
-        supportedFixes: [`increase component "${c.id}" size height to at least ${architectureBrandSize}px`],
-      });
-      problems.push(message);
-    }
     // sublabel and tag render as single unwrapped <text> elements; shrink-to-fit
     // handles the ordinary case, this rejects what it cannot rescue.
     const availableTextW = availableNodeTextWidth(c.width);
@@ -1090,13 +1078,10 @@ function renderComponent(c) {
     ? `\n        <text data-detail="fine" x="${cx}" y="${c.y + c.height - 8}" class="${accent}" font-size="${fittedNodeFontSize(c.tag, c.width, componentTextFit.tagPreferred, componentTextFit.tagMinimum)}" text-anchor="middle">${esc(c.tag)}</text>`
     : '';
   const brandInset = 6;
-  // Compact nodes give up vertical padding, not brand legibility or identity.
-  const brandY = c.y + Math.min(brandInset, (c.height - architectureBrandSize) / 2);
-  const brand = renderBrandMark(c, {
-    x: c.x + c.width - brandInset - architectureBrandSize,
-    y: brandY,
-    size: architectureBrandSize,
-  });
+  const brandSize = Math.min(22, Math.max(0, c.height - brandInset * 2));
+  const brand = brandSize >= 12
+    ? renderBrandMark(c, { x: c.x + c.width - brandInset - brandSize, y: c.y + brandInset, size: brandSize })
+    : '';
   const labelFontSize = fittedNodeFontSize(c.label, brandLabelFitWidth(c, c.width), 11, 8);
   // drilldowns / href 简写一并解析：单目标会包 <a> + 角标，多目标只写 Passport 属性
   const drilldowns = resolveNodeDrilldowns(c);
