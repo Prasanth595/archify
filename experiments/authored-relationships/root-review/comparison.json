@@ -1,0 +1,175 @@
+{
+  "pairedStates": [
+    {
+      "pair": "en-one",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 9,
+      "matchingEdgeGroups": 9,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "en-two",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 10,
+      "matchingEdgeGroups": 3,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "en-narrow",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 9,
+      "matchingEdgeGroups": 9,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "zh-one",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 9,
+      "matchingEdgeGroups": 9,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "zero",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 1,
+      "matchingEdgeGroups": 0,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "override",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 2,
+      "matchingEdgeGroups": 6,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "override-en",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 2,
+      "matchingEdgeGroups": 6,
+      "panelGeometryEqual": true
+    },
+    {
+      "pair": "en-full",
+      "equal": {
+        "viewport": true,
+        "scroll": true,
+        "selectedKinds": true,
+        "selectedNodes": true,
+        "peerNodes": true,
+        "edges": true,
+        "status": true,
+        "zoom": true,
+        "urlFragment": true
+      },
+      "selectedNodes": 9,
+      "matchingEdgeGroups": 9,
+      "panelGeometryEqual": false
+    }
+  ],
+  "primarySvgPairs": [
+    {
+      "name": "author-override-en.html",
+      "primarySvgSha256": "d7668ec903e1e63cc6ac0aea45a6cac9a7665d30de09a0eb9853cb9e2dfa3035",
+      "bytes": 29432,
+      "identical": true
+    },
+    {
+      "name": "author-override.html",
+      "primarySvgSha256": "d7668ec903e1e63cc6ac0aea45a6cac9a7665d30de09a0eb9853cb9e2dfa3035",
+      "bytes": 29432,
+      "identical": true
+    },
+    {
+      "name": "waterfall-en.html",
+      "primarySvgSha256": "9cf0d5c0e819dc17adcfee0542cf114810ac7c8bddd0096c5e1fb2a2a7cb94b1",
+      "bytes": 47153,
+      "identical": true
+    },
+    {
+      "name": "waterfall-zh.html",
+      "primarySvgSha256": "1254d3d7b32c8010dc5ba0057f89aa3501c477daadba7bd8a405b2dc8b0ce93f",
+      "bytes": 47398,
+      "identical": true
+    },
+    {
+      "name": "zero-relationships.html",
+      "primarySvgSha256": "43455af07974d3373050d193732d04ce1a13a5f281473efcf4f5f0952dcb9455",
+      "bytes": 7743,
+      "identical": true
+    }
+  ],
+  "observations": 19,
+  "screenshots": 17,
+  "note": "Supplementary 1440x1100 panel docking differs; do not use as geometry-matched pixel comparison. Main 1440x900 and390x844 comparisons include recorded geometry."
+}

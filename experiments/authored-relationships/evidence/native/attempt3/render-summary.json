@@ -1,0 +1,99 @@
+[
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "/tmp/archify-round13-base/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/zero-relationships.json",
+      "/tmp/archify-round17-native/attempt3/base/zero-relationships.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt3/base/zero-relationships-receipts"
+    ],
+    "cwd": "/tmp/archify-round13-base",
+    "exit": 0,
+    "durationSeconds": 2.19728422164917
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "/tmp/archify-round13-base/archify/bin/archify.mjs",
+      "finalize",
+      "architecture",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/author-override.json",
+      "/tmp/archify-round17-native/attempt3/base/author-override.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt3/base/author-override-receipts"
+    ],
+    "cwd": "/tmp/archify-round13-base",
+    "exit": 0,
+    "durationSeconds": 2.233035087585449
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/waterfall-en.json",
+      "/tmp/archify-round17-native/attempt3/candidate/waterfall-en.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt3/candidate/waterfall-en-receipts",
+      "--browser-check"
+    ],
+    "cwd": "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify",
+    "exit": 0,
+    "durationSeconds": 1.9940478801727295
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/waterfall-zh.json",
+      "/tmp/archify-round17-native/attempt3/candidate/waterfall-zh.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt3/candidate/waterfall-zh-receipts"
+    ],
+    "cwd": "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify",
+    "exit": 0,
+    "durationSeconds": 2.1622769832611084
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/zero-relationships.json",
+      "/tmp/archify-round17-native/attempt3/candidate/zero-relationships.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt3/candidate/zero-relationships-receipts"
+    ],
+    "cwd": "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify",
+    "exit": 0,
+    "durationSeconds": 2.0588090419769287
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/archify/bin/archify.mjs",
+      "finalize",
+      "architecture",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/author-override.json",
+      "/tmp/archify-round17-native/attempt3/candidate/author-override.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt3/candidate/author-override-receipts"
+    ],
+    "cwd": "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify",
+    "exit": 0,
+    "durationSeconds": 2.0710039138793945
+  }
+]

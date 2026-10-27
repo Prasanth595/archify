@@ -1,0 +1,55 @@
+{
+  "links": {
+    "node_modules": {
+      "expected": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/node_modules",
+      "actual": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/node_modules",
+      "removed": true
+    },
+    "archify/node_modules": {
+      "expected": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/archify/node_modules",
+      "actual": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/archify/node_modules",
+      "removed": true
+    }
+  },
+  "zip": {
+    "sha256": "4b5cb4ec0d85e19439368a3e46e6d0887855dbcd5b70760643f99f706557c89e",
+    "expected_sha256": "4b5cb4ec0d85e19439368a3e46e6d0887855dbcd5b70760643f99f706557c89e",
+    "member_count": 235,
+    "matches_saved_inventory": true,
+    "forbidden": [],
+    "modified_source_count": 28,
+    "modified_source_paths": [
+      "archify/assets/template.html",
+      "archify/examples/class-payment-processors-rendered.html",
+      "archify/examples/class-payments-rendered.html",
+      "archify/examples/dataflow-product-analytics.html",
+      "archify/examples/erd-orders-rendered.html",
+      "archify/examples/lifecycle-agent-run.html",
+      "archify/examples/locales/de.json",
+      "archify/examples/locales/fr.json",
+      "archify/examples/locales/it.json",
+      "archify/examples/locales/ja.json",
+      "archify/examples/locales/pt.json",
+      "archify/examples/locales/ru.json",
+      "archify/examples/sequence-cache-miss-request.html",
+      "archify/examples/subscription-billing-rendered.html",
+      "archify/examples/timeline-archify-dev-activity-rendered.html",
+      "archify/examples/timeline-payment-incident-rendered.html",
+      "archify/examples/tree-archify-repository-rendered.html",
+      "archify/examples/tree-payment-platform-rendered.html",
+      "archify/examples/waterfall-checkout-request-rendered.html",
+      "archify/examples/waterfall-example-rebuild-rendered.html",
+      "archify/examples/web-app-rendered.html",
+      "archify/examples/workflow-agent-tool-call-rendered.html",
+      "archify/locales/ar.json",
+      "archify/locales/en.json",
+      "archify/locales/es.json",
+      "archify/locales/ko.json",
+      "archify/locales/zh-CN.json",
+      "archify/locales/zh-TW.json"
+    ],
+    "missing": [],
+    "mismatches": []
+  },
+  "success": true
+}

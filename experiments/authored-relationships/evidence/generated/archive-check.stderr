@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/tmp/archify-round17-generated/check-archive.py", line 10, in <module>
+    assert z.read(name)==Path(p).read_bytes(),p
+           ~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/zipfile/__init__.py", line 1715, in read
+    with self.open(name, "r", pwd) as fp:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/zipfile/__init__.py", line 1752, in open
+    zinfo = self.getinfo(name)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/zipfile/__init__.py", line 1680, in getinfo
+    raise KeyError(
+        'There is no item named %r in the archive' % name)
+KeyError: "There is no item named 'assets/template.html' in the archive"

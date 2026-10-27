@@ -1,0 +1,1099 @@
+[
+  {
+    "name": "base-en-one",
+    "url": "file:///tmp/archify-round17-native/base/waterfall-en.html?review=base#lens=frontend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "9 Frontend nodes · 9 touching relationships · connected peers remain visible",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 670.375,
+      "width": 320,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 721.8046875,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "base-en-one.png"
+  },
+  {
+    "name": "base-en-narrow",
+    "url": "file:///tmp/archify-round17-native/base/waterfall-en.html?review=base#lens=frontend",
+    "viewport": [
+      390,
+      844
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "9 Frontend nodes · 9 touching relationships · connected peers remain visible",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 25,
+      "y": 431.546875,
+      "width": 340,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 26,
+      "y": 482.9765625,
+      "width": 338,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      338,
+      338,
+      256,
+      256
+    ],
+    "pageWidth": [
+      390,
+      390
+    ],
+    "zoom": "READ100%",
+    "image": "base-en-narrow.png"
+  },
+  {
+    "name": "base-en-two",
+    "url": "file:///tmp/archify-round17-native/base/waterfall-en.html?review=base#lens=frontend~external",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "Frontend → External: 0 · External → Frontend: 3 · 3 direct relationships",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "external",
+      "frontend"
+    ],
+    "selectedNodes": [
+      "batch",
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [],
+    "edges": [
+      "13|batch|ex4",
+      "1|batch|ex0",
+      "22|batch|ex7"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 670.375,
+      "width": 320,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 721.8046875,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "base-en-two.png"
+  },
+  {
+    "name": "base-guide",
+    "image": "base-guide.png",
+    "viewport": [
+      1440,
+      900
+    ],
+    "text": "Count roles, reveal their traffic, and compare direct authored links.",
+    "visible": true,
+    "theme": "light"
+  },
+  {
+    "name": "candidate-en-one",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/waterfall-en.html#lens=frontend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare node types",
+    "instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+    "status": "9 Frontend nodes · 9 touching relationships · connected peers remain visible",
+    "guideHint": "Choose up to two node types to highlight their diagram relationships.",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 670.375,
+      "width": 320,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 721.8046875,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-en-one.png"
+  },
+  {
+    "name": "candidate-en-narrow",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/waterfall-en.html#lens=frontend",
+    "viewport": [
+      390,
+      844
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare node types",
+    "instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+    "status": "9 Frontend nodes · 9 touching relationships · connected peers remain visible",
+    "guideHint": "Choose up to two node types to highlight their diagram relationships.",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 25,
+      "y": 431.546875,
+      "width": 340,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 26,
+      "y": 482.9765625,
+      "width": 338,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      338,
+      338,
+      256,
+      256
+    ],
+    "pageWidth": [
+      390,
+      390
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-en-narrow.png"
+  },
+  {
+    "name": "candidate-en-two",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/waterfall-en.html#lens=frontend~external",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare node types",
+    "instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+    "status": "Frontend → External: 0 · External → Frontend: 3 · 3 direct relationships",
+    "guideHint": "Choose up to two node types to highlight their diagram relationships.",
+    "selectedKinds": [
+      "external",
+      "frontend"
+    ],
+    "selectedNodes": [
+      "batch",
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [],
+    "edges": [
+      "13|batch|ex4",
+      "1|batch|ex0",
+      "22|batch|ex7"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 670.375,
+      "width": 320,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 721.8046875,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-en-two.png"
+  },
+  {
+    "name": "candidate-guide",
+    "image": "candidate-guide.png",
+    "viewport": [
+      1440,
+      900
+    ],
+    "text": "Choose up to two node types to highlight their diagram relationships.",
+    "visible": true,
+    "theme": "light"
+  },
+  {
+    "name": "base-zh-one",
+    "url": "file:///tmp/archify-round17-native/base/waterfall-zh.html#lens=frontend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "比较系统角色",
+    "instruction": "最多选择两种语义类型。选择一种可显示其真实流量；选择两种只比较直接编写的关系。",
+    "status": "9 个前端节点 · 9 条相连关系 · 已连接节点保持可见",
+    "guideHint": "统计角色、显示流量并比较直接编写的连接。",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 670.4140625,
+      "width": 320,
+      "height": 258.28125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 725.8984375,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": null,
+    "image": "base-zh-one.png"
+  },
+  {
+    "name": "candidate-zh-one",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/waterfall-zh.html#lens=frontend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "比较节点类型",
+    "instruction": "最多选择两种类型。选择一种可突出显示其节点及相连关系；选择两种可突出显示两类之间的直接关系。",
+    "status": "9 个前端节点 · 9 条相连关系 · 已连接节点保持可见",
+    "guideHint": "最多选择两种节点类型，突出显示它们在图中的关系。",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 670.4140625,
+      "width": 320,
+      "height": 258.28125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 725.8984375,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": null,
+    "image": "candidate-zh-one.png"
+  },
+  {
+    "name": "base-zero",
+    "url": "file:///tmp/archify-round17-native/attempt3/base/zero-relationships.html#lens=external",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "1 External node · 0 touching relationships · connected peers remain visible",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "external"
+    ],
+    "selectedNodes": [
+      "single"
+    ],
+    "peerNodes": [],
+    "edges": [],
+    "panel": {
+      "x": 49,
+      "y": 16.0703125,
+      "width": 320,
+      "height": 219.125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 67.5,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      217,
+      217
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%"
+  },
+  {
+    "name": "candidate-zero",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/zero-relationships.html#lens=external",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare node types",
+    "instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+    "status": "1 External node · 0 touching relationships · connected peers remain visible",
+    "guideHint": "Choose up to two node types to highlight their diagram relationships.",
+    "selectedKinds": [
+      "external"
+    ],
+    "selectedNodes": [
+      "single"
+    ],
+    "peerNodes": [],
+    "edges": [],
+    "panel": {
+      "x": 49,
+      "y": 16.0703125,
+      "width": 320,
+      "height": 219.125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 67.5,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      217,
+      217
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-zero.png"
+  },
+  {
+    "name": "base-override",
+    "url": "file:///tmp/archify-round17-native/attempt3/base/author-override.html#lens=backend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "2 Backend nodes · 6 touching relationships · connected peers remain visible",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "backend"
+    ],
+    "selectedNodes": [
+      "api",
+      "worker"
+    ],
+    "peerNodes": [
+      "auth",
+      "cache",
+      "db",
+      "lb",
+      "queue"
+    ],
+    "edges": [
+      "1|auth|api",
+      "4|lb|api",
+      "5|api|cache",
+      "6|api|db",
+      "7|api|queue",
+      "8|queue|worker"
+    ],
+    "panel": {
+      "x": 1071,
+      "y": 449.90625,
+      "width": 320,
+      "height": 297.515625
+    },
+    "instructionRect": {
+      "x": 1072,
+      "y": 501.3359375,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      296,
+      296
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%"
+  },
+  {
+    "name": "candidate-override",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/author-override.html#lens=backend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare node types",
+    "instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+    "status": "2 Backend nodes · 6 touching relationships · connected peers remain visible",
+    "guideHint": "Choose up to two node types to highlight their diagram relationships.",
+    "selectedKinds": [
+      "backend"
+    ],
+    "selectedNodes": [
+      "api",
+      "worker"
+    ],
+    "peerNodes": [
+      "auth",
+      "cache",
+      "db",
+      "lb",
+      "queue"
+    ],
+    "edges": [
+      "1|auth|api",
+      "4|lb|api",
+      "5|api|cache",
+      "6|api|db",
+      "7|api|queue",
+      "8|queue|worker"
+    ],
+    "panel": {
+      "x": 1071,
+      "y": 449.90625,
+      "width": 320,
+      "height": 297.515625
+    },
+    "instructionRect": {
+      "x": 1072,
+      "y": 501.3359375,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      296,
+      296
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-override.png"
+  },
+  {
+    "name": "base-en-full",
+    "url": "file:///tmp/archify-round17-native/base/waterfall-en.html?review=full#lens=frontend",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "9 Frontend nodes · 9 touching relationships · connected peers remain visible",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 1071,
+      "y": 710.375,
+      "width": 320,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 1072,
+      "y": 761.8046875,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "base-en-full.png"
+  },
+  {
+    "name": "candidate-en-full",
+    "url": "file:///tmp/archify-round17-native/attempt3/candidate/waterfall-en.html?review=full#lens=frontend",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare node types",
+    "instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+    "status": "9 Frontend nodes · 9 touching relationships · connected peers remain visible",
+    "guideHint": "Choose up to two node types to highlight their diagram relationships.",
+    "selectedKinds": [
+      "frontend"
+    ],
+    "selectedNodes": [
+      "ex0",
+      "ex0_check",
+      "ex0_render",
+      "ex4",
+      "ex4_check",
+      "ex4_render",
+      "ex7",
+      "ex7_check",
+      "ex7_render"
+    ],
+    "peerNodes": [
+      "batch"
+    ],
+    "edges": [
+      "13|batch|ex4",
+      "14|ex4|ex4_render",
+      "15|ex4|ex4_check",
+      "1|batch|ex0",
+      "22|batch|ex7",
+      "23|ex7|ex7_render",
+      "24|ex7|ex7_check",
+      "2|ex0|ex0_render",
+      "3|ex0|ex0_check"
+    ],
+    "panel": {
+      "x": 49,
+      "y": 710.375,
+      "width": 320,
+      "height": 258.3203125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 761.8046875,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      256,
+      256
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-en-full.png"
+  },
+  {
+    "name": "base-zero-visual",
+    "url": "file:///tmp/archify-round17-native/attempt3/base/zero-relationships.html?review=visual#lens=external",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Compare system roles",
+    "instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
+    "status": "1 External node · 0 touching relationships · connected peers remain visible",
+    "guideHint": "Count roles, reveal their traffic, and compare direct authored links.",
+    "selectedKinds": [
+      "external"
+    ],
+    "selectedNodes": [
+      "single"
+    ],
+    "peerNodes": [],
+    "edges": [],
+    "panel": {
+      "x": 49,
+      "y": 16.0703125,
+      "width": 320,
+      "height": 219.125
+    },
+    "instructionRect": {
+      "x": 50,
+      "y": 67.5,
+      "width": 318,
+      "height": 41.4921875
+    },
+    "panelScroll": [
+      318,
+      318,
+      217,
+      217
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "base-zero-visual.png"
+  },
+  {
+    "name": "base-override-en",
+    "url": "file:///tmp/archify-round17-native/attempt4/base/author-override-en.html#lens=backend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Reader chosen title",
+    "instruction": "Keep this explicit reader instruction.",
+    "status": "2 Backend nodes · 6 touching relationships · connected peers remain visible",
+    "guideHint": "Keep this explicit reader guide.",
+    "selectedKinds": [
+      "backend"
+    ],
+    "selectedNodes": [
+      "api",
+      "worker"
+    ],
+    "peerNodes": [
+      "auth",
+      "cache",
+      "db",
+      "lb",
+      "queue"
+    ],
+    "edges": [
+      "1|auth|api",
+      "4|lb|api",
+      "5|api|cache",
+      "6|api|db",
+      "7|api|queue",
+      "8|queue|worker"
+    ],
+    "panel": {
+      "x": 1071,
+      "y": 462.65625,
+      "width": 320,
+      "height": 284.765625
+    },
+    "instructionRect": {
+      "x": 1072,
+      "y": 514.0859375,
+      "width": 318,
+      "height": 28.7421875
+    },
+    "panelScroll": [
+      318,
+      318,
+      283,
+      283
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "base-override-en.png"
+  },
+  {
+    "name": "candidate-override-en",
+    "url": "file:///tmp/archify-round17-native/attempt4/candidate/author-override-en.html#lens=backend",
+    "viewport": [
+      1440,
+      900
+    ],
+    "theme": "light",
+    "scroll": [
+      0,
+      0
+    ],
+    "title": "Reader chosen title",
+    "instruction": "Keep this explicit reader instruction.",
+    "status": "2 Backend nodes · 6 touching relationships · connected peers remain visible",
+    "guideHint": "Keep this explicit reader guide.",
+    "selectedKinds": [
+      "backend"
+    ],
+    "selectedNodes": [
+      "api",
+      "worker"
+    ],
+    "peerNodes": [
+      "auth",
+      "cache",
+      "db",
+      "lb",
+      "queue"
+    ],
+    "edges": [
+      "1|auth|api",
+      "4|lb|api",
+      "5|api|cache",
+      "6|api|db",
+      "7|api|queue",
+      "8|queue|worker"
+    ],
+    "panel": {
+      "x": 1071,
+      "y": 462.65625,
+      "width": 320,
+      "height": 284.765625
+    },
+    "instructionRect": {
+      "x": 1072,
+      "y": 514.0859375,
+      "width": 318,
+      "height": 28.7421875
+    },
+    "panelScroll": [
+      318,
+      318,
+      283,
+      283
+    ],
+    "pageWidth": [
+      1440,
+      1440
+    ],
+    "zoom": "READ100%",
+    "image": "candidate-override-en.png"
+  }
+]

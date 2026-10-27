@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "waterfall",
+  "quality": "showcase",
+  "specification": {
+    "path": "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/zero-relationships.json",
+    "sha256": "8382ef3db2f4325fce0a5001bda9e150ede7233504f14906e753b4460b679f8b",
+    "bytes": 346
+  },
+  "artifact": {
+    "path": "/tmp/archify-round17-native/base/zero-relationships.html"
+  },
+  "gates": {
+    "validate": "not-run",
+    "deliver": "fail",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "failedStage": "deliver",
+  "diagnostics": [
+    {
+      "code": "output/meta-path-syntax",
+      "severity": "error",
+      "message": "meta.output must be a portable POSIX-relative path.",
+      "subject": {
+        "path": "/meta/output"
+      },
+      "evidence": {
+        "reason": "type"
+      },
+      "supportedFixes": [
+        "set meta.output to a portable relative .html path such as reports/diagram.html"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/tmp/archify-round17-native/base/zero-relationships-receipts/zero-relationships.finalize.json",
+    "summaryReceipt": "/tmp/archify-round17-native/base/zero-relationships-receipts/zero-relationships.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T23:50:51.017Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 92,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  }
+}

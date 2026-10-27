@@ -1,0 +1,34 @@
+[
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "/tmp/archify-round13-base/archify/bin/archify.mjs",
+      "finalize",
+      "architecture",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/author-override-en.json",
+      "/tmp/archify-round17-native/attempt4/base/author-override-en.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt4/base/author-override-en-receipts"
+    ],
+    "cwd": "/tmp/archify-round13-base",
+    "exit": 0,
+    "durationSeconds": 9.209147214889526
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/archify/bin/archify.mjs",
+      "finalize",
+      "architecture",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/author-override-en.json",
+      "/tmp/archify-round17-native/attempt4/candidate/author-override-en.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/attempt4/candidate/author-override-en-receipts"
+    ],
+    "cwd": "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify",
+    "exit": 0,
+    "durationSeconds": 2.125216007232666
+  }
+]

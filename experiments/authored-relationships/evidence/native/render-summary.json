@@ -1,0 +1,51 @@
+[
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "/tmp/archify-round13-base/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/waterfall-en.json",
+      "/tmp/archify-round17-native/base/waterfall-en.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/base/waterfall-en-receipts",
+      "--browser-check"
+    ],
+    "cwd": "/tmp/archify-round13-base",
+    "exit": 0,
+    "durationSeconds": 2.166171073913574
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "/tmp/archify-round13-base/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/waterfall-zh.json",
+      "/tmp/archify-round17-native/base/waterfall-zh.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/base/waterfall-zh-receipts"
+    ],
+    "cwd": "/tmp/archify-round13-base",
+    "exit": 0,
+    "durationSeconds": 2.180946111679077
+  },
+  {
+    "argv": [
+      "/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node",
+      "/tmp/archify-round13-base/archify/bin/archify.mjs",
+      "finalize",
+      "waterfall",
+      "<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify/experiments/authored-relationships/inputs/zero-relationships.json",
+      "/tmp/archify-round17-native/base/zero-relationships.html",
+      "--json",
+      "--out-dir",
+      "/tmp/archify-round17-native/base/zero-relationships-receipts"
+    ],
+    "cwd": "/tmp/archify-round13-base",
+    "exit": 1,
+    "durationSeconds": 0.21264410018920898
+  }
+]

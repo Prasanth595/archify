@@ -1,0 +1,21 @@
+from pathlib import Path
+import subprocess,json,os,time
+r=Path('<USER_HOME>/.codex/worktrees/lab-authored-relationships/archify')
+out=Path('/tmp/archify-round17-native/attempt4');out.mkdir()
+node='/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node'
+env=dict(os.environ);env['PATH']=str(Path(node).parent)+':'+env['PATH']
+results=[]
+for arm,runtime in [('base',Path('/tmp/archify-round13-base')),('candidate',r)]:
+    d=out/arm;d.mkdir()
+    for name,typ in [('author-override-en','architecture')]:
+        if arm=='base' and name in ['waterfall-en','waterfall-zh']:continue
+        argv=[node,str(runtime/'archify/bin/archify.mjs'),'finalize',typ,str(r/'experiments/authored-relationships/inputs'/f'{name}.json'),str(d/f'{name}.html'),'--json','--out-dir',str(d/f'{name}-receipts')]
+        if name=='waterfall-en':argv.append('--browser-check')
+        start=time.time();p=subprocess.run(argv,cwd=runtime,env=env,capture_output=True)
+        (d/f'{name}.stdout.json').write_bytes(p.stdout);(d/f'{name}.stderr').write_bytes(p.stderr)
+        rec={'argv':argv,'cwd':str(runtime),'exit':p.returncode,'durationSeconds':time.time()-start};(d/f'{name}.command.json').write_text(json.dumps(rec,indent=2)+'\n');results.append(rec)
+        print(arm,name,'exit',p.returncode,flush=True)
+        if p.returncode:break
+    if p.returncode:break
+(out/'render-summary.json').write_text(json.dumps(results,indent=2)+'\n')
+raise SystemExit(p.returncode)

@@ -1,0 +1,316 @@
+diff --git a/archify/examples/locales/de.json b/archify/examples/locales/de.json
+index 7fdebf22..8d1d060f 100644
+--- a/archify/examples/locales/de.json
++++ b/archify/examples/locales/de.json
+@@ -183,7 +183,7 @@
+   "viewer.guide.map": "Das gesamte System sehen",
+   "viewer.guide.map.hint": "Semantisches Radar mit Live-Ansicht und stabilen Knoten öffnen.",
+   "viewer.guide.lens": "Semantische Arten vergleichen",
+-  "viewer.guide.lens.hint": "Rollen zählen, ihren Verkehr sichtbar machen und direkte verfasste Verbindungen vergleichen.",
++  "viewer.guide.lens.hint": "Wählen Sie bis zu zwei Knotentypen, um ihre Beziehungen im Diagramm hervorzuheben.",
+   "viewer.guide.present": "Präsentationsmodus starten",
+   "viewer.guide.present.hint": "Dem Live-Diagramm die gesamte Ansicht geben, ohne den Export zu verändern.",
+   "viewer.guide.shortcuts": "Weitere Tastenkombinationen",
+@@ -341,9 +341,9 @@
+   "viewer.route.hop.one": "{count} Hop",
+   "viewer.route.hop.other": "{count} Hops",
+   "viewer.lens.eyebrow": "Semantische Linse",
+-  "viewer.lens.title": "Systemrollen vergleichen",
++  "viewer.lens.title": "Knotentypen vergleichen",
+   "viewer.lens.close": "Semantische Linse schließen",
+-  "viewer.lens.instruction": "Bis zu zwei semantische Arten wählen. Eine zeigt ihren echten Verkehr; zwei vergleichen nur direkte verfasste Beziehungen.",
++  "viewer.lens.instruction": "Wählen Sie bis zu zwei Typen. Bei einem Typ werden dessen Knoten und die mit ihnen verbundenen Beziehungen hervorgehoben; bei zwei Typen die direkten Beziehungen zwischen diesen Typen.",
+   "viewer.lens.kinds": "Semantische Arten",
+   "viewer.lens.choose": "Eine Art wählen, um ihre Knoten und berührenden Beziehungen zu prüfen.",
+   "viewer.lens.copy": "Link zur semantischen Linse kopieren",
+diff --git a/archify/examples/locales/fr.json b/archify/examples/locales/fr.json
+index f2ff1aa1..1f929d96 100644
+--- a/archify/examples/locales/fr.json
++++ b/archify/examples/locales/fr.json
+@@ -191,7 +191,7 @@
+   "viewer.guide.map": "Voir tout le système",
+   "viewer.guide.map.hint": "Ouvrir le radar sémantique avec un viewport en direct et des nœuds stables.",
+   "viewer.guide.lens": "Comparer les types sémantiques",
+-  "viewer.guide.lens.hint": "Comptez les rôles, révélez leur trafic et comparez les liens édités directs.",
++  "viewer.guide.lens.hint": "Sélectionnez jusqu’à deux types de nœuds pour mettre en évidence leurs relations dans le diagramme.",
+   "viewer.guide.present": "Entrer en mode présentation",
+   "viewer.guide.present.hint": "Donnez tout le viewport au diagramme en direct sans modifier l'export.",
+   "viewer.guide.shortcuts": "Raccourcis clavier supplémentaires",
+@@ -350,9 +350,9 @@
+   "viewer.route.hop.one": "{count} saut",
+   "viewer.route.hop.other": "{count} sauts",
+   "viewer.lens.eyebrow": "Lentille sémantique",
+-  "viewer.lens.title": "Comparer les rôles du système",
++  "viewer.lens.title": "Comparer les types de nœuds",
+   "viewer.lens.close": "Fermer la lentille sémantique",
+-  "viewer.lens.instruction": "Choisissez jusqu'à deux types sémantiques. Un seul révèle son trafic réel ; deux comparent uniquement les relations éditées directes.",
++  "viewer.lens.instruction": "Sélectionnez jusqu’à deux types. Un type met en évidence ses nœuds et les relations qui leur sont liées ; deux types mettent en évidence les relations directes entre eux.",
+   "viewer.lens.kinds": "Types sémantiques",
+   "viewer.lens.choose": "Choisissez un type pour inspecter ses nœuds et relations associées.",
+   "viewer.lens.copy": "Copier le lien de la lentille sémantique",
+diff --git a/archify/examples/locales/it.json b/archify/examples/locales/it.json
+index 57df42ad..b0f14cf3 100644
+--- a/archify/examples/locales/it.json
++++ b/archify/examples/locales/it.json
+@@ -183,7 +183,7 @@
+   "viewer.guide.map": "Guarda l'intero sistema",
+   "viewer.guide.map.hint": "Apri il Radar semantico con un viewport dal vivo e nodi stabili.",
+   "viewer.guide.lens": "Confronta i tipi semantici",
+-  "viewer.guide.lens.hint": "Conta i ruoli, mostra il loro traffico e confronta i collegamenti diretti generati.",
++  "viewer.guide.lens.hint": "Scegli fino a due tipi di nodo per evidenziare le loro relazioni nel diagramma.",
+   "viewer.guide.present": "Entra in modalità presentazione",
+   "viewer.guide.present.hint": "Assegna il viewport al diagramma dal vivo senza modificare l'esportazione.",
+   "viewer.guide.shortcuts": "Altre scorciatoie da tastiera",
+@@ -341,9 +341,9 @@
+   "viewer.route.hop.one": "{count} salto",
+   "viewer.route.hop.other": "{count} salti",
+   "viewer.lens.eyebrow": "Lente semantica",
+-  "viewer.lens.title": "Confronta i ruoli del sistema",
++  "viewer.lens.title": "Confronta i tipi di nodo",
+   "viewer.lens.close": "Chiudi la lente semantica",
+-  "viewer.lens.instruction": "Scegli fino a due tipi semantici. Uno mostra il traffico reale; due confrontano solo le relazioni dirette generate.",
++  "viewer.lens.instruction": "Scegli fino a due tipi. Con un tipo si evidenziano i suoi nodi e le relazioni collegate; con due tipi si evidenziano le relazioni dirette tra i due.",
+   "viewer.lens.kinds": "Tipi semantici",
+   "viewer.lens.choose": "Scegli un tipo per analizzarne i nodi e le relazioni collegate.",
+   "viewer.lens.copy": "Copia il link alla lente semantica",
+diff --git a/archify/examples/locales/ja.json b/archify/examples/locales/ja.json
+index d49ce3a2..b4e88be1 100644
+--- a/archify/examples/locales/ja.json
++++ b/archify/examples/locales/ja.json
+@@ -183,7 +183,7 @@
+   "viewer.guide.map": "システム全体を表示",
+   "viewer.guide.map.hint": "ライブビューポートと固定ノードを持つセマンティックレーダーを開きます。",
+   "viewer.guide.lens": "セマンティックな種類を比較",
+-  "viewer.guide.lens.hint": "役割を数え、そのトラフィックを表示し、直接編集されたリンクを比較します。",
++  "viewer.guide.lens.hint": "ノードの種類を最大2つ選択して、図中の関係を強調表示します。",
+   "viewer.guide.present": "プレゼンテーションステージに入る",
+   "viewer.guide.present.hint": "エクスポートを変更せずに、ライブダイアグラムにビューポート全体を割り当てます。",
+   "viewer.guide.shortcuts": "その他のキーボードショートカット",
+@@ -341,9 +341,9 @@
+   "viewer.route.hop.one": "{count} ホップ",
+   "viewer.route.hop.other": "{count} ホップ",
+   "viewer.lens.eyebrow": "セマンティックレンズ",
+-  "viewer.lens.title": "システムの役割を比較",
++  "viewer.lens.title": "ノードの種類を比較",
+   "viewer.lens.close": "セマンティックレンズを閉じる",
+-  "viewer.lens.instruction": "セマンティックな種類を最大2つ選択してください。1つ選ぶと実際のトラフィックが表示され、2つ選ぶと直接の編集済み関係のみを比較します。",
++  "viewer.lens.instruction": "種類を最大2つ選択してください。1つ選ぶと、その種類のノードと接続された関係を強調表示し、2つ選ぶと、両方の種類の間にある直接の関係を強調表示します。",
+   "viewer.lens.kinds": "セマンティックな種類",
+   "viewer.lens.choose": "種類を選択すると、そのノードと接する関係を検査できます。",
+   "viewer.lens.copy": "セマンティックレンズへのリンクをコピー",
+diff --git a/archify/examples/locales/pt.json b/archify/examples/locales/pt.json
+index 166c3089..a2f166a5 100644
+--- a/archify/examples/locales/pt.json
++++ b/archify/examples/locales/pt.json
+@@ -183,7 +183,7 @@
+   "viewer.guide.map": "Ver o sistema inteiro",
+   "viewer.guide.map.hint": "Abra o Radar Semântico com uma janela de visualização ativa e nós estáveis.",
+   "viewer.guide.lens": "Comparar tipos semânticos",
+-  "viewer.guide.lens.hint": "Conte papéis, revele seu tráfego e compare links diretos definidos.",
++  "viewer.guide.lens.hint": "Escolha até dois tipos de nós para destacar suas relações no diagrama.",
+   "viewer.guide.present": "Entrar no Palco de Apresentação",
+   "viewer.guide.present.hint": "Dê ao diagrama ao vivo a janela de visualização inteira sem alterar a exportação.",
+   "viewer.guide.shortcuts": "Atalhos de teclado adicionais",
+@@ -341,9 +341,9 @@
+   "viewer.route.hop.one": "{count} salto",
+   "viewer.route.hop.other": "{count} saltos",
+   "viewer.lens.eyebrow": "Lente semântica",
+-  "viewer.lens.title": "Comparar papéis do sistema",
++  "viewer.lens.title": "Comparar tipos de nós",
+   "viewer.lens.close": "Fechar lente semântica",
+-  "viewer.lens.instruction": "Escolha até dois tipos semânticos. Um revela seu tráfego real; dois comparam apenas relações diretas definidas.",
++  "viewer.lens.instruction": "Escolha até dois tipos. Um destaca seus nós e as relações conectadas a eles; dois destacam as relações diretas entre os tipos.",
+   "viewer.lens.kinds": "Tipos semânticos",
+   "viewer.lens.choose": "Escolha um tipo para inspecionar seus nós e relações que o tocam.",
+   "viewer.lens.copy": "Copiar link da lente semântica",
+diff --git a/archify/examples/locales/ru.json b/archify/examples/locales/ru.json
+index 8fab5fff..abffc0db 100644
+--- a/archify/examples/locales/ru.json
++++ b/archify/examples/locales/ru.json
+@@ -183,7 +183,7 @@
+   "viewer.guide.map": "Просмотреть всю систему",
+   "viewer.guide.map.hint": "Откройте семантический радар с живым видом и постоянными узлами.",
+   "viewer.guide.lens": "Сравнить семантические типы",
+-  "viewer.guide.lens.hint": "Подсчитайте роли, покажите их связи и сравните прямые заданные связи.",
++  "viewer.guide.lens.hint": "Выберите до двух типов узлов, чтобы выделить их связи на диаграмме.",
+   "viewer.guide.present": "Войти в режим презентации",
+   "viewer.guide.present.hint": "Отдать весь экран живой диаграмме без изменения экспорта.",
+   "viewer.guide.shortcuts": "Дополнительные горячие клавиши",
+@@ -341,9 +341,9 @@
+   "viewer.route.hop.one": "{count} переход",
+   "viewer.route.hop.other": "{count} переходов",
+   "viewer.lens.eyebrow": "Семантическая линза",
+-  "viewer.lens.title": "Сравнить роли системы",
++  "viewer.lens.title": "Сравнить типы узлов",
+   "viewer.lens.close": "Закрыть семантическую линзу",
+-  "viewer.lens.instruction": "Выберите до двух семантических типов. Один тип показывает реальные связи; два — сравнивают только прямые заданные связи.",
++  "viewer.lens.instruction": "Выберите до двух типов. Выбор одного типа выделяет его узлы и связи с ними; выбор двух — прямые связи между этими типами.",
+   "viewer.lens.kinds": "Семантические типы",
+   "viewer.lens.choose": "Выберите тип, чтобы просмотреть его узлы и смежные связи.",
+   "viewer.lens.copy": "Скопировать ссылку на семантическую линзу",
+diff --git a/archify/locales/ar.json b/archify/locales/ar.json
+index 14ddc6ed..6e683ce3 100644
+--- a/archify/locales/ar.json
++++ b/archify/locales/ar.json
+@@ -191,7 +191,7 @@
+   "viewer.guide.map": "شاهد النظام كاملًا",
+   "viewer.guide.map.hint": "افتح الرادار الدلالي بنافذةٍ حيّة وعُقدٍ ثابتة.",
+   "viewer.guide.lens": "قارن الأنواع الدلالية",
+-  "viewer.guide.lens.hint": "عُدّ الأدوار، واكشف حركتها، وقارن الروابط المُؤَلَّفة المباشرة.",
++  "viewer.guide.lens.hint": "اختر نوعين من العقد كحد أقصى لإبراز علاقاتهما في المخطط.",
+   "viewer.guide.present": "ادخل منصّة العرض",
+   "viewer.guide.present.hint": "امنح المخطّطَ الحيّ نافذةَ العرض بلا تغيير التصدير.",
+   "viewer.guide.shortcuts": "اختصاراتُ لوحة المفاتيح الإضافية",
+@@ -352,9 +352,9 @@
+   "viewer.route.hop.one": "{count} قفزة",
+   "viewer.route.hop.other": "{count} قفزات",
+   "viewer.lens.eyebrow": "العدسة الدلالية",
+-  "viewer.lens.title": "قارن أدوار النظام",
++  "viewer.lens.title": "مقارنة أنواع العقد",
+   "viewer.lens.close": "أغلق العدسة الدلالية",
+-  "viewer.lens.instruction": "اختر نوعين دلاليين على الأكثر. الواحد يكشف حركته الحقيقية، والاثنان يقارنان الروابط المُؤَلَّفة المباشرة فقط.",
++  "viewer.lens.instruction": "اختر نوعين كحد أقصى. اختيار نوع واحد يبرز عقده والعلاقات المتصلة بها؛ واختيار نوعين يبرز العلاقات المباشرة بينهما.",
+   "viewer.lens.kinds": "الأنواع الدلالية",
+   "viewer.lens.choose": "اختر نوعًا لتفحص عُقده وعلاقاته الملامسة.",
+   "viewer.lens.copy": "انسخ رابط العدسة الدلالية",
+diff --git a/archify/locales/en.json b/archify/locales/en.json
+index b8481764..9b6e9440 100644
+--- a/archify/locales/en.json
++++ b/archify/locales/en.json
+@@ -191,7 +191,7 @@
+   "viewer.guide.map": "See the whole system",
+   "viewer.guide.map.hint": "Open Semantic Radar with a live viewport and stable nodes.",
+   "viewer.guide.lens": "Compare semantic kinds",
+-  "viewer.guide.lens.hint": "Count roles, reveal their traffic, and compare direct authored links.",
++  "viewer.guide.lens.hint": "Choose up to two node types to highlight their diagram relationships.",
+   "viewer.guide.present": "Enter Presentation Stage",
+   "viewer.guide.present.hint": "Give the live diagram the viewport without changing export.",
+   "viewer.guide.shortcuts": "Additional keyboard shortcuts",
+@@ -352,9 +352,9 @@
+   "viewer.route.hop.one": "{count} hop",
+   "viewer.route.hop.other": "{count} hops",
+   "viewer.lens.eyebrow": "Semantic lens",
+-  "viewer.lens.title": "Compare system roles",
++  "viewer.lens.title": "Compare node types",
+   "viewer.lens.close": "Close semantic lens",
+-  "viewer.lens.instruction": "Choose up to two semantic kinds. One reveals its real traffic; two compare only direct authored relationships.",
++  "viewer.lens.instruction": "Choose up to two types. One highlights its nodes and connected relationships; two highlight direct relationships between the types.",
+   "viewer.lens.kinds": "Semantic kinds",
+   "viewer.lens.choose": "Choose a kind to inspect its nodes and touching relationships.",
+   "viewer.lens.copy": "Copy link to semantic lens",
+diff --git a/archify/locales/es.json b/archify/locales/es.json
+index d171960f..35ec9be9 100644
+--- a/archify/locales/es.json
++++ b/archify/locales/es.json
+@@ -199,7 +199,7 @@
+   "viewer.guide.map": "Ver todo el sistema",
+   "viewer.guide.map.hint": "Abre el Radar semántico con un viewport en vivo y nodos estables.",
+   "viewer.guide.lens": "Comparar tipos semánticos",
+-  "viewer.guide.lens.hint": "Cuenta roles, revela su tráfico y compara enlaces directos definidos.",
++  "viewer.guide.lens.hint": "Elige hasta dos tipos de nodos para resaltar sus relaciones en el diagrama.",
+   "viewer.guide.present": "Entrar al modo presentación",
+   "viewer.guide.present.hint": "Dale al diagrama en vivo todo el viewport sin cambiar la exportación.",
+   "viewer.guide.shortcuts": "Atajos de teclado adicionales",
+@@ -360,9 +360,9 @@
+   "viewer.route.hop.one": "{count} salto",
+   "viewer.route.hop.other": "{count} saltos",
+   "viewer.lens.eyebrow": "Lente semántico",
+-  "viewer.lens.title": "Comparar roles del sistema",
++  "viewer.lens.title": "Comparar tipos de nodos",
+   "viewer.lens.close": "Cerrar el lente semántico",
+-  "viewer.lens.instruction": "Elige hasta dos tipos semánticos. Uno revela su tráfico real; dos comparan solo las relaciones directas definidas.",
++  "viewer.lens.instruction": "Elige hasta dos tipos. Uno resalta sus nodos y las relaciones conectadas a ellos; dos resaltan las relaciones directas entre ambos tipos.",
+   "viewer.lens.kinds": "Tipos semánticos",
+   "viewer.lens.choose": "Elige un tipo para inspeccionar sus nodos y las relaciones que lo tocan.",
+   "viewer.lens.copy": "Copiar enlace al lente semántico",
+diff --git a/archify/locales/ko.json b/archify/locales/ko.json
+index a3cf4dda..5daf5f81 100644
+--- a/archify/locales/ko.json
++++ b/archify/locales/ko.json
+@@ -191,7 +191,7 @@
+   "viewer.guide.map": "전체 시스템 보기",
+   "viewer.guide.map.hint": "실시간 뷰포트와 고정 노드가 있는 시맨틱 레이더를 엽니다.",
+   "viewer.guide.lens": "시맨틱 유형 비교",
+-  "viewer.guide.lens.hint": "역할 수를 세고, 트래픽을 표시하고, 직접 편집된 연결을 비교합니다.",
++  "viewer.guide.lens.hint": "노드 유형을 최대 두 개 선택하여 다이어그램에서 해당 유형의 관계를 강조하세요.",
+   "viewer.guide.present": "프레젠테이션 모드 진입",
+   "viewer.guide.present.hint": "내보내기는 그대로 두고 실시간 다이어그램에 뷰포트 전체를 할애합니다.",
+   "viewer.guide.shortcuts": "추가 키보드 단축키",
+@@ -351,9 +351,9 @@
+   "viewer.route.hop.one": "홉 {count}개",
+   "viewer.route.hop.other": "홉 {count}개",
+   "viewer.lens.eyebrow": "시맨틱 렌즈",
+-  "viewer.lens.title": "시스템 역할 비교",
++  "viewer.lens.title": "노드 유형 비교",
+   "viewer.lens.close": "시맨틱 렌즈 닫기",
+-  "viewer.lens.instruction": "시맨틱 유형을 최대 두 개까지 선택하세요. 하나를 선택하면 실제 트래픽을 표시하고, 두 개를 선택하면 직접 편집된 관계만 비교합니다.",
++  "viewer.lens.instruction": "유형을 최대 두 개 선택하세요. 하나를 선택하면 해당 유형의 노드와 연결된 관계를 강조하고, 두 개를 선택하면 두 유형 사이의 직접적인 관계를 강조합니다.",
+   "viewer.lens.kinds": "시맨틱 유형",
+   "viewer.lens.choose": "유형을 선택해 해당 노드와 연결된 관계를 확인하세요.",
+   "viewer.lens.copy": "시맨틱 렌즈 링크 복사",
+diff --git a/archify/locales/zh-CN.json b/archify/locales/zh-CN.json
+index eb7fa452..deadb213 100644
+--- a/archify/locales/zh-CN.json
++++ b/archify/locales/zh-CN.json
+@@ -191,7 +191,7 @@
+   "viewer.guide.map": "查看完整系统",
+   "viewer.guide.map.hint": "打开带实时视口和稳定节点的语义雷达。",
+   "viewer.guide.lens": "比较语义类型",
+-  "viewer.guide.lens.hint": "统计角色、显示流量并比较直接编写的连接。",
++  "viewer.guide.lens.hint": "最多选择两种节点类型，突出显示它们在图中的关系。",
+   "viewer.guide.present": "进入演示模式",
+   "viewer.guide.present.hint": "让实时图表占满视口，同时不改变导出。",
+   "viewer.guide.shortcuts": "其他键盘快捷键",
+@@ -352,9 +352,9 @@
+   "viewer.route.hop.one": "{count} 跳",
+   "viewer.route.hop.other": "{count} 跳",
+   "viewer.lens.eyebrow": "语义透镜",
+-  "viewer.lens.title": "比较系统角色",
++  "viewer.lens.title": "比较节点类型",
+   "viewer.lens.close": "关闭语义透镜",
+-  "viewer.lens.instruction": "最多选择两种语义类型。选择一种可显示其真实流量；选择两种只比较直接编写的关系。",
++  "viewer.lens.instruction": "最多选择两种类型。选择一种可突出显示其节点及相连关系；选择两种可突出显示两类之间的直接关系。",
+   "viewer.lens.kinds": "语义类型",
+   "viewer.lens.choose": "选择一种类型以检查其节点和相连关系。",
+   "viewer.lens.copy": "复制语义透镜链接",
+diff --git a/archify/locales/zh-TW.json b/archify/locales/zh-TW.json
+index 6ed434dc..ab70251c 100644
+--- a/archify/locales/zh-TW.json
++++ b/archify/locales/zh-TW.json
+@@ -191,7 +191,7 @@
+   "viewer.guide.map": "檢視完整系統",
+   "viewer.guide.map.hint": "開啟語意雷達，顯示即時可視範圍與穩定的節點位置。",
+   "viewer.guide.lens": "比較語意類型",
+-  "viewer.guide.lens.hint": "統計各角色、顯示其流量，並比較圖中的直接連線。",
++  "viewer.guide.lens.hint": "最多選擇兩種節點類型，突顯它們在圖中的關係。",
+   "viewer.guide.present": "進入簡報模式",
+   "viewer.guide.present.hint": "讓即時圖占滿畫面，不影響匯出結果。",
+   "viewer.guide.shortcuts": "其他鍵盤快速鍵",
+@@ -352,9 +352,9 @@
+   "viewer.route.hop.one": "{count} 跳",
+   "viewer.route.hop.other": "{count} 跳",
+   "viewer.lens.eyebrow": "語意透鏡",
+-  "viewer.lens.title": "比較系統角色",
++  "viewer.lens.title": "比較節點類型",
+   "viewer.lens.close": "關閉語意透鏡",
+-  "viewer.lens.instruction": "最多選兩種語意類型。選一種會顯示它實際的流量；選兩種只比較兩者之間的直接關係。",
++  "viewer.lens.instruction": "最多選擇兩種類型。選擇一種可突顯其節點及相連關係；選擇兩種可突顯兩類之間的直接關係。",
+   "viewer.lens.kinds": "語意類型",
+   "viewer.lens.choose": "選擇一種類型，檢查它的節點和相連的關係。",
+   "viewer.lens.copy": "複製語意透鏡連結",
+diff --git a/viewer/viewer.css b/viewer/viewer.css
+index 2b147f8a..bd852d11 100644
+--- a/viewer/viewer.css
++++ b/viewer/viewer.css
+@@ -1215,8 +1215,9 @@ html[data-preset="blueprint"] .overview-map-surface { border-radius: 0.1rem; }
+ }
+ 
+ /* Semantic Lens turns the compiled node-kind palette into an analytical
+-   legend. One kind reveals its real traffic; two kinds compare only their
+-   direct authored relationships. Geometry and the canonical SVG stay put. */
++   legend. One type highlights its nodes and connected diagram relationships;
++   two highlight direct relationships between types. Geometry and the canonical
++   SVG stay put. */
+ .semantic-lens {
+   position: absolute;
+   right: 1rem;
