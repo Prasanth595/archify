@@ -1,0 +1,161 @@
+{
+  "comparisons": [
+    {
+      "case": "short-top",
+      "equalSemanticState": {
+        "viewport": true,
+        "scroll": true,
+        "selected": true,
+        "edges": true,
+        "status": true
+      },
+      "devPanel": {
+        "x": 49,
+        "y": 16.0703125,
+        "width": 320,
+        "height": 219.125,
+        "top": 16.0703125,
+        "bottom": 235.1953125,
+        "left": 49,
+        "right": 369
+      },
+      "prPanel": {
+        "x": 49,
+        "y": 16.0703125,
+        "width": 320,
+        "height": 219.125,
+        "top": 16.0703125,
+        "bottom": 235.1953125,
+        "left": 49,
+        "right": 369
+      },
+      "devVisibleBounds": {
+        "top": 84.6953125,
+        "bottom": 355.59375,
+        "left": 33,
+        "right": 1407
+      },
+      "prVisibleBounds": {
+        "top": 84.6953125,
+        "bottom": 355.59375,
+        "left": 33,
+        "right": 1407
+      },
+      "devControlHits": {
+        "semantic-lens-close": false,
+        "semantic-lens-copy": true,
+        "semantic-lens-clear": true
+      },
+      "prControlHits": {
+        "semantic-lens-close": false,
+        "semantic-lens-copy": true,
+        "semantic-lens-clear": true
+      }
+    },
+    {
+      "case": "long-top-controlled",
+      "equalSemanticState": {
+        "viewport": true,
+        "scroll": true,
+        "selected": true,
+        "edges": true,
+        "status": true
+      },
+      "devPanel": {
+        "x": 1071,
+        "y": 670.375,
+        "width": 320,
+        "height": 258.3203125,
+        "top": 670.375,
+        "bottom": 928.6953125,
+        "left": 1071,
+        "right": 1391
+      },
+      "prPanel": {
+        "x": 49,
+        "y": 670.375,
+        "width": 320,
+        "height": 258.3203125,
+        "top": 670.375,
+        "bottom": 928.6953125,
+        "left": 49,
+        "right": 369
+      },
+      "devVisibleBounds": {
+        "top": 106.390625,
+        "bottom": 900,
+        "left": 33,
+        "right": 1407
+      },
+      "prVisibleBounds": {
+        "top": 106.390625,
+        "bottom": 900,
+        "left": 33,
+        "right": 1407
+      },
+      "devControlHits": {
+        "semantic-lens-close": true,
+        "semantic-lens-copy": false,
+        "semantic-lens-clear": false
+      },
+      "prControlHits": {
+        "semantic-lens-close": true,
+        "semantic-lens-copy": false,
+        "semantic-lens-clear": false
+      }
+    },
+    {
+      "case": "long-scrolled-controlled",
+      "equalSemanticState": {
+        "viewport": true,
+        "scroll": true,
+        "selected": true,
+        "edges": true,
+        "status": true
+      },
+      "devPanel": {
+        "x": 1071,
+        "y": 350.375,
+        "width": 320,
+        "height": 258.3203125,
+        "top": 350.375,
+        "bottom": 608.6953125,
+        "left": 1071,
+        "right": 1391
+      },
+      "prPanel": {
+        "x": 49,
+        "y": 350.375,
+        "width": 320,
+        "height": 258.3203125,
+        "top": 350.375,
+        "bottom": 608.6953125,
+        "left": 49,
+        "right": 369
+      },
+      "devVisibleBounds": {
+        "top": 0,
+        "bottom": 729.09375,
+        "left": 33,
+        "right": 1407
+      },
+      "prVisibleBounds": {
+        "top": 0,
+        "bottom": 729.09375,
+        "left": 33,
+        "right": 1407
+      },
+      "devControlHits": {
+        "semantic-lens-close": true,
+        "semantic-lens-copy": true,
+        "semantic-lens-clear": true
+      },
+      "prControlHits": {
+        "semantic-lens-close": true,
+        "semantic-lens-copy": true,
+        "semantic-lens-clear": true
+      }
+    }
+  ],
+  "note": "Initial dev long-top/scrolled scrollY509/742 differs fromPR0/320: retained but excluded from matched comparison. Copy is hidden whenunselected (zero rect); false hit then is notaclipping failure. Longhorizontal docking differs, so onlyvertical behavior is compared."
+}

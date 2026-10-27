@@ -1,0 +1,45 @@
+# Batch 18 — Lens vertical placement diagnosis
+
+**Worth fixing in a bounded Lens-only experiment.** The supplied actual Ego evidence establishes two existing failures with the same root cause: Lens placement chooses a horizontal side but never bounds its vertical rectangle against the visible portion of its clipping container. This is independent of Batch 17 copy.
+
+## Revision, evidence and certainty
+
+Read-only source inspection used hub `<USER_HOME>/.codex/worktrees/research-lab-20261026/archify` at `b5dc91d5e5494e617bf1d81410a74cc753a514e9`. Recorded base pages are pinned to the Batch 17 `d5d97949` baseline, so these identities are not conflated. No fresh remote status, browser, tests, installations or source writes are claimed. Reviewed supplied observations/comparison and visually opened `base-en-one.png` and `base-zero-visual.png`. Previous archify-review/test-value guidance applies.
+
+### Long page: viewport cutoff, not proved ancestor clipping
+
+At 1440×900, scroll (0,0), base and copy candidate both record panel `(49, 670.375, 320, 258.3203125)`. Its bottom is **928.6953125**, 28.6953125 px below the viewport. The actual screenshot cuts the panel footer at the viewport floor. Instruction rect and panel scroll/client dimensions are equal between both versions; this is not a copy-induced internal overflow. The larger 1440×1100 capture places the panel wholly inside the viewport, with different docking, consistent with insufficient vertical viewport placement rather than corrupted panel content. Ancestor clipping at the bottom is not established by these records. Page scrolling may reveal that footer, but no new scroll experiment was performed; that is a potential workaround, not a demonstrated fix.
+
+### Short page: actual clipping by the diagram container
+
+The single-span page records panel top **16.0703125**, bottom **235.1953125**, height 219.125, all inside the viewport. Yet the actual screenshot begins painting it only at the diagram-container top, visually near y=84, and cuts off its title and close button. That is actual ancestor clipping, not screenshot cropping at y=0 or insufficient viewport height. `.diagram-container` has `overflow:hidden` and `position:relative` (`viewer/viewer.css:585–599`); the absolute bottom-anchored child grows upward beyond that ancestor. Panel scroll/client heights (217/217) show no internal scroll overflow, so scrolling the panel will not expose the title. Exact ancestor coordinates were not stored in observations; y≈84 is image-derived, and a regression should measure the container border/padding rect directly.
+
+Both failures appear identically on base and Batch 17 candidate. They are a shared Viewer placement defect, not Waterfall drawing geometry or new wording.
+
+## Cause and existing controls
+
+- `viewer/semantic-lens.js:341–371` removes/sets `data-dock-side`, measures the CSS-produced top/bottom, and compares left/right candidates at that unchanged vertical position. It considers selected-node overlap plus high-weight legend/navigation overlap but never clamps to viewport or container, and never sets top/height.
+- `.semantic-lens` is absolute, with `bottom:calc(4.15rem + var(--archify-nav-reserve))`, width cap and `overflow:hidden` (`viewer/viewer.css:1212–1228`). Bottom anchoring produces the long-page offscreen footer and the short-container upward spill. The mobile rule has a container-relative max-height and still `overflow:hidden`; merely retaining that max-height does not guarantee all controls are reachable.
+- The open/selection paths call docking, but resize only re-docks an already selected open Lens (`semantic-lens.js:645–648`). No scroll or panel/container-size observer corrects vertical position. Clear changes panel content and removes the docking attribute without a vertical layout mechanism.
+- Existing `viewer-chrome-layout.js:144–166` lifts **navigation only** through `--archify-dock-lift`, observed on page scroll/container changes. Lens does not use that lift variable. Nav reserve is layout space, not a general vertical clamp. Adding it blindly to Lens bottom would not cure short-container upward clipping.
+- Lens has no panel drag handlers. Radar has a separate placement solver and two drag modes (panel head and viewport); they are not Lens recovery controls. Camera pan/zoom changes the SVG/page dimensions, not a reliable Lens-specific recovery path. Presentation changes the reader mode and can incidentally supply space; it does not fix ordinary reader placement. Escape/launcher can close/reopen, but reopening repeats the same placement.
+- Existing `semantic-lens-browser.test.mjs:322–348` covers public open/close and left/right docking using overridden rectangles, plus width thresholds 720/721/1440. It does not assert panel top/bottom containment, short native containers, scroll repositioning or a zero-selected open panel after resize. A passing docking fixture therefore does not refute these failures.
+
+## Minimal fix direction and exact ownership
+
+Implement vertical placement **inside Lens**, retaining its absolute descendant relationship and current horizontal side-selection behavior. Do not change the canonical SVG, Reader scaling/min-height, container overflow, page scrolling, camera transforms, navigation lift/reserve, Radar placement or drag protocols. Do not add Lens drag or a generic panel-manager abstraction as part of this fix.
+
+1. Establish visible vertical bounds from the intersection of the container content/padding paint area and viewport, with the existing small inset. Use a fresh natural CSS bottom anchor as the preferred top, then clamp measured top into `[visibleTop, visibleBottom - measuredHeight]`. Convert viewport coordinates back to the absolute containing block correctly, including its border; use a CSS top/custom property with bottom:auto for the bounded state, not a transform that overwrites the existing narrow wide-diagram horizontal-scroll compensation.
+2. Compute the current left/right overlap scores using that final vertical rectangle. Keep navigation and legend overlap handling as spatial rectangles. Do not reserve the entire navigation-height strip on both sides: the recorded short container can fit Lens at the left while navigation sits at the right; a global nav-top ceiling would create an unnecessary no-room state.
+3. Where the natural panel is taller than the actual available intersection, cap the panel to available height and make its content reachable by scrolling rather than continuing to clip. Prefer a small local CSS overflow/max-height rule over importing Radar’s placement/degrade/retry solver. Preserve close, kinds, status and actions access. Recompute against natural measurements so a previous cap/position does not become the next preferred anchor and ratchet the panel upward.
+4. Re-layout on open, selection/clear/rendered content changes, viewport resize and page/container scroll/size changes while open, including zero selections. Reuse existing animation-frame scheduling patterns; do not start a polling loop. A small local observer/scheduler is sufficient. Ignore/clear stale bounded styles when hidden or when no visible container intersection exists, allowing normal page navigation to bring it back. Container size/font settlement can change without a window resize; cover that actual caller path rather than only resize.
+
+A natural-height clamp suffices for both recorded desktop failures; the height cap/scroll step covers the direct no-fit boundary of the same mechanism and existing mobile max-height clipping. No additional security, race, keyboard framework or speculative layout solver is indicated.
+
+## Smallest acceptance evidence for the experiment
+
+- Reuse the supplied long English Waterfall and single-span zero-edge inputs at 1440×900 on baseline/candidate. Record panel **and container** rectangles, viewport and scroll positions; assert all controls are within the visible container intersection (or internally scroll-reachable if the panel is capped). Screenshot both so actual ancestor clipping is distinguished from DOM geometry.
+- Exercise open without selection, one/two selections, clear, page scroll, and resize 720/721/1440 through public Lens controls. Extend the existing browser docking test with real native-page cases; keep its existing horizontal-score fixture rather than duplicating a fixture family.
+- Include one constrained-height/narrow case and verify body/footer reachability when capped; keep horizontal scrolling compensation and existing container scrolling intact. A long translation can be the same no-fit boundary, not a new locale cross-product.
+- Confirm selected IDs, matched edges, hashes, canonical SVG bytes/viewBox and reader/camera state are unchanged. Preserve navigation reachability. Reuse relevant existing Radar panel/viewport drag coverage if shared CSS is touched; the intended Lens-only fix should not require editing those modules.
+- Parent owns actual Ego before/after visual acceptance. This diagnosis performs no tests or browser interaction and makes no candidate success claim.

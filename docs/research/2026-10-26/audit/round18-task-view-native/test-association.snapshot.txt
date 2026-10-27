@@ -1,0 +1,197 @@
+[p1 "Change review · task-view" | space "Archify research 20261026"(24): 1 managed, 0 untracked — p1* "Change review · task-view"]
+root
+  container
+    container
+      button [ref=238]
+        svg_root
+      container
+        svg_root
+        text "task-view"
+      container
+        text "/"
+        text "task-view"
+        text "/"
+        text "change-show-code-after.json"
+      container
+        button [ref=239]
+          svg_root
+          text "22"
+          text "verified"
+        button [ref=240]
+          svg_root
+          text "0"
+          text "contradicted"
+        button [ref=241]
+          svg_root
+          text "0"
+          text "unresolved"
+        button [ref=242]
+          svg_root
+          text "14"
+          text "agent statements"
+        button [ref=243]
+          svg_root
+          text "0"
+          text "errors"
+        button [ref=244]
+          svg_root
+          text "0"
+          text "warnings"
+        container
+          svg_root
+          text "0/12"
+    container
+      container [ref=262]
+        container
+          heading
+            svg_root
+            text "SUMMARY"
+          container
+            container
+              svg_root
+              text "AGENT SAYS"
+            paragraph
+              text "The inspector's code box gets Diff and After tabs. After shows the referenced code as it reads in the final state, without removed lines; for a `file` ref on a modified file the page data now also car..."
+            button [ref=246]
+              text "Show more"
+        container
+          heading
+            svg_root
+            text "REPOSITORIES"
+            text "1"
+          container
+            container
+              svg_root
+              text "task-view"
+              text "changed"
+              container
+                text "6 files"
+                text "+69"
+                text "−12"
+            text "."
+            container
+              container
+                text "1219994"
+                text "Show the code after the change next to the diff"
+              container
+                text "7d66ec7"
+                text "base · Scan only listed repos, resize the inspector, skip tests on non-source"
+        container
+          heading
+            svg_root
+            text "FINDINGS"
+            text "0"
+          container
+            svg_root
+            text "The account matches the diff"
+        container
+          heading
+            svg_root
+            text "AGENT NOTES"
+            text "2"
+          unordered_list
+            list_item
+              text "No automated test covers the tabs in app.js; TestOpenWritesPage only checks that the page is written and embeds the review data."
+            list_item
+              text "The After rows for a whole file are capped at the same row limit as the diff rows; a very long file shows the truncation note."
+      splitter
+      container
+        container [ref=263]
+          button [ref=264]
+            svg_root
+            text "Flows"
+            text "1"
+          button [ref=265]
+            svg_root
+            text "Graph"
+            text "12"
+          button [ref=266]
+            svg_root
+            text "Diff map"
+            text "6"
+          button [ref=267]
+            svg_root
+            text "Claims"
+            text "3"
+          button [ref=268]
+            svg_root
+            text "Docs & config"
+        container [ref=269]
+          container
+            canvas
+            canvas
+            canvas
+          svg_root
+          text "builder.excerpt"
+          text "code · data.go:387–508"
+          button [ref=288]
+            text "+1"
+          svg_root
+          text "TestOpenWritesPage"
+          text "test · main_test.go:215–238"
+          text "agent says: passed"
+          container
+            button [ref=271]
+              svg_root
+            button [ref=272]
+              svg_root
+            button [ref=273]
+              svg_root
+          container
+            button [ref=274]
+              svg_root
+            heading
+              text "REFERENCE STATUS"
+            text "Verified"
+            text "Contradicted"
+            text "Unresolved"
+            text "Agent statement"
+            heading
+              text "CHANGE"
+            text "Added"
+            text "Modified"
+            text "Deleted"
+            text "Unchanged"
+            heading
+              text "EDGES"
+            text "Verified site"
+            text "No reference"
+      container
+        splitter
+        container
+          svg_root
+          container
+            heading
+              text "builder.excerpt"
+            text "builder-excerpt · code"
+            container
+              text "Modified"
+              container
+                svg_root
+                text "Verified"
+          button [ref=289]
+            svg_root
+            text "Mark read"
+        container
+          container
+            text "task-view"
+            text "›"
+            text "internal/render/data.go:387–508"
+            text "range"
+            text "1219994"
+          tablist
+            tab [ref=290]
+              text "Code"
+            tab [ref=291]
+              text "Agent's account"
+            tab [ref=292]
+              text "Tests 1"
+            tab [ref=293]
+              text "Relations 1"
+          container
+            text "TestOpenWritesPage"
+            text "Unchanged"
+            text "agent says: passed"
+            text "main_test.go:215–238"
+  text "builder.excerpt"
+  text "Modified code · task-view internal/render/data.go:387–508"

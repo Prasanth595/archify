@@ -481,3 +481,29 @@ root在固定d5 runtime重新生成该输入并完成[实际页面复现](audit/
 本批AI辅助由研究代理完成来源/合同/重复核查，候选作者完成窄文案及生成物，root完成固定输入、实际页面和收尾判断。12种语言未经过逐语种专业人工校订；翻译检查与英文/中文页面观察不能替代其余语言阅读验收。研究目标继续active，没有新PR、合并、发布、部署或安装；实验分支已推送并核对精确远端head。独立源码审查和188项交付清单审计无阻塞；最终补入审计报告及验证记录后root核对190项。全部diff空白检查在冻结HTML/patch/log里有272条告警，保留原字节；非归档代码/输入/说明检查通过。
 
 ![实际候选页面：Lens突出图中关系](https://raw.githubusercontent.com/tt-a1i/archify/81cd0f4c45f720f8f18b9c03912ecdf59983fd55/experiments/authored-relationships/root-review/candidate-en-full.png)
+
+## 第十八批：核对现有修复与 task-view 新原生能力
+
+先刷新并保存 [314 个远端 head](audit/remote-branches-round18.txt)，dev 仍是 `d5d97949`。上一批是已交付进展；本批没有把重复查询当新成果，而是根据[去重结果](audit/round18-dedup.md)补了两个会改变后续选择的实际对照。只更新研究远程分支，不创建 PR。
+
+### Lens：缺口确实存在，先保留现有贡献范围
+
+上一批的长图底部超出视口、短图顶部被容器裁切值得处理。[源码诊断](audit/round18-panel-diagnosis.md)指出 Lens 仅左右选位，没有纵向可见范围约束；[Floating UI 研究](audit/round18-floating-reading.md)固定 `93ea014e` 与 MIT 来源，区分可见边界、移动、尺寸和滚动更新。引入整个库或改成 top-layer popover 会扩大焦点、关闭和叠层影响，本批没有采用。
+
+去重发现现有 [#1027](https://github.com/tt-a1i/archify/pull/1027) 已由 jahfaliabdulrahman-dev 处理移动 dock 与 Lens 控件可达性。它的具体复现不同，不能直接说已修复，也不能绕开相邻贡献范围另做一套。[精确源码对照](audit/round18-pr1027-comparison.md)固定其 `c393fc7f`：与 dev 分叉 38/16 个提交，不能把两侧全部差异归给作者，更不能当作最新 dev 合并后结果。
+
+[原生对照包](audit/round18-panel-native/README.md)保存两个固定输入、四份新 HTML、回执、源 blob 清单、20 条 UI 记录和 10 张实际截图。两份 producer 各 238 文件在前后核对一致；四次 finalize 的四项门禁通过，两对主 SVG 字节相同。实际页面仍显示同样的纵向问题：1440×900、滚动 0 时两侧面板底部为 928.695px，Copy/Clear 中心不可命中；滚动 320px 后均可命中。短图 panel top 为 16.070px，而容器裁切 top 为 84.695px，Close 中心不可命中；Escape 均可关闭并返回入口。横向停靠位置不同，未宣称整体几何一致。
+
+首轮 dev 长图自动滚到 509/742px，不能与 PR 的 0/320px 成对比较，原记录保留；结论使用后续明确固定的滚动位置。Copy 在未选类型时被设计为隐藏，不计为裁切失败。这里只读核查现有 PR，没有代修、发表评论、运行其完整测试或给出新的 CI/合并结论。该证据可供后续明确剩余维护范围，本批不并行实现重叠修复。
+
+### Task-view：新版官方页面已经提供范围和测试关联
+
+用户提到的 [task-view 新源码](audit/round18-task-view-delta.md)已从 `f27b8bef` 前进两次提交到 `a3fa2176`：加入分支 flow、阅读进度、按 flow 节点/边/整体选择 Graph 范围及邻居展开。不能继续把旧版本的缺口当作当前状态。
+
+[实际原生检查](audit/round18-task-view-native/README.md)直接操作官方在线示例，无需安装或构建。选中 `builder.excerpt` 后 Graph 带入 `TestOpenWritesPage`；`+1` 展开 `excerpt (page data)`，收起回到两节点，Tests 1 显示同一关联，重新加载 focus URL 恢复范围。页面将测试结果标成 agent says: passed，并明确说明此测试不覆盖 app.js tabs；本轮没有执行测试。固定输入、MIT 原文及独立依赖许可、7 张实际截图和状态记录均已保存。
+
+首次展开捕获了过渡状态，保留但不作最终布局结论；1440×900 探索截图和1291×762后续截图分别记账，不做跨尺寸像素或完整响应式验收。页面版本标识与调研下载的 HTML 哈希分开记录，没有冒称逐字节源码重建。版本选择器误收集 script 的调试记录在公开副本中剔除，原始/公开映射可核，未复制上游内嵌运行库。
+
+这个上游示例与现有 Archify task-flow-tests 不是同输入，不足以宣布旧实验无效；它确实提高了原生基线。后续若比较，应统一事实、未关联步骤和测试声明，并证明具体剩余阅读问题；本批不再制作同义 graph focus 或测试列表。持续目标保持 active，没有新实验方向在本批取得独立实施条件，研究和真实对照证据仍形成可审查交付。
+
+[独立交付审计](audit/round18-delivery-audit.md)核对两组 66/26 项清单、四份回执、相同 SVG、保存的 UI 状态、输入和许可身份，未重跑浏览器或测试；[最终范围记录](audit/round18-validation.json)将首次不匹配截图、公开调试记录变换及后续文档澄清单列。本批给 PR 冻结副本临时借用的两个依赖链接已清理，无安装、合并、产品发布或部署。

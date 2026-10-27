@@ -1,0 +1,183 @@
+dev-long-top-controlled [ 0, 0 ] 670.375 928.6953125 [ [ 'semantic-lens-close', true ], [ 'database', true ], [ 'frontend', true ], [ 'backend', true ], [ 'external', true ], [ 'semantic-lens-copy', false ], [ 'semantic-lens-clear', false ] ]
+dev-long-scrolled-controlled [ 0, 320 ] 350.375 608.6953125 [ [ 'semantic-lens-close', true ], [ 'database', true ], [ 'frontend', true ], [ 'backend', true ], [ 'external', true ], [ 'semantic-lens-copy', true ], [ 'semantic-lens-clear', true ] ]
+pr1027-long-top-controlled [ 0, 0 ] 670.375 928.6953125 [ [ 'semantic-lens-close', true ], [ 'database', true ], [ 'frontend', true ], [ 'backend', true ], [ 'external', true ], [ 'semantic-lens-copy', false ], [ 'semantic-lens-clear', false ] ]
+pr1027-long-scrolled-controlled [ 0, 320 ] 350.375 608.6953125 [ [ 'semantic-lens-close', true ], [ 'database', true ], [ 'frontend', true ], [ 'backend', true ], [ 'external', true ], [ 'semantic-lens-copy', true ], [ 'semantic-lens-clear', true ] ]
+[p1 "Change review · task-view" | space "Archify research 20261026"(24): 1 managed, 0 untracked — p1* "Change review · task-view"]
+root
+  container
+    button [ref=238]
+      svg_root
+    container
+      svg_root
+      text "task-view"
+    container
+      text "/"
+      text "task-view"
+      text "/"
+      text "change-show-code-after.json"
+    container
+      button [ref=239]
+        svg_root
+        text "22"
+        text "verified"
+      button [ref=240]
+        svg_root
+        text "0"
+        text "contradicted"
+      button [ref=241]
+        svg_root
+        text "0"
+        text "unresolved"
+      button [ref=242]
+        svg_root
+        text "14"
+        text "agent statements"
+      button [ref=243]
+        svg_root
+        text "0"
+        text "errors"
+      button [ref=244]
+        svg_root
+        text "0"
+        text "warnings"
+      container
+        svg_root
+        text "0/12"
+        text "read"
+    button [ref=245]
+      svg_root
+  container
+    container
+      container
+        heading
+          svg_root
+          text "SUMMARY"
+        container
+          container
+            svg_root
+            text "AGENT SAYS"
+          paragraph
+            text "The inspector's code box gets Diff and After tabs. After shows the referenced code as it reads in the final state, without removed lines; for a `file` ref on a modified file the page data now also car..."
+          button [ref=246]
+            text "Show more"
+      container
+        heading
+          svg_root
+          text "REPOSITORIES"
+          text "1"
+        container
+          container
+            svg_root
+            text "task-view"
+            text "changed"
+            container
+              text "6 files"
+              text "+69"
+              text "−12"
+          text "."
+          container
+            container
+              text "1219994"
+              text "Show the code after the change next to the diff"
+            container
+              text "7d66ec7"
+              text "base · Scan only listed repos, resize the inspector, skip tests on non-source"
+      container
+        heading
+          svg_root
+          text "FINDINGS"
+          text "0"
+        container
+          svg_root
+          text "The account matches the diff"
+      container
+        heading
+          svg_root
+          text "AGENT NOTES"
+          text "2"
+        unordered_list
+          list_item
+            text "No automated test covers the tabs in app.js; TestOpenWritesPage only checks that the page is written and embeds the review data."
+          list_item
+            text "The After rows for a whole file are capped at the same row limit as the diff rows; a very long file shows the truncation note."
+      text "Generated 2026/10/28 02:37:50 · task-view main-a3fa217"
+    splitter
+    container
+      container
+        button [ref=247]
+          svg_root
+          text "Flows"
+          text "1"
+        button [ref=248]
+          svg_root
+          text "Graph"
+          text "12"
+        button [ref=249]
+          svg_root
+          text "Diff map"
+          text "6"
+        button [ref=250]
+          svg_root
+          text "Claims"
+          text "3"
+        button [ref=251]
+          svg_root
+          text "Docs & config"
+          text "3"
+      container
+        container
+          svg_root
+          heading
+            button [ref=252]
+              text "Reviewer opens a node: its code box reads the page data, the After rows and the remembered tab"
+          text "inspector-code"
+          container
+            text "0/8 steps read"
+            button [ref=253]
+              svg_root
+              text "Mark reviewed"
+        container [ref=254]
+          svg_root
+          button [ref=255]
+            svg_root
+            container
+              text "nodeInspector"
+              text "component · app.js:1218–1270"
+          button [ref=256]
+            svg_root
+            container
+              text "excerptBox"
+              text "component · app.js:1046–1088"
+          button [ref=257]
+            svg_root
+            container
+              text "codeMode preference"
+              text "code · app.js:150"
+          button [ref=258]
+            svg_root
+            container
+              text "afterRows"
+              text "code · app.js:1013–1017"
+          button [ref=259]
+            svg_root
+            container
+              text "excerpt (page data)"
+              text "code · data.go:25–39"
+          button [ref=260]
+            svg_root
+            container
+              text "codeTable"
+              text "component · app.js:995–1012"
+          button [ref=261]
+            svg_root
+            container
+              text "After tab styles"
+              text "code · app.css:474–478"
+          text "renders"
+          text "depends"
+          text "calls"
+          text "calls"
+          text "depends"
+          text "depends"
+
+

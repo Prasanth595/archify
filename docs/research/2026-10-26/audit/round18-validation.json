@@ -1,0 +1,37 @@
+{
+  "sourceBaseline": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "pr1027Head": "c393fc7fbc321d5b6c4685ca35cd612b75d64083",
+  "taskViewSource": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "initialRemoteHeads": 314,
+  "nativeFinalizes": 4,
+  "nativeFourGatesPassed": 4,
+  "nativeSvgIdenticalPairs": 2,
+  "nativeUiRecords": 20,
+  "nativePngsRootInspected": 10,
+  "upstreamPngsRootInspected": 7,
+  "manifestCounts": [
+    66,
+    26
+  ],
+  "liveInstalls": 0,
+  "newImplementationBranches": 0,
+  "prMutations": 0,
+  "claims": "Read-only exact producer comparisons and public upstream UI observations. No general CI, merged composition, AT or reader-benefit acceptance.",
+  "auditRawSha256": "84781c29e0b37eaae444e10a33763e16373e7ff8c9d97b0dec069d5b7031925a",
+  "auditPublicSha256": "84781c29e0b37eaae444e10a33763e16373e7ff8c9d97b0dec069d5b7031925a",
+  "postAuditChange": "Panel README clarifies reused measured input and synthetic short fixture; only its manifest entry changed.",
+  "retainedLimitations": [
+    "First dev long automatic scroll 509/742 cannot pair with PR 0/320; later controlled samples used.",
+    "Initial task-view expanded screenshot is transient; settled capture recorded separately.",
+    "Task-view exploration1440x900 and later1291x762 are not matched pixel comparisons.",
+    "Raw reload version selector collected scripts; public footer-only record has explicit raw/public derivation.",
+    "Unselected Lens Copy is intentionally hidden and not a reachability failure."
+  ],
+  "whitespace": {
+    "fullStagedExit": 1,
+    "warningCount": 114,
+    "files": 6,
+    "reason": "Original generated HTML and captured stderr preserve upstream whitespace.",
+    "scopedAuthoredExit": 0
+  }
+}

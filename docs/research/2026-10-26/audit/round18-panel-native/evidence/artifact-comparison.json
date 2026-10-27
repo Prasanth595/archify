@@ -1,0 +1,93 @@
+{
+  "records": [
+    {
+      "side": "dev",
+      "input": "waterfall-en",
+      "inputSha256": "77d610013a5aab031df739c207b66ebc26e1740371b51da06956ecf06b5e9929",
+      "inputBytes": 4617,
+      "artifactSha256": "8cffcf1c132ae65fc6323042ae1b6ce75eb1f4d22ff821e9ae40ec306c00aca3",
+      "artifactBytes": 893047,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "browserCheck": {
+        "requested": true,
+        "ran": true
+      },
+      "visualReview": "not-requested",
+      "svgSha256": "9cf0d5c0e819dc17adcfee0542cf114810ac7c8bddd0096c5e1fb2a2a7cb94b1",
+      "svgBytes": 47153
+    },
+    {
+      "side": "pr1027",
+      "input": "waterfall-en",
+      "inputSha256": "77d610013a5aab031df739c207b66ebc26e1740371b51da06956ecf06b5e9929",
+      "inputBytes": 4617,
+      "artifactSha256": "449c5a0942086672d33f1dfccf399829a60ff99073311eafbc0e774d43d6313a",
+      "artifactBytes": 895797,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "browserCheck": {
+        "requested": true,
+        "ran": true
+      },
+      "visualReview": "not-requested",
+      "svgSha256": "9cf0d5c0e819dc17adcfee0542cf114810ac7c8bddd0096c5e1fb2a2a7cb94b1",
+      "svgBytes": 47153
+    },
+    {
+      "side": "dev",
+      "input": "zero-relationships",
+      "inputSha256": "9514338c423047d6d374109bbfed1e65534d2f3d70aa5625ffbc439f6967da90",
+      "inputBytes": 419,
+      "artifactSha256": "a1bdd3cc262230d8184f77d2e3d60a9c6c22e3403dfe9ae74c8c0d47cfdf4d5c",
+      "artifactBytes": 853507,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "browserCheck": {
+        "requested": true,
+        "ran": true
+      },
+      "visualReview": "not-requested",
+      "svgSha256": "43455af07974d3373050d193732d04ce1a13a5f281473efcf4f5f0952dcb9455",
+      "svgBytes": 7743
+    },
+    {
+      "side": "pr1027",
+      "input": "zero-relationships",
+      "inputSha256": "9514338c423047d6d374109bbfed1e65534d2f3d70aa5625ffbc439f6967da90",
+      "inputBytes": 419,
+      "artifactSha256": "6f6552b98541e72399399c9b67ee7598d109dcccee4fc4b91f0f9237ef65b7e8",
+      "artifactBytes": 856257,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "pass"
+      },
+      "browserCheck": {
+        "requested": true,
+        "ran": true
+      },
+      "visualReview": "not-requested",
+      "svgSha256": "43455af07974d3373050d193732d04ce1a13a5f281473efcf4f5f0952dcb9455",
+      "svgBytes": 7743
+    }
+  ],
+  "svgPairs": {
+    "waterfall-en": true,
+    "zero-relationships": true
+  },
+  "method": "single literal <svg> through </svg> byte comparison; no rendering"
+}

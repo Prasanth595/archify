@@ -1,0 +1,27 @@
+{
+  "pr1027": {
+    "root": "/tmp/archify-round18-pr1027",
+    "inventory": "/tmp/archify-round18-pr1027-source-inventory.json",
+    "count": 238,
+    "mismatches": []
+  },
+  "base": {
+    "root": "/tmp/archify-round13-base",
+    "inventory": "/tmp/archify-round18-panel/base-source-inventory.json",
+    "count": 238,
+    "mismatches": []
+  },
+  "links": {
+    "/tmp/archify-round18-pr1027/node_modules": {
+      "expected": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/node_modules",
+      "actual": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/node_modules",
+      "removed": true
+    },
+    "/tmp/archify-round18-pr1027/archify/node_modules": {
+      "expected": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/archify/node_modules",
+      "actual": "<USER_HOME>/.codex/worktrees/pr671-validation/archify/archify/node_modules",
+      "removed": true
+    }
+  },
+  "success": true
+}

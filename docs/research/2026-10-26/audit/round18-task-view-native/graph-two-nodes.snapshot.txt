@@ -1,0 +1,565 @@
+[p1 "Change review · task-view" | space "Archify research 20261026"(24): 1 managed, 0 untracked — p1* "Change review · task-view"]
+root
+  container
+    container
+      button [ref=238]
+        svg_root
+      container
+        svg_root
+        text "task-view"
+      container
+        text "/"
+        text "task-view"
+        text "/"
+        text "change-show-code-after.json"
+      container
+        button [ref=239]
+          svg_root
+          text "22"
+          text "verified"
+        button [ref=240]
+          svg_root
+          text "0"
+          text "contradicted"
+        button [ref=241]
+          svg_root
+          text "0"
+          text "unresolved"
+        button [ref=242]
+          svg_root
+          text "14"
+          text "agent statements"
+        button [ref=243]
+          svg_root
+          text "0"
+          text "errors"
+        button [ref=244]
+          svg_root
+          text "0"
+          text "warnings"
+        container
+          svg_root
+          text "0/12"
+          text "read"
+      button [ref=245]
+        svg_root
+    container
+      container
+        container
+          heading
+            svg_root
+            text "SUMMARY"
+          container
+            container
+              svg_root
+              text "AGENT SAYS"
+            paragraph
+              text "The inspector's code box gets Diff and After tabs. After shows the referenced code as it reads in the final state, without removed lines; for a `file` ref on a modified file the page data now also car..."
+            button [ref=246]
+              text "Show more"
+        container
+          heading
+            svg_root
+            text "REPOSITORIES"
+            text "1"
+          container
+            container
+              svg_root
+              text "task-view"
+              text "changed"
+              container
+                text "6 files"
+                text "+69"
+                text "−12"
+            text "."
+            container
+              container
+                text "1219994"
+                text "Show the code after the change next to the diff"
+              container
+                text "7d66ec7"
+                text "base · Scan only listed repos, resize the inspector, skip tests on non-source"
+        container
+          heading
+            svg_root
+            text "FINDINGS"
+            text "0"
+          container
+            svg_root
+            text "The account matches the diff"
+        container
+          heading
+            svg_root
+            text "AGENT NOTES"
+            text "2"
+          unordered_list
+            list_item
+              text "No automated test covers the tabs in app.js; TestOpenWritesPage only checks that the page is written and embeds the review data."
+            list_item
+              text "The After rows for a whole file are capped at the same row limit as the diff rows; a very long file shows the truncation note."
+        text "Generated 2026/10/28 02:37:50 · task-view main-a3fa217"
+      splitter
+      container
+        container [ref=263]
+          button [ref=264]
+            svg_root
+            text "Flows"
+            text "1"
+          button [ref=265]
+            svg_root
+            text "Graph"
+            text "12"
+          button [ref=266]
+            svg_root
+            text "Diff map"
+            text "6"
+          button [ref=267]
+            svg_root
+            text "Claims"
+            text "3"
+          button [ref=268]
+            svg_root
+            text "Docs & config"
+        container
+          container
+            canvas
+            canvas
+            canvas
+          svg_root
+          text "builder.excerpt"
+          text "code · data.go:387–508"
+          button [ref=270]
+            text "+1"
+          svg_root
+          text "TestOpenWritesPage"
+          text "test · main_test.go:215–238"
+          text "agent says: passed"
+          container
+            button [ref=271]
+              svg_root
+            button [ref=272]
+              svg_root
+            button [ref=273]
+              svg_root
+          container
+            button [ref=274]
+              svg_root
+            heading
+              text "REFERENCE STATUS"
+            text "Verified"
+            text "Contradicted"
+            text "Unresolved"
+            text "Agent statement"
+            heading
+              text "CHANGE"
+            text "Added"
+            text "Modified"
+            text "Deleted"
+            text "Unchanged"
+            heading
+              text "EDGES"
+            text "Verified site"
+            text "No reference"
+      container
+        splitter
+        container
+          svg_root
+          container
+            heading
+              text "builder.excerpt"
+            text "builder-excerpt · code"
+            container
+              text "Modified"
+              container
+                svg_root
+                text "Verified"
+          button [ref=275]
+            svg_root
+            text "Mark read"
+          button [ref=284]
+            svg_root
+        container
+          container
+            text "task-view"
+            text "›"
+            text "internal/render/data.go:387–508"
+            text "range"
+            text "1219994"
+          tablist
+            tab [ref=277]
+              text "Code"
+            tab [ref=278]
+              text "Agent's account"
+            tab [ref=279]
+              text "Tests 1"
+            tab [ref=280]
+              text "Relations 1"
+          container
+            container
+              svg_root
+              text "internal/render/data.go:387–508"
+              tablist
+                tab [ref=281]
+                  text "Diff"
+                tab [ref=282]
+                  text "After"
+              text "1219994"
+              text "go"
+              button [ref=285]
+                svg_root
+            container [ref=283]
+              table
+                table_row
+                  table_cell
+                    text "380"
+                  table_cell
+                    text "384"
+                  table_cell
+                  table_cell
+                table_row
+                  table_cell
+                    text "381"
+                  table_cell
+                    text "385"
+                  table_cell
+                  table_cell
+                    text "// excerpt resolves the code a ref points at; it returns false when there is"
+                table_row
+                  table_cell
+                    text "382"
+                  table_cell
+                    text "386"
+                  table_cell
+                  table_cell
+                    text "// nothing to show."
+                table_row
+                  table_cell
+                    text "383"
+                  table_cell
+                    text "387"
+                  table_cell
+                  table_cell
+                    text "func"
+                    text "("
+                    text "b"
+                    text "*"
+                    text "builder"
+                    text ")"
+                    text "excerpt"
+                    text "("
+                    text "id"
+                    text "string"
+                    text ","
+                    text "ref"
+                    text "*"
+                    text "review"
+                    text "."
+                    text "Ref"
+                    text ","
+                    text "res"
+                    text "*"
+                table_row
+                  table_cell
+                    text "384"
+                  table_cell
+                    text "388"
+                  table_cell
+                  table_cell
+                    text "s"
+                    text ":="
+                    text "b"
+                    text "."
+                    text "e"
+                    text "."
+                    text "Repo"
+                    text "("
+                    text "ref"
+                    text "."
+                    text "Repo"
+                    text ")"
+                table_row
+                  table_cell
+                    text "385"
+                  table_cell
+                    text "389"
+                  table_cell
+                  table_cell
+                    text "if"
+                    text "s"
+                    text "=="
+                    text "nil"
+                    text "||"
+                    text "!"
+                    text "s"
+                    text "."
+                    text "OK"
+                    text "||"
+                    text "ref"
+                    text "."
+                    text "File"
+                    text "=="
+                    text """"
+                    text "||"
+                    text "res"
+                    text "."
+                    text "State"
+                    text "=="
+                table_row
+                  table_cell
+                    text "386"
+                  table_cell
+                    text "390"
+                  table_cell
+                  table_cell
+                    text "return"
+                    text "false"
+                table_row
+                  table_cell
+                    text "387"
+                  table_cell
+                    text "391"
+                  table_cell
+                  table_cell
+                    text "}"
+                table_row
+                  table_cell
+                    text "388"
+                  table_cell
+                    text "392"
+                  table_cell
+                  table_cell
+                    text "language"
+                    text ":="
+                    text "s"
+                    text "."
+                    text "Language"
+                    text "("
+                    text "ref"
+                    text "."
+                    text "File"
+                    text ","
+                    text "ref"
+                    text "."
+                    text "Language"
+                    text ")"
+                table_row
+                  table_cell
+                    text "389"
+                  table_cell
+                    text "393"
+                  table_cell
+                  table_cell
+                    text "x"
+                    text ":="
+                    text "&"
+                    text "excerpt"
+                    text "{"
+                    text "Repo"
+                    text ":"
+                    text "ref"
+                    text "."
+                    text "Repo"
+                    text ","
+                    text "File"
+                    text ":"
+                    text "ref"
+                    text "."
+                    text "File"
+                    text ","
+                    text "Language"
+                    text ":"
+                table_row
+                  table_cell
+                    text "390"
+                  table_cell
+                    text "394"
+                  table_cell
+                  table_cell
+                table_row
+                  table_cell
+                    text "391"
+                  table_cell
+                    text "395"
+                  table_cell
+                  table_cell
+                    text "state"
+                    text ":="
+                    text "engine"
+                    text "."
+                    text "StateFinal"
+                table_row
+                  table_cell
+                    text "392"
+                  table_cell
+                    text "396"
+                  table_cell
+                  table_cell
+                    text "switch"
+                    text "res"
+                    text "."
+                    text "StateKind"
+                    text "{"
+                table_row
+                  table_cell
+                    text "393"
+                  table_cell
+                    text "397"
+                  table_cell
+                  table_cell
+                    text "case"
+                    text ""initial""
+                    text ":"
+                table_row
+                  table_cell
+                    text "394"
+                  table_cell
+                    text "398"
+                  table_cell
+                  table_cell
+                    text "state"
+                    text "="
+                    text "engine"
+                    text "."
+                    text "StateInitial"
+                table_row
+                  table_cell
+                    text "395"
+                  table_cell
+                    text "399"
+                  table_cell
+                  table_cell
+                    text "case"
+                    text ""at""
+                    text ":"
+                table_row
+                  table_cell
+                    text "396"
+                  table_cell
+                    text "400"
+                  table_cell
+                  table_cell
+                    text "state"
+                    text "="
+                    text "ref"
+                    text "."
+                    text "At"
+                table_row
+                  table_cell
+                    text "397"
+                  table_cell
+                    text "401"
+                  table_cell
+                  table_cell
+                    text "}"
+                table_row
+                  table_cell
+                    text "398"
+                  table_cell
+                    text "402"
+                  table_cell
+                  table_cell
+                    text "hl"
+                    text ","
+                    text "content"
+                    text ":="
+                    text "b"
+                    text "."
+                    text "highlighted"
+                    text "("
+                    text "s"
+                    text ","
+                    text "state"
+                    text ","
+                    text "ref"
+                    text "."
+                    text "File"
+                    text ","
+                    text "language"
+                table_row
+                  table_cell
+                    text "399"
+                  table_cell
+                    text "403"
+                  table_cell
+                  table_cell
+                    text "if"
+                    text "!"
+                    text "content"
+                    text "."
+                    text "Exists"
+                    text "{"
+                table_row
+                  table_cell
+                    text "400"
+                  table_cell
+                    text "404"
+                  table_cell
+                  table_cell
+                    text "return"
+                    text "false"
+                table_row
+                  table_cell
+                    text "401"
+                  table_cell
+                    text "405"
+                  table_cell
+                  table_cell
+                    text "}"
+                table_row
+                  table_cell
+                    text "402"
+                  table_cell
+                    text "406"
+                  table_cell
+                  table_cell
+                    text "if"
+                    text "content"
+                    text "."
+                    text "Binary"
+                    text "{"
+                table_row
+                  table_cell
+                    text "403"
+                  table_cell
+                    text "407"
+                  table_cell
+                  table_cell
+                    text "x"
+                    text "."
+                    text "Note"
+                    text "="
+                    text ""binary file""
+                table_row
+                  table_cell
+                    text "404"
+                  table_cell
+                    text "408"
+                  table_cell
+                  table_cell
+                    text "b"
+                    text "."
+                    text "excerpts"
+                    text "["
+                    text "id"
+                    text "]"
+                    text "="
+                    text "x"
+                table_row
+                  table_cell
+                    text "405"
+                  table_cell
+                    text "409"
+                  table_cell
+                  table_cell
+                    text "return"
+                    text "true"
+                table_row
+                  table_cell
+                    text "406"
+                  table_cell
+                    text "410"
+                  table_cell
+                  table_cell
+                    text "}"
+  text "builder.excerpt"
+  text "Modified code · task-view internal/render/data.go:387–508"

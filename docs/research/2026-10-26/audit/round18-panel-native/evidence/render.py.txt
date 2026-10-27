@@ -1,0 +1,18 @@
+from pathlib import Path
+import subprocess,json,time,os
+out=Path('/tmp/archify-round18-panel')
+node='/private/tmp/keyboard-refresh-e837/node-v22.23.2-darwin-arm64/bin/node'
+env=dict(os.environ);env['PATH']=str(Path(node).parent)+':'+env['PATH']
+records=[]
+for arm,root in [('dev',Path('/tmp/archify-round13-base')),('pr1027',Path('/tmp/archify-round18-pr1027'))]:
+    dest=out/arm;dest.mkdir()
+    for name in ['waterfall-en','zero-relationships']:
+        argv=[node,str(root/'archify/bin/archify.mjs'),'finalize','waterfall',str(out/'inputs'/f'{name}.json'),str(dest/f'{name}.html'),'--json','--out-dir',str(dest/f'{name}-receipts'),'--browser-check']
+        start=time.time();p=subprocess.run(argv,cwd=root,env=env,capture_output=True)
+        (dest/f'{name}.stdout.json').write_bytes(p.stdout);(dest/f'{name}.stderr').write_bytes(p.stderr)
+        record={'argv':argv,'cwd':str(root),'exit':p.returncode,'seconds':time.time()-start};records.append(record);(dest/f'{name}.command.json').write_text(json.dumps(record,indent=2)+'\n')
+        print(arm,name,p.returncode,flush=True)
+        if p.returncode:break
+    if p.returncode:break
+(out/'render-summary.json').write_text(json.dumps(records,indent=2)+'\n')
+raise SystemExit(p.returncode)
