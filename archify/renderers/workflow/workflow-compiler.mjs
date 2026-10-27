@@ -5491,7 +5491,7 @@ function renderSvg() {
     ? ' data-reader-fit="width-first"'
     : '';
   const contract = workflow.schema_version === 2 ? ' data-layout-contract="readable-v2"' : '';
-  return `      <svg viewBox="0 0 ${viewBox[0]} ${viewBox[1]}"${readerFit}${contract} ${svgRootAttrs(workflow.meta, resolvedQualityProfile)} ${NODE_CARD_ATTR}>
+  return `      <svg viewBox="0 0 ${viewBox[0]} ${viewBox[1]}"${readerFit}${contract} ${svgRootAttrs(workflow.meta, resolvedQualityProfile, { profileIsAuthoritative: true })} ${NODE_CARD_ATTR}>
 ${svgAccessibleText(workflow.meta, 'workflow')}
 ${renderDefinitions()}
 ${nodeCardStyle()}
@@ -5621,7 +5621,7 @@ function absoluteGeometrySizingDiagnostic() {
     measuredPlanReady = false;
     const svg = renderSvg();
     const receipt = measuredPlanReceipt(workflowDiagnostics, requiredViewBox);
-    return { ok: true, svg, receipt };
+    return { ok: true, svg, receipt, resolvedQualityProfile };
   } catch (error) {
     if (!Array.isArray(error?.archifyDiagnostics)) throw error;
     const diagnostics = error.archifyDiagnostics.map((diagnostic) => ({ ...diagnostic }));

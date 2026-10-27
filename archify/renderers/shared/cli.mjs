@@ -230,11 +230,12 @@ function stageRenderedHtml(outputPath, html, mode) {
   throw error;
 }
 
-// Common CLI tail: fill the template and write the standalone HTML file.
-export function writeDiagram({ outPath, template, diagramType, meta, svg, cards, sourceEvidence = null, diagram = null }) {
-  if (!START_TYPES.has(diagramType)) throw new Error(`writeDiagram: unknown diagram type ${JSON.stringify(diagramType)}`);
-  const outputGuard = outputPathGuards.get(outPath);
-  const html = applyTemplate(template, {
+// Fills the standalone HTML template. Shared by the CLI's writeDiagram and
+// by in-memory render APIs that return html to their caller instead of
+// writing it to disk.
+export function renderDiagramHtml({ diagramType, meta, svg, cards, sourceEvidence = null, diagram = null, template }) {
+  if (!START_TYPES.has(diagramType)) throw new Error(`renderDiagramHtml: unknown diagram type ${JSON.stringify(diagramType)}`);
+  return applyTemplate(template, {
     title: meta.title,
     subtitle: meta.subtitle,
     svg,
@@ -244,6 +245,12 @@ export function writeDiagram({ outPath, template, diagramType, meta, svg, cards,
     sourceEvidence,
     explanations: diagram ? collectExplanations(diagramType, diagram) : null,
   });
+}
+
+// Common CLI tail: fill the template and write the standalone HTML file.
+export function writeDiagram({ outPath, template, diagramType, meta, svg, cards, sourceEvidence = null, diagram = null }) {
+  const outputGuard = outputPathGuards.get(outPath);
+  const html = renderDiagramHtml({ diagramType, meta, svg, cards, sourceEvidence, diagram, template });
   let candidatePath;
   let candidateIdentity;
   let candidateBinding;
@@ -373,7 +380,7 @@ export function validateCrossCollectionContracts(diagramType, diagram) {
 }
 
 // Accessible name for the generated diagram SVG.
-export function svgRootAttrs(meta, explicitQualityProfile) {
+export function svgRootAttrs(meta, explicitQualityProfile, { profileIsAuthoritative = false } = {}) {
   // Motion is a Viewer capability for every diagram; Live/Still controls playback.
   const animation = ' data-animation="trace"';
   const preset = ` data-preset="${esc(meta.visual_preset || 'classic')}"`;
@@ -386,7 +393,16 @@ export function svgRootAttrs(meta, explicitQualityProfile) {
   const parentHref = parentHrefRaw && isSiblingHtmlHref(parentHrefRaw)
     ? ` data-parent-href="${esc(parentHrefRaw)}"`
     : '';
-  const requestedProfile = explicitQualityProfile || process.env.ARCHIFY_QUALITY_PROFILE || meta.quality_profile;
+  // A caller that has already resolved its own quality policy (e.g. a
+  // compiler weighing an explicit param against authored meta) must not have
+  // that decision second-guessed by this process's environment — that would
+  // let an in-process library caller's render silently pick up an ambient
+  // ARCHIFY_QUALITY_PROFILE the caller never asked for. Only a renderer with
+  // no such resolution of its own (still reading straight from meta here)
+  // falls back to the environment, matching today's CLI behavior.
+  const requestedProfile = profileIsAuthoritative
+    ? explicitQualityProfile
+    : explicitQualityProfile || process.env.ARCHIFY_QUALITY_PROFILE || meta.quality_profile;
   const qualityProfile = requestedProfile === 'showcase' ? 'showcase' : 'standard';
   const advisory = requestedProfile ? '' : ' data-quality-gates="advisory"';
   return `role="img" lang="${esc(resolveLocale(meta.locale))}" aria-labelledby="archify-diagram-title archify-diagram-description"${animation}${preset}${engineeringProfile}${parentHref} data-quality-profile="${esc(qualityProfile)}"${advisory}`;
