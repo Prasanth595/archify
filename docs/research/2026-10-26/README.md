@@ -21,7 +21,7 @@
 
 Task-view 确认为 [`gtindo/task-view@f27b8bef63ec336b8e3487e90ccd484a2fa7a235`](https://github.com/gtindo/task-view/tree/f27b8bef63ec336b8e3487e90ccd484a2fa7a235)。本次核对仍是同一源码版本，不能把重新发现当新增能力。项目 MIT 与 vendored ELK 的 EPL-2.0 分别记账；实验只独立实现有限投影，不复制依赖。
 
-两个方向的价值目前是有来源支持的阅读假设。通过产图或自动检查不代表真人阅读更快，也不代表适合直接加入正式产品。各分支应保存输入、实际产物、来源许可、复现命令、失败与验证范围，完成独立检查后再决定是否值得 Draft PR。
+两个方向的价值目前是有来源支持的阅读假设。通过产图或自动检查不代表真人阅读更快，也不代表适合直接加入正式产品。各分支应保存输入、实际产物、来源许可、复现命令、失败与验证范围，完成独立检查后保留可审查远程分支，按最新交付要求不再新建 PR。
 
 ## 交付进度
 
@@ -170,3 +170,35 @@ Task-view 确认为 [`gtindo/task-view@f27b8bef63ec336b8e3487e90ccd484a2fa7a235`
 确认整个 workflow 已终止后，只请求重跑失败 browser job，依赖汇总随之重跑；attempt 2 workflow 成功，[最终精确快照](audit/keyboard-ci-attempt2.json)为 19 success、2 deployment skipped。其他成功项复用 attempt 1 的执行结果。首次失败没有被删除或解释成已经修复，PR 说明同步两次状态。本批没有合入产品分支、发布、部署或安装，目标仍 active。
 
 AI assistance：Codex（GPT-6.1-Terra 与 GPT-6.1-Sol 子代理）参与调研、实验实现、验证和文档；本记录不声称维护者已完成个人审查或验收。
+
+
+## 27 日第七批：固定来源对照与未得到报告的探针
+
+开始前先刷新远程分支并检索历史 50 项实验、scouts 与现有 issue/PR，BPF、ASan 未发现同范围实验；这些有界关键词搜索不保证覆盖全部同义表达。CSS cascade/specificity 已有历史 `style-reading-round9.md`，未重复实现。实验冻结于 `dev@500d4a65`；收尾 [远端精确 ref 快照](audit/round7-delivery.json) 显示 dev 已推进至 `d5d979493bba650b3995836afd379cd249f2d0dd`，增加 compact brand badge 与 edge-label contrast 改动。本批图片和检查仍属于冻结基线，不能当作新版验证。
+
+**按用户更新要求，两方向仅推送独立远程分支，没有新建 PR。** 不将已暂缓的运行探针计为完成图形实验。
+
+| 方向 | 远程分支 / 精确 head | 实际交付和限制 |
+| --- | --- | --- |
+| [BPF 边界阅读](scouts/bpf-range-reading.md) | [`codex/lab-bpf-range-reading@cd5d94ea`](https://github.com/tt-a1i/archify/tree/cd5d94ea3bf66b9ae4b08459ac5d454994b2aee2/experiments/bpf-range-reading) | 同源 baseline/candidate HTML、完整上游文件与许可、原创 65,536 对数学模型、七张实际截图、机器回执和独立复核。候选只追加对齐表，没有共享代码或 native 图。没有运行 Linux/verifier，也没有证明读者更快。 |
+| [ASan 三段栈](scouts/asan-provenance-reading.md) | [`codex/lab-asan-provenance@6f604170`](https://github.com/tt-a1i/archify/tree/6f604170574b5ba854026a7ec8f01fb5ba0dd67a/experiments/asan-provenance) | 原创 C 探针、复现命令及脱敏控制记录。未得到 ASan 报告，因而没有制作图、图片或阅读对照；方向暂缓。 |
+
+### BPF：同一证据的并排组织
+
+固定 Linux `d135ab45` 的完整 `verifier_bounds.c` 与 GPL-2.0/COPYING 原样保留；两臂均展示 map 定义和两个完整函数（原文 9–76 行），原始特权/非特权预期、数学说明及来源一致。独立复核验证远端 blob、实际 HTML 可见 DOM 和数学事实，没有把位向量集合当作 verifier 内部范围。候选新增六行比较表，突显唯一额外移位指令及标为数学模型的 −1/255 结果。既有表格足以承载这个问题，不为研究数量增加 parser、range engine 或通用图功能。
+
+两臂 finalize 的 validate/deliver/check 均通过，各自 browser gate 当时未请求；保留基线 1 条、候选 2 条写作提示。后续 public CLI 的 authentic-provenance browser-check 分别通过四种主题/视口组合，必达目标 21/21 与 23/23，浏览器诊断为零；runtime 是 Node 26.12.0 / Chrome 156.0.8078.48，不是 canonical Node 22 CI。首次并发交付锁失败、首次 audit 尾部换行失败及未改内容的串行重试均保留。发布回执仅脱敏本机绝对路径，完整浏览器机器记录入库，原件/public SHA 清单区分派生副本；未公开原始本机路径的旧本地提交。
+
+[实际页面复核](https://github.com/tt-a1i/archify/blob/cd5d94ea3bf66b9ae4b08459ac5d454994b2aee2/experiments/bpf-range-reading/root-review/review.md)使用本目标唯一 Ego 空间，按既有授权重建后继续，不操作用户其他空间。1440×900 明暗与 390×844 窄桌面视口截图已逐张查看，导航和主题切换可用。比较表三列保持在 332px 内；源码需要水平滚动，实际 wheel 从 0 到 375.5 再返回 0，页面没有横向溢出。窄视口不是手机设备或触摸验收。
+
+基线已有清楚结论与完整预期表；候选只提供另一种组织。代价是 HTML 增加 10,191 bytes，1440px 页面高由 2761 增至 3185（+424px），390px 由 3597 增至 4141（+544px）。没有计时、错误率或真人理解实验，暂不推荐进入共享产品。无需为此次内容与证据提交重跑完整产品测试，也没有声称 hosted CI 通过。
+
+![BPF 同源内容对照：数学限定与指令差异并排呈现](https://raw.githubusercontent.com/tt-a1i/archify/cd5d94ea3bf66b9ae4b08459ac5d454994b2aee2/experiments/bpf-range-reading/root-review/candidate-compare-light.png)
+
+### ASan：先承认运行证据缺失
+
+原创 16-byte 分配/释放/偏移 5 读取示例用 Apple clang 17.0.0 编译成功，但运行约 20 秒无输出，SIGTERM 后 shell status 143；禁用符号化再运行约 10 秒仍无输出。第二次状态是作者记录，不冒称原始退出码流。独立空程序控制中，普通构建运行 0.538 秒后 exit 0；相同工具链加 ASan 后 5 秒无输出，由 runner 终止，return −15。最初 direct-driver 的链接失败与后来正常 launcher 的成功编译分别留档。
+
+一秒 process sample 的选取记录显示初始化过程中通过 dyld/malloc 再入 ASan、落在 StaticSpinMutex 等待。它支持“本机 instrumentation 初始化未正常完成”的观察，不证明特定 OS bug、死锁根因或修复办法。没有安装新工具、修补环境或伪造报告。恢复该方向需先得到完整、带符号的三段真实报告，再做同源阅读对照；当前远程分支只交付可复现探针和诊断边界。
+
+研究总目标继续 active。后续仍先核对远程分支与已有研究，按可证实的阅读价值筛选；不合并、发布版本、部署或安装。

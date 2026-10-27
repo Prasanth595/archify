@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-10-27T14:19:27.080224+00:00",
+  "method": "git ls-remote --heads; exact selected refs",
+  "refs": {
+    "refs/heads/codex/lab-asan-provenance": "6f604170574b5ba854026a7ec8f01fb5ba0dd67a",
+    "refs/heads/codex/lab-bpf-range-reading": "cd5d94ea3bf66b9ae4b08459ac5d454994b2aee2",
+    "refs/heads/codex/research-lab-20261026": "255828331107d1c794f03a74e0695c425182c477",
+    "refs/heads/dev": "d5d979493bba650b3995836afd379cd249f2d0dd"
+  },
+  "experiment_product_base": "500d4a65211ffe607fde6b3ce7505027b45bb59e",
+  "delivery_policy": "Remote codex branches only; no new PR, merge, release, deployment, or installation.",
+  "status": {
+    "bpf": "Paired content and actual images delivered; no measured reader benefit or Linux execution.",
+    "asan": "Deferred runtime probe; no ASan report or reading artifact.",
+    "hub": "Recorded pre-update head; this snapshot is committed by the later hub delivery commit."
+  }
+}
