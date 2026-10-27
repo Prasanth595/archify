@@ -1,0 +1,281 @@
+[
+  {
+    "arm": "base",
+    "name": "native-baseline",
+    "exitCode": 1,
+    "status": "fail",
+    "diagnostics": 28,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "count": 42,
+        "reached": 35,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 7
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "count": 42,
+        "reached": 35,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 7
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "count": 42,
+        "reached": 35,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 7
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "count": 42,
+        "reached": 35,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 7
+      }
+    ]
+  },
+  {
+    "arm": "base",
+    "name": "comparison",
+    "exitCode": 1,
+    "status": "fail",
+    "diagnostics": 52,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "count": 55,
+        "reached": 42,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 13
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "count": 55,
+        "reached": 42,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 13
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "count": 55,
+        "reached": 42,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 13
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "count": 55,
+        "reached": 42,
+        "ok": false,
+        "steps": null,
+        "stepLimit": null,
+        "termination": null,
+        "missing": 13
+      }
+    ]
+  },
+  {
+    "arm": "base",
+    "name": "tab-trap",
+    "scope": "public HTML inspector only",
+    "keyboardTraversal": {
+      "count": 2,
+      "reached": 1,
+      "missing": [
+        {
+          "key": "1",
+          "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+          "text": "Last",
+          "href": null,
+          "tag": "BUTTON",
+          "component": "last",
+          "label": "Last",
+          "tabIndex": 0,
+          "type": "submit",
+          "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+        }
+      ],
+      "ok": false
+    }
+  },
+  {
+    "arm": "candidate",
+    "name": "native-baseline",
+    "exitCode": 0,
+    "status": "pass",
+    "diagnostics": 0,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "count": 42,
+        "reached": 42,
+        "ok": true,
+        "steps": 52,
+        "stepLimit": 329,
+        "termination": "complete",
+        "missing": 0
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "count": 42,
+        "reached": 42,
+        "ok": true,
+        "steps": 52,
+        "stepLimit": 329,
+        "termination": "complete",
+        "missing": 0
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "count": 42,
+        "reached": 42,
+        "ok": true,
+        "steps": 52,
+        "stepLimit": 329,
+        "termination": "complete",
+        "missing": 0
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "count": 42,
+        "reached": 42,
+        "ok": true,
+        "steps": 52,
+        "stepLimit": 329,
+        "termination": "complete",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "arm": "candidate",
+    "name": "comparison",
+    "exitCode": 0,
+    "status": "pass",
+    "diagnostics": 0,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "count": 55,
+        "reached": 55,
+        "ok": true,
+        "steps": 74,
+        "stepLimit": 428,
+        "termination": "complete",
+        "missing": 0
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "count": 55,
+        "reached": 55,
+        "ok": true,
+        "steps": 74,
+        "stepLimit": 428,
+        "termination": "complete",
+        "missing": 0
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "count": 55,
+        "reached": 55,
+        "ok": true,
+        "steps": 74,
+        "stepLimit": 428,
+        "termination": "complete",
+        "missing": 0
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "count": 55,
+        "reached": 55,
+        "ok": true,
+        "steps": 74,
+        "stepLimit": 428,
+        "termination": "complete",
+        "missing": 0
+      }
+    ]
+  },
+  {
+    "arm": "candidate",
+    "name": "tab-trap",
+    "scope": "public HTML inspector only",
+    "keyboardTraversal": {
+      "count": 2,
+      "reached": 1,
+      "missing": [
+        {
+          "key": "1",
+          "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+          "text": "Last",
+          "href": null,
+          "tag": "BUTTON",
+          "component": "last",
+          "label": "Last",
+          "tabIndex": 0,
+          "type": "submit",
+          "reason": "This active control was not reached before keyboard focus repeated without progress."
+        }
+      ],
+      "ok": false,
+      "steps": 2,
+      "stepLimit": 12,
+      "termination": "focus-cycle"
+    }
+  }
+]

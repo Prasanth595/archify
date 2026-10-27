@@ -71,4 +71,8 @@ JS
 
 原task-review输入依然`mappingComplete=false`、mapping exit1，`archify.zip`因1MiB限制unresolved，PR tests/build未运行。本分支通过键盘检查**不能改写为PR通过、完整mapping或ZIP内容已核实**。原README/receipt不回填，原HTML完全不变。
 
-源代码与本实验原创fixture遵循本仓MIT；固定HTML来源与原mapping内容见上游实验记录。远端CI、合并、发布和安装未执行；本地commit/push状态以协调者最终回报为准。
+最早固定基线 `82c7e0f` 的[仓库许可证为 MIT](https://github.com/tt-a1i/archify/blob/82c7e0f089a02a4d514714adf37dc2061682da5f/LICENSE)，保留 tt-a1i / Cocoon AI 原署名；当前分支根 LICENSE 为 Apache-2.0。历史固定文件按其来源 revision 记账，不能将当前许可反称旧来源许可；固定HTML来源与原mapping内容见上游实验记录。远端CI、合并、发布和安装未执行；本地commit/push状态以协调者最终回报为准。
+
+## 完整 Kconfig 页面上的迁移验证
+
+[新增证据包](kconfig-transfer-d5/README.md)固定当前 dev `d5d97949`，仅换入既有 `f9fc38cb` checker；两份 HTML 字节不变，原 28/52 条诊断变为四组观察均到达 42/42、55/55 个初始目标，真实 Tab trap 仍失败。另有实际源码卡片 Tab 进入、Escape 返回及下一引用的图片与轨迹。这是明确记录的临时组合运行时检查，不是 Git 合并、新 ZIP 或完整 finalize；本轮没有再修改 checker，也不回填 Kconfig 原失败回执。

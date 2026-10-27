@@ -1,0 +1,61 @@
+{
+  "measurementMethod": {
+    "version": "public-html-qa-v2",
+    "clipping": "native-intersection-observer-expanded-root",
+    "clippingMeasured": true,
+    "clipCoverage": "native-clip-chain",
+    "documentExtentMeasured": true,
+    "rootMargin": 1281,
+    "limits": [
+      "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+      "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+    ]
+  },
+  "staticReading": [],
+  "innerWidth": 1280,
+  "innerHeight": 900,
+  "scrollWidth": 1280,
+  "scrollHeight": 900,
+  "overflowElements": [],
+  "localClipping": [],
+  "references": [],
+  "duplicateIds": [],
+  "keyboardIssues": [],
+  "controlCount": 2,
+  "occluded": [],
+  "smallText": [],
+  "bodyText": "FirstLast",
+  "background": "rgb(255, 255, 255)",
+  "resolvedTheme": "light",
+  "panels": [],
+  "interactiveVisible": [],
+  "fontReadiness": {
+    "status": "loaded",
+    "waitMs": 7
+  },
+  "themeControl": "query",
+  "navigationUrl": "file:///private/tmp/archify-round21-transfer/inputs/tab-trap.html?theme=light",
+  "keyboardTraversal": {
+    "count": 2,
+    "reached": 1,
+    "missing": [
+      {
+        "key": "1",
+        "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+        "text": "Last",
+        "href": null,
+        "tag": "BUTTON",
+        "component": "last",
+        "label": "Last",
+        "tabIndex": 0,
+        "type": "submit",
+        "reason": "This active control was not reached before keyboard focus repeated without progress."
+      }
+    ],
+    "ok": false,
+    "steps": 2,
+    "stepLimit": 12,
+    "termination": "focus-cycle"
+  },
+  "consoleErrors": []
+}
