@@ -1,0 +1,61 @@
+{
+  "description": "Actual manual browser observations and file bindings; not automated receipts",
+  "reviewedSourceCommit": "90a32138da3f1202de5c36b2bddaeb6c06aa61de",
+  "artifactSha256": "65f0b87b6b230600971af7e2895f65cc227bfe875d972cc158c350ce8a84b3b2",
+  "artifactBytes": 537543,
+  "baselineSha256": "23f9b8bac86f37e888e6067f3ad4fa000d3de5a86797a4227f74c314faf58de6",
+  "date": "2026-10-27",
+  "browser": "Ego, user-authorized recreation of research TaskSpace; returned id 4",
+  "reportedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "deviceScaleFactor": 1,
+    "mobile": false
+  },
+  "actions": [
+    "Clicked light theme and constraints anchor",
+    "Opened interactive diagram with actual button",
+    "Inspected light dialog screenshot and visible 操作 legend",
+    "Clicked iframe color-theme button and inspected dark dialog screenshot",
+    "Pressed Escape; no visible dialog remained and focus returned to 打开交互图 button"
+  ],
+  "afterEscape": {
+    "visibleDialogs": 0,
+    "activeTag": "BUTTON",
+    "activeText": "打开交互图",
+    "pageWidth": 1440,
+    "pageHeight": 1805,
+    "outerTheme": "light"
+  },
+  "screenshots": [
+    {
+      "file": "constraints-light.png",
+      "bytes": 137900,
+      "sha256": "c9cd682904afee9548eb47c0d18b340ef17fe8b50edda52a96a09abe6d8c581a",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "modal-light.png",
+      "bytes": 78522,
+      "sha256": "00d119268b309f8e10a597db21119c049411449353a635899454c8ef38a085d6",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "modal-dark.png",
+      "bytes": 77731,
+      "sha256": "6cc57faf9c1bc80fe53b565a7d00a64a6bdb2a04e58c14ba2885aee490ecd1c0",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "limits": [
+    "Old eight screenshots retain original 4d0d21c6 identity",
+    "No new mobile comparison, reading-benefit study or AT validation",
+    "Inner iframe DOM was inaccessible from outer evaluate; evidence comes from semantic browser snapshot and actual screenshot",
+    "Browser.getVersion via task.cdp was unavailable; reported browser version is UA only",
+    "Emulation override resets across tool invocations; set and confirmed 1440x900 in capture/action invocations"
+  ]
+}

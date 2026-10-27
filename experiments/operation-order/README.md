@@ -2,7 +2,7 @@
 
 [三句文字基线](baseline.html) · [文字加约束图](explanation.html) · [源稿](candidate.archify.md) · [独立复核](audit.py)
 
-当前图版已用现有原生字段把图例改为“操作”。下方八张实际截图与页面高度仍绑定旧版 `4d0d21c6`；新版本的四阶段自动检查和[独立静态复核](legend-label-review/review.md)已完成，尚无新手动交互截图。
+当前图版已用现有原生字段把图例改为“操作”。下方八张历史截图仍绑定旧版 `4d0d21c6`；新版本已完成四阶段自动检查、[独立静态复核](legend-label-review/review.md)及[手动交互与三张新截图](legend-label-review/manual-review.json)。
 
 Porcupine README 的说明例中，一次长写覆盖两次读取，但实时顺序与寄存器模型无合法排列。两个页面共用同一六行事件、初态、模型、三句解释和三候选枚举；后者增加三节点约束图。图边表示必须先于，带实时或模型依据，不表示调用、死锁或因果。事件位置是 ordinal，不是时间。上游 README 声明 checker 返回 false；本轮未运行 Porcupine。
 
@@ -43,4 +43,6 @@ python3 experiments/operation-order/audit.py
 
 最终图版的 finalize validate、deliver、check、browser-check 均通过；保留三条原有写作提示。固定模型 audit 通过，原始结果及浏览器 receipt 在同一临时证据目录；[派生验证摘要](legend-label-review/verification.json)记录最终文件摘要与检查，不冒充原始结果。[独立静态复核](legend-label-review/review.md)确认实际内嵌 SVG 只有两处标签值变化，外层标题与无障碍名称保持一致。当前图版为 537543 bytes，基线仍为 156572 bytes；旧页面高度不重新归因给新文件。
 
-原 Ego 研究空间 4 已不存在，未另开浏览器空间；重建许可已向用户询问，等待答复。尚待协调者实际检查新图例与操作，不以自动 browser-check 或旧截图替代这项观察。图是否提升阅读效率仍无证据，维持仅研究分支、暂不开 Draft PR 的决定。
+原 Ego 研究空间缺失后，用户于 2026-10-27 明确允许重建；重建空间返回 id 4。协调者以实际点击打开交互图，检查明暗主题下的“操作”图例与三条约束，再按 Escape 关闭，焦点回到“打开交互图”按钮。三张原始截图均为 1440×900，已逐张查看；[文件哈希、范围和操作记录](legend-label-review/manual-review.json)绑定本次 HTML。新页面实际宽 1440px、高 1805px；未重做手机或阅读效率对照。图是否提升阅读效率仍无证据，维持仅研究分支、暂不开 Draft PR 的决定。
+
+![修正后的原生交互图例](legend-label-review/modal-light.png)
