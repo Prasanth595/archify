@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "recordKind": "historical-experiment-evidence-index",
+  "date": "2026-10-27",
+  "liveProvenance": false,
+  "redaction": {
+    "<WORKTREE>": "absolute path of the experiment checkout",
+    "<HOME>": "local user home when outside checkout",
+    "<PRIVATE_ORIGINALS>": "local private originals archive, not part of repository"
+  },
+  "records": [
+    {
+      "publicPath": "first/a.delivery.redacted.json",
+      "publicSha256": "3ed9508cc7ef8542c43e5650aab28edf8ce4ff189d64b5c1080542a22c58813a",
+      "publicBytes": 671,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/sidecars/a.delivery.json",
+      "rawSha256": "3805edd25c1fa668971c0735aeca29b5041626d9f71743b8aa41cc30d126a5d0",
+      "rawBytes": 771,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/a.finalize-summary.redacted.json",
+      "publicSha256": "358c7f9647b4cac4526c6283253a44049015e01e90c89da07ba21e82143d28ae",
+      "publicBytes": 1317,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/sidecars/a.finalize-summary.json",
+      "rawSha256": "a1c4cbc28641c21e8a84fdbd44cdd35b73de0a5715db187b0944ca3b656db946",
+      "rawBytes": 1517,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/a.finalize.redacted.json",
+      "publicSha256": "22c7047ec98a88e584781718365bdfadabbf1962c0dc65835f9e398ae546be70",
+      "publicBytes": 5711,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/sidecars/a.finalize.json",
+      "rawSha256": "b0eb6e7f2afa940e34c43c22cf8972434f874ed875d28c471062da85d576b263",
+      "rawBytes": 6461,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/b.delivery.redacted.json",
+      "publicSha256": "236b2f114ee60b64bb3c5f7854afd45eec9ac05e37fb302e784df8675536b79d",
+      "publicBytes": 881,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/sidecars/b.delivery.json",
+      "rawSha256": "6193061e443d7a70a55a57fa4af12cf9ce3f0182ac96e1bb25b6dff52886326d",
+      "rawBytes": 981,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/b.finalize-summary.redacted.json",
+      "publicSha256": "1d78b0be8337e75fd384fe5ed559f446bcbc2d9639c319bd0f0b12b44133c082",
+      "publicBytes": 1318,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/sidecars/b.finalize-summary.json",
+      "rawSha256": "a09045f400d22c8fb11ddc7badde3138708163f064f3b09118f00ca663d5cf53",
+      "rawBytes": 1518,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/b.finalize.redacted.json",
+      "publicSha256": "ea36eabb2b542c8dfcd2926b85113e7159b41d7e899afb2ea9c5138545864f78",
+      "publicBytes": 10633,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/sidecars/b.finalize.json",
+      "rawSha256": "cb651db4a4dfddc0ee1bcb4082caa798017974f6119e5069f1f7ef9e963647ee",
+      "rawBytes": 11383,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/a.delivery.redacted.json",
+      "publicSha256": "8ec756c3ef70c61b33d4d8752cf77de804cc415898fc2132de6167c337d8146c",
+      "publicBytes": 671,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/sidecars/a.delivery.json",
+      "rawSha256": "fc3d28a043ea8569b607c7e71548ae1a41703ce52bbdd25984b3fa0b1620d010",
+      "rawBytes": 771,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/a.finalize-summary.redacted.json",
+      "publicSha256": "e0f29f32fe932013aa904aecbb08b545a120ffe4c7fc4ef1530ce5dfbb33cbff",
+      "publicBytes": 1317,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/sidecars/a.finalize-summary.json",
+      "rawSha256": "0230cfe6ea062b8638cfa71515481156eb4e5a5ef8ed95921c7a4185dab58bf0",
+      "rawBytes": 1517,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/a.finalize.redacted.json",
+      "publicSha256": "158ed6a81917896a0aac75e8962e7be60d722b15ee3a2ce54f25c521af7b5539",
+      "publicBytes": 5711,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/sidecars/a.finalize.json",
+      "rawSha256": "c8e1c8df27fb0ce4ae1cf91fcfd075ca2b924dcd8d46c115da5f28fc45312d9a",
+      "rawBytes": 6461,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/b.delivery.redacted.json",
+      "publicSha256": "9413795d056d114893d8a9402f13d3cd53666f556d88d13fad0ac2f8100086c1",
+      "publicBytes": 881,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/sidecars/b.delivery.json",
+      "rawSha256": "16ef57d9cce2dcb8c4644027e9081354de870bdc2a9e20b1537e46df4a689d70",
+      "rawBytes": 981,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/b.finalize-summary.redacted.json",
+      "publicSha256": "08469afbb5c81f9f4157f86b28d76450db30bcb6b56ec4cd3e7cbf22548d352e",
+      "publicBytes": 1318,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/sidecars/b.finalize-summary.json",
+      "rawSha256": "1bdd5416097fe3a9d303f8af7809090308bd6af1a9c2d0d8c986a6ce2ba0684a",
+      "rawBytes": 1518,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/b.finalize.redacted.json",
+      "publicSha256": "ce26f4075627f9ddcbfc7f2cd073cc5b8c1f87dd4e4e0357d7a0bd70ffd011d4",
+      "publicBytes": 10633,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/sidecars/b.finalize.json",
+      "rawSha256": "3c4b3b211b045f3f8b0b520352b0ee16bbeb7df44f31aec4e7546d45b5f90405",
+      "rawBytes": 11383,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "a.delivery.redacted.json",
+      "publicSha256": "60fd2b1e42f957c656c29e7319fde0491a8600f97bb834919dfb55c2a515177f",
+      "publicBytes": 671,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/sidecars/a.delivery.json",
+      "rawSha256": "101dcf28f9e9ad2e304e4be72cf018ed4437e5361a09d625cdd8d2887ef4039d",
+      "rawBytes": 771,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "a.finalize-summary.redacted.json",
+      "publicSha256": "2bb0ba86f0420575ff6e2368d0ed1a29693885feecd4eee413f801dd5d479c70",
+      "publicBytes": 2152,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/sidecars/a.finalize-summary.json",
+      "rawSha256": "e5f61d435e11f2dc973ccda61a8a40feb1ce16e72a6da3588f1f4a6ee49e1b6a",
+      "rawBytes": 2402,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "a.finalize.redacted.json",
+      "publicSha256": "012d1de1636cc1e5362b390296dbd373f241fb7668ddfb26af5527cda2d86844",
+      "publicBytes": 7636,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/sidecars/a.finalize.json",
+      "rawSha256": "10548b32eacbb851c22a67c447a41ee4e41704d98821c982064645f13f296c1d",
+      "rawBytes": 8486,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "b.delivery.redacted.json",
+      "publicSha256": "0e540bffdd91ec23b65e663da862d8f014be6e8ffa08c98c48b929fe798f3ba8",
+      "publicBytes": 881,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/sidecars/b.delivery.json",
+      "rawSha256": "4cf324d77a0f464296de54a297fc533139623443e390e8deefd78c79a19bc82b",
+      "rawBytes": 981,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "b.finalize-summary.redacted.json",
+      "publicSha256": "f975330d7d7119acdda447efde5a6e04a79c9fe88235d648584699dfb7920ba6",
+      "publicBytes": 2153,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/sidecars/b.finalize-summary.json",
+      "rawSha256": "cee4629bff59a7117a18d1a27e670752f43c6da6e8ece01dea221d25b4bcd624",
+      "rawBytes": 2403,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "b.finalize.redacted.json",
+      "publicSha256": "1c057df0a2719be3c3de623b425f541b3173f339828815da5508b1708982869f",
+      "publicBytes": 12558,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/sidecars/b.finalize.json",
+      "rawSha256": "a9ed38f8376755a9dd79ddd9a24189db66b02fb54b685ee589943f4f5c4fe68f",
+      "rawBytes": 13408,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/a.finalize-command.redacted.json",
+      "publicSha256": "0794f52d0d784c4b73d852b7fd14ea49f15048ac04d739d19671c29e090caf79",
+      "publicBytes": 1081,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/commands/conflict-a-finalize.json",
+      "rawSha256": "2eb88ea28d3ae38adad9aaa33faeee02badc640a6e4cd58c3c87fd3a4420f77e",
+      "rawBytes": 1281,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/a.browser-check.redacted.json",
+      "publicSha256": "aedba0e5fd0f850efdf5a13a4542998d8e422046f71b79cd9cb1aead484524cc",
+      "publicBytes": 511301,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/commands/conflict-a-browser.json",
+      "rawSha256": "aa2015ab335e8c3ac9e628244c8e4f671ba8cc14841cae351561a7aaba231977",
+      "rawBytes": 511351,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/b.finalize-command.redacted.json",
+      "publicSha256": "f366b299c8388bdb593d7d8294e02e827b894329b221ffc4f077983c30948536",
+      "publicBytes": 1082,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/commands/conflict-b-finalize.json",
+      "rawSha256": "fb42154525eae761210ae262c2f7b5826169dd26fad00a66aea2389996cdaba8",
+      "rawBytes": 1282,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "first/b.browser-check.redacted.json",
+      "publicSha256": "aa0c51ab1bb881317661d311a026480bdf93bcf9c028d5e245a1a1267986a102",
+      "publicBytes": 643265,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/first/commands/conflict-b-browser.json",
+      "rawSha256": "30492dd05e6f7d0829dbe2a0d00874f009ae2c9655b10570a4e03be331777737",
+      "rawBytes": 643315,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/a.finalize-command.redacted.json",
+      "publicSha256": "56017fe00db5eff67aa01391dbebdd8b55ed50d73a7ccd90b0f61c2cda71d8c7",
+      "publicBytes": 1081,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/commands/conflict-a-finalize-2.json",
+      "rawSha256": "5e709b949ef50a5abf66263c16d8a2e968663458398e1ac6ebbc4fcd82b3cfab",
+      "rawBytes": 1281,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/a.browser-check.redacted.json",
+      "publicSha256": "24b1b6a3b371fdac816aea8239689e7754732dc733aa113d548a4c5d6777cc14",
+      "publicBytes": 513714,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/commands/conflict-a-browser-2.json",
+      "rawSha256": "20870ced81e49197ced27d42436478798d5b1d9e30be273f9e454fb296cd258b",
+      "rawBytes": 513764,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/b.finalize-command.redacted.json",
+      "publicSha256": "93ba515ad8dd3044717ff8c40e67d1514e14a1a0304c27b7b562a4ff607f0a19",
+      "publicBytes": 1082,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/commands/conflict-b-finalize-2.json",
+      "rawSha256": "964b3778a8dff538d25225e907be1528d986515dfdcf1fccf2a8d07a216917ed",
+      "rawBytes": 1282,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "second/b.browser-check.redacted.json",
+      "publicSha256": "ceaa61c92b8790fb2c08130ab5c94f9347453a594d87387dc4bab8f49bf8d532",
+      "publicBytes": 652146,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/second/commands/conflict-b-browser-2.json",
+      "rawSha256": "af6fd7ec000fc94882b43430af4494fd412082cafb90280650bafccc0fc8ff91",
+      "rawBytes": 652196,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/final/a.finalize-command.redacted.json",
+      "publicSha256": "5823afca3b5e659c527d8bced5ddf19dfa207ee5d0ea0abde28e116cde52c1c8",
+      "publicBytes": 1735,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/commands/conflict-a-finalize-final.json",
+      "rawSha256": "2f9cda2bcac9ddeb0f132f6b125e87c42d38e74a394bc3dbaeff022af099fc90",
+      "rawBytes": 1985,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/final/a.browser-check.redacted.json",
+      "publicSha256": "df97c8aa14ff88fed4ee986f0b6617d9082f13a1c4e6ec27252afbcf558e058b",
+      "publicBytes": 574575,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/commands/conflict-a-browser-final.json",
+      "rawSha256": "f153a3ca3fd581204fd52feccde1abf2c02b50850136c51d497b7b31dcd71892",
+      "rawBytes": 574625,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/final/b.finalize-command.redacted.json",
+      "publicSha256": "7c4f21b4b248b6dc9f9d5fa92b2569c350a143064160b535435cee5a22a1703d",
+      "publicBytes": 1736,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/commands/conflict-b-finalize-final.json",
+      "rawSha256": "f031f7c271e3a09eacdf66633300dac644a8b27e44f3b2898723cd5d55ee1e5a",
+      "rawBytes": 1986,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/final/b.browser-check.redacted.json",
+      "publicSha256": "e760dd65d9b774ab5d5d4f90e02f71b6bf2cc8f1774076cffe54d5e725bfd491",
+      "publicBytes": 726683,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/final/commands/conflict-b-browser-final.json",
+      "rawSha256": "c322e836722277f2d7dba4a0813bd55d926755fa2eb9cdfba6b703f47d9d9628",
+      "rawBytes": 726733,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/failures/post-redact.redacted.json",
+      "publicSha256": "104a6f3dfecc99f8ffe56bbfeb44e7179bb5201aae2e193e3ef25aef6e80e368",
+      "publicBytes": 1123,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/failures/conflict-post-redact.json",
+      "rawSha256": "7e7ef7d0e4cbf287b3aa912b2311d4cba0648f469bdc485b4308c32e0cac434b",
+      "rawBytes": 1323,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/narrow/b.delivery.redacted.json",
+      "publicSha256": "5ca8774545aec616934738cded9f7622cde5fe1dfc7181ccb5168a7f481657bf",
+      "publicBytes": 881,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/narrow/sidecars/b.delivery.json",
+      "rawSha256": "0708558624bc9503c68a7982c47268cae2b53195cccdd9b26e47773c37683711",
+      "rawBytes": 981,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/narrow/b.finalize-summary.redacted.json",
+      "publicSha256": "dfb3aadda8fc3ae2b1f0c4d56d5ac6ad9b65eec72978a89ac6586544d810b82b",
+      "publicBytes": 2153,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/narrow/sidecars/b.finalize-summary.json",
+      "rawSha256": "b9754819a19bc1588ea07d83a0a3fcf68a13ceb7066ec7d0ff63353359e520e2",
+      "rawBytes": 2403,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/narrow/b.finalize.redacted.json",
+      "publicSha256": "7676771e56b5d4a6dcd118be3957ca66636b32353811b83618bdce96d4cb8318",
+      "publicBytes": 12558,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/narrow/sidecars/b.finalize.json",
+      "rawSha256": "e9a62ca9e77d53dda501b7f48fca750b9db4a23b757dcf0c8e58cefe9b013465",
+      "rawBytes": 13408,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/narrow/b.finalize-command.redacted.json",
+      "publicSha256": "7a7d64b8bfcf6d10e4051e8d406cc9072822e22be995d1e53a178b4f743b3614",
+      "publicBytes": 1736,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/narrow/commands/conflict-b-finalize-narrow.json",
+      "rawSha256": "72f77354057d95f7ae0295899f3dc393a4a76d165c4838be187f5f08ad8fc5e3",
+      "rawBytes": 1986,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    },
+    {
+      "publicPath": "evidence/narrow/b.browser-check.redacted.json",
+      "publicSha256": "8d8bb99214fcfefd249afa26aaae47a1e7e29606a540dc8339980451ef3118b3",
+      "publicBytes": 722328,
+      "rawPrivatePath": "<PRIVATE_ORIGINALS>/narrow/commands/conflict-b-browser-narrow.json",
+      "rawSha256": "435de0e9566f08a1bf130ae53dbf52feaeff671c22ff4b0373fc4664b167721a",
+      "rawBytes": 722378,
+      "transformation": "UTF-8 text substitution: worktree prefix -> <WORKTREE>, user home -> <HOME>; historical evidence only, not live provenance"
+    }
+  ],
+  "preservedArtifactFiles": [
+    {
+      "path": "a.archify.md",
+      "sha256": "26091a87c9a0e2185359171a034005027c56d70b7aa3023c7b6492dce18a1d17",
+      "bytes": 3683
+    },
+    {
+      "path": "a.html",
+      "sha256": "d9f6488f8ba79cf0c8596a888ad8189c48d56972bd58d4e905b91b3d68bfaed9",
+      "bytes": 152937
+    },
+    {
+      "path": "b.archify.md",
+      "sha256": "ad3579df177e039d7f347ceee248fb286946be6f897691da460c7b311e82a956",
+      "bytes": 4394
+    },
+    {
+      "path": "b.html",
+      "sha256": "b3abfa149778fb86b5fe9cf2450dd49d36364bd067ee542150c6694a73f0fd3c",
+      "bytes": 539978
+    },
+    {
+      "path": "before-narrow-repair/b.archify.md",
+      "sha256": "cd1a3cf5851d955f4dbaab25dad936169473e37f8e9f871fd41621155267d504",
+      "bytes": 4427
+    },
+    {
+      "path": "before-narrow-repair/b.html",
+      "sha256": "23fcc185c7d14ed3884eb3e2e0d9ef2281a960b063e97eeeea2970252dbcc796",
+      "bytes": 540077
+    },
+    {
+      "path": "first/a.archify.md",
+      "sha256": "c573dbf20bb64b5a4ad659b7393412d9d90899f6ff2a835021b30967495e52b5",
+      "bytes": 3058
+    },
+    {
+      "path": "first/b.archify.md",
+      "sha256": "f50cec5d64b8061212c51c11bb77814c611dca9fd85e2113628443bc9a14588f",
+      "bytes": 3662
+    },
+    {
+      "path": "first/root-observed-first-draft.png",
+      "sha256": "627ca8234ab5917e36ed6a0a3fb4c2ba953478183e650f66338d2b34f7d14639",
+      "bytes": 78749
+    },
+    {
+      "path": "second/a.archify.md",
+      "sha256": "1a8aebb31d5f1b50dac8464c12645fbb816a66948fe1fe8e57fc9c3a2eeddbb9",
+      "bytes": 3081
+    },
+    {
+      "path": "second/a.html",
+      "sha256": "8e71793084616c7e311484808e603751f53c36ef6477e11886d2efd7d990cae2",
+      "bytes": 148740
+    },
+    {
+      "path": "second/b.archify.md",
+      "sha256": "49cf529a4465e6a9fd9f4b0500aa35723a62f0683fc6f58989cef7b8c7b51a12",
+      "bytes": 3734
+    },
+    {
+      "path": "second/b.html",
+      "sha256": "b67b2565e45ff9fb8a564c32c78dfe953c8342d162965836890e5c1d0ebb8d6c",
+      "bytes": 535061
+    },
+    {
+      "path": "source/LICENSE",
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+      "bytes": 16725,
+      "gitBlobSha1": "a612ad9813b006ce81d1ee438dd784da99a54007"
+    },
+    {
+      "path": "source/examples.rs",
+      "sha256": "e01a286a207ad2f3b663db9281f5302ccd576b40857ba054541037ddcb2a47f0",
+      "bytes": 9352,
+      "gitBlobSha1": "b91fecde84def3a1a5f68ddf40d1b348451c3b55"
+    }
+  ],
+  "firstHtmlPreserved": false,
+  "firstScreenshotByteBinding": "Observation only; browser-loaded HTML bytes were not hashed at capture time. Do not claim screenshot is bound to either first HTML hash.",
+  "excludedFromArtifactManifest": [
+    "README.md",
+    "root-review/**"
+  ],
+  "legacyPublicCopies": "Preserved privately in <PRIVATE_ORIGINALS>/legacy-public-first; superseded by redacted copies derived directly from original records.",
+  "narrowRepair": "2026-10-27: added evidence/narrow for B only; previous final records unchanged; old B archived under before-narrow-repair; A unchanged."
+}

@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "startedAt": "2026-10-27T14:37:09.236Z",
+  "specification": {
+    "path": "<WORKTREE>/experiments/conflict-explanation/a.archify.md",
+    "sha256": "26091a87c9a0e2185359171a034005027c56d70b7aa3023c7b6492dce18a1d17",
+    "bytes": 3683
+  },
+  "artifact": {
+    "path": "<WORKTREE>/experiments/conflict-explanation/a.html",
+    "sha256": "d9f6488f8ba79cf0c8596a888ad8189c48d56972bd58d4e905b91b3d68bfaed9",
+    "bytes": 152937
+  },
+  "stages": {
+    "browser-check": {
+      "status": "not-run",
+      "execution": "not-requested"
+    },
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "<WORKTREE>/archify/bin/archify.mjs",
+        "deliver",
+        "explainer",
+        "<WORKTREE>/experiments/conflict-explanation/a.archify.md",
+        "<WORKTREE>/experiments/conflict-explanation/a.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "26091a87c9a0e2185359171a034005027c56d70b7aa3023c7b6492dce18a1d17",
+          "bytes": 3683
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 460,
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "<WORKTREE>/archify/bin/archify.mjs",
+        "deliver",
+        "explainer",
+        "<WORKTREE>/experiments/conflict-explanation/a.archify.md",
+        "<WORKTREE>/experiments/conflict-explanation/a.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "7f6b33f3-15c0-47a2-b8e0-9b8f08e7de5e",
+        "ok": true,
+        "command": "deliver",
+        "type": "explainer",
+        "input": "<WORKTREE>/experiments/conflict-explanation/a.archify.md",
+        "output": "<WORKTREE>/experiments/conflict-explanation/a.html",
+        "explainer": {
+          "preparedSha256": "cad7df80a5a59f0a94b532b8e9139bb047f0eaacc2655f6d8247a9e111eb3266",
+          "dependencies": []
+        },
+        "specification": {
+          "sha256": "26091a87c9a0e2185359171a034005027c56d70b7aa3023c7b6492dce18a1d17",
+          "bytes": 3683
+        },
+        "artifact": {
+          "sha256": "d9f6488f8ba79cf0c8596a888ad8189c48d56972bd58d4e905b91b3d68bfaed9",
+          "bytes": 152937
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "diagnostics": [
+          {
+            "code": "explainer/writing-sentence-length",
+            "severity": "warning",
+            "message": "Sentence has 52 reading units, above the configured zh limit of 50.",
+            "subject": {
+              "line": 33,
+              "component": "prose",
+              "panelId": "collapsed-report",
+              "input": "<WORKTREE>/experiments/conflict-explanation/a.archify.md"
+            },
+            "evidence": {
+              "rule": "sentence-length",
+              "reason": "Sentence has 52 reading units, above the configured zh limit of 50.",
+              "example": "先查缓存。未命中时再查数据库。 / Check the cache first. Query the database on a miss.",
+              "units": 52,
+              "limit": 50
+            },
+            "supportedFixes": [
+              "Split at a logical action or condition boundary while preserving qualifications and causal links."
+            ]
+          }
+        ],
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "stderr": "archify: Sentence has 52 reading units, above the configured zh limit of 50."
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 219,
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "<WORKTREE>/archify/bin/archify.mjs",
+        "check",
+        "<WORKTREE>/experiments/conflict-explanation/a.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "<WORKTREE>/experiments/conflict-explanation/a.html",
+        "family": "explainer",
+        "artifact": {
+          "sha256": "d9f6488f8ba79cf0c8596a888ad8189c48d56972bd58d4e905b91b3d68bfaed9",
+          "bytes": 152937
+        },
+        "checks": [
+          {
+            "name": "explainer_structure",
+            "ok": true,
+            "details": [
+              "22 unique DOM IDs"
+            ]
+          },
+          {
+            "name": "explainer_payload_identity",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "explainer_dependencies",
+            "ok": true,
+            "details": [
+              "0 frozen dependencies"
+            ]
+          },
+          {
+            "name": "explainer_native_diagrams",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "issues": [],
+          "nativeDiagrams": []
+        },
+        "diagnostics": [],
+        "provenance": "current",
+        "deliveryReceiptId": "7f6b33f3-15c0-47a2-b8e0-9b8f08e7de5e"
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "explainer/writing-sentence-length",
+      "severity": "warning",
+      "message": "Sentence has 52 reading units, above the configured zh limit of 50.",
+      "subject": {
+        "input": "<WORKTREE>/experiments/conflict-explanation/a.archify.md",
+        "line": 33,
+        "component": "prose",
+        "panelId": "collapsed-report"
+      },
+      "evidence": {
+        "reason": "Sentence has 52 reading units, above the configured zh limit of 50.",
+        "example": "先查缓存。未命中时再查数据库。 / Check the cache first. Query the database on a miss.",
+        "rule": "sentence-length",
+        "units": 52,
+        "limit": 50
+      },
+      "supportedFixes": [
+        "Split at a logical action or condition boundary while preserving qualifications and causal links."
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "<WORKTREE>/experiments/conflict-explanation/a.finalize.json",
+    "summaryReceipt": "<WORKTREE>/experiments/conflict-explanation/a.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-27T14:37:10.155Z",
+  "durationMs": 918,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T23:50:51.017Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

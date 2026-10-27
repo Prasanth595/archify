@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "check",
+  "provenance": "invalid",
+  "artifact": {
+    "path": "<WORKTREE>/experiments/conflict-explanation/a.html"
+  },
+  "error": "Could not read delivery provenance: Delivery provenance does not conform to the supported receipt schema.",
+  "file": "<WORKTREE>/experiments/conflict-explanation/a.html",
+  "diagnostic": "Could not read delivery provenance: Delivery provenance does not conform to the supported receipt schema.",
+  "diagnostics": [
+    {
+      "code": "delivery/provenance-invalid",
+      "severity": "error",
+      "message": "Could not read delivery provenance: Delivery provenance does not conform to the supported receipt schema.",
+      "subject": {
+        "artifact": "<WORKTREE>/experiments/conflict-explanation/a.html",
+        "provenance": "<WORKTREE>/experiments/conflict-explanation/a.delivery.json"
+      },
+      "evidence": {
+        "reason": "Delivery provenance does not conform to the supported receipt schema."
+      },
+      "supportedFixes": [
+        "rerun deliver to replace the invalid provenance sidecar"
+      ]
+    }
+  ]
+}

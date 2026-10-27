@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "bae597e5-63ea-4624-9b4c-b530f13f2b91",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "<WORKTREE>/experiments/conflict-explanation/b.archify.md",
+  "output": "<WORKTREE>/experiments/conflict-explanation/b.html",
+  "specification": {
+    "sha256": "cd1a3cf5851d955f4dbaab25dad936169473e37f8e9f871fd41621155267d504",
+    "bytes": 4427
+  },
+  "artifact": {
+    "sha256": "23fcc185c7d14ed3884eb3e2e0d9ef2281a960b063e97eeeea2970252dbcc796",
+    "bytes": 540077
+  },
+  "explainer": {
+    "preparedSha256": "afd7ffe5c08bc535318a4357ad24529afbc9d9a18b9fbf2a302de43d1e7d8739",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "declared",
+        "inline": true,
+        "sha256": "a7a5e9cce26c5a01db326b2816739acada7f02f8b742e8f95955eb5d48abdf2a",
+        "bytes": 356
+      }
+    ]
+  }
+}

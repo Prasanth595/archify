@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "recordKind": "reproduction-context",
+  "reportedBy": "root agent actual execution context, retained without rerunning product",
+  "baseCommit": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "node": "v26.12.0",
+  "zlib": "1.2.12",
+  "nodeExecutable": "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+  "runtimeSource": "Node executable also present in finalize stage command arrays; zlib reported by root",
+  "archifyVersion": "3.2.1-dev.1",
+  "officialNode22Used": false,
+  "productRuntimeModified": false,
+  "thirdPartyRustOrSolverRun": false,
+  "ciRun": false,
+  "browserPolicy": "explainer-desktop-v1",
+  "browserViewports": [
+    {
+      "width": 1280,
+      "height": 900,
+      "themes": [
+        "light",
+        "dark"
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "themes": [
+        "light",
+        "dark"
+      ]
+    }
+  ],
+  "browserVisualReviewField": "not-requested; independent UI inspection is recorded separately in root-review/review.md",
+  "commandsAre": "Reproduction commands; complete executed inner stage commands are retained in corresponding finalize.redacted.json. Top-level shell invocations are not asserted beyond the recorded command kind."
+}

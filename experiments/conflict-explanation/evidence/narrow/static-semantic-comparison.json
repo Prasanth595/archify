@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "recordKind": "static-semantic-comparison",
+  "date": "2026-10-27",
+  "oldBHtmlSha256": "23fcc185c7d14ed3884eb3e2e0d9ef2281a960b063e97eeeea2970252dbcc796",
+  "newBHtmlSha256": "b3abfa149778fb86b5fe9cf2450dd49d36364bd067ee542150c6694a73f0fd3c",
+  "aHtmlSha256": "d9f6488f8ba79cf0c8596a888ad8189c48d56972bd58d4e905b91b3d68bfaed9",
+  "onlyAuthoredChange": "Two B table headings shortened; body, rows, native diagram and all shared A/B content unchanged. Compiled comparison/row IDs change automatically with headings.",
+  "sharedFourPanelsDeepEqual": true,
+  "bPreparedDiagramsDeepEqual": true,
+  "nativeHtmlDecompressedByteEqual": true,
+  "nativeHtmlSha256": "ff72baeb79ec8bf7622ded0c4e4035ab2fdf01bffbb1d1327b5520d59c199c94",
+  "nativeHtmlBytes": 858106,
+  "screenshotReuseBoundary": "Existing old-B native-interaction images remain labeled with old B parent SHA. Byte-identical native child permits reuse, not rebinding screenshot parent identity.",
+  "browserOrSolverRerunDuringThisReview": false,
+  "verdict": "static semantics pass; no measured reader benefit claim"
+}
