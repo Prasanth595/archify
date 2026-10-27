@@ -1,0 +1,25 @@
+{
+  "recordedAtUtc": "2026-10-27T17:16:20.018008+00:00",
+  "status": "not executed to a verified result",
+  "reason": "The subagent execution request failed with an automatic safety flag for possible cybersecurity risk. No retry or alternate execution path was attempted.",
+  "preparedFiles": [
+    {
+      "name": "example.c",
+      "sha256": "91c16739b225e98975acd711cd46f3ea7d7c01f878070634c1f3e3f42e30bbd8",
+      "bytes": 648,
+      "privateArchive": "/tmp/archify-round13-asan-prepared/example.c",
+      "status": "prepared, execution unverified; no new run evidence received"
+    },
+    {
+      "name": "run.py",
+      "sha256": "f66e14776e7498f72c86b895f196fd66042fdd320289fe4a5574cdbb8cb05dd2",
+      "bytes": 5054,
+      "privateArchive": "/tmp/archify-round13-asan-prepared/run.py",
+      "status": "prepared, execution unverified; no new run evidence received"
+    }
+  ],
+  "runEvidence": "No output or receipts in the prepared directory; no matching runner process observed by current command inventory. This does not reconstruct a full historical lifecycle.",
+  "oldProbe": "Existing 6f604170 probe evidence preserved; no new ASan report or toolchain success claim.",
+  "toolchainObservation": "Read-only inspection found an already installed Xcode21 toolchain and SDK; availability is not execution validation.",
+  "policy": "No installation or global xcode-select change. No binaries or unexecuted runner added to the public branch."
+}
