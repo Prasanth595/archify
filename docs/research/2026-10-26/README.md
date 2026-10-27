@@ -446,3 +446,38 @@ root在固定d5 runtime重新生成该输入并完成[实际页面复现](audit/
 补查发现，固定GumTree仓库的官方截图已经展示相同AccountManager示例，对应语句、方法和字符串变化可见；截图hash、尺寸和路径已记录。它是上游图片，不是本轮产物；图例/参数未展开，不能凭颜色宣称特定机器action，图中文字也不能证明与issue字节完全一致。该证据增强了原生基线，暂缓新页面/匹配器；不把AST对应当语义等价，也不为已覆盖的结构差异换一张图。
 
 本批交付改变筛选依据的研究与原生证据，尚无新实现方向通过筛选，因此没有新增实验分支或产物图片。[记录验证](audit/round16-validation.json)覆盖原生探针、JSON、相对链接、脚本语法、全部清单成员已暂存和空白检查；未跑无关产品套件，未宣称hosted CI。AI分工为Terra来源研究/临时bootstrap/首稿探针/独立归档核对，root补查原生基线、修正泛化结论、便携复现和远端交付。只推远程分支；没有新PR、合并、发布、部署或安装，持续目标保持active。
+
+
+## 第十七批：让 Lens 说明只陈述图中关系
+
+本批先fetch/prune并保存[313条远端head](audit/remote-branches-round17.txt)，dev仍为d5d979493bba650b3995836afd379cd249f2d0dd。继续对照历史研究、相关远端分支与issue/PR，不将相邻关键词当新需求。下面的三项判断分别是通过筛选的窄文案修正、已有研究的重复方向、已有贡献者认领的能力；不把三个方向合并成新的框架。实验已经提交并推送，精确head为 `81cd0f4c45f720f8f18b9c03912ecdf59983fd55`；[可审查证据包](https://github.com/tt-a1i/archify/tree/81cd0f4c45f720f8f18b9c03912ecdf59983fd55/experiments/authored-relationships)保存原生 HTML、输入、实际截图和失败记录。
+
+### 通过筛选：共享 Lens 不再把声明关系称为真实流量
+
+[Lens文案决策](audit/round17-lens-wording-decision.md)沿用Batch14已保存的Waterfall实际页面：Lens将作者声明的parent/child关系称为real traffic，而源码只是按节点kind选择图中相连边，没有观测请求或测量流量。现有flow overlay也不构成运行证据。这是已有界面的具体准确性问题，不是新的service分类、边推断或筛选能力。
+
+隔离候选分支为 `codex/lab-authored-relationships`，从固定dev d5开始；精确SHA为 `81cd0f4c45f720f8f18b9c03912ecdf59983fd55`，已核对远端 head。修改限于12份locale的3项说明文案与一处CSS维护注释，未改共享选择逻辑、kind、边、计数、hash、URL、画布或schema。英文/中文说明改为类型节点及其图中相连关系，两类只比较直接关系；不因缺少边而承诺会出现关系。Tree/Timeline已有专属实验仍在独立分支，不冒称它们已合入dev。实现沿用Archify原有Apache-2.0与署名，没有复制外部实现或新增依赖。
+
+固定输入的实际Ego观察由root完成：19条记录、17张截图已逐张检查。英文单类显示9个节点、9条触及关系，双类显示3条直接关系；中文的对应数量相同。390×844窄视口没有本次说明文字新增的溢出，但已有桌面长面板底部、短面板顶部裁切仍然存在，不能称整体面板、移动端、触摸或AT验收。这里证明的是文案与既有选择行为相符，不是人类理解率、阅读速度或新的运行测量。
+
+相关focused检查46/46、core19/19通过；generated检查通过，15份原生示例SVG逐一与基线相同，ZIP重复构建相同。十次finalize的validate/deliver/check/browser-check均通过；这不替代root的实际页面检查，也不是hosted CI或全仓库套件结论。精确命令、HTML身份及原始/公开映射见[证据包](https://github.com/tt-a1i/archify/tree/81cd0f4c45f720f8f18b9c03912ecdf59983fd55/experiments/authored-relationships)；最终manifest覆盖190项文件，另附manifest本身。ZIP SHA为4b5cb4ec0d85e19439368a3e46e6d0887855dbcd5b70760643f99f706557c89e，235项、28个修改的包内文件逐字节匹配，借用依赖链接已移除。
+
+作者自定义文案的首个control漏写locale，基线与候选均忽略了该override；这属于无效对照，**不计为覆盖优先级通过**。随后另加显式meta.locale=en输入，原对照保留；两侧实际页面均保留作者自定义title、instruction，DOM也保留自定义Guide hint。五对主SVG字节一致。1440×1100补充图停靠位置不同，仅用于内容/选择核对；中文zoom选择器返回null，不能据此声称缩放DOM读数相同。初始零关系输入缺output/evidence的失败、采集使用错误selector的失败、ZIP harness prefix失败均保留，不用随后成功覆盖首次记录。这些失败分别属于输入/交付门槛、采集工具及打包harness，不混为同一种产品缺陷。
+
+### LLVM remarks：已有完整原生基线，不重建同义图示
+
+[LLVM optimization remarks重复核查](audit/round17-optimization-reading.md)固定LLVM f17204bd4c24b4cf0ab7b9b041ddc0fe0529ca3c及Apache-2.0 WITH LLVM-exception许可。完整上游fixture中，同一行不同列的两次NoDefinition分别指foo/bar，Caller定义位置不是callsite；阈值过滤可以使预期输出为空，手工profile metadata不能当实际性能收益。历史研究已覆盖这些事实及opt-viewer贴近源码的强基线。
+
+本轮没有新的自然优化记录、对应源码/producer配置或原生viewer实际运行，不能把合成FileCheck预期冒充用户误读，也不能从remarks推导运行时加速。因此暂缓重复parser/解释页面，保留明确重新考虑门槛；没有下载整个LLVM、编译、运行或安装。
+
+### 独立长描述：需求成立，但已有批准和owner
+
+[描述能力决策](audit/round17-description-decision.md)核对[#1112](https://github.com/tt-a1i/archify/issues/1112)：维护者已批准optional plain-text meta.description≤2000，按description→subtitle→localized default写入共享SVG描述；贡献者testikun已认领同范围。本轮有界搜索未找到关联PR，不据此认定owner放弃或重复认领实现。若贡献PR出现，按既有约定只读review，不代修其分支。
+
+现有subtitle会同时成为SVG描述和可见header/raster标题带，UI翻译值上限400字符，确有独立表达能力缺口；作者报告的五段说明长度是自报，不是本轮取得的自然图或AT会话。Native SVG desc、宿主img.alt、PNG像素、visual-check截图标签、Explainer独立image.alt各走不同接口。新增desc字段不会自动给所有嵌入和输出提供等价阅读替代；现行Archify还把title+desc共同放进aria-labelledby，不能冒称与Mermaid独立aria-describedby的行为相同。
+
+一手对照固定Mermaid11.12.0的commit0116b272b4b558f60ec292fb994148956287eaa1及MIT许可、Quarto source eb1c5db2c12bc8e07cb00e97455b503782d3458b及其MIT COPYING。Mermaid的authored accDescr与可见说明分开；Quarto fig-alt是可访问名称而非desc，并保留原Mermaid accDescr。源码与上游输出边界已经区分，没有把current-main称为已发布版本，没有移植依赖或声称全格式/AT保证。该比较支持既有scope，未增加新的实施方向。
+
+本批AI辅助由研究代理完成来源/合同/重复核查，候选作者完成窄文案及生成物，root完成固定输入、实际页面和收尾判断。12种语言未经过逐语种专业人工校订；翻译检查与英文/中文页面观察不能替代其余语言阅读验收。研究目标继续active，没有新PR、合并、发布、部署或安装；实验分支已推送并核对精确远端head。独立源码审查和188项交付清单审计无阻塞；最终补入审计报告及验证记录后root核对190项。全部diff空白检查在冻结HTML/patch/log里有272条告警，保留原字节；非归档代码/输入/说明检查通过。
+
+![实际候选页面：Lens突出图中关系](https://raw.githubusercontent.com/tt-a1i/archify/81cd0f4c45f720f8f18b9c03912ecdf59983fd55/experiments/authored-relationships/root-review/candidate-en-full.png)
