@@ -234,3 +234,30 @@ B 在共同文稿后追加现有 native Tree 和范围表，四个包名节点�
 继续固定既有 `cd5d94ea` 的 A，在 390×844 下通过真实 Tab 走到原生 `pre`（DOM tabIndex 为 −1），ArrowRight 能将 scrollLeft 从 0 移至 253.5，再在明确重建焦点后到最右 375.5。完整记录和图片在 [source keyboard audit](audit/bpf-source-keyboard/README.md)。一次跨调用焦点前提失效被保留，没有在失焦状态发送按键或将其报成页面缺陷。这里支持 Chrome 原生水平滚动无需增加 tabindex；没有新键盘分支、BPF 内容改动或 AT 结论。
 
 本批 AI 辅助由 GPT-6.1-Terra medium 作者/研究代理、GPT-6.1-Sol medium 来源复核代理和 root 完成；作者代理在早期阶段中断后由 root 接续。最终包装再经独立只读检查。总目标继续 active，后续按用户最新规则仅交付远程分支。
+
+
+## 27 日第九批：先验证现有交互，再决定是否扩展
+
+开始先 fetch/prune、保存 [311 条远程 head](audit/remote-branches-round9.txt)，dev 仍为 d5d979493bba650b3995836afd379cd249f2d0dd。查询 task-view 当前 main 仍为历史已研究的 f27b8bef63ec336b8e3487e90ccd484a2fa7a235；没有因为重新查 HEAD 就复制已有 review-map/flow 实验。[有界查重](audit/round9-dedup.json)保存术语、tooltip、线性化与 source keyboard 搜索，并补查当前开放 #221。搜索范围不证明全局没有同义工作。
+
+### 现有 PubGrub 分支补一个内容对照
+
+原远程 [`codex/lab-conflict-explanation@d4f872ee`](https://github.com/tt-a1i/archify/tree/d4f872ee81d3df4e4fd39a2860fccc4f2cae8a65/experiments/conflict-explanation/term-links) 正常推进；本批没有新建分支或 PR，因为这是同一阅读问题的后续验证。原 A/B 文件字节保留，新增 C 与七张实际截图、复现命令、机器记录和独立复核。它只把原文两个包名包装为已有 `node:` 链接，没有新的节点、关系、正文事实或共享 runtime。
+
+在原 B 首屏实际悬停 baz，正确高亮的图节点位于 y≈2187px，当前视口看不到；离开词语正常清除。自动术语本来是 hover 入口，不能把“点击不打开”当失败。27次真实 Tab 能到达原有通用打开按钮，Enter/Escape 都有效；这与正文精确节点入口是不同任务。
+
+C 的两链接在桌面通过真实键盘打开 baz/bar，native 返回的 active/nodes 指向正确目标，Escape 回到各自链接；390×844 也验证了 baz 的进入与返回。只增加 **292 bytes**：539978→540270。原始 native preparedDiagrams 完全相等，编译 document 仅改变链接标记及自动段落 ID。新一轮匹配条件下，两臂页面高相等（1440px宽3161px高，390px宽3451px高）；旧2806px来自另一页面状态，未建立原因，不据跨状态差值归因。
+
+[实际页面复核](https://github.com/tt-a1i/archify/blob/d4f872ee81d3df4e4fd39a2860fccc4f2cae8a65/experiments/conflict-explanation/term-links/root-review/review.md)也记录了不应隐藏的结果：桌面 bar 的节点被详情浮层遮挡，窄屏 baz 被遮住；既有 [#221](https://github.com/tt-a1i/archify/issues/221) 已负责相邻关系探索/护照遮挡工作，因此不另起共享修复。护照还把包名叶节点标为“外部系统”，这是当前 Tree 的泛化标签，不能当作源代码或求解器事实。键盘定位成立，不等于解释语义、视觉可读性或 AT 验收完整通过。
+
+**处置：保留已有链接用法的内容实验，不升级为全面采用图版或改共享 Reader 的建议。** 固定的12次 Tab 是某入口路径计数，不与原通用打开的27次换算阅读速度。没有人类阅读正确率/计时、触摸或 AT 结论，根实验文字 A 的优势仍保留。
+
+第二次生成的精确 C（8c02079d…a9c1f）通过三个静态 gate 与单独 provenance browser-check，保留一条句长提示；机器记录均绑定这次身份，未运行 canonical CI。第一次生成到系统临时目录，虽然检查通过，HTML却包含本机源路径；该首稿私有保全，第二次改为源旁生成并重新检查，没有对已验 HTML 做路径替换。12个 staged 空白提示属于冻结的生成 HTML，排除 HTML 后文本检查通过。
+
+![键盘进入 baz 后的实际页面，浮层类型标签也被保留用于审查](https://raw.githubusercontent.com/tt-a1i/archify/d4f872ee81d3df4e4fd39a2860fccc4f2cae8a65/experiments/conflict-explanation/term-links/root-review/candidate-baz-focused.png)
+
+### 线性化历史排重
+
+[Porcupine / Knossos 补查](scouts/linearizability-reading.md)确认原生 Porcupine 已提供 partition、最长部分顺序、非法候选点、hover 状态与固定选择；同一三操作反例已有 operation-order，未重复制图。Knossos另有16事件、两个未完成操作的完整历史，其 README 对该输入给出 false；这只是固定上游示例，不是本轮运行或绑定的 native 图。记录 pending 与 checker unknown/false 的不同含义和可复现合同，暂缓新的 parser 或同义内容例。
+
+[收尾远端核对](audit/round9-delivery.json)确认实验 head 已推送、工作树干净。用户的仅远程分支规则持续有效；本轮没有新 PR、合并、发布、部署或安装。研究总目标继续 active。

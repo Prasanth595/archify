@@ -1,0 +1,112 @@
+{
+  "observedAt": "2026-10-27T15:26:02.994Z",
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "searches": [
+    {
+      "query": "repo:tt-a1i/archify is:open keyword",
+      "issues": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open tooltip",
+      "issues": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open linearizability",
+      "issues": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open source keyboard",
+      "issues": [
+        {
+          "number": 918,
+          "title": "feat(website): expose all ten diagram types across homepage, Start, Guide and Proof Lab",
+          "url": "https://github.com/tt-a1i/archify/issues/918"
+        },
+        {
+          "number": 221,
+          "title": "fix(viewer): keep explored relationships visible outside the semantic passport",
+          "url": "https://github.com/tt-a1i/archify/issues/221"
+        },
+        {
+          "number": 1068,
+          "title": "feat(artifacts): polish standalone page reading and interaction experience",
+          "url": "https://github.com/tt-a1i/archify/issues/1068"
+        },
+        {
+          "number": 244,
+          "title": "[Bug]: Lifecycle rail appears as a false direct edge during semantic interactions",
+          "url": "https://github.com/tt-a1i/archify/issues/244"
+        },
+        {
+          "number": 666,
+          "title": "Explore Viewer component boundaries with matched AI evaluations and standalone HTML",
+          "url": "https://github.com/tt-a1i/archify/issues/666"
+        },
+        {
+          "number": 1064,
+          "title": "feat(reader): voluntary feedback and update awareness for standalone artifacts",
+          "url": "https://github.com/tt-a1i/archify/issues/1064"
+        },
+        {
+          "number": 821,
+          "title": "[Bug]: A declared group label makes an explicit vertical handoff uncompilable under schema v2, blocking v1 migration for shipped examples",
+          "url": "https://github.com/tt-a1i/archify/issues/821"
+        }
+      ]
+    }
+  ],
+  "followupSearches": [
+    {
+      "query": "repo:tt-a1i/archify is:open \"#221\"",
+      "issues": [
+        {
+          "number": 221,
+          "title": "fix(viewer): keep explored relationships visible outside the semantic passport",
+          "url": "https://github.com/tt-a1i/archify/issues/221"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"semantic passport\"",
+      "issues": [
+        {
+          "number": 221,
+          "title": "fix(viewer): keep explored relationships visible outside the semantic passport",
+          "url": "https://github.com/tt-a1i/archify/issues/221"
+        },
+        {
+          "number": 244,
+          "title": "[Bug]: Lifecycle rail appears as a false direct edge during semantic interactions",
+          "url": "https://github.com/tt-a1i/archify/issues/244"
+        },
+        {
+          "number": 81,
+          "title": "[UX][Workflow] Make phase ownership visible without requiring hover",
+          "url": "https://github.com/tt-a1i/archify/issues/81"
+        },
+        {
+          "number": 546,
+          "title": "Feature request: icon-first node rendering mode + broader/pinned icon support (no AWS/cloud-provider icons in bundled library)",
+          "url": "https://github.com/tt-a1i/archify/issues/546"
+        },
+        {
+          "number": 196,
+          "title": "[architecture] Support revision-verified evidence from multiple repositories",
+          "url": "https://github.com/tt-a1i/archify/issues/196"
+        },
+        {
+          "number": 401,
+          "title": "Feature request: 节点可展开结构子图（模块目录与状态字段两个概念 demo）",
+          "url": "https://github.com/tt-a1i/archify/issues/401"
+        }
+      ]
+    }
+  ],
+  "taskView": {
+    "sha": "f27b8bef63ec336b8e3487e90ccd484a2fa7a235",
+    "date": "2026-10-24T18:57:09Z",
+    "subject": "Animate graph filter and direction changes in place"
+  },
+  "taskViewDisposition": "Same fixed source as historical study; no new duplicate implementation.",
+  "boundary": "Bounded keyword searches and fixed remote inventory, not proof that no synonymous issue exists. Latest user rule: branch only, no new PR."
+}
