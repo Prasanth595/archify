@@ -1,0 +1,18 @@
+{
+  "baselineHtmlSha256": "b3abfa149778fb86b5fe9cf2450dd49d36364bd067ee542150c6694a73f0fd3c",
+  "candidateHtmlSha256": "8c02079dc91e49c8ca461e40d9ce0863cd49ae1e067522909f308718440a9c1f",
+  "wholePreparedDiagramsEqual": true,
+  "documentChanges": [
+    {
+      "path": "document.panels[0].blocks[0].id",
+      "B": "prose-5852bf36a605",
+      "C": "prose-6ccd48ae713d"
+    },
+    {
+      "path": "document.panels[0].blocks[0].text",
+      "B": "root 1 声明依赖 foo 和 baz，范围都是任意版本。已登记的 foo 候选为五个整数版本 {1,2,3,4,5}，每个都声明依赖任意版本的 bar。baz 1 没有依赖；输入没有提供 bar 的版本。",
+      "C": "root 1 声明依赖 foo 和 baz，范围都是任意版本。已登记的 foo 候选为五个整数版本 {1,2,3,4,5}，每个都声明依赖任意版本的 bar。[baz 1](node:declared.baz) 没有依赖；输入没有提供 [bar](node:declared.bar) 的版本。"
+    }
+  ],
+  "deltaHtmlBytes": 292
+}

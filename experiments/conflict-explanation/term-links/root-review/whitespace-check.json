@@ -1,0 +1,7 @@
+{
+  "command": "git diff --cached --check",
+  "exit": 2,
+  "stdout": "experiments/conflict-explanation/term-links/c.html:522: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:534: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:579: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:641: trailing whitespace.\n+      --text-faint: #5d778a; \nexperiments/conflict-explanation/term-links/c.html:645: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:706: trailing whitespace.\n+      --text-faint: #577786; \nexperiments/conflict-explanation/term-links/c.html:774: trailing whitespace.\n+      --text-faint: #796f60; \nexperiments/conflict-explanation/term-links/c.html:778: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:1063: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:1090: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:1102: trailing whitespace.\n+      \nexperiments/conflict-explanation/term-links/c.html:1147: trailing whitespace.\n+      \n",
+  "findings": 12,
+  "disposition": "Retain frozen generated HTML bytes. Scoped staged check excluding HTML passes; no source/runtime whitespace edit."
+}

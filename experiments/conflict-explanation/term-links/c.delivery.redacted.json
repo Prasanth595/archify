@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "81a6f4d8-cbdd-4c48-b742-8b3b0de29a40",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "<USER_PATH>",
+  "output": "<USER_PATH>",
+  "specification": {
+    "sha256": "4e58f9bb87d8b16426bf1a0683a6129b0f96ae7f9a41b9b1cf39904538126789",
+    "bytes": 4436
+  },
+  "artifact": {
+    "sha256": "8c02079dc91e49c8ca461e40d9ce0863cd49ae1e067522909f308718440a9c1f",
+    "bytes": 540270
+  },
+  "explainer": {
+    "preparedSha256": "2487634dc325e924cd16a6f9a5be8f5ce466e260bc38e11e161f8404b0e8c1b1",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "declared",
+        "inline": true,
+        "sha256": "a7a5e9cce26c5a01db326b2816739acada7f02f8b742e8f95955eb5d48abdf2a",
+        "bytes": 356
+      }
+    ]
+  }
+}

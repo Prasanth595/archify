@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "startedAt": "2026-10-27T15:16:23.747Z",
+  "specification": {
+    "path": "<USER_PATH>",
+    "sha256": "4e58f9bb87d8b16426bf1a0683a6129b0f96ae7f9a41b9b1cf39904538126789",
+    "bytes": 4436
+  },
+  "artifact": {
+    "path": "<USER_PATH>",
+    "sha256": "8c02079dc91e49c8ca461e40d9ce0863cd49ae1e067522909f308718440a9c1f",
+    "bytes": 540270
+  },
+  "stages": {
+    "browser-check": {
+      "status": "not-run",
+      "execution": "not-requested"
+    },
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "<USER_PATH>",
+        "deliver",
+        "explainer",
+        "<USER_PATH>",
+        "<USER_PATH>",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "4e58f9bb87d8b16426bf1a0683a6129b0f96ae7f9a41b9b1cf39904538126789",
+          "bytes": 4436
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 737,
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "<USER_PATH>",
+        "deliver",
+        "explainer",
+        "<USER_PATH>",
+        "<USER_PATH>",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "81a6f4d8-cbdd-4c48-b742-8b3b0de29a40",
+        "ok": true,
+        "command": "deliver",
+        "type": "explainer",
+        "input": "<USER_PATH>",
+        "output": "<USER_PATH>",
+        "explainer": {
+          "preparedSha256": "2487634dc325e924cd16a6f9a5be8f5ce466e260bc38e11e161f8404b0e8c1b1",
+          "dependencies": [
+            {
+              "kind": "diagram-spec",
+              "id": "declared",
+              "inline": true,
+              "sha256": "a7a5e9cce26c5a01db326b2816739acada7f02f8b742e8f95955eb5d48abdf2a",
+              "bytes": 356
+            }
+          ]
+        },
+        "specification": {
+          "sha256": "4e58f9bb87d8b16426bf1a0683a6129b0f96ae7f9a41b9b1cf39904538126789",
+          "bytes": 4436
+        },
+        "artifact": {
+          "sha256": "8c02079dc91e49c8ca461e40d9ce0863cd49ae1e067522909f308718440a9c1f",
+          "bytes": 540270
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "diagnostics": [
+          {
+            "code": "explainer/writing-sentence-length",
+            "severity": "warning",
+            "message": "Sentence has 52 reading units, above the configured zh limit of 50.",
+            "subject": {
+              "line": 33,
+              "component": "prose",
+              "panelId": "collapsed-report",
+              "input": "<USER_PATH>"
+            },
+            "evidence": {
+              "rule": "sentence-length",
+              "reason": "Sentence has 52 reading units, above the configured zh limit of 50.",
+              "example": "先查缓存。未命中时再查数据库。 / Check the cache first. Query the database on a miss.",
+              "units": 52,
+              "limit": 50
+            },
+            "supportedFixes": [
+              "Split at a logical action or condition boundary while preserving qualifications and causal links."
+            ]
+          }
+        ],
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "stderr": "archify: Sentence has 52 reading units, above the configured zh limit of 50."
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 367,
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "<USER_PATH>",
+        "check",
+        "<USER_PATH>",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "<USER_PATH>",
+        "family": "explainer",
+        "artifact": {
+          "sha256": "8c02079dc91e49c8ca461e40d9ce0863cd49ae1e067522909f308718440a9c1f",
+          "bytes": 540270
+        },
+        "checks": [
+          {
+            "name": "explainer_structure",
+            "ok": true,
+            "details": [
+              "41 unique DOM IDs"
+            ]
+          },
+          {
+            "name": "explainer_payload_identity",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "explainer_dependencies",
+            "ok": true,
+            "details": [
+              "1 frozen dependencies"
+            ]
+          },
+          {
+            "name": "explainer_native_diagrams",
+            "ok": true,
+            "details": [
+              "declared: pass"
+            ]
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "issues": [],
+          "nativeDiagrams": [
+            {
+              "id": "declared",
+              "receipt": {
+                "ok": true,
+                "file": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-explainer-check-0qjQNH/child.html",
+                "artifact": {
+                  "sha256": "ff72baeb79ec8bf7622ded0c4e4035ab2fdf01bffbb1d1327b5520d59c199c94",
+                  "bytes": 858106
+                },
+                "checks": [
+                  {
+                    "name": "single_svg",
+                    "ok": true,
+                    "details": [
+                      "found 1 <svg> block(s)"
+                    ]
+                  },
+                  {
+                    "name": "finite_svg",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "orthogonal_arrows",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "label_route_clearance",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_crossings",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_corridors",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "container_border_runs",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "route_rhythm",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "legend_clearance",
+                    "ok": true,
+                    "details": [
+                      "no legend marker found"
+                    ]
+                  }
+                ],
+                "composition": {
+                  "schemaVersion": 1,
+                  "profile": "showcase",
+                  "status": "pass",
+                  "summary": {
+                    "errors": 0,
+                    "warnings": 0
+                  },
+                  "metrics": {
+                    "properCrossings": 0,
+                    "resolvedCrossovers": 0,
+                    "ambiguousCorridors": 0,
+                    "arrowheadCollisions": 0,
+                    "containerBorderRuns": 0,
+                    "labelRouteClearanceIssues": 0,
+                    "labelCanvasOverflowIssues": 0,
+                    "minLabelRouteClearance": null,
+                    "desktopReadabilityIssues": 0,
+                    "viewportHeightIssues": 0,
+                    "minProjectedNodeTextPx": 13,
+                    "maxBends": 0,
+                    "routesOverSuggestedBends": 0,
+                    "maxStretch": null,
+                    "routesOverSuggestedStretch": 0,
+                    "minSegmentPx": null,
+                    "minInteriorSegmentPx": null,
+                    "shortSegmentCount": 0,
+                    "shortEndpointSegmentCount": 0,
+                    "shortInteriorSegmentCount": 0,
+                    "microSegmentCount": 0
+                  },
+                  "suggestedLimits": {
+                    "bendsPerRelationship": 2,
+                    "stretch": 1.35,
+                    "segmentPx": 16,
+                    "microSegmentPx": 8
+                  },
+                  "routeReview": {
+                    "crossings": [],
+                    "detours": []
+                  },
+                  "leadingSpace": {
+                    "measured": false,
+                    "reviewSuggested": false
+                  },
+                  "desktopReadability": {
+                    "budgetBasis": "legacy-930",
+                    "readerContract": "declared-wide-v1",
+                    "availableDiagramWidth": 930,
+                    "actualBudgetPx": 930,
+                    "limit": "legacy",
+                    "requestedTargetPx": 7.5,
+                    "requestedTargetMet": true,
+                    "hardFloorPx": 6,
+                    "hardFloorMet": true,
+                    "minimumOwner": {
+                      "kind": "node",
+                      "id": "foo"
+                    },
+                    "minimumSourceTextPx": 13,
+                    "minimumProjectedTextPx": 13,
+                    "semanticTextCount": 4
+                  },
+                  "issues": []
+                }
+              }
+            }
+          ]
+        },
+        "diagnostics": [],
+        "provenance": "current",
+        "deliveryReceiptId": "81a6f4d8-cbdd-4c48-b742-8b3b0de29a40"
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "explainer/writing-sentence-length",
+      "severity": "warning",
+      "message": "Sentence has 52 reading units, above the configured zh limit of 50.",
+      "subject": {
+        "input": "<USER_PATH>",
+        "line": 33,
+        "component": "prose",
+        "panelId": "collapsed-report"
+      },
+      "evidence": {
+        "reason": "Sentence has 52 reading units, above the configured zh limit of 50.",
+        "example": "先查缓存。未命中时再查数据库。 / Check the cache first. Query the database on a miss.",
+        "rule": "sentence-length",
+        "units": 52,
+        "limit": 50
+      },
+      "supportedFixes": [
+        "Split at a logical action or condition boundary while preserving qualifications and causal links."
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "<ORIGINALS>/finalize/c.finalize.json",
+    "summaryReceipt": "<ORIGINALS>/finalize/c.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-27T15:16:25.077Z",
+  "durationMs": 1329,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T23:50:51.017Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

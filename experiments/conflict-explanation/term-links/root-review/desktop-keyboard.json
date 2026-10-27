@@ -1,0 +1,123 @@
+{
+  "artifactSha256": "8c02079dc91e49c8ca461e40d9ce0863cd49ae1e067522909f308718440a9c1f",
+  "initial": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "page": [
+      1440,
+      3161
+    ],
+    "scrollY": 0,
+    "links": [
+      {
+        "text": "baz 1",
+        "tag": "A",
+        "tabIndex": 0,
+        "target": "focus=baz"
+      },
+      {
+        "text": "bar",
+        "tag": "A",
+        "tabIndex": 0,
+        "target": "focus=bar"
+      }
+    ]
+  },
+  "tabCountToBaz": 12,
+  "stops": [
+    {
+      "tag": "A",
+      "text": "跳至正文",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "系统",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "浅色",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "深色",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "简洁",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "导出",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "追问",
+      "hash": null
+    },
+    {
+      "tag": "A",
+      "text": "1",
+      "hash": null
+    },
+    {
+      "tag": "A",
+      "text": "打开原文 ↗",
+      "hash": null
+    },
+    {
+      "tag": "A",
+      "text": "1",
+      "hash": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "追问",
+      "hash": null
+    },
+    {
+      "tag": "A",
+      "text": "baz 1",
+      "hash": "focus=baz"
+    }
+  ],
+  "openings": [
+    {
+      "target": "baz",
+      "ready": "true",
+      "focus": {
+        "nodes": [
+          "baz"
+        ],
+        "edges": [],
+        "active": "baz"
+      },
+      "returned": {
+        "dialogOpen": false,
+        "hash": "focus=baz"
+      }
+    },
+    {
+      "target": "bar",
+      "ready": "true",
+      "focus": {
+        "nodes": [
+          "bar"
+        ],
+        "edges": [],
+        "active": "bar"
+      },
+      "returned": {
+        "dialogOpen": false,
+        "hash": "focus=bar"
+      }
+    }
+  ]
+}
