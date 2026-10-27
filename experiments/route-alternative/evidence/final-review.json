@@ -1,0 +1,92 @@
+{
+  "kind": "derived independent final review binding",
+  "originalObservation": false,
+  "reviewedSnapshot": "dab817714f59471e80c0174bca8501138e5f3cfe",
+  "comparisonBase": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+  "reviewedAt": "2026-10-28",
+  "disposition": "ready for authorized local commit and remote experiment-branch delivery",
+  "blockingFindings": [],
+  "checksPerformed": [
+    "Static review of same-hop BFS, stable edge identity, native action, reset and hash restoration consumers",
+    "All four frozen artifact hashes and sizes; frozen identity manifest hash and size",
+    "Nine original evidence hashes and sizes; five PNG IHDR dimensions and observation field bindings",
+    "Input equals fixed-base source bytes; base and candidate canonical SVG bytes equal",
+    "Candidate contains current Route source; archive has 235 entries; compiled template and six locale bytes equal current files",
+    "Read archived logs: Route browser 10 passed / 0 skipped; focused 388 passed / 0 skipped; generated checks and package smoke passed",
+    "Finalize artifact identity and automatic browser requested/ran/pass confirmed"
+  ],
+  "evidenceReuse": "Archived results are reused at their recorded artifact/source state; no large suite or browser replay performed in this final review. Current source/evidence hashes are recorded below.",
+  "documentationCorrection": "Finalize automatic browser-check was requested and ran successfully; visualReview alone was not-requested.",
+  "limits": [
+    "No independent repeat of root browser actions or perceptual inspection",
+    "No measured user-efficiency or large-graph performance claim",
+    "Narrow CSS viewport is not physical touch or assistive-technology acceptance",
+    "Remote push/CI, merge, release and installation are not established by this review"
+  ],
+  "inspectedFiles": {
+    "viewer/route-probe.js": {
+      "bytes": 50286,
+      "sha256": "4b9e85ffd68c4bc90c0579d7159db86c4a02c985d6390eb3c91926c691195aed"
+    },
+    "viewer/template.source.html": {
+      "bytes": 172029,
+      "sha256": "7e6a5897a39a29f44e7bfc2ec2d97c9e2265a744fc90ca54a29c6bbe5e96a389"
+    },
+    "viewer/viewer.css": {
+      "bytes": 191041,
+      "sha256": "ff6a4811abab591e3fccb3fadaafbf619e38b0e5d0aeea5c257370272d88cb03"
+    },
+    "viewer/README.md": {
+      "bytes": 69598,
+      "sha256": "572c7809b0e2bcf24000da0da012d8d188f4c8f18503c7f2d227d785c4fe8b16"
+    },
+    "test/route-probe-browser.test.mjs": {
+      "bytes": 43731,
+      "sha256": "de4909e4d18e680807b23f26ff2478ec1183fae7edd13a43df25a44e7548e5e9"
+    },
+    "archify/assets/template.html": {
+      "bytes": 818321,
+      "sha256": "c996d7feb8a8cbac6b7619ed5b75be4c15718bef3520686a7629694e5be2c9da"
+    },
+    "experiments/route-alternative/browser-evidence.json": {
+      "bytes": 9038,
+      "sha256": "6c8de276bb94756b34148d155934ca2306fdfd1798051d85758cbfe11668c4d9"
+    },
+    "experiments/route-alternative/evidence/identities.json": {
+      "bytes": 669,
+      "sha256": "653a23a77f879874be9533a90dfa1e2c3e45fba9d7f5525bd70d95cca76ba107"
+    },
+    "experiments/route-alternative/evidence/route-browser-pass.log": {
+      "bytes": 2772,
+      "sha256": "ec519ef98794dd172eceeeb8c4fdec849654194e95f2db8020e10c0d8564e1ed"
+    },
+    "experiments/route-alternative/evidence/focused.log": {
+      "bytes": 95791,
+      "sha256": "93f9a65886a778b248064362c5964aebe9e5db86f52652629e152b5d8d747c59"
+    },
+    "experiments/route-alternative/evidence/generated-pass.log": {
+      "bytes": 4647,
+      "sha256": "ee4c27df0506412458b1cdcf7107c03312b190727c64e9fc3e98e5c38169094c"
+    },
+    "experiments/route-alternative/evidence/package.json": {
+      "bytes": 435,
+      "sha256": "cee8fb584eafaa28592ecfdcbe67a8971752daed1cf91786ed846b4bb73d1950"
+    },
+    "experiments/route-alternative/evidence/package-smoke.log": {
+      "bytes": 259,
+      "sha256": "b837f9e44cc27398c401a8a5941c6f4bd2b81439c77387ba757ee6cb48500129"
+    },
+    "experiments/route-alternative/evidence/finalize.json": {
+      "bytes": 35879,
+      "sha256": "8728afaad399c6cd0f0b1f3df14b7ca3fa502fae3cd0fb1cafcf5646379dcde4"
+    },
+    "experiments/route-alternative/evidence/finalize-summary.json": {
+      "bytes": 1702,
+      "sha256": "63e90f67fd5b947fbd04276a3b912cd5cde38208b5f69f05d8af8ea6e79f24a2"
+    },
+    "experiments/route-alternative/evidence/finalize-command.json": {
+      "bytes": 1460,
+      "sha256": "8fbd267c85bf2cced89ad3e86e807102aa4f99a655c8c281f6cbcc8b99a85cbe"
+    }
+  }
+}

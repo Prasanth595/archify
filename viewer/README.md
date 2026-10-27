@@ -277,15 +277,24 @@ The nineteen methods remain `begin`, `choose`, `clear`, `toggle`, `escape`,
 
 - Route owns mode, endpoint IDs, path node arrays and exact edge DOM references,
   Journey index/playing/complete, timer/generation/elapsed time, Motion token,
-  overlays and its panel/listener state. Mode is idle/source/target/result;
+  overlays, at most two same-hop route candidates, and its panel/listener state. Mode is idle/source/target/result;
   panel error is presentation state and can coexist with target mode. `active`
   returns mode or null. `result` returns copied nodes and scalar state only in
   result mode; it does not certify an exportable snapshot.
 - Nodes and edges are read dynamically. The node map keeps the last element per
   ID; it does not use Lens's kind filter or first-ID rule. Outgoing relationships
   require existing endpoints and ignore self-loops. BFS follows directed DOM edge
-  order, keeping the first reached path and exact edge references. There is no
-  grouping by edge key, weighted search, new sort order or persistent graph index.
+  order, keeping the first reached path and exact edge references. The default
+  path is unchanged. To offer another same-hop route, at most one BFS per first-path
+  hop omits that relationship (all fragments with its stable edge key), retaining
+  the first result with the same hop count. Distinct parallel keys can therefore
+  yield the same node sequence with different relationships. Only two candidates
+  are retained; this neither enumerates nor counts all shortest routes. There is
+  no weighted search, new sort order or persistent graph index. Each BFS uses its
+  existing visited-node bound; cycles cannot cause path enumeration.
+- The alternative action is hidden without a second same-hop candidate. Switching
+  reuses result rendering, stops and resets Journey, retains endpoints and keeps
+  native button focus. A new picker session or clear discards both candidates.
 - Source selection marks reachable targets, including the existing no-outgoing
   outcome. In target mode, same-node/unreachable choices return false and render
   error while retaining target mode. Unknown IDs and choices outside picker mode
@@ -331,7 +340,10 @@ The nineteen methods remain `begin`, `choose`, `clear`, `toggle`, `escape`,
   edge. Returned data contain no DOM references. Export consumes the snapshot;
   it owns Share Card rendering, rejection receipts and clone cleanup.
 - URL updates replace the hash with encoded source~target and preserve query.
-  Journey progress is never serialized. Missing/empty route clears active state;
+  The optional `routeAlternative=1` hash parameter restores the second candidate;
+  copy preserves that choice. Ordinary first-path URLs remain unchanged. If no
+  second candidate exists, restoration retains the first. Journey progress is
+  never serialized. Missing/empty route clears active state;
   malformed pairs/unknown endpoints return early. Valid but same/unreachable
   endpoints retain begin/choose error state and the original hash. Existing
   encoding, asynchronous hashchange order and embed guards are unchanged.

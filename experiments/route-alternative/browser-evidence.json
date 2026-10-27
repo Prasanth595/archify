@@ -1,0 +1,229 @@
+{
+  "kind": "derived browser-evidence binding",
+  "originalObservation": false,
+  "baseCommit": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+  "rootViewed": true,
+  "rootViewedScope": "The five PNGs were viewed by root; this copying agent did not visually inspect them.",
+  "rootConfirmation": "Parent task instruction reports actual browser use and visual review on 2026-10-26.",
+  "frozenIdentityFile": {
+    "path": "evidence/identities.json",
+    "sha256": "653a23a77f879874be9533a90dfa1e2c3e45fba9d7f5525bd70d95cca76ba107",
+    "bytes": 669,
+    "preserved": true
+  },
+  "artifactIdentity": {
+    "experiments/route-alternative/input.architecture.json": {
+      "bytes": 4734,
+      "sha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+    },
+    "experiments/route-alternative/base.html": {
+      "bytes": 883018,
+      "sha256": "3fa981dad4c929f30d40ffb2f77c21f029e6d4723c06b6f1945742f42c0fe1d1"
+    },
+    "experiments/route-alternative/candidate.html": {
+      "bytes": 885664,
+      "sha256": "3b6ec2c7ed322ed284291072e13b580551b7aa5a29ec4efbc64c16f1ddad34f1"
+    },
+    "archify.zip": {
+      "bytes": 7001229,
+      "sha256": "ccee597f01ffc991faf876493fe21aeef6b517c5aa03e014617831fbb8cbcc19"
+    }
+  },
+  "originals": [
+    {
+      "path": "screenshots/base-default-route-blueprint.png",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/base-default-route-blueprint.png",
+      "bytes": 272248,
+      "sha256": "27541bc5222e6a1289b329afc9be17b852c99de1d42d4aeb9bb9650cbd7f05e4",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "mime": "image/png",
+      "ihdr": {
+        "width": 1440,
+        "height": 1100
+      },
+      "rootViewed": true,
+      "viewedBy": "root",
+      "viewedByThisAgent": false
+    },
+    {
+      "path": "screenshots/candidate-default-route-blueprint.png",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-default-route-blueprint.png",
+      "bytes": 276033,
+      "sha256": "72bfefd060ea0ae3d4cf93e77e4fd8088b6279ef25e5f959e3fa7c63c6f6bcca",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "mime": "image/png",
+      "ihdr": {
+        "width": 1440,
+        "height": 1100
+      },
+      "rootViewed": true,
+      "viewedBy": "root",
+      "viewedByThisAgent": false
+    },
+    {
+      "path": "screenshots/candidate-alternative-blueprint.png",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-alternative-blueprint.png",
+      "bytes": 265263,
+      "sha256": "4f7bb3569fc3131482287ee799fec90899f950148f9d5053b3a16d49c3042fb7",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "mime": "image/png",
+      "ihdr": {
+        "width": 1440,
+        "height": 1100
+      },
+      "rootViewed": true,
+      "viewedBy": "root",
+      "viewedByThisAgent": false
+    },
+    {
+      "path": "screenshots/candidate-alternative-narrow-light.png",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-alternative-narrow-light.png",
+      "bytes": 103335,
+      "sha256": "21c24f6a110e8604d81fb8977fffc4c262258b88d940b0dd8534b38954723e4a",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "mime": "image/png",
+      "ihdr": {
+        "width": 390,
+        "height": 844
+      },
+      "rootViewed": true,
+      "viewedBy": "root",
+      "viewedByThisAgent": false
+    },
+    {
+      "path": "observations/base-observations.json",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/base-observations.json",
+      "bytes": 2715,
+      "sha256": "443209eed94244badc5a7ff465caf3b531621714c585ad1e612a9875f3175b7f",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T06:17:23.933Z"
+    },
+    {
+      "path": "observations/candidate-desktop-observations.json",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-desktop-observations.json",
+      "bytes": 4601,
+      "sha256": "3051cc53416c75ecb32f8e17dc735916911e7096b93e561e32894f57d25a0964",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T06:24:27.189Z"
+    },
+    {
+      "path": "observations/candidate-recovery-narrow-observations.json",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-recovery-narrow-observations.json",
+      "bytes": 3575,
+      "sha256": "675262bb360f4d2e3f00b4dfda39ae646e35873259f51e0256af1e72b9c66db9",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T06:26:03.074Z"
+    },
+    {
+      "path": "screenshots/candidate-narrow-cold-toggle-light.png",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-narrow-cold-toggle-light.png",
+      "bytes": 105252,
+      "sha256": "40be6463dbf9e9a6949cd9b1a887e177cd86a41e1be543359e66bd9e4dd6acc5",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "mime": "image/png",
+      "ihdr": {
+        "width": 390,
+        "height": 844
+      },
+      "rootViewed": true,
+      "viewedBy": "root",
+      "viewedByThisAgent": false
+    },
+    {
+      "path": "observations/candidate-narrow-actions.json",
+      "sourcePath": "/tmp/archify-route-alternative-20261026/candidate-narrow-actions.json",
+      "bytes": 1443,
+      "sha256": "058affb901965fca87e32380b2a300d9594e273d9fcf2478ae4e4aab8d1917e9",
+      "byteIdentity": "Exact source bytes copied without rewriting.",
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T06:29:33.546Z"
+    }
+  ],
+  "bindings": [
+    {
+      "screenshot": "screenshots/base-default-route-blueprint.png",
+      "observation": "observations/base-observations.json",
+      "field": "observation",
+      "artifact": "base.html",
+      "viewportCss": [
+        1440,
+        1100
+      ],
+      "scope": "Base Find selects gateway/events; first route through api_a, no alternative action."
+    },
+    {
+      "screenshot": "screenshots/candidate-default-route-blueprint.png",
+      "observation": "observations/candidate-desktop-observations.json",
+      "field": "first",
+      "artifact": "candidate.html",
+      "viewportCss": [
+        1440,
+        1100
+      ],
+      "scope": "Cold default remains api_a; another same-hop route action is present."
+    },
+    {
+      "screenshot": "screenshots/candidate-alternative-blueprint.png",
+      "observation": "observations/candidate-desktop-observations.json",
+      "field": "alternate",
+      "artifact": "candidate.html",
+      "viewportCss": [
+        1440,
+        1100
+      ],
+      "scope": "Pointer selects api_b alternative; Back to first route retains focus."
+    },
+    {
+      "screenshot": "screenshots/candidate-alternative-narrow-light.png",
+      "observation": "observations/candidate-recovery-narrow-observations.json",
+      "field": "narrow",
+      "artifact": "candidate.html",
+      "viewportCss": [
+        390,
+        844
+      ],
+      "pageWidthCss": 375,
+      "scope": "Hot-resize light/blueprint narrow rendered state; action fits and all three crumbs are visible; title truncates. This remains a separate observation from the later cold-load pointer round trip."
+    },
+    {
+      "screenshot": "screenshots/candidate-narrow-cold-toggle-light.png",
+      "observation": "observations/candidate-narrow-actions.json",
+      "field": "alternate",
+      "artifact": "candidate.html",
+      "viewportCss": [
+        390,
+        844
+      ],
+      "pageWidthCss": 375,
+      "scope": "Desktop Chromium CSS narrow cold-load alternative; pointer Back returns api_a/default hash, Another returns api_b/alternative hash, focus stays on the corresponding action. Full crumbs visible, title truncates, local canvas only. Not physical touch."
+    }
+  ],
+  "additionalOriginalEvidence": [
+    {
+      "observation": "observations/candidate-recovery-narrow-observations.json",
+      "fields": [
+        "keyboardReturn",
+        "reload"
+      ],
+      "scope": "Desktop Enter returns api_a/default hash; switching back to api_b then reload retains alternative hash and route."
+    },
+    {
+      "observation": "observations/candidate-narrow-actions.json",
+      "fields": [
+        "first",
+        "alternate"
+      ],
+      "scope": "Root-reported cold-load alternative at desktop Chromium CSS 390x844, followed by real pointer Back/Another round trip. Original JSON records resulting route/hash/focus for each action."
+    }
+  ],
+  "limits": [
+    "Representative authored deployment example, not observed traffic or user-efficiency measurement.",
+    "Narrow screenshot shows a local canvas portion, not complete mobile usability.",
+    "No physical touch or assistive-technology acceptance.",
+    "Final independent review remains separate.",
+    "Narrow actions were exercised in desktop Chromium with a CSS narrow viewport; no physical touch acceptance."
+  ]
+}

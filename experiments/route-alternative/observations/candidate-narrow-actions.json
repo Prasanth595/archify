@@ -1,0 +1,21 @@
+{
+  "kind": "original browser observations",
+  "observedAt": "2026-10-26T06:29:33.546Z",
+  "boundCandidateSha256": "3b6ec2c7ed322ed284291072e13b580551b7aa5a29ec4efbc64c16f1ddad34f1",
+  "first": {
+    "hash": "#route=gateway~events",
+    "focus": "Another same-hop route",
+    "path": "\n        \n          \n            Path\n            API Gateway to Event Bus\n          \n          \n            Find target\n            Another same-hop route\n            Copy link\n            Clear\n          \n        \n        API Gateway→API Pods / AZ-a→Event Bus\n        \n          ←\n          \n            ▶\n            Journey\n          \n          →\n          Overview\n        \n        3 nodes · 2 steps · shortest path\n      "
+  },
+  "alternate": {
+    "hash": "#route=gateway~events&routeAlternative=1",
+    "focus": "Back to first route",
+    "path": "\n        \n          \n            Path\n            API Gateway to Event Bus\n          \n          \n            Find target\n            Back to first route\n            Copy link\n            Clear\n          \n        \n        API Gateway→API Pods / AZ-b→Event Bus\n        \n          ←\n          \n            ▶\n            Journey\n          \n          →\n          Overview\n        \n        3 nodes · 2 steps · another shortest path\n      ",
+    "viewport": [
+      390,
+      844
+    ],
+    "pageWidth": 375,
+    "theme": "light"
+  }
+}

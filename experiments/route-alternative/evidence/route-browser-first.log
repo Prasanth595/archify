@@ -1,0 +1,129 @@
+Repository tests: 1 files, concurrency 2
+TAP version 13
+# Subtest: Route Probe preserves directed paths, Journey and export contracts
+    # Subtest: five modes initialize and trusted endpoint input preserves capture and error recovery
+    ok 1 - five modes initialize and trusted endpoint input preserves capture and error recovery
+      ---
+      duration_ms: 3473.630416
+      type: 'test'
+      ...
+    # Subtest: SVG graph fixtures preserve directed BFS order, parallel edges and strict export snapshots
+    ok 2 - SVG graph fixtures preserve directed BFS order, parallel edges and strict export snapshots
+      ---
+      duration_ms: 410.917917
+      type: 'test'
+      ...
+    # Subtest: same-hop alternative retains exact route, native controls, links and cleanup
+    not ok 3 - same-hop alternative retains exact route, native controls, links and cleanup
+      ---
+      duration_ms: 15808.441667
+      type: 'test'
+      location: '/Users/tushaokun/.codex/worktrees/lab-route-alternative/archify/test/route-probe-browser.test.mjs:214:11'
+      failureType: 'testCodeFailure'
+      error: |-
+        Chrome DevTools event timeout failed: Page.loadEventFired: event timed out after 15000ms
+        Chrome process: still running.
+        Chrome stderr:
+        0145134:1026/141609.966503:VERBOSE1:chrome/updater/updater.cc:375] Version: 157.0.8089.0, opt, ARM_64, command line: /Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/GoogleUpdater.app/Contents/MacOS/GoogleUpdater --wake-all --enable-logging --vmodule=*/components/update_client/*=2,*/chrome/enterprise_companion/*=2,*/chrome/updater/*=2
+        [52150:50145134:1026/141609.967002:VERBOSE1:chrome/updater/updater.cc:378] OS version: 26.5.2, arch: arm64, System uptime (seconds): 805888, parent pid: 51937
+        [52150:50145134:1026/141609.968517:VERBOSE1:chrome/updater/updater.cc:383] Available disk space in install directory (/Users/tushaokun/Library/Application Support/Google/GoogleUpdater): 64577531904B (60.143GiB) / 494384795648B (460.432GiB)
+        [52150:50145134:1026/141609.968544:VERBOSE1:chrome/updater/updater.cc:387] Available disk space in temporary directory (/var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/): 64577531904B (60.143GiB) / 494384795648B (460.432GiB)
+        [52150:50145134:1026/141609.968592:VERBOSE2:chrome/updater/event_history.cc:266] Emitted a UPDATER_PROCESS START event to the history log
+        [52156:50145156:1026/141609.983529:VERBOSE1:chrome/updater/updater.cc:375] Version: 157.0.8089.0, opt, ARM_64, command line: /Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/GoogleUpdater.app/Contents/MacOS/GoogleUpdater --crash-handler --database=/Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/Crashpad --url=https://clients2.google.com/cr/report --annotation=prod=Update4 --annotation=ver=157.0.8089.0 --handshake-fd=6 --enable-logging --vmodule=*/components/update_client/*=2,*/chrome/enterprise_companion/*=2,*/chrome/updater/*=2
+        [52156:50145156:1026/141609.984007:VERBOSE1:chrome/updater/updater.cc:378] OS version: 26.5.2, arch: arm64, System uptime (seconds): 805888, parent pid: 1
+        [52156:50145156:1026/141609.985747:VERBOSE1:chrome/updater/updater.cc:383] Available disk space in install directory (/Users/tushaokun/Library/Application Support/Google/GoogleUpdater): 64577466368B (60.142GiB) / 494384795648B (460.432GiB)
+        [52156:50145156:1026/141609.985773:VERBOSE1:chrome/updater/updater.cc:387] Available disk space in temporary directory (/var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/): 64577466368B (60.142GiB) / 494384795648B (460.432GiB)
+        [52156:50145156:1026/141609.985828:VERBOSE2:chrome/updater/event_history.cc:266] Emitted a UPDATER_PROCESS START event to the history log
+        [52150:50145134:1026/141609.986280:VERBOSE1:chrome/updater/crash_reporter.cc:123] Crash handler launched and ready.
+        [52150:50145134:1026/141609.986774:VERBOSE1:chrome/updater/crash_client.cc:109] Found 0 completed crash reports
+        [52150:50145134:1026/141609.986848:VERBOSE1:chrome/updater/crash_client.cc:132] Found 0 pending crash reports
+        [52150:50145134:1026/141609.986945:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/RLZ/Crashpad/settings.dat: No such file or directory (2)
+        [52150:50145134:1026/141609.986994:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/ChromeForTesting/Crashpad/settings.dat: No such file or directory (2)
+        [52150:50145134:1026/141609.987002:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/Chrome Canary/Crashpad/settings.dat: No such file or directory (2)
+        [52150:50145134:1026/141609.987008:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/Chrome-headless/Crashpad/settings.dat: No such file or directory (2)
+        [52150:50145134:1026/141609.987016:VERBOSE1:chrome/updater/updater.cc:107] Crash reporting initialized.
+        [52150:50145181:1026/141609.987401:VERBOSE1:chrome/updater/app/app_wakeall.cc:58] Launching `/Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/GoogleUpdater.app/Contents/MacOS/GoogleUpdater --wake`
+        [52160:50145187:1026/141610.000687:VERBOSE1:chrome/updater/updater.cc:375] Version: 157.0.8089.0, opt, ARM_64, command line: /Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/GoogleUpdater.app/Contents/MacOS/GoogleUpdater --wake --enable-logging --vmodule=*/components/update_client/*=2,*/chrome/enterprise_companion/*=2,*/chrome/updater/*=2
+        [52160:50145187:1026/141610.001175:VERBOSE1:chrome/updater/updater.cc:378] OS version: 26.5.2, arch: arm64, System uptime (seconds): 805888, parent pid: 52150
+        [52160:50145187:1026/141610.002755:VERBOSE1:chrome/updater/updater.cc:383] Available disk space in install directory (/Users/tushaokun/Library/Application Support/Google/GoogleUpdater): 64577466368B (60.142GiB) / 494384795648B (460.432GiB)
+        [52160:50145187:1026/141610.002782:VERBOSE1:chrome/updater/updater.cc:387] Available disk space in temporary directory (/var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/): 64577466368B (60.142GiB) / 494384795648B (460.432GiB)
+        [52160:50145187:1026/141610.002828:VERBOSE2:chrome/updater/event_history.cc:266] Emitted a UPDATER_PROCESS START event to the history log
+        [52162:50145193:1026/141610.018629:VERBOSE1:chrome/updater/updater.cc:375] Version: 157.0.8089.0, opt, ARM_64, command line: /Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/GoogleUpdater.app/Contents/MacOS/GoogleUpdater --crash-handler --database=/Users/tushaokun/Library/Application Support/Google/GoogleUpdater/157.0.8089.0/Crashpad --url=https://clients2.google.com/cr/report --annotation=prod=Update4 --annotation=ver=157.0.8089.0 --handshake-fd=6 --enable-logging --vmodule=*/components/update_client/*=2,*/chrome/enterprise_companion/*=2,*/chrome/updater/*=2
+        [52162:50145193:1026/141610.019192:VERBOSE1:chrome/updater/updater.cc:378] OS version: 26.5.2, arch: arm64, System uptime (seconds): 805888, parent pid: 1
+        [52162:50145193:1026/141610.020905:VERBOSE1:chrome/updater/updater.cc:383] Available disk space in install directory (/Users/tushaokun/Library/Application Support/Google/GoogleUpdater): 64577466368B (60.142GiB) / 494384795648B (460.432GiB)
+        [52162:50145193:1026/141610.020935:VERBOSE1:chrome/updater/updater.cc:387] Available disk space in temporary directory (/var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/): 64577466368B (60.142GiB) / 494384795648B (460.432GiB)
+        [52162:50145193:1026/141610.020987:VERBOSE2:chrome/updater/event_history.cc:266] Emitted a UPDATER_PROCESS START event to the history log
+        [52160:50145187:1026/141610.021508:VERBOSE1:chrome/updater/crash_reporter.cc:123] Crash handler launched and ready.
+        [52160:50145187:1026/141610.022117:VERBOSE1:chrome/updater/crash_client.cc:109] Found 0 completed crash reports
+        [52160:50145187:1026/141610.022193:VERBOSE1:chrome/updater/crash_client.cc:132] Found 0 pending crash reports
+        [52160:50145187:1026/141610.022285:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/RLZ/Crashpad/settings.dat: No such file or directory (2)
+        [52160:50145187:1026/141610.022348:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/ChromeForTesting/Crashpad/settings.dat: No such file or directory (2)
+        [52160:50145187:1026/141610.022356:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/Chrome Canary/Crashpad/settings.dat: No such file or directory (2)
+        [52160:50145187:1026/141610.022363:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /Users/tushaokun/Library/Application Support/Google/Chrome-headless/Crashpad/settings.dat: No such file or directory (2)
+        [52160:50145187:1026/141610.022372:VERBOSE1:chrome/updater/updater.cc:107] Crash reporting initialized.
+        [52160:50145187:1026/141610.022535:VERBOSE1:chrome/updater/ipc/update_service_internal_proxy_mojo.cc:61] Run
+        Chrome transport: Node v22.23.2, libuv 1.51.0, darwin; pid=51937, exitCode=null, signalCode=null.
+        Chrome read pipe: readable=true, ended=false, destroyed=false, receivedBytes=86850, messages=418, bufferedBytes=0.
+        Chrome write pipe: writable=true, ended=false, destroyed=false, completedWrites=204, writtenBytes=87421, bufferedBytes=0.
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        PipeCdp.failure (file:///Users/tushaokun/.codex/worktrees/lab-route-alternative/archify/archify/bin/visual-check.mjs:1416:21)
+        Timeout._onTimeout (file:///Users/tushaokun/.codex/worktrees/lab-route-alternative/archify/archify/bin/visual-check.mjs:1503:21)
+        listOnTimeout (node:internal/timers:585:17)
+        process.processTimers (node:internal/timers:521:7)
+      ...
+    # Subtest: native Journey controls, finite playback, pause and layered Escape preserve path state
+    ok 4 - native Journey controls, finite playback, pause and layered Escape preserve path state
+      ---
+      duration_ms: 6225.669583
+      type: 'test'
+      ...
+    # Subtest: controlled clocks preserve elapsed dwell, fresh steps, stale generations and pulse cleanup
+    ok 5 - controlled clocks preserve elapsed dwell, fresh steps, stale generations and pulse cleanup
+      ---
+      duration_ms: 1326.894333
+      type: 'test'
+      ...
+    # Subtest: actual Finder, Focus, Lens, Guide and Camera handoffs retain cleanup options
+    ok 6 - actual Finder, Focus, Lens, Guide and Camera handoffs retain cleanup options
+      ---
+      duration_ms: 1513.421
+      type: 'test'
+      ...
+    # Subtest: hash restoration and controlled clipboard preserve invalid states, query and delayed feedback
+    ok 7 - hash restoration and controlled clipboard preserve invalid states, query and delayed feedback
+      ---
+      duration_ms: 8778.626459
+      type: 'test'
+      ...
+    # Subtest: docking rectangle and timer fixtures preserve top/bottom ties, resize and scroll
+    ok 8 - docking rectangle and timer fixtures preserve top/bottom ties, resize and scroll
+      ---
+      duration_ms: 1481.462625
+      type: 'test'
+      ...
+    # Subtest: theme snapshots, Still rendering and real exports retain authored route semantics
+    ok 9 - theme snapshots, Still rendering and real exports retain authored route semantics
+      ---
+      duration_ms: 2061.501167
+      type: 'test'
+      ...
+    1..9
+not ok 1 - Route Probe preserves directed paths, Journey and export contracts
+  ---
+  duration_ms: 44693.948125
+  type: 'test'
+  location: '/Users/tushaokun/.codex/worktrees/lab-route-alternative/archify/test/route-probe-browser.test.mjs:14:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 10
+# suites 0
+# pass 8
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 44767.601084

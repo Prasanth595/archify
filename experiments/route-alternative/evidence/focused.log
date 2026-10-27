@@ -1,0 +1,2342 @@
+Repository tests: 5 files, concurrency 2
+TAP version 13
+# Subtest: core smoke: public CLI diagrams, compatibility and delivery safety
+    # Subtest: architecture: validate, render and deliver the official example
+    ok 1 - architecture: validate, render and deliver the official example
+      ---
+      duration_ms: 1411.423542
+      type: 'test'
+      ...
+    # Subtest: workflow: validate, render and deliver the official example
+    ok 2 - workflow: validate, render and deliver the official example
+      ---
+      duration_ms: 2196.244292
+      type: 'test'
+      ...
+    # Subtest: sequence: validate, render and deliver the official example
+    ok 3 - sequence: validate, render and deliver the official example
+      ---
+      duration_ms: 1507.747917
+      type: 'test'
+      ...
+    # Subtest: dataflow: validate, render and deliver the official example
+    ok 4 - dataflow: validate, render and deliver the official example
+      ---
+      duration_ms: 1471.7985
+      type: 'test'
+      ...
+    # Subtest: lifecycle: validate, render and deliver the official example
+    ok 5 - lifecycle: validate, render and deliver the official example
+      ---
+      duration_ms: 1301.723458
+      type: 'test'
+      ...
+    # Subtest: erd: validate, render and deliver the official example
+    ok 6 - erd: validate, render and deliver the official example
+      ---
+      duration_ms: 1444.227459
+      type: 'test'
+      ...
+    # Subtest: tree: validate, render and deliver the official example
+    ok 7 - tree: validate, render and deliver the official example
+      ---
+      duration_ms: 1254.156041
+      type: 'test'
+      ...
+    # Subtest: class: validate, render and deliver the official example
+    ok 8 - class: validate, render and deliver the official example
+      ---
+      duration_ms: 1395.935958
+      type: 'test'
+      ...
+    # Subtest: timeline: validate, render and deliver the official example
+    ok 9 - timeline: validate, render and deliver the official example
+      ---
+      duration_ms: 1561.034542
+      type: 'test'
+      ...
+    # Subtest: waterfall: validate, render and deliver the official example
+    ok 10 - waterfall: validate, render and deliver the official example
+      ---
+      duration_ms: 1409.953375
+      type: 'test'
+      ...
+    # Subtest: explainer: validate, render and deliver the official example
+    ok 11 - explainer: validate, render and deliver the official example
+      ---
+      duration_ms: 775.395625
+      type: 'test'
+      ...
+    # Subtest: architecture: frozen schema-v1 input remains valid and renderable
+    ok 12 - architecture: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 759.254458
+      type: 'test'
+      ...
+    # Subtest: workflow: frozen schema-v1 input remains valid and renderable
+    ok 13 - workflow: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 864.455875
+      type: 'test'
+      ...
+    # Subtest: sequence: frozen schema-v1 input remains valid and renderable
+    ok 14 - sequence: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 752.185125
+      type: 'test'
+      ...
+    # Subtest: dataflow: frozen schema-v1 input remains valid and renderable
+    ok 15 - dataflow: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 749.449375
+      type: 'test'
+      ...
+    # Subtest: unknown diagram types return a structured diagnostic
+    ok 16 - unknown diagram types return a structured diagnostic
+      ---
+      duration_ms: 30.229791
+      type: 'test'
+      ...
+    # Subtest: strict provenance binds the delivered artifact bytes
+    ok 17 - strict provenance binds the delivered artifact bytes
+      ---
+      duration_ms: 271.481875
+      type: 'test'
+      ...
+    # Subtest: invalid schema preserves the last artifact and marks its delivery as failed
+    ok 18 - invalid schema preserves the last artifact and marks its delivery as failed
+      ---
+      duration_ms: 406.827792
+      type: 'test'
+      ...
+    1..18
+ok 1 - core smoke: public CLI diagrams, compatibility and delivery safety
+  ---
+  duration_ms: 19586.647667
+  type: 'test'
+  ...
+# Subtest: Focus preserves semantic selection, relationships, reachability and shared flow tokens
+    # Subtest: five modes expose the same Focus and flowTokens surfaces at cold start
+    ok 1 - five modes expose the same Focus and flowTokens surfaces at cold start
+      ---
+      duration_ms: 2836.904666
+      type: 'test'
+      ...
+    # Subtest: native node input and option variants preserve selection and cleanup side effects
+    ok 2 - native node input and option variants preserve selection and cleanup side effects
+      ---
+      duration_ms: 583.6185
+      type: 'test'
+      ...
+    # Subtest: Passport rows preserve keyboard navigation, missing metadata and no-neighbor state
+    ok 3 - Passport rows preserve keyboard navigation, missing metadata and no-neighbor state
+      ---
+      duration_ms: 1098.467083
+      type: 'test'
+      ...
+    # Subtest: relationship focus and pointer intents yield to pins and direct keyboard exploration
+    ok 4 - relationship focus and pointer intents yield to pins and direct keyboard exploration
+      ---
+      duration_ms: 1533.885084
+      type: 'test'
+      ...
+    # Subtest: direct pointer delay, touch filtering and background input keep ownership rules
+    ok 5 - direct pointer delay, touch filtering and background input keep ownership rules
+      ---
+      duration_ms: 1264.887375
+      type: 'test'
+      ...
+    # Subtest: authored graph geometry and shared token kinds preserve grouping and direction
+    ok 6 - authored graph geometry and shared token kinds preserve grouping and direction
+      ---
+      duration_ms: 334.492667
+      type: 'test'
+      ...
+    # Subtest: reachability handles cycles, parallel edges, toggles and strict snapshot rejection
+    ok 7 - reachability handles cycles, parallel edges, toggles and strict snapshot rejection
+      ---
+      duration_ms: 1632.252417
+      type: 'test'
+      ...
+    # Subtest: cold URLs and hashchange preserve focus, relation, reach and query semantics
+    ok 8 - cold URLs and hashchange preserve focus, relation, reach and query semantics
+      ---
+      duration_ms: 1516.209417
+      type: 'test'
+      ...
+    # Subtest: copy fallback and delayed feedback retain node, reach and relation links
+    ok 9 - copy fallback and delayed feedback retain node, reach and relation links
+      ---
+      duration_ms: 9756.530875
+      type: 'test'
+      ...
+    # Subtest: real pulse completion and motion transitions preserve static relationship state
+    ok 10 - real pulse completion and motion transitions preserve static relationship state
+      ---
+      duration_ms: 1831.705
+      type: 'test'
+      ...
+    # Subtest: real SVG export strips temporary Focus, Reach and relationship state from clones
+    ok 11 - real SVG export strips temporary Focus, Reach and relationship state from clones
+      ---
+      duration_ms: 687.717083
+      type: 'test'
+      ...
+    # Subtest: Passport layout and dark/light output remain stable through viewport and camera changes
+    ok 12 - Passport layout and dark/light output remain stable through viewport and camera changes
+      ---
+      duration_ms: 3315.444584
+      type: 'test'
+      ...
+    1..12
+ok 2 - Focus preserves semantic selection, relationships, reachability and shared flow tokens
+  ---
+  duration_ms: 28585.466083
+  type: 'test'
+  ...
+# Subtest: the committed Viewer rebuilds deterministically outside the repository working directory
+ok 3 - the committed Viewer rebuilds deterministically outside the repository working directory
+  ---
+  duration_ms: 498.138625
+  type: 'test'
+  ...
+# Subtest: Viewer generation runs through a preserved symlink entry
+ok 4 - Viewer generation runs through a preserved symlink entry
+  ---
+  duration_ms: 253.869417
+  type: 'test'
+  ...
+# Subtest: importing the generator with an unavailable entry path does not run or throw
+ok 5 - importing the generator with an unavailable entry path does not run or throw
+  ---
+  duration_ms: 215.547625
+  type: 'test'
+  ...
+# Subtest: editing any authoritative source requires explicit regeneration
+ok 6 - editing any authoritative source requires explicit regeneration
+  ---
+  duration_ms: 3962.491459
+  type: 'test'
+  ...
+# Subtest: a missing generated template is stale and can be regenerated
+ok 7 - a missing generated template is stale and can be regenerated
+  ---
+  duration_ms: 307.926
+  type: 'test'
+  ...
+# Subtest: the story motion runtime is generated from the same authoritative Viewer source
+ok 8 - the story motion runtime is generated from the same authoritative Viewer source
+  ---
+  duration_ms: 266.465584
+  type: 'test'
+  ...
+# Subtest: assembly failure matrix preserves a valid artifact
+    # Subtest: assembly rejects viewerCss: missing shell without overwriting a valid artifact
+    ok 1 - assembly rejects viewerCss: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 4.434875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: missing fragment without overwriting a valid artifact
+    ok 2 - assembly rejects viewerCss: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 5.0655
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: missing marker without overwriting a valid artifact
+    ok 3 - assembly rejects viewerCss: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.469458
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: duplicate marker without overwriting a valid artifact
+    ok 4 - assembly rejects viewerCss: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.150958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: empty fragment without overwriting a valid artifact
+    ok 5 - assembly rejects viewerCss: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 1.631292
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: viewerCss marker without overwriting a valid artifact
+    ok 6 - assembly rejects viewerCss: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.777709
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: export marker without overwriting a valid artifact
+    ok 7 - assembly rejects viewerCss: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.427833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: reader marker without overwriting a valid artifact
+    ok 8 - assembly rejects viewerCss: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.106833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: cleanup marker without overwriting a valid artifact
+    ok 9 - assembly rejects viewerCss: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.566708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: chrome marker without overwriting a valid artifact
+    ok 10 - assembly rejects viewerCss: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.610417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: camera marker without overwriting a valid artifact
+    ok 11 - assembly rejects viewerCss: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.684916
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: radar marker without overwriting a valid artifact
+    ok 12 - assembly rejects viewerCss: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.012708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: motion marker without overwriting a valid artifact
+    ok 13 - assembly rejects viewerCss: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.974417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: finder marker without overwriting a valid artifact
+    ok 14 - assembly rejects viewerCss: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.07625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: outline marker without overwriting a valid artifact
+    ok 15 - assembly rejects viewerCss: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.213291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: tree marker without overwriting a valid artifact
+    ok 16 - assembly rejects viewerCss: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.094333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: intent marker without overwriting a valid artifact
+    ok 17 - assembly rejects viewerCss: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 2.802708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: lens marker without overwriting a valid artifact
+    ok 18 - assembly rejects viewerCss: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.987375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: route marker without overwriting a valid artifact
+    ok 19 - assembly rejects viewerCss: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.280666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects viewerCss: focus marker without overwriting a valid artifact
+    ok 20 - assembly rejects viewerCss: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.465792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: missing shell without overwriting a valid artifact
+    ok 21 - assembly rejects export: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.574333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: missing fragment without overwriting a valid artifact
+    ok 22 - assembly rejects export: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 1.744208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: missing marker without overwriting a valid artifact
+    ok 23 - assembly rejects export: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.488125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: duplicate marker without overwriting a valid artifact
+    ok 24 - assembly rejects export: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.533292
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: empty fragment without overwriting a valid artifact
+    ok 25 - assembly rejects export: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 1.670125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: viewerCss marker without overwriting a valid artifact
+    ok 26 - assembly rejects export: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.749666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: export marker without overwriting a valid artifact
+    ok 27 - assembly rejects export: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.195583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: reader marker without overwriting a valid artifact
+    ok 28 - assembly rejects export: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.7545
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: cleanup marker without overwriting a valid artifact
+    ok 29 - assembly rejects export: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.201208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: chrome marker without overwriting a valid artifact
+    ok 30 - assembly rejects export: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.62
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: camera marker without overwriting a valid artifact
+    ok 31 - assembly rejects export: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.490125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: radar marker without overwriting a valid artifact
+    ok 32 - assembly rejects export: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.49475
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: motion marker without overwriting a valid artifact
+    ok 33 - assembly rejects export: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.656708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: finder marker without overwriting a valid artifact
+    ok 34 - assembly rejects export: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.637334
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: outline marker without overwriting a valid artifact
+    ok 35 - assembly rejects export: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.550042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: tree marker without overwriting a valid artifact
+    ok 36 - assembly rejects export: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.559458
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: intent marker without overwriting a valid artifact
+    ok 37 - assembly rejects export: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.846833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: lens marker without overwriting a valid artifact
+    ok 38 - assembly rejects export: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.199334
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: route marker without overwriting a valid artifact
+    ok 39 - assembly rejects export: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.380917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects export: focus marker without overwriting a valid artifact
+    ok 40 - assembly rejects export: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 3.398916
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: missing shell without overwriting a valid artifact
+    ok 41 - assembly rejects reader: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.328334
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: missing fragment without overwriting a valid artifact
+    ok 42 - assembly rejects reader: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.145334
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: missing marker without overwriting a valid artifact
+    ok 43 - assembly rejects reader: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.009083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: duplicate marker without overwriting a valid artifact
+    ok 44 - assembly rejects reader: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 114.983625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: empty fragment without overwriting a valid artifact
+    ok 45 - assembly rejects reader: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 4.678208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: viewerCss marker without overwriting a valid artifact
+    ok 46 - assembly rejects reader: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.095875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: export marker without overwriting a valid artifact
+    ok 47 - assembly rejects reader: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.512041
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: reader marker without overwriting a valid artifact
+    ok 48 - assembly rejects reader: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.202792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: cleanup marker without overwriting a valid artifact
+    ok 49 - assembly rejects reader: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.585583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: chrome marker without overwriting a valid artifact
+    ok 50 - assembly rejects reader: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.404417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: camera marker without overwriting a valid artifact
+    ok 51 - assembly rejects reader: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.922
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: radar marker without overwriting a valid artifact
+    ok 52 - assembly rejects reader: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.652792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: motion marker without overwriting a valid artifact
+    ok 53 - assembly rejects reader: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.51275
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: finder marker without overwriting a valid artifact
+    ok 54 - assembly rejects reader: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.792041
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: outline marker without overwriting a valid artifact
+    ok 55 - assembly rejects reader: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.186084
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: tree marker without overwriting a valid artifact
+    ok 56 - assembly rejects reader: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.264583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: intent marker without overwriting a valid artifact
+    ok 57 - assembly rejects reader: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.148291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: lens marker without overwriting a valid artifact
+    ok 58 - assembly rejects reader: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.49475
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: route marker without overwriting a valid artifact
+    ok 59 - assembly rejects reader: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.152458
+      type: 'test'
+      ...
+    # Subtest: assembly rejects reader: focus marker without overwriting a valid artifact
+    ok 60 - assembly rejects reader: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.219542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: missing shell without overwriting a valid artifact
+    ok 61 - assembly rejects cleanup: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.936333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: missing fragment without overwriting a valid artifact
+    ok 62 - assembly rejects cleanup: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 7.391083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: missing marker without overwriting a valid artifact
+    ok 63 - assembly rejects cleanup: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.2895
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: duplicate marker without overwriting a valid artifact
+    ok 64 - assembly rejects cleanup: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 2.617541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: empty fragment without overwriting a valid artifact
+    ok 65 - assembly rejects cleanup: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 3.873625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: viewerCss marker without overwriting a valid artifact
+    ok 66 - assembly rejects cleanup: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.49675
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: export marker without overwriting a valid artifact
+    ok 67 - assembly rejects cleanup: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.789709
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: reader marker without overwriting a valid artifact
+    ok 68 - assembly rejects cleanup: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.993666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: cleanup marker without overwriting a valid artifact
+    ok 69 - assembly rejects cleanup: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.44725
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: chrome marker without overwriting a valid artifact
+    ok 70 - assembly rejects cleanup: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.131375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: camera marker without overwriting a valid artifact
+    ok 71 - assembly rejects cleanup: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.701666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: radar marker without overwriting a valid artifact
+    ok 72 - assembly rejects cleanup: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.350417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: motion marker without overwriting a valid artifact
+    ok 73 - assembly rejects cleanup: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.109416
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: finder marker without overwriting a valid artifact
+    ok 74 - assembly rejects cleanup: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.571333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: outline marker without overwriting a valid artifact
+    ok 75 - assembly rejects cleanup: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.174875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: tree marker without overwriting a valid artifact
+    ok 76 - assembly rejects cleanup: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.768792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: intent marker without overwriting a valid artifact
+    ok 77 - assembly rejects cleanup: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.240792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: lens marker without overwriting a valid artifact
+    ok 78 - assembly rejects cleanup: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.246833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: route marker without overwriting a valid artifact
+    ok 79 - assembly rejects cleanup: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.746041
+      type: 'test'
+      ...
+    # Subtest: assembly rejects cleanup: focus marker without overwriting a valid artifact
+    ok 80 - assembly rejects cleanup: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.336333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: missing shell without overwriting a valid artifact
+    ok 81 - assembly rejects chrome: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.596625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: missing fragment without overwriting a valid artifact
+    ok 82 - assembly rejects chrome: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 3.176625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: missing marker without overwriting a valid artifact
+    ok 83 - assembly rejects chrome: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.880917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: duplicate marker without overwriting a valid artifact
+    ok 84 - assembly rejects chrome: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.718
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: empty fragment without overwriting a valid artifact
+    ok 85 - assembly rejects chrome: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.619375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: viewerCss marker without overwriting a valid artifact
+    ok 86 - assembly rejects chrome: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.076084
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: export marker without overwriting a valid artifact
+    ok 87 - assembly rejects chrome: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.76875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: reader marker without overwriting a valid artifact
+    ok 88 - assembly rejects chrome: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.988083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: cleanup marker without overwriting a valid artifact
+    ok 89 - assembly rejects chrome: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.005333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: chrome marker without overwriting a valid artifact
+    ok 90 - assembly rejects chrome: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.548666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: camera marker without overwriting a valid artifact
+    ok 91 - assembly rejects chrome: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.962084
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: radar marker without overwriting a valid artifact
+    ok 92 - assembly rejects chrome: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.194
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: motion marker without overwriting a valid artifact
+    ok 93 - assembly rejects chrome: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.625958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: finder marker without overwriting a valid artifact
+    ok 94 - assembly rejects chrome: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.925125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: outline marker without overwriting a valid artifact
+    ok 95 - assembly rejects chrome: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.65375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: tree marker without overwriting a valid artifact
+    ok 96 - assembly rejects chrome: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.257792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: intent marker without overwriting a valid artifact
+    ok 97 - assembly rejects chrome: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.576917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: lens marker without overwriting a valid artifact
+    ok 98 - assembly rejects chrome: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.493833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: route marker without overwriting a valid artifact
+    ok 99 - assembly rejects chrome: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.117583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects chrome: focus marker without overwriting a valid artifact
+    ok 100 - assembly rejects chrome: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.427167
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: missing shell without overwriting a valid artifact
+    ok 101 - assembly rejects camera: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.894584
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: missing fragment without overwriting a valid artifact
+    ok 102 - assembly rejects camera: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 4.909417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: missing marker without overwriting a valid artifact
+    ok 103 - assembly rejects camera: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.412667
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: duplicate marker without overwriting a valid artifact
+    ok 104 - assembly rejects camera: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.02825
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: empty fragment without overwriting a valid artifact
+    ok 105 - assembly rejects camera: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.685417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: viewerCss marker without overwriting a valid artifact
+    ok 106 - assembly rejects camera: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.660167
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: export marker without overwriting a valid artifact
+    ok 107 - assembly rejects camera: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.767541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: reader marker without overwriting a valid artifact
+    ok 108 - assembly rejects camera: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.462542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: cleanup marker without overwriting a valid artifact
+    ok 109 - assembly rejects camera: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.478459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: chrome marker without overwriting a valid artifact
+    ok 110 - assembly rejects camera: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.525625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: camera marker without overwriting a valid artifact
+    ok 111 - assembly rejects camera: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.151583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: radar marker without overwriting a valid artifact
+    ok 112 - assembly rejects camera: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.329666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: motion marker without overwriting a valid artifact
+    ok 113 - assembly rejects camera: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.586792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: finder marker without overwriting a valid artifact
+    ok 114 - assembly rejects camera: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.293042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: outline marker without overwriting a valid artifact
+    ok 115 - assembly rejects camera: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.957459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: tree marker without overwriting a valid artifact
+    ok 116 - assembly rejects camera: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.984625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: intent marker without overwriting a valid artifact
+    ok 117 - assembly rejects camera: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.119791
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: lens marker without overwriting a valid artifact
+    ok 118 - assembly rejects camera: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.851541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: route marker without overwriting a valid artifact
+    ok 119 - assembly rejects camera: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.136459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects camera: focus marker without overwriting a valid artifact
+    ok 120 - assembly rejects camera: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.061625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: missing shell without overwriting a valid artifact
+    ok 121 - assembly rejects radar: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.648833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: missing fragment without overwriting a valid artifact
+    ok 122 - assembly rejects radar: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.444833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: missing marker without overwriting a valid artifact
+    ok 123 - assembly rejects radar: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.882209
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: duplicate marker without overwriting a valid artifact
+    ok 124 - assembly rejects radar: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 195.621958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: empty fragment without overwriting a valid artifact
+    ok 125 - assembly rejects radar: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 5.613
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: viewerCss marker without overwriting a valid artifact
+    ok 126 - assembly rejects radar: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 14.89125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: export marker without overwriting a valid artifact
+    ok 127 - assembly rejects radar: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 10.2225
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: reader marker without overwriting a valid artifact
+    ok 128 - assembly rejects radar: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 12.484958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: cleanup marker without overwriting a valid artifact
+    ok 129 - assembly rejects radar: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.51975
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: chrome marker without overwriting a valid artifact
+    ok 130 - assembly rejects radar: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.628875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: camera marker without overwriting a valid artifact
+    ok 131 - assembly rejects radar: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.226041
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: radar marker without overwriting a valid artifact
+    ok 132 - assembly rejects radar: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.05625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: motion marker without overwriting a valid artifact
+    ok 133 - assembly rejects radar: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.190375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: finder marker without overwriting a valid artifact
+    ok 134 - assembly rejects radar: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.8635
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: outline marker without overwriting a valid artifact
+    ok 135 - assembly rejects radar: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.583125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: tree marker without overwriting a valid artifact
+    ok 136 - assembly rejects radar: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.323167
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: intent marker without overwriting a valid artifact
+    ok 137 - assembly rejects radar: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.871583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: lens marker without overwriting a valid artifact
+    ok 138 - assembly rejects radar: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 16.129625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: route marker without overwriting a valid artifact
+    ok 139 - assembly rejects radar: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.280625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects radar: focus marker without overwriting a valid artifact
+    ok 140 - assembly rejects radar: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.809041
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: missing shell without overwriting a valid artifact
+    ok 141 - assembly rejects motion: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 2.080625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: missing fragment without overwriting a valid artifact
+    ok 142 - assembly rejects motion: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 3.841625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: missing marker without overwriting a valid artifact
+    ok 143 - assembly rejects motion: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.510541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: duplicate marker without overwriting a valid artifact
+    ok 144 - assembly rejects motion: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 10.874292
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: empty fragment without overwriting a valid artifact
+    ok 145 - assembly rejects motion: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.786208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: viewerCss marker without overwriting a valid artifact
+    ok 146 - assembly rejects motion: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.598291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: export marker without overwriting a valid artifact
+    ok 147 - assembly rejects motion: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.320125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: reader marker without overwriting a valid artifact
+    ok 148 - assembly rejects motion: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.757459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: cleanup marker without overwriting a valid artifact
+    ok 149 - assembly rejects motion: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.22275
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: chrome marker without overwriting a valid artifact
+    ok 150 - assembly rejects motion: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.09175
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: camera marker without overwriting a valid artifact
+    ok 151 - assembly rejects motion: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.820042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: radar marker without overwriting a valid artifact
+    ok 152 - assembly rejects motion: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.882375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: motion marker without overwriting a valid artifact
+    ok 153 - assembly rejects motion: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.696333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: finder marker without overwriting a valid artifact
+    ok 154 - assembly rejects motion: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.951708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: outline marker without overwriting a valid artifact
+    ok 155 - assembly rejects motion: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.293042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: tree marker without overwriting a valid artifact
+    ok 156 - assembly rejects motion: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.445333
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: intent marker without overwriting a valid artifact
+    ok 157 - assembly rejects motion: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.837542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: lens marker without overwriting a valid artifact
+    ok 158 - assembly rejects motion: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.607458
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: route marker without overwriting a valid artifact
+    ok 159 - assembly rejects motion: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.552208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects motion: focus marker without overwriting a valid artifact
+    ok 160 - assembly rejects motion: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.495708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: missing shell without overwriting a valid artifact
+    ok 161 - assembly rejects finder: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 2.123125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: missing fragment without overwriting a valid artifact
+    ok 162 - assembly rejects finder: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 3.45875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: missing marker without overwriting a valid artifact
+    ok 163 - assembly rejects finder: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.297375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: duplicate marker without overwriting a valid artifact
+    ok 164 - assembly rejects finder: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 11.182
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: empty fragment without overwriting a valid artifact
+    ok 165 - assembly rejects finder: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.613166
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: viewerCss marker without overwriting a valid artifact
+    ok 166 - assembly rejects finder: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.137084
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: export marker without overwriting a valid artifact
+    ok 167 - assembly rejects finder: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.605917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: reader marker without overwriting a valid artifact
+    ok 168 - assembly rejects finder: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.02075
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: cleanup marker without overwriting a valid artifact
+    ok 169 - assembly rejects finder: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.98475
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: chrome marker without overwriting a valid artifact
+    ok 170 - assembly rejects finder: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 16.194834
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: camera marker without overwriting a valid artifact
+    ok 171 - assembly rejects finder: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.918708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: radar marker without overwriting a valid artifact
+    ok 172 - assembly rejects finder: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.232042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: motion marker without overwriting a valid artifact
+    ok 173 - assembly rejects finder: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.015458
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: finder marker without overwriting a valid artifact
+    ok 174 - assembly rejects finder: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.88125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: outline marker without overwriting a valid artifact
+    ok 175 - assembly rejects finder: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.602292
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: tree marker without overwriting a valid artifact
+    ok 176 - assembly rejects finder: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.775917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: intent marker without overwriting a valid artifact
+    ok 177 - assembly rejects finder: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.985
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: lens marker without overwriting a valid artifact
+    ok 178 - assembly rejects finder: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.455291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: route marker without overwriting a valid artifact
+    ok 179 - assembly rejects finder: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 186.217625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects finder: focus marker without overwriting a valid artifact
+    ok 180 - assembly rejects finder: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 14.573334
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: missing shell without overwriting a valid artifact
+    ok 181 - assembly rejects outline: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 3.542042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: missing fragment without overwriting a valid artifact
+    ok 182 - assembly rejects outline: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 172.046417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: missing marker without overwriting a valid artifact
+    ok 183 - assembly rejects outline: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 20.1865
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: duplicate marker without overwriting a valid artifact
+    ok 184 - assembly rejects outline: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 13.352083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: empty fragment without overwriting a valid artifact
+    ok 185 - assembly rejects outline: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 3.722416
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: viewerCss marker without overwriting a valid artifact
+    ok 186 - assembly rejects outline: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.173833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: export marker without overwriting a valid artifact
+    ok 187 - assembly rejects outline: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.096
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: reader marker without overwriting a valid artifact
+    ok 188 - assembly rejects outline: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.504417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: cleanup marker without overwriting a valid artifact
+    ok 189 - assembly rejects outline: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.543708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: chrome marker without overwriting a valid artifact
+    ok 190 - assembly rejects outline: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.131042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: camera marker without overwriting a valid artifact
+    ok 191 - assembly rejects outline: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.081459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: radar marker without overwriting a valid artifact
+    ok 192 - assembly rejects outline: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.544291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: motion marker without overwriting a valid artifact
+    ok 193 - assembly rejects outline: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.391375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: finder marker without overwriting a valid artifact
+    ok 194 - assembly rejects outline: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.677583
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: outline marker without overwriting a valid artifact
+    ok 195 - assembly rejects outline: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.017666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: tree marker without overwriting a valid artifact
+    ok 196 - assembly rejects outline: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.908334
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: intent marker without overwriting a valid artifact
+    ok 197 - assembly rejects outline: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.907459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: lens marker without overwriting a valid artifact
+    ok 198 - assembly rejects outline: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.518417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: route marker without overwriting a valid artifact
+    ok 199 - assembly rejects outline: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.653125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects outline: focus marker without overwriting a valid artifact
+    ok 200 - assembly rejects outline: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.812875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: missing shell without overwriting a valid artifact
+    ok 201 - assembly rejects tree: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.98375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: missing fragment without overwriting a valid artifact
+    ok 202 - assembly rejects tree: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 3.079625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: missing marker without overwriting a valid artifact
+    ok 203 - assembly rejects tree: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.03175
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: duplicate marker without overwriting a valid artifact
+    ok 204 - assembly rejects tree: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.472416
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: empty fragment without overwriting a valid artifact
+    ok 205 - assembly rejects tree: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 2.824709
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: viewerCss marker without overwriting a valid artifact
+    ok 206 - assembly rejects tree: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.581666
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: export marker without overwriting a valid artifact
+    ok 207 - assembly rejects tree: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.210375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: reader marker without overwriting a valid artifact
+    ok 208 - assembly rejects tree: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.347958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: cleanup marker without overwriting a valid artifact
+    ok 209 - assembly rejects tree: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.785
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: chrome marker without overwriting a valid artifact
+    ok 210 - assembly rejects tree: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.472541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: camera marker without overwriting a valid artifact
+    ok 211 - assembly rejects tree: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.889083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: radar marker without overwriting a valid artifact
+    ok 212 - assembly rejects tree: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.891708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: motion marker without overwriting a valid artifact
+    ok 213 - assembly rejects tree: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.136958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: finder marker without overwriting a valid artifact
+    ok 214 - assembly rejects tree: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.829167
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: outline marker without overwriting a valid artifact
+    ok 215 - assembly rejects tree: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.936375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: tree marker without overwriting a valid artifact
+    ok 216 - assembly rejects tree: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.247917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: intent marker without overwriting a valid artifact
+    ok 217 - assembly rejects tree: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.211375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: lens marker without overwriting a valid artifact
+    ok 218 - assembly rejects tree: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.040625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: route marker without overwriting a valid artifact
+    ok 219 - assembly rejects tree: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.811917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects tree: focus marker without overwriting a valid artifact
+    ok 220 - assembly rejects tree: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.312125
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: missing shell without overwriting a valid artifact
+    ok 221 - assembly rejects intent: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 1.845458
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: missing fragment without overwriting a valid artifact
+    ok 222 - assembly rejects intent: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 6.488042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: missing marker without overwriting a valid artifact
+    ok 223 - assembly rejects intent: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.8775
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: duplicate marker without overwriting a valid artifact
+    ok 224 - assembly rejects intent: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 12.444958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: empty fragment without overwriting a valid artifact
+    ok 225 - assembly rejects intent: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 6.022792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: viewerCss marker without overwriting a valid artifact
+    ok 226 - assembly rejects intent: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.763875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: export marker without overwriting a valid artifact
+    ok 227 - assembly rejects intent: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.686625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: reader marker without overwriting a valid artifact
+    ok 228 - assembly rejects intent: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.463084
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: cleanup marker without overwriting a valid artifact
+    ok 229 - assembly rejects intent: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.873542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: chrome marker without overwriting a valid artifact
+    ok 230 - assembly rejects intent: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.424167
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: camera marker without overwriting a valid artifact
+    ok 231 - assembly rejects intent: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.266625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: radar marker without overwriting a valid artifact
+    ok 232 - assembly rejects intent: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.67075
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: motion marker without overwriting a valid artifact
+    ok 233 - assembly rejects intent: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.932917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: finder marker without overwriting a valid artifact
+    ok 234 - assembly rejects intent: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.274541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: outline marker without overwriting a valid artifact
+    ok 235 - assembly rejects intent: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.762417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: tree marker without overwriting a valid artifact
+    ok 236 - assembly rejects intent: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.39925
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: intent marker without overwriting a valid artifact
+    ok 237 - assembly rejects intent: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.027542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: lens marker without overwriting a valid artifact
+    ok 238 - assembly rejects intent: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.283416
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: route marker without overwriting a valid artifact
+    ok 239 - assembly rejects intent: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.086417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects intent: focus marker without overwriting a valid artifact
+    ok 240 - assembly rejects intent: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.98775
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: missing shell without overwriting a valid artifact
+    ok 241 - assembly rejects lens: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 8.09225
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: missing fragment without overwriting a valid artifact
+    ok 242 - assembly rejects lens: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 4.935417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: missing marker without overwriting a valid artifact
+    ok 243 - assembly rejects lens: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 11.587291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: duplicate marker without overwriting a valid artifact
+    ok 244 - assembly rejects lens: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 201.709042
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: empty fragment without overwriting a valid artifact
+    ok 245 - assembly rejects lens: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 5.000542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: viewerCss marker without overwriting a valid artifact
+    ok 246 - assembly rejects lens: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.685875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: export marker without overwriting a valid artifact
+    ok 247 - assembly rejects lens: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.523833
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: reader marker without overwriting a valid artifact
+    ok 248 - assembly rejects lens: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.118667
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: cleanup marker without overwriting a valid artifact
+    ok 249 - assembly rejects lens: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.1645
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: chrome marker without overwriting a valid artifact
+    ok 250 - assembly rejects lens: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 189.10875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: camera marker without overwriting a valid artifact
+    ok 251 - assembly rejects lens: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.994792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: radar marker without overwriting a valid artifact
+    ok 252 - assembly rejects lens: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.132834
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: motion marker without overwriting a valid artifact
+    ok 253 - assembly rejects lens: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.2005
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: finder marker without overwriting a valid artifact
+    ok 254 - assembly rejects lens: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.144584
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: outline marker without overwriting a valid artifact
+    ok 255 - assembly rejects lens: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.325542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: tree marker without overwriting a valid artifact
+    ok 256 - assembly rejects lens: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.399958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: intent marker without overwriting a valid artifact
+    ok 257 - assembly rejects lens: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.449459
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: lens marker without overwriting a valid artifact
+    ok 258 - assembly rejects lens: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.806709
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: route marker without overwriting a valid artifact
+    ok 259 - assembly rejects lens: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.473792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects lens: focus marker without overwriting a valid artifact
+    ok 260 - assembly rejects lens: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.169208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: missing shell without overwriting a valid artifact
+    ok 261 - assembly rejects route: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 2.744959
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: missing fragment without overwriting a valid artifact
+    ok 262 - assembly rejects route: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 6.779375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: missing marker without overwriting a valid artifact
+    ok 263 - assembly rejects route: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.016791
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: duplicate marker without overwriting a valid artifact
+    ok 264 - assembly rejects route: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 188.59825
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: empty fragment without overwriting a valid artifact
+    ok 265 - assembly rejects route: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 5.371917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: viewerCss marker without overwriting a valid artifact
+    ok 266 - assembly rejects route: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 14.641542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: export marker without overwriting a valid artifact
+    ok 267 - assembly rejects route: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 11.612625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: reader marker without overwriting a valid artifact
+    ok 268 - assembly rejects route: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 10.027792
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: cleanup marker without overwriting a valid artifact
+    ok 269 - assembly rejects route: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 13.363292
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: chrome marker without overwriting a valid artifact
+    ok 270 - assembly rejects route: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.361
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: camera marker without overwriting a valid artifact
+    ok 271 - assembly rejects route: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.834709
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: radar marker without overwriting a valid artifact
+    ok 272 - assembly rejects route: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 9.8035
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: motion marker without overwriting a valid artifact
+    ok 273 - assembly rejects route: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.222375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: finder marker without overwriting a valid artifact
+    ok 274 - assembly rejects route: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.433167
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: outline marker without overwriting a valid artifact
+    ok 275 - assembly rejects route: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.976084
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: tree marker without overwriting a valid artifact
+    ok 276 - assembly rejects route: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.38575
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: intent marker without overwriting a valid artifact
+    ok 277 - assembly rejects route: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.922
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: lens marker without overwriting a valid artifact
+    ok 278 - assembly rejects route: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.197083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: route marker without overwriting a valid artifact
+    ok 279 - assembly rejects route: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 8.964208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects route: focus marker without overwriting a valid artifact
+    ok 280 - assembly rejects route: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 198.50475
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: missing shell without overwriting a valid artifact
+    ok 281 - assembly rejects focus: missing shell without overwriting a valid artifact
+      ---
+      duration_ms: 5.069208
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: missing fragment without overwriting a valid artifact
+    ok 282 - assembly rejects focus: missing fragment without overwriting a valid artifact
+      ---
+      duration_ms: 13.15075
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: missing marker without overwriting a valid artifact
+    ok 283 - assembly rejects focus: missing marker without overwriting a valid artifact
+      ---
+      duration_ms: 11.645541
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: duplicate marker without overwriting a valid artifact
+    ok 284 - assembly rejects focus: duplicate marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.947834
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: empty fragment without overwriting a valid artifact
+    ok 285 - assembly rejects focus: empty fragment without overwriting a valid artifact
+      ---
+      duration_ms: 5.706542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: viewerCss marker without overwriting a valid artifact
+    ok 286 - assembly rejects focus: viewerCss marker without overwriting a valid artifact
+      ---
+      duration_ms: 22.863083
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: export marker without overwriting a valid artifact
+    ok 287 - assembly rejects focus: export marker without overwriting a valid artifact
+      ---
+      duration_ms: 11.282791
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: reader marker without overwriting a valid artifact
+    ok 288 - assembly rejects focus: reader marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.974917
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: cleanup marker without overwriting a valid artifact
+    ok 289 - assembly rejects focus: cleanup marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.964417
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: chrome marker without overwriting a valid artifact
+    ok 290 - assembly rejects focus: chrome marker without overwriting a valid artifact
+      ---
+      duration_ms: 5.832375
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: camera marker without overwriting a valid artifact
+    ok 291 - assembly rejects focus: camera marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.64425
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: radar marker without overwriting a valid artifact
+    ok 292 - assembly rejects focus: radar marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.959875
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: motion marker without overwriting a valid artifact
+    ok 293 - assembly rejects focus: motion marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.134542
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: finder marker without overwriting a valid artifact
+    ok 294 - assembly rejects focus: finder marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.855958
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: outline marker without overwriting a valid artifact
+    ok 295 - assembly rejects focus: outline marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.342625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: tree marker without overwriting a valid artifact
+    ok 296 - assembly rejects focus: tree marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.92825
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: intent marker without overwriting a valid artifact
+    ok 297 - assembly rejects focus: intent marker without overwriting a valid artifact
+      ---
+      duration_ms: 7.092291
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: lens marker without overwriting a valid artifact
+    ok 298 - assembly rejects focus: lens marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.847708
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: route marker without overwriting a valid artifact
+    ok 299 - assembly rejects focus: route marker without overwriting a valid artifact
+      ---
+      duration_ms: 4.93625
+      type: 'test'
+      ...
+    # Subtest: assembly rejects focus: focus marker without overwriting a valid artifact
+    ok 300 - assembly rejects focus: focus marker without overwriting a valid artifact
+      ---
+      duration_ms: 6.637334
+      type: 'test'
+      ...
+    1..300
+ok 9 - assembly failure matrix preserves a valid artifact
+  ---
+  duration_ms: 3453.7815
+  type: 'test'
+  ...
+# Subtest: assembly preserves literal replacement tokens, Unicode and source line endings
+ok 10 - assembly preserves literal replacement tokens, Unicode and source line endings
+  ---
+  duration_ms: 264.472833
+  type: 'test'
+  ...
+# Subtest: an invalid invocation cannot silently regenerate the template
+ok 11 - an invalid invocation cannot silently regenerate the template
+  ---
+  duration_ms: 154.382084
+  type: 'test'
+  ...
+# Subtest: Cleanup ownership rejects additional shell slot without overwriting output
+ok 12 - Cleanup ownership rejects additional shell slot without overwriting output
+  ---
+  duration_ms: 290.999875
+  type: 'test'
+  ...
+# Subtest: Cleanup ownership rejects moved to shell without overwriting output
+ok 13 - Cleanup ownership rejects moved to shell without overwriting output
+  ---
+  duration_ms: 250.605833
+  type: 'test'
+  ...
+# Subtest: zh-CN localizes renderer-owned output across all five modes without translating authored content
+ok 14 - zh-CN localizes renderer-owned output across all five modes without translating authored content
+  ---
+  duration_ms: 1659.904834
+  type: 'test'
+  ...
+# Subtest: explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+ok 15 - explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+  ---
+  duration_ms: 5173.549917
+  type: 'test'
+  ...
+# Subtest: omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+ok 16 - omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+  ---
+  duration_ms: 1775.062417
+  type: 'test'
+  ...
+# Subtest: checked-in Korean fixture validates and delivers a ko architecture artifact
+ok 17 - checked-in Korean fixture validates and delivers a ko architecture artifact
+  ---
+  duration_ms: 1069.388708
+  type: 'test'
+  ...
+# Subtest: checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+ok 18 - checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+  ---
+  duration_ms: 1085.14825
+  type: 'test'
+  ...
+# Subtest: malformed locale tags fail schema validation in every mode
+ok 19 - malformed locale tags fail schema validation in every mode
+  ---
+  duration_ms: 539.391625
+  type: 'test'
+  ...
+# Subtest: a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+ok 20 - a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+  ---
+  duration_ms: 6810.176541
+  type: 'test'
+  ...
+# Subtest: a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+ok 21 - a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+  ---
+  duration_ms: 1781.172708
+  type: 'test'
+  ...
+# Subtest: translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+ok 22 - translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+  ---
+  duration_ms: 347.910167
+  type: 'test'
+  ...
+# Subtest: bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+ok 23 - bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+  ---
+  duration_ms: 10667.510584
+  type: 'test'
+  ...
+# Subtest: a partial override replaces only its keys and keeps the rest of the selected bundled language
+ok 24 - a partial override replaces only its keys and keeps the rest of the selected bundled language
+  ---
+  duration_ms: 1937.548417
+  type: 'test'
+  ...
+# Subtest: empty translations and equivalent tag casing select the same bundled catalog
+ok 25 - empty translations and equivalent tag casing select the same bundled catalog
+  ---
+  duration_ms: 6010.429917
+  type: 'test'
+  ...
+# Subtest: rejected overrides keep the bundled message and are reported apart from English fallback gaps
+ok 26 - rejected overrides keep the bundled message and are reported apart from English fallback gaps
+  ---
+  duration_ms: 313.190125
+  type: 'test'
+  ...
+# Subtest: an unbundled tag with only unusable translations falls back to English UI and language metadata
+ok 27 - an unbundled tag with only unusable translations falls back to English UI and language metadata
+  ---
+  duration_ms: 311.346333
+  type: 'test'
+  ...
+# Subtest: coverage reports the final resolved catalog with the English source of each gap
+ok 28 - coverage reports the final resolved catalog with the English source of each gap
+  ---
+  duration_ms: 1.41225
+  type: 'test'
+  ...
+# Subtest: a document override never mutates the reusable bundled catalog
+ok 29 - a document override never mutates the reusable bundled catalog
+  ---
+  duration_ms: 0.349416
+  type: 'test'
+  ...
+# Subtest: validate and deliver receipts carry locale warnings as structured diagnostics without failing
+ok 30 - validate and deliver receipts carry locale warnings as structured diagnostics without failing
+  ---
+  duration_ms: 2733.150625
+  type: 'test'
+  ...
+# Subtest: the manifest enrolls exactly the bundled catalogs, and each is complete
+ok 31 - the manifest enrolls exactly the bundled catalogs, and each is complete
+  ---
+  duration_ms: 4.926167
+  type: 'test'
+  ...
+# Subtest: enrolling a catalog is a data-only change and works from an unrelated working directory
+ok 32 - enrolling a catalog is a data-only change and works from an unrelated working directory
+  ---
+  duration_ms: 5255.793833
+  type: 'test'
+  ...
+# Subtest: every Viewer message reference resolves through the shared catalog
+ok 33 - every Viewer message reference resolves through the shared catalog
+  ---
+  duration_ms: 1.519375
+  type: 'test'
+  ...
+# Subtest: every supported catalog is complete and preserves interpolation variables
+ok 34 - every supported catalog is complete and preserves interpolation variables
+  ---
+  duration_ms: 4.947
+  type: 'test'
+  ...
+# Subtest: the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+ok 35 - the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+  ---
+  duration_ms: 0.396333
+  type: 'test'
+  ...
+# Subtest: the checked-in fr example catalog validates reusable translations and discloses historical gaps
+ok 36 - the checked-in fr example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.730958
+  type: 'test'
+  ...
+# Subtest: fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 37 - fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 323.612708
+  type: 'test'
+  ...
+# Subtest: the checked-in pt example catalog validates reusable translations and discloses historical gaps
+ok 38 - the checked-in pt example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.855292
+  type: 'test'
+  ...
+# Subtest: pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 39 - pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 323.358708
+  type: 'test'
+  ...
+# Subtest: the checked-in ja example catalog validates reusable translations and discloses historical gaps
+ok 40 - the checked-in ja example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.663417
+  type: 'test'
+  ...
+# Subtest: ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 41 - ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 385.668917
+  type: 'test'
+  ...
+# Subtest: the checked-in de example catalog validates reusable translations and discloses historical gaps
+ok 42 - the checked-in de example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.658083
+  type: 'test'
+  ...
+# Subtest: de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 43 - de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 326.049833
+  type: 'test'
+  ...
+# Subtest: the checked-in it example catalog validates reusable translations and discloses historical gaps
+ok 44 - the checked-in it example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.694833
+  type: 'test'
+  ...
+# Subtest: it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 45 - it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 438.9485
+  type: 'test'
+  ...
+# Subtest: the checked-in ru example catalog validates reusable translations and discloses historical gaps
+ok 46 - the checked-in ru example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.80875
+  type: 'test'
+  ...
+# Subtest: ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 47 - ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 440.447625
+  type: 'test'
+  ...
+# Subtest: runtime labels stay localized after composition
+ok 48 - runtime labels stay localized after composition
+  ---
+  duration_ms: 0.132875
+  type: 'test'
+  ...
+# Subtest: Share Card and export failures use catalog messages instead of fixed English
+ok 49 - Share Card and export failures use catalog messages instead of fixed English
+  ---
+  duration_ms: 1.571292
+  type: 'test'
+  ...
+# Subtest: Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+ok 50 - Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+  ---
+  duration_ms: 0.239416
+  type: 'test'
+  ...
+# Subtest: all five renderers inherit one resolved-only Route Share Card Export item
+ok 51 - all five renderers inherit one resolved-only Route Share Card Export item
+  ---
+  duration_ms: 1484.62225
+  type: 'test'
+  ...
+# Subtest: Route Share Card menu lifecycle excludes hidden state from keyboard navigation
+ok 52 - Route Share Card menu lifecycle excludes hidden state from keyboard navigation
+  ---
+  duration_ms: 405.67075
+  type: 'test'
+  ...
+# Subtest: Route Share Card snapshots copy exact resolved node and relationship identity without rerouting
+ok 53 - Route Share Card snapshots copy exact resolved node and relationship identity without rerouting
+  ---
+  duration_ms: 306.151916
+  type: 'test'
+  ...
+# Subtest: Route Share Card snapshot fails closed when the resolved DOM becomes stale or conflicting
+ok 54 - Route Share Card snapshot fails closed when the resolved DOM becomes stale or conflicting
+  ---
+  duration_ms: 357.51675
+  type: 'test'
+  ...
+# Subtest: Route variant decorates only a finite canonical clone with dedicated static attributes
+ok 55 - Route variant decorates only a finite canonical clone with dedicated static attributes
+  ---
+  duration_ms: 476.635916
+  type: 'test'
+  ...
+# Subtest: clone-only Route styling retains context and distinguishes start, middle, and end without motion
+ok 56 - clone-only Route styling retains context and distinguishes start, middle, and end without motion
+  ---
+  duration_ms: 294.658333
+  type: 'test'
+  ...
+# Subtest: Route Share Card reuses one 1200x630 variant seam and publishes a truthful receipt
+ok 57 - Route Share Card reuses one 1200x630 variant seam and publishes a truthful receipt
+  ---
+  duration_ms: 299.29475
+  type: 'test'
+  ...
+# Subtest: skill and READMEs describe the optional Export variant and show one real card without changing the hero
+ok 58 - skill and READMEs describe the optional Export variant and show one real card without changing the hero
+  ---
+  duration_ms: 1.969625
+  type: 'test'
+  ...
+1..58
+# tests 388
+# suites 0
+# pass 388
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 79152.393208

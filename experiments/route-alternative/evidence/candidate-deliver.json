@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "0683ead1-e0e8-4ea0-bb1a-a4366217b830",
+  "ok": true,
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/tushaokun/.codex/worktrees/lab-route-alternative/archify/experiments/route-alternative/input.architecture.json",
+  "output": "/Users/tushaokun/.codex/worktrees/lab-route-alternative/archify/experiments/route-alternative/candidate.html",
+  "specification": {
+    "sha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+    "bytes": 4734
+  },
+  "artifact": {
+    "sha256": "3b6ec2c7ed322ed284291072e13b580551b7aa5a29ec4efbc64c16f1ddad34f1",
+    "bytes": 885664
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "engineeringProfile": "deployment-ownership",
+    "errors": 0,
+    "warnings": 0
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T05:43:49.895Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

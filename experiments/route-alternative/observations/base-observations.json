@@ -1,0 +1,101 @@
+{
+  "kind": "original browser observations",
+  "observedAt": "2026-10-26T06:17:23.933Z",
+  "baseCommit": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+  "identity": {
+    "base.html": {
+      "bytes": 883018,
+      "sha256": "3fa981dad4c929f30d40ffb2f77c21f029e6d4723c06b6f1945742f42c0fe1d1"
+    },
+    "input.architecture.json": {
+      "bytes": 4734,
+      "sha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+    }
+  },
+  "observation": {
+    "hash": "#route=gateway~events",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "routeText": "\n        \n          \n            Path\n            API Gateway to Event Bus\n          \n          \n            Find target\n            Copy link\n            Clear\n          \n        \n        API Gateway→API Pods / AZ-a→Event Bus\n        \n          ←\n          \n            ▶\n            Journey\n          \n          →\n          Overview\n        \n        3 nodes · 2 steps · shortest path\n      ",
+    "buttons": [
+      {
+        "label": "Find a reachable route destination",
+        "text": "Find target",
+        "visible": false
+      },
+      {
+        "label": "Copy link to traced route",
+        "text": "Copy link",
+        "visible": true
+      },
+      {
+        "label": "Clear route probe",
+        "text": "Clear",
+        "visible": true
+      },
+      {
+        "label": "Route position 1 of 3: API Gateway",
+        "text": "API Gateway",
+        "visible": true
+      },
+      {
+        "label": "Route position 2 of 3: API Pods / AZ-a",
+        "text": "API Pods / AZ-a",
+        "visible": true
+      },
+      {
+        "label": "Route position 3 of 3: Event Bus",
+        "text": "Event Bus",
+        "visible": true
+      },
+      {
+        "label": "Previous route position",
+        "text": "←",
+        "visible": true
+      },
+      {
+        "label": "Play route journey",
+        "text": "▶\n            Journey",
+        "visible": true
+      },
+      {
+        "label": "Next route position",
+        "text": "→",
+        "visible": true
+      },
+      {
+        "label": "Show complete route overview",
+        "text": "Overview",
+        "visible": true
+      }
+    ],
+    "routeMarks": [
+      {
+        "tag": "g",
+        "class": "route-probe-overlay",
+        "from": null,
+        "to": null,
+        "key": null,
+        "id": null
+      },
+      {
+        "tag": "path",
+        "class": "route-probe-flow",
+        "from": null,
+        "to": null,
+        "key": null,
+        "id": null
+      },
+      {
+        "tag": "path",
+        "class": "route-probe-flow",
+        "from": null,
+        "to": null,
+        "key": null,
+        "id": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "kind": "original browser observations",
+  "observedAt": "2026-10-26T06:24:27.189Z",
+  "identity": {
+    "candidate.html": {
+      "bytes": 885664,
+      "sha256": "3b6ec2c7ed322ed284291072e13b580551b7aa5a29ec4efbc64c16f1ddad34f1"
+    },
+    "base.html": {
+      "bytes": 883018,
+      "sha256": "3fa981dad4c929f30d40ffb2f77c21f029e6d4723c06b6f1945742f42c0fe1d1"
+    },
+    "input.architecture.json": {
+      "bytes": 4734,
+      "sha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+    }
+  },
+  "first": {
+    "hash": "#route=gateway~events",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "theme": "dark",
+    "preset": "blueprint",
+    "routeText": "\n        \n          \n            Path\n            API Gateway to Event Bus\n          \n          \n            Find target\n            Another same-hop route\n            Copy link\n            Clear\n          \n        \n        API Gateway→API Pods / AZ-a→Event Bus\n        \n          ←\n          \n            ▶\n            Journey\n          \n          →\n          Overview\n        \n        3 nodes · 2 steps · shortest path\n      ",
+    "buttons": [
+      {
+        "label": null,
+        "text": "Another same-hop route",
+        "focused": false
+      },
+      {
+        "label": "Copy link to traced route",
+        "text": "Copy link",
+        "focused": false
+      },
+      {
+        "label": "Clear route probe",
+        "text": "Clear",
+        "focused": false
+      },
+      {
+        "label": "Route position 1 of 3: API Gateway",
+        "text": "API Gateway",
+        "focused": false
+      },
+      {
+        "label": "Route position 2 of 3: API Pods / AZ-a",
+        "text": "API Pods / AZ-a",
+        "focused": false
+      },
+      {
+        "label": "Route position 3 of 3: Event Bus",
+        "text": "Event Bus",
+        "focused": false
+      },
+      {
+        "label": "Previous route position",
+        "text": "←",
+        "focused": false
+      },
+      {
+        "label": "Play route journey",
+        "text": "▶\n            Journey",
+        "focused": false
+      },
+      {
+        "label": "Next route position",
+        "text": "→",
+        "focused": false
+      },
+      {
+        "label": "Show complete route overview",
+        "text": "Overview",
+        "focused": false
+      }
+    ],
+    "flows": [
+      "M 558 330 L 586 330 Q 594 330 594 322 L 594 234 Q 594 226 602 226 L 630 226",
+      "M 698 195 L 698 178 Q 698 170 706 170 L 1095 170 Q 1103 170 1103 178 L 1103 300"
+    ]
+  },
+  "alternate": {
+    "hash": "#route=gateway~events&routeAlternative=1",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "theme": "dark",
+    "preset": "blueprint",
+    "routeText": "\n        \n          \n            Path\n            API Gateway to Event Bus\n          \n          \n            Find target\n            Back to first route\n            Copy link\n            Clear\n          \n        \n        API Gateway→API Pods / AZ-b→Event Bus\n        \n          ←\n          \n            ▶\n            Journey\n          \n          →\n          Overview\n        \n        3 nodes · 2 steps · another shortest path\n      ",
+    "buttons": [
+      {
+        "label": null,
+        "text": "Back to first route",
+        "focused": true
+      },
+      {
+        "label": "Copy link to traced route",
+        "text": "Copy link",
+        "focused": false
+      },
+      {
+        "label": "Clear route probe",
+        "text": "Clear",
+        "focused": false
+      },
+      {
+        "label": "Route position 1 of 3: API Gateway",
+        "text": "API Gateway",
+        "focused": false
+      },
+      {
+        "label": "Route position 2 of 3: API Pods / AZ-b",
+        "text": "API Pods / AZ-b",
+        "focused": false
+      },
+      {
+        "label": "Route position 3 of 3: Event Bus",
+        "text": "Event Bus",
+        "focused": false
+      },
+      {
+        "label": "Previous route position",
+        "text": "←",
+        "focused": false
+      },
+      {
+        "label": "Play route journey",
+        "text": "▶\n            Journey",
+        "focused": false
+      },
+      {
+        "label": "Next route position",
+        "text": "→",
+        "focused": false
+      },
+      {
+        "label": "Show complete route overview",
+        "text": "Overview",
+        "focused": false
+      }
+    ],
+    "flows": [
+      "M 558 330 L 586 330 Q 594 330 594 338 L 594 428 Q 594 436 602 436 L 630 436",
+      "M 698 405 L 698 388 Q 698 380 706 380 L 1095 380 Q 1103 380 1103 372 L 1103 360"
+    ]
+  }
+}

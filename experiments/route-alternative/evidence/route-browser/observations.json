@@ -1,0 +1,5851 @@
+[
+  {
+    "scenario": "architecture-initial",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "workflow-initial",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "sequence-initial",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "dataflow-initial",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "lifecycle-initial",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "source",
+    "active": "source",
+    "result": null,
+    "panel": "source",
+    "hidden": false,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Next, pick the end. Only nodes you can reach will light up.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "target",
+    "active": "target",
+    "result": null,
+    "panel": "target",
+    "hidden": false,
+    "hash": "",
+    "nodes": [
+      "users"
+    ],
+    "candidates": [
+      "cdn",
+      "lb",
+      "api",
+      "cache",
+      "db",
+      "s3",
+      "queue",
+      "worker"
+    ],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "8 reachable nodes are highlighted. Click one.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "same-node",
+    "active": "target",
+    "result": null,
+    "panel": "error",
+    "hidden": false,
+    "hash": "",
+    "nodes": [
+      "users"
+    ],
+    "candidates": [
+      "cdn",
+      "lb",
+      "api",
+      "cache",
+      "db",
+      "s3",
+      "queue",
+      "worker"
+    ],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Pick two different nodes.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "unreachable",
+    "active": "target",
+    "result": null,
+    "panel": "error",
+    "hidden": false,
+    "hash": "",
+    "nodes": [
+      "users"
+    ],
+    "candidates": [
+      "cdn",
+      "lb",
+      "api",
+      "cache",
+      "db",
+      "s3",
+      "queue",
+      "worker"
+    ],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Auth Provider cannot be reached from Users along the arrows. Pick a highlighted node.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "result",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "focus-seeded",
+    "active": "target",
+    "result": null,
+    "panel": "target",
+    "hidden": false,
+    "hash": "#focus=api",
+    "nodes": [
+      "api"
+    ],
+    "candidates": [
+      "cache",
+      "db",
+      "queue",
+      "worker"
+    ],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "4 reachable nodes are highlighted. Click one.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "multi-focus-source",
+    "active": "source",
+    "result": null,
+    "panel": "source",
+    "hidden": false,
+    "hash": "#focus=api",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Next, pick the end. Only nodes you can reach will light up.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "embed-hash",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#route=users~db",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "embed-focus",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#focus=web&reach=downstream",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": "web",
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "graph-order",
+    "active": "result",
+    "result": {
+      "source": "a",
+      "target": "d",
+      "nodes": [
+        "a",
+        "b",
+        "d"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=a~d",
+    "nodes": [
+      "a",
+      "b",
+      "d"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "ab",
+        "from": "a",
+        "to": "b",
+        "step": "0"
+      },
+      {
+        "key": "bd",
+        "from": "b",
+        "to": "d",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "a",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "b",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "d",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "geometry",
+    "shape": {
+      "count": 3,
+      "transform": "translate(3 4)",
+      "d": "M0 0 L10 10",
+      "points": "0,0 10,10",
+      "steps": [
+        "0",
+        "0",
+        "1"
+      ],
+      "normalized": true,
+      "stripped": true,
+      "original": "M0 0 L10 10",
+      "beforeNode": true
+    },
+    "snapshot": {
+      "source": {
+        "id": "a",
+        "label": "A"
+      },
+      "target": {
+        "id": "d",
+        "label": "D"
+      },
+      "nodeIds": [
+        "a",
+        "b",
+        "d"
+      ],
+      "hops": 2,
+      "edges": [
+        {
+          "key": "ab",
+          "id": "first",
+          "from": "a",
+          "to": "b",
+          "label": ""
+        },
+        {
+          "key": "bd",
+          "id": "",
+          "from": "b",
+          "to": "d",
+          "label": ""
+        }
+      ]
+    }
+  },
+  {
+    "scenario": "parallel-alternative",
+    "active": "result",
+    "result": {
+      "source": "a",
+      "target": "d",
+      "nodes": [
+        "a",
+        "b",
+        "d"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=a~d&routeAlternative=1",
+    "nodes": [
+      "a",
+      "b",
+      "d"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "parallel",
+        "from": "a",
+        "to": "b",
+        "step": "0"
+      },
+      {
+        "key": "bd",
+        "from": "b",
+        "to": "d",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "a",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "b",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "d",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · another shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "parallel-first",
+    "active": "result",
+    "result": {
+      "source": "a",
+      "target": "d",
+      "nodes": [
+        "a",
+        "b",
+        "d"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=a~d",
+    "nodes": [
+      "a",
+      "b",
+      "d"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "ab",
+        "from": "a",
+        "to": "b",
+        "step": "0"
+      },
+      {
+        "key": "bd",
+        "from": "b",
+        "to": "d",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "a",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "b",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "d",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "unique-shortest-with-fragment-and-cycle",
+    "active": "result",
+    "result": {
+      "source": "a",
+      "target": "d",
+      "nodes": [
+        "a",
+        "b",
+        "d"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=a~d",
+    "nodes": [
+      "a",
+      "b",
+      "d"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "ab",
+        "from": "a",
+        "to": "b",
+        "step": "0"
+      },
+      {
+        "key": "bd",
+        "from": "b",
+        "to": "d",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "a",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "b",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "d",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "reordered-tie",
+    "active": "result",
+    "result": {
+      "source": "a",
+      "target": "d",
+      "nodes": [
+        "a",
+        "c",
+        "d"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=a~d",
+    "nodes": [
+      "a",
+      "c",
+      "d"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "ac",
+        "from": "a",
+        "to": "c",
+        "step": "0"
+      },
+      {
+        "key": "cd",
+        "from": "c",
+        "to": "d",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "a",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "c",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "d",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "directed-unreachable",
+    "active": "target",
+    "result": null,
+    "panel": "error",
+    "hidden": false,
+    "hash": "#route=a~d",
+    "nodes": [
+      "d"
+    ],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "A cannot be reached from D along the arrows. Pick a highlighted node.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "snapshot-duplicate-node",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-detached-edge",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-missing-key",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-duplicate-key",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-inconsistent-fragment",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-multiple-drawable",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-zero-drawable",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "snapshot-different-drawable",
+    "result": true,
+    "snapshot": null
+  },
+  {
+    "scenario": "no-geometry",
+    "active": "result",
+    "result": {
+      "source": "a",
+      "target": "b",
+      "nodes": [
+        "a",
+        "b"
+      ],
+      "hops": 1,
+      "journey": 1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=a~b",
+    "nodes": [
+      "a",
+      "b"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "ab",
+        "from": "a",
+        "to": "b",
+        "step": "0"
+      }
+    ],
+    "journey": [
+      {
+        "id": "a",
+        "state": "past"
+      },
+      {
+        "id": "b",
+        "state": "current"
+      }
+    ],
+    "currentEdges": [
+      "ab"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "a",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "b",
+        "tab": 0,
+        "current": "step"
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 2 · Inspecting · B",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "empty-graph",
+    "active": "source",
+    "result": null,
+    "panel": "source",
+    "hidden": false,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Next, pick the end. Only nodes you can reach will light up.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "production-first",
+    "active": "result",
+    "result": {
+      "source": "gateway",
+      "target": "events",
+      "nodes": [
+        "gateway",
+        "api_a",
+        "events"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=gateway~events",
+    "nodes": [
+      "gateway",
+      "api_a",
+      "events"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "2",
+        "from": "gateway",
+        "to": "api_a",
+        "step": "0"
+      },
+      {
+        "key": "6",
+        "from": "api_a",
+        "to": "events",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "gateway",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "api_a",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "events",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "production-other",
+    "active": "result",
+    "result": {
+      "source": "gateway",
+      "target": "events",
+      "nodes": [
+        "gateway",
+        "api_b",
+        "events"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=gateway~events&routeAlternative=1",
+    "nodes": [
+      "gateway",
+      "api_b",
+      "events"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "3",
+        "from": "gateway",
+        "to": "api_b",
+        "step": "0"
+      },
+      {
+        "key": "7",
+        "from": "api_b",
+        "to": "events",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "gateway",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "api_b",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "events",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · another shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "production-restored-other",
+    "active": "result",
+    "result": {
+      "source": "gateway",
+      "target": "events",
+      "nodes": [
+        "gateway",
+        "api_b",
+        "events"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=gateway~events&routeAlternative=1",
+    "nodes": [
+      "gateway",
+      "api_b",
+      "events"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "3",
+        "from": "gateway",
+        "to": "api_b",
+        "step": "0"
+      },
+      {
+        "key": "7",
+        "from": "api_b",
+        "to": "events",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "gateway",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "api_b",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "events",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · another shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "production-return-first",
+    "active": "result",
+    "result": {
+      "source": "gateway",
+      "target": "events",
+      "nodes": [
+        "gateway",
+        "api_a",
+        "events"
+      ],
+      "hops": 2,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=gateway~events",
+    "nodes": [
+      "gateway",
+      "api_a",
+      "events"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "2",
+        "from": "gateway",
+        "to": "api_a",
+        "step": "0"
+      },
+      {
+        "key": "6",
+        "from": "api_a",
+        "to": "events",
+        "step": "1"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "gateway",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "api_a",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "events",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "3 nodes · 2 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "production-cleared",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "missing-alternative-falls-back",
+    "active": "result",
+    "result": {
+      "source": "gateway",
+      "target": "api_a",
+      "nodes": [
+        "gateway",
+        "api_a"
+      ],
+      "hops": 1,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=gateway~api_a&routeAlternative=1",
+    "nodes": [
+      "gateway",
+      "api_a"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "2",
+        "from": "gateway",
+        "to": "api_a",
+        "step": "0"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "gateway",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "api_a",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "2 nodes · 1 step · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "journey-position",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "current"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "0"
+    ],
+    "overlays": 1,
+    "pulses": 1,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 5 · Inspecting · CloudFront",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "journey-next",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 2,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "past"
+      },
+      {
+        "id": "lb",
+        "state": "current"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "2"
+    ],
+    "overlays": 1,
+    "pulses": 1,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 3 of 5 · Inspecting · Load Balancer",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "journey-prev",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "current"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "0"
+    ],
+    "overlays": 1,
+    "pulses": 1,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 5 · Inspecting · CloudFront",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "overview",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "real-play-step",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 1,
+      "playing": true
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "current"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "0"
+    ],
+    "overlays": 1,
+    "pulses": 1,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "true"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 5 · Playing · CloudFront",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "escape-paused",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "current"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "0"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 5 · Inspecting · CloudFront",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "escape-overview",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "escape-cleared",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "natural-completion",
+    "active": "result",
+    "result": {
+      "source": "api",
+      "target": "db",
+      "nodes": [
+        "api",
+        "db"
+      ],
+      "hops": 1,
+      "journey": 1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=api~db",
+    "nodes": [
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "0"
+      }
+    ],
+    "journey": [
+      {
+        "id": "api",
+        "state": "past"
+      },
+      {
+        "id": "db",
+        "state": "current"
+      }
+    ],
+    "currentEdges": [
+      "6"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": 0,
+        "current": "step"
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 2 · Complete · PostgreSQL",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "replay",
+    "active": "result",
+    "result": {
+      "source": "api",
+      "target": "db",
+      "nodes": [
+        "api",
+        "db"
+      ],
+      "hops": 1,
+      "journey": 0,
+      "playing": true
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=api~db",
+    "nodes": [
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "0"
+      }
+    ],
+    "journey": [
+      {
+        "id": "api",
+        "state": "current"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "api",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "true"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 1 of 2 · Playing · API Server",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "native-space-position",
+    "active": "result",
+    "result": {
+      "source": "api",
+      "target": "db",
+      "nodes": [
+        "api",
+        "db"
+      ],
+      "hops": 1,
+      "journey": 1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=api~db",
+    "nodes": [
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "0"
+      }
+    ],
+    "journey": [
+      {
+        "id": "api",
+        "state": "past"
+      },
+      {
+        "id": "db",
+        "state": "current"
+      }
+    ],
+    "currentEdges": [
+      "6"
+    ],
+    "overlays": 1,
+    "pulses": 1,
+    "chips": [
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": 0,
+        "current": "step"
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 2 of 2 · Inspecting · PostgreSQL",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "clock-fixture",
+    "cancelled": [
+      {
+        "action": "overview",
+        "before": {
+          "source": "users",
+          "target": "db",
+          "nodes": [
+            "users",
+            "cdn",
+            "lb",
+            "api",
+            "db"
+          ],
+          "hops": 4,
+          "journey": -1,
+          "playing": false
+        },
+        "after": {
+          "source": "users",
+          "target": "db",
+          "nodes": [
+            "users",
+            "cdn",
+            "lb",
+            "api",
+            "db"
+          ],
+          "hops": 4,
+          "journey": -1,
+          "playing": false
+        }
+      },
+      {
+        "action": "manual",
+        "before": {
+          "source": "users",
+          "target": "db",
+          "nodes": [
+            "users",
+            "cdn",
+            "lb",
+            "api",
+            "db"
+          ],
+          "hops": 4,
+          "journey": 2,
+          "playing": false
+        },
+        "after": {
+          "source": "users",
+          "target": "db",
+          "nodes": [
+            "users",
+            "cdn",
+            "lb",
+            "api",
+            "db"
+          ],
+          "hops": 4,
+          "journey": 2,
+          "playing": false
+        }
+      }
+    ],
+    "started": true,
+    "paused": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 0,
+      "playing": false
+    },
+    "advanced": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 1,
+      "playing": true
+    },
+    "resumed": 700,
+    "fresh": 1100,
+    "afterClear": null,
+    "stale": null,
+    "replacement": {
+      "source": "users",
+      "target": "cache",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "cache"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "afterReplacement": {
+      "source": "users",
+      "target": "cache",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "cache"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    }
+  },
+  {
+    "scenario": "pulse-fixture",
+    "pulses": {
+      "oldGone": true,
+      "retained": true,
+      "afterClear": 0
+    },
+    "fallback": {
+      "before": true,
+      "after": false,
+      "result": {
+        "source": "users",
+        "target": "db",
+        "nodes": [
+          "users",
+          "cdn",
+          "lb",
+          "api",
+          "db"
+        ],
+        "hops": 4,
+        "journey": 1,
+        "playing": false
+      }
+    }
+  },
+  {
+    "scenario": "real-animation-complete",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 2,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "past"
+      },
+      {
+        "id": "lb",
+        "state": "current"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "2"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 3 of 5 · Inspecting · Load Balancer",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "owner-replacement",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 3,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "past"
+      },
+      {
+        "id": "lb",
+        "state": "past"
+      },
+      {
+        "id": "api",
+        "state": "current"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "4"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 4 of 5 · Inspecting · API Server",
+    "focus": null,
+    "owner": "story",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "owner-released",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 3,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "past"
+      },
+      {
+        "id": "lb",
+        "state": "past"
+      },
+      {
+        "id": "api",
+        "state": "current"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "4"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 4 of 5 · Inspecting · API Server",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "finder-result",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "focus-takeover",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#focus=api",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": "api",
+    "owner": "focus",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "lens-takeover",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#lens=backend",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "lens",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "camera-pause",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 0,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "current"
+      },
+      {
+        "id": "cdn",
+        "state": "future"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 1 of 5 · Inspecting · Users",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "guide-pause",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 0,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "current"
+      },
+      {
+        "id": "cdn",
+        "state": "future"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 1 of 5 · Inspecting · Users",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "still-pause",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 0,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "current"
+      },
+      {
+        "id": "cdn",
+        "state": "future"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 1 of 5 · Inspecting · Users",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "print-fixture-pause",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 0,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "current"
+      },
+      {
+        "id": "cdn",
+        "state": "future"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": false,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 1 of 5 · Inspecting · Users",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "hidden-fixture-pause",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 0,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "current"
+      },
+      {
+        "id": "cdn",
+        "state": "future"
+      },
+      {
+        "id": "lb",
+        "state": "future"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 1 of 5 · Inspecting · Users",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "clear-preserved",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#route=users~db",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "clear-reset",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "initial-hash",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "#route=users",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "#route=unknown~db",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=unknown~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "#route=users~db~api",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db~api",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "hash-same",
+    "active": "target",
+    "result": null,
+    "panel": "error",
+    "hidden": false,
+    "hash": "#route=users~users",
+    "nodes": [
+      "users"
+    ],
+    "candidates": [
+      "cdn",
+      "lb",
+      "api",
+      "cache",
+      "db",
+      "s3",
+      "queue",
+      "worker"
+    ],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Pick two different nodes.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "hash-unreachable",
+    "active": "target",
+    "result": null,
+    "panel": "error",
+    "hidden": false,
+    "hash": "#route=db~users",
+    "nodes": [
+      "db"
+    ],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Users cannot be reached from PostgreSQL along the arrows. Pick a highlighted node.",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "hash-empty",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#route=",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "hash-missing",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "#unrelated=yes",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "copy-success",
+    "value": true,
+    "commands": 0,
+    "correct": true,
+    "fields": 0,
+    "text": "Copied",
+    "aria": "Traced route link copied"
+  },
+  {
+    "scenario": "copy-reject",
+    "value": true,
+    "commands": 1,
+    "correct": true,
+    "fields": 0,
+    "text": "Copied",
+    "aria": "Traced route link copied"
+  },
+  {
+    "scenario": "copy-absent",
+    "value": true,
+    "commands": 1,
+    "correct": true,
+    "fields": 0,
+    "text": "Copied",
+    "aria": "Traced route link copied"
+  },
+  {
+    "scenario": "copy-failure",
+    "value": false,
+    "commands": 1,
+    "correct": true,
+    "fields": 0,
+    "text": "Copy failed",
+    "aria": "Could not copy traced route link"
+  },
+  {
+    "scenario": "copy-throw",
+    "value": false,
+    "commands": 1,
+    "correct": true,
+    "fields": 0,
+    "text": "Copy failed",
+    "aria": "Could not copy traced route link"
+  },
+  {
+    "scenario": "feedback-after-clear",
+    "active": null,
+    "result": null,
+    "panel": "idle",
+    "hidden": true,
+    "hash": "",
+    "nodes": [],
+    "candidates": [],
+    "edges": [],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 0,
+    "pulses": 0,
+    "chips": [],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "Click a start, then an end. Paths follow the arrows.",
+    "focus": null,
+    "owner": "",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "docking-fixture",
+    "sides": [
+      "bottom",
+      "top",
+      "top"
+    ],
+    "noSize": "top",
+    "scheduled": [
+      120,
+      560
+    ],
+    "hidden": null
+  },
+  {
+    "scenario": "viewport-720",
+    "width": 720,
+    "dock": "top",
+    "hidden": false
+  },
+  {
+    "scenario": "viewport-390",
+    "width": 390,
+    "dock": "top",
+    "hidden": false
+  },
+  {
+    "scenario": "viewport-1440",
+    "width": 1440,
+    "dock": "top",
+    "hidden": false
+  },
+  {
+    "scenario": "dark--1",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "dark-2",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 2,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "past"
+      },
+      {
+        "id": "lb",
+        "state": "current"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "2"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 3 of 5 · Inspecting · Load Balancer",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "light--1",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": -1,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [],
+    "currentEdges": [],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": 0,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": true,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": true,
+        "pressed": null
+      }
+    ],
+    "status": "5 nodes · 4 steps · shortest path",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  },
+  {
+    "scenario": "light-2",
+    "active": "result",
+    "result": {
+      "source": "users",
+      "target": "db",
+      "nodes": [
+        "users",
+        "cdn",
+        "lb",
+        "api",
+        "db"
+      ],
+      "hops": 4,
+      "journey": 2,
+      "playing": false
+    },
+    "panel": "result",
+    "hidden": false,
+    "hash": "#route=users~db",
+    "nodes": [
+      "users",
+      "cdn",
+      "lb",
+      "api",
+      "db"
+    ],
+    "candidates": [],
+    "edges": [
+      {
+        "key": "0",
+        "from": "users",
+        "to": "cdn",
+        "step": "0"
+      },
+      {
+        "key": "2",
+        "from": "cdn",
+        "to": "lb",
+        "step": "1"
+      },
+      {
+        "key": "4",
+        "from": "lb",
+        "to": "api",
+        "step": "2"
+      },
+      {
+        "key": "6",
+        "from": "api",
+        "to": "db",
+        "step": "3"
+      }
+    ],
+    "journey": [
+      {
+        "id": "users",
+        "state": "past"
+      },
+      {
+        "id": "cdn",
+        "state": "past"
+      },
+      {
+        "id": "lb",
+        "state": "current"
+      },
+      {
+        "id": "api",
+        "state": "future"
+      },
+      {
+        "id": "db",
+        "state": "future"
+      }
+    ],
+    "currentEdges": [
+      "2"
+    ],
+    "overlays": 1,
+    "pulses": 0,
+    "chips": [
+      {
+        "id": "users",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "cdn",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "lb",
+        "tab": 0,
+        "current": "step"
+      },
+      {
+        "id": "api",
+        "tab": -1,
+        "current": null
+      },
+      {
+        "id": "db",
+        "tab": -1,
+        "current": null
+      }
+    ],
+    "controls": [
+      {
+        "id": "route-journey-prev",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-play",
+        "disabled": true,
+        "pressed": "false"
+      },
+      {
+        "id": "route-journey-next",
+        "disabled": false,
+        "pressed": null
+      },
+      {
+        "id": "route-journey-overview",
+        "disabled": false,
+        "pressed": null
+      }
+    ],
+    "status": "Step 3 of 5 · Inspecting · Load Balancer",
+    "focus": null,
+    "owner": "route",
+    "errors": [],
+    "external": []
+  }
+]

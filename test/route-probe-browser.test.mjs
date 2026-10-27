@@ -33,6 +33,9 @@ test('Route Probe preserves directed paths, Journey and export contracts', {
     execFileSync(process.execPath, [path.join(skillRoot, `renderers/${mode}/render-${mode}.mjs`),
       path.join(skillRoot, 'examples', example), files[mode]]);
   }
+  files.production = path.join(scratch, 'production.html');
+  execFileSync(process.execPath, [path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'),
+    path.join(skillRoot, 'examples/production-deployment.architecture.json'), files.production]);
   const trace = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples', cases.architecture), 'utf8'));
   trace.meta.animation = 'trace';
   const traceInput = path.join(scratch, 'trace.json');
@@ -160,6 +163,30 @@ test('Route Probe preserves directed paths, Journey and export contracts', {
     assert.deepEqual(shape, { count: 3, transform: 'translate(3 4)', d: 'M0 0 L10 10', points: '0,0 10,10', steps: ['0', '0', '1'], normalized: true, stripped: true, original: 'M0 0 L10 10', beforeNode: true });
     const valid = await run(`(()=>{const p=Archify.routeProbe,s=p.exportSnapshot();s.nodeIds.length=0;s.edges[0].key='mutated';s.source.label='mutated';return p.exportSnapshot();})()`);
     assert.deepEqual(valid.nodeIds, ['a', 'b', 'd']); assert.equal(valid.edges[0].key, 'ab'); assert.equal(valid.source.label, 'A'); records.push({ scenario: 'geometry', shape, snapshot: valid });
+    // Distinct parallel keys are a different route even with the same nodes.
+    await run(`Archify.routeProbe.selectJourneyIndex(1);document.getElementById('route-probe-alternative').focus()`);
+    await key('Enter', 'Enter', 13);
+    s = await snapshot('parallel-alternative');
+    assert.deepEqual(s.result.nodes, ['a', 'b', 'd']);
+    assert.deepEqual(s.edges.map(e => e.key), ['parallel', 'bd']);
+    assert.equal(s.result.journey, -1); assert.equal(s.result.playing, false); assert.equal(s.pulses, 0);
+    assert.equal(await run('document.activeElement.id'), 'route-probe-alternative');
+    assert.deepEqual(await run('Archify.routeProbe.exportSnapshot().edges.map(e=>e.key)'), ['parallel', 'bd']);
+    await key(' ', 'Space', 32);
+    assert.deepEqual((await snapshot('parallel-first')).edges.map(e => e.key), ['ab', 'bd']);
+    // A repeated fragment of one stable relationship is not a new route.
+    // The only remaining alternatives are longer or cyclic and must stay hidden.
+    await run(`(()=>{routeGraph();const svg=document.querySelector('.diagram-container > svg');
+      ['parallel','cd'].forEach(k=>svg.querySelector('[data-edge-key="'+k+'"]').remove());
+      const fragment=document.createElementNS(svg.namespaceURI,'text');
+      ['from','to','key'].forEach(k=>fragment.setAttribute('data-edge-'+k,({from:'a',to:'b',key:'ab'})[k]));svg.appendChild(fragment);
+      const longer=document.createElementNS(svg.namespaceURI,'path');longer.setAttribute('data-edge-from','c');longer.setAttribute('data-edge-to','b');longer.setAttribute('data-edge-key','cb');longer.setAttribute('d','M0 0 L10 10');svg.appendChild(longer);})()`);
+    await route('a', 'd');
+    assert.equal(await run('document.getElementById("route-probe-alternative").hidden'), true);
+    assert.deepEqual((await snapshot('unique-shortest-with-fragment-and-cycle')).result.nodes, ['a', 'b', 'd']);
+    await run(`Archify.routeProbe.begin({source:'solo'})`);
+    assert.equal(await run(`Archify.routeProbe.choose('a')`), false);
+    assert.equal(await run('document.getElementById("route-probe-alternative").hidden'), true);
     await run(`(()=>{routeGraph();const svg=document.querySelector('.diagram-container > svg');svg.insertBefore(svg.querySelector('[data-edge-key="ac"]'),svg.firstChild);})()`); await route('a', 'd');
     assert.deepEqual((await snapshot('reordered-tie')).result.nodes, ['a', 'c', 'd']);
     await run(`Archify.routeProbe.begin({source:'d'})`); assert.equal(await run(`Archify.routeProbe.choose('a')`), false);
@@ -182,6 +209,47 @@ test('Route Probe preserves directed paths, Journey and export contracts', {
     await run('Archify.routeProbe.selectJourneyIndex(1)'); assert.equal((await snapshot('no-geometry')).pulses, 0);
     await run(`Archify.routeProbe.clear();document.querySelector('.diagram-container > svg').innerHTML='';Archify.routeProbe.begin({focusNode:true})`);
     assert.deepEqual(await run('Archify.routeProbe.finderContext().allowedIds'), []); assert.equal(await run(`Archify.routeProbe.choose('missing')`), false); await snapshot('empty-graph');
+  });
+
+  await t.test('same-hop alternative retains exact route, native controls, links and cleanup', async () => {
+    await load('production'); await route('gateway', 'events');
+    const first = await snapshot('production-first');
+    assert.deepEqual(first.result.nodes, ['gateway', 'api_a', 'events']);
+    assert.equal(first.hash, '#route=gateway~events');
+    assert.equal(await run('document.getElementById("route-probe-alternative").hidden'), false);
+    await run('Archify.motionGovernor.resume();Archify.routeProbe.playJourney()');
+    assert.equal(await run('Archify.routeProbe.isJourneyPlaying()'), true);
+    await click('#route-probe-alternative');
+    const other = await snapshot('production-other');
+    assert.deepEqual(other.result.nodes, ['gateway', 'api_b', 'events']);
+    assert.equal(other.result.hops, first.result.hops);
+    assert.equal(other.result.journey, -1); assert.equal(other.result.playing, false); assert.equal(other.pulses, 0);
+    assert.equal(other.hash, '#route=gateway~events&routeAlternative=1');
+    assert.equal(await run('document.activeElement.id'), 'route-probe-alternative');
+    const exact = await run('Archify.routeProbe.exportSnapshot()');
+    assert.deepEqual(exact.edges.map(e=>[e.from,e.to,e.label]), [['gateway','api_b','VPC route'],['api_b','events','']]);
+    const copied = await run(`(async()=>{const saved=Object.getOwnPropertyDescriptor(navigator,'clipboard');let value;
+      Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:text=>{value=text;return Promise.resolve();}}});
+      try {return {ok:await Archify.routeProbe.copyLink(),value};}finally{if(saved)Object.defineProperty(navigator,'clipboard',saved);else delete navigator.clipboard;}})()`);
+    assert.equal(copied.ok, true); assert.ok(copied.value.endsWith('#route=gateway~events&routeAlternative=1'));
+    await load(); // Force a new document before restoring a cold hash URL.
+    await load('production', { suffix: '#route=gateway~events&routeAlternative=1' });
+    assert.deepEqual((await snapshot('production-restored-other')).result.nodes, ['gateway', 'api_b', 'events']);
+    assert.deepEqual(await run('Archify.routeProbe.exportSnapshot().edges.map(e=>e.key)'), exact.edges.map(e=>e.key));
+    await click('#route-probe-alternative');
+    assert.deepEqual((await snapshot('production-return-first')).result.nodes, first.result.nodes);
+    assert.equal(await run('location.hash'), '#route=gateway~events');
+    await click('#route-probe-alternative');
+    await run(`Archify.routeProbe.begin({source:'gateway'});Archify.routeProbe.choose('api_a')`);
+    assert.equal(await run('document.getElementById("route-probe-alternative").hidden'), true);
+    assert.equal(await run('location.hash'), '#route=gateway~api_a');
+    await click('#route-probe-clear');
+    assert.equal(await run('document.getElementById("route-probe-alternative").hidden'), true);
+    assert.equal((await snapshot('production-cleared')).active, null);
+    await load(); // Force a new document before restoring a cold hash URL.
+    await load('production', { suffix: '#route=gateway~api_a&routeAlternative=1' });
+    assert.deepEqual((await snapshot('missing-alternative-falls-back')).result.nodes, ['gateway', 'api_a']);
+    assert.equal(await run('document.getElementById("route-probe-alternative").hidden'), true);
   });
 
   await t.test('native Journey controls, finite playback, pause and layered Escape preserve path state', async () => {

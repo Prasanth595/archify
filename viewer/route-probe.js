@@ -15,6 +15,7 @@
       var status = document.getElementById('route-probe-status');
       var findBtn = document.getElementById('route-probe-find');
       var copyBtn = document.getElementById('route-probe-copy');
+      var alternativeBtn = document.getElementById('route-probe-alternative');
       var clearBtn = document.getElementById('route-probe-clear');
       var journeyControls = document.getElementById('route-journey-controls');
       var journeyPrevBtn = document.getElementById('route-journey-prev');
@@ -29,6 +30,8 @@
       var endId = null;
       var activeNodeIds = [];
       var activeEdges = [];
+      var routeCandidates = [];
+      var alternativeIndex = 0;
       var journeyIndex = -1;
       var journeyPlaying = false;
       var journeyComplete = false;
@@ -242,6 +245,9 @@
         endId = null;
         activeNodeIds = [];
         activeEdges = [];
+        routeCandidates = [];
+        alternativeIndex = 0;
+        alternativeBtn.hidden = true;
         cleanSvgState();
         panel.hidden = true;
         panel.setAttribute('data-state', 'idle');
@@ -304,7 +310,7 @@
         }
         return distances;
       }
-      function shortestDirectedPath(source, target) {
+      function shortestDirectedPath(source, target, excludedEdge) {
         if (source === target) return null;
         var outgoing = outgoingByNode();
         var previous = Object.create(null);
@@ -313,6 +319,11 @@
         for (var cursor = 0; cursor < queue.length && !Object.prototype.hasOwnProperty.call(previous, target); cursor += 1) {
           var links = outgoing[queue[cursor]] || [];
           links.some(function (link) {
+            // A relationship may have more than one DOM fragment. Skip its whole
+            // stable key, while distinct parallel keys remain different choices.
+            if (excludedEdge && (link.edge === excludedEdge ||
+                (excludedEdge.getAttribute('data-edge-key') &&
+                 link.edge.getAttribute('data-edge-key') === excludedEdge.getAttribute('data-edge-key')))) return false;
             if (Object.prototype.hasOwnProperty.call(previous, link.to)) return false;
             previous[link.to] = { from: queue[cursor], edge: link.edge };
             queue.push(link.to);
@@ -331,6 +342,25 @@
           current = step.from;
         }
         return { nodes: nodeIds, edges: routeEdges };
+      }
+      function anotherShortestPath(result) {
+        // Any different route omits at least one relationship from this shortest
+        // route. Each ordinary BFS is finite; retain only the first same-hop
+        // witness, without enumerating or counting all possible routes.
+        for (var index = 0; index < result.edges.length; index += 1) {
+          var candidate = shortestDirectedPath(result.nodes[0], result.nodes[result.nodes.length - 1], result.edges[index]);
+          if (candidate && candidate.edges.length === result.edges.length) return candidate;
+        }
+        return null;
+      }
+      function routeHashValue() {
+        return encodeURIComponent(startId) + '~' + encodeURIComponent(endId) +
+          (alternativeIndex === 1 ? '&routeAlternative=1' : '');
+      }
+      function switchAlternative() {
+        if (mode !== 'result' || routeCandidates.length !== 2) return;
+        alternativeIndex = alternativeIndex === 0 ? 1 : 0;
+        showResult(routeCandidates[alternativeIndex]);
       }
       function traceGeometry(shape, step) {
         var clone = shape.cloneNode(false);
@@ -386,7 +416,7 @@
           !Archify.motionGovernor.isPaused();
       }
       function routeOverviewStatus() {
-        return viewerText('viewer.route.overview.status', {
+        return viewerText(alternativeIndex === 1 ? 'viewer.route.alternative.status' : 'viewer.route.overview.status', {
           nodes: viewerCount('viewer.route.overview.node', activeNodeIds.length),
           hops: viewerCount('viewer.route.overview.hop', activeEdges.length)
         });
@@ -752,10 +782,12 @@
         });
         findBtn.hidden = true;
         copyBtn.hidden = false;
+        alternativeBtn.hidden = routeCandidates.length !== 2;
+        alternativeBtn.textContent = viewerText(alternativeIndex === 1 ? 'viewer.route.alternative.first' : 'viewer.route.alternative.other');
         setTrigger(true);
         if (Archify.exportMenu && typeof Archify.exportMenu.syncRouteShare === 'function') Archify.exportMenu.syncRouteShare();
         if (options.updateUrl !== false) {
-          replaceRouteHash(encodeURIComponent(startId) + '~' + encodeURIComponent(endId));
+          replaceRouteHash(routeHashValue());
         }
         showJourneyOverview({ reveal: false });
         if (Archify.view && typeof Archify.view.reveal === 'function') {
@@ -785,6 +817,9 @@
           });
           return false;
         }
+        var alternative = anotherShortestPath(result);
+        routeCandidates = alternative ? [result, alternative] : [result];
+        alternativeIndex = 0;
         return showResult(result, options);
       }
       function begin(options) {
@@ -887,7 +922,7 @@
       }
       function copyLink() {
         if (mode !== 'result') return Promise.resolve(false);
-        var value = readerLink('route=' + encodeURIComponent(startId) + '~' + encodeURIComponent(endId));
+        var value = readerLink('route=' + routeHashValue());
         return (value === null ? Promise.resolve(false) : copyReaderText(value)).then(function (copied) {
           copyBtn.textContent = viewerText(copied ? 'viewer.common.copied' : 'viewer.common.copyFailed');
           copyBtn.setAttribute('aria-label', viewerText(copied ? 'viewer.route.copy.success' : 'viewer.route.copy.failed'));
@@ -921,7 +956,10 @@
           var byId = nodesById();
           if (!byId[parts[0]] || !byId[parts[1]]) return;
           begin({ source: parts[0], focusNode: false });
-          choose(parts[1], { updateUrl: false });
+          if (choose(parts[1], { updateUrl: false }) && params.get('routeAlternative') === '1' && routeCandidates.length === 2) {
+            alternativeIndex = 1;
+            showResult(routeCandidates[1], { updateUrl: false });
+          }
         } catch (_) {}
       }
       function escapeRoute(options) {
@@ -949,6 +987,7 @@
       findBtn.addEventListener('click', openFinder);
       clearBtn.addEventListener('click', function () { clear({ restoreFocus: true }); });
       copyBtn.addEventListener('click', copyLink);
+      alternativeBtn.addEventListener('click', switchAlternative);
       journeyPrevBtn.addEventListener('click', previousJourney);
       journeyPlayBtn.addEventListener('click', toggleJourney);
       journeyNextBtn.addEventListener('click', nextJourney);

@@ -1,0 +1,72 @@
+Repository tests: 1 files, concurrency 2
+TAP version 13
+# Subtest: Route Probe preserves directed paths, Journey and export contracts
+    # Subtest: five modes initialize and trusted endpoint input preserves capture and error recovery
+    ok 1 - five modes initialize and trusted endpoint input preserves capture and error recovery
+      ---
+      duration_ms: 3322.372375
+      type: 'test'
+      ...
+    # Subtest: SVG graph fixtures preserve directed BFS order, parallel edges and strict export snapshots
+    ok 2 - SVG graph fixtures preserve directed BFS order, parallel edges and strict export snapshots
+      ---
+      duration_ms: 356.444583
+      type: 'test'
+      ...
+    # Subtest: same-hop alternative retains exact route, native controls, links and cleanup
+    ok 3 - same-hop alternative retains exact route, native controls, links and cleanup
+      ---
+      duration_ms: 3442.888583
+      type: 'test'
+      ...
+    # Subtest: native Journey controls, finite playback, pause and layered Escape preserve path state
+    ok 4 - native Journey controls, finite playback, pause and layered Escape preserve path state
+      ---
+      duration_ms: 6239.395584
+      type: 'test'
+      ...
+    # Subtest: controlled clocks preserve elapsed dwell, fresh steps, stale generations and pulse cleanup
+    ok 5 - controlled clocks preserve elapsed dwell, fresh steps, stale generations and pulse cleanup
+      ---
+      duration_ms: 1311.78825
+      type: 'test'
+      ...
+    # Subtest: actual Finder, Focus, Lens, Guide and Camera handoffs retain cleanup options
+    ok 6 - actual Finder, Focus, Lens, Guide and Camera handoffs retain cleanup options
+      ---
+      duration_ms: 1378.274917
+      type: 'test'
+      ...
+    # Subtest: hash restoration and controlled clipboard preserve invalid states, query and delayed feedback
+    ok 7 - hash restoration and controlled clipboard preserve invalid states, query and delayed feedback
+      ---
+      duration_ms: 8751.2785
+      type: 'test'
+      ...
+    # Subtest: docking rectangle and timer fixtures preserve top/bottom ties, resize and scroll
+    ok 8 - docking rectangle and timer fixtures preserve top/bottom ties, resize and scroll
+      ---
+      duration_ms: 1466.180041
+      type: 'test'
+      ...
+    # Subtest: theme snapshots, Still rendering and real exports retain authored route semantics
+    ok 9 - theme snapshots, Still rendering and real exports retain authored route semantics
+      ---
+      duration_ms: 1900.054625
+      type: 'test'
+      ...
+    1..9
+ok 1 - Route Probe preserves directed paths, Journey and export contracts
+  ---
+  duration_ms: 30666.559917
+  type: 'test'
+  ...
+1..1
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30728.683709
