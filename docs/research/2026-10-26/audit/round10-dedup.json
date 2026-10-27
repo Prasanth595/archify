@@ -1,0 +1,282 @@
+{
+  "frozenDev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "queries": [
+    {
+      "kind": "issue",
+      "query": "repo:tt-a1i/archify is:open tree passport",
+      "scope": "open",
+      "results": [],
+      "note": null
+    },
+    {
+      "kind": "issue",
+      "query": "repo:tt-a1i/archify is:open \"外部系统\"",
+      "scope": "open",
+      "results": [],
+      "note": null
+    },
+    {
+      "kind": "issue",
+      "query": "repo:tt-a1i/archify is:open \"semantic type\"",
+      "scope": "open",
+      "results": [
+        {
+          "number": 546,
+          "title": "Feature request: icon-first node rendering mode + broader/pinned icon support (no AWS/cloud-provider icons in bundled library)",
+          "url": "https://github.com/tt-a1i/archify/issues/546"
+        },
+        {
+          "number": 1134,
+          "title": "Add Semantic Comparison for Workflow Diagrams",
+          "url": "https://github.com/tt-a1i/archify/issues/1134"
+        },
+        {
+          "number": 149,
+          "title": "New diagram type proposal: cognition — render how a reasoning system routed one question through its own knowledge",
+          "url": "https://github.com/tt-a1i/archify/issues/149"
+        },
+        {
+          "number": 244,
+          "title": "[Bug]: Lifecycle rail appears as a false direct edge during semantic interactions",
+          "url": "https://github.com/tt-a1i/archify/issues/244"
+        }
+      ],
+      "note": null
+    },
+    {
+      "kind": "issue",
+      "query": "repo:tt-a1i/archify is:open tree node type",
+      "scope": "open",
+      "results": [
+        {
+          "number": 1067,
+          "title": "[Bug]: Wrapped CJK text can start a line with closing punctuation (Tree, Timeline, Sequence notes)",
+          "url": "https://github.com/tt-a1i/archify/issues/1067"
+        },
+        {
+          "number": 1000,
+          "title": "[Bug]: Viewer camera clips zoomed content to a narrow height-limited stage",
+          "url": "https://github.com/tt-a1i/archify/issues/1000"
+        },
+        {
+          "number": 937,
+          "title": "[Proposal] Cognition capacity: multi-node cells, variable lane height, and flat subgraphs",
+          "url": "https://github.com/tt-a1i/archify/issues/937"
+        },
+        {
+          "number": 935,
+          "title": "[Scope] Right-to-left locales: scene geometry and Arabic reading order",
+          "url": "https://github.com/tt-a1i/archify/issues/935"
+        },
+        {
+          "number": 250,
+          "title": "workflow: per-lane height / tall lanes for a vertically-stacked group (one container, N stacked stages)",
+          "url": "https://github.com/tt-a1i/archify/issues/250"
+        },
+        {
+          "number": 395,
+          "title": "[Bug]: A non-member component renders inside a boundary frame; showcase and deployment-ownership both pass",
+          "url": "https://github.com/tt-a1i/archify/issues/395"
+        },
+        {
+          "number": 248,
+          "title": "[Bug]: Two anti-parallel labelAt connections render as one line, and delivery passes 9/9",
+          "url": "https://github.com/tt-a1i/archify/issues/248"
+        }
+      ],
+      "note": null
+    },
+    {
+      "kind": "pr",
+      "query": "repo:tt-a1i/archify tree in:title",
+      "scope": "open",
+      "results": [
+        {
+          "number": 854,
+          "title": "test: protect card publisher truncated-tree boundary",
+          "url": "https://github.com/tt-a1i/archify/pull/854"
+        }
+      ],
+      "note": null
+    },
+    {
+      "kind": "pr",
+      "query": "repo:tt-a1i/archify \"passport\" in:title",
+      "scope": "open",
+      "results": [],
+      "note": null
+    },
+    {
+      "kind": "pr",
+      "query": "repo:tt-a1i/archify \"semantic-stage-fidelity\"",
+      "scope": "open",
+      "results": [],
+      "note": null
+    },
+    {
+      "kind": "pr",
+      "query": "repo:tt-a1i/archify tree",
+      "topn": 30,
+      "scope": "open",
+      "results": [
+        {
+          "number": 854,
+          "title": "test: protect card publisher truncated-tree boundary",
+          "url": "https://github.com/tt-a1i/archify/pull/854"
+        },
+        {
+          "number": 1027,
+          "title": "fix(viewer): mobile nav reachability, dock clearance and presentation scroll",
+          "url": "https://github.com/tt-a1i/archify/pull/1027"
+        },
+        {
+          "number": 1066,
+          "title": "feat: add standalone artifact update notice",
+          "url": "https://github.com/tt-a1i/archify/pull/1066"
+        },
+        {
+          "number": 874,
+          "title": "fix(viewer): save exports through Artifact host",
+          "url": "https://github.com/tt-a1i/archify/pull/874"
+        },
+        {
+          "number": 1001,
+          "title": "fix(viewer): camera viewport follows the container, not the narrower SVG box",
+          "url": "https://github.com/tt-a1i/archify/pull/1001"
+        },
+        {
+          "number": 533,
+          "title": "feat(packaging): prepare scoped @tt-a1i/archify CLI package",
+          "url": "https://github.com/tt-a1i/archify/pull/533"
+        },
+        {
+          "number": 1119,
+          "title": "在语义护照中只读展示节点的任务清单（Task checklist）",
+          "url": "https://github.com/tt-a1i/archify/pull/1119"
+        },
+        {
+          "number": 1117,
+          "title": "fix: hide classic grid in SVG exports",
+          "url": "https://github.com/tt-a1i/archify/pull/1117"
+        },
+        {
+          "number": 795,
+          "title": "fix(viewer): declare unavailable relationship queries honestly",
+          "url": "https://github.com/tt-a1i/archify/pull/795"
+        },
+        {
+          "number": 1063,
+          "title": "feat: GitHub Enterprise source links for repository evidence",
+          "url": "https://github.com/tt-a1i/archify/pull/1063"
+        },
+        {
+          "number": 839,
+          "title": "fix(tooling): stop star history publication on remote lookup errors",
+          "url": "https://github.com/tt-a1i/archify/pull/839"
+        },
+        {
+          "number": 1049,
+          "title": "feat(compare): read Architecture snapshots from Git refs",
+          "url": "https://github.com/tt-a1i/archify/pull/1049"
+        },
+        {
+          "number": 825,
+          "title": "fix(dsh): resolve command shims from child environment",
+          "url": "https://github.com/tt-a1i/archify/pull/825"
+        },
+        {
+          "number": 998,
+          "title": "Code analysis Main branch",
+          "url": "https://github.com/tt-a1i/archify/pull/998"
+        },
+        {
+          "number": 1076,
+          "title": "fix(explainer): keep mobile toolbar and Style/Export menus in view",
+          "url": "https://github.com/tt-a1i/archify/pull/1076"
+        },
+        {
+          "number": 1101,
+          "title": "docs(readme): put install before showcase and trim agent-facing detail",
+          "url": "https://github.com/tt-a1i/archify/pull/1101"
+        },
+        {
+          "number": 87,
+          "title": "Add Claude, Grok, Codex, and Pi plugin marketplaces",
+          "url": "https://github.com/tt-a1i/archify/pull/87"
+        },
+        {
+          "number": 923,
+          "title": "fix(sequence): emit the whole ordered adjustment when a note reaches several messages",
+          "url": "https://github.com/tt-a1i/archify/pull/923"
+        },
+        {
+          "number": 1029,
+          "title": "fix(timeline): state sub-second break durations in milliseconds",
+          "url": "https://github.com/tt-a1i/archify/pull/1029"
+        },
+        {
+          "number": 955,
+          "title": "ci: add npmscan dependency security check",
+          "url": "https://github.com/tt-a1i/archify/pull/955"
+        },
+        {
+          "number": 1030,
+          "title": "fix(waterfall): key the incomplete legend only to open bars",
+          "url": "https://github.com/tt-a1i/archify/pull/1030"
+        },
+        {
+          "number": 367,
+          "title": "feat: stable identity map — ownership sidecar, archify locate, drilldown bundles",
+          "url": "https://github.com/tt-a1i/archify/pull/367"
+        },
+        {
+          "number": 1028,
+          "title": "fix(waterfall): scale the timing tolerance to the value magnitude",
+          "url": "https://github.com/tt-a1i/archify/pull/1028"
+        },
+        {
+          "number": 875,
+          "title": "fix(checker): preserve endpoint identity around quadratic curves",
+          "url": "https://github.com/tt-a1i/archify/pull/875"
+        },
+        {
+          "number": 1124,
+          "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+          "url": "https://github.com/tt-a1i/archify/pull/1124"
+        },
+        {
+          "number": 1103,
+          "title": "Add an Atlas view to Code Analysis",
+          "url": "https://github.com/tt-a1i/archify/pull/1103"
+        },
+        {
+          "number": 172,
+          "title": "fix(architecture): prefer straight routes over unnecessary Port Spread doglegs",
+          "url": "https://github.com/tt-a1i/archify/pull/172"
+        },
+        {
+          "number": 1032,
+          "title": "fix(timeline): keep the year on multi-year labels and the header in frame",
+          "url": "https://github.com/tt-a1i/archify/pull/1032"
+        },
+        {
+          "number": 328,
+          "title": "Add archify export svg for a standalone, styled SVG",
+          "url": "https://github.com/tt-a1i/archify/pull/328"
+        },
+        {
+          "number": 482,
+          "title": "feat(workflow): add in-memory renderWorkflow() library entrypoint",
+          "url": "https://github.com/tt-a1i/archify/pull/482"
+        }
+      ],
+      "note": "Top 30 bounded results; not exhaustive."
+    }
+  ],
+  "boundary": "Queries executed earlier this batch through connected GitHub search. No keyword result proves global absence. Existing #221 retains related passport/relationship scope. No issue/PR created or commented.",
+  "existingResearch": "Historical codex/research-lab-20261025 at 60342aa9e40618aeb7c33bdb8d65889fea3a588e and current hub checked; D corrects the same existing PubGrub direction.",
+  "sourceBranchReview": {
+    "codex/semantic-stage-fidelity": "Architecture artifact-kind/model-floor/schema/routing/Finder work; did not supply same Tree renderer fix",
+    "fix/1070-native-treeview-guidance": "Tree contract remains containment-only"
+  }
+}

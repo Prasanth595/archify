@@ -206,6 +206,8 @@ AI assistance：Codex（GPT-6.1-Terra 与 GPT-6.1-Sol 子代理）参与调研�
 研究总目标继续 active。后续仍先核对远程分支与已有研究，按可证实的阅读价值筛选；不合并、发布版本、部署或安装。
 
 
+> 第十批更正：下面第八、九批的 B/C 保留为历史记录。Tree 用来表达依赖声明不符合包含关系合同；此前只核对来源与拓扑的复核不足。当前更正候选和证据见 [D](https://github.com/tt-a1i/archify/tree/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model)。
+
 ## 27 日第八批：解释范围对照，保持原生阅读能力
 
 开始先 fetch/prune 并检查 [309 条远程 head](audit/remote-branches-round8.txt)，当前 dev 为 `d5d979493bba650b3995836afd379cd249f2d0dd`。复核历史 50 项实验和相关 scouts，再进行 [有界 issue/PR 搜索](audit/round8-dedup.json)；#1136 是跨产物一致性提案，与依赖求解失败阅读不同。零关键词命中不证明全仓不存在同义需求。本批只新增一个远程实验分支，没有新 PR；[收尾精确 ref](audit/round8-delivery.json) 验证远端 head 与本地提交一致，dev 在收尾快照中未变。
@@ -261,3 +263,34 @@ C 的两链接在桌面通过真实键盘打开 baz/bar，native 返回的 activ
 [Porcupine / Knossos 补查](scouts/linearizability-reading.md)确认原生 Porcupine 已提供 partition、最长部分顺序、非法候选点、hover 状态与固定选择；同一三操作反例已有 operation-order，未重复制图。Knossos另有16事件、两个未完成操作的完整历史，其 README 对该输入给出 false；这只是固定上游示例，不是本轮运行或绑定的 native 图。记录 pending 与 checker unknown/false 的不同含义和可复现合同，暂缓新的 parser 或同义内容例。
 
 [收尾远端核对](audit/round9-delivery.json)确认实验 head 已推送、工作树干净。用户的仅远程分支规则持续有效；本轮没有新 PR、合并、发布、部署或安装。研究总目标继续 active。
+
+
+## 第十批：先更正模型，再评价阅读价值
+
+本批开始先 fetch/prune，保存 [311 条远程 head](audit/remote-branches-round10.txt)，冻结 dev `d5d979493bba650b3995836afd379cd249f2d0dd`，对照历史50项实验及当前分支。[有界 issue/PR 查询](audit/round10-dedup.json)和相关 remote branch diff 未发现本例同范围修正；宽泛 tree PR 搜索只取30条，不证明全局不存在同义工作。现有 #221 仍负责护照与相邻关系阅读，未新建重复 issue/PR。D 是原 PubGrub 方向的模型更正，继续推进原分支，没有人为再拆一个方向。
+
+[层级角色研究](scouts/hierarchy-role-reading.md)固定 D3-hierarchy v3.1.2 / ISC 与 Cytoscape.js v3.33.1 / MIT 的源码和官方文档，补充领域数据、结构角色与绘制样式的区别。Cytoscape 的 compound containment 不能拿普通依赖入度/出度代替。与历史 component identity、graph exchange、folding 研究排重后，仅保留本例的具体启发，没有引入其依赖或复制实现。
+
+### 更正此前结论
+
+[独立源码诊断](https://github.com/tt-a1i/archify/blob/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model/root-review/tree-source-diagnosis.md)发现两项独立问题。第一，Tree 合同表达包含关系，B/C 即使满足单父树拓扑，也不能用其连线表达依赖声明；此前“现有 native 能承载该解释”的无条件结论撤回，原产物不改写。第二，Tree 主动把配色 tone 写入 Passport.kind，造成包名叶节点显示“外部系统”；这不是 metadata 缺失后的 Viewer fallback。合法包含树也受第二项影响，本批未修复通用 Tree 默认值。仅把 Tree 文案改成包名的方案已否决，因为依赖/包含的模型错误仍然存在。
+
+原远程 [`codex/lab-conflict-explanation@4805f166`](https://github.com/tt-a1i/archify/tree/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model)增加独立 D：已有 Architecture 的有向连接、四个包名、三条分组依赖箭头、显式任意版本约束。foo 的五个候选合并显示，源输入实际包含七项逐版本声明；没有选定或安装版本、运行 solver、补造证明图。共同正文、四个面板、完整测试函数、两份报告、范围表及来源许可引用保持 C 原样，原始 MPL-2.0 文件仍在实验根目录。
+
+D 按现有领域命名合同统一采用 backend/icon:none，再把图例、Passport、Finder 和 Lens 可见类型称为“包名”。raw IR/DOM、SVG 元数据、Lens kind、Story inspect 仍是 backend，明确不称原生 package 类型。只使用现有字段；没有共享 renderer、schema、Viewer、依赖或产品默认修改。
+
+### 实物、失败与验证
+
+[实际复核](https://github.com/tt-a1i/archify/blob/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model/root-review/review.md)保留13张实际页面图片：4张首版、9张末版，均有文件 SHA 和 HTML 身份。首版 Lens 把输入依赖称为“真实流量”，实际检查发现后，仅补两项文档级 Lens 翻译并重新生成；首版 HTML、初稿、失败截图及两组机器记录保留。[独立产物复核](https://github.com/tt-a1i/archify/blob/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model/root-review/independent-source-review.md)确认 native SVG 未变、解压 HTML 仅两条措辞改变。
+
+1440×900 总览能读到四节点和三条带标签箭头；真实键盘第12次 Tab 进入 baz，Escape 返回，再进 bar，二者显示正确源事实。Finder 查找 bar、Lens 选包名分组后显示4节点3关系均实际观察。新页面进入 bar 另保留13次 Tab 的有效状态，过早读取旧回执的一张总览图没有冒充焦点验收。次数只是固定入口路径，不是阅读计时。
+
+390×844 正文与表格无横向溢出，预览如实提示文字过小需打开原生图；但原生图仍横向滚动、baz右侧被裁切、卡片遮挡其他内容。没有移动端、触摸或 AT 验收结论，也没有拿焦点成功代替可读性通过。
+
+最终 D HTML `09ec711ed24370ea330fe614e0541adf6a5ce621d0324cfdfa66c2676100cd96`，541872 bytes：比 C 增加1602，比文字 A 增加388935。模型与几何已变化，不是同输入图性能优化；没有独立读者错误率/计时，暂不推荐扩大共享功能。额外产物体积、滚动和内容同步成本尚未得到收益证据抵消。
+
+首末两个版本各通过三静态 gate 和独立 provenance browser-check，保留相同1条句长 warning；Node 26.12.0/Chrome 非 canonical Node 22 CI。独立包装复核实算13图、12组raw/public收据映射、归档身份和相对链接全部一致。脱敏副本是历史证据，重现须 fresh finalize；完整 staged diff-check 的32项提示属于冻结HTML尾随空白，排除HTML的文本检查通过。未运行完整产品测试或宣称 hosted CI 通过。
+
+![D 实际依赖声明图：四个包名与三条分组箭头](https://raw.githubusercontent.com/tt-a1i/archify/4805f166d0c3078f06e7b309f1594c788b79ee5f/experiments/conflict-explanation/dependency-model/root-review/declarations-overview-light.png)
+
+[收尾远端记录](audit/round10-delivery.json)核对实验精确 head。AI 辅助由 Terra 研究/作者、Sol 独立诊断与复核、root 页面检查及收尾完成；作者最后包装任务因 capacity 不可用，由 root 接手后再独立复核。用户仅远程分支的规则持续有效，没有新建 PR、合并、发布、部署或安装。研究总目标继续 active。
