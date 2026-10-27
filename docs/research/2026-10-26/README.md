@@ -526,3 +526,28 @@ Lifecycle 的 `reviewing` 可达 `completed/blocked/expired`；回到 reviewing 
 采集入口首次用错 CLI 参数导致 exit 2，修正后执行成功；首张 relabel 图仍有加载圈，补采稳定结果且不覆盖原图。[独立源码审计](audit/round19-source-audit.md)核对原件及三个断言，交付审计另校验保存的 UI 记录；二者与根代理的实际图片检查分别记账。本批没有新方向达到独立实施条件，现有实验分支保持原状，目标继续 active。
 
 [独立交付审计](audit/round19-delivery-audit.md)指出 neutral 状态未保存 intent 属性，相关具体值声明已删除，首次发现及复核结论均保留。[最终验证记录](audit/round19-validation.json)明确测试未运行、原生工件未重生成、线上 commit 未知等边界。
+
+## 第二十批：Kconfig 的完整证据阅读实验
+
+开始前刷新并保存了 [314 个远程 head](audit/remote-branches-round20.txt)，dev 仍为 `d5d97949`。本批新增一个隔离实验分支；[推送实验后的 315 个 head](audit/remote-branches-round20-after-experiment.txt)核对到 `codex/lab-kconfig-imply-reading` 的 `6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f`。既有 authored-relationships、Tree、Timeline、ASan 和 DBML 五个实验 head 未变。按用户最新要求只交付远程分支，没有新建 PR。
+
+| 调研线 | 本批决定 |
+| --- | --- |
+| [阅读交接与来源回执](audit/round20-handoff-needs.md) | #921 已有下游工作及未决维护者方案，其他导出/标题问题已有能力或 owner；不重复实现。该笔记“不选新实验”只指这条检索线。 |
+| [Playwright 调查交接](audit/round20-investigation-sharing.md) | 固定官方源码 `ad5210f2`，Apache-2.0。自然 retry-trace 报告已关闭，现行 TraceLink 按选中 run 工作，原生 Trace Viewer/CLI 基线完整；没有取得同案完整报告与 trace，不重建同义 viewer。 |
+| [DBML 普通输入缺口](audit/round20-dbml-gap.md) | 完整官方 127B 样例超出旧实验承诺的子集，除 bare type 外还含 defaults、非键 NOT NULL 等当前属性模型不能表达的事实；不做仅修首个拒绝点的表面支持。旧分支保持原样。 |
+| [Kconfig imply](audit/round20-kconfig-reading.md) | 完整官方 Kimply 可用固定原生求值验证。选做既有 Explainer 的离线内容实验，不引入解析器、配置 schema 或运行时图。定向 [issue/PR/分支去重](audit/round20-kconfig-dedup.md)未发现同题 owner；Figment config-origins 是不同语义。 |
+
+### 一个已推送的可审查原型
+
+[实验分支与复现说明](https://github.com/tt-a1i/archify/tree/6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f/experiments/kconfig-imply-reading)保留完整 145 行 Kimply、Kconfiglib 原始 ISC 许可、程序调用原生 formatter 得到的三份说明、完整配置及 26 个符号的实测 JSON。上游固定为 `061e71f7d78cb057762d88de088055361863deff`；只运行了一次 Python 3.15.0 观察，exit 0、stderr 和 Kconfig warnings 均为空，没有加载用户配置或赋值。这里没有运行交互式 menuconfig、上游全套测试或 Zephyr 构建。
+
+同一 implier 为 y，两目标的 weak reverse dependency 都是 y；UNMET_DIRECT_1 的直接依赖和最终值都是 n，MET_DIRECT_1 则都是 y。三者 visibility 均为 n，说明“菜单中不可见”不能代替最终值。生成配置未写出 UNMET 的条目，其 n 来自原生说明和求值 JSON。基线页面与候选页面包含相同的完整证据，候选仅增加对照表和解释；[独立源码审计](audit/round20-kconfig-native-audit.md)及[交付审查](audit/round20-kconfig-delivery-review.md)确认八份内嵌源码范围和七个完整证据面板保持一致。
+
+可查看[桌面实际产物](https://github.com/tt-a1i/archify/blob/6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f/experiments/kconfig-imply-reading/evidence/browser/final-comparison-desktop.png)、[窄屏对照](https://github.com/tt-a1i/archify/blob/6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f/experiments/kconfig-imply-reading/evidence/browser/final-comparison-mobile-table.png)及[来源卡片](https://github.com/tt-a1i/archify/blob/6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f/experiments/kconfig-imply-reading/evidence/browser/final-source-desktop.png)。Ego 实际观察覆盖 1440×900、390×844 CSS 视口，来源悬停及 Escape；目标页断网仿真下，两页仍有完整内容和来源预览，未记录 HTTP 资源请求，最后已恢复网络仿真状态。浏览器记录支持基线/候选分别经 52/74 次 Tab 到达页脚；这是该浏览器中的有界观察，不是所有控制或平台验收。
+
+**自动交付门禁仍失败，实验不作功能验收。** 最终两页 validate/deliver/check 均通过，browser-check 分别报 28/52 个 keyboard-traversal 错误，finalize exit 1。390px 视口下工具栏使文档宽度达到 401px，表格长词也有生硬换行。没有改共享代码、抑制诊断或删减原始证据来取得通过，更没有测得人类阅读速度或理解率收益。原型的用途是审查“固定原生证据如何离线交接”，不能冒称比原生 TUI 更高效。
+
+两次有界内容修订、最初的 HTML/输入/截图及所有失败回执均保留。首次浏览器脚本只重定向 stdout，而 Ego 将控制台记录写到 stderr，导致六份 JSONL 为空；已保留空文件和先前截图，再用双流采集记录最终检查，未将后来结果归给空日志。旧研究空间消失后按已有用户授权重建为 28。大 JSON 用确定性 gzip 保存，路径脱敏有原始/公开/存储哈希映射；[独立打包审计](audit/round20-kconfig-package-audit.md)核对 131 项清单、102 项映射与最终 HTML。审计后仅修 README 末尾空行并更新相应清单摘要，root 再次核对全部 131 项。
+
+[最终范围记录](audit/round20-validation.json)区分原生执行、内容静态检查、自动浏览器失败、实际 UI 观察及未做的人类实验。270 个 producer 文件字节未变，临时借用的依赖链接已移除；作者脚本/文档 diff 检查通过，原生文本和生成 HTML 中原有的混合缩进按原样保留。没有安装、合并、发布或新增 PR，持续目标保持 active。

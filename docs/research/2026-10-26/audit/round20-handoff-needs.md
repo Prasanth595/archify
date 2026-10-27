@@ -1,0 +1,19 @@
+# 第20批：阅读交接去重与需求筛选
+
+2026-10-28，只读。**没有找到同时满足自然报告、当前 dev 仍存在、无已有负责人覆盖的两个可实施问题；本条阅读交接检索线不选新实验。** 不把存在 issue 或旧产物当现行缺陷证明。
+
+## 查询与历史基线
+
+读取历史 `origin/codex/research-lab-20261025@60342aa9` 的 [graph-exchange](https://github.com/tt-a1i/archify/blob/60342aa9e40618aeb7c33bdb8d65889fea3a588e/docs/research/2026-10-25/scouts/graph-exchange-smalltools.md)、[annotation-reading-round7](https://github.com/tt-a1i/archify/blob/60342aa9e40618aeb7c33bdb8d65889fea3a588e/docs/research/2026-10-25/scouts/annotation-reading-round7.md)、[reading-handoff](https://github.com/tt-a1i/archify/blob/60342aa9e40618aeb7c33bdb8d65889fea3a588e/docs/research/2026-10-25/scouts/reading-handoff-audit.md) 和当前 [followup](https://github.com/tt-a1i/archify/blob/de2e81fbf5a4ff81fe633c9f88c36885b6634cff/docs/research/2026-10-26/scouts/reading-handoff-followup.md)。结论包括离线内容/外链分开、关系身份不能被交换格式无损假定、source-keyboard 已有实验、relation-return 在原例中并未比既有 Incoming 一击返回证明优势。
+
+GitHub connector 对 `repo:tt-a1i/archify is:open` 搜索 `"share"`、`"permalink"`、`"offline"`、`"deep link"`、`"export" "viewer"`、`"reachability"`、`"route"`，每项 top 50；其中 permalink 无结果，deep link 命中 #918/#221。针对 #1111/#1024/#469/#733/#241/#921/#179 和 `"sidecars" "finalize"` 等追加 open PR 搜索、查 issue 正文和评论。最多50及关键词索引均不能证明所有等价问题不存在。314 refs 的 `/tmp/archify-round20-remote-heads.txt` 搜索 share/export/permalink/reach/route/snapshot/offline/handoff/annotation，仅匹配 `codex/concise-diagram-handoff@7567b654` 与 `codex/preserve-route-port-widths@1dc9dbec`；另按 finalize/sidecar/provenance/out-dir 发现 `codex/finalize-delivery-gate@01e914ac`、`codex/finalize-review-followup@1c1965b6`、`codex/fix-sidecar-failure-1071@16a1ef10`。名称检索不是语义穷举。
+
+## 最接近但不选择
+
+- [#921](https://github.com/tt-a1i/archify/issues/921) 是自然交付困惑：二次 `finalize --out-dir` 后 HTML 和 delivery receipt 原位改写，旧的邻接 finalize/browser 证据绑定先前哈希，接手者可能误以为它对应新页面。当前 dev [`d5d97949` 文档](https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/archify/references/delivery-contract.md#L590-L599) 已明确旧证据属于原字节、out-dir 是证据而非 HTML 归档；[SKILL](https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/archify/SKILL.md#L92-L95) 同样解释。维护者 [明确说明](https://github.com/tt-a1i/archify/issues/921#issuecomment-6207466812) 文档已合并但自动标记/最新邻接摘要尚未接受或实现；[BlueboxC](https://github.com/tt-a1i/archify/issues/921#issuecomment-6186974080) 已有具体下游修复与浏览器回归。当前源码的 receipt 路径依据 outDir，静态阅读支持交接边界仍需注意，但没有复跑证明某次旧侧车仍在；已有明确下游工作及上游未决方案，故不新建竞争实现。小下一步仅比较固定当前 dev 文档和该 fork 回执的语义及 maintainer decision，不覆盖/删除旧证据。
+- [#469](https://github.com/tt-a1i/archify/issues/469) 是真实文档交付：SVG 依系统主题使 GitHub 页面主题不匹配。现行 [export.js](https://github.com/tt-a1i/archify/blob/d5d979493bba650b3995836afd379cd249f2d0dd/viewer/export.js#L1214-L1228) 已提供 auto/light/dark 三个 SVG 选项；issue [评论](https://github.com/tt-a1i/archify/issues/469#issuecomment-5788930552) 有 `outlier27-cell` 认领 Viewer 范围。不能把旧 auto 行为称为当前没有 pinned 选项；本轮未浏览器验证。
+- [#1024](https://github.com/tt-a1i/archify/issues/1024) 初报是合成标题，非自然生产事件。Unicode 保留已合入，当前 `diagramFilename` 仍从 `document.title` 去英文后缀；[维护者同意标题政策并邀请贡献](https://github.com/tt-a1i/archify/issues/1024#issuecomment-6430166114)，`BlueboxC` 已给出五语言浏览器下载与 fallback 下游实现。剩余范围已有明确 owner/候选，不能重做。
+- [#1111](https://github.com/tt-a1i/archify/issues/1111) 的 Viewer/PNG 与 SVG classic 网格不一致有真实 Chrome 截图，但已有 [#1117](https://github.com/tt-a1i/archify/pull/1117) 修复；[#733](https://github.com/tt-a1i/archify/issues/733) 的 Claude Artifact 导出已有 [#874](https://github.com/tt-a1i/archify/pull/874)；[#241](https://github.com/tt-a1i/archify/issues/241) 非交互 SVG 已有 #272/#328 且维护者明确不要第三实现；[#179](https://github.com/tt-a1i/archify/issues/179) 全页图已有 #180。当前 PR 状态不等于合入或验收，但足以避免抢占。
+- #221 的关系探索 Passport 遮挡有既有具体范围与 owner，不能包装成新通用 return/history；#816 有 #795 实现候选，不能重新设计 graph-unavailable。依任务要求没有复查 #1063/#1128/#1129/#1132、Lens #1027 或 #1112。
+
+没有执行、浏览器验证、修改产品、联系贡献者或创建 PR。此筛选是来源与 ownership 状态，不是对任何候选的独立功能验收。
