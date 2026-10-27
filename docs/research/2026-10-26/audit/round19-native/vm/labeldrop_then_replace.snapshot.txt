@@ -1,0 +1,117 @@
+[p1 "Metric relabel debug - vmui" | space "Archify research 20261026"(24): 1 managed, 0 untracked — p1* "Metric relabel debug - vmui"]
+root
+  container
+    container
+      svg_root
+      container
+        anchor [ref=324, loc=href:/select/0/prometheus/graph/#/, url=https://play.victoriametrics.com/select/0/prometheus/graph/#/]
+          text "Query"
+        anchor [ref=325, loc=href:/select/0/prometheus/graph/#/raw-query, url=https://play.victoriametrics.com/select/0/prometheus/graph/#/raw-query]
+          text "Raw Query"
+        container
+          text "Explore"
+          svg_root
+        container
+          text "Tools"
+          svg_root
+        anchor [ref=341, loc=href:/select/0/prometheus/graph/#/dashboards, url=https://play.victoriametrics.com/select/0/prometheus/graph/#/dashboards]
+          text "Dashboards"
+        container
+          text "Alerting"
+          svg_root
+      container
+        button [ref=326]
+          svg_root
+          text "UTC+00:00"
+        button "settings" [ref=327, loc=css:button[aria-label="settings"]]
+          svg_root
+        button "Shortcut keys" [ref=328, loc=css:button[aria-label="Shortcut keys"]]
+          svg_root
+    container
+      container
+        container
+          text "Config"
+          textbox [ref=329]
+            text "- action: labeldrop"
+            text "regex: "foo.*""
+            text "- target_label: foobar"
+            text "replacement: "abc""
+        container
+          text "A time series"
+          textbox [ref=330, loc=css:textarea[placeholder="up{job=\"job_name\",instance=\"host:port\"}"]]
+            text "m{foo="x",foobc="123",a="b"}"
+        container
+          anchor [ref=331, loc=href:https://docs.victoriametrics.com/victoriametrics/relabeling/, url=https://docs.victoriametrics.com/victoriametrics/relabeling/]
+            button [ref=332]
+              svg_root
+              text "Relabeling Cookbook"
+          anchor [ref=333, loc=href:https://docs.victoriametrics.com/victoriametrics/relabeling/#relabeling-stages, url=https://docs.victoriametrics.com/victoriametrics/relabeling/#relabeling-stages]
+            button [ref=334]
+              svg_root
+              text "Relabeling Stages"
+          button [ref=335]
+            text "Try Example"
+          button [ref=336]
+            svg_root
+            text "Preview"
+      container
+        container
+          text "Original labels:"
+          text "m{a="b", foo="x", foobc="123"}"
+        container
+          container
+            text "Step:"
+            text "1"
+          container
+            text "Relabeling Rule:"
+            text "action: labeldrop regex: foo.*"
+          container
+            text "Input Labels:"
+            container
+              text "m{a="b","
+              text "foo="x""
+              text ","
+              text "foobc="123""
+              text "}"
+          container
+            text "Output labels:"
+            text "m{a="b"}"
+        container
+          container
+            text "Step:"
+            text "2"
+          container
+            text "Relabeling Rule:"
+            text "target_label: foobar replacement: abc"
+          container
+            text "Input Labels:"
+            text "m{a="b"}"
+          container
+            text "Output labels:"
+            container
+              text "m{a="b","
+              text "foobar="abc""
+              text "}"
+        container
+          text "Resulting labels:"
+          text "m{a="b", foobar="abc"}"
+    container
+      anchor [ref=337, loc=href:https://victoriametrics.com/, url=https://victoriametrics.com/]
+        svg_root
+        text "victoriametrics.com"
+      anchor [ref=338, loc=href:https://docs.victoriametrics.com/victoriametrics/metricsql/, url=https://docs.victoriametrics.com/victoriametrics/metricsql/]
+        svg_root
+        text "MetricsQL"
+      anchor [ref=339, url=https://docs.victoriametrics.com/victoriametrics/single-server-victoriametrics/#vmui]
+        svg_root
+        text "Documentation"
+      anchor [ref=340, loc=href:https://github.com/VictoriaMetrics/VictoriaMetrics/issues/new/choose, url=https://github.com/VictoriaMetrics/VictoriaMetrics/issues/new/choose]
+        svg_root
+        text "Create an issue"
+      container
+        text "©"
+        text "2019-2026"
+        text "VictoriaMetrics."
+        container
+          text " Version:"
+          text "v1.155.0-enterprise-cluster"

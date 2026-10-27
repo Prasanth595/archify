@@ -1,0 +1,33 @@
+[
+  {
+    "at": "2026-10-27T20:07:15.177Z",
+    "text": "Original labels:\nfoo{bar=\"baz\"}\nStep:\n1\nRelabeling Rule:\ntarget_label: bar\nreplacement: \"\"\n\nInput Labels:\nfoo{bar=\"baz\"}\nOutput labels:\nfoo{bar=\"\"}\nStep:\n2\nRelabeling Rule:\nremove empty labels\nInput Labels:\nfoo{bar=\"\"}\nOutput labels:\nfoo\nResulting labels:\nfoo",
+    "loading": [
+      "vm-spinner",
+      "half-circle-spinner"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:07:15.388Z",
+    "text": "Original labels:\nfoo{bar=\"baz\"}\nStep:\n1\nRelabeling Rule:\ntarget_label: bar\nreplacement: \"\"\n\nInput Labels:\nfoo{bar=\"baz\"}\nOutput labels:\nfoo{bar=\"\"}\nStep:\n2\nRelabeling Rule:\nremove empty labels\nInput Labels:\nfoo{bar=\"\"}\nOutput labels:\nfoo\nResulting labels:\nfoo",
+    "loading": [
+      "vm-spinner",
+      "half-circle-spinner"
+    ]
+  },
+  {
+    "at": "2026-10-27T20:07:15.591Z",
+    "text": "Original labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nStep:\n1\nRelabeling Rule:\naction: labeldrop\nregex: foo.*\n\nInput Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nOutput labels:\nm{a=\"b\"}\nStep:\n2\nRelabeling Rule:\ntarget_label: foobar\nreplacement: abc\n\nInput Labels:\nm{a=\"b\"}\nOutput labels:\nm{a=\"b\", foobar=\"abc\"}\nResulting labels:\nm{a=\"b\", foobar=\"abc\"}",
+    "loading": []
+  },
+  {
+    "at": "2026-10-27T20:07:15.794Z",
+    "text": "Original labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nStep:\n1\nRelabeling Rule:\naction: labeldrop\nregex: foo.*\n\nInput Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nOutput labels:\nm{a=\"b\"}\nStep:\n2\nRelabeling Rule:\ntarget_label: foobar\nreplacement: abc\n\nInput Labels:\nm{a=\"b\"}\nOutput labels:\nm{a=\"b\", foobar=\"abc\"}\nResulting labels:\nm{a=\"b\", foobar=\"abc\"}",
+    "loading": []
+  },
+  {
+    "at": "2026-10-27T20:07:15.998Z",
+    "text": "Original labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nStep:\n1\nRelabeling Rule:\naction: labeldrop\nregex: foo.*\n\nInput Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nOutput labels:\nm{a=\"b\"}\nStep:\n2\nRelabeling Rule:\ntarget_label: foobar\nreplacement: abc\n\nInput Labels:\nm{a=\"b\"}\nOutput labels:\nm{a=\"b\", foobar=\"abc\"}\nResulting labels:\nm{a=\"b\", foobar=\"abc\"}",
+    "loading": []
+  }
+]

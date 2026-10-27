@@ -1,0 +1,35 @@
+const fs=await import('node:fs/promises');
+const root='/tmp/archify-round19-native/vm';await fs.mkdir(root,{recursive:true});
+const task=await taskSpace(24),page=task.page('p1');
+const cases=JSON.parse(await fs.readFile('/tmp/archify-round19-vm-source/cases.json','utf8')).cases;
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'},{name:'prefers-color-scheme',value:'light'}]});
+await fs.writeFile(root+'/browser-version.json',JSON.stringify(await page.cdp('Browser.getVersion'),null,2)+'\n');
+const records=[];
+const norm=s=>s.replace(/\s/g,'');
+for(const c of cases){
+ await page.fill('loc=css:.vm-relabeling-header-configs textarea',c.rules);
+ await page.fill('loc=css:.vm-relabeling-header__labels textarea',c.input);
+ await page.click('loc=role:button[name="Preview"]',{label:'Preview public test case'});
+ let state;const polls=[];let match=false;
+ for(let i=0;i<60;i++){
+  state=await page.evaluate(()=>({url:location.href,viewport:[innerWidth,innerHeight],scroll:[scrollX,scrollY],inputs:Array.from(document.querySelectorAll('textarea')).map(e=>e.value),steps:Array.from(document.querySelectorAll('.vm-relabeling-steps-item')).map(e=>({text:e.innerText,rows:Array.from(e.querySelectorAll('.vm-relabeling-steps-item__row')).map(r=>r.innerText)})),version:document.body.innerText.match(/Version:\s*(\S+)/)?.[1]??null,bodyText:document.body.innerText}));
+  const steps=state.steps.filter(s=>s.text.startsWith('Step:'));
+  const outs=steps.map(s=>s.rows.find(t=>t.startsWith('Output labels:'))?.slice('Output labels:'.length).trim());
+  match=outs.length===c.expected_steps.length&&outs.every((s,k)=>s&&norm(s)===norm(c.expected_steps[k].out));
+  polls.push({at:new Date().toISOString(),outputs:outs,match});
+  if(match)break;await new Promise(r=>setTimeout(r,200));
+ }
+ await fs.writeFile(root+'/'+c.id+'.polls.json',JSON.stringify(polls,null,2)+'\n');
+ records.push({id:c.id,upstreamExpectedMatched:match,...state});
+ await fs.writeFile(root+'/observations.json',JSON.stringify(records,null,2)+'\n');
+ if(!match)throw new Error('UI results did not match fixed expected outputs: '+c.id);
+ await page.evaluate(async()=>{window.scrollTo(0,0);await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+ await fs.writeFile(root+'/'+c.id+'.snapshot.txt',await page.snapshot({scope:'full_page'}));
+ await page.screenshot({path:root+'/'+c.id+'-top.png'});
+ const geometry=await page.evaluate(()=>({scroll:[scrollX,scrollY],height:document.documentElement.scrollHeight,viewport:[innerWidth,innerHeight],lastResultBottom:document.querySelector('.vm-relabeling-steps-item:last-child').getBoundingClientRect().bottom}));
+ records.at(-1).captureTop=geometry;
+ if(geometry.lastResultBottom>900){await page.mouse.move(1260,700,{label:'Point at result column'});await page.mouse.wheel(0,550,{label:'Read the final labels'});await page.screenshot({path:root+'/'+c.id+'-scrolled.png'});records.at(-1).captureScrolled=await page.evaluate(()=>({scroll:[scrollX,scrollY],viewport:[innerWidth,innerHeight]}));}
+ await fs.writeFile(root+'/observations.json',JSON.stringify(records,null,2)+'\n');
+ console.log(c.id,match,state.version);
+}

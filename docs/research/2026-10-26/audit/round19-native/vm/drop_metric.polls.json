@@ -1,0 +1,25 @@
+[
+  {
+    "at": "2026-10-27T20:05:46.088Z",
+    "outputs": [
+      "m{a=\"b\"}",
+      "m{a=\"b\", foobar=\"abc\"}"
+    ],
+    "match": false
+  },
+  {
+    "at": "2026-10-27T20:05:46.292Z",
+    "outputs": [
+      "m{a=\"b\"}",
+      "m{a=\"b\", foobar=\"abc\"}"
+    ],
+    "match": false
+  },
+  {
+    "at": "2026-10-27T20:05:46.494Z",
+    "outputs": [
+      "{}"
+    ],
+    "match": true
+  }
+]

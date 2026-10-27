@@ -1,0 +1,17 @@
+{
+  "url": "https://play.victoriametrics.com/select/0/prometheus/graph/#/relabeling?config=-+action%3A+labeldrop%0A++regex%3A+%22foo.*%22%0A-+target_label%3A+foobar%0A++replacement%3A+%22abc%22%0A&labels=m%7Bfoo%3D%22x%22%2Cfoobc%3D%22123%22%2Ca%3D%22b%22%7D",
+  "viewport": [
+    1440,
+    900
+  ],
+  "scroll": [
+    0,
+    0
+  ],
+  "inputs": [
+    "- action: labeldrop\n  regex: \"foo.*\"\n- target_label: foobar\n  replacement: \"abc\"\n",
+    "m{foo=\"x\",foobc=\"123\",a=\"b\"}"
+  ],
+  "text": "Original labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nStep:\n1\nRelabeling Rule:\naction: labeldrop\nregex: foo.*\n\nInput Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nOutput labels:\nm{a=\"b\"}\nStep:\n2\nRelabeling Rule:\ntarget_label: foobar\nreplacement: abc\n\nInput Labels:\nm{a=\"b\"}\nOutput labels:\nm{a=\"b\", foobar=\"abc\"}\nResulting labels:\nm{a=\"b\", foobar=\"abc\"}",
+  "version": "v1.155.0-enterprise-cluster"
+}

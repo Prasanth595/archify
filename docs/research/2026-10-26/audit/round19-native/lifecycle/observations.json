@@ -1,0 +1,1189 @@
+[
+  {
+    "name": "focus",
+    "url": "file:///tmp/archify-round19-native/lifecycle/agent-run.lifecycle.html#focus=reviewing",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "rails": 0,
+    "svgStates": [
+      {
+        "focus": "reviewing",
+        "reach": null
+      }
+    ],
+    "nodes": [
+      {
+        "id": "queued",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "planning",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "executing",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "reviewing",
+        "focus": true,
+        "selected": true,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "completed",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "approval",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "failed",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "blocked",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "cancelled",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "expired",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      }
+    ],
+    "edges": [
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      }
+    ],
+    "reachText": "",
+    "zoom": null,
+    "activeElement": "node-reviewing"
+  },
+  {
+    "name": "downstream",
+    "url": "file:///tmp/archify-round19-native/lifecycle/agent-run.lifecycle.html#focus=reviewing&reach=downstream",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "rails": 0,
+    "svgStates": [
+      {
+        "focus": "reviewing",
+        "reach": "downstream"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "queued",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.09"
+      },
+      {
+        "id": "planning",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.09"
+      },
+      {
+        "id": "executing",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.09"
+      },
+      {
+        "id": "reviewing",
+        "focus": true,
+        "selected": true,
+        "reach": true,
+        "depth": "0",
+        "opacity": "1"
+      },
+      {
+        "id": "completed",
+        "focus": true,
+        "selected": false,
+        "reach": true,
+        "depth": "1",
+        "opacity": "1"
+      },
+      {
+        "id": "approval",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.09"
+      },
+      {
+        "id": "failed",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.09"
+      },
+      {
+        "id": "blocked",
+        "focus": true,
+        "selected": false,
+        "reach": true,
+        "depth": "1",
+        "opacity": "1"
+      },
+      {
+        "id": "cancelled",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.09"
+      },
+      {
+        "id": "expired",
+        "focus": false,
+        "selected": false,
+        "reach": true,
+        "depth": "2",
+        "opacity": "1"
+      }
+    ],
+    "edges": [
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "0.09"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": true,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": true,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": true,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": true,
+        "focus": false,
+        "opacity": "1"
+      },
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": true,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.09"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": true,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": true,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": true,
+        "focus": false,
+        "opacity": "1"
+      }
+    ],
+    "reachText": "Downstream · 3 nodes · 4 links · max 2 hops",
+    "zoom": null,
+    "activeElement": "btn-reach-downstream"
+  },
+  {
+    "name": "reach-cleared",
+    "url": "file:///tmp/archify-round19-native/lifecycle/agent-run.lifecycle.html#focus=reviewing",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "rails": 0,
+    "svgStates": [
+      {
+        "focus": "reviewing",
+        "reach": null
+      }
+    ],
+    "nodes": [
+      {
+        "id": "queued",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "planning",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "executing",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "reviewing",
+        "focus": true,
+        "selected": true,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "completed",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "approval",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "failed",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "blocked",
+        "focus": true,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "cancelled",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      },
+      {
+        "id": "expired",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "0.13"
+      }
+    ],
+    "edges": [
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": false,
+        "focus": true,
+        "opacity": "1"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.13"
+      }
+    ],
+    "reachText": "",
+    "zoom": null,
+    "activeElement": "btn-reach-downstream"
+  },
+  {
+    "name": "restored",
+    "url": "file:///tmp/archify-round19-native/lifecycle/agent-run.lifecycle.html",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "rails": 0,
+    "svgStates": [],
+    "nodes": [
+      {
+        "id": "queued",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "planning",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "executing",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "reviewing",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "completed",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "approval",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "failed",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "blocked",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "cancelled",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      },
+      {
+        "id": "expired",
+        "focus": false,
+        "selected": false,
+        "reach": false,
+        "depth": null,
+        "opacity": "1"
+      }
+    ],
+    "edges": [
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "1"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "queued",
+        "to": "planning",
+        "id": "queued-planning",
+        "reach": false,
+        "focus": false,
+        "opacity": "1"
+      },
+      {
+        "from": "planning",
+        "to": "executing",
+        "id": "planning-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "1"
+      },
+      {
+        "from": "executing",
+        "to": "reviewing",
+        "id": "executing-reviewing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "reviewing",
+        "to": "completed",
+        "id": "reviewing-completed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "executing",
+        "to": "approval",
+        "id": "executing-approval",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "approval",
+        "to": "executing",
+        "id": "approval-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "approval",
+        "to": "cancelled",
+        "id": "approval-cancelled",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "executing",
+        "to": "failed",
+        "id": "executing-failed",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "failed",
+        "to": "executing",
+        "id": "failed-executing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "reviewing",
+        "to": "blocked",
+        "id": "reviewing-blocked",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "blocked",
+        "to": "reviewing",
+        "id": "blocked-reviewing",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      },
+      {
+        "from": "blocked",
+        "to": "expired",
+        "id": "blocked-expired",
+        "reach": false,
+        "focus": false,
+        "opacity": "0.2"
+      }
+    ],
+    "reachText": "",
+    "zoom": null,
+    "activeElement": "node-reviewing"
+  }
+]

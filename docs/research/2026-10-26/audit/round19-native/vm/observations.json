@@ -1,0 +1,182 @@
+[
+  {
+    "id": "labeldrop_then_replace",
+    "upstreamExpectedMatched": true,
+    "url": "https://play.victoriametrics.com/select/0/prometheus/graph/#/relabeling?config=-+action%3A+labeldrop%0A++regex%3A+%22foo.*%22%0A-+target_label%3A+foobar%0A++replacement%3A+%22abc%22%0A&labels=m%7Bfoo%3D%22x%22%2Cfoobc%3D%22123%22%2Ca%3D%22b%22%7D",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "inputs": [
+      "- action: labeldrop\n  regex: \"foo.*\"\n- target_label: foobar\n  replacement: \"abc\"\n",
+      "m{foo=\"x\",foobc=\"123\",a=\"b\"}"
+    ],
+    "steps": [
+      {
+        "text": "Original labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}",
+        "rows": [
+          "Original labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}"
+        ]
+      },
+      {
+        "text": "Step:\n1\nRelabeling Rule:\naction: labeldrop\nregex: foo.*\n\nInput Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nOutput labels:\nm{a=\"b\"}",
+        "rows": [
+          "Step:\n1",
+          "Relabeling Rule:\naction: labeldrop\nregex: foo.*\n",
+          "Input Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}",
+          "Output labels:\nm{a=\"b\"}"
+        ]
+      },
+      {
+        "text": "Step:\n2\nRelabeling Rule:\ntarget_label: foobar\nreplacement: abc\n\nInput Labels:\nm{a=\"b\"}\nOutput labels:\nm{a=\"b\", foobar=\"abc\"}",
+        "rows": [
+          "Step:\n2",
+          "Relabeling Rule:\ntarget_label: foobar\nreplacement: abc\n",
+          "Input Labels:\nm{a=\"b\"}",
+          "Output labels:\nm{a=\"b\", foobar=\"abc\"}"
+        ]
+      },
+      {
+        "text": "Resulting labels:\nm{a=\"b\", foobar=\"abc\"}",
+        "rows": [
+          "Resulting labels:\nm{a=\"b\", foobar=\"abc\"}"
+        ]
+      }
+    ],
+    "version": "v1.155.0-enterprise-cluster",
+    "bodyText": "Query\nRaw Query\nExplore\nTools\nDashboards\nAlerting\nUTC+00:00\nConfig\nA time series\nRelabeling Cookbook\nRelabeling Stages\nTry Example\nPreview\nOriginal labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nStep:\n1\nRelabeling Rule:\naction: labeldrop\nregex: foo.*\n\nInput Labels:\nm{a=\"b\", foo=\"x\", foobc=\"123\"}\nOutput labels:\nm{a=\"b\"}\nStep:\n2\nRelabeling Rule:\ntarget_label: foobar\nreplacement: abc\n\nInput Labels:\nm{a=\"b\"}\nOutput labels:\nm{a=\"b\", foobar=\"abc\"}\nResulting labels:\nm{a=\"b\", foobar=\"abc\"}\nvictoriametrics.com\nMetricsQL\nDocumentation\nCreate an issue\n© 2019-2026 VictoriaMetrics. Version: v1.155.0-enterprise-cluster",
+    "captureTop": {
+      "scroll": [
+        0,
+        0
+      ],
+      "height": 900,
+      "viewport": [
+        1440,
+        900
+      ],
+      "lastResultBottom": 781
+    }
+  },
+  {
+    "id": "drop_metric",
+    "upstreamExpectedMatched": true,
+    "url": "https://play.victoriametrics.com/select/0/prometheus/graph/#/relabeling?config=-+action%3A+drop%0A++source_labels%3A+%5Bbar%5D%0A++regex%3A+baz%0A&labels=foo%7Bbar%3D%22baz%22%2Cabc%3D%22def%22%7D",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "inputs": [
+      "- action: drop\n  source_labels: [bar]\n  regex: baz\n",
+      "foo{bar=\"baz\",abc=\"def\"}"
+    ],
+    "steps": [
+      {
+        "text": "Original labels:\nfoo{abc=\"def\", bar=\"baz\"}",
+        "rows": [
+          "Original labels:\nfoo{abc=\"def\", bar=\"baz\"}"
+        ]
+      },
+      {
+        "text": "Step:\n1\nRelabeling Rule:\naction: drop\nsource_labels: [bar]\nregex: baz\n\nInput Labels:\nfoo{abc=\"def\", bar=\"baz\"}\nOutput labels:\n{}",
+        "rows": [
+          "Step:\n1",
+          "Relabeling Rule:\naction: drop\nsource_labels: [bar]\nregex: baz\n",
+          "Input Labels:\nfoo{abc=\"def\", bar=\"baz\"}",
+          "Output labels:\n{}"
+        ]
+      },
+      {
+        "text": "Resulting labels:\n{}",
+        "rows": [
+          "Resulting labels:\n{}"
+        ]
+      }
+    ],
+    "version": "v1.155.0-enterprise-cluster",
+    "bodyText": "Query\nRaw Query\nExplore\nTools\nDashboards\nAlerting\nUTC+00:00\nConfig\nA time series\nRelabeling Cookbook\nRelabeling Stages\nTry Example\nPreview\nOriginal labels:\nfoo{abc=\"def\", bar=\"baz\"}\nStep:\n1\nRelabeling Rule:\naction: drop\nsource_labels: [bar]\nregex: baz\n\nInput Labels:\nfoo{abc=\"def\", bar=\"baz\"}\nOutput labels:\n{}\nResulting labels:\n{}\nvictoriametrics.com\nMetricsQL\nDocumentation\nCreate an issue\n© 2019-2026 VictoriaMetrics. Version: v1.155.0-enterprise-cluster",
+    "captureTop": {
+      "scroll": [
+        0,
+        0
+      ],
+      "height": 900,
+      "viewport": [
+        1440,
+        900
+      ],
+      "lastResultBottom": 664
+    }
+  },
+  {
+    "id": "replace_empty_then_cleanup",
+    "upstreamExpectedMatched": true,
+    "url": "https://play.victoriametrics.com/select/0/prometheus/graph/#/relabeling?config=-+target_label%3A+bar%0A++replacement%3A+%27%27%0A&labels=foo%7Bbar%3D%22baz%22%7D",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "inputs": [
+      "- target_label: bar\n  replacement: ''\n",
+      "foo{bar=\"baz\"}"
+    ],
+    "steps": [
+      {
+        "text": "Original labels:\nfoo{bar=\"baz\"}",
+        "rows": [
+          "Original labels:\nfoo{bar=\"baz\"}"
+        ]
+      },
+      {
+        "text": "Step:\n1\nRelabeling Rule:\ntarget_label: bar\nreplacement: \"\"\n\nInput Labels:\nfoo{bar=\"baz\"}\nOutput labels:\nfoo{bar=\"\"}",
+        "rows": [
+          "Step:\n1",
+          "Relabeling Rule:\ntarget_label: bar\nreplacement: \"\"\n",
+          "Input Labels:\nfoo{bar=\"baz\"}",
+          "Output labels:\nfoo{bar=\"\"}"
+        ]
+      },
+      {
+        "text": "Step:\n2\nRelabeling Rule:\nremove empty labels\nInput Labels:\nfoo{bar=\"\"}\nOutput labels:\nfoo",
+        "rows": [
+          "Step:\n2",
+          "Relabeling Rule:\nremove empty labels",
+          "Input Labels:\nfoo{bar=\"\"}",
+          "Output labels:\nfoo"
+        ]
+      },
+      {
+        "text": "Resulting labels:\nfoo",
+        "rows": [
+          "Resulting labels:\nfoo"
+        ]
+      }
+    ],
+    "version": "v1.155.0-enterprise-cluster",
+    "bodyText": "Query\nRaw Query\nExplore\nTools\nDashboards\nAlerting\nUTC+00:00\nConfig\nA time series\nRelabeling Cookbook\nRelabeling Stages\nTry Example\nPreview\nOriginal labels:\nfoo{bar=\"baz\"}\nStep:\n1\nRelabeling Rule:\ntarget_label: bar\nreplacement: \"\"\n\nInput Labels:\nfoo{bar=\"baz\"}\nOutput labels:\nfoo{bar=\"\"}\nStep:\n2\nRelabeling Rule:\nremove empty labels\nInput Labels:\nfoo{bar=\"\"}\nOutput labels:\nfoo\nResulting labels:\nfoo\nvictoriametrics.com\nMetricsQL\nDocumentation\nCreate an issue\n© 2019-2026 VictoriaMetrics. Version: v1.155.0-enterprise-cluster",
+    "captureTop": {
+      "scroll": [
+        0,
+        0
+      ],
+      "height": 900,
+      "viewport": [
+        1440,
+        900
+      ],
+      "lastResultBottom": 781
+    }
+  }
+]

@@ -507,3 +507,22 @@ root在固定d5 runtime重新生成该输入并完成[实际页面复现](audit/
 这个上游示例与现有 Archify task-flow-tests 不是同输入，不足以宣布旧实验无效；它确实提高了原生基线。后续若比较，应统一事实、未关联步骤和测试声明，并证明具体剩余阅读问题；本批不再制作同义 graph focus 或测试列表。持续目标保持 active，没有新实验方向在本批取得独立实施条件，研究和真实对照证据仍形成可审查交付。
 
 [独立交付审计](audit/round18-delivery-audit.md)核对两组 66/26 项清单、四份回执、相同 SVG、保存的 UI 状态、输入和许可身份，未重跑浏览器或测试；[最终范围记录](audit/round18-validation.json)将首次不匹配截图、公开调试记录变换及后续文档澄清单列。本批给 PR 冻结副本临时借用的两个依赖链接已清理，无安装、合并、产品发布或部署。
+
+## 第十九批：用原生操作筛掉重复实现
+
+上一批交付是已验证进展。本批重新 fetch/prune 并保存 [314 个远程 head](audit/remote-branches-round19.txt)，dev 仍为 `d5d97949`；没有因来源新出现而直接开始实现。全部只更新研究远程分支，不新建 PR。
+
+| 来源或阅读问题 | 本批证据与决定 |
+| --- | --- |
+| [VictoriaMetrics / Prometheus relabel 调试](audit/round19-relabel-reading.md) | 完整原生 UI 已按规则展示标签变化。进一步实际操作三个固定样例，均显示预期的中间和最终状态；不制作同义图版，不自建求值器。 |
+| [SARIF code-flow](audit/round19-sarif-reading.md) | 历史已覆盖同一四步样例。VS Code 的多 threadflow 和不同 result 同行问题是不同的自然报告，当前单 thread 样例不能验证它们；无现行原生对照，不再包装旧内容。 |
+| [Archify 来源链接 #1128/#1129](audit/round19-needs.md) | 两份公开合成复现分别涉及 Markdown 行链接和 annotated tag 身份，作者已与 #1063 协调同一代码范围。记录其报告及所有权，本批不复跑或并行实现。 |
+| [Lifecycle 旧装饰 rail / Reach](audit/round19-lifecycle-reach.md) | 当前 v3 renderer 已无旧背景 rail。实际打开 dev 中现成工件，Downstream 精确匹配四节点（含起点）和四条声明边，不把旧 #244 的表现误称当前缺陷。 |
+
+[原生检查包](audit/round19-native/README.md)保存 10 张实际截图、完整固定输入、源码许可、状态、首次失败及后续澄清。VMUI 显示版本 `v1.155.0-enterprise-cluster`；部署 commit 未知，与固定开源源码 `61916650` 分开。三例分别验证删标签后再添标签、丢弃整个 metric、先置空再清理空标签，原生步骤已直接承载需要解释的区别。这里只比较实际显示结果，没有运行上游测试、采集生产指标或宣称理解效率提升。
+
+Lifecycle 的 `reviewing` 可达 `completed/blocked/expired`；回到 reviewing 的环仍保留。清除 Reach、关闭 Passport 后，焦点返回 reviewing，关系预览仍可能存在；点击标题离开节点后才得到无预览画面。单看 focus/reach 空属性或 group opacity 不足以证明所有视觉状态清除，实际图片和阶段记录均保留。未重新生成 HTML，未验证旧 v1 fixture、导出或所有平台。
+
+采集入口首次用错 CLI 参数导致 exit 2，修正后执行成功；首张 relabel 图仍有加载圈，补采稳定结果且不覆盖原图。[独立源码审计](audit/round19-source-audit.md)核对原件及三个断言，交付审计另校验保存的 UI 记录；二者与根代理的实际图片检查分别记账。本批没有新方向达到独立实施条件，现有实验分支保持原状，目标继续 active。
+
+[独立交付审计](audit/round19-delivery-audit.md)指出 neutral 状态未保存 intent 属性，相关具体值声明已删除，首次发现及复核结论均保留。[最终验证记录](audit/round19-validation.json)明确测试未运行、原生工件未重生成、线上 commit 未知等边界。

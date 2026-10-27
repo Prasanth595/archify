@@ -1,0 +1,33 @@
+{
+  "source_revision": "61916650cafcb6037b5f6947774302ece0fb32e2",
+  "source": "https://github.com/VictoriaMetrics/VictoriaMetrics/blob/61916650cafcb6037b5f6947774302ece0fb32e2/lib/promrelabel/relabel_test.go#L91-L164",
+  "evidence": "Expected DebugStep values asserted by upstream test; not this session's runtime output. Live playground version is independently unknown.",
+  "cases": [
+    {
+      "id": "labeldrop_then_replace",
+      "input": "m{foo=\"x\",foobc=\"123\",a=\"b\"}",
+      "rules": "- action: labeldrop\n  regex: \"foo.*\"\n- target_label: foobar\n  replacement: \"abc\"\n",
+      "expected_steps": [
+        {"rule": "action: labeldrop\nregex: foo.*\n", "in": "m{a=\"b\",foo=\"x\",foobc=\"123\"}", "out": "m{a=\"b\"}"},
+        {"rule": "target_label: foobar\nreplacement: abc\n", "in": "m{a=\"b\"}", "out": "m{a=\"b\",foobar=\"abc\"}"}
+      ]
+    },
+    {
+      "id": "drop_metric",
+      "input": "foo{bar=\"baz\",abc=\"def\"}",
+      "rules": "- action: drop\n  source_labels: [bar]\n  regex: baz\n",
+      "expected_steps": [
+        {"rule": "action: drop\nsource_labels: [bar]\nregex: baz\n", "in": "foo{abc=\"def\",bar=\"baz\"}", "out": "{}"}
+      ]
+    },
+    {
+      "id": "replace_empty_then_cleanup",
+      "input": "foo{bar=\"baz\"}",
+      "rules": "- target_label: bar\n  replacement: ''\n",
+      "expected_steps": [
+        {"rule": "target_label: bar\nreplacement: \"\"\n", "in": "foo{bar=\"baz\"}", "out": "foo{bar=\"\"}"},
+        {"rule": "remove empty labels", "in": "foo{bar=\"\"}", "out": "foo"}
+      ]
+    }
+  ]
+}

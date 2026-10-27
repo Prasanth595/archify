@@ -1,0 +1,5 @@
+focus [ { focus: 'reviewing', reach: null } ] [] []
+downstream [ { focus: 'reviewing', reach: 'downstream' } ] [ 'reviewing', 'completed', 'blocked', 'expired' ] [ 'reviewing>completed', 'reviewing>blocked', 'blocked>reviewing', 'blocked>expired' ]
+reach-cleared [ { focus: 'reviewing', reach: null } ] [] []
+restored [] [] []
+
