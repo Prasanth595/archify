@@ -1,0 +1,27 @@
+{
+  "scope": "Research documentation, preserved native CLI evidence, no product source changes",
+  "jsonParsed": 4,
+  "nativeManifestFilesVerified": 24,
+  "nativeSourceFilesVerified": 49,
+  "remoteHeadsAtStart": 313,
+  "relativeMarkdownLinks": "pass",
+  "portableHarnessBashSyntax": "pass",
+  "fullStagedWhitespaceCheck": {
+    "exit": 2,
+    "stdout": "docs/research/2026-10-26/audit/round15-stack-native/fresh-stdout.txt:18: trailing whitespace.\n+|/  \ndocs/research/2026-10-26/audit/round15-stack-native/historical/probe-stdout.txt:16: trailing whitespace.\n+|/  \ndocs/research/2026-10-26/audit/round15-stack-native/root-replay.stdout:18: trailing whitespace.\n+|/  \n",
+    "stderr": "",
+    "preservedRawOutputPaths": [
+      "docs/research/2026-10-26/audit/round15-stack-native/fresh-stdout.txt",
+      "docs/research/2026-10-26/audit/round15-stack-native/historical/probe-stdout.txt",
+      "docs/research/2026-10-26/audit/round15-stack-native/root-replay.stdout"
+    ]
+  },
+  "excludingThreePreservedRawStdoutWhitespaceCheck": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "productTests": "not run; documentation/evidence scope",
+  "hostedCI": "not claimed",
+  "independentAudit": "round15-delivery-audit.md"
+}

@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-28",
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remoteHeads": 313,
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:open \"erd\" \"kind\"",
+      "type": "issues",
+      "results": [
+        {
+          "number": 666,
+          "title": "Explore Viewer component boundaries with matched AI evaluations and standalone HTML",
+          "url": "https://github.com/tt-a1i/archify/issues/666"
+        },
+        {
+          "number": 1114,
+          "title": "[提案]：Task_Checklist",
+          "url": "https://github.com/tt-a1i/archify/issues/1114"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"erd\" \"kind\"",
+      "type": "PRs",
+      "results": [
+        {
+          "number": 1027,
+          "title": "fix(viewer): mobile nav reachability, dock clearance and presentation scroll",
+          "url": "https://github.com/tt-a1i/archify/pull/1027"
+        },
+        {
+          "number": 1119,
+          "title": "在语义护照中只读展示节点的任务清单（Task checklist）",
+          "url": "https://github.com/tt-a1i/archify/pull/1119"
+        },
+        {
+          "number": 795,
+          "title": "fix(viewer): declare unavailable relationship queries honestly",
+          "url": "https://github.com/tt-a1i/archify/pull/795"
+        },
+        {
+          "number": 874,
+          "title": "fix(viewer): save exports through Artifact host",
+          "url": "https://github.com/tt-a1i/archify/pull/874"
+        },
+        {
+          "number": 1066,
+          "title": "feat: add standalone artifact update notice",
+          "url": "https://github.com/tt-a1i/archify/pull/1066"
+        },
+        {
+          "number": 1117,
+          "title": "fix: hide classic grid in SVG exports",
+          "url": "https://github.com/tt-a1i/archify/pull/1117"
+        },
+        {
+          "number": 317,
+          "title": "feat(architecture): allow connections to named boundaries",
+          "url": "https://github.com/tt-a1i/archify/pull/317"
+        },
+        {
+          "number": 998,
+          "title": "Code analysis Main branch",
+          "url": "https://github.com/tt-a1i/archify/pull/998"
+        },
+        {
+          "number": 923,
+          "title": "fix(sequence): emit the whole ordered adjustment when a note reaches several messages",
+          "url": "https://github.com/tt-a1i/archify/pull/923"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"Radar\"",
+      "type": "PRs",
+      "results": [
+        {
+          "number": 382,
+          "title": "perf(template): drop backdrop-blur and filter transitions so viewer stays smooth",
+          "url": "https://github.com/tt-a1i/archify/pull/382"
+        },
+        {
+          "number": 225,
+          "title": "fix(viewer): stabilize relationship exploration",
+          "url": "https://github.com/tt-a1i/archify/pull/225"
+        },
+        {
+          "number": 1001,
+          "title": "fix(viewer): camera viewport follows the container, not the narrower SVG box",
+          "url": "https://github.com/tt-a1i/archify/pull/1001"
+        },
+        {
+          "number": 478,
+          "title": "feat: extend adaptive canvas and large-world browsing to five diagram types",
+          "url": "https://github.com/tt-a1i/archify/pull/478"
+        },
+        {
+          "number": 551,
+          "title": "fix(architecture): preserve semantics and reject perimeter detours",
+          "url": "https://github.com/tt-a1i/archify/pull/551"
+        },
+        {
+          "number": 1027,
+          "title": "fix(viewer): mobile nav reachability, dock clearance and presentation scroll",
+          "url": "https://github.com/tt-a1i/archify/pull/1027"
+        },
+        {
+          "number": 653,
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "url": "https://github.com/tt-a1i/archify/pull/653"
+        },
+        {
+          "number": 895,
+          "title": "feat: add processor architecture components",
+          "url": "https://github.com/tt-a1i/archify/pull/895"
+        },
+        {
+          "number": 329,
+          "title": "feat(viewer): add pointer-anchored wheel zoom",
+          "url": "https://github.com/tt-a1i/archify/pull/329"
+        },
+        {
+          "number": 272,
+          "title": "feat: add standalone SVG delivery",
+          "url": "https://github.com/tt-a1i/archify/pull/272"
+        },
+        {
+          "number": 998,
+          "title": "Code analysis Main branch",
+          "url": "https://github.com/tt-a1i/archify/pull/998"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"nbdime\"",
+      "type": "issues",
+      "results": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open \"git-machete\"",
+      "type": "issues",
+      "results": []
+    }
+  ],
+  "taskView": {
+    "head": "f27b8bef63ec336b8e3487e90ccd484a2fa7a235",
+    "method": "git ls-remote public upstream HEAD",
+    "changedSincePriorResearch": false
+  },
+  "limits": "Bounded keyword searches, relevant ref/source audit and historical compilation; not proof of global absence.",
+  "policy": "Only remote branches; no new PRs."
+}

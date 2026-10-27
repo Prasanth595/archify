@@ -1,0 +1,251 @@
+{
+  "sourceCommit": "9578cc2a38d5dbca3c0551857802b28bfb1255ee",
+  "matched": 49,
+  "files": [
+    {
+      "path": "LICENSE",
+      "gitBlob": "2605254a8861c08d7a77813101e41de912959f2f",
+      "sha256": "3373ee6761354806da3addda0c4ada38e4ebe00cc9db24b11254b781adfa5a3c"
+    },
+    {
+      "path": "git_machete/__init__.py",
+      "gitBlob": "7152a383739edd17bca72dc8862a979afe7b7925",
+      "sha256": "76322f15dd493bbdfe15eb8fd43bea7916a6ed003045e121e555bc3589e875a3"
+    },
+    {
+      "path": "git_machete/annotation.py",
+      "gitBlob": "5fb2a5dbe8f6ffe2ff32e83d4f550ee6362a005d",
+      "sha256": "87dceba323750a41f00fef24426c382ed8ecfe00804021fd04c1ae4d55176814"
+    },
+    {
+      "path": "git_machete/bin.py",
+      "gitBlob": "3ff503a9ea45c7a3e4e8edc9864d2dd612a2e106",
+      "sha256": "94a57df0c52193b386ccefe39a968eaab7b9ad0b523132547b660d7361c2f718"
+    },
+    {
+      "path": "git_machete/cli.py",
+      "gitBlob": "9343421e6c326d89c33d94ac634abe63665ed771",
+      "sha256": "0e2668b9e904223f31026807901556177af0dffcd40b689aba5e588d4d552ec0"
+    },
+    {
+      "path": "git_machete/cli_commands.py",
+      "gitBlob": "12ba927e0cc8f1621697a79c9192fc24b90d08ed",
+      "sha256": "5f4ad3d650f93650756d967e933a0d1bd80878e890755944922cf1c1197e7d49"
+    },
+    {
+      "path": "git_machete/cli_parser.py",
+      "gitBlob": "4b328acb31d8b6d6c4a85881296fef81a77dfdef",
+      "sha256": "f3a4fd51eb0e7642b55eed2003dc07d3b65d1c38f6f27fe1825ad46df6b167b5"
+    },
+    {
+      "path": "git_machete/client/__init__.py",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "git_machete/client/advance.py",
+      "gitBlob": "c09bc7444e2334e3d600ed065f48bdbd4e74c1bd",
+      "sha256": "e28bd10c294b0110be8da20df8d2e0e8ca99ccc258e6dd916f0259142f78a4a5"
+    },
+    {
+      "path": "git_machete/client/anno.py",
+      "gitBlob": "7809e763a62569891e790d206d453167f184be97",
+      "sha256": "b7dedc4b9c3fc1900cefcafe4e32190b10ff012724b7dffcde8c00e5659f5b89"
+    },
+    {
+      "path": "git_machete/client/base.py",
+      "gitBlob": "4efc068f774f172f9a0614081570861f8cdf60d0",
+      "sha256": "12301795f52b73b9552cd2591dabeaa8038fb2c2610d11436da1ac633c06a622"
+    },
+    {
+      "path": "git_machete/client/branch_layout.py",
+      "gitBlob": "376c334e84b82886f4042d67c2e3a2019e1dcdef",
+      "sha256": "d539be09bfeda561d4cac13e5714302e8ff549b5f1f74795adf67ceb20da7ec6"
+    },
+    {
+      "path": "git_machete/client/diff.py",
+      "gitBlob": "a2cee19a2484b899f314189cc0c29aeaf2c23ce8",
+      "sha256": "e9902aa8359ac7134ee43f61f21465128bf5df2a56b1cac71efb15e1b31f3a01"
+    },
+    {
+      "path": "git_machete/client/discover.py",
+      "gitBlob": "c04f8764d60996598d184b2ab0d22657868731d1",
+      "sha256": "16290025aaf5581870c3c8fd0ecd642b440d8f167b57d3dd3101966c334d1217"
+    },
+    {
+      "path": "git_machete/client/fork_point.py",
+      "gitBlob": "7241683a86db6b78ae453bbe7558a8493597cee6",
+      "sha256": "93585b77b1eca347a51f40b5cd46dbaf5e10b3f08328e5fc876ecb9a4794e597"
+    },
+    {
+      "path": "git_machete/client/go_interactive.py",
+      "gitBlob": "4e3969c2fdae5658aac1e400b0ce2329256ffb5b",
+      "sha256": "0230fc07b8bd3ff25972e6fe1a7a2d7e56c9d0ae8bc93ef88f8b6ef8f52e6f52"
+    },
+    {
+      "path": "git_machete/client/go_show.py",
+      "gitBlob": "368ca8c6b0efcc3bc509ab390d9aaa4c734c8af9",
+      "sha256": "7f3e6e43204d9a44c41721f5b74e2bdaeed7782be09575bdd3adecf96d9aa7b9"
+    },
+    {
+      "path": "git_machete/client/list.py",
+      "gitBlob": "6279257965091f79ed183c52d82f4d5c884a83a1",
+      "sha256": "b416d30b89fd520884360dc869411406727a5df9b29e1d272f1aff6957c1044f"
+    },
+    {
+      "path": "git_machete/client/log.py",
+      "gitBlob": "39a99427100b133d0e9e2c4a78cbeb24d43cd26a",
+      "sha256": "137c64f8b8fe21f0f1c69ad3608d8a4078c674b335b7292d43682754609e2211"
+    },
+    {
+      "path": "git_machete/client/reapply.py",
+      "gitBlob": "ea22ba85787489827f32d6f6f17175a1e862a337",
+      "sha256": "77b8252734343d13a68803afa9763fabbdee7c7585d26be06a4e3e44297c888a"
+    },
+    {
+      "path": "git_machete/client/rename.py",
+      "gitBlob": "d6a0279c96e9f67053c5cad994b6f178499ebdf4",
+      "sha256": "a9315e06e0e68859cdc5a36b7052f6149ec8f906ee8c1ba561c3a89d408f003a"
+    },
+    {
+      "path": "git_machete/client/slide_out.py",
+      "gitBlob": "6f39c00f4a09a16ea268ed053b6291e778418efd",
+      "sha256": "a71dc675300c2ffc7954c40fb9d16627eb549e2973f97ec52ac03c13592b41f7"
+    },
+    {
+      "path": "git_machete/client/squash.py",
+      "gitBlob": "cc6350418b34fbf601694a8137db9d7e3066c8d4",
+      "sha256": "e31ea3783089f3e142c5267392b30e31aa9c8f210f9dc509e2f6b7976b229e9a"
+    },
+    {
+      "path": "git_machete/client/state.py",
+      "gitBlob": "68beca93e9497b0ad4d21a9c9174f8e5c7af17d6",
+      "sha256": "1b92157736d6869af819b7fd4ef2ee0f61b8f0f0d999c6b8194df5617bc1dd46"
+    },
+    {
+      "path": "git_machete/client/status.py",
+      "gitBlob": "c84104ddebf93363c176a66e3deafc7a06a349e7",
+      "sha256": "385ce5eb376cecb1595fbabe5376b1cfb5945f9f762da2f34e08496b28c2c07e"
+    },
+    {
+      "path": "git_machete/client/traverse.py",
+      "gitBlob": "fd5c78b0223f8b8c79557c51a4d82dc572d65d58",
+      "sha256": "918f568f3972d02df197f313342529d45da476b68f7d2135b3ec463ab86d4400"
+    },
+    {
+      "path": "git_machete/client/update.py",
+      "gitBlob": "8eb41873e91121e3b4da66d11ee50413426f2553",
+      "sha256": "77e329e9ecd77e8e6ff3534fb5e8c481b63c36b87606b8bd09bdddbca562ceb4"
+    },
+    {
+      "path": "git_machete/client/with_code_hosting.py",
+      "gitBlob": "decbc44a23efd726920f3d1529b62112235ad3b7",
+      "sha256": "ca541461653c6c4e224a7db3806edff4d59637074bdb4bec5e1ca27ac3be6c83"
+    },
+    {
+      "path": "git_machete/code_hosting.py",
+      "gitBlob": "77550992e1e9e7314eddd99f0f4f9ff9940cebe3",
+      "sha256": "a14747375d014d64003db9946329db29c19ca4a581b5c10877c8bfedfd28acef"
+    },
+    {
+      "path": "git_machete/config.py",
+      "gitBlob": "1386e7cb5140a488afc4340339df45ecd0b53b67",
+      "sha256": "e4bc10c08ea543b61c5493ae0ee954be7010756299f9f76ae36ba46ae1be9e9b"
+    },
+    {
+      "path": "git_machete/constants.py",
+      "gitBlob": "c522a7f6fcc825e9265b9ab3e6108dc5e032459f",
+      "sha256": "1806568e8e12b64a1c4dd5f3003162caef2fc54dc7f43cf7d2ffe7088248a7a5"
+    },
+    {
+      "path": "git_machete/generated_docs.py",
+      "gitBlob": "f95b68ef67f97e2cef5252b90a01369e14450dc0",
+      "sha256": "dd8755bac94a725b883bd45be3c54336d2a16ad08849be21caebb7124f588385"
+    },
+    {
+      "path": "git_machete/git.py",
+      "gitBlob": "c746185977d52c9d532743eb04e7c3517032f595",
+      "sha256": "1685d9d26516cac4bd86cfaa628ff45e0adde3d9979f3602baf33e5e9d623db0"
+    },
+    {
+      "path": "git_machete/git_version_thresholds.py",
+      "gitBlob": "33bc4bebde737d938d23f52ddd7d3dea40ec74e4",
+      "sha256": "0d5c26c1fa2b23a4572e4a548d5e619c1f125efc59d253d6ed26dbf37cfede47"
+    },
+    {
+      "path": "git_machete/github.py",
+      "gitBlob": "ec4f4eadfc9ddd0fc3e0d22e0aa028af27a191dc",
+      "sha256": "1a7b88195a6ed88f3938700ad778fe4db4a0c9b8cda6308ec70cf5e5dd6158e5"
+    },
+    {
+      "path": "git_machete/gitlab.py",
+      "gitBlob": "2d45f6ecda867bd5b39729f9abc0231f58f83c17",
+      "sha256": "8b65691ed7ac71cd4cee23ecc3a1bb0b27ea33d162b1286f3b4b39e8bf78f958"
+    },
+    {
+      "path": "git_machete/help.py",
+      "gitBlob": "6c08df5b0225c2bce7221f58249e1d7f47c43a8d",
+      "sha256": "b6a84a181cd3a2a4d9a8e67ef0e3e6632790cd9746dfacb5b0c0809c312fb5bf"
+    },
+    {
+      "path": "git_machete/options.py",
+      "gitBlob": "f24923abedcf67110edb00ae741bcbb32d755ea2",
+      "sha256": "fa04a02ed1a232de12ef2b2efdbfc2f7dae1ae6e8605250f8c024d86eadee435"
+    },
+    {
+      "path": "git_machete/utils/__init__.py",
+      "gitBlob": "7c1e20ea1520c208115a530620c611bf7ca22715",
+      "sha256": "6cd1c15c33cd1fc43d4a898280164981168b3cefe9c17d1c49c850f67f83b601"
+    },
+    {
+      "path": "git_machete/utils/_subproc.py",
+      "gitBlob": "87dc8caa87b46858ebf5b06f7d8594cefd5fa6c8",
+      "sha256": "69e15b70c1aaa615f34449db1dbfc91677c1d411baeab16761d79e455f513060"
+    },
+    {
+      "path": "git_machete/utils/cmd.py",
+      "gitBlob": "c87a2624fc9a75308adbfa39f37b956b1ece7e74",
+      "sha256": "bbf250da6a1971ccaa2b3df7d40d06d96af8907b38d98204199ba35db51484bc"
+    },
+    {
+      "path": "git_machete/utils/collections.py",
+      "gitBlob": "22c2172b29fe9a64b52a380ebaec46f73099d46a",
+      "sha256": "5b88983eae18a346f5e22e617b6773c9363734cdd6742648541115311eaf438b"
+    },
+    {
+      "path": "git_machete/utils/date.py",
+      "gitBlob": "dee7ffa950e7eb4685e8f82edfb2f6f0204fd6fa",
+      "sha256": "35603868081770539fba7c14ef32400225276cb6ef194fb878a36ee9f4de9e1d"
+    },
+    {
+      "path": "git_machete/utils/debug_log.py",
+      "gitBlob": "1510fc5decc927796071ed3b2812c8b1a8b83578",
+      "sha256": "33bcb89dc09600c5b46088599f84f7ef4ad053ee1df95acecc8a8768aacdd017"
+    },
+    {
+      "path": "git_machete/utils/exceptions.py",
+      "gitBlob": "86496ead39c90b4900dec4a888271a3723ff432d",
+      "sha256": "849e6f6aa82777bfd01248902ea16f2431c622e75ae14151327f9d548787fa07"
+    },
+    {
+      "path": "git_machete/utils/fs.py",
+      "gitBlob": "315b806ada9a797b06b8b67ada2e0845090b6b02",
+      "sha256": "73bab57deb75bb03429cc198648628389c119395a4143f30ea5b627ad178efdc"
+    },
+    {
+      "path": "git_machete/utils/markup.py",
+      "gitBlob": "c58a7144a41efbf7321f06a736663db90a2f0265",
+      "sha256": "45058e0ede9d7f75166766751a93a10a159beef6cd3db115cb3aec26217b8210"
+    },
+    {
+      "path": "git_machete/utils/paths.py",
+      "gitBlob": "48509144bf7cf0bbbada18067e72d1499a74a72a",
+      "sha256": "dd7ba647887d71a61348d04cfe370df25ab63ad5809bfe50e857ada97af7a9c0"
+    },
+    {
+      "path": "git_machete/utils/terminal.py",
+      "gitBlob": "bf806b2e61b8c25d9ed71db5e5ffed66524b3382",
+      "sha256": "4bbda96f31d7b1843a8455c4adc950dd92c54b0077a4696437ecc34730ec0a31"
+    }
+  ]
+}

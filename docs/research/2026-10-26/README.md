@@ -392,3 +392,34 @@ root在固定d5 runtime重新生成该输入并完成[实际页面复现](audit/
 [Speedscope/Perfetto选区阅读](scouts/profile-window-reading.md)补充旧profile研究：Speedscope #512用户确有按窗口聚合需求，但关闭是因重复#39/PR#366，本次后二者仍open，不能称问题已修复。问题未附完整profile、窗口与预期数字；固定公开Firefox递归fixture虽完整、哈希已记录，却不是同一问题输入，不能拼接成复现。Speedscope原生三视图、self/total、递归折叠与Perfetto区域flamegraph都应进入对照。未运行这些UI或证明Archify额外收益，不再建立同义parser分支。来源与许可保留。
 
 本批新增的是缺陷复现和改变实施决定的证据，没有通过筛选的新实现，因此没有新增实验分支；研究总账远程交付后继续筛选。AI分工为Terra外部研究/交付核对、Sol源码与兼容判断、root固定输入运行/实际页面/取舍与交付。没有新PR、合并、发布、部署或安装；持续目标保持active。
+
+
+## 第十五批：区分语义差异与需要新界面的缺口
+
+开始先fetch/prune，保存[313条远程head](audit/remote-branches-round15.txt)；dev仍为d5d979493bba650b3995836afd379cd249f2d0dd，既有Tree、Timeline与ASan状态分支不变。[有界issue/PR去重](audit/round15-dedup.json)覆盖ERD/Radar及nbdime/git-machete关键词，不宣称全局没有同义工作。task-view再次读取远程HEAD，仍为f27b8bef63ec336b8e3487e90ccd484a2fa7a235，沿用已有来源/许可研究，不重复制作实验。用户只推远程分支的规则持续有效。
+
+### 既有实现检查：没有证据的修正不做
+
+[Radar类型/配色审计](scouts/radar-kind-audit.md)对固定Tree a15fbd6e和Timeline e5bc4cf0源码确认：Radar保留data-node-kind，显式CSS覆盖各特殊角色，Tree branch与Timeline recovery使用默认backend色，恰与原配色相同。Outline另读SVG实际tone，生成模板也同步。没有发现需要补修的颜色回归；这是源码与映射检查，没有本轮实际UI或computed-color验收，不能拿旧绿灯测试冒充颜色证明。
+
+[ERD类型取舍](scouts/erd-kind-decision.md)拒绝直接照搬Tree/Timeline改名。六个示例节点当前用database，但context明确是Entity，源码没有称其为六个已部署数据库实例；它们已经处于一个Lens组，改成entity也不增加选择能力。raw token迁移会牵动URL、Radar颜色、Story、关系标记与翻译。maintainer在[issue115后续说明](https://github.com/tt-a1i/archify/issues/115#issuecomment-6162488004)已修订早期kind草案，最终范围是实体、键、FK、基数和共享Viewer；不能把最初枚举当遗漏的已批准需求。现有文案override的可行性只做源码确认，未运行实验。当前价值不足以抵消迁移成本。
+
+### Git Machete：完整原生对照已经解释状态差异
+
+[堆栈阅读研究](scouts/stacked-branch-reading.md)固定Git Machete 9578cc2a、MIT与完整上游测试，并单列Git Town #4222自然讨论。后者是远端tracking删除语义，不能与本地squash fixture拼成一份用户复现。
+
+[本轮原生记录](audit/round15-stack-native/README.md)在临时合成四层堆栈上执行已有Python/Git、直接读取固定上游源码，没有安装依赖。develop squash feature后，默认status显示m-feature，关闭squash检测显示x-feature；两条命令exit0、stderr为空。root额外查询确认两分支tree SHA相同，但feature不是develop祖先。内容、提交可达性、声明stack边回答不同问题，现有模式与fork-point说明已经能表达这点。
+
+作者初次、fresh版本与root可移植版本三份运行分开保存，目录/commit身份不同，不冒称同一仓库或三个人类阅读试验。原始HOME设置脚本仅作历史TXT证据；推荐脚本使用干净环境、禁用Git全局/系统配置、新建临时仓库且不改写HOME。48个Python源文件和LICENSE共49个Git blob与固定上游树一致，未把源码vendoring到Archify。[独立交付审计](audit/round15-delivery-audit.md)核对24项文件清单、49个源blob/SHA、MIT字节、日志、实际临时仓库tree/祖先关系以及复现脚本变动，没有发现阻塞。下载超时、克隆中断、SSL失败和随后raw取得路径保留在回执，残片未发布。
+
+本例没有remote、没有执行traverse/rebase/删除，不复现上游完整测试里的origin状态。没有自然仓库同步安全、系统调用审计、UI图片或读者速度结论。原生命令已经回答固定任务，因此暂缓另造stack DAG/parser。
+
+### nbdime：机器差异与阅读界面的选择
+
+[notebook身份研究](scouts/notebook-identity-diff.md)固定nbdime 744c9789、BSD-3许可和完整center/left notebooks，逐文件SHA保留。首cell除id外字段相同；上游已提交截图显示“1 unchanged cell(s) hidden”，它是原作者截图，不是本轮浏览器产物。
+
+[补充源码核对](scouts/notebook-identity-source-followup.md)解决初轮疑问：默认identifier开启且未外部Ignore时，源码路径会产生cell id replace；前端CellDiffModel.unchanged却不计cellId，CSS还隐藏unchanged cell的ID头。这能解释机器字段与阅读摘要的粒度差异，但缺少该上游截图对应的实际响应与server配置，不能把条件推导写成已捕获数据。本机两套Python都缺所需依赖，未安装、未运行nbdime UI或生成新差异图。
+
+既有notebook occurrences实验不含ID，不能替代这次机制判断；但目前也没有必须审计ID的完整真实交接任务，不能把选择隐藏身份字段直接认定为产品缺陷。暂缓导入器或新页面，保留来源、许可和明确重新考虑门槛。
+
+本批交付研究判断、既有实现审计与原生可复现证据，没有通过筛选的新实现，因此没有新增实验分支或产物图片。只修改研究文档和原生回执，未运行无关产品套件；[本地记录检查](audit/round15-validation.json)通过；完整空白检查只有三份冻结Git graph原始输出中的尾随空白，排除这三份记录后通过。检查不等于hosted CI。AI分工为Terra外部研究/Radar/原生探针/交付核对，Sol ERD判断，root补充源码查询、可移植复现与交付。没有新PR、合并、发布、部署或安装，总目标继续active。

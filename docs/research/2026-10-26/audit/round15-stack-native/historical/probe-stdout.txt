@@ -1,0 +1,52 @@
+Updating b4d9c70..895f5a4
+Fast-forward
+Squash commit -- not updating HEAD
+ feature_1.txt | 1 +
+ feature_2.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 feature_1.txt
+ create mode 100644 feature_2.txt
+
+GIT GRAPH
+* 98815ef child_2 parents=c6ab636
+* c6ab636 child_1 parents=895f5a4
+* 895f5a4 feature_2 parents=bca7296
+* bca7296 feature_1 parents=b4d9c70
+| * bc97666 squash_feature parents=b4d9c70
+|/  
+* b4d9c70 develop parents=559896a
+* 559896a root parents=
+
+LAYOUT
+root
+    develop
+        feature
+            child
+
+DEFAULT STATUS
+  root
+  |
+  | develop
+  | squash_feature
+  o-develop
+    |
+    m-feature
+      |
+      | child_1
+      | child_2
+      o-child *
+
+NONE STATUS
+  root
+  |
+  | develop
+  | squash_feature
+  o-develop
+    |
+    | feature_1
+    | feature_2
+    x-feature
+      |
+      | child_1
+      | child_2
+      o-child *

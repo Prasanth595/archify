@@ -1,0 +1,58 @@
+Source: /tmp/archify-round15-stack-native/source-raw
+Repo: /tmp/archify-round15-stack-native/fresh-repo.It3AAfd9
+Updating 58d593b..4cc51bb
+Fast-forward
+Squash commit -- not updating HEAD
+ feature_1.txt | 1 +
+ feature_2.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 feature_1.txt
+ create mode 100644 feature_2.txt
+
+GIT GRAPH
+* 9546e3f child_2 parents=6057976
+* 6057976 child_1 parents=4cc51bb
+* 4cc51bb feature_2 parents=a83f52c
+* a83f52c feature_1 parents=58d593b
+| * 7d26fe2 squash_feature parents=58d593b
+|/  
+* 58d593b develop parents=384c631
+* 384c631 root parents=
+
+LAYOUT
+root
+    develop
+        feature
+            child
+
+DEFAULT STATUS
+  root
+  |
+  | develop
+  | squash_feature
+  o-develop
+    |
+    m-feature
+      |
+      | child_1
+      | child_2
+      o-child *
+
+DEFAULT EXIT=0
+
+NONE STATUS
+  root
+  |
+  | develop
+  | squash_feature
+  o-develop
+    |
+    | feature_1
+    | feature_2
+    x-feature
+      |
+      | child_1
+      | child_2
+      o-child *
+
+NONE EXIT=0

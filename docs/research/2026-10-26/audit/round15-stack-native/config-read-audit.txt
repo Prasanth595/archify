@@ -1,0 +1,162 @@
+/tmp/archify-round15-stack-native/source-raw/git_machete/cli.py:219:        # Set up `--debug` / `--verbose` (and refine `--color` against the parsed value) before any subsequent `git config` read.
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/diff.py:13:        extra_diff_opts = os.environ.get('GIT_MACHETE_DIFF_OPTS', '').split()  # currently undocumented
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:803:        extra_rebase_opts = os.environ.get('GIT_MACHETE_REBASE_OPTS', '').split()
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:829:                f"Cannot determine editor. Set `GIT_MACHETE_EDITOR` environment "
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:841:            ("$" + git_machete_editor_var, lambda: os.environ.get(git_machete_editor_var)),
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:842:            ("$GIT_EDITOR", lambda: os.environ.get("GIT_EDITOR")),
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:843:            ("git config core.editor", lambda: self._config.core_editor()),
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:844:            ("$VISUAL", lambda: os.environ.get("VISUAL")),
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:845:            ("$EDITOR", lambda: os.environ.get("EDITOR")),
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/base.py:877:                                  "Use `git config --global advice.macheteEditorSelection false` to suppress this message.",
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/status.py:345:                hook_env = dict(os.environ, ASCII_ONLY=str(not markup.use_ansi_escapes_in_stdout).lower())
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/status.py:433:          so typical layouts like `~/worktrees/wt1`, `~/worktrees/wt2`, ... render as `wt1`, `wt2`, ...).
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:11:from git_machete.code_hosting import (CodeHostingApi, CodeHostingGitConfigKeys, CodeHostingSpec, OrganizationAndRepository,
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:37:        debug(f"1. Trying to find token in `{GITHUB_TOKEN_ENV_VAR}` environment variable...")
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:38:        github_token = os.environ.get(GITHUB_TOKEN_ENV_VAR)
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:41:                       provider=f'`{GITHUB_TOKEN_ENV_VAR}` environment variable')
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:46:        debug("2. Trying to find token in `~/.github-token`...")
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:48:        provider = f'auth token for {domain} from `~/.github-token`'
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:49:        file_full_path: AbsPath = AbsPath.home().join_fragments(required_file_name)
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:54:            # ~/.github-token is a file with a structure similar to:
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:128:        config_hub_path: AbsPath = AbsPath.home().join_fragments(".config", "hub")
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:130:            # ~/.config/hub is a yaml file, with a structure similar to:
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:529:        f'\n    1. `{GITHUB_TOKEN_ENV_VAR}` environment variable\n'
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:530:        '    2. Content of the `~/.github-token` file\n'
+/tmp/archify-round15-stack-native/source-raw/git_machete/github.py:534:    git_config_keys=CodeHostingGitConfigKeys(
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/traverse.py:171:        # Resolve tri-state CLI options against git config (CLI flag > config key > built-in default).
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:1:"""Typed interface to machete-specific git config values (with defaults)."""
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:6:from git_machete.code_hosting import CodeHostingGitConfigKeys
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:77:            f"`{self._SQUASH_MERGE_DETECTION}` git config key")
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:96:            f"`{self._TRAVERSE_WHEN_BRANCH_NOT_CHECKED_OUT_IN_ANY_WORKTREE}` git config key")
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:123:    def code_hosting_domain(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:126:    def code_hosting_remote(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:129:    def code_hosting_organization(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:132:    def code_hosting_repository(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:135:    def code_hosting_base_remote(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:138:    def code_hosting_base_organization(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:141:    def code_hosting_base_repository(self, keys: CodeHostingGitConfigKeys) -> Optional[str]:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:144:    def code_hosting_annotate_with_urls(self, keys: CodeHostingGitConfigKeys) -> bool:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:147:    def code_hosting_force_description_from_commit_message(self, keys: CodeHostingGitConfigKeys) -> bool:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:150:    def code_hosting_pr_description_intro_style(self, keys: CodeHostingGitConfigKeys) -> PRDescriptionIntroStyle:
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:154:            from_where=f"`{keys.pr_description_intro_style}` git config key")
+/tmp/archify-round15-stack-native/source-raw/git_machete/config.py:156:    def code_hosting_retrieve_by_author(self, keys: CodeHostingGitConfigKeys) -> bool:
+/tmp/archify-round15-stack-native/source-raw/git_machete/code_hosting.py:152:class CodeHostingGitConfigKeys(NamedTuple):
+/tmp/archify-round15-stack-native/source-raw/git_machete/code_hosting.py:186:    git_config_keys: CodeHostingGitConfigKeys
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:12:from git_machete.code_hosting import (CodeHostingApi, CodeHostingGitConfigKeys, CodeHostingSpec, OrganizationAndRepository,
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:37:        debug(f"1. Trying to find token in `{GITLAB_TOKEN_ENV_VAR}` environment variable...")
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:38:        gitlab_token = os.environ.get(GITLAB_TOKEN_ENV_VAR)
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:41:                       provider=f'`{GITLAB_TOKEN_ENV_VAR}` environment variable')
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:46:        debug("2. Trying to find token in `~/.gitlab-token`...")
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:48:        provider = f'auth token for {domain} from `~/.gitlab-token`'
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:49:        file_full_path: AbsPath = AbsPath.home().join_fragments(required_file_name)
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:54:            # ~/.gitlab-token is a file with a structure similar to:
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:362:        f'\n    1. `{GITLAB_TOKEN_ENV_VAR}` environment variable\n'
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:363:        '    2. Content of the `~/.gitlab-token` file\n'
+/tmp/archify-round15-stack-native/source-raw/git_machete/gitlab.py:366:    git_config_keys=CodeHostingGitConfigKeys(
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/squash.py:47:        author_env = dict(os.environ,
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:55:        keys = self.code_hosting_spec.git_config_keys
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:73:        keys = spec.git_config_keys
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:77:                f'`{keys.retrieve_by_author}` git config key is set, '
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:94:        if include_url or self._config.code_hosting_annotate_with_urls(self.code_hosting_spec.git_config_keys):
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:390:        if self._config.code_hosting_force_description_from_commit_message(spec.git_config_keys):
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:417:        style = self._config.code_hosting_pr_description_intro_style(self.code_hosting_spec.git_config_keys)
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:556:        style = self._config.code_hosting_pr_description_intro_style(self.code_hosting_spec.git_config_keys)
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:630:        return self._config.code_hosting_domain(spec.git_config_keys) or spec.default_domain
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:640:        keys = spec.git_config_keys
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:658:            raise MacheteException(f'`{org_key}` git config key is present, '
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:662:            raise MacheteException(f'`{repo_key}` git config key is present, '
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:667:                raise MacheteException(f'`{remote_key}` git config key points to `{remote_from_config}` remote, '
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:677:                raise MacheteException(f'`{remote_key}` git config key points to `{remote_from_config}` remote, '
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:688:                f'Both `{org_key}` and `{repo_key}` git config keys are defined, '
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:706:                f'via some or all of git config keys: \n'
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:707:                f'{spec.git_config_keys.for_locating_repo_message()}\n')
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:725:            f'You can select the {spec.repository_name} by providing some or all of git config keys:\n'
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:726:            f'{spec.git_config_keys.for_locating_repo_message()}\n')
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:1012:            keys = spec.git_config_keys
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:1046:            keys = spec.git_config_keys
+/tmp/archify-round15-stack-native/source-raw/git_machete/client/with_code_hosting.py:1108:        # (the `machete.{github,gitlab}.remote` git config key when set, otherwise the remote inferred from the
+/tmp/archify-round15-stack-native/source-raw/git_machete/utils/cmd.py:30:measure_command_time: bool = os.environ.get('GIT_MACHETE_MEASURE_COMMAND_TIME') == 'true'  # undocumented, internal
+/tmp/archify-round15-stack-native/source-raw/git_machete/utils/cmd.py:112:    # GitHub tokens are likely to appear e.g. in the output of `git config -l`:
+/tmp/archify-round15-stack-native/source-raw/git_machete/utils/cmd.py:143:    # We don't want to include the env vars that are inherited from the environment of git-machete process
+/tmp/archify-round15-stack-native/source-raw/git_machete/utils/cmd.py:144:    env_repr = [k + "=" + shell_escape(v) for k, v in env.items() if k not in os.environ]
+/tmp/archify-round15-stack-native/source-raw/git_machete/utils/fs.py:46:    path = os.environ.get('PATH', os.defpath)
+/tmp/archify-round15-stack-native/source-raw/git_machete/utils/paths.py:77:        return AbsPath(str(PyPath.home()))
+/tmp/archify-round15-stack-native/source-raw/git_machete/git.py:502:            git_config_stdout = self._popen_git("config", "--list", "--null").stdout
+/tmp/archify-round15-stack-native/source-raw/git_machete/git.py:503:            for config_entry in filter(None, git_config_stdout.split("\0")):
+/tmp/archify-round15-stack-native/source-raw/git_machete/git.py:533:            raise MacheteException(f"Invalid value for `{key}` git config key: `{raw_value}`. Expected a boolean value")
+/tmp/archify-round15-stack-native/source-raw/git_machete/git.py:538:        # Loose port of git's `git config --bool` (`git_parse_maybe_bool` in `config.c`):
+/tmp/archify-round15-stack-native/source-raw/git_machete/git.py:648:        extra_push_opts = os.environ.get('GIT_MACHETE_PUSH_OPTS', '').split()
+/tmp/archify-round15-stack-native/source-raw/git_machete/git.py:1331:                    "<yellow>hint: You can disable this warning with `git config advice.ignoredHook false`.</yellow>",
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:13:    "config": "Display docs for the git machete configuration keys and environment variables",
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:127:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:155:             TL;DR: `GITHUB_TOKEN` env var or `~/.github-token` file or `gh`/`hub` CLI configs if exist.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:158:             TL;DR: `GITLAB_TOKEN` env var or `~/.gitlab-token` file or `glab` CLI config if exists.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:160:             For enterprise domains, non-standard URLs etc., check git config keys in either command's help.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:199:             TL;DR: `GITHUB_TOKEN` env var or `~/.github-token` file or `gh`/`hub` CLI configs if exist.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:200:             For enterprise domains, non-standard URLs etc., check git config keys in `github` help.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:210:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:227:        Put the following into `~/.bashrc` or `~/.bash_profile`:
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:234:        Put the following into `~/.config/fish/config.fish`:
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:240:        Put the following into `~/.zshrc`:
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:247:        Documentation about available `git machete` git config keys and environment variables that change the command's default behavior.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:251:        <b>Git config keys</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:265:                For example, `git config machete.github.domain git.example.org`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:274:                For example, `git config machete.github.remote origin`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:278:                For example, `git config machete.github.organization VirtusLab`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:282:                For example, `git config machete.github.repository git-machete`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:288:                For example, `git config machete.github.baseRemote upstream`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:295:                For example, `git config machete.github.baseOrganization VirtusLab`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:302:                For example, `git config machete.github.baseRepository git-machete`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:352:                For example, `git config machete.gitlab.domain git.example.org`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:361:                For example, `git config machete.gitlab.remote origin`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:365:                For example, `git config machete.gitlab.namespace foo/bar`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:369:                For example, `git config machete.gitlab.project hello-world`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:375:                For example, `git config machete.gitlab.baseRemote upstream`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:382:                For example, `git config machete.gitlab.baseNamespace foo/bar`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:389:                For example, `git config machete.gitlab.baseProject hello-world`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:439:              The override data is stored under `machete.overrideForkPoint.<branch>.to` git config key.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:463:              you can add an extra space between └─ and branch name by setting `git config machete.status.extraSpaceBeforeBranchName true`.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:511:              set `git config machete.worktree.useTopLevelMacheteFile false`.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:513:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:613:           * `$(git config core.editor)`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:628:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:686:        The override data is stored under `machete.overrideForkPoint.<branch>.to` git config key.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:708:        This is simply done by removing the corresponding `machete.overrideForkPoint.<branch>.to` git config entry.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:750:              See <b>Git config keys</b> below in case the target repository cannot be detected automatically (for example, in case of GitHub Enterprise).
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:882:              (depending on `machete.github.prDescriptionIntroStyle` git config key).
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:896:        <b>Git config keys</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:906:                For example, `git config machete.github.domain git.example.org`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:915:                For example, `git config machete.github.remote origin`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:919:                For example, `git config machete.github.organization VirtusLab`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:923:                For example, `git config machete.github.repository git-machete`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:929:                For example, `git config machete.github.baseRemote upstream`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:936:                For example, `git config machete.github.baseOrganization VirtusLab`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:943:                For example, `git config machete.github.baseRepository git-machete`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:990:        <b>Environment variables (all subcommands)</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:995:        <b>Environment variables (create-pr and restack-pr only)</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1011:              See <b>Git config keys</b> below in case the target project cannot be detected automatically (for example, in case of GitLab self-managed instance).
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1134:              (depending on `machete.gitlab.mrDescriptionIntroStyle` git config key).
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1148:        <b>Git config keys</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1158:                For example, `git config machete.gitlab.domain git.example.org`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1167:                For example, `git config machete.gitlab.remote origin`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1171:                For example, `git config machete.gitlab.namespace foo/bar`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1175:                For example, `git config machete.gitlab.project hello-world`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1181:                For example, `git config machete.gitlab.baseRemote upstream`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1188:                For example, `git config machete.gitlab.baseNamespace foo/bar`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1195:                For example, `git config machete.gitlab.baseProject hello-world`
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1242:        <b>Environment variables (all subcommands)</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1247:        <b>Environment variables (create-mr and restack-mr only)</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1302:        As with the standard git hooks, git machete looks for its own specific hooks in `$GIT_DIR/hooks/*` (or `$(git config core.hooksPath)/*`, if set).
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1361:              Note: the hook is always invoked with `ASCII_ONLY` variable passed into the environment.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1441:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1592:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1684:        you can add an extra space between └─ and branch name by setting `git config machete.status.extraSpaceBeforeBranchName true`.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1721:              See the below paragraph on `machete.squashMergeDetection` git config key for more details.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1723:        <b>Git config keys</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1744:              you can add an extra space between └─ and branch name by setting `git config machete.status.extraSpaceBeforeBranchName true`.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1828:        This behavior can be customized using `machete.traverse.whenBranchNotCheckedOutInAnyWorktree` git config key (see below).
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1873:              by setting git configuration key `git config machete.traverse.push false`.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1889:              See the below paragraph on `machete.squashMergeDetection` git config key for more details.
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1914:        <b>Git config keys</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:1958:        <b>Environment variables</b>
+/tmp/archify-round15-stack-native/source-raw/git_machete/generated_docs.py:2002:        <b>Environment variables</b>

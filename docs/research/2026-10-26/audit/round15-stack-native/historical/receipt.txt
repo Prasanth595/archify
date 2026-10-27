@@ -1,0 +1,5 @@
+Source: git-machete 9578cc2a38d5dbca3c0551857802b28bfb1255ee; GitHub tree API and pinned raw files, blob verification in source-verification.txt; LICENSE MIT, SHA256 in digests.txt.
+Runtime: Python 3.15.0; git 2.50.1 Apple Git-155. setup.py declares no install_requires; direct import succeeded. No packages installed.
+Execution: bash probe.sh > probe-stdout.txt 2> probe-stderr.txt; exit 0. Script uses set -e, so each status command exited 0. Environment and commands are in probe.sh. Isolated HOME, git global and system config, hooks disabled. No remote, so no ahead-of-origin output. Synthetic fixture adapted from upstream test, not a natural incident or reader validation.
+Acquisition attempts: archive download timed out with partial source-complete.tar.gz; initial archive source.tar.gz was incomplete; shallow filtered Git clone was interrupted. Python urllib parallel download failed with SSL unexpected EOF; curl parallel source fetch succeeded (fetch-stdout/stderr). No fixture harness repair was needed.
+No traverse, branch deletion, package installation, user repository or network push was performed.

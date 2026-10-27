@@ -1,0 +1,24 @@
+{
+  "sourceCommit": "9578cc2a38d5dbca3c0551857802b28bfb1255ee",
+  "command": "env -i PATH=/opt/homebrew/bin:/usr/bin:/bin /bin/bash probe-fresh.sh VERIFIED_SOURCE_PATH",
+  "harnessChanges": [
+    "manifest location follows script directory",
+    "fresh repo created outside checkout",
+    "source Git blob hashing explicitly uses --no-filters"
+  ],
+  "exit": 0,
+  "defaultStatusExit": 0,
+  "noneStatusExit": 0,
+  "stderrEmpty": true,
+  "developTree": "569d3f8edb348bf01c3ca01a5fdef9f5c44347e7",
+  "featureTree": "569d3f8edb348bf01c3ca01a5fdef9f5c44347e7",
+  "sameTree": true,
+  "featureIsAncestorOfDevelopExit": 1,
+  "featureIsAncestorOfDevelop": false,
+  "repo": "/tmp/archify-stack-replay.vX4xxFws",
+  "limitations": [
+    "Synthetic local graph; no remote tracking state",
+    "No traverse/rebase/branch deletion",
+    "No system-call audit or human reading benchmark"
+  ]
+}
