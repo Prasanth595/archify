@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-28",
+  "policy": "Remote branches only; no new PRs",
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remoteHeads": 312,
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:open timeline kind",
+      "results": [
+        {
+          "number": 452,
+          "title": "Feature request — author-ordered relationships: highlight a node's outgoing calls in call order",
+          "url": "https://github.com/tt-a1i/archify/issues/452"
+        },
+        {
+          "number": 1114,
+          "title": "[提案]：Task_Checklist",
+          "url": "https://github.com/tt-a1i/archify/issues/1114"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open waterfall passport",
+      "results": [
+        {
+          "number": 1019,
+          "title": "[Bug]: Timeline drops the year, so events in different years get identical labels",
+          "url": "https://github.com/tt-a1i/archify/issues/1019"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:open asan",
+      "results": []
+    }
+  ],
+  "timelinePRs": [
+    {
+      "number": 831,
+      "title": "test(timeline): protect repeated DST hour interpretation",
+      "url": "https://github.com/tt-a1i/archify/pull/831",
+      "head": "2a5e458ac58ded0b5c15f456ed37a429f427ae28",
+      "review": "Metadata and diff read; DST/time-label/header scope, not event kind semantics"
+    },
+    {
+      "number": 1029,
+      "title": "fix(timeline): state sub-second break durations in milliseconds",
+      "url": "https://github.com/tt-a1i/archify/pull/1029",
+      "head": "0b2bad0b669f64c84c7111cd512a8aa741009e3e",
+      "review": "Metadata and diff read; DST/time-label/header scope, not event kind semantics"
+    },
+    {
+      "number": 1032,
+      "title": "fix(timeline): keep the year on multi-year labels and the header in frame",
+      "url": "https://github.com/tt-a1i/archify/pull/1032",
+      "head": "f4486a9c587dc72d651e059dc33f05e5365fb530",
+      "review": "Metadata and diff read; DST/time-label/header scope, not event kind semantics"
+    }
+  ],
+  "scope": "Relevant branch names and git history, prior research compilation, bounded connector searches. Not proof of global absence."
+}

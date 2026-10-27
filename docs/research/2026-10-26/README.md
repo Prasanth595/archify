@@ -1,4 +1,4 @@
-# Archify research continuation · 2026-10-26–27
+# Archify research continuation · 2026-10-26–28
 
 > 当前交付规则：按用户最新要求，后续实验只推送独立 `codex/` 远程分支，不新建 PR；已有历史 PR 不作自动合并或关闭。
 
@@ -340,3 +340,32 @@ D 按现有领域命名合同统一采用 backend/icon:none，再把图例、Pas
 [公开原生证据](audit/round12-bisect-native/README.md)保存作者两轮脚本与完整输出，以及root的一次独立可复现运行；9份文件有SHA/字节数。整体exit0、stderr为空，中间歧义exit2符合预期。两轮原始录制来自不同临时目录、五个commit身份一致；原脚本保留，另提供从新临时仓库开始的脚本。空树状态均由命令声明，不是真实bug历史、gitk GUI观察、用户研究或新产品测试。未把原生命令输出改造成Archify图。
 
 两方向均暂缓；重新考虑需完整自然任务及原生强基线上的可重复阅读障碍。缺少这类证据时，新增解释格式维护、关系映射或版本兼容成本没有得到收益支持。本批仅研究与原生复现记录进入总分支，没有通过筛选的实现方向，因此没有新增实验分支或图片，也没有PR、合并、发布、部署、安装。AI辅助由Terra两项研究与原生探针、root补充复现和事实/交付检查完成。总目标继续active。
+
+
+## 第十三批：Timeline 类型保真与自然问题核查
+
+先fetch/prune并保存[312条远程head](audit/remote-branches-round13.txt)，新实验基线为dev `d5d979493bba650b3995836afd379cd249f2d0dd`；既有Tree方向留在原分支。[有界去重](audit/round13-dedup.json)包括相关分支/历史汇编、issue查询和三个Timeline PR的固定head及diff：#831是DST，#1029是短时长，#1032是年份/表头，没有复做这些工作。该检索不代表全局穷举。继续遵守仅远程分支规则，不创建PR。
+
+### 通过筛选：Timeline 的事件类别进入阅读界面
+
+[九类原生渲染器审计](scouts/timeline-waterfall-kind-audit.md)发现Timeline把调色板技术名称写进Passport.kind：处置成为消息总线，默认事件成为外部系统。新的独立分支 [`codex/lab-timeline-kinds@e5bc4cf0`](https://github.com/tt-a1i/archify/tree/e5bc4cf09129a4f2f49fb799318d18111d9331b0/experiments/timeline-kinds)采用Timeline事件token，并通过既有legend翻译呈现类别。保留技术调色板、用户变量、旧类型文案覆盖、旧Lens分享hash和locale回退；旧hash转换仅限Timeline，新分享链接输出新token。原始data-node-kind选择器有意变化，需迁移旧自定义选择器。没有新增依赖、输入字段、解析器或通用框架。
+
+两份固定输入来自项目原有事故示例和README最小示例，只固定中文与输出名。两臂同输入、同1440×900浅色页面、同Finder查询rollback与真实Enter，目标矩形完全一致；节点详情由“消息总线”改为“处置”，默认事件由“外部系统”改为“事件”。SVG只改变kind元数据，时间、布局、颜色不变；短标签会改变Passport换行，不能称整个页面几何不变。旧messagebus链接在实际深色页面恢复为timeline-action。14张真实截图保留，其中12张为有效观察，2张因视口或动画状态不合条件排除。Lens仍覆盖右侧事件，390×844窄视口仍有详情卡片遮挡，未扩张成移动端验收。
+
+![同条件聚焦后的Timeline处置节点](https://raw.githubusercontent.com/tt-a1i/archify/e5bc4cf09129a4f2f49fb799318d18111d9331b0/experiments/timeline-kinds/root-review/candidate-focus-paired.png)
+
+源码首候选21/22，先修复不合schema的翻译键，再修复未知locale的回退；两次修复预算用完。第一次HTML候选在这两轮源码修复之后生成，与最终HTML字节相同，不能称首份源码通过。最终Node22.23.2 / zlib1.3.1-e00f703 / Chrome156：相关五文件379/379，core19/19，0skip；generated检查通过。初次缺simple-icons、ZIP包装器漏函数、Ego视口/面板采集失败都保留。借用匹配版本依赖后已移除链接，没有安装。五次finalize均通过validate/deliver/check/browser-check且零诊断；visualReview为not-requested，root实际页面验收另有记录。没有hosted CI、自然阅读耗时、AT、触摸、视频或完整测试套件结论。
+
+13份非Timeline原生示例SVG不变，2份Timeline仅kind元数据变化，开发/打包副本一致。主HTML增加1120字节，默认事件增加1095字节。独立源码审查无阻塞；交付审计发现五条失效的改名路径，已修复并去除脱敏副本的重复映射。root最终核对146组raw/public哈希；独立审计核对其中144组业务证据，另两组为随后加入的审计报告。14图、对应HTML、235个ZIP成员及package.json既有字段移除均核对。完整空白告警仅来自冻结HTML、历史日志和补丁上下文，源码检查通过。
+
+[干净提交后的打包复验](audit/round13-clean-build.json)在前后工作树均干净时成功，ZIP仍为 `c002107b581918105fff1099cdc272bdda696272f93af0c2de5e9706c4bdb633`，6999975bytes、235项；与此前两次构建相同，不含实验或node_modules。实际产物、复现命令、第一稿、修复和验证记录都在实验分支，Archify Apache-2.0与来源保留。
+
+### 暂缓与未取得的证据
+
+Waterfall存在同类色调进入类型的机制，但服务、错误状态与span身份不是同一个维度；没有在本轮猜测新分类模型。只保留审计，未建另一个实现分支。
+
+[fast-check与marimo自然问题核查](scouts/natural-reading-gap-round13.md)：fast-check #4956实际是全局endOnFailure关闭收缩、重放建议被当作运行配置；#5276是数据库隔离。二者不能证明尝试树图有价值。marimo #2100涉及lazy、disabled和playbook控制，原生已有依赖图、minimap、引用与运行控制；未取得完整自然状态与独立阅读任务，不能用弱化的原生基线证明新增图的收益。来源、固定版本、许可和重新考虑门槛保留。
+
+[ASan工具链缺口](scouts/asan-toolchain-gap-round13.md)确认旧空程序阻塞发生在main前初始化路径；现有Xcode21只是本地可用替代工具链，没有新运行证据。子代理的新探针执行请求被自动安全检查拦截，提示可能涉及网络安全风险；没有绕过、重试或把准备文件当结果。[原ASan分支状态更新](https://github.com/tt-a1i/archify/tree/9f8d640e2ea5f413560821517e4573738f45aee8/experiments/asan-provenance/toolchain21)仅提交README与JSON，未提交新runner或二进制。旧第二轮运行缺少原始PID/wait记录，当前进程清单不补足历史证据。自然LLVM问题沿用旧笔记，本轮未重新固定全文。
+
+AI辅助由Terra源码/自然问题侦察、生成物和交付核对，Sol实现、独立代码审查和ASan只读缺口分析，root固定输入比较、实际页面、证据修正与远端交付完成。只推送独立实验和研究记录；没有新PR、合并、发布、部署或安装。总目标继续active。

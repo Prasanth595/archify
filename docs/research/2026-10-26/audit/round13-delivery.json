@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-28",
+  "remoteHeadsVerified": {
+    "codex/lab-asan-provenance": "9f8d640e2ea5f413560821517e4573738f45aee8",
+    "codex/lab-timeline-kinds": "e5bc4cf09129a4f2f49fb799318d18111d9331b0",
+    "codex/lab-tree-roles": "a15fbd6e6b68df387bdf37f0c155509d3c3242ad",
+    "codex/research-lab-20261025": "60342aa9e40618aeb7c33bdb8d65889fea3a588e",
+    "dev": "d5d979493bba650b3995836afd379cd249f2d0dd"
+  },
+  "remoteCheck": "git ls-remote origin exact refs",
+  "newExperimentBranches": [
+    "codex/lab-timeline-kinds"
+  ],
+  "updatedExistingBranch": "codex/lab-asan-provenance",
+  "asanaState": "Automatic safety check blocked new probe request; no new execution evidence; status docs only.",
+  "checks": {
+    "timelineFocusedPass": 379,
+    "corePass": 19,
+    "skip": 0,
+    "generated": "pass",
+    "rawPublicPairs": 146,
+    "screenshots": 14,
+    "observedAcceptedScreenshots": 12,
+    "zipMembers": 235,
+    "cleanBuild": "round13-clean-build.json"
+  },
+  "policy": "Remote branches only; no new PR, merge, release, deploy or installation. Goal remains active."
+}
