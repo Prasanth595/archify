@@ -122,3 +122,62 @@ export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,
   }
   return {rows,counts,diagnostics,format};
 }
+
+/** Conservative text correspondences inside one parsed diff, not move detection.
+ * Trim is comparison-only: rows, line endings, positions and counts stay untouched.
+ */
+export function matchingExplainerDiffBlocks(rows) {
+  const runs=[];
+  let run=null,hunk=null,hunkIndex=0;
+  for(const [index,row] of rows.entries()) {
+    if(row.kind==='hunk')hunk=++hunkIndex;
+    if(row.kind==='header')hunk=null;
+    if(!['removed','added'].includes(row.kind)){run=null;continue;}
+    if(!run||run.kind!==row.kind){run={kind:row.kind,hunk,start:index,text:[]};runs.push(run);}
+    run.text.push(row.text.trim());
+  }
+  const seeds={removed:new Map(),added:new Map()};
+  for(const [runIndex,part] of runs.entries()) {
+    const meaningful=part.text.flatMap((text,index)=>Buffer.byteLength(text,'utf8')>=4?[index]:[]);
+    for(let index=0;index+2<meaningful.length;index++) {
+      const start=meaningful[index],end=meaningful[index+2];
+      const key=JSON.stringify(part.text.slice(start,end+1));
+      const entries=seeds[part.kind].get(key)||[];
+      entries.push({runIndex,start,end});seeds[part.kind].set(key,entries);
+    }
+  }
+  const candidates=[],diagonals=new Map();
+  for(const [key,removed] of seeds.removed) {
+    const added=seeds.added.get(key);
+    if(removed.length!==1||added?.length!==1)continue;
+    const oldSeed=removed[0],newSeed=added[0],oldRun=runs[oldSeed.runIndex],newRun=runs[newSeed.runIndex];
+    // A same-hunk reindent already reads together; fragments have no hunk identity.
+    if(oldRun.hunk!==null&&oldRun.hunk===newRun.hunk)continue;
+    const diagonal=`${oldSeed.runIndex}:${newSeed.runIndex}:${oldSeed.start-newSeed.start}`;
+    const previous=diagonals.get(diagonal)||[];
+    if(previous.some(item=>oldSeed.start>=item.oldStart&&oldSeed.end<=item.oldEnd))continue;
+    let oldStart=oldSeed.start,newStart=newSeed.start,oldEnd=oldSeed.end,newEnd=newSeed.end;
+    while(oldStart>0&&newStart>0&&oldRun.text[oldStart-1]===newRun.text[newStart-1]){oldStart--;newStart--;}
+    while(oldEnd+1<oldRun.text.length&&newEnd+1<newRun.text.length&&oldRun.text[oldEnd+1]===newRun.text[newEnd+1]){oldEnd++;newEnd++;}
+    while(oldStart<oldEnd&&!oldRun.text[oldStart]){oldStart++;newStart++;}
+    while(oldEnd>oldStart&&!oldRun.text[oldEnd]){oldEnd--;newEnd--;}
+    const candidate={oldRun:oldSeed.runIndex,newRun:newSeed.runIndex,oldStart,oldEnd,newStart,newEnd};
+    previous.push(candidate);diagonals.set(diagonal,previous);candidates.push(candidate);
+  }
+  // Competing overlaps have no unique attribution. Reject all participants,
+  // rather than letting iteration order silently choose a source or destination.
+  const conflicting=new Set();
+  for(const side of ['old','new']) {
+    const ordered=candidates.slice().sort((a,b)=>a[side+'Run']-b[side+'Run']||a[side+'Start']-b[side+'Start']);
+    let group=[],end=-1,runIndex=-1;
+    for(const item of ordered) {
+      if(item[side+'Run']!==runIndex||item[side+'Start']>end){group=[];end=-1;runIndex=item[side+'Run'];}
+      if(group.length){if(group.length===1)conflicting.add(group[0]);conflicting.add(item);}
+      group.push(item);end=Math.max(end,item[side+'End']);
+    }
+  }
+  return candidates.filter(item=>!conflicting.has(item)).map(item=>({
+    removed:{start:runs[item.oldRun].start+item.oldStart,end:runs[item.oldRun].start+item.oldEnd},
+    added:{start:runs[item.newRun].start+item.newStart,end:runs[item.newRun].start+item.newEnd}
+  })).sort((a,b)=>a.removed.start-b.removed.start);
+}

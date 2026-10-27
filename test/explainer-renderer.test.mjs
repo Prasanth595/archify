@@ -232,3 +232,19 @@ test('renderer: Windows cross-volume source locations are omitted instead of exp
   const frozen=payload(tree,'archify-explainer-prepared'),manifest=JSON.parse(text(find(tree,'explainer-manifest')));
   assert.equal(frozen.sourcePath,null);assert.equal(frozen.baseDir,null);assert.equal(frozen.dependencies[0].path,null);assert.equal(manifest.diagnostics[0].subject.input,null);
 });
+
+
+test('matching diff links retain exact row text, line numbers and independent block identities',()=>{
+  const patch='--- a/old.mjs\n+++ b/new.mjs\n@@ -11,3 +11,0 @@\n-const value = "<unsafe>";\n-const parsed = read(value);\n-return parsed;\n@@ -20,0 +17,3 @@\n+  const value = "<unsafe>";\n+  const parsed = read(value);\n+  return parsed;';
+  const input={schema_version:1,diagram_type:'explainer',meta:{id:'diff-reader',title:'Where is the matching text?',locale:'en'},answer:{summary:'Compare the text at both ends.'},panels:[{id:'review',title:'What changed?',blocks:[{id:'first-diff',type:'diff',text:patch},{id:'second-diff',type:'diff',text:patch}]}],sources:[]};
+  const tree=parse(renderExplainer(input)),ids=all(tree,node=>attr(node,'id')).map(node=>attr(node,'id'));
+  assert.equal(new Set(ids).size,ids.length);
+  for(const id of ['first-diff','second-diff']) {
+    const block=find(tree,id),links=all(block,node=>attr(node,'data-diff-match-link')!==undefined);
+    assert.equal(links.length,2);assert.match(text(block),/ignores leading and trailing whitespace/);
+    for(const link of links){const target=find(tree,attr(link,'href').slice(1));assert.ok(all(block,node=>node===target).length);assert.equal(attr(target,'tabindex'),'-1');}
+    assert.match(text(links[0]),/new.mjs:17–19/);assert.match(text(links[1]),/old.mjs:11–13/);
+    assert.deepEqual(all(block,node=>node.tagName==='code').map(text),patch.split('\n'));
+    assert.equal(all(block,node=>node.tagName==='unsafe').length,0);
+  }
+});

@@ -1,0 +1,41 @@
+{
+  "kind": "original browser observations",
+  "observedAt": "2026-10-26T06:30:22.513Z",
+  "identity": {
+    "baseline.html": {
+      "bytes": 147993,
+      "sha256": "23c2e30d4d3fa2b1c9bf5c1d5e22ae27351c9ade720547981799151c9d56d147"
+    },
+    "candidate.html": {
+      "bytes": 150918,
+      "sha256": "4741ef0254a934ece5cc4aa9631aa6210d54fa75161e80ec0d4aa1e4f7d790e9"
+    },
+    "candidate-archify.html": {
+      "bytes": 217150,
+      "sha256": "953e5ab18f43a3b28b403281c42adfda3b187fa0dbbeeaa12033b372305f02a3"
+    }
+  },
+  "baseline": {
+    "title": "Where is the matching helper text? · Archify",
+    "viewport": [
+      1440,
+      1100
+    ],
+    "tableLinks": [],
+    "tables": [
+      {
+        "label": "Full upstream test literal · first instance",
+        "rows": 24,
+        "text": "OldNewChangediff --git a/app.py b/app.py--- a/app.py+++ b/app.py@@ -10,7 +10,2 @@1010 x = 111-def helper(x):12-    total = x * 213-    total += 114-    return total15-1611 y = 2diff --git a/util.py b/util.py--- a/util.py+++ b/util.py@@ -1,1 +1,8 @@11 import os2+class Util:3+    def helper(x):4+        total = x * 25+        total += 16+        return total7+8+    def other(y):"
+      },
+      {
+        "label": "Full upstream test literal · second instance",
+        "rows": 24,
+        "text": "OldNewChangediff --git a/app.py b/app.py--- a/app.py+++ b/app.py@@ -10,7 +10,2 @@1010 x = 111-def helper(x):12-    total = x * 213-    total += 114-    return total15-1611 y = 2diff --git a/util.py b/util.py--- a/util.py+++ b/util.py@@ -1,1 +1,8 @@11 import os2+class Util:3+    def helper(x):4+        total = x * 25+        total += 16+        return total7+8+    def other(y):"
+      }
+    ],
+    "intro": [
+      "This is the complete second-look movedPatch test literal, not a user failure report. The candidate adds whitespace-trimmed text links within each diff instance; the baseline keeps the original table. The unchanged class and other helper lines stay visible."
+    ]
+  }
+}

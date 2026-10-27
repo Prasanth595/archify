@@ -223,3 +223,39 @@ test('text names light their diagram nodes and walk-throughs step through steps 
   assert.equal(image.type,'image/png');assert.ok(image.size>20000,'the long image carries the rendered page');
  }finally{await browser.close();}
 });
+
+
+test('matching diff text navigates with native pointer and Enter without crossing duplicate instances',{skip:!chrome},async()=>{
+ const {renderExplainer}=await import('../archify/explainer/render.mjs');
+ const patch=fs.readFileSync(new URL('../experiments/diff-matches/input/second-look.patch',import.meta.url),'utf8');
+ const doc=formalDocument();doc.panels=[{id:'changes',title:'Where is the matching text?',blocks:[{id:'first-diff',type:'diff',text:patch},{id:'second-diff',type:'diff',text:patch}]}];
+ const file=artifact('diff-matches',renderExplainer(doc)),browser=new ChromeVisualBrowser(chrome);
+ try {
+  await inspectPublicHtml(browser,{artifactPath:file,width:1440,keyboard:false});
+  const session=await browser.sessionPromise;await browser.cdp.send('Emulation.setFocusEmulationEnabled',{enabled:true},session);
+  const original=await pageValue(browser,`[...document.querySelectorAll('#first-diff code')].map(code=>code.textContent)`);
+  assert.deepEqual(original,patch.trimEnd().split('\n'));
+  assert.equal(await pageValue(browser,`document.querySelectorAll('#first-diff [data-diff-match-link]').length`),2);
+  const link='#first-diff .removed [data-diff-match-link]';
+  const point=await pageValue(browser,`(()=>{const link=document.querySelector(${JSON.stringify(link)});link.scrollIntoView({block:'center'});const r=link.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2};})()`);
+  for(const type of ['mousePressed','mouseReleased'])await browser.cdp.send('Input.dispatchMouseEvent',{type,...point,button:'left',clickCount:1},session);
+  await pageValue(browser,'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  const state=()=>pageValue(browser,`(()=>{const target=document.activeElement;return{block:target.closest('.block')?.id,line:target.dataset.newLine||target.dataset.oldLine,hash:location.hash,matching:document.querySelectorAll('#first-diff .diff-match-active').length,other:document.querySelectorAll('#second-diff .diff-match-active').length};})()`);
+  let shown=await state();assert.equal(shown.block,'first-diff');assert.equal(shown.line,'3');assert.equal(shown.matching,8);assert.equal(shown.other,0);
+  for(const type of ['keyDown','keyUp'])await browser.cdp.send('Input.dispatchKeyEvent',{type,key:'Tab',code:'Tab',windowsVirtualKeyCode:9},session);
+  assert.equal(await pageValue(browser,`document.activeElement.matches('#first-diff .added [data-diff-match-link]')`),true,'Tab from the target row reaches its reciprocal link');
+  await keyboardActivate(browser,'#first-diff .added [data-diff-match-link]');shown=await state();assert.equal(shown.line,'11');assert.equal(shown.block,'first-diff');
+  await keyboardActivate(browser,'#second-diff .removed [data-diff-match-link]');
+  assert.equal(await pageValue(browser,`document.activeElement.closest('.block').id`),'second-diff');
+  assert.equal(await pageValue(browser,`document.activeElement.dataset.newLine`),'3');
+  assert.deepEqual(await pageValue(browser,`[...document.querySelectorAll('#first-diff code')].map(code=>code.textContent)`),original);
+  const historical=fs.readFileSync(new URL('../experiments/diff-matches/input/archify-side-selection.patch',import.meta.url),'utf8');
+  doc.panels[0].blocks=[{id:'historical',type:'diff',text:historical}];
+  await inspectPublicHtml(browser,{artifactPath:artifact('historical-diff',renderExplainer(doc)),width:1440,keyboard:false});
+  assert.equal(await pageValue(browser,`document.querySelectorAll('#historical [data-diff-match-link]').length`),2);
+  await keyboardActivate(browser,'#historical .removed [data-diff-match-link]');
+  assert.equal(await pageValue(browser,`document.activeElement.dataset.newLine`),'1176');
+  await keyboardActivate(browser,'#historical .added [data-diff-match-link]');
+  assert.equal(await pageValue(browser,`document.activeElement.dataset.oldLine`),'3022');
+ } finally {await browser.close();}
+});

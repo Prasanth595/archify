@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-28",
+  "base": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+  "recoveredSnapshot": "3ee923f0cccb2e26136fa57b061a4a92e1a04d33",
+  "sourceAndTestDiffSha256": "83b6c1d914847ef653d350fbb89bc3736a5e8ac199cf972372a39332e83993c9",
+  "diffPaths": [
+    "archify/explainer",
+    "test/explainer-diff.test.mjs",
+    "test/explainer-renderer.test.mjs",
+    "test/explainer-browser.test.mjs"
+  ],
+  "identityChecks": [
+    {
+      "manifest": "identity.json",
+      "result": "pass",
+      "filesChecked": 10
+    },
+    {
+      "manifest": "source-manifest.json",
+      "result": "pass",
+      "filesChecked": 5
+    }
+  ],
+  "rawCopies": {
+    "result": "pass",
+    "files": 41,
+    "method": "byte-for-byte comparison and SHA256"
+  },
+  "testEvidence": "Reused original logs, no rerun: focused 63/63; browser full 9/9; expanded final browser subset 1/1; base discrimination expected 0 links vs 2. Final subset is included behavior, not a tenth unique browser case.",
+  "browserReview": "Completed root browser comparison and visual inspection; see ../browser-evidence.json. Existing line-number wrapping and narrow overflow retained as limitations.",
+  "scope": "Evidence and explanatory prose only; no product, tests, HTML, ZIP, installation, commit or push.",
+  "browserRawCopies": {
+    "result": "pass",
+    "files": 9,
+    "method": "byte-for-byte comparison and SHA256"
+  }
+}

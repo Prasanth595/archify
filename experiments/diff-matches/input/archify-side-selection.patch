@@ -1,0 +1,266 @@
+diff --git a/archify/renderers/workflow/workflow-compiler.mjs b/archify/renderers/workflow/workflow-compiler.mjs
+index 1aea262c..fac5cd0e 100644
+--- a/archify/renderers/workflow/workflow-compiler.mjs
++++ b/archify/renderers/workflow/workflow-compiler.mjs
+@@ -1163,6 +1163,133 @@ function createLegacyCapacityRepair({
+   return { enforceLegacyColumnCapacity };
+ }
+ 
++// Automatic side selection: which sides an automatic one-bend route leaves and
++// enters. Uses the shared side cache and the readable candidate set, so both are
++// passed in rather than captured.
++function createAutomaticSideSelection({
++  workflow,
++  readableSideCache,
++  readableAutomaticCandidateSet,
++  compareCost,
++  oneBendCrossLaneVia,
++}) {
++  function legacyAutomaticOneBendSides(edge, from, to) {
++    const automaticRoute = !edge.via && (!edge.route || edge.route === 'auto');
++    const automaticFrom = !edge.fromSide || edge.fromSide === 'auto';
++    const automaticTo = !edge.toSide || edge.toSide === 'auto';
++    if (!automaticRoute || !automaticFrom || !automaticTo || from.lane === to.lane) return null;
++    if (from.cx === to.cx || from.cy === to.cy) return null;
++    const verticalFrom = to.cy < from.cy ? 'top' : 'bottom';
++    const horizontalTo = to.cx < from.cx ? 'right' : 'left';
++    const horizontalFrom = to.cx < from.cx ? 'left' : 'right';
++    const verticalTo = to.cy < from.cy ? 'bottom' : 'top';
++    const candidates = [
++      { fromSide: verticalFrom, toSide: horizontalTo },
++      { fromSide: horizontalFrom, toSide: verticalTo },
++    ];
++
++    return candidates.find(({ fromSide, toSide }) => {
++      const start = anchor(from, fromSide);
++      const end = anchor(to, toSide);
++      return oneBendCrossLaneVia(edge, start, end, fromSide, toSide);
++    }) || null;
++  }
++
++  function readableAutomaticSides(edge, from, to) {
++    const automaticRoute = !edge.via
++      && edge.channelX === undefined
++      && edge.channelY === undefined
++      && (!edge.route || edge.route === 'auto');
++    const authoredFrom = edge.fromSide && edge.fromSide !== 'auto' ? edge.fromSide : null;
++    const authoredTo = edge.toSide && edge.toSide !== 'auto' ? edge.toSide : null;
++    if (!automaticRoute || (authoredFrom && authoredTo)) return null;
++    if (readableSideCache.has(edge)) return readableSideCache.get(edge);
++
++    const preferred = [];
++    const legacyPreferred = legacyAutomaticOneBendSides(edge, from, to);
++    if (legacyPreferred) preferred.push(legacyPreferred);
++    preferred.push({
++      fromSide: authoredFrom || defaultFromSide(from, to),
++      toSide: authoredTo || defaultToSide(from, to),
++    });
++    const sideOrder = ['right', 'bottom', 'left', 'top'];
++    for (const fromSide of authoredFrom ? [authoredFrom] : sideOrder) {
++      for (const toSide of authoredTo ? [authoredTo] : sideOrder) {
++        preferred.push({ fromSide, toSide });
++      }
++    }
++
++    const seen = new Set();
++    const sidePairs = [];
++    for (const candidate of preferred) {
++      if (authoredFrom && candidate.fromSide !== authoredFrom) continue;
++      if (authoredTo && candidate.toSide !== authoredTo) continue;
++      const key = `${candidate.fromSide}:${candidate.toSide}`;
++      if (seen.has(key)) continue;
++      seen.add(key);
++      sidePairs.push(candidate);
++    }
++
++    const naturalFromSide = authoredFrom || defaultFromSide(from, to);
++    const naturalToSide = authoredTo || defaultToSide(from, to);
++    const planFor = (candidate, pairOrdinal) => {
++      const start = anchor(from, candidate.fromSide);
++      const end = anchor(to, candidate.toSide);
++      return {
++        start,
++        end,
++        planned: readableAutomaticCandidateSet(
++          edge,
++          from,
++          to,
++          start,
++          end,
++          candidate.fromSide,
++          candidate.toSide,
++          {
++            ordinalOffset: pairOrdinal * 9,
++            naturalFromSide,
++            naturalToSide,
++          },
++        ),
++      };
++    };
++
++    const primary = sidePairs[0];
++    if (primary) {
++      const { planned } = planFor(primary, 0);
++      if (planned.candidates.length) {
++        readableSideCache.set(edge, primary);
++        return primary;
++      }
++    }
++
++    const candidates = [];
++    for (const [pairOrdinal, candidate] of sidePairs.entries()) {
++      const { planned } = planFor(candidate, pairOrdinal);
++      candidates.push(...planned.candidates.map((route) => ({ ...route, ...candidate })));
++    }
++    candidates.sort((left, right) => compareCost(left.cost, right.cost));
++    if (candidates.length) {
++      const selected = {
++        fromSide: candidates[0].fromSide,
++        toSide: candidates[0].toSide,
++      };
++      readableSideCache.set(edge, selected);
++      return selected;
++    }
++    readableSideCache.set(edge, null);
++    return null;
++  }
++
++  function automaticOneBendSides(edge, from, to) {
++    return workflow.schema_version === 2
++      ? readableAutomaticSides(edge, from, to)
++      : legacyAutomaticOneBendSides(edge, from, to);
++  }
++  return { automaticOneBendSides };
++}
++
+ function compileWorkflowInternal({
+   workflow: inputWorkflow,
+   qualityProfile,
+@@ -3019,120 +3146,13 @@ const pathCache = new Map();
+ const readableSideCache = new Map();
+ const workflowDiagnostics = [];
+ 
+-function legacyAutomaticOneBendSides(edge, from, to) {
+-  const automaticRoute = !edge.via && (!edge.route || edge.route === 'auto');
+-  const automaticFrom = !edge.fromSide || edge.fromSide === 'auto';
+-  const automaticTo = !edge.toSide || edge.toSide === 'auto';
+-  if (!automaticRoute || !automaticFrom || !automaticTo || from.lane === to.lane) return null;
+-  if (from.cx === to.cx || from.cy === to.cy) return null;
+-  const verticalFrom = to.cy < from.cy ? 'top' : 'bottom';
+-  const horizontalTo = to.cx < from.cx ? 'right' : 'left';
+-  const horizontalFrom = to.cx < from.cx ? 'left' : 'right';
+-  const verticalTo = to.cy < from.cy ? 'bottom' : 'top';
+-  const candidates = [
+-    { fromSide: verticalFrom, toSide: horizontalTo },
+-    { fromSide: horizontalFrom, toSide: verticalTo },
+-  ];
+-
+-  return candidates.find(({ fromSide, toSide }) => {
+-    const start = anchor(from, fromSide);
+-    const end = anchor(to, toSide);
+-    return oneBendCrossLaneVia(edge, start, end, fromSide, toSide);
+-  }) || null;
+-}
+-
+-function readableAutomaticSides(edge, from, to) {
+-  const automaticRoute = !edge.via
+-    && edge.channelX === undefined
+-    && edge.channelY === undefined
+-    && (!edge.route || edge.route === 'auto');
+-  const authoredFrom = edge.fromSide && edge.fromSide !== 'auto' ? edge.fromSide : null;
+-  const authoredTo = edge.toSide && edge.toSide !== 'auto' ? edge.toSide : null;
+-  if (!automaticRoute || (authoredFrom && authoredTo)) return null;
+-  if (readableSideCache.has(edge)) return readableSideCache.get(edge);
+-
+-  const preferred = [];
+-  const legacyPreferred = legacyAutomaticOneBendSides(edge, from, to);
+-  if (legacyPreferred) preferred.push(legacyPreferred);
+-  preferred.push({
+-    fromSide: authoredFrom || defaultFromSide(from, to),
+-    toSide: authoredTo || defaultToSide(from, to),
+-  });
+-  const sideOrder = ['right', 'bottom', 'left', 'top'];
+-  for (const fromSide of authoredFrom ? [authoredFrom] : sideOrder) {
+-    for (const toSide of authoredTo ? [authoredTo] : sideOrder) {
+-      preferred.push({ fromSide, toSide });
+-    }
+-  }
+-
+-  const seen = new Set();
+-  const sidePairs = [];
+-  for (const candidate of preferred) {
+-    if (authoredFrom && candidate.fromSide !== authoredFrom) continue;
+-    if (authoredTo && candidate.toSide !== authoredTo) continue;
+-    const key = `${candidate.fromSide}:${candidate.toSide}`;
+-    if (seen.has(key)) continue;
+-    seen.add(key);
+-    sidePairs.push(candidate);
+-  }
+-
+-  const naturalFromSide = authoredFrom || defaultFromSide(from, to);
+-  const naturalToSide = authoredTo || defaultToSide(from, to);
+-  const planFor = (candidate, pairOrdinal) => {
+-    const start = anchor(from, candidate.fromSide);
+-    const end = anchor(to, candidate.toSide);
+-    return {
+-      start,
+-      end,
+-      planned: readableAutomaticCandidateSet(
+-        edge,
+-        from,
+-        to,
+-        start,
+-        end,
+-        candidate.fromSide,
+-        candidate.toSide,
+-        {
+-          ordinalOffset: pairOrdinal * 9,
+-          naturalFromSide,
+-          naturalToSide,
+-        },
+-      ),
+-    };
+-  };
+-
+-  const primary = sidePairs[0];
+-  if (primary) {
+-    const { planned } = planFor(primary, 0);
+-    if (planned.candidates.length) {
+-      readableSideCache.set(edge, primary);
+-      return primary;
+-    }
+-  }
+-
+-  const candidates = [];
+-  for (const [pairOrdinal, candidate] of sidePairs.entries()) {
+-    const { planned } = planFor(candidate, pairOrdinal);
+-    candidates.push(...planned.candidates.map((route) => ({ ...route, ...candidate })));
+-  }
+-  candidates.sort((left, right) => compareCost(left.cost, right.cost));
+-  if (candidates.length) {
+-    const selected = {
+-      fromSide: candidates[0].fromSide,
+-      toSide: candidates[0].toSide,
+-    };
+-    readableSideCache.set(edge, selected);
+-    return selected;
+-  }
+-  readableSideCache.set(edge, null);
+-  return null;
+-}
+-
+-function automaticOneBendSides(edge, from, to) {
+-  return workflow.schema_version === 2
+-    ? readableAutomaticSides(edge, from, to)
+-    : legacyAutomaticOneBendSides(edge, from, to);
+-}
++const { automaticOneBendSides } = createAutomaticSideSelection({
++  workflow,
++  readableSideCache,
++  readableAutomaticCandidateSet,
++  compareCost,
++  oneBendCrossLaneVia,
++});
+ 
+ const OUTWARD_SIDE_VECTOR = Object.freeze({
+   left: [-1, 0],

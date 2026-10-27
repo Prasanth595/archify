@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "id": "diff-match-controls",
+    "title": "Which text links are intentionally absent?",
+    "locale": "en"
+  },
+  "answer": {
+    "summary": "Repeated candidates and weak or same-hunk text remain unlinked.",
+    "scope": "Constructed controls plus complete upstream test controls; absence is not proof that text has no correspondence."
+  },
+  "panels": [
+    {
+      "id": "controls",
+      "title": "Where does the conservative rule stop?",
+      "blocks": [
+        {
+          "id": "duplicate",
+          "type": "diff",
+          "text": "-const alpha = read();\n-const beta = parse(alpha);\n-return beta;\n+const alpha = read();\n+const beta = parse(alpha);\n+return beta;\n context\n+const alpha = read();\n+const beta = parse(alpha);\n+return beta;\n",
+          "caption": "Original constructed control: two indistinguishable destinations"
+        },
+        {
+          "id": "same-hunk",
+          "type": "diff",
+          "text": "diff --git a/a.go b/a.go\n--- a/a.go\n+++ b/a.go\n@@ -1,3 +1,3 @@\n-\tfirst(a)\n-\tsecond(b)\n-\tthird(c)\n+\t\tfirst(a)\n+\t\tsecond(b)\n+\t\tthird(c)\n",
+          "caption": "Complete upstream same-hunk reindent control"
+        },
+        {
+          "id": "nearby-helper",
+          "type": "diff",
+          "text": "diff --git a/app.py b/app.py\n--- a/app.py\n+++ b/app.py\n@@ -10,7 +10,3 @@\n x = 1\n-def helper(x):\n-    total = x * 2\n-    total += 1\n-    return total\n-\n+def helper(y):\n y = 2\ndiff --git a/util.py b/util.py\n--- a/util.py\n+++ b/util.py\n@@ -1,1 +1,8 @@\n import os\n+class Util:\n+    def helper(x):\n+        total = x * 2\n+        total += 1\n+        return total\n+\n+    def other(y):\n",
+          "caption": "Complete upstream modified patch: unrelated neighboring helper remains unlinked"
+        }
+      ]
+    }
+  ],
+  "sources": []
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "startedAt": "2026-10-26T06:19:35.105Z",
+  "specification": {
+    "path": "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/input/controls.json",
+    "sha256": "9371bdd509ec29b4eb15151c9c098cb5e2f3d7afed0a577abfe68b159c369654",
+    "bytes": 1895
+  },
+  "artifact": {
+    "path": "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/controls.html",
+    "sha256": "d84226429a2686f275502bbafbcec67fa82ba98a13e174968477e40f6e4587e7",
+    "bytes": 149031
+  },
+  "stages": {
+    "browser-check": {
+      "status": "not-run",
+      "execution": "not-requested"
+    },
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "/private/tmp/node-v22.23.2-darwin-arm64/bin/node",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/archify/bin/archify.mjs",
+        "deliver",
+        "explainer",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/input/controls.json",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/controls.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "9371bdd509ec29b4eb15151c9c098cb5e2f3d7afed0a577abfe68b159c369654",
+          "bytes": 1895
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 248,
+      "command": [
+        "/private/tmp/node-v22.23.2-darwin-arm64/bin/node",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/archify/bin/archify.mjs",
+        "deliver",
+        "explainer",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/input/controls.json",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/controls.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "94628505-e895-4940-ad73-5c990f502e6a",
+        "ok": true,
+        "command": "deliver",
+        "type": "explainer",
+        "input": "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/input/controls.json",
+        "output": "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/controls.html",
+        "explainer": {
+          "preparedSha256": "be68ad5052a14079e8417687aec427ee088f9af6a4baba7cd170427303ee92be",
+          "dependencies": []
+        },
+        "specification": {
+          "sha256": "9371bdd509ec29b4eb15151c9c098cb5e2f3d7afed0a577abfe68b159c369654",
+          "bytes": 1895
+        },
+        "artifact": {
+          "sha256": "d84226429a2686f275502bbafbcec67fa82ba98a13e174968477e40f6e4587e7",
+          "bytes": 149031
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 91,
+      "command": [
+        "/private/tmp/node-v22.23.2-darwin-arm64/bin/node",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/archify/bin/archify.mjs",
+        "check",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/controls.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "/Users/tushaokun/.codex/worktrees/lab-diff-matches/archify/experiments/diff-matches/controls.html",
+        "family": "explainer",
+        "artifact": {
+          "sha256": "d84226429a2686f275502bbafbcec67fa82ba98a13e174968477e40f6e4587e7",
+          "bytes": 149031
+        },
+        "checks": [
+          {
+            "name": "explainer_structure",
+            "ok": true,
+            "details": [
+              "15 unique DOM IDs"
+            ]
+          },
+          {
+            "name": "explainer_payload_identity",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "explainer_dependencies",
+            "ok": true,
+            "details": [
+              "0 frozen dependencies"
+            ]
+          },
+          {
+            "name": "explainer_native_diagrams",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "issues": [],
+          "nativeDiagrams": []
+        },
+        "diagnostics": [],
+        "provenance": "current",
+        "deliveryReceiptId": "94628505-e895-4940-ad73-5c990f502e6a"
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "diagnostics": [],
+  "evidence": {
+    "receipt": "/tmp/archify-diff-matches-20261026/controls/controls.finalize.json",
+    "summaryReceipt": "/tmp/archify-diff-matches-20261026/controls/controls.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-26T06:19:35.719Z",
+  "durationMs": 614,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T05:43:49.895Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

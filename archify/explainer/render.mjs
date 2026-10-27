@@ -3,7 +3,7 @@ import { softwareNoticesHtml } from '../renderers/shared/software-notices.mjs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { renderInline } from './inline.mjs';
-import { parseExplainerDiff } from './diff.mjs';
+import { parseExplainerDiff, matchingExplainerDiffBlocks } from './diff.mjs';
 import { computeExplainerRevision } from './revision.mjs';
 import { layoutExplainerPanels } from './layout.mjs';
 import { compileExplainerChart } from './charts.mjs';
@@ -81,7 +81,19 @@ export function renderExplainer(document, options = {}) {
       case 'diff': {
         const parsed = parseExplainerDiff(block.text,{component:'diff',input:sourcePath,panelId});
         if(parsed.diagnostics.some(diagnostic=>diagnostic.severity === 'error')) throw Object.assign(new Error(`Malformed diff: ${block.id}`),{diagnostics:parsed.diagnostics,archifyDiagnostics:parsed.diagnostics});
-        body = `<figure class="diff" data-diff-format="${parsed.format}"><figcaption>${block.caption ? `<span>${i(block.caption)}</span>` : ''}<span class="diff-summary"><span class="added">+${parsed.counts.added} ${words.added}</span> · <span class="removed">−${parsed.counts.removed} ${words.removed}</span></span></figcaption><div class="diff-scroll"><table class="diff-code" aria-label="${escape(block.caption || (english?'Code changes':'代码改动'))}"><thead><tr><th scope="col">${english?'Old':'原行'}</th><th scope="col">${english?'New':'新行'}</th><th scope="col">${english?'Change':'改动'}</th></tr></thead><tbody>${parsed.rows.map(row=>`<tr class="diff-line ${escape(row.kind)}" data-diff-kind="${escape(row.kind)}"${row.oldLine === null ? '' : ` data-old-line="${row.oldLine}"`}${row.newLine === null ? '' : ` data-new-line="${row.newLine}"`}><td class="diff-number">${row.oldLine ?? ''}</td><td class="diff-number">${row.newLine ?? ''}</td><td><code>${escape(row.raw)}</code></td></tr>`).join('')}</tbody></table></div></figure>`;
+        const matches=matchingExplainerDiffBlocks(parsed.rows),marks=new Map(),links=new Map();
+        const rowId=index=>`explainer-diff-${block.id}-${index}`;
+        function location(range,side) {
+          const first=parsed.rows[range.start],last=parsed.rows[range.end],number=side==='removed'?'oldLine':'newLine';
+          const lines=first[number]===null?`${english?'diff rows':'diff 行'} ${range.start+1}–${range.end+1}`:`${first[number]}–${last[number]}`;
+          return [first.filePath,lines].filter(Boolean).join(':');
+        }
+        for(const [index,match] of matches.entries())for(const side of ['removed','added']) {
+          const range=match[side],otherSide=side==='removed'?'added':'removed',other=match[otherSide];
+          for(let row=range.start;row<=range.end;row++)marks.set(row,index);
+          links.set(range.start,`<a class="diff-match-link interactive" href="#${escape(rowId(other.start))}" data-diff-match-link>${english?'Matching text':'匹配文本'} → ${escape(location(other,otherSide))}</a>`);
+        }
+        body = `<figure class="diff" data-diff-format="${parsed.format}"><figcaption>${block.caption ? `<span>${i(block.caption)}</span>` : ''}<span class="diff-summary"><span class="added">+${parsed.counts.added} ${words.added}</span> · <span class="removed">−${parsed.counts.removed} ${words.removed}</span></span></figcaption>${matches.length?`<p class="diff-match-note">${english?'Matching text ignores leading and trailing whitespace; it does not establish a move or equivalent behavior. Unmarked text may still correspond.':'匹配文本忽略行首尾空白，不证明真实搬移或行为等价；未标注也不代表没有对应。'}</p>`:''}<div class="diff-scroll"><table class="diff-code" aria-label="${escape(block.caption || (english?'Code changes':'代码改动'))}"><thead><tr><th scope="col">${english?'Old':'原行'}</th><th scope="col">${english?'New':'新行'}</th><th scope="col">${english?'Change':'改动'}</th></tr></thead><tbody>${parsed.rows.map((row,index)=>`<tr class="diff-line ${escape(row.kind)}" data-diff-kind="${escape(row.kind)}"${marks.has(index)?` data-diff-match="${marks.get(index)}"`:''}${links.has(index)?` id="${escape(rowId(index))}" tabindex="-1"`:''}${row.oldLine === null ? '' : ` data-old-line="${row.oldLine}"`}${row.newLine === null ? '' : ` data-new-line="${row.newLine}"`}><td class="diff-number">${row.oldLine ?? ''}</td><td class="diff-number">${row.newLine ?? ''}</td><td><code>${escape(row.raw)}</code>${links.get(index)||''}</td></tr>`).join('')}</tbody></table></div></figure>`;
         break;
       }
       case 'image': { const asset = assets[block.id]; if (!asset?.dataUrl || !/^data:image\/(png|jpeg|webp|gif);base64,/.test(asset.dataUrl)) unavailable(block,`Missing contained image: ${block.id}`); body = `<figure class="image"><img src="${escape(asset.dataUrl)}" alt="${escape(block.alt)}">${block.caption ? `<figcaption>${i(block.caption)}</figcaption>` : ''}</figure>`; break; }

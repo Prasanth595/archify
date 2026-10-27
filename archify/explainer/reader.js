@@ -11,6 +11,23 @@
   const all = (selector, within = document) => [...within.querySelectorAll(selector)];
   let toastTimer;
   function notify(text) { const toast=byId('toast');toast.textContent=text;toast.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('visible'),3000); }
+  // Native links own navigation/history; only target focus and local emphasis
+  // are added here. Identical diff content in another block is a separate scope.
+  function focusDiffMatch() {
+    let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}
+    const target=byId(id);
+    if(!target?.matches('.diff-line[data-diff-match]'))return;
+    const figure=target.closest('.diff');
+    all('.diff-match-active',figure).forEach(row=>row.classList.remove('diff-match-active'));
+    all('[data-diff-match]',figure).filter(row=>row.dataset.diffMatch===target.dataset.diffMatch).forEach(row=>row.classList.add('diff-match-active'));
+    target.focus({preventScroll:true});target.scrollIntoView({block:'center'});
+  }
+  addEventListener('hashchange',focusDiffMatch);
+  document.addEventListener('click',event=>{
+    const link=event.target.closest('[data-diff-match-link]');
+    if(link&&!event.defaultPrevented&&!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey&&link.hash===location.hash)focusDiffMatch();
+  });
+  focusDiffMatch();
   // Measured board layout. Each panel is measured at every column width, then each column template is
   // simulated and the one with the least page height and blank area wins. Panels keep source order on
   // a 1px row grid, so the DOM and reading order never change.

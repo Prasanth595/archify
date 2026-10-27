@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
-import {parseExplainerDiff} from '../archify/explainer/diff.mjs';
+import {parseExplainerDiff,matchingExplainerDiffBlocks} from '../archify/explainer/diff.mjs';
 import {parseExplainer} from '../archify/explainer/parse.mjs';
 import {validateExplainer} from '../archify/explainer/validate.mjs';
 
@@ -101,4 +101,32 @@ test('hunk content resembling file headers is counted as literal removed and add
 test('a renamed file retains the old credential syntax for removed lines',()=>{
   const literal='diff --git a/config.yaml b/notes.txt\n--- a/config.yaml\n+++ b/notes.txt\n@@ -1 +1 @@\n-api_key: example-private-credential\n+Public notes';
   const result=parseExplainerDiff(literal);assert.equal(result.rows.find(row=>row.kind==='removed').filePath,'config.yaml');assert.equal(result.rows.find(row=>row.kind==='added').filePath,'notes.txt');assert.ok(result.diagnostics.some(issue=>issue.code==='explainer/diff-secret'));assert.ok(!JSON.stringify(result.diagnostics).includes('example-private-credential'));
+});
+
+
+test('matching diff fragments find unique inner spans without rewriting literal rows or inventing numbers',()=>{
+  const literal='-old local change\r\n-  const first = read();  \r\n-  const second = parse(first);\r\n-  return second;\r\n-new local change\r\n+other local change\r\n+const first = read();\r\n+const second = parse(first);\r\n+return second;\r\n+different local change';
+  const parsed=parseExplainerDiff(literal),before=JSON.stringify(parsed);
+  assert.deepEqual(matchingExplainerDiffBlocks(parsed.rows),[{removed:{start:1,end:3},added:{start:6,end:8}}]);
+  assert.equal(JSON.stringify(parsed),before);assert.equal(reconstruction(parsed),literal);
+  assert.ok(parsed.rows.every(row=>row.oldLine===null&&row.newLine===null));
+});
+
+test('matching diff blocks preserve hunk boundaries and decline repeated or weak text',()=>{
+  const lines=['const first = read();','const second = parse(first);','return second;'];
+  const removed=lines.map(line=>'-'+line).join('\n'),added=lines.map(line=>'+'+line).join('\n');
+  const matches=text=>matchingExplainerDiffBlocks(parseExplainerDiff(text).rows);
+  assert.deepEqual(matches(removed+'\n'+added+'\n'+added),[],'duplicated destination cannot be attributed');
+  assert.deepEqual(matches(removed+'\n'+removed+'\n'+added),[],'duplicated source cannot be attributed');
+  assert.deepEqual(matches('@@ -1,3 +1,3 @@\n'+removed+'\n'+added),[],'same-hunk reindent is not a distant match');
+  assert.equal(matches('@@ -1,3 +1,0 @@\n'+removed+'\n@@ -10,0 +8,3 @@\n'+added).length,1,'separate hunks can correspond');
+  assert.deepEqual(matches('-{\n-}\n-\n+{\n+}\n+'),[]);
+  assert.deepEqual(matches('-const first = read();\n-return first;\n+const first = read();\n+return first;'),[]);
+  assert.deepEqual(matches(removed+'\n@@ -10,0 +8,2 @@\n'+added.split('\n').slice(0,2).join('\n')+'\n@@ -12,0 +10 @@\n'+added.split('\n')[2]),[],'seeds cannot bridge hunks');
+});
+
+test('overlapping competing match spans remain unlinked instead of choosing traversal order',()=>{
+  const a=['const alpha = read();','const beta = parse(alpha);','const gamma = build(beta);','const delta = finish(gamma);'];
+  const text=a.map(line=>'-'+line).join('\n')+'\n'+a.slice(0,3).map(line=>'+'+line).join('\n')+'\n context\n'+a.slice(1).map(line=>'+'+line).join('\n');
+  assert.deepEqual(matchingExplainerDiffBlocks(parseExplainerDiff(text).rows),[]);
 });

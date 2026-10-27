@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-28",
+  "method": "Actual browser interaction: the 2026-10-26 observations used root agent Ego TaskSpace 13; the 2026-10-28 recovered-session observations used Ego TaskSpace 7. Root visually inspected all four screenshots. Original observation JSON and screenshots are copied byte-for-byte. Automated browser test logs are separate reused evidence.",
+  "artifacts": {
+    "experiments/diff-matches/baseline.html": {
+      "bytes": 147993,
+      "sha256": "23c2e30d4d3fa2b1c9bf5c1d5e22ae27351c9ade720547981799151c9d56d147"
+    },
+    "experiments/diff-matches/candidate.html": {
+      "bytes": 150918,
+      "sha256": "4741ef0254a934ece5cc4aa9631aa6210d54fa75161e80ec0d4aa1e4f7d790e9"
+    },
+    "experiments/diff-matches/baseline-archify.html": {
+      "bytes": 210425,
+      "sha256": "7081e83d2dc84d7f2e6fbd5a16a01f4b6e03fc1212fcdeae947103f7e6873bb6"
+    },
+    "experiments/diff-matches/candidate-archify.html": {
+      "bytes": 217150,
+      "sha256": "953e5ab18f43a3b28b403281c42adfda3b187fa0dbbeeaa12033b372305f02a3"
+    },
+    "experiments/diff-matches/controls.html": {
+      "bytes": 149031,
+      "sha256": "d84226429a2686f275502bbafbcec67fa82ba98a13e174968477e40f6e4587e7"
+    }
+  },
+  "files": [
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261026/baseline-complete-fixture-light.png",
+      "path": "evidence/20261026/baseline-complete-fixture-light.png",
+      "bytes": 161379,
+      "sha256": "ac929969c4dbbee4e8fc1cb545f162cf073a7a1db83fabb5f25404137cb8e8b2"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261026/candidate-matched-helper-light.png",
+      "path": "evidence/20261026/candidate-matched-helper-light.png",
+      "bytes": 129469,
+      "sha256": "6b97827e99c6954436d58c5dd17e8ff3294ac5d2149980c9042b12780e0556f8"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261026/baseline-observations.json",
+      "path": "evidence/20261026/baseline-observations.json",
+      "bytes": 1990,
+      "sha256": "6aac022b103bf2bad521f293243fcc6db684013fe38d74ba4008867bb1678aa4"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261026/candidate-helper-observations.json",
+      "path": "evidence/20261026/candidate-helper-observations.json",
+      "bytes": 3078,
+      "sha256": "a07acaceb8454a1c3206ae8dab54cfc1843b215255816d26714f8cfff92a1ac0"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261028/candidate-archify-old-light.png",
+      "path": "evidence/20261028/candidate-archify-old-light.png",
+      "bytes": 125573,
+      "sha256": "253f123f6f23b99f146961702a9adb0e1c907f0571e7cd8b86d51ed03b8b6c3a"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261028/candidate-matched-helper-narrow-dark.png",
+      "path": "evidence/20261028/candidate-matched-helper-narrow-dark.png",
+      "bytes": 64393,
+      "sha256": "3e9bd65cb5d09ea806ae58bbf5c8819cd532905dc769e0bb4f5e7e9fce893b56"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261028/candidate-archify-observations.json",
+      "path": "evidence/20261028/candidate-archify-observations.json",
+      "bytes": 1101,
+      "sha256": "5b3a9cd424456bb33a04c7088a96befdb660185eb57569098471de9d2a55103a"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261028/candidate-narrow-observations.json",
+      "path": "evidence/20261028/candidate-narrow-observations.json",
+      "bytes": 3175,
+      "sha256": "75f90a2ffb61a881a1109990f4117f336068e3eacb3a12951ac67cd2c28336a5"
+    },
+    {
+      "originalPath": "/tmp/archify-diff-matches-20261028/baseline-existing-layout-observations.json",
+      "path": "evidence/20261028/baseline-existing-layout-observations.json",
+      "bytes": 336,
+      "sha256": "576bf861f5210782be3b33e9a371515196be3b91b0ce28322d23728e0fd0120a"
+    }
+  ],
+  "observations": [
+    {
+      "evidence": "evidence/20261026/baseline-observations.json",
+      "result": "Baseline keeps both complete diff tables and has no matching links."
+    },
+    {
+      "evidence": "evidence/20261026/candidate-helper-observations.json",
+      "result": "Pointer follows old app.py:11\u201314 to new util.py:3\u20136; Tab focuses reciprocal link and Enter returns. Second identical instance focuses its own destination; eight matching rows per selected figure are emphasized. Existing highlights remain local to their figure."
+    },
+    {
+      "evidence": "evidence/20261028/candidate-archify-observations.json",
+      "result": "Pointer follows historical patch to old 3022, then Tab/Enter returns to new 1176. Selected group emphasizes 228 rows, 114 on each side."
+    },
+    {
+      "evidence": "evidence/20261028/candidate-narrow-observations.json",
+      "result": "At desktop CSS viewport 390\u00d7844, dark theme, pointer and Tab/Enter work; matching link stays visible and screenshot is locally readable. Page scrollWidth is 400px."
+    },
+    {
+      "evidence": "evidence/20261028/baseline-existing-layout-observations.json",
+      "result": "Baseline also wraps four-digit 3022 into two visual lines: cell width 36px, height 40.796875px, overflow-wrap:anywhere, white-space:normal. At CSS viewport 390px the baseline page is 401px wide."
+    }
+  ],
+  "visualDisposition": "Root found the new reading action functionally reviewable. Four-digit line-number wrapping and approximately 10px narrow-page overflow remain existing baseline limitations; this is not full mobile visual acceptance. No CSS or HTML was changed to produce this evidence.",
+  "limitations": [
+    "Desktop Chromium only; CSS viewport observation is not physical touch-device or assistive-technology acceptance.",
+    "No separate long-image/print visual acceptance.",
+    "No move/copy/behavior equivalence, successful compilation or execution established.",
+    "No measured reading-speed benefit."
+  ],
+  "galleryImage": "evidence/20261026/candidate-matched-helper-light.png"
+}

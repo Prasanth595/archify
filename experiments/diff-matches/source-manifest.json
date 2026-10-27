@@ -1,0 +1,38 @@
+{
+  "reference": {
+    "repository": "KyleKing/second-look",
+    "revision": "b0f604f4a740dc3098fca2ec9d508bd16af7b761",
+    "test": "internal/diff/moved_test.go",
+    "license": "MIT; Copyright (c) 2026 Kyle King",
+    "fixture": "Full const movedPatch raw string, including final LF; extracted, not an upstream standalone patch file"
+  },
+  "realRepositoryPatch": {
+    "repository": "tt-a1i/archify",
+    "revision": "e3fe0c2d3299df3846e84194f29b771771b2c0a0",
+    "command": "git show --format= --no-ext-diff --no-color --no-renames e3fe0c2d3299df3846e84194f29b771771b2c0a0",
+    "scope": "Complete single-file commit patch, no path filtering",
+    "license": "Historical MIT grant, full license copied from that revision"
+  },
+  "files": {
+    "inspiration/moved_test.go": {
+      "bytes": 2465,
+      "sha256": "f5d6365d001a1fa4a99abe206f6e5bf21d9d29fa357d65e1ad3a06370415aa85"
+    },
+    "inspiration/second-look-LICENSE": {
+      "bytes": 1066,
+      "sha256": "ccc5da2887126ec7e3001e7631c18c21b251b0c7f0c0b195d961b59b5f504724"
+    },
+    "inspiration/archify-historical-LICENSE": {
+      "bytes": 1102,
+      "sha256": "b799ab081703e7821ae5096d2c1abdf14bbdc75e8ea1c4045998c36ed6db9706"
+    },
+    "input/second-look.patch": {
+      "bytes": 363,
+      "sha256": "5766fb90a003c49f1ae6df5068c1d840b2d9bb6e043f68efb16a97ab122ba0a6"
+    },
+    "input/archify-side-selection.patch": {
+      "bytes": 9666,
+      "sha256": "731f68b023f1644bace47dee9f6eb5b21851b4b9ae868a387bea4126999ce04d"
+    }
+  }
+}

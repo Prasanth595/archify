@@ -1,0 +1,47 @@
+{
+  "base": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+  "branch": "codex/lab-diff-matches",
+  "state": "uncommitted candidate; frozen product code and normal CLI artifacts",
+  "files": {
+    "archify/explainer/diff.mjs": {
+      "bytes": 11925,
+      "sha256": "14fe3356998c7d53d080f8dc7de5c1e1cd34b48947fc35f2e70e149da391573f"
+    },
+    "archify/explainer/render.mjs": {
+      "bytes": 35904,
+      "sha256": "4e6e2dc034757fa0254b2703efd57c64626074d04cee19ed29d1ccbf746ceb49"
+    },
+    "archify/explainer/reader.js": {
+      "bytes": 55089,
+      "sha256": "d13ba4c3e97a09b77fb801ec0e902dccda9b4e156c01c42629e9ad640a22a992"
+    },
+    "archify/explainer/reader.css": {
+      "bytes": 47709,
+      "sha256": "c9ddc6d9879cdcf0b69b814f1008b7e4ba3624ae8b2bd4ea4b7590a67761bd49"
+    },
+    "archify.zip": {
+      "bytes": 6990929,
+      "sha256": "c9077080e9bf05de53334c9a3d4414eeb221541c27e047cf17c84e20fbbeadb7"
+    },
+    "experiments/diff-matches/baseline.html": {
+      "bytes": 147993,
+      "sha256": "23c2e30d4d3fa2b1c9bf5c1d5e22ae27351c9ade720547981799151c9d56d147"
+    },
+    "experiments/diff-matches/candidate.html": {
+      "bytes": 150918,
+      "sha256": "4741ef0254a934ece5cc4aa9631aa6210d54fa75161e80ec0d4aa1e4f7d790e9"
+    },
+    "experiments/diff-matches/baseline-archify.html": {
+      "bytes": 210425,
+      "sha256": "7081e83d2dc84d7f2e6fbd5a16a01f4b6e03fc1212fcdeae947103f7e6873bb6"
+    },
+    "experiments/diff-matches/candidate-archify.html": {
+      "bytes": 217150,
+      "sha256": "953e5ab18f43a3b28b403281c42adfda3b187fa0dbbeeaa12033b372305f02a3"
+    },
+    "experiments/diff-matches/controls.html": {
+      "bytes": 149031,
+      "sha256": "d84226429a2686f275502bbafbcec67fa82ba98a13e174968477e40f6e4587e7"
+    }
+  }
+}

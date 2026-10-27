@@ -1,0 +1,102 @@
+{
+  "kind": "original browser observations",
+  "observedAt": "2026-10-26T06:31:04.375Z",
+  "boundCandidateSha256": "4741ef0254a934ece5cc4aa9631aa6210d54fa75161e80ec0d4aa1e4f7d790e9",
+  "selected": {
+    "hash": "#explainer-diff-change-first-17",
+    "active": "explainer-diff-change-first-17",
+    "focusBlock": "change-first",
+    "focusText": "3+    def helper(x):Matching text → app.py:11–14",
+    "links": [
+      {
+        "text": "Matching text → util.py:3–6",
+        "href": "#explainer-diff-change-first-17",
+        "block": "change-first"
+      },
+      {
+        "text": "Matching text → app.py:11–14",
+        "href": "#explainer-diff-change-first-5",
+        "block": "change-first"
+      },
+      {
+        "text": "Matching text → util.py:3–6",
+        "href": "#explainer-diff-change-second-17",
+        "block": "change-second"
+      },
+      {
+        "text": "Matching text → app.py:11–14",
+        "href": "#explainer-diff-change-second-5",
+        "block": "change-second"
+      }
+    ],
+    "rows": [
+      {
+        "id": "explainer-diff-change-first-5",
+        "cls": "diff-line removed diff-match-active",
+        "block": "change-first",
+        "text": "11-def helper(x):Matching text → util.py:3–6"
+      },
+      {
+        "id": "",
+        "cls": "diff-line removed diff-match-active",
+        "block": "change-first",
+        "text": "12-    total = x * 2"
+      },
+      {
+        "id": "",
+        "cls": "diff-line removed diff-match-active",
+        "block": "change-first",
+        "text": "13-    total += 1"
+      },
+      {
+        "id": "",
+        "cls": "diff-line removed diff-match-active",
+        "block": "change-first",
+        "text": "14-    return total"
+      },
+      {
+        "id": "explainer-diff-change-first-17",
+        "cls": "diff-line added diff-match-active",
+        "block": "change-first",
+        "text": "3+    def helper(x):Matching text → app.py:11–14"
+      },
+      {
+        "id": "",
+        "cls": "diff-line added diff-match-active",
+        "block": "change-first",
+        "text": "4+        total = x * 2"
+      },
+      {
+        "id": "",
+        "cls": "diff-line added diff-match-active",
+        "block": "change-first",
+        "text": "5+        total += 1"
+      },
+      {
+        "id": "",
+        "cls": "diff-line added diff-match-active",
+        "block": "change-first",
+        "text": "6+        return total"
+      }
+    ]
+  },
+  "nextFocus": {
+    "tag": "A",
+    "text": "Matching text → app.py:11–14",
+    "href": "#explainer-diff-change-first-5"
+  },
+  "returned": {
+    "hash": "#explainer-diff-change-first-5",
+    "active": "explainer-diff-change-first-5",
+    "focusBlock": "change-first",
+    "focusText": "11-def helper(x):Matching text → util.py:3–6"
+  },
+  "second": {
+    "hash": "#explainer-diff-change-second-17",
+    "active": "explainer-diff-change-second-17",
+    "focusBlock": "change-second",
+    "focusText": "3+    def helper(x):Matching text → app.py:11–14",
+    "firstHighlights": 8,
+    "secondHighlights": 8
+  }
+}

@@ -266,6 +266,11 @@ pre code{background:none;border:0;padding:0;white-space:pre;font-size:inherit}
 .diff-code .header,.diff-code .no-newline{color:var(--muted)}
 .diff-code tbody tr>*,.diff-code tbody tr:hover>*{background:inherit}
 .diff-summary{white-space:nowrap}
+.diff-match-note{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 4px}
+.diff-match-link{display:block;width:fit-content;max-width:100%;font:11px/1.5 var(--sans);white-space:normal;margin:4px 0;color:var(--accent)}
+.diff-line[data-diff-match]{border-left:3px solid var(--accent)}
+.diff-code .diff-match-active{box-shadow:inset 3px 0 var(--accent);background:color-mix(in srgb,var(--accent) 15%,var(--code))}
+.diff-line[id]{scroll-margin-block:32px}
 .image img{display:block;max-width:100%;height:auto;border-radius:8px}
 
 /* Footer */

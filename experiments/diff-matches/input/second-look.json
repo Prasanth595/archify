@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "id": "diff-matches-second-look",
+    "title": "Where is the matching helper text?",
+    "locale": "en"
+  },
+  "answer": {
+    "summary": "Follow matching text to its other occurrence, then follow its link back.",
+    "scope": "Text comparison only; no move, copy, execution, or behavior equivalence claim."
+  },
+  "panels": [
+    {
+      "id": "review",
+      "title": "Where does the same text appear?",
+      "blocks": [
+        {
+          "id": "context",
+          "type": "prose",
+          "text": "This is the complete second-look movedPatch test literal, not a user failure report. The candidate adds whitespace-trimmed text links within each diff instance; the baseline keeps the original table. The unchanged class and other helper lines stay visible."
+        },
+        {
+          "id": "change-first",
+          "type": "diff",
+          "text": "diff --git a/app.py b/app.py\n--- a/app.py\n+++ b/app.py\n@@ -10,7 +10,2 @@\n x = 1\n-def helper(x):\n-    total = x * 2\n-    total += 1\n-    return total\n-\n y = 2\ndiff --git a/util.py b/util.py\n--- a/util.py\n+++ b/util.py\n@@ -1,1 +1,8 @@\n import os\n+class Util:\n+    def helper(x):\n+        total = x * 2\n+        total += 1\n+        return total\n+\n+    def other(y):\n",
+          "caption": "Full upstream test literal · first instance"
+        },
+        {
+          "id": "instance",
+          "type": "prose",
+          "text": "The same complete diff appears again below. Its links belong to this second instance, even though its text and line numbers repeat."
+        },
+        {
+          "id": "change-second",
+          "type": "diff",
+          "text": "diff --git a/app.py b/app.py\n--- a/app.py\n+++ b/app.py\n@@ -10,7 +10,2 @@\n x = 1\n-def helper(x):\n-    total = x * 2\n-    total += 1\n-    return total\n-\n y = 2\ndiff --git a/util.py b/util.py\n--- a/util.py\n+++ b/util.py\n@@ -1,1 +1,8 @@\n import os\n+class Util:\n+    def helper(x):\n+        total = x * 2\n+        total += 1\n+        return total\n+\n+    def other(y):\n",
+          "caption": "Full upstream test literal · second instance"
+        }
+      ]
+    }
+  ],
+  "sources": []
+}
