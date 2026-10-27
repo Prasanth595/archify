@@ -1,0 +1,59 @@
+{
+  "batch": 24,
+  "date": "2026-10-28",
+  "research_base": "6aad697d086992fbbbd2a88f96bdcae78a765630",
+  "dev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remote_heads_before": 316,
+  "remote_delta_vs_round23_before": {
+    "added": [
+      "codex/lab-source-link-context"
+    ],
+    "removed": [],
+    "changed": [
+      "codex/research-lab-20261026"
+    ]
+  },
+  "decisions": {
+    "bazel": "defer; native matching/diff already informative, full natural two-report observation missing",
+    "cargo": "defer new reader; native offline derived observation answers this small context question"
+  },
+  "native_observation": {
+    "cargo": "1.89.0 c24e1064277fe51ab72011e2612e556ac56addf7",
+    "rustc": "1.89.0 29483883eed69d5fb4db01964cdf2af4d86e9cb2",
+    "host": "aarch64-apple-darwin",
+    "tree_commands": 14,
+    "tree_exit_zero": 14,
+    "version_commands": 2,
+    "version_exit_zero": 2,
+    "only_fixture_file_differing_between_arms": [
+      "foo/Cargo.toml"
+    ],
+    "allowed_difference": "explicit resolver = 1 versus 2",
+    "lockfile_sha256_both_arms": "722df078676f90f32a3ae93bc058faee8e591ce974a075b7afe254fc5724b24b",
+    "target_exists": false,
+    "fixture_target_paths": [],
+    "pre_fixture_files": 14,
+    "post_fixture_files": 16,
+    "raw_copy_files": 70,
+    "copy_hashes_verified": true,
+    "post_inventory_hashes_verified": true,
+    "upstream": "rust-lang/cargo@31d3246e0e8d3a80d4a90b54aa48ff180adb408b",
+    "source_identity_change": "test registry replaced with local paths; not original fixture/source identity",
+    "upstream_test_executed": false,
+    "fixture_code_compiled_or_executed": false
+  },
+  "not_verified": [
+    "latest Cargo behavior",
+    "Bazel runtime",
+    "nightly unit graph",
+    "actual compiled units",
+    "human reading benefit",
+    "Archify product tests/browser/CI"
+  ],
+  "product_changed": false,
+  "new_experiment_branch": false,
+  "new_pr": false,
+  "merge_release_install": false,
+  "goal_status": "active",
+  "source_capture_correction": "Initial apply_patch capture appended one extra LF to deps.rs and LICENSE-MIT. Removed that single added LF from both temporary and archived copies before commit, refreshed copy-map, and compared complete text to original connector response. Native fixtures/commands/results unchanged."
+}

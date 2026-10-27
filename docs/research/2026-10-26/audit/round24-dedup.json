@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-27T22:12:43.191Z",
+  "issueQueries": [
+    {
+      "query": "repo:tt-a1i/archify cargo",
+      "topn": 15,
+      "results": []
+    },
+    {
+      "query": "repo:tt-a1i/archify bazel",
+      "topn": 15,
+      "results": []
+    }
+  ],
+  "prQueries": [
+    {
+      "query": "repo:tt-a1i/archify dependency",
+      "stateFilter": "open",
+      "topn": 15,
+      "resultCount": 15,
+      "coverage": "capped, not exhaustive"
+    },
+    {
+      "query": "repo:tt-a1i/archify (cargo OR bazel OR \"feature resolver\" OR \"aquery\")",
+      "stateFilter": "all",
+      "topn": 10,
+      "results": [
+        {
+          "title": "feat: add inspect-repo repository index and Level 2/3 evidence pack",
+          "url": "https://github.com/tt-a1i/archify/pull/540"
+        }
+      ]
+    }
+  ],
+  "verifiedPR540": {
+    "state": "closed",
+    "merged": false,
+    "head": "638aa8df219ed9aa6ed2c079d168f6faed4027a4",
+    "scope": "repository-index/evidence pack, not a tested Cargo/Bazel context reader"
+  }
+}

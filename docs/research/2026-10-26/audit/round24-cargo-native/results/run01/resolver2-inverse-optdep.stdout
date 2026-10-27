@@ -1,0 +1,10 @@
+optdep v1.0.0 (/private/tmp/archify-round24-cargo-native/fixtures/resolver2/optdep)
+└── optdep feature "default"
+    └── bar v1.0.0 (/private/tmp/archify-round24-cargo-native/fixtures/resolver2/bar)
+        ├── bar feature "default"
+        │   [build-dependencies]
+        │   └── foo v0.1.0 (/private/tmp/archify-round24-cargo-native/fixtures/resolver2/foo)
+        │       └── foo feature "default" (command-line)
+        └── bar feature "optdep"
+            [build-dependencies]
+            └── foo v0.1.0 (/private/tmp/archify-round24-cargo-native/fixtures/resolver2/foo) (*)

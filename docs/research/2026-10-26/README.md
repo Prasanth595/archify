@@ -605,3 +605,20 @@ clangd 探针的 harness/进程 exit 0 不覆盖 outgoing 方法失败。实际 
 另行核对 [Promise 结算与取消](scouts/promise-settlement-reading-round23.md)：存在自然问题，但完整代码/日志已能说明输家继续执行；Loupe 的 Promise 支持问题不能拿来制造图的优势。没有新建 Promise 阅读器。
 
 本批只推实验分支与研究总账，未创建 PR、合并、发布或修改 live Archify。持续研究目标保持进行中；源码链接修复的机器证据与人类阅读效果分开。
+
+## 第二十四批：构建上下文先与完整原生输出比较
+
+开始前 fetch/prune 并核对 [316 个远程 head](audit/remote-branches-round24.txt)。相对第23批开头，只新增上一批的 `codex/lab-source-link-context`，研究总账更新到 `6aad697d`；其余 head 未变，dev 仍为 `d5d97949`。GitHub Cargo/Bazel issue 检索没有命中；补充 PR 检索命中已关闭且未合并的 #540 repository-index 工作，另有既存 Atlas/静态分析方向。检索受关键词和数量限制，不声称全历史无重复；已有 dependency-map、edge-extras、plan-actions、task-occurrences 和 Ninja/CMake 记录共同用于排重。
+
+| 方向 | 证据与筛选决定 |
+| --- | --- |
+| [Bazel configured target / action](scouts/bazel-reading-round24.md) | 固定 `88888ad0` 的完整测试与源码显示，原生 `aquery_differ` 已按输出集合配对并显示选中的命令或输入差异。这个匹配键不是跨构建永久身份，分析图也不是执行或 cache 事实。没有同源完整自然构建报告及原生运行对照，本批不增加 importer、匹配器或因果图。 |
+| [Cargo feature 与 host/build 上下文](scouts/cargo-features-round24.md) | 固定 `31d3246e` 的官方样例已用 tree、反查、包筛选和 duplicates 显示不同上下文。自然问题 #11261 还涉及实际 build unit，作者在讨论中确认 nightly unit graph 满足其需要。随后执行下述离线派生观察，原生输出能回答小样例中的 feature 来源；尚无额外图的用户收益证据。 |
+
+[Cargo 原生观察包](audit/round24-cargo-native/README.md)保存完整上游测试、MIT 许可、本地派生输入、脚本、两组 lockfile 和完整 stdout/stderr/命令/版本/时长/前后哈希。已安装的 Cargo/rustc **1.89.0** 下，resolver 1/2 各7条 `tree --offline` 命令均退出0；没有编译，也没有产生 target 目录。临时 Cargo 缓存记账文件未复制，排除项及70份原样复制文件见 [copy map](audit/round24-cargo-copy-map.json)。
+
+两组 `Cargo.lock` 字节相同，但原生树显示的 feature 上下文不同：resolver 1 在普通 `bar` 下展开 `optdep`，build 分支标为重复；resolver 2 只有 build 分支含 `optdep`。`-p bar`、`-d` 和反向 feature 查询直接揭示这个区别。它说明本例不能由 lockfile 单独恢复 feature 上下文，不代表执行了两个编译单元或运行了原始用户项目。
+
+该观察把上游测试 registry 改成本地 path 依赖，显式声明 edition/resolver，并用空库文件提供本地 package target；**不是上游测试原样复现**，也不是当前 Cargo 最新版本验证。两个 scout 文件保留的是观察前的只读筛选记录，其中“未运行”仅指该阶段；实际运行以观察包为准。没有运行 Bazel、nightly unit graph、Archify 测试或人类理解对照。本批没有方向通过新增产品实验的门槛，因此只推研究总账，不制作无依据的示意截图，也不新增 PR。
+
+[独立交付审计](audit/round24-delivery-review.md)与[验证范围](audit/round24-validation.json)分开记录源码预期、派生实测和未知项。目标保持进行中；下次遇到同类候选，先要求完整原生证据和明确阅读任务，再判断现有 Explainer 是否已足够。

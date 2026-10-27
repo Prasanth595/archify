@@ -1,0 +1,11 @@
+[package]
+name = "foo"
+version = "0.1.0"
+edition = "2015"
+resolver = "2"
+
+[dependencies]
+bar = { path = "../bar" }
+
+[build-dependencies]
+bar = { path = "../bar", features = ["optdep"] }

@@ -1,0 +1,429 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "source": "/tmp/archify-round24-cargo-native/README.md",
+      "sha256": "fb58438c367bd907991dbe8586b79a5a2788aab4d9f43c4b03d586ef2e99e1ec",
+      "bytes": 3899
+    },
+    {
+      "path": "fixtures/resolver1/bar/Cargo.toml",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/bar/Cargo.toml",
+      "sha256": "c8422daacb1e11c8554f8ce2a40cb0f45c9c7498096833508b9be0cfebd11e24",
+      "bytes": 123
+    },
+    {
+      "path": "fixtures/resolver1/bar/src/lib.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/bar/src/lib.rs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "fixtures/resolver1/foo/Cargo.lock",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/foo/Cargo.lock",
+      "sha256": "722df078676f90f32a3ae93bc058faee8e591ce974a075b7afe254fc5724b24b",
+      "bytes": 295
+    },
+    {
+      "path": "fixtures/resolver1/foo/Cargo.toml",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/foo/Cargo.toml",
+      "sha256": "10315146abee39bc2a8fc7a98001438fa1af071815641fba94d0a13f86cf2457",
+      "bytes": 186
+    },
+    {
+      "path": "fixtures/resolver1/foo/build.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/foo/build.rs",
+      "sha256": "ef32637cb9c3ec2e3968c9cbdf26a5e9c172be94f88af533e14bd43f892d5297",
+      "bytes": 12
+    },
+    {
+      "path": "fixtures/resolver1/foo/src/lib.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/foo/src/lib.rs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "fixtures/resolver1/optdep/Cargo.toml",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/optdep/Cargo.toml",
+      "sha256": "9f074d9d5decdaeb59fef969f587d53a17ce1b3431c23ec2866667c3ff8f7527",
+      "bytes": 61
+    },
+    {
+      "path": "fixtures/resolver1/optdep/src/lib.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver1/optdep/src/lib.rs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "fixtures/resolver2/bar/Cargo.toml",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/bar/Cargo.toml",
+      "sha256": "c8422daacb1e11c8554f8ce2a40cb0f45c9c7498096833508b9be0cfebd11e24",
+      "bytes": 123
+    },
+    {
+      "path": "fixtures/resolver2/bar/src/lib.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/bar/src/lib.rs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "fixtures/resolver2/foo/Cargo.lock",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/foo/Cargo.lock",
+      "sha256": "722df078676f90f32a3ae93bc058faee8e591ce974a075b7afe254fc5724b24b",
+      "bytes": 295
+    },
+    {
+      "path": "fixtures/resolver2/foo/Cargo.toml",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/foo/Cargo.toml",
+      "sha256": "7231059eaf58bffbeca970218a42b3d34ccb9464a6e0e615cadbe1dd16c28818",
+      "bytes": 186
+    },
+    {
+      "path": "fixtures/resolver2/foo/build.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/foo/build.rs",
+      "sha256": "ef32637cb9c3ec2e3968c9cbdf26a5e9c172be94f88af533e14bd43f892d5297",
+      "bytes": 12
+    },
+    {
+      "path": "fixtures/resolver2/foo/src/lib.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/foo/src/lib.rs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "fixtures/resolver2/optdep/Cargo.toml",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/optdep/Cargo.toml",
+      "sha256": "9f074d9d5decdaeb59fef969f587d53a17ce1b3431c23ec2866667c3ff8f7527",
+      "bytes": 61
+    },
+    {
+      "path": "fixtures/resolver2/optdep/src/lib.rs",
+      "source": "/tmp/archify-round24-cargo-native/fixtures/resolver2/optdep/src/lib.rs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "github-dedup.json",
+      "source": "/tmp/archify-round24-cargo-native/github-dedup.json",
+      "sha256": "f537137f44c7db67f534b9ef36add4a7335f6d9e47aaba8ed996590a9498cac7",
+      "bytes": 65411
+    },
+    {
+      "path": "results/run01/cargo-version.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/cargo-version.json",
+      "sha256": "3471f439558cde2fb25e442812d5842d34b7fb9a338d00baa21cceef2e247e2d",
+      "bytes": 315
+    },
+    {
+      "path": "results/run01/cargo-version.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/cargo-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/cargo-version.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/cargo-version.stdout",
+      "sha256": "ae663817a3828de03c95142dd542f5c320542d3e056154be1bd3c4c572ef8e68",
+      "bytes": 335
+    },
+    {
+      "path": "results/run01/resolver1-duplicates.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-duplicates.json",
+      "sha256": "01ffc8dba8bcc28d423d96b0c92ed88ffd1503c9c9fd942ef682d9f5aa64ed5e",
+      "bytes": 366
+    },
+    {
+      "path": "results/run01/resolver1-duplicates.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-duplicates.stderr",
+      "sha256": "4dc8e4fe7f86c681d8b81d94c4e76a3dda13457f37def5513d5850195a7778f6",
+      "bytes": 176
+    },
+    {
+      "path": "results/run01/resolver1-duplicates.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-duplicates.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver1-features-no-dedupe.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-features-no-dedupe.json",
+      "sha256": "0f2070cc5a9087c3ef695e4efc2457ded24a4286c5d80b1bd80f737aa71a0142",
+      "bytes": 402
+    },
+    {
+      "path": "results/run01/resolver1-features-no-dedupe.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-features-no-dedupe.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver1-features-no-dedupe.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-features-no-dedupe.stdout",
+      "sha256": "469371bacf27dd5025291b7dfe25c3b92c329ae2d4b9a2edd0a89588e2df26cb",
+      "bytes": 923
+    },
+    {
+      "path": "results/run01/resolver1-features.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-features.json",
+      "sha256": "c72727ce65bbe389826128e9e4fb7943f0bf42cf01d56e1bfb2bfd165b2a7447",
+      "bytes": 382
+    },
+    {
+      "path": "results/run01/resolver1-features.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-features.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver1-features.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-features.stdout",
+      "sha256": "108259b88fd730f54c787da71aaba0e21f927214b49d91094dd1c069075086bf",
+      "bytes": 535
+    },
+    {
+      "path": "results/run01/resolver1-inverse-optdep.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-inverse-optdep.json",
+      "sha256": "e64fcf7713625aaa7f5c8ffd9b64ca909c177de0fccceb7212a760170a5110a3",
+      "bytes": 407
+    },
+    {
+      "path": "results/run01/resolver1-inverse-optdep.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-inverse-optdep.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver1-inverse-optdep.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-inverse-optdep.stdout",
+      "sha256": "992bd0b9abc9d3e4861a7d086777275f7bd8c54ffc47dbb4b34d62a9dd778204",
+      "bytes": 735
+    },
+    {
+      "path": "results/run01/resolver1-normal-build.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-normal-build.json",
+      "sha256": "da82a909b6aa1b721088d65d573549fb1bdca4830c45caca54c39dbaa455b814",
+      "bytes": 386
+    },
+    {
+      "path": "results/run01/resolver1-normal-build.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-normal-build.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver1-normal-build.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-normal-build.stdout",
+      "sha256": "4b03da8ec3c9be3452d286e5460ac3aaf042cbd9b003f736444c02b8f60b012d",
+      "bytes": 377
+    },
+    {
+      "path": "results/run01/resolver1-package-bar.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-package-bar.json",
+      "sha256": "225fe7f2617240eaadcb8131fc93d6edfc4ef6f62e49a3fe5ff1c54fc3d957b5",
+      "bytes": 377
+    },
+    {
+      "path": "results/run01/resolver1-package-bar.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-package-bar.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver1-package-bar.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-package-bar.stdout",
+      "sha256": "91abe34f2e7d92dd59e384863d5659e9df1d597837d3aa672f3cd6c77038f404",
+      "bytes": 172
+    },
+    {
+      "path": "results/run01/resolver1-tree.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-tree.json",
+      "sha256": "c70efdb1f2089134b7680348315f6b304bc1dcd917866691e15ba2a47584ebd3",
+      "bytes": 355
+    },
+    {
+      "path": "results/run01/resolver1-tree.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-tree.stderr",
+      "sha256": "ef74f1b0c870b1e09026b71bf8d9a5b89427abffdadecd2966fbdd0c891919ab",
+      "bytes": 54
+    },
+    {
+      "path": "results/run01/resolver1-tree.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver1-tree.stdout",
+      "sha256": "4b03da8ec3c9be3452d286e5460ac3aaf042cbd9b003f736444c02b8f60b012d",
+      "bytes": 377
+    },
+    {
+      "path": "results/run01/resolver2-duplicates.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-duplicates.json",
+      "sha256": "6964b0774c880aaf8be9b50db9a8ca5ac0e2c0fa977b8deaa733b3c824825341",
+      "bytes": 366
+    },
+    {
+      "path": "results/run01/resolver2-duplicates.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-duplicates.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver2-duplicates.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-duplicates.stdout",
+      "sha256": "cca850a979238862f67f3b7e99b8050b1089822430be78e5e46255f0e0c7dc65",
+      "bytes": 354
+    },
+    {
+      "path": "results/run01/resolver2-features-no-dedupe.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-features-no-dedupe.json",
+      "sha256": "3c5139dc5b25ff1d218748f0d67234192bd6c307d74bd6b32212f27a9e55ea33",
+      "bytes": 401
+    },
+    {
+      "path": "results/run01/resolver2-features-no-dedupe.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-features-no-dedupe.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver2-features-no-dedupe.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-features-no-dedupe.stdout",
+      "sha256": "d90c98637e0050c8d8ea010a739f033fa231116440b4a03879e6a6c1d8629d2c",
+      "bytes": 774
+    },
+    {
+      "path": "results/run01/resolver2-features.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-features.json",
+      "sha256": "552f981ce3eae98acd4b9ccc9611da1572200562d1647a11b2324685f4247305",
+      "bytes": 381
+    },
+    {
+      "path": "results/run01/resolver2-features.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-features.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver2-features.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-features.stdout",
+      "sha256": "2b8dcc6e0051be50028b8d2dc9f078631ac4a84d93aab3a704d354b4650ffa6b",
+      "bytes": 629
+    },
+    {
+      "path": "results/run01/resolver2-inverse-optdep.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-inverse-optdep.json",
+      "sha256": "763b38cfb1e8d2bf464712629fe8aa9d3609457eab5108a565d89b10b39028c5",
+      "bytes": 406
+    },
+    {
+      "path": "results/run01/resolver2-inverse-optdep.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-inverse-optdep.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver2-inverse-optdep.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-inverse-optdep.stdout",
+      "sha256": "b7b82180a4655a5c82fab4e0a0a742a5c5088a46e26a6e3de12cfb5596f18f6f",
+      "bytes": 629
+    },
+    {
+      "path": "results/run01/resolver2-normal-build.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-normal-build.json",
+      "sha256": "8f71e9ed0cf2216cd140f00163f5fb047a215cc9c6398d24e4bc2ae98bce18bf",
+      "bytes": 386
+    },
+    {
+      "path": "results/run01/resolver2-normal-build.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-normal-build.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver2-normal-build.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-normal-build.stdout",
+      "sha256": "8b0930a1bfaf06056128d1a77a1a06a5e41ca0fd2ee31a384b30706f1c9cd655",
+      "bytes": 373
+    },
+    {
+      "path": "results/run01/resolver2-package-bar.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-package-bar.json",
+      "sha256": "006ee96ec154e985df68e4090d1d2ddade9ebd8c922ebbd79e664af314ab3d07",
+      "bytes": 377
+    },
+    {
+      "path": "results/run01/resolver2-package-bar.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-package-bar.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/resolver2-package-bar.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-package-bar.stdout",
+      "sha256": "2d6dc4b02375cf5a222b07f241ec008c6d798e5637cda50b41dbfc155753b5ff",
+      "bytes": 251
+    },
+    {
+      "path": "results/run01/resolver2-tree.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-tree.json",
+      "sha256": "5f5b8544c0ac67e72df6761f8c845c2133102ce71ab5ae6b21c5973db6c20208",
+      "bytes": 356
+    },
+    {
+      "path": "results/run01/resolver2-tree.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-tree.stderr",
+      "sha256": "ef74f1b0c870b1e09026b71bf8d9a5b89427abffdadecd2966fbdd0c891919ab",
+      "bytes": 54
+    },
+    {
+      "path": "results/run01/resolver2-tree.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/resolver2-tree.stdout",
+      "sha256": "8b0930a1bfaf06056128d1a77a1a06a5e41ca0fd2ee31a384b30706f1c9cd655",
+      "bytes": 373
+    },
+    {
+      "path": "results/run01/rustc-version.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/rustc-version.json",
+      "sha256": "312087e9ac141b82fb8f6d426e6e68115a689b628fc9a645f036d4ea3ce0553d",
+      "bytes": 314
+    },
+    {
+      "path": "results/run01/rustc-version.stderr",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/rustc-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/run01/rustc-version.stdout",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/rustc-version.stdout",
+      "sha256": "a3138eb77dfe19d4cdb1d83ceb7c34944715564062936cf209d247cbf5208fae",
+      "bytes": 192
+    },
+    {
+      "path": "results/run01/summary.json",
+      "source": "/tmp/archify-round24-cargo-native/results/run01/summary.json",
+      "sha256": "b9dda5930d7ddf1e97ecb6d412e1f08e568e39a2bbd44f2634266093092eee74",
+      "bytes": 11787
+    },
+    {
+      "path": "run.py",
+      "source": "/tmp/archify-round24-cargo-native/run.py",
+      "sha256": "52adb0aa9d7db43ee319941835b9b1d8c1013349d02a992c70837ab81604bbdb",
+      "bytes": 3163
+    },
+    {
+      "path": "upstream/LICENSE-MIT",
+      "source": "/tmp/archify-round24-cargo-native/upstream/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "bytes": 1023
+    },
+    {
+      "path": "upstream/deps.rs",
+      "source": "/tmp/archify-round24-cargo-native/upstream/deps.rs",
+      "sha256": "5c292f4b11741038ad83bb872ae1e5b6e0c81db3a91f111e7f7e55b1ad47af0b",
+      "bytes": 54745
+    }
+  ],
+  "excluded": [
+    "results/run01/cargo-home/.package-cache",
+    "results/run01/cargo-home/.global-cache"
+  ],
+  "exclusion_reason": "Cargo temporary bookkeeping is not input or tree output; preserved under /tmp original; no target/build artifacts were produced."
+}
