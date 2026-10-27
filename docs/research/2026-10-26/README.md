@@ -587,3 +587,21 @@ root 在原 Kconfig 页面上用真实 Tab 进一步核实动态动作：1440×9
 clangd 探针的 harness/进程 exit 0 不覆盖 outgoing 方法失败。实际 9 条发送、7 条已读取消息经过[独立核对](audit/round22-native-audit.md)；记录只覆盖读到 shutdown 的帧，没有退出后的 stdout drain。初稿把启动器 SHA 写成 binary 身份，整理时已分开 `/usr/bin/clangd` 和运行后解析的 CLT 二进制；源记录不重写。仅有构造测试 TU 的程序化客户端观察，不含样例程序执行、原生编辑器导航、完整跨文件覆盖或读者收益。
 
 本批三个方向均未通过新增实现筛选，没有新图片或新实验分支；不以重复绘图填补证据缺口。可审查的研究、原始协议与失败记录推到现有研究总账分支。产品代码及以前实验不变，未运行无关产品测试、安装、合并或发布，持续目标保持进行中。
+
+## 第二十三批：让源码链接的名称保留具体位置
+
+开始前远程仍为 [315 个 heads](audit/remote-branches-round23.txt)，dev 为 `d5d97949`。沿上批调用位置的阅读问题核对现有 SourceCard/Passport：起始行、范围和 href 未发现错配；真正的丢失发生在 Native 链接名称。两条引用同一个文件的链接，其可见标签和行号不同，但 aria-label 都只含文件路径和版本。[字段审计](audit/round23-source-excerpt-audit.md)明确这是源码检查发现，随后才由真实 Chrome AX 复现，非自然用户事故。
+
+通过筛选的局部修复已推送独立分支 [codex/lab-source-link-context](https://github.com/tt-a1i/archify/tree/codex/lab-source-link-context/experiments/source-link-context)，head `dae900182d317d76620104e619d8fdfba7229315`。它仅让 Native Passport 名称复用已有可见标签、L行范围和原有本地化路径/版本短语；不加 schema、目录键、解析器、缓存或运行依赖。#1063 的托管平台支持、#1132 的关系证据，以及既有 source-question-tour、line-notes、source-keyboard 均未重复实现。
+
+- 新 AX 回归在旧模板上真实失败，候选上来源浏览器 3 项、相关浏览器/Passport 7 项通过；[独立 review](audit/round23-source-link-review.md)认可局部代码和覆盖范围。
+- 真实 Ego 32 的 English/1440×900/light 与 zh-CN/390×844/dark，Finder→Enter→Tab 分别经过相同的 14/13 次 Tab 到第一条，再一次到第二条。基线名称相同，候选名称不同；可见文字和 href 相同。没有打开外部源码或做物理读屏器验收。
+- 四份完整 HTML 用明确 Node22.23.3 重生成，全部与已拍摄字节一致。两份候选 require-provenance check 通过。截图保留了不同相机状态，不能作为像素差分；静态 SVG 的字节对照相同。
+- 初次 generated 检查有 31 项过期输出，执行者最初误报成功，经独立 review 纠正。旧失败保留；随后按仓库脚本刷新 15 对示例、派生 web-app.html 和 ZIP，最终 generated 退出0、stderr空。32个改动HTML的SVG列表与基线相同（模板可为空）；ZIP 内模板等于候选。ZIP 使用临时官方 Node22.23.2/zlib，不是安装或发布。
+- 最终证据目录包含95个被manifest绑定的文件，64份原样复制记录；Browser.getVersion 查询失败、重置相机关闭 Passport 导致补充拍摄失败也保留。无完整suite或远程CI结论。
+
+![源码链接候选的真实键盘焦点状态](https://raw.githubusercontent.com/tt-a1i/archify/dae900182d317d76620104e619d8fdfba7229315/experiments/source-link-context/screenshots/candidate-en-desktop.png)
+
+另行核对 [Promise 结算与取消](scouts/promise-settlement-reading-round23.md)：存在自然问题，但完整代码/日志已能说明输家继续执行；Loupe 的 Promise 支持问题不能拿来制造图的优势。没有新建 Promise 阅读器。
+
+本批只推实验分支与研究总账，未创建 PR、合并、发布或修改 live Archify。持续研究目标保持进行中；源码链接修复的机器证据与人类阅读效果分开。
