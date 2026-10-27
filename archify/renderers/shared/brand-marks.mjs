@@ -6,7 +6,6 @@ import net from 'node:net';
 import { BRAND_MARKS } from './generated-brand-marks.mjs';
 import { throwDiagnosticError } from './diagnostics.mjs';
 import { esc, textUnits } from './utils.mjs';
-import { nodeTextFit } from './text-fit.mjs';
 
 const COLLECTIONS = Object.freeze({
   architecture: 'components',
@@ -708,7 +707,7 @@ export function brandLabelFitWidth(node, width) {
 
 export function brandTopRailProblem(node, width, minimumFontSize, subject = 'Node') {
   if (!brandMarkFor(node)) return null;
-  const available = brandLabelFitWidth(node, width) - nodeTextFit.horizontalPadding;
+  const available = brandLabelFitWidth(node, width);
   const required = textUnits(node.label) * minimumFontSize * 0.6;
   if (available >= required) return null;
   return `${subject} "${node.id}" brand top rail leaves ${Math.max(0, available)}px for its label, but `

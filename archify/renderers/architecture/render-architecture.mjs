@@ -6,7 +6,7 @@ import { animateAttr, focusEdgeAttrs, focusNodeAttrs, focusNodeTitle, loadDiagra
 import { componentBox, boundaryBox, connectionPath } from '../shared/layout-report.mjs';
 import { rendererFailure, throwDiagnosticProblems } from '../shared/diagnostics.mjs';
 import { legendFootprint, relationshipLegendObstacles, resolveLegend, renderLegend as renderResolvedLegend } from '../shared/legend.mjs';
-import { availableNodeTextWidth, fittedNodeFontSize, minimumNodeTextWidth } from '../shared/text-fit.mjs';
+import { availableNodeTextWidth, fittedNodeFontSize, minimumNodeTextWidth, nodeTextFit } from '../shared/text-fit.mjs';
 import { brandLabelFitWidth, brandMetadataFor, brandTopRailProblem, renderBrandMark } from '../shared/brand-marks.mjs';
 import { minimumReadableSourceTextPx } from '../shared/desktop-readability.mjs';
 import { translateMessage as i18nText } from '../shared/i18n.mjs';
@@ -562,7 +562,9 @@ function validateArchitecture() {
       });
       problems.push(message);
     }
-    const brandRailProblem = brandTopRailProblem(c, c.width, 8, 'Component');
+    // Architecture labels use fittedNodeFontSize, which reserves this padding.
+    // Other renderers retain the shared rail's established accepted-width boundary.
+    const brandRailProblem = brandTopRailProblem(c, c.width - nodeTextFit.horizontalPadding, 8, 'Component');
     if (brandRailProblem) problems.push(brandRailProblem);
     // sublabel and tag render as single unwrapped <text> elements; shrink-to-fit
     // handles the ordinary case, this rejects what it cannot rescue.

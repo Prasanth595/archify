@@ -252,6 +252,27 @@ test('architecture brand top rail accounts for fitted text padding', () => {
   assert.equal(html, '');
 });
 
+test('Dataflow retains its existing branded-rail acceptance boundary', () => {
+  const input = path.join(tmp, 'dataflow-branded-rail-compatibility.json');
+  fs.writeFileSync(input, JSON.stringify({
+    schema_version: 1,
+    diagram_type: 'dataflow',
+    meta: {
+      title: 'Branded rail compatibility probe', output: 'probe.html', quality_profile: 'standard',
+      viewBox: [600, 400], legend: { mode: 'hidden' },
+    },
+    stages: [{ label: 'Source' }, { label: 'Sink' }],
+    nodes: [
+      { id: 'a', type: 'backend', label: 'ABCDEFGHIJKLMN', brand: 'openai', stage: 0, row: 0, width: 120, height: 64 },
+      { id: 'b', type: 'backend', label: 'Sink', stage: 1, row: 0, height: 64 },
+    ],
+    flows: [{ from: 'a', to: 'b', label: 'uses' }],
+  }));
+  const { result, html } = renderSync('dataflow', input, 'dataflow-branded-rail-compatibility');
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(html, /data-brand-mark="openai"/);
+});
+
 test('a larger upper-right badge keeps the type fill, semantic icon, and text', () => {
   const input = writeFixture('architecture', 'larger-badge', 'postgresql', (diagram, node) => {
     node.label = 'PostgreSQL';
