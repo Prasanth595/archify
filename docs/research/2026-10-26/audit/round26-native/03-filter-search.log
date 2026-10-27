@@ -1,0 +1,124 @@
+{ filtered: { collapsed: [ 'viewer' ], lens: [ 'backend' ], focus: null, targetHidden: true, targetLensMatch: true, targetDisplay: 'none', at: '2026-10-27T22:58:55.982Z' }, searching: { collapsed: [ 'viewer' ], lens: [ 'backend' ], focus: null, query: 'tree-branches.js', targetHidden: true, at: '2026-10-27T22:58:58.294Z' } }
+[p1 "Archify repository layout Diagram" | space "Archify research 20261026"(34): 1 managed, 0 untracked — p1* "Archify repository layout Diagram"]
+root
+  toolbar "Diagram actions"
+    container
+      button "Toggle color theme" [ref=25, loc=css:button[aria-label="Toggle color theme"]]
+      button "Visual style: Classic. Choose visual style" [ref=26, loc=css:button[aria-label="Visual style: Classic. Choose visual style"]]
+        text "Classic"
+      button "Resume motion" [ref=27, loc=css:button[aria-label="Resume motion"]]
+        text "Still"
+      button "Enter presentation stage" [ref=28]
+    button "Export diagram" [ref=29, loc=css:button[aria-label="Export diagram"]]
+      text "Export"
+  container
+    container
+      heading
+        text "Archify repository layout"
+      paragraph
+        text "Observed directory structure of this repository (selected files). Runs of three or more files are listed; the viewer/ branch starts collapsed."
+    container
+      image "archify repository Skill, viewer, and site archify/ Installable Skill package viewer/ Inlined into the template website/ Astro project site scripts/ Build and freshness tools renderers/ One per diagra..." [ref=30]
+        text "archify repository"
+        text "Skill, viewer, and site"
+        text "archify/"
+        text "Installable Skill package"
+        text "viewer/"
+        text "Inlined into the template"
+        text "website/"
+        text "Astro project site"
+        text "scripts/"
+        text "Build and freshness tools"
+        text "renderers/"
+        text "One per diagram type"
+        text "schemas/"
+        text "Typed JSON contracts"
+        text "bin/"
+        text "CLI entry points"
+        text "references/"
+        text "Authoring contracts"
+        text "architecture/"
+        text "Boundaries and router"
+        text "workflow/"
+        text "Workflow compiler"
+        text "sequence/"
+        text "dataflow/"
+        text "lifecycle/"
+        text "erd/"
+        text "Crow's foot markers"
+        text "tree/"
+        text "This renderer"
+        text "shared/"
+        text "Shared helpers"
+        text "cli.mjs"
+        text "Load, validate, write"
+        text "geometry.mjs"
+        text "Composition gates"
+        text "i18n.mjs"
+        text "Locale catalogs"
+        text "generated-validators.mjs"
+        text "Schema validators"
+        text "archify.mjs"
+        text "CLI: validate, finalize"
+        text "finalize.mjs"
+        text "Render, check, deliver"
+        text "preview.mjs"
+        text "Live preview server"
+        text "focus.js"
+        text "Semantic passport"
+        text "export.js"
+        text "SVG, PNG, WebM export"
+        text "tree-branches.js"
+        text "Expand and collapse"
+        text "viewer-camera.js"
+        text "Pan, zoom, reveal"
+        text "generate-viewer.mjs"
+        text "Inlines viewer/"
+        text "build-zip.sh"
+        text "Deterministic archive"
+        text "build-gallery.mjs"
+        text "30"
+        text "19"
+        text "4"
+        text "3"
+        text "12"
+        text "3"
+        text "4"
+        text "Expand all"
+      dialog "Find a node"
+        container
+          text "FIND A NODE"
+          button "Close node finder" [ref=44, loc=css:button[aria-label="Close node finder"]]
+            text "×"
+        container
+          text "⌕"
+          searchbox "Search diagram nodes" [ref=45, loc=css:input[placeholder="Search labels or IDs"]]
+            text "tree-branches.js"
+          text "/"
+        group "Diagram nodes"
+          button "Focus tree-branches.js, 1 related connection" [ref=46, loc=css:button[aria-label="Focus tree-branches.js, 1 related connection"]]
+            text "tree-branches.js"
+            text "1 link"
+            text "External · v_tree · Expand and collapse"
+        paragraph
+          text "1 of 31 nodes"
+      toolbar "Diagram view controls"
+        button "Trace a directed route" [ref=31]
+          text "ROUTE"
+        button "Open active semantic lens" [ref=32, loc=css:button[aria-label="Open active semantic lens"]]
+          text "LENS"
+        button "Find a node" [ref=33, loc=css:button[aria-label="Find a node"]]
+        button "Open diagram guide" [ref=34, loc=css:button[aria-label="Open diagram guide"]]
+        button "Zoom out" [ref=35, loc=css:button[aria-label="Zoom out"]]
+        button "100% · Zoom in again to reveal tags and annotations. Reset diagram view" [ref=36, loc=css:button[aria-label="100% · Zoom in again to reveal tags and annotations. Reset diagram view"]]
+          text "100%"
+        button "Zoom in" [ref=37, loc=css:button[aria-label="Zoom in"]]
+    container
+      toolbar "Side panel"
+        button "Move panel beside the diagram" [ref=38, loc=css:button[aria-label="Move panel beside the diagram"]]
+      container "Node index"
+        container
+          text "Node index"
+          text "31"
+
+

@@ -1,0 +1,11 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(34);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('loc=css:button[aria-label="Backend, 6 nodes"]');
+const filtered=await page.evaluate(()=>{const n=document.querySelector('[data-node-id="v_tree"]');return {collapsed:Archify.treeBranches.collapsedIds(),lens:Archify.semanticLens.active(),focus:Archify.focus.active(),targetHidden:n.hasAttribute('data-tree-hidden'),targetLensMatch:n.hasAttribute('data-lens-match'),targetDisplay:getComputedStyle(n).display,at:new Date().toISOString()};});
+await fs.writeFile('/tmp/archify-round26-native/filtered-state.json',JSON.stringify(filtered,null,2));
+await page.screenshot({path:'/tmp/archify-round26-native/filtered.png'});
+await page.click('loc=css:button[aria-label="Find a node"]');
+await page.fill('#node-finder-input','tree-branches.js');
+const snapshot=await page.snapshot();await fs.writeFile('/tmp/archify-round26-native/search-snapshot.json',JSON.stringify(snapshot,null,2));
+const searching=await page.evaluate(()=>({collapsed:Archify.treeBranches.collapsedIds(),lens:Archify.semanticLens.active(),focus:Archify.focus.active(),query:document.querySelector('#node-finder-input').value,targetHidden:document.querySelector('[data-node-id="v_tree"]').hasAttribute('data-tree-hidden'),at:new Date().toISOString()}));
+await fs.writeFile('/tmp/archify-round26-native/search-state.json',JSON.stringify(searching,null,2));console.log({filtered,searching});console.log(snapshot);

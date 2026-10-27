@@ -1,0 +1,133 @@
+{
+  "at": "2026-10-27T23:08:23.678Z",
+  "issues": [
+    {
+      "query": "repo:tt-a1i/archify finder",
+      "state": "open",
+      "topn": 15,
+      "status": "fulfilled",
+      "results": [
+        {
+          "title": "Explore Viewer component boundaries with matched AI evaluations and standalone HTML",
+          "url": "https://github.com/tt-a1i/archify/issues/666"
+        },
+        {
+          "title": "[Bug]: Distinguish unavailable graph queries from zero relationships",
+          "url": "https://github.com/tt-a1i/archify/issues/816"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify lens",
+      "state": "open",
+      "topn": 15,
+      "status": "fulfilled",
+      "results": [
+        {
+          "title": "docs: track Round 34 relationship test link correction",
+          "url": "https://github.com/tt-a1i/archify/issues/1038"
+        },
+        {
+          "title": "[Viewer] Mobile: nav actions overflow, route probe hides under the nav, presentation stage clips the scene start",
+          "url": "https://github.com/tt-a1i/archify/issues/1026"
+        },
+        {
+          "title": "[Feature][Viewer] Support broader comparison and consistent hover previews",
+          "url": "https://github.com/tt-a1i/archify/issues/83"
+        },
+        {
+          "title": "[Bug]: Distinguish unavailable graph queries from zero relationships",
+          "url": "https://github.com/tt-a1i/archify/issues/816"
+        },
+        {
+          "title": "Explore Viewer component boundaries with matched AI evaluations and standalone HTML",
+          "url": "https://github.com/tt-a1i/archify/issues/666"
+        },
+        {
+          "title": "[Proposal] Formal logical operators for workflow: decision node + edge conditions (AND/OR)",
+          "url": "https://github.com/tt-a1i/archify/issues/312"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify collapsed",
+      "state": "open",
+      "topn": 10,
+      "status": "fulfilled",
+      "results": [
+        {
+          "title": "[Feature][Workflow] Preserve critical approval details within the first-screen constraint",
+          "url": "https://github.com/tt-a1i/archify/issues/84"
+        }
+      ]
+    }
+  ],
+  "pull_requests": {
+    "query": "repo:tt-a1i/archify focus",
+    "state_filter": "open",
+    "topn": 15,
+    "results": [
+      {
+        "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+        "url": "https://github.com/tt-a1i/archify/pull/1015"
+      },
+      {
+        "title": "perf(explainer): index outgoing shorthand edges",
+        "url": "https://github.com/tt-a1i/archify/pull/1108"
+      },
+      {
+        "title": "fix(explainer): keep mobile toolbar and Style/Export menus in view",
+        "url": "https://github.com/tt-a1i/archify/pull/1076"
+      },
+      {
+        "title": "perf(dataflow): avoid repeated flow index scans",
+        "url": "https://github.com/tt-a1i/archify/pull/1109"
+      },
+      {
+        "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+        "url": "https://github.com/tt-a1i/archify/pull/1124"
+      },
+      {
+        "title": "Add an Atlas view to Code Analysis",
+        "url": "https://github.com/tt-a1i/archify/pull/1103"
+      },
+      {
+        "title": "Improve workflow compilation performance",
+        "url": "https://github.com/tt-a1i/archify/pull/1106"
+      },
+      {
+        "title": "test(update): cover bounded checker output transport",
+        "url": "https://github.com/tt-a1i/archify/pull/834"
+      },
+      {
+        "title": "fix(browser): preserve DevTools pipes during Windows browser startup",
+        "url": "https://github.com/tt-a1i/archify/pull/863"
+      },
+      {
+        "title": "fix(viewer): stabilize relationship exploration",
+        "url": "https://github.com/tt-a1i/archify/pull/225"
+      },
+      {
+        "title": "chore: add scoped PR review and ZIP integration tools",
+        "url": "https://github.com/tt-a1i/archify/pull/1138"
+      },
+      {
+        "title": "fix(doctor): require regular installation files",
+        "url": "https://github.com/tt-a1i/archify/pull/844"
+      },
+      {
+        "title": "fix(cli): preserve browser-check review mode on directory failure",
+        "url": "https://github.com/tt-a1i/archify/pull/832"
+      },
+      {
+        "title": "fix(check): retain collinear quadratic route reversals",
+        "url": "https://github.com/tt-a1i/archify/pull/822"
+      },
+      {
+        "title": "Deferred: optional offline Atlas overview/detail reading",
+        "url": "https://github.com/tt-a1i/archify/pull/461"
+      }
+    ]
+  },
+  "limits": "Keyword searches and capped results; not exhaustive ownership or current-state verification for every returned item. Existing reveal-related branches/source tests also inspected; no new implementation."
+}

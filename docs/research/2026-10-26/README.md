@@ -644,3 +644,21 @@ Ohm页面报告引擎 **17.5.0**，编辑器部署commit未知，与固定编辑
 [复制记录](audit/round25-copy-map.json)绑定63份原始材料；[独立审计](audit/round25-delivery-review.md)与[验证范围](audit/round25-validation.json)分别核对原始输入、实际输出及文案边界。三个scout文件保留筛选阶段的只读结论，后续实测以原生观察包为准。本批无产品改动、Archify测试或新实验分支；只推研究总账，未创建PR、发布、合并或安装。目标保持进行中。
 
 首次 staged whitespace 检查将原始CRLF、expected中的空白与终端日志末尾空行报为错误，[原始输出](audit/round25-whitespace-before.stdout)保留。最终仅对这些原始来源/输出设置局部Git属性，保持字节身份；文稿和脚本仍正常检查，没有清洗原始记录。
+
+## 第二十六批：搜索目标已经能解除折叠与旧筛选
+
+本批先刷新 [316 个远程 head](audit/remote-branches-round26.txt)，dev仍为 `d5d97949`。对照现有 finder-context、finder-highlights、spatial-focus 分支，以及[相关 issue/PR 检索](audit/round26-dedup.json)，没有先假设缺少一个新 reveal 功能。
+
+[LikeC4 的真实跨视图搜索问题](scouts/search-reveal-round26.md)说明目标身份、切换视图、搜索面板关闭与实际聚焦是不同步骤。固定 `b7a69c46` 的helper测试不是过滤/折叠端到端证明；代码中的自动退焦延迟为0，也不能照搬PR描述声称存在定时退焦。这为检查提供了具体问题，不能用来宣称Archify同样有缺陷。
+
+[Archify源码审计](audit/round26-reveal-audit.md)确认有效Finder/Focus选择已有Lens/Reach清理、Tree祖先展开及相机显现调用；已有Tree浏览器测试也写了共享选择和hash展开断言，本批未重跑这些测试。随后对dev中完整的31节点树JSON与现成HTML做[实际原生交互](audit/round26-native/README.md)，没有重新生成或注入测试钩子：
+
+- 原生Backend Lens会保留相连的`v_tree`作为peer，虽然它的kind是External；这次对照保留，不能以“不同kind”冒充“已被筛掉”。
+- 切换为Frontend Lens后，`v_tree`确实不在Lens匹配中，同时仍藏在折叠的`viewer/`下面。仅打开Finder和输入完整文件名，旧Lens与折叠仍在。
+- 对唯一结果按Enter后，祖先展开，Lens为空；目标成为语义选择与DOM焦点，opacity为1、display为inline，整个节点框在1440×900视口内，中心命中目标。SVG只留下当前Focus状态，没有旧Lens/Reach active mask。其余节点的降亮属于新的Focus邻域。
+
+![现有Finder展开并显示目标](audit/round26-native/selected.png)
+
+四张实际截图、完整HTML/JSON、UI状态、操作脚本、源文件身份与许可保存在[观察包](audit/round26-native/README.md)；[复制清单](audit/round26-copy-map.json)绑定34份原始文件。Archify的Apache/MIT许可、NOTICE、第三方说明与HTML内嵌声明均保留。既有kind/关系措辞实验仍是独立范围，本批不将这些旧标签当作新发现或运行时事实。
+
+[交付审计](audit/round26-delivery-review.md)与[验证范围](audit/round26-validation.json)区分源码证据和本次浏览器观察。没有重跑active Reach、深链接、移动端、跨工件、导出或人类理解对照；截图状态和相机缩放不同，不做像素差分结论。实际能力已满足这个局部问题，本批不新增产品代码、实验分支或PR，只推研究总账，目标继续进行中。

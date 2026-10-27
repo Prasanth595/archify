@@ -1,0 +1,106 @@
+{ collapsed: [], lens: null, focus: 'v_tree', activeNode: 'v_tree', targetHidden: false, targetSelected: true, targetOpacity: '1', targetDisplay: 'inline', targetRect: { x: 797.4120483398438, y: 555.7569580078125, width: 238.37384033203125, height: 81.9583740234375 }, withinViewport: true, centerHitNode: 'v_tree', hash: '#focus=v_tree', viewport: { width: 1440, height: 900, dpr: 1 }, at: '2026-10-27T23:01:13.764Z' }
+[p1 "Archify repository layout Diagram" | space "Archify research 20261026"(34): 1 managed, 0 untracked — p1* "Archify repository layout Diagram"]
+root
+  toolbar "Diagram actions"
+    container
+      button "Toggle color theme" [ref=25, loc=css:button[aria-label="Toggle color theme"]]
+      button "Visual style: Classic. Choose visual style" [ref=26, loc=css:button[aria-label="Visual style: Classic. Choose visual style"]]
+        text "Classic"
+      button "Resume motion" [ref=27, loc=css:button[aria-label="Resume motion"]]
+        text "Still"
+      button "Enter presentation stage" [ref=28]
+    button "Export diagram" [ref=29, loc=css:button[aria-label="Export diagram"]]
+      text "Export"
+  container
+    container
+      heading
+        text "Archify repository layout"
+      paragraph
+        text "Observed directory structure of this repository (selected files). Runs of three or more files are listed; the viewer/ branch starts collapsed."
+    container
+      image "archify repository Skill, viewer, and site archify/ Installable Skill package viewer/ Inlined into the template website/ Astro project site scripts/ Build and freshness tools renderers/ One per diagra..." [ref=30]
+        text "Skill, viewer, and site"
+        text "Installable Skill package"
+        text "viewer/"
+        text "Inlined into the template"
+        text "website/"
+        text "Astro project site"
+        text "Build and freshness tools"
+        text "Typed JSON contracts"
+        text "bin/"
+        text "CLI entry points"
+        text "references/"
+        text "Authoring contracts"
+        text "archify.mjs"
+        text "CLI: validate, finalize"
+        text "finalize.mjs"
+        text "Render, check, deliver"
+        text "preview.mjs"
+        text "Live preview server"
+        text "focus.js"
+        text "Semantic passport"
+        text "export.js"
+        text "SVG, PNG, WebM export"
+        text "tree-branches.js"
+        text "Expand and collapse"
+        text "viewer-camera.js"
+        text "Pan, zoom, reveal"
+        text "30"
+        text "4"
+        text "3"
+        text "3"
+      region "tree-branches.js"
+        container
+          button "Move semantic passport. Drag, use arrow keys, or press Home to reset." [ref=48, loc=css:button[aria-label="Move semantic passport. Drag, use arrow keys, or press Home to reset."]]
+          container
+            text "SEMANTIC PASSPORT"
+            text "tree-branches.js"
+            text "Expand and collapse"
+            container "Node metadata"
+              text "EXTERNAL"
+              text "Leaf"
+              text "v_tree"
+            text "0 outgoing · 1 incoming"
+            container
+              text "AUTHORED REACH"
+              group "Trace authored reachability"
+                button "Trace 2 upstream authored nodes" [ref=49, loc=css:button[aria-label="Trace 2 upstream authored nodes"]]
+                  text "Upstream"
+                  text "2"
+                button "No downstream authored nodes" [ref=50, loc=css:button[aria-label="No downstream authored nodes"]]
+                  text "Downstream"
+                  text "0"
+          container
+            button "Close semantic passport" [ref=51, loc=css:button[aria-label="Close semantic passport"]]
+              text "×"
+            button "Copy link to focused node" [ref=52, loc=css:button[aria-label="Copy link to focused node"]]
+              text "Copy link"
+        container "Connected relationships"
+          text "INCOMING · 1"
+          button "Incoming: connects from, viewer/" [ref=53, loc=css:button[aria-label="Incoming: connects from, viewer/"]]
+            text "← IN"
+            text "viewer/"
+            text "connects from"
+      toolbar "Diagram view controls"
+        button "Trace a directed route" [ref=31]
+          text "ROUTE"
+        button "Open semantic radar" [ref=54, loc=css:button[aria-label="Open semantic radar"]]
+          text "MAP"
+        button "Open semantic lens" [ref=32, loc=css:button[aria-label="Open semantic lens"]]
+          text "LENS"
+        button "Find a node" [ref=33, loc=css:button[aria-label="Find a node"]]
+        button "Open diagram guide" [ref=34, loc=css:button[aria-label="Open diagram guide"]]
+        button "Zoom out" [ref=35, loc=css:button[aria-label="Zoom out"]]
+        button "AUTO 190% · Full diagram detail. Reset diagram view" [ref=36, loc=css:button[aria-label="AUTO 190% · Full diagram detail. Reset diagram view"]]
+          text "AUTO"
+          text "190%"
+        button "Zoom in" [ref=37, loc=css:button[aria-label="Zoom in"]]
+    container
+      toolbar "Side panel"
+        button "Move panel beside the diagram" [ref=38, loc=css:button[aria-label="Move panel beside the diagram"]]
+      container "Node index"
+        container
+          text "Node index"
+          text "31"
+
+

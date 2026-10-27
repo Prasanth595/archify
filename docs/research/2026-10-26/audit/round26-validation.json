@@ -1,0 +1,121 @@
+{
+  "batch": 26,
+  "date": "2026-10-28",
+  "hub_base": "9530157f71f4482c19cfe7f8e04079a26b051536",
+  "product_snapshot": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remote_heads_before": 316,
+  "decision": "Existing supported Finder/Focus path already reveals authored collapsed target and clears Lens; no new implementation",
+  "native_observation": {
+    "source": "unchanged checked-in 31-node Tree JSON + HTML",
+    "html_sha256": "d6d8428c86c62efc1525ac67a9650e27684d762a76606045400d7a4391906a8a",
+    "ui_actions": "Lens buttons, Finder input, Enter; APIs read state only",
+    "peer_control": {
+      "collapsed": [
+        "viewer"
+      ],
+      "lens": [
+        "backend"
+      ],
+      "focus": null,
+      "targetHidden": true,
+      "targetLensMatch": true,
+      "targetDisplay": "none",
+      "at": "2026-10-27T22:58:55.982Z"
+    },
+    "excluded_precondition": {
+      "collapsed": [
+        "viewer"
+      ],
+      "lens": [
+        "frontend"
+      ],
+      "focus": null,
+      "targetHidden": true,
+      "targetLensMatch": false,
+      "targetDisplay": "none",
+      "at": "2026-10-27T23:00:15.163Z"
+    },
+    "selected": {
+      "collapsed": [],
+      "lens": null,
+      "focus": "v_tree",
+      "activeNode": "v_tree",
+      "targetHidden": false,
+      "targetSelected": true,
+      "targetOpacity": "1",
+      "targetDisplay": "inline",
+      "targetRect": {
+        "x": 797.4120483398438,
+        "y": 555.7569580078125,
+        "width": 238.37384033203125,
+        "height": 81.9583740234375
+      },
+      "withinViewport": true,
+      "centerHitNode": "v_tree",
+      "hash": "#focus=v_tree",
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1
+      },
+      "at": "2026-10-27T23:01:13.764Z"
+    },
+    "root_mask": {
+      "lens": null,
+      "focus": "v_tree",
+      "rootAttributes": [
+        {
+          "name": "data-focus-active",
+          "value": "v_tree"
+        }
+      ],
+      "nodeAttributes": [
+        {
+          "name": "data-tree-depth",
+          "value": "2"
+        },
+        {
+          "name": "data-tree-ancestors",
+          "value": "viewer repo"
+        },
+        {
+          "name": "data-focus-match",
+          "value": ""
+        },
+        {
+          "name": "data-focus-selected",
+          "value": ""
+        }
+      ],
+      "at": "2026-10-27T23:04:21.513Z"
+    },
+    "screenshots": [
+      "excluded.png",
+      "filtered.png",
+      "initial.png",
+      "selected.png"
+    ],
+    "root_images_viewed": true
+  },
+  "raw_copy_files": 34,
+  "raw_hashes_verified": true,
+  "not_run": [
+    "regeneration",
+    "automated test suites",
+    "active Reach transition",
+    "deep-link UI replay",
+    "mobile",
+    "cross-artifact navigation",
+    "export",
+    "human reading comparison"
+  ],
+  "new_product_change": false,
+  "new_experiment_branch": false,
+  "new_pr": false,
+  "merge_release_install": false,
+  "goal_status": "active",
+  "raw_formatting": {
+    "initial_staged_check_exit": 2,
+    "scope": "Only exact captured HTML filename and existing raw log/notice paths opt out of whitespace warnings; bytes remain identical to dev source."
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "scope": "Batch26 existing-artifact observation and source/independent audits; excludes this manifest and evolving shared README",
+  "files": [
+    {
+      "path": "audit/remote-branches-round26.txt",
+      "sha256": "658c8620f9362f4e06ffb44eee9c6dd851941a4b031aa862b26a0fbda6ca05de",
+      "bytes": 25360
+    },
+    {
+      "path": "audit/round26-copy-map.json",
+      "sha256": "62d175c480a0a9578a01f04b32f9efcfc4ed684d5c501d7c2d37e434b9534c25",
+      "bytes": 8157
+    },
+    {
+      "path": "audit/round26-dedup.json",
+      "sha256": "9256019929b89f70991ed6fd3dbd645e77b5ad594653bbdd36eadf2bfdbba20a",
+      "bytes": 4877
+    },
+    {
+      "path": "audit/round26-delivery-review.md",
+      "sha256": "88e51efeba16130521da07366746fe945a86db3213a72358eba4176a579526fa",
+      "bytes": 3197
+    },
+    {
+      "path": "audit/round26-native/.gitattributes",
+      "sha256": "985016e72b17bd3134015516723b082db69537027eefa0fe6ce371b71a370cc2",
+      "bytes": 324
+    },
+    {
+      "path": "audit/round26-native/01-open.log",
+      "sha256": "e02e3f1bb69481692bcdca249f2df0efa084c758af64ecefee652ca44139d490",
+      "bytes": 4598
+    },
+    {
+      "path": "audit/round26-native/01-open.mjs",
+      "sha256": "4a4b7f67b46425e35f8510b6edf4b1925155d230126663b1c3b71ba066afe619",
+      "bytes": 1220
+    },
+    {
+      "path": "audit/round26-native/02-lens-panel.log",
+      "sha256": "ed8c3629d1ce14764dca6f3838beb1b1c726da7efc0b5d656a89e81a2fce3540",
+      "bytes": 5350
+    },
+    {
+      "path": "audit/round26-native/02-lens-panel.mjs",
+      "sha256": "542093670a61fe392d0017c5d4e89ea480bff1c10b5a9d46f3a7ef10b198c0ff",
+      "bytes": 275
+    },
+    {
+      "path": "audit/round26-native/03-filter-search.log",
+      "sha256": "f445cb85aa3f6e34257dc941c53e81bb18b0c1073eb1e24de5b5a704af048f54",
+      "bytes": 5228
+    },
+    {
+      "path": "audit/round26-native/03-filter-search.mjs",
+      "sha256": "4d24d4e8d93bdefbe22a2b9509f776a18381e58c83842bfb055f832be0772c11",
+      "bytes": 1601
+    },
+    {
+      "path": "audit/round26-native/04-excluded-search.log",
+      "sha256": "4791e2974a2b798fa6212e0238f57bdb72d1d44a66ccf146363193b5787e5104",
+      "bytes": 5231
+    },
+    {
+      "path": "audit/round26-native/04-excluded-search.mjs",
+      "sha256": "a220f662d588638befe229197d0b6a43758295134199c21b0ed8d30f251b1761",
+      "bytes": 1812
+    },
+    {
+      "path": "audit/round26-native/05-select.log",
+      "sha256": "c11c2d79e8640fb4dc046112ef0bf69b3661cfd02d1d80e73d1167b5bc51c5e3",
+      "bytes": 5259
+    },
+    {
+      "path": "audit/round26-native/05-select.mjs",
+      "sha256": "b51d79c205f72811961be501ef51c9dafe2a867a3ca4816cfc4a2288a6b8f5f3",
+      "bytes": 1796
+    },
+    {
+      "path": "audit/round26-native/06-mask-state.log",
+      "sha256": "f6fd7bc7d49016ba40be8cc91ea46ff85020f48c09c51b8fa08b95575743c933",
+      "bytes": 334
+    },
+    {
+      "path": "audit/round26-native/06-mask-state.mjs",
+      "sha256": "a7cb1300dacaa5729053ff5b503e8e2ab8d0cf3fcffa1780d70e0dde01d928ee",
+      "bytes": 713
+    },
+    {
+      "path": "audit/round26-native/LICENSE-Archify",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "audit/round26-native/LICENSE-MIT",
+      "sha256": "b799ab081703e7821ae5096d2c1abdf14bbdc75e8ea1c4045998c36ed6db9706",
+      "bytes": 1102
+    },
+    {
+      "path": "audit/round26-native/NOTICE",
+      "sha256": "4c88357b600f24214bd6d12ee70e37d66a160c6069bba2aec2d35486f6ff1a3a",
+      "bytes": 1340
+    },
+    {
+      "path": "audit/round26-native/README.md",
+      "sha256": "98ea39f0db358f5d5fb5ca864e3581567a39475ee34d61c04192a63fe1928428",
+      "bytes": 4701
+    },
+    {
+      "path": "audit/round26-native/THIRD_PARTY_NOTICES.md",
+      "sha256": "afe000ec995a2025368ab0017f7f9417df682724970c824ff8f4af5cfac0e9a4",
+      "bytes": 5967
+    },
+    {
+      "path": "audit/round26-native/archify-repository.tree.json",
+      "sha256": "970617ee844ecfb1bb792c677aa8b85688abfd2cf8ab2365dc03ea9e26e6b9c7",
+      "bytes": 4368
+    },
+    {
+      "path": "audit/round26-native/excluded-search-state.json",
+      "sha256": "b9b39addd49f01a142d4f02daf23b29018d75b0f049b0d4d6559941ec7bb7b68",
+      "bytes": 177
+    },
+    {
+      "path": "audit/round26-native/excluded-state.json",
+      "sha256": "634f1040887e04bc8594f2dab79617462eecd29e93a9810e5b889a9c585d8031",
+      "bytes": 201
+    },
+    {
+      "path": "audit/round26-native/excluded.png",
+      "sha256": "3e3ad8ec6525995758daf70e9685922f6b27ae5177ac6e5ab7dd56486f07c153",
+      "bytes": 163637
+    },
+    {
+      "path": "audit/round26-native/filtered-state.json",
+      "sha256": "1b1d7d13156a08111f35c7b44130db8b1ef4c422284536187454325a9ee33e03",
+      "bytes": 199
+    },
+    {
+      "path": "audit/round26-native/filtered.png",
+      "sha256": "3f03de9f02141bfb7b9a479484e71e59b7ded2375c97b8d82afaad149fe5f70e",
+      "bytes": 209508
+    },
+    {
+      "path": "audit/round26-native/initial-snapshot.json",
+      "sha256": "50f4a602dd32f84c64ad0dc40b21fd6326499f3035b4e3aa512a5a15070605bb",
+      "bytes": 4470
+    },
+    {
+      "path": "audit/round26-native/initial-state.json",
+      "sha256": "94de16b0a4b67ac6f0d046368798c3c4fb9fa4109ccd4fcd6076eca611454a64",
+      "bytes": 573
+    },
+    {
+      "path": "audit/round26-native/initial.png",
+      "sha256": "d43f650d5d4437a6854c2b5c45a3ac122bf9fa82dece6f83b847667ac40e8647",
+      "bytes": 143263
+    },
+    {
+      "path": "audit/round26-native/search-snapshot.json",
+      "sha256": "e2be5544f11fbba88731e34d3d3bb22f6b44c313b5db04f105e49c5f287357ff",
+      "bytes": 5272
+    },
+    {
+      "path": "audit/round26-native/search-state.json",
+      "sha256": "9e56cbaaee85c5efaf3402de52edeb0e394d6e4097804be167527e8becebca11",
+      "bytes": 176
+    },
+    {
+      "path": "audit/round26-native/selected-mask-state.json",
+      "sha256": "1a168e9dd4ef447bea9a46759da24d5f9dd448f478ca698747334e36aaf92a5a",
+      "bytes": 476
+    },
+    {
+      "path": "audit/round26-native/selected-snapshot.json",
+      "sha256": "7637b30d80d9f17c8400ba3c49f0c91a9bcf0abfa270b2bb638ceaaac5931109",
+      "bytes": 5162
+    },
+    {
+      "path": "audit/round26-native/selected-state.json",
+      "sha256": "990d9b127ca573f715da5ccf11a428efc75d48d858581eb0cd70c33990cb0f3f",
+      "bytes": 521
+    },
+    {
+      "path": "audit/round26-native/selected.png",
+      "sha256": "13a82929a88dff75d0b7a6ef8269eb1c8f8806011ccd83b8ca4ab8287d483aef",
+      "bytes": 166783
+    },
+    {
+      "path": "audit/round26-native/source-identity.json",
+      "sha256": "cdbacd117c0e453a45e262106ec0c731c7f3bed0822d1d20b11d14041aa84d9a",
+      "bytes": 1665
+    },
+    {
+      "path": "audit/round26-native/tree-archify-repository-rendered.html",
+      "sha256": "d6d8428c86c62efc1525ac67a9650e27684d762a76606045400d7a4391906a8a",
+      "bytes": 907203
+    },
+    {
+      "path": "audit/round26-raw-format-check.json",
+      "sha256": "7dc736e9f9b62ce0d503a5f7c468dd50b7d1a722d748b373bdbce28ee5324abd",
+      "bytes": 2115
+    },
+    {
+      "path": "audit/round26-reveal-audit.md",
+      "sha256": "fc2661881cd827629279686ef085694bd473e1910cf299777a34074786183859",
+      "bytes": 9283
+    },
+    {
+      "path": "audit/round26-validation.json",
+      "sha256": "a849db01d56ae1c8495cb42531df5074b834cd91f14c66688702109117ad1ade",
+      "bytes": 3160
+    },
+    {
+      "path": "scouts/search-reveal-round26.md",
+      "sha256": "8195cb44e59e785fdc0eb03ea565b1cfff59944c732835c3a609f4be6ac9a0c4",
+      "bytes": 6599
+    }
+  ]
+}

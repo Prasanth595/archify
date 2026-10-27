@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "exit": 2,
+  "stdout": "docs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:3254: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4186: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4187: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4188: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4189: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4190: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4191: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4192: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4193: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4194: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4195: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4196: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4203: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:4246: trailing whitespace.\n+      \ndocs/research/2026-10-26/audit/round26-native/tree-archify-repository-rendered.html:5204: trailing whitespace.\n+      \n",
+  "stderr": "",
+  "resolution": "The unchanged upstream HTML contains whitespace-only lines. Preserve its exact Git blob and scope -text/-whitespace to this captured filename; no content cleanup."
+}

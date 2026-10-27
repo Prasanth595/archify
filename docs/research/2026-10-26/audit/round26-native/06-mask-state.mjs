@@ -1,0 +1,3 @@
+const fs=await import('node:fs/promises');const task=await taskSpace(34);const page=task.page('p1');
+const state=await page.evaluate(()=>{const node=document.querySelector('[data-node-id="v_tree"]');const svg=node.ownerSVGElement;return {lens:Archify.semanticLens.active(),focus:Archify.focus.active(),rootAttributes:[...svg.attributes].filter(a=>/^data-(lens|reach|focus)/.test(a.name)).map(a=>({name:a.name,value:a.value})),nodeAttributes:[...node.attributes].filter(a=>/^data-(lens|reach|focus|tree)/.test(a.name)).map(a=>({name:a.name,value:a.value})),at:new Date().toISOString()};});
+await fs.writeFile('/tmp/archify-round26-native/selected-mask-state.json',JSON.stringify(state,null,2));console.log(state);

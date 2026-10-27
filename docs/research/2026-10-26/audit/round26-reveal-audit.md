@@ -1,0 +1,46 @@
+# Batch26 focus/reveal cross-module audit
+
+2026-10-28. **No worthwhile new supported selection/reveal defect found by source inspection.** Do not open another reveal/focus experiment on the premise that Finder leaves a selected target filtered out by Lens/Reach or hidden under a collapsed tree. Existing code explicitly handles those transitions. This is a read-only audit, not new browser/perceptual evidence; no test, render, installation or upstream execution occurred. Sole authored output is this report. Root owns live branch/issue refresh; the branch identities below are observed local remote refs.
+
+## Revision and contract
+
+Comparison base `origin/dev=d5d979493bba650b3995836afd379cd249f2d0dd`. Audited current hub source for focus.js, node-finder.js, semantic-lens.js, viewer-camera.js and tree-branches.js matches that base. Hub viewer.css differs for unrelated edge-label styling; selected/Lens/Reach opacity rules referenced here retain their relevant behavior. Preserve others' edits.
+
+`viewer/README.md:155-174` explicitly documents set/setMany, Lens/Route clearing, selected neighborhood/multi-selection and clear() removing Reach; `:507-553` documents Finder ordinary-selection camera reset→Focus→reveal and focus restoration. A raw DOM focus, semantic selection, camera reveal and hidden-tree ancestor expansion are different actions. No requirement that every JavaScript call to `focus.set` independently frame the camera is documented; UI callers compose those actions.
+
+## Concrete user paths
+
+**Finder ordinary result activation.** `viewer/node-finder.js:113-134` validates a known indexed item, calls Camera.reset automatic, `Archify.focus.set(id,{toggle:false})`, Camera.reveal target+neighbors with reason finder, closes Finder without restoring trigger focus and focuses the actual node with preventScroll. Opening Finder at :183-190 clears Lens preview and closes the Lens panel, but closing a panel alone deliberately does not remove Lens selection; the later valid selection does clear it. Route endpoint pickers use their separate choose/reveal contract, not ordinary Focus.
+
+**Shared valid semantic selection.** `viewer/focus.js:1552-1581` clears Lens preview and active kind selection, clears Route unless preserveRoute, normalizes IDs, and calls treeBranches.reveal for each valid ID before measuring. `clear({updateUrl:false,preserveView:true,...})` at :1580 removes old Reach via clearReachability at :1493, plus old selection/preview state. setMany then marks selected/related nodes, writes data-focus-active and Passport. Unrelated nodes may remain dim under the **new** selected neighborhood, but the selected node is data-focus-match and data-focus-selected. This is intended context emphasis, not residual old Lens/Reach hiding.
+
+**Direct node UI and relationship targets.** focus.js:1651-1693 maps pointer/Enter/Space activation through set and, if still active after toggle, Camera.reveal. :1726-1737 does the same for a Passport relationship target then focuses its node. Repeated ordinary activation can intentionally toggle clear; Finder uses toggle:false to avoid that. Modifier/drilldown paths intentionally navigate rather than select.
+
+**Deep link/hash.** focus.js:1825-1848 parses #focus and optional reach, sets with toggle:false/updateUrl:false, optionally applies new Reach. Viewer Camera independently listens to hashchange and schedules syncSemantic, and calls initial sync on rAF at `viewer/viewer-camera.js:533-539,606-609`. syncSemantic reveals the actual active ID(s). Hash restoration does not depend on the node's earlier visibility. Compound lens+focus query parameters are not a promised composed mode: Lens selection deliberately clears Focus (`semantic-lens.js:449-461`) and hash sync owns its own namespace. Do not invent a combined-mode persistence contract.
+
+**Lens and Reach semantics.** semantic-lens.js:376-446 marks selected kind nodes, incident/cross-kind edges and peers, then data-lens-active; :449-480 clears Focus/Route on entering Lens. Its panel close at :479-486 only closes the panel. Focus:setMany explicitly clears active Lens selection as above. Reach dim state is cleared by shared Focus.clear; selecting a valid new target cannot retain its old data-reach-active mask. CSS `viewer/viewer.css:4332-4335,4397-4414` uses low opacity for nonmatching nodes and opacity1 for current matching nodes. It does not display:none Lens/Reach nodes.
+
+## Tree collapse is real and already revealed
+
+`viewer/tree-branches.js:1-8` explicitly promises Finder, Outline and shared-link selection expands ancestors. :22-44 tags descendants hidden according to collapsed ancestors; :57-67 reveal removes each collapsed ancestor and reapplies visibility. `archify/renderers/tree/render-tree.mjs:500,517-519` enables data-tree-ui and supplies actual `[data-tree-hidden]{display:none}` CSS. This is an actual runtime feature, not an assumed generic tree control. Focus:setMany calls this reveal before lens bounds, supporting Finder, node Outline and shared Focus/hash callers without moving the authored tree layout.
+
+Existing `test/tree-branches-browser.test.mjs:118-124` collapses platform, proves refunds hidden, calls shared focus.set('refunds'), then asserts no collapsed ancestors and no data-tree-hidden. This is existing coverage read, not a test pass in this audit. Exports deliberately restore full tree without altering live collapse state, also protected immediately afterwards. A different case—user manually collapsing a branch *after* selecting its descendant—would be a separate policy question; no natural trigger/evidence here justifies automatic cancellation or new state complexity.
+
+## Camera bounds and limits
+
+`viewer/viewer-camera.js:389-445` collects selected/neighborhood getBBox bounds, computes desktop framing with viewport padding and Passport avoidance. :498-531 uses desktop framing above720px; narrow mode resets transform and horizontally scrolls wide diagrams to the chosen area. This establishes active framing behavior, not proof every overlay or extreme viewport is perceptually perfect. Without a fixed actual screenshot showing a chosen target obscured/offscreen, do not label theoretical bounds/neighbor-size possibilities as a defect. Direct focus.set is a state API; public Finder, node activation and hash paths supply the corresponding reveal calls.
+
+## Existing research ownership / duplicates
+
+- `origin/codex/lab-finder-context@e219bc5ba4fdf90f653c2fae7eadcc1ceeeda942`: existing visible Finder metadata becomes accessible descriptions. It does not implement camera/filter reveal.
+- `origin/codex/lab-finder-highlights@ed04916f33cca4cc6475eada7b4397694426f3f8`: temporary canvas markers for the same ordinary query-result IDs. README explicitly preserves existing focus-and-reveal on choosing a result. Query preview is not committed selection; do not reclassify absent query highlighting as failed node selection.
+- `origin/codex/lab-spatial-focus@08af09117396b4d2b62774215bc48d8bd516386f`: Arrow moves **DOM keyboard focus** between currently visible nearby nodes; excludes Tree and Route. It preserves semantic selection, hash and camera; adds a focus-visible readability exception because existing selection dims unrelated nodes to .13. This already owns the adjacent “DOM focus differs from selected node” issue. It does not promise revealing distant nodes or clearing Lens/Reach on Arrow navigation. Reusing it requires its own acceptance scope, not another selection-reveal patch.
+- `origin/codex/lab-keyboard-traversal@3254fda4fcd61a101cc09e6b68fbdbb4d2779604`: fixes generic browser-checker early termination with native scrollers/dynamic SourceCards; no Viewer selection behavior. Checker misses are not evidence that selected nodes stay hidden.
+
+Existing test files cover Finder selection/camera snapshots, Focus clear/Reach/hash state, Lens/Focus mutual exclusion and Tree hidden-target reveal. They do not constitute newly run verification or universal visual acceptance. The scoped source trace provides counterevidence sufficient to reject an ungrounded new implementation now.
+
+## Minimal existing-full-fixture verification if a real case appears
+
+Use unchanged `archify/examples/web-app.architecture.json` for ordinary Lens/Reach/Finder and `archify/examples/payment-platform.tree.json` for collapse (the existing tree browser fixture also has platform/refunds). Render current dev through the existing public CLI only after permission to run the investigation. Capture exact input/HTML/version, viewport/theme/zoom, before/after SVG mask attributes, computed target display/opacity, bounding rectangle versus visible Viewer rectangle, active semantic ID, hash, camera receipt and actual screenshot.
+
+For architecture, activate a kind Lens, Find and choose a different-kind node; repeat after old-node Upstream/Downstream and from a focus hash. Expected source behavior is Lens/old Reach cleared and chosen node framed. For Tree, collapse an ancestor then choose a descendant via Finder or #focus; expect ancestors expanded before target measurement. Preserve any failure and identify the first actual observable divergence. No new fixture, schema, filter-reveal policy, browser-history state or race defense is needed without that evidence.

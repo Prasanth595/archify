@@ -1,0 +1,7 @@
+# Native logs and source notices retain their original formatting.
+*.log -text -whitespace
+LICENSE* -text -whitespace
+NOTICE -text -whitespace
+THIRD_PARTY_NOTICES.md -text -whitespace
+# Unmodified checked-in HTML snapshot; source identity takes priority over cleanup.
+tree-archify-repository-rendered.html -text -whitespace
