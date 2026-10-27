@@ -1,5 +1,7 @@
 # Archify research continuation · 2026-10-26–27
 
+> 当前交付规则：按用户最新要求，后续实验只推送独立 `codex/` 远程分支，不新建 PR；已有历史 PR 不作自动合并或关闭。
+
 本批从远程现状开始去重，再为有明确阅读价值的剩余问题制作小实验。用户已授权持续调研、隔离实现和独立 `codex/` 远程分支。**2026-10-27 用户更新交付要求：完成的实验只推送远程分支，附产物、图片和验证记录，后续不新建 PR。** 下方已创建的 Draft 属于此前交付历史。不自动合并、发布版本、部署或安装。此前研究记录中的暂停属于上一轮历史，本次明确继续。
 
 ## 开始前核对
@@ -202,3 +204,33 @@ AI assistance：Codex（GPT-6.1-Terra 与 GPT-6.1-Sol 子代理）参与调研�
 一秒 process sample 的选取记录显示初始化过程中通过 dyld/malloc 再入 ASan、落在 StaticSpinMutex 等待。它支持“本机 instrumentation 初始化未正常完成”的观察，不证明特定 OS bug、死锁根因或修复办法。没有安装新工具、修补环境或伪造报告。恢复该方向需先得到完整、带符号的三段真实报告，再做同源阅读对照；当前远程分支只交付可复现探针和诊断边界。
 
 研究总目标继续 active。后续仍先核对远程分支与已有研究，按可证实的阅读价值筛选；不合并、发布版本、部署或安装。
+
+
+## 27 日第八批：解释范围对照，保持原生阅读能力
+
+开始先 fetch/prune 并检查 [309 条远程 head](audit/remote-branches-round8.txt)，当前 dev 为 `d5d979493bba650b3995836afd379cd249f2d0dd`。复核历史 50 项实验和相关 scouts，再进行 [有界 issue/PR 搜索](audit/round8-dedup.json)；#1136 是跨产物一致性提案，与依赖求解失败阅读不同。零关键词命中不证明全仓不存在同义需求。本批只新增一个远程实验分支，没有新 PR；[收尾精确 ref](audit/round8-delivery.json) 验证远端 head 与本地提交一致，dev 在收尾快照中未变。
+
+| 方向 | 筛选与实际交付 |
+| --- | --- |
+| [PubGrub / uv 失败解释](scouts/dependency-conflict-reading.md) | PubGrub 有完整离线 fixture 和归约前后双份报告，允许一个有界同源内容实验；uv 的 open3d 快照缺冻结的完整索引，仅保留研究。 |
+| [堆保留关系](scouts/heap-retention-reading.md) | Chrome 已能联查分配区间与 retainer；Memray 分配栈不能替代 GC 引用路径。缺少可公开的同源 capture 与完整原生对照，暂缓，不引入 parser、快照采集或 viewer。 |
+
+### PubGrub：既有图的潜在收益和实际成本
+
+独立远程 [`codex/lab-conflict-explanation@ae0acf7d`](https://github.com/tt-a1i/archify/tree/ae0acf7db3014cf4392ae5db9ff7529ec1fe8190/experiments/conflict-explanation)，只提交 `experiments/conflict-explanation/`，工作树干净。两臂固定 PubGrub `2b32d6a1` 的完整 `confusing_with_lots_of_holes`，包含完整测试函数、未归约和归约后报告、相同结论及上下文；保留完整上游文件和 MPL-2.0。报告来自上游预期断言，本轮未运行求解器、Rust 或 registry。输入登记五个 foo 候选，每个引用没有提供版本的 bar；baz 已登记，但归约后的解释包名集合没有引用它。不能把图当安装树、唯一最小冲突或运行时轨迹。
+
+B 在共同文稿后追加现有 native Tree 和范围表，四个包名节点、三条声明边；同时触发 Reader 已有的正文词语标记，不能把对照说成只有静态排版变化。共享 renderer、schema、Skill、依赖均未改。独立来源复核与 HTML 静态核对通过；[实际页面记录](https://github.com/tt-a1i/archify/blob/ae0acf7db3014cf4392ae5db9ff7529ec1fe8190/experiments/conflict-explanation/root-review/review.md)含 14 张末期截图，另有一张首稿观察。旧 B native 图片仍绑定旧父 HTML，只有经解压字节比较确认完全相同的 native 子产物允许复用观察。
+
+1440×900 的 A 首屏已经能解释核心问题；B 将输入/解释范围并排展示，但没有计时、正确率或独立读者结果证明增益。实际验证了打开图、折叠 foo、恢复 bar、切换明暗与 Escape 返回焦点。390×844 发现表头溢出，保全失败前版本后，只缩短两个表头，最终三列完整落在 332px 容器内。原生工具条可以横向滚动，随后两次放大到 150%；放大后节点部分超出视口，需平移查看。平移、触摸、AT 和单独正文词语入口激活没有完整验收，不把窄桌面视口称为手机验收。
+
+最终 A 为 152937 bytes，B 为 539978 bytes，增加 **387041 bytes**；桌面页面高增加 723px，窄视口增加 787px。保留首稿/第二稿/语义修订/窄屏修正的源稿和机器记录，首稿 HTML 本身没有留存，首稿图片未严格绑定加载字节。三静态 gate 与单独 browser-check 通过，各保留一条 writing warning；runtime 是 Node 26.12.0 / Chrome，未运行 canonical CI。脱敏 records 只是历史证据，重新检查需生成当前 sidecar。完整 staged diff-check 的 36 个空白提示来自冻结的生成 HTML，排除 HTML 后文本检查通过；没有为消除提示改写已验产物字节。
+
+**处置：保留研究分支，尚不推荐共享功能。** 现有 native 能承载该解释，但额外体积、滚动和内容维护成本尚未被读者收益抵消。复现命令、原文、许可、各阶段 SHA、失败记录及独立复核都在分支 README 中。没有新建 PR，也没有合并、发布、部署或安装。
+
+![PubGrub 最终声明图与解释范围表的实际页面](https://raw.githubusercontent.com/tt-a1i/archify/ae0acf7db3014cf4392ae5db9ff7529ec1fe8190/experiments/conflict-explanation/root-review/candidate-final-overview-light.png)
+
+### BPF：源码键盘滚动没有复现缺陷
+
+继续固定既有 `cd5d94ea` 的 A，在 390×844 下通过真实 Tab 走到原生 `pre`（DOM tabIndex 为 −1），ArrowRight 能将 scrollLeft 从 0 移至 253.5，再在明确重建焦点后到最右 375.5。完整记录和图片在 [source keyboard audit](audit/bpf-source-keyboard/README.md)。一次跨调用焦点前提失效被保留，没有在失焦状态发送按键或将其报成页面缺陷。这里支持 Chrome 原生水平滚动无需增加 tabindex；没有新键盘分支、BPF 内容改动或 AT 结论。
+
+本批 AI 辅助由 GPT-6.1-Terra medium 作者/研究代理、GPT-6.1-Sol medium 来源复核代理和 root 完成；作者代理在早期阶段中断后由 root 接续。最终包装再经独立只读检查。总目标继续 active，后续按用户最新规则仅交付远程分支。
