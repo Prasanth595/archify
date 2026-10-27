@@ -368,4 +368,4 @@ Waterfall存在同类色调进入类型的机制，但服务、错误状态与sp
 
 [ASan工具链缺口](scouts/asan-toolchain-gap-round13.md)确认旧空程序阻塞发生在main前初始化路径；现有Xcode21只是本地可用替代工具链，没有新运行证据。子代理的新探针执行请求被自动安全检查拦截，提示可能涉及网络安全风险；没有绕过、重试或把准备文件当结果。[原ASan分支状态更新](https://github.com/tt-a1i/archify/tree/9f8d640e2ea5f413560821517e4573738f45aee8/experiments/asan-provenance/toolchain21)仅提交README与JSON，未提交新runner或二进制。旧第二轮运行缺少原始PID/wait记录，当前进程清单不补足历史证据。自然LLVM问题沿用旧笔记，本轮未重新固定全文。
 
-AI辅助由Terra源码/自然问题侦察、生成物和交付核对，Sol实现、独立代码审查和ASan只读缺口分析，root固定输入比较、实际页面、证据修正与远端交付完成。只推送独立实验和研究记录；没有新PR、合并、发布、部署或安装。总目标继续active。
+[本批远端交付记录](audit/round13-delivery.json)保存精确head和验证边界。AI辅助由Terra源码/自然问题侦察、生成物和交付核对，Sol实现、独立代码审查和ASan只读缺口分析，root固定输入比较、实际页面、证据修正与远端交付完成。只推送独立实验和研究记录；没有新PR、合并、发布、部署或安装。总目标继续active。
