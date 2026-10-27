@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "<NODE22_BIN>/node",
+    "<EXPERIMENT_REPO>/archify/bin/archify.mjs",
+    "finalize",
+    "explainer",
+    "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/drafts/native-baseline.archify.md",
+    "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/native-baseline.html",
+    "--repo-root",
+    "<EXPERIMENT_REPO>",
+    "--json",
+    "--out-dir",
+    "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/native-baseline-receipts",
+    "--browser-check"
+  ],
+  "exit": 1,
+  "seconds": 11.81236720085144
+}

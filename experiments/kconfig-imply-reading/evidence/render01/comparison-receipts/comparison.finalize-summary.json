@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "explainer",
+  "quality": "showcase",
+  "specification": {
+    "path": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/drafts/comparison.archify.md",
+    "sha256": "0fa7e509626ab09dad05372345575cc5ad1e2ca7aa0f972e43b7c8c6cc8e75bc",
+    "bytes": 2664
+  },
+  "artifact": {
+    "path": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+    "sha256": "6fd821e6ebb1e497f4ba1b6812ec8ff6464da6311dff92fc7941235b76d82a64",
+    "bytes": 222118
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A All 26 observed symbols",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 51,
+        "component": "panel-values",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A All 26 observed symbols",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 1",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 53,
+        "component": "code-10e41d627191",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 1",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A All 26 observed symbols",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 1,
+        "component": "a",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A All 26 observed symbols",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON Ask",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 51,
+        "component": "panel-values",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON Ask",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Complete Kimply fixture",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 1,
+        "component": "a",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Complete Kimply fixture",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Native formatter: unmet target",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 1,
+        "component": "a",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Native formatter: unmet target",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Native formatter: met target",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 1,
+        "component": "a",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Native formatter: met target",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Generated config",
+      "subject": {
+        "input": "../../drafts/comparison.archify.md",
+        "line": 1,
+        "component": "a",
+        "artifact": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Generated config",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 40,
+    "shown": 8,
+    "truncated": true,
+    "omittedByCode": {
+      "explainer/browser-keyboard-traversal": 32
+    }
+  },
+  "evidence": {
+    "receipt": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison-receipts/comparison.finalize.json",
+    "summaryReceipt": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison-receipts/comparison.finalize-summary.json",
+    "browserCheckReceipt": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison-receipts/comparison.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T23:50:51.017Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 4632,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

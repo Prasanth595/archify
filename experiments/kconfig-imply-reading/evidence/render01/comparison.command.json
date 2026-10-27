@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "<NODE22_BIN>/node",
+    "<EXPERIMENT_REPO>/archify/bin/archify.mjs",
+    "finalize",
+    "explainer",
+    "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/drafts/comparison.archify.md",
+    "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+    "--repo-root",
+    "<EXPERIMENT_REPO>",
+    "--json",
+    "--out-dir",
+    "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison-receipts",
+    "--browser-check"
+  ],
+  "exit": 1,
+  "seconds": 5.072118043899536
+}

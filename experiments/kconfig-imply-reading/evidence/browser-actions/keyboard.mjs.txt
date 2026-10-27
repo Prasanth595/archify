@@ -1,0 +1,6 @@
+const t=await taskSpace(28),p=t.page('p1');const root='<EXPERIMENT_REPO>/experiments/kconfig-imply-reading';
+for(const arm of ['native-baseline','comparison']){
+ await p.goto('file://'+root+'/artifacts/'+arm+'.html');await p.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});await p.mouse.move(5,5);const trace=[];let footer=false;
+ for(let i=0;i<110;i++){await p.keyboard.press('Tab');const a=await p.evaluate(()=>{const x=document.activeElement;return{tag:x.tagName,id:x.id,cls:x.className,text:x.innerText?.trim().slice(0,100),href:x.getAttribute('href'),scrollY,sourceVisible:!document.querySelector('.source-card').hidden}});trace.push(a);if(a.href==='https://github.com/tt-a1i/archify'&&a.text?.startsWith('Archify')){footer=true;break;}}
+ console.log(JSON.stringify({arm,footer,tabPresses:trace.length,trace,screenshot:await p.screenshot({path:root+'/evidence/browser/keyboard-'+arm+'.png'})}));
+}

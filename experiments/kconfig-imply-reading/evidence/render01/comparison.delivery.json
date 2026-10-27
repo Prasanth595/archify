@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "24ae55a3-88d3-4705-aa00-57940aa621e0",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/drafts/comparison.archify.md",
+  "output": "<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence/render01/comparison.html",
+  "specification": {
+    "sha256": "0fa7e509626ab09dad05372345575cc5ad1e2ca7aa0f972e43b7c8c6cc8e75bc",
+    "bytes": 2664
+  },
+  "artifact": {
+    "sha256": "6fd821e6ebb1e497f4ba1b6812ec8ff6464da6311dff92fc7941235b76d82a64",
+    "bytes": 222118
+  },
+  "explainer": {
+    "preparedSha256": "7bb7ab817de825672839f640f7dc9b002d27b53c9df7c19e89c1d82c15163787",
+    "dependencies": [
+      {
+        "kind": "repository",
+        "id": "kimply",
+        "path": "experiments/kconfig-imply-reading/upstream/tests/Kimply",
+        "revision": "a2c5843748d3843baa21708f3ec0c51fb15c9985",
+        "sha256": "0952741f2cf17f091d74bfb689a08fbbf8b584d6f7c31cef786fde2c88f6c9ed",
+        "bytes": 2056
+      },
+      {
+        "kind": "repository",
+        "id": "implier",
+        "path": "experiments/kconfig-imply-reading/observation/run01/output/native-info/IMPLY_DIRECT_DEPS.txt",
+        "revision": "a2c5843748d3843baa21708f3ec0c51fb15c9985",
+        "sha256": "814fce2e5390b69af9c78d451f75cc93f9534af004d7e70ab36ea07cfe80ed3d",
+        "bytes": 472
+      },
+      {
+        "kind": "repository",
+        "id": "unmet",
+        "path": "experiments/kconfig-imply-reading/observation/run01/output/native-info/UNMET_DIRECT_1.txt",
+        "revision": "a2c5843748d3843baa21708f3ec0c51fb15c9985",
+        "sha256": "a6c1c4aacf845bcca10036c5aacc50e6d91812c563eb104258e1d54f5fbedd8a",
+        "bytes": 365
+      },
+      {
+        "kind": "repository",
+        "id": "met",
+        "path": "experiments/kconfig-imply-reading/observation/run01/output/native-info/MET_DIRECT_1.txt",
+        "revision": "a2c5843748d3843baa21708f3ec0c51fb15c9985",
+        "sha256": "dbd7ddd21b7acd81c43b5239be326a3fb882764fae77bc32192d98df5c21994e",
+        "bytes": 311
+      },
+      {
+        "kind": "repository",
+        "id": "config",
+        "path": "experiments/kconfig-imply-reading/observation/run01/output/generated.config",
+        "revision": "a2c5843748d3843baa21708f3ec0c51fb15c9985",
+        "sha256": "0ce31d00b3c572592685373a152a03ef3c8aabf0f7341e4c7f20d049c83b3188",
+        "bytes": 390
+      },
+      {
+        "kind": "repository",
+        "id": "values",
+        "path": "experiments/kconfig-imply-reading/observation/run01/output/all-symbol-values.json",
+        "revision": "a2c5843748d3843baa21708f3ec0c51fb15c9985",
+        "sha256": "6acb0e76339d9dbcc810c8a9e8c4f35fc63f354442cd797828b3b274d336bfe2",
+        "bytes": 9810
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+const task=await taskSpace(28);const page=task.page('p1');
+const root='<EXPERIMENT_REPO>/experiments/kconfig-imply-reading/evidence';
+for(const arm of ['native-baseline','comparison'])for(const [label,width,height]of[['desktop',1440,900],['mobile',390,844]]){
+ await page.goto('file://'+root+'/render01/'+arm+'.html');
+ await page.cdp('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
+ await page.cdp('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'},{name:'prefers-color-scheme',value:'light'}]});
+ await page.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));return true;});
+ const data=await page.evaluate(()=>({title:document.title,heading:document.querySelector('h1')?.textContent,width:innerWidth,bodyWidth:document.documentElement.scrollWidth,height:innerHeight,scrollY,ready:document.readyState,headings:[...document.querySelectorAll('h2')].map(x=>x.textContent),tables:[...document.querySelectorAll('table')].map(x=>({text:x.innerText,width:x.getBoundingClientRect().width}))}));
+ const screenshot=await page.screenshot({path:root+'/browser/first-'+arm+'-'+label+'.png'});console.log(JSON.stringify({arm,label,screenshot,data}));
+}

@@ -1,0 +1,9 @@
+const t=await taskSpace(28),p=t.page('p1');const root='<EXPERIMENT_REPO>/experiments/kconfig-imply-reading';
+await p.cdp('Network.enable');
+try{
+ await p.cdp('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:0,uploadThroughput:0});
+ for(const arm of ['native-baseline','comparison']){
+  await p.goto('file://'+root+'/artifacts/'+arm+'.html');await p.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});await p.mouse.move(8,8);await p.evaluate(async()=>{await document.fonts.ready;return true;});console.log(JSON.stringify({arm,offlineEmulation:true,data:await p.evaluate(()=>({heading:document.querySelector('h1').textContent,ready:document.readyState,fontStatus:document.fonts.status,fixtureText:document.querySelector('#panel-kimply pre code')?.textContent,valuesText:document.querySelector('#panel-values pre code')?.textContent,licenseText:document.querySelector('#panel-license pre code')?.textContent,externalResources:performance.getEntriesByType('resource').filter(e=>/^https?:/.test(e.name)).map(e=>e.name)}))}));
+ }
+ await p.hover('loc=css:#comparison a[href="#source-unmet"]');console.log(JSON.stringify({step:'offline-source-peek',visible:await p.evaluate(()=>!document.querySelector('.source-card').hidden)}));await p.keyboard.press('Escape');console.log(JSON.stringify({step:'offline-escape',hidden:await p.evaluate(()=>document.querySelector('.source-card').hidden)}));await p.mouse.move(8,8);
+}finally{await p.cdp('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});console.log(JSON.stringify({networkEmulationRestored:true}));}
