@@ -209,3 +209,108 @@ test('timeline: automatic breaks leave room for proportional time on a narrow ax
   const receipt = JSON.parse(spawnSync(process.execPath, [checker, result.output], { encoding: 'utf8' }).stdout);
   assert.equal(receipt.ok, true, JSON.stringify(receipt.checks.filter((entry) => !entry.ok)));
 });
+
+test('timeline: event categories survive rendering instead of becoming technical color roles', () => {
+  const diagram = clone(small);
+  diagram.events = ['default', 'change', 'alert', 'action', 'recovery'].map((kind, i) => ({
+    id: kind, title: kind, at: `2026-10-01T10:0${i}:00Z`, ...(i ? { kind } : {}),
+  }));
+  delete diagram.lanes;
+  const result = run(diagram);
+  assert.equal(result.status, 0, result.stderr);
+  const html = fs.readFileSync(result.output, 'utf8');
+  for (const kind of ['default', 'change', 'alert', 'action', 'recovery']) {
+    assert.match(html, new RegExp(`data-node-id="${kind}"[^>]*data-node-kind="timeline-${kind}"`));
+  }
+});
+
+test('timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors', async (t) => {
+  const { findChrome } = await import('../archify/bin/visual-check.mjs');
+  const chrome = process.env.ARCHIFY_CHROME ? findChrome() : null;
+  if (!chrome) return t.skip('Set ARCHIFY_CHROME for real-browser Timeline semantics.');
+  const { desktopBrowser } = await import('./helpers/desktop-browser.mjs');
+  const { pathToFileURL } = await import('node:url');
+  const { scanStory } = await import('../archify/story/tool.mjs');
+  const browser = desktopBrowser(chrome);
+  t.after(() => browser.close());
+  const session = await browser.sessionPromise;
+  const send = (method, params = {}) => browser.cdp.send(method, params, session);
+  const evaluate = async (expression) => {
+    const result = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+    assert.equal(result.exceptionDetails, undefined, result.exceptionDetails?.exception?.description);
+    return result.result.value;
+  };
+  const kinds = ['default', 'change', 'alert', 'action', 'recovery'];
+  const tones = ['external', 'frontend', 'security', 'messagebus', 'backend'];
+  const diagram = clone(small);
+  delete diagram.lanes;
+  diagram.events = kinds.map((kind, i) => ({ id: kind, title: `Event ${i}`, at: `2026-10-01T10:0${i}:00Z`, ...(i ? { kind } : {}) }));
+  const load = async (data, hash = '') => {
+    const rendered = run(data);
+    assert.equal(rendered.status, 0, rendered.stderr);
+    const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
+    await send('Page.navigate', { url: pathToFileURL(rendered.output).href + hash });
+    await loaded;
+    await evaluate('document.fonts.ready');
+    return rendered.output;
+  };
+  const file = await load(diagram);
+  await evaluate('Archify.semanticLens.open()');
+  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('#semantic-lens-kinds strong'),n=>n.textContent).sort()`), ['Event', 'Change', 'Alert', 'Response', 'Recovery'].sort());
+  assert.deepEqual(scanStory(file).nodes.map(n => n.kind), kinds.map(k => `timeline-${k}`));
+  assert.doesNotMatch(await evaluate(`document.querySelector('.semantic-lens-instruction').textContent`), /traffic/i);
+  const colors = await evaluate(`(${JSON.stringify(kinds)}).map((kind,i)=>{
+    const node=document.querySelector('[data-node-id="'+kind+'"]');
+    const button=document.querySelector('#semantic-lens-kinds [data-kind="timeline-'+kind+'"]');
+    return {accent:getComputedStyle(node.querySelector('.tl-accent')).stroke,swatch:getComputedStyle(button.querySelector('.semantic-lens-swatch')).backgroundColor};
+  })`);
+  for (const color of colors) assert.equal(color.accent, color.swatch);
+  // A user's existing palette variables continue to control both consumers.
+  await evaluate(`document.documentElement.style.setProperty('--frontend-stroke','rgb(12, 34, 56)')`);
+  assert.deepEqual(await evaluate(`({accent:getComputedStyle(document.querySelector('#node-change .tl-accent')).stroke,swatch:getComputedStyle(document.querySelector('[data-kind="timeline-change"] .semantic-lens-swatch')).backgroundColor})`), { accent: 'rgb(12, 34, 56)', swatch: 'rgb(12, 34, 56)' });
+  await evaluate(`Archify.semanticLens.close(); document.querySelector('#node-default').dispatchEvent(new MouseEvent('click',{bubbles:true}))`);
+  assert.equal(await evaluate(`document.getElementById('focus-kind').textContent`), 'Event');
+  await evaluate('Archify.finder.open()');
+  assert.match(await evaluate(`document.getElementById('node-finder-results').textContent`), /Event/);
+  assert.doesNotMatch(await evaluate(`document.getElementById('node-finder-results').textContent`), /External|Frontend|Message bus|Backend|Security/);
+  for (let i = 0; i < tones.length; i++) {
+    await load(diagram, '#lens=' + tones[i]);
+    assert.deepEqual(await evaluate('Archify.semanticLens.active()'), [`timeline-${kinds[i]}`]);
+    await evaluate(`Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:value=>{window.timelineCopied=value;return Promise.resolve();}}})`);
+    assert.equal(await evaluate('Archify.semanticLens.copyLink()'), true);
+    assert.match(await evaluate('window.timelineCopied'), new RegExp('lens=timeline-' + kinds[i]));
+    await evaluate(`Archify.semanticLens.select('timeline-${kinds[(i+1)%5]}')`);
+    assert.match(await evaluate('location.hash'), /lens=timeline-/);
+    assert.doesNotMatch(await evaluate('location.hash'), new RegExp('lens=' + tones[i]));
+  }
+  for (const [translations, expected] of [
+    [Object.fromEntries(tones.map((tone,i) => ['viewer.kind.' + tone, 'Legacy ' + kinds[i]])), 'Legacy default'],
+    [{ 'viewer.kind.external': 'Legacy event', 'viewer.kind.timeline.default': 'New event', 'viewer.lens.instruction': 'Authored lens' }, 'New event'],
+    [{ 'legend.timeline.default': 'Milestone' }, 'Milestone'],
+  ]) {
+    const custom = clone(diagram);
+    custom.meta.locale = 'en'; custom.meta.translations = translations;
+    await load(custom); await evaluate('Archify.semanticLens.open()');
+    assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-default"] strong').textContent`), expected);
+    assert.doesNotMatch(await evaluate(`document.querySelector('[data-legend]').textContent`), /Legacy/);
+    if (expected === 'Legacy default') for (const kind of kinds) assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-${kind}"] strong').textContent`), 'Legacy ' + kind);
+    if (translations['viewer.lens.instruction']) assert.equal(await evaluate(`document.querySelector('.semantic-lens-instruction').textContent`), 'Authored lens');
+  }
+  const minimal = clone(diagram); minimal.events = [minimal.events[0]];
+  await load(minimal); await evaluate('Archify.semanticLens.open()');
+  assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-default"] strong').textContent`), 'Event');
+  const unsupported = clone(minimal); unsupported.meta.locale = 'zz';
+  await load(unsupported);
+  assert.equal(await evaluate('document.documentElement.lang'), 'en');
+  const localized = clone(diagram); localized.meta.locale = 'zh-CN';
+  await load(localized); await evaluate('Archify.semanticLens.open()');
+  assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-default"] strong').textContent`), '事件');
+  // The old technical hash retains its original meaning in another mode.
+  const directory = path.dirname(file);
+  const architecture = path.join(directory, 'architecture.html');
+  const rendered = spawnSync(process.execPath, [path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'), path.join(skillRoot, 'examples/web-app.architecture.json'), architecture], { encoding: 'utf8' });
+  assert.equal(rendered.status, 0, rendered.stderr);
+  const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
+  await send('Page.navigate', { url: pathToFileURL(architecture).href + '#lens=backend' }); await loaded;
+  assert.deepEqual(await evaluate('Archify.semanticLens.active()'), ['backend']);
+});

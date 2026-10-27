@@ -1,0 +1,12 @@
+{
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "branch": "codex/lab-timeline-kinds",
+  "patchSha256": "245ff00a1d814d715552384273b819a2ad1337a08eb64a80f5a4aa730bf188fb",
+  "node": "{\"version\":\"v22.23.2\",\"zlib\":\"1.3.1-e00f703\"}",
+  "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "coverage": "Timeline render+DST, real Chrome Timeline semantic consumers and overrides/hash/colors, shared Lens browser, Viewer generator, i18n; no full suite/gallery/example/ZIP refresh or live install",
+  "repairs": [
+    "Schema rejects hyphenated translation keys; use viewer.kind.timeline.default etc with bounded label key normalization",
+    "Unsupported locale zz became declared language after synthesized overrides; use resolved locale before deriving timeline messages"
+  ]
+}

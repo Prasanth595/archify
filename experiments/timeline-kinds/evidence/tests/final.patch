@@ -1,0 +1,539 @@
+diff --git a/archify/assets/template.html b/archify/assets/template.html
+index f44341a9..d78b8e7e 100644
+--- a/archify/assets/template.html
++++ b/archify/assets/template.html
+@@ -1314,16 +1314,20 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+       cursor: pointer;
+       transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
+     }
++    .overview-map-node[data-kind="timeline-change"],
+     .overview-map-node[data-kind="frontend"],
+     .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
+     .overview-map-node[data-kind="database"],
+     .overview-map-node[data-kind="success"] { fill: var(--database-stroke); stroke: var(--database-stroke); }
+     .overview-map-node[data-kind="cloud"],
+     .overview-map-node[data-kind="waiting"] { fill: var(--cloud-stroke); stroke: var(--cloud-stroke); }
++    .overview-map-node[data-kind="timeline-action"],
+     .overview-map-node[data-kind="messagebus"] { fill: var(--messagebus-stroke); stroke: var(--messagebus-stroke); }
++    .overview-map-node[data-kind="timeline-alert"],
+     .overview-map-node[data-kind="security"],
+     .overview-map-node[data-kind="decision"],
+     .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
++    .overview-map-node[data-kind="timeline-default"],
+     .overview-map-node[data-kind="external"],
+     .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
+     .overview-map-node[data-radar-active="true"],
+@@ -1479,18 +1483,23 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+       transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
+     }
+     html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
++    .semantic-lens-kind[data-kind="timeline-change"],
+     .semantic-lens-kind[data-kind="frontend"],
+     .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
++    .semantic-lens-kind[data-kind="timeline-recovery"],
+     .semantic-lens-kind[data-kind="backend"],
+     .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
+     .semantic-lens-kind[data-kind="database"],
+     .semantic-lens-kind[data-kind="success"] { --lens-color: var(--database-stroke); }
+     .semantic-lens-kind[data-kind="cloud"],
+     .semantic-lens-kind[data-kind="waiting"] { --lens-color: var(--cloud-stroke); }
++    .semantic-lens-kind[data-kind="timeline-action"],
+     .semantic-lens-kind[data-kind="messagebus"] { --lens-color: var(--messagebus-stroke); }
++    .semantic-lens-kind[data-kind="timeline-alert"],
+     .semantic-lens-kind[data-kind="security"],
+     .semantic-lens-kind[data-kind="decision"],
+     .semantic-lens-kind[data-kind="failure"] { --lens-color: var(--security-stroke); }
++    .semantic-lens-kind[data-kind="timeline-default"] { --lens-color: var(--external-stroke); }
+     .semantic-lens-kind:hover,
+     .semantic-lens-kind:focus-visible,
+     .semantic-lens-kind[aria-pressed="true"] {
+@@ -5833,7 +5842,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+ 
+     function viewerKindLabel(value) {
+       var normalized = String(value || 'node').toLowerCase();
+-      var knownKey = 'viewer.kind.' + normalized;
++      var knownKey = 'viewer.kind.' + normalized.replace(/^timeline-/, 'timeline.');
+       var known = viewerText(knownKey);
+       if (known !== knownKey) return known;
+       return normalized
+@@ -14969,7 +14978,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+             return;
+           }
+           var available = collectKinds().map(function (kind) { return kind.id; });
+-          var requested = value.split('~').filter(function (kind, index, list) {
++          // Previously Timeline links encoded drawing tones as event kinds.
++          // Accept those hashes only here; newly copied links use event kinds.
++          var legacyTimelineKinds = { external: 'timeline-default', frontend: 'timeline-change', security: 'timeline-alert', messagebus: 'timeline-action', backend: 'timeline-recovery' };
++          var requested = value.split('~').map(function (kind) {
++            return svg.hasAttribute('data-timeline-ui') ? legacyTimelineKinds[kind] || kind : kind;
++          }).filter(function (kind, index, list) {
+             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
+           }).slice(0, 2);
+           if (!requested.length) return;
+diff --git a/archify/examples/locales/de.json b/archify/examples/locales/de.json
+index 7fdebf22..bd02544a 100644
+--- a/archify/examples/locales/de.json
++++ b/archify/examples/locales/de.json
+@@ -459,5 +459,10 @@
+   "legend.waterfall.ok": "Abgeschlossen",
+   "legend.waterfall.error": "Fehler",
+   "legend.waterfall.cancelled": "Abgebrochen",
+-  "legend.waterfall.incomplete": "Unvollständig (kein Ende aufgezeichnet)"
++  "legend.waterfall.incomplete": "Unvollständig (kein Ende aufgezeichnet)",
++  "viewer.kind.timeline.default": "Ereignis",
++  "viewer.kind.timeline.change": "Änderung",
++  "viewer.kind.timeline.alert": "Warnung",
++  "viewer.kind.timeline.action": "Reaktion",
++  "viewer.kind.timeline.recovery": "Wiederherstellung"
+ }
+diff --git a/archify/examples/locales/fr.json b/archify/examples/locales/fr.json
+index f2ff1aa1..60501b52 100644
+--- a/archify/examples/locales/fr.json
++++ b/archify/examples/locales/fr.json
+@@ -482,5 +482,10 @@
+   "legend.waterfall.ok": "Terminé",
+   "legend.waterfall.error": "Erreur",
+   "legend.waterfall.cancelled": "Annulé",
+-  "legend.waterfall.incomplete": "Incomplet (fin non enregistrée)"
++  "legend.waterfall.incomplete": "Incomplet (fin non enregistrée)",
++  "viewer.kind.timeline.default": "Événement",
++  "viewer.kind.timeline.change": "Changement",
++  "viewer.kind.timeline.alert": "Alerte",
++  "viewer.kind.timeline.action": "Intervention",
++  "viewer.kind.timeline.recovery": "Rétablissement"
+ }
+diff --git a/archify/examples/locales/it.json b/archify/examples/locales/it.json
+index 57df42ad..9bbdb8a2 100644
+--- a/archify/examples/locales/it.json
++++ b/archify/examples/locales/it.json
+@@ -459,5 +459,10 @@
+   "legend.waterfall.ok": "Completato",
+   "legend.waterfall.error": "Errore",
+   "legend.waterfall.cancelled": "Annullato",
+-  "legend.waterfall.incomplete": "Incompleto (fine non registrata)"
++  "legend.waterfall.incomplete": "Incompleto (fine non registrata)",
++  "viewer.kind.timeline.default": "Evento",
++  "viewer.kind.timeline.change": "Modifica",
++  "viewer.kind.timeline.alert": "Avviso",
++  "viewer.kind.timeline.action": "Risposta",
++  "viewer.kind.timeline.recovery": "Ripristino"
+ }
+diff --git a/archify/examples/locales/ja.json b/archify/examples/locales/ja.json
+index d49ce3a2..856eb390 100644
+--- a/archify/examples/locales/ja.json
++++ b/archify/examples/locales/ja.json
+@@ -459,5 +459,10 @@
+   "legend.waterfall.ok": "完了",
+   "legend.waterfall.error": "エラー",
+   "legend.waterfall.cancelled": "キャンセル済み",
+-  "legend.waterfall.incomplete": "未完了（終了記録なし）"
++  "legend.waterfall.incomplete": "未完了（終了記録なし）",
++  "viewer.kind.timeline.default": "イベント",
++  "viewer.kind.timeline.change": "変更",
++  "viewer.kind.timeline.alert": "警告",
++  "viewer.kind.timeline.action": "対応",
++  "viewer.kind.timeline.recovery": "復旧"
+ }
+diff --git a/archify/examples/locales/pt.json b/archify/examples/locales/pt.json
+index 166c3089..f394b842 100644
+--- a/archify/examples/locales/pt.json
++++ b/archify/examples/locales/pt.json
+@@ -459,5 +459,10 @@
+   "legend.waterfall.ok": "Concluído",
+   "legend.waterfall.error": "Erro",
+   "legend.waterfall.cancelled": "Cancelado",
+-  "legend.waterfall.incomplete": "Incompleto (fim não registrado)"
++  "legend.waterfall.incomplete": "Incompleto (fim não registrado)",
++  "viewer.kind.timeline.default": "Evento",
++  "viewer.kind.timeline.change": "Mudança",
++  "viewer.kind.timeline.alert": "Alerta",
++  "viewer.kind.timeline.action": "Resposta",
++  "viewer.kind.timeline.recovery": "Recuperação"
+ }
+diff --git a/archify/examples/locales/ru.json b/archify/examples/locales/ru.json
+index 8fab5fff..bddf47a4 100644
+--- a/archify/examples/locales/ru.json
++++ b/archify/examples/locales/ru.json
+@@ -459,5 +459,10 @@
+   "legend.waterfall.ok": "Завершено",
+   "legend.waterfall.error": "Ошибка",
+   "legend.waterfall.cancelled": "Отменено",
+-  "legend.waterfall.incomplete": "Не завершено (конец не записан)"
++  "legend.waterfall.incomplete": "Не завершено (конец не записан)",
++  "viewer.kind.timeline.default": "Событие",
++  "viewer.kind.timeline.change": "Изменение",
++  "viewer.kind.timeline.alert": "Предупреждение",
++  "viewer.kind.timeline.action": "Реагирование",
++  "viewer.kind.timeline.recovery": "Восстановление"
+ }
+diff --git a/archify/locales/ar.json b/archify/locales/ar.json
+index 14ddc6ed..686e39f9 100644
+--- a/archify/locales/ar.json
++++ b/archify/locales/ar.json
+@@ -497,5 +497,10 @@
+   "viewer.passport.back": "العودة إلى المخطط الأصل",
+   "viewer.passport.back.aria": "العودة إلى المخطط الأصل",
+   "viewer.nav.back": "رجوع",
+-  "viewer.nav.back.title": "العودة إلى المخطط الأصل"
++  "viewer.nav.back.title": "العودة إلى المخطط الأصل",
++  "viewer.kind.timeline.default": "حدث",
++  "viewer.kind.timeline.change": "تغيير",
++  "viewer.kind.timeline.alert": "تنبيه",
++  "viewer.kind.timeline.action": "استجابة",
++  "viewer.kind.timeline.recovery": "تعافٍ"
+ }
+diff --git a/archify/locales/en.json b/archify/locales/en.json
+index b8481764..0e622d24 100644
+--- a/archify/locales/en.json
++++ b/archify/locales/en.json
+@@ -497,5 +497,10 @@
+   "viewer.passport.back": "Back to parent",
+   "viewer.passport.back.aria": "Return to the parent diagram",
+   "viewer.nav.back": "Back",
+-  "viewer.nav.back.title": "Return to the parent diagram"
++  "viewer.nav.back.title": "Return to the parent diagram",
++  "viewer.kind.timeline.default": "Event",
++  "viewer.kind.timeline.change": "Change",
++  "viewer.kind.timeline.alert": "Alert",
++  "viewer.kind.timeline.action": "Response",
++  "viewer.kind.timeline.recovery": "Recovery"
+ }
+diff --git a/archify/locales/es.json b/archify/locales/es.json
+index d171960f..cd358633 100644
+--- a/archify/locales/es.json
++++ b/archify/locales/es.json
+@@ -497,5 +497,10 @@
+   "viewer.passport.back": "Volver al diagrama principal",
+   "viewer.passport.back.aria": "Volver al diagrama principal",
+   "viewer.nav.back": "Volver",
+-  "viewer.nav.back.title": "Volver al diagrama principal"
++  "viewer.nav.back.title": "Volver al diagrama principal",
++  "viewer.kind.timeline.default": "Evento",
++  "viewer.kind.timeline.change": "Cambio",
++  "viewer.kind.timeline.alert": "Alerta",
++  "viewer.kind.timeline.action": "Respuesta",
++  "viewer.kind.timeline.recovery": "Recuperación"
+ }
+diff --git a/archify/locales/ko.json b/archify/locales/ko.json
+index a3cf4dda..785af8d0 100644
+--- a/archify/locales/ko.json
++++ b/archify/locales/ko.json
+@@ -497,5 +497,10 @@
+   "viewer.passport.back": "상위 다이어그램으로 돌아가기",
+   "viewer.passport.back.aria": "상위 다이어그램으로 돌아가기",
+   "viewer.nav.back": "뒤로",
+-  "viewer.nav.back.title": "상위 다이어그램으로 돌아가기"
++  "viewer.nav.back.title": "상위 다이어그램으로 돌아가기",
++  "viewer.kind.timeline.default": "이벤트",
++  "viewer.kind.timeline.change": "변경",
++  "viewer.kind.timeline.alert": "알림",
++  "viewer.kind.timeline.action": "대응",
++  "viewer.kind.timeline.recovery": "복구"
+ }
+diff --git a/archify/locales/zh-CN.json b/archify/locales/zh-CN.json
+index eb7fa452..643a38a0 100644
+--- a/archify/locales/zh-CN.json
++++ b/archify/locales/zh-CN.json
+@@ -497,5 +497,10 @@
+   "viewer.passport.back": "返回上一级",
+   "viewer.passport.back.aria": "返回父级图",
+   "viewer.nav.back": "返回",
+-  "viewer.nav.back.title": "返回父级图"
++  "viewer.nav.back.title": "返回父级图",
++  "viewer.kind.timeline.default": "事件",
++  "viewer.kind.timeline.change": "变更",
++  "viewer.kind.timeline.alert": "告警",
++  "viewer.kind.timeline.action": "处置",
++  "viewer.kind.timeline.recovery": "恢复"
+ }
+diff --git a/archify/locales/zh-TW.json b/archify/locales/zh-TW.json
+index 6ed434dc..04b2c5e3 100644
+--- a/archify/locales/zh-TW.json
++++ b/archify/locales/zh-TW.json
+@@ -497,5 +497,10 @@
+   "viewer.passport.back": "返回上一級",
+   "viewer.passport.back.aria": "返回父級圖",
+   "viewer.nav.back": "返回",
+-  "viewer.nav.back.title": "返回父級圖"
++  "viewer.nav.back.title": "返回父級圖",
++  "viewer.kind.timeline.default": "事件",
++  "viewer.kind.timeline.change": "變更",
++  "viewer.kind.timeline.alert": "警示",
++  "viewer.kind.timeline.action": "處置",
++  "viewer.kind.timeline.recovery": "復原"
+ }
+diff --git a/archify/renderers/timeline/README.md b/archify/renderers/timeline/README.md
+index 7718ced3..5de62787 100644
+--- a/archify/renderers/timeline/README.md
++++ b/archify/renderers/timeline/README.md
+@@ -39,7 +39,17 @@ events (with their millisecond timestamps and x positions) instead of HTML.
+   badge at the top-left of the canvas.
+ - With `lanes`, every event names a declared lane (`timeline/unknown-lane`).
+   `detail` appears in the Semantic Passport; `kind` (`change`, `alert`,
+-  `action`, `recovery`) colours the card and adds a legend entry.
++  `action`, `recovery`, or `default`) describes the event category, colours the
++  card, and adds a legend entry. Omitted `kind` means Event. Viewer and Story
++  export these as `timeline-default`, `timeline-change`, `timeline-alert`,
++  `timeline-action`, and `timeline-recovery`, independently of drawing tones.
++  Localize the Viewer labels with `viewer.kind.timeline.default` (and the
++  corresponding category suffixes). Explicit legacy `viewer.kind.external`,
++  `frontend`, `security`, `messagebus`, and `backend` overrides remain fallbacks
++  for their respective event categories; new keys take priority. These old
++  Viewer overrides do not change `legend.timeline.*` labels. Old Timeline Lens
++  hashes using those tones still open the matching event category; new links
++  use `timeline-*`. Other diagram types keep their existing kind semantics.
+ 
+ ## Axis
+ 
+diff --git a/archify/renderers/timeline/render-timeline.mjs b/archify/renderers/timeline/render-timeline.mjs
+index 2bf4934a..03887ab6 100644
+--- a/archify/renderers/timeline/render-timeline.mjs
++++ b/archify/renderers/timeline/render-timeline.mjs
+@@ -13,7 +13,7 @@ import {
+ import { throwDiagnosticProblems } from '../shared/diagnostics.mjs';
+ import { legendFootprint, measureLegend, resolveLegend, renderLegend as renderResolvedLegend } from '../shared/legend.mjs';
+ import { nodeTextFit } from '../shared/text-fit.mjs';
+-import { translateMessage as i18nText } from '../shared/i18n.mjs';
++import { translateMessage as i18nText, registerLocale, validateTranslations, resolveLocale } from '../shared/i18n.mjs';
+ import { asArray } from '../shared/geometry.mjs';
+ 
+ const __dirname = path.dirname(fileURLToPath(import.meta.url));
+@@ -25,7 +25,27 @@ const { diagram: tl, template, outPath, sourceEvidence } = loadDiagram({
+   defaultExample: 'payment-incident.timeline.json',
+   argv: cliArgs,
+ });
+-const locale = tl.meta.locale;
++const locale = resolveLocale(tl.meta.locale);
++// Event identity and drawing tone are separate contracts. Keep authored legacy
++// label overrides usable for this renderer, with the new event key taking priority.
++const KIND_TONE = { default: 'external', change: 'frontend', alert: 'security', action: 'messagebus', recovery: 'backend' };
++const translations = { ...tl.meta.translations };
++const invalid = new Set(validateTranslations(translations).placeholderMismatches.map(({ key }) => key));
++const explicit = (key) => Object.hasOwn(translations, key) && !invalid.has(key);
++for (const [kind, tone] of Object.entries(KIND_TONE)) {
++  const key = `viewer.kind.timeline.${kind}`;
++  if (!explicit(key)) translations[key] = explicit(`viewer.kind.${tone}`)
++    ? translations[`viewer.kind.${tone}`] : i18nText(locale, `legend.timeline.${kind}`);
++}
++// Timeline events have no traffic relationships. Use existing localized neutral
++// Lens copy unless the author explicitly supplied the generic Lens messages.
++for (const [key, fallback] of Object.entries({
++  'viewer.lens.title': 'viewer.lens.kinds',
++  'viewer.lens.instruction': 'viewer.lens.choose',
++  'viewer.guide.lens.hint': 'viewer.lens.choose',
++})) if (!explicit(key)) translations[key] = i18nText(locale, fallback);
++registerLocale(locale, translations);
++tl.meta.locale = locale;
+ const ADVANCE = nodeTextFit.widthFactor;
+ const MINUTE = 60_000;
+ const HOUR = 60 * MINUTE;
+@@ -377,7 +397,6 @@ const laneLayout = [];
+ }
+ 
+ // ---- Legend ---------------------------------------------------------------------
+-const KIND_TONE = { default: 'external', change: 'frontend', alert: 'security', action: 'messagebus', recovery: 'backend' };
+ const kindOf = (event) => event.kind || 'default';
+ const legendEntries = resolveLegend(undefined,
+   Object.keys(KIND_TONE).map((kind) => ({ kind, label: i18nText(locale, `legend.timeline.${kind}`), interactive: false })),
+@@ -466,7 +485,7 @@ function renderEvent(card, order) {
+   const lane = laneLayout.find((entry) => entry.id === laneOf(card));
+   // The Node index groups by the context before " › ", so the lane leads.
+   const context = [lane?.label, `${clockLabel(card.t, { seconds: true, date: true })} ${offsetLabel(card.t)}`].filter(Boolean).join(' \u203a ');
+-  const passport = { kind: tone, sublabel: card.detail, context };
++  const passport = { kind: `timeline-${kindOf(card)}`, sublabel: card.detail, context };
+   const textX = card.left + card.padLeft;
+   let y = card.top + 9 + 10;
+   const time = `<text x="${textX}" y="${y}" class="t-${tone} tl-time" font-size="${layout.timeFont}" font-weight="600">${esc(card.time)}</text>`;
+diff --git a/test/timeline-rendering.test.mjs b/test/timeline-rendering.test.mjs
+index 7440433d..b93dd9ca 100644
+--- a/test/timeline-rendering.test.mjs
++++ b/test/timeline-rendering.test.mjs
+@@ -209,3 +209,108 @@ test('timeline: automatic breaks leave room for proportional time on a narrow ax
+   const receipt = JSON.parse(spawnSync(process.execPath, [checker, result.output], { encoding: 'utf8' }).stdout);
+   assert.equal(receipt.ok, true, JSON.stringify(receipt.checks.filter((entry) => !entry.ok)));
+ });
++
++test('timeline: event categories survive rendering instead of becoming technical color roles', () => {
++  const diagram = clone(small);
++  diagram.events = ['default', 'change', 'alert', 'action', 'recovery'].map((kind, i) => ({
++    id: kind, title: kind, at: `2026-10-01T10:0${i}:00Z`, ...(i ? { kind } : {}),
++  }));
++  delete diagram.lanes;
++  const result = run(diagram);
++  assert.equal(result.status, 0, result.stderr);
++  const html = fs.readFileSync(result.output, 'utf8');
++  for (const kind of ['default', 'change', 'alert', 'action', 'recovery']) {
++    assert.match(html, new RegExp(`data-node-id="${kind}"[^>]*data-node-kind="timeline-${kind}"`));
++  }
++});
++
++test('timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors', async (t) => {
++  const { findChrome } = await import('../archify/bin/visual-check.mjs');
++  const chrome = process.env.ARCHIFY_CHROME ? findChrome() : null;
++  if (!chrome) return t.skip('Set ARCHIFY_CHROME for real-browser Timeline semantics.');
++  const { desktopBrowser } = await import('./helpers/desktop-browser.mjs');
++  const { pathToFileURL } = await import('node:url');
++  const { scanStory } = await import('../archify/story/tool.mjs');
++  const browser = desktopBrowser(chrome);
++  t.after(() => browser.close());
++  const session = await browser.sessionPromise;
++  const send = (method, params = {}) => browser.cdp.send(method, params, session);
++  const evaluate = async (expression) => {
++    const result = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
++    assert.equal(result.exceptionDetails, undefined, result.exceptionDetails?.exception?.description);
++    return result.result.value;
++  };
++  const kinds = ['default', 'change', 'alert', 'action', 'recovery'];
++  const tones = ['external', 'frontend', 'security', 'messagebus', 'backend'];
++  const diagram = clone(small);
++  delete diagram.lanes;
++  diagram.events = kinds.map((kind, i) => ({ id: kind, title: `Event ${i}`, at: `2026-10-01T10:0${i}:00Z`, ...(i ? { kind } : {}) }));
++  const load = async (data, hash = '') => {
++    const rendered = run(data);
++    assert.equal(rendered.status, 0, rendered.stderr);
++    const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
++    await send('Page.navigate', { url: pathToFileURL(rendered.output).href + hash });
++    await loaded;
++    await evaluate('document.fonts.ready');
++    return rendered.output;
++  };
++  const file = await load(diagram);
++  await evaluate('Archify.semanticLens.open()');
++  assert.deepEqual(await evaluate(`Array.from(document.querySelectorAll('#semantic-lens-kinds strong'),n=>n.textContent).sort()`), ['Event', 'Change', 'Alert', 'Response', 'Recovery'].sort());
++  assert.deepEqual(scanStory(file).nodes.map(n => n.kind), kinds.map(k => `timeline-${k}`));
++  assert.doesNotMatch(await evaluate(`document.querySelector('.semantic-lens-instruction').textContent`), /traffic/i);
++  const colors = await evaluate(`(${JSON.stringify(kinds)}).map((kind,i)=>{
++    const node=document.querySelector('[data-node-id="'+kind+'"]');
++    const button=document.querySelector('#semantic-lens-kinds [data-kind="timeline-'+kind+'"]');
++    return {accent:getComputedStyle(node.querySelector('.tl-accent')).stroke,swatch:getComputedStyle(button.querySelector('.semantic-lens-swatch')).backgroundColor};
++  })`);
++  for (const color of colors) assert.equal(color.accent, color.swatch);
++  // A user's existing palette variables continue to control both consumers.
++  await evaluate(`document.documentElement.style.setProperty('--frontend-stroke','rgb(12, 34, 56)')`);
++  assert.deepEqual(await evaluate(`({accent:getComputedStyle(document.querySelector('#node-change .tl-accent')).stroke,swatch:getComputedStyle(document.querySelector('[data-kind="timeline-change"] .semantic-lens-swatch')).backgroundColor})`), { accent: 'rgb(12, 34, 56)', swatch: 'rgb(12, 34, 56)' });
++  await evaluate(`Archify.semanticLens.close(); document.querySelector('#node-default').dispatchEvent(new MouseEvent('click',{bubbles:true}))`);
++  assert.equal(await evaluate(`document.getElementById('focus-kind').textContent`), 'Event');
++  await evaluate('Archify.finder.open()');
++  assert.match(await evaluate(`document.getElementById('node-finder-results').textContent`), /Event/);
++  assert.doesNotMatch(await evaluate(`document.getElementById('node-finder-results').textContent`), /External|Frontend|Message bus|Backend|Security/);
++  for (let i = 0; i < tones.length; i++) {
++    await load(diagram, '#lens=' + tones[i]);
++    assert.deepEqual(await evaluate('Archify.semanticLens.active()'), [`timeline-${kinds[i]}`]);
++    await evaluate(`Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:value=>{window.timelineCopied=value;return Promise.resolve();}}})`);
++    assert.equal(await evaluate('Archify.semanticLens.copyLink()'), true);
++    assert.match(await evaluate('window.timelineCopied'), new RegExp('lens=timeline-' + kinds[i]));
++    await evaluate(`Archify.semanticLens.select('timeline-${kinds[(i+1)%5]}')`);
++    assert.match(await evaluate('location.hash'), /lens=timeline-/);
++    assert.doesNotMatch(await evaluate('location.hash'), new RegExp('lens=' + tones[i]));
++  }
++  for (const [translations, expected] of [
++    [Object.fromEntries(tones.map((tone,i) => ['viewer.kind.' + tone, 'Legacy ' + kinds[i]])), 'Legacy default'],
++    [{ 'viewer.kind.external': 'Legacy event', 'viewer.kind.timeline.default': 'New event', 'viewer.lens.instruction': 'Authored lens' }, 'New event'],
++    [{ 'legend.timeline.default': 'Milestone' }, 'Milestone'],
++  ]) {
++    const custom = clone(diagram);
++    custom.meta.locale = 'en'; custom.meta.translations = translations;
++    await load(custom); await evaluate('Archify.semanticLens.open()');
++    assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-default"] strong').textContent`), expected);
++    assert.doesNotMatch(await evaluate(`document.querySelector('[data-legend]').textContent`), /Legacy/);
++    if (expected === 'Legacy default') for (const kind of kinds) assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-${kind}"] strong').textContent`), 'Legacy ' + kind);
++    if (translations['viewer.lens.instruction']) assert.equal(await evaluate(`document.querySelector('.semantic-lens-instruction').textContent`), 'Authored lens');
++  }
++  const minimal = clone(diagram); minimal.events = [minimal.events[0]];
++  await load(minimal); await evaluate('Archify.semanticLens.open()');
++  assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-default"] strong').textContent`), 'Event');
++  const unsupported = clone(minimal); unsupported.meta.locale = 'zz';
++  await load(unsupported);
++  assert.equal(await evaluate('document.documentElement.lang'), 'en');
++  const localized = clone(diagram); localized.meta.locale = 'zh-CN';
++  await load(localized); await evaluate('Archify.semanticLens.open()');
++  assert.equal(await evaluate(`document.querySelector('[data-kind="timeline-default"] strong').textContent`), '事件');
++  // The old technical hash retains its original meaning in another mode.
++  const directory = path.dirname(file);
++  const architecture = path.join(directory, 'architecture.html');
++  const rendered = spawnSync(process.execPath, [path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'), path.join(skillRoot, 'examples/web-app.architecture.json'), architecture], { encoding: 'utf8' });
++  assert.equal(rendered.status, 0, rendered.stderr);
++  const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
++  await send('Page.navigate', { url: pathToFileURL(architecture).href + '#lens=backend' }); await loaded;
++  assert.deepEqual(await evaluate('Archify.semanticLens.active()'), ['backend']);
++});
+diff --git a/viewer/semantic-lens.js b/viewer/semantic-lens.js
+index 09fe1a19..a99bc432 100644
+--- a/viewer/semantic-lens.js
++++ b/viewer/semantic-lens.js
+@@ -541,7 +541,12 @@
+             return;
+           }
+           var available = collectKinds().map(function (kind) { return kind.id; });
+-          var requested = value.split('~').filter(function (kind, index, list) {
++          // Previously Timeline links encoded drawing tones as event kinds.
++          // Accept those hashes only here; newly copied links use event kinds.
++          var legacyTimelineKinds = { external: 'timeline-default', frontend: 'timeline-change', security: 'timeline-alert', messagebus: 'timeline-action', backend: 'timeline-recovery' };
++          var requested = value.split('~').map(function (kind) {
++            return svg.hasAttribute('data-timeline-ui') ? legacyTimelineKinds[kind] || kind : kind;
++          }).filter(function (kind, index, list) {
+             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
+           }).slice(0, 2);
+           if (!requested.length) return;
+diff --git a/viewer/template.source.html b/viewer/template.source.html
+index c014621b..a749a65c 100644
+--- a/viewer/template.source.html
++++ b/viewer/template.source.html
+@@ -708,7 +708,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
+ 
+     function viewerKindLabel(value) {
+       var normalized = String(value || 'node').toLowerCase();
+-      var knownKey = 'viewer.kind.' + normalized;
++      var knownKey = 'viewer.kind.' + normalized.replace(/^timeline-/, 'timeline.');
+       var known = viewerText(knownKey);
+       if (known !== knownKey) return known;
+       return normalized
+diff --git a/viewer/viewer.css b/viewer/viewer.css
+index 2b147f8a..2f657f8f 100644
+--- a/viewer/viewer.css
++++ b/viewer/viewer.css
+@@ -1145,16 +1145,20 @@ html[data-preset="blueprint"] .overview-map-surface { border-radius: 0.1rem; }
+   cursor: pointer;
+   transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
+ }
++.overview-map-node[data-kind="timeline-change"],
+ .overview-map-node[data-kind="frontend"],
+ .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
+ .overview-map-node[data-kind="database"],
+ .overview-map-node[data-kind="success"] { fill: var(--database-stroke); stroke: var(--database-stroke); }
+ .overview-map-node[data-kind="cloud"],
+ .overview-map-node[data-kind="waiting"] { fill: var(--cloud-stroke); stroke: var(--cloud-stroke); }
++.overview-map-node[data-kind="timeline-action"],
+ .overview-map-node[data-kind="messagebus"] { fill: var(--messagebus-stroke); stroke: var(--messagebus-stroke); }
++.overview-map-node[data-kind="timeline-alert"],
+ .overview-map-node[data-kind="security"],
+ .overview-map-node[data-kind="decision"],
+ .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
++.overview-map-node[data-kind="timeline-default"],
+ .overview-map-node[data-kind="external"],
+ .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
+ .overview-map-node[data-radar-active="true"],
+@@ -1310,18 +1314,23 @@ html[data-preset="blueprint"] .semantic-lens { border-radius: 0.28rem; }
+   transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
+ }
+ html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
++.semantic-lens-kind[data-kind="timeline-change"],
+ .semantic-lens-kind[data-kind="frontend"],
+ .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
++.semantic-lens-kind[data-kind="timeline-recovery"],
+ .semantic-lens-kind[data-kind="backend"],
+ .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
+ .semantic-lens-kind[data-kind="database"],
+ .semantic-lens-kind[data-kind="success"] { --lens-color: var(--database-stroke); }
+ .semantic-lens-kind[data-kind="cloud"],
+ .semantic-lens-kind[data-kind="waiting"] { --lens-color: var(--cloud-stroke); }
++.semantic-lens-kind[data-kind="timeline-action"],
+ .semantic-lens-kind[data-kind="messagebus"] { --lens-color: var(--messagebus-stroke); }
++.semantic-lens-kind[data-kind="timeline-alert"],
+ .semantic-lens-kind[data-kind="security"],
+ .semantic-lens-kind[data-kind="decision"],
+ .semantic-lens-kind[data-kind="failure"] { --lens-color: var(--security-stroke); }
++.semantic-lens-kind[data-kind="timeline-default"] { --lens-color: var(--external-stroke); }
+ .semantic-lens-kind:hover,
+ .semantic-lens-kind:focus-visible,
+ .semantic-lens-kind[aria-pressed="true"] {

@@ -1,0 +1,142 @@
+[
+  {
+    "file": "baseline-default-focused.png",
+    "sha256": "67134ec0932217509fb246fa08e0b0612783b3d8019a97fb3cb38c1aa08a46e2",
+    "width": 1440,
+    "height": 900,
+    "artifact": "baseline/default.html",
+    "artifactSha256": "905865f19f9bc336cd537e9a1d35f940995c9a0df466ee77e4111801d8bf85f6",
+    "acceptance": "accepted observed UI state",
+    "comparison": "matched light desktop"
+  },
+  {
+    "file": "baseline-finder.png",
+    "sha256": "f09b1b8616ae03fb04c7419ad188bce97145fbe6913b8f114bcd2ef711ae6f6e",
+    "width": 1440,
+    "height": 900,
+    "artifact": "baseline/timeline.html",
+    "artifactSha256": "e0456b2463281dc231b035e67dae1ce1c4fb1b068692f8c356669920a030a449",
+    "acceptance": "accepted observed UI state",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "baseline-focus-paired.png",
+    "sha256": "037bc7dcb338c09dacd7c5742ca01894bb65e585c7b2a6679fff48cd04c36e74",
+    "width": 1440,
+    "height": 900,
+    "artifact": "baseline/timeline.html",
+    "artifactSha256": "e0456b2463281dc231b035e67dae1ce1c4fb1b068692f8c356669920a030a449",
+    "acceptance": "accepted observed UI state",
+    "comparison": "matched light desktop"
+  },
+  {
+    "file": "baseline-lens-paired.png",
+    "sha256": "667443b15c6dc19fe3e93e13b5e052c7efd8091ab3a192a55c519e00f9aa56f0",
+    "width": 1440,
+    "height": 900,
+    "artifact": "baseline/timeline.html",
+    "artifactSha256": "e0456b2463281dc231b035e67dae1ce1c4fb1b068692f8c356669920a030a449",
+    "acceptance": "accepted observed UI state",
+    "comparison": "matched light desktop"
+  },
+  {
+    "file": "baseline-overview-light.png",
+    "sha256": "57570d63d6cd5c21dd00440ec1bd465be753daa1f0efa198c7b148174323fea6",
+    "width": 1440,
+    "height": 900,
+    "artifact": "baseline/timeline.html",
+    "artifactSha256": "e0456b2463281dc231b035e67dae1ce1c4fb1b068692f8c356669920a030a449",
+    "acceptance": "accepted observed UI state",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "candidate-default-focused.png",
+    "sha256": "5609b9a78cb3e4779e8eb4a5b7e9c9fa70c1fa5fbd3d4fac1bd4f94d0fde50d8",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/default.html",
+    "artifactSha256": "aee13ef5f8e1c20758b797afe2cb912f2fdc3fd8636dda75be87ab9f3e950080",
+    "acceptance": "accepted observed UI state",
+    "comparison": "matched light desktop"
+  },
+  {
+    "file": "candidate-finder.png",
+    "sha256": "e9becdb8b7f8333c48f1b8937dba1210605cfccf6849d4c7b19f13c356d33bc5",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "accepted observed UI state",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "candidate-focus-narrow.png",
+    "sha256": "478db1bc3e743eb7f16cee74f0ff51a657a59b29ae1b0308b845596713cf2c5e",
+    "width": 390,
+    "height": 844,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "accepted observed UI state",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "candidate-focus-paired.png",
+    "sha256": "1a15783c908f7929d7899919f4d5a7d9bd9d11e5702262a6d61fc7c34ef652f7",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "accepted observed UI state",
+    "comparison": "matched light desktop"
+  },
+  {
+    "file": "candidate-legacy-lens-dark.png",
+    "sha256": "f43b03df08a57dc407277aa1a37eaa159d893b3670092778f22ed8098c72b39d",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "accepted observed UI state",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "candidate-lens-paired.png",
+    "sha256": "30ccfee0d655453684e89aeadd69c363546dba50207f8303e25db77799c52acc",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "accepted observed UI state",
+    "comparison": "matched light desktop"
+  },
+  {
+    "file": "candidate-overview-light.png",
+    "sha256": "9ba5a92f923c4cd27dea268516a61d21f1704597c65850bd73da183fa48a77ec",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "accepted observed UI state",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "early-baseline-overview.png",
+    "sha256": "6c92b542cdc0e59754ab366abd7039c9c7601d82ed84ddae08a2cf475da1a674",
+    "width": 1291,
+    "height": 762,
+    "artifact": "baseline/timeline.html",
+    "artifactSha256": "e0456b2463281dc231b035e67dae1ce1c4fb1b068692f8c356669920a030a449",
+    "acceptance": "excluded from acceptance: unexpected viewport or unsettled panel",
+    "comparison": "individual state; not a speed comparison"
+  },
+  {
+    "file": "early-legacy-lens-dark.png",
+    "sha256": "801fffffd29ba6b3ce1a799a65ba52b1875580e73d5a9ec3216cdb2b6b4e509c",
+    "width": 1440,
+    "height": 900,
+    "artifact": "candidate/timeline.html",
+    "artifactSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+    "acceptance": "excluded from acceptance: unexpected viewport or unsettled panel",
+    "comparison": "individual state; not a speed comparison"
+  }
+]

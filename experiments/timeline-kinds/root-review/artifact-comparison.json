@@ -1,0 +1,42 @@
+{
+  "inputChange": "none between arms",
+  "firstCandidateEqualsFinal": true,
+  "fixtures": [
+    {
+      "fixture": "timeline",
+      "baseSha256": "e0456b2463281dc231b035e67dae1ce1c4fb1b068692f8c356669920a030a449",
+      "candidateSha256": "8f88ab7d638c8dfe3010d70487ab6f33563c33d8ca0a017aad060b84b7f22ba8",
+      "baseBytes": 863486,
+      "candidateBytes": 864606,
+      "svgUnchangedExceptKind": true,
+      "baseKinds": [
+        "frontend",
+        "security",
+        "messagebus",
+        "backend",
+        "messagebus"
+      ],
+      "candidateKinds": [
+        "timeline-change",
+        "timeline-alert",
+        "timeline-action",
+        "timeline-recovery",
+        "timeline-action"
+      ]
+    },
+    {
+      "fixture": "default",
+      "baseSha256": "905865f19f9bc336cd537e9a1d35f940995c9a0df466ee77e4111801d8bf85f6",
+      "candidateSha256": "aee13ef5f8e1c20758b797afe2cb912f2fdc3fd8636dda75be87ab9f3e950080",
+      "baseBytes": 853259,
+      "candidateBytes": 854354,
+      "svgUnchangedExceptKind": true,
+      "baseKinds": [
+        "external"
+      ],
+      "candidateKinds": [
+        "timeline-default"
+      ]
+    }
+  ]
+}

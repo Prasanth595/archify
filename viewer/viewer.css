@@ -1145,16 +1145,20 @@ html[data-preset="blueprint"] .overview-map-surface { border-radius: 0.1rem; }
   cursor: pointer;
   transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
 }
+.overview-map-node[data-kind="timeline-change"],
 .overview-map-node[data-kind="frontend"],
 .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
 .overview-map-node[data-kind="database"],
 .overview-map-node[data-kind="success"] { fill: var(--database-stroke); stroke: var(--database-stroke); }
 .overview-map-node[data-kind="cloud"],
 .overview-map-node[data-kind="waiting"] { fill: var(--cloud-stroke); stroke: var(--cloud-stroke); }
+.overview-map-node[data-kind="timeline-action"],
 .overview-map-node[data-kind="messagebus"] { fill: var(--messagebus-stroke); stroke: var(--messagebus-stroke); }
+.overview-map-node[data-kind="timeline-alert"],
 .overview-map-node[data-kind="security"],
 .overview-map-node[data-kind="decision"],
 .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
+.overview-map-node[data-kind="timeline-default"],
 .overview-map-node[data-kind="external"],
 .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
 .overview-map-node[data-radar-active="true"],
@@ -1310,18 +1314,23 @@ html[data-preset="blueprint"] .semantic-lens { border-radius: 0.28rem; }
   transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
 }
 html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
+.semantic-lens-kind[data-kind="timeline-change"],
 .semantic-lens-kind[data-kind="frontend"],
 .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
+.semantic-lens-kind[data-kind="timeline-recovery"],
 .semantic-lens-kind[data-kind="backend"],
 .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
 .semantic-lens-kind[data-kind="database"],
 .semantic-lens-kind[data-kind="success"] { --lens-color: var(--database-stroke); }
 .semantic-lens-kind[data-kind="cloud"],
 .semantic-lens-kind[data-kind="waiting"] { --lens-color: var(--cloud-stroke); }
+.semantic-lens-kind[data-kind="timeline-action"],
 .semantic-lens-kind[data-kind="messagebus"] { --lens-color: var(--messagebus-stroke); }
+.semantic-lens-kind[data-kind="timeline-alert"],
 .semantic-lens-kind[data-kind="security"],
 .semantic-lens-kind[data-kind="decision"],
 .semantic-lens-kind[data-kind="failure"] { --lens-color: var(--security-stroke); }
+.semantic-lens-kind[data-kind="timeline-default"] { --lens-color: var(--external-stroke); }
 .semantic-lens-kind:hover,
 .semantic-lens-kind:focus-visible,
 .semantic-lens-kind[aria-pressed="true"] {

@@ -1,0 +1,12 @@
+
+> test:generated
+> npm --prefix archify run check:viewer && npm --prefix archify run check:brand-marks && npm --prefix archify run check:validators && npm --prefix archify run check:release-identity && node test/golden.mjs
+
+
+> archify@3.2.1-dev.1 check:viewer
+> node ../scripts/generate-viewer.mjs --check
+
+
+> archify@3.2.1-dev.1 check:brand-marks
+> node scripts/generate-brand-marks.mjs --check
+

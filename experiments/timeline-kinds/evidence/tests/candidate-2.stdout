@@ -1,0 +1,364 @@
+TAP version 13
+# Subtest: zh-CN localizes renderer-owned output across all five modes without translating authored content
+ok 1 - zh-CN localizes renderer-owned output across all five modes without translating authored content
+  ---
+  duration_ms: 997.628
+  type: 'test'
+  ...
+# Subtest: explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+ok 2 - explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+  ---
+  duration_ms: 2989.91025
+  type: 'test'
+  ...
+# Subtest: omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+ok 3 - omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+  ---
+  duration_ms: 1066.625958
+  type: 'test'
+  ...
+# Subtest: checked-in Korean fixture validates and delivers a ko architecture artifact
+ok 4 - checked-in Korean fixture validates and delivers a ko architecture artifact
+  ---
+  duration_ms: 720.114542
+  type: 'test'
+  ...
+# Subtest: checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+ok 5 - checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+  ---
+  duration_ms: 694.86525
+  type: 'test'
+  ...
+# Subtest: malformed locale tags fail schema validation in every mode
+ok 6 - malformed locale tags fail schema validation in every mode
+  ---
+  duration_ms: 785.297416
+  type: 'test'
+  ...
+# Subtest: a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+ok 7 - a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+  ---
+  duration_ms: 4454.617875
+  type: 'test'
+  ...
+# Subtest: a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+ok 8 - a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+  ---
+  duration_ms: 969.504375
+  type: 'test'
+  ...
+# Subtest: translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+ok 9 - translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+  ---
+  duration_ms: 177.871875
+  type: 'test'
+  ...
+# Subtest: bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+ok 10 - bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+  ---
+  duration_ms: 5934.524583
+  type: 'test'
+  ...
+# Subtest: a partial override replaces only its keys and keeps the rest of the selected bundled language
+ok 11 - a partial override replaces only its keys and keeps the rest of the selected bundled language
+  ---
+  duration_ms: 982.318
+  type: 'test'
+  ...
+# Subtest: empty translations and equivalent tag casing select the same bundled catalog
+ok 12 - empty translations and equivalent tag casing select the same bundled catalog
+  ---
+  duration_ms: 3313.997125
+  type: 'test'
+  ...
+# Subtest: rejected overrides keep the bundled message and are reported apart from English fallback gaps
+ok 13 - rejected overrides keep the bundled message and are reported apart from English fallback gaps
+  ---
+  duration_ms: 187.985375
+  type: 'test'
+  ...
+# Subtest: an unbundled tag with only unusable translations falls back to English UI and language metadata
+ok 14 - an unbundled tag with only unusable translations falls back to English UI and language metadata
+  ---
+  duration_ms: 191.152834
+  type: 'test'
+  ...
+# Subtest: coverage reports the final resolved catalog with the English source of each gap
+ok 15 - coverage reports the final resolved catalog with the English source of each gap
+  ---
+  duration_ms: 2.341917
+  type: 'test'
+  ...
+# Subtest: a document override never mutates the reusable bundled catalog
+ok 16 - a document override never mutates the reusable bundled catalog
+  ---
+  duration_ms: 0.571583
+  type: 'test'
+  ...
+# Subtest: validate and deliver receipts carry locale warnings as structured diagnostics without failing
+ok 17 - validate and deliver receipts carry locale warnings as structured diagnostics without failing
+  ---
+  duration_ms: 1910.33075
+  type: 'test'
+  ...
+# Subtest: the manifest enrolls exactly the bundled catalogs, and each is complete
+ok 18 - the manifest enrolls exactly the bundled catalogs, and each is complete
+  ---
+  duration_ms: 4.738625
+  type: 'test'
+  ...
+# Subtest: enrolling a catalog is a data-only change and works from an unrelated working directory
+ok 19 - enrolling a catalog is a data-only change and works from an unrelated working directory
+  ---
+  duration_ms: 489.186375
+  type: 'test'
+  ...
+# Subtest: every Viewer message reference resolves through the shared catalog
+ok 20 - every Viewer message reference resolves through the shared catalog
+  ---
+  duration_ms: 3.039375
+  type: 'test'
+  ...
+# Subtest: every supported catalog is complete and preserves interpolation variables
+ok 21 - every supported catalog is complete and preserves interpolation variables
+  ---
+  duration_ms: 7.010542
+  type: 'test'
+  ...
+# Subtest: the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+ok 22 - the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+  ---
+  duration_ms: 0.470625
+  type: 'test'
+  ...
+# Subtest: the checked-in fr example catalog validates reusable translations and discloses historical gaps
+ok 23 - the checked-in fr example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.965041
+  type: 'test'
+  ...
+# Subtest: fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 24 - fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 193.596792
+  type: 'test'
+  ...
+# Subtest: the checked-in pt example catalog validates reusable translations and discloses historical gaps
+ok 25 - the checked-in pt example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.819792
+  type: 'test'
+  ...
+# Subtest: pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 26 - pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 189.270708
+  type: 'test'
+  ...
+# Subtest: the checked-in ja example catalog validates reusable translations and discloses historical gaps
+ok 27 - the checked-in ja example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.828042
+  type: 'test'
+  ...
+# Subtest: ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 28 - ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 194.383583
+  type: 'test'
+  ...
+# Subtest: the checked-in de example catalog validates reusable translations and discloses historical gaps
+ok 29 - the checked-in de example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.796041
+  type: 'test'
+  ...
+# Subtest: de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 30 - de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 184.762458
+  type: 'test'
+  ...
+# Subtest: the checked-in it example catalog validates reusable translations and discloses historical gaps
+ok 31 - the checked-in it example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.764625
+  type: 'test'
+  ...
+# Subtest: it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 32 - it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 186.246458
+  type: 'test'
+  ...
+# Subtest: the checked-in ru example catalog validates reusable translations and discloses historical gaps
+ok 33 - the checked-in ru example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.928708
+  type: 'test'
+  ...
+# Subtest: ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 34 - ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 186.955167
+  type: 'test'
+  ...
+# Subtest: runtime labels stay localized after composition
+ok 35 - runtime labels stay localized after composition
+  ---
+  duration_ms: 0.199625
+  type: 'test'
+  ...
+# Subtest: Share Card and export failures use catalog messages instead of fixed English
+ok 36 - Share Card and export failures use catalog messages instead of fixed English
+  ---
+  duration_ms: 2.624542
+  type: 'test'
+  ...
+# Subtest: Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+ok 37 - Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+  ---
+  duration_ms: 0.385875
+  type: 'test'
+  ...
+# Subtest: timeline: daily local ticks survive spring forward without moving the time axis
+ok 38 - timeline: daily local ticks survive spring forward without moving the time axis
+  ---
+  duration_ms: 548.157416
+  type: 'test'
+  ...
+# Subtest: timeline: daily local ticks survive fall back without moving the time axis
+ok 39 - timeline: daily local ticks survive fall back without moving the time axis
+  ---
+  duration_ms: 551.328875
+  type: 'test'
+  ...
+# Subtest: timeline: hourly ticks skips the nonexistent spring hour
+ok 40 - timeline: hourly ticks skips the nonexistent spring hour
+  ---
+  duration_ms: 271.742584
+  type: 'test'
+  ...
+# Subtest: timeline: hourly ticks retains both real occurrences of the repeated fall hour
+ok 41 - timeline: hourly ticks retains both real occurrences of the repeated fall hour
+  ---
+  duration_ms: 278.081834
+  type: 'test'
+  ...
+# Subtest: timeline: hourly ticks aligns whole hours across the Lord Howe half-hour jump
+ok 42 - timeline: hourly ticks aligns whole hours across the Lord Howe half-hour jump
+  ---
+  duration_ms: 276.035292
+  type: 'test'
+  ...
+# Subtest: timeline: a skipped civil date in Apia does not invent or duplicate an instant
+ok 43 - timeline: a skipped civil date in Apia does not invent or duplicate an instant
+  ---
+  duration_ms: 281.243125
+  type: 'test'
+  ...
+# Subtest: timeline: equal endpoint offsets do not hide the daylight-saving season inside a long segment
+ok 44 - timeline: equal endpoint offsets do not hide the daylight-saving season inside a long segment
+  ---
+  duration_ms: 296.703
+  type: 'test'
+  ...
+# Subtest: timeline: a short segment keeps its start tick and automatic breaks retain real local dates
+ok 45 - timeline: a short segment keeps its start tick and automatic breaks retain real local dates
+  ---
+  duration_ms: 554.316583
+  type: 'test'
+  ...
+# Subtest: timeline: subsecond events retain their time in cards and accessible context
+ok 46 - timeline: subsecond events retain their time in cards and accessible context
+  ---
+  duration_ms: 243.815417
+  type: 'test'
+  ...
+# Subtest: timeline: both examples render and pass the showcase artifact checks
+ok 47 - timeline: both examples render and pass the showcase artifact checks
+  ---
+  duration_ms: 429.288209
+  type: 'test'
+  ...
+# Subtest: timeline: duplicate lane IDs fail before visual and accessible ownership diverge
+ok 48 - timeline: duplicate lane IDs fail before visual and accessible ownership diverge
+  ---
+  duration_ms: 103.670917
+  type: 'test'
+  ...
+# Subtest: timeline: position is linear in time on one shared axis across lanes
+ok 49 - timeline: position is linear in time on one shared axis across lanes
+  ---
+  duration_ms: 106.234458
+  type: 'test'
+  ...
+# Subtest: timeline: events are drawn in chronological order whatever the authored order
+ok 50 - timeline: events are drawn in chronological order whatever the authored order
+  ---
+  duration_ms: 105.192208
+  type: 'test'
+  ...
+# Subtest: timeline: historical years retain the actual display-zone UTC offset
+ok 51 - timeline: historical years retain the actual display-zone UTC offset
+  ---
+  duration_ms: 656.480959
+  type: 'test'
+  ...
+# Subtest: timeline: offsets are honoured, so the same instant in two offsets aligns
+ok 52 - timeline: offsets are honoured, so the same instant in two offsets aligns
+  ---
+  duration_ms: 108.221917
+  type: 'test'
+  ...
+# Subtest: timeline: long quiet periods become disclosed breaks, proportional inside each segment
+ok 53 - timeline: long quiet periods become disclosed breaks, proportional inside each segment
+  ---
+  duration_ms: 364.579542
+  type: 'test'
+  ...
+# Subtest: timeline: simultaneous and close events stack instead of overprinting
+ok 54 - timeline: simultaneous and close events stack instead of overprinting
+  ---
+  duration_ms: 111.115583
+  type: 'test'
+  ...
+# Subtest: timeline: ambiguous or invalid time input is refused
+ok 55 - timeline: ambiguous or invalid time input is refused
+  ---
+  duration_ms: 486.312084
+  type: 'test'
+  ...
+# Subtest: timeline: invalid calendar dates are rejected before Date.parse can normalize them
+ok 56 - timeline: invalid calendar dates are rejected before Date.parse can normalize them
+  ---
+  duration_ms: 625.7525
+  type: 'test'
+  ...
+# Subtest: timeline: automatic breaks leave room for proportional time on a narrow axis
+ok 57 - timeline: automatic breaks leave room for proportional time on a narrow axis
+  ---
+  duration_ms: 319.364083
+  type: 'test'
+  ...
+# Subtest: timeline: event categories survive rendering instead of becoming technical color roles
+ok 58 - timeline: event categories survive rendering instead of becoming technical color roles
+  ---
+  duration_ms: 128.272167
+  type: 'test'
+  ...
+# Subtest: timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+ok 59 - timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+  ---
+  duration_ms: 2719.880958
+  type: 'test'
+  ...
+1..59
+# tests 59
+# suites 0
+# pass 59
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27162.689708

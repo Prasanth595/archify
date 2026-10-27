@@ -1314,16 +1314,20 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       cursor: pointer;
       transition: fill-opacity 140ms ease, stroke-width 140ms ease, filter 140ms ease;
     }
+    .overview-map-node[data-kind="timeline-change"],
     .overview-map-node[data-kind="frontend"],
     .overview-map-node[data-kind="start"] { fill: var(--frontend-stroke); stroke: var(--frontend-stroke); }
     .overview-map-node[data-kind="database"],
     .overview-map-node[data-kind="success"] { fill: var(--database-stroke); stroke: var(--database-stroke); }
     .overview-map-node[data-kind="cloud"],
     .overview-map-node[data-kind="waiting"] { fill: var(--cloud-stroke); stroke: var(--cloud-stroke); }
+    .overview-map-node[data-kind="timeline-action"],
     .overview-map-node[data-kind="messagebus"] { fill: var(--messagebus-stroke); stroke: var(--messagebus-stroke); }
+    .overview-map-node[data-kind="timeline-alert"],
     .overview-map-node[data-kind="security"],
     .overview-map-node[data-kind="decision"],
     .overview-map-node[data-kind="failure"] { fill: var(--security-stroke); stroke: var(--security-stroke); }
+    .overview-map-node[data-kind="timeline-default"],
     .overview-map-node[data-kind="external"],
     .overview-map-node[data-kind="neutral"] { fill: var(--external-stroke); stroke: var(--external-stroke); }
     .overview-map-node[data-radar-active="true"],
@@ -1479,18 +1483,23 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
     }
     html[data-preset="blueprint"] .semantic-lens-kind { border-radius: 0.12rem; }
+    .semantic-lens-kind[data-kind="timeline-change"],
     .semantic-lens-kind[data-kind="frontend"],
     .semantic-lens-kind[data-kind="start"] { --lens-color: var(--frontend-stroke); }
+    .semantic-lens-kind[data-kind="timeline-recovery"],
     .semantic-lens-kind[data-kind="backend"],
     .semantic-lens-kind[data-kind="active"] { --lens-color: var(--backend-stroke); }
     .semantic-lens-kind[data-kind="database"],
     .semantic-lens-kind[data-kind="success"] { --lens-color: var(--database-stroke); }
     .semantic-lens-kind[data-kind="cloud"],
     .semantic-lens-kind[data-kind="waiting"] { --lens-color: var(--cloud-stroke); }
+    .semantic-lens-kind[data-kind="timeline-action"],
     .semantic-lens-kind[data-kind="messagebus"] { --lens-color: var(--messagebus-stroke); }
+    .semantic-lens-kind[data-kind="timeline-alert"],
     .semantic-lens-kind[data-kind="security"],
     .semantic-lens-kind[data-kind="decision"],
     .semantic-lens-kind[data-kind="failure"] { --lens-color: var(--security-stroke); }
+    .semantic-lens-kind[data-kind="timeline-default"] { --lens-color: var(--external-stroke); }
     .semantic-lens-kind:hover,
     .semantic-lens-kind:focus-visible,
     .semantic-lens-kind[aria-pressed="true"] {
@@ -5833,7 +5842,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
     function viewerKindLabel(value) {
       var normalized = String(value || 'node').toLowerCase();
-      var knownKey = 'viewer.kind.' + normalized;
+      var knownKey = 'viewer.kind.' + normalized.replace(/^timeline-/, 'timeline.');
       var known = viewerText(knownKey);
       if (known !== knownKey) return known;
       return normalized
@@ -14969,7 +14978,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
             return;
           }
           var available = collectKinds().map(function (kind) { return kind.id; });
-          var requested = value.split('~').filter(function (kind, index, list) {
+          // Previously Timeline links encoded drawing tones as event kinds.
+          // Accept those hashes only here; newly copied links use event kinds.
+          var legacyTimelineKinds = { external: 'timeline-default', frontend: 'timeline-change', security: 'timeline-alert', messagebus: 'timeline-action', backend: 'timeline-recovery' };
+          var requested = value.split('~').map(function (kind) {
+            return svg.hasAttribute('data-timeline-ui') ? legacyTimelineKinds[kind] || kind : kind;
+          }).filter(function (kind, index, list) {
             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
           }).slice(0, 2);
           if (!requested.length) return;

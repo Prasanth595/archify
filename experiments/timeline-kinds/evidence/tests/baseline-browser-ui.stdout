@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+not ok 1 - timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+  ---
+  duration_ms: 781.717042
+  type: 'test'
+  location: '<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:227:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   'Backend',
+    +   'External',
+    +   'Frontend',
+    +   'Message bus',
+    +   'Security'
+    -   'Alert',
+    -   'Change',
+    -   'Event',
+    -   'Recovery',
+    -   'Response'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'Alert'
+    1: 'Change'
+    2: 'Event'
+    3: 'Recovery'
+    4: 'Response'
+  actual:
+    0: 'Backend'
+    1: 'External'
+    2: 'Frontend'
+    3: 'Message bus'
+    4: 'Security'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:259:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 841.969417

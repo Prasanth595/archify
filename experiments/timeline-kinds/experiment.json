@@ -1,0 +1,24 @@
+{
+  "startedAtUtc": "2026-10-27T17:12:59.355911+00:00",
+  "base": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "branch": "codex/lab-timeline-kinds",
+  "hypothesis": "Using authored event category instead of paint tone removes false technology types in Passport/Finder/Lens/Story with unchanged time, SVG layout and paint.",
+  "sourceInputs": [
+    {
+      "path": "archify/examples/payment-incident.timeline.json",
+      "sha256": "c1f535b3cc915ddd47ecd7df4e3ef02c441c8c3191daced5cf4422cff8dec95f",
+      "kind": "shipped illustrative fixture"
+    },
+    {
+      "path": "archify/renderers/timeline/README.md",
+      "kind": "documented default-category minimal fixture"
+    }
+  ],
+  "inputEdits": [
+    "meta.locale=zh-CN",
+    "meta.output matching delivered filename"
+  ],
+  "repairBudget": "First implementation and two evidence-based repairs; bounded independent review discoveries separately recorded.",
+  "comparison": "Same JSON on immutable base and final candidate; only fixed-input metadata/copy behavior. Not fresh-author speed or human comprehension benchmark.",
+  "policy": "Remote branches only; no PR, merge, release, deploy or installation."
+}

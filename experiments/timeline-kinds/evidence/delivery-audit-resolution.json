@@ -1,0 +1,37 @@
+{
+  "initialAudit": "delivery-audit-initial.md",
+  "renamedSidecars": [
+    {
+      "public": "evidence/delivery/delivery-candidate-timeline.delivery.json",
+      "keptSource": "experiments/timeline-kinds/candidate/timeline.delivery.json",
+      "removedDuplicateSource": "experiments/timeline-kinds/evidence/delivery/candidate-timeline.delivery.json"
+    },
+    {
+      "public": "evidence/delivery/delivery-candidate-default.delivery.json",
+      "keptSource": "experiments/timeline-kinds/candidate/default.delivery.json",
+      "removedDuplicateSource": "experiments/timeline-kinds/evidence/delivery/candidate-default.delivery.json"
+    },
+    {
+      "public": "evidence/delivery/delivery-first-candidate-timeline.delivery.json",
+      "keptSource": "experiments/timeline-kinds/first-candidate/timeline.delivery.json",
+      "removedDuplicateSource": "experiments/timeline-kinds/evidence/delivery/first-candidate-timeline.delivery.json"
+    },
+    {
+      "public": "evidence/delivery/delivery-baseline-timeline.delivery.json",
+      "keptSource": "experiments/timeline-kinds/baseline/timeline.delivery.json",
+      "removedDuplicateSource": "experiments/timeline-kinds/evidence/delivery/baseline-timeline.delivery.json"
+    },
+    {
+      "public": "evidence/delivery/delivery-baseline-default.delivery.json",
+      "keptSource": "experiments/timeline-kinds/baseline/default.delivery.json",
+      "removedDuplicateSource": "experiments/timeline-kinds/evidence/delivery/baseline-default.delivery.json"
+    }
+  ],
+  "finalUniquePairs": 146,
+  "memberEvidence": "zip-members.json",
+  "note": "Kept original raw-source mapping; removed duplicate mapping of already-redacted renamed copies. Original archives were not modified.",
+  "independentFinalAuditPairs": 144,
+  "rootAddedAuditReportPairs": 2,
+  "finalAudit": "delivery-audit-final.md",
+  "rootFinalHashCheck": "all146 public/raw pairs matched"
+}

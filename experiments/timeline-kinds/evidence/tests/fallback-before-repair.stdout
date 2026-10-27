@@ -1,0 +1,33 @@
+TAP version 13
+# Subtest: timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+not ok 1 - timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+  ---
+  duration_ms: 2572.124875
+  type: 'test'
+  location: '<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:227:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'zz' !== 'en'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'en'
+  actual: 'zz'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:304:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2634.800709

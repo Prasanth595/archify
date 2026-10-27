@@ -39,7 +39,17 @@ events (with their millisecond timestamps and x positions) instead of HTML.
   badge at the top-left of the canvas.
 - With `lanes`, every event names a declared lane (`timeline/unknown-lane`).
   `detail` appears in the Semantic Passport; `kind` (`change`, `alert`,
-  `action`, `recovery`) colours the card and adds a legend entry.
+  `action`, `recovery`, or `default`) describes the event category, colours the
+  card, and adds a legend entry. Omitted `kind` means Event. Viewer and Story
+  export these as `timeline-default`, `timeline-change`, `timeline-alert`,
+  `timeline-action`, and `timeline-recovery`, independently of drawing tones.
+  Localize the Viewer labels with `viewer.kind.timeline.default` (and the
+  corresponding category suffixes). Explicit legacy `viewer.kind.external`,
+  `frontend`, `security`, `messagebus`, and `backend` overrides remain fallbacks
+  for their respective event categories; new keys take priority. These old
+  Viewer overrides do not change `legend.timeline.*` labels. Old Timeline Lens
+  hashes using those tones still open the matching event category; new links
+  use `timeline-*`. Other diagram types keep their existing kind semantics.
 
 ## Axis
 

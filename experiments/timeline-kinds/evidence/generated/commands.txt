@@ -1,0 +1,14 @@
+node -p JSON.stringify\(\{\ executable:\ process.execPath\,\ node:\ process.versions.node\,\ zlib:\ process.versions.zlib\ \}\) 
+node archify/scripts/render-examples.mjs examples 
+node archify/scripts/render-examples.mjs archify/examples 
+python3 /tmp/archify-round13-generated/refresh-web-app.py 
+node scripts/build-gallery.mjs docs 
+npm run test:generated 
+scripts/build-zip.sh archify.zip 
+scripts/build-zip.sh /tmp/archify-round13-generated/build-2.zip 
+cmp archify.zip /tmp/archify-round13-generated/build-2.zip 
+shasum -a 256 archify.zip /tmp/archify-round13-generated/build-2.zip 
+unzip -Z1 archify.zip 
+python3 /tmp/archify-round13-generated/check-exclusions.py 
+npm run test:generated
+npm test

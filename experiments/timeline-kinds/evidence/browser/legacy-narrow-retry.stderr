@@ -1,0 +1,70 @@
+[ { case: 'legacy-dark', width: 1440, height: 900, theme: 'dark', hash: '#lens=messagebus', active: 'timeline-action', selected: [ 'timeline-action' ] }, { case: 'narrow-focus', width: 390, height: 844, pageWidth: 390, theme: 'light', id: 'rollback', kind: '处置', hash: '#focus=rollback' } ]
+[p1 "Payment failure incident" | space "Archify research 20261028"(18): 1 managed, 0 untracked — p1* "Payment failure incident"]
+root
+  toolbar "图表操作"
+    container
+      button "切换颜色主题" [ref=57, loc=css:button[aria-label="切换颜色主题"]]
+      button "当前视觉风格：经典。选择视觉风格" [ref=58, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+        text "经典"
+      button "恢复动效" [ref=59, loc=css:button[aria-label="恢复动效"]]
+        text "静态"
+      button "进入演示模式" [ref=60]
+    button "导出图表" [ref=61, loc=css:button[aria-label="导出图表"]]
+      text "导出"
+  container
+    container
+      heading
+        text "Payment failure incident"
+      paragraph
+        text "Illustrative incident: release, monitoring, and response events on one clock."
+    container [ref=62]
+      image "示例数据 时间: Asia/Shanghai (UTC+08:00) · 2026-10-01 Release Monitoring Response 10:00 10:05 10:10 10:15 10:20 10:00 Deploy v2.4 10:05 Payment failure alert 10:10 Start rollback 10:15 Metrics ..." [ref=63]
+        text "时间: Asia/Shanghai (UTC+08:00) · 2026-10-01"
+        text "10:05"
+        text "10:10"
+        text "10:15"
+        text "10:05"
+        text "Payment failure alert"
+        text "10:10"
+        text "Start rollback"
+        text "10:15"
+        text "Metrics recovered"
+      region "Start rollback"
+        container
+          text "语义护照"
+          text "Start rollback"
+          text "On-call decides to return to v2.3."
+          container "节点元数据"
+            text "处置"
+            text "Response › 10-01 10:10:00 UTC+08:00"
+            text "rollback"
+          text "0 条出向 · 0 条入向"
+          container
+            text "编写可达范围"
+            group "追踪编写的可达性"
+              button "没有上游编写节点" [ref=64, loc=css:button[aria-label="没有上游编写节点"]]
+                text "上游"
+                text "0"
+              button "没有下游编写节点" [ref=65, loc=css:button[aria-label="没有下游编写节点"]]
+                text "下游"
+                text "0"
+        container
+          button "关闭语义护照" [ref=66, loc=css:button[aria-label="关闭语义护照"]]
+            text "×"
+          button "复制聚焦节点的链接" [ref=67, loc=css:button[aria-label="复制聚焦节点的链接"]]
+            text "复制链接"
+          button "显示 0 条关联关系" [ref=68, loc=css:button[aria-label="显示 0 条关联关系"]]
+            text "0 条关系"
+      toolbar "图表视图控制" [ref=69, loc=role:toolbar[name="图表视图控制"]]
+        button "追踪有向路径" [ref=70]
+          text "路径"
+        button "打开语义透镜" [ref=71, loc=css:button[aria-label="打开语义透镜"]]
+          text "透镜"
+        button "查找节点" [ref=72, loc=css:button[aria-label="查找节点"]]
+        button "打开图表指南" [ref=73, loc=css:button[aria-label="打开图表指南"]]
+        button "缩小" [ref=74, loc=css:button[aria-label="缩小"]]
+        button "完整 100% · 完整图表详情。重置图表视图" [ref=75, loc=css:button[aria-label="完整 100% · 完整图表详情。重置图表视图"]]
+          text "完整"
+          text "100%"
+
+

@@ -13,7 +13,7 @@ import {
 import { throwDiagnosticProblems } from '../shared/diagnostics.mjs';
 import { legendFootprint, measureLegend, resolveLegend, renderLegend as renderResolvedLegend } from '../shared/legend.mjs';
 import { nodeTextFit } from '../shared/text-fit.mjs';
-import { translateMessage as i18nText } from '../shared/i18n.mjs';
+import { translateMessage as i18nText, registerLocale, validateTranslations, resolveLocale } from '../shared/i18n.mjs';
 import { asArray } from '../shared/geometry.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -25,7 +25,27 @@ const { diagram: tl, template, outPath, sourceEvidence } = loadDiagram({
   defaultExample: 'payment-incident.timeline.json',
   argv: cliArgs,
 });
-const locale = tl.meta.locale;
+const locale = resolveLocale(tl.meta.locale);
+// Event identity and drawing tone are separate contracts. Keep authored legacy
+// label overrides usable for this renderer, with the new event key taking priority.
+const KIND_TONE = { default: 'external', change: 'frontend', alert: 'security', action: 'messagebus', recovery: 'backend' };
+const translations = { ...tl.meta.translations };
+const invalid = new Set(validateTranslations(translations).placeholderMismatches.map(({ key }) => key));
+const explicit = (key) => Object.hasOwn(translations, key) && !invalid.has(key);
+for (const [kind, tone] of Object.entries(KIND_TONE)) {
+  const key = `viewer.kind.timeline.${kind}`;
+  if (!explicit(key)) translations[key] = explicit(`viewer.kind.${tone}`)
+    ? translations[`viewer.kind.${tone}`] : i18nText(locale, `legend.timeline.${kind}`);
+}
+// Timeline events have no traffic relationships. Use existing localized neutral
+// Lens copy unless the author explicitly supplied the generic Lens messages.
+for (const [key, fallback] of Object.entries({
+  'viewer.lens.title': 'viewer.lens.kinds',
+  'viewer.lens.instruction': 'viewer.lens.choose',
+  'viewer.guide.lens.hint': 'viewer.lens.choose',
+})) if (!explicit(key)) translations[key] = i18nText(locale, fallback);
+registerLocale(locale, translations);
+tl.meta.locale = locale;
 const ADVANCE = nodeTextFit.widthFactor;
 const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
@@ -377,7 +397,6 @@ const laneLayout = [];
 }
 
 // ---- Legend ---------------------------------------------------------------------
-const KIND_TONE = { default: 'external', change: 'frontend', alert: 'security', action: 'messagebus', recovery: 'backend' };
 const kindOf = (event) => event.kind || 'default';
 const legendEntries = resolveLegend(undefined,
   Object.keys(KIND_TONE).map((kind) => ({ kind, label: i18nText(locale, `legend.timeline.${kind}`), interactive: false })),
@@ -466,7 +485,7 @@ function renderEvent(card, order) {
   const lane = laneLayout.find((entry) => entry.id === laneOf(card));
   // The Node index groups by the context before " › ", so the lane leads.
   const context = [lane?.label, `${clockLabel(card.t, { seconds: true, date: true })} ${offsetLabel(card.t)}`].filter(Boolean).join(' \u203a ');
-  const passport = { kind: tone, sublabel: card.detail, context };
+  const passport = { kind: `timeline-${kindOf(card)}`, sublabel: card.detail, context };
   const textX = card.left + card.padLeft;
   let y = card.top + 9 + 10;
   const time = `<text x="${textX}" y="${y}" class="t-${tone} tl-time" font-size="${layout.timeFont}" font-weight="600">${esc(card.time)}</text>`;

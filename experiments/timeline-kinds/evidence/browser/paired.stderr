@@ -1,0 +1,91 @@
+[ { arm: 'baseline', lens: { width: 1440, height: 900, theme: 'light', groups: [ { kind: 'messagebus', text: '消息总线2', pressed: 'true' }, { kind: 'security', text: '安全1', pressed: 'false' }, { kind: 'backend', text: '后端1', pressed: 'false' }, { kind: 'frontend', text: '前端1', pressed: 'false' } ], selected: [ 'node-rollback', 'node-closed' ], active: 'messagebus' }, focus: { width: 1440, height: 900, id: 'rollback', kind: '消息总线', targetRect: [ 738.3477172851562, 356.02484130859375, 307.43231201171875, 145.1763916015625 ], theme: 'light', hash: '#focus=rollback' } }, { arm: 'candidate', lens: { width: 1440, height: 900, theme: 'light', groups: [ { kind: 'timeline-action', text: '处置2', pressed: 'true' }, { kind: 'timeline-change', text: '变更1', pressed: 'false' }, { kind: 'timeline-alert', text: '告警1', pressed: 'false' }, { kind: 'timeline-recovery', text: '恢复1', pressed: 'false' } ], selected: [ 'node-rollback', 'node-closed' ], active: 'timeline-action' }, focus: { width: 1440, height: 900, id: 'rollback', kind: '处置', targetRect: [ 738.3477172851562, 356.02484130859375, 307.43231201171875, 145.1763916015625 ], theme: 'light', hash: '#focus=rollback' } } ]
+[p1 "Payment failure incident" | space "Archify research 20261028"(18): 1 managed, 0 untracked — p1* "Payment failure incident"]
+root
+  toolbar "图表操作"
+    container
+      button "切换颜色主题" [ref=22, loc=css:button[aria-label="切换颜色主题"]]
+      button "当前视觉风格：经典。选择视觉风格" [ref=23, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+        text "经典"
+      button "恢复动效" [ref=24, loc=css:button[aria-label="恢复动效"]]
+        text "静态"
+      button "进入演示模式" [ref=25]
+    button "导出图表" [ref=26, loc=css:button[aria-label="导出图表"]]
+      text "导出"
+  container
+    container
+      heading
+        text "Payment failure incident"
+      paragraph
+        text "Illustrative incident: release, monitoring, and response events on one clock."
+    container
+      image "示例数据 时间: Asia/Shanghai (UTC+08:00) · 2026-10-01 Release Monitoring Response 10:00 10:05 10:10 10:15 10:20 10:00 Deploy v2.4 10:05 Payment failure alert 10:10 Start rollback 10:15 Metrics ..." [ref=27]
+        text "10:05"
+        text "Payment failure alert"
+        text "10:10"
+        text "Start rollback"
+        text "10:15"
+        text "Metrics recovered"
+        text "恢复"
+      region "Start rollback"
+        container
+          button "移动语义护照。可拖动、使用方向键移动，或按 Home 恢复自动位置。" [ref=28]
+          container
+            text "语义护照"
+            text "Start rollback"
+            text "On-call decides to return to v2.3."
+            container "节点元数据"
+              text "处置"
+              text "Response › 10-01 10:10:00 UTC+08:00"
+              text "rollback"
+            text "0 条出向 · 0 条入向"
+            container
+              text "编写可达范围"
+              group "追踪编写的可达性"
+                button "没有上游编写节点" [ref=29, loc=css:button[aria-label="没有上游编写节点"]]
+                  text "上游"
+                  text "0"
+                button "没有下游编写节点" [ref=30, loc=css:button[aria-label="没有下游编写节点"]]
+                  text "下游"
+                  text "0"
+          container
+            button "关闭语义护照" [ref=31, loc=css:button[aria-label="关闭语义护照"]]
+              text "×"
+            button "复制聚焦节点的链接" [ref=32, loc=css:button[aria-label="复制聚焦节点的链接"]]
+              text "复制链接"
+        container "关联关系"
+          paragraph
+            text "没有关联关系"
+      toolbar "图表视图控制"
+        button "追踪有向路径" [ref=33]
+          text "路径"
+        button "打开语义雷达" [ref=34, loc=css:button[aria-label="打开语义雷达"]]
+          text "地图"
+        button "打开语义透镜" [ref=35, loc=css:button[aria-label="打开语义透镜"]]
+          text "透镜"
+        button "查找节点" [ref=36, loc=css:button[aria-label="查找节点"]]
+        button "打开图表指南" [ref=37, loc=css:button[aria-label="打开图表指南"]]
+        button "缩小" [ref=38, loc=css:button[aria-label="缩小"]]
+        button "自动 190% · 完整图表详情。重置图表视图" [ref=39, loc=css:button[aria-label="自动 190% · 完整图表详情。重置图表视图"]]
+          text "自动"
+          text "190%"
+        button "放大" [ref=40, loc=css:button[aria-label="放大"]]
+    container
+      toolbar "侧栏"
+        button "移到图右侧" [ref=41, loc=css:button[aria-label="移到图右侧"]]
+      container "节点索引"
+        container
+          text "节点索引"
+          text "5"
+        ordered_list
+          list_item
+            container
+              text "Release"
+              text "1"
+            unordered_list
+              list_item
+                button [ref=42]
+                  text "Deploy v2.4"
+                  text "New version starts serving payment requests."
+          list_item
+
+

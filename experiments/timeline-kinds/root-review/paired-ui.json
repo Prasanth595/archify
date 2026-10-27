@@ -1,0 +1,100 @@
+[
+  {
+    "arm": "baseline",
+    "lens": {
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "groups": [
+        {
+          "kind": "messagebus",
+          "text": "消息总线2",
+          "pressed": "true"
+        },
+        {
+          "kind": "security",
+          "text": "安全1",
+          "pressed": "false"
+        },
+        {
+          "kind": "backend",
+          "text": "后端1",
+          "pressed": "false"
+        },
+        {
+          "kind": "frontend",
+          "text": "前端1",
+          "pressed": "false"
+        }
+      ],
+      "selected": [
+        "node-rollback",
+        "node-closed"
+      ],
+      "active": "messagebus"
+    },
+    "focus": {
+      "width": 1440,
+      "height": 900,
+      "id": "rollback",
+      "kind": "消息总线",
+      "targetRect": [
+        738.3477172851562,
+        356.02484130859375,
+        307.43231201171875,
+        145.1763916015625
+      ],
+      "theme": "light",
+      "hash": "#focus=rollback"
+    }
+  },
+  {
+    "arm": "candidate",
+    "lens": {
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "groups": [
+        {
+          "kind": "timeline-action",
+          "text": "处置2",
+          "pressed": "true"
+        },
+        {
+          "kind": "timeline-change",
+          "text": "变更1",
+          "pressed": "false"
+        },
+        {
+          "kind": "timeline-alert",
+          "text": "告警1",
+          "pressed": "false"
+        },
+        {
+          "kind": "timeline-recovery",
+          "text": "恢复1",
+          "pressed": "false"
+        }
+      ],
+      "selected": [
+        "node-rollback",
+        "node-closed"
+      ],
+      "active": "timeline-action"
+    },
+    "focus": {
+      "width": 1440,
+      "height": 900,
+      "id": "rollback",
+      "kind": "处置",
+      "targetRect": [
+        738.3477172851562,
+        356.02484130859375,
+        307.43231201171875,
+        145.1763916015625
+      ],
+      "theme": "light",
+      "hash": "#focus=rollback"
+    }
+  }
+]

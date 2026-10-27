@@ -1,0 +1,165 @@
+TAP version 13
+# Subtest: timeline: daily local ticks survive spring forward without moving the time axis
+ok 1 - timeline: daily local ticks survive spring forward without moving the time axis
+  ---
+  duration_ms: 546.413083
+  type: 'test'
+  ...
+# Subtest: timeline: daily local ticks survive fall back without moving the time axis
+ok 2 - timeline: daily local ticks survive fall back without moving the time axis
+  ---
+  duration_ms: 547.7215
+  type: 'test'
+  ...
+# Subtest: timeline: hourly ticks skips the nonexistent spring hour
+ok 3 - timeline: hourly ticks skips the nonexistent spring hour
+  ---
+  duration_ms: 269.575333
+  type: 'test'
+  ...
+# Subtest: timeline: hourly ticks retains both real occurrences of the repeated fall hour
+ok 4 - timeline: hourly ticks retains both real occurrences of the repeated fall hour
+  ---
+  duration_ms: 280.785541
+  type: 'test'
+  ...
+# Subtest: timeline: hourly ticks aligns whole hours across the Lord Howe half-hour jump
+ok 5 - timeline: hourly ticks aligns whole hours across the Lord Howe half-hour jump
+  ---
+  duration_ms: 279.59025
+  type: 'test'
+  ...
+# Subtest: timeline: a skipped civil date in Apia does not invent or duplicate an instant
+ok 6 - timeline: a skipped civil date in Apia does not invent or duplicate an instant
+  ---
+  duration_ms: 279.869375
+  type: 'test'
+  ...
+# Subtest: timeline: equal endpoint offsets do not hide the daylight-saving season inside a long segment
+ok 7 - timeline: equal endpoint offsets do not hide the daylight-saving season inside a long segment
+  ---
+  duration_ms: 296.54275
+  type: 'test'
+  ...
+# Subtest: timeline: a short segment keeps its start tick and automatic breaks retain real local dates
+ok 8 - timeline: a short segment keeps its start tick and automatic breaks retain real local dates
+  ---
+  duration_ms: 550.563334
+  type: 'test'
+  ...
+# Subtest: timeline: subsecond events retain their time in cards and accessible context
+ok 9 - timeline: subsecond events retain their time in cards and accessible context
+  ---
+  duration_ms: 236.513708
+  type: 'test'
+  ...
+# Subtest: timeline: both examples render and pass the showcase artifact checks
+ok 10 - timeline: both examples render and pass the showcase artifact checks
+  ---
+  duration_ms: 421.049916
+  type: 'test'
+  ...
+# Subtest: timeline: duplicate lane IDs fail before visual and accessible ownership diverge
+ok 11 - timeline: duplicate lane IDs fail before visual and accessible ownership diverge
+  ---
+  duration_ms: 104.286208
+  type: 'test'
+  ...
+# Subtest: timeline: position is linear in time on one shared axis across lanes
+ok 12 - timeline: position is linear in time on one shared axis across lanes
+  ---
+  duration_ms: 108.256417
+  type: 'test'
+  ...
+# Subtest: timeline: events are drawn in chronological order whatever the authored order
+ok 13 - timeline: events are drawn in chronological order whatever the authored order
+  ---
+  duration_ms: 103.922041
+  type: 'test'
+  ...
+# Subtest: timeline: historical years retain the actual display-zone UTC offset
+ok 14 - timeline: historical years retain the actual display-zone UTC offset
+  ---
+  duration_ms: 639.817541
+  type: 'test'
+  ...
+# Subtest: timeline: offsets are honoured, so the same instant in two offsets aligns
+ok 15 - timeline: offsets are honoured, so the same instant in two offsets aligns
+  ---
+  duration_ms: 114.805708
+  type: 'test'
+  ...
+# Subtest: timeline: long quiet periods become disclosed breaks, proportional inside each segment
+ok 16 - timeline: long quiet periods become disclosed breaks, proportional inside each segment
+  ---
+  duration_ms: 343.402333
+  type: 'test'
+  ...
+# Subtest: timeline: simultaneous and close events stack instead of overprinting
+ok 17 - timeline: simultaneous and close events stack instead of overprinting
+  ---
+  duration_ms: 105.444167
+  type: 'test'
+  ...
+# Subtest: timeline: ambiguous or invalid time input is refused
+ok 18 - timeline: ambiguous or invalid time input is refused
+  ---
+  duration_ms: 478.703875
+  type: 'test'
+  ...
+# Subtest: timeline: invalid calendar dates are rejected before Date.parse can normalize them
+ok 19 - timeline: invalid calendar dates are rejected before Date.parse can normalize them
+  ---
+  duration_ms: 620.915208
+  type: 'test'
+  ...
+# Subtest: timeline: automatic breaks leave room for proportional time on a narrow axis
+ok 20 - timeline: automatic breaks leave room for proportional time on a narrow axis
+  ---
+  duration_ms: 329.681625
+  type: 'test'
+  ...
+# Subtest: timeline: event categories survive rendering instead of becoming technical color roles
+ok 21 - timeline: event categories survive rendering instead of becoming technical color roles
+  ---
+  duration_ms: 134.802125
+  type: 'test'
+  ...
+# Subtest: timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+not ok 22 - timeline: Passport, Finder, Lens and Story agree on event identity and preserve tone colors
+  ---
+  duration_ms: 2089.761875
+  type: 'test'
+  location: '<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:227:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    timeline schema validation failed:
+      /meta/translations must match pattern "^[a-z][a-zA-Z0-9]*(\.[a-z][a-zA-Z0-9]*)*$" {"pattern":"^[a-z][a-zA-Z0-9]*(\\.[a-z][a-zA-Z0-9]*)*$"}
+      /meta/translations property name must be valid {"propertyName":"viewer.kind.timeline-default"}
+    [schema/pattern] /meta/translations must match pattern "^[a-z][a-zA-Z0-9]*(\.[a-z][a-zA-Z0-9]*)*$" Fix: match the required pattern "^[a-z][a-zA-Z0-9]*(\\.[a-z][a-zA-Z0-9]*)*$".
+    [schema/propertyNames] /meta/translations property name must be valid
+    
+    
+    1 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    load (file://<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:250:12)
+    TestContext.<anonymous> (file://<USER_HOME>/.codex/worktrees/lab-timeline-kinds/archify/test/timeline-rendering.test.mjs:290:11)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 21
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5902.238208

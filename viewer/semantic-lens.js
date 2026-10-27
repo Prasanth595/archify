@@ -541,7 +541,12 @@
             return;
           }
           var available = collectKinds().map(function (kind) { return kind.id; });
-          var requested = value.split('~').filter(function (kind, index, list) {
+          // Previously Timeline links encoded drawing tones as event kinds.
+          // Accept those hashes only here; newly copied links use event kinds.
+          var legacyTimelineKinds = { external: 'timeline-default', frontend: 'timeline-change', security: 'timeline-alert', messagebus: 'timeline-action', backend: 'timeline-recovery' };
+          var requested = value.split('~').map(function (kind) {
+            return svg.hasAttribute('data-timeline-ui') ? legacyTimelineKinds[kind] || kind : kind;
+          }).filter(function (kind, index, list) {
             return available.indexOf(kind) >= 0 && list.indexOf(kind) === index;
           }).slice(0, 2);
           if (!requested.length) return;

@@ -708,7 +708,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
     function viewerKindLabel(value) {
       var normalized = String(value || 'node').toLowerCase();
-      var knownKey = 'viewer.kind.' + normalized;
+      var knownKey = 'viewer.kind.' + normalized.replace(/^timeline-/, 'timeline.');
       var known = viewerText(knownKey);
       if (known !== knownKey) return known;
       return normalized
