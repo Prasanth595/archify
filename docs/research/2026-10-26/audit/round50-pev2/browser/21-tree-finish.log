@@ -1,0 +1,5 @@
+{ url: 'http://127.0.0.1:18751/output/plan-row-counts.html', title: '每次 3 行 × 352 次 ≈ 1056 次行输出', text: '浅色\n经典\n静态\n演示\n导出\n每次 3 行 × 352 次 ≈ 1056 次行输出\n\nPEV2 committed sample · 仅 Nested Loop 和两个直接输入 · 父→输入表示计划结构，不是行流或执行顺序\n\nNested Loop\n每次估计 528 / actual 1056 行 · loops 1\nHash Join · Outer\n每次估计 176 / actual 352 行 · loops 1\nIndex Scan · Inner\n每次估计 3 / actual 3 行 · loops 352\n2\n全部展开\n\n路径\n透镜\n100%\n节点索引\n3\n根节点\n1\nNested Loop\n每次估计 528 / actual 1056 行 · loops 1\n叶子节点\n2\nHash Join · Outer\n每次估计 176 / actual 352 行 · loops 1\nIndex Scan · Inner\n每次估计 3 / actual 3 行 · loops 352' }
+[p1 "about:blank" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "about:blank"]
+root
+
+

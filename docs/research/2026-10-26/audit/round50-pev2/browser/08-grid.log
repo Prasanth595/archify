@@ -1,0 +1,866 @@
+[p1 "Postgres EXPLAIN Visualizer 2 (pev2)" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Postgres EXPLAIN Visualizer 2 (pev2)"]
+root
+  container
+    container
+      anchor [ref=1254, url=http://127.0.0.1:18750/native/pev2.html]
+        image
+      text "Many CTEs"
+      anchor [ref=1255, url=http://127.0.0.1:18750/native/pev2.html]
+        text "New Plan"
+      button [ref=1256]
+        image
+      anchor [ref=1257, url=http://127.0.0.1:18750/native/pev2.html]
+        text "About"
+    container
+      container
+        unordered_list
+          list_item
+            anchor [ref=1258, loc=href:/native/pev2.html#plan, url=http://127.0.0.1:18750/native/pev2.html#plan]
+              text "Plan"
+          list_item
+            anchor [ref=1259, loc=href:/native/pev2.html#grid, url=http://127.0.0.1:18750/native/pev2.html#grid]
+              text "Grid"
+              text "new"
+          list_item
+            anchor [ref=1260, loc=href:/native/pev2.html#raw, url=http://127.0.0.1:18750/native/pev2.html#raw]
+              text "Raw"
+          list_item
+            anchor [ref=1261, loc=href:/native/pev2.html#query, url=http://127.0.0.1:18750/native/pev2.html#query]
+              text "Query"
+          list_item
+            anchor [ref=1262, loc=href:/native/pev2.html#stats, url=http://127.0.0.1:18750/native/pev2.html#stats]
+              text "Stats"
+        anchor [ref=1263, loc=href:https://github.com/dalibo/pev2, url=https://github.com/dalibo/pev2]
+          image
+          text "1.25.0"
+      container
+        container
+          container
+            text "Execution time:"
+            text "14.4ms"
+          container
+            text "Planning:"
+            text "4.46ms"
+        container [ref=1279]
+          table
+            container
+              table_row
+                table_cell
+                table_cell
+                table_cell
+                  text "shared"
+              table_row
+                table_cell
+                table_cell
+                  text "time"
+                table_cell
+                  text "rows"
+                table_cell
+                  text "estim"
+                table_cell
+                  text "cost"
+                table_cell
+                  text "loops"
+                table_cell
+                  text "filter"
+                table_cell
+                table_cell
+                  text "hit"
+            table_row
+              table_cell
+                anchor [ref=1280, url=http://127.0.0.1:18750/native/pev2.html#plan/node/1]
+                  text "#1"
+              table_cell
+                text "0.267"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  svg_root
+                  container
+                    text "12 ×"
+                    text "▴"
+              table_cell
+                container
+                  svg_root
+                  text "1,179.79"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text "Sort"
+                container
+                  text "by"
+                  text "sv.product_id"
+              table_cell
+                text "3"
+            table_row
+              table_cell
+                anchor [ref=1281, url=http://127.0.0.1:18750/native/pev2.html#plan/node/37]
+                  text "#37"
+              table_cell
+                text "0.180"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  svg_root
+                  container
+                    text "12 ×"
+                    text "▴"
+              table_cell
+                container
+                  svg_root
+                  text "158.14"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "pr.variant_id = sv.variant_id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1282, url=http://127.0.0.1:18750/native/pev2.html#plan/node/38]
+                  text "#38"
+              table_cell
+                text "0.120"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  svg_root
+                  container
+                    text "13 ×"
+                    text "▴"
+              table_cell
+                text "92.42"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " ├"
+                container
+                  text "CTE Scan"
+                  container
+                    text "on"
+                    text "pr"
+                    container
+                      text "CTE"
+                      text "variants_min_prices"
+              table_cell
+                text "102"
+            table_row
+              table_cell
+                anchor [ref=1283, url=http://127.0.0.1:18750/native/pev2.html#plan/node/39]
+                  text "#39"
+              table_cell
+                text "0.165"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1284, url=http://127.0.0.1:18750/native/pev2.html#plan/node/40]
+                  text "#40"
+              table_cell
+                text "0.160"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "4.69"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "sv.variant_id = vc.variant_id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1285, url=http://127.0.0.1:18750/native/pev2.html#plan/node/41]
+                  text "#41"
+              table_cell
+                text "0.165"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "5.51"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " ├"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "sv.product_id = sp.id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1286, url=http://127.0.0.1:18750/native/pev2.html#plan/node/42]
+                  text "#42"
+              table_cell
+                text "0.021"
+              table_cell
+                text "352"
+              table_cell
+              table_cell
+                text "7.04"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " ├"
+                container
+                  text "CTE Scan"
+                  container
+                    text "on"
+                    text "sv"
+                    container
+                      text "CTE"
+                      text "catalog_variants"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1287, url=http://127.0.0.1:18750/native/pev2.html#plan/node/43]
+                  text "#43"
+              table_cell
+                text "0.112"
+              table_cell
+                text "311"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1288, url=http://127.0.0.1:18750/native/pev2.html#plan/node/44]
+                  text "#44"
+              table_cell
+                text "0.167"
+              table_cell
+                text "311"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "5.13"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " └"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "sp.id = pcc.product_id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1289, url=http://127.0.0.1:18750/native/pev2.html#plan/node/45]
+                  text "#45"
+              table_cell
+                text "0.115"
+              table_cell
+                text "311"
+              table_cell
+              table_cell
+                text "11.11"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " ├"
+                container
+                  text "Seq Scan"
+                  container
+                    text "on"
+                    text "public."
+                    text "spree_products"
+                    container
+                      text "as"
+                      text "sp"
+              table_cell
+                text "8"
+            table_row
+              table_cell
+                anchor [ref=1290, url=http://127.0.0.1:18750/native/pev2.html#plan/node/46]
+                  text "#46"
+              table_cell
+                text "0.092"
+              table_cell
+                text "311"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1291, url=http://127.0.0.1:18750/native/pev2.html#plan/node/47]
+                  text "#47"
+              table_cell
+                text "0.156"
+              table_cell
+                text "311"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "3.52"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " └"
+                container
+                  text "CTE Scan"
+                  container
+                    text "on"
+                    text "pcc"
+                    container
+                      text "CTE"
+                      text "product_color_classifications"
+              table_cell
+                text "1,295"
+            table_row
+              table_cell
+                anchor [ref=1292, url=http://127.0.0.1:18750/native/pev2.html#plan/node/48]
+                  text "#48"
+              table_cell
+                text "0.073"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1293, url=http://127.0.0.1:18750/native/pev2.html#plan/node/49]
+                  text "#49"
+              table_cell
+                text "0.101"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "3.52"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                container
+                  text "CTE Scan"
+                  container
+                    text "on"
+                    text "vc"
+                    container
+                      text "CTE"
+                      text "variant_colors"
+              table_cell
+                text "1,287"
+            table_row
+              table_cell
+              table_cell
+                text "CTE catalog_variants"
+            table_row
+              table_cell
+                anchor [ref=1294, url=http://127.0.0.1:18750/native/pev2.html#plan/node/2]
+                  text "#2"
+              table_cell
+                text "0.740"
+              table_cell
+                text "352"
+              table_cell
+              table_cell
+                text "80.47"
+              table_cell
+                text "1"
+              table_cell
+                container
+                  svg_root
+                  text "91%"
+              table_cell
+                text "Seq Scan"
+                container
+                  text "on"
+                  text "public."
+                  text "spree_variants"
+                  container
+                    text "as"
+                    text "spree_variants"
+              table_cell
+                text "41"
+            table_row
+              table_cell
+              table_cell
+                text "CTE product_color_classifications"
+            table_row
+              table_cell
+                anchor [ref=1295, url=http://127.0.0.1:18750/native/pev2.html#plan/node/3]
+                  text "#3"
+              table_cell
+                text "1.275"
+              table_cell
+                text "311"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "3.08"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text "GroupAggregate"
+                container
+                  text "by"
+                  text "sv_1.product_id"
+              table_cell
+                text "8"
+            table_row
+              table_cell
+                anchor [ref=1296, url=http://127.0.0.1:18750/native/pev2.html#plan/node/4]
+                  text "#4"
+              table_cell
+                text "0.255"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "7.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                container
+                  text "Sort"
+                  container
+                    text "by"
+                    text "sv_1.product_id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1297, url=http://127.0.0.1:18750/native/pev2.html#plan/node/5]
+                  text "#5"
+              table_cell
+                text "0.300"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "4.63"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "sov_sv.option_value_id = sov.id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1298, url=http://127.0.0.1:18750/native/pev2.html#plan/node/6]
+                  text "#6"
+              table_cell
+                text "0.562"
+              table_cell
+                text "1,056"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                container
+                  svg_root
+                  text "245.31"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " ├"
+                text "Nested Loop"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1299, url=http://127.0.0.1:18750/native/pev2.html#plan/node/7]
+                  text "#7"
+              table_cell
+                text "0.170"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "2 ×"
+                  text "▾"
+              table_cell
+                text "7.34"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " ├"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "sv_1.variant_id = catalog_variants.variant_id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1300, url=http://127.0.0.1:18750/native/pev2.html#plan/node/8]
+                  text "#8"
+              table_cell
+                text "0.031"
+              table_cell
+                text "352"
+              table_cell
+              table_cell
+                text "7.04"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " │"
+                  text " ├"
+                container
+                  text "CTE Scan"
+                  container
+                    text "on"
+                    text "sv_1"
+                    container
+                      text "CTE"
+                      text "catalog_variants"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1301, url=http://127.0.0.1:18750/native/pev2.html#plan/node/9]
+                  text "#9"
+              table_cell
+                text "0.054"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " │"
+                  text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1302, url=http://127.0.0.1:18750/native/pev2.html#plan/node/10]
+                  text "#10"
+              table_cell
+                text "0.129"
+              table_cell
+                text "352"
+              table_cell
+                container
+                  text "1.8 ×"
+                  text "▾"
+              table_cell
+                text "2.88"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " │"
+                  text " └"
+                container
+                  text "HashAggregate"
+                  container
+                    text "by"
+                    text "catalog_variants.variant_id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1303, url=http://127.0.0.1:18750/native/pev2.html#plan/node/11]
+                  text "#11"
+              table_cell
+                text "0.011"
+              table_cell
+                text "352"
+              table_cell
+              table_cell
+                text "7.04"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " │"
+                  text " └"
+                container
+                  text "CTE Scan"
+                  container
+                    text "on"
+                    text "catalog_variants"
+                    container
+                      text "CTE"
+                      text "catalog_variants"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1304, url=http://127.0.0.1:18750/native/pev2.html#plan/node/12]
+                  text "#12"
+              table_cell
+                text "1.056"
+              table_cell
+                text "~1,056"
+              table_cell
+              table_cell
+                text "1.37"
+              table_cell
+                text "352"
+              table_cell
+              table_cell
+                container
+                  text " │"
+                  text " └"
+                container
+                  text "Index Scan"
+                  container
+                    text "on"
+                    text "public."
+                    text "spree_option_values_variants"
+                    container
+                      text "as"
+                      text "sov_sv"
+                    text "using"
+                    text "index_spree_option_values_variants_on_variant_id"
+              table_cell
+                text "1,284"
+            table_row
+              table_cell
+                anchor [ref=1305, url=http://127.0.0.1:18750/native/pev2.html#plan/node/13]
+                  text "#13"
+              table_cell
+                text "0.002"
+              table_cell
+                text "11"
+              table_cell
+                container
+                  text "6.5 ×"
+                  text "▴"
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1306, url=http://127.0.0.1:18750/native/pev2.html#plan/node/14]
+                  text "#14"
+              table_cell
+                text "0.038"
+              table_cell
+                text "11"
+              table_cell
+                container
+                  text "6.5 ×"
+                  text "▴"
+              table_cell
+                text "1.52"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                container
+                  text "Hash Join"
+                  container
+                    text "on"
+                    text "sov.option_type_id = sot.id"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1307, url=http://127.0.0.1:18750/native/pev2.html#plan/node/15]
+                  text "#15"
+              table_cell
+                text "0.017"
+              table_cell
+                text "213"
+              table_cell
+              table_cell
+                text "4.13"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " ├"
+                container
+                  text "Seq Scan"
+                  container
+                    text "on"
+                    text "public."
+                    text "spree_option_values"
+                    container
+                      text "as"
+                      text "sov"
+              table_cell
+                text "2"
+            table_row
+              table_cell
+                anchor [ref=1308, url=http://127.0.0.1:18750/native/pev2.html#plan/node/16]
+                  text "#16"
+              table_cell
+                text "0.004"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text "0.00"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text " └"
+                text "Hash"
+              table_cell
+            table_row
+              table_cell
+                anchor [ref=1309, url=http://127.0.0.1:18750/native/pev2.html#plan/node/17]
+                  text "#17"
+              table_cell
+                text "0.003"
+              table_cell
+                text "1"
+              table_cell
+              table_cell
+                text "1.04"
+              table_cell
+                text "1"
+              table_cell
+                container
+                  svg_root
+                  text "66%"
+              table_cell
+                text " └"
+                container
+                  text "Seq Scan"
+                  container
+                    text "on"
+                    text "public."
+                    text "spree_option_types"
+                    container
+                      text "as"
+                      text "sot"
+              table_cell
+                text "1"
+            table_row
+              table_cell
+              table_cell
+                text "CTE variant_colors"
+  text "Duration:"
+  text "Exclusive: 0.044ms, Total: 0.09ms"
+
+TARGET DOM [ { tag: 'SCRIPT', html: `<head>\n    <meta charset="UTF-8">\n    <meta http-equiv="Content-Security-Policy" content="\n        default-src 'self' 'unsafe-inline' data:;\n        connect-src 'self' https://api.github.com;\n      ">\n    <style type="text/css">:root, :host {\n  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";\n  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";\n  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";\n  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";\n  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";\n  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";\n  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";\n  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";\n  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";\n}\n\nsvg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {\n  overflow: visible;\n  box-sizing: content-box;\n}\n\n.svg-inline--fa {\n  display: var(--fa-display, inline-block);\n  height: 1em;\n  overflow: visible;\n  vertical-align: -0.125em;\n}\n.svg-inline--fa.fa-2xs {\n  vertical-align: 0.1em;\n}\n.svg-inline--fa.fa-xs {\n  vertical-align: 0em;\n}\n.svg-inline--fa.fa-sm {\n  vertical-align: -0.0714285705em;\n}\n.svg-inline--fa.fa-lg {\n  vertical-align: -0.2em;\n}\n.svg-inline--fa.fa-xl {\n  vertical-align: -0.25em;\n}\n.svg-inline--fa.fa-2xl {\n  vertical-align: -0.3125em;\n}\n.svg-inline--fa.fa-pull` }, { tag: 'SPAN', html: '<div class="line-clamp-2"><span class="text-body-tertiary">on</span> <span>sov_sv.option_value_id = sov.id</span></div>' }, { tag: 'SPAN', html: '<div class="line-clamp-2"><span class="text-body-tertiary">on</span> <span>sov_sv_1.option_value_id = sov_1.id</span></div>' }, { tag: 'SPAN', html: '<span class="text-body-secondary"><!----> <!----> <!----> <!----> <span class="text-body-tertiary">on</span> <span>sov_sv.option_value_id = sov.id</span> <!----></span>' }, { tag: 'SPAN', html: '<span class="text-body-secondary"><!----> <!----> <!----> <!----> <span class="text-body-tertiary">on</span> <span>sov_sv_1.option_value_id = sov_1.id</span> <!----></span>' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' }, { tag: 'SPAN', html: '<code><span class="hljs-punctuation">[</span>\n  <span class="hljs-punctuation">{</span>\n    <span class="hljs-attr">"Plan"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>\n      <span class="hljs-attr">"Node Type"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Sort"</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Startup Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1460.74</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Total Cost"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1470.87</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4050</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Plan Width"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">183</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Startup Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.766</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Total Time"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">13.793</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Rows"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">352</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Actual Loops"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>\n      <span class="hljs-attr">"Output"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">"sv.variant_id"</span><span class="hljs-punctuation">,</span> <span class="hljs-string">"sv.sku"</span><span class="hljs-' } ]
+

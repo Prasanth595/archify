@@ -1,0 +1,38 @@
+{
+  "checkedOn": "2026-10-29",
+  "remoteHeadSnapshot": "remote-heads.tsv",
+  "branch": "codex/lab-plan-row-counts",
+  "branchBefore": "91e2ffadb5cd46fc72d5da978a4b83f8c7dfe521",
+  "hubBefore": "31f197ec36e35130bb565c119d2fc26ba49efab4",
+  "searches": [
+    {
+      "url": "https://api.github.com/repos/tt-a1i/archify/pulls?state=all&head=tt-a1i%3Acodex%2Flab-plan-row-counts&per_page=100",
+      "total": 0,
+      "items": []
+    },
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20(PEV2%20OR%20%22plan%20rows%22%20OR%20%22row%20counts%22)&per_page=30",
+      "total": 0,
+      "items": []
+    },
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20(PEV2%20OR%20%22plan%20rows%22%20OR%20%22row%20counts%22)&per_page=30",
+      "total": 2,
+      "items": [
+        {
+          "number": 1011,
+          "title": "fix(explainer): preserve data chart labels and quoted CSV records",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/1011"
+        },
+        {
+          "number": 370,
+          "title": "feat(dataflow): multi-line sublabels and a viewBox-derived row grid",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/370"
+        }
+      ]
+    }
+  ],
+  "scope": "Search results were metadata screening, not review of every matching PR. No PR created. Existing isolated experiment branch reused."
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "text": "#6\t\n0.562\n\t\n1,056\n\t\n2 × ▾\n\t\n245.31\n\t1\t\t     ├ Nested Loop\n\t",
+    "cells": [
+      "#6",
+      "0.562",
+      "1,056",
+      "2 × ▾",
+      "245.31",
+      "1",
+      "",
+      "     ├ Nested Loop\n",
+      ""
+    ]
+  },
+  {
+    "text": "#7\t\n0.170\n\t\n352\n\t\n2 × ▾\n\t\n7.34\n\t1\t\t     │ ├ Hash Join on sv_1.variant_id = catalog_variants.variant_id\n\t",
+    "cells": [
+      "#7",
+      "0.170",
+      "352",
+      "2 × ▾",
+      "7.34",
+      "1",
+      "",
+      "     │ ├ Hash Join on sv_1.variant_id = catalog_variants.variant_id\n",
+      ""
+    ]
+  },
+  {
+    "text": "#12\t\n1.056\n\t\n~1,056\n\t\n\t\n1.37\n\t352\t\t     │ └ Index Scan on public.spree_option_values_variants as sov_sv using index_spree_option_values_variants_on_variant_id\n\t\n1,284",
+    "cells": [
+      "#12",
+      "1.056",
+      "~1,056",
+      "",
+      "1.37",
+      "352",
+      "",
+      "     │ └ Index Scan on public.spree_option_values_variants as sov_sv using index_spree_option_values_variants_on_variant_id\n",
+      "1,284"
+    ]
+  }
+]

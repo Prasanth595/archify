@@ -1,0 +1,81 @@
+[p1 "Postgres EXPLAIN Visualizer 2 (pev2)" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Postgres EXPLAIN Visualizer 2 (pev2)"]
+root
+  container
+    anchor [ref=1225, url=http://127.0.0.1:18750/native/pev2.html]
+      image
+    anchor [ref=1226, url=http://127.0.0.1:18750/native/pev2.html]
+      text "New Plan"
+    button [ref=1227]
+      image
+    anchor [ref=1228, url=http://127.0.0.1:18750/native/pev2.html]
+      text "About"
+  container
+    container
+      text "This is the demo application for"
+      anchor [ref=1229, loc=href:https://github.com/dalibo/pev2, url=https://github.com/dalibo/pev2]
+        text "PEV2"
+      text ". It is serverless and doesn't send your plans over the internet."
+      text "Please consider using"
+      anchor [ref=1230, loc=href:https://explain.dalibo.com/, url=https://explain.dalibo.com/]
+        text "explain.dalibo.com"
+      text "instead if you want to save or share your plans."
+    container
+      container
+        text "For best results, use"
+        text "EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON)"
+        text "psql"
+        text "users can export the plan to a file using"
+        text "psql -XqAt -f explain.sql > analyze.json"
+      form
+        container
+          container
+            container
+              text "Plan Name"
+              text "(optional)"
+            button [ref=1231]
+              text "Sample Plans"
+          textbox [ref=1232, loc=css:input[placeholder="Name for the plan"]]
+            text "Name for the plan"
+        container
+          container
+            text "Plan"
+            text "(text or JSON)"
+          textbox [ref=1233, loc=css:textarea[placeholder="Paste execution plan
+Or drop a file"]]
+  text "Paste execution plan Or drop a file"
+  container
+    container
+      text "Query"
+      text "(optional)"
+    textbox [ref=1234, loc=css:textarea[placeholder="Paste corresponding SQL query
+Or drop a file"]]
+  text "Paste corresponding SQL query Or drop a file"
+  container
+    container
+      text "Comments"
+      text "(optional)"
+    textbox [ref=1235, loc=css:textarea[placeholder="Add notes about this plan"]]
+      text "Add notes about this plan"
+  container
+    container
+      container
+        text "Saved Plans"
+        text "0"
+        image
+      container
+        button [ref=1236]
+          image
+          text "Import"
+        button [ref=1237]
+          text "Select"
+    unordered_list
+      list_item
+        anchor "Previous" [ref=1238, loc=css:a[aria-label="Previous"], url=http://127.0.0.1:18750/native/pev2.html#]
+          text "«"
+      list_item
+        anchor [ref=1239, url=http://127.0.0.1:18750/native/pev2.html#]
+          text "»"
+    paragraph
+      text "You haven't saved any plan yet."
+
+

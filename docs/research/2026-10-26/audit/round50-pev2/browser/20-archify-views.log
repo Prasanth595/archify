@@ -1,0 +1,42 @@
+{ url: 'http://127.0.0.1:18751/output/explainer.html', title: '每次3行，为什么累计约1056次行输出？ · Archify', text: '跳至正文\n每次3行，为什么累计约1056次行输出？\n系统\n浅色\n深色\n简洁\n导出\n答\n结论\n追问\n\n每次平均3行 × 352次循环 ≈ 1056次行输出。 该Index Scan的每次估计也是3行。不能拿累计1056与每次估计3比较，称它出现了352倍估计偏差。\n\nActual Rows是报告中的每次平均值，循环次数单独给出。1\n累计行输出可包含重复记录；这里不推断唯一记录数。\n本页只解释已提交样例的局部计划，没有执行SQL或测量性能。\n\n适用于\nPEV2 upstream committed sample\n局部三节点\n数据库版本/采集时间/SQL参数未知\n非本次执行\n\n1\n先统一口径，再比较数字\n追问\nIndex Scan指标\t报告原值\t应怎样读\nPlan Rows\t\n3\n\t\n每次估计输出3行\n\nActual Rows\t\n3\n\t\n每次平均输出3行\n\nActual Loops\t\n352\n\t\n该节点执行352次\n\n推导累计行输出\t\n3 × 352 ≈ 1056\n\t\n由报告均值推导，含重复输出且可能受舍入影响\n累计输出不是唯一记录数\n\n1056不是唯一记录数，也不是与每次估计3可直接比较的同口径值。这个节点的每次估计和报告均值相同，不证明整份计划估计准确。\n\n2\n这352次循环位于哪个输入？\n追问\n每次 3 行 × 352 次 ≈ 1056 次行输出\n打开交互图\nNested Loop\n每次估计 528 / actual 1056 行 · loops 1\nHash Join · Outer\n每次估计 176 / actual 352 行 · loops 1\nIndex Scan · Inner\n每次估计 3 / actual 3 行 · loops 352\n2\n全部展开\n\n父Nested Loop提供actual1056行、loops1。两个直接输入分别为Outer Hash Join与Inner Index Scan。树线表示父节点与输入关系，不代表行流方向或全局执行顺序；输入内部的其它节点未展示。\n\n所选节点\tParent Relationship\t每次估计行数\t每次actual均值\tloops\nNested Loop\t\nOuter（相对于视图外父节点）\n\t\n528\n\t\n1056\n\t\n1\n\nHash Join\t\nOuter\n\t\n176\n\t\n352\n\t\n1\n\nIndex Scan\t\nInner\n\t\n3\n\t\n3\n\t\n352\n\n其它两行也保留原估计与actual差异。本页不判断其成因，不给索引或SQL调优建议，也不推导时间或关键路径。\n\n3\n怎样回到同一份原始报告？\n追问\n来源分类\nUpstream committed sample，不是本次运行或手写synthetic\nPEV2固定revision\ne41d4e8b3006c479f9364d68a5d538d81cb7d110\n完整报告SHA256\na1c79b5782086474c73bd5ad2f7dd3265d73663f9030f5769638a4c2633cf6b4\n原始常量\nsamples.ts中的plan_many_ctes，静态字节抽取，未执行TypeScript\n节点\t完整报告中的JSON pointer\nNested Loop\t\n/0/Plan/Plans/1/Plans/0/Plans/0/Plans/0\n\nHash Join\t\n/0/Plan/Plans/1/Plans/0/Plans/0/Plans/0/Plans/0\n\nIndex Scan\t\n/0/Plan/Plans/1/Plans/0/Plans/0/Plans/0/Plans/1\n\n报告digest与pointer一起定位本报告内的出现位置。节点名称、表名和索引名都不是跨计划稳定ID。独立Tree与本页引用同一JSON模型。\n\n数据库版本、采集时间、SQL、参数及ANALYZE/TIMING选项未核实，均保留未知。PG18源码只用于核对字段规则，不能当成这份样例的生成版本。原文件、完整抽取报告、许可与逐项映射随实验保留。\n\n来源\nPostgreSQL18：按nloops输出平均值的字段规则\nPEV2：plan_many_ctes完整样例\nArchify\n把你想理解、规划或分享的事，变成可以互动的可视化作品。\n\n3 个面板\n1 张图已通过结构校验\n2 个来源' }
+[p1 "每次 3 行 × 352 次 ≈ 1056 次行输出" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "每次 3 行 × 352 次 ≈ 1056 次行输出"]
+root
+  toolbar "图表操作"
+    container
+      button "切换颜色主题" [ref=1323, loc=css:button[aria-label="切换颜色主题"]]
+      button "当前视觉风格：经典。选择视觉风格" [ref=1324, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+        text "经典"
+      button "恢复动效" [ref=1325, loc=css:button[aria-label="恢复动效"]]
+        text "静态"
+      button "进入演示模式" [ref=1326]
+    button "导出图表" [ref=1327, loc=css:button[aria-label="导出图表"]]
+      text "导出"
+  container
+    container
+      heading
+        text "每次 3 行 × 352 次 ≈ 1056 次行输出"
+      paragraph
+        text "PEV2 committed sample · 仅 Nested Loop 和两个直接输入 · 父→输入表示计划结构，不是行流或执行顺序"
+    container
+      image "Nested Loop 每次估计 528 / actual 1056 行 · loops 1 Hash Join · Outer 每次估计 176 / actual 352 行 · loops 1 Index Scan · Inner 每次估计 3 / actual 3 行 · loops 352 2 全部展开" [ref=1328]
+        text "Nested Loop"
+        text "每次估计 528 / actual 1056 行 · loops 1"
+        text "Hash Join · Outer"
+        text "每次估计 176 / actual 352 行 · loops 1"
+        text "Index Scan · Inner"
+        text "每次估计 3 / actual 3 行 · loops 352"
+        text "2"
+        text "全部展开"
+      toolbar "图表视图控制"
+        button "追踪有向路径" [ref=1329]
+          text "路径"
+        button "打开语义透镜" [ref=1330, loc=css:button[aria-label="打开语义透镜"]]
+          text "透镜"
+        button "查找节点" [ref=1331, loc=css:button[aria-label="查找节点"]]
+        button "打开图表指南" [ref=1332, loc=css:button[aria-label="打开图表指南"]]
+        button "缩小" [ref=1333, loc=css:button[aria-label="缩小"]]
+        button "100% · 再次放大以显示标签和注释。重置图表视图" [ref=1334, loc=css:button[aria-label="100% · 再次放大以显示标签和注释。重置图表视图"]]
+          text "100%"
+        button "放大" [ref=1335, loc=css:button[aria-label="放大"]]
+
+

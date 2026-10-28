@@ -1,0 +1,69 @@
+[p1 "explain.dalibo.com" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "explain.dalibo.com"]
+root
+  container
+    unordered_list
+      list_item
+        anchor [ref=1215, url=https://explain.dalibo.com/]
+          image
+          text "explain.dalibo.com"
+    unordered_list
+      list_item
+        anchor [ref=1216, url=https://explain.dalibo.com/#]
+          image
+  main [ref=1217]
+    container
+      heading
+        image
+        text "explain.dalibo.com"
+        text "PostgreSQL execution plan visualizer"
+      paragraph
+        text "Visualizing and understanding PostgreSQL EXPLAIN plans made easy."
+    container
+      form
+        container
+          container
+            text "Title"
+            text "(optional)"
+          textbox [ref=1218, loc=css:input[name="title"]]
+        container
+          container
+            text "Plan"
+            text "(text or JSON)"
+          textbox [ref=1219, loc=css:textarea[name="plan"]]
+            text "Paste execution plan or drop a file"
+        container
+          container
+            text "Query"
+            text "(optional)"
+          textbox [ref=1220, loc=css:textarea[placeholder="Paste corresponding SQL query or drop a file"]]
+            text "Paste corresponding SQL query or drop a file"
+        container
+          container
+            text "Comments"
+            text "(optional)"
+          textbox [ref=1221, loc=css:textarea[placeholder="Add notes about this plan"]]
+            text "Add notes about this plan"
+        container
+          container
+            text "Password"
+            text "(optional)"
+            text "New"
+          textbox [ref=1222, loc=css:input[name="password"]]
+      container
+        heading
+          text "Plans"
+        paragraph
+          text "You haven't submitted any plan yet."
+  container
+    container
+      text "Service brought to you with"
+      image
+      text "by"
+      anchor [ref=1223, loc=href:https://dalibo.com/, url=https://dalibo.com/]
+        text "Dalibo"
+    unordered_list
+      list_item
+        anchor [ref=1224, loc=href:/about, url=https://explain.dalibo.com/about]
+          text "Help / About"
+
+

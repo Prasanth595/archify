@@ -1,0 +1,131 @@
+RAW IDENTITY { bytes: 67418, sha256: 'a1c79b5782086474c73bd5ad2f7dd3265d73663f9030f5769638a4c2633cf6b4', environment: { url: 'http://127.0.0.1:18750/native/pev2.html#raw', userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36', viewport: { width: 1440, height: 900, dpr: 1 }, resources: [ { url: 'https://api.github.com/repos/dalibo/pev2/releases/latest', initiatorType: 'fetch' } ] } }
+[p1 "每次3行，为什么累计约1056次行输出？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "每次3行，为什么累计约1056次行输出？ · Archify"]
+root
+  container
+    container
+      heading
+        text "每次3行，为什么累计约1056次行输出？"
+      container
+        group "主题"
+          button [ref=1311]
+            text "系统"
+          button [ref=1312]
+            text "浅色"
+          button [ref=1313]
+            text "深色"
+        button "样式" [ref=1314, loc=css:button[aria-label="样式"]]
+          text "简洁"
+          svg_root
+        button [ref=1315]
+          svg_root
+          text "导出"
+          svg_root
+    container
+      container
+        container
+          text "答"
+          heading
+            text "结论"
+          button [ref=1316]
+            text "追问"
+        container
+          paragraph
+            text "每次平均3行 × 352次循环 ≈ 1056次行输出。"
+            text "该Index Scan的每次估计也是3行。不能拿累计1056与每次估计3比较，称它出现了352倍估计偏差。"
+          ordered_list
+            list_item
+              text "1"
+              text "Actual Rows"
+              text "是报告中的每次平均值，循环次数单独给出。"
+              anchor [ref=1317, loc=href:/output/explainer.html#source-pg-rules, url=http://127.0.0.1:18751/output/explainer.html#source-pg-rules]
+                text "1"
+            list_item
+              text "2"
+              text "累计行输出可包含重复记录；这里不推断唯一记录数。"
+            list_item
+              text "3"
+              text "本页只解释已提交样例的局部计划，没有执行SQL或测量性能。"
+        paragraph
+          text "适用于"
+          text "PEV2 upstream committed sample"
+          text "局部三节点"
+          text "数据库版本/采集时间/SQL参数未知"
+          text "非本次执行"
+      container
+        container
+          anchor "先统一口径，再比较数字" [ref=1318, loc=css:a[aria-label="先统一口径，再比较数字"], url=http://127.0.0.1:18751/output/explainer.html#same-basis]
+            text "1"
+          heading
+            text "先统一口径，再比较数字"
+          button [ref=1319]
+            text "追问"
+        container
+          table
+            table_row
+              table_cell
+                text "Index Scan指标"
+              table_cell
+                text "报告原值"
+              table_cell
+                text "应怎样读"
+            table_row
+              table_cell
+                text "Plan Rows"
+              table_cell
+                text "3"
+              table_cell
+                text "每次估计输出3行"
+            table_row
+              table_cell
+                text "Actual Rows"
+              table_cell
+                text "3"
+              table_cell
+                text "每次平均输出3行"
+            table_row
+              table_cell
+                text "Actual Loops"
+              table_cell
+                text "352"
+              table_cell
+                text "该节点执行352次"
+            table_row
+              table_cell
+                text "推导累计行输出"
+              table_cell
+                text "3 × 352 ≈ 1056"
+              table_cell
+                text "由报告均值推导，含重复输出且可能受舍入影响"
+          container
+            heading
+              text "累计输出不是唯一记录数"
+            paragraph
+              text "1056不是唯一记录数，也不是与每次估计3可直接比较的同口径值。这个节点的每次估计和报告均值相同，不证明整份计划估计准确。"
+      container
+        container
+          anchor "这352次循环位于哪个输入？" [ref=1320, loc=css:a[aria-label="这352次循环位于哪个输入？"], url=http://127.0.0.1:18751/output/explainer.html#local-plan]
+            text "2"
+          heading
+            text "这352次循环位于哪个输入？"
+          button [ref=1321]
+            text "追问"
+        container
+          container
+            container
+              text "每次 3 行 × 352 次 ≈ 1056 次行输出"
+              button [ref=1322]
+                svg_root
+                text "打开交互图"
+            image "每次 3 行 × 352 次 ≈ 1056 次行输出"
+              image "Nested Loop 每次估计 528 / actual 1056 行 · loops 1 Hash Join · Outer 每次估计 176 / actual 352 行 · loops 1 Index Scan · Inner 每次估计 3 / actual 3 行 · loops 352 2 全部展开"
+                text "Nested Loop"
+                text "每次估计 528 / actual 1056 行 · loops 1"
+                text "Hash Join · Outer"
+                text "每次估计 176 / actual 352 行 · loops 1"
+                text "Index Scan · Inner"
+                text "每次估计 3 / actual 3 行 · loops 352"
+                text "2"
+          paragraph
+            text "父Nested Loop提供actual1056行、loops1。两个直接输入分别为Outer Hash Join与Inner Index Scan。树线表示父节点与输入关系，不代表行流方向或全局执行顺序；输入�..."
+
+

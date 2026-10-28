@@ -1,0 +1,111 @@
+[p1 "Postgres EXPLAIN Visualizer 2 (pev2)" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Postgres EXPLAIN Visualizer 2 (pev2)"]
+root
+  container
+    anchor [ref=1225, url=http://127.0.0.1:18750/native/pev2.html]
+      image
+    anchor [ref=1226, url=http://127.0.0.1:18750/native/pev2.html]
+      text "New Plan"
+    button [ref=1227]
+      image
+    anchor [ref=1228, url=http://127.0.0.1:18750/native/pev2.html]
+      text "About"
+  container
+    container
+      text "This is the demo application for"
+      anchor [ref=1229, loc=href:https://github.com/dalibo/pev2, url=https://github.com/dalibo/pev2]
+        text "PEV2"
+      text ". It is serverless and doesn't send your plans over the internet."
+      text "Please consider using"
+      anchor [ref=1230, loc=href:https://explain.dalibo.com/, url=https://explain.dalibo.com/]
+        text "explain.dalibo.com"
+      text "instead if you want to save or share your plans."
+    container
+      container
+        text "For best results, use"
+        text "EXPLAIN (ANALYZE, COSTS, VERBOSE, BUFFERS, FORMAT JSON)"
+        text "psql"
+        text "users can export the plan to a file using"
+        text "psql -XqAt -f explain.sql > analyze.json"
+      form
+        container
+          container
+            container
+              text "Plan Name"
+              text "(optional)"
+            container
+              button [ref=1231]
+                text "Sample Plans"
+              container "Sample Plans"
+                anchor [ref=1240, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Simple join (TEXT format)"
+                anchor [ref=1241, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Simple join (JSON format)"
+                anchor [ref=1242, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Three joins, missing an index"
+                anchor [ref=1243, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Aggregate with four joins"
+                anchor [ref=1244, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "With subplan"
+                anchor [ref=1245, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "With Buffers"
+                anchor [ref=1246, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "A single CTE"
+                anchor [ref=1247, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Many CTEs"
+                anchor [ref=1248, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Very large plan"
+                anchor [ref=1249, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "DELETE with triggers"
+                anchor [ref=1250, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "With many options"
+                anchor [ref=1251, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Parallel (verbose)"
+                anchor [ref=1252, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Parallel (4 workers)"
+                anchor [ref=1253, url=http://127.0.0.1:18750/native/pev2.html]
+                  text "Partitions"
+          textbox [ref=1232, loc=css:input[placeholder="Name for the plan"]]
+            text "Name for the plan"
+        container
+          container
+            text "Plan"
+            text "(text or JSON)"
+          textbox [ref=1233, loc=css:textarea[placeholder="Paste execution plan
+Or drop a file"]]
+  text "Paste execution plan Or drop a file"
+  container
+    container
+      text "Query"
+      text "(optional)"
+    textbox [ref=1234, loc=css:textarea[placeholder="Paste corresponding SQL query
+Or drop a file"]]
+  text "Paste corresponding SQL query Or drop a file"
+  container
+    container
+      text "Comments"
+      text "(optional)"
+    textbox [ref=1235, loc=css:textarea[placeholder="Add notes about this plan"]]
+      text "Add notes about this plan"
+  container
+    container
+      container
+        text "Saved Plans"
+        text "0"
+        image
+      container
+        button [ref=1236]
+          image
+          text "Import"
+        button [ref=1237]
+          text "Select"
+    unordered_list
+      list_item
+        anchor "Previous" [ref=1238, loc=css:a[aria-label="Previous"], url=http://127.0.0.1:18750/native/pev2.html#]
+          text "«"
+      list_item
+        anchor [ref=1239, url=http://127.0.0.1:18750/native/pev2.html#]
+          text "»"
+    paragraph
+      text "You haven't saved any plan yet."
+
+

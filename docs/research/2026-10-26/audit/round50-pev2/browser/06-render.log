@@ -1,0 +1,720 @@
+[p1 "Postgres EXPLAIN Visualizer 2 (pev2)" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Postgres EXPLAIN Visualizer 2 (pev2)"]
+root
+  container
+    container
+      anchor [ref=1254, url=http://127.0.0.1:18750/native/pev2.html]
+        image
+      text "Many CTEs"
+      anchor [ref=1255, url=http://127.0.0.1:18750/native/pev2.html]
+        text "New Plan"
+      button [ref=1256]
+        image
+      anchor [ref=1257, url=http://127.0.0.1:18750/native/pev2.html]
+        text "About"
+    container
+      container
+        unordered_list
+          list_item
+            anchor [ref=1258, loc=href:/native/pev2.html#plan, url=http://127.0.0.1:18750/native/pev2.html#plan]
+              text "Plan"
+          list_item
+            anchor [ref=1259, loc=href:/native/pev2.html#grid, url=http://127.0.0.1:18750/native/pev2.html#grid]
+              text "Grid"
+              text "new"
+          list_item
+            anchor [ref=1260, loc=href:/native/pev2.html#raw, url=http://127.0.0.1:18750/native/pev2.html#raw]
+              text "Raw"
+          list_item
+            anchor [ref=1261, loc=href:/native/pev2.html#query, url=http://127.0.0.1:18750/native/pev2.html#query]
+              text "Query"
+          list_item
+            anchor [ref=1262, loc=href:/native/pev2.html#stats, url=http://127.0.0.1:18750/native/pev2.html#stats]
+              text "Stats"
+        anchor [ref=1263, loc=href:https://github.com/dalibo/pev2, url=https://github.com/dalibo/pev2]
+          image
+          text "1.25.0"
+      container
+        container
+          container
+            text "Execution time:"
+            text "14.4ms"
+          container
+            text "Planning:"
+            text "4.46ms"
+        container
+          container
+            container
+              button [ref=1264]
+                text "time"
+              button [ref=1265]
+                text "rows"
+              button [ref=1266]
+                text "estimation"
+              button [ref=1267]
+                text "cost"
+              button [ref=1268]
+                text "buffers"
+              button [ref=1269]
+                text "IO"
+            container [ref=1270]
+              table
+                table_row
+                  table_cell
+                    text "Main Query Plan"
+                table_row
+                  table_cell
+                    text "#1"
+                  table_cell
+                    text "Sort"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#37"
+                  table_cell
+                    text "└"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#38"
+                  table_cell
+                    text "├"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#39"
+                  table_cell
+                    text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#40"
+                  table_cell
+                    text "└"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#41"
+                  table_cell
+                    text "├"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#42"
+                  table_cell
+                    container
+                      text "│"
+                      text "├"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#43"
+                  table_cell
+                    container
+                      text "│"
+                      text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#44"
+                  table_cell
+                    container
+                      text "│"
+                      text "└"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#45"
+                  table_cell
+                    container
+                      text "│"
+                      text "├"
+                    text "Seq Scan"
+                  table_cell
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#46"
+                  table_cell
+                    container
+                      text "│"
+                      text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#47"
+                  table_cell
+                    container
+                      text "│"
+                      text "└"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#48"
+                  table_cell
+                    text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#49"
+                  table_cell
+                    text "└"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                table_row
+                  table_cell
+                  table_cell
+                    anchor [ref=1271, url=http://127.0.0.1:18750/native/pev2.html]
+                      text "CTE catalog_variants"
+                table_row
+                  table_cell
+                    text "#2"
+                  table_cell
+                    text "Seq Scan"
+                  table_cell
+                    progressindicator
+                table_row
+                  table_cell
+                table_row
+                  table_cell
+                  table_cell
+                    anchor [ref=1272, url=http://127.0.0.1:18750/native/pev2.html]
+                      text "CTE product_color_classifications"
+                table_row
+                  table_cell
+                    text "#3"
+                  table_cell
+                    text "GroupAggregate"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#4"
+                  table_cell
+                    text "└"
+                    text "Sort"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#5"
+                  table_cell
+                    text "└"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#6"
+                  table_cell
+                    text "├"
+                    text "Nested Loop"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#7"
+                  table_cell
+                    container
+                      text "│"
+                      text "├"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#8"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "├"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#9"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#10"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "└"
+                    text "HashAggregate"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#11"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "└"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#12"
+                  table_cell
+                    container
+                      text "│"
+                      text "└"
+                    text "Index Scan"
+                  table_cell
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#13"
+                  table_cell
+                    text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#14"
+                  table_cell
+                    text "└"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#15"
+                  table_cell
+                    text "├"
+                    text "Seq Scan"
+                  table_cell
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#16"
+                  table_cell
+                    text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#17"
+                  table_cell
+                    text "└"
+                    text "Seq Scan"
+                  table_cell
+                    progressindicator
+                table_row
+                  table_cell
+                table_row
+                  table_cell
+                  table_cell
+                    anchor [ref=1273, url=http://127.0.0.1:18750/native/pev2.html]
+                      text "CTE variant_colors"
+                table_row
+                  table_cell
+                    text "#18"
+                  table_cell
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#19"
+                  table_cell
+                    text "├"
+                    text "Nested Loop"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#20"
+                  table_cell
+                    container
+                      text "│"
+                      text "├"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#21"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "├"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#22"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#23"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "└"
+                    text "HashAggregate"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#24"
+                  table_cell
+                    container
+                      text "│"
+                      text "│"
+                      text "└"
+                    text "CTE Scan"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#25"
+                  table_cell
+                    container
+                      text "│"
+                      text "└"
+                    text "Index Scan"
+                  table_cell
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#26"
+                  table_cell
+                    text "└"
+                    text "Hash"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#27"
+                  table_cell
+                    text "▶"
+                    text "Hash Join"
+                  table_cell
+                    progressindicator
+                    progressindicator
+                table_row
+                  table_cell
+                    text "#28"
+                  table_cell
+                    text "├"
+                    text "Seq Scan"
+                  table_cell
+          splitter [ref=1274]
+          container
+            container
+              button [ref=1275]
+                text "none"
+              button [ref=1276]
+                text "duration"
+              button [ref=1277]
+                text "rows"
+              button [ref=1278]
+                text "cost"
+            svg_root "Sort #1 by sv.product_id Hash Join #37 on pr.variant_id = sv.variant_id CTE Scan #38 on pr CTE variants_min_prices Hash #39 Hash Join #40 on sv.variant_id = vc.variant_id Hash Join #41 on sv.product_i..."
+              text "Sort"
+              text "#1"
+              text "by"
+              text "sv.product_id"
+              text "Hash Join"
+              text "#37"
+              text "on"
+              text "pr.variant_id = sv.variant_id"
+              text "CTE Scan"
+              text "#38"
+              text "on"
+              text "pr"
+              text "CTE"
+              text "variants_min_prices"
+              text "Hash"
+              text "#39"
+              text "Hash Join"
+              text "#40"
+              text "on"
+              text "sv.variant_id = vc.variant_id"
+              text "Hash Join"
+              text "#41"
+              text "on"
+              text "sv.product_id = sp.id"
+              text "Hash"
+              text "#48"
+              text "CTE Scan"
+              text "#42"
+              text "on"
+              text "sv"
+              text "CTE"
+              text "catalog_variants"
+              text "Hash"
+              text "#43"
+              text "CTE Scan"
+              text "#49"
+              text "on"
+              text "vc"
+              text "CTE"
+              text "variant_colors"
+              text "Hash Join"
+              text "#44"
+              text "on"
+              text "sp.id = pcc.product_id"
+              text "Seq Scan"
+              text "#45"
+              text "on"
+              text "public."
+              text "spree_products"
+              text "as"
+              text "sp"
+              text "Hash"
+              text "#46"
+              text "CTE Scan"
+              text "#47"
+              text "on"
+              text "pcc"
+              text "CTE"
+              text "product_color_classifications"
+              text "CTE catalog_variants"
+              text "Seq Scan"
+              text "#2"
+              text "on"
+              text "public."
+              text "spree_variants"
+              text "as"
+              text "spree_variants"
+              text "CTE product_color_classifications"
+              text "GroupAggregate"
+              text "#3"
+              text "by"
+              text "sv_1.product_id"
+              text "Sort"
+              text "#4"
+              text "by"
+              text "sv_1.product_id"
+              text "Hash Join"
+              text "#5"
+              text "on"
+              text "sov_sv.option_value_id = sov.id"
+              text "Nested Loop"
+              text "#6"
+              text "Hash"
+              text "#13"
+              text "Hash Join"
+              text "#7"
+              text "on"
+              text "sv_1.variant_id = catalog_variants.variant_id"
+              text "Index Scan"
+              text "#12"
+              text "on"
+              text "public."
+              text "spree_option_values_variants"
+              text "using"
+              text "index_spree_option_values_variants_on_variant_id"
+              text "Hash Join"
+              text "#14"
+              text "on"
+              text "sov.option_type_id = sot.id"
+              text "CTE Scan"
+              text "#8"
+              text "on"
+              text "sv_1"
+              text "CTE"
+              text "catalog_variants"
+              text "Hash"
+              text "#9"
+              text "Seq Scan"
+              text "#15"
+              text "on"
+              text "public."
+              text "spree_option_values"
+              text "as"
+              text "sov"
+              text "Hash"
+              text "#16"
+              text "HashAggregate"
+              text "#10"
+              text "by"
+              text "catalog_variants.variant_id"
+              text "Seq Scan"
+              text "#17"
+              text "on"
+              text "public."
+              text "spree_option_types"
+              text "as"
+              text "sot"
+              text "CTE Scan"
+              text "#11"
+              text "on"
+              text "catalog_variants"
+              text "CTE"
+              text "catalog_variants"
+              text "CTE variant_colors"
+              text "Hash Join"
+              text "#18"
+              text "on"
+              text "sov_sv_1.option_value_id = sov_1.id"
+              text "Nested Loop"
+              text "#19"
+              text "Hash"
+              text "#26"
+              text "Hash Join"
+              text "#20"
+              text "on"
+              text "sv_2.variant_id = catalog_variants_1.variant_id"
+              text "Index Scan"
+              text "#25"
+              text "on"
+              text "public."
+              text "spree_option_values_variants"
+              text "using"
+              text "index_spree_option_values_variants_on_variant_id"
+              text "Hash Join"
+              text "#27"
+              text "on"
+              text "sov_1.option_type_id = sot_1.id"
+              text "CTE Scan"
+              text "#21"
+              text "on"
+              text "sv_2"
+              text "CTE"
+              text "catalog_variants"
+              text "Hash"
+              text "#22"
+              text "Seq Scan"
+              text "#28"
+              text "on"
+              text "public."
+              text "spree_option_values"
+              text "as"
+              text "sov_1"
+              text "Hash"
+              text "#29"
+              text "HashAggregate"
+              text "#23"
+              text "by"
+              text "catalog_variants_1.variant_id"
+              text "Seq Scan"
+              text "#30"
+              text "on"
+              text "public."
+              text "spree_option_types"
+              text "as"
+              text "sot_1"
+              text "CTE Scan"
+              text "#24"
+              text "on"
+              text "catalog_variants_1"
+              text "CTE"
+              text "catalog_variants"
+              text "CTE variants_min_prices"
+              text "HashAggregate"
+              text "#31"
+              text "by"
+              text "spree_prices.variant_id"
+              text "Hash Join"
+              text "#32"
+              text "on"
+              text "spree_prices.variant_id = catalog_variants_2.variant_id"
+              text "Seq Scan"
+              text "#33"
+              text "on"
+              text "public."
+              text "spree_prices"
+              text "as"
+              text "spree_prices"
+              text "Hash"
+              text "#34"
+              text "HashAggregate"
+              text "#35"
+              text "by"
+              text "catalog_variants_2.variant_id"
+              text "CTE Scan"
+              text "#36"
+              text "on"
+              text "catalog_variants_2"
+              text "CTE"
+              text "catalog_variants"
+  text "Duration:"
+  text "Exclusive: 0.044ms, Total: 0.09ms"
+
+

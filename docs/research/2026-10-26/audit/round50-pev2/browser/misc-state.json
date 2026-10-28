@@ -1,0 +1,69 @@
+{
+  "url": "http://127.0.0.1:18750/native/pev2.html#plan/node/12",
+  "text": " Index Scan\n#12\non public.spree_option_values_variants as sov_sv\nusing index_spree_option_values_variants_on_variant_id\nIndex Scan Node finds relevant records based on an Index. Index Scans perform 2 read operations: one to read the index and another to read the actual value from the table.\nGeneral\nIO & Buffers\nOutput\nWorkers\nMisc\nParent Relationship\tInner\nSchema\tpublic\nStartup Cost\t0.29\nPlan Width\t8 B\nActual Startup Time\t0.002ms\nActual Total Time\t0.003ms\nIndex Cond\t(sov_sv.variant_id = sv_1.variant_id)\n*Actual Startup Time Revised\t0.704\n*Actual Total Time Revised\t1.056\n* Calculated value",
+  "rows": [
+    [
+      "Hit",
+      "Read",
+      "Dirtied",
+      "Written"
+    ],
+    [
+      "Shared",
+      "1,28410 MB",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "Temp",
+      "",
+      "-",
+      "",
+      "-"
+    ],
+    [
+      "Local",
+      "-",
+      "-",
+      "-",
+      "-"
+    ],
+    [
+      "Parent Relationship",
+      "Inner"
+    ],
+    [
+      "Schema",
+      "public"
+    ],
+    [
+      "Startup Cost",
+      "0.29"
+    ],
+    [
+      "Plan Width",
+      "8 B"
+    ],
+    [
+      "Actual Startup Time",
+      "0.002ms"
+    ],
+    [
+      "Actual Total Time",
+      "0.003ms"
+    ],
+    [
+      "Index Cond",
+      "(sov_sv.variant_id = sv_1.variant_id)"
+    ],
+    [
+      "*Actual Startup Time Revised",
+      "0.704"
+    ],
+    [
+      "*Actual Total Time Revised",
+      "1.056"
+    ]
+  ]
+}

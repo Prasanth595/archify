@@ -1,0 +1,11 @@
+const task=await taskSpace(3),page=task.page('p1'),fs=await import('node:fs/promises'),crypto=await import('node:crypto');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+const raw=await page.evaluate(()=>document.querySelector('pre.small')?.textContent);
+if(typeof raw!=='string')throw new Error('Native Raw JSON not present');
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round50-pev2/fixture/native-raw.json",raw);
+const state={bytes:Buffer.byteLength(raw),sha256:crypto.createHash('sha256').update(raw).digest('hex'),environment:await page.evaluate(()=>({url:location.href,userAgent:navigator.userAgent,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},resources:performance.getEntriesByType('resource').map(x=>({url:x.name,initiatorType:x.initiatorType}))}))};
+console.log('RAW IDENTITY',state);
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round50-pev2/browser/raw-state.json",JSON.stringify(state,null,2)+'\n');
+await page.goto('http://127.0.0.1:18751/output/explainer.html');
+await page.waitForFunction(()=>document.body.innerText.includes('每次3行'),undefined,{timeout:10000});
+console.log(await page.snapshot());

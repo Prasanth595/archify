@@ -1,0 +1,376 @@
+<script lang="ts" setup>
+import {
+  faAlignJustify,
+  faArrowDown,
+  faArrowUp,
+  faClock,
+  faDollarSign,
+  faExchangeAlt,
+  faFilter,
+  faInfoCircle,
+  faUndo,
+} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import _ from "lodash"
+import { computed, inject, onBeforeMount, reactive, ref, watch } from "vue"
+import { directive as vTippy } from "vue-tippy"
+
+import Approximative from "@/components/Approximative.vue"
+import BucketsDetail from "@/components/BucketsDetail.vue"
+import BuffersDetail from "@/components/BuffersDetail.vue"
+import IoTable from "@/components/IoTable.vue"
+import MiscDetail from "@/components/MiscDetail.vue"
+import SortDetail from "@/components/SortDetail.vue"
+import WorkersDetail from "@/components/WorkersDetail.vue"
+import { EstimateDirection, Property } from "@/enums"
+import type { Node, ViewOptions } from "@/interfaces"
+import useNode from "@/node"
+import { getNodeTypeDescription } from "@/services/help-service"
+import { store } from "@/store"
+import { ViewOptionsKey } from "@/symbols"
+
+const viewOptions = inject(ViewOptionsKey) as ViewOptions
+
+interface Props {
+  node: Node
+}
+const props = defineProps<Props>()
+
+const updateSize = inject<(node: Node) => null>("updateSize")
+
+const node = reactive<Node>(props.node)
+const nodeProps = ref<
+  {
+    key: keyof typeof Property
+    value: unknown
+  }[]
+>()
+
+// UI flags
+const activeTab = ref<string>("general")
+
+const {
+  costClass,
+  durationClass,
+  estimationClass,
+  executionTimePercent,
+  filterDetailTooltip,
+  formattedProp,
+  heapFetchesClass,
+  indexRecheckTooltip,
+  plannerRowEstimateDirection,
+  plannerRowEstimateValue,
+  rowsRemoved,
+  rowsRemovedClass,
+  rowsRemovedPercentString,
+  rowsRemovedProp,
+  tilde,
+} = useNode(node, viewOptions)
+
+onBeforeMount(() => {
+  calculateProps()
+})
+
+const shouldShowPlannerEstimate = computed(() => {
+  return (
+    estimationClass.value &&
+    plannerRowEstimateDirection.value !== EstimateDirection.none &&
+    plannerRowEstimateValue.value
+  )
+})
+
+// create an array of node propeties so that they can be displayed in the view
+function calculateProps() {
+  nodeProps.value = _.chain(node)
+    .omit(Property.PLANS)
+    .omit(Property.WORKERS)
+    .map((value, key) => {
+      return { key: key as keyof typeof Property, value }
+    })
+    .value()
+}
+
+const shouldShowIoBuffers = computed((): boolean => {
+  const properties: Array<keyof typeof Property> = [
+    "EXCLUSIVE_SHARED_HIT_BLOCKS",
+    "EXCLUSIVE_SHARED_READ_BLOCKS",
+    "EXCLUSIVE_SHARED_DIRTIED_BLOCKS",
+    "EXCLUSIVE_SHARED_WRITTEN_BLOCKS",
+    "EXCLUSIVE_TEMP_READ_BLOCKS",
+    "EXCLUSIVE_TEMP_WRITTEN_BLOCKS",
+    "EXCLUSIVE_LOCAL_HIT_BLOCKS",
+    "EXCLUSIVE_LOCAL_READ_BLOCKS",
+    "EXCLUSIVE_LOCAL_DIRTIED_BLOCKS",
+    "EXCLUSIVE_LOCAL_WRITTEN_BLOCKS",
+    "EXCLUSIVE_IO_READ_TIME",
+    "EXCLUSIVE_IO_WRITE_TIME",
+  ]
+  const values = _.map(properties, (property) => {
+    const value = node[Property[property]]
+    return _.isNaN(value) ? 0 : value
+  })
+  const sum = _.sum(values)
+  return sum > 0
+})
+
+watch(activeTab, () => {
+  window.setTimeout(() => updateSize && updateSize(node), 1)
+})
+</script>
+
+<template>
+  <div class="card-header border-top">
+    <div
+      v-if="getNodeTypeDescription(node[Property.NODE_TYPE])"
+      class="node-description"
+    >
+      <span class="node-type">{{ node[Property.NODE_TYPE] }} Node</span>
+      <span v-html="getNodeTypeDescription(node[Property.NODE_TYPE])"></span>
+    </div>
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          :class="{ active: activeTab === 'general' }"
+          @click.prevent.stop="activeTab = 'general'"
+          href=""
+          >General</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-nowrap"
+          :class="{
+            active: activeTab === 'iobuffer',
+            disabled: !shouldShowIoBuffers,
+          }"
+          @click.prevent.stop="activeTab = 'iobuffer'"
+          href=""
+          >IO & Buffers</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          :class="{
+            active: activeTab === 'output',
+            disabled: !node[Property.OUTPUT],
+          }"
+          @click.prevent.stop="activeTab = 'output'"
+          href=""
+          >Output</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          :class="{
+            active: activeTab === 'workers',
+            disabled: !(
+              node[Property.WORKERS_PLANNED] ||
+              node[Property.WORKERS_PLANNED_BY_GATHER]
+            ),
+          }"
+          @click.prevent.stop="activeTab = 'workers'"
+          href=""
+          >Workers</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          :class="{ active: activeTab === 'misc' }"
+          @click.prevent.stop="activeTab = 'misc'"
+          href=""
+          >Misc</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="card-body tab-content">
+    <div class="tab-pane" :class="{ 'show active': activeTab === 'general' }">
+      <!-- general -->
+      <div v-if="store.plan?.isAnalyze">
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faClock"
+          class="text-body-tertiary"
+        ></FontAwesomeIcon>
+        <b>Timing:</b>
+        <span
+          class="p-0 px-1 rounded alert"
+          :class="durationClass"
+          v-html="formattedProp('EXCLUSIVE_DURATION')"
+        ></span>
+        <template
+          v-if="executionTimePercent && executionTimePercent !== Infinity"
+        >
+          |
+          <strong>{{ executionTimePercent }}</strong
+          ><span class="text-body-tertiary">%</span>
+        </template>
+      </div>
+      <div>
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faAlignJustify"
+          class="text-body-tertiary"
+        ></FontAwesomeIcon>
+        <b>Rows:</b>
+        <span class="px-1">{{
+          tilde + formattedProp("ACTUAL_ROWS_REVISED")
+        }}</span>
+        <span class="text-body-tertiary" v-if="node[Property.PLAN_ROWS]"
+          >(Planned: {{ tilde + formattedProp("PLAN_ROWS_REVISED") }})</span
+        >
+        <Approximative :node="node" />
+        <span
+          v-if="
+            plannerRowEstimateDirection !== EstimateDirection.none &&
+            shouldShowPlannerEstimate
+          "
+        >
+          |
+          <span v-if="plannerRowEstimateDirection === EstimateDirection.over"
+            ><FontAwesomeIcon :icon="faArrowUp"></FontAwesomeIcon> over</span
+          >
+          <span v-if="plannerRowEstimateDirection === EstimateDirection.under"
+            ><FontAwesomeIcon :icon="faArrowDown"></FontAwesomeIcon> under</span
+          >
+          estimated
+          <span v-if="plannerRowEstimateValue != Infinity">
+            by
+            <span
+              class="p-0 px-1 alert"
+              :class="estimationClass"
+              v-html="formattedProp('PLANNER_ESTIMATE_FACTOR')"
+            ></span>
+          </span>
+        </span>
+      </div>
+      <div v-if="rowsRemoved">
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faFilter"
+          class="text-body-tertiary"
+        ></FontAwesomeIcon>
+        <b> {{ Property[rowsRemovedProp] }}: </b>
+        <span>
+          <span class="px-1">{{ tilde + formattedProp(rowsRemovedProp) }}</span
+          >|
+          <span class="p-0 px-1 alert" :class="rowsRemovedClass"
+            >{{ rowsRemovedPercentString }}%</span
+          >
+        </span>
+        <Approximative :node="node" />
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faInfoCircle"
+          class="text-muted"
+          v-tippy="{ allowHTML: true, content: indexRecheckTooltip }"
+          v-if="rowsRemovedProp == 'ROWS_REMOVED_BY_INDEX_RECHECK_REVISED'"
+        ></FontAwesomeIcon>
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faInfoCircle"
+          class="text-muted"
+          v-tippy="{ allowHTML: true, content: filterDetailTooltip }"
+          v-else
+        ></FontAwesomeIcon>
+      </div>
+      <div v-if="node[Property.HEAP_FETCHES]">
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faExchangeAlt"
+          class="text-body-tertiary"
+        ></FontAwesomeIcon>
+        <b>Heap Fetches:</b>
+        <span
+          class="p-0 px-1 rounded alert"
+          :class="heapFetchesClass"
+          v-html="formattedProp('HEAP_FETCHES')"
+        ></span>
+        <FontAwesomeIcon
+          :icon="faInfoCircle"
+          fixed-width
+          class="text-body-tertiary"
+          v-if="heapFetchesClass"
+          v-tippy="{
+            arrow: true,
+            content:
+              'Visibility map may be out-of-date. Consider using VACUUM or change autovacuum settings.',
+          }"
+        ></FontAwesomeIcon>
+      </div>
+      <div v-if="!_.isUndefined(node[Property.EXCLUSIVE_COST])">
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faDollarSign"
+          class="text-body-tertiary"
+        ></FontAwesomeIcon>
+        <b>Cost:</b>
+        <span class="p-0 px-1 me-1 alert" :class="costClass">{{
+          formattedProp("EXCLUSIVE_COST")
+        }}</span>
+        <span class="text-body-tertiary"
+          >(Total: {{ formattedProp("TOTAL_COST") }})</span
+        >
+      </div>
+      <div v-if="node[Property.ACTUAL_LOOPS] > 1">
+        <FontAwesomeIcon
+          fixed-width
+          :icon="faUndo"
+          class="text-body-tertiary"
+        ></FontAwesomeIcon>
+        <b>Loops:</b>
+        <span class="px-1">{{ formattedProp("ACTUAL_LOOPS") }} </span>
+      </div>
+      <SortDetail :node="node" />
+      <!-- general tab -->
+    </div>
+    <div class="tab-pane" :class="{ 'show active': activeTab === 'iobuffer' }">
+      <!-- iobuffer tab -->
+      <BucketsDetail :node="node" />
+      <IoTable :object="node" exclusive />
+      <BuffersDetail :object="node" />
+      <div
+        v-if="node[Property.WAL_RECORDS] || node[Property.WAL_BYTES]"
+        class="mb-2"
+      >
+        <b>
+          <span class="more-info" v-tippy="'Write-Ahead Logging'">WAL</span>:
+        </b>
+        {{ formattedProp("WAL_RECORDS") }} records
+        <small>({{ formattedProp("WAL_BYTES") }})</small>
+        <span v-if="node[Property.WAL_FPI]">
+          -
+          <span class="more-info" v-tippy="'WAL Full Page Images'">FPI</span>:
+          {{ formattedProp("WAL_FPI") }}
+        </span>
+      </div>
+      <!-- iobuffer tab -->
+    </div>
+    <div
+      class="tab-pane overflow-auto font-monospace"
+      :class="{ 'show active': activeTab === 'output' }"
+      v-html="formattedProp('OUTPUT')"
+      style="max-height: 200px"
+      @mousewheel.stop
+    ></div>
+    <div
+      class="tab-pane"
+      :class="{ 'show active': activeTab === 'workers' }"
+      v-if="
+        node[Property.WORKERS_PLANNED] ||
+        node[Property.WORKERS_PLANNED_BY_GATHER]
+      "
+    >
+      <!-- workers tab -->
+      <WorkersDetail :node="node" />
+    </div>
+    <div class="tab-pane" :class="{ 'show active': activeTab === 'misc' }">
+      <!-- misc tab -->
+      <MiscDetail :node="node" />
+    </div>
+  </div>
+</template>

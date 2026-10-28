@@ -1,0 +1,2 @@
+const task=await taskSpace(3),page=task.page('p1');
+console.log(await page.evaluate(()=>[...document.querySelectorAll('.selected')].map(x=>({tag:x.tagName,cls:x.getAttribute('class'),text:x.innerText,triangles:[...x.querySelectorAll('[data-icon="triangle-exclamation"]')].map(y=>({html:y.outerHTML.slice(0,400),parent:y.parentElement.outerHTML.slice(0,800)})),rect:x.getBoundingClientRect().toJSON()}))));

@@ -1,0 +1,10 @@
+const task=await taskSpace(3),page=task.page('p1'),fs=await import('node:fs/promises');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.hover('tr.node a[href="#plan/node/12"]',{label:'inspect corresponding index scan row'});
+await fs.mkdir("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round50-pev2/screenshots",{recursive:true});
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round50-pev2/screenshots/01-grid-rows.png"});
+const grid=await page.evaluate(()=>[...document.querySelectorAll('tr.node')].filter(x=>['#6','#7','#12'].includes(x.querySelector('a')?.textContent.trim())).map(x=>({text:x.innerText,cells:[...x.querySelectorAll('td')].map(t=>t.innerText)})));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round50-pev2/browser/grid-state.json",JSON.stringify(grid,null,2)+'\n');
+console.log('GRID',grid);
+await page.click('tr.node a[href="#plan/node/12"]',{label:'open index scan details'});
+console.log(await page.snapshot());
