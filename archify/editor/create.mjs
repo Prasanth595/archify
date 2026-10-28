@@ -44,7 +44,11 @@ function availableEndpoints(source,scene,value) {
 }
 function assertGeometry(source,scene,edge,quality) {
   const ctx=context(source,scene,quality),relation=ctx.relations.at(-1);
-  const labels=scene.edges.flatMap((item,index)=>item.labelBox?[{...item.labelBox,lx:item.labelAnchor[0],ly:item.labelAnchor[1],relation:connectionBinding(source,source.diagram_type,item).item,relationIndex:index,label:item.label}]:[]);
+  const labels=scene.edges.flatMap(item=>{
+    if(!item.labelBox)return [];
+    const {item:relation,index}=connectionBinding(source,source.diagram_type,item);
+    return [{...item.labelBox,lx:item.labelAnchor[0],ly:item.labelAnchor[1],relation,relationIndex:index,label:item.label}];
+  });
   const [, ,width,height]=scene.viewBox.split(/[ ,]+/).map(Number);
   if(edge.points.some(p=>p[0]<0||p[1]<0||p[0]>width||p[1]>height))throw Error('The current canvas has no room for this route.');
   const ownLabel=edge.label?labels.at(-1):null;

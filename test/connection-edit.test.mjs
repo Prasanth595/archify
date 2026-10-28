@@ -382,3 +382,20 @@ test('unsupported diagram types cannot start editing or touch their source files
   for(const type of ['class','erd','sequence','lifecycle','tree','timeline','waterfall'])await assert.rejects(startEditor({type,input,output:path.join(dir,'diagram.html'),open:false}),/not supported/);
   assert.deepEqual(fs.readdirSync(dir),['source.json']);assert.equal(fs.readFileSync(input,'utf8'),'source must remain intact');
 });
+
+test('reordered workflow labels retain their native clearance relationships',t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-label-order-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const source=connectionDiagram('workflow');source.edges.reverse();source.meta.quality_profile='showcase';
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');fs.writeFileSync(input,JSON.stringify(source));
+  execFileSync(process.execPath,[path.join(root,'archify/renderers/workflow/render-workflow.mjs'),input,output]);
+  const scene=readEditScene(fs.readFileSync(output));
+  const proposal=proposeConnection(source,scene,{from:'c',to:'a',fromSide:'bottom',toSide:'bottom',label:'Return'},'showcase');
+  const command={key:proposal.edge.key,field:'create',value:proposal.value};
+  fs.writeFileSync(input,JSON.stringify(prepareEdits(source,'workflow',scene,[command],'showcase').source));
+  execFileSync(process.execPath,[path.join(root,'archify/renderers/workflow/render-workflow.mjs'),input,output]);
+  assert.deepEqual(checkEditScope(source,'workflow',scene,readEditScene(fs.readFileSync(output)),[command]).added,[proposal.value.id]);
+  const label=scene.edges.find(e=>e.id==='first'),other=scene.edges.find(e=>e.id==='second');
+  const [a,b]=other.points.slice(0,2),x=(a[0]+b[0])/2,y=(a[1]+b[1])/2;
+  label.labelAnchor=[x,y+3];label.labelBox={x:x-17,y:y-7,width:34,height:14};
+  assert.throws(()=>proposeConnection(source,scene,{from:'c',to:'a',fromSide:'top',toSide:'top',label:'Return'},'showcase'),/label-route-clearance/,'a native order change cannot make a label exempt from another route');
+});
