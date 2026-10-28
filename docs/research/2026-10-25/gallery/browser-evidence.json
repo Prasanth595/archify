@@ -1,45 +1,43 @@
 {
-  "kind": "derived browser evidence for fixed59 gallery; root receipt and original scenario JSON/PNG linked separately",
-  "status": "root-browser-observed-prepared-local-bound",
-  "delivery": {
-    "sourceHub": "prepared/local-bound; immutable source commit separate from future artifact commit",
-    "gallery": "prepared/local-bound; push/readback will be recorded separately",
-    "experiment": "Root reported b3c85c9656212a4ba83430844603334132f120a9 pushed/readback;0check-runs/Actions not CI success."
-  },
-  "hubSourceCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+  "kind": "derived browser evidence for fixed60 gallery; original/URL-redacted observations distinguished",
+  "status": "root-browser-observed-scoped-gallery",
+  "packagingStage": "Browser evidence recorded before final artifact commit/push. Actual delivery head and exact remote readback recorded by the task result, avoiding a self-hash cycle.",
+  "hubSourceCommit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
+  "staticArtifactCommit": "18cbf8ba17a2fcb729f324293959b8b370c82e59",
   "hubReadme": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
-    "sha256": "f7344cec1257265e5ab9ad54b7f4ce931194c720d13bcad509403f657a54a426",
-    "bytes": 73881,
-    "gitBlob": "a50fa34bfb3d6e145efb33aa3fcdf5ce5764b528"
+    "commit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
+    "sha256": "71133622646b8da5561253c192f1c2427b6e1e608481d16c9c1fefc36d6a6df9",
+    "bytes": 75604,
+    "gitBlob": "82589de12d1843b207fa5f9706379c53751dca60"
   },
-  "experimentCommit": "b3c85c9656212a4ba83430844603334132f120a9",
+  "experimentCommit": "7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5",
+  "productCommit": "88e7e64b8e5d8ae7bafd754e60ece33c5d59dd58",
   "artifacts": {
     "index.html": {
       "path": "index.html",
-      "bytes": 18520803,
-      "sha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846"
+      "bytes": 18613319,
+      "sha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0"
     },
     "manifest.json": {
       "path": "manifest.json",
-      "bytes": 136611,
-      "sha256": "bcc52b23d332311ba2871bff77a814d0023ec99e7affd7a9e037a2c7c8594c97"
+      "bytes": 139100,
+      "sha256": "7550e3a0b365c356dc487cf2dcb36a11f4036df8faf5f92bf51b417083ce31d9"
     },
     "selection.json": {
       "path": "selection.json",
-      "bytes": 30359,
-      "sha256": "68e281222fa57b17958e82cadd9ea0b11c2936a837dfff8c05cae478e6de4ea7"
+      "bytes": 30878,
+      "sha256": "53abf221d26ad9e8ccd29161f5418517e6a7eb9a82c93a1c7b4e22a8bbae0791"
     },
     "verification.json": {
       "path": "verification.json",
       "bytes": 800,
-      "sha256": "b49b1c86715e098eb41eea7da7152d1d1152733e74632819edf462b5fb1f1efd"
+      "sha256": "305ccec6dbd677ad075599a6f21db403876201976242283fe522b36d9fb4df6b"
     },
     "README.md": {
       "path": "README.md",
-      "bytes": 67946,
-      "sha256": "7f7c6d3f8babd77ba784d5eab3fd5043f3b51e0eea595673730bb50844eab82c"
+      "bytes": 74230,
+      "sha256": "5d2bc3e79cab59732d52fea64a15fbf144143bb7e9458552a530d331d0177bed"
     },
     "template.html": {
       "path": "template.html",
@@ -58,360 +56,482 @@
     }
   },
   "summary": {
-    "experiments": 59,
-    "images": 59,
-    "pngBytes": 13775375,
+    "experiments": 60,
+    "images": 60,
+    "pngBytes": 13842732,
     "groupCounts": {
-      "product": 18,
+      "product": 19,
       "offline": 20,
       "content": 21
     },
     "deferredCountedAsPublished": false
   },
+  "sourceCopies": [
+    {
+      "path": "screenshots60/desktop-filtered.json",
+      "sourceLabel": "root-gallery60/desktop-filtered.json",
+      "original": {
+        "fileName": "desktop-filtered.json",
+        "bytes": 1434,
+        "sha256": "e226f88def4493065fd91e6b7dde03125b28039944947e18816e70e967fd66db"
+      },
+      "public": {
+        "bytes": 1335,
+        "sha256": "2d191c88917ce011a4f8882e6022c8e089a5e8ee484d38834b160a1994dff36e"
+      },
+      "byteIdentical": false,
+      "classification": "URL-redacted-derived-copy",
+      "transforms": [
+        {
+          "jsonPointer": "/url",
+          "operation": "replace-local-file-URL",
+          "replacement": "$GALLERY_URL",
+          "limits": "Only this string token changed; all other bytes and parsed observation values retained."
+        }
+      ]
+    },
+    {
+      "path": "screenshots60/desktop-filtered.png",
+      "sourceLabel": "root-gallery60/desktop-filtered.png",
+      "original": {
+        "fileName": "desktop-filtered.png",
+        "bytes": 130485,
+        "sha256": "4d9d85a52043581807becf98af9d4e63d74f2306389bc5a09f1f6f24107d6f34"
+      },
+      "public": {
+        "bytes": 130485,
+        "sha256": "4d9d85a52043581807becf98af9d4e63d74f2306389bc5a09f1f6f24107d6f34"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/desktop-native.json",
+      "sourceLabel": "root-gallery60/desktop-native.json",
+      "original": {
+        "fileName": "desktop-native.json",
+        "bytes": 633,
+        "sha256": "98da70787f9175a4d676ad1e3e76af523f691b86114a3b437315bc3dd5b575de"
+      },
+      "public": {
+        "bytes": 633,
+        "sha256": "98da70787f9175a4d676ad1e3e76af523f691b86114a3b437315bc3dd5b575de"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/desktop-native.png",
+      "sourceLabel": "root-gallery60/desktop-native.png",
+      "original": {
+        "fileName": "desktop-native.png",
+        "bytes": 102151,
+        "sha256": "29116d187ea715fcf6974799bd5c3ddb225c1fae2c9977acb6ec8b0d16ac655e"
+      },
+      "public": {
+        "bytes": 102151,
+        "sha256": "29116d187ea715fcf6974799bd5c3ddb225c1fae2c9977acb6ec8b0d16ac655e"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/empty.json",
+      "sourceLabel": "root-gallery60/empty.json",
+      "original": {
+        "fileName": "empty.json",
+        "bytes": 176,
+        "sha256": "f224d548a0643d7d557833d75873f012e3d1f79bbc408637c212f41b39e03a37"
+      },
+      "public": {
+        "bytes": 176,
+        "sha256": "f224d548a0643d7d557833d75873f012e3d1f79bbc408637c212f41b39e03a37"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/empty.png",
+      "sourceLabel": "root-gallery60/empty.png",
+      "original": {
+        "fileName": "empty.png",
+        "bytes": 75805,
+        "sha256": "ddedae2457150aaeca295a377d55ccdd6f62c2dd10e019430cc4554798b4cfa3"
+      },
+      "public": {
+        "bytes": 75805,
+        "sha256": "ddedae2457150aaeca295a377d55ccdd6f62c2dd10e019430cc4554798b4cfa3"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/final.json",
+      "sourceLabel": "root-gallery60/final.json",
+      "original": {
+        "fileName": "final.json",
+        "bytes": 497,
+        "sha256": "a54f3ea5389b27b0ccd2e073b6b87a195a18e31c5201447ecbf9b67c39980ae2"
+      },
+      "public": {
+        "bytes": 497,
+        "sha256": "a54f3ea5389b27b0ccd2e073b6b87a195a18e31c5201447ecbf9b67c39980ae2"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/final.png",
+      "sourceLabel": "root-gallery60/final.png",
+      "original": {
+        "fileName": "final.png",
+        "bytes": 250898,
+        "sha256": "6161098b31176fc5bf06238aaba89cbe630afc01fb7cfd9557b9456b89b64c3b"
+      },
+      "public": {
+        "bytes": 250898,
+        "sha256": "6161098b31176fc5bf06238aaba89cbe630afc01fb7cfd9557b9456b89b64c3b"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/mobile-fit.json",
+      "sourceLabel": "root-gallery60/mobile-fit.json",
+      "original": {
+        "fileName": "mobile-fit.json",
+        "bytes": 781,
+        "sha256": "b7bf33f7e5619384f0a3beaf0385c683e38118b4132b6e7fba4f6f8a8036537e"
+      },
+      "public": {
+        "bytes": 682,
+        "sha256": "58c5c04fe6df2951015090ca2d9b0f4c38e303ab39a5151e778ad168fa02cf85"
+      },
+      "byteIdentical": false,
+      "classification": "URL-redacted-derived-copy",
+      "transforms": [
+        {
+          "jsonPointer": "/url",
+          "operation": "replace-local-file-URL",
+          "replacement": "$GALLERY_URL",
+          "limits": "Only this string token changed; all other bytes and parsed observation values retained."
+        }
+      ]
+    },
+    {
+      "path": "screenshots60/mobile-fit.png",
+      "sourceLabel": "root-gallery60/mobile-fit.png",
+      "original": {
+        "fileName": "mobile-fit.png",
+        "bytes": 41497,
+        "sha256": "60e682515d98257b3aadf3ff9038aee354a6592a2c24b2316ba75ccd9d3e7e7e"
+      },
+      "public": {
+        "bytes": 41497,
+        "sha256": "60e682515d98257b3aadf3ff9038aee354a6592a2c24b2316ba75ccd9d3e7e7e"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    },
+    {
+      "path": "screenshots60/mobile-native.json",
+      "sourceLabel": "root-gallery60/mobile-native.json",
+      "original": {
+        "fileName": "mobile-native.json",
+        "bytes": 768,
+        "sha256": "b3c15231c2234cb43c680392dbbf53bcec89d804cc6a3ab5ed87b7e0b7da8a63"
+      },
+      "public": {
+        "bytes": 669,
+        "sha256": "9db60a89f1c705638aef536f754f643b347875cadd2486a70413c07522a573b2"
+      },
+      "byteIdentical": false,
+      "classification": "URL-redacted-derived-copy",
+      "transforms": [
+        {
+          "jsonPointer": "/url",
+          "operation": "replace-local-file-URL",
+          "replacement": "$GALLERY_URL",
+          "limits": "Only this string token changed; all other bytes and parsed observation values retained."
+        }
+      ]
+    },
+    {
+      "path": "screenshots60/mobile-native.png",
+      "sourceLabel": "root-gallery60/mobile-native.png",
+      "original": {
+        "fileName": "mobile-native.png",
+        "bytes": 52384,
+        "sha256": "39e24dbba6b482ee4a7dc44d97d67d1ed08ebd2951d55880c2699109abecaf32"
+      },
+      "public": {
+        "bytes": 52384,
+        "sha256": "39e24dbba6b482ee4a7dc44d97d67d1ed08ebd2951d55880c2699109abecaf32"
+      },
+      "byteIdentical": true,
+      "classification": "unchanged-original-copy",
+      "transforms": []
+    }
+  ],
   "rawSources": [
     {
-      "path": "screenshots59/desktop-decoded.json",
-      "bytes": 94,
-      "sha256": "539850be7cffd75b3b573371c7e0ec742cadda2ec4333695c2d3233f1899023d"
+      "path": "screenshots60/desktop-native.json",
+      "bytes": 633,
+      "sha256": "98da70787f9175a4d676ad1e3e76af523f691b86114a3b437315bc3dd5b575de"
     },
     {
-      "path": "screenshots59/desktop-dialog.json",
-      "bytes": 1402,
-      "sha256": "a255090f369da54c20a3c9061646c584b6413c395b18e4764e1ddc862b17a4d5"
+      "path": "screenshots60/empty.json",
+      "bytes": 176,
+      "sha256": "f224d548a0643d7d557833d75873f012e3d1f79bbc408637c212f41b39e03a37"
     },
     {
-      "path": "screenshots59/desktop-new-card.json",
-      "bytes": 1648,
-      "sha256": "307223536a109a3d635112e667d150b9f6c2f21d23c26286c5dad3208b3af322"
+      "path": "screenshots60/final.json",
+      "bytes": 497,
+      "sha256": "a54f3ea5389b27b0ccd2e073b6b87a195a18e31c5201447ecbf9b67c39980ae2"
+    }
+  ],
+  "derivedSources": [
+    {
+      "path": "screenshots60/desktop-filtered.json",
+      "bytes": 1335,
+      "sha256": "2d191c88917ce011a4f8882e6022c8e089a5e8ee484d38834b160a1994dff36e"
     },
     {
-      "path": "screenshots59/mobile-dialog.json",
-      "bytes": 897,
-      "sha256": "751767c668176f62e959d5e8360004a59a54dc294de743095a9dee4b4f71988f"
+      "path": "screenshots60/mobile-fit.json",
+      "bytes": 682,
+      "sha256": "58c5c04fe6df2951015090ca2d9b0f4c38e303ab39a5151e778ad168fa02cf85"
     },
     {
-      "path": "screenshots59/reset-observations.json",
-      "bytes": 292,
-      "sha256": "276c418fc5541880a3c0c380fd985fafe26270fa4c8b580933a3134bc76283e2"
-    },
-    {
-      "path": "screenshots59/root-observations.json",
-      "bytes": 3366,
-      "sha256": "dd9a4217170ad63b65ebf3acdfd97288cb68108798a15db0c535f63302eff834"
+      "path": "screenshots60/mobile-native.json",
+      "bytes": 669,
+      "sha256": "9db60a89f1c705638aef536f754f643b347875cadd2486a70413c07522a573b2"
     }
   ],
   "screenshots": [
     {
-      "path": "screenshots59/desktop-new-card-decoded.png",
-      "bytes": 136243,
-      "sha256": "c447378e1df2dab0beadd2f25331258978ef26cfed142efd71196d6d9c015bb1",
+      "path": "screenshots60/desktop-filtered.png",
+      "bytes": 130485,
+      "sha256": "4d9d85a52043581807becf98af9d4e63d74f2306389bc5a09f1f6f24107d6f34",
       "width": 1440,
       "height": 1000,
-      "rootViewed": true,
-      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "status": "root-viewed-completed-capture",
-      "visibleScope": "Final card after complete/natural1440x1000 decode.",
-      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
-      "completedCapture": true
+      "boundHtmlSha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0",
+      "rootViewed": null,
+      "visualInspection": "not separately reported; screenshot preserved with observation file",
+      "semantics": "Original PNG bytes copied unchanged; dimensions from IHDR."
     },
     {
-      "path": "screenshots59/desktop-new-card.png",
-      "bytes": 123631,
-      "sha256": "ae557a6d4b02d2fdcfd892747447ef7f058e7b51629ea0072901a26977d435d7",
+      "path": "screenshots60/desktop-native.png",
+      "bytes": 102151,
+      "sha256": "29116d187ea715fcf6974799bd5c3ddb225c1fae2c9977acb6ec8b0d16ac655e",
       "width": 1440,
       "height": 1000,
+      "boundHtmlSha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0",
       "rootViewed": true,
-      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "status": "incomplete-lazy-preview-before-decode",
-      "visibleScope": "Initial lazy preview before decode: natural0x0 and decodedfalse. Retained intermediate, not completed preview.",
-      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
-      "completedCapture": false
+      "visualInspection": "root reported viewing this PNG",
+      "semantics": "Original PNG bytes copied unchanged; dimensions from IHDR."
     },
     {
-      "path": "screenshots59/desktop-original-dialog.png",
-      "bytes": 108269,
-      "sha256": "411aabdfc0ef74b8e2eb361056b8294fa2f5e96c37c066703619d9cf1c449a14",
+      "path": "screenshots60/empty.png",
+      "bytes": 75805,
+      "sha256": "ddedae2457150aaeca295a377d55ccdd6f62c2dd10e019430cc4554798b4cfa3",
+      "width": 390,
+      "height": 844,
+      "boundHtmlSha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0",
+      "rootViewed": null,
+      "visualInspection": "not separately reported; screenshot preserved with observation file",
+      "semantics": "Original PNG bytes copied unchanged; dimensions from IHDR."
+    },
+    {
+      "path": "screenshots60/final.png",
+      "bytes": 250898,
+      "sha256": "6161098b31176fc5bf06238aaba89cbe630afc01fb7cfd9557b9456b89b64c3b",
       "width": 1440,
       "height": 1000,
-      "rootViewed": true,
-      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "status": "root-viewed-completed-capture",
-      "visibleScope": "Desktop original-size image in dialog.",
-      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
-      "completedCapture": true
+      "boundHtmlSha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0",
+      "rootViewed": null,
+      "visualInspection": "not separately reported; screenshot preserved with observation file",
+      "semantics": "Original PNG bytes copied unchanged; dimensions from IHDR."
     },
     {
-      "path": "screenshots59/mobile-dark-card-visible.png",
-      "bytes": 96839,
-      "sha256": "df54c4a14ad4a7d6f855f7985af7e7e15542094437af93912854d1b00d53873f",
+      "path": "screenshots60/mobile-fit.png",
+      "bytes": 41497,
+      "sha256": "60e682515d98257b3aadf3ff9038aee354a6592a2c24b2316ba75ccd9d3e7e7e",
       "width": 390,
       "height": 844,
-      "rootViewed": true,
-      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "status": "root-viewed-completed-capture",
-      "visibleScope": "Narrow dark visible new card capture.",
-      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
-      "completedCapture": true
+      "boundHtmlSha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0",
+      "rootViewed": null,
+      "visualInspection": "not separately reported; screenshot preserved with observation file",
+      "semantics": "Original PNG bytes copied unchanged; dimensions from IHDR."
     },
     {
-      "path": "screenshots59/mobile-dark-card.png",
-      "bytes": 87145,
-      "sha256": "3df9526daa4494c0de1115c71cf423be140bf60ea151667816972df8fe830169",
+      "path": "screenshots60/mobile-native.png",
+      "bytes": 52384,
+      "sha256": "39e24dbba6b482ee4a7dc44d97d67d1ed08ebd2951d55880c2699109abecaf32",
       "width": 390,
       "height": 844,
-      "rootViewed": true,
-      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "status": "root-viewed-completed-capture",
-      "visibleScope": "First narrow dark card/page capture; later visible-card capture separate.",
-      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
-      "completedCapture": true
-    },
-    {
-      "path": "screenshots59/mobile-original-dialog.png",
-      "bytes": 55227,
-      "sha256": "a7373359514d8021538f5a75a374006fa2b8c44874e74a7e9d1b6dfbeeadea28",
-      "width": 390,
-      "height": 844,
-      "rootViewed": true,
-      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "status": "root-viewed-completed-capture",
-      "visibleScope": "Narrow original-size image overflow with visible close; not whole-image fit.",
-      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
-      "completedCapture": true
+      "boundHtmlSha256": "a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0",
+      "rootViewed": null,
+      "visualInspection": "not separately reported; screenshot preserved with observation file",
+      "semantics": "Original PNG bytes copied unchanged; dimensions from IHDR."
     }
   ],
   "observations": {
-    "desktop-decoded": {
-      "complete": true,
-      "natural": [
-        1440,
-        1000
-      ],
-      "status": "显示 1 / 59 项"
+    "empty": {
+      "status": "显示 0 / 60 项",
+      "query": "no-such-checklist-20261028",
+      "dialogOpen": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
     },
-    "desktop-dialog": {
-      "dialog": {
-        "open": true,
+    "mobile-native": {
+      "url": "$GALLERY_URL",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 375
+      },
+      "theme": "dark",
+      "open": true,
+      "status": "显示 1 / 60 项",
+      "image": {
         "natural": [
           1440,
           1000
         ],
-        "rect": {
-          "width": 1440,
-          "height": 1000
-        },
-        "text": "Profile normalization\n\n六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑\n\n适应宽度\n关闭 · Esc\nSHA-256 14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457\n固定提交中的原图 ↗"
-      },
-      "returned": {
-        "dialogOpen": false,
-        "active": "<button type=\"button\" class=\"image-open\" aria-label=\"查看 Profile normalization 完整原图\" data-title=\"Profile normalization\" data-caption=\"六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。\" data-size=\"1440 × 1000\" data-sha=\"14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457\" data-source=\"https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/evidence/browser/final3-count-light.png\">\n    <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABaAAAAPoCAIAAACnGc6kAAABJ2lDQ1BfAAB4nJWQP0vDQBjGf5aCf6iD6OiQsYtSFbqoSxWLTlIrWJ3SNE2FJoYkpQhufgE/hODsKEJnBwVBcBQ/gji4xicJki4dfI/37nfPPdzd+0JhBkWxAq4XBY16zThp"
-      }
-    },
-    "desktop-new-card": {
-      "before": {
-        "status": "显示 59 / 59 项",
-        "filters": [
-          "全部59",
-          "产品交互18",
-          "离线适配20",
-          "内容示例21"
+        "rendered": [
+          1440,
+          1000
         ]
       },
-      "card": {
-        "status": "显示 1 / 59 项",
-        "text": "完整pprof历史fixture / 有界parser与算术适配\nb3c85c96\nProfile normalization\n\n从完整pprof历史原件重建逐栈归一化差，显示六source共同决定factor及base/diff_base报告分母\n\n预览已裁切 · 点击完整图\n\n六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。\n\n验证边界\n固定6ca6基线；有界parser/算术适配而非采集workload；5tests/静态三阶段/strictcheck通过，8writing warnings；最终public browser FAIL164键盘预算，旧658四组真实Tab282/282按legend-only delta复用，不改绑最终035；root来源卡→6项→S2/12maps→factor及3分母节点实链，390px base toolbar裁切保留，非AT/人类/速度证明\n\n固定提交说明 ↗\n分支 ↗",
+      "stage": {
+        "clientWidth": 342,
+        "scrollWidth": 1460
+      },
+      "dialogText": "Checklist progress\n\nJSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。 · 1440 × 1000 px · 原 PNG 未编辑\n\n适应宽度\n关闭 · Esc\nSHA-256 fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1\n固定提交中的原图 ↗"
+    },
+    "desktop-filtered": {
+      "url": "$GALLERY_URL",
+      "status": "显示 1 / 60 项",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1425
+      },
+      "query": "checklist",
+      "cardText": "完整构造JSON清单 / 显式ID个人进度修复\n7d1f2fe4\nChecklist progress\n\nJSON显式ID清单调换顺序后，旧勾选不再错落到另一项；无关段落编辑仍保留个人进度\n\n预览已裁切 · 点击完整图\n\nJSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。\n\n验证边界\n固定6ca6基线；源码/ZIP88e7e64b，整份清单文字+顺序身份；red0/1→green1/0，charts7/CLI19/公共四阶段/ZIP通过；root同origin实际勾选重载/段落保留/重排重置，首次旧键进度一次性重置且原记录不删；不逐项迁移，源码变化不自动清勾，390px原有400px溢出保留，非审批/人类/效率结论\n\n固定提交说明 ↗\n分支 ↗",
+      "image": {
+        "width": 1440,
+        "height": 1000,
+        "sha256": "fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1",
+        "bytes": 67357
+      },
+      "links": [
+        "https://github.com/tt-a1i/archify/tree/7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5/experiments/checklist-progress",
+        "https://github.com/tt-a1i/archify/tree/codex/lab-checklist-progress/experiments/checklist-progress"
+      ]
+    },
+    "desktop-native": {
+      "open": true,
+      "dialogText": "Checklist progress\n\nJSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。 · 1440 × 1000 px · 原 PNG 未编辑\n\n适应宽度\n关闭 · Esc\nSHA-256 fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1\n固定提交中的原图 ↗",
+      "image": {
         "natural": [
-          0,
-          0
+          1440,
+          1000
         ],
-        "decoded": false,
-        "links": [
-          {
-            "text": "固定提交说明 ↗",
-            "href": "https://github.com/tt-a1i/archify/tree/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization"
-          },
-          {
-            "text": "分支 ↗",
-            "href": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-normalization/experiments/profile-normalization"
-          }
-        ],
-        "png": {
-          "bytes": 109862,
-          "sha256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457"
-        }
-      }
-    },
-    "mobile-dialog": {
-      "mobile": {
-        "viewport": [
-          390,
-          844
-        ],
-        "dialog": {
-          "open": true,
-          "rect": {
-            "x": 8,
-            "y": 8,
-            "width": 359,
-            "height": 828,
-            "top": 8,
-            "right": 367,
-            "bottom": 836,
-            "left": 8
-          }
-        },
-        "image": {
-          "natural": [
-            1440,
-            1000
-          ],
-          "rect": {
-            "x": 19,
-            "y": 189.7890625,
-            "width": 1440,
-            "height": 1000,
-            "top": 189.7890625,
-            "right": 1459,
-            "bottom": 1189.7890625,
-            "left": 19
-          }
-        },
-        "close": {
-          "x": 263.328125,
-          "y": 122.7890625,
-          "width": 90.671875,
-          "height": 44,
-          "top": 122.7890625,
-          "right": 354,
-          "bottom": 166.7890625,
-          "left": 263.328125
-        }
+        "rendered": [
+          1440,
+          1000
+        ]
       },
-      "returned": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "stage": {
+        "clientWidth": 1368,
+        "scrollWidth": 1480
+      },
+      "afterEscape": {
         "open": false,
-        "active": "查看 Profile normalization 完整原图"
+        "opener": true
       }
     },
-    "reset-observations": {
-      "empty": {
-        "status": "显示 0 / 59 项"
+    "mobile-fit": {
+      "url": "$GALLERY_URL",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 375
       },
-      "reset": {
-        "status": "显示 59 / 59 项",
+      "theme": "dark",
+      "open": true,
+      "status": "显示 1 / 60 项",
+      "image": {
+        "natural": [
+          1440,
+          1000
+        ],
+        "rendered": [
+          336.9921875,
+          234.0234375
+        ]
+      },
+      "stage": {
+        "clientWidth": 357,
+        "scrollWidth": 357
+      },
+      "dialogText": "Checklist progress\n\nJSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。 · 1440 × 1000 px · 原 PNG 未编辑\n\n原始尺寸\n关闭 · Esc\nSHA-256 fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1\n固定提交中的原图 ↗"
+    },
+    "final": {
+      "offline": {
+        "status": "显示 20 / 60 项",
         "query": ""
       },
-      "offline": {
-        "status": "显示 20 / 59 项"
-      },
       "final": {
-        "status": "显示 59 / 59 项",
+        "status": "显示 60 / 60 项",
         "query": "",
-        "dialog": false,
-        "theme": "light"
-      }
-    },
-    "root-observations": {
-      "kind": "root actual Ego gallery59 observations",
-      "date": "2026-10-28",
-      "taskSpace": 20,
-      "finished": "finish keep[] once after reset; no page kept",
-      "galleryHTMLSHA256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
-      "sourceHubCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
-      "newExperimentCommit": "b3c85c9656212a4ba83430844603334132f120a9",
-      "newImageSHA256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457",
-      "viewports": [
-        [
-          1440,
-          1000
-        ],
-        [
-          390,
-          844
-        ]
-      ],
-      "observed": [
-        "59/18/20/21 filters, Profile normalization search ->1/59, fixed commit and branch link targets point to published experiment.",
-        "Embedded original PNG SHA/109862B matches experiment. First extraction caught lazy image before decode (0x0/false); kept intermediate screenshot/JSON, waited for complete1440x1000 then final decoded screenshot.",
-        "Desktop original-size dialog displayed1440x1000 CSS image; Escape closed and returned exact new-card opener.",
-        "390 dark card and original-size dialog observed; header close visible/clickable, overflow retains original image dimensions. This is native scrollable original size, not fit-to-screen whole image.",
-        "Zero result0/59 -> reset59/59 with empty query; offline filter20/59; final all59/59, light, query empty, dialogclosed."
-      ],
-      "limits": [
-        "Only newly added card and affected shared controls exercised; prior58 browser evidence retains original gallery identity.",
-        "No new experiment data/CI/human usability claims from gallery. No touch or AT/full keyboard test.",
-        "All6 PNGs viewed by root agent, including initial predecode intermediate; final acceptance uses decoded image observation."
-      ],
-      "files": {
-        "desktop-decoded.json": {
-          "bytes": 94,
-          "sha256": "539850be7cffd75b3b573371c7e0ec742cadda2ec4333695c2d3233f1899023d"
-        },
-        "desktop-dialog.json": {
-          "bytes": 1402,
-          "sha256": "a255090f369da54c20a3c9061646c584b6413c395b18e4764e1ddc862b17a4d5"
-        },
-        "desktop-new-card-decoded.png": {
-          "bytes": 136243,
-          "sha256": "c447378e1df2dab0beadd2f25331258978ef26cfed142efd71196d6d9c015bb1"
-        },
-        "desktop-new-card.json": {
-          "bytes": 1648,
-          "sha256": "307223536a109a3d635112e667d150b9f6c2f21d23c26286c5dad3208b3af322"
-        },
-        "desktop-new-card.png": {
-          "bytes": 123631,
-          "sha256": "ae557a6d4b02d2fdcfd892747447ef7f058e7b51629ea0072901a26977d435d7"
-        },
-        "desktop-original-dialog.png": {
-          "bytes": 108269,
-          "sha256": "411aabdfc0ef74b8e2eb361056b8294fa2f5e96c37c066703619d9cf1c449a14"
-        },
-        "mobile-dark-card-visible.png": {
-          "bytes": 96839,
-          "sha256": "df54c4a14ad4a7d6f855f7985af7e7e15542094437af93912854d1b00d53873f"
-        },
-        "mobile-dark-card.png": {
-          "bytes": 87145,
-          "sha256": "3df9526daa4494c0de1115c71cf423be140bf60ea151667816972df8fe830169"
-        },
-        "mobile-dialog.json": {
-          "bytes": 897,
-          "sha256": "751767c668176f62e959d5e8360004a59a54dc294de743095a9dee4b4f71988f"
-        },
-        "mobile-original-dialog.png": {
-          "bytes": 55227,
-          "sha256": "a7373359514d8021538f5a75a374006fa2b8c44874e74a7e9d1b6dfbeeadea28"
-        },
-        "reset-observations.json": {
-          "bytes": 292,
-          "sha256": "276c418fc5541880a3c0c380fd985fafe26270fa4c8b580933a3134bc76283e2"
+        "dialogOpen": false,
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000,
+          "scrollWidth": 1425
         }
-      }
+      },
+      "automationNote": "Previous call stopped after filter reset because a CDP viewport change invalidated ref @55. Refreshed snapshot, continued via semantic button selectors; no page edit or alternate browser."
     }
   },
-  "historical58": {
-    "path": "browser-evidence58.json",
-    "bytes": 15765,
-    "sha256": "5646ed2b76ff71dbd3484ca7c9632646d8274c7b40c676a323b0b04023fefe35"
-  },
-  "remoteExperimentReceipt": {
-    "path": "../../2026-10-28/profile-normalization-remote.json",
-    "bytes": 712,
-    "sha256": "468307c70175df07795b12af3be77cbe762f2d313f33f45c1523828507bf3bc9"
+  "historical59": {
+    "path": "browser-evidence59.json",
+    "bytes": 16968,
+    "sha256": "1195cea97ba17fcb86ef6415e14f591305b22fe4e324684e54f8a112ecdb27e6"
   },
   "completion": {
-    "taskSpaceId": 20,
+    "taskSpaceId": 26,
     "finishCount": 1,
     "finished": true,
     "keep": [],
     "resumeAllowed": false,
-    "finalState": "All59/light/empty query/dialog closed after reset and offline20 checks."
+    "provenance": "Root task message; raw final.json independently records final page state.",
+    "finalState": "All60/light/empty query/dialog closed after offline20."
   },
-  "scope": "Only new profile-normalization card and affected shared controls. Previous58 complete item/card/PNG bytes and historical evidence unchanged.",
+  "scope": "Only new checklist card and related common controls. All old59 complete selection/item/card/PNG bytes and historical evidence preserved.",
+  "automationBoundary": "CDP viewport change invalidated ref@55; stopped after reset, then fresh snapshot plus semantic button selectors resumed. Retained in unchanged final.json; not a product failure.",
   "limits": [
-    "Initial desktop-new-card.png retains0x0 predecode state and is not a successful preview; decoded final capture separate.",
-    "Original-size native image overflow is preserved; no whole-image mobile fit, touch, AT or full-keyboard claim.",
-    "No previous58 experiment rerun, CI, human usability or speed result inferred.",
-    "Experimental publicFAIL164 and old658 Tab/legend-delta reuse remain separate from gallery observation."
+    "Six PNGs unedited. Root visual review explicitly reported for desktop-native only, not all six.",
+    "Only three JSON url fields replaced by$GALLERY_URL; all other bytes/values retained. Their raw originals remain external and are not published.",
+    "Original-size native overflow is not simultaneous whole-image mobile fit or complete keyboard/touch/AT acceptance.",
+    "No old59 experiment rerun, new CI, human acceptance, product release, installation or speed claim."
   ]
 }

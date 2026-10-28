@@ -29,9 +29,9 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前60版静态绑定；浏览器待本批观察
+## 当前60版静态绑定与实际浏览器观察
 
-固定sourceHub为 [`e21fb6f3c5a7a012688757ae89747cabae2b51c2`](https://github.com/tt-a1i/archify/blob/e21fb6f3c5a7a012688757ae89747cabae2b51c2/docs/research/2026-10-25/README.md)：**60项 / 60张原PNG，19产品交互 / 20离线适配 / 21内容示例**。固定README为75,604 bytes，SHA-256 `71133622646b8da5561253c192f1c2427b6e1e608481d16c9c1fefc36d6a6df9`。sourceHub先固定60行与本轮五报告，后续gallery artifact及交付文档分别记账；目前均为本地prepared阶段，未推送。
+固定sourceHub为 [`e21fb6f3c5a7a012688757ae89747cabae2b51c2`](https://github.com/tt-a1i/archify/blob/e21fb6f3c5a7a012688757ae89747cabae2b51c2/docs/research/2026-10-25/README.md)：**60项 / 60张原PNG，19产品交互 / 20离线适配 / 21内容示例**。固定README为75,604 bytes，SHA-256 `71133622646b8da5561253c192f1c2427b6e1e608481d16c9c1fefc36d6a6df9`。sourceHub先固定60行与本轮五报告；静态artifact `18cbf8ba17a2fcb729f324293959b8b370c82e59` 保留其形成时点。下述本批UI证据补齐后另作交付提交，最终push/readback记录与sourceHub、静态artifact分别记账，不自指本文件提交。
 
 第60项Checklist progress为product interaction。固定实验远端head `7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5`，产品修复/回归/ZIP提交 `88e7e64b8e5d8ae7bafd754e60ece33c5d59dd58`；base为6ca6。它修复JSON保留显式artifact/block ID却交换清单顺序时错项继承勾选的真实源码缺陷，使用完整构造输入复现，不称生产事故。新存储身份绑定整份清单文字及顺序：无关段落变化保留，重排/改字/增删整份清单重置；不猜逐项对应。旧存储键缺内容身份，首次新HTML一次性重置且旧记录不删除；已生成旧HTML需重新渲染，引用代码变化不会自动清勾，也不代表审批/测试/验收。
 
@@ -47,7 +47,19 @@ Node **22.23.3** 静态verify通过：60张嵌图摘要、60/19/20/21卡片与�
 - `manifest.json`：SHA-256 `7550e3a0b365c356dc487cf2dcb36a11f4036df8faf5f92bf51b417083ce31d9`
 - `selection.json`：SHA-256 `53abf221d26ad9e8ccd29161f5418517e6a7eb9a82c93a1c7b4e22a8bbae0791`
 
-60版静态产物冻结，root将在仍由其管理的TaskSpace26单独验收新gallery卡片并补本轮真实PNG/JSON。当前 `browser-evidence.json` 仍绑定历史59版，不作60版观察；gallery静态检查不代替布局、dialog焦点、触屏或AT/人类接受。持续探索保持已恢复状态，本任务未启动浏览器、新研究或额外产品测试。
+Root已在TaskSpace26实际操作冻结60版新卡和相关公共控件，finish keep=[]一次。本批 [screenshots60](screenshots60/)保存6张未编辑原PNG和6份观察JSON；**desktop-filtered、mobile-fit、mobile-native三份JSON仅将本机file URL字段替换为 `$GALLERY_URL`**，其余字段和值/字节不变，另三份JSON与全部PNG逐字复制。原件保留在外部目录；[本批编号绑定](browser-evidence60.json)与 [current evidence](browser-evidence.json)逐文件列原始/公开bytes、SHA及字段变换，不把三份派生JSON称为原始字节副本。
+
+桌面1440×1000搜索checklist得到1/60，直接解码原PNG为1440×1000、67357B、SHA fc2789…309ba1，与固定实验主图一致。原始尺寸实际显示1440×1000，stage client1368/scroll1480，保留原生overflow；Escape关闭并返回精确 `#checklist-progress .image-open`。root另外查看了 [desktop-native.png](screenshots60/desktop-native.png)；其他五张保存为实际截图，未补称root逐张视觉审阅。
+
+390×844暗色fit模式stage357/357，图像显示约336.99×234.02；native模式stage342/1460，图像仍1440×1000，两种模式可切换且关闭按钮实际成功。原尺寸是可滚动完整图，不等于移动整图同时fit，也不抵消实验自身400px横向溢出限制；不声称触屏或AT接受。
+
+![桌面原尺寸弹窗](screenshots60/desktop-native.png)
+
+[搜索新卡](screenshots60/desktop-filtered.png) · [390px适应宽度](screenshots60/mobile-fit.png) · [390px原尺寸overflow](screenshots60/mobile-native.png) · [空结果](screenshots60/empty.png) · [最终60项浅色](screenshots60/final.png)。图片实际尺寸均取IHDR，不由CSS viewport推断整图尺寸。
+
+空搜索0/60→清空→offline20/60→all60/60，最终light、空query、dialog closed。一次调用因CDP改viewport令旧ref @55失效，停在reset之后；随后按新snapshot用语义button selector恢复。该过程保留在 [final.json](screenshots60/final.json)，是自动化定位中断，不是产品失败，也没有页面修改或另开浏览器。TaskSpace26已finish keep=[]一次，不再使用。
+
+本轮只操作新增卡与相关公共控件，没有重跑旧59项实验/逐项图片交互，没有新CI、完整键盘/触摸/AT、人类或效率结论。root新卡操作与scoped静态核对分别记账；持续探索保持已恢复状态，最终交付head与远端精确readback由本轮提交/推送结果单列。
 
 ## 历史59版静态绑定与实际浏览器观察
 

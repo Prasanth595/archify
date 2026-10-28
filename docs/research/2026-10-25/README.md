@@ -26,7 +26,7 @@
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：59版已从固定sourceHub `c0d514eb4f393be46633ce4440d466bc8560fa52` 构建并完成root本批新卡Ego，18产品交互、20离线适配、21内容示例，HTML SHA-256 `780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846`。旧58项完整selection/item/card/PNG字节不变，历史证据原样保留。root观察分组标签与新query1/59，核原PNG摘要/bytes、桌面原尺寸/Escape回精确opener、390px暗色卡片与可见close实点/原生overflow、empty/reset/offline20，收尾all59/light/空query/dialog closed。首张lazy0×0图保留为中间结果，最终decode后图另存；6图均已查看，TaskSpace20已finish keep[]一次。sourceHub与gallery artifact仍prepared/local-bound，远端交付随后单列；没有新CI或全移动/AT/人类接受结论。
+[离线图片浏览页](gallery/README.md)：60版已按固定sourceHub `e21fb6f3c5a7a012688757ae89747cabae2b51c2` 构建并完成root本批新卡Ego，19产品交互、20离线适配、21内容示例，HTML SHA-256 `a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0`。原59项完整selection/item/card/PNG及历史证据原字节不变。root核checklist搜索1/60、原图摘要/1440×1000实际原尺寸/Escape回精确opener、390px dark fit与native overflow切换/关闭、empty→offline20→all60收尾；TaskSpace26已finish keep[]一次。6原PNG、3原字节JSON与3仅替换本机URL的派生JSON分别绑定，root视觉查看明确只记录desktop-native；viewport导致stale ref的自动化中断与语义selector恢复按原final观察保留。sourceHub、静态artifact18cb及本批最终交付提交分别记账，不新增实验/CI/触摸/AT或人类接受结论。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |

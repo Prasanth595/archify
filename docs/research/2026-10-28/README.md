@@ -210,4 +210,9 @@ source input阶段记录：实验总账已为59项（18产品/20离线/21内容�
 
 [主图](https://github.com/tt-a1i/archify/blob/7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5/experiments/checklist-progress/screenshots/candidate-reordered.png)原始1440×1000、67357B，SHA-256 `fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1`；candidate-reordered完整HTML136837B，SHA-256 `3e73d9a296d98d4b3d972a773de0613f611d26dd4f3bf87cbcc8036c1ee89663`。root逐项重核42个实验manifest文件和5个产品文件hash；该head实时check-runs=0、Actions runs=0，不是远端CI通过。实验工作区clean、临时依赖symlink已移除，无安装、合入、产品release或人类接受结论。
 
-实验总账60＝19产品/20离线/21内容；当前已交付gallery59仍保留固定身份。接下来只做60项sourceHub提交、静态追加和root新卡Ego，旧59的完整字段、卡片、PNG及历史证据保留原字节；sourceHub与后续gallery artifact提交分别固定。旧red原日志的两处尾空白按原字节保留，不为whitespace刷零改写证据。持续探索保持已恢复状态。
+source input阶段记录：实验总账60＝19产品/20离线/21内容，当时已交付gallery59仍保留固定身份；随后做60项sourceHub提交、静态追加和root新卡Ego，旧59的完整字段、卡片、PNG及历史证据保留原字节；sourceHub与后续gallery artifact提交分别固定。旧red原日志的两处尾空白按原字节保留，不为whitespace刷零改写证据。持续探索保持已恢复状态。
+
+
+第60项gallery本批已完成：固定sourceHub `e21fb6f3c5a7a012688757ae89747cabae2b51c2`、静态artifact `18cbf8ba17a2fcb729f324293959b8b370c82e59`，冻结index `a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0` / manifest `7550e3a0b365c356dc487cf2dcb36a11f4036df8faf5f92bf51b417083ce31d9`。root实际搜索checklist1/60，原PNG67357B/1440×1000/SHA fc2789…309ba1与固定实验一致；桌面原尺寸与Escape回精确opener，390px dark fit357/357和native342/1460可切换、关闭成功。empty0→清空→offline20→all60，最终浅色/空query/dialog closed，TaskSpace26 finish keep[]一次。
+
+[本批6PNG和6JSON](../2026-10-25/gallery/screenshots60/)分别记录图片原bytes、3份原字节JSON和3份只替换本机file URL的脱敏派生JSON，原始/公开hash和字段变换见gallery绑定。root明确查看desktop-native原图，未扩大为六图全部视觉审阅。CDP改viewport使旧ref @55失效，调用停在reset后，新snapshot语义button恢复，保留原final.json作为自动化过程边界，不记产品失败。旧59全部字段/卡片/PNG与历史证据不变；没有重跑产品套件、浏览器或新研究，交付commit/push/readback与sourceHub分别记账。
