@@ -1,0 +1,22 @@
+{
+  "scope": "Native Git observation plus research prose; no Archify product behavior changed",
+  "version": "git version 2.50.1 (Apple Git-155)",
+  "runs": 2,
+  "commandsPerRun": 71,
+  "expectedNonzero": "logging-ancestor exits1; all other commands exit0",
+  "upstreamSourceGitBlobsVerified": 4,
+  "localLinks": "new scout and packet README targets resolve",
+  "whitespace": {
+    "exitCode": 2,
+    "notices": 2,
+    "scope": "raw original native output preserved; authored prose/scripts checked separately"
+  },
+  "initialArchiveFailure": "Full GitHub search bodies exceeded OS argument length before process creation; compact derived inventory saved subsequently. No Git observation failure.",
+  "notRun": [
+    "application fixture code",
+    "upstream Git suite",
+    "Archify runtime tests",
+    "browser/screenshots",
+    "human reading comparison"
+  ]
+}

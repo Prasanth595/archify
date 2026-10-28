@@ -1,0 +1,190 @@
+{
+  "scope": "Batch32 changed files, excluding this manifest",
+  "files": [
+    {
+      "path": "docs/research/2026-10-26/README.md",
+      "bytes": 127400,
+      "sha256": "245cf88e774f4eafb22fbfef2b6f1b82551e45c813e988051817448d4a9d06dc"
+    },
+    {
+      "path": "docs/research/2026-10-26/scouts/range-diff-reading-round32.md",
+      "bytes": 4889,
+      "sha256": "e626ee68583de2dcb45313badfb56bcc3cd9f6c0313216650d8f290632b37c6f"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-dedup.json",
+      "bytes": 19214,
+      "sha256": "e9af4fb84a54c905761c1f0d3ced8e03731f9ffe63083c245ddf4505fbefc1b2"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/README.md",
+      "bytes": 3334,
+      "sha256": "07c02a89cb8543850e9a2f3f05c92d84a11531eea07c483aeee60cc5f635e928"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/copy-map.json",
+      "bytes": 1769,
+      "sha256": "c5609a25caa6a6f5e65f27611cb8b066b8d09439cd27964fd092de2fbfbb619f"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/identity.json",
+      "bytes": 743,
+      "sha256": "25f4acb26274996e43023cdc67f05bc51d0050b3307cbb6b15cf01bcd7187ec9"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/new-series.txt",
+      "bytes": 1510,
+      "sha256": "37b4319be1742a12f268c20249ce877e85e4aa10b6982bc75002efd422831249"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/old-series.txt",
+      "bytes": 1490,
+      "sha256": "91e4ea211a2bac33469ae6bc840449c31be322daec4e0ba11cc5ca8a62656b69"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/parents.txt",
+      "bytes": 792,
+      "sha256": "65b73c6f04761038b037cb70f01af21e69ea5b5e7ff4179f6378b6c4d15356b4"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/range-default.txt",
+      "bytes": 462,
+      "sha256": "79c27c3bd913c092c024898ef06e4c5748c5601c9e41d9f982cf6967f2446b4e"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/range-factor0.txt",
+      "bytes": 290,
+      "sha256": "6e4c43e1bab9ca50e0cd95b246d97f03b158de854faf9dc65625dc3961290781"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/range-message.txt",
+      "bytes": 256,
+      "sha256": "7856e9e248fa41d81abfffee8916fa67c5b33ea4054182f0b09ca4b470bb6905"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/base/worker.py",
+      "bytes": 186,
+      "sha256": "6ee3c6ea995f4c180e81a0fd4c11717fcf1bdcffebdd3d88078f3a37390c1b72"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/message-retry/worker.py",
+      "bytes": 186,
+      "sha256": "daae6e0417c3f5f1c0f90a131e6a3d7cbc111a5f974ac7f06288566f68e3521a"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-logging/logging.conf",
+      "bytes": 24,
+      "sha256": "d5c3f4b9539f064d89f62e03a92d7e7ac374b0123ba9138fa6711f1c34470d0c"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-logging/worker.py",
+      "bytes": 186,
+      "sha256": "6ee3c6ea995f4c180e81a0fd4c11717fcf1bdcffebdd3d88078f3a37390c1b72"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-retry/logging.conf",
+      "bytes": 24,
+      "sha256": "d5c3f4b9539f064d89f62e03a92d7e7ac374b0123ba9138fa6711f1c34470d0c"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-retry/worker.py",
+      "bytes": 186,
+      "sha256": "48d836cc961d1d988e73b93eb51414007fcc6de6f20cbc51007db3b82c2c8c50"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-tip/logging.conf",
+      "bytes": 24,
+      "sha256": "d5c3f4b9539f064d89f62e03a92d7e7ac374b0123ba9138fa6711f1c34470d0c"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-tip/metrics.conf",
+      "bytes": 29,
+      "sha256": "27cab58b26cb244643940e0b08924581009b8467c1e2027ac2f5a441dd5f3cd5"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/new-tip/worker.py",
+      "bytes": 186,
+      "sha256": "48d836cc961d1d988e73b93eb51414007fcc6de6f20cbc51007db3b82c2c8c50"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/old-logging/logging.conf",
+      "bytes": 24,
+      "sha256": "d5c3f4b9539f064d89f62e03a92d7e7ac374b0123ba9138fa6711f1c34470d0c"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/old-logging/worker.py",
+      "bytes": 186,
+      "sha256": "daae6e0417c3f5f1c0f90a131e6a3d7cbc111a5f974ac7f06288566f68e3521a"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/old-retry/worker.py",
+      "bytes": 186,
+      "sha256": "daae6e0417c3f5f1c0f90a131e6a3d7cbc111a5f974ac7f06288566f68e3521a"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/old-tip/NOTES.md",
+      "bytes": 34,
+      "sha256": "301d577fbd459cde81edf951f903d23bbc34abbf8eb5e4c2555c91e7556ba250"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/old-tip/logging.conf",
+      "bytes": 24,
+      "sha256": "d5c3f4b9539f064d89f62e03a92d7e7ac374b0123ba9138fa6711f1c34470d0c"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/snapshots/old-tip/worker.py",
+      "bytes": 186,
+      "sha256": "daae6e0417c3f5f1c0f90a131e6a3d7cbc111a5f974ac7f06288566f68e3521a"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/tip-diff.txt",
+      "bytes": 684,
+      "sha256": "f49bc65ab9f5b6207231703d1455433f7eaf95a1088578ba24ef4ca42755ef91"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/initial/transcript.jsonl",
+      "bytes": 57953,
+      "sha256": "c51cef7e212f2c944548658be6501e43487f5732dead16d77b8f42dba149e24a"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/replay/identity.json",
+      "bytes": 743,
+      "sha256": "25f4acb26274996e43023cdc67f05bc51d0050b3307cbb6b15cf01bcd7187ec9"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/replay/transcript.jsonl",
+      "bytes": 57949,
+      "sha256": "8f023417154dcf81fc11d758eb85f5909daef05a9b019291ddcdf0f522476d18"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/run.py",
+      "bytes": 5748,
+      "sha256": "3501bb6a347b6fe4ba273d94d7271b96cc29b9957733262d4d29347702cd2751"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/source-identities.json",
+      "bytes": 1485,
+      "sha256": "47a2b7d10561e7a39eb0bd378a31782eeb80388d9bb1bd359fd91acca9884b1f"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/verification.json",
+      "bytes": 363,
+      "sha256": "df3684901bd2268ec11be2d293461c41d2bfb6a47acd6c32d0a6d73b9df5ce88"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-range-diff-native/verify.py",
+      "bytes": 2360,
+      "sha256": "4ce308fe5babd450b26ef3a388797fb0a8030cf16aa553948a6647cf26fec72c"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-remote-heads.tsv",
+      "bytes": 26376,
+      "sha256": "165b073541d76565db691a00944dad99b8149a92b483c3c98fd74993c77b6474"
+    },
+    {
+      "path": "docs/research/2026-10-26/audit/round32-validation.json",
+      "bytes": 863,
+      "sha256": "7eb1bcd0f4acb537eae8fd4cc97abfa5be475f11be596b3877699b87390de62e"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+commit 84365c61c8ccd7f4adc04902416816fa59f5b415
+Author:     Archify Research <research@example.invalid>
+AuthorDate: Thu Oct 1 00:00:00 2026 +0000
+Commit:     Archify Research <research@example.invalid>
+CommitDate: Thu Oct 1 00:00:00 2026 +0000
+
+    Add logging configuration
+
+diff --git a/logging.conf b/logging.conf
+new file mode 100644
+index 000000000000..2aa1d2968c99
+--- /dev/null
++++ b/logging.conf
+@@ -0,0 +1,2 @@
++level=INFO
++format=plain
+
+commit 67fb4164d5ffead3fcff3db941b481575312033c
+Author:     Archify Research <research@example.invalid>
+AuthorDate: Thu Oct 1 00:00:00 2026 +0000
+Commit:     Archify Research <research@example.invalid>
+CommitDate: Thu Oct 1 00:00:00 2026 +0000
+
+    Limit retry attempts
+
+diff --git a/worker.py b/worker.py
+index 5994362cb9dd..f65668f18621 100644
+--- a/worker.py
++++ b/worker.py
+@@ -1,7 +1,7 @@
+ # Original synthetic review fixture; not executed application code.
+ def options():
+     return {
+-        "attempts": 1,
++        "attempts": 4,
+         "timeout_seconds": 10,
+         "backoff_seconds": 0,
+     }
+
+commit b47f26db89c5eba40ed9a2bf4ffbb31d0aaaf135
+Author:     Archify Research <research@example.invalid>
+AuthorDate: Thu Oct 1 00:00:00 2026 +0000
+Commit:     Archify Research <research@example.invalid>
+CommitDate: Thu Oct 1 00:00:00 2026 +0000
+
+    Add metrics configuration
+
+diff --git a/metrics.conf b/metrics.conf
+new file mode 100644
+index 000000000000..0ae617e356b5
+--- /dev/null
++++ b/metrics.conf
+@@ -0,0 +1,2 @@
++enabled=false
++format=counter

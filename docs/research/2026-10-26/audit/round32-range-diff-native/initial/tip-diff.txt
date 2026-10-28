@@ -1,0 +1,28 @@
+diff --git a/NOTES.md b/NOTES.md
+deleted file mode 100644
+index 0798eabf1ad1..000000000000
+--- a/NOTES.md
++++ /dev/null
+@@ -1 +0,0 @@
+-Review retry settings before use.
+diff --git a/metrics.conf b/metrics.conf
+new file mode 100644
+index 000000000000..0ae617e356b5
+--- /dev/null
++++ b/metrics.conf
+@@ -0,0 +1,2 @@
++enabled=false
++format=counter
+diff --git a/worker.py b/worker.py
+index 8eee3cc775be..f65668f18621 100644
+--- a/worker.py
++++ b/worker.py
+@@ -1,7 +1,7 @@
+ # Original synthetic review fixture; not executed application code.
+ def options():
+     return {
+-        "attempts": 3,
++        "attempts": 4,
+         "timeout_seconds": 10,
+         "backoff_seconds": 0,
+     }

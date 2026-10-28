@@ -718,3 +718,11 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 [Soufflé筛选](scouts/souffle-proof-reading-round31.md)核对既有JSON导出、深度限制与否定条件解释。一个关键边界是JSON的axiom字段同时用于普通叶子、折叠子证明和带失败标记的条件，不能按字段名全部绘为已成立事实。[17份完整上游来源](audit/round31-souffle-source/README.md)的Git blob／字节／SHA核对通过，expected JSON包含3个规则应用和3个叶子。这里是源码与expected检查，没有运行引擎或证明其当前部署行为。
 
 原生功能已能解答当前小例，泛化导入还需维护类型、深度、选择与多查询输出合同，本批暂缓新增适配器或内容实验。没有新图片、产品测试或新实验分支；只推研究总账，不创建PR。持续目标保持进行中。
+
+## 第32批：修订配对与提交身份的原生对照
+
+开始前刷新329个远程head，较第31批仅本研究分支更新；[有界检索](audit/round32-dedup.json)保留range-diff广义PR查询94条与title/body查询1条的区别，没有把广义命中掩盖为零。既有stacked-branch、diff-matches与checklist-progress不重复实现。
+
+[range-diff阅读研究](scouts/range-diff-reading-round32.md)在两个全新临时仓库实际运行原创fixture，各71条命令。原生输出显示logging从旧2移到新1并标为相同patch，但两份完整快照中的retry值不同；message-only控制标为修改，源码树却完全相同。creation-factor=0使修改patch的配对变成删除／新增，不能将启发式配对当作永久身份或自动继承已读状态。
+
+[完整原生观察包](audit/round32-range-diff-native/README.md)保留8个固定提交、全部输入快照、命令与输出字节、时长、许可来源和复现脚本。两次运行的8个提交身份及22份关键输出流逐字一致；没有执行应用代码、上游suite或真实rebase，也没有阅读效率结论。原生命令已经能回答本例，本批不新增parser、图形实验、图片或PR，只推研究分支。

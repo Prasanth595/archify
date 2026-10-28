@@ -1,0 +1,40 @@
+{
+  "rawCopies": [
+    {
+      "source": "/tmp/archify-round32-observation/logs/range-default.stdout",
+      "public": "initial/range-default.txt",
+      "sha256": "79c27c3bd913c092c024898ef06e4c5748c5601c9e41d9f982cf6967f2446b4e"
+    },
+    {
+      "source": "/tmp/archify-round32-observation/logs/range-factor0.stdout",
+      "public": "initial/range-factor0.txt",
+      "sha256": "6e4c43e1bab9ca50e0cd95b246d97f03b158de854faf9dc65625dc3961290781"
+    },
+    {
+      "source": "/tmp/archify-round32-observation/logs/range-message.stdout",
+      "public": "initial/range-message.txt",
+      "sha256": "7856e9e248fa41d81abfffee8916fa67c5b33ea4054182f0b09ca4b470bb6905"
+    },
+    {
+      "source": "/tmp/archify-round32-observation/logs/tip-diff.stdout",
+      "public": "initial/tip-diff.txt",
+      "sha256": "f49bc65ab9f5b6207231703d1455433f7eaf95a1088578ba24ef4ca42755ef91"
+    },
+    {
+      "source": "/tmp/archify-round32-observation/logs/old-series.stdout",
+      "public": "initial/old-series.txt",
+      "sha256": "91e4ea211a2bac33469ae6bc840449c31be322daec4e0ba11cc5ca8a62656b69"
+    },
+    {
+      "source": "/tmp/archify-round32-observation/logs/new-series.stdout",
+      "public": "initial/new-series.txt",
+      "sha256": "37b4319be1742a12f268c20249ce877e85e4aa10b6982bc75002efd422831249"
+    },
+    {
+      "source": "/tmp/archify-round32-observation/logs/parents.stdout",
+      "public": "initial/parents.txt",
+      "sha256": "65b73c6f04761038b037cb70f01af21e69ea5b5e7ff4179f6378b6c4d15356b4"
+    }
+  ],
+  "transcripts": "Derived lossless base64 packaging of every stdout/stderr byte with original command metadata. No timing or init-path normalization. Replay snapshots are reconstructible by run.py and Git IDs; initial full snapshots preserved."
+}

@@ -1,0 +1,54 @@
+commit ad6fcd172ffc9fe7765c34daa9bf139a2997485b
+Author:     Archify Research <research@example.invalid>
+AuthorDate: Thu Oct 1 00:00:00 2026 +0000
+Commit:     Archify Research <research@example.invalid>
+CommitDate: Thu Oct 1 00:00:00 2026 +0000
+
+    Limit retry attempts
+
+diff --git a/worker.py b/worker.py
+index 5994362cb9dd..8eee3cc775be 100644
+--- a/worker.py
++++ b/worker.py
+@@ -1,7 +1,7 @@
+ # Original synthetic review fixture; not executed application code.
+ def options():
+     return {
+-        "attempts": 1,
++        "attempts": 3,
+         "timeout_seconds": 10,
+         "backoff_seconds": 0,
+     }
+
+commit fc8783c32657d35056003e90cf69a5a96dcbe67d
+Author:     Archify Research <research@example.invalid>
+AuthorDate: Thu Oct 1 00:00:00 2026 +0000
+Commit:     Archify Research <research@example.invalid>
+CommitDate: Thu Oct 1 00:00:00 2026 +0000
+
+    Add logging configuration
+
+diff --git a/logging.conf b/logging.conf
+new file mode 100644
+index 000000000000..2aa1d2968c99
+--- /dev/null
++++ b/logging.conf
+@@ -0,0 +1,2 @@
++level=INFO
++format=plain
+
+commit ce04598052c79c1101799bcd81e8f11e5a9180e7
+Author:     Archify Research <research@example.invalid>
+AuthorDate: Thu Oct 1 00:00:00 2026 +0000
+Commit:     Archify Research <research@example.invalid>
+CommitDate: Thu Oct 1 00:00:00 2026 +0000
+
+    Add review note
+
+diff --git a/NOTES.md b/NOTES.md
+new file mode 100644
+index 000000000000..0798eabf1ad1
+--- /dev/null
++++ b/NOTES.md
+@@ -0,0 +1 @@
++Review retry settings before use.
