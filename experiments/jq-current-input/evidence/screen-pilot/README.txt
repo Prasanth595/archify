@@ -1,0 +1,1 @@
+Earlier exploratory screen: four queries using /usr/bin/jq -c -f /tmp/archify-round39-screen/<case>.jq /tmp/archify-round39-screen/input.json. These files retain the screen inputs and output streams. This is separate from the two fully recorded 9-command replays; timing and command metadata were not archived in this exploratory screen.

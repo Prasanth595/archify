@@ -1,0 +1,46 @@
+{
+  "heads": 332,
+  "archifyPR": {
+    "count": 0,
+    "items": []
+  },
+  "archifyIssue": {
+    "count": 1,
+    "items": [
+      {
+        "number": 48,
+        "title": "SKILL.md references four examples that are not shipped inside the skill",
+        "state": "closed",
+        "url": "https://github.com/tt-a1i/archify/issues/48"
+      }
+    ]
+  },
+  "failedUnqualifiedQuery": {
+    "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}",
+    "error_code": "INVALID_ARGUMENT",
+    "error_data": {
+      "message": "Query must include 'is:issue' or 'is:pull-request'",
+      "documentation_url": "https://docs.github.com/rest/search/search#search-issues-and-pull-requests",
+      "status": "422"
+    }
+  },
+  "taskView": {
+    "ref": "refs/heads/main",
+    "node_id": "REF_kwDOVVQxCa9yZWZzL2hlYWRzL21haW4",
+    "url": "https://api.github.com/repos/gtindo/task-view/git/refs/heads/main",
+    "object": {
+      "sha": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+      "type": "commit",
+      "url": "https://api.github.com/repos/gtindo/task-view/git/commits/a3fa21767bfaeb3077fdda08bddb7249366caa93"
+    }
+  },
+  "historicalMotivation": {
+    "url": "https://github.com/jqlang/jq/issues/1326",
+    "title": "Documentation/Feature request: Clarify expressions/scope",
+    "state": "open",
+    "created_at": "2017-01-27T23:10:28Z",
+    "updated_at": "2017-02-15T05:40:13Z",
+    "quote": "what does the filter `.` return?",
+    "note": "Historical motivation, not current incidence or language specification; use pinned manual for semantics."
+  }
+}

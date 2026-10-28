@@ -1,0 +1,126 @@
+CODE [ '.owners as $owners | .jobs[] | {job: .id, owner: $owners[.owner]}', '.owners | .jobs[]', '.jobs[] as $job | {job: $job.id, owner: .owners[$job.owner]}', '.jobs[] | {job: .id, owner: .owners[.owner]}', 'python3 experiments/jq-current-input/fixtures/reproduce.py /tmp/jq-context-fresh' ]
+[p1 "jq 的 `.` 此刻指向谁？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "jq 的 `.` 此刻指向谁？ · Archify"]
+root
+  container
+    container
+      container
+        anchor "相同输出，也可能经过不同上下文" [ref=510, loc=css:a[aria-label="相同输出，也可能经过不同上下文"], url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#results]
+          text "3"
+        heading
+          text "相同输出，也可能经过不同上下文"
+        button [ref=511]
+          text "追问"
+      container
+        paragraph
+          text "“构造前当前值”来自查询中手工插入的观测点。这里比较 JSON 值，不推断对象身份或内存复制。"
+          anchor [ref=512, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-run]
+            text "1"
+        table
+          table_row
+            table_cell
+              text "查询"
+            table_cell
+              text "构造前当前值"
+            table_cell
+              text "可用的绑定"
+            table_cell
+              text "owner 输出"
+            table_cell
+              text "退出码"
+          table_row
+            table_cell
+              text "A"
+            table_cell
+              text "每次一项 job"
+            table_cell
+              text "$owners 映射"
+            table_cell
+              text "Mina、Bo"
+            table_cell
+              text "0"
+          table_row
+            table_cell
+              text "B"
+            table_cell
+              text "未进入构造；当前值已变成 owners 映射"
+            table_cell
+              text "无"
+            table_cell
+              text "无输出"
+            table_cell
+              text "5"
+          table_row
+            table_cell
+              text "C"
+            table_cell
+              text "整份"
+              text "root"
+              text "，观测两次"
+            table_cell
+              text "每次一项 $job"
+            table_cell
+              text "Mina、Bo"
+            table_cell
+              text "0"
+          table_row
+            table_cell
+              text "D"
+            table_cell
+              text "每次一项 job"
+            table_cell
+              text "无"
+            table_cell
+              text "null、null"
+            table_cell
+              text "0"
+        container
+          heading
+            text "退出成功，不等于字段读对了"
+          paragraph
+            text "D 中 .owners[.owner] 是从当前 job 查映射。当前 job 没有 owners；本次两个结果的 owner 都为 null。"
+    container
+      container
+        anchor "怎样复核这张图？" [ref=513, loc=css:a[aria-label="怎样复核这张图？"], url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#verify]
+          text "4"
+        heading
+          text "怎样复核这张图？"
+        button [ref=514]
+          text "追问"
+      container
+        unordered_list
+          list_item
+            checkbox [ref=515]
+            container
+              text "对照完整输入，确认 owners 与"
+              text "jobs"
+              text "位于同一层。"
+          list_item
+            checkbox [ref=516]
+            text "对照每组 plain 与 marked 输出；两者的 stdout 和退出码一致。"
+          list_item
+            checkbox [ref=517]
+            text "打开 observed.json，区分 current 值和额外绑定的变量。"
+          list_item
+            checkbox [ref=518]
+            text "将原生输出与图中的 A、B、C、D 逐项对应。"
+        container
+          container
+            container
+              text "在新目录重放四组查询"
+              text "sh"
+            button [ref=519]
+              text "复制"
+          text "python3 experiments/jq-current-input/fixtures/reproduce.py /tmp/jq-context-fresh"
+        paragraph
+          text "两次回放各运行 9 次命令、记录 18 个观测值。脚本只运行本机 jq；没有执行 jnv、jqp、jaq 或 gojq。没有测量读者理解率或阅读速度。"
+          anchor [ref=520, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-run]
+            text "1"
+        paragraph
+          text "任务与负责人数据改编自 jq 手册的文章与作者例子，并增加三组对照及观测点。手册作者为 Stephen Dolan 与 jq contributors，文档采用"
+          anchor [ref=521, loc=href:https://creativecommons.org/licenses/by/3.0/, url=https://creativecommons.org/licenses/by/3.0/]
+            text "CC BY 3.0"
+          text "。"
+          anchor [ref=522, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-manual]
+            text "2"
+
+

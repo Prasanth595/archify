@@ -33,4 +33,25 @@ All nine upstream files are complete and byte-verified against Git blob identiti
 
 Accept only a fixed teaching artifact using existing Archify capabilities. Defer a generic step evaluator, query editor, engine adapter, and automatic trace importer: each needs language semantics and engine/version compatibility beyond these four cases. The manual plus native diagnostics is the lower-cost baseline. The artifact's additional value is a visible current-input comparison, not a demonstrated improvement over that baseline.
 
-No installation, publication, PR, or merge is part of this experiment. The authorized delivery is an isolated `codex/` remote branch.
+No live installation, release, site publication, PR, or merge is part of this experiment. The authorized delivery is an isolated `codex/` remote branch.
+
+## Artifact and visual verification
+
+Open [explanation.html](explanation.html), or serve the checkout with an existing Python HTTP server. The authoritative source is `candidate.explainer.json`. Regenerate with an existing compatible Archify development environment and Node 22:
+
+```sh
+node archify/bin/archify.mjs finalize explainer experiments/jq-current-input/candidate.explainer.json experiments/jq-current-input/explanation.html --repo-root . --json
+python3 experiments/jq-current-input/audit.py
+```
+
+The first Markdown draft compiled successfully. Its default workflow legend called the value nodes “Agent logic”; this was misleading for the query comparison. The final JSON uses the existing per-artifact legend override “输入与结果”, removes decorative icons, and labels lanes A/B. No renderer or default was changed. Both first-draft writing warnings were resolved; the initial Markdown, HTML, receipts and two screenshots remain in `evidence/`.
+
+Final validate/deliver/check all passed, with no diagnostics. Explainer's automated browser gate is **not run**. Separately, six retained Ego scripts visited the actual generated HTML, inspected all six guided steps and their matching highlighted node IDs, ended the tour, opened the full native diagram, checked the corrected legend, read the pinned input source card, inspected all four queries and the four-row result table, and switched themes. All 13 PNGs were visually inspected. These are artifact checks, not proof of reader comprehension or an upstream TUI test.
+
+At 1440×900 the diagram and its labels fit, and the code/table are readable. The sixth step's description is below the initial fold; it requires scrolling. At 390×844, page scroll width remains 390; the diagram thumbnail is small and the 544px table requires horizontal scrolling. The full narrow interaction path was not accepted or tested. See `evidence/visual-review.json` for the exact observations.
+
+Initial remote inventory contained 332 heads. Neither research hub had jq/jnv/jqp findings under the bounded searches. The issue search matched closed #48 solely because its reproduction uses `gh --jq`; it concerns missing packaged examples and does not duplicate this context-reading experiment. The corresponding jq PR query found no matches. One unqualified search was rejected with HTTP 422; that failure and the corrected query are retained. Task-view remains at `a3fa21767bfaeb3077fdda08bddb7249366caa93`; existing task-view work is not repeated.
+
+![Actual generated diagram with corrected legend](evidence/native-modal.png)
+
+![Observed results compared on the generated page](evidence/result-table.png)

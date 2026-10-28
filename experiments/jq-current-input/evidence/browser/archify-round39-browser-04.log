@@ -1,0 +1,218 @@
+STEP 1 { progress: [ '1 / 6' ], nodes: [ { text: '\n          整份输入 · 查询 A：绑定\n          \n          \n          \n          整份输入\n        ', attributes: { id: 'preview-context-flow-node-root', 'data-node-id': 'root', 'data-node-label': '整份输入', 'aria-label': '聚焦整份输入，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source reader-highlight' } }, { text: '\n          绑定后仍是 root · 查询 A：绑定\n          \n          \n          \n          绑定后仍是 root\n    ', attributes: { id: 'preview-context-flow-node-kept', 'data-node-id': 'kept', 'data-node-label': '绑定后仍是 root', 'aria-label': '聚焦绑定后仍是 root，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          每次一项 job · 查询 A：绑定\n          \n          \n          \n          每次一项 job\n        ', attributes: { id: 'preview-context-flow-node-jobs', 'data-node-id': 'jobs', 'data-node-label': '每次一项 job', 'aria-label': '聚焦每次一项 job，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          Mina 与 Bo · 查询 A：绑定\n          \n          \n          \n          Mina 与 Bo\n      ', attributes: { id: 'preview-context-flow-node-names', 'data-node-id': 'names', 'data-node-label': 'Mina 与 Bo', 'aria-label': '聚焦Mina 与 Bo，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          管道后仅有 owners · 查询 B：管道\n          \n          \n          \n          管道后仅有 owners\n', attributes: { id: 'preview-context-flow-node-replaced', 'data-node-id': 'replaced', 'data-node-label': '管道后仅有 owners', 'aria-label': '聚焦管道后仅有 owners，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          无 jobs，报错 · 查询 B：管道\n          \n          \n          \n          无 jobs，报错\n      ', attributes: { id: 'preview-context-flow-node-fail', 'data-node-id': 'fail', 'data-node-label': '无 jobs，报错', 'aria-label': '聚焦无 jobs，报错，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          \n          变量查表\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'jobs', 'data-edge-to': 'names', 'data-edge-label': '变量查表', 'data-edge-key': '0', 'data-edge-id': 'jobs-to-names-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'kept', 'data-edge-to': 'jobs', 'data-edge-label': '.jobs[]', 'data-edge-key': '1', 'data-edge-id': 'kept-to-jobs-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'replaced', 'data-edge-to': 'fail', 'data-edge-label': '.jobs[]', 'data-edge-key': '2', 'data-edge-id': 'replaced-to-fail-1' } }, { text: '\n          \n          as\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'kept', 'data-edge-label': 'as', 'data-edge-key': '3', 'data-edge-id': 'root-to-kept-1' } }, { text: '\n          \n          管道\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'replaced', 'data-edge-label': '管道', 'data-edge-key': '4', 'data-edge-id': 'root-to-replaced-1' } }, { text: '\n          图例\n          \n            \n            输入与结果\n          \n        ', attributes: { 'data-legend': '', 'data-legend-bridge': '' } }, { text: '\n            \n            输入与结果\n          ', attributes: { 'data-legend-semantic-kind': 'backend', 'data-legend-kind': 'backend', 'data-legend-label': '输入与结果', 'data-legend-x': '20', 'data-legend-baseline': '324', 'data-legend-width': '90' } } ] }
+STEP 2 { progress: [ '2 / 6' ], nodes: [ { text: '\n          整份输入 · 查询 A：绑定\n          \n          \n          \n          整份输入\n        ', attributes: { id: 'preview-context-flow-node-root', 'data-node-id': 'root', 'data-node-label': '整份输入', 'aria-label': '聚焦整份输入，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          绑定后仍是 root · 查询 A：绑定\n          \n          \n          \n          绑定后仍是 root\n    ', attributes: { id: 'preview-context-flow-node-kept', 'data-node-id': 'kept', 'data-node-label': '绑定后仍是 root', 'aria-label': '聚焦绑定后仍是 root，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source reader-highlight' } }, { text: '\n          每次一项 job · 查询 A：绑定\n          \n          \n          \n          每次一项 job\n        ', attributes: { id: 'preview-context-flow-node-jobs', 'data-node-id': 'jobs', 'data-node-label': '每次一项 job', 'aria-label': '聚焦每次一项 job，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          Mina 与 Bo · 查询 A：绑定\n          \n          \n          \n          Mina 与 Bo\n      ', attributes: { id: 'preview-context-flow-node-names', 'data-node-id': 'names', 'data-node-label': 'Mina 与 Bo', 'aria-label': '聚焦Mina 与 Bo，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          管道后仅有 owners · 查询 B：管道\n          \n          \n          \n          管道后仅有 owners\n', attributes: { id: 'preview-context-flow-node-replaced', 'data-node-id': 'replaced', 'data-node-label': '管道后仅有 owners', 'aria-label': '聚焦管道后仅有 owners，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          无 jobs，报错 · 查询 B：管道\n          \n          \n          \n          无 jobs，报错\n      ', attributes: { id: 'preview-context-flow-node-fail', 'data-node-id': 'fail', 'data-node-label': '无 jobs，报错', 'aria-label': '聚焦无 jobs，报错，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          \n          变量查表\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'jobs', 'data-edge-to': 'names', 'data-edge-label': '变量查表', 'data-edge-key': '0', 'data-edge-id': 'jobs-to-names-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'kept', 'data-edge-to': 'jobs', 'data-edge-label': '.jobs[]', 'data-edge-key': '1', 'data-edge-id': 'kept-to-jobs-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'replaced', 'data-edge-to': 'fail', 'data-edge-label': '.jobs[]', 'data-edge-key': '2', 'data-edge-id': 'replaced-to-fail-1' } }, { text: '\n          \n          as\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'kept', 'data-edge-label': 'as', 'data-edge-key': '3', 'data-edge-id': 'root-to-kept-1' } }, { text: '\n          \n          管道\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'replaced', 'data-edge-label': '管道', 'data-edge-key': '4', 'data-edge-id': 'root-to-replaced-1' } }, { text: '\n          图例\n          \n            \n            输入与结果\n          \n        ', attributes: { 'data-legend': '', 'data-legend-bridge': '' } }, { text: '\n            \n            输入与结果\n          ', attributes: { 'data-legend-semantic-kind': 'backend', 'data-legend-kind': 'backend', 'data-legend-label': '输入与结果', 'data-legend-x': '20', 'data-legend-baseline': '324', 'data-legend-width': '90' } } ] }
+STEP 3 { progress: [ '3 / 6' ], nodes: [ { text: '\n          整份输入 · 查询 A：绑定\n          \n          \n          \n          整份输入\n        ', attributes: { id: 'preview-context-flow-node-root', 'data-node-id': 'root', 'data-node-label': '整份输入', 'aria-label': '聚焦整份输入，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          绑定后仍是 root · 查询 A：绑定\n          \n          \n          \n          绑定后仍是 root\n    ', attributes: { id: 'preview-context-flow-node-kept', 'data-node-id': 'kept', 'data-node-label': '绑定后仍是 root', 'aria-label': '聚焦绑定后仍是 root，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          每次一项 job · 查询 A：绑定\n          \n          \n          \n          每次一项 job\n        ', attributes: { id: 'preview-context-flow-node-jobs', 'data-node-id': 'jobs', 'data-node-label': '每次一项 job', 'aria-label': '聚焦每次一项 job，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source reader-highlight' } }, { text: '\n          Mina 与 Bo · 查询 A：绑定\n          \n          \n          \n          Mina 与 Bo\n      ', attributes: { id: 'preview-context-flow-node-names', 'data-node-id': 'names', 'data-node-label': 'Mina 与 Bo', 'aria-label': '聚焦Mina 与 Bo，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          管道后仅有 owners · 查询 B：管道\n          \n          \n          \n          管道后仅有 owners\n', attributes: { id: 'preview-context-flow-node-replaced', 'data-node-id': 'replaced', 'data-node-label': '管道后仅有 owners', 'aria-label': '聚焦管道后仅有 owners，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          无 jobs，报错 · 查询 B：管道\n          \n          \n          \n          无 jobs，报错\n      ', attributes: { id: 'preview-context-flow-node-fail', 'data-node-id': 'fail', 'data-node-label': '无 jobs，报错', 'aria-label': '聚焦无 jobs，报错，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          \n          变量查表\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'jobs', 'data-edge-to': 'names', 'data-edge-label': '变量查表', 'data-edge-key': '0', 'data-edge-id': 'jobs-to-names-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'kept', 'data-edge-to': 'jobs', 'data-edge-label': '.jobs[]', 'data-edge-key': '1', 'data-edge-id': 'kept-to-jobs-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'replaced', 'data-edge-to': 'fail', 'data-edge-label': '.jobs[]', 'data-edge-key': '2', 'data-edge-id': 'replaced-to-fail-1' } }, { text: '\n          \n          as\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'kept', 'data-edge-label': 'as', 'data-edge-key': '3', 'data-edge-id': 'root-to-kept-1' } }, { text: '\n          \n          管道\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'replaced', 'data-edge-label': '管道', 'data-edge-key': '4', 'data-edge-id': 'root-to-replaced-1' } }, { text: '\n          图例\n          \n            \n            输入与结果\n          \n        ', attributes: { 'data-legend': '', 'data-legend-bridge': '' } }, { text: '\n            \n            输入与结果\n          ', attributes: { 'data-legend-semantic-kind': 'backend', 'data-legend-kind': 'backend', 'data-legend-label': '输入与结果', 'data-legend-x': '20', 'data-legend-baseline': '324', 'data-legend-width': '90' } } ] }
+STEP 4 { progress: [ '4 / 6' ], nodes: [ { text: '\n          整份输入 · 查询 A：绑定\n          \n          \n          \n          整份输入\n        ', attributes: { id: 'preview-context-flow-node-root', 'data-node-id': 'root', 'data-node-label': '整份输入', 'aria-label': '聚焦整份输入，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          绑定后仍是 root · 查询 A：绑定\n          \n          \n          \n          绑定后仍是 root\n    ', attributes: { id: 'preview-context-flow-node-kept', 'data-node-id': 'kept', 'data-node-label': '绑定后仍是 root', 'aria-label': '聚焦绑定后仍是 root，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          每次一项 job · 查询 A：绑定\n          \n          \n          \n          每次一项 job\n        ', attributes: { id: 'preview-context-flow-node-jobs', 'data-node-id': 'jobs', 'data-node-label': '每次一项 job', 'aria-label': '聚焦每次一项 job，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          Mina 与 Bo · 查询 A：绑定\n          \n          \n          \n          Mina 与 Bo\n      ', attributes: { id: 'preview-context-flow-node-names', 'data-node-id': 'names', 'data-node-label': 'Mina 与 Bo', 'aria-label': '聚焦Mina 与 Bo，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source reader-highlight' } }, { text: '\n          管道后仅有 owners · 查询 B：管道\n          \n          \n          \n          管道后仅有 owners\n', attributes: { id: 'preview-context-flow-node-replaced', 'data-node-id': 'replaced', 'data-node-label': '管道后仅有 owners', 'aria-label': '聚焦管道后仅有 owners，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          无 jobs，报错 · 查询 B：管道\n          \n          \n          \n          无 jobs，报错\n      ', attributes: { id: 'preview-context-flow-node-fail', 'data-node-id': 'fail', 'data-node-label': '无 jobs，报错', 'aria-label': '聚焦无 jobs，报错，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          \n          变量查表\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'jobs', 'data-edge-to': 'names', 'data-edge-label': '变量查表', 'data-edge-key': '0', 'data-edge-id': 'jobs-to-names-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'kept', 'data-edge-to': 'jobs', 'data-edge-label': '.jobs[]', 'data-edge-key': '1', 'data-edge-id': 'kept-to-jobs-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'replaced', 'data-edge-to': 'fail', 'data-edge-label': '.jobs[]', 'data-edge-key': '2', 'data-edge-id': 'replaced-to-fail-1' } }, { text: '\n          \n          as\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'kept', 'data-edge-label': 'as', 'data-edge-key': '3', 'data-edge-id': 'root-to-kept-1' } }, { text: '\n          \n          管道\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'replaced', 'data-edge-label': '管道', 'data-edge-key': '4', 'data-edge-id': 'root-to-replaced-1' } }, { text: '\n          图例\n          \n            \n            输入与结果\n          \n        ', attributes: { 'data-legend': '', 'data-legend-bridge': '' } }, { text: '\n            \n            输入与结果\n          ', attributes: { 'data-legend-semantic-kind': 'backend', 'data-legend-kind': 'backend', 'data-legend-label': '输入与结果', 'data-legend-x': '20', 'data-legend-baseline': '324', 'data-legend-width': '90' } } ] }
+STEP 5 { progress: [ '5 / 6' ], nodes: [ { text: '\n          整份输入 · 查询 A：绑定\n          \n          \n          \n          整份输入\n        ', attributes: { id: 'preview-context-flow-node-root', 'data-node-id': 'root', 'data-node-label': '整份输入', 'aria-label': '聚焦整份输入，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          绑定后仍是 root · 查询 A：绑定\n          \n          \n          \n          绑定后仍是 root\n    ', attributes: { id: 'preview-context-flow-node-kept', 'data-node-id': 'kept', 'data-node-label': '绑定后仍是 root', 'aria-label': '聚焦绑定后仍是 root，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          每次一项 job · 查询 A：绑定\n          \n          \n          \n          每次一项 job\n        ', attributes: { id: 'preview-context-flow-node-jobs', 'data-node-id': 'jobs', 'data-node-label': '每次一项 job', 'aria-label': '聚焦每次一项 job，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          Mina 与 Bo · 查询 A：绑定\n          \n          \n          \n          Mina 与 Bo\n      ', attributes: { id: 'preview-context-flow-node-names', 'data-node-id': 'names', 'data-node-label': 'Mina 与 Bo', 'aria-label': '聚焦Mina 与 Bo，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          管道后仅有 owners · 查询 B：管道\n          \n          \n          \n          管道后仅有 owners\n', attributes: { id: 'preview-context-flow-node-replaced', 'data-node-id': 'replaced', 'data-node-label': '管道后仅有 owners', 'aria-label': '聚焦管道后仅有 owners，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source reader-highlight' } }, { text: '\n          无 jobs，报错 · 查询 B：管道\n          \n          \n          \n          无 jobs，报错\n      ', attributes: { id: 'preview-context-flow-node-fail', 'data-node-id': 'fail', 'data-node-label': '无 jobs，报错', 'aria-label': '聚焦无 jobs，报错，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          \n          变量查表\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'jobs', 'data-edge-to': 'names', 'data-edge-label': '变量查表', 'data-edge-key': '0', 'data-edge-id': 'jobs-to-names-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'kept', 'data-edge-to': 'jobs', 'data-edge-label': '.jobs[]', 'data-edge-key': '1', 'data-edge-id': 'kept-to-jobs-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'replaced', 'data-edge-to': 'fail', 'data-edge-label': '.jobs[]', 'data-edge-key': '2', 'data-edge-id': 'replaced-to-fail-1' } }, { text: '\n          \n          as\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'kept', 'data-edge-label': 'as', 'data-edge-key': '3', 'data-edge-id': 'root-to-kept-1' } }, { text: '\n          \n          管道\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'replaced', 'data-edge-label': '管道', 'data-edge-key': '4', 'data-edge-id': 'root-to-replaced-1' } }, { text: '\n          图例\n          \n            \n            输入与结果\n          \n        ', attributes: { 'data-legend': '', 'data-legend-bridge': '' } }, { text: '\n            \n            输入与结果\n          ', attributes: { 'data-legend-semantic-kind': 'backend', 'data-legend-kind': 'backend', 'data-legend-label': '输入与结果', 'data-legend-x': '20', 'data-legend-baseline': '324', 'data-legend-width': '90' } } ] }
+STEP 6 { progress: [ '6 / 6' ], nodes: [ { text: '\n          整份输入 · 查询 A：绑定\n          \n          \n          \n          整份输入\n        ', attributes: { id: 'preview-context-flow-node-root', 'data-node-id': 'root', 'data-node-label': '整份输入', 'aria-label': '聚焦整份输入，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          绑定后仍是 root · 查询 A：绑定\n          \n          \n          \n          绑定后仍是 root\n    ', attributes: { id: 'preview-context-flow-node-kept', 'data-node-id': 'kept', 'data-node-label': '绑定后仍是 root', 'aria-label': '聚焦绑定后仍是 root，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          每次一项 job · 查询 A：绑定\n          \n          \n          \n          每次一项 job\n        ', attributes: { id: 'preview-context-flow-node-jobs', 'data-node-id': 'jobs', 'data-node-label': '每次一项 job', 'aria-label': '聚焦每次一项 job，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          Mina 与 Bo · 查询 A：绑定\n          \n          \n          \n          Mina 与 Bo\n      ', attributes: { id: 'preview-context-flow-node-names', 'data-node-id': 'names', 'data-node-label': 'Mina 与 Bo', 'aria-label': '聚焦Mina 与 Bo，查询 A：绑定', 'data-node-kind': 'backend', 'data-node-context': '查询 A：绑定', class: 'has-source' } }, { text: '\n          管道后仅有 owners · 查询 B：管道\n          \n          \n          \n          管道后仅有 owners\n', attributes: { id: 'preview-context-flow-node-replaced', 'data-node-id': 'replaced', 'data-node-label': '管道后仅有 owners', 'aria-label': '聚焦管道后仅有 owners，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source' } }, { text: '\n          无 jobs，报错 · 查询 B：管道\n          \n          \n          \n          无 jobs，报错\n      ', attributes: { id: 'preview-context-flow-node-fail', 'data-node-id': 'fail', 'data-node-label': '无 jobs，报错', 'aria-label': '聚焦无 jobs，报错，查询 B：管道', 'data-node-kind': 'backend', 'data-node-context': '查询 B：管道', class: 'has-source reader-highlight' } }, { text: '\n          \n          变量查表\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'jobs', 'data-edge-to': 'names', 'data-edge-label': '变量查表', 'data-edge-key': '0', 'data-edge-id': 'jobs-to-names-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'kept', 'data-edge-to': 'jobs', 'data-edge-label': '.jobs[]', 'data-edge-key': '1', 'data-edge-id': 'kept-to-jobs-1' } }, { text: '\n          \n          .jobs[]\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'replaced', 'data-edge-to': 'fail', 'data-edge-label': '.jobs[]', 'data-edge-key': '2', 'data-edge-id': 'replaced-to-fail-1' } }, { text: '\n          \n          as\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'kept', 'data-edge-label': 'as', 'data-edge-key': '3', 'data-edge-id': 'root-to-kept-1' } }, { text: '\n          \n          管道\n        ', attributes: { 'data-detail': 'context', 'data-edge-from': 'root', 'data-edge-to': 'replaced', 'data-edge-label': '管道', 'data-edge-key': '4', 'data-edge-id': 'root-to-replaced-1' } }, { text: '\n          图例\n          \n            \n            输入与结果\n          \n        ', attributes: { 'data-legend': '', 'data-legend-bridge': '' } }, { text: '\n            \n            输入与结果\n          ', attributes: { 'data-legend-semantic-kind': 'backend', 'data-legend-kind': 'backend', 'data-legend-label': '输入与结果', 'data-legend-x': '20', 'data-legend-baseline': '324', 'data-legend-width': '90' } } ] }
+[p1 "jq 的 `.` 此刻指向谁？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "jq 的 `.` 此刻指向谁？ · Archify"]
+root
+  container
+    heading
+      text "jq 的 `.` 此刻指向谁？"
+    button [ref=470]
+      text "系统"
+    button [ref=471]
+      text "浅色"
+    button [ref=472]
+      text "深色"
+    button "样式" [ref=473, loc=css:button[aria-label="样式"]]
+      text "简洁"
+      svg_root
+    button [ref=474]
+      svg_root
+      text "导出"
+      svg_root
+  container
+    container
+      container
+        text "答"
+        heading
+          text "结论"
+        button [ref=475]
+          text "追问"
+      paragraph
+        text "as"
+        text "绑定一个值后，后续表达式仍接收绑定前的输入。普通管道则把左侧输出传给右侧。找不到负责人时，先检查"
+        text "."
+        text "指向谁。"
+      ordered_list
+        list_item
+          text "1"
+          text "两种正确写法输出相同，但构造结果前的"
+          text "."
+          text "不同。"
+          anchor [ref=476, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-run]
+            text "1"
+        list_item
+          text "2"
+          text "错误写法也可能退出成功，却把负责人变成"
+          text "null"
+          text "。"
+          anchor [ref=477, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-run]
+            text "1"
+        list_item
+          text "3"
+          text "jq 手册已经解释这条规则；下图把四组观测放在一起。"
+          anchor [ref=478, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-manual]
+            text "2"
+      paragraph
+        text "适用于"
+        text "四组固定查询"
+        text "jq-1.7.1-apple"
+        text "手工观测点"
+    container
+      container
+        anchor "A 与 B：同一份输入，两次独立运行" [ref=479, loc=css:a[aria-label="A 与 B：同一份输入，两次独立运行"], url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#contrast]
+          text "1"
+        heading
+          text "A 与 B：同一份输入，两次独立运行"
+        button [ref=480]
+          text "追问"
+      container
+        text "绑定保留输入，管道替换输入"
+        button [ref=481]
+          svg_root
+          text "打开交互图"
+        image "绑定保留输入，管道替换输入"
+          image "整份输入 绑定后仍是 root 每次一项 job Mina 与 Bo 管道后仅有 owners 无 jobs，报错 变量查表 .jobs[] .jobs[] as 管道 图例 输入与结果"
+            text "整份输入"
+            text "绑定后仍是 root"
+            text "每次一项 job"
+            text "Mina 与 Bo"
+            text "管道后仅有 owners"
+            text "无 jobs，报错"
+            text "变量查表"
+            text ".jobs[]"
+            text ".jobs[]"
+            text "as"
+            text "管道"
+      paragraph
+        text "两条路线对照两个独立查询。它们不在同一次执行中分支。"
+        text "root"
+        text "表示含"
+        text "owners"
+        text "和"
+        text "jobs"
+        text "的"
+        text "整份输入"
+        text "。"
+        anchor [ref=482, loc=href:/experiments/jq-current-input/explanation.html#source-input, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-input]
+          text "3"
+      button [ref=483]
+        text "▶ 逐步看"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=484, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+            text "整份输入"
+            text "↗"
+          paragraph
+            text "owners 把 u1、u2 映射到 Mina、Bo；"
+            text "jobs"
+            text "中有 compile、test 两项任务。"
+        list_item
+          text "2"
+          anchor [ref=485, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+            text "绑定后仍是 root"
+            text "↗"
+          paragraph
+            text "A 将映射绑定给 $owners；观测点上的当前值仍包含 owners 和 jobs。"
+        list_item
+          text "3"
+          anchor [ref=486, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+            text "每次一项 job"
+            text "↗"
+          paragraph
+            text ".jobs[] 分别产生 compile 和 test。此时 .owner 是 u1 或 u2；$owners 仍可用。"
+        list_item
+          text "4"
+          anchor [ref=487, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+            text "Mina 与 Bo"
+            text "↗"
+          paragraph
+            text "$owners[.owner] 用当前任务的 owner 查已绑定映射，得到两个名字。"
+        list_item
+          text "5"
+          anchor [ref=488, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+            text "管道后仅有 owners"
+            text "↗"
+          paragraph
+            text "B 的 .owners 把当前输入变成映射，只剩 u1 和 u2 两个键。"
+  dialog_modal "绑定保留输入，管道替换输入" [ref=489]
+    button [ref=490]
+      svg_root
+      text "关闭"
+      text "Esc"
+    status
+      text "正在打开交互图…"
+    iframe [ref=491]
+      root
+        toolbar "图表操作"
+          container
+            button "切换颜色主题" [ref=492, loc=css:button[aria-label="切换颜色主题"]]
+            button "当前视觉风格：经典。选择视觉风格" [ref=493, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+              text "经典"
+            button "恢复动效" [ref=494, loc=css:button[aria-label="恢复动效"]]
+              text "静态"
+            button "进入演示模式" [ref=495]
+          button "导出图表" [ref=496, loc=css:button[aria-label="导出图表"]]
+            text "导出"
+        container
+          heading
+            text "绑定保留输入，管道替换输入"
+          container
+            image "01 / 查询 A：绑定 02 / 查询 B：管道 整份输入 绑定后仍是 root 每次一项 job Mina 与 Bo 管道后仅有 owners 无 jobs，报错 变量查表 .jobs[] .jobs[] as 管道 图例 输�..." [ref=497, loc=role:image[name="绑定保留输入，管道替换输入 由 Archify 生成的工作流图。"]]
+              text "01 / 查询 A：绑定"
+              text "02 / 查询 B：管道"
+              text "整份输入"
+              text "绑定后仍是 root"
+              text "每次一项 job"
+              text "Mina 与 Bo"
+              text "管道后仅有 owners"
+              text "无 jobs，报错"
+              text "变量查表"
+              text ".jobs[]"
+              text ".jobs[]"
+              text "as"
+              text "管道"
+              text "图例"
+              text "输入与结果"
+              text "6"
+            toolbar "图表视图控制"
+              button "追踪有向路径" [ref=498]
+                text "路径"
+              button "打开语义透镜" [ref=499, loc=css:button[aria-label="打开语义透镜"]]
+                text "透镜"
+              button "查找节点" [ref=500, loc=css:button[aria-label="查找节点"]]
+              button "打开图表指南" [ref=501, loc=css:button[aria-label="打开图表指南"]]
+              button "缩小" [ref=502, loc=css:button[aria-label="缩小"]]
+              button "100% · 再次放大以显示标签和注释。重置图表视图" [ref=503, loc=css:button[aria-label="100% · 再次放大以显示标签和注释。重置图表视图"]]
+                text "100%"
+              button "放大" [ref=504, loc=css:button[aria-label="放大"]]
+          container
+            toolbar "侧栏"
+              button "移到图右侧" [ref=505, loc=css:button[aria-label="移到图右侧"]]
+            container "节点索引"
+              container
+                text "节点索引"
+                text "6"
+              ordered_list
+                list_item
+                  container
+                    text "查询 A：绑定"
+                    text "4"
+                  unordered_list
+                    list_item
+                      button [ref=506]
+                        text "整份输入"
+                    list_item
+                      button [ref=507]
+                        text "绑定后仍是 root"
+                    list_item
+                      button [ref=508]
+                        text "每次一项 job"
+                    list_item
+                      button [ref=509]
+                        text "Mina 与 Bo"
+
+

@@ -1,0 +1,11 @@
+const task=await taskSpace(3),page=task.page("p1");
+const base="http://127.0.0.1:8839/experiments/jq-current-input/explanation.html",dir="/Users/tsk/.codex/worktrees/lab-jq-current-input/archify/experiments/jq-current-input/evidence";
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.keyboard.press("Escape");
+await page.goto(base+"#queries");
+await page.evaluate(()=>document.fonts.ready);
+await page.screenshot({path:dir+"/query-code.png"});
+console.log("CODE",await page.evaluate(()=>Array.from(document.querySelectorAll('pre')).map(x=>x.innerText)));
+await page.goto(base+"#results");
+await page.screenshot({path:dir+"/result-table.png"});
+console.log(await page.snapshot());

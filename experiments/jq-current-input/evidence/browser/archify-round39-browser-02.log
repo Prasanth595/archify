@@ -1,0 +1,150 @@
+[p1 "jq 的 `.` 此刻指向谁？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "jq 的 `.` 此刻指向谁？ · Archify"]
+root
+  container
+    container
+      heading
+        text "jq 的 `.` 此刻指向谁？"
+      container
+        group "主题"
+          button [ref=416]
+            text "系统"
+          button [ref=417]
+            text "浅色"
+          button [ref=418]
+            text "深色"
+        button "样式" [ref=419, loc=css:button[aria-label="样式"]]
+          text "简洁"
+          svg_root
+        button [ref=420]
+          svg_root
+          text "导出"
+          svg_root
+    container
+      container
+        container
+          text "答"
+          heading
+            text "结论"
+          button [ref=421]
+            text "追问"
+        container
+          paragraph
+            text "as"
+            text "绑定一个值后，后续表达式仍接收绑定前的输入。普通管道则把左侧输出传给右侧。找不到负责人时，先检查"
+            text "."
+            text "指向谁。"
+          ordered_list
+            list_item
+              text "1"
+              text "两种正确写法输出相同，但构造结果前的"
+              text "."
+              text "不同。"
+              anchor [ref=422, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-run]
+                text "1"
+            list_item
+              text "2"
+              text "错误写法也可能退出成功，却把负责人变成"
+              text "null"
+              text "。"
+              anchor [ref=423, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-run]
+                text "1"
+            list_item
+              text "3"
+              text "jq 手册已经解释这条规则；下图把四组观测放在一起。"
+              anchor [ref=424, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-manual]
+                text "2"
+        paragraph
+          text "适用于"
+          text "四组固定查询"
+          text "jq-1.7.1-apple"
+          text "手工观测点"
+      container
+        container
+          anchor "A 与 B：同一份输入，两次独立运行" [ref=425, loc=css:a[aria-label="A 与 B：同一份输入，两次独立运行"], url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#contrast]
+            text "1"
+          heading
+            text "A 与 B：同一份输入，两次独立运行"
+          button [ref=426]
+            text "追问"
+        container
+          container
+            container
+              text "绑定保留输入，管道替换输入"
+              button [ref=427]
+                svg_root
+                text "打开交互图"
+            image "绑定保留输入，管道替换输入"
+              image "整份输入 绑定后仍是 root 每次一项 job Mina 与 Bo 管道后仅有 owners 无 jobs，报错 变量查表 .jobs[] .jobs[] as 管道 图例 Agent 逻辑"
+                text "整份输入"
+                text "绑定后仍是 root"
+                text "每次一项 job"
+                text "Mina 与 Bo"
+                text "管道后仅有 owners"
+                text "无 jobs，报错"
+                text "变量查表"
+                text ".jobs[]"
+                text ".jobs[]"
+                text "as"
+                text "管道"
+          container
+            paragraph
+              text "图上的两条路线是两个查询的对照，不是一次执行中的条件分支。"
+              text "root"
+              text "表示含"
+              text "owners"
+              text "和"
+              text "jobs"
+              text "的"
+              text "整份输入"
+              text "。"
+              anchor [ref=428, loc=href:/experiments/jq-current-input/explanation.html#source-input, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#source-input]
+                text "3"
+            container
+              container
+                button [ref=467]
+                  text "← 上一步"
+                text "1 / 6"
+                button [ref=468]
+                  text "下一步 →"
+                button [ref=469]
+                  text "结束"
+              ordered_list
+                list_item
+                  text "1"
+                  anchor [ref=430, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+                    text "整份输入"
+                    text "↗"
+                  paragraph
+                    text "owners 把 u1、u2 映射到 Mina、Bo；"
+                    text "jobs"
+                    text "中有 compile、test 两项任务。"
+                list_item
+                  text "2"
+                  anchor [ref=431, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+                    text "绑定后仍是 root"
+                    text "↗"
+                  paragraph
+                    text "A 将映射绑定给 $owners；观测点上的当前值仍包含 owners 和 jobs。"
+                list_item
+                  text "3"
+                  anchor [ref=432, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+                    text "每次一项 job"
+                    text "↗"
+                  paragraph
+                    text ".jobs[] 分别产生 compile 和 test。此时 .owner 是 u1 或 u2；$owners 仍可用。"
+                list_item
+                  text "4"
+                  anchor [ref=433, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+                    text "Mina 与 Bo"
+                    text "↗"
+                  paragraph
+                    text "$owners[.owner] 用当前任务的 owner 查已绑定映射，得到两个名字。"
+                list_item
+                  text "5"
+                  anchor [ref=434, url=http://127.0.0.1:8839/experiments/jq-current-input/explanation.html#context-flow]
+                    text "管道后仅有 owners"
+                    text "↗"
+                  paragraph
+                    text "B 的 .owners 把当前输入变成映射，只剩 u1 和 u2 两个键。"
+
+

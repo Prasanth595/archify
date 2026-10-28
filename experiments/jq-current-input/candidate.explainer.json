@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "title": "jq 的 `.` 此刻指向谁？",
+    "id": "jq-current-input",
+    "locale": "zh-CN",
+    "repository": {
+      "url": "https://github.com/tt-a1i/archify",
+      "revision": "b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed"
+    }
+  },
+  "answer": {
+    "summary": "`as` 绑定一个值后，后续表达式仍接收绑定前的输入。普通管道则把左侧输出传给右侧。找不到负责人时，先检查 `.` 指向谁。",
+    "reasons": [
+      "两种正确写法输出相同，但构造结果前的 `.` 不同。[](source:run)",
+      "错误写法也可能退出成功，却把负责人变成 `null`。[](source:run)",
+      "jq 手册已经解释这条规则；下图把四组观测放在一起。[](source:manual)"
+    ],
+    "scope": "四组固定查询 · jq-1.7.1-apple · 手工观测点"
+  },
+  "panels": [
+    {
+      "id": "contrast",
+      "title": "A 与 B：同一份输入，两次独立运行",
+      "blocks": [
+        {
+          "type": "prose",
+          "text": "两条路线对照两个独立查询。它们不在同一次执行中分支。`root` 表示含 `owners` 和 `jobs` 的整份输入。[](source:input)",
+          "id": "prose-0532ca5bd0c5"
+        },
+        {
+          "type": "diagram",
+          "id": "context-flow",
+          "diagramType": "workflow",
+          "nodeSources": {
+            "root": "input",
+            "kept": "bindOwners",
+            "replaced": "pipeOwners",
+            "jobs": "bindOwners",
+            "fail": "pipeOwners",
+            "names": "bindOwners"
+          },
+          "spec": {
+            "schema_version": 2,
+            "diagram_type": "workflow",
+            "meta": {
+              "title": "绑定保留输入，管道替换输入",
+              "output": "context-flow.html",
+              "quality_profile": "showcase",
+              "legend": {
+                "entries": {
+                  "backend": {
+                    "label": "输入与结果"
+                  }
+                }
+              }
+            },
+            "lanes": [
+              {
+                "id": "lane-0",
+                "label": "查询 A：绑定"
+              },
+              {
+                "id": "lane-1",
+                "label": "查询 B：管道"
+              }
+            ],
+            "nodes": [
+              {
+                "id": "root",
+                "label": "整份输入",
+                "type": "backend",
+                "col": 0,
+                "lane": "lane-0",
+                "icon": "none"
+              },
+              {
+                "id": "kept",
+                "label": "绑定后仍是 root",
+                "type": "backend",
+                "width": 137,
+                "col": 1,
+                "lane": "lane-0",
+                "icon": "none"
+              },
+              {
+                "id": "replaced",
+                "label": "管道后仅有 owners",
+                "type": "backend",
+                "width": 151,
+                "col": 1,
+                "lane": "lane-1",
+                "icon": "none"
+              },
+              {
+                "id": "jobs",
+                "label": "每次一项 job",
+                "type": "backend",
+                "width": 118,
+                "col": 2,
+                "lane": "lane-0",
+                "icon": "none"
+              },
+              {
+                "id": "fail",
+                "label": "无 jobs，报错",
+                "type": "backend",
+                "width": 124,
+                "col": 2,
+                "lane": "lane-1",
+                "icon": "none"
+              },
+              {
+                "id": "names",
+                "label": "Mina 与 Bo",
+                "type": "backend",
+                "width": 104,
+                "col": 3,
+                "lane": "lane-0",
+                "icon": "none"
+              }
+            ],
+            "edges": [
+              {
+                "id": "root-to-kept-1",
+                "from": "root",
+                "to": "kept",
+                "label": "as"
+              },
+              {
+                "id": "root-to-replaced-1",
+                "from": "root",
+                "to": "replaced",
+                "label": "管道"
+              },
+              {
+                "id": "kept-to-jobs-1",
+                "from": "kept",
+                "to": "jobs",
+                "label": ".jobs[]"
+              },
+              {
+                "id": "replaced-to-fail-1",
+                "from": "replaced",
+                "to": "fail",
+                "label": ".jobs[]"
+              },
+              {
+                "id": "jobs-to-names-1",
+                "from": "jobs",
+                "to": "names",
+                "label": "变量查表"
+              }
+            ]
+          }
+        },
+        {
+          "type": "steps",
+          "id": "context-steps",
+          "items": [
+            {
+              "id": "inspect-input",
+              "text": "整份输入",
+              "detail": "owners 把 u1、u2 映射到 Mina、Bo；jobs 中有 compile、test 两项任务。",
+              "target": {
+                "diagram": "context-flow",
+                "node": "root"
+              }
+            },
+            {
+              "id": "keep-input",
+              "text": "绑定后仍是 root",
+              "detail": "A 将映射绑定给 $owners；观测点上的当前值仍包含 owners 和 jobs。",
+              "target": {
+                "diagram": "context-flow",
+                "node": "kept"
+              }
+            },
+            {
+              "id": "inspect-job",
+              "text": "每次一项 job",
+              "detail": ".jobs[] 分别产生 compile 和 test。此时 .owner 是 u1 或 u2；$owners 仍可用。",
+              "target": {
+                "diagram": "context-flow",
+                "node": "jobs"
+              }
+            },
+            {
+              "id": "read-result",
+              "text": "Mina 与 Bo",
+              "detail": "$owners[.owner] 用当前任务的 owner 查已绑定映射，得到两个名字。",
+              "target": {
+                "diagram": "context-flow",
+                "node": "names"
+              }
+            },
+            {
+              "id": "replace-input",
+              "text": "管道后仅有 owners",
+              "detail": "B 的 .owners 把当前输入变成映射，只剩 u1 和 u2 两个键。",
+              "target": {
+                "diagram": "context-flow",
+                "node": "replaced"
+              }
+            },
+            {
+              "id": "read-error",
+              "text": "无 jobs，报错",
+              "detail": "该映射没有 jobs 字段，.jobs 为 null；.jobs[] 报错，退出码为 5。",
+              "target": {
+                "diagram": "context-flow",
+                "node": "fail"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "queries",
+      "title": "每条查询实际运行了什么？",
+      "blocks": [
+        {
+          "type": "prose",
+          "text": "A 保存映射，随后逐项读取任务。[](source:bindOwners)",
+          "id": "prose-a6e9b9185f2b"
+        },
+        {
+          "type": "code",
+          "id": "query-a",
+          "source": "bindOwners",
+          "language": "jq"
+        },
+        {
+          "type": "prose",
+          "text": "B 把当前输入直接换成映射。[](source:pipeOwners)",
+          "id": "prose-9a20b0d6a369"
+        },
+        {
+          "type": "code",
+          "id": "query-b",
+          "source": "pipeOwners",
+          "language": "jq"
+        },
+        {
+          "type": "prose",
+          "text": "C 每次绑定一个任务，让当前输入继续保留整份数据。[](source:bindJobs)",
+          "id": "prose-5c81e638540e"
+        },
+        {
+          "type": "code",
+          "id": "query-c",
+          "source": "bindJobs",
+          "language": "jq"
+        },
+        {
+          "type": "prose",
+          "text": "D 切到任务后，又试图从当前任务里读 owners。[](source:lostRoot)",
+          "id": "prose-a17f6c833b25"
+        },
+        {
+          "type": "code",
+          "id": "query-d",
+          "source": "lostRoot",
+          "language": "jq"
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "title": "相同输出，也可能经过不同上下文",
+      "blocks": [
+        {
+          "type": "prose",
+          "text": "“构造前当前值”来自查询中手工插入的观测点。这里比较 JSON 值，不推断对象身份或内存复制。[](source:run)",
+          "id": "prose-9fa6f2fd0b14"
+        },
+        {
+          "type": "comparison",
+          "labelColumn": "查询",
+          "columns": [
+            "构造前当前值",
+            "可用的绑定",
+            "owner 输出",
+            "退出码"
+          ],
+          "rows": [
+            {
+              "label": "A",
+              "cells": [
+                {
+                  "text": "每次一项 job"
+                },
+                {
+                  "text": "$owners 映射"
+                },
+                {
+                  "text": "Mina、Bo"
+                },
+                {
+                  "text": "0"
+                }
+              ],
+              "id": "row-79b6f7f4b872"
+            },
+            {
+              "label": "B",
+              "cells": [
+                {
+                  "text": "未进入构造；当前值已变成 owners 映射"
+                },
+                {
+                  "text": "无"
+                },
+                {
+                  "text": "无输出"
+                },
+                {
+                  "text": "5"
+                }
+              ],
+              "id": "row-1f6417f21a0c"
+            },
+            {
+              "label": "C",
+              "cells": [
+                {
+                  "text": "整份 root，观测两次"
+                },
+                {
+                  "text": "每次一项 $job"
+                },
+                {
+                  "text": "Mina、Bo"
+                },
+                {
+                  "text": "0"
+                }
+              ],
+              "id": "row-63eb689db803"
+            },
+            {
+              "label": "D",
+              "cells": [
+                {
+                  "text": "每次一项 job"
+                },
+                {
+                  "text": "无"
+                },
+                {
+                  "text": "null、null"
+                },
+                {
+                  "text": "0"
+                }
+              ],
+              "id": "row-69dbc4df1662"
+            }
+          ],
+          "id": "comparison-310886be5cbb"
+        },
+        {
+          "type": "callout",
+          "level": "warning",
+          "title": "退出成功，不等于字段读对了",
+          "text": "D 中 .owners[.owner] 是从当前 job 查映射。当前 job 没有 owners；本次两个结果的 owner 都为 null。",
+          "id": "callout-41b1730c2add"
+        }
+      ]
+    },
+    {
+      "id": "verify",
+      "title": "怎样复核这张图？",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "checklist": true,
+          "items": [
+            "对照完整输入，确认 owners 与 jobs 位于同一层。",
+            "对照每组 plain 与 marked 输出；两者的 stdout 和退出码一致。",
+            "打开 observed.json，区分 current 值和额外绑定的变量。",
+            "将原生输出与图中的 A、B、C、D 逐项对应。"
+          ],
+          "id": "list-4a10e7b2b8e8"
+        },
+        {
+          "type": "snippet",
+          "language": "sh",
+          "title": "在新目录重放四组查询",
+          "text": "python3 experiments/jq-current-input/fixtures/reproduce.py /tmp/jq-context-fresh",
+          "id": "snippet-3d7b676fdd43"
+        },
+        {
+          "type": "prose",
+          "text": "两次回放各运行 9 次命令、记录 18 个观测值。脚本只运行本机 jq；没有执行 jnv、jqp、jaq 或 gojq。没有测量读者理解率或阅读速度。[](source:run)",
+          "id": "prose-3d9a76433f20"
+        },
+        {
+          "type": "prose",
+          "text": "任务与负责人数据改编自 jq 手册的文章与作者例子，并增加三组对照及观测点。手册作者为 Stephen Dolan 与 jq contributors，文档采用 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)。[](source:manual)",
+          "id": "prose-e205b3a11c8b"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "run",
+      "title": "两次原生回放：命令、退出码、stdout、stderr、观测值",
+      "url": "https://github.com/tt-a1i/archify/tree/b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed/experiments/jq-current-input/evidence"
+    },
+    {
+      "id": "manual",
+      "title": "jq 1.7 手册 · Stephen Dolan / jq contributors · CC BY 3.0",
+      "url": "https://github.com/jqlang/jq/blob/71c2ab509a8628dbbad4bc7b3f98a64aa90d3297/docs/content/manual/v1.7/manual.yml"
+    },
+    {
+      "id": "input",
+      "title": "完整输入：两项任务与负责人映射",
+      "path": "experiments/jq-current-input/fixtures/input.json",
+      "lines": [
+        1,
+        16
+      ]
+    },
+    {
+      "id": "bindOwners",
+      "title": "A：先绑定负责人映射",
+      "path": "experiments/jq-current-input/fixtures/bind-owners.plain.jq",
+      "lines": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "pipeOwners",
+      "title": "B：直接把当前输入换成映射",
+      "path": "experiments/jq-current-input/fixtures/pipe-owners.plain.jq",
+      "lines": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "bindJobs",
+      "title": "C：逐项绑定任务，保留整份输入",
+      "path": "experiments/jq-current-input/fixtures/bind-jobs.plain.jq",
+      "lines": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "lostRoot",
+      "title": "D：切到任务后，整份输入不在当前点上",
+      "path": "experiments/jq-current-input/fixtures/lost-root.plain.jq",
+      "lines": [
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "787485c2-742d-4c16-8356-e42adf7aaace",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "/Users/tsk/.codex/worktrees/lab-jq-current-input/archify/experiments/jq-current-input/candidate.archify.md",
+  "output": "/Users/tsk/.codex/worktrees/lab-jq-current-input/archify/experiments/jq-current-input/explanation.html",
+  "specification": {
+    "sha256": "95c6a0cdfdb433870a446c1988cd3a2e938058223a2f8efeeeb68908406e57c0",
+    "bytes": 5665
+  },
+  "artifact": {
+    "sha256": "c5c1807cf2381c7cff220be7377fa1ded64b7685b0b360138bce3e1c63e97450",
+    "bytes": 585253
+  },
+  "explainer": {
+    "preparedSha256": "41ad984c31881f14400ce83e4be767ffba26867725c352f4638bbc010dfab445",
+    "dependencies": [
+      {
+        "kind": "repository",
+        "id": "bindOwners",
+        "path": "experiments/jq-current-input/fixtures/bind-owners.plain.jq",
+        "revision": "b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed",
+        "sha256": "25c071b89dd07bc2f23a5a2fd4480039ed375fb0244ac531bfe9930ef9d31239",
+        "bytes": 66
+      },
+      {
+        "kind": "repository",
+        "id": "pipeOwners",
+        "path": "experiments/jq-current-input/fixtures/pipe-owners.plain.jq",
+        "revision": "b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed",
+        "sha256": "3b253158719d7a33863c63778514967814047d5dfc74c57704dd7a6aa73ab3ce",
+        "bytes": 18
+      },
+      {
+        "kind": "repository",
+        "id": "bindJobs",
+        "path": "experiments/jq-current-input/fixtures/bind-jobs.plain.jq",
+        "revision": "b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed",
+        "sha256": "07b7ff594ba36cc1dbd46b675a7e77cf90c0119e211dafef6276fb68511bc095",
+        "bytes": 61
+      },
+      {
+        "kind": "repository",
+        "id": "lostRoot",
+        "path": "experiments/jq-current-input/fixtures/lost-root.plain.jq",
+        "revision": "b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed",
+        "sha256": "c3c5ce13a7e10c663d30b8766be2d4d4c6d48fb2eefc6f984ee63d49d8e24034",
+        "bytes": 45
+      },
+      {
+        "kind": "repository",
+        "id": "input",
+        "path": "experiments/jq-current-input/fixtures/input.json",
+        "revision": "b7feaa95486db5128b5bebdd1f68ea8d91c5f3ed",
+        "sha256": "3fde4ba64273c7025101096d1272c1a036ef5ec28196edcce1de2701b4981350",
+        "bytes": 180
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "context-flow",
+        "inline": true,
+        "sha256": "e814a9476b787ee4da65ba0167ef39bdbe7b2c2a0b8a94bfb79068619dfdff09",
+        "bytes": 1210
+      }
+    ]
+  }
+}
