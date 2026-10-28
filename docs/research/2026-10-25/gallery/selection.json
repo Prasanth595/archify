@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+  "hubCommit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -612,6 +612,16 @@
       "inputKind": "完整pprof历史fixture / 有界parser与算术适配",
       "imagePath": "experiments/profile-normalization/evidence/browser/final3-count-light.png",
       "imageCaption": "六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。"
+    },
+    {
+      "id": "checklist-progress",
+      "commit": "7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5",
+      "branch": "codex/lab-checklist-progress",
+      "directory": "experiments/checklist-progress",
+      "group": "product",
+      "inputKind": "完整构造JSON清单 / 显式ID个人进度修复",
+      "imagePath": "experiments/checklist-progress/screenshots/candidate-reordered.png",
+      "imageCaption": "JSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。"
     }
   ],
   "deferred": {

@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
-    "sha256": "f7344cec1257265e5ab9ad54b7f4ce931194c720d13bcad509403f657a54a426",
-    "bytes": 73881,
-    "gitBlob": "a50fa34bfb3d6e145efb33aa3fcdf5ce5764b528"
+    "commit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
+    "sha256": "71133622646b8da5561253c192f1c2427b6e1e608481d16c9c1fefc36d6a6df9",
+    "bytes": 75604,
+    "gitBlob": "82589de12d1843b207fa5f9706379c53751dca60"
   },
-  "policy": "59 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "60 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+      "commit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+      "commit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+      "commit": "e21fb6f3c5a7a012688757ae89747cabae2b51c2",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -2113,6 +2113,41 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-normalization/experiments/profile-normalization",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/evidence/browser/final3-count-light.png"
+    },
+    {
+      "id": "checklist-progress",
+      "commit": "7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5",
+      "branch": "codex/lab-checklist-progress",
+      "directory": "experiments/checklist-progress",
+      "group": "product",
+      "inputKind": "完整构造JSON清单 / 显式ID个人进度修复",
+      "imagePath": "experiments/checklist-progress/screenshots/candidate-reordered.png",
+      "imageCaption": "JSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。",
+      "title": "Checklist progress",
+      "value": "JSON显式ID清单调换顺序后，旧勾选不再错落到另一项；无关段落编辑仍保留个人进度",
+      "limits": "固定6ca6基线；源码/ZIP88e7e64b，整份清单文字+顺序身份；red0/1→green1/0，charts7/CLI19/公共四阶段/ZIP通过；root同origin实际勾选重载/段落保留/重排重置，首次旧键进度一次性重置且原记录不删；不逐项迁移，源码变化不自动清勾，390px原有400px溢出保留，非审批/人类/效率结论",
+      "readme": {
+        "path": "experiments/checklist-progress/README.md",
+        "commit": "7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5",
+        "sha256": "00ffcd0840ae71332a20cc655babe44e86ea4ab1c67db55a2789140a03db7158",
+        "bytes": 7563,
+        "gitBlob": "72872e482968338612c22a5a290f70bc13631cc4"
+      },
+      "image": {
+        "path": "experiments/checklist-progress/screenshots/candidate-reordered.png",
+        "commit": "7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5",
+        "sha256": "fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1",
+        "bytes": 67357,
+        "gitBlob": "9e6bdffffb08d0a83c233a8a0554fc58a44c61a4",
+        "width": 1440,
+        "height": 1000,
+        "mime": "image/png",
+        "caption": "JSON清单交换顺序后，旧勾选不再落到另一项；无关段落编辑仍保留进度。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5/experiments/checklist-progress",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-checklist-progress/experiments/checklist-progress",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5/experiments/checklist-progress/screenshots/candidate-reordered.png"
     }
   ],
   "deferred": {
@@ -2123,11 +2158,11 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 59,
-    "images": 59,
-    "pngBytes": 13775375,
+    "experiments": 60,
+    "images": 60,
+    "pngBytes": 13842732,
     "groupCounts": {
-      "product": 18,
+      "product": 19,
       "offline": 20,
       "content": 21
     },

@@ -29,7 +29,27 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前59版静态绑定与实际浏览器观察（待远端交付）
+## 当前60版静态绑定；浏览器待本批观察
+
+固定sourceHub为 [`e21fb6f3c5a7a012688757ae89747cabae2b51c2`](https://github.com/tt-a1i/archify/blob/e21fb6f3c5a7a012688757ae89747cabae2b51c2/docs/research/2026-10-25/README.md)：**60项 / 60张原PNG，19产品交互 / 20离线适配 / 21内容示例**。固定README为75,604 bytes，SHA-256 `71133622646b8da5561253c192f1c2427b6e1e608481d16c9c1fefc36d6a6df9`。sourceHub先固定60行与本轮五报告，后续gallery artifact及交付文档分别记账；目前均为本地prepared阶段，未推送。
+
+第60项Checklist progress为product interaction。固定实验远端head `7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5`，产品修复/回归/ZIP提交 `88e7e64b8e5d8ae7bafd754e60ece33c5d59dd58`；base为6ca6。它修复JSON保留显式artifact/block ID却交换清单顺序时错项继承勾选的真实源码缺陷，使用完整构造输入复现，不称生产事故。新存储身份绑定整份清单文字及顺序：无关段落变化保留，重排/改字/增删整份清单重置；不猜逐项对应。旧存储键缺内容身份，首次新HTML一次性重置且旧记录不删除；已生成旧HTML需重新渲染，引用代码变化不会自动清勾，也不代表审批/测试/验收。
+
+固定主图 `experiments/checklist-progress/screenshots/candidate-reordered.png` 为67,357 bytes、1440×1000，SHA-256 `fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1`，Git blob `9e6bdffffb08d0a83c233a8a0554fc58a44c61a4`。candidate-reordered完整HTML为136837B，SHA-256 `3e73d9a296d98d4b3d972a773de0613f611d26dd4f3bf87cbcc8036c1ee89663`。主图只展示root在同origin实际操作后的读者状态，静态HTML本身不携带勾选或完整浏览器历史。
+
+实验回归red0pass/1fail→green1pass/0fail/0skip，charts7、CLI19、候选public finalize含browser-check四阶段零diagnostics通过，canonical ZIP两次逐字相同且独立解包CLI三阶段通过；独立代码复查未重跑浏览器。root另做同origin基线错勾、候选旧键重置/刷新保持/段落保留/重排清空。390×844暗色可键盘勾选并刷新保留，但base/candidate均400px scrollWidth，原有横向溢出保留，主题刷新回浅色为既有不持久化，不称完整mobile/AT/人类或效率接受。root精确head的check-runs与Actions runs均0，不是CI通过；原始red日志的尾空白按原字节保留。
+
+原builder `--source-repo`直接读取60个固定README/PNG Git blob并核本地origin tracking refs，不恢复旧工作区、不将本地tracking视为本轮旧59远端重查。完整golden59保存在本地对照目录：原59 selection完整字段/次序、manifest完整items、完整card HTML与PNG逐字不变；113个历史文件与五份冻结scouts原字节核对通过。当前59 browser binding逐字另存 [browser-evidence59.json](browser-evidence59.json)，16,968 bytes，SHA-256 `1195cea97ba17fcb86ef6415e14f591305b22fe4e324684e54f8a112ecdb27e6`；旧截图及其他编号证据全部保留。
+
+Node **22.23.3** 静态verify通过：60张嵌图摘要、60/19/20/21卡片与筛选计数、固定/分支链接、JS语法一致，外部资源引用0，原PNG共13,842,732 bytes。模板、builder、verify原字节不变；新增研究说明scoped whitespace检查干净，冻结execution scout的原EOF空行保留，不冒称所有原始文件零warning。
+
+- `index.html`：18,613,319 bytes；SHA-256 `a8294a3f735853a1cac9a6a620d9424447fdb33ec291596eba3b7e44f5218ca0`
+- `manifest.json`：SHA-256 `7550e3a0b365c356dc487cf2dcb36a11f4036df8faf5f92bf51b417083ce31d9`
+- `selection.json`：SHA-256 `53abf221d26ad9e8ccd29161f5418517e6a7eb9a82c93a1c7b4e22a8bbae0791`
+
+60版静态产物冻结，root将在仍由其管理的TaskSpace26单独验收新gallery卡片并补本轮真实PNG/JSON。当前 `browser-evidence.json` 仍绑定历史59版，不作60版观察；gallery静态检查不代替布局、dialog焦点、触屏或AT/人类接受。持续探索保持已恢复状态，本任务未启动浏览器、新研究或额外产品测试。
+
+## 历史59版静态绑定与实际浏览器观察
 
 固定source hub为 [`c0d514eb4f393be46633ce4440d466bc8560fa52`](https://github.com/tt-a1i/archify/blob/c0d514eb4f393be46633ce4440d466bc8560fa52/docs/research/2026-10-25/README.md)：**59项 / 59张原PNG，18产品交互 / 20离线适配 / 21内容示例**。固定README为73,881 bytes，SHA-256 `f7344cec1257265e5ab9ad54b7f4ce931194c720d13bcad509403f657a54a426`。sourceHub是先固定59行输入的文档提交，与后续gallery artifact/delivery commit分开；目前sourceHub和gallery prepared/local-bound，未推送。
 
@@ -47,7 +67,7 @@ Node **22.23.3** 静态verify通过：59张嵌图摘要、59/18/20/21卡片与�
 - `manifest.json`：SHA-256 `bcc52b23d332311ba2871bff77a814d0023ec99e7affd7a9e037a2c7c8594c97`
 - `selection.json`：SHA-256 `68e281222fa57b17958e82cadd9ea0b11c2936a837dfff8c05cae478e6de4ea7`
 
-Root已在Ego TaskSpace20实际操作冻结59版新卡和受影响通用控件，并逐张查看6张原PNG。六张PNG、五份场景JSON及 [root-observations.json](screenshots59/root-observations.json)原字节保存在 [screenshots59](screenshots59/)；[browser-evidence.json](browser-evidence.json)为本批派生绑定，记录当前产物、最终README、原件hash/bytes/IHDR尺寸和中间/完成状态，不冒称新的API响应。sourceHub与gallery artifact目前仍prepared/local-bound，最终远端交付随后单列。
+Root已在Ego TaskSpace20实际操作冻结59版新卡和受影响通用控件，并逐张查看6张原PNG。六张PNG、五份场景JSON及 [root-observations.json](screenshots59/root-observations.json)原字节保存在 [screenshots59](screenshots59/)；[browser-evidence59.json](browser-evidence59.json)为本批派生绑定，记录当前产物、最终README、原件hash/bytes/IHDR尺寸和中间/完成状态，不冒称新的API响应。sourceHub与gallery artifact目前仍prepared/local-bound，最终远端交付随后单列。
 
 1440×1000浅色观察到总量与分组标签59/18/20/21，Profile normalization实际搜索得到1/59；固定提交与分支链接的目标指向已交付实验，未将观察标签等同于逐一点击全部分组按钮。直接解码嵌入PNG得到109862B、SHA14a930…1457，与固定实验主图相同。首张 [desktop-new-card.png](screenshots59/desktop-new-card.png)在lazy图片decode前采集，natural0×0/decoded=false，原图及 [即时观察](screenshots59/desktop-new-card.json)保留为中间结果，不作为成功预览。等待complete=true/天然1440×1000后才取 [最终decoded卡片](screenshots59/desktop-new-card-decoded.png)，没有覆盖或回填首次记录。
 

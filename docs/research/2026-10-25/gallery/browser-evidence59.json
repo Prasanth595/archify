@@ -1,0 +1,417 @@
+{
+  "kind": "derived browser evidence for fixed59 gallery; root receipt and original scenario JSON/PNG linked separately",
+  "status": "root-browser-observed-prepared-local-bound",
+  "delivery": {
+    "sourceHub": "prepared/local-bound; immutable source commit separate from future artifact commit",
+    "gallery": "prepared/local-bound; push/readback will be recorded separately",
+    "experiment": "Root reported b3c85c9656212a4ba83430844603334132f120a9 pushed/readback;0check-runs/Actions not CI success."
+  },
+  "hubSourceCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+  "hubReadme": {
+    "path": "docs/research/2026-10-25/README.md",
+    "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+    "sha256": "f7344cec1257265e5ab9ad54b7f4ce931194c720d13bcad509403f657a54a426",
+    "bytes": 73881,
+    "gitBlob": "a50fa34bfb3d6e145efb33aa3fcdf5ce5764b528"
+  },
+  "experimentCommit": "b3c85c9656212a4ba83430844603334132f120a9",
+  "artifacts": {
+    "index.html": {
+      "path": "index.html",
+      "bytes": 18520803,
+      "sha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846"
+    },
+    "manifest.json": {
+      "path": "manifest.json",
+      "bytes": 136611,
+      "sha256": "bcc52b23d332311ba2871bff77a814d0023ec99e7affd7a9e037a2c7c8594c97"
+    },
+    "selection.json": {
+      "path": "selection.json",
+      "bytes": 30359,
+      "sha256": "68e281222fa57b17958e82cadd9ea0b11c2936a837dfff8c05cae478e6de4ea7"
+    },
+    "verification.json": {
+      "path": "verification.json",
+      "bytes": 800,
+      "sha256": "b49b1c86715e098eb41eea7da7152d1d1152733e74632819edf462b5fb1f1efd"
+    },
+    "README.md": {
+      "path": "README.md",
+      "bytes": 67946,
+      "sha256": "7f7c6d3f8babd77ba784d5eab3fd5043f3b51e0eea595673730bb50844eab82c"
+    },
+    "template.html": {
+      "path": "template.html",
+      "bytes": 16951,
+      "sha256": "bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9"
+    },
+    "build.py": {
+      "path": "build.py",
+      "bytes": 9748,
+      "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e"
+    },
+    "verify.py": {
+      "path": "verify.py",
+      "bytes": 4853,
+      "sha256": "d806985fcb08bdb071f2b528c35953aca80e522267a32b0611a2f8199617ab46"
+    }
+  },
+  "summary": {
+    "experiments": 59,
+    "images": 59,
+    "pngBytes": 13775375,
+    "groupCounts": {
+      "product": 18,
+      "offline": 20,
+      "content": 21
+    },
+    "deferredCountedAsPublished": false
+  },
+  "rawSources": [
+    {
+      "path": "screenshots59/desktop-decoded.json",
+      "bytes": 94,
+      "sha256": "539850be7cffd75b3b573371c7e0ec742cadda2ec4333695c2d3233f1899023d"
+    },
+    {
+      "path": "screenshots59/desktop-dialog.json",
+      "bytes": 1402,
+      "sha256": "a255090f369da54c20a3c9061646c584b6413c395b18e4764e1ddc862b17a4d5"
+    },
+    {
+      "path": "screenshots59/desktop-new-card.json",
+      "bytes": 1648,
+      "sha256": "307223536a109a3d635112e667d150b9f6c2f21d23c26286c5dad3208b3af322"
+    },
+    {
+      "path": "screenshots59/mobile-dialog.json",
+      "bytes": 897,
+      "sha256": "751767c668176f62e959d5e8360004a59a54dc294de743095a9dee4b4f71988f"
+    },
+    {
+      "path": "screenshots59/reset-observations.json",
+      "bytes": 292,
+      "sha256": "276c418fc5541880a3c0c380fd985fafe26270fa4c8b580933a3134bc76283e2"
+    },
+    {
+      "path": "screenshots59/root-observations.json",
+      "bytes": 3366,
+      "sha256": "dd9a4217170ad63b65ebf3acdfd97288cb68108798a15db0c535f63302eff834"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots59/desktop-new-card-decoded.png",
+      "bytes": 136243,
+      "sha256": "c447378e1df2dab0beadd2f25331258978ef26cfed142efd71196d6d9c015bb1",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "status": "root-viewed-completed-capture",
+      "visibleScope": "Final card after complete/natural1440x1000 decode.",
+      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
+      "completedCapture": true
+    },
+    {
+      "path": "screenshots59/desktop-new-card.png",
+      "bytes": 123631,
+      "sha256": "ae557a6d4b02d2fdcfd892747447ef7f058e7b51629ea0072901a26977d435d7",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "status": "incomplete-lazy-preview-before-decode",
+      "visibleScope": "Initial lazy preview before decode: natural0x0 and decodedfalse. Retained intermediate, not completed preview.",
+      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
+      "completedCapture": false
+    },
+    {
+      "path": "screenshots59/desktop-original-dialog.png",
+      "bytes": 108269,
+      "sha256": "411aabdfc0ef74b8e2eb361056b8294fa2f5e96c37c066703619d9cf1c449a14",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "status": "root-viewed-completed-capture",
+      "visibleScope": "Desktop original-size image in dialog.",
+      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
+      "completedCapture": true
+    },
+    {
+      "path": "screenshots59/mobile-dark-card-visible.png",
+      "bytes": 96839,
+      "sha256": "df54c4a14ad4a7d6f855f7985af7e7e15542094437af93912854d1b00d53873f",
+      "width": 390,
+      "height": 844,
+      "rootViewed": true,
+      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "status": "root-viewed-completed-capture",
+      "visibleScope": "Narrow dark visible new card capture.",
+      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
+      "completedCapture": true
+    },
+    {
+      "path": "screenshots59/mobile-dark-card.png",
+      "bytes": 87145,
+      "sha256": "3df9526daa4494c0de1115c71cf423be140bf60ea151667816972df8fe830169",
+      "width": 390,
+      "height": 844,
+      "rootViewed": true,
+      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "status": "root-viewed-completed-capture",
+      "visibleScope": "First narrow dark card/page capture; later visible-card capture separate.",
+      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
+      "completedCapture": true
+    },
+    {
+      "path": "screenshots59/mobile-original-dialog.png",
+      "bytes": 55227,
+      "sha256": "a7373359514d8021538f5a75a374006fa2b8c44874e74a7e9d1b6dfbeeadea28",
+      "width": 390,
+      "height": 844,
+      "rootViewed": true,
+      "boundHtmlSha256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "status": "root-viewed-completed-capture",
+      "visibleScope": "Narrow original-size image overflow with visible close; not whole-image fit.",
+      "semantics": "Original PNG copied unchanged. Actual dimensions from IHDR.",
+      "completedCapture": true
+    }
+  ],
+  "observations": {
+    "desktop-decoded": {
+      "complete": true,
+      "natural": [
+        1440,
+        1000
+      ],
+      "status": "显示 1 / 59 项"
+    },
+    "desktop-dialog": {
+      "dialog": {
+        "open": true,
+        "natural": [
+          1440,
+          1000
+        ],
+        "rect": {
+          "width": 1440,
+          "height": 1000
+        },
+        "text": "Profile normalization\n\n六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑\n\n适应宽度\n关闭 · Esc\nSHA-256 14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457\n固定提交中的原图 ↗"
+      },
+      "returned": {
+        "dialogOpen": false,
+        "active": "<button type=\"button\" class=\"image-open\" aria-label=\"查看 Profile normalization 完整原图\" data-title=\"Profile normalization\" data-caption=\"六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。\" data-size=\"1440 × 1000\" data-sha=\"14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457\" data-source=\"https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/evidence/browser/final3-count-light.png\">\n    <img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABaAAAAPoCAIAAACnGc6kAAABJ2lDQ1BfAAB4nJWQP0vDQBjGf5aCf6iD6OiQsYtSFbqoSxWLTlIrWJ3SNE2FJoYkpQhufgE/hODsKEJnBwVBcBQ/gji4xicJki4dfI/37nfPPdzd+0JhBkWxAq4XBY16zThp"
+      }
+    },
+    "desktop-new-card": {
+      "before": {
+        "status": "显示 59 / 59 项",
+        "filters": [
+          "全部59",
+          "产品交互18",
+          "离线适配20",
+          "内容示例21"
+        ]
+      },
+      "card": {
+        "status": "显示 1 / 59 项",
+        "text": "完整pprof历史fixture / 有界parser与算术适配\nb3c85c96\nProfile normalization\n\n从完整pprof历史原件重建逐栈归一化差，显示六source共同决定factor及base/diff_base报告分母\n\n预览已裁切 · 点击完整图\n\n六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。\n\n验证边界\n固定6ca6基线；有界parser/算术适配而非采集workload；5tests/静态三阶段/strictcheck通过，8writing warnings；最终public browser FAIL164键盘预算，旧658四组真实Tab282/282按legend-only delta复用，不改绑最终035；root来源卡→6项→S2/12maps→factor及3分母节点实链，390px base toolbar裁切保留，非AT/人类/速度证明\n\n固定提交说明 ↗\n分支 ↗",
+        "natural": [
+          0,
+          0
+        ],
+        "decoded": false,
+        "links": [
+          {
+            "text": "固定提交说明 ↗",
+            "href": "https://github.com/tt-a1i/archify/tree/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization"
+          },
+          {
+            "text": "分支 ↗",
+            "href": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-normalization/experiments/profile-normalization"
+          }
+        ],
+        "png": {
+          "bytes": 109862,
+          "sha256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457"
+        }
+      }
+    },
+    "mobile-dialog": {
+      "mobile": {
+        "viewport": [
+          390,
+          844
+        ],
+        "dialog": {
+          "open": true,
+          "rect": {
+            "x": 8,
+            "y": 8,
+            "width": 359,
+            "height": 828,
+            "top": 8,
+            "right": 367,
+            "bottom": 836,
+            "left": 8
+          }
+        },
+        "image": {
+          "natural": [
+            1440,
+            1000
+          ],
+          "rect": {
+            "x": 19,
+            "y": 189.7890625,
+            "width": 1440,
+            "height": 1000,
+            "top": 189.7890625,
+            "right": 1459,
+            "bottom": 1189.7890625,
+            "left": 19
+          }
+        },
+        "close": {
+          "x": 263.328125,
+          "y": 122.7890625,
+          "width": 90.671875,
+          "height": 44,
+          "top": 122.7890625,
+          "right": 354,
+          "bottom": 166.7890625,
+          "left": 263.328125
+        }
+      },
+      "returned": {
+        "open": false,
+        "active": "查看 Profile normalization 完整原图"
+      }
+    },
+    "reset-observations": {
+      "empty": {
+        "status": "显示 0 / 59 项"
+      },
+      "reset": {
+        "status": "显示 59 / 59 项",
+        "query": ""
+      },
+      "offline": {
+        "status": "显示 20 / 59 项"
+      },
+      "final": {
+        "status": "显示 59 / 59 项",
+        "query": "",
+        "dialog": false,
+        "theme": "light"
+      }
+    },
+    "root-observations": {
+      "kind": "root actual Ego gallery59 observations",
+      "date": "2026-10-28",
+      "taskSpace": 20,
+      "finished": "finish keep[] once after reset; no page kept",
+      "galleryHTMLSHA256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+      "sourceHubCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+      "newExperimentCommit": "b3c85c9656212a4ba83430844603334132f120a9",
+      "newImageSHA256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457",
+      "viewports": [
+        [
+          1440,
+          1000
+        ],
+        [
+          390,
+          844
+        ]
+      ],
+      "observed": [
+        "59/18/20/21 filters, Profile normalization search ->1/59, fixed commit and branch link targets point to published experiment.",
+        "Embedded original PNG SHA/109862B matches experiment. First extraction caught lazy image before decode (0x0/false); kept intermediate screenshot/JSON, waited for complete1440x1000 then final decoded screenshot.",
+        "Desktop original-size dialog displayed1440x1000 CSS image; Escape closed and returned exact new-card opener.",
+        "390 dark card and original-size dialog observed; header close visible/clickable, overflow retains original image dimensions. This is native scrollable original size, not fit-to-screen whole image.",
+        "Zero result0/59 -> reset59/59 with empty query; offline filter20/59; final all59/59, light, query empty, dialogclosed."
+      ],
+      "limits": [
+        "Only newly added card and affected shared controls exercised; prior58 browser evidence retains original gallery identity.",
+        "No new experiment data/CI/human usability claims from gallery. No touch or AT/full keyboard test.",
+        "All6 PNGs viewed by root agent, including initial predecode intermediate; final acceptance uses decoded image observation."
+      ],
+      "files": {
+        "desktop-decoded.json": {
+          "bytes": 94,
+          "sha256": "539850be7cffd75b3b573371c7e0ec742cadda2ec4333695c2d3233f1899023d"
+        },
+        "desktop-dialog.json": {
+          "bytes": 1402,
+          "sha256": "a255090f369da54c20a3c9061646c584b6413c395b18e4764e1ddc862b17a4d5"
+        },
+        "desktop-new-card-decoded.png": {
+          "bytes": 136243,
+          "sha256": "c447378e1df2dab0beadd2f25331258978ef26cfed142efd71196d6d9c015bb1"
+        },
+        "desktop-new-card.json": {
+          "bytes": 1648,
+          "sha256": "307223536a109a3d635112e667d150b9f6c2f21d23c26286c5dad3208b3af322"
+        },
+        "desktop-new-card.png": {
+          "bytes": 123631,
+          "sha256": "ae557a6d4b02d2fdcfd892747447ef7f058e7b51629ea0072901a26977d435d7"
+        },
+        "desktop-original-dialog.png": {
+          "bytes": 108269,
+          "sha256": "411aabdfc0ef74b8e2eb361056b8294fa2f5e96c37c066703619d9cf1c449a14"
+        },
+        "mobile-dark-card-visible.png": {
+          "bytes": 96839,
+          "sha256": "df54c4a14ad4a7d6f855f7985af7e7e15542094437af93912854d1b00d53873f"
+        },
+        "mobile-dark-card.png": {
+          "bytes": 87145,
+          "sha256": "3df9526daa4494c0de1115c71cf423be140bf60ea151667816972df8fe830169"
+        },
+        "mobile-dialog.json": {
+          "bytes": 897,
+          "sha256": "751767c668176f62e959d5e8360004a59a54dc294de743095a9dee4b4f71988f"
+        },
+        "mobile-original-dialog.png": {
+          "bytes": 55227,
+          "sha256": "a7373359514d8021538f5a75a374006fa2b8c44874e74a7e9d1b6dfbeeadea28"
+        },
+        "reset-observations.json": {
+          "bytes": 292,
+          "sha256": "276c418fc5541880a3c0c380fd985fafe26270fa4c8b580933a3134bc76283e2"
+        }
+      }
+    }
+  },
+  "historical58": {
+    "path": "browser-evidence58.json",
+    "bytes": 15765,
+    "sha256": "5646ed2b76ff71dbd3484ca7c9632646d8274c7b40c676a323b0b04023fefe35"
+  },
+  "remoteExperimentReceipt": {
+    "path": "../../2026-10-28/profile-normalization-remote.json",
+    "bytes": 712,
+    "sha256": "468307c70175df07795b12af3be77cbe762f2d313f33f45c1523828507bf3bc9"
+  },
+  "completion": {
+    "taskSpaceId": 20,
+    "finishCount": 1,
+    "finished": true,
+    "keep": [],
+    "resumeAllowed": false,
+    "finalState": "All59/light/empty query/dialog closed after reset and offline20 checks."
+  },
+  "scope": "Only new profile-normalization card and affected shared controls. Previous58 complete item/card/PNG bytes and historical evidence unchanged.",
+  "limits": [
+    "Initial desktop-new-card.png retains0x0 predecode state and is not a successful preview; decoded final capture separate.",
+    "Original-size native image overflow is preserved; no whole-image mobile fit, touch, AT or full-keyboard claim.",
+    "No previous58 experiment rerun, CI, human usability or speed result inferred.",
+    "Experimental publicFAIL164 and old658 Tab/legend-delta reuse remain separate from gallery observation."
+  ]
+}
