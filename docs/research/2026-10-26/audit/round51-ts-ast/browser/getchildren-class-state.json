@@ -1,0 +1,2510 @@
+{
+  "selected": "ClassDeclaration",
+  "fields": [
+    {
+      "name": "pos",
+      "value": "150"
+    },
+    {
+      "name": "end",
+      "value": "1501"
+    },
+    {
+      "name": "kind",
+      "value": "264 (SyntaxKind.ClassDeclaration)"
+    },
+    {
+      "name": "flags",
+      "value": "0"
+    },
+    {
+      "name": "modifiers",
+      "value": "ExportKeyword"
+    },
+    {
+      "name": "name",
+      "value": "Identifier"
+    },
+    {
+      "name": "typeParameters",
+      "value": "undefined"
+    },
+    {
+      "name": "heritageClauses",
+      "value": "undefined"
+    },
+    {
+      "name": "members",
+      "value": "PropertyDeclarationConstructorMethodDeclarationMethodDeclaration"
+    },
+    {
+      "name": "getChildCount()",
+      "value": "7"
+    },
+    {
+      "name": "getFullStart()",
+      "value": "150"
+    },
+    {
+      "name": "getStart()",
+      "value": "234"
+    },
+    {
+      "name": "getStart(sourceFile, true)",
+      "value": "152"
+    },
+    {
+      "name": "getFullWidth()",
+      "value": "1351"
+    },
+    {
+      "name": "getWidth()",
+      "value": "1267"
+    },
+    {
+      "name": "getLeadingTriviaWidth()",
+      "value": "84"
+    },
+    {
+      "name": "getFullText()",
+      "value": "\n\n/** An efficient way to compute the line and column of a position in a string. */\nexport class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}"
+    },
+    {
+      "name": "getText()",
+      "value": "export class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}"
+    },
+    {
+      "name": "ts.getLeadingCommentRanges(fileFullText, 150)",
+      "value": "Object"
+    },
+    {
+      "name": "ts.getTrailingCommentRanges(fileFullText, 1501)",
+      "value": "undefined"
+    }
+  ],
+  "tree": [
+    {
+      "kind": "SourceFile",
+      "parent": null
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "SourceFile"
+    },
+    {
+      "kind": "ImportDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ImportKeyword",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "ImportClause",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "NamespaceImport",
+      "parent": "ImportClause"
+    },
+    {
+      "kind": "AsteriskToken",
+      "parent": "NamespaceImport"
+    },
+    {
+      "kind": "AsKeyword",
+      "parent": "NamespaceImport"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "NamespaceImport"
+    },
+    {
+      "kind": "FromKeyword",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "ImportDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ImportKeyword",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "ImportClause",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "NamedImports",
+      "parent": "ImportClause"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "NamedImports"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "NamedImports"
+    },
+    {
+      "kind": "ImportSpecifier",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ImportSpecifier"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ImportSpecifier",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "TypeKeyword",
+      "parent": "ImportSpecifier"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ImportSpecifier"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "NamedImports"
+    },
+    {
+      "kind": "FromKeyword",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "ClassDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "JSDoc",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "ExportKeyword",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ClassKeyword",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "PropertyDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "PrivateKeyword",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "ArrayType",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "TypeReference",
+      "parent": "ArrayType"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "TypeReference"
+    },
+    {
+      "kind": "OpenBracketToken",
+      "parent": "ArrayType"
+    },
+    {
+      "kind": "CloseBracketToken",
+      "parent": "ArrayType"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "Constructor",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ConstructorKeyword",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "PublicKeyword",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReadonlyKeyword",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "StringKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "Block",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "ExpressionStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ExpressionStatement"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "EqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ExpressionStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "MethodDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "NumberKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Block",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "IfKeyword",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "ObjectLiteralExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "ConstKeyword",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "EqualsToken",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ArrowFunction",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "EqualsGreaterThanToken",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "Block",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "IfKeyword",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PrefixUnaryExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "PrefixUnaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PrefixUnaryExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "IfKeyword",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "GreaterThanEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "AmpersandAmpersandToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "ConstKeyword",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "EqualsToken",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "ConditionalExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "GreaterThanEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "QuestionToken",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "CloseBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "IfKeyword",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "EqualsEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NullKeyword",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "ObjectLiteralExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "ObjectLiteralExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "MethodDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "NumberKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "NumberKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Block",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "IfKeyword",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "EqualsEqualsEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BarBarToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "ConstKeyword",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "EqualsToken",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "IfKeyword",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "EqualsEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NullKeyword",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "OpenBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "ConstKeyword",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "EqualsToken",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseBracketToken",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "ReturnKeyword",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "OpenParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SyntaxList",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "DotToken",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "CommaToken",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "SyntaxList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CloseParenToken",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "SemicolonToken",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "Block"
+    },
+    {
+      "kind": "CloseBraceToken",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "EndOfFileToken",
+      "parent": "SourceFile"
+    }
+  ],
+  "highlights": [
+    {
+      "rect": {
+        "x": 62,
+        "y": 222,
+        "width": 390,
+        "height": 18,
+        "top": 222,
+        "right": 452,
+        "bottom": 240,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:390px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 240,
+        "width": 22,
+        "height": 18,
+        "top": 240,
+        "right": 84,
+        "bottom": 258,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:22px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 258,
+        "width": 0,
+        "height": 18,
+        "top": 258,
+        "right": 62,
+        "bottom": 276,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 276,
+        "width": 304,
+        "height": 18,
+        "top": 276,
+        "right": 366,
+        "bottom": 294,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:304px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 294,
+        "width": 130,
+        "height": 18,
+        "top": 294,
+        "right": 192,
+        "bottom": 312,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:130px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 312,
+        "width": 304,
+        "height": 18,
+        "top": 312,
+        "right": 366,
+        "bottom": 330,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:304px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 330,
+        "width": 36,
+        "height": 18,
+        "top": 330,
+        "right": 98,
+        "bottom": 348,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:36px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 348,
+        "width": 0,
+        "height": 18,
+        "top": 348,
+        "right": 62,
+        "bottom": 366,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 366,
+        "width": 499,
+        "height": 18,
+        "top": 366,
+        "right": 561,
+        "bottom": 384,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:499px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 384,
+        "width": 195,
+        "height": 18,
+        "top": 384,
+        "right": 257,
+        "bottom": 402,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:195px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 402,
+        "width": 130,
+        "height": 18,
+        "top": 402,
+        "right": 192,
+        "bottom": 420,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:130px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 420,
+        "width": 51,
+        "height": 18,
+        "top": 420,
+        "right": 113,
+        "bottom": 438,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:51px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 438,
+        "width": 672,
+        "height": 18,
+        "top": 438,
+        "right": 734,
+        "bottom": 456,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:672px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 456,
+        "width": 123,
+        "height": 18,
+        "top": 456,
+        "right": 185,
+        "bottom": 474,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:123px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 474,
+        "width": 51,
+        "height": 18,
+        "top": 474,
+        "right": 113,
+        "bottom": 492,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:51px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 492,
+        "width": 108,
+        "height": 18,
+        "top": 492,
+        "right": 170,
+        "bottom": 510,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:108px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 510,
+        "width": 51,
+        "height": 18,
+        "top": 510,
+        "right": 113,
+        "bottom": 528,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:51px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 528,
+        "width": 723,
+        "height": 18,
+        "top": 528,
+        "right": 785,
+        "bottom": 546,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:723px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 546,
+        "width": 0,
+        "height": 18,
+        "top": 546,
+        "right": 62,
+        "bottom": 564,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 564,
+        "width": 195,
+        "height": 18,
+        "top": 564,
+        "right": 257,
+        "bottom": 582,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:195px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 582,
+        "width": 304,
+        "height": 18,
+        "top": 582,
+        "right": 366,
+        "bottom": 600,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:304px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 600,
+        "width": 36,
+        "height": 18,
+        "top": 600,
+        "right": 98,
+        "bottom": 618,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:36px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 618,
+        "width": 0,
+        "height": 18,
+        "top": 618,
+        "right": 62,
+        "bottom": 636,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 636,
+        "width": 766,
+        "height": 18,
+        "top": 636,
+        "right": 828,
+        "bottom": 654,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:766px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 654,
+        "width": 22,
+        "height": 18,
+        "top": 654,
+        "right": 84,
+        "bottom": 672,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:22px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 672,
+        "width": 0,
+        "height": 18,
+        "top": 672,
+        "right": 62,
+        "bottom": 690,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 690,
+        "width": 412,
+        "height": 18,
+        "top": 690,
+        "right": 474,
+        "bottom": 708,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:412px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 708,
+        "width": 361,
+        "height": 18,
+        "top": 708,
+        "right": 423,
+        "bottom": 726,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:361px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 726,
+        "width": 108,
+        "height": 18,
+        "top": 726,
+        "right": 170,
+        "bottom": 744,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:108px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 132,
+        "width": 585,
+        "height": 18,
+        "top": 132,
+        "right": 647,
+        "bottom": 150,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:585px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 150,
+        "width": 260,
+        "height": 18,
+        "top": 150,
+        "right": 322,
+        "bottom": 168,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:260px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 168,
+        "width": 311,
+        "height": 18,
+        "top": 168,
+        "right": 373,
+        "bottom": 186,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:311px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 186,
+        "width": 0,
+        "height": 18,
+        "top": 186,
+        "right": 62,
+        "bottom": 204,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 204,
+        "width": 325,
+        "height": 18,
+        "top": 204,
+        "right": 387,
+        "bottom": 222,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:325px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 744,
+        "width": 36,
+        "height": 18,
+        "top": 744,
+        "right": 98,
+        "bottom": 762,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:36px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 762,
+        "width": 0,
+        "height": 18,
+        "top": 762,
+        "right": 62,
+        "bottom": 780,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:0px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 780,
+        "width": 332,
+        "height": 18,
+        "top": 780,
+        "right": 394,
+        "bottom": 798,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:332px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 798,
+        "width": 195,
+        "height": 18,
+        "top": 798,
+        "right": 257,
+        "bottom": 816,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:195px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 816,
+        "width": 499,
+        "height": 18,
+        "top": 816,
+        "right": 561,
+        "bottom": 834,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:499px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 834,
+        "width": 376,
+        "height": 18,
+        "top": 834,
+        "right": 438,
+        "bottom": 852,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:376px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 852,
+        "width": 36,
+        "height": 18,
+        "top": 852,
+        "right": 98,
+        "bottom": 870,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:36px;\"></div>"
+    },
+    {
+      "rect": {
+        "x": 62,
+        "y": 870,
+        "width": 463,
+        "height": 18,
+        "top": 870,
+        "right": 525,
+        "bottom": 888,
+        "left": 62
+      },
+      "html": "<div class=\"cdr editorRangeHighlight\" style=\"left:0px;width:463px;\"></div>"
+    }
+  ],
+  "editorText": "    this.lineInfos = createLineNumberAndColumns(text);\n  }\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\nimport * as arrayUtils from \"./arrayUtils.js\";\nimport { createLineNumberAndColumns, type LineNumberAndColumn } from \"./createLineNumberAndColumns.js\";\n/** An efficient way to compute the line and column of a position in a string. */\nexport class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n  constructor(public readonly text: string) {\n    }\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);",
+  "options": {
+    "compiler": "typescript-6.0.3",
+    "mode": "1",
+    "binding": false,
+    "factory": false
+  }
+}

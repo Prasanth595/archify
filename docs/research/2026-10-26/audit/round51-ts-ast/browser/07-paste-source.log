@@ -1,0 +1,316 @@
+[p1 "TypeScript AST Viewer" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "TypeScript AST Viewer"]
+root
+  container
+    heading
+      text "TypeScript AST Viewer"
+    button
+      text "Options"
+  container
+    container
+      container
+        tablist
+          tab
+            text "main.ts"
+        button [ref=1348]
+          text "+"
+      container
+        code
+          textbox [ref=1349]
+          text "1"
+          container
+            svg_root
+            canvas
+        container
+          text "Pos"
+          text "1502"
+          text ", Ln"
+          text "48"
+          text ", Col"
+          text "1"
+    container
+      container [ref=1350]
+        container
+          text "▾"
+          text "SourceFile"
+        container
+          container
+            container
+              text "▾"
+              text "ImportDeclaration"
+            container
+              container
+                container
+                  text "▾"
+                  text "ImportClause"
+                container
+                  container
+                    text "▾"
+                    text "NamespaceImport"
+                  text "Identifier"
+              text "StringLiteral"
+          container
+            container
+              text "▾"
+              text "ImportDeclaration"
+            container
+              container
+                container
+                  text "▾"
+                  text "ImportClause"
+                container
+                  container
+                    text "▾"
+                    text "NamedImports"
+                  container
+                    container
+                      container
+                        text "▾"
+                        text "ImportSpecifier"
+                      text "Identifier"
+                    container
+                      container
+                        text "▾"
+                        text "ImportSpecifier"
+                      text "Identifier"
+              text "StringLiteral"
+          container
+            container
+              text "▾"
+              text "ClassDeclaration"
+            container
+              text "ExportKeyword"
+              text "Identifier"
+              container
+                container
+                  text "▾"
+                  text "PropertyDeclaration"
+                container
+                  text "PrivateKeyword"
+                  text "Identifier"
+                  container
+                    container
+                      text "▾"
+                      text "ArrayType"
+                    container
+                      container
+                        text "▾"
+                        text "TypeReference"
+                      text "Identifier"
+              container
+                container
+                  text "▾"
+                  text "Constructor"
+                container
+                  container
+                    container
+                      text "▾"
+                      text "Parameter"
+                    container
+                      text "PublicKeyword"
+                      text "ReadonlyKeyword"
+                      text "Identifier"
+                      text "StringKeyword"
+                  container
+                    container
+                      text "▾"
+                      text "Block"
+                    container
+                      container
+                        text "▾"
+                        text "ExpressionStatement"
+                      container
+                        container
+                          text "▾"
+                          text "BinaryExpression"
+                        container
+                          container
+                            container
+                              text "▾"
+                              text "PropertyAccessExpression"
+                            container
+                              text "ThisKeyword"
+                              text "Identifier"
+                          text "EqualsToken"
+                          container
+                            container
+                              text "▾"
+                              text "CallExpression"
+                            container
+                              text "Identifier"
+                              text "Identifier"
+              container
+                container
+                  text "▾"
+                  text "MethodDeclaration"
+                container
+                  text "Identifier"
+                  container
+                    container
+                      text "▾"
+                      text "Parameter"
+                    container
+                      text "Identifier"
+                      text "NumberKeyword"
+                  container
+                    container
+                      text "▾"
+                      text "Block"
+                    container
+                      container
+                        text "▾"
+                        text "IfStatement"
+                      container
+                        container
+                          container
+                            text "▾"
+                            text "BinaryExpression"
+                          container
+                            text "Identifier"
+                            text "LessThanToken"
+                            text "NumericLiteral"
+                        container
+                          text "▾"
+                          text "Block"
+      container [ref=1351]
+        heading
+          text "Node"
+        container
+          container
+            text "▾"
+            text "SourceFile"
+          container
+            container
+              container
+                text "pos"
+                text ":"
+              text "0"
+            container
+              container
+                text "end"
+                text ":"
+              text "1502"
+            container
+              container
+                text "kind"
+                text ":"
+              text "308 (SyntaxKind.SourceFile)"
+            container
+              container
+                text "flags"
+                text ":"
+              text "0"
+            container
+              container
+                text "statements"
+                text ": ["
+              container
+                container
+                  text "▸"
+                  text "ImportDeclaration"
+                container
+                  text "▸"
+                  text "ImportDeclaration"
+                container
+                  text "▸"
+                  text "ClassDeclaration"
+              text "]"
+            container
+              container
+                text "endOfFileToken"
+                text ":"
+              container
+                text "▸"
+                text "EndOfFileToken"
+            container
+              container
+                text "text"
+                text ":"
+              text ""import * as arrayUtils from \"./arrayUtils.js\";\nimport { createLineNumberAndColumns, type LineNumberAndColumn } from \"./createLineNumberAndColumns.js\";\n\n/** An efficient way to compute the line..."
+            container
+              container
+                text "fileName"
+                text ":"
+              text ""/main.ts""
+            container
+              container
+                text "languageVersion"
+                text ":"
+              text "99"
+            container
+              container
+                text "languageVariant"
+                text ":"
+              text "0"
+            container
+              container
+                text "isDeclarationFile"
+                text ":"
+              text "false"
+            container
+              container
+                text "hasNoDefaultLib"
+                text ":"
+              text "false"
+            container
+              container
+                text "referencedFiles"
+                text ":"
+              text "[]"
+            container
+              container
+                text "typeReferenceDirectives"
+                text ":"
+              text "[]"
+            container
+              container
+                text "libReferenceDirectives"
+                text ":"
+              text "[]"
+            container
+              container
+                text "amdDependencies"
+                text ":"
+              text "[]"
+            container
+              container
+                text "impliedNodeFormat"
+                text ":"
+              text "undefined"
+            container
+              container
+                text "getChildCount()"
+                text ":"
+              text "2"
+            container
+              container
+                text "getFullStart()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getStart()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getStart(sourceFile, true)"
+                text ":"
+              text "0"
+            container
+              container
+                text "getFullWidth()"
+                text ":"
+              text "1502"
+            container
+              container
+                text "getWidth()"
+                text ":"
+              text "1502"
+            container
+              container
+                text "getLeadingTriviaWidth()"
+                text ":"
+              text "0"
+
+SOURCE DOM [ { name: 'text', text: '"import * as arrayUtils from \\"./arrayUtils.js\\";\\nimport { createLineNumberAndColumns, type LineNumberAndColumn } from \\"./createLineNumberAndColumns.js\\";\\n\\n/** An efficient way to compute the line and column of a position in a string. */\\nexport class LineAndColumnComputer {\\n  private lineInfos: LineNumberAndColumn[];\\n\\n  constructor(public readonly text: string) {\\n    this.lineInfos = createLineNumberAndColumns(text);\\n  }\\n\\n  getNumberAndColumnFromPos(pos: number) {\\n    if (pos < 0) {\\n      return { lineNumber: 1, column: 1 };\\n    }\\n\\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\\n      if (pos < info.pos) {\\n        return -1;\\n      }\\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\\n        return 0;\\n      }\\n      return 1;\\n    });\\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\\n\\n    if (lineInfo == null) {\\n      return { lineNumber: 1, column: 1 };\\n    }\\n\\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\\n  }\\n\\n  getPosFromLineAndColumn(line: number, column: number) {\\n    if (this.lineInfos.length === 0 || line < 1) {\\n      return 0;\\n    }\\n\\n    const lineInfo = this.lineInfos[line - 1];\\n    if (lineInfo == null) {\\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\\n      return lastLineInfo.pos + lastLineInfo.length;\\n    }\\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\\n  }\\n}\\n"' }, { name: 'getFullText()', text: 'import * as arrayUtils from "./arrayUtils.js";\nimport { createLineNumberAndColumns, type LineNumberAndColumn } from "./createLineNumberAndColumns.js";\n\n/** An efficient way to compute the line and column of a position in a string. */\nexport class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}\n' } ]
+

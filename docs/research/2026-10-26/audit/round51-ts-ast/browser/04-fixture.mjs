@@ -1,0 +1,10 @@
+const task=await taskSpace(3),page=task.page('p1'),fs=await import('node:fs/promises');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+console.log('OPTIONS BEFORE',await page.evaluate(()=>[...document.querySelectorAll('input[type="checkbox"]')].map(x=>({id:x.id,checked:x.checked}))));
+await page.click('text="Options"',{label:'close compiler options'});
+await page.click('@1337',{label:'focus source editor'});
+await page.keyboard.press('ControlOrMeta+A');
+await page.keyboard.paste(await fs.readFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round51-ts-ast/fixture/LineAndColumnComputer.ts",'utf8'));
+await page.waitForSelector('#treeViewer .nodeText',{state:'visible'});
+console.log(await page.snapshot());
+console.log('SOURCE PROPERTIES DOM',await page.evaluate(()=>[...document.querySelectorAll('span,pre,code')].filter(x=>x.children.length===0&&x.textContent.includes('import * as arrayUtils')).map(x=>({tag:x.tagName,cls:x.className,text:x.textContent.slice(0,1800),parent:x.parentElement.outerHTML.slice(0,2100)})).slice(0,4)));

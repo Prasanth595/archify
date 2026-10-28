@@ -1,0 +1,14 @@
+const task=await taskSpace(3),page=task.page('p1'),fs=await import('node:fs/promises');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+console.log('CURRENT',await page.snapshot());
+await page.click('text="Options"',{label:'set syntax-only reading controls'});
+await page.click('#bindingEnabled',{label:'disable unrelated type binding'});
+await page.click('#showFactoryCode',{label:'hide generated factory code'});
+await page.click('text="Options"',{label:'return to syntax reader'});
+await page.waitForFunction(()=>document.querySelectorAll('textarea.ime-text-area').length===1,undefined,{timeout:10000});
+await page.click('textarea.ime-text-area',{label:'enter public upstream source'});
+await page.keyboard.press('ControlOrMeta+A');
+await page.keyboard.paste(await fs.readFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round51-ts-ast/fixture/LineAndColumnComputer.ts",'utf8'));
+await page.waitForFunction(()=>document.querySelector('#treeViewer')?.innerText.includes('ClassDeclaration'),undefined,{timeout:10000});
+console.log(await page.snapshot());
+console.log('SOURCE DOM',await page.evaluate(()=>[...document.querySelectorAll('.propertiesViewer [data-name="text"],.propertiesViewer [data-name="getFullText()"]')].map(x=>({name:x.getAttribute('data-name'),html:x.outerHTML}))));

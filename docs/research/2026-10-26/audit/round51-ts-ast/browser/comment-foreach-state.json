@@ -1,0 +1,526 @@
+{
+  "target": {
+    "text": "/** An efficient way to compute the line and column of a position in a string. */",
+    "rect": {
+      "x": 62,
+      "y": 132,
+      "width": 808,
+      "height": 18,
+      "top": 132,
+      "right": 870,
+      "bottom": 150,
+      "left": 62
+    }
+  },
+  "state": {
+    "selected": "ClassDeclaration",
+    "fields": [
+      {
+        "name": "pos",
+        "value": "150"
+      },
+      {
+        "name": "end",
+        "value": "1501"
+      },
+      {
+        "name": "kind",
+        "value": "264 (SyntaxKind.ClassDeclaration)"
+      },
+      {
+        "name": "flags",
+        "value": "0"
+      },
+      {
+        "name": "modifiers",
+        "value": "ExportKeyword"
+      },
+      {
+        "name": "name",
+        "value": "Identifier"
+      },
+      {
+        "name": "typeParameters",
+        "value": "undefined"
+      },
+      {
+        "name": "heritageClauses",
+        "value": "undefined"
+      },
+      {
+        "name": "members",
+        "value": "PropertyDeclarationConstructorMethodDeclarationMethodDeclaration"
+      },
+      {
+        "name": "getChildCount()",
+        "value": "7"
+      },
+      {
+        "name": "getFullStart()",
+        "value": "150"
+      },
+      {
+        "name": "getStart()",
+        "value": "234"
+      },
+      {
+        "name": "getStart(sourceFile, true)",
+        "value": "152"
+      },
+      {
+        "name": "getFullWidth()",
+        "value": "1351"
+      },
+      {
+        "name": "getWidth()",
+        "value": "1267"
+      },
+      {
+        "name": "getLeadingTriviaWidth()",
+        "value": "84"
+      },
+      {
+        "name": "getFullText()",
+        "value": "\n\n/** An efficient way to compute the line and column of a position in a string. */\nexport class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}"
+      },
+      {
+        "name": "getText()",
+        "value": "export class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}"
+      },
+      {
+        "name": "ts.getLeadingCommentRanges(fileFullText, 150)",
+        "value": "Object"
+      },
+      {
+        "name": "ts.getTrailingCommentRanges(fileFullText, 1501)",
+        "value": "undefined"
+      }
+    ],
+    "status": [
+      "Pos 166, Ln 4, Col 15"
+    ],
+    "mode": "0",
+    "highlights": [
+      {
+        "x": 62,
+        "y": 222,
+        "width": 390,
+        "height": 18,
+        "top": 222,
+        "right": 452,
+        "bottom": 240,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 240,
+        "width": 22,
+        "height": 18,
+        "top": 240,
+        "right": 84,
+        "bottom": 258,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 258,
+        "width": 0,
+        "height": 18,
+        "top": 258,
+        "right": 62,
+        "bottom": 276,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 276,
+        "width": 304,
+        "height": 18,
+        "top": 276,
+        "right": 366,
+        "bottom": 294,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 294,
+        "width": 130,
+        "height": 18,
+        "top": 294,
+        "right": 192,
+        "bottom": 312,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 312,
+        "width": 304,
+        "height": 18,
+        "top": 312,
+        "right": 366,
+        "bottom": 330,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 330,
+        "width": 36,
+        "height": 18,
+        "top": 330,
+        "right": 98,
+        "bottom": 348,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 348,
+        "width": 0,
+        "height": 18,
+        "top": 348,
+        "right": 62,
+        "bottom": 366,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 366,
+        "width": 499,
+        "height": 18,
+        "top": 366,
+        "right": 561,
+        "bottom": 384,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 384,
+        "width": 195,
+        "height": 18,
+        "top": 384,
+        "right": 257,
+        "bottom": 402,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 402,
+        "width": 130,
+        "height": 18,
+        "top": 402,
+        "right": 192,
+        "bottom": 420,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 420,
+        "width": 51,
+        "height": 18,
+        "top": 420,
+        "right": 113,
+        "bottom": 438,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 438,
+        "width": 672,
+        "height": 18,
+        "top": 438,
+        "right": 734,
+        "bottom": 456,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 456,
+        "width": 123,
+        "height": 18,
+        "top": 456,
+        "right": 185,
+        "bottom": 474,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 474,
+        "width": 51,
+        "height": 18,
+        "top": 474,
+        "right": 113,
+        "bottom": 492,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 492,
+        "width": 108,
+        "height": 18,
+        "top": 492,
+        "right": 170,
+        "bottom": 510,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 510,
+        "width": 51,
+        "height": 18,
+        "top": 510,
+        "right": 113,
+        "bottom": 528,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 528,
+        "width": 723,
+        "height": 18,
+        "top": 528,
+        "right": 785,
+        "bottom": 546,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 546,
+        "width": 0,
+        "height": 18,
+        "top": 546,
+        "right": 62,
+        "bottom": 564,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 564,
+        "width": 195,
+        "height": 18,
+        "top": 564,
+        "right": 257,
+        "bottom": 582,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 582,
+        "width": 304,
+        "height": 18,
+        "top": 582,
+        "right": 366,
+        "bottom": 600,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 600,
+        "width": 36,
+        "height": 18,
+        "top": 600,
+        "right": 98,
+        "bottom": 618,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 618,
+        "width": 0,
+        "height": 18,
+        "top": 618,
+        "right": 62,
+        "bottom": 636,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 636,
+        "width": 766,
+        "height": 18,
+        "top": 636,
+        "right": 828,
+        "bottom": 654,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 654,
+        "width": 22,
+        "height": 18,
+        "top": 654,
+        "right": 84,
+        "bottom": 672,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 672,
+        "width": 0,
+        "height": 18,
+        "top": 672,
+        "right": 62,
+        "bottom": 690,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 690,
+        "width": 412,
+        "height": 18,
+        "top": 690,
+        "right": 474,
+        "bottom": 708,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 708,
+        "width": 361,
+        "height": 18,
+        "top": 708,
+        "right": 423,
+        "bottom": 726,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 726,
+        "width": 108,
+        "height": 18,
+        "top": 726,
+        "right": 170,
+        "bottom": 744,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 132,
+        "width": 585,
+        "height": 18,
+        "top": 132,
+        "right": 647,
+        "bottom": 150,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 150,
+        "width": 260,
+        "height": 18,
+        "top": 150,
+        "right": 322,
+        "bottom": 168,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 168,
+        "width": 311,
+        "height": 18,
+        "top": 168,
+        "right": 373,
+        "bottom": 186,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 186,
+        "width": 0,
+        "height": 18,
+        "top": 186,
+        "right": 62,
+        "bottom": 204,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 204,
+        "width": 325,
+        "height": 18,
+        "top": 204,
+        "right": 387,
+        "bottom": 222,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 744,
+        "width": 36,
+        "height": 18,
+        "top": 744,
+        "right": 98,
+        "bottom": 762,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 762,
+        "width": 0,
+        "height": 18,
+        "top": 762,
+        "right": 62,
+        "bottom": 780,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 780,
+        "width": 332,
+        "height": 18,
+        "top": 780,
+        "right": 394,
+        "bottom": 798,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 798,
+        "width": 195,
+        "height": 18,
+        "top": 798,
+        "right": 257,
+        "bottom": 816,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 816,
+        "width": 499,
+        "height": 18,
+        "top": 816,
+        "right": 561,
+        "bottom": 834,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 834,
+        "width": 376,
+        "height": 18,
+        "top": 834,
+        "right": 438,
+        "bottom": 852,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 852,
+        "width": 36,
+        "height": 18,
+        "top": 852,
+        "right": 98,
+        "bottom": 870,
+        "left": 62
+      },
+      {
+        "x": 62,
+        "y": 870,
+        "width": 463,
+        "height": 18,
+        "top": 870,
+        "right": 525,
+        "bottom": 888,
+        "left": 62
+      }
+    ]
+  }
+}

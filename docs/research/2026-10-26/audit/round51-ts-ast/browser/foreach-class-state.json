@@ -1,0 +1,1183 @@
+{
+  "selected": "ClassDeclaration",
+  "fields": [
+    {
+      "name": "pos",
+      "value": "150"
+    },
+    {
+      "name": "end",
+      "value": "1501"
+    },
+    {
+      "name": "kind",
+      "value": "264 (SyntaxKind.ClassDeclaration)"
+    },
+    {
+      "name": "flags",
+      "value": "0"
+    },
+    {
+      "name": "modifiers",
+      "value": "ExportKeyword"
+    },
+    {
+      "name": "name",
+      "value": "Identifier"
+    },
+    {
+      "name": "typeParameters",
+      "value": "undefined"
+    },
+    {
+      "name": "heritageClauses",
+      "value": "undefined"
+    },
+    {
+      "name": "members",
+      "value": "PropertyDeclarationConstructorMethodDeclarationMethodDeclaration"
+    },
+    {
+      "name": "getChildCount()",
+      "value": "7"
+    },
+    {
+      "name": "getFullStart()",
+      "value": "150"
+    },
+    {
+      "name": "getStart()",
+      "value": "234"
+    },
+    {
+      "name": "getStart(sourceFile, true)",
+      "value": "152"
+    },
+    {
+      "name": "getFullWidth()",
+      "value": "1351"
+    },
+    {
+      "name": "getWidth()",
+      "value": "1267"
+    },
+    {
+      "name": "getLeadingTriviaWidth()",
+      "value": "84"
+    },
+    {
+      "name": "getFullText()",
+      "value": "\n\n/** An efficient way to compute the line and column of a position in a string. */\nexport class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}"
+    },
+    {
+      "name": "getText()",
+      "value": "export class LineAndColumnComputer {\n  private lineInfos: LineNumberAndColumn[];\n\n  constructor(public readonly text: string) {\n    this.lineInfos = createLineNumberAndColumns(text);\n  }\n\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}"
+    },
+    {
+      "name": "ts.getLeadingCommentRanges(fileFullText, 150)",
+      "value": "Object"
+    },
+    {
+      "name": "ts.getTrailingCommentRanges(fileFullText, 1501)",
+      "value": "undefined"
+    }
+  ],
+  "tree": [
+    {
+      "kind": "SourceFile",
+      "parent": null
+    },
+    {
+      "kind": "ImportDeclaration",
+      "parent": "SourceFile"
+    },
+    {
+      "kind": "ImportClause",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "NamespaceImport",
+      "parent": "ImportClause"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "NamespaceImport"
+    },
+    {
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "ImportDeclaration",
+      "parent": "SourceFile"
+    },
+    {
+      "kind": "ImportClause",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "NamedImports",
+      "parent": "ImportClause"
+    },
+    {
+      "kind": "ImportSpecifier",
+      "parent": "NamedImports"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ImportSpecifier"
+    },
+    {
+      "kind": "ImportSpecifier",
+      "parent": "NamedImports"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ImportSpecifier"
+    },
+    {
+      "kind": "StringLiteral",
+      "parent": "ImportDeclaration"
+    },
+    {
+      "kind": "ClassDeclaration",
+      "parent": "SourceFile"
+    },
+    {
+      "kind": "ExportKeyword",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "PropertyDeclaration",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "PrivateKeyword",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "ArrayType",
+      "parent": "PropertyDeclaration"
+    },
+    {
+      "kind": "TypeReference",
+      "parent": "ArrayType"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "TypeReference"
+    },
+    {
+      "kind": "Constructor",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "PublicKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "ReadonlyKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "StringKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "Block",
+      "parent": "Constructor"
+    },
+    {
+      "kind": "ExpressionStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ExpressionStatement"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "EqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "MethodDeclaration",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "NumberKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "Block",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "ObjectLiteralExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ArrowFunction",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "EqualsGreaterThanToken",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "Block",
+      "parent": "ArrowFunction"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "PrefixUnaryExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PrefixUnaryExpression"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "GreaterThanEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "AmpersandAmpersandToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "ConditionalExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "GreaterThanEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "QuestionToken",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ColonToken",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "ConditionalExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "EqualsEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NullKeyword",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "ObjectLiteralExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "ObjectLiteralExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PropertyAssignment",
+      "parent": "ObjectLiteralExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "PropertyAssignment"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MethodDeclaration",
+      "parent": "ClassDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "NumberKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "Parameter",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "NumberKeyword",
+      "parent": "Parameter"
+    },
+    {
+      "kind": "Block",
+      "parent": "MethodDeclaration"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "EqualsEqualsEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BarBarToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "LessThanToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "IfStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "EqualsEqualsToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NullKeyword",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Block",
+      "parent": "IfStatement"
+    },
+    {
+      "kind": "VariableStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "VariableDeclarationList",
+      "parent": "VariableStatement"
+    },
+    {
+      "kind": "VariableDeclaration",
+      "parent": "VariableDeclarationList"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "ElementAccessExpression",
+      "parent": "VariableDeclaration"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ElementAccessExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ThisKeyword",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "ReturnStatement",
+      "parent": "Block"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "ReturnStatement"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PlusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "CallExpression",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "PropertyAccessExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "PropertyAccessExpression"
+    },
+    {
+      "kind": "BinaryExpression",
+      "parent": "CallExpression"
+    },
+    {
+      "kind": "Identifier",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "MinusToken",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "NumericLiteral",
+      "parent": "BinaryExpression"
+    },
+    {
+      "kind": "EndOfFileToken",
+      "parent": "SourceFile"
+    }
+  ],
+  "highlights": [],
+  "editorText": "    this.lineInfos = createLineNumberAndColumns(text);\n  }\n  getNumberAndColumnFromPos(pos: number) {\n    if (pos < 0) {\n      return { lineNumber: 1, column: 1 };\n    }\n    const index = arrayUtils.binarySearch(this.lineInfos, (info) => {\n      if (pos < info.pos) {\n        return -1;\n      }\n      if (pos >= info.pos && pos < info.pos + info.length + 1) { // `+ 1` is for newline char\n        return 0;\n      }\n      return 1;\n    });\n    const lineInfo = index >= 0 ? this.lineInfos[index] : this.lineInfos[this.lineInfos.length - 1];\n    if (lineInfo == null) {\n      return { lineNumber: 1, column: 1 };\n    }\n    return { lineNumber: lineInfo.number, column: Math.min(pos - lineInfo.pos + 1, lineInfo.length + 1) };\n  }\n  getPosFromLineAndColumn(line: number, column: number) {\n    if (this.lineInfos.length === 0 || line < 1) {\n      return 0;\n    }\n    const lineInfo = this.lineInfos[line - 1];\n    if (lineInfo == null) {\n      const lastLineInfo = this.lineInfos[this.lineInfos.length - 1];\n      return lastLineInfo.pos + lastLineInfo.length;\n    }\n    return lineInfo.pos + Math.min(lineInfo.length, column - 1);\n  }\n}",
+  "options": {
+    "compiler": "typescript-6.0.3",
+    "mode": "0",
+    "binding": false,
+    "factory": false
+  }
+}

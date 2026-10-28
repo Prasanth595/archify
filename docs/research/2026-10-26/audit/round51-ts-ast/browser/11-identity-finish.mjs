@@ -1,0 +1,14 @@
+const task=await taskSpace(3),page=task.page('p1'),fs=await import('node:fs/promises');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('#treeViewer [data-name="SourceFile"] .nodeText >> nth=0',{label:'verify unchanged full source'});
+const raw=await page.evaluate(()=>document.querySelector('.propertiesViewer [data-name="getFullText()"] .value')?.textContent);
+const expected=await fs.readFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round51-ts-ast/fixture/LineAndColumnComputer.ts",'utf8');
+if(raw!==expected)throw new Error('Source changed during traversal comparison');
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round51-ts-ast/fixture/native-after.ts",raw);
+await page.click('text="Options"',{label:'record reproducible compiler settings'});
+const state=await page.evaluate(()=>({url:location.href,userAgent:navigator.userAgent,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},selects:[...document.querySelectorAll('select')].map(x=>({id:x.id,value:x.value,label:x.selectedOptions[0]?.textContent})),checkboxes:[...document.querySelectorAll('input[type="checkbox"]')].map(x=>({id:x.id,checked:x.checked})),resources:performance.getEntriesByType('resource').map(x=>({url:x.name,initiatorType:x.initiatorType}))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round51-ts-ast/browser/environment.json",JSON.stringify(state,null,2)+'\n');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round51-ts-ast/screenshots/06-options.png"});
+console.log({viewport:state.viewport,selects:state.selects,checkboxes:state.checkboxes,resources:state.resources.length,urlPrefix:state.url.slice(0,100)});
+await page.goto('about:blank');
+console.log(await page.snapshot());

@@ -1,0 +1,127 @@
+{
+  "repository": "dsherret/ts-ast-viewer",
+  "commit": "cbcacc6181b1e3ef09f3f61eb3d8056c004a5bd9",
+  "license": "MIT; Copyright (c) 2017-2024 David Sherret",
+  "files": [
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e848ff89feb28c5d7a04ecfe2cef391e879668b",
+      "size": 1085,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/7e848ff89feb28c5d7a04ecfe2cef391e879668b"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a4302c93d2836dc0ccd2988f5ef91f3e494f0b4",
+      "size": 1049,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/6a4302c93d2836dc0ccd2988f5ef91f3e494f0b4"
+    },
+    {
+      "path": "readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "332e3bd20ea5462e50d03847bfee62d5d592501e",
+      "size": 992,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/332e3bd20ea5462e50d03847bfee62d5d592501e"
+    },
+    {
+      "path": "src/App.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "544b505c2dbb04afda9b660648b86e929dcecdba",
+      "size": 5412,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/544b505c2dbb04afda9b660648b86e929dcecdba"
+    },
+    {
+      "path": "src/compiler/createSourceFile.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "44d13dadfe4dcc3961b83c6364b2d67b58f47880",
+      "size": 2339,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/44d13dadfe4dcc3961b83c6364b2d67b58f47880"
+    },
+    {
+      "path": "src/compiler/getChildrenFunction.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3dce88992f05a6263e8a89b9b4bf48a74b55ef1",
+      "size": 953,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/f3dce88992f05a6263e8a89b9b4bf48a74b55ef1"
+    },
+    {
+      "path": "src/compiler/getDescendantAtRange.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c1d8da0a49c28fa7d83899104483f4aa1d58823",
+      "size": 1536,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/1c1d8da0a49c28fa7d83899104483f4aa1d58823"
+    },
+    {
+      "path": "src/compiler/getStartSafe.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25f6047de31592a4e3334154ed86df47d79c8dbd",
+      "size": 414,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/25f6047de31592a4e3334154ed86df47d79c8dbd"
+    },
+    {
+      "path": "src/components/CodeEditor.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c94ba9c50cdeb7c83b133f547e67e7c369636c35",
+      "size": 14250,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/c94ba9c50cdeb7c83b133f547e67e7c369636c35"
+    },
+    {
+      "path": "src/components/Options.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "074668c76662902d1465d50e87f676314cdacf0e",
+      "size": 5803,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/074668c76662902d1465d50e87f676314cdacf0e"
+    },
+    {
+      "path": "src/components/PropertiesViewer.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "799506895529cc23afe207f18c6ff36f68e25c94",
+      "size": 18756,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/799506895529cc23afe207f18c6ff36f68e25c94"
+    },
+    {
+      "path": "src/components/TreeViewer.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d47db70834068a375cac3b3158b029e4e1e3a13",
+      "size": 1991,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/9d47db70834068a375cac3b3158b029e4e1e3a13"
+    },
+    {
+      "path": "src/utils/LineAndColumnComputer.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39099c24f5f2b1f8ae21de7d70dc8498dc14bf33",
+      "size": 1502,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/39099c24f5f2b1f8ae21de7d70dc8498dc14bf33"
+    },
+    {
+      "path": "src/utils/UrlSaver.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afd6fadc1e769d70e609b1d60e786f3c7cbf79f7",
+      "size": 1920,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/afd6fadc1e769d70e609b1d60e786f3c7cbf79f7"
+    },
+    {
+      "path": "src/utils/createLineNumberAndColumns.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e71207ae2c16a45015b98a90157fad2727ced558",
+      "size": 556,
+      "url": "https://api.github.com/repos/dsherret/ts-ast-viewer/git/blobs/e71207ae2c16a45015b98a90157fad2727ced558"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+ElementResolutionError: Stale ref: @1337; take a new snapshot
+    at #refMapForAction (file:////[eval1]:19304:23)
+    at async #resolveActionTargets (file:////[eval1]:19108:24)
+    at async #retryElementAction (file:////[eval1]:19140:34)
+    at async file:////[eval1]:19242:29
+    at async file:////[eval1]:16940:28
+OPTIONS BEFORE [ { id: 'bindingEnabled', checked: true }, { id: 'showFactoryCode', checked: true }, { id: 'showInternals', checked: false } ]
+
+ego's nodejs process exited with code 1.

@@ -1,0 +1,207 @@
+[p1 "TypeScript AST Viewer" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "TypeScript AST Viewer"]
+root
+  container
+    heading
+      text "TypeScript AST Viewer"
+    button
+      text "Options"
+  container
+    container
+      container
+        container
+          tablist
+            tab
+              text "main.ts"
+          button [ref=1336]
+            text "+"
+        container
+          code
+            textbox [ref=1337]
+            text "1"
+            container
+              svg_root
+              canvas
+          container
+            text "Pos"
+            text "0"
+            text ", Ln"
+            text "1"
+            text ", Col"
+            text "1"
+      code
+        textbox [ref=1338]
+        container
+          text "1"
+          text "2"
+        container
+          container
+            text "["
+            text "]"
+            text ";"
+          canvas
+    container
+      container
+        container
+          text "▾"
+          text "SourceFile"
+        text "EndOfFileToken"
+      container
+        heading
+          text "Node"
+        container
+          container
+            text "▾"
+            text "SourceFile"
+          container
+            container
+              container
+                text "pos"
+                text ":"
+              text "0"
+            container
+              container
+                text "end"
+                text ":"
+              text "0"
+            container
+              container
+                text "kind"
+                text ":"
+              text "308 (SyntaxKind.SourceFile)"
+            container
+              container
+                text "flags"
+                text ":"
+              text "0"
+            container
+              container
+                text "statements"
+                text ":"
+              text "[]"
+            container
+              container
+                text "endOfFileToken"
+                text ":"
+              container
+                text "▸"
+                text "EndOfFileToken"
+            container
+              container
+                text "text"
+                text ":"
+              text """"
+            container
+              container
+                text "fileName"
+                text ":"
+              text ""/main.ts""
+            container
+              container
+                text "languageVersion"
+                text ":"
+              text "99"
+            container
+              container
+                text "languageVariant"
+                text ":"
+              text "0"
+            container
+              container
+                text "isDeclarationFile"
+                text ":"
+              text "false"
+            container
+              container
+                text "hasNoDefaultLib"
+                text ":"
+              text "false"
+            container
+              container
+                text "referencedFiles"
+                text ":"
+              text "[]"
+            container
+              container
+                text "typeReferenceDirectives"
+                text ":"
+              text "[]"
+            container
+              container
+                text "libReferenceDirectives"
+                text ":"
+              text "[]"
+            container
+              container
+                text "amdDependencies"
+                text ":"
+              text "[]"
+            container
+              container
+                text "impliedNodeFormat"
+                text ":"
+              text "undefined"
+            container
+              container
+                text "getChildCount()"
+                text ":"
+              text "2"
+            container
+              container
+                text "getFullStart()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getStart()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getStart(sourceFile, true)"
+                text ":"
+              text "0"
+            container
+              container
+                text "getFullWidth()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getWidth()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getLeadingTriviaWidth()"
+                text ":"
+              text "0"
+            container
+              text "getFullText()"
+              text ":"
+            container
+              text "getText()"
+              text ":"
+            container
+              container
+                text "ts.getLeadingCommentRanges(fileFullText, 0)"
+                text ":"
+              text "undefined"
+            container
+              container
+                text "ts.getTrailingCommentRanges(fileFullText, 0)"
+                text ":"
+              text "undefined"
+        heading
+          text "Type"
+        text "[None]"
+        heading
+          text "Symbol"
+        text "[None]"
+        heading
+          text "Signature"
+        text "[None]"
+        heading
+          text "FlowNode"
+        text "[None]"
+
+

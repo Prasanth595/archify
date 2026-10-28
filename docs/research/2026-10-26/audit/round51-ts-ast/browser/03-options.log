@@ -1,0 +1,257 @@
+[p1 "TypeScript AST Viewer" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "TypeScript AST Viewer"]
+root
+  container
+    heading
+      text "TypeScript AST Viewer"
+    container
+      button
+        text "Options"
+      container
+        container
+          container
+            text "Version"
+            text ":"
+          combobox [ref=1339]
+            text "6.0.3"
+        container
+          container
+            text "Tree mode"
+            text ":"
+          combobox [ref=1340]
+            text "node.forEachChild(child => ...)"
+        container
+          container
+            text "Script target"
+            text ":"
+          combobox [ref=1341]
+            text "ts.ScriptTarget.ESNext / Latest"
+        container
+          container
+            text "Binding"
+            text ":"
+          checkbox [ref=1342]
+        container
+          container
+            text "Factory code"
+            text ":"
+          checkbox [ref=1343]
+        container
+          container
+            text "Show internals"
+            text ":"
+          checkbox [ref=1344]
+        container
+          container
+            text "Theme"
+            text ":"
+          combobox [ref=1345]
+            text "OS"
+        container
+          anchor [ref=1346, loc=href:https://github.com/dsherret/ts-ast-viewer/tree/main/docs/about.md, url=https://github.com/dsherret/ts-ast-viewer/tree/main/docs/about.md]
+            text "About"
+            image
+          text " | "
+          anchor [ref=1347, loc=href:https://github.com/dsherret/ts-ast-viewer, url=https://github.com/dsherret/ts-ast-viewer]
+            text "View on GitHub"
+            image
+  container
+    container
+      container
+        container
+          tablist
+            tab
+              text "main.ts"
+          button [ref=1336]
+            text "+"
+        container
+          code
+            textbox [ref=1337]
+            text "1"
+            container
+              svg_root
+              canvas
+          container
+            text "Pos"
+            text "0"
+            text ", Ln"
+            text "1"
+            text ", Col"
+            text "1"
+      code
+        textbox [ref=1338]
+        container
+          text "1"
+          text "2"
+        container
+          container
+            text "["
+            text "]"
+            text ";"
+          canvas
+    container
+      container
+        container
+          text "▾"
+          text "SourceFile"
+        text "EndOfFileToken"
+      container
+        heading
+          text "Node"
+        container
+          container
+            text "▾"
+            text "SourceFile"
+          container
+            container
+              container
+                text "pos"
+                text ":"
+              text "0"
+            container
+              container
+                text "end"
+                text ":"
+              text "0"
+            container
+              container
+                text "kind"
+                text ":"
+              text "308 (SyntaxKind.SourceFile)"
+            container
+              container
+                text "flags"
+                text ":"
+              text "0"
+            container
+              container
+                text "statements"
+                text ":"
+              text "[]"
+            container
+              container
+                text "endOfFileToken"
+                text ":"
+              container
+                text "▸"
+                text "EndOfFileToken"
+            container
+              container
+                text "text"
+                text ":"
+              text """"
+            container
+              container
+                text "fileName"
+                text ":"
+              text ""/main.ts""
+            container
+              container
+                text "languageVersion"
+                text ":"
+              text "99"
+            container
+              container
+                text "languageVariant"
+                text ":"
+              text "0"
+            container
+              container
+                text "isDeclarationFile"
+                text ":"
+              text "false"
+            container
+              container
+                text "hasNoDefaultLib"
+                text ":"
+              text "false"
+            container
+              container
+                text "referencedFiles"
+                text ":"
+              text "[]"
+            container
+              container
+                text "typeReferenceDirectives"
+                text ":"
+              text "[]"
+            container
+              container
+                text "libReferenceDirectives"
+                text ":"
+              text "[]"
+            container
+              container
+                text "amdDependencies"
+                text ":"
+              text "[]"
+            container
+              container
+                text "impliedNodeFormat"
+                text ":"
+              text "undefined"
+            container
+              container
+                text "getChildCount()"
+                text ":"
+              text "2"
+            container
+              container
+                text "getFullStart()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getStart()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getStart(sourceFile, true)"
+                text ":"
+              text "0"
+            container
+              container
+                text "getFullWidth()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getWidth()"
+                text ":"
+              text "0"
+            container
+              container
+                text "getLeadingTriviaWidth()"
+                text ":"
+              text "0"
+            container
+              text "getFullText()"
+              text ":"
+            container
+              text "getText()"
+              text ":"
+            container
+              container
+                text "ts.getLeadingCommentRanges(fileFullText, 0)"
+                text ":"
+              text "undefined"
+            container
+              container
+                text "ts.getTrailingCommentRanges(fileFullText, 0)"
+                text ":"
+              text "undefined"
+        heading
+          text "Type"
+        text "[None]"
+        heading
+          text "Symbol"
+        text "[None]"
+        heading
+          text "Signature"
+        text "[None]"
+        heading
+          text "FlowNode"
+        text "[None]"
+
+{ selects: [ { html: '<select id="compilerVersionSelection"><option value="@typescript/native-preview@7.0.2">7.0.2</option><option value="typescript-6.0.3">6.0.3</option><option value="typescript-5.9.3">5.9.3</option><option value="typescript-5.8.3">5.8.3</option><option value="typescript-5.7.3">5.7.3</option><option value="typescript-5.6.3">5.6.3</option><option value="typescript-5.5.4">5.5.4</option><option value="typescript-5.4.5">5.4.5</option><option value="typescript-5.3.3">5.3.3</option><option value="typescript-5.2.2">5.2.2</option><option value="@typescript/native-preview@nightly">nightly (2026-08-20)</option></select>', value: 'typescript-6.0.3' }, { html: '<select id="treeMode"><option value="0">node.forEachChild(child =&gt; ...)</option><option value="1">node.getChildren()</option></select>', value: '0' }, { html: '<select><option value="0">ts.ScriptTarget.ES3</option><option value="1">ts.ScriptTarget.ES5</option><option value="2">ts.ScriptTarget.ES2015</option><option value="3">ts.ScriptTarget.ES2016</option><option value="4">ts.ScriptTarget.ES2017</option><option value="5">ts.ScriptTarget.ES2018</option><option value="6">ts.ScriptTarget.ES2019</option><option value="7">ts.ScriptTarget.ES2020</option><option value="8">ts.ScriptTarget.ES2021</option><option value="9">ts.ScriptTarget.ES2022</option><option value="10">ts.ScriptTarget.ES2023</option><option value="11">ts.ScriptTarget.ES2024</option><option value="12">ts.ScriptTarget.ES2025 / LatestStandard</option><option value="99">ts.ScriptTarget.ESNext / Latest</option><option value="100">ts.ScriptTarget.JSON</option></select>', value: '99' }, { html: '<select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select>', value: 'os' } ], editors: [ { label: null, cls: 'ime-text-area' }, { label: null, cls: 'ime-text-area' } ] }
+

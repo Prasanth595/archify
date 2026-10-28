@@ -1,0 +1,238 @@
+{
+  "checkedOn": "2026-10-29",
+  "heads": "remote-heads-before.tsv",
+  "headCount": 333,
+  "changesSinceBatch50Start": [
+    "codex/lab-plan-row-counts advanced to 794692251231051ff229ac983e9c674a374e653c",
+    "codex/research-lab-20261026 advanced to 6057cc4c63c06abd1cf467a82f6e59330a8567c4"
+  ],
+  "searches": [
+    {
+      "query": "repo:tt-a1i/archify is:issue AST",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20AST&per_page=30",
+      "total": 1,
+      "returned": 1,
+      "items": [
+        {
+          "number": 731,
+          "title": "Feature: GIF motion export in the Viewer",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/731"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr AST",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20AST&per_page=30",
+      "total": 42,
+      "returned": 30,
+      "items": [
+        {
+          "number": 382,
+          "title": "perf(template): drop backdrop-blur and filter transitions so viewer stays smooth",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/382"
+        },
+        {
+          "number": 272,
+          "title": "feat: add standalone SVG delivery",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/272"
+        },
+        {
+          "number": 571,
+          "title": "feat(sequence): support self-messages",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/571"
+        },
+        {
+          "number": 798,
+          "title": "fix(viewer): fit compact automatic sequences on the first screen",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/798"
+        },
+        {
+          "number": 653,
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/653"
+        },
+        {
+          "number": 992,
+          "title": "Add evidence-backed AI task handoff to Code Analysis",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/992"
+        },
+        {
+          "number": 354,
+          "title": "feat(evidence): support Gitee and local-only repositories",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/354"
+        },
+        {
+          "number": 794,
+          "title": "fix(class): keep hierarchy buses clear of other relationship routes",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/794"
+        },
+        {
+          "number": 328,
+          "title": "Add archify export svg for a standalone, styled SVG",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/328"
+        },
+        {
+          "number": 1049,
+          "title": "feat(compare): read Architecture snapshots from Git refs",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1049"
+        },
+        {
+          "number": 315,
+          "title": "fix: stabilize offline reader geometry",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/315"
+        },
+        {
+          "number": 538,
+          "title": "fix(cli): report checker buffer overflow as an output-limit failure",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/538"
+        },
+        {
+          "number": 380,
+          "title": "fix(delivery): reject stale artifacts after failed deliver",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/380"
+        },
+        {
+          "number": 424,
+          "title": "fix(viewer): handle Object.prototype names as semantic IDs",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/424"
+        },
+        {
+          "number": 566,
+          "title": "feat(viewer)!: refined reader shell, Viewer-style figures, and no guided views",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/566"
+        },
+        {
+          "number": 266,
+          "title": "refactor(architecture): extract connection routing into routing.mjs",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/266"
+        },
+        {
+          "number": 478,
+          "title": "feat: extend adaptive canvas and large-world browsing to five diagram types",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/478"
+        },
+        {
+          "number": 480,
+          "title": "feat: open the renderer without changing a single existing artifact",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/480"
+        },
+        {
+          "number": 1069,
+          "title": "docs: add standalone Explainer baseline evidence for #1068",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/1069"
+        },
+        {
+          "number": 419,
+          "title": "Codex/code analysis module",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/419"
+        },
+        {
+          "number": 489,
+          "title": "fix(brands): ignore inactive HTML icon declarations",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/489"
+        },
+        {
+          "number": 236,
+          "title": "feat(renderers): keep edge labels inside the canvas",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/236"
+        },
+        {
+          "number": 674,
+          "title": "feat(community): community package registry v0 + website catalog page",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/674"
+        },
+        {
+          "number": 578,
+          "title": "feat(architecture): add bounded typography scale",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/578"
+        },
+        {
+          "number": 589,
+          "title": "feat(lifecycle): schema v2 grid layout, UML state marks, and readable source badges",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/589"
+        },
+        {
+          "number": 523,
+          "title": "feat(cli): finalize verified delivery with capture-free browser evidence",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/523"
+        },
+        {
+          "number": 606,
+          "title": "docs(references): document brand URL as the network trust boundary",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/606"
+        },
+        {
+          "number": 625,
+          "title": "fix(lifecycle): fit automatic outer loops within canvas bounds",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/625"
+        },
+        {
+          "number": 632,
+          "title": "fix(viewer): wrap long card notes instead of overflowing the page",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/632"
+        },
+        {
+          "number": 560,
+          "title": "feat(viewer): refined reader shell with a collapsible summary rail",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/560"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:issue \"ts-ast-viewer\"",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20%22ts-ast-viewer%22&per_page=30",
+      "total": 0,
+      "returned": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr \"ts-ast-viewer\"",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20%22ts-ast-viewer%22&per_page=30",
+      "total": 0,
+      "returned": 0,
+      "items": []
+    }
+  ],
+  "relatedScope": {
+    "number": 1015,
+    "url": "https://github.com/tt-a1i/archify/pull/1015",
+    "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "head": "fe4f80d2195e0a7b49b7cfe6d3dba7ffd31a7ac8",
+    "note": "Same head as actual diff inspected in batch49. This batch refreshed ownership/status only, not a new correctness review."
+  },
+  "noNewPR": true
+}
