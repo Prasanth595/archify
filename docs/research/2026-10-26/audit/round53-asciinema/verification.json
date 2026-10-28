@@ -1,0 +1,44 @@
+{
+  "sourceBlobs": 12,
+  "inputBytes": 136,
+  "originalEvents": 4,
+  "derivedMarkers": 2,
+  "pngs": 7,
+  "observations": [
+    {
+      "variant": "original-external",
+      "terminalRows": [
+        "start",
+        "one",
+        "six"
+      ],
+      "elapsed": "00:06",
+      "remainingDomField": "-00:06",
+      "visibleMarker": "00:06 - source t=6 s"
+    },
+    {
+      "variant": "compressed-external",
+      "terminalRows": [
+        "start",
+        "one",
+        "six",
+        "twelve"
+      ],
+      "elapsed": "00:06",
+      "remainingDomField": "-00:06",
+      "visibleMarker": "00:06 - source t=6 s"
+    },
+    {
+      "variant": "compressed-embedded",
+      "terminalRows": [
+        "start",
+        "one",
+        "six"
+      ],
+      "elapsed": "00:02",
+      "remainingDomField": "-00:01",
+      "visibleMarker": "00:02 - source t=6 s"
+    }
+  ],
+  "scope": "Offline archived-source/input/DOM/image/manifest verification, not a fresh browser run or upstream/product suite."
+}

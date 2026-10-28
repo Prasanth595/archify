@@ -1,0 +1,146 @@
+[p1 "asciinema marker clock comparison" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "asciinema marker clock comparison"]
+root
+  container
+    heading
+      text "Original clock · external markers"
+    text "asciinema-player 3.17.0 · original fixture: 80 columns × 24 rows · four output events"
+    container
+      anchor [ref=1466, loc=href:/?case=original-external, url=http://127.0.0.1:8873/?case=original-external]
+        text "Original / external"
+      anchor [ref=1467, loc=href:/?case=compressed-external, url=http://127.0.0.1:8873/?case=compressed-external]
+        text "Compressed / external"
+      anchor [ref=1468, loc=href:/?case=compressed-embedded, url=http://127.0.0.1:8873/?case=compressed-embedded]
+        text "Compressed / embedded"
+    container
+      container [ref=1469]
+        container
+          canvas
+          svg_root
+          container [ref=1470]
+            text "start"
+            text "one"
+            text "six"
+        container
+          button "Play" [ref=1471, loc=css:button[aria-label="Play"]]
+            svg_root
+          text "00:06"
+          text "00:06 - source t=6 s"
+          button "Show keyboard shortcuts" [ref=1472, loc=css:button[aria-label="Show keyboard shortcuts"]]
+            svg_root
+          button "Toggle fullscreen mode" [ref=1473, loc=css:button[aria-label="Toggle fullscreen mode"]]
+            svg_root
+        svg_root
+      container
+        heading
+          text "Same source events"
+        text "0.1 s start 1.0 s one 6.0 s six 12.0 s twelve"
+        paragraph
+          text "Click the first dot on the native progress bar. Its label is “source t=6 s”."
+        heading
+          text "Changed options"
+        text "{"markers":[[6,"source t=6 s"],[12,"source t=12 s"]]}"
+        paragraph
+          anchor [ref=1474, loc=href:/original.cast, url=http://127.0.0.1:8873/original.cast]
+            text "Recording input"
+    container
+      text "Unmodified native release player in a small research wrapper. Synthetic upstream fixture; no shell commands are being executed."
+      text "Source: asciinema/asciinema-player 8ba9c54008ed1f25d2914abe31ea118dbf7da2e4 · Apache-2.0 · © Marcin Kulik. Embedded variant adds only two marker events."
+
+[p1 "asciinema marker clock comparison" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "asciinema marker clock comparison"]
+root
+  container
+    heading
+      text "Idle limit 1 s · external markers"
+    text "asciinema-player 3.17.0 · original fixture: 80 columns × 24 rows · four output events"
+    container
+      anchor [ref=1475, loc=href:/?case=original-external, url=http://127.0.0.1:8873/?case=original-external]
+        text "Original / external"
+      anchor [ref=1476, loc=href:/?case=compressed-external, url=http://127.0.0.1:8873/?case=compressed-external]
+        text "Compressed / external"
+      anchor [ref=1477, loc=href:/?case=compressed-embedded, url=http://127.0.0.1:8873/?case=compressed-embedded]
+        text "Compressed / embedded"
+    container
+      container [ref=1478]
+        container
+          canvas
+          svg_root
+          container [ref=1479]
+            text "start"
+            text "one"
+            text "six"
+            text "twelve"
+        container
+          button "Play" [ref=1480, loc=css:button[aria-label="Play"]]
+            svg_root
+          text "00:06"
+          text "00:06 - source t=6 s"
+          button "Show keyboard shortcuts" [ref=1481, loc=css:button[aria-label="Show keyboard shortcuts"]]
+            svg_root
+          button "Toggle fullscreen mode" [ref=1482, loc=css:button[aria-label="Toggle fullscreen mode"]]
+            svg_root
+        svg_root
+      container
+        heading
+          text "Same source events"
+        text "0.1 s start 1.0 s one 6.0 s six 12.0 s twelve"
+        paragraph
+          text "Click the first dot on the native progress bar. Its label is “source t=6 s”."
+        heading
+          text "Changed options"
+        text "{"idleTimeLimit":1,"markers":[[6,"source t=6 s"],[12,"source t=12 s"]]}"
+        paragraph
+          anchor [ref=1483, loc=href:/original.cast, url=http://127.0.0.1:8873/original.cast]
+            text "Recording input"
+    container
+      text "Unmodified native release player in a small research wrapper. Synthetic upstream fixture; no shell commands are being executed."
+      text "Source: asciinema/asciinema-player 8ba9c54008ed1f25d2914abe31ea118dbf7da2e4 · Apache-2.0 · © Marcin Kulik. Embedded variant adds only two marker events."
+
+[p1 "asciinema marker clock comparison" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "asciinema marker clock comparison"]
+root
+  container
+    heading
+      text "Idle limit 1 s · embedded markers"
+    text "asciinema-player 3.17.0 · original fixture: 80 columns × 24 rows · four output events"
+    container
+      anchor [ref=1484, loc=href:/?case=original-external, url=http://127.0.0.1:8873/?case=original-external]
+        text "Original / external"
+      anchor [ref=1485, loc=href:/?case=compressed-external, url=http://127.0.0.1:8873/?case=compressed-external]
+        text "Compressed / external"
+      anchor [ref=1486, loc=href:/?case=compressed-embedded, url=http://127.0.0.1:8873/?case=compressed-embedded]
+        text "Compressed / embedded"
+    container
+      container [ref=1487]
+        container
+          canvas
+          svg_root
+          container [ref=1488]
+            text "start"
+            text "one"
+            text "six"
+        container
+          button "Play" [ref=1489, loc=css:button[aria-label="Play"]]
+            svg_root
+          text "00:02"
+          text "00:02 - source t=6 s"
+          button "Show keyboard shortcuts" [ref=1490, loc=css:button[aria-label="Show keyboard shortcuts"]]
+            svg_root
+          button "Toggle fullscreen mode" [ref=1491, loc=css:button[aria-label="Toggle fullscreen mode"]]
+            svg_root
+        svg_root
+      container
+        heading
+          text "Same source events"
+        text "0.1 s start 1.0 s one 6.0 s six 12.0 s twelve"
+        paragraph
+          text "Click the first dot on the native progress bar. Its label is “source t=6 s”."
+        heading
+          text "Changed options"
+        text "{"idleTimeLimit":1}"
+        paragraph
+          anchor [ref=1492, loc=href:/embedded.cast, url=http://127.0.0.1:8873/embedded.cast]
+            text "Recording input"
+    container
+      text "Unmodified native release player in a small research wrapper. Synthetic upstream fixture; no shell commands are being executed."
+      text "Source: asciinema/asciinema-player 8ba9c54008ed1f25d2914abe31ea118dbf7da2e4 · Apache-2.0 · © Marcin Kulik. Embedded variant adds only two marker events."
+
+

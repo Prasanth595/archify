@@ -1,0 +1,29 @@
+{
+  "url": "http://127.0.0.1:8873/?case=compressed-external",
+  "title": "Idle limit 1 s · external markers",
+  "options": "{\n  \"idleTimeLimit\": 1,\n  \"markers\": [\n    [\n      6,\n      \"source t=6 s\"\n    ],\n    [\n      12,\n      \"source t=12 s\"\n    ]\n  ]\n}",
+  "viewport": {
+    "width": 1291,
+    "height": 762
+  },
+  "elapsed": "00:06",
+  "remaining": "-00:06",
+  "markers": [
+    {
+      "text": "00:06 - source t=6 s",
+      "left": "50%"
+    }
+  ],
+  "playerText": "start                                                                           \none                                                                             \nsix                                                                             \ntwelve                                                                          \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n                                                                                \n00:06\n00:06 - source t=6 s",
+  "canvas": [
+    {
+      "width": 640,
+      "height": 576
+    }
+  ],
+  "buttons": [
+    "Play",
+    "Show keyboard shortcuts",
+    "Toggle fullscreen mode"
+  ]
+}

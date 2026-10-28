@@ -1,0 +1,1 @@
+const task=await taskSpace(3),page=task.page('p1');console.log(await page.snapshot());console.log(await page.evaluate(()=>({resources:[...document.querySelectorAll('script[src],link[href]')].map(e=>e.src||e.href).filter(x=>/asciinema|player/.test(x)),text:document.querySelector('article')?.innerText.slice(-5000)})));

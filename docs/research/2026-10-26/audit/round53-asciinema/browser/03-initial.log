@@ -1,0 +1,43 @@
+[p1 "asciinema marker clock comparison" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "asciinema marker clock comparison"]
+root
+  container
+    heading
+      text "Original clock · external markers"
+    text "asciinema-player 3.17.0 · original fixture: 80 columns × 24 rows · four output events"
+    container
+      anchor [ref=1430, loc=href:/?case=original-external, url=http://127.0.0.1:8873/?case=original-external]
+        text "Original / external"
+      anchor [ref=1431, loc=href:/?case=compressed-external, url=http://127.0.0.1:8873/?case=compressed-external]
+        text "Compressed / external"
+      anchor [ref=1432, loc=href:/?case=compressed-embedded, url=http://127.0.0.1:8873/?case=compressed-embedded]
+        text "Compressed / embedded"
+    container
+      container [ref=1433]
+        container
+          canvas
+          svg_root
+          container [ref=1434]
+        container
+          button "Play" [ref=1435, loc=css:button[aria-label="Play"]]
+            svg_root
+          text "00:00"
+          button "Show keyboard shortcuts" [ref=1436, loc=css:button[aria-label="Show keyboard shortcuts"]]
+            svg_root
+          button "Toggle fullscreen mode" [ref=1437, loc=css:button[aria-label="Toggle fullscreen mode"]]
+            svg_root
+        svg_root
+      container
+        heading
+          text "Same source events"
+        text "0.1 s start 1.0 s one 6.0 s six 12.0 s twelve"
+        paragraph
+          text "Click the first dot on the native progress bar. Its label is “source t=6 s”."
+        heading
+          text "Changed options"
+        text "{ "markers": [ [ 6, "source t=6 s" ], [ 12, "source t=12 s" ] ] }"
+        paragraph
+          anchor [ref=1438, loc=href:/original.cast, url=http://127.0.0.1:8873/original.cast]
+            text "Recording input"
+
+{ viewport: { width: 1291, height: 762 }, markers: [ { text: '00:06 - source t=6 s', html: '<span class="ap-marker-container ap-tooltip-container" style="left: 50%;"><span class="ap-marker"></span><span class="ap-tooltip">00:06 - source t=6 s</span></span>' } ], paragraphs: [] }
+

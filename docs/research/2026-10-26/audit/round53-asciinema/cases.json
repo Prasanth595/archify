@@ -1,0 +1,45 @@
+[
+  {
+    "id": "original-external",
+    "title": "Original clock \u00b7 external markers",
+    "cast": "original.cast",
+    "options": {
+      "markers": [
+        [
+          6,
+          "source t=6 s"
+        ],
+        [
+          12,
+          "source t=12 s"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "compressed-external",
+    "title": "Idle limit 1 s \u00b7 external markers",
+    "cast": "original.cast",
+    "options": {
+      "idleTimeLimit": 1,
+      "markers": [
+        [
+          6,
+          "source t=6 s"
+        ],
+        [
+          12,
+          "source t=12 s"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "compressed-embedded",
+    "title": "Idle limit 1 s \u00b7 embedded markers",
+    "cast": "embedded.cast",
+    "options": {
+      "idleTimeLimit": 1
+    }
+  }
+]

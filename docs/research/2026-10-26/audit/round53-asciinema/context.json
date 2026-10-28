@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-29 +08:00",
+  "remoteHeadCount": 333,
+  "previousTurn": "Progress: Batch52 committed and pushed exact head 86a514a86582b996a154425aead334f8c132c7cc.",
+  "searches": [
+    {
+      "query": "repo:tt-a1i/archify is:pr asciinema",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20asciinema&per_page=30",
+      "total": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:issue asciinema",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20asciinema&per_page=30",
+      "total": 0,
+      "items": []
+    }
+  ],
+  "scoutSearch": {
+    "refs": [
+      "HEAD@86a514a86582b996a154425aead334f8c132c7cc",
+      "origin/codex/research-lab-20261025@3beb343b8fd6686201bde9b0f307f9a1c6b00246"
+    ],
+    "path": "docs/research/*/scouts/*.md",
+    "pattern": "asciinema",
+    "matches": 0,
+    "scope": "Scoped scout search, not exhaustive repo audit."
+  },
+  "archifySource": "847146aeb93b492592adb78dc220f57e4a8b4636",
+  "nativeDocumentation": {
+    "url": "https://docs.asciinema.org/manual/player/markers/",
+    "script": "https://docs.asciinema.org/javascripts/player-3.9.0-83ce182.min.js",
+    "css": "https://docs.asciinema.org/stylesheets/player-3.9.0-83ce182.css",
+    "scope": "Observed public DOM asset URLs, not a verified deployed commit or matching executed release."
+  },
+  "executedRelease": {
+    "tag": "v3.17.0",
+    "commit": "8ba9c54008ed1f25d2914abe31ea118dbf7da2e4"
+  },
+  "notes": [
+    "Default development branch 415db52438edc88adab9d65227a6cc36b40b7885 was not executed.",
+    "asciinema CLI was not found by command -v; no recorder, terminal command execution, AGG, Rust build, npm install or dependency installation ran.",
+    "Initial GitHub contents README parse expected metadata but received raw Markdown; consumed raw text thereafter."
+  ]
+}

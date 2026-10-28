@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>asciinema marker clock comparison</title>
+<link rel="stylesheet" href="/vendor/asciinema-player.css">
+<style>body{margin:0;background:#f4f6fa;color:#182438;font:16px system-ui}main{max-width:1200px;margin:24px auto}h1{font-size:25px;margin:0 0 8px}nav{display:flex;gap:18px;margin:16px 0}a{color:#375cc5}.grid{display:grid;grid-template-columns:760px 416px;gap:24px}.side{background:white;border:1px solid #d7dee9;border-radius:8px;padding:18px}.side pre{white-space:pre-wrap;font-size:14px;line-height:1.5}footer{font-size:14px;color:#526175;line-height:1.6;margin-top:16px}#player{width:760px}#status{color:#526175}</style>
+<main><h1 id="title"></h1><div id="status">asciinema-player 3.17.0 · original fixture: 80 columns × 24 rows · four output events</div>
+<nav><a href="?case=original-external">Original / external</a><a href="?case=compressed-external">Compressed / external</a><a href="?case=compressed-embedded">Compressed / embedded</a></nav>
+<div class="grid"><div id="player"></div><aside class="side"><h2>Same source events</h2><pre>0.1 s   start
+1.0 s   one
+6.0 s   six
+12.0 s  twelve</pre><p>Click the first dot on the native progress bar. Its label is “source t=6 s”.</p><h3>Changed options</h3><pre id="options"></pre><p><a id="cast-link">Recording input</a></p></aside></div>
+<footer>Unmodified native release player in a small research wrapper. Synthetic upstream fixture; no shell commands are being executed.<br>Source: asciinema/asciinema-player 8ba9c54008ed1f25d2914abe31ea118dbf7da2e4 · Apache-2.0 · © Marcin Kulik. Embedded variant adds only two marker events.</footer></main>
+<script src="/vendor/asciinema-player.min.js"></script><script>
+(async()=>{
+const cases=await fetch('cases.json').then(r=>r.json());
+const id=new URLSearchParams(location.search).get('case')||'original-external';
+const c=cases.find(c=>c.id===id);if(!c)throw new Error('unknown case');
+document.getElementById('title').textContent=c.title;
+document.getElementById('options').textContent=JSON.stringify(c.options);
+document.getElementById('cast-link').href=c.cast;
+AsciinemaPlayer.create(c.cast,document.getElementById('player'),{preload:true,poster:'npt:0',controls:true,fit:'width',terminalFontSize:'14px',cursorMode:'hidden',...c.options});
+})();
+</script></html>

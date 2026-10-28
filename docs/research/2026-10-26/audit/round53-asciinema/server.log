@@ -1,0 +1,35 @@
+127.0.0.1 - - [29/Oct/2026 07:17:15] "GET /?case=original-external HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:15] "GET /vendor/asciinema-player.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:15] "GET /vendor/asciinema-player.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:15] "GET /vendor/asciinema-player.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:16] "GET /cases.json HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:16] "GET /original.cast HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:16] code 404, message File not found
+127.0.0.1 - - [29/Oct/2026 07:17:16] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [29/Oct/2026 07:17:49] "GET /?case=original-external HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:17:49] "GET /vendor/asciinema-player.css HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:17:49] "GET /vendor/asciinema-player.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:17:49] "GET /vendor/asciinema-player.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:17:49] "GET /cases.json HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:17:49] "GET /original.cast HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:17:50] "GET /?case=compressed-external HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:52] "GET /?case=compressed-embedded HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:17:52] "GET /embedded.cast HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /?case=original-external HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /vendor/asciinema-player.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /vendor/asciinema-player.css HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /vendor/asciinema-player.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /cases.json HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /original.cast HTTP/1.1" 304 -
+127.0.0.1 - - [29/Oct/2026 07:19:04] "GET /?case=compressed-external HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:19:05] "GET /?case=compressed-embedded HTTP/1.1" 200 -
+127.0.0.1 - - [29/Oct/2026 07:19:05] "GET /embedded.cast HTTP/1.1" 304 -
+Traceback (most recent call last):
+  File "/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round53-asciinema/serve.py", line 11, in <module>
+    http.server.ThreadingHTTPServer(('127.0.0.1',a.port),Handler).serve_forever()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/socketserver.py", line 232, in serve_forever
+    ready = selector.select(poll_interval)
+  File "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/selectors.py", line 398, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
