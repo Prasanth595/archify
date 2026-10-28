@@ -31,9 +31,9 @@
 <p align="center">
   <a href="https://github.com/tt-a1i/archify/stargazers"><img src="https://img.shields.io/github/stars/tt-a1i/archify?style=flat-square&amp;color=E5B650&amp;logo=github&amp;label=Stars" alt="GitHub stars" /></a>
   <a href="https://skills.sh/tt-a1i/archify/archify"><img src="https://img.shields.io/badge/installs-130K%2B-0EA5E9?style=flat-square" alt="130K+ installs on skills.sh" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT License" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-22c55e?style=flat-square" alt="Apache License 2.0" /></a>
   <a href="#インストール方法"><img src="https://img.shields.io/badge/works_with-Claude_Code_%7C_Codex_%7C_Cursor_%7C_OpenCode-7C3AED?style=flat-square" alt="Works with Claude Code, Codex, Cursor, and OpenCode" /></a>
-  <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.0.2--dev.1-0891b2?style=flat-square" alt="Development version 3.0.2-dev.1" /></a>
+  <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.2.1--dev.1-0891b2?style=flat-square" alt="Development version 3.2.1-dev.1" /></a>
 </p>
 
 <p align="center">
@@ -62,6 +62,12 @@ Cursor、Claude Code、Codex CLI、OpenCode で利用できます。その他の
 npx skills add tt-a1i/archify -g
 ```
 
+**AI エージェントに任せる。** 次の文をそのまま貼り付けてください:
+
+```text
+Install Archify for me by reading https://raw.githubusercontent.com/tt-a1i/archify/main/llms.txt
+```
+
 エージェントにこう送ってください:
 
 ```text
@@ -74,6 +80,24 @@ the API checks Redis, and a cache miss queries PostgreSQL and fills the cache.
 **リポジトリは不要です:** 説明から始めることも、リポジトリを読ませてソースに基づくアーキテクチャ図を作らせることもできます。
 
 [エージェントを選ぶ](https://archify.si/start.html?agent=cursor&type=architecture) · [インストールの詳細と更新チェック](#クイックスタート)
+
+## 質問すると、1 ページで答えが返る
+
+答えがいつも 1 枚の図とは限りません。エージェントに「1 ページで答えて」と頼むと、Archify は **explainer** を作ります。結論を先に示し、質問ごとのパネルで、表・手順・チャート・コード・検証済みの図を使って理由を説明します。
+
+[![explainer の例：結論が先頭にあり、手順がそれを説明するシーケンス図の横に並ぶ](docs/assets/explainer-tls-en.png)](https://archify.si/cases/explainer/tls-first-visit.html)
+
+- **結論が先。** 答えと理由が先頭に来て、各パネルは 1 つの質問に答えます。
+- **図と文章が連動する。** 手順は説明対象の図の横に並び、読んでいる手順に合わせて図の該当部分が光ります。ノードをクリックすると完全なインタラクティブ表示が開きます。
+- **確かめられる。** 主張には番号付きの出典が付き、リポジトリの抜粋は特定のコミットに固定され、ソースカードで開けます。
+- **共有しやすい。** 1 つの HTML ファイルに 4 つのスタイルとライト／ダークテーマ。PNG・WebP・JPG の縦長画像や PDF 印刷で書き出せます。どのパネルにも追加の質問ができ、エージェントはそのパネルだけを直せます。
+
+```text
+Archify で 1 ページにまとめて答えて：API の P99 が 80 ms から 600 ms に上がったが、
+平均はほとんど変わらない。考えられる原因と調べ方は？
+```
+
+ライブ例：[初めての HTTPS 接続（英語）](https://archify.si/cases/explainer/tls-first-visit.html) · [P99 レイテンシ（中国語）](https://archify.si/cases/explainer/p99-tail-latency.html) · [Archify の finalize をリポジトリから読む（中国語）](https://archify.si/cases/explainer/finalize-delivery.html) · [初めての賃貸チェックリスト（中国語）](https://archify.si/cases/explainer/first-rental.html)
 
 ## ❤️ スポンサー
 
@@ -171,7 +195,7 @@ Export メニューから PNG をクリップボードにコピーしたり、�
 
 ## クイックスタート
 
-**現在の開発版:** `v3.0.2-dev.1`。[変更履歴](CHANGELOG.md#unreleased)を参照してください。
+**現在の開発版:** `v3.2.1-dev.1`。[変更履歴](CHANGELOG.md#unreleased)を参照してください。
 
 ### 1. インストール
 
@@ -179,14 +203,30 @@ Export メニューから PNG をクリップボードにコピーしたり、�
 npx skills add tt-a1i/archify -g
 ```
 
-<details>
-<summary>その他のインストール方法と更新チェックの詳細</summary>
+**AI エージェントに任せる**
 
-Cursor に明示的・非対話的にインストールする場合:
+次の文をそのまま貼り付けてください:
+
+```text
+Install Archify for me by reading https://raw.githubusercontent.com/tt-a1i/archify/main/llms.txt
+```
+
+確認なしでインストールすることもできます。`--agent` は 1 つ、または切り替え対象ごとに繰り返します（`cursor`、`codex`、`claude-code`、`opencode`、`github-copilot`）。`--copy` はシンボリックリンクではなくファイルをコピーします:
+
+Cursor のみにインストールする場合:
 
 ```bash
 npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
 ```
+
+または、5 つすべてのエージェントが必要な場合のみ:
+
+```bash
+npx -y skills add tt-a1i/archify --skill archify --agent cursor --agent codex --agent claude-code --agent opencode --agent github-copilot --global --copy --yes
+```
+
+<details>
+<summary>その他のインストール方法と更新チェックの詳細</summary>
 
 インストールせずに試す場合:
 
@@ -196,7 +236,7 @@ npx skills use tt-a1i/archify@archify --agent codex
 
 [DSH コミュニティ版（任意）](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@1.0.0`
 
-[エージェント切り替え](https://archify.si/start.html?agent=cursor&type=architecture)は `cursor`、`codex`、`claude-code`、`opencode` に対応しています。
+[エージェント切り替え](https://archify.si/start.html?agent=cursor&type=architecture)は `cursor`、`codex`、`claude-code`、`opencode`、`github-copilot` に対応しています。
 
 Archify は固定の安定版マニフェストを GET して任意の更新リマインダーを表示することがありますが、更新をダウンロードしたりインストールしたりすることはありません。チェックに成功すると次回まで約 24 時間（±20%）待機し、失敗した場合はアクティブに使用していれば 6 時間後、その後は 24 時間後に再試行します。サーバーが受け取るのは通常の HTTP メタデータ（IP と時刻）だけで、バージョン、Agent、プロジェクトデータ、プロンプト、アカウント／デバイス ID、ETag は送信されません。更新するかどうか、いつ更新するかは常にあなたが決めます。`ARCHIFY_UPDATE_CHECK_DISABLED=1` を設定すると、ネットワーク通信とリマインダー状態の書き込みを無効化できます。
 
@@ -223,7 +263,7 @@ Put supporting detail in cards instead of adding more edges.
 ## 適切な図を選ぶ
 
 <details>
-<summary>5 種類の図、アーキテクチャの比較、サンプル</summary>
+<summary>10 種類の図、アーキテクチャの比較、サンプル</summary>
 
 
 | 種類 | 向いている対象 | プロンプトに含めるもの |
@@ -233,6 +273,11 @@ Put supporting detail in cards instead of adding more edges.
 | **Sequence** | API 呼び出し、キャッシュフォールバック、認証、非同期トレース | 呼び出し元、呼び出し先、戻り、タイミング |
 | **Data Flow** | パイプライン、リネージ、PII、コンシューマ | ソース、変換、ストア、境界 |
 | **Lifecycle** | 状態、リトライ、待機、終端結果 | 状態、イベント、リトライとキャンセルの経路 |
+| **ERD** | データベーススキーマ: テーブル、カラム、キー、カーディナリティ | テーブル、各カラムと型、主キー・外部キー・ユニークキー、リレーションのカーディナリティ |
+| **Class** | クラス、インターフェース、主要メンバー、型同士の関係 | 型、主要メンバー、継承とインターフェース実装、コンポジション、依存 |
+| **Tree** | 親が 1 つの階層: リポジトリ、モジュール、機能の分解 | ルート、階層、各ブランチの中身 |
+| **Timeline** | いつ何が起きたか: インシデントレビュー、リリース履歴 | タイムゾーン付きのタイムスタンプ、イベント、ソースレーン、時刻が実測か説明用か |
+| **Waterfall** | 1 つのリクエストやエージェント実行の時間の内訳 | スパン、開始時刻と所要時間、ネスト、所要時間が実測か説明用か |
 
 Architecture の任意プロファイル `deployment-ownership` は、記述されたオーナー、リージョン配置、データベースのプライベートスコープ、名前付きの境界越えが欠けている場合は fail-closed で停止します。暗黙的に有効化されることはなく、ライブのインフラを検査することもありません。[検証済みのデプロイ実証](https://archify.si/gallery.html#proof-deployment-ownership)を参照してください。
 
@@ -264,6 +309,30 @@ Data Flow はデータの移動と機密性の境界を明示します:
 Lifecycle は進行、待機、リトライ、終端結果を切り分けます:
 
 ![Lifecycle の例](docs/assets/archify-lifecycle.png)
+
+3.1 で ERD、Class、Tree、Timeline、Waterfall が追加されました。
+
+ERD は、テーブル、すべてのカラムとキー、リレーションのカーディナリティをまとめて示します:
+
+![ERD の例: customer、order、payment、inventory、product、order_item テーブルをドメインごとにまとめた注文管理スキーマ](docs/assets/archify-erd.png)
+
+Class は契約、主要メンバー、どの型がそれに依存し実装しているかを示します:
+
+![Class の例: OrderService が PaymentGateway インターフェースに依存し、カードとウォレットのゲートウェイが実装する](docs/assets/archify-class.png)
+
+Tree は機能の分解のような、親が 1 つの包含関係を示します:
+
+![Tree の例: 注文、決済、運用の機能に分解された決済プラットフォーム](docs/assets/archify-tree.png)
+
+Timeline はイベントを実時間に比例した 1 本の時間軸に置き、ソースごとにレーンを分けます:
+
+![Timeline の例: リリース、監視、対応のイベントを 1 本の時間軸に並べた説明用の決済障害](docs/assets/archify-timeline.png)
+
+Waterfall はネストや重なりのあるスパンのどこで時間がかかったかを示します:
+
+![Waterfall の例: 在庫照会と割引計算が並行して走るチェックアウトリクエストの説明用の所要時間](docs/assets/archify-waterfall.png)
+
+サンプルを開く: [`ERD`](https://archify.si/gallery/artifacts/orders.erd.html) · [`Class`](examples/class-payments-rendered.html) · [`Tree`](examples/tree-payment-platform-rendered.html) · [`Timeline`](examples/timeline-payment-incident-rendered.html) · [`Waterfall`](examples/waterfall-checkout-request-rendered.html)。Timeline と Waterfall の例は説明用のデータを使用しています。ログやトレースに基づく時刻や所要時間だけを実データとして扱ってください。
 
 Architecture の例: [`web-app`](examples/web-app.html) · [`Archify pipeline`](examples/archify-repo.html) · [`grid placement`](examples/archify-repo-grid.html) · [`desktop agent`](examples/maka-architecture.html)
 
@@ -337,7 +406,7 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 }
 ```
 
-`meta.locale=en|zh-CN|zh-TW|es|ko` はページタイトル、Legend、状態／エラー、アクセシビリティ、HTML/SVG の `lang` をローカライズします（記述された内容自体は変更しません）。該当しない場合は省略し、要求された言語の文言はそのまま維持し、英語へフォールバックした場合はその旨を明示してください。静止出力では `animation` は省略され、`classic` が既定になります。
+`meta.locale=en|zh-CN|zh-TW|es|ko|ar` はページタイトル、Legend、状態／エラー、アクセシビリティ、HTML/SVG の `lang` をローカライズします（記述された内容自体は変更しません）。該当しない場合は省略し、要求された言語の文言はそのまま維持し、英語へフォールバックした場合はその旨を明示してください。静止出力では `animation` は省略され、`classic` が既定になります。
 
 </details>
 
@@ -401,13 +470,15 @@ Mermaid の自動パース、汎用オートレイアウト、ホスティング
 
 ## 公式リンクと第三者サービス
 
-- **オープンソースプロジェクト：** ソースコードとインストールパッケージは [MIT ライセンス](LICENSE)に従って無料で利用できます。
+- **オープンソースプロジェクト：** 現在のソースコードとそれから構築したパッケージには [Apache-2.0 ライセンス](LICENSE)が適用され、過去のリリースは元の許諾を維持します。
 - **公式サイト：** [archify.si](https://archify.si) は現在、プロジェクトの紹介、サンプル、インストール手順を提供しています。
 - **第三者サービス：** 料金、データの取り扱い、サポートは各運営者が決定します。名称やドメインが似ていても、公式の提携を意味するものではありません。
 
 ## ライセンス
 
-[MIT](LICENSE) — 自由に利用・改変・配布できます。
+[Apache-2.0](LICENSE) — 自由に利用・改変・配布できます。
+
+過去の MIT 許諾は引き続き有効です。[NOTICE](NOTICE) と [LICENSE-MIT](LICENSE-MIT) を参照してください。第三者コンポーネントには各自のライセンスが適用されます。ソフトウェアの許諾はユーザー作成コンテンツの権利を変更せず、Archify の商標を一般的に使用する権利も付与しません。
 
 ## コントリビュート
 
@@ -436,6 +507,12 @@ Alipay で下の QR コードをスキャンするか、画像を保存して Al
 </details>
 
 利用、共有、不具合の報告、改善への貢献も、プロジェクトの支えになります。
+
+## コントリビューター
+
+Archify の開発を支えてくれたすべての人に感謝します。[フォローしてみてください。](https://github.com/tt-a1i/archify/graphs/contributors) ❤️
+
+<p align="center"><a href="https://github.com/tt-a1i/archify/graphs/contributors"><img alt="Archify のコントリビューター" src="https://raw.githubusercontent.com/tt-a1i/archify/contributors/contributors.svg" width="1000" /></a></p>
 
 ## Star History
 
