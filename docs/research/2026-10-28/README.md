@@ -85,6 +85,8 @@ root已实际查看浅深色overview、指针双路、键盘/Enter/Escape与不�
 实验总账已为55项，画廊原54版golden已保存，55版静态增量及本批gallery新卡片UI待分别记录，不复用实验截图或旧54版交互冒充本批gallery检查。未创建PR、合入、发布或安装；本批不再增加第二个实现。用户最新“继续吧”恢复持续目标，本批收尾后目标继续，不将交付一个实验写成目标结束。
 
 
+第55项当前状态补记：Mandatory paths实验与55版gallery均已远端交付，gallery固定source hub为 `cc347773a8474fb1bf3c6329b15f378d6493da75`、HTML SHA-256 `73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d`。root本批gallery搜索、Enter展开、原图摘要/原始尺寸、Escape回焦、390px暗色和空结果/reset已实际观察；上段pending仅保留当时阶段，不代表当前仍待55版交付。
+
 ## 后续只读筛查：源码路径见证（0新增实验）
 
 Root已完整阅读 [Source path witnesses](scouts/source-path-witnesses.md)，采纳本轮**0个新实验**的建议。完整Semgrep SARIF快照中同一文件第3行的两个位置列范围不同（3:9–18与3:5–6），角色及occurrence也不同，不能按文件/行去重。工具提供的threadFlow只是分析说明路径，不等于程序实际执行、因果或已验证漏洞；报告未执行上游、加载扩展或操作浏览器。
@@ -105,3 +107,5 @@ Root已完整阅读 [Source path witnesses](scouts/source-path-witnesses.md)，�
 root已查看9张原PNG，实际R0键盘Enter、R1指针共享目标及Escape回原record，核对4条known-base记录各两citations、unknown-base仅after链接。iframe nativeFocus runtime IDs未提取；旧legend图保留历史身份，名为source-card的截图不展示瞬时卡片，卡片URL由之前snapshot和DOM观察单独支持。390px暗色页client/scroll375/375，但record局部317/321；inline图cannot-fit-readable，不能称触摸/AT/跨浏览器或效率验收。
 
 主图1440×1400、173243B，SHA-256 `b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea`；packaging index SHA-256 `7e7b61c68bf6dce90c09b0c870662cae4d584bdac33ab32392b65f6ab75643f5`，root核49总文件/48清单条目。实验分支交付不等于合入、发布或安装；56版画廊将按固定source hub生成，旧55项golden与历史浏览器身份保留，本批gallery新卡片操作尚待root单独记录。源码路径报告维持0新实验；持续目标继续。
+
+[第56项远端派生记录](refactoring-records-remote.json)保存root报告的精确head核对与GitHub API计数：check-runs=0、Actions runs=0，不是CI通过。dev仍 `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`，main仍 `d6059331abbddb49bca380ff46dca8ce33158b04`；该JSON明确为转述的派生receipt，不冒称原始API响应。持续目标保持active。
