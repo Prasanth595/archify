@@ -26,7 +26,7 @@
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：58版已从固定source hub `fd4fee4986b45470042f54771c1fe2019a641467` 构建，18产品交互、19离线适配、21内容示例，HTML SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`。原56项完整item/card/PNG字节不变，历史证据保留。root在TaskSpace12观察分组计数58/18/19/21，实际操作两新卡搜索、嵌图摘要/尺寸、Cycle原尺寸与Escape回焦、Profile深色、390px原尺寸shell/可见关闭/原生overflow；4PNG与4JSON分别绑定，收尾清查询/浅色/关闭弹窗并finish keep[]一次。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6` 远端交付，root以git ls-remote精确读回；其实际gh查询0个check run/0个commit status，不是CI通过。artifact中原local-bound文字保留推送前阶段，本次不新增浏览器/CI结果，没有合入、产品release或安装。
+[离线图片浏览页](gallery/README.md)：59版已从固定sourceHub `c0d514eb4f393be46633ce4440d466bc8560fa52` 构建并完成root本批新卡Ego，18产品交互、20离线适配、21内容示例，HTML SHA-256 `780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846`。旧58项完整selection/item/card/PNG字节不变，历史证据原样保留。root观察分组标签与新query1/59，核原PNG摘要/bytes、桌面原尺寸/Escape回精确opener、390px暗色卡片与可见close实点/原生overflow、empty/reset/offline20，收尾all59/light/空query/dialog closed。首张lazy0×0图保留为中间结果，最终decode后图另存；6图均已查看，TaskSpace20已finish keep[]一次。sourceHub与gallery artifact仍prepared/local-bound，远端交付随后单列；没有新CI或全移动/AT/人类接受结论。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |

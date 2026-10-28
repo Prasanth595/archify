@@ -29,7 +29,37 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前58版静态绑定与实际浏览器观察（远端已交付）
+## 当前59版静态绑定与实际浏览器观察（待远端交付）
+
+固定source hub为 [`c0d514eb4f393be46633ce4440d466bc8560fa52`](https://github.com/tt-a1i/archify/blob/c0d514eb4f393be46633ce4440d466bc8560fa52/docs/research/2026-10-25/README.md)：**59项 / 59张原PNG，18产品交互 / 20离线适配 / 21内容示例**。固定README为73,881 bytes，SHA-256 `f7344cec1257265e5ab9ad54b7f4ce931194c720d13bcad509403f657a54a426`。sourceHub是先固定59行输入的文档提交，与后续gallery artifact/delivery commit分开；目前sourceHub和gallery prepared/local-bound，未推送。
+
+新增Profile normalization为offline有界parser/算术适配，固定实验remote head `b3c85c9656212a4ba83430844603334132f120a9`，不是仅更换图样式。它从完整pprof历史source/base/golden原件重建逐栈归一化，显示6source共同决定S1 factor及base/diff_base报告分母；不是本轮采集workload或性能改善。最终实验HTML冻结035、1776392B，5tests/静态三阶段/strict check通过，8条writing warning保留；public browser仍FAIL164键盘预算。旧658四组真实Tab282/282按legend-only delta及相同控制结构复用，不改绑成最终035新运行或门禁通过。
+
+所选真实主图为 `experiments/profile-normalization/evidence/browser/final3-count-light.png`：109,862 bytes、1440×1000，SHA-256 `14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457`，Git blob `d1b53bf13febd99926cc258a9ea94f0365e54ce3`。root实验级来源卡→6项→S2/12maps→factor及3分母节点链已在固定分支持久保存；这不是本批gallery卡片检查。实验390px base toolbar仍裁切，baseline是escaped prose/ledger dump且没有同等可点击导航，不声称完整mobile/AT/人类接受或速度优势。
+
+[实验远端派生记录](../../2026-10-28/profile-normalization-remote.json)转述root实际push/readback与实时gh API结果：该精确head check-runs=0、Actions runs=0，不是CI通过；派生JSON不是包装者再次查询或原始API响应。
+
+沿用原builder `--source-repo`读取固定Git对象并核59个本地origin tracking refs，不恢复旧工作区或核工作文件，不冒充本批旧58远端重新查询。独立baseline/check59脚本确认原58 selection完整字段及次序、manifest完整items、完整card HTML、PNG原字节全部不变；旧screenshots与编号browser evidence均保留。原58活动绑定逐字归档为 [browser-evidence58.json](browser-evidence58.json)，15,765 bytes，SHA-256 `5646ed2b76ff71dbd3484ca7c9632646d8274c7b40c676a323b0b04023fefe35`。模板、builder、verify原字节未改。
+
+Node **22.23.3** 静态verify通过：59张嵌图摘要、59/18/20/21卡片与筛选计数、固定/分支链接、JS语法一致，外部资源引用0，原PNG共13,775,375 bytes。原golden58的尾空白及生成卡片对应字节保持；没有为全diff whitespace刷零而修改历史内容。新增研究文档只做scoped whitespace核对，不冒称完整历史diff零warning。
+
+- `index.html`：18,520,803 bytes；SHA-256 `780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846`
+- `manifest.json`：SHA-256 `bcc52b23d332311ba2871bff77a814d0023ec99e7affd7a9e037a2c7c8594c97`
+- `selection.json`：SHA-256 `68e281222fa57b17958e82cadd9ea0b11c2936a837dfff8c05cae478e6de4ea7`
+
+Root已在Ego TaskSpace20实际操作冻结59版新卡和受影响通用控件，并逐张查看6张原PNG。六张PNG、五份场景JSON及 [root-observations.json](screenshots59/root-observations.json)原字节保存在 [screenshots59](screenshots59/)；[browser-evidence.json](browser-evidence.json)为本批派生绑定，记录当前产物、最终README、原件hash/bytes/IHDR尺寸和中间/完成状态，不冒称新的API响应。sourceHub与gallery artifact目前仍prepared/local-bound，最终远端交付随后单列。
+
+1440×1000浅色观察到总量与分组标签59/18/20/21，Profile normalization实际搜索得到1/59；固定提交与分支链接的目标指向已交付实验，未将观察标签等同于逐一点击全部分组按钮。直接解码嵌入PNG得到109862B、SHA14a930…1457，与固定实验主图相同。首张 [desktop-new-card.png](screenshots59/desktop-new-card.png)在lazy图片decode前采集，natural0×0/decoded=false，原图及 [即时观察](screenshots59/desktop-new-card.json)保留为中间结果，不作为成功预览。等待complete=true/天然1440×1000后才取 [最终decoded卡片](screenshots59/desktop-new-card-decoded.png)，没有覆盖或回填首次记录。
+
+桌面原尺寸弹窗的DOM图像实际1440×1000；Escape关闭并精确返回“查看 Profile normalization 完整原图”的新卡按钮。390×844暗色卡片与 [后续可见卡片](screenshots59/mobile-dark-card-visible.png)分别保留；原尺寸dialog为x8/y8、359×828，图像仍1440×1000，关闭按钮在可见shell内且root实际点击可用。原生overflow保留原图尺寸，不能称移动整图fit、无图片横滚或AT接受。这是gallery原图阅读，不抵消实验自身base toolbar裁切。
+
+![已等待decode的第59项卡片](screenshots59/desktop-new-card-decoded.png)
+
+[桌面原尺寸弹窗](screenshots59/desktop-original-dialog.png) · [390px暗色初始卡片](screenshots59/mobile-dark-card.png) · [390px实际可见卡片](screenshots59/mobile-dark-card-visible.png) · [可见关闭按钮与原生overflow](screenshots59/mobile-original-dialog.png)。
+
+空结果0/59→reset59/59且query空；offline实际20/59，最后恢复all59/59、浅色、空query、dialog closed。TaskSpace20已finish keep=[]一次，无保留页面，不再使用。本批只操作新增卡和上述公共控件，不重测旧58项实验，没有新CI、触摸、AT、完整键盘遍历、人类或速度证明；public实验gate仍FAIL164，旧658真实Tab与delta身份不变。人类最新“继续吧”已恢复持续探索，实验交付、gallery观察及远端交付仍分别记账。
+
+## 历史58版静态绑定与实际浏览器观察
 
 以已发布hub `d82d3b5539523355ea3f2f6d9c46adf2806164eb` 为开始基准，追加第57/58两行source inputs，固定新source hub为 [`fd4fee4986b45470042f54771c1fe2019a641467`](https://github.com/tt-a1i/archify/blob/fd4fee4986b45470042f54771c1fe2019a641467/docs/research/2026-10-25/README.md)：**58项 / 58张原PNG，18产品交互 / 19离线适配 / 21内容示例**。固定README为71,968 bytes，SHA-256 `2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a`。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随固定artifact commit [`70065a0ce2a14e040e98f6ceceae731367c4fec6`](https://github.com/tt-a1i/archify/tree/70065a0ce2a14e040e98f6ceceae731367c4fec6/docs/research/2026-10-25/gallery) 推送，root以git ls-remote精确读回一致；未将旧d82的56行表冒称58行，也没有修改builder读取规则。
 
@@ -47,7 +77,7 @@ Node **22.23.3** 静态verify通过：58张PNG摘要、58/18/19/21卡片与筛�
 - `manifest.json`：SHA-256 `609724470184cf4544fcdc8f72786d473b96d5c5b1d4c8cab45c0ff46a73a9ac`
 - `selection.json`：SHA-256 `cda2bcc9fd1c70a8cf83781f7809ef4547ec0616f686c41988a39e01eb86ebdc`
 
-Root在同一Ego TaskSpace12实际操作冻结58版gallery，并逐张查看4张原PNG。四张PNG、[ROOT-gallery58.json](screenshots58/ROOT-gallery58.json)观察收据及3份场景JSON按原字节保存在 [screenshots58](screenshots58/)；PNG公开文件名统一带gallery58，派生绑定保留原始文件名映射，不改图片bytes。[browser-evidence.json](browser-evidence.json)绑定当前产物、最终README及8份原件的bytes/SHA与PNG IHDR尺寸，不冒称新的API响应。当前source hub与gallery远端交付固定为 `70065a0ce2a14e040e98f6ceceae731367c4fec6`，不自指本次delivery文档commit。该artifact提交中的原README和派生绑定仍保留推送前prepared/local-bound阶段，本次只补记root实际远端核对。
+Root在同一Ego TaskSpace12实际操作冻结58版gallery，并逐张查看4张原PNG。四张PNG、[ROOT-gallery58.json](screenshots58/ROOT-gallery58.json)观察收据及3份场景JSON按原字节保存在 [screenshots58](screenshots58/)；PNG公开文件名统一带gallery58，派生绑定保留原始文件名映射，不改图片bytes。[browser-evidence58.json](browser-evidence58.json)绑定当前产物、最终README及8份原件的bytes/SHA与PNG IHDR尺寸，不冒称新的API响应。当前source hub与gallery远端交付固定为 `70065a0ce2a14e040e98f6ceceae731367c4fec6`，不自指本次delivery文档commit。该artifact提交中的原README和派生绑定仍保留推送前prepared/local-bound阶段，本次只补记root实际远端核对。
 
 1440×1000浅色总览观察到分组计数58/18/19/21；本批实际操作的是Cycle region与Profile contexts两个搜索，各为1/58，不声称点击了四个group filter。两弹窗直接解码嵌入PNG的bytes/SHA/天然尺寸分别与固定实验主图相同：Cycle189972B/1440×900，Profile90219B/1440×1000。Cycle原始尺寸原生toggle实际pressed=true/mode=true；Escape回Cycle原卡按钮。Profile切深色后仍显示未编辑的原浅色PNG，Escape回Profile原卡；没有把深色shell说成重绘深色图。
 

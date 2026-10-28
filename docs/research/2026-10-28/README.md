@@ -180,4 +180,9 @@ root已逐张查看12张最终原PNG，实际hover/点击完成factor→来源�
 
 主图1440×1000、109862B，SHA-256 `14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457`。[远端派生记录](profile-normalization-remote.json)转述root实际gh API的精确head check-runs=0、Actions runs=0，不是CI通过。依赖仅复用既有匹配lock的临时symlink，root已仅unlink移除，无安装、merge或产品release；TaskSpace16已finish keep=[]一次。
 
-实验总账已为59项（18产品/20离线/21内容）；gallery当前已交付58版保留原身份。接下来仅做59版静态追加与root新卡片实际浏览器检查，不重跑旧58实验；sourceHub文档commit与后续gallery artifact/delivery commit分别固定。持续探索保持恢复状态，折叠边与coverage仍0新实验。
+source input阶段记录：实验总账已为59项（18产品/20离线/21内容），当时gallery已交付58版保留原身份，随后做59版静态追加与root新卡片实际浏览器检查，不重跑旧58实验；sourceHub文档commit与后续gallery artifact/delivery commit分别固定。持续探索保持恢复状态，折叠边与coverage仍0新实验。
+
+
+第59项gallery静态与本批UI已完成：sourceHub `c0d514eb4f393be46633ce4440d466bc8560fa52`，冻结HTML `780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846`，59＝18产品/20离线/21内容。root在TaskSpace20观察分组标签、新卡query1/59及原PNG14a930…1457/109862B；第一张lazy截图natural0×0保留为中间记录，等待完成1440×1000后另拍最终图。桌面原尺寸1440×1000，Escape回精确新卡opener；390px暗色原尺寸shell与可见close实际点击、原生overflow均有原图。没有移动整图fit或AT结论。
+
+[本批6原PNG与6JSON](../2026-10-25/gallery/screenshots59/)均按原字节保存，root已逐张看图；旧58完整selection/items/card/PNG与历史证据保持原字节。empty0→reset59、offline20、最后all59/light/空query/dialog closed，TaskSpace20 finish keep[]一次。sourceHub与gallery artifact此阶段仍prepared/local-bound，随后按授权提交、push和精确readback；不混同已交付实验head与hub artifact，不新增研究、产品测试或浏览器。持续探索已恢复，后续范围依当前授权推进。

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
+  "hubCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -602,6 +602,16 @@
       "inputKind": "完整speedscope上游fixture / 原生Tree＋Explainer",
       "imagePath": "experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png",
       "imageCaption": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。"
+    },
+    {
+      "id": "profile-normalization",
+      "commit": "b3c85c9656212a4ba83430844603334132f120a9",
+      "branch": "codex/lab-profile-normalization",
+      "directory": "experiments/profile-normalization",
+      "group": "offline",
+      "inputKind": "完整pprof历史fixture / 有界parser与算术适配",
+      "imagePath": "experiments/profile-normalization/evidence/browser/final3-count-light.png",
+      "imageCaption": "六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。"
     }
   ],
   "deferred": {

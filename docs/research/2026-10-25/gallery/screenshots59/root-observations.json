@@ -1,0 +1,78 @@
+{
+  "kind": "root actual Ego gallery59 observations",
+  "date": "2026-10-28",
+  "taskSpace": 20,
+  "finished": "finish keep[] once after reset; no page kept",
+  "galleryHTMLSHA256": "780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846",
+  "sourceHubCommit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+  "newExperimentCommit": "b3c85c9656212a4ba83430844603334132f120a9",
+  "newImageSHA256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457",
+  "viewports": [
+    [
+      1440,
+      1000
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "observed": [
+    "59/18/20/21 filters, Profile normalization search ->1/59, fixed commit and branch link targets point to published experiment.",
+    "Embedded original PNG SHA/109862B matches experiment. First extraction caught lazy image before decode (0x0/false); kept intermediate screenshot/JSON, waited for complete1440x1000 then final decoded screenshot.",
+    "Desktop original-size dialog displayed1440x1000 CSS image; Escape closed and returned exact new-card opener.",
+    "390 dark card and original-size dialog observed; header close visible/clickable, overflow retains original image dimensions. This is native scrollable original size, not fit-to-screen whole image.",
+    "Zero result0/59 -> reset59/59 with empty query; offline filter20/59; final all59/59, light, query empty, dialogclosed."
+  ],
+  "limits": [
+    "Only newly added card and affected shared controls exercised; prior58 browser evidence retains original gallery identity.",
+    "No new experiment data/CI/human usability claims from gallery. No touch or AT/full keyboard test.",
+    "All6 PNGs viewed by root agent, including initial predecode intermediate; final acceptance uses decoded image observation."
+  ],
+  "files": {
+    "desktop-decoded.json": {
+      "bytes": 94,
+      "sha256": "539850be7cffd75b3b573371c7e0ec742cadda2ec4333695c2d3233f1899023d"
+    },
+    "desktop-dialog.json": {
+      "bytes": 1402,
+      "sha256": "a255090f369da54c20a3c9061646c584b6413c395b18e4764e1ddc862b17a4d5"
+    },
+    "desktop-new-card-decoded.png": {
+      "bytes": 136243,
+      "sha256": "c447378e1df2dab0beadd2f25331258978ef26cfed142efd71196d6d9c015bb1"
+    },
+    "desktop-new-card.json": {
+      "bytes": 1648,
+      "sha256": "307223536a109a3d635112e667d150b9f6c2f21d23c26286c5dad3208b3af322"
+    },
+    "desktop-new-card.png": {
+      "bytes": 123631,
+      "sha256": "ae557a6d4b02d2fdcfd892747447ef7f058e7b51629ea0072901a26977d435d7"
+    },
+    "desktop-original-dialog.png": {
+      "bytes": 108269,
+      "sha256": "411aabdfc0ef74b8e2eb361056b8294fa2f5e96c37c066703619d9cf1c449a14"
+    },
+    "mobile-dark-card-visible.png": {
+      "bytes": 96839,
+      "sha256": "df54c4a14ad4a7d6f855f7985af7e7e15542094437af93912854d1b00d53873f"
+    },
+    "mobile-dark-card.png": {
+      "bytes": 87145,
+      "sha256": "3df9526daa4494c0de1115c71cf423be140bf60ea151667816972df8fe830169"
+    },
+    "mobile-dialog.json": {
+      "bytes": 897,
+      "sha256": "751767c668176f62e959d5e8360004a59a54dc294de743095a9dee4b4f71988f"
+    },
+    "mobile-original-dialog.png": {
+      "bytes": 55227,
+      "sha256": "a7373359514d8021538f5a75a374006fa2b8c44874e74a7e9d1b6dfbeeadea28"
+    },
+    "reset-observations.json": {
+      "bytes": 292,
+      "sha256": "276c418fc5541880a3c0c380fd985fafe26270fa4c8b580933a3134bc76283e2"
+    }
+  }
+}

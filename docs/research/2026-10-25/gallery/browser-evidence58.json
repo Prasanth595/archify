@@ -1,0 +1,424 @@
+{
+  "kind": "derived browser evidence for fixed58 gallery; root receipt and original scenario JSON/PNG linked separately",
+  "status": "root-browser-observed-remote-delivered",
+  "delivery": {
+    "artifactCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+    "sourceHubCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
+    "sourceHub": "Remote delivered as ancestor included in the fixed artifact commit. Build source identity unchanged.",
+    "gallery": "Root pushed and git ls-remote read back the exact fixed artifact commit.",
+    "experiments": "Root verified both final branch heads; zero checks/statuses is not CI success.",
+    "remoteVerification": {
+      "performedBy": "root",
+      "method": "git push plus exact git ls-remote readback; actual gh API queries for artifact check runs and commit statuses",
+      "readbackCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+      "checkRuns": 0,
+      "commitStatuses": 0,
+      "provenance": "Derived from root task message, not raw API responses or a repeated query by this packaging agent.",
+      "interpretation": "Zero records is not CI success; no new tests/browser, merge, product release or installation."
+    },
+    "batchState": "Current57/58 batch collected; continuing goal remains active, later scope awaiting latest confirmation."
+  },
+  "hubSourceCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
+  "hubReadme": {
+    "path": "docs/research/2026-10-25/README.md",
+    "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
+    "sha256": "2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a",
+    "bytes": 71968,
+    "gitBlob": "42cea00d10437099cd5de3080ba65e70f8bbf855"
+  },
+  "artifacts": {
+    "index.html": {
+      "path": "index.html",
+      "sha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "bytes": 18371338
+    },
+    "manifest.json": {
+      "path": "manifest.json",
+      "sha256": "609724470184cf4544fcdc8f72786d473b96d5c5b1d4c8cab45c0ff46a73a9ac",
+      "bytes": 133921
+    },
+    "selection.json": {
+      "path": "selection.json",
+      "sha256": "cda2bcc9fd1c70a8cf83781f7809ef4547ec0616f686c41988a39e01eb86ebdc",
+      "bytes": 29756
+    },
+    "verification.json": {
+      "path": "verification.json",
+      "sha256": "45eed4ad589077e7f3a6682912c384f9309df91c2dd47bb7edcf092ba3568fb1",
+      "bytes": 800
+    },
+    "README.md": {
+      "path": "README.md",
+      "bytes": 61994,
+      "sha256": "749b7916111c44f70e29a8c9fa4fa5c87b8b4052563fa248f0ed66f0758043f2"
+    },
+    "template.html": {
+      "path": "template.html",
+      "sha256": "bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9",
+      "bytes": 16951
+    },
+    "build.py": {
+      "path": "build.py",
+      "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e",
+      "bytes": 9748
+    },
+    "verify.py": {
+      "path": "verify.py",
+      "sha256": "d806985fcb08bdb071f2b528c35953aca80e522267a32b0611a2f8199617ab46",
+      "bytes": 4853
+    }
+  },
+  "summary": {
+    "experiments": 58,
+    "images": 58,
+    "pngBytes": 13665513,
+    "groupCounts": {
+      "product": 18,
+      "offline": 19,
+      "content": 21
+    },
+    "deferredCountedAsPublished": false
+  },
+  "rawSources": [
+    {
+      "path": "screenshots58/ROOT-gallery58.json",
+      "sha256": "ec9a70c5663aa3e58cedf7439ae47271798900e496ffc5547750045f7c820569",
+      "bytes": 3825
+    },
+    {
+      "path": "screenshots58/cycle-dialog.json",
+      "sha256": "4154d1482e1f049c35f2d3301f90612a9a3216e7be1a3352cd50a152f105eca8",
+      "bytes": 349
+    },
+    {
+      "path": "screenshots58/mobile-dialog.json",
+      "sha256": "4d0336f0ff002215da5900912e1b0f7b59e12273763a9115ca5b4ab534d9cd08",
+      "bytes": 566
+    },
+    {
+      "path": "screenshots58/profile-dialog.json",
+      "sha256": "c558366511cafae00e932f007c5766423dbecee53c5fc1356bdfccef2f12fbb6",
+      "bytes": 491
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots58/gallery58-cycle-region-full-image.png",
+      "sha256": "0469efa498d88e0aaa20dda4b3dacb973e06e3b38504c0520336ad5c7ab32e14",
+      "bytes": 240835,
+      "originalFileName": "cycle-region-full-image.png",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
+    },
+    {
+      "path": "screenshots58/gallery58-mobile-original-dark.png",
+      "sha256": "494231752defc0e16050426ff60d2ec44076635ca7abdeaf76a9da1908a68380",
+      "bytes": 46118,
+      "originalFileName": "gallery58-mobile-original-dark.png",
+      "width": 390,
+      "height": 844,
+      "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
+    },
+    {
+      "path": "screenshots58/gallery58-overview-light.png",
+      "sha256": "fc343d5f9385a0d2559c638e604e0bc34a8ea3bf0cebdf3a498cae6e1f53eb9c",
+      "bytes": 250641,
+      "originalFileName": "gallery58-overview-light.png",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
+    },
+    {
+      "path": "screenshots58/gallery58-profile-contexts-full-image-dark.png",
+      "sha256": "f8dcbf1b49bfb7b80a116ee04feddc63cd91d17343c56123fdb84ef292acd31e",
+      "bytes": 120819,
+      "originalFileName": "profile-contexts-full-image-dark.png",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
+    }
+  ],
+  "observations": {
+    "ROOT-gallery58": {
+      "schemaVersion": 1,
+      "kind": "root-browser-observations",
+      "date": "2026-10-28",
+      "tool": "ego-browser",
+      "taskSpace": 12,
+      "taskSpaceFinished": true,
+      "finishKeep": [],
+      "humanAcceptance": false,
+      "galleryHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "sourceHub": "fd4fee4986b45470042f54771c1fe2019a641467",
+      "counts": {
+        "all": 58,
+        "product": 18,
+        "offline": 19,
+        "content": 21
+      },
+      "cycle": {
+        "title": "Cycle region",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+        "bytes": 189972,
+        "original": {
+          "pressed": "true",
+          "mode": "true"
+        },
+        "closed": {
+          "open": false,
+          "opener": "cycle-region",
+          "active": "查看 Cycle region 完整原图"
+        }
+      },
+      "profile": {
+        "title": "Profile contexts",
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f",
+        "bytes": 90219,
+        "description": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑",
+        "closed": {
+          "open": false,
+          "opener": "profile-contexts"
+        }
+      },
+      "mobile": {
+        "viewport": [
+          390,
+          844
+        ],
+        "page": [
+          390,
+          375
+        ],
+        "dialog": {
+          "x": 8,
+          "y": 8,
+          "width": 359,
+          "height": 828,
+          "top": 8,
+          "right": 367,
+          "bottom": 836,
+          "left": 8
+        },
+        "original": "true",
+        "scroller": {
+          "client": 342,
+          "scroll": 1460
+        },
+        "close": {
+          "x": 263.328125,
+          "y": 142.5859375,
+          "width": 90.671875,
+          "height": 44,
+          "top": 142.5859375,
+          "right": 354,
+          "bottom": 186.5859375,
+          "left": 263.328125
+        },
+        "closed": {
+          "open": false,
+          "opener": "profile-contexts"
+        }
+      },
+      "observations": [
+        "1440x1000 light overview reports58; both new query filters each show1/58.",
+        "Both new dialogs decode embedded PNG with exact bytes/sha/dimensions matched to branch artifacts.",
+        "Cycle original-size native toggle works; Escape returns to Cycle opener.",
+        "Profile dark dialog opens original light PNG without image editing; Escape returns to Profile opener.",
+        "390x844 original-size dialog has bounded shell/visible close button and native image overflow; Escape restores correct opener.",
+        "All four screenshots viewed by coordinating Agent.",
+        "Before finishing, search cleared and light theme restored; DOM58 articles, status58/58, dialog closed.",
+        "No external GitHub links clicked; exact pinned URLs observed and immutable source commits verified separately."
+      ],
+      "screenshots": [
+        {
+          "file": "cycle-region-full-image.png",
+          "bytes": 240835,
+          "sha256": "0469efa498d88e0aaa20dda4b3dacb973e06e3b38504c0520336ad5c7ab32e14",
+          "width": 1440,
+          "height": 1000,
+          "agentViewed": true
+        },
+        {
+          "file": "gallery58-mobile-original-dark.png",
+          "bytes": 46118,
+          "sha256": "494231752defc0e16050426ff60d2ec44076635ca7abdeaf76a9da1908a68380",
+          "width": 390,
+          "height": 844,
+          "agentViewed": true
+        },
+        {
+          "file": "gallery58-overview-light.png",
+          "bytes": 250641,
+          "sha256": "fc343d5f9385a0d2559c638e604e0bc34a8ea3bf0cebdf3a498cae6e1f53eb9c",
+          "width": 1440,
+          "height": 1000,
+          "agentViewed": true
+        },
+        {
+          "file": "profile-contexts-full-image-dark.png",
+          "bytes": 120819,
+          "sha256": "f8dcbf1b49bfb7b80a116ee04feddc63cd91d17343c56123fdb84ef292acd31e",
+          "width": 1440,
+          "height": 1000,
+          "agentViewed": true
+        }
+      ]
+    },
+    "cycle-dialog": {
+      "title": "Cycle region",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+      "bytes": 189972,
+      "original": {
+        "pressed": "true",
+        "mode": "true"
+      },
+      "closed": {
+        "open": false,
+        "opener": "cycle-region",
+        "active": "查看 Cycle region 完整原图"
+      }
+    },
+    "mobile-dialog": {
+      "viewport": [
+        390,
+        844
+      ],
+      "page": [
+        390,
+        375
+      ],
+      "dialog": {
+        "x": 8,
+        "y": 8,
+        "width": 359,
+        "height": 828,
+        "top": 8,
+        "right": 367,
+        "bottom": 836,
+        "left": 8
+      },
+      "original": "true",
+      "scroller": {
+        "client": 342,
+        "scroll": 1460
+      },
+      "close": {
+        "x": 263.328125,
+        "y": 142.5859375,
+        "width": 90.671875,
+        "height": 44,
+        "top": 142.5859375,
+        "right": 354,
+        "bottom": 186.5859375,
+        "left": 263.328125
+      },
+      "closed": {
+        "open": false,
+        "opener": "profile-contexts"
+      }
+    },
+    "profile-dialog": {
+      "title": "Profile contexts",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f",
+      "bytes": 90219,
+      "description": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑",
+      "closed": {
+        "open": false,
+        "opener": "profile-contexts"
+      }
+    }
+  },
+  "historical56": {
+    "path": "browser-evidence56.json",
+    "sha256": "57574b0b47646e74248f5adcfa558c919af798994298ea8f0ddc825524c545b7",
+    "bytes": 12509
+  },
+  "remoteHeadReceipt": {
+    "path": "../../2026-10-28/reading-batch-57-58-remote.json",
+    "sha256": "10329ce9b435dabdb31915c5fe3caac7ecccdc20a81576101fba0f512213d378",
+    "bytes": 984
+  },
+  "completion": {
+    "taskSpaceId": 12,
+    "finishCount": 1,
+    "finished": true,
+    "keep": [],
+    "resumeAllowed": false,
+    "finalState": "Query cleared, light theme,58 articles/status58 of58, dialog closed.",
+    "scope": "Only TaskSpace12 browser round ended. Current57/58 batch collected; continuing goal remains active, later scope awaiting latest confirmation."
+  },
+  "scope": "Two new cards and shared gallery controls only; previous56 item/card/PNG bytes and historical evidence unchanged.",
+  "limits": [
+    "Four original PNGs viewed by root; public filenames map to original names without image edits.",
+    "Native original-size image overflow is expected; mobile shell/close visibility is not all-image visibility or no-horizontal-scroll claim.",
+    "Gallery image reading does not remove either experiment base-toolbar clipping; Profile public keyboard gate remains fail68, independent continuation445/445 distinct.",
+    "No external links clicked, old56 experiment rerun, physical touch, AT, human acceptance, efficiency or new CI result."
+  ],
+  "artifactCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+  "deliveryHistory": {
+    "artifactCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+    "stage": "prepared/local-bound before push",
+    "status": "root-browser-observed-prepared-local-bound",
+    "delivery": {
+      "sourceHub": "prepared/local-bound; awaiting root push and exact remote verification",
+      "gallery": "prepared/local-bound; awaiting root push and exact remote verification",
+      "experiments": "Root verified both final branch heads; zero checks/statuses is not CI success."
+    },
+    "record": {
+      "path": "docs/research/2026-10-25/gallery/browser-evidence.json",
+      "commit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+      "bytes": 12946,
+      "sha256": "2fb2ab6a349b37bddf7d6e06993460ac43554bdf847213085f880c6bc43c6d25",
+      "url": "https://github.com/tt-a1i/archify/blob/70065a0ce2a14e040e98f6ceceae731367c4fec6/docs/research/2026-10-25/gallery/browser-evidence.json"
+    },
+    "semantics": "Original prepared/local-bound snapshot remains unchanged in the fixed artifact commit."
+  },
+  "observationBoundary": {
+    "groupCountsObserved": {
+      "all": 58,
+      "product": 18,
+      "offline": 19,
+      "content": 21
+    },
+    "actualSearches": [
+      "Cycle region",
+      "Profile contexts"
+    ],
+    "groupFilterClicksClaimed": false,
+    "semantics": "Observed group counts do not establish clicks of all four group filters. Original browser receipt remains unchanged."
+  },
+  "scopeDecision": {
+    "current": "Current57/58 batch collected; continuing goal remains active, later scope awaiting latest confirmation.",
+    "history": "Earlier pause-after-batch instructions in fixed source/artifact snapshots record that earlier stage; they are not a claim that the goal is now paused.",
+    "pendingScope": "No new research started while waiting for the latest clarification."
+  }
+}

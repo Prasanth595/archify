@@ -1,0 +1,34 @@
+{
+  "before": {
+    "status": "显示 59 / 59 项",
+    "filters": [
+      "全部59",
+      "产品交互18",
+      "离线适配20",
+      "内容示例21"
+    ]
+  },
+  "card": {
+    "status": "显示 1 / 59 项",
+    "text": "完整pprof历史fixture / 有界parser与算术适配\nb3c85c96\nProfile normalization\n\n从完整pprof历史原件重建逐栈归一化差，显示六source共同决定factor及base/diff_base报告分母\n\n预览已裁切 · 点击完整图\n\n六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。\n\n验证边界\n固定6ca6基线；有界parser/算术适配而非采集workload；5tests/静态三阶段/strictcheck通过，8writing warnings；最终public browser FAIL164键盘预算，旧658四组真实Tab282/282按legend-only delta复用，不改绑最终035；root来源卡→6项→S2/12maps→factor及3分母节点实链，390px base toolbar裁切保留，非AT/人类/速度证明\n\n固定提交说明 ↗\n分支 ↗",
+    "natural": [
+      0,
+      0
+    ],
+    "decoded": false,
+    "links": [
+      {
+        "text": "固定提交说明 ↗",
+        "href": "https://github.com/tt-a1i/archify/tree/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization"
+      },
+      {
+        "text": "分支 ↗",
+        "href": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-normalization/experiments/profile-normalization"
+      }
+    ],
+    "png": {
+      "bytes": 109862,
+      "sha256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457"
+    }
+  }
+}

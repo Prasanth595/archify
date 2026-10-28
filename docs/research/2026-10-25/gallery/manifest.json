@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
-    "sha256": "2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a",
-    "bytes": 71968,
-    "gitBlob": "42cea00d10437099cd5de3080ba65e70f8bbf855"
+    "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
+    "sha256": "f7344cec1257265e5ab9ad54b7f4ce931194c720d13bcad509403f657a54a426",
+    "bytes": 73881,
+    "gitBlob": "a50fa34bfb3d6e145efb33aa3fcdf5ce5764b528"
   },
-  "policy": "58 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "59 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
+      "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
+      "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
+      "commit": "c0d514eb4f393be46633ce4440d466bc8560fa52",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -2078,6 +2078,41 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-contexts/experiments/profile-contexts",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png"
+    },
+    {
+      "id": "profile-normalization",
+      "commit": "b3c85c9656212a4ba83430844603334132f120a9",
+      "branch": "codex/lab-profile-normalization",
+      "directory": "experiments/profile-normalization",
+      "group": "offline",
+      "inputKind": "完整pprof历史fixture / 有界parser与算术适配",
+      "imagePath": "experiments/profile-normalization/evidence/browser/final3-count-light.png",
+      "imageCaption": "六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。",
+      "title": "Profile normalization",
+      "value": "从完整pprof历史原件重建逐栈归一化差，显示六source共同决定factor及base/diff_base报告分母",
+      "limits": "固定6ca6基线；有界parser/算术适配而非采集workload；5tests/静态三阶段/strictcheck通过，8writing warnings；最终public browser FAIL164键盘预算，旧658四组真实Tab282/282按legend-only delta复用，不改绑最终035；root来源卡→6项→S2/12maps→factor及3分母节点实链，390px base toolbar裁切保留，非AT/人类/速度证明",
+      "readme": {
+        "path": "experiments/profile-normalization/README.md",
+        "commit": "b3c85c9656212a4ba83430844603334132f120a9",
+        "sha256": "aa143065f74cf8ed54d2bfc5b2bd8ef6d0f702fca86ae33fe9bc20a3362ff351",
+        "bytes": 18443,
+        "gitBlob": "01be15055e61809b182c7e1fdcc2a8bca6c5c9b8"
+      },
+      "image": {
+        "path": "experiments/profile-normalization/evidence/browser/final3-count-light.png",
+        "commit": "b3c85c9656212a4ba83430844603334132f120a9",
+        "sha256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457",
+        "bytes": 109862,
+        "gitBlob": "d1b53bf13febd99926cc258a9ea94f0365e54ce3",
+        "width": 1440,
+        "height": 1000,
+        "mime": "image/png",
+        "caption": "六条source共同决定S1归一化factor，区分绝对差、分布差与报告分母；完整原件可回查，public键盘gate仍FAIL164，非采集workload。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-normalization/experiments/profile-normalization",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/evidence/browser/final3-count-light.png"
     }
   ],
   "deferred": {
@@ -2088,12 +2123,12 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 58,
-    "images": 58,
-    "pngBytes": 13665513,
+    "experiments": 59,
+    "images": 59,
+    "pngBytes": 13775375,
     "groupCounts": {
       "product": 18,
-      "offline": 19,
+      "offline": 20,
       "content": 21
     },
     "deferredCountedAsPublished": false
