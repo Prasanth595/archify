@@ -1,0 +1,89 @@
+{
+  "exporter": "speedscope@1.25.0",
+  "exportSha256": "4ed03704ea6461fdf686b0cdabc196f041ef951a6dccd6b1f055b88ff8cbb01c",
+  "twoExportsByteIdentical": true,
+  "source": "Firefox fixture; importer reconstructs open/close intervals from sampled stacks",
+  "sourceSampleCount": 15,
+  "sourceThread": "GeckoMain",
+  "exportEventCount": 62,
+  "unit": "milliseconds",
+  "range": [
+    0,
+    274.29782799998065
+  ],
+  "representedStackWeightMs": 11.149112000013702,
+  "mainPercentOfExportRange": 4.064600905266551,
+  "mainPercentOfRepresentedStacks": 100.0,
+  "frames": [
+    {
+      "name": "main",
+      "self_ms": 1.1944820000207983,
+      "total_ms_unique_per_interval": 11.149112000013702,
+      "total_ms_if_recursive_occurrences_added": 11.149112000013702
+    },
+    {
+      "name": "alpha",
+      "self_ms": 0.0,
+      "total_ms_unique_per_interval": 9.954629999992903,
+      "total_ms_if_recursive_occurrences_added": 25.42462999984855
+    },
+    {
+      "name": "beta",
+      "self_ms": 0.0,
+      "total_ms_unique_per_interval": 8.962158999987878,
+      "total_ms_if_recursive_occurrences_added": 17.60007899987977
+    },
+    {
+      "name": "delta",
+      "self_ms": 0.0,
+      "total_ms_unique_per_interval": 6.859736999962479,
+      "total_ms_if_recursive_occurrences_added": 6.859736999962479
+    },
+    {
+      "name": "gamma",
+      "self_ms": 9.954629999992903,
+      "total_ms_unique_per_interval": 9.954629999992903,
+      "total_ms_if_recursive_occurrences_added": 9.954629999992903
+    }
+  ],
+  "sandwichRows": [
+    [
+      "Total",
+      "Self",
+      "Symbol Name"
+    ],
+    [
+      "9.95ms (89%)",
+      "9.95ms (89%)",
+      "gamma"
+    ],
+    [
+      "11.15ms (100%)",
+      "1.19ms (11%)",
+      "main"
+    ],
+    [
+      "6.86ms (62%)",
+      "0.00ns (<0.01%)",
+      "delta"
+    ],
+    [
+      "8.96ms (80%)",
+      "0.00ns (<0.01%)",
+      "beta"
+    ],
+    [
+      "9.95ms (89%)",
+      "0.00ns (<0.01%)",
+      "alpha"
+    ]
+  ],
+  "rowsUnchangedAfterZoomAndRecursionCollapse": true,
+  "notEstablished": [
+    "original issue reproduction",
+    "real function invocation counts",
+    "true entry/exit instrumentation",
+    "reader benefit",
+    "deployment commit identity"
+  ]
+}

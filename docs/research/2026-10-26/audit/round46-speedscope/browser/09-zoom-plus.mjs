@@ -1,0 +1,15 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(3),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.keyboard.press('+');
+await page.keyboard.press('+');
+await page.waitForTimeout(200);
+await page.mouse.move(1400,600,{label:'leave profile tooltip'});
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/time-order-zoom-plus.png"});
+const before=await page.evaluate(()=>({text:document.body.innerText,rows:[...document.querySelectorAll('tr')].map(x=>x.innerText)}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/browser/time-order-zoom.json",JSON.stringify(before,null,2)+'\n');
+await page.click('text="Sandwich"');
+const after=await page.evaluate(()=>({text:document.body.innerText,rows:[...document.querySelectorAll('tr')].map(x=>[...x.querySelectorAll('td,th')].map(c=>c.innerText))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/browser/sandwich-after-zoom.json",JSON.stringify(after,null,2)+'\n');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/sandwich-after-zoom.png"});
+console.log(after.rows);

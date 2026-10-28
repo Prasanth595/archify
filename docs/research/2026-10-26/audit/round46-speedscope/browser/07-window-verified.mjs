@@ -1,0 +1,17 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(3),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.mouse.click(30,152,{clickCount:2,label:'fit main frame viewport'});
+await page.waitForTimeout(200);
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/time-order-main-fit.png"});
+await page.mouse.move(5,60,{label:'start outside existing viewport'});
+await page.mouse.down();
+await page.mouse.move(30,60,{label:'draw smaller time viewport'});
+await page.mouse.up();
+await page.waitForTimeout(200);
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/time-order-narrow.png"});
+await page.click('text="Sandwich"');
+const data=await page.evaluate(()=>({url:location.href,text:document.body.innerText,rows:[...document.querySelectorAll('tr')].map(x=>[...x.querySelectorAll('td,th')].map(c=>c.innerText))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/browser/sandwich-after-narrow.json",JSON.stringify(data,null,2)+'\n');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/sandwich-after-narrow.png"});
+console.log(data);

@@ -778,3 +778,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 45 批 · 固定前端的同事实页面对照
 
 [task-view 前端夹具与实拍](scouts/task-view-frontend-round45.md)：原 `codex/lab-task-flow-tests` 推进到 `7b2a7ba3c`，九状态实际观察与 11 张最终图片补齐前端证据；原 Archify 阅读页未改。手写内部数据的状态与片段错误经实拍发现、修正并保留，不算上游缺陷。完整 CLI/Git/schema 流水线和读者收益仍未验证，暂不推广通用适配器；只推分支，无新 PR。
+
+## 第 46 批 · 性能视口与统计分母
+
+[Speedscope 原生操作补证](scouts/speedscope-native-round46.md)：同一公开 Firefox fixture 的真实缩放不改变 Sandwich 五行统计；main 的 11.15ms 在两处分别显示 4.1% / 100%。递归折叠改变形状而保留函数权重，原生导出由 15 条采样重建成 62 条事件记录。保存 12 份固定来源、9 张有效实拍及 6 张排除的早期尝试；尚无新增 importer 的收益证据，只推研究分支，无新 PR。

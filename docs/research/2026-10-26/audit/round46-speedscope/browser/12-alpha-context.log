@@ -1,0 +1,116 @@
+[p1 "recursion.json - speedscope" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "recursion.json - speedscope"]
+root
+  canvas
+  container
+    container
+      container
+        text "🕰"
+        text "Time Order"
+      container
+        text "⬅️"
+        text "Left Heavy"
+      container
+        text "🥪"
+        text "Sandwich"
+    text "recursion.json"
+    container
+      container
+        text "⤴️"
+        text "Export"
+      container
+        text "⤵️"
+        text "Import"
+      container
+        text "🎨"
+        text "System"
+      anchor [ref=857, loc=href:https://github.com/jlfwong/speedscope#usage, url=https://github.com/jlfwong/speedscope#usage]
+        text "❓"
+        text "Help"
+  container
+    container
+      table
+        table_row
+          table_cell
+            svg_root
+            text "Total"
+          table_cell
+            svg_root
+            text "Self"
+          table_cell
+            svg_root
+            text "Symbol Name"
+      table
+        table_row
+          table_cell
+            text "9.95ms"
+            text "("
+            text "89%"
+            text ")"
+          table_cell
+            text "9.95ms"
+            text "("
+            text "89%"
+            text ")"
+          table_cell
+            text "gamma"
+        table_row
+          table_cell
+            text "11.15ms"
+            text "("
+            text "100%"
+            text ")"
+          table_cell
+            text "1.19ms"
+            text "("
+            text "11%"
+            text ")"
+          table_cell
+            text "main"
+        table_row
+          table_cell
+            text "6.86ms"
+            text "("
+            text "62%"
+            text ")"
+          table_cell
+            text "0.00ns"
+            text "("
+            text "<0.01%"
+            text ")"
+          table_cell
+            text "delta"
+        table_row
+          table_cell
+            text "8.96ms"
+            text "("
+            text "80%"
+            text ")"
+          table_cell
+            text "0.00ns"
+            text "("
+            text "<0.01%"
+            text ")"
+          table_cell
+            text "beta"
+        table_row
+          table_cell
+            text "9.95ms"
+            text "("
+            text "89%"
+            text ")"
+          table_cell
+            text "0.00ns"
+            text "("
+            text "<0.01%"
+            text ")"
+          table_cell
+            text "alpha"
+    container
+      container
+        text "Callers"
+        canvas
+      container
+        text "Callees"
+        canvas
+
+

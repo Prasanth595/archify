@@ -1,0 +1,12 @@
+const task=await taskSpace(3),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('text="Time Order"');
+await page.keyboard.press('0');
+console.log(await page.evaluate(()=>({width:innerWidth,height:innerHeight,dpr:devicePixelRatio,canvases:[...document.querySelectorAll('canvas')].map(e=>{const r=e.getBoundingClientRect();return {rect:[r.x,r.y,r.width,r.height],class:e.className,parent:e.parentElement.className};}),hit:document.elementFromPoint(20,60)?.outerHTML.slice(0,300)})));
+await page.mouse.move(10,60,{label:'begin narrow timeline selection'});
+await page.mouse.down();
+await page.mouse.move(60,60,{label:'select first profile interval'});
+await page.mouse.up();
+await page.waitForTimeout(300);
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/time-order-window-same-call.png"});
+console.log(await page.snapshot());

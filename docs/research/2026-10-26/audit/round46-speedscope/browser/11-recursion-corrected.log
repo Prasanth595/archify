@@ -1,0 +1,34 @@
+[p1 "recursion.json - speedscope" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "recursion.json - speedscope"]
+root
+  canvas
+  container
+    container
+      container
+        text "🕰"
+        text "Time Order"
+      container
+        text "⬅️"
+        text "Left Heavy"
+      container
+        text "🥪"
+        text "Sandwich"
+    text "recursion.json"
+    container
+      container
+        text "⤴️"
+        text "Export"
+      container
+        text "⤵️"
+        text "Import"
+      container
+        text "🎨"
+        text "System"
+      anchor [ref=857, loc=href:https://github.com/jlfwong/speedscope#usage, url=https://github.com/jlfwong/speedscope#usage]
+        text "❓"
+        text "Help"
+  container
+    canvas
+    canvas
+
+{ filename: 'recursion.speedscope.json', rows: [ [ 'Total', 'Self', 'Symbol Name' ], [ '9.95ms (89%)', '9.95ms (89%)', 'gamma' ], [ '11.15ms (100%)', '1.19ms (11%)', 'main' ], [ '6.86ms (62%)', '0.00ns (<0.01%)', 'delta' ], [ '8.96ms (80%)', '0.00ns (<0.01%)', 'beta' ], [ '9.95ms (89%)', '0.00ns (<0.01%)', 'alpha' ] ] }
+

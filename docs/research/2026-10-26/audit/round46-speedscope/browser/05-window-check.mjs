@@ -1,0 +1,10 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(3),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/time-order-window.png"});
+await page.click('text="Sandwich"');
+const data=await page.evaluate(()=>({url:location.href,title:document.title,text:document.body.innerText,rows:[...document.querySelectorAll('tr')].map(x=>[...x.querySelectorAll('td,th')].map(c=>c.innerText))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/browser/sandwich-after-window.json",JSON.stringify(data,null,2)+'\n');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round46-speedscope/images/sandwich-after-window.png"});
+await page.click('text="Left Heavy"');
+console.log(await page.snapshot());
