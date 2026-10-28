@@ -1,0 +1,2019 @@
+{
+  "basis": "independent source reading + Python standard library; no author implementation/golden imported; upstream not executed",
+  "upstream": "dbd0ed30aa888a30e21ba83b9831ac0e80d41022",
+  "scope": "fixed full fixtures; no focus/ignore, nonmean, no extra divide_by; report total captured before address graph aggregation",
+  "files": [
+    {
+      "path": "internal/driver/testdata/cppbench.contention",
+      "bytes": 1551,
+      "sha256": "e0f3035db93cd3bb384590b224ca2b26d79aca41e71042a32c351a6d3e34d2d4"
+    },
+    {
+      "path": "internal/driver/testdata/cppbench.small.contention",
+      "bytes": 821,
+      "sha256": "0d1f47b05eb6664827672b360eb122f13daec15765eb76eed1d77ed9e788516f"
+    },
+    {
+      "path": "profile/testdata/cppbench.contention.string",
+      "bytes": 2025,
+      "sha256": "a552baca08d20d75945171f9d1ff08f5f9df12a0d7099ce88c9b894358015552"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  ],
+  "source": {
+    "rows": [
+      {
+        "id": "S1",
+        "line": 6,
+        "literal": "  19490304       27 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "rawCycles": 19490304,
+        "rawCount": 27,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xc61202",
+          "0x42ed5f",
+          "0x42edc1",
+          "0x42e15a",
+          "0x5261af",
+          "0x526edf",
+          "0x5280ab",
+          "0x79e80a",
+          "0x7a251b",
+          "0x7a296d",
+          "0xa456e4",
+          "0x7fcdc2ff214e"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xc61201",
+          "0x42ed5e",
+          "0x42edc0",
+          "0x42e159",
+          "0x5261ae",
+          "0x526ede",
+          "0x5280aa",
+          "0x79e809",
+          "0x7a251a",
+          "0x7a296c",
+          "0xa456e3",
+          "0x7fcdc2ff214d"
+        ],
+        "values": [
+          2700,
+          608881724
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xc61202",
+            "corrected": "0xc61201",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42ed5f",
+            "corrected": "0x42ed5e",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42edc1",
+            "corrected": "0x42edc0",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42e15a",
+            "corrected": "0x42e159",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapLine": 19
+          }
+        ]
+      },
+      {
+        "id": "S2",
+        "line": 7,
+        "literal": "       768        1 @ 0xbccc97 0xa42dc7 0xa456e4 0x7fcdc2ff214e",
+        "rawCycles": 768,
+        "rawCount": 1,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xa42dc7",
+          "0xa456e4",
+          "0x7fcdc2ff214e"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xa42dc6",
+          "0xa456e3",
+          "0x7fcdc2ff214d"
+        ],
+        "values": [
+          100,
+          23992
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xa42dc7",
+            "corrected": "0xa42dc6",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapLine": 19
+          }
+        ]
+      },
+      {
+        "id": "S3",
+        "line": 8,
+        "literal": "      5760        2 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87eab 0xb8814c 0x4e969d 0x4faa17 0x4fc5f6 0x4fd028 0x4fd230 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "rawCycles": 5760,
+        "rawCount": 2,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xb82b73",
+          "0xb82bcb",
+          "0xb87eab",
+          "0xb8814c",
+          "0x4e969d",
+          "0x4faa17",
+          "0x4fc5f6",
+          "0x4fd028",
+          "0x4fd230",
+          "0x79e80a",
+          "0x7a251b",
+          "0x7a296d",
+          "0xa456e4",
+          "0x7fcdc2ff214e"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xb82b72",
+          "0xb82bca",
+          "0xb87eaa",
+          "0xb8814b",
+          "0x4e969c",
+          "0x4faa16",
+          "0x4fc5f5",
+          "0x4fd027",
+          "0x4fd22f",
+          "0x79e809",
+          "0x7a251a",
+          "0x7a296c",
+          "0xa456e3",
+          "0x7fcdc2ff214d"
+        ],
+        "values": [
+          200,
+          179943
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82b73",
+            "corrected": "0xb82b72",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82bcb",
+            "corrected": "0xb82bca",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb87eab",
+            "corrected": "0xb87eaa",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb8814c",
+            "corrected": "0xb8814b",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4e969d",
+            "corrected": "0x4e969c",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4faa17",
+            "corrected": "0x4faa16",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4fc5f6",
+            "corrected": "0x4fc5f5",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4fd028",
+            "corrected": "0x4fd027",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4fd230",
+            "corrected": "0x4fd22f",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapLine": 19
+          }
+        ]
+      },
+      {
+        "id": "S4",
+        "line": 9,
+        "literal": "    569088        1 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87f08 0xb8814c 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "rawCycles": 569088,
+        "rawCount": 1,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xb82b73",
+          "0xb82bcb",
+          "0xb87f08",
+          "0xb8814c",
+          "0x42ed5f",
+          "0x42edc1",
+          "0x42e15a",
+          "0x5261af",
+          "0x526edf",
+          "0x5280ab",
+          "0x79e80a",
+          "0x7a251b",
+          "0x7a296d",
+          "0xa456e4",
+          "0x7fcdc2ff214e"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xb82b72",
+          "0xb82bca",
+          "0xb87f07",
+          "0xb8814b",
+          "0x42ed5e",
+          "0x42edc0",
+          "0x42e159",
+          "0x5261ae",
+          "0x526ede",
+          "0x5280aa",
+          "0x79e809",
+          "0x7a251a",
+          "0x7a296c",
+          "0xa456e3",
+          "0x7fcdc2ff214d"
+        ],
+        "values": [
+          100,
+          17778444
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82b73",
+            "corrected": "0xb82b72",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82bcb",
+            "corrected": "0xb82bca",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb87f08",
+            "corrected": "0xb87f07",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb8814c",
+            "corrected": "0xb8814b",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42ed5f",
+            "corrected": "0x42ed5e",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42edc1",
+            "corrected": "0x42edc0",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42e15a",
+            "corrected": "0x42e159",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapLine": 19
+          }
+        ]
+      },
+      {
+        "id": "S5",
+        "line": 10,
+        "literal": "      2432        1 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87eab 0xb8814c 0x7aa74c 0x7ab844 0x7ab914 0x79e9e9 0x79e326 0x4d299e 0x4d4b7b 0x4b7be8 0x4b7ff1 0x4d2dae 0x79e80a",
+        "rawCycles": 2432,
+        "rawCount": 1,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xb82b73",
+          "0xb82bcb",
+          "0xb87eab",
+          "0xb8814c",
+          "0x7aa74c",
+          "0x7ab844",
+          "0x7ab914",
+          "0x79e9e9",
+          "0x79e326",
+          "0x4d299e",
+          "0x4d4b7b",
+          "0x4b7be8",
+          "0x4b7ff1",
+          "0x4d2dae",
+          "0x79e80a"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xb82b72",
+          "0xb82bca",
+          "0xb87eaa",
+          "0xb8814b",
+          "0x7aa74b",
+          "0x7ab843",
+          "0x7ab913",
+          "0x79e9e8",
+          "0x79e325",
+          "0x4d299d",
+          "0x4d4b7a",
+          "0x4b7be7",
+          "0x4b7ff0",
+          "0x4d2dad",
+          "0x79e809"
+        ],
+        "values": [
+          100,
+          75976
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82b73",
+            "corrected": "0xb82b72",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82bcb",
+            "corrected": "0xb82bca",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb87eab",
+            "corrected": "0xb87eaa",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb8814c",
+            "corrected": "0xb8814b",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7aa74c",
+            "corrected": "0x7aa74b",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7ab844",
+            "corrected": "0x7ab843",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7ab914",
+            "corrected": "0x7ab913",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e9e9",
+            "corrected": "0x79e9e8",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e326",
+            "corrected": "0x79e325",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4d299e",
+            "corrected": "0x4d299d",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4d4b7b",
+            "corrected": "0x4d4b7a",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4b7be8",
+            "corrected": "0x4b7be7",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4b7ff1",
+            "corrected": "0x4b7ff0",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x4d2dae",
+            "corrected": "0x4d2dad",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapLine": 13
+          }
+        ]
+      },
+      {
+        "id": "S6",
+        "line": 11,
+        "literal": "   2034816        3 @ 0xbccc97 0xb82f0f 0xb83003 0xb87d50 0xc635f0 0x42ecc3 0x42e14c 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "rawCycles": 2034816,
+        "rawCount": 3,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xb82f0f",
+          "0xb83003",
+          "0xb87d50",
+          "0xc635f0",
+          "0x42ecc3",
+          "0x42e14c",
+          "0x5261af",
+          "0x526edf",
+          "0x5280ab",
+          "0x79e80a",
+          "0x7a251b",
+          "0x7a296d",
+          "0xa456e4",
+          "0x7fcdc2ff214e"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xb82f0e",
+          "0xb83002",
+          "0xb87d4f",
+          "0xc635ef",
+          "0x42ecc2",
+          "0x42e14b",
+          "0x5261ae",
+          "0x526ede",
+          "0x5280aa",
+          "0x79e809",
+          "0x7a251a",
+          "0x7a296c",
+          "0xa456e3",
+          "0x7fcdc2ff214d"
+        ],
+        "values": [
+          300,
+          63568134
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb82f0f",
+            "corrected": "0xb82f0e",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb83003",
+            "corrected": "0xb83002",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xb87d50",
+            "corrected": "0xb87d4f",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xc635f0",
+            "corrected": "0xc635ef",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42ecc3",
+            "corrected": "0x42ecc2",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x42e14c",
+            "corrected": "0x42e14b",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapLine": 13
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapLine": 13
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapLine": 19
+          }
+        ]
+      }
+    ],
+    "maps": [
+      {
+        "line": 13,
+        "literal": "  00400000-00fcb000: cppbench_server_main",
+        "start": 4194304,
+        "limit": 16560128,
+        "file": "cppbench_server_main"
+      },
+      {
+        "line": 14,
+        "literal": "  7fcdc231e000-7fcdc2321000: /libnss_cache-2.15.so",
+        "start": 140521703071744,
+        "limit": 140521703084032,
+        "file": "/libnss_cache-2.15.so"
+      },
+      {
+        "line": 15,
+        "literal": "  7fcdc2522000-7fcdc252e000: /libnss_files-2.15.so",
+        "start": 140521705185280,
+        "limit": 140521705234432,
+        "file": "/libnss_files-2.15.so"
+      },
+      {
+        "line": 16,
+        "literal": "  7fcdc272f000-7fcdc28dd000: /libc-2.15.so",
+        "start": 140521707335680,
+        "limit": 140521709096960,
+        "file": "/libc-2.15.so"
+      },
+      {
+        "line": 17,
+        "literal": "  7fcdc2ae7000-7fcdc2be2000: /libm-2.15.so",
+        "start": 140521711235072,
+        "limit": 140521712263168,
+        "file": "/libm-2.15.so"
+      },
+      {
+        "line": 18,
+        "literal": "  7fcdc2de3000-7fcdc2dea000: /librt-2.15.so",
+        "start": 140521714364416,
+        "limit": 140521714393088,
+        "file": "/librt-2.15.so"
+      },
+      {
+        "line": 19,
+        "literal": "  7fcdc2feb000-7fcdc3003000: /libpthread-2.15.so",
+        "start": 140521716494336,
+        "limit": 140521716592640,
+        "file": "/libpthread-2.15.so"
+      },
+      {
+        "line": 20,
+        "literal": "  7fcdc3208000-7fcdc320a000: /libdl-2.15.so",
+        "start": 140521718710272,
+        "limit": 140521718718464,
+        "file": "/libdl-2.15.so"
+      },
+      {
+        "line": 21,
+        "literal": "  7fcdc340c000-7fcdc3415000: /libcrypt-2.15.so",
+        "start": 140521720823808,
+        "limit": 140521720860672,
+        "file": "/libcrypt-2.15.so"
+      },
+      {
+        "line": 22,
+        "literal": "  7fcdc3645000-7fcdc3669000: /ld-2.15.so",
+        "start": 140521723154432,
+        "limit": 140521723301888,
+        "file": "/ld-2.15.so"
+      },
+      {
+        "line": 23,
+        "literal": "  7fff86bff000-7fff86c00000: [vdso]",
+        "start": 140735454113792,
+        "limit": 140735454117888,
+        "file": "[vdso]"
+      },
+      {
+        "line": 24,
+        "literal": "  ffffffffff600000-ffffffffff601000: [vsyscall]",
+        "start": 18446744073699065856,
+        "limit": 18446744073699069952,
+        "file": "[vsyscall]"
+      }
+    ],
+    "headers": {
+      "cycles/second": 3201000000,
+      "sampling period": 100,
+      "ms since reset": 16502830,
+      "discarded samples": 0
+    }
+  },
+  "base": {
+    "rows": [
+      {
+        "id": "B1",
+        "line": 6,
+        "literal": "       100     10 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "rawCycles": 100,
+        "rawCount": 10,
+        "rawAddresses": [
+          "0xbccc97",
+          "0xc61202",
+          "0x42ed5f",
+          "0x42edc1",
+          "0x42e15a",
+          "0x5261af",
+          "0x526edf",
+          "0x5280ab",
+          "0x79e80a",
+          "0x7a251b",
+          "0x7a296d",
+          "0xa456e4",
+          "0x7fcdc2ff214e"
+        ],
+        "correctedAddresses": [
+          "0xbccc96",
+          "0xc61201",
+          "0x42ed5e",
+          "0x42edc0",
+          "0x42e159",
+          "0x5261ae",
+          "0x526ede",
+          "0x5280aa",
+          "0x79e809",
+          "0x7a251a",
+          "0x7a296c",
+          "0xa456e3",
+          "0x7fcdc2ff214d"
+        ],
+        "values": [
+          1000,
+          3124
+        ],
+        "locationEvidence": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapLine": 8
+          },
+          {
+            "raw": "0xc61202",
+            "corrected": "0xc61201",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x42ed5f",
+            "corrected": "0x42ed5e",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x42edc1",
+            "corrected": "0x42edc0",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x42e15a",
+            "corrected": "0x42e159",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapLine": 8
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapLine": 8
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapLine": 14
+          }
+        ]
+      }
+    ],
+    "maps": [
+      {
+        "line": 8,
+        "literal": "  00400000-00fcb000: cppbench_server_main",
+        "start": 4194304,
+        "limit": 16560128,
+        "file": "cppbench_server_main"
+      },
+      {
+        "line": 9,
+        "literal": "  7fcdc231e000-7fcdc2321000: /libnss_cache-2.15.so",
+        "start": 140521703071744,
+        "limit": 140521703084032,
+        "file": "/libnss_cache-2.15.so"
+      },
+      {
+        "line": 10,
+        "literal": "  7fcdc2522000-7fcdc252e000: /libnss_files-2.15.so",
+        "start": 140521705185280,
+        "limit": 140521705234432,
+        "file": "/libnss_files-2.15.so"
+      },
+      {
+        "line": 11,
+        "literal": "  7fcdc272f000-7fcdc28dd000: /libc-2.15.so",
+        "start": 140521707335680,
+        "limit": 140521709096960,
+        "file": "/libc-2.15.so"
+      },
+      {
+        "line": 12,
+        "literal": "  7fcdc2ae7000-7fcdc2be2000: /libm-2.15.so",
+        "start": 140521711235072,
+        "limit": 140521712263168,
+        "file": "/libm-2.15.so"
+      },
+      {
+        "line": 13,
+        "literal": "  7fcdc2de3000-7fcdc2dea000: /librt-2.15.so",
+        "start": 140521714364416,
+        "limit": 140521714393088,
+        "file": "/librt-2.15.so"
+      },
+      {
+        "line": 14,
+        "literal": "  7fcdc2feb000-7fcdc3003000: /libpthread-2.15.so",
+        "start": 140521716494336,
+        "limit": 140521716592640,
+        "file": "/libpthread-2.15.so"
+      },
+      {
+        "line": 15,
+        "literal": "  7fcdc3208000-7fcdc320a000: /libdl-2.15.so",
+        "start": 140521718710272,
+        "limit": 140521718718464,
+        "file": "/libdl-2.15.so"
+      },
+      {
+        "line": 16,
+        "literal": "  7fcdc340c000-7fcdc3415000: /libcrypt-2.15.so",
+        "start": 140521720823808,
+        "limit": 140521720860672,
+        "file": "/libcrypt-2.15.so"
+      },
+      {
+        "line": 17,
+        "literal": "  7fcdc3645000-7fcdc3669000: /ld-2.15.so",
+        "start": 140521723154432,
+        "limit": 140521723301888,
+        "file": "/ld-2.15.so"
+      },
+      {
+        "line": 18,
+        "literal": "  7fff86bff000-7fff86c00000: [vdso]",
+        "start": 140735454113792,
+        "limit": 140735454117888,
+        "file": "[vdso]"
+      },
+      {
+        "line": 19,
+        "literal": "  ffffffffff600000-ffffffffff601000: [vsyscall]",
+        "start": 18446744073699065856,
+        "limit": 18446744073699069952,
+        "file": "[vsyscall]"
+      }
+    ],
+    "headers": {
+      "cycles/second": 3201000000,
+      "sampling period": 100,
+      "ms since reset": 16502830,
+      "discarded samples": 0
+    }
+  },
+  "sourceTotals": [
+    3500,
+    690508213
+  ],
+  "baseTotals": [
+    1000,
+    3124
+  ],
+  "ratios": [
+    0.2857142857142857,
+    4.524203972067744e-06
+  ],
+  "ratioFractions": [
+    [
+      1000,
+      3500
+    ],
+    [
+      3124,
+      690508213
+    ]
+  ],
+  "roundedSourceTotals": [
+    1001,
+    3124
+  ],
+  "comparisonRows": [
+    {
+      "id": "S1",
+      "base": "B1",
+      "source": [
+        2700,
+        608881724
+      ],
+      "rounded": [
+        771,
+        2755
+      ],
+      "absoluteDiff": [
+        1700,
+        608878600
+      ],
+      "normalizedDiff": [
+        -229,
+        -369
+      ]
+    },
+    {
+      "id": "S2",
+      "base": null,
+      "source": [
+        100,
+        23992
+      ],
+      "rounded": [
+        29,
+        0
+      ],
+      "absoluteDiff": [
+        100,
+        23992
+      ],
+      "normalizedDiff": [
+        29,
+        0
+      ]
+    },
+    {
+      "id": "S3",
+      "base": null,
+      "source": [
+        200,
+        179943
+      ],
+      "rounded": [
+        57,
+        1
+      ],
+      "absoluteDiff": [
+        200,
+        179943
+      ],
+      "normalizedDiff": [
+        57,
+        1
+      ]
+    },
+    {
+      "id": "S4",
+      "base": null,
+      "source": [
+        100,
+        17778444
+      ],
+      "rounded": [
+        29,
+        80
+      ],
+      "absoluteDiff": [
+        100,
+        17778444
+      ],
+      "normalizedDiff": [
+        29,
+        80
+      ]
+    },
+    {
+      "id": "S5",
+      "base": null,
+      "source": [
+        100,
+        75976
+      ],
+      "rounded": [
+        29,
+        0
+      ],
+      "absoluteDiff": [
+        100,
+        75976
+      ],
+      "normalizedDiff": [
+        29,
+        0
+      ]
+    },
+    {
+      "id": "S6",
+      "base": null,
+      "source": [
+        300,
+        63568134
+      ],
+      "rounded": [
+        86,
+        288
+      ],
+      "absoluteDiff": [
+        300,
+        63568134
+      ],
+      "normalizedDiff": [
+        86,
+        288
+      ]
+    }
+  ],
+  "branches": {
+    "absolute-base": {
+      "mergedSamples": [
+        {
+          "location": [
+            "0xbccc96",
+            "0xc61201",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            1700,
+            608878600
+          ],
+          "members": [
+            "S1",
+            "B1"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xa42dc6",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            100,
+            23992
+          ],
+          "members": [
+            "S2"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x4e969c",
+            "0x4faa16",
+            "0x4fc5f5",
+            "0x4fd027",
+            "0x4fd22f",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            200,
+            179943
+          ],
+          "members": [
+            "S3"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87f07",
+            "0xb8814b",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            100,
+            17778444
+          ],
+          "members": [
+            "S4"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x7aa74b",
+            "0x7ab843",
+            "0x7ab913",
+            "0x79e9e8",
+            "0x79e325",
+            "0x4d299d",
+            "0x4d4b7a",
+            "0x4b7be7",
+            "0x4b7ff0",
+            "0x4d2dad",
+            "0x79e809"
+          ],
+          "labels": {},
+          "values": [
+            100,
+            75976
+          ],
+          "members": [
+            "S5"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82f0e",
+            "0xb83002",
+            "0xb87d4f",
+            "0xc635ef",
+            "0x42ecc2",
+            "0x42e14b",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            300,
+            63568134
+          ],
+          "members": [
+            "S6"
+          ]
+        }
+      ],
+      "reportDenominators": [
+        2500,
+        690505089
+      ],
+      "signedNet": [
+        2500,
+        690505089
+      ],
+      "sampleCount": 6
+    },
+    "absolute-diff_base": {
+      "mergedSamples": [
+        {
+          "location": [
+            "0xbccc96",
+            "0xc61201",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            2700,
+            608881724
+          ],
+          "members": [
+            "S1"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xa42dc6",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            100,
+            23992
+          ],
+          "members": [
+            "S2"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x4e969c",
+            "0x4faa16",
+            "0x4fc5f5",
+            "0x4fd027",
+            "0x4fd22f",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            200,
+            179943
+          ],
+          "members": [
+            "S3"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87f07",
+            "0xb8814b",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            100,
+            17778444
+          ],
+          "members": [
+            "S4"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x7aa74b",
+            "0x7ab843",
+            "0x7ab913",
+            "0x79e9e8",
+            "0x79e325",
+            "0x4d299d",
+            "0x4d4b7a",
+            "0x4b7be7",
+            "0x4b7ff0",
+            "0x4d2dad",
+            "0x79e809"
+          ],
+          "labels": {},
+          "values": [
+            100,
+            75976
+          ],
+          "members": [
+            "S5"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82f0e",
+            "0xb83002",
+            "0xb87d4f",
+            "0xc635ef",
+            "0x42ecc2",
+            "0x42e14b",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            300,
+            63568134
+          ],
+          "members": [
+            "S6"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xc61201",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {
+            "pprof::base": [
+              "true"
+            ]
+          },
+          "values": [
+            -1000,
+            -3124
+          ],
+          "members": [
+            "B1"
+          ]
+        }
+      ],
+      "reportDenominators": [
+        1000,
+        3124
+      ],
+      "signedNet": [
+        2500,
+        690505089
+      ],
+      "sampleCount": 7
+    },
+    "normalized-base": {
+      "mergedSamples": [
+        {
+          "location": [
+            "0xbccc96",
+            "0xc61201",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            -229,
+            -369
+          ],
+          "members": [
+            "S1",
+            "B1"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xa42dc6",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            29,
+            0
+          ],
+          "members": [
+            "S2"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x4e969c",
+            "0x4faa16",
+            "0x4fc5f5",
+            "0x4fd027",
+            "0x4fd22f",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            57,
+            1
+          ],
+          "members": [
+            "S3"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87f07",
+            "0xb8814b",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            29,
+            80
+          ],
+          "members": [
+            "S4"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x7aa74b",
+            "0x7ab843",
+            "0x7ab913",
+            "0x79e9e8",
+            "0x79e325",
+            "0x4d299d",
+            "0x4d4b7a",
+            "0x4b7be7",
+            "0x4b7ff0",
+            "0x4d2dad",
+            "0x79e809"
+          ],
+          "labels": {},
+          "values": [
+            29,
+            0
+          ],
+          "members": [
+            "S5"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82f0e",
+            "0xb83002",
+            "0xb87d4f",
+            "0xc635ef",
+            "0x42ecc2",
+            "0x42e14b",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            86,
+            288
+          ],
+          "members": [
+            "S6"
+          ]
+        }
+      ],
+      "reportDenominators": [
+        459,
+        738
+      ],
+      "signedNet": [
+        1,
+        0
+      ],
+      "sampleCount": 6
+    },
+    "normalized-diff_base": {
+      "mergedSamples": [
+        {
+          "location": [
+            "0xbccc96",
+            "0xc61201",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            771,
+            2755
+          ],
+          "members": [
+            "S1"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xa42dc6",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            29,
+            0
+          ],
+          "members": [
+            "S2"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x4e969c",
+            "0x4faa16",
+            "0x4fc5f5",
+            "0x4fd027",
+            "0x4fd22f",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            57,
+            1
+          ],
+          "members": [
+            "S3"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87f07",
+            "0xb8814b",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            29,
+            80
+          ],
+          "members": [
+            "S4"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82b72",
+            "0xb82bca",
+            "0xb87eaa",
+            "0xb8814b",
+            "0x7aa74b",
+            "0x7ab843",
+            "0x7ab913",
+            "0x79e9e8",
+            "0x79e325",
+            "0x4d299d",
+            "0x4d4b7a",
+            "0x4b7be7",
+            "0x4b7ff0",
+            "0x4d2dad",
+            "0x79e809"
+          ],
+          "labels": {},
+          "values": [
+            29,
+            0
+          ],
+          "members": [
+            "S5"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xb82f0e",
+            "0xb83002",
+            "0xb87d4f",
+            "0xc635ef",
+            "0x42ecc2",
+            "0x42e14b",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {},
+          "values": [
+            86,
+            288
+          ],
+          "members": [
+            "S6"
+          ]
+        },
+        {
+          "location": [
+            "0xbccc96",
+            "0xc61201",
+            "0x42ed5e",
+            "0x42edc0",
+            "0x42e159",
+            "0x5261ae",
+            "0x526ede",
+            "0x5280aa",
+            "0x79e809",
+            "0x7a251a",
+            "0x7a296c",
+            "0xa456e3",
+            "0x7fcdc2ff214d"
+          ],
+          "labels": {
+            "pprof::base": [
+              "true"
+            ]
+          },
+          "values": [
+            -1000,
+            -3124
+          ],
+          "members": [
+            "B1"
+          ]
+        }
+      ],
+      "reportDenominators": [
+        1000,
+        3124
+      ],
+      "signedNet": [
+        1,
+        0
+      ],
+      "sampleCount": 7
+    }
+  },
+  "normalizedAddressCumulative": {
+    "0x79e809": [
+      -28,
+      0
+    ],
+    "0x7fcdc2ff214d": [
+      -28,
+      0
+    ],
+    "0xc61201": [
+      -229,
+      -369
+    ],
+    "0xbccc96": [
+      1,
+      0
+    ],
+    "0x7a251a": [
+      -57,
+      0
+    ],
+    "0x526ede": [
+      -114,
+      -1
+    ],
+    "0x42ed5e": [
+      -200,
+      -289
+    ],
+    "0x42e159": [
+      -200,
+      -289
+    ],
+    "0x5261ae": [
+      -114,
+      -1
+    ],
+    "0x42edc0": [
+      -200,
+      -289
+    ],
+    "0xa456e3": [
+      -28,
+      0
+    ],
+    "0x7a296c": [
+      -57,
+      0
+    ],
+    "0x5280aa": [
+      -114,
+      -1
+    ],
+    "0xa42dc6": [
+      29,
+      0
+    ],
+    "0x4faa16": [
+      57,
+      1
+    ],
+    "0x4e969c": [
+      57,
+      1
+    ],
+    "0x4fd027": [
+      57,
+      1
+    ],
+    "0xb82bca": [
+      115,
+      81
+    ],
+    "0x4fd22f": [
+      57,
+      1
+    ],
+    "0xb8814b": [
+      115,
+      81
+    ],
+    "0xb82b72": [
+      115,
+      81
+    ],
+    "0x4fc5f5": [
+      57,
+      1
+    ],
+    "0xb87eaa": [
+      86,
+      1
+    ],
+    "0xb87f07": [
+      29,
+      80
+    ],
+    "0x79e325": [
+      29,
+      0
+    ],
+    "0x4d299d": [
+      29,
+      0
+    ],
+    "0x7ab843": [
+      29,
+      0
+    ],
+    "0x4b7ff0": [
+      29,
+      0
+    ],
+    "0x4d2dad": [
+      29,
+      0
+    ],
+    "0x7aa74b": [
+      29,
+      0
+    ],
+    "0x79e9e8": [
+      29,
+      0
+    ],
+    "0x7ab913": [
+      29,
+      0
+    ],
+    "0x4b7be7": [
+      29,
+      0
+    ],
+    "0x4d4b7a": [
+      29,
+      0
+    ],
+    "0xb87d4f": [
+      86,
+      288
+    ],
+    "0xb83002": [
+      86,
+      288
+    ],
+    "0xc635ef": [
+      86,
+      288
+    ],
+    "0x42e14b": [
+      86,
+      288
+    ],
+    "0x42ecc2": [
+      86,
+      288
+    ],
+    "0xb82f0e": [
+      86,
+      288
+    ]
+  },
+  "normalizedAddressFlat": {
+    "0xbccc96": [
+      1,
+      0
+    ]
+  },
+  "sourceAddressPositions": 79,
+  "baseAddressPositions": 13,
+  "sourceUniqueLocations": 40
+}

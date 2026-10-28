@@ -1,0 +1,1387 @@
+[p1 "S1 绝对量增加，归一化后为什么是负数？ · Archify" | space "Archify profile normalization acceptance 20261028"(16): 1 managed, 0 untracked — p1* "S1 绝对量增加，归一化后为什么是负数？ · Archify"]
+root
+  anchor [ref=89, url=file://$REPO/experiments/profile-normalization/output/candidate.html#board]
+    text "跳至正文"
+  container
+    heading
+      text "S1 绝对量增加，归一化后为什么是负数？"
+    button [ref=90]
+      text "系统"
+    button [ref=91]
+      text "浅色"
+    button [ref=92]
+      text "深色"
+    button "样式" [ref=93, loc=css:button[aria-label="样式"]]
+      text "简洁"
+      svg_root
+    button [ref=94]
+      svg_root
+      text "导出"
+      svg_root
+  container
+    container
+      container
+        text "答"
+        heading
+          text "结论"
+        button [ref=95]
+          text "追问"
+      paragraph
+        text "先把整个 source 缩到 base 总量，再减同栈 B1：S1 从 +1700 count / +608878600 ns，变成 −229 count / −369 ns。六条 source 都进入缩放分母。"
+      ordered_list
+        list_item
+          text "1"
+          text "归一化先逐类型求比例，再逐样本"
+          text "round"
+          text "；最后才相减。"
+        list_item
+          text "2"
+          text "count 用"
+          text "1000/3500"
+          text "；delay 用"
+          text "3124/690508213"
+          text "，单位不能混用。"
+        list_item
+          text "3"
+          text "缩放分母、净差、报告百分比分母是三件不同的事。"
+      paragraph
+        text "适用于"
+        text "固定 legacy contention fixture；非性能结论；无 focus/mean/divide_by"
+    container
+      container
+        anchor "读图任务：从负数追回全局分母" [ref=96, loc=css:a[aria-label="读图任务：从负数追回全局分母"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#reading]
+          text "1"
+        heading
+          text "读图任务：从负数追回全局分母"
+        button [ref=97]
+          text "追问"
+      paragraph
+        text "箭头只表示算术值依赖，不是程序调用、执行顺序或测得 trace。两张图分别固定 count 和 ns；图内解释 S1，一旁六行账目保留全部结果。"
+      paragraph
+        anchor [ref=98, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "count 依赖"
+        text "·"
+        anchor [ref=99, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "delay 依赖"
+        text "·"
+        anchor [ref=100, url=file://$REPO/experiments/profile-normalization/output/candidate.html#results]
+          text "六行结果"
+        text "·"
+        anchor [ref=101, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "报告分母"
+        text "·"
+        anchor [ref=102, url=file://$REPO/experiments/profile-normalization/output/candidate.html#originals]
+          text "完整原件"
+        text "。focus / hover 图节点后，“阅读这段”进入其真实详情；每段有固定 native 入口。"
+    container
+      container
+        anchor "01 · count：六条输入决定 S1 的符号" [ref=75, loc=css:a[aria-label="01 · count：六条输入决定 S1 的符号"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "2"
+        heading
+          text "01 · count：六条输入决定 S1 的符号"
+        button [ref=76]
+          text "追问"
+      paragraph
+        text "固定比例入口："
+        anchor [ref=77, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确 factor 节点"
+        text "。"
+        anchor [ref=78, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-factor]
+          text "比例算式"
+        text "。"
+      container
+        text "count · 六条 source 如何改变 S1"
+        button [ref=79]
+          svg_root
+          text "打开交互图"
+        image "count · 六条 source 如何改变 S1"
+          image "S1: 2700 S2: 100 S3: 200 S4: 100 S5: 100 S6: 300 B1: 1000 Σs 3500 Σb 1000 1000/3500 round 771 绝对差 1700 归一化差 -229 贡献 贡献 贡献 贡献 贡献 贡献 贡献 分母 分子 乘数 �..."
+            text "S1: 2700"
+            text "S2: 100"
+            text "S3: 200"
+            text "S4: 100"
+            text "S5: 100"
+            text "S6: 300"
+            text "B1: 1000"
+            text "Σs 3500"
+            text "Σb 1000"
+            text "1000/3500"
+            text "round 771"
+            text "绝对差 1700"
+            text "归一化差 -229"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "分母"
+            text "分子"
+            text "乘数"
+            text "被乘数"
+            text "被减数"
+            text "减数"
+            text "被减数"
+            text "减数"
+            text "图例"
+            text "算术输入与运算"
+      paragraph
+        text "Σs 是全部 source 总量，Σb 是全部 base 总量；所有节点数值单位见图标题。图保留 S1…S6 与 B1 共7个完整输入身份；15条依赖只见证 S1 两种差值。其余5条�..."
+    container
+      container
+        anchor "count · 每个节点的算术与固定返回" [ref=80, loc=css:a[aria-label="count · 每个节点的算术与固定返回"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-arithmetic]
+          text "3"
+        heading
+          text "count · 每个节点的算术与固定返回"
+        button [ref=81]
+          text "追问"
+      button [ref=87]
+        text "▶ 逐步看"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=88, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+            text "归一化差"
+            text "↗"
+          paragraph
+            anchor [ref=103, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-normalized]
+              text "核对依据"
+        list_item
+          text "2"
+          anchor [ref=104, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+            text "归一化比例"
+            text "↗"
+          paragraph
+            anchor [ref=105, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-factor]
+              text "核对依据"
+        list_item
+          text "3"
+          anchor [ref=106, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+            text "source 总量"
+            text "↗"
+          paragraph
+            anchor [ref=107, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-source-total]
+              text "核对依据"
+        list_item
+          text "4"
+          anchor [ref=108, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+            text "S2"
+            text "↗"
+          paragraph
+            anchor [ref=109, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-S2]
+              text "核对依据"
+        list_item
+          text "5"
+          anchor [ref=110, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+            text "S1 舍入"
+            text "↗"
+          paragraph
+            anchor [ref=111, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-round]
+              text "核对依据"
+      paragraph
+        text "S1 是 source 原件第 6 行，unsampled 2700 count。"
+        anchor [ref=112, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s1]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=113, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=114, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S2 是 source 原件第 7 行，unsampled 100 count。"
+        anchor [ref=115, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s2]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=116, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=117, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S3 是 source 原件第 8 行，unsampled 200 count。"
+        anchor [ref=118, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s3]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=119, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=120, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S4 是 source 原件第 9 行，unsampled 100 count。"
+        anchor [ref=121, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s4]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=122, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=123, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S5 是 source 原件第 10 行，unsampled 100 count。"
+        anchor [ref=124, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s5]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=125, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=126, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S6 是 source 原件第 11 行，unsampled 300 count。"
+        anchor [ref=127, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s6]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=128, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=129, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "B1 是 base 原件第 6 行，unsampled 1000 count。"
+        anchor [ref=130, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-b1]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=131, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=132, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "全部 source 贡献："
+        anchor [ref=133, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s1]
+          text "S1"
+        text "2700 +"
+        anchor [ref=134, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s2]
+          text "S2"
+        text "100 +"
+        anchor [ref=135, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s3]
+          text "S3"
+        text "200 +"
+        anchor [ref=136, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s4]
+          text "S4"
+        text "100 +"
+        anchor [ref=137, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s5]
+          text "S5"
+        text "100 +"
+        anchor [ref=138, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s6]
+          text "S6"
+        text "300 = 3500 count。即使 S2 与 S1 不同完整栈，S2 仍改变 S1 的缩放分母。"
+        anchor [ref=139, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=140, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "base 只有"
+        anchor [ref=141, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-b1]
+          text "B1"
+        text "：1000 count。base 不被 Normalize；合并前才乘 −1。"
+        anchor [ref=142, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=143, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "比例 = baseTotal/sourceTotal ="
+        text "1000/3500"
+        text "。分子来自 B1，分母来自完整六条 source；不是从 S1 单独求比例。"
+        anchor [ref=144, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-source-total]
+          text "全部六项与求和"
+        text "。"
+        anchor [ref=145, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=146, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S1 2700 × (1000/3500) →"
+        text "round"
+        text "= 771 count。每类型独立 scale"
+        anchor [ref=147, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-scale-rule]
+          text "1"
+        text "与 math.Round"
+        anchor [ref=148, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-round-rule]
+          text "2"
+        text "。"
+        anchor [ref=149, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-factor]
+          text "比例依据"
+        text "。"
+        anchor [ref=150, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=151, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S1 2700 − B1 1000 = 1700 count。完整 location 序列和 labels 匹配，不是按公共叶地址匹配。"
+        anchor [ref=152, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s1]
+          text "S1/B1 原始身份"
+        text "。"
+        anchor [ref=153, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=154, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "round(S1 ×"
+        text "factor"
+        text ") 771 − 同完整栈 B1 1000 = -229 count。符号变了，因为比较问题变了；不能据此说绝对量下降。"
+        anchor [ref=155, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-round]
+          text "舍入依据"
+        text "·"
+        anchor [ref=156, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-factor]
+          text "比例依据"
+        text "·"
+        anchor [ref=157, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-b1]
+          text "同栈 B1"
+        text "。"
+        anchor [ref=158, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=159, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-view]
+          text "回到本图入口"
+        text "。"
+    container
+      container
+        anchor "02 · ns：六条输入决定 S1 的符号" [ref=160, loc=css:a[aria-label="02 · ns：六条输入决定 S1 的符号"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "4"
+        heading
+          text "02 · ns：六条输入决定 S1 的符号"
+        button [ref=161]
+          text "追问"
+      paragraph
+        text "固定比例入口："
+        anchor [ref=162, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确 factor 节点"
+        text "。"
+        anchor [ref=163, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-factor]
+          text "比例算式"
+        text "。"
+      container
+        text "ns · 六条 source 如何改变 S1"
+        button [ref=164]
+          svg_root
+          text "打开交互图"
+        image "ns · 六条 source 如何改变 S1"
+          image "S1: 608881724 S2: 23992 S3: 179943 S4: 17778444 S5: 75976 S6: 63568134 B1: 3124 Σs 690508213 Σb 3124 3124/690508213 round 2755 绝对差 608878600 归一化差 -369 贡献 贡献 贡献 贡献 贡�..."
+            text "S1: 608881724"
+            text "S2: 23992"
+            text "S3: 179943"
+            text "S4: 17778444"
+            text "S5: 75976"
+            text "S6: 63568134"
+            text "B1: 3124"
+            text "Σs 690508213"
+            text "Σb 3124"
+            text "3124/690508213"
+            text "round 2755"
+            text "绝对差 608878600"
+            text "归一化差 -369"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "贡献"
+            text "分母"
+            text "分子"
+            text "乘数"
+            text "被乘数"
+            text "被减数"
+            text "减数"
+            text "被减数"
+            text "减数"
+            text "图例"
+            text "算术输入与运算"
+      paragraph
+        text "Σs 是全部 source 总量，Σb 是全部 base 总量；所有节点数值单位见图标题。图保留 S1…S6 与 B1 共7个完整输入身份；15条依赖只见证 S1 两种差值。其余5条�..."
+    container
+      container
+        anchor "ns · 每个节点的算术与固定返回" [ref=165, loc=css:a[aria-label="ns · 每个节点的算术与固定返回"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-arithmetic]
+          text "5"
+        heading
+          text "ns · 每个节点的算术与固定返回"
+        button [ref=166]
+          text "追问"
+      button [ref=167]
+        text "▶ 逐步看"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=168, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+            text "归一化差"
+            text "↗"
+          paragraph
+            anchor [ref=169, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-normalized]
+              text "核对依据"
+        list_item
+          text "2"
+          anchor [ref=170, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+            text "归一化比例"
+            text "↗"
+          paragraph
+            anchor [ref=171, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-factor]
+              text "核对依据"
+        list_item
+          text "3"
+          anchor [ref=172, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+            text "source 总量"
+            text "↗"
+          paragraph
+            anchor [ref=173, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-source-total]
+              text "核对依据"
+        list_item
+          text "4"
+          anchor [ref=174, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+            text "S2"
+            text "↗"
+          paragraph
+            anchor [ref=175, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-S2]
+              text "核对依据"
+        list_item
+          text "5"
+          anchor [ref=176, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+            text "S1 舍入"
+            text "↗"
+          paragraph
+            anchor [ref=177, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-round]
+              text "核对依据"
+      paragraph
+        text "S1 是 source 原件第 6 行，unsampled 608881724 ns。"
+        anchor [ref=178, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s1]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=179, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=180, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S2 是 source 原件第 7 行，unsampled 23992 ns。"
+        anchor [ref=181, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s2]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=182, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=183, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S3 是 source 原件第 8 行，unsampled 179943 ns。"
+        anchor [ref=184, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s3]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=185, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=186, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S4 是 source 原件第 9 行，unsampled 17778444 ns。"
+        anchor [ref=187, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s4]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=188, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=189, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S5 是 source 原件第 10 行，unsampled 75976 ns。"
+        anchor [ref=190, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s5]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=191, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=192, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S6 是 source 原件第 11 行，unsampled 63568134 ns。"
+        anchor [ref=193, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s6]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=194, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=195, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "B1 是 base 原件第 6 行，unsampled 3124 ns。"
+        anchor [ref=196, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-b1]
+          text "完整原行、全部地址与 map"
+        text "。"
+        anchor [ref=197, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=198, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "全部 source 贡献："
+        anchor [ref=199, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s1]
+          text "S1"
+        text "608881724 +"
+        anchor [ref=200, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s2]
+          text "S2"
+        text "23992 +"
+        anchor [ref=201, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s3]
+          text "S3"
+        text "179943 +"
+        anchor [ref=202, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s4]
+          text "S4"
+        text "17778444 +"
+        anchor [ref=203, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s5]
+          text "S5"
+        text "75976 +"
+        anchor [ref=204, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s6]
+          text "S6"
+        text "63568134 = 690508213 ns。即使 S2 与 S1 不同完整栈，S2 仍改变 S1 的缩放分母。"
+        anchor [ref=205, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=206, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "base 只有"
+        anchor [ref=207, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-b1]
+          text "B1"
+        text "：3124 ns。base 不被 Normalize；合并前才乘 −1。"
+        anchor [ref=208, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=209, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "比例 = baseTotal/sourceTotal ="
+        text "3124/690508213"
+        text "。分子来自 B1，分母来自完整六条 source；不是从 S1 单独求比例。"
+        anchor [ref=210, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-source-total]
+          text "全部六项与求和"
+        text "。"
+        anchor [ref=211, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=212, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S1 608881724 × (3124/690508213) →"
+        text "round"
+        text "= 2755 ns。每类型独立 scale"
+        anchor [ref=213, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-scale-rule]
+          text "1"
+        text "与 math.Round"
+        anchor [ref=214, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-round-rule]
+          text "2"
+        text "。"
+        anchor [ref=215, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-factor]
+          text "比例依据"
+        text "。"
+        anchor [ref=216, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=217, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "S1 608881724 − B1 3124 = 608878600 ns。完整 location 序列和 labels 匹配，不是按公共叶地址匹配。"
+        anchor [ref=218, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s1]
+          text "S1/B1 原始身份"
+        text "。"
+        anchor [ref=219, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=220, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+      paragraph
+        text "round(S1 ×"
+        text "factor"
+        text ") 2755 − 同完整栈 B1 3124 = -369 ns。符号变了，因为比较问题变了；不能据此说绝对量下降。"
+        anchor [ref=221, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-round]
+          text "舍入依据"
+        text "·"
+        anchor [ref=222, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-factor]
+          text "比例依据"
+        text "·"
+        anchor [ref=223, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-b1]
+          text "同栈 B1"
+        text "。"
+        anchor [ref=224, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-flow]
+          text "打开此精确节点"
+        text "。"
+        anchor [ref=225, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-view]
+          text "回到本图入口"
+        text "。"
+    container
+      container
+        anchor "03 · 完整六行：按完整栈对齐的算术投影" [ref=226, loc=css:a[aria-label="03 · 完整六行：按完整栈对齐的算术投影"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#results]
+          text "6"
+        heading
+          text "03 · 完整六行：按完整栈对齐的算术投影"
+        button [ref=227]
+          text "追问"
+      paragraph
+        text "下表是忽略 base 角色标签后的完整 stack 对齐投影；不是 -diff_base 的7条内部记录。S2…S6 在这个 base 输入里缺失，贡献补0，不表示现实中从未执行。所有..."
+      table
+        table_row
+          table_cell
+            text "输入 / source原行"
+          table_cell
+            text "source count / ns"
+          table_cell
+            text "base count / ns"
+          table_cell
+            text "scaled+round count / ns"
+          table_cell
+            text "绝对差 count / ns"
+          table_cell
+            text "归一化差 count / ns"
+        table_row
+          table_cell
+            text "S1 / L6"
+          table_cell
+            text "2700 / 608881724"
+          table_cell
+            text "1000 / 3124"
+          table_cell
+            text "771 / 2755"
+          table_cell
+            text "1700 / 608878600"
+          table_cell
+            text "-229 / -369"
+        table_row
+          table_cell
+            text "S2 / L7"
+          table_cell
+            text "100 / 23992"
+          table_cell
+            text "0 / 0"
+          table_cell
+            text "29 / 0"
+          table_cell
+            text "100 / 23992"
+          table_cell
+            text "29 / 0"
+        table_row
+          table_cell
+            text "S3 / L8"
+          table_cell
+            text "200 / 179943"
+          table_cell
+            text "0 / 0"
+          table_cell
+            text "57 / 1"
+          table_cell
+            text "200 / 179943"
+          table_cell
+            text "57 / 1"
+        table_row
+          table_cell
+            text "S4 / L9"
+          table_cell
+            text "100 / 17778444"
+          table_cell
+            text "0 / 0"
+          table_cell
+            text "29 / 80"
+          table_cell
+            text "100 / 17778444"
+          table_cell
+            text "29 / 80"
+        table_row
+          table_cell
+            text "S5 / L10"
+          table_cell
+            text "100 / 75976"
+          table_cell
+            text "0 / 0"
+          table_cell
+            text "29 / 0"
+          table_cell
+            text "100 / 75976"
+          table_cell
+            text "29 / 0"
+        table_row
+          table_cell
+            text "S6 / L11"
+          table_cell
+            text "300 / 63568134"
+          table_cell
+            text "0 / 0"
+          table_cell
+            text "86 / 288"
+          table_cell
+            text "300 / 63568134"
+          table_cell
+            text "86 / 288"
+      paragraph
+        text "S2、S5 的归一化 delay=0 ns，但 count=29，两条身份都保留。"
+        anchor [ref=228, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s2]
+          text "S2 原件"
+        text "·"
+        anchor [ref=229, url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-s5]
+          text "S5 原件"
+        text "。scaled source 总计 1001 count / 3124 ns；净差 1 count / 0 ns，是逐样本"
+        text "round"
+        text "的结果，不是报告百分比分母。"
+      paragraph
+        text "raw → unsampled 用截断：count=observedCount×100，delay=int(cycles×100/(3201000000/1e9)) ns。Normalize 用逐值 math.Round；这两道舍入不可混成一步。producer"
+        anchor [ref=230, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-parse-rule]
+          text "3"
+        text "· 上游双 expected"
+        anchor [ref=231, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-oracle-rule]
+          text "4"
+        text "。"
+    container
+      container
+        anchor "04 · 同样的负差，百分比为什么不同？" [ref=232, loc=css:a[aria-label="04 · 同样的负差，百分比为什么不同？"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "7"
+        heading
+          text "04 · 同样的负差，百分比为什么不同？"
+        button [ref=233]
+          text "追问"
+      container
+        text "相同差值，报告分母来自不同样本集合"
+        button [ref=234]
+          svg_root
+          text "打开交互图"
+        image "相同差值，报告分母来自不同样本集合"
+          image "-base · 6条 -diff_base · 7条 S1 -229 / -369 全部 signed abs 仅 base 标签 abs 459 / 738 1000 / 3124 S1 ÷ -base 分母 S1 ÷ 标签分母 无标签 取 base sum abs sum abs 分母 分母 分�..."
+            text "-base · 6条"
+            text "-diff_base · 7条"
+            text "S1 -229 / -369"
+            text "全部 signed abs"
+            text "仅 base 标签 abs"
+            text "459 / 738"
+            text "1000 / 3124"
+            text "S1 ÷ -base 分母"
+            text "S1 ÷ 标签分母"
+            text "无标签"
+            text "取 base"
+            text "sum abs"
+            text "sum abs"
+            text "分母"
+            text "分母"
+            text "分子"
+            text "分子"
+            text "图例"
+            text "算术输入与运算"
+      paragraph
+        text "图内成对数字顺序均为 count / ns，除法完整算式见节点详情。report.New 在 aggregate 前 computeTotal；-base 取 merged signed 样本的 abs 总和，-diff_base 取 base 标签子..."
+        anchor [ref=235, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-report-rule]
+          text "5"
+        text "· 调用顺序"
+        anchor [ref=236, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-order-rule]
+          text "6"
+        text "。"
+      table
+        table_row
+          table_cell
+            text "模式"
+          table_cell
+            text "count denominator"
+          table_cell
+            text "ns denominator"
+        table_row
+          table_cell
+            text "absolute"
+            text "-base"
+          table_cell
+            text "2500"
+          table_cell
+            text "690505089"
+        table_row
+          table_cell
+            text "absolute-diff-base"
+          table_cell
+            text "1000"
+          table_cell
+            text "3124"
+        table_row
+          table_cell
+            text "normalized"
+            text "-base"
+          table_cell
+            text "459"
+          table_cell
+            text "738"
+        table_row
+          table_cell
+            text "normalized-diff-base"
+          table_cell
+            text "1000"
+          table_cell
+            text "3124"
+    container
+      container
+        anchor "报告分母：身份、集合、算式" [ref=237, loc=css:a[aria-label="报告分母：身份、集合、算式"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-details]
+          text "8"
+        heading
+          text "报告分母：身份、集合、算式"
+        button [ref=238]
+          text "追问"
+      button [ref=239]
+        text "▶ 逐步看"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=240, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+            text "全部 signed 样本"
+            text "↗"
+          paragraph
+            anchor [ref=241, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denom-detail-all-abs]
+              text "完整集合"
+        list_item
+          text "2"
+          anchor [ref=242, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+            text "仅 base 标签"
+            text "↗"
+          paragraph
+            anchor [ref=243, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denom-detail-tagged-abs]
+              text "完整集合"
+      paragraph
+        text "-base：S1 与负 B1 的完整 location 序列、labels 均匹配，先合并为一个 signed 样本；其余5条不同栈，所以一共6条。"
+        anchor [ref=244, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=245, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "-diff_base：负 B1 保留 pprof::base=true。S1 无该标签，不能先合并；内部保留6 source + 1负base，共7条。"
+        anchor [ref=246, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=247, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "S1 完整栈投影分子为 -229 count / -369 ns。"
+        anchor [ref=248, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-detail-normalized]
+          text "count 差值算式"
+        text "·"
+        anchor [ref=249, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-detail-normalized]
+          text "delay 差值算式"
+        text "；除法的另一输入是各自报告分母。"
+        anchor [ref=250, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=251, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "normalized"
+        text "-base 的集合：count abs(-229, 29, 57, 29, 29, 86)；ns abs(-369, 0, 1, 80, 0, 288)。逐样本取绝对值后求和。"
+        anchor [ref=252, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=253, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "normalized -diff_base：只选带 pprof::base=true 的负 B1。count abs(−1000)，ns abs(−3124)。不能对6行差值表重新标一个base标签冒充此集合。"
+        anchor [ref=254, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=255, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "normalized -base：229+29+57+29+29+86=459 count；369+0+1+80+0+288=738 ns。"
+        anchor [ref=256, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=257, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "normalized -diff_base：负 B1 的绝对值总量=1000 count / 3124 ns。"
+        anchor [ref=258, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=259, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "S1 投影行相同分子 −229 count / −369 ns；normalized -base 比率为 −229/459 与 −369/738。这里展示算式，不冒充 pprof 格式化 UI。"
+        anchor [ref=260, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=261, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+      paragraph
+        text "同一 S1 投影分子，normalized -diff_base 比率为 −229/1000 与 −369/3124。图中分母输入不改变分子；标签/合并身份变化见左侧分支。"
+        anchor [ref=262, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominator-flow]
+          text "打开精确节点"
+        text "。"
+        anchor [ref=263, url=file://$REPO/experiments/profile-normalization/output/candidate.html#denominators-view]
+          text "返回分母图"
+        text "。"
+    container
+      container
+        anchor "公共地址不能代替完整栈" [ref=264, loc=css:a[aria-label="公共地址不能代替完整栈"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#aggregation-limit]
+          text "9"
+        heading
+          text "公共地址不能代替完整栈"
+        button [ref=265]
+          text "追问"
+      paragraph
+        text "全部6条 source 与 B1 都有同一个 raw leaf 0xbccc97，pprof 修正地址为 0xbccc96。若再按 leaf 地址 flat 聚合，signed count 相消为1、ns相消为0；S1 的负值被其他栈正�..."
+      paragraph
+        text "这里原始顺序是 leaf→caller；没有函数符号。地址减1保存为独立 corrected 列，完整12条 map 随两份原件保留。匹配只在这一对相同映射的固定输入内成立�..."
+    container
+      container
+        anchor "05 · 七条原始记录：完整栈、位置与固定入口" [ref=266, loc=css:a[aria-label="05 · 七条原始记录：完整栈、位置与固定入口"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#raw-details]
+          text "10"
+        heading
+          text "05 · 七条原始记录：完整栈、位置与固定入口"
+        button [ref=267]
+          text "追问"
+      paragraph
+        text "S1 · source 原件第6行。raw cycles=19490304，observed count=27；unsampled=2700 count / 608881724 ns。S1/B1 全栈和 map 匹配，只有此对相减。"
+        anchor [ref=268, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-source]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=269, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=270, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "S1 完整原行（leaf → caller）"
+        button [ref=271]
+          text "复制"
+        text "19490304 27 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e"
+      container
+        text "S1 全部 raw → corrected / mapping"
+        button [ref=272]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xc61202 → 0xc61201 / M1 0x42ed5f → 0x42ed5e / M1 0x42edc1 → 0x42edc0 / M1 0x42e15a → 0x42e159 / M1 0x5261af → 0x5261ae / M1 0x526edf → 0x526ede / M1 0x5280ab �..."
+      paragraph
+        text "S2 · source 原件第7行。raw cycles=768，observed count=1；unsampled=100 count / 23992 ns。base 没有该完整栈，算术贡献补0。"
+        anchor [ref=273, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-source]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=274, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=275, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "S2 完整原行（leaf → caller）"
+        button [ref=276]
+          text "复制"
+        text "768 1 @ 0xbccc97 0xa42dc7 0xa456e4 0x7fcdc2ff214e"
+      container
+        text "S2 全部 raw → corrected / mapping"
+        button [ref=277]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xa42dc7 → 0xa42dc6 / M1 0xa456e4 → 0xa456e3 / M1 0x7fcdc2ff214e → 0x7fcdc2ff214d / M7"
+      paragraph
+        text "S3 · source 原件第8行。raw cycles=5760，observed count=2；unsampled=200 count / 179943 ns。base 没有该完整栈，算术贡献补0。"
+        anchor [ref=278, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-source]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=279, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=280, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "S3 完整原行（leaf → caller）"
+        button [ref=281]
+          text "复制"
+        text "5760 2 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87eab 0xb8814c 0x4e969d 0x4faa17 0x4fc5f6 0x4fd028 0x4fd230 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e"
+      container
+        text "S3 全部 raw → corrected / mapping"
+        button [ref=282]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xb82b73 → 0xb82b72 / M1 0xb82bcb → 0xb82bca / M1 0xb87eab → 0xb87eaa / M1 0xb8814c → 0xb8814b / M1 0x4e969d → 0x4e969c / M1 0x4faa17 → 0x4faa16 / M1 0x4fc5f6 �..."
+      paragraph
+        text "S4 · source 原件第9行。raw cycles=569088，observed count=1；unsampled=100 count / 17778444 ns。base 没有该完整栈，算术贡献补0。"
+        anchor [ref=283, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-source]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=284, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=285, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "S4 完整原行（leaf → caller）"
+        button [ref=286]
+          text "复制"
+        text "569088 1 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87f08 0xb8814c 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e"
+      container
+        text "S4 全部 raw → corrected / mapping"
+        button [ref=287]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xb82b73 → 0xb82b72 / M1 0xb82bcb → 0xb82bca / M1 0xb87f08 → 0xb87f07 / M1 0xb8814c → 0xb8814b / M1 0x42ed5f → 0x42ed5e / M1 0x42edc1 → 0x42edc0 / M1 0x42e15a �..."
+      paragraph
+        text "S5 · source 原件第10行。raw cycles=2432，observed count=1；unsampled=100 count / 75976 ns。base 没有该完整栈，算术贡献补0。"
+        anchor [ref=288, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-source]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=289, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=290, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "S5 完整原行（leaf → caller）"
+        button [ref=291]
+          text "复制"
+        text "2432 1 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87eab 0xb8814c 0x7aa74c 0x7ab844 0x7ab914 0x79e9e9 0x79e326 0x4d299e 0x4d4b7b 0x4b7be8 0x4b7ff1 0x4d2dae 0x79e80a"
+      container
+        text "S5 全部 raw → corrected / mapping"
+        button [ref=292]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xb82b73 → 0xb82b72 / M1 0xb82bcb → 0xb82bca / M1 0xb87eab → 0xb87eaa / M1 0xb8814c → 0xb8814b / M1 0x7aa74c → 0x7aa74b / M1 0x7ab844 → 0x7ab843 / M1 0x7ab914 �..."
+      paragraph
+        text "S6 · source 原件第11行。raw cycles=2034816，observed count=3；unsampled=300 count / 63568134 ns。base 没有该完整栈，算术贡献补0。"
+        anchor [ref=293, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-source]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=294, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=295, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "S6 完整原行（leaf → caller）"
+        button [ref=296]
+          text "复制"
+        text "2034816 3 @ 0xbccc97 0xb82f0f 0xb83003 0xb87d50 0xc635f0 0x42ecc3 0x42e14c 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e"
+      container
+        text "S6 全部 raw → corrected / mapping"
+        button [ref=297]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xb82f0f → 0xb82f0e / M1 0xb83003 → 0xb83002 / M1 0xb87d50 → 0xb87d4f / M1 0xc635f0 → 0xc635ef / M1 0x42ecc3 → 0x42ecc2 / M1 0x42e14c → 0x42e14b / M1 0x5261af �..."
+      paragraph
+        text "B1 · base 原件第6行。raw cycles=100，observed count=10；unsampled=1000 count / 3124 ns。S1/B1 全栈和 map 匹配，只有此对相减。"
+        anchor [ref=298, url=file://$REPO/experiments/profile-normalization/output/candidate.html#original-base]
+          text "完整含 maps 原件"
+        text "·"
+        anchor [ref=299, url=file://$REPO/experiments/profile-normalization/output/candidate.html#count-factor-entry]
+          text "返回 count 比例入口"
+        text "·"
+        anchor [ref=300, url=file://$REPO/experiments/profile-normalization/output/candidate.html#delay-factor-entry]
+          text "返回 delay 比例入口"
+        text "。"
+      container
+        text "B1 完整原行（leaf → caller）"
+        button [ref=301]
+          text "复制"
+        text "100 10 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e"
+      container
+        text "B1 全部 raw → corrected / mapping"
+        button [ref=302]
+          text "复制"
+        text "0xbccc97 → 0xbccc96 / M1 0xc61202 → 0xc61201 / M1 0x42ed5f → 0x42ed5e / M1 0x42edc1 → 0x42edc0 / M1 0x42e15a → 0x42e159 / M1 0x5261af → 0x5261ae / M1 0x526edf → 0x526ede / M1 0x5280ab �..."
+    container
+      container
+        anchor "06 · 完整原件、golden 与许可" [ref=303, loc=css:a[aria-label="06 · 完整原件、golden 与许可"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#originals]
+          text "11"
+        heading
+          text "06 · 完整原件、golden 与许可"
+        button [ref=304]
+          text "追问"
+      paragraph
+        text "internal/driver/testdata/cppbench.contention · 1551 bytes · SHA-256"
+        text "e0f3035db93cd3bb384590b224ca2b26d79aca41e71042a32c351a6d3e34d2d4"
+        text "。固定原件"
+        anchor [ref=305, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-source-0]
+          text "7"
+        text "。下方为完整原 bytes 的文本展示；URL-only 来源不等于 Git excerpt 验证。"
+      container
+        text "完整 cppbench.contention"
+        button [ref=306]
+          text "复制"
+        text "--- contentionz 1 --- cycles/second = 3201000000 sampling period = 100 ms since reset = 16502830 discarded samples = 0 19490304 27 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x52..."
+      paragraph
+        text "internal/driver/testdata/cppbench.small.contention · 821 bytes · SHA-256"
+        text "0d1f47b05eb6664827672b360eb122f13daec15765eb76eed1d77ed9e788516f"
+        text "。固定原件"
+        anchor [ref=307, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-source-1]
+          text "8"
+        text "。下方为完整原 bytes 的文本展示；URL-only 来源不等于 Git excerpt 验证。"
+      container
+        text "完整 cppbench.small.contention"
+        button [ref=308]
+          text "复制"
+        text "--- contentionz 1 --- cycles/second = 3201000000 sampling period = 100 ms since reset = 16502830 discarded samples = 0 100 10 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab ..."
+      paragraph
+        text "profile/testdata/cppbench.contention.string · 2025 bytes · SHA-256"
+        text "a552baca08d20d75945171f9d1ff08f5f9df12a0d7099ce88c9b894358015552"
+        text "。固定原件"
+        anchor [ref=309, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-source-2]
+          text "9"
+        text "。下方为完整原 bytes 的文本展示；URL-only 来源不等于 Git excerpt 验证。"
+      container
+        text "完整 cppbench.contention.string"
+        button [ref=310]
+          text "复制"
+        text "PeriodType: contentions count Period: 100 Duration: 4h35 Samples: contentions/count delay/nanoseconds 2700 608881724: 1 2 3 4 5 6 7 8 9 10 11 12 13 100 23992: 1 14 12 13 200 179943: 1 15 16 17 18 19 2..."
+      paragraph
+        text "LICENSE · 11358 bytes · SHA-256"
+        text "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        text "。固定原件"
+        anchor [ref=311, url=file://$REPO/experiments/profile-normalization/output/candidate.html#source-source-3]
+          text "10"
+        text "。下方为完整原 bytes 的文本展示；URL-only 来源不等于 Git excerpt 验证。"
+      container
+        text "完整 LICENSE-pprof"
+        button [ref=312]
+          text "复制"
+        text "Apache License Version 2.0, January 2004 http://www.apache.org/licenses/ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION 1. Definitions. "License" shall mean the terms and conditions for ..."
+    container
+      container
+        anchor "实验边界" [ref=313, loc=css:a[aria-label="实验边界"], url=file://$REPO/experiments/profile-normalization/output/candidate.html#boundaries]
+          text "12"
+        heading
+          text "实验边界"
+        button [ref=314]
+          text "追问"
+      paragraph
+        text "只读取固定两份 legacy fixture 并独立核算，没有运行 pprof 或采集 workload。数据依赖图不描述程序执行。没有通用 importer、新 schema 或动态 metric 切换。完�..."
+  container
+    container
+      heading
+        text "来源"
+      ordered_list
+        list_item
+          anchor [ref=315, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/profile/merge.go#L91-L123]
+            text "每类型 Normalize 与完整 stack 合并"
+        list_item
+          anchor [ref=316, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/profile/profile.go#L780-L825]
+            text "ScaleN 的 math.Round"
+        list_item
+          anchor [ref=317, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/profile/legacy_profile.go#L680-L838]
+            text "raw → unsampled"
+        list_item
+          anchor [ref=318, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/fetch_test.go#L327-L416]
+            text "上游完整双 expected"
+        list_item
+          anchor [ref=319, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/report/report.go#L1319-L1352]
+            text "computeTotal 的 abs 样本集合"
+        list_item
+          anchor [ref=320, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/driver.go#L79-L109]
+            text "report.New 在 aggregate 前"
+        list_item
+          anchor [ref=321, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/testdata/cppbench.contention]
+            text "完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）"
+        list_item
+          anchor [ref=322, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/testdata/cppbench.small.contention]
+            text "完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）"
+        list_item
+          anchor [ref=323, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/profile/testdata/cppbench.contention.string]
+            text "完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）"
+        list_item
+          anchor [ref=324, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/LICENSE]
+            text "完整 LICENSE · 固定 SHA（URL-only）"
+        list_item
+          anchor [ref=325, url=https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/fetch.go#L60-L105]
+            text "先 Normalize，再负 base 合并"
+    anchor [ref=326, url=https://github.com/tt-a1i/archify]
+      svg_root
+      text "Archify"
+      text "把你想理解、规划或分享的事，变成可以互动的可视化作品。"
+    paragraph
+      text "12 个面板"
+      text "·"
+      text "3 张图已通过结构校验"
+      text "·"
+      text "11 个来源"
+  dialog_modal "count · 六条 source 如何改变 S1" [ref=83]
+    container
+      heading
+        text "count · 六条 source 如何改变 S1"
+      button [ref=84]
+        svg_root
+        text "关闭"
+        text "Esc"
+    iframe [ref=85]
+      root
+        toolbar "图表操作"
+          container
+            button "切换颜色主题" [ref=327, loc=css:button[aria-label="切换颜色主题"]]
+              text "浅色"
+            button "当前视觉风格：经典。选择视觉风格" [ref=328, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+              text "经典"
+            button "恢复动效" [ref=329, loc=css:button[aria-label="恢复动效"]]
+              text "静态"
+            button "进入演示模式" [ref=330]
+              text "演示"
+          button "导出图表" [ref=331, loc=css:button[aria-label="导出图表"]]
+            text "导出"
+        container
+          heading
+            text "count · 六条 source 如何改变 S1"
+          container
+            image "S1: 2700 S2: 100 S3: 200 S4: 100 S5: 100 S6: 300 B1: 1000 Σs 3500 Σb 1000 1000/3500 round 771 绝对差 1700 归一化差 -229 贡献 贡献 贡献 贡献 贡献 贡献 贡献 分母 分子 乘数 �..." [ref=332, loc=role:image[name="count · 六条 source 如何改变 S1 由 Archify 生成的架构图。"]]
+              text "S1: 2700"
+              text "S2: 100"
+              text "S3: 200"
+              text "S4: 100"
+              text "S5: 100"
+              text "S6: 300"
+              text "B1: 1000"
+              text "Σs 3500"
+              text "Σb 1000"
+              text "1000/3500"
+              text "round 771"
+              text "绝对差 1700"
+              text "归一化差 -229"
+              text "贡献"
+              text "贡献"
+              text "贡献"
+              text "贡献"
+              text "贡献"
+              text "贡献"
+              text "贡献"
+              text "分母"
+              text "分子"
+              text "乘数"
+              text "被乘数"
+              text "被减数"
+              text "减数"
+              text "被减数"
+              text "减数"
+              text "图例"
+              text "算术输入与运算"
+              text "13"
+            status
+            region "1000/3500"
+              container
+                button "移动语义护照。可拖动、使用方向键移动，或按 Home 恢复自动位置。" [ref=333]
+                container
+                  text "语义护照"
+                  text "1000/3500"
+                  container "节点元数据"
+                    text "后端"
+                    text "架构组件"
+                    text "factor"
+                  text "1 条出向 · 2 条入向"
+                  container
+                    text "编写可达范围"
+                    group "追踪编写的可达性"
+                      button "追踪 9 个上游编写节点" [ref=334, loc=css:button[aria-label="追踪 9 个上游编写节点"]]
+                        text "上游"
+                        text "9"
+                      button "追踪 2 个下游编写节点" [ref=335, loc=css:button[aria-label="追踪 2 个下游编写节点"]]
+                        text "下游"
+                        text "2"
+                container
+                  button "关闭语义护照" [ref=336, loc=css:button[aria-label="关闭语义护照"]]
+                    text "×"
+                  button "复制聚焦节点的链接" [ref=337, loc=css:button[aria-label="复制聚焦节点的链接"]]
+                    text "复制链接"
+              container "关联关系"
+                container
+                  text "出向 · 1"
+                  button "出向：乘数，round 771" [ref=338, loc=css:button[aria-label="出向：乘数，round 771"]]
+                    text "出 →"
+                    text "round 771"
+                    text "乘数"
+                container
+                  text "入向 · 2"
+                  button "入向：分母，Σs 3500" [ref=339, loc=css:button[aria-label="入向：分母，Σs 3500"]]
+                    text "← 入"
+                    text "Σs 3500"
+                    text "分母"
+                  button "入向：分子，Σb 1000" [ref=340, loc=css:button[aria-label="入向：分子，Σb 1000"]]
+                    text "← 入"
+                    text "Σb 1000"
+                    text "分子"
+            toolbar "图表视图控制"
+              button "追踪有向路径" [ref=341]
+                text "路径"
+              button "打开语义透镜" [ref=342, loc=css:button[aria-label="打开语义透镜"]]
+                text "透镜"
+              button "查找节点" [ref=343, loc=css:button[aria-label="查找节点"]]
+              button "打开图表指南" [ref=344, loc=css:button[aria-label="打开图表指南"]]
+              button "缩小" [ref=345, loc=css:button[aria-label="缩小"]]
+              button "完整 100% · 完整图表详情。重置图表视图" [ref=346, loc=css:button[aria-label="完整 100% · 完整图表详情。重置图表视图"]]
+                text "完整"
+                text "100%"
+              button "放大" [ref=347, loc=css:button[aria-label="放大"]]
+          container
+            toolbar "侧栏"
+            container "节点索引"
+              container
+                text "节点索引"
+                text "13"
+              ordered_list
+                list_item
+                  unordered_list
+                    list_item
+                      button [ref=348]
+                        text "S1: 2700"
+                    list_item
+                      button [ref=349]
+                        text "S2: 100"
+                    list_item
+                      button [ref=350]
+                        text "S3: 200"
+                    list_item
+                      button [ref=351]
+                        text "S4: 100"
+                    list_item
+                      button [ref=352]
+                        text "S5: 100"
+                    list_item
+                      button [ref=353]
+                        text "S6: 300"
+                    list_item
+                      button [ref=354]
+                        text "B1: 1000"
+                    list_item
+                      button [ref=355]
+                        text "Σs 3500"
+                    list_item
+                      button [ref=356]
+                        text "Σb 1000"
+                    list_item
+                      button [ref=357]
+                        text "1000/3500"
+                    list_item
+                      button [ref=358]
+                        text "round 771"
+                    list_item
+                      button [ref=359]
+                        text "绝对差 1700"
+                    list_item
+                      button [ref=360]
+                        text "归一化差 -229"

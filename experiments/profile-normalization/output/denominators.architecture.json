@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "相同差值，报告分母来自不同样本集合",
+    "locale": "zh-CN",
+    "output": "denominators.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "算术输入与运算"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "base-records",
+      "type": "backend",
+      "label": "-base · 6条",
+      "pos": [
+        20,
+        60
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "tagged-records",
+      "type": "backend",
+      "label": "-diff_base · 7条",
+      "pos": [
+        20,
+        360
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "numerator",
+      "type": "backend",
+      "label": "S1 -229 / -369",
+      "pos": [
+        205,
+        210
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "all-abs",
+      "type": "backend",
+      "label": "全部 signed abs",
+      "pos": [
+        205,
+        60
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "tagged-abs",
+      "type": "backend",
+      "label": "仅 base 标签 abs",
+      "pos": [
+        205,
+        360
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "base-denom",
+      "type": "backend",
+      "label": "459 / 738",
+      "pos": [
+        390,
+        60
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "tagged-denom",
+      "type": "backend",
+      "label": "1000 / 3124",
+      "pos": [
+        390,
+        360
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "base-ratio",
+      "type": "backend",
+      "label": "S1 ÷ -base 分母",
+      "pos": [
+        575,
+        60
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "tagged-ratio",
+      "type": "backend",
+      "label": "S1 ÷ 标签分母",
+      "pos": [
+        575,
+        360
+      ],
+      "size": [
+        120,
+        50
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "denom-edge-0",
+      "from": "base-records",
+      "to": "all-abs",
+      "label": "无标签"
+    },
+    {
+      "id": "denom-edge-1",
+      "from": "tagged-records",
+      "to": "tagged-abs",
+      "label": "取 base"
+    },
+    {
+      "id": "denom-edge-2",
+      "from": "all-abs",
+      "to": "base-denom",
+      "label": "sum abs"
+    },
+    {
+      "id": "denom-edge-3",
+      "from": "tagged-abs",
+      "to": "tagged-denom",
+      "label": "sum abs"
+    },
+    {
+      "id": "denom-edge-4",
+      "from": "base-denom",
+      "to": "base-ratio",
+      "label": "分母"
+    },
+    {
+      "id": "denom-edge-5",
+      "from": "tagged-denom",
+      "to": "tagged-ratio",
+      "label": "分母"
+    },
+    {
+      "id": "denom-edge-6",
+      "from": "numerator",
+      "to": "base-ratio",
+      "label": "分子"
+    },
+    {
+      "id": "denom-edge-7",
+      "from": "numerator",
+      "to": "tagged-ratio",
+      "label": "分子"
+    }
+  ]
+}

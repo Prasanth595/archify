@@ -1,0 +1,29 @@
+{
+  "card": {
+    "hash": "#count-view",
+    "active": "preview-count-flow-node-factor",
+    "card": "1000/3500比例 = baseTotal/sourceTotal = 1000/3500。分子来自 B1，分母来自完整六条 source；不是从 S1 单独求比例。全部六项与求和。 打开此精确节点。回到本图入口。阅读这段 ↗"
+  },
+  "factor": {
+    "hash": "#count-detail-factor",
+    "active": "BODY",
+    "content": "比例 = baseTotal/sourceTotal = 1000/3500。分子来自 B1，分母来自完整六条 source；不是从 S1 单独求比例。全部六项与求和。 打开此精确节点。回到本图入口。",
+    "links": [
+      {
+        "text": "全部六项与求和",
+        "href": "#count-detail-source-total",
+        "html": "<a href=\"#count-detail-source-total\" data-block-ref=\"count-detail-source-total\">全部六项与求和</a>"
+      },
+      {
+        "text": "打开此精确节点",
+        "href": "#count-flow",
+        "html": "<a class=\"diagram-link\" href=\"#count-flow\" data-diagram-link=\"count-flow\" data-diagram-hash=\"focus=factor\">打开此精确节点</a>"
+      },
+      {
+        "text": "回到本图入口",
+        "href": "#count-view",
+        "html": "<a href=\"#count-view\" data-block-ref=\"count-view\">回到本图入口</a>"
+      }
+    ]
+  }
+}

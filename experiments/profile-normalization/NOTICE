@@ -1,0 +1,18 @@
+Profile normalization reading experiment
+
+Complete upstream fixtures and golden are from google/pprof at
+  dbd0ed30aa888a30e21ba83b9831ac0e80d41022
+  https://github.com/google/pprof/tree/dbd0ed30aa888a30e21ba83b9831ac0e80d41022
+
+Their complete source paths, byte sizes and SHA-256 hashes are retained in
+output/manifest.json. The complete upstream Apache License, Version 2.0 is
+fixtures/LICENSE-pprof. This experiment does not copy the pprof implementation
+or the unrelated third_party/svgpan component.
+
+The JavaScript fixture reader, arithmetic model and generated explanation are
+original experiment work, derived from reading the pinned public contracts.
+No upstream profiler, tests or workload was executed for this experiment.
+New experiment contributions follow the repository's Apache-2.0 contribution
+terms. OpenAI Codex (configured gpt-6.1-sol) assisted investigation,
+implementation, testing and writing; independent review and browser evidence
+are separately attributed in the experiment README.

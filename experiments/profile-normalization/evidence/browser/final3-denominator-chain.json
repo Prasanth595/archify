@@ -1,0 +1,14 @@
+[
+  {
+    "hash": "#denom-detail-all-abs",
+    "text": "normalized -base 的集合：count abs(-229, 29, 57, 29, 29, 86)；ns abs(-369, 0, 1, 80, 0, 288)。逐样本取绝对值后求和。 打开精确节点。返回分母图。"
+  },
+  {
+    "hash": "#denom-detail-tagged-abs",
+    "text": "normalized -diff_base：只选带 pprof::base=true 的负 B1。count abs(−1000)，ns abs(−3124)。不能对6行差值表重新标一个base标签冒充此集合。 打开精确节点。返回分母图。"
+  },
+  {
+    "hash": "#denom-detail-numerator",
+    "text": "S1 完整栈投影分子为 -229 count / -369 ns。count 差值算式 · delay 差值算式；除法的另一输入是各自报告分母。 打开精确节点。返回分母图。"
+  }
+]

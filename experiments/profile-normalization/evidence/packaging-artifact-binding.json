@@ -1,0 +1,96 @@
+{
+  "kind": "packaging byte guard, not new test/browser execution",
+  "scope": "Only experiment README and evidence packaged; generator/output/tests/fixtures untouched",
+  "artifact": {
+    "bytes": 1776392,
+    "sha256": "035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94"
+  },
+  "protectedFiles": {
+    "verify.mjs": {
+      "bytes": 2522,
+      "sha256": "8d21c1d4e214e11520f740ccefa474f3924c862db65d97d085696dcb9f256b3e"
+    },
+    "NOTICE": {
+      "bytes": 1009,
+      "sha256": "79cce88a243a0fe27d6a0ac69a1cb4d83f083eb2c9d6f3375343bfc27ec1a6e7"
+    },
+    ".gitignore": {
+      "bytes": 90,
+      "sha256": "7cc544e96c3a3878a70caa3305076885d781f7ab983a174128873a06bcb853dd"
+    },
+    "generate.mjs": {
+      "bytes": 28738,
+      "sha256": "20df1edce8366dbb8d4cc1347bdbd40c4a6b4c32b3a23845e0eaf32f60c8d030"
+    },
+    "profile-normalization.test.mjs": {
+      "bytes": 6980,
+      "sha256": "259e97397c970bb2b8fa9000f993ccd1c4866c32b634600e490a57e4f3417bb5"
+    },
+    "output/count.architecture.json": {
+      "bytes": 4577,
+      "sha256": "bc5de067f521f2acb441b86ea560340c04b537607c26f892c5a9dce1a061c7d1"
+    },
+    "output/denominators.architecture.json": {
+      "bytes": 3128,
+      "sha256": "718c7ecdbb3664cb8f3cbd94e39797c092c98ad130c66ecdf6bc50ecf9caf964"
+    },
+    "output/baseline.html": {
+      "bytes": 98898,
+      "sha256": "0668f1f91c1c77e81fd55ff0a479f77fcd676675ea2143e35e40940d7197c214"
+    },
+    "output/candidate.explainer.json": {
+      "bytes": 79369,
+      "sha256": "dcdda473b220acb17f6b7280f96a24d695b4cf41be9436fa50ad1f295e274ca7"
+    },
+    "output/delay.architecture.json": {
+      "bytes": 4612,
+      "sha256": "e0d884a872026505bbf9d682e5cbff14efa821dfdbffef2441f7fcbfb58fdea2"
+    },
+    "output/manifest.json": {
+      "bytes": 1571,
+      "sha256": "759c784845f1f08fdb6d99b36f620ccc4464d27e21ef2c1cb4605173e2596e56"
+    },
+    "output/candidate.html": {
+      "bytes": 1776392,
+      "sha256": "035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94"
+    },
+    "output/verification.json": {
+      "bytes": 1716,
+      "sha256": "0177e26669ca2a339608db8687fb739b23f84c878a9dd0f8a1febaafd7004d46"
+    },
+    "output/ledger.json": {
+      "bytes": 43528,
+      "sha256": "9f80b6f9f85cf637ba5a2a7f4d2f6591a01d49574a6a4f5c16ae0e785d4c6819"
+    },
+    "output/candidate.delivery.json": {
+      "bytes": 1460,
+      "sha256": "29c1deaba2c4374762a0e04efdc8636104f79d836003add1f191764bfa95796c"
+    },
+    "output/probe-architecture.delivery.json": {
+      "bytes": 1052,
+      "sha256": "597883267d2c0993e7aba9b23f3f55bd9a15b5f4dcbd670cd50c8f51596830b7"
+    },
+    "fixtures/cppbench.small.contention": {
+      "bytes": 821,
+      "sha256": "0d1f47b05eb6664827672b360eb122f13daec15765eb76eed1d77ed9e788516f"
+    },
+    "fixtures/cppbench.contention.string": {
+      "bytes": 2025,
+      "sha256": "a552baca08d20d75945171f9d1ff08f5f9df12a0d7099ce88c9b894358015552"
+    },
+    "fixtures/cppbench.contention": {
+      "bytes": 1551,
+      "sha256": "e0f3035db93cd3bb384590b224ca2b26d79aca41e71042a32c351a6d3e34d2d4"
+    },
+    "fixtures/LICENSE-pprof": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  },
+  "independentFinalBinding": "independent/final-evidence-binding.json",
+  "browserEvidence": {
+    "rootSummary": "browser/final3-acceptance-summary.json",
+    "imageBindings": "browser/image-bindings.json",
+    "runtime": "Root-provided observations; no browser operation by packaging agent."
+  }
+}

@@ -1,0 +1,965 @@
+{
+  "ok": true,
+  "file": "$REPO/experiments/profile-normalization/output/candidate.html",
+  "family": "explainer",
+  "artifact": {
+    "sha256": "035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94",
+    "bytes": 1776392
+  },
+  "checks": [
+    {
+      "name": "explainer_structure",
+      "ok": true,
+      "details": [
+        "195 unique DOM IDs"
+      ]
+    },
+    {
+      "name": "explainer_payload_identity",
+      "ok": true,
+      "details": []
+    },
+    {
+      "name": "explainer_dependencies",
+      "ok": true,
+      "details": [
+        "3 frozen dependencies"
+      ]
+    },
+    {
+      "name": "explainer_native_diagrams",
+      "ok": true,
+      "details": [
+        "count-flow: pass",
+        "delay-flow: pass",
+        "denominator-flow: pass"
+      ]
+    }
+  ],
+  "composition": {
+    "schemaVersion": 1,
+    "profile": "showcase",
+    "status": "pass",
+    "summary": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "issues": [],
+    "nativeDiagrams": [
+      {
+        "id": "count-flow",
+        "receipt": {
+          "ok": true,
+          "file": "$LOCAL_PATH",
+          "artifact": {
+            "sha256": "0795a8c704c3df8a89be9497695f28db44a6a1932c1dc336507c4f699eb3f394",
+            "bytes": 879813
+          },
+          "checks": [
+            {
+              "name": "single_svg",
+              "ok": true,
+              "details": [
+                "found 1 <svg> block(s)"
+              ]
+            },
+            {
+              "name": "finite_svg",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "orthogonal_arrows",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "label_route_clearance",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "relationship_crossings",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "relationship_corridors",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "container_border_runs",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "route_rhythm",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "legend_clearance",
+              "ok": true,
+              "details": []
+            }
+          ],
+          "composition": {
+            "schemaVersion": 1,
+            "profile": "showcase",
+            "status": "pass",
+            "summary": {
+              "errors": 0,
+              "warnings": 0
+            },
+            "metrics": {
+              "properCrossings": 0,
+              "resolvedCrossovers": 9,
+              "ambiguousCorridors": 0,
+              "arrowheadCollisions": 0,
+              "containerBorderRuns": 0,
+              "labelRouteClearanceIssues": 0,
+              "labelCanvasOverflowIssues": 0,
+              "minLabelRouteClearance": 5.5,
+              "desktopReadabilityIssues": 0,
+              "viewportHeightIssues": 0,
+              "minProjectedNodeTextPx": 8,
+              "maxBends": 4,
+              "routesOverSuggestedBends": 2,
+              "maxStretch": 1.259,
+              "routesOverSuggestedStretch": 0,
+              "minSegmentPx": 8.2,
+              "minInteriorSegmentPx": 16,
+              "shortSegmentCount": 2,
+              "shortEndpointSegmentCount": 2,
+              "shortInteriorSegmentCount": 0,
+              "microSegmentCount": 0
+            },
+            "suggestedLimits": {
+              "bendsPerRelationship": 2,
+              "stretch": 1.35,
+              "segmentPx": 16,
+              "microSegmentPx": 8
+            },
+            "routeReview": {
+              "crossings": [
+                {
+                  "left": {
+                    "id": "count-S1-source-total",
+                    "from": "S1",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 0,
+                    "artifactIndex": 1
+                  },
+                  "right": {
+                    "id": "count-S2-source-total",
+                    "from": "S2",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 1,
+                    "artifactIndex": 2
+                  },
+                  "point": [
+                    251,
+                    155
+                  ],
+                  "sharedNode": "source-total"
+                },
+                {
+                  "left": {
+                    "id": "count-S1-source-total",
+                    "from": "S1",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 0,
+                    "artifactIndex": 1
+                  },
+                  "right": {
+                    "id": "count-S1-round",
+                    "from": "S1",
+                    "to": "round",
+                    "label": "被乘数",
+                    "collectionIndex": 10,
+                    "artifactIndex": 11
+                  },
+                  "point": [
+                    251,
+                    90
+                  ],
+                  "sharedNode": "S1"
+                },
+                {
+                  "left": {
+                    "id": "count-S1-source-total",
+                    "from": "S1",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 0,
+                    "artifactIndex": 1
+                  },
+                  "right": {
+                    "id": "count-S1-absolute",
+                    "from": "S1",
+                    "to": "absolute",
+                    "label": "被减数",
+                    "collectionIndex": 11,
+                    "artifactIndex": 12
+                  },
+                  "point": [
+                    251,
+                    94
+                  ],
+                  "sharedNode": "S1"
+                },
+                {
+                  "left": {
+                    "id": "count-S5-source-total",
+                    "from": "S5",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 4,
+                    "artifactIndex": 5
+                  },
+                  "right": {
+                    "id": "count-S6-source-total",
+                    "from": "S6",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 5,
+                    "artifactIndex": 6
+                  },
+                  "point": [
+                    237,
+                    365
+                  ],
+                  "sharedNode": "source-total"
+                },
+                {
+                  "left": {
+                    "id": "count-base-total-factor",
+                    "from": "base-total",
+                    "to": "factor",
+                    "label": "分子",
+                    "collectionIndex": 8,
+                    "artifactIndex": 9
+                  },
+                  "right": {
+                    "id": "count-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "point": [
+                    450,
+                    450.5
+                  ]
+                },
+                {
+                  "left": {
+                    "id": "count-base-total-factor",
+                    "from": "base-total",
+                    "to": "factor",
+                    "label": "分子",
+                    "collectionIndex": 8,
+                    "artifactIndex": 9
+                  },
+                  "right": {
+                    "id": "count-B1-normalized",
+                    "from": "B1",
+                    "to": "normalized",
+                    "label": "减数",
+                    "collectionIndex": 14,
+                    "artifactIndex": 15
+                  },
+                  "point": [
+                    450,
+                    476
+                  ]
+                },
+                {
+                  "left": {
+                    "id": "count-S1-round",
+                    "from": "S1",
+                    "to": "round",
+                    "label": "被乘数",
+                    "collectionIndex": 10,
+                    "artifactIndex": 11
+                  },
+                  "right": {
+                    "id": "count-S1-absolute",
+                    "from": "S1",
+                    "to": "absolute",
+                    "label": "被减数",
+                    "collectionIndex": 11,
+                    "artifactIndex": 12
+                  },
+                  "point": [
+                    164.72727272727272,
+                    90
+                  ],
+                  "sharedNode": "S1"
+                },
+                {
+                  "left": {
+                    "id": "count-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "right": {
+                    "id": "count-round-normalized",
+                    "from": "round",
+                    "to": "normalized",
+                    "label": "被减数",
+                    "collectionIndex": 13,
+                    "artifactIndex": 14
+                  },
+                  "point": [
+                    698,
+                    260
+                  ]
+                },
+                {
+                  "left": {
+                    "id": "count-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "right": {
+                    "id": "count-B1-normalized",
+                    "from": "B1",
+                    "to": "normalized",
+                    "label": "减数",
+                    "collectionIndex": 14,
+                    "artifactIndex": 15
+                  },
+                  "point": [
+                    202,
+                    476
+                  ],
+                  "sharedNode": "B1"
+                }
+              ],
+              "crowdedSides": [
+                {
+                  "node": "S1",
+                  "label": "S1: 2700",
+                  "side": "right",
+                  "relationships": 3,
+                  "sidePx": 50,
+                  "neededPx": 60
+                },
+                {
+                  "node": "source-total",
+                  "label": "Σs 3500",
+                  "side": "left",
+                  "relationships": 6,
+                  "sidePx": 50,
+                  "neededPx": 102
+                },
+                {
+                  "node": "B1",
+                  "label": "B1: 1000",
+                  "side": "right",
+                  "relationships": 3,
+                  "sidePx": 50,
+                  "neededPx": 60
+                }
+              ],
+              "detours": [
+                {
+                  "relationship": {
+                    "id": "count-S1-absolute",
+                    "from": "S1",
+                    "to": "absolute",
+                    "label": "被减数",
+                    "collectionIndex": 11,
+                    "artifactIndex": 12
+                  },
+                  "bends": 4,
+                  "stretch": 1.051
+                },
+                {
+                  "relationship": {
+                    "id": "count-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "bends": 4,
+                  "stretch": 1
+                }
+              ]
+            },
+            "leadingSpace": {
+              "measured": true,
+              "emptyTopPx": 16,
+              "emptyTopRatio": 0.025,
+              "occupiedTop": 16,
+              "viewBoxTop": 0,
+              "canvasHeight": 642,
+              "typicalNodeHeight": 50,
+              "reviewSuggested": false
+            },
+            "desktopReadability": {
+              "budgetBasis": "legacy-930",
+              "readerContract": "declared-wide-v1",
+              "availableDiagramWidth": 930,
+              "actualBudgetPx": 930,
+              "limit": "legacy",
+              "requestedTargetPx": 7.5,
+              "requestedTargetMet": true,
+              "hardFloorPx": 6,
+              "hardFloorMet": true,
+              "minimumOwner": {
+                "kind": "edge",
+                "id": "count-S1-source-total",
+                "from": "S1",
+                "to": "source-total"
+              },
+              "minimumSourceTextPx": 8,
+              "minimumProjectedTextPx": 8,
+              "semanticTextCount": 28
+            },
+            "issues": []
+          }
+        }
+      },
+      {
+        "id": "delay-flow",
+        "receipt": {
+          "ok": true,
+          "file": "$LOCAL_PATH",
+          "artifact": {
+            "sha256": "2ab9f109a84bd07f83e08154540638c50df3f91bd72c6cb33ff23c6da868e069",
+            "bytes": 879956
+          },
+          "checks": [
+            {
+              "name": "single_svg",
+              "ok": true,
+              "details": [
+                "found 1 <svg> block(s)"
+              ]
+            },
+            {
+              "name": "finite_svg",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "orthogonal_arrows",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "label_route_clearance",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "relationship_crossings",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "relationship_corridors",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "container_border_runs",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "route_rhythm",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "legend_clearance",
+              "ok": true,
+              "details": []
+            }
+          ],
+          "composition": {
+            "schemaVersion": 1,
+            "profile": "showcase",
+            "status": "pass",
+            "summary": {
+              "errors": 0,
+              "warnings": 0
+            },
+            "metrics": {
+              "properCrossings": 0,
+              "resolvedCrossovers": 9,
+              "ambiguousCorridors": 0,
+              "arrowheadCollisions": 0,
+              "containerBorderRuns": 0,
+              "labelRouteClearanceIssues": 0,
+              "labelCanvasOverflowIssues": 0,
+              "minLabelRouteClearance": 5.5,
+              "desktopReadabilityIssues": 0,
+              "viewportHeightIssues": 0,
+              "minProjectedNodeTextPx": 8,
+              "maxBends": 4,
+              "routesOverSuggestedBends": 2,
+              "maxStretch": 1.259,
+              "routesOverSuggestedStretch": 0,
+              "minSegmentPx": 8.2,
+              "minInteriorSegmentPx": 16,
+              "shortSegmentCount": 2,
+              "shortEndpointSegmentCount": 2,
+              "shortInteriorSegmentCount": 0,
+              "microSegmentCount": 0
+            },
+            "suggestedLimits": {
+              "bendsPerRelationship": 2,
+              "stretch": 1.35,
+              "segmentPx": 16,
+              "microSegmentPx": 8
+            },
+            "routeReview": {
+              "crossings": [
+                {
+                  "left": {
+                    "id": "delay-S1-source-total",
+                    "from": "S1",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 0,
+                    "artifactIndex": 1
+                  },
+                  "right": {
+                    "id": "delay-S2-source-total",
+                    "from": "S2",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 1,
+                    "artifactIndex": 2
+                  },
+                  "point": [
+                    251,
+                    155
+                  ],
+                  "sharedNode": "source-total"
+                },
+                {
+                  "left": {
+                    "id": "delay-S1-source-total",
+                    "from": "S1",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 0,
+                    "artifactIndex": 1
+                  },
+                  "right": {
+                    "id": "delay-S1-round",
+                    "from": "S1",
+                    "to": "round",
+                    "label": "被乘数",
+                    "collectionIndex": 10,
+                    "artifactIndex": 11
+                  },
+                  "point": [
+                    251,
+                    90
+                  ],
+                  "sharedNode": "S1"
+                },
+                {
+                  "left": {
+                    "id": "delay-S1-source-total",
+                    "from": "S1",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 0,
+                    "artifactIndex": 1
+                  },
+                  "right": {
+                    "id": "delay-S1-absolute",
+                    "from": "S1",
+                    "to": "absolute",
+                    "label": "被减数",
+                    "collectionIndex": 11,
+                    "artifactIndex": 12
+                  },
+                  "point": [
+                    251,
+                    94
+                  ],
+                  "sharedNode": "S1"
+                },
+                {
+                  "left": {
+                    "id": "delay-S5-source-total",
+                    "from": "S5",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 4,
+                    "artifactIndex": 5
+                  },
+                  "right": {
+                    "id": "delay-S6-source-total",
+                    "from": "S6",
+                    "to": "source-total",
+                    "label": "贡献",
+                    "collectionIndex": 5,
+                    "artifactIndex": 6
+                  },
+                  "point": [
+                    237,
+                    365
+                  ],
+                  "sharedNode": "source-total"
+                },
+                {
+                  "left": {
+                    "id": "delay-base-total-factor",
+                    "from": "base-total",
+                    "to": "factor",
+                    "label": "分子",
+                    "collectionIndex": 8,
+                    "artifactIndex": 9
+                  },
+                  "right": {
+                    "id": "delay-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "point": [
+                    450,
+                    450.5
+                  ]
+                },
+                {
+                  "left": {
+                    "id": "delay-base-total-factor",
+                    "from": "base-total",
+                    "to": "factor",
+                    "label": "分子",
+                    "collectionIndex": 8,
+                    "artifactIndex": 9
+                  },
+                  "right": {
+                    "id": "delay-B1-normalized",
+                    "from": "B1",
+                    "to": "normalized",
+                    "label": "减数",
+                    "collectionIndex": 14,
+                    "artifactIndex": 15
+                  },
+                  "point": [
+                    450,
+                    476
+                  ]
+                },
+                {
+                  "left": {
+                    "id": "delay-S1-round",
+                    "from": "S1",
+                    "to": "round",
+                    "label": "被乘数",
+                    "collectionIndex": 10,
+                    "artifactIndex": 11
+                  },
+                  "right": {
+                    "id": "delay-S1-absolute",
+                    "from": "S1",
+                    "to": "absolute",
+                    "label": "被减数",
+                    "collectionIndex": 11,
+                    "artifactIndex": 12
+                  },
+                  "point": [
+                    164.72727272727272,
+                    90
+                  ],
+                  "sharedNode": "S1"
+                },
+                {
+                  "left": {
+                    "id": "delay-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "right": {
+                    "id": "delay-round-normalized",
+                    "from": "round",
+                    "to": "normalized",
+                    "label": "被减数",
+                    "collectionIndex": 13,
+                    "artifactIndex": 14
+                  },
+                  "point": [
+                    698,
+                    260
+                  ]
+                },
+                {
+                  "left": {
+                    "id": "delay-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "right": {
+                    "id": "delay-B1-normalized",
+                    "from": "B1",
+                    "to": "normalized",
+                    "label": "减数",
+                    "collectionIndex": 14,
+                    "artifactIndex": 15
+                  },
+                  "point": [
+                    202,
+                    476
+                  ],
+                  "sharedNode": "B1"
+                }
+              ],
+              "crowdedSides": [
+                {
+                  "node": "S1",
+                  "label": "S1: 608881724",
+                  "side": "right",
+                  "relationships": 3,
+                  "sidePx": 50,
+                  "neededPx": 60
+                },
+                {
+                  "node": "source-total",
+                  "label": "Σs 690508213",
+                  "side": "left",
+                  "relationships": 6,
+                  "sidePx": 50,
+                  "neededPx": 102
+                },
+                {
+                  "node": "B1",
+                  "label": "B1: 3124",
+                  "side": "right",
+                  "relationships": 3,
+                  "sidePx": 50,
+                  "neededPx": 60
+                }
+              ],
+              "detours": [
+                {
+                  "relationship": {
+                    "id": "delay-S1-absolute",
+                    "from": "S1",
+                    "to": "absolute",
+                    "label": "被减数",
+                    "collectionIndex": 11,
+                    "artifactIndex": 12
+                  },
+                  "bends": 4,
+                  "stretch": 1.051
+                },
+                {
+                  "relationship": {
+                    "id": "delay-B1-absolute",
+                    "from": "B1",
+                    "to": "absolute",
+                    "label": "减数",
+                    "collectionIndex": 12,
+                    "artifactIndex": 13
+                  },
+                  "bends": 4,
+                  "stretch": 1
+                }
+              ]
+            },
+            "leadingSpace": {
+              "measured": true,
+              "emptyTopPx": 16,
+              "emptyTopRatio": 0.025,
+              "occupiedTop": 16,
+              "viewBoxTop": 0,
+              "canvasHeight": 642,
+              "typicalNodeHeight": 50,
+              "reviewSuggested": false
+            },
+            "desktopReadability": {
+              "budgetBasis": "legacy-930",
+              "readerContract": "declared-wide-v1",
+              "availableDiagramWidth": 930,
+              "actualBudgetPx": 930,
+              "limit": "legacy",
+              "requestedTargetPx": 7.5,
+              "requestedTargetMet": true,
+              "hardFloorPx": 6,
+              "hardFloorMet": true,
+              "minimumOwner": {
+                "kind": "edge",
+                "id": "delay-S1-source-total",
+                "from": "S1",
+                "to": "source-total"
+              },
+              "minimumSourceTextPx": 8,
+              "minimumProjectedTextPx": 8,
+              "semanticTextCount": 28
+            },
+            "issues": []
+          }
+        }
+      },
+      {
+        "id": "denominator-flow",
+        "receipt": {
+          "ok": true,
+          "file": "$LOCAL_PATH",
+          "artifact": {
+            "sha256": "1722cfdf303119a824009cfb1be235fad5b5891a3afb4f7803773367da20bb05",
+            "bytes": 868125
+          },
+          "checks": [
+            {
+              "name": "single_svg",
+              "ok": true,
+              "details": [
+                "found 1 <svg> block(s)"
+              ]
+            },
+            {
+              "name": "finite_svg",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "orthogonal_arrows",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "label_route_clearance",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "relationship_crossings",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "relationship_corridors",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "container_border_runs",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "route_rhythm",
+              "ok": true,
+              "details": []
+            },
+            {
+              "name": "legend_clearance",
+              "ok": true,
+              "details": []
+            }
+          ],
+          "composition": {
+            "schemaVersion": 1,
+            "profile": "showcase",
+            "status": "pass",
+            "summary": {
+              "errors": 0,
+              "warnings": 0
+            },
+            "metrics": {
+              "properCrossings": 0,
+              "resolvedCrossovers": 0,
+              "ambiguousCorridors": 0,
+              "arrowheadCollisions": 0,
+              "containerBorderRuns": 0,
+              "labelRouteClearanceIssues": 0,
+              "labelCanvasOverflowIssues": 0,
+              "minLabelRouteClearance": 50.7,
+              "desktopReadabilityIssues": 0,
+              "viewportHeightIssues": 0,
+              "minProjectedNodeTextPx": 8,
+              "maxBends": 1,
+              "routesOverSuggestedBends": 0,
+              "maxStretch": 1,
+              "routesOverSuggestedStretch": 0,
+              "minSegmentPx": 65,
+              "minInteriorSegmentPx": null,
+              "shortSegmentCount": 0,
+              "shortEndpointSegmentCount": 0,
+              "shortInteriorSegmentCount": 0,
+              "microSegmentCount": 0
+            },
+            "suggestedLimits": {
+              "bendsPerRelationship": 2,
+              "stretch": 1.35,
+              "segmentPx": 16,
+              "microSegmentPx": 8
+            },
+            "routeReview": {
+              "crossings": [],
+              "detours": []
+            },
+            "leadingSpace": {
+              "measured": true,
+              "emptyTopPx": 58,
+              "emptyTopRatio": 0.121,
+              "occupiedTop": 58,
+              "viewBoxTop": 0,
+              "canvasHeight": 478,
+              "typicalNodeHeight": 50,
+              "reviewSuggested": false
+            },
+            "desktopReadability": {
+              "budgetBasis": "legacy-930",
+              "readerContract": "declared-wide-v1",
+              "availableDiagramWidth": 930,
+              "actualBudgetPx": 930,
+              "limit": "legacy",
+              "requestedTargetPx": 7.5,
+              "requestedTargetMet": true,
+              "hardFloorPx": 6,
+              "hardFloorMet": true,
+              "minimumOwner": {
+                "kind": "edge",
+                "id": "denom-edge-0",
+                "from": "base-records",
+                "to": "all-abs"
+              },
+              "minimumSourceTextPx": 8,
+              "minimumProjectedTextPx": 8,
+              "semanticTextCount": 17
+            },
+            "issues": []
+          }
+        }
+      }
+    ]
+  },
+  "diagnostics": [],
+  "provenance": "current",
+  "deliveryReceiptId": "70f67c13-e1ed-4013-848a-fcba3280701c"
+}

@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "count · 六条 source 如何改变 S1",
+    "locale": "zh-CN",
+    "output": "count.html",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "算术输入与运算"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "S1",
+      "type": "backend",
+      "label": "S1: 2700",
+      "pos": [
+        20,
+        60
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "S2",
+      "type": "backend",
+      "label": "S2: 100",
+      "pos": [
+        20,
+        130
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "S3",
+      "type": "backend",
+      "label": "S3: 200",
+      "pos": [
+        20,
+        200
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "S4",
+      "type": "backend",
+      "label": "S4: 100",
+      "pos": [
+        20,
+        270
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "S5",
+      "type": "backend",
+      "label": "S5: 100",
+      "pos": [
+        20,
+        340
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "S6",
+      "type": "backend",
+      "label": "S6: 300",
+      "pos": [
+        20,
+        410
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "B1",
+      "type": "backend",
+      "label": "B1: 1000",
+      "pos": [
+        20,
+        500
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "source-total",
+      "type": "backend",
+      "label": "Σs 3500",
+      "pos": [
+        205,
+        235
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "base-total",
+      "type": "backend",
+      "label": "Σb 1000",
+      "pos": [
+        205,
+        500
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "factor",
+      "type": "backend",
+      "label": "1000/3500",
+      "pos": [
+        390,
+        320
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "round",
+      "type": "backend",
+      "label": "round 771",
+      "pos": [
+        575,
+        235
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "absolute",
+      "type": "backend",
+      "label": "绝对差 1700",
+      "pos": [
+        760,
+        60
+      ],
+      "size": [
+        120,
+        50
+      ]
+    },
+    {
+      "id": "normalized",
+      "type": "backend",
+      "label": "归一化差 -229",
+      "pos": [
+        760,
+        500
+      ],
+      "size": [
+        120,
+        50
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "count-S1-source-total",
+      "from": "S1",
+      "to": "source-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-S2-source-total",
+      "from": "S2",
+      "to": "source-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-S3-source-total",
+      "from": "S3",
+      "to": "source-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-S4-source-total",
+      "from": "S4",
+      "to": "source-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-S5-source-total",
+      "from": "S5",
+      "to": "source-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-S6-source-total",
+      "from": "S6",
+      "to": "source-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-B1-base-total",
+      "from": "B1",
+      "to": "base-total",
+      "label": "贡献"
+    },
+    {
+      "id": "count-source-total-factor",
+      "from": "source-total",
+      "to": "factor",
+      "label": "分母"
+    },
+    {
+      "id": "count-base-total-factor",
+      "from": "base-total",
+      "to": "factor",
+      "label": "分子"
+    },
+    {
+      "id": "count-factor-round",
+      "from": "factor",
+      "to": "round",
+      "label": "乘数"
+    },
+    {
+      "id": "count-S1-round",
+      "from": "S1",
+      "to": "round",
+      "label": "被乘数"
+    },
+    {
+      "id": "count-S1-absolute",
+      "from": "S1",
+      "to": "absolute",
+      "label": "被减数"
+    },
+    {
+      "id": "count-B1-absolute",
+      "from": "B1",
+      "to": "absolute",
+      "label": "减数"
+    },
+    {
+      "id": "count-round-normalized",
+      "from": "round",
+      "to": "normalized",
+      "label": "被减数"
+    },
+    {
+      "id": "count-B1-normalized",
+      "from": "B1",
+      "to": "normalized",
+      "label": "减数"
+    }
+  ]
+}

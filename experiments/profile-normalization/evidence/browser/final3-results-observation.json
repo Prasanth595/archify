@@ -1,0 +1,5 @@
+{
+  "hash": "#results",
+  "table": "输入 / source原行\tsource count / ns\tbase count / ns\tscaled+round count / ns\t绝对差 count / ns\t归一化差 count / ns\nS1 / L6\t\n2700 / 608881724\n\t\n1000 / 3124\n\t\n771 / 2755\n\t\n1700 / 608878600\n\t\n-229 / -369\n\nS2 / L7\t\n100 / 23992\n\t\n0 / 0\n\t\n29 / 0\n\t\n100 / 23992\n\t\n29 / 0\n\nS3 / L8\t\n200 / 179943\n\t\n0 / 0\n\t\n57 / 1\n\t\n200 / 179943\n\t\n57 / 1\n\nS4 / L9\t\n100 / 17778444\n\t\n0 / 0\n\t\n29 / 80\n\t\n100 / 17778444\n\t\n29 / 80\n\nS5 / L10\t\n100 / 75976\n\t\n0 / 0\n\t\n29 / 0\n\t\n100 / 75976\n\t\n29 / 0\n\nS6 / L11\t\n300 / 63568134\n\t\n0 / 0\n\t\n86 / 288\n\t\n300 / 63568134\n\t\n86 / 288",
+  "zero": "S2、S5 的归一化 delay=0 ns，但 count=29，两条身份都保留。S2 原件 · S5 原件。scaled source 总计 1001 count / 3124 ns；净差 1 count / 0 ns，是逐样本 round 的结果，不是报告百分比分母。"
+}

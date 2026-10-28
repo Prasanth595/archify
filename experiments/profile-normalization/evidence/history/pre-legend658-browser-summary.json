@@ -1,0 +1,122 @@
+{
+  "kind": "derived selected-field browser receipt; not the raw receipt",
+  "originalReceipt": {
+    "bytes": 6353287,
+    "sha256": "3d906268efd2ed6024bbf4eca77e789d387cafdc8a51382ba940ed2ce524840e"
+  },
+  "schemaVersion": 1,
+  "ok": false,
+  "status": "fail",
+  "command": "browser-check",
+  "evidenceKind": "automated-browser",
+  "visualReview": "not-requested",
+  "originalProvenanceField": "current",
+  "artifact": {
+    "path": "$REPO/experiments/profile-normalization/output/candidate.html",
+    "sha256": "65815f7d59d26476c20ea833b06102419a24c77729973fac6fa172ffe14c8234",
+    "bytes": 1773349
+  },
+  "state": {
+    "detail": "read",
+    "motion": "still"
+  },
+  "chrome": {
+    "status": "available",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "diagnosticCount": 164,
+  "diagnosticCountsByCode": {
+    "explainer/browser-keyboard-traversal": 164
+  },
+  "checkStatuses": {
+    "containment": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "themeStates": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "readability": {
+      "status": "pass",
+      "minimumProjectedNodeTextPx": 6,
+      "viewportObservations": 4
+    },
+    "viewerChrome": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "commonQa": {
+      "status": "fail",
+      "observationCount": 4
+    },
+    "interactions": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "references": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "noJavaScript": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "print": {
+      "status": "pass",
+      "observationCount": 4
+    }
+  },
+  "omitted": [
+    "Most historical diagnostic entries and large successful DOM observations. Original complete receipt remains outside checkout, bound by originalReceipt bytes/SHA."
+  ],
+  "limits": "Historical selected summary only; all original failures remain external. This is not the complete raw receipt and is not a new run.",
+  "representativeDiagnostics": [
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1542,
+        "component": "literal-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1548,
+        "component": "locations-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3848 @@
+{
+  "kind": "derived selected-field browser receipt; not the raw receipt",
+  "originalReceipt": {
+    "bytes": 6359227,
+    "sha256": "abd5f22107923db348e5e0bad9cca847cb1c7263f5c0c5f358f420eebf55280f"
+  },
+  "schemaVersion": 1,
+  "ok": false,
+  "status": "fail",
+  "command": "browser-check",
+  "evidenceKind": "automated-browser",
+  "visualReview": "not-requested",
+  "originalProvenanceField": "current",
+  "artifact": {
+    "path": "$REPO/experiments/profile-normalization/output/candidate.html",
+    "sha256": "035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94",
+    "bytes": 1776392
+  },
+  "state": {
+    "detail": "read",
+    "motion": "still"
+  },
+  "chrome": {
+    "status": "available",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "diagnosticCount": 164,
+  "diagnosticCountsByCode": {
+    "explainer/browser-keyboard-traversal": 164
+  },
+  "diagnostics": [
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1563,
+        "component": "literal-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1569,
+        "component": "locations-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1580,
+        "component": "literal-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1586,
+        "component": "locations-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1597,
+        "component": "literal-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1603,
+        "component": "locations-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1614,
+        "component": "literal-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1620,
+        "component": "locations-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1633,
+        "component": "original-meta-0",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1638,
+        "component": "original-source",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1644,
+        "component": "original-meta-1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1649,
+        "component": "original-base",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1655,
+        "component": "original-meta-2",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1660,
+        "component": "original-golden",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1666,
+        "component": "original-meta-3",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1671,
+        "component": "original-license",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1563,
+        "component": "literal-s4",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1569,
+        "component": "locations-s4",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1580,
+        "component": "literal-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1586,
+        "component": "locations-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1597,
+        "component": "literal-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1603,
+        "component": "locations-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1614,
+        "component": "literal-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1620,
+        "component": "locations-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1633,
+        "component": "original-meta-0",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1638,
+        "component": "original-source",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1644,
+        "component": "original-meta-1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1649,
+        "component": "original-base",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1655,
+        "component": "original-meta-2",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1660,
+        "component": "original-golden",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1666,
+        "component": "original-meta-3",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1671,
+        "component": "original-license",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1563,
+        "component": "literal-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1569,
+        "component": "locations-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1580,
+        "component": "literal-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1586,
+        "component": "locations-s5",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1597,
+        "component": "literal-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1603,
+        "component": "locations-s6",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1614,
+        "component": "literal-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1620,
+        "component": "locations-b1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1633,
+        "component": "original-meta-0",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1638,
+        "component": "original-source",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1644,
+        "component": "original-meta-1",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1649,
+        "component": "original-base",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1655,
+        "component": "original-meta-2",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1660,
+        "component": "original-golden",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1666,
+        "component": "original-meta-3",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1671,
+        "component": "original-license",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1563,
+        "component": "literal-s4",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1569,
+        "component": "locations-s4",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1575,
+        "component": "raw-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1580,
+        "component": "literal-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1586,
+        "component": "locations-s5",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1592,
+        "component": "raw-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1597,
+        "component": "literal-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1603,
+        "component": "locations-s6",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整含 maps 原件",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 count 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1609,
+        "component": "raw-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 返回 delay 比例入口",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1614,
+        "component": "literal-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1620,
+        "component": "locations-b1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 06 · 完整原件、golden 与许可",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1628,
+        "component": "originals",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1633,
+        "component": "original-meta-0",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 7",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1638,
+        "component": "original-source",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1644,
+        "component": "original-meta-1",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 8",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1649,
+        "component": "original-base",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1655,
+        "component": "original-meta-2",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 9",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1660,
+        "component": "original-golden",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1666,
+        "component": "original-meta-3",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 10",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1671,
+        "component": "original-license",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 实验边界",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1679,
+        "component": "boundaries",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 追问",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 每类型 Normalize 与完整 stack 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A ScaleN 的 math.Round",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A raw → unsampled",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 上游完整双 expected",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A computeTotal 的 abs 样本集合",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A report.New 在 aggregate 前",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 internal/driver/testdata/cppbench.small.contention · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 profile/testdata/cppbench.contention.string · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 完整 LICENSE · 固定 SHA（URL-only）",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A 先 Normalize，再负 base 合并",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1,
+        "component": "a",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "dark"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. A Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    }
+  ],
+  "checkStatuses": {
+    "containment": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "themeStates": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "readability": {
+      "status": "pass",
+      "minimumProjectedNodeTextPx": 6,
+      "viewportObservations": 4
+    },
+    "viewerChrome": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "commonQa": {
+      "status": "fail",
+      "observationCount": 4
+    },
+    "interactions": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "references": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "noJavaScript": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "print": {
+      "status": "pass",
+      "observationCount": 4
+    }
+  },
+  "omitted": [
+    "Large successful DOM/viewports/readability observation arrays; original receipt preserved outside checkout with exact original hash/bytes."
+  ],
+  "limits": "All original diagnostics retained. Selected successful-check statuses do not establish human visual acceptance. Paths replaced; original artifact SHA is unchanged."
+}

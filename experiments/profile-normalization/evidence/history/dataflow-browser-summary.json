@@ -1,0 +1,875 @@
+{
+  "kind": "derived selected-field browser receipt; not the raw receipt",
+  "originalReceipt": {
+    "bytes": 7180021,
+    "sha256": "a71f7c54fb068b8d34bf554231044682809a8182463416ba2a99f4be79f9c01d"
+  },
+  "schemaVersion": 1,
+  "ok": false,
+  "status": "fail",
+  "command": "browser-check",
+  "evidenceKind": "automated-browser",
+  "visualReview": "not-requested",
+  "originalProvenanceField": "current",
+  "artifact": {
+    "path": "$REPO/experiments/profile-normalization/output/candidate.html",
+    "sha256": "4551f177ac6d2517a9dacff6ae1ece22e78728e1015bb1e72cb7e1772637c1dc",
+    "bytes": 1724984
+  },
+  "state": {
+    "detail": "read",
+    "motion": "still"
+  },
+  "chrome": {
+    "status": "available",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "diagnosticCount": 314,
+  "diagnosticCountsByCode": {
+    "explainer/browser-keyboard-traversal": 164,
+    "explainer/browser-readability": 138,
+    "explainer/browser-diagram-fit": 6,
+    "explainer/browser-diagram-text": 6
+  },
+  "checkStatuses": {
+    "containment": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "themeStates": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "readability": {
+      "status": "fail",
+      "minimumProjectedNodeTextPx": 6,
+      "viewportObservations": 4
+    },
+    "viewerChrome": {
+      "status": "pass",
+      "viewportObservations": 4
+    },
+    "commonQa": {
+      "status": "fail",
+      "observationCount": 4
+    },
+    "interactions": {
+      "status": "fail",
+      "observationCount": 4
+    },
+    "references": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "noJavaScript": {
+      "status": "pass",
+      "observationCount": 4
+    },
+    "print": {
+      "status": "pass",
+      "observationCount": 4
+    }
+  },
+  "omitted": [
+    "Most historical diagnostic entries and large successful DOM observations. Original complete receipt remains outside checkout, bound by originalReceipt bytes/SHA."
+  ],
+  "limits": "Historical selected summary only; all original failures remain external. This is not the complete raw receipt and is not a new run.",
+  "representativeDiagnostics": [
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1565,
+        "component": "literal-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-keyboard-traversal",
+      "severity": "error",
+      "message": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 1571,
+        "component": "locations-s4",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "This active control was not reached by Tab or native radio ArrowRight navigation. BUTTON 复制",
+        "example": "Use a native button/link/input with visible focus and keyboard activation."
+      },
+      "supportedFixes": [
+        "Use a native button/link/input with visible focus and keyboard activation."
+      ]
+    },
+    {
+      "code": "explainer/browser-readability",
+      "severity": "error",
+      "message": "Rendered text is 8.954477611940298px, below 10px.",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 104,
+        "component": "count-flow",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "Rendered text is 8.954477611940298px, below 10px.",
+        "example": "Repair the reported component and re-render the source."
+      },
+      "supportedFixes": [
+        "Repair the reported component and re-render the source."
+      ]
+    },
+    {
+      "code": "explainer/browser-readability",
+      "severity": "error",
+      "message": "Rendered text is 8.954477611940298px, below 10px.",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 104,
+        "component": "count-flow",
+        "viewport": {
+          "width": 1280,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "Rendered text is 8.954477611940298px, below 10px.",
+        "example": "Repair the reported component and re-render the source."
+      },
+      "supportedFixes": [
+        "Repair the reported component and re-render the source."
+      ]
+    },
+    {
+      "code": "explainer/browser-diagram-fit",
+      "severity": "error",
+      "message": "The native preview cannot fit its complete graph at the required text size.",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 104,
+        "component": "count-flow",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "The native preview cannot fit its complete graph at the required text size.",
+        "example": "Repair the reported component and re-render the source.",
+        "measurement": {
+          "component": "count-flow",
+          "minimum": 10.619286380597016,
+          "body": 14.5,
+          "ratio": 0.732364577972208,
+          "smallest": {
+            "text": "01 / 完整输入",
+            "size": 10.619286380597016
+          },
+          "rect": {
+            "width": 1246,
+            "height": 790.546875
+          },
+          "computed": {
+            "width": "1246px",
+            "height": "790.547px"
+          },
+          "fit": "insufficient",
+          "requiredWidth": 1277,
+          "minimumText": 10.875,
+          "minWidth": "0px",
+          "viewBox": "10 40 1056 670",
+          "preview": {
+            "left": 97,
+            "right": 1343,
+            "top": -538.4375,
+            "bottom": 252.109375,
+            "width": 1246,
+            "height": 790.546875
+          },
+          "scrollWidth": 1246,
+          "clientWidth": 1246,
+          "nodes": [
+            {
+              "id": "S1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -434.6044921875,
+              "bottom": -366.1690673828125,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S2",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -349.65020751953125,
+              "bottom": -281.21478271484375,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S3",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -264.6958923339844,
+              "bottom": -196.260498046875,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "S4",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -179.74160766601562,
+              "bottom": -111.30621337890625,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "S5",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -94.78732299804688,
+              "bottom": -26.3519287109375,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "S6",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -9.8330078125,
+              "bottom": 58.60235595703125,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            },
+            {
+              "id": "B1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 75.12127685546875,
+              "bottom": 143.556640625,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            },
+            {
+              "id": "source-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": -165.58255004882812,
+              "bottom": -97.14715576171875,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "base-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": 75.12127685546875,
+              "bottom": 143.556640625,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            },
+            {
+              "id": "factor",
+              "left": 644.4850463867188,
+              "right": 776.6361694335938,
+              "top": -165.58255004882812,
+              "bottom": -97.14715576171875,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "round",
+              "left": 898.1680297851562,
+              "right": 1030.319091796875,
+              "top": -165.58255004882812,
+              "bottom": -97.14715576171875,
+              "width": 132.15106201171875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "absolute",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": -434.6044921875,
+              "bottom": -366.1690673828125,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "normalized",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": 75.12127685546875,
+              "bottom": 143.556640625,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            }
+          ],
+          "outsidePreview": []
+        }
+      },
+      "supportedFixes": [
+        "Repair the reported component and re-render the source."
+      ]
+    },
+    {
+      "code": "explainer/browser-diagram-fit",
+      "severity": "error",
+      "message": "The native preview cannot fit its complete graph at the required text size.",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 564,
+        "component": "delay-flow",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "The native preview cannot fit its complete graph at the required text size.",
+        "example": "Repair the reported component and re-render the source.",
+        "measurement": {
+          "component": "delay-flow",
+          "minimum": 10.619286380597016,
+          "body": 14.5,
+          "ratio": 0.732364577972208,
+          "smallest": {
+            "text": "01 / 完整输入",
+            "size": 10.619286380597016
+          },
+          "rect": {
+            "width": 1246,
+            "height": 790.546875
+          },
+          "computed": {
+            "width": "1246px",
+            "height": "790.547px"
+          },
+          "fit": "insufficient",
+          "requiredWidth": 1277,
+          "minimumText": 10.875,
+          "minWidth": "0px",
+          "viewBox": "10 40 1056 670",
+          "preview": {
+            "left": 97,
+            "right": 1343,
+            "top": 1490.5625,
+            "bottom": 2281.109375,
+            "width": 1246,
+            "height": 790.546875
+          },
+          "scrollWidth": 1246,
+          "clientWidth": 1246,
+          "nodes": [
+            {
+              "id": "S1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1594.3955078125,
+              "bottom": 1662.8309326171875,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S2",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1679.349853515625,
+              "bottom": 1747.78515625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "S3",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1764.3040771484375,
+              "bottom": 1832.739501953125,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S4",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1849.2584228515625,
+              "bottom": 1917.69384765625,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S5",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1934.212646484375,
+              "bottom": 2002.6480712890625,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S6",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 2019.1669921875,
+              "bottom": 2087.602294921875,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "B1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 2104.121337890625,
+              "bottom": 2172.556640625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "source-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": 1863.41748046875,
+              "bottom": 1931.852783203125,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "base-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": 2104.121337890625,
+              "bottom": 2172.556640625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "factor",
+              "left": 644.4850463867188,
+              "right": 776.6361694335938,
+              "top": 1863.41748046875,
+              "bottom": 1931.852783203125,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "round",
+              "left": 898.1680297851562,
+              "right": 1030.319091796875,
+              "top": 1863.41748046875,
+              "bottom": 1931.852783203125,
+              "width": 132.15106201171875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "absolute",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": 1594.3955078125,
+              "bottom": 1662.8309326171875,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "normalized",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": 2104.121337890625,
+              "bottom": 2172.556640625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            }
+          ],
+          "outsidePreview": []
+        }
+      },
+      "supportedFixes": [
+        "Repair the reported component and re-render the source."
+      ]
+    },
+    {
+      "code": "explainer/browser-diagram-text",
+      "severity": "error",
+      "message": "Native diagram text is below its viewport reading floor (10px; 75% of body at 1440).",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 104,
+        "component": "count-flow",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "Native diagram text is below its viewport reading floor (10px; 75% of body at 1440).",
+        "example": "Increase the diagram panel span until projected node text reaches 75% of body text.",
+        "measurement": {
+          "component": "count-flow",
+          "minimum": 10.619286380597016,
+          "body": 14.5,
+          "ratio": 0.732364577972208,
+          "smallest": {
+            "text": "01 / 完整输入",
+            "size": 10.619286380597016
+          },
+          "rect": {
+            "width": 1246,
+            "height": 790.546875
+          },
+          "computed": {
+            "width": "1246px",
+            "height": "790.547px"
+          },
+          "fit": "insufficient",
+          "requiredWidth": 1277,
+          "minimumText": 10.875,
+          "minWidth": "0px",
+          "viewBox": "10 40 1056 670",
+          "preview": {
+            "left": 97,
+            "right": 1343,
+            "top": -538.4375,
+            "bottom": 252.109375,
+            "width": 1246,
+            "height": 790.546875
+          },
+          "scrollWidth": 1246,
+          "clientWidth": 1246,
+          "nodes": [
+            {
+              "id": "S1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -434.6044921875,
+              "bottom": -366.1690673828125,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S2",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -349.65020751953125,
+              "bottom": -281.21478271484375,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S3",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -264.6958923339844,
+              "bottom": -196.260498046875,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "S4",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -179.74160766601562,
+              "bottom": -111.30621337890625,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "S5",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -94.78732299804688,
+              "bottom": -26.3519287109375,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "S6",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": -9.8330078125,
+              "bottom": 58.60235595703125,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            },
+            {
+              "id": "B1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 75.12127685546875,
+              "bottom": 143.556640625,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            },
+            {
+              "id": "source-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": -165.58255004882812,
+              "bottom": -97.14715576171875,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "base-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": 75.12127685546875,
+              "bottom": 143.556640625,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            },
+            {
+              "id": "factor",
+              "left": 644.4850463867188,
+              "right": 776.6361694335938,
+              "top": -165.58255004882812,
+              "bottom": -97.14715576171875,
+              "width": 132.151123046875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "round",
+              "left": 898.1680297851562,
+              "right": 1030.319091796875,
+              "top": -165.58255004882812,
+              "bottom": -97.14715576171875,
+              "width": 132.15106201171875,
+              "height": 68.43539428710938
+            },
+            {
+              "id": "absolute",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": -434.6044921875,
+              "bottom": -366.1690673828125,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "normalized",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": 75.12127685546875,
+              "bottom": 143.556640625,
+              "width": 132.151123046875,
+              "height": 68.43536376953125
+            }
+          ],
+          "outsidePreview": []
+        }
+      },
+      "supportedFixes": [
+        "Increase the diagram panel span until projected node text reaches 75% of body text."
+      ]
+    },
+    {
+      "code": "explainer/browser-diagram-text",
+      "severity": "error",
+      "message": "Native diagram text is below its viewport reading floor (10px; 75% of body at 1440).",
+      "subject": {
+        "artifact": "$REPO/experiments/profile-normalization/output/candidate.html",
+        "input": "candidate.explainer.json",
+        "line": 564,
+        "component": "delay-flow",
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "theme": "light"
+        }
+      },
+      "evidence": {
+        "reason": "Native diagram text is below its viewport reading floor (10px; 75% of body at 1440).",
+        "example": "Increase the diagram panel span until projected node text reaches 75% of body text.",
+        "measurement": {
+          "component": "delay-flow",
+          "minimum": 10.619286380597016,
+          "body": 14.5,
+          "ratio": 0.732364577972208,
+          "smallest": {
+            "text": "01 / 完整输入",
+            "size": 10.619286380597016
+          },
+          "rect": {
+            "width": 1246,
+            "height": 790.546875
+          },
+          "computed": {
+            "width": "1246px",
+            "height": "790.547px"
+          },
+          "fit": "insufficient",
+          "requiredWidth": 1277,
+          "minimumText": 10.875,
+          "minWidth": "0px",
+          "viewBox": "10 40 1056 670",
+          "preview": {
+            "left": 97,
+            "right": 1343,
+            "top": 1490.5625,
+            "bottom": 2281.109375,
+            "width": 1246,
+            "height": 790.546875
+          },
+          "scrollWidth": 1246,
+          "clientWidth": 1246,
+          "nodes": [
+            {
+              "id": "S1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1594.3955078125,
+              "bottom": 1662.8309326171875,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S2",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1679.349853515625,
+              "bottom": 1747.78515625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "S3",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1764.3040771484375,
+              "bottom": 1832.739501953125,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S4",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1849.2584228515625,
+              "bottom": 1917.69384765625,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S5",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 1934.212646484375,
+              "bottom": 2002.6480712890625,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "S6",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 2019.1669921875,
+              "bottom": 2087.602294921875,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "B1",
+              "left": 137.11917114257812,
+              "right": 269.2702941894531,
+              "top": 2104.121337890625,
+              "bottom": 2172.556640625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "source-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": 1863.41748046875,
+              "bottom": 1931.852783203125,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "base-total",
+              "left": 390.8021240234375,
+              "right": 522.9532470703125,
+              "top": 2104.121337890625,
+              "bottom": 2172.556640625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "factor",
+              "left": 644.4850463867188,
+              "right": 776.6361694335938,
+              "top": 1863.41748046875,
+              "bottom": 1931.852783203125,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "round",
+              "left": 898.1680297851562,
+              "right": 1030.319091796875,
+              "top": 1863.41748046875,
+              "bottom": 1931.852783203125,
+              "width": 132.15106201171875,
+              "height": 68.435302734375
+            },
+            {
+              "id": "absolute",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": 1594.3955078125,
+              "bottom": 1662.8309326171875,
+              "width": 132.151123046875,
+              "height": 68.4354248046875
+            },
+            {
+              "id": "normalized",
+              "left": 1151.8509521484375,
+              "right": 1284.0020751953125,
+              "top": 2104.121337890625,
+              "bottom": 2172.556640625,
+              "width": 132.151123046875,
+              "height": 68.435302734375
+            }
+          ],
+          "outsidePreview": []
+        }
+      },
+      "supportedFixes": [
+        "Increase the diagram panel span until projected node text reaches 75% of body text."
+      ]
+    }
+  ]
+}

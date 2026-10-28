@@ -1,0 +1,24 @@
+{
+  "kind": "derived root task-message follow-up; not raw GitHub/API/browser response",
+  "browserRound": {
+    "taskSpace": 16,
+    "finishCount": 1,
+    "keep": [],
+    "finished": true,
+    "pagesRetained": false
+  },
+  "dependencies": "Root removed only the two temporary node_modules symlinks by unlink; their targets were not removed.",
+  "remote": {
+    "dev": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+    "main": "d6059331abbddb49bca380ff46dca8ce33158b04",
+    "experimentBranch": "codex/lab-profile-normalization",
+    "experimentRemote": "not yet created/reported by root at packaging time"
+  },
+  "pr1124": {
+    "state": "open",
+    "merged": false,
+    "head": "3254fda4fcd61a101cc09e6b68fbdbb4d2779604",
+    "provenance": "Root reported actual new gh API query; packaging agent did not repeat it."
+  },
+  "limits": "No CI, merge, release, installation, human acceptance or speed evidence inferred."
+}

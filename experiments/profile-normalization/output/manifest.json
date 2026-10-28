@@ -1,0 +1,35 @@
+{
+  "upstreamSHA": "dbd0ed30aa888a30e21ba83b9831ac0e80d41022",
+  "inputs": [
+    {
+      "file": "cppbench.contention",
+      "source": "internal/driver/testdata/cppbench.contention",
+      "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/testdata/cppbench.contention",
+      "bytes": 1551,
+      "sha256": "e0f3035db93cd3bb384590b224ca2b26d79aca41e71042a32c351a6d3e34d2d4"
+    },
+    {
+      "file": "cppbench.small.contention",
+      "source": "internal/driver/testdata/cppbench.small.contention",
+      "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/testdata/cppbench.small.contention",
+      "bytes": 821,
+      "sha256": "0d1f47b05eb6664827672b360eb122f13daec15765eb76eed1d77ed9e788516f"
+    },
+    {
+      "file": "cppbench.contention.string",
+      "source": "profile/testdata/cppbench.contention.string",
+      "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/profile/testdata/cppbench.contention.string",
+      "bytes": 2025,
+      "sha256": "a552baca08d20d75945171f9d1ff08f5f9df12a0d7099ce88c9b894358015552"
+    },
+    {
+      "file": "LICENSE-pprof",
+      "source": "LICENSE",
+      "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  ],
+  "generatedBy": "generate.mjs",
+  "scope": "complete fixtures + original bounded arithmetic; no upstream execution"
+}

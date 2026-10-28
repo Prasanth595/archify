@@ -1,0 +1,64 @@
+{
+  "kind": "Portable derived summary; raw CLI stdout/stderr and receipts retained outside checkout",
+  "base": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "node": "v22.23.3",
+  "results": [
+    {
+      "name": "tests",
+      "exitCode": 0
+    },
+    {
+      "name": "finalize",
+      "exitCode": 0
+    },
+    {
+      "name": "check",
+      "exitCode": 0
+    }
+  ],
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "not-run"
+  },
+  "outputs": [
+    {
+      "file": "baseline.html",
+      "bytes": 98898,
+      "sha256": "0668f1f91c1c77e81fd55ff0a479f77fcd676675ea2143e35e40940d7197c214"
+    },
+    {
+      "file": "candidate.html",
+      "bytes": 1776392,
+      "sha256": "035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94"
+    },
+    {
+      "file": "candidate.explainer.json",
+      "bytes": 79369,
+      "sha256": "dcdda473b220acb17f6b7280f96a24d695b4cf41be9436fa50ad1f295e274ca7"
+    },
+    {
+      "file": "ledger.json",
+      "bytes": 43528,
+      "sha256": "9f80b6f9f85cf637ba5a2a7f4d2f6591a01d49574a6a4f5c16ae0e785d4c6819"
+    },
+    {
+      "file": "count.architecture.json",
+      "bytes": 4577,
+      "sha256": "bc5de067f521f2acb441b86ea560340c04b537607c26f892c5a9dce1a061c7d1"
+    },
+    {
+      "file": "delay.architecture.json",
+      "bytes": 4612,
+      "sha256": "e0d884a872026505bbf9d682e5cbff14efa821dfdbffef2441f7fcbfb58fdea2"
+    },
+    {
+      "file": "denominators.architecture.json",
+      "bytes": 3128,
+      "sha256": "718c7ecdbb3664cb8f3cbd94e39797c092c98ad130c66ecdf6bc50ecf9caf964"
+    }
+  ],
+  "browser": "not run by this script; root owns separate real Ego acceptance and public browser gate",
+  "ci": "not run"
+}

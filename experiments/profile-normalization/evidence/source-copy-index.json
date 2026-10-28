@@ -1,0 +1,1024 @@
+{
+  "kind": "public evidence copy/derivation index",
+  "policy": "Original path-bearing files remain external. Final035 selected browser summary preserves all164 diagnostics and statuses while omitting large successful DOM arrays. Historical summaries retain counts and representative diagnostics only; full originals stay external with exact fingerprints. Public derivatives do not provide executable raw provenance.",
+  "placeholders": {
+    "$REPO": "experiment checkout",
+    "$REVIEW_RUN": "independent review directory",
+    "$FINAL_CLI_RUN": "final static CLI run",
+    "$FINAL_BROWSER_RUN": "final035 public browser run",
+    "$PRE_LEGEND_BROWSER_RUN": "old658 public browser run",
+    "$DATAFLOW_BROWSER_RUN": "earlier Dataflow public browser run",
+    "$DATAFLOW_HISTORY": "preserved historical Dataflow artifacts",
+    "$UPSTREAM_ARCHIVE": "fixed upstream source archive",
+    "$LOCAL_PATH": "other local temporary path",
+    "$ROOT_BROWSER_RUN": "root-provided final3 Ego source records"
+  },
+  "entries": [
+    {
+      "path": "independent/REVIEW.md",
+      "sourceLabel": "$REVIEW_RUN/REVIEW.md",
+      "original": {
+        "fileName": "REVIEW.md",
+        "bytes": 8267,
+        "sha256": "0a252f436895769d7b0bf9b0181f5db9aaa16b991e24f5b2e52f3bd064cbf36f"
+      },
+      "public": {
+        "bytes": 8119,
+        "sha256": "2f5af38dbd4ca456534fa17290fae9d2ea741f03b241509eeca95fdab460f1f7"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/DERIVATION.md",
+      "sourceLabel": "$REVIEW_RUN/DERIVATION.md",
+      "original": {
+        "fileName": "DERIVATION.md",
+        "bytes": 5712,
+        "sha256": "9cdbf4572509adb93dd04bb72a45b784b7e17220b33346c178b1fc7dce20fe76"
+      },
+      "public": {
+        "bytes": 5686,
+        "sha256": "5786f4a5a11ba57ffd59ce80cbb29a343da252909d93e5532e32093e4cbe1085"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/derive.py",
+      "sourceLabel": "$REVIEW_RUN/derive.py",
+      "original": {
+        "fileName": "derive.py",
+        "bytes": 7156,
+        "sha256": "f298994cd2ed6f0db37ad1a5819f1582530de8386e3e08ded74466bdb4617b94"
+      },
+      "public": {
+        "bytes": 7079,
+        "sha256": "71e169681f7629e705d8a8e9fe01718cb920e69ac3e6f0d7ca480e1cb31e170c"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/derivation.json",
+      "sourceLabel": "$REVIEW_RUN/derivation.json",
+      "original": {
+        "fileName": "derivation.json",
+        "bytes": 43340,
+        "sha256": "906e47439e988c6e50c35d6ef2a0187566a0f9354c56752a73df4dd35190116f"
+      },
+      "public": {
+        "bytes": 43340,
+        "sha256": "906e47439e988c6e50c35d6ef2a0187566a0f9354c56752a73df4dd35190116f"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/derive.stdout",
+      "sourceLabel": "$REVIEW_RUN/derive.stdout",
+      "original": {
+        "fileName": "derive.stdout",
+        "bytes": 2101,
+        "sha256": "3e77be84c9365a7c793831abcdf9b52852ace8990d6e69eba34ec590c11cc6ec"
+      },
+      "public": {
+        "bytes": 2101,
+        "sha256": "3e77be84c9365a7c793831abcdf9b52852ace8990d6e69eba34ec590c11cc6ec"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/review_final.py",
+      "sourceLabel": "$REVIEW_RUN/review_final.py",
+      "original": {
+        "fileName": "review_final.py",
+        "bytes": 9450,
+        "sha256": "efd0754a75bf257e772c92f684478d6c240046437f92fbd4c1e9eb3fa69537c5"
+      },
+      "public": {
+        "bytes": 9337,
+        "sha256": "793fe0628491f55305e89537c42e88b23fa8d5ed33d4a894165375f27ed34025"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/final-frozen-review.json",
+      "sourceLabel": "$REVIEW_RUN/final-frozen-review.json",
+      "original": {
+        "fileName": "final-frozen-review.json",
+        "bytes": 3046,
+        "sha256": "b6a3d6855faad0d4ce0bc3841cf6268529933fda7024b0f9ca29e02bcd4ca626"
+      },
+      "public": {
+        "bytes": 3046,
+        "sha256": "b6a3d6855faad0d4ce0bc3841cf6268529933fda7024b0f9ca29e02bcd4ca626"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/final-delta.json",
+      "sourceLabel": "$REVIEW_RUN/final-delta.json",
+      "original": {
+        "fileName": "final-delta.json",
+        "bytes": 2917,
+        "sha256": "40c8920a511836926336b28dfe8631f401a1d81ab7b68a1a713312fc56d2b06d"
+      },
+      "public": {
+        "bytes": 2917,
+        "sha256": "40c8920a511836926336b28dfe8631f401a1d81ab7b68a1a713312fc56d2b06d"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/legend-spec-delta.json",
+      "sourceLabel": "$REVIEW_RUN/legend-spec-delta.json",
+      "original": {
+        "fileName": "legend-spec-delta.json",
+        "bytes": 528,
+        "sha256": "fe2a88342978432ad1666bd7435f8ff1a369c6eea7aa3396b72be5e2646265ba"
+      },
+      "public": {
+        "bytes": 528,
+        "sha256": "fe2a88342978432ad1666bd7435f8ff1a369c6eea7aa3396b72be5e2646265ba"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "independent/final-evidence-binding.json",
+      "sourceLabel": "$REVIEW_RUN/final-evidence-binding.json",
+      "original": {
+        "fileName": "final-evidence-binding.json",
+        "bytes": 1714,
+        "sha256": "b92f8858a35e30bce8dfb4093231c9289d3f496ca842cd71d8cc7331b6e85a06"
+      },
+      "public": {
+        "bytes": 1600,
+        "sha256": "c30bc1fb64f2e87089b3b3befeaca8301fc3df2bf25b5f63d24c1800cdde16aa"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Independent review-stage snapshots keep their original artifact and README hashes; this copy is not a new review run."
+    },
+    {
+      "path": "keyboard/continued-tab.mjs",
+      "sourceLabel": "$REVIEW_RUN/continued-tab.mjs",
+      "original": {
+        "fileName": "continued-tab.mjs",
+        "bytes": 4445,
+        "sha256": "88298a4fb990321d8fdbd51259d2ff1caf5c6fdf9f2b014ec9d1a0438f6e4ca3"
+      },
+      "public": {
+        "bytes": 4208,
+        "sha256": "c2907e58e0cde9b114e413b227f29eedc415d3c7ba29562d6acfd6e159f73f6a"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Bound to pre-legend658 HTML. No final035 Tab rerun claimed; see final-delta and final-evidence-binding for reuse basis. Redacted scripts require local path configuration before replay."
+    },
+    {
+      "path": "keyboard/continued-tab.stdout",
+      "sourceLabel": "$REVIEW_RUN/continued-tab.stdout",
+      "original": {
+        "fileName": "continued-tab.stdout",
+        "bytes": 1265,
+        "sha256": "96b76d520f9cb34caca869d26b2b1f53523cb5dc7a459ce19bb92b7cc0a9ccc2"
+      },
+      "public": {
+        "bytes": 1265,
+        "sha256": "96b76d520f9cb34caca869d26b2b1f53523cb5dc7a459ce19bb92b7cc0a9ccc2"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Bound to pre-legend658 HTML. No final035 Tab rerun claimed; see final-delta and final-evidence-binding for reuse basis. Redacted scripts require local path configuration before replay."
+    },
+    {
+      "path": "keyboard/continued-tab.stderr",
+      "sourceLabel": "$REVIEW_RUN/continued-tab.stderr",
+      "original": {
+        "fileName": "continued-tab.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "public": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Bound to pre-legend658 HTML. No final035 Tab rerun claimed; see final-delta and final-evidence-binding for reuse basis. Redacted scripts require local path configuration before replay."
+    },
+    {
+      "path": "keyboard/keyboard-traversal.json",
+      "sourceLabel": "$REVIEW_RUN/keyboard-traversal.json",
+      "original": {
+        "fileName": "keyboard-traversal.json",
+        "bytes": 528940,
+        "sha256": "a176c11afe9c9cfeed8f1bb405478860bd2e347686f8af1a30485aac10e581e1"
+      },
+      "public": {
+        "bytes": 528940,
+        "sha256": "a176c11afe9c9cfeed8f1bb405478860bd2e347686f8af1a30485aac10e581e1"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Bound to pre-legend658 HTML. No final035 Tab rerun claimed; see final-delta and final-evidence-binding for reuse basis. Redacted scripts require local path configuration before replay."
+    },
+    {
+      "path": "keyboard/keyboard-summary.json",
+      "sourceLabel": "$REVIEW_RUN/keyboard-summary.json",
+      "original": {
+        "fileName": "keyboard-summary.json",
+        "bytes": 960,
+        "sha256": "f15d5c0ca730f4d10cbe98f4c24ba59bc963f5b20b67c72fed6116a1e969f0df"
+      },
+      "public": {
+        "bytes": 960,
+        "sha256": "f15d5c0ca730f4d10cbe98f4c24ba59bc963f5b20b67c72fed6116a1e969f0df"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Bound to pre-legend658 HTML. No final035 Tab rerun claimed; see final-delta and final-evidence-binding for reuse basis. Redacted scripts require local path configuration before replay."
+    },
+    {
+      "path": "cli/tests.stdout",
+      "sourceLabel": "$FINAL_CLI_RUN/tests.stdout",
+      "original": {
+        "fileName": "tests.stdout",
+        "bytes": 1276,
+        "sha256": "880020af2cd82408b52463a026645e96c02e900c6a6a7593bf96a1449b5934e0"
+      },
+      "public": {
+        "bytes": 1276,
+        "sha256": "880020af2cd82408b52463a026645e96c02e900c6a6a7593bf96a1449b5934e0"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Final035 CLI run. Public redacted path-bearing logs are not executable original provenance receipts."
+    },
+    {
+      "path": "cli/tests.stderr",
+      "sourceLabel": "$FINAL_CLI_RUN/tests.stderr",
+      "original": {
+        "fileName": "tests.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "public": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Final035 CLI run. Public redacted path-bearing logs are not executable original provenance receipts."
+    },
+    {
+      "path": "cli/finalize.stdout",
+      "sourceLabel": "$FINAL_CLI_RUN/finalize.stdout",
+      "original": {
+        "fileName": "finalize.stdout",
+        "bytes": 8750,
+        "sha256": "daa2363417193b8350af4029003ec22f0e16c7ae08918948ae01b8e9f117bd02"
+      },
+      "public": {
+        "bytes": 7974,
+        "sha256": "37a3fac987c8b7641d9d9784888f6788f92cf848685677068b366b7316a31f90"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Final035 CLI run. Public redacted path-bearing logs are not executable original provenance receipts."
+    },
+    {
+      "path": "cli/finalize.stderr",
+      "sourceLabel": "$FINAL_CLI_RUN/finalize.stderr",
+      "original": {
+        "fileName": "finalize.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "public": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Final035 CLI run. Public redacted path-bearing logs are not executable original provenance receipts."
+    },
+    {
+      "path": "cli/check.stdout",
+      "sourceLabel": "$FINAL_CLI_RUN/check.stdout",
+      "original": {
+        "fileName": "check.stdout",
+        "bytes": 30243,
+        "sha256": "727ca4741be4eaf73db0b901384fdbfcfda37efced3c7c1ca699720944fef132"
+      },
+      "public": {
+        "bytes": 29944,
+        "sha256": "d0505bfa193c31e9563a86e48d2412a5cf2cebef1f882f76b9046c17738269dc"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Final035 CLI run. Public redacted path-bearing logs are not executable original provenance receipts."
+    },
+    {
+      "path": "cli/check.stderr",
+      "sourceLabel": "$FINAL_CLI_RUN/check.stderr",
+      "original": {
+        "fileName": "check.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "public": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Final035 CLI run. Public redacted path-bearing logs are not executable original provenance receipts."
+    },
+    {
+      "path": "cli/candidate.finalize-summary.json",
+      "sourceLabel": "$FINAL_CLI_RUN/finalize/candidate.finalize-summary.json",
+      "original": {
+        "fileName": "candidate.finalize-summary.json",
+        "bytes": 10432,
+        "sha256": "a464ebc00f20f12073af1ecae20e4d34b18c5906997ded3cb4675e3af2fe6dcc"
+      },
+      "public": {
+        "bytes": 9656,
+        "sha256": "672a3a04644329920e38f0f80f544a2f95ee558b7a448191a4b1103bc6d5bc55"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Final035 static finalize;8 writing warnings retained; browser-check not requested in this CLI invocation."
+    },
+    {
+      "path": "cli/candidate.finalize.json",
+      "sourceLabel": "$FINAL_CLI_RUN/finalize/candidate.finalize.json",
+      "original": {
+        "fileName": "candidate.finalize.json",
+        "bytes": 73805,
+        "sha256": "46749e65874654bb0d383292413724449481421d9ba75eb8a8f9f626e6962828"
+      },
+      "public": {
+        "bytes": 70994,
+        "sha256": "111d0a0ce8f93f81e7184450e1bd92f059851e3dde2036524b75873d5d9c1031"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Final035 static finalize;8 writing warnings retained; browser-check not requested in this CLI invocation."
+    },
+    {
+      "path": "public-browser/final035-browser-summary.json",
+      "sourceLabel": "$FINAL_BROWSER_RUN/candidate.browser-check.json",
+      "original": {
+        "fileName": "candidate.browser-check.json",
+        "bytes": 6359227,
+        "sha256": "abd5f22107923db348e5e0bad9cca847cb1c7263f5c0c5f358f420eebf55280f"
+      },
+      "public": {
+        "bytes": 152553,
+        "sha256": "682daece2f31fba876df6531d0fd889f704ce03f465bbb985b074b6c32502515"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "selected-receipt-fields",
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-derived-summary"
+    },
+    {
+      "path": "history/pre-legend658-browser-summary.json",
+      "sourceLabel": "$PRE_LEGEND_BROWSER_RUN/candidate.browser-check.json",
+      "original": {
+        "fileName": "candidate.browser-check.json",
+        "bytes": 6353287,
+        "sha256": "3d906268efd2ed6024bbf4eca77e789d387cafdc8a51382ba940ed2ce524840e"
+      },
+      "public": {
+        "bytes": 3864,
+        "sha256": "5363b44851e165441158217f377a613fade1a43b6addf190b363765a5b14e4fb"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "selected-historical-summary-with-representative-diagnostics",
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-derived-summary",
+      "limits": "Historical selected summary only; all original failures remain external. This is not the complete raw receipt and is not a new run."
+    },
+    {
+      "path": "history/dataflow-browser-summary.json",
+      "sourceLabel": "$DATAFLOW_BROWSER_RUN/candidate.browser-check.json",
+      "original": {
+        "fileName": "candidate.browser-check.json",
+        "bytes": 7180021,
+        "sha256": "a71f7c54fb068b8d34bf554231044682809a8182463416ba2a99f4be79f9c01d"
+      },
+      "public": {
+        "bytes": 28791,
+        "sha256": "c4710827390337813c1194fdf214c96352619a19d8e51df0f4d46d5dd6bcad62"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "selected-historical-summary-with-representative-diagnostics",
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-derived-summary",
+      "limits": "Historical selected summary only; all original failures remain external. This is not the complete raw receipt and is not a new run."
+    },
+    {
+      "path": "public-browser/final035-finalize-summary.json",
+      "sourceLabel": "$FINAL_BROWSER_RUN/candidate.finalize-summary.json",
+      "original": {
+        "fileName": "candidate.finalize-summary.json",
+        "bytes": 9429,
+        "sha256": "f8188073af487e59bb91fc8ec8c863dac0163617f1ba5cca485347cc59347eca"
+      },
+      "public": {
+        "bytes": 8701,
+        "sha256": "42eb3f5a242af08b226d2ba18e3623a16425c222bd3927effdd0dfab4c1ae066"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Separate final035 public browser finalize failed at browser-check; this does not replace the successful static CLI finalize."
+    },
+    {
+      "path": "browser/final3-acceptance-summary.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-acceptance-summary.json",
+      "original": {
+        "fileName": "final3-acceptance-summary.json",
+        "bytes": 7737,
+        "sha256": "dc1a283d4719eea4731c13e1d422426575437691a69a0f4c8557ef94b7e02f07"
+      },
+      "public": {
+        "bytes": 7737,
+        "sha256": "dc1a283d4719eea4731c13e1d422426575437691a69a0f4c8557ef94b7e02f07"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-baseline-light.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-baseline-light.png",
+      "original": {
+        "fileName": "final3-baseline-light.png",
+        "bytes": 286962,
+        "sha256": "ba3ae3c0513df1a141120c696265bf187ac04fb4147c00196bc1e2267b8f81d8"
+      },
+      "public": {
+        "bytes": 286962,
+        "sha256": "ba3ae3c0513df1a141120c696265bf187ac04fb4147c00196bc1e2267b8f81d8"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-baseline-observation.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-baseline-observation.json",
+      "original": {
+        "fileName": "final3-baseline-observation.json",
+        "bytes": 161,
+        "sha256": "6d1c22fee6b7c1db69a40c924893755b191320aa06c663b2aded70bc83c9a05f"
+      },
+      "public": {
+        "bytes": 161,
+        "sha256": "6d1c22fee6b7c1db69a40c924893755b191320aa06c663b2aded70bc83c9a05f"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-chain-1.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-chain-1.json",
+      "original": {
+        "fileName": "final3-chain-1.json",
+        "bytes": 1307,
+        "sha256": "89b3f5caee6437413ee693a3e541202ddc9561fa32e2fc501df6d3edfb4d235d"
+      },
+      "public": {
+        "bytes": 1307,
+        "sha256": "89b3f5caee6437413ee693a3e541202ddc9561fa32e2fc501df6d3edfb4d235d"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-chain-2.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-chain-2.json",
+      "original": {
+        "fileName": "final3-chain-2.json",
+        "bytes": 778,
+        "sha256": "25ac533f4503180091309ba2980206ed17ee168304931ed514e0799965a229e7"
+      },
+      "public": {
+        "bytes": 778,
+        "sha256": "25ac533f4503180091309ba2980206ed17ee168304931ed514e0799965a229e7"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-chain-3.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-chain-3.json",
+      "original": {
+        "fileName": "final3-chain-3.json",
+        "bytes": 549,
+        "sha256": "93440044c95093acf224df0d80854303823fb6610aada285940443775d5b8415"
+      },
+      "public": {
+        "bytes": 549,
+        "sha256": "93440044c95093acf224df0d80854303823fb6610aada285940443775d5b8415"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-chain-4.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-chain-4.json",
+      "original": {
+        "fileName": "final3-chain-4.json",
+        "bytes": 3266,
+        "sha256": "afc71630bbb920abf9c837cfa1295904071d267d587cbfd099f4b0da64cc574b"
+      },
+      "public": {
+        "bytes": 3266,
+        "sha256": "afc71630bbb920abf9c837cfa1295904071d267d587cbfd099f4b0da64cc574b"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-chain-5.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-chain-5.json",
+      "original": {
+        "fileName": "final3-chain-5.json",
+        "bytes": 527,
+        "sha256": "bc2d8977dd545a75a6f695b6fe23dae5fa0c466dd810b8f407fde291cc2d24c7"
+      },
+      "public": {
+        "bytes": 527,
+        "sha256": "bc2d8977dd545a75a6f695b6fe23dae5fa0c466dd810b8f407fde291cc2d24c7"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-chain-6.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-chain-6.json",
+      "original": {
+        "fileName": "final3-chain-6.json",
+        "bytes": 433,
+        "sha256": "7c947070fc569229afb2c85cbfb852491bd7356b5f7cd405d5aa5fc0f42a155c"
+      },
+      "public": {
+        "bytes": 433,
+        "sha256": "7c947070fc569229afb2c85cbfb852491bd7356b5f7cd405d5aa5fc0f42a155c"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-count-light.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-count-light.png",
+      "original": {
+        "fileName": "final3-count-light.png",
+        "bytes": 109862,
+        "sha256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457"
+      },
+      "public": {
+        "bytes": 109862,
+        "sha256": "14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-count-observation.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-count-observation.json",
+      "original": {
+        "fileName": "final3-count-observation.json",
+        "bytes": 2675,
+        "sha256": "639ed5f446d6ff8f1f0536bb6a11c88e604ae8276a878d4eae4284484b5ac645"
+      },
+      "public": {
+        "bytes": 2675,
+        "sha256": "639ed5f446d6ff8f1f0536bb6a11c88e604ae8276a878d4eae4284484b5ac645"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-delay-light.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-delay-light.png",
+      "original": {
+        "fileName": "final3-delay-light.png",
+        "bytes": 115857,
+        "sha256": "6093ed260e29e5bf404610b0c55bd98ecf0227f48342b7a75b71206527b9d632"
+      },
+      "public": {
+        "bytes": 115857,
+        "sha256": "6093ed260e29e5bf404610b0c55bd98ecf0227f48342b7a75b71206527b9d632"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-delay-observation.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-delay-observation.json",
+      "original": {
+        "fileName": "final3-delay-observation.json",
+        "bytes": 3410,
+        "sha256": "7cae0a482224430a3781853864978fff40642b804089165025766102ce24c788"
+      },
+      "public": {
+        "bytes": 3410,
+        "sha256": "7cae0a482224430a3781853864978fff40642b804089165025766102ce24c788"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-denominator-chain.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-denominator-chain.json",
+      "original": {
+        "fileName": "final3-denominator-chain.json",
+        "bytes": 749,
+        "sha256": "c1c8eff883d93b46b458111f680fa5fecba0dae96904e099f55c138c9760784e"
+      },
+      "public": {
+        "bytes": 749,
+        "sha256": "c1c8eff883d93b46b458111f680fa5fecba0dae96904e099f55c138c9760784e"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-denominator-observation.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-denominator-observation.json",
+      "original": {
+        "fileName": "final3-denominator-observation.json",
+        "bytes": 1488,
+        "sha256": "1e1406a9e8aded0b49de0d709b0fc96a793a8194e1f9178d43be52c805da72fd"
+      },
+      "public": {
+        "bytes": 1488,
+        "sha256": "1e1406a9e8aded0b49de0d709b0fc96a793a8194e1f9178d43be52c805da72fd"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-denominators-light.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-denominators-light.png",
+      "original": {
+        "fileName": "final3-denominators-light.png",
+        "bytes": 112241,
+        "sha256": "a18ae2bbe777dcbaf05774e9d9f0fe7971af75330539924d46471e0ea3e85049"
+      },
+      "public": {
+        "bytes": 112241,
+        "sha256": "a18ae2bbe777dcbaf05774e9d9f0fe7971af75330539924d46471e0ea3e85049"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-factor-card.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-factor-card.png",
+      "original": {
+        "fileName": "final3-factor-card.png",
+        "bytes": 141312,
+        "sha256": "d08cd88db5520bf525e53e535936806b3eba94df129c2ce8ed367203095f6ee4"
+      },
+      "public": {
+        "bytes": 141312,
+        "sha256": "d08cd88db5520bf525e53e535936806b3eba94df129c2ce8ed367203095f6ee4"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-factor-viewer.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-factor-viewer.png",
+      "original": {
+        "fileName": "final3-factor-viewer.png",
+        "bytes": 124801,
+        "sha256": "4c81ab77c25dfdd9269aaf752acb3fd9adb43691abbae64bce385ad96a8c0355"
+      },
+      "public": {
+        "bytes": 124801,
+        "sha256": "4c81ab77c25dfdd9269aaf752acb3fd9adb43691abbae64bce385ad96a8c0355"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-mobile-dark.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-mobile-dark.png",
+      "original": {
+        "fileName": "final3-mobile-dark.png",
+        "bytes": 77386,
+        "sha256": "049ed2cdf0b17c5179790d9a55f4b68db8fa513bddcc1d84cfe71f8a8e71f8a3"
+      },
+      "public": {
+        "bytes": 77386,
+        "sha256": "049ed2cdf0b17c5179790d9a55f4b68db8fa513bddcc1d84cfe71f8a8e71f8a3"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-mobile-observation.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-mobile-observation.json",
+      "original": {
+        "fileName": "final3-mobile-observation.json",
+        "bytes": 57222,
+        "sha256": "01a2a9d17f1973fbbfe418587cf8c6528d0351f45fa1694c571679ec4158f3fa"
+      },
+      "public": {
+        "bytes": 57222,
+        "sha256": "01a2a9d17f1973fbbfe418587cf8c6528d0351f45fa1694c571679ec4158f3fa"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-mobile-return.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-mobile-return.json",
+      "original": {
+        "fileName": "final3-mobile-return.json",
+        "bytes": 214,
+        "sha256": "f462c9cb358c0b10d8a774702597ee5a8f51f0485a59c06e7834d82b9353a0a0"
+      },
+      "public": {
+        "bytes": 214,
+        "sha256": "f462c9cb358c0b10d8a774702597ee5a8f51f0485a59c06e7834d82b9353a0a0"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-mobile-viewer-dark.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-mobile-viewer-dark.png",
+      "original": {
+        "fileName": "final3-mobile-viewer-dark.png",
+        "bytes": 56300,
+        "sha256": "515a6b7f393ed80f0f743cb61a75100a0a1c666336887d31d7b6e270e842494a"
+      },
+      "public": {
+        "bytes": 56300,
+        "sha256": "515a6b7f393ed80f0f743cb61a75100a0a1c666336887d31d7b6e270e842494a"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-mobile-viewer-snapshot.txt",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-mobile-viewer-snapshot.txt",
+      "original": {
+        "fileName": "final3-mobile-viewer-snapshot.txt",
+        "bytes": 78737,
+        "sha256": "6e77ff1fe83e2f168f9d0013e781c245be90e79e9b71ba165f0e75ee221ecb9f"
+      },
+      "public": {
+        "bytes": 66771,
+        "sha256": "88b2b158034383c3f9f696317156d7486014977adbf2125a3bcdc856a47b433b"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-original-source.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-original-source.png",
+      "original": {
+        "fileName": "final3-original-source.png",
+        "bytes": 210754,
+        "sha256": "b3088cd5d1690e0a256150657c36fa855124bcfb956d28c93833178bbaea0c7d"
+      },
+      "public": {
+        "bytes": 210754,
+        "sha256": "b3088cd5d1690e0a256150657c36fa855124bcfb956d28c93833178bbaea0c7d"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-overview-dark.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-overview-dark.png",
+      "original": {
+        "fileName": "final3-overview-dark.png",
+        "bytes": 161058,
+        "sha256": "e02713b33b4ab1432ba87b20f34366ef5aeef655bc2bbaf0c82b22c78edfde54"
+      },
+      "public": {
+        "bytes": 161058,
+        "sha256": "e02713b33b4ab1432ba87b20f34366ef5aeef655bc2bbaf0c82b22c78edfde54"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-raw-s2.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-raw-s2.png",
+      "original": {
+        "fileName": "final3-raw-s2.png",
+        "bytes": 165658,
+        "sha256": "0380bc304fad7375ccc22e6c3ce38656493afd711feabef94f2bf3bd4294024b"
+      },
+      "public": {
+        "bytes": 165658,
+        "sha256": "0380bc304fad7375ccc22e6c3ce38656493afd711feabef94f2bf3bd4294024b"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-results-dark.png",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-results-dark.png",
+      "original": {
+        "fileName": "final3-results-dark.png",
+        "bytes": 147341,
+        "sha256": "7d5aa630ddc6f24671cf84e8102d4d7b2b8be536db32eff99edb542f9c8fb238"
+      },
+      "public": {
+        "bytes": 147341,
+        "sha256": "7d5aa630ddc6f24671cf84e8102d4d7b2b8be536db32eff99edb542f9c8fb238"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-results-observation.json",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-results-observation.json",
+      "original": {
+        "fileName": "final3-results-observation.json",
+        "bytes": 922,
+        "sha256": "5bf452ae5bd824101d9094544335db819e9f70d126ddeb4a1841eb1c58fa3934"
+      },
+      "public": {
+        "bytes": 922,
+        "sha256": "5bf452ae5bd824101d9094544335db819e9f70d126ddeb4a1841eb1c58fa3934"
+      },
+      "byteIdentical": true,
+      "transforms": [],
+      "classification": "unchanged-source-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    },
+    {
+      "path": "browser/final3-viewer-snapshot.txt",
+      "sourceLabel": "$ROOT_BROWSER_RUN/final3-viewer-snapshot.txt",
+      "original": {
+        "fileName": "final3-viewer-snapshot.txt",
+        "bytes": 80988,
+        "sha256": "bfc1395a0fa1c18bb96ad3a99a7ae497404aac46436247aeb25572952e621e8a"
+      },
+      "public": {
+        "bytes": 69022,
+        "sha256": "55344009318f322d1055fcaeefa494f0f3e1d9f24e9deb9a26a2647942b42908"
+      },
+      "byteIdentical": false,
+      "transforms": [
+        "local-absolute-paths-replaced"
+      ],
+      "classification": "public-redacted-copy",
+      "limits": "Root-provided final035 observations, not a browser run by the packaging agent. Baseline material is separately bound."
+    }
+  ],
+  "externalOnlySources": [
+    {
+      "sourceLabel": "$REVIEW_RUN/review_frozen.py",
+      "original": {
+        "fileName": "review_frozen.py",
+        "bytes": 9438,
+        "sha256": "400e03ed891ec8c760c22c2bf47098b23260b5514a184bf1deaf6a50c00c8479"
+      },
+      "reason": "Earlier duplicate static-review source/result retained externally; final review source/result and delta are published."
+    },
+    {
+      "sourceLabel": "$REVIEW_RUN/frozen-review.json",
+      "original": {
+        "fileName": "frozen-review.json",
+        "bytes": 3046,
+        "sha256": "3845507385cd2c0e99546244a7b12306a31bff7455f1f2d04c134d9426590bae"
+      },
+      "reason": "Earlier duplicate static-review source/result retained externally; final review source/result and delta are published."
+    }
+  ]
+}

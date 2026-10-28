@@ -1,0 +1,64 @@
+{
+  "artifact": "035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94",
+  "bytes": 1776392,
+  "rootVerifyRun": "$FINAL_CLI_RUN",
+  "tests": {
+    "pass": 5,
+    "fail": 0,
+    "skip": 0
+  },
+  "finalizeGates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "not-run"
+  },
+  "strictCheck": true,
+  "finalizeWarnings": [
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    },
+    {
+      "code": "explainer/writing-paragraph-length",
+      "severity": "warning"
+    }
+  ],
+  "publicBrowser": {
+    "receipt": "$FINAL_BROWSER_RUN/candidate.browser-check.json",
+    "status": "fail",
+    "diagnostics": 164,
+    "codes": [
+      "explainer/browser-keyboard-traversal"
+    ]
+  },
+  "priorTabEvidence": {
+    "file": "keyboard-traversal.json",
+    "artifact": "65815f7d59d26476c20ea833b06102419a24c77729973fac6fa172ffe14c8234",
+    "reuseBasis": "legend-only delta and unchanged IDs/static interactive DOM attributes/order; no new Tab run claimed"
+  }
+}

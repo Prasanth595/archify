@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: complete pinned fixtures retain all seven raw identities, locations and maps
+ok 1 - complete pinned fixtures retain all seven raw identities, locations and maps
+  ---
+  duration_ms: 1.507791
+  type: 'test'
+  ...
+# Subtest: each metric independently scales, rounds, subtracts and preserves zero-delay rows
+ok 2 - each metric independently scales, rounds, subtracts and preserves zero-delay rows
+  ---
+  duration_ms: 0.627792
+  type: 'test'
+  ...
+# Subtest: base matching uses the whole stack; shared leaf alone cannot create a match
+ok 3 - base matching uses the whole stack; shared leaf alone cannot create a match
+  ---
+  duration_ms: 0.265458
+  type: 'test'
+  ...
+# Subtest: merge labels preserve seven diff_base records and distinct report denominators
+ok 4 - merge labels preserve seven diff_base records and distinct report denominators
+  ---
+  duration_ms: 0.354
+  type: 'test'
+  ...
+# Subtest: native witnesses retain six total dependencies, arithmetic inputs and reachable fixed returns
+ok 5 - native witnesses retain six total dependencies, arithmetic inputs and reachable fixed returns
+  ---
+  duration_ms: 1.990917
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 72.439709

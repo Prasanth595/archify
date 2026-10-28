@@ -1,0 +1,1526 @@
+{
+  "provenance": {
+    "upstreamSHA": "dbd0ed30aa888a30e21ba83b9831ac0e80d41022",
+    "method": "Independent offline arithmetic from complete fixed fixtures; upstream not executed",
+    "sources": [
+      {
+        "file": "cppbench.contention",
+        "source": "internal/driver/testdata/cppbench.contention",
+        "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/testdata/cppbench.contention",
+        "bytes": 1551,
+        "sha256": "e0f3035db93cd3bb384590b224ca2b26d79aca41e71042a32c351a6d3e34d2d4"
+      },
+      {
+        "file": "cppbench.small.contention",
+        "source": "internal/driver/testdata/cppbench.small.contention",
+        "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/internal/driver/testdata/cppbench.small.contention",
+        "bytes": 821,
+        "sha256": "0d1f47b05eb6664827672b360eb122f13daec15765eb76eed1d77ed9e788516f"
+      },
+      {
+        "file": "cppbench.contention.string",
+        "source": "profile/testdata/cppbench.contention.string",
+        "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/profile/testdata/cppbench.contention.string",
+        "bytes": 2025,
+        "sha256": "a552baca08d20d75945171f9d1ff08f5f9df12a0d7099ce88c9b894358015552"
+      },
+      {
+        "file": "LICENSE-pprof",
+        "source": "LICENSE",
+        "url": "https://github.com/google/pprof/blob/dbd0ed30aa888a30e21ba83b9831ac0e80d41022/LICENSE",
+        "bytes": 11358,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      }
+    ]
+  },
+  "source": {
+    "role": "source",
+    "hz": 3201000000,
+    "period": 100,
+    "rows": [
+      {
+        "id": "S1",
+        "role": "source",
+        "line": 6,
+        "literal": "  19490304       27 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "raw": {
+          "cycles": 19490304,
+          "observedCount": 27,
+          "stack": [
+            "0xbccc97",
+            "0xc61202",
+            "0x42ed5f",
+            "0x42edc1",
+            "0x42e15a",
+            "0x5261af",
+            "0x526edf",
+            "0x5280ab",
+            "0x79e80a",
+            "0x7a251b",
+            "0x7a296d",
+            "0xa456e4",
+            "0x7fcdc2ff214e"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xc61202",
+            "corrected": "0xc61201",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42ed5f",
+            "corrected": "0x42ed5e",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42edc1",
+            "corrected": "0x42edc0",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42e15a",
+            "corrected": "0x42e159",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapping": "M7"
+          }
+        ],
+        "values": [
+          2700,
+          608881724
+        ],
+        "labels": {}
+      },
+      {
+        "id": "S2",
+        "role": "source",
+        "line": 7,
+        "literal": "       768        1 @ 0xbccc97 0xa42dc7 0xa456e4 0x7fcdc2ff214e",
+        "raw": {
+          "cycles": 768,
+          "observedCount": 1,
+          "stack": [
+            "0xbccc97",
+            "0xa42dc7",
+            "0xa456e4",
+            "0x7fcdc2ff214e"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa42dc7",
+            "corrected": "0xa42dc6",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapping": "M7"
+          }
+        ],
+        "values": [
+          100,
+          23992
+        ],
+        "labels": {}
+      },
+      {
+        "id": "S3",
+        "role": "source",
+        "line": 8,
+        "literal": "      5760        2 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87eab 0xb8814c 0x4e969d 0x4faa17 0x4fc5f6 0x4fd028 0x4fd230 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "raw": {
+          "cycles": 5760,
+          "observedCount": 2,
+          "stack": [
+            "0xbccc97",
+            "0xb82b73",
+            "0xb82bcb",
+            "0xb87eab",
+            "0xb8814c",
+            "0x4e969d",
+            "0x4faa17",
+            "0x4fc5f6",
+            "0x4fd028",
+            "0x4fd230",
+            "0x79e80a",
+            "0x7a251b",
+            "0x7a296d",
+            "0xa456e4",
+            "0x7fcdc2ff214e"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82b73",
+            "corrected": "0xb82b72",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82bcb",
+            "corrected": "0xb82bca",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb87eab",
+            "corrected": "0xb87eaa",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb8814c",
+            "corrected": "0xb8814b",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4e969d",
+            "corrected": "0x4e969c",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4faa17",
+            "corrected": "0x4faa16",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4fc5f6",
+            "corrected": "0x4fc5f5",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4fd028",
+            "corrected": "0x4fd027",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4fd230",
+            "corrected": "0x4fd22f",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapping": "M7"
+          }
+        ],
+        "values": [
+          200,
+          179943
+        ],
+        "labels": {}
+      },
+      {
+        "id": "S4",
+        "role": "source",
+        "line": 9,
+        "literal": "    569088        1 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87f08 0xb8814c 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "raw": {
+          "cycles": 569088,
+          "observedCount": 1,
+          "stack": [
+            "0xbccc97",
+            "0xb82b73",
+            "0xb82bcb",
+            "0xb87f08",
+            "0xb8814c",
+            "0x42ed5f",
+            "0x42edc1",
+            "0x42e15a",
+            "0x5261af",
+            "0x526edf",
+            "0x5280ab",
+            "0x79e80a",
+            "0x7a251b",
+            "0x7a296d",
+            "0xa456e4",
+            "0x7fcdc2ff214e"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82b73",
+            "corrected": "0xb82b72",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82bcb",
+            "corrected": "0xb82bca",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb87f08",
+            "corrected": "0xb87f07",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb8814c",
+            "corrected": "0xb8814b",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42ed5f",
+            "corrected": "0x42ed5e",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42edc1",
+            "corrected": "0x42edc0",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42e15a",
+            "corrected": "0x42e159",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapping": "M7"
+          }
+        ],
+        "values": [
+          100,
+          17778444
+        ],
+        "labels": {}
+      },
+      {
+        "id": "S5",
+        "role": "source",
+        "line": 10,
+        "literal": "      2432        1 @ 0xbccc97 0xb82b73 0xb82bcb 0xb87eab 0xb8814c 0x7aa74c 0x7ab844 0x7ab914 0x79e9e9 0x79e326 0x4d299e 0x4d4b7b 0x4b7be8 0x4b7ff1 0x4d2dae 0x79e80a",
+        "raw": {
+          "cycles": 2432,
+          "observedCount": 1,
+          "stack": [
+            "0xbccc97",
+            "0xb82b73",
+            "0xb82bcb",
+            "0xb87eab",
+            "0xb8814c",
+            "0x7aa74c",
+            "0x7ab844",
+            "0x7ab914",
+            "0x79e9e9",
+            "0x79e326",
+            "0x4d299e",
+            "0x4d4b7b",
+            "0x4b7be8",
+            "0x4b7ff1",
+            "0x4d2dae",
+            "0x79e80a"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82b73",
+            "corrected": "0xb82b72",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82bcb",
+            "corrected": "0xb82bca",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb87eab",
+            "corrected": "0xb87eaa",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb8814c",
+            "corrected": "0xb8814b",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7aa74c",
+            "corrected": "0x7aa74b",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7ab844",
+            "corrected": "0x7ab843",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7ab914",
+            "corrected": "0x7ab913",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e9e9",
+            "corrected": "0x79e9e8",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e326",
+            "corrected": "0x79e325",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4d299e",
+            "corrected": "0x4d299d",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4d4b7b",
+            "corrected": "0x4d4b7a",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4b7be8",
+            "corrected": "0x4b7be7",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4b7ff1",
+            "corrected": "0x4b7ff0",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x4d2dae",
+            "corrected": "0x4d2dad",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapping": "M1"
+          }
+        ],
+        "values": [
+          100,
+          75976
+        ],
+        "labels": {}
+      },
+      {
+        "id": "S6",
+        "role": "source",
+        "line": 11,
+        "literal": "   2034816        3 @ 0xbccc97 0xb82f0f 0xb83003 0xb87d50 0xc635f0 0x42ecc3 0x42e14c 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "raw": {
+          "cycles": 2034816,
+          "observedCount": 3,
+          "stack": [
+            "0xbccc97",
+            "0xb82f0f",
+            "0xb83003",
+            "0xb87d50",
+            "0xc635f0",
+            "0x42ecc3",
+            "0x42e14c",
+            "0x5261af",
+            "0x526edf",
+            "0x5280ab",
+            "0x79e80a",
+            "0x7a251b",
+            "0x7a296d",
+            "0xa456e4",
+            "0x7fcdc2ff214e"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb82f0f",
+            "corrected": "0xb82f0e",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb83003",
+            "corrected": "0xb83002",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xb87d50",
+            "corrected": "0xb87d4f",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xc635f0",
+            "corrected": "0xc635ef",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42ecc3",
+            "corrected": "0x42ecc2",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42e14c",
+            "corrected": "0x42e14b",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapping": "M7"
+          }
+        ],
+        "values": [
+          300,
+          63568134
+        ],
+        "labels": {}
+      }
+    ],
+    "maps": [
+      {
+        "id": "M1",
+        "line": 13,
+        "start": "0x00400000",
+        "limit": "0x00fcb000",
+        "file": "cppbench_server_main",
+        "literal": "  00400000-00fcb000: cppbench_server_main"
+      },
+      {
+        "id": "M2",
+        "line": 14,
+        "start": "0x7fcdc231e000",
+        "limit": "0x7fcdc2321000",
+        "file": "/libnss_cache-2.15.so",
+        "literal": "  7fcdc231e000-7fcdc2321000: /libnss_cache-2.15.so"
+      },
+      {
+        "id": "M3",
+        "line": 15,
+        "start": "0x7fcdc2522000",
+        "limit": "0x7fcdc252e000",
+        "file": "/libnss_files-2.15.so",
+        "literal": "  7fcdc2522000-7fcdc252e000: /libnss_files-2.15.so"
+      },
+      {
+        "id": "M4",
+        "line": 16,
+        "start": "0x7fcdc272f000",
+        "limit": "0x7fcdc28dd000",
+        "file": "/libc-2.15.so",
+        "literal": "  7fcdc272f000-7fcdc28dd000: /libc-2.15.so"
+      },
+      {
+        "id": "M5",
+        "line": 17,
+        "start": "0x7fcdc2ae7000",
+        "limit": "0x7fcdc2be2000",
+        "file": "/libm-2.15.so",
+        "literal": "  7fcdc2ae7000-7fcdc2be2000: /libm-2.15.so"
+      },
+      {
+        "id": "M6",
+        "line": 18,
+        "start": "0x7fcdc2de3000",
+        "limit": "0x7fcdc2dea000",
+        "file": "/librt-2.15.so",
+        "literal": "  7fcdc2de3000-7fcdc2dea000: /librt-2.15.so"
+      },
+      {
+        "id": "M7",
+        "line": 19,
+        "start": "0x7fcdc2feb000",
+        "limit": "0x7fcdc3003000",
+        "file": "/libpthread-2.15.so",
+        "literal": "  7fcdc2feb000-7fcdc3003000: /libpthread-2.15.so"
+      },
+      {
+        "id": "M8",
+        "line": 20,
+        "start": "0x7fcdc3208000",
+        "limit": "0x7fcdc320a000",
+        "file": "/libdl-2.15.so",
+        "literal": "  7fcdc3208000-7fcdc320a000: /libdl-2.15.so"
+      },
+      {
+        "id": "M9",
+        "line": 21,
+        "start": "0x7fcdc340c000",
+        "limit": "0x7fcdc3415000",
+        "file": "/libcrypt-2.15.so",
+        "literal": "  7fcdc340c000-7fcdc3415000: /libcrypt-2.15.so"
+      },
+      {
+        "id": "M10",
+        "line": 22,
+        "start": "0x7fcdc3645000",
+        "limit": "0x7fcdc3669000",
+        "file": "/ld-2.15.so",
+        "literal": "  7fcdc3645000-7fcdc3669000: /ld-2.15.so"
+      },
+      {
+        "id": "M11",
+        "line": 23,
+        "start": "0x7fff86bff000",
+        "limit": "0x7fff86c00000",
+        "file": "[vdso]",
+        "literal": "  7fff86bff000-7fff86c00000: [vdso]"
+      },
+      {
+        "id": "M12",
+        "line": 24,
+        "start": "0xffffffffff600000",
+        "limit": "0xffffffffff601000",
+        "file": "[vsyscall]",
+        "literal": "  ffffffffff600000-ffffffffff601000: [vsyscall]"
+      }
+    ],
+    "lines": 24
+  },
+  "base": {
+    "role": "base",
+    "hz": 3201000000,
+    "period": 100,
+    "rows": [
+      {
+        "id": "B1",
+        "role": "base",
+        "line": 6,
+        "literal": "       100     10 @ 0xbccc97 0xc61202 0x42ed5f 0x42edc1 0x42e15a 0x5261af 0x526edf 0x5280ab 0x79e80a 0x7a251b 0x7a296d 0xa456e4 0x7fcdc2ff214e",
+        "raw": {
+          "cycles": 100,
+          "observedCount": 10,
+          "stack": [
+            "0xbccc97",
+            "0xc61202",
+            "0x42ed5f",
+            "0x42edc1",
+            "0x42e15a",
+            "0x5261af",
+            "0x526edf",
+            "0x5280ab",
+            "0x79e80a",
+            "0x7a251b",
+            "0x7a296d",
+            "0xa456e4",
+            "0x7fcdc2ff214e"
+          ]
+        },
+        "locations": [
+          {
+            "raw": "0xbccc97",
+            "corrected": "0xbccc96",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xc61202",
+            "corrected": "0xc61201",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42ed5f",
+            "corrected": "0x42ed5e",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42edc1",
+            "corrected": "0x42edc0",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x42e15a",
+            "corrected": "0x42e159",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5261af",
+            "corrected": "0x5261ae",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x526edf",
+            "corrected": "0x526ede",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x5280ab",
+            "corrected": "0x5280aa",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x79e80a",
+            "corrected": "0x79e809",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a251b",
+            "corrected": "0x7a251a",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7a296d",
+            "corrected": "0x7a296c",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0xa456e4",
+            "corrected": "0xa456e3",
+            "mapping": "M1"
+          },
+          {
+            "raw": "0x7fcdc2ff214e",
+            "corrected": "0x7fcdc2ff214d",
+            "mapping": "M7"
+          }
+        ],
+        "values": [
+          1000,
+          3124
+        ],
+        "labels": {}
+      }
+    ],
+    "maps": [
+      {
+        "id": "M1",
+        "line": 8,
+        "start": "0x00400000",
+        "limit": "0x00fcb000",
+        "file": "cppbench_server_main",
+        "literal": "  00400000-00fcb000: cppbench_server_main"
+      },
+      {
+        "id": "M2",
+        "line": 9,
+        "start": "0x7fcdc231e000",
+        "limit": "0x7fcdc2321000",
+        "file": "/libnss_cache-2.15.so",
+        "literal": "  7fcdc231e000-7fcdc2321000: /libnss_cache-2.15.so"
+      },
+      {
+        "id": "M3",
+        "line": 10,
+        "start": "0x7fcdc2522000",
+        "limit": "0x7fcdc252e000",
+        "file": "/libnss_files-2.15.so",
+        "literal": "  7fcdc2522000-7fcdc252e000: /libnss_files-2.15.so"
+      },
+      {
+        "id": "M4",
+        "line": 11,
+        "start": "0x7fcdc272f000",
+        "limit": "0x7fcdc28dd000",
+        "file": "/libc-2.15.so",
+        "literal": "  7fcdc272f000-7fcdc28dd000: /libc-2.15.so"
+      },
+      {
+        "id": "M5",
+        "line": 12,
+        "start": "0x7fcdc2ae7000",
+        "limit": "0x7fcdc2be2000",
+        "file": "/libm-2.15.so",
+        "literal": "  7fcdc2ae7000-7fcdc2be2000: /libm-2.15.so"
+      },
+      {
+        "id": "M6",
+        "line": 13,
+        "start": "0x7fcdc2de3000",
+        "limit": "0x7fcdc2dea000",
+        "file": "/librt-2.15.so",
+        "literal": "  7fcdc2de3000-7fcdc2dea000: /librt-2.15.so"
+      },
+      {
+        "id": "M7",
+        "line": 14,
+        "start": "0x7fcdc2feb000",
+        "limit": "0x7fcdc3003000",
+        "file": "/libpthread-2.15.so",
+        "literal": "  7fcdc2feb000-7fcdc3003000: /libpthread-2.15.so"
+      },
+      {
+        "id": "M8",
+        "line": 15,
+        "start": "0x7fcdc3208000",
+        "limit": "0x7fcdc320a000",
+        "file": "/libdl-2.15.so",
+        "literal": "  7fcdc3208000-7fcdc320a000: /libdl-2.15.so"
+      },
+      {
+        "id": "M9",
+        "line": 16,
+        "start": "0x7fcdc340c000",
+        "limit": "0x7fcdc3415000",
+        "file": "/libcrypt-2.15.so",
+        "literal": "  7fcdc340c000-7fcdc3415000: /libcrypt-2.15.so"
+      },
+      {
+        "id": "M10",
+        "line": 17,
+        "start": "0x7fcdc3645000",
+        "limit": "0x7fcdc3669000",
+        "file": "/ld-2.15.so",
+        "literal": "  7fcdc3645000-7fcdc3669000: /ld-2.15.so"
+      },
+      {
+        "id": "M11",
+        "line": 18,
+        "start": "0x7fff86bff000",
+        "limit": "0x7fff86c00000",
+        "file": "[vdso]",
+        "literal": "  7fff86bff000-7fff86c00000: [vdso]"
+      },
+      {
+        "id": "M12",
+        "line": 19,
+        "start": "0xffffffffff600000",
+        "limit": "0xffffffffff601000",
+        "file": "[vsyscall]",
+        "literal": "  ffffffffff600000-ffffffffff601000: [vsyscall]"
+      }
+    ],
+    "lines": 19
+  },
+  "sourceTotal": [
+    3500,
+    690508213
+  ],
+  "baseTotal": [
+    1000,
+    3124
+  ],
+  "factors": [
+    0.2857142857142857,
+    0.000004524203972067744
+  ],
+  "comparisonRows": [
+    {
+      "id": "S1",
+      "sourceLine": 6,
+      "baseId": "B1",
+      "baseLine": 6,
+      "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+      "source": [
+        2700,
+        608881724
+      ],
+      "base": [
+        1000,
+        3124
+      ],
+      "normalized": [
+        771,
+        2755
+      ],
+      "absoluteDiff": [
+        1700,
+        608878600
+      ],
+      "normalizedDiff": [
+        -229,
+        -369
+      ]
+    },
+    {
+      "id": "S2",
+      "sourceLine": 7,
+      "baseId": null,
+      "baseLine": null,
+      "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xa42dc6\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+      "source": [
+        100,
+        23992
+      ],
+      "base": [
+        0,
+        0
+      ],
+      "normalized": [
+        29,
+        0
+      ],
+      "absoluteDiff": [
+        100,
+        23992
+      ],
+      "normalizedDiff": [
+        29,
+        0
+      ]
+    },
+    {
+      "id": "S3",
+      "sourceLine": 8,
+      "baseId": null,
+      "baseLine": null,
+      "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x4e969c\",\"M1\"],[\"0x4faa16\",\"M1\"],[\"0x4fc5f5\",\"M1\"],[\"0x4fd027\",\"M1\"],[\"0x4fd22f\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+      "source": [
+        200,
+        179943
+      ],
+      "base": [
+        0,
+        0
+      ],
+      "normalized": [
+        57,
+        1
+      ],
+      "absoluteDiff": [
+        200,
+        179943
+      ],
+      "normalizedDiff": [
+        57,
+        1
+      ]
+    },
+    {
+      "id": "S4",
+      "sourceLine": 9,
+      "baseId": null,
+      "baseLine": null,
+      "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87f07\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+      "source": [
+        100,
+        17778444
+      ],
+      "base": [
+        0,
+        0
+      ],
+      "normalized": [
+        29,
+        80
+      ],
+      "absoluteDiff": [
+        100,
+        17778444
+      ],
+      "normalizedDiff": [
+        29,
+        80
+      ]
+    },
+    {
+      "id": "S5",
+      "sourceLine": 10,
+      "baseId": null,
+      "baseLine": null,
+      "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x7aa74b\",\"M1\"],[\"0x7ab843\",\"M1\"],[\"0x7ab913\",\"M1\"],[\"0x79e9e8\",\"M1\"],[\"0x79e325\",\"M1\"],[\"0x4d299d\",\"M1\"],[\"0x4d4b7a\",\"M1\"],[\"0x4b7be7\",\"M1\"],[\"0x4b7ff0\",\"M1\"],[\"0x4d2dad\",\"M1\"],[\"0x79e809\",\"M1\"]]",
+      "source": [
+        100,
+        75976
+      ],
+      "base": [
+        0,
+        0
+      ],
+      "normalized": [
+        29,
+        0
+      ],
+      "absoluteDiff": [
+        100,
+        75976
+      ],
+      "normalizedDiff": [
+        29,
+        0
+      ]
+    },
+    {
+      "id": "S6",
+      "sourceLine": 11,
+      "baseId": null,
+      "baseLine": null,
+      "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82f0e\",\"M1\"],[\"0xb83002\",\"M1\"],[\"0xb87d4f\",\"M1\"],[\"0xc635ef\",\"M1\"],[\"0x42ecc2\",\"M1\"],[\"0x42e14b\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+      "source": [
+        300,
+        63568134
+      ],
+      "base": [
+        0,
+        0
+      ],
+      "normalized": [
+        86,
+        288
+      ],
+      "absoluteDiff": [
+        300,
+        63568134
+      ],
+      "normalizedDiff": [
+        86,
+        288
+      ]
+    }
+  ],
+  "modes": {
+    "absolute-base": {
+      "samples": [
+        {
+          "id": "S1",
+          "contributors": [
+            "S1",
+            "B1"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            1700,
+            608878600
+          ]
+        },
+        {
+          "id": "S2",
+          "contributors": [
+            "S2"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xa42dc6\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            100,
+            23992
+          ]
+        },
+        {
+          "id": "S3",
+          "contributors": [
+            "S3"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x4e969c\",\"M1\"],[\"0x4faa16\",\"M1\"],[\"0x4fc5f5\",\"M1\"],[\"0x4fd027\",\"M1\"],[\"0x4fd22f\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            200,
+            179943
+          ]
+        },
+        {
+          "id": "S4",
+          "contributors": [
+            "S4"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87f07\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            100,
+            17778444
+          ]
+        },
+        {
+          "id": "S5",
+          "contributors": [
+            "S5"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x7aa74b\",\"M1\"],[\"0x7ab843\",\"M1\"],[\"0x7ab913\",\"M1\"],[\"0x79e9e8\",\"M1\"],[\"0x79e325\",\"M1\"],[\"0x4d299d\",\"M1\"],[\"0x4d4b7a\",\"M1\"],[\"0x4b7be7\",\"M1\"],[\"0x4b7ff0\",\"M1\"],[\"0x4d2dad\",\"M1\"],[\"0x79e809\",\"M1\"]]",
+          "labels": {},
+          "values": [
+            100,
+            75976
+          ]
+        },
+        {
+          "id": "S6",
+          "contributors": [
+            "S6"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82f0e\",\"M1\"],[\"0xb83002\",\"M1\"],[\"0xb87d4f\",\"M1\"],[\"0xc635ef\",\"M1\"],[\"0x42ecc2\",\"M1\"],[\"0x42e14b\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            300,
+            63568134
+          ]
+        }
+      ],
+      "denominatorSamples": [
+        [
+          "S1",
+          "B1"
+        ],
+        [
+          "S2"
+        ],
+        [
+          "S3"
+        ],
+        [
+          "S4"
+        ],
+        [
+          "S5"
+        ],
+        [
+          "S6"
+        ]
+      ],
+      "denominators": [
+        2500,
+        690505089
+      ]
+    },
+    "absolute-diff-base": {
+      "samples": [
+        {
+          "id": "S1",
+          "contributors": [
+            "S1"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            2700,
+            608881724
+          ]
+        },
+        {
+          "id": "S2",
+          "contributors": [
+            "S2"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xa42dc6\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            100,
+            23992
+          ]
+        },
+        {
+          "id": "S3",
+          "contributors": [
+            "S3"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x4e969c\",\"M1\"],[\"0x4faa16\",\"M1\"],[\"0x4fc5f5\",\"M1\"],[\"0x4fd027\",\"M1\"],[\"0x4fd22f\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            200,
+            179943
+          ]
+        },
+        {
+          "id": "S4",
+          "contributors": [
+            "S4"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87f07\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            100,
+            17778444
+          ]
+        },
+        {
+          "id": "S5",
+          "contributors": [
+            "S5"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x7aa74b\",\"M1\"],[\"0x7ab843\",\"M1\"],[\"0x7ab913\",\"M1\"],[\"0x79e9e8\",\"M1\"],[\"0x79e325\",\"M1\"],[\"0x4d299d\",\"M1\"],[\"0x4d4b7a\",\"M1\"],[\"0x4b7be7\",\"M1\"],[\"0x4b7ff0\",\"M1\"],[\"0x4d2dad\",\"M1\"],[\"0x79e809\",\"M1\"]]",
+          "labels": {},
+          "values": [
+            100,
+            75976
+          ]
+        },
+        {
+          "id": "S6",
+          "contributors": [
+            "S6"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82f0e\",\"M1\"],[\"0xb83002\",\"M1\"],[\"0xb87d4f\",\"M1\"],[\"0xc635ef\",\"M1\"],[\"0x42ecc2\",\"M1\"],[\"0x42e14b\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            300,
+            63568134
+          ]
+        },
+        {
+          "id": "B1",
+          "contributors": [
+            "B1"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {
+            "pprof::base": [
+              "true"
+            ]
+          },
+          "values": [
+            -1000,
+            -3124
+          ]
+        }
+      ],
+      "denominatorSamples": [
+        [
+          "B1"
+        ]
+      ],
+      "denominators": [
+        1000,
+        3124
+      ]
+    },
+    "normalized-base": {
+      "samples": [
+        {
+          "id": "S1",
+          "contributors": [
+            "S1",
+            "B1"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            -229,
+            -369
+          ]
+        },
+        {
+          "id": "S2",
+          "contributors": [
+            "S2"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xa42dc6\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            29,
+            0
+          ]
+        },
+        {
+          "id": "S3",
+          "contributors": [
+            "S3"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x4e969c\",\"M1\"],[\"0x4faa16\",\"M1\"],[\"0x4fc5f5\",\"M1\"],[\"0x4fd027\",\"M1\"],[\"0x4fd22f\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            57,
+            1
+          ]
+        },
+        {
+          "id": "S4",
+          "contributors": [
+            "S4"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87f07\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            29,
+            80
+          ]
+        },
+        {
+          "id": "S5",
+          "contributors": [
+            "S5"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x7aa74b\",\"M1\"],[\"0x7ab843\",\"M1\"],[\"0x7ab913\",\"M1\"],[\"0x79e9e8\",\"M1\"],[\"0x79e325\",\"M1\"],[\"0x4d299d\",\"M1\"],[\"0x4d4b7a\",\"M1\"],[\"0x4b7be7\",\"M1\"],[\"0x4b7ff0\",\"M1\"],[\"0x4d2dad\",\"M1\"],[\"0x79e809\",\"M1\"]]",
+          "labels": {},
+          "values": [
+            29,
+            0
+          ]
+        },
+        {
+          "id": "S6",
+          "contributors": [
+            "S6"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82f0e\",\"M1\"],[\"0xb83002\",\"M1\"],[\"0xb87d4f\",\"M1\"],[\"0xc635ef\",\"M1\"],[\"0x42ecc2\",\"M1\"],[\"0x42e14b\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            86,
+            288
+          ]
+        }
+      ],
+      "denominatorSamples": [
+        [
+          "S1",
+          "B1"
+        ],
+        [
+          "S2"
+        ],
+        [
+          "S3"
+        ],
+        [
+          "S4"
+        ],
+        [
+          "S5"
+        ],
+        [
+          "S6"
+        ]
+      ],
+      "denominators": [
+        459,
+        738
+      ]
+    },
+    "normalized-diff-base": {
+      "samples": [
+        {
+          "id": "S1",
+          "contributors": [
+            "S1"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            771,
+            2755
+          ]
+        },
+        {
+          "id": "S2",
+          "contributors": [
+            "S2"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xa42dc6\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            29,
+            0
+          ]
+        },
+        {
+          "id": "S3",
+          "contributors": [
+            "S3"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x4e969c\",\"M1\"],[\"0x4faa16\",\"M1\"],[\"0x4fc5f5\",\"M1\"],[\"0x4fd027\",\"M1\"],[\"0x4fd22f\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            57,
+            1
+          ]
+        },
+        {
+          "id": "S4",
+          "contributors": [
+            "S4"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87f07\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            29,
+            80
+          ]
+        },
+        {
+          "id": "S5",
+          "contributors": [
+            "S5"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82b72\",\"M1\"],[\"0xb82bca\",\"M1\"],[\"0xb87eaa\",\"M1\"],[\"0xb8814b\",\"M1\"],[\"0x7aa74b\",\"M1\"],[\"0x7ab843\",\"M1\"],[\"0x7ab913\",\"M1\"],[\"0x79e9e8\",\"M1\"],[\"0x79e325\",\"M1\"],[\"0x4d299d\",\"M1\"],[\"0x4d4b7a\",\"M1\"],[\"0x4b7be7\",\"M1\"],[\"0x4b7ff0\",\"M1\"],[\"0x4d2dad\",\"M1\"],[\"0x79e809\",\"M1\"]]",
+          "labels": {},
+          "values": [
+            29,
+            0
+          ]
+        },
+        {
+          "id": "S6",
+          "contributors": [
+            "S6"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xb82f0e\",\"M1\"],[\"0xb83002\",\"M1\"],[\"0xb87d4f\",\"M1\"],[\"0xc635ef\",\"M1\"],[\"0x42ecc2\",\"M1\"],[\"0x42e14b\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {},
+          "values": [
+            86,
+            288
+          ]
+        },
+        {
+          "id": "B1",
+          "contributors": [
+            "B1"
+          ],
+          "stackKey": "[[\"0xbccc96\",\"M1\"],[\"0xc61201\",\"M1\"],[\"0x42ed5e\",\"M1\"],[\"0x42edc0\",\"M1\"],[\"0x42e159\",\"M1\"],[\"0x5261ae\",\"M1\"],[\"0x526ede\",\"M1\"],[\"0x5280aa\",\"M1\"],[\"0x79e809\",\"M1\"],[\"0x7a251a\",\"M1\"],[\"0x7a296c\",\"M1\"],[\"0xa456e3\",\"M1\"],[\"0x7fcdc2ff214d\",\"M7\"]]",
+          "labels": {
+            "pprof::base": [
+              "true"
+            ]
+          },
+          "values": [
+            -1000,
+            -3124
+          ]
+        }
+      ],
+      "denominatorSamples": [
+        [
+          "B1"
+        ]
+      ],
+      "denominators": [
+        1000,
+        3124
+      ]
+    }
+  },
+  "normalizedSourceTotal": [
+    1001,
+    3124
+  ],
+  "netDiff": [
+    1,
+    0
+  ],
+  "scope": "non-mean; no focus/ignore; no extra divide_by; report.New computes totals before address aggregation"
+}
