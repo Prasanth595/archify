@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
-    "sha256": "c2c335e6b990d166474d3ec82fc88224218d94a4fe48f2af0028a07f661c54df",
-    "bytes": 64201,
-    "gitBlob": "95447e2979423dbbfbdef59a8249f46d38738cbd"
+    "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
+    "sha256": "cf0d1f5db543b3b34e7368e17b9488a5d68e18b63c9aed9568aaa332a2aa4bd4",
+    "bytes": 65389,
+    "gitBlob": "415cb4d174b6d9451135bda2ff2c3859d4360f72"
   },
-  "policy": "50 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "52 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+      "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+      "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+      "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -1798,6 +1798,76 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-relation-search/experiments/relation-search",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/screenshots/candidate-enqueue.png"
+    },
+    {
+      "id": "route-alternative",
+      "commit": "d61217d82fd0dd844e77aab7434620b47b792d2b",
+      "branch": "codex/lab-route-alternative",
+      "directory": "experiments/route-alternative",
+      "group": "product",
+      "inputKind": "现成示例 / 等跳数路径切换",
+      "imagePath": "experiments/route-alternative/screenshots/candidate-alternative-blueprint.png",
+      "imageCaption": "在既有有向图中切换另一条等跳数路径；这是作者连接，不是实测流量或故障切换。",
+      "title": "Route alternative",
+      "value": "在既有有向图中切换另一条等跳数路径，保留默认路线与精确关系身份",
+      "limits": "固定e837基线；Route10/10与focused388/388、generated/ZIP macOS通过，自动browser-check通过；root五图/四观察含切换、键盘、reload、CSS窄屏；独立READY；不证明流量/failover/最佳路线，无触摸/AT/效率验收",
+      "readme": {
+        "path": "experiments/route-alternative/README.md",
+        "commit": "d61217d82fd0dd844e77aab7434620b47b792d2b",
+        "sha256": "d6c50bc145cc180ecf43cf8de3844eb5fd0c1f0dcc5a918cff56749b3f54bbbd",
+        "bytes": 14935,
+        "gitBlob": "de500f992f15778bac43ba7248435cde936cbd3d"
+      },
+      "image": {
+        "path": "experiments/route-alternative/screenshots/candidate-alternative-blueprint.png",
+        "commit": "d61217d82fd0dd844e77aab7434620b47b792d2b",
+        "sha256": "4f7bb3569fc3131482287ee799fec90899f950148f9d5053b3a16d49c3042fb7",
+        "bytes": 265263,
+        "gitBlob": "b5bee51d6f5dccbebb51393210632deb35c07569",
+        "width": 1440,
+        "height": 1100,
+        "mime": "image/png",
+        "caption": "在既有有向图中切换另一条等跳数路径；这是作者连接，不是实测流量或故障切换。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/d61217d82fd0dd844e77aab7434620b47b792d2b/experiments/route-alternative",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-route-alternative/experiments/route-alternative",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/d61217d82fd0dd844e77aab7434620b47b792d2b/experiments/route-alternative/screenshots/candidate-alternative-blueprint.png"
+    },
+    {
+      "id": "diff-matches",
+      "commit": "a8456ef796ab62ba490b03fa0c896ae206edb5ea",
+      "branch": "codex/lab-diff-matches",
+      "directory": "experiments/diff-matches",
+      "group": "product",
+      "inputKind": "固定上游fixture / diff文本对应",
+      "imagePath": "experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png",
+      "imageCaption": "同一diff中从删除文本跳到对应新增文本并返回；文本对应不证明语义移动或行为等价。",
+      "title": "Diff matching blocks",
+      "value": "在同一diff的删除与新增片段之间双向跳转，保留完整补丁和原行号",
+      "limits": "固定e837基线；63focused、9browser及最终同例扩展1pass，base缺链接预期失败；真实9666B历史patch114行双向跳转；四图/五观察，generated/ZIP macOS通过，独立READY；保留基线拆号和窄屏约10px溢出，不证明语义移动或效率",
+      "readme": {
+        "path": "experiments/diff-matches/README.md",
+        "commit": "a8456ef796ab62ba490b03fa0c896ae206edb5ea",
+        "sha256": "ad76e25a4facd38408cc2d4f49715398776f504982d54d691afd14294a3e2534",
+        "bytes": 12762,
+        "gitBlob": "b0e15a21c7ce03e680c621f0862f9e6390aa14c7"
+      },
+      "image": {
+        "path": "experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png",
+        "commit": "a8456ef796ab62ba490b03fa0c896ae206edb5ea",
+        "sha256": "6b97827e99c6954436d58c5dd17e8ff3294ac5d2149980c9042b12780e0556f8",
+        "bytes": 129469,
+        "gitBlob": "99b9d0e2ba3ab0a91c275de82463773421d525e1",
+        "width": 1440,
+        "height": 1100,
+        "mime": "image/png",
+        "caption": "同一diff中从删除文本跳到对应新增文本并返回；文本对应不证明语义移动或行为等价。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-diff-matches/experiments/diff-matches",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png"
     }
   ],
   "deferred": {
@@ -1808,11 +1878,11 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 50,
-    "images": 50,
-    "pngBytes": 12347479,
+    "experiments": 52,
+    "images": 52,
+    "pngBytes": 12742211,
     "groupCounts": {
-      "product": 14,
+      "product": 16,
       "offline": 15,
       "content": 21
     },

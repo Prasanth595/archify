@@ -1,39 +1,39 @@
 {
-  "kind": "derived browser evidence for fixed 50-item gallery; raw observations linked separately",
-  "status": "root-browser-observed-scoped-batch-closeout",
-  "hubSourceCommit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+  "kind": "derived browser evidence for fixed 52-item gallery; raw observations linked separately",
+  "status": "root-browser-observed-scoped-gallery",
+  "hubSourceCommit": "50c40e9da7e6029536d9c8df049012de4563483c",
   "hubReadme": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
-    "sha256": "c2c335e6b990d166474d3ec82fc88224218d94a4fe48f2af0028a07f661c54df",
-    "bytes": 64201,
-    "gitBlob": "95447e2979423dbbfbdef59a8249f46d38738cbd"
+    "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
+    "sha256": "cf0d1f5db543b3b34e7368e17b9488a5d68e18b63c9aed9568aaa332a2aa4bd4",
+    "bytes": 65389,
+    "gitBlob": "415cb4d174b6d9451135bda2ff2c3859d4360f72"
   },
   "artifacts": {
     "index.html": {
       "path": "index.html",
-      "sha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-      "bytes": 16592477
+      "sha256": "857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb",
+      "bytes": 17123752
     },
     "manifest.json": {
       "path": "manifest.json",
-      "sha256": "2d94130013febd67de7d7b3e101ffbfd09cbbdd66824ebc90c33a453c382e9a0",
-      "bytes": 113779
+      "sha256": "aa82f6fbb2b02addfb529f0b049542190bbdf93dc8707f53dc38745ee489ec3b",
+      "bytes": 118577
     },
     "selection.json": {
       "path": "selection.json",
-      "sha256": "141165d55cb5381a5f9b893f4686cf5b4c0bb256beff1f06bd30f02b8f5fba0d",
-      "bytes": 25309
+      "sha256": "ee12c2f5a8d51b2ff8be9cf5c1bb6df562c81c551963421997e653082be87a43",
+      "bytes": 26352
     },
     "verification.json": {
       "path": "verification.json",
-      "sha256": "6f6be5a48b430c270f6949b4b427af1521b75d8187d3c10159ee6054f6916833",
+      "sha256": "cd6155d4f76262c97d8c8d4b21707d39791eadbb4ca938411d5bae419d442c16",
       "bytes": 800
     },
     "README.md": {
       "path": "README.md",
-      "sha256": "1e187fb183cb43cc916ad04ada292476c8c03aecae6596cb0ec3122daee2c294",
-      "bytes": 31467
+      "sha256": "6579ba9b99aaecaa58c7861db58810e5393d1316b1f778ea46aba1e8a208e669",
+      "bytes": 35995
     },
     "template.html": {
       "path": "template.html",
@@ -44,221 +44,316 @@
       "path": "build.py",
       "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e",
       "bytes": 9748
+    },
+    "verify.py": {
+      "path": "verify.py",
+      "sha256": "d806985fcb08bdb071f2b528c35953aca80e522267a32b0611a2f8199617ab46",
+      "bytes": 4853
     }
   },
   "summary": {
-    "experiments": 50,
-    "images": 50,
-    "pngBytes": 12347479,
+    "experiments": 52,
+    "images": 52,
+    "pngBytes": 12742211,
     "groupCounts": {
-      "product": 14,
+      "product": 16,
       "offline": 15,
       "content": 21
-    }
+    },
+    "deferredCountedAsPublished": false
   },
   "rawSources": [
     {
-      "path": "screenshots50/desktop-search.json",
-      "sha256": "3856b99e74d4fa212b11a9565a0adc0cb68c30054c3f101c5150d31788e157c8",
-      "bytes": 1144
+      "path": "screenshots52/dialog-observations.json",
+      "sha256": "42720c0cef92fb0cc172ca607782aa66c265f83cf36c63aa52317d1c8e24a471",
+      "bytes": 1337
     },
     {
-      "path": "screenshots50/desktop-dialog.json",
-      "sha256": "837d14d66f52751fb9037a4882883548b30b7c84e6331738bf9872960844c5bf",
-      "bytes": 889
+      "path": "screenshots52/filter-observations.json",
+      "sha256": "91b833c7d8ec72a42f954d86fdc2980285dafaf647055047e8e12eb4a0850a53",
+      "bytes": 566
     },
     {
-      "path": "screenshots50/mobile-observations.json",
-      "sha256": "d8a3a9d2ba0df6ddef9cc32217d67f62eef7ee1eed8fd1135cc52904a0a88714",
-      "bytes": 635
+      "path": "screenshots52/narrow-observations.json",
+      "sha256": "ebf6a7cbb7aae983b2b00d584c1ad93bc202029197ddfe8dd8a903375d4c7d45",
+      "bytes": 384
     },
     {
-      "path": "screenshots50/remote-heads.json",
-      "sha256": "fa08bee5231edce343a0dfcc3c53cfe96204ec593075b01c312195aeccf3f78d",
-      "bytes": 11777
+      "path": "screenshots52/route-card-loaded-observations.json",
+      "sha256": "5842e7395d3cc590a2b22d46661fc33e962bd9d398bb6da83b8ba3efc4d133a6",
+      "bytes": 613
     }
   ],
   "screenshots": [
     {
-      "path": "screenshots50/desktop-relation-card.png",
-      "sha256": "216ab0534a95fda1a456c55f090163032d6249f3a4bc31a9e1c7fcba77154a27",
-      "bytes": 205093,
-      "width": 1425,
-      "height": 1501,
+      "path": "screenshots52/diff-card-narrow-dark.png",
+      "sha256": "f578507d6bb5c516e319d8c613f5235d05e2e3a9da912321f33fd1045432f04d",
+      "bytes": 177423,
+      "width": 375,
+      "height": 1751,
       "rootViewed": true,
-      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR."
+      "boundHtmlSha256": "857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "observationSource": "screenshots52/narrow-observations.json"
     },
     {
-      "path": "screenshots50/desktop-relation-dialog.png",
-      "sha256": "641b44be135d3544dac6a62481221a697c64a18a1b6b6fa65e4b6c59566a39d6",
-      "bytes": 176734,
+      "path": "screenshots52/diff-dialog.png",
+      "sha256": "da8ed64788c6dd3087e01dc8e7df537874310faeb7cbd49f18cba052870da276",
+      "bytes": 197964,
       "width": 1440,
       "height": 1100,
       "rootViewed": true,
-      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR."
+      "boundHtmlSha256": "857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "observationSource": "screenshots52/dialog-observations.json"
     },
     {
-      "path": "screenshots50/mobile-relation-card-dark.png",
-      "sha256": "7e7756c50c253333a57bed12b9a282897210751ee0b47695ba444e70d13961ff",
-      "bytes": 176002,
-      "width": 375,
-      "height": 1752,
+      "path": "screenshots52/route-card-loaded.png",
+      "sha256": "8a239a0186edd4c17c31b3f3f1ae727ad93b1a5287b952d1cf8913ef770936fe",
+      "bytes": 226337,
+      "width": 1425,
+      "height": 1501,
       "rootViewed": true,
-      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR."
+      "boundHtmlSha256": "857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "observationSource": "screenshots52/route-card-loaded-observations.json"
+    },
+    {
+      "path": "screenshots52/route-card.png",
+      "sha256": "d89b08c31b419bbc3bd3bd6f0bb76d860c3705d49543942a8e5abca8aeef7f10",
+      "bytes": 187767,
+      "width": 1425,
+      "height": 1501,
+      "rootViewed": true,
+      "boundHtmlSha256": "857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "status": "incomplete-lazy-preview-not-decoded",
+      "successfulIllustration": false,
+      "observationSource": "screenshots52/filter-observations.json"
+    },
+    {
+      "path": "screenshots52/route-dialog.png",
+      "sha256": "2dc83269ca28657025ea5b1f4901d2149f1f63c7bd15b609a3901528d1bddf13",
+      "bytes": 293442,
+      "width": 1440,
+      "height": 1100,
+      "rootViewed": true,
+      "boundHtmlSha256": "857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "observationSource": "screenshots52/dialog-observations.json"
     }
   ],
   "observations": {
-    "desktop": {
-      "kind": "original browser observations",
-      "observedAt": "2026-10-26T05:54:54.096Z",
-      "identities": {
-        "index.html": {
-          "sha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-          "bytes": 16592477
+    "dialog-observations": {
+      "observedAt": "2026-10-28T03:37:33.001Z",
+      "viewport": [
+        1440,
+        1100
+      ],
+      "observations": [
+        {
+          "name": "Route alternative",
+          "first": {
+            "title": "Route alternative",
+            "width": 1440,
+            "height": 1100,
+            "hash": "SHA-256 4f7bb3569fc3131482287ee799fec90899f950148f9d5053b3a16d49c3042fb7",
+            "pngSha256": "4f7bb3569fc3131482287ee799fec90899f950148f9d5053b3a16d49c3042fb7"
+          },
+          "original": {
+            "mode": "true",
+            "width": 1440,
+            "height": 1100
+          },
+          "returned": {
+            "active": "查看 Route alternative 完整原图",
+            "closed": true,
+            "src": null
+          },
+          "screenshot": "route-dialog.png"
         },
-        "manifest.json": {
-          "sha256": "2d94130013febd67de7d7b3e101ffbfd09cbbdd66824ebc90c33a453c382e9a0",
-          "bytes": 113779
-        },
-        "selection.json": {
-          "sha256": "141165d55cb5381a5f9b893f4686cf5b4c0bb256beff1f06bd30f02b8f5fba0d",
-          "bytes": 25309
+        {
+          "name": "Diff matching blocks",
+          "first": {
+            "title": "Diff matching blocks",
+            "width": 1440,
+            "height": 1100,
+            "hash": "SHA-256 6b97827e99c6954436d58c5dd17e8ff3294ac5d2149980c9042b12780e0556f8",
+            "pngSha256": "6b97827e99c6954436d58c5dd17e8ff3294ac5d2149980c9042b12780e0556f8"
+          },
+          "original": {
+            "mode": "true",
+            "width": 1440,
+            "height": 1100
+          },
+          "returned": {
+            "active": "查看 Diff matching blocks 完整原图",
+            "closed": true,
+            "src": null
+          },
+          "screenshot": "diff-dialog.png"
         }
-      },
-      "filters": [
+      ]
+    },
+    "filter-observations": {
+      "observedAt": "2026-10-28T03:36:56.725Z",
+      "counts": [
         {
-          "active": "all",
-          "text": "显示 50 / 50 项",
-          "visible": 50
+          "status": "显示 52 / 52 项",
+          "visible": 52
         },
         {
-          "active": "product",
-          "text": "显示 14 / 50 项",
-          "visible": 14
+          "status": "显示 16 / 52 项",
+          "visible": 16
         },
         {
-          "active": "offline",
-          "text": "显示 15 / 50 项",
+          "status": "显示 15 / 52 项",
           "visible": 15
         },
         {
-          "active": "content",
-          "text": "显示 21 / 50 项",
+          "status": "显示 21 / 52 项",
           "visible": 21
+        },
+        {
+          "status": "显示 52 / 52 项",
+          "visible": 52
         }
       ],
-      "search": {
-        "query": "Relation search",
-        "result": "显示 1 / 50 项",
-        "visible": [
-          "relation-search"
-        ],
-        "viewport": [
-          1440,
-          1100
-        ],
-        "pageWidth": 1425,
-        "theme": "light"
-      }
-    },
-    "dialog": {
-      "kind": "original browser observations",
-      "observedAt": "2026-10-26T05:55:25.234Z",
-      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-      "fit": {
-        "open": true,
-        "natural": [
-          1440,
-          1100
-        ],
-        "display": [
-          1327.984375,
-          1014.4375
-        ],
-        "decodedSha256": "2b7038d42dfb472b75fd4642dcbe554e1670a368b81e5ea0878ad6e7455b907e",
-        "decodedBytes": 141076,
-        "source": [
-          "https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/screenshots/candidate-enqueue.png"
-        ],
-        "viewport": [
-          1440,
-          1100
+      "routeSearch": {
+        "status": "显示 1 / 52 项",
+        "title": [
+          "Route alternative"
         ]
       },
-      "original": {
-        "button": "适应宽度",
-        "natural": [
-          1440,
-          1100
-        ],
-        "display": [
-          1440,
-          1100
-        ]
-      },
-      "close": {
-        "open": false,
-        "cleared": true,
-        "focus": "relation-search"
-      }
+      "viewport": [
+        1440,
+        1100
+      ]
     },
-    "mobile": {
-      "kind": "original browser observations",
-      "observedAt": "2026-10-26T05:55:47.427Z",
-      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
-      "card": {
+    "narrow-observations": {
+      "observedAt": "2026-10-28T03:37:35.326Z",
+      "narrow": {
         "viewport": [
           390,
           844
         ],
         "pageWidth": 375,
+        "clientWidth": 375,
         "theme": "dark",
-        "query": "Relation search",
-        "result": "显示 1 / 50 项",
-        "visible": [
-          "relation-search"
-        ],
-        "cardWidth": 347
+        "status": "显示 1 / 52 项"
       },
       "empty": {
-        "result": "显示 0 / 50 项",
-        "resetVisible": true,
-        "pageWidth": 375
+        "status": "显示 0 / 52 项",
+        "emptyVisible": true
       },
       "reset": {
-        "result": "显示 50 / 50 项",
-        "query": "",
-        "focus": "query",
-        "pageWidth": 375
+        "status": "显示 52 / 52 项",
+        "active": "query",
+        "query": ""
       }
+    },
+    "route-card-loaded-observations": {
+      "observedAt": "2026-10-28T03:37:59.953Z",
+      "observation": {
+        "status": "显示 1 / 52 项",
+        "loaded": true,
+        "natural": [
+          1440,
+          1100
+        ],
+        "rect": {
+          "x": 53.5,
+          "y": 709.3125,
+          "width": 427.328125,
+          "height": 228,
+          "top": 709.3125,
+          "right": 480.828125,
+          "bottom": 937.3125,
+          "left": 53.5
+        },
+        "viewport": [
+          1440,
+          1100
+        ]
+      },
+      "note": "Earlier route-card.png captured before the lazy preview decoded; it is retained as that incomplete observation. This capture waits for the actual image and two animation frames."
     }
+  },
+  "rootReportedScope": {
+    "allFivePngsViewed": true,
+    "filters": [
+      52,
+      16,
+      15,
+      21
+    ],
+    "bothNewCardsSearchable": true,
+    "bothDialogDataUriHashesMatchFixedImages": true,
+    "bothDialogNaturalAndOriginalDimensions": [
+      1440,
+      1100
+    ],
+    "bothEscapeClosedClearedAndReturnedFocus": true,
+    "dialogCanScroll": "Full image need not be simultaneously visible.",
+    "narrowCssViewport": [
+      390,
+      844
+    ],
+    "narrowPageWidth": 375,
+    "narrowClientWidth": 375,
+    "narrowHorizontalOverflow": false,
+    "emptyCount": 0,
+    "resetCount": 52,
+    "resetFocus": "query"
   },
   "remoteHeadSnapshot": {
-    "checkedAtUTC": "2026-10-26T05:56:14.447312+00:00",
-    "count": 50,
-    "allMatch": true,
+    "scope": "Only the two newly published experiment branches; previous 50 remote heads not re-queried in this batch.",
     "record": {
-      "path": "screenshots50/remote-heads.json",
-      "sha256": "fa08bee5231edce343a0dfcc3c53cfe96204ec593075b01c312195aeccf3f78d",
-      "bytes": 11777
-    }
+      "path": "../../2026-10-28/remote-heads.json",
+      "sha256": "18811ae5493c9e362fb6bb825ad17450a8d86cc7a439ade71d629938415c98ae",
+      "bytes": 526
+    },
+    "branches": [
+      {
+        "branch": "codex/lab-route-alternative",
+        "head": "d61217d82fd0dd844e77aab7434620b47b792d2b",
+        "actionsRuns": 0,
+        "checkRuns": 0
+      },
+      {
+        "branch": "codex/lab-diff-matches",
+        "head": "a8456ef796ab62ba490b03fa0c896ae206edb5ea",
+        "actionsRuns": 0,
+        "checkRuns": 0
+      }
+    ],
+    "zeroCheckRunsMeaning": "No recorded CI runs/checks; not a CI pass."
   },
-  "historical49": {
-    "path": "browser-evidence49.json",
-    "sha256": "d58dcb15cfbebd0349f85d2de25901e75bc99bbcda742c8d0eefbf74cc58d488",
-    "bytes": 7609
+  "historical50": {
+    "path": "browser-evidence50.json",
+    "sha256": "841e09a0b2bc2b6cd39a0e22523def5bfe95dcd4cf78fe81248f56fdab2d25bc",
+    "bytes": 8139
   },
   "limits": [
-    "Three new PNGs captured and viewed by root; no all-50 experiment rerun.",
-    "Current 50 observations cover filters, new card and desktop dialog, narrow dark card and empty/reset; old 49 evidence remains historical.",
-    "CSS viewport 390x844 uses desktop Chromium width emulation, not physical mobile or touch.",
-    "No external navigation, full Tab traversal, AT, OS clipboard, upstream execution or efficiency claim."
+    "route-card.png is an incomplete lazy-preview observation, retained and viewed by root; route-card-loaded.png is the completed decoded recapture.",
+    "Current gallery interactions do not rerun either experiment feature or all 52 experiments.",
+    "CSS viewport emulation is not physical mobile, touch or assistive-technology acceptance.",
+    "No full Tab traversal, external navigation or efficiency result; no human acceptance claim."
   ],
   "completion": {
-    "browserSpaceFinished": true,
-    "userInstruction": "Finish current batch then pause; start no new research or implementation."
+    "browserRoundFinished": true,
+    "rootReportedFinishResult": {
+      "finished": true,
+      "keptTabs": []
+    },
+    "scope": "Only this gallery browser round ended. The continuing research goal remains active."
   }
 }

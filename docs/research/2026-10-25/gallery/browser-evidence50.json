@@ -1,0 +1,264 @@
+{
+  "kind": "derived browser evidence for fixed 50-item gallery; raw observations linked separately",
+  "status": "root-browser-observed-scoped-batch-closeout",
+  "hubSourceCommit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+  "hubReadme": {
+    "path": "docs/research/2026-10-25/README.md",
+    "commit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+    "sha256": "c2c335e6b990d166474d3ec82fc88224218d94a4fe48f2af0028a07f661c54df",
+    "bytes": 64201,
+    "gitBlob": "95447e2979423dbbfbdef59a8249f46d38738cbd"
+  },
+  "artifacts": {
+    "index.html": {
+      "path": "index.html",
+      "sha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+      "bytes": 16592477
+    },
+    "manifest.json": {
+      "path": "manifest.json",
+      "sha256": "2d94130013febd67de7d7b3e101ffbfd09cbbdd66824ebc90c33a453c382e9a0",
+      "bytes": 113779
+    },
+    "selection.json": {
+      "path": "selection.json",
+      "sha256": "141165d55cb5381a5f9b893f4686cf5b4c0bb256beff1f06bd30f02b8f5fba0d",
+      "bytes": 25309
+    },
+    "verification.json": {
+      "path": "verification.json",
+      "sha256": "6f6be5a48b430c270f6949b4b427af1521b75d8187d3c10159ee6054f6916833",
+      "bytes": 800
+    },
+    "README.md": {
+      "path": "README.md",
+      "sha256": "1e187fb183cb43cc916ad04ada292476c8c03aecae6596cb0ec3122daee2c294",
+      "bytes": 31467
+    },
+    "template.html": {
+      "path": "template.html",
+      "sha256": "bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9",
+      "bytes": 16951
+    },
+    "build.py": {
+      "path": "build.py",
+      "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e",
+      "bytes": 9748
+    }
+  },
+  "summary": {
+    "experiments": 50,
+    "images": 50,
+    "pngBytes": 12347479,
+    "groupCounts": {
+      "product": 14,
+      "offline": 15,
+      "content": 21
+    }
+  },
+  "rawSources": [
+    {
+      "path": "screenshots50/desktop-search.json",
+      "sha256": "3856b99e74d4fa212b11a9565a0adc0cb68c30054c3f101c5150d31788e157c8",
+      "bytes": 1144
+    },
+    {
+      "path": "screenshots50/desktop-dialog.json",
+      "sha256": "837d14d66f52751fb9037a4882883548b30b7c84e6331738bf9872960844c5bf",
+      "bytes": 889
+    },
+    {
+      "path": "screenshots50/mobile-observations.json",
+      "sha256": "d8a3a9d2ba0df6ddef9cc32217d67f62eef7ee1eed8fd1135cc52904a0a88714",
+      "bytes": 635
+    },
+    {
+      "path": "screenshots50/remote-heads.json",
+      "sha256": "fa08bee5231edce343a0dfcc3c53cfe96204ec593075b01c312195aeccf3f78d",
+      "bytes": 11777
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots50/desktop-relation-card.png",
+      "sha256": "216ab0534a95fda1a456c55f090163032d6249f3a4bc31a9e1c7fcba77154a27",
+      "bytes": 205093,
+      "width": 1425,
+      "height": 1501,
+      "rootViewed": true,
+      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR."
+    },
+    {
+      "path": "screenshots50/desktop-relation-dialog.png",
+      "sha256": "641b44be135d3544dac6a62481221a697c64a18a1b6b6fa65e4b6c59566a39d6",
+      "bytes": 176734,
+      "width": 1440,
+      "height": 1100,
+      "rootViewed": true,
+      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR."
+    },
+    {
+      "path": "screenshots50/mobile-relation-card-dark.png",
+      "sha256": "7e7756c50c253333a57bed12b9a282897210751ee0b47695ba444e70d13961ff",
+      "bytes": 176002,
+      "width": 375,
+      "height": 1752,
+      "rootViewed": true,
+      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR."
+    }
+  ],
+  "observations": {
+    "desktop": {
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T05:54:54.096Z",
+      "identities": {
+        "index.html": {
+          "sha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+          "bytes": 16592477
+        },
+        "manifest.json": {
+          "sha256": "2d94130013febd67de7d7b3e101ffbfd09cbbdd66824ebc90c33a453c382e9a0",
+          "bytes": 113779
+        },
+        "selection.json": {
+          "sha256": "141165d55cb5381a5f9b893f4686cf5b4c0bb256beff1f06bd30f02b8f5fba0d",
+          "bytes": 25309
+        }
+      },
+      "filters": [
+        {
+          "active": "all",
+          "text": "显示 50 / 50 项",
+          "visible": 50
+        },
+        {
+          "active": "product",
+          "text": "显示 14 / 50 项",
+          "visible": 14
+        },
+        {
+          "active": "offline",
+          "text": "显示 15 / 50 项",
+          "visible": 15
+        },
+        {
+          "active": "content",
+          "text": "显示 21 / 50 项",
+          "visible": 21
+        }
+      ],
+      "search": {
+        "query": "Relation search",
+        "result": "显示 1 / 50 项",
+        "visible": [
+          "relation-search"
+        ],
+        "viewport": [
+          1440,
+          1100
+        ],
+        "pageWidth": 1425,
+        "theme": "light"
+      }
+    },
+    "dialog": {
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T05:55:25.234Z",
+      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+      "fit": {
+        "open": true,
+        "natural": [
+          1440,
+          1100
+        ],
+        "display": [
+          1327.984375,
+          1014.4375
+        ],
+        "decodedSha256": "2b7038d42dfb472b75fd4642dcbe554e1670a368b81e5ea0878ad6e7455b907e",
+        "decodedBytes": 141076,
+        "source": [
+          "https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/screenshots/candidate-enqueue.png"
+        ],
+        "viewport": [
+          1440,
+          1100
+        ]
+      },
+      "original": {
+        "button": "适应宽度",
+        "natural": [
+          1440,
+          1100
+        ],
+        "display": [
+          1440,
+          1100
+        ]
+      },
+      "close": {
+        "open": false,
+        "cleared": true,
+        "focus": "relation-search"
+      }
+    },
+    "mobile": {
+      "kind": "original browser observations",
+      "observedAt": "2026-10-26T05:55:47.427Z",
+      "boundHtmlSha256": "9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b",
+      "card": {
+        "viewport": [
+          390,
+          844
+        ],
+        "pageWidth": 375,
+        "theme": "dark",
+        "query": "Relation search",
+        "result": "显示 1 / 50 项",
+        "visible": [
+          "relation-search"
+        ],
+        "cardWidth": 347
+      },
+      "empty": {
+        "result": "显示 0 / 50 项",
+        "resetVisible": true,
+        "pageWidth": 375
+      },
+      "reset": {
+        "result": "显示 50 / 50 项",
+        "query": "",
+        "focus": "query",
+        "pageWidth": 375
+      }
+    }
+  },
+  "remoteHeadSnapshot": {
+    "checkedAtUTC": "2026-10-26T05:56:14.447312+00:00",
+    "count": 50,
+    "allMatch": true,
+    "record": {
+      "path": "screenshots50/remote-heads.json",
+      "sha256": "fa08bee5231edce343a0dfcc3c53cfe96204ec593075b01c312195aeccf3f78d",
+      "bytes": 11777
+    }
+  },
+  "historical49": {
+    "path": "browser-evidence49.json",
+    "sha256": "d58dcb15cfbebd0349f85d2de25901e75bc99bbcda742c8d0eefbf74cc58d488",
+    "bytes": 7609
+  },
+  "limits": [
+    "Three new PNGs captured and viewed by root; no all-50 experiment rerun.",
+    "Current 50 observations cover filters, new card and desktop dialog, narrow dark card and empty/reset; old 49 evidence remains historical.",
+    "CSS viewport 390x844 uses desktop Chromium width emulation, not physical mobile or touch.",
+    "No external navigation, full Tab traversal, AT, OS clipboard, upstream execution or efficiency claim."
+  ],
+  "completion": {
+    "browserSpaceFinished": true,
+    "userInstruction": "Finish current batch then pause; start no new research or implementation."
+  }
+}

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "f098176f8d642549acd9b699414df8adcf2c7b4d",
+  "hubCommit": "50c40e9da7e6029536d9c8df049012de4563483c",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -522,6 +522,26 @@
       "inputKind": "现成示例 / 关系文字查询",
       "imagePath": "experiments/relation-search/screenshots/candidate-enqueue.png",
       "imageCaption": "直接查找关系标签或 ID，并进入既有精确关系检查。"
+    },
+    {
+      "id": "route-alternative",
+      "commit": "d61217d82fd0dd844e77aab7434620b47b792d2b",
+      "branch": "codex/lab-route-alternative",
+      "directory": "experiments/route-alternative",
+      "group": "product",
+      "inputKind": "现成示例 / 等跳数路径切换",
+      "imagePath": "experiments/route-alternative/screenshots/candidate-alternative-blueprint.png",
+      "imageCaption": "在既有有向图中切换另一条等跳数路径；这是作者连接，不是实测流量或故障切换。"
+    },
+    {
+      "id": "diff-matches",
+      "commit": "a8456ef796ab62ba490b03fa0c896ae206edb5ea",
+      "branch": "codex/lab-diff-matches",
+      "directory": "experiments/diff-matches",
+      "group": "product",
+      "inputKind": "固定上游fixture / diff文本对应",
+      "imagePath": "experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png",
+      "imageCaption": "同一diff中从删除文本跳到对应新增文本并返回；文本对应不证明语义移动或行为等价。"
     }
   ],
   "deferred": {

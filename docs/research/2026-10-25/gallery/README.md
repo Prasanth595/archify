@@ -29,7 +29,37 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前50版静态绑定与浏览器观察
+## 当前52版静态绑定与实际浏览器观察
+
+固定 hub 为 [`50c40e9da7e6029536d9c8df049012de4563483c`](https://github.com/tt-a1i/archify/blob/50c40e9da7e6029536d9c8df049012de4563483c/docs/research/2026-10-25/README.md)：**52项 / 52张原PNG，16产品交互 / 15离线适配 / 21内容示例**。来源README为65,389 bytes，SHA-256 `cf0d1f5db543b3b34e7368e17b9488a5d68e18b63c9aed9568aaa332a2aa4bd4`。后续研究中心工作树变化不改变此固定快照。
+
+新增两项产品实验：Route alternative切换另一条等跳数路径，保留默认路线及精确关系身份；Diff matching blocks在同一diff的删除与新增文本之间双向跳转，保留完整补丁和原行号。它们分别固定远端提交 `d61217d82fd0dd844e77aab7434620b47b792d2b` 与 `a8456ef796ab62ba490b03fa0c896ae206edb5ea`。Route不代表流量、failover或最佳路线；Diff的文本对应不证明语义移动或效率收益，基线拆号和窄屏约10px溢出仍保留。实验自己的验证与未验收边界以固定README和卡片为准。
+
+本次使用原builder的 `--source-repo` 模式，从本hub仓库直接读取固定Git blob，并逐项核对52个本地origin跟踪引用与selection提交相同；没有恢复旧实验工作区，也没有核对这些工作区文件。新两条远端head由协调Agent单独核对；本次构建不声称旧50条远端head已重新查询。
+
+原50项selection记录、manifest完整item字段、完整卡片HTML及嵌入PNG原bytes逐项与构建前golden一致。模板、builder及verify未改，模板SHA-256仍为 `bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9`。原50版浏览器JSON逐字另存为 [browser-evidence50.json](browser-evidence50.json)，SHA-256 `841e09a0b2bc2b6cd39a0e22523def5bfe95dcd4cf78fe81248f56fdab2d25bc`；screenshots50及更早原件保留，其观察只属于历史固定页面。
+
+Python标准库构建与现有Node **22.23.3** 静态verify通过：52张PNG摘要、52/16/15/21卡片与筛选计数、固定链接和内联JS语法通过，外部资源引用0。原PNG共12,742,211 bytes。
+
+- `index.html`：17,123,752 bytes；SHA-256 `857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb`
+- `manifest.json`：SHA-256 `aa82f6fbb2b02addfb529f0b049542190bbdf93dc8707f53dc38745ee489ec3b`
+- `selection.json`：SHA-256 `ee12c2f5a8d51b2ff8be9cf5c1bb6df562c81c551963421997e653082be87a43`
+
+Root在Ego/Chromium实际操作上述冻结52版HTML，并逐张查看本次5张原始PNG。四份原始观察JSON与5张PNG按原字节保存在 [screenshots52](screenshots52/)；[browser-evidence.json](browser-evidence.json)是派生绑定，列当前静态产物、原件bytes/SHA、PNG IHDR尺寸及root查看状态，不冒称原始receipt。下节50版及更早观察仍仅属于其历史固定页面。
+
+桌面1440×1100：实际四筛选为52/16/15/21；Route与Diff均可搜索到一张卡片。两项完整图均直接解码嵌入data URI，SHA分别与固定PNG一致，天然尺寸与切原始尺寸后的显示尺寸均为1440×1100。Escape后弹窗关闭、图片src清空、焦点回到各自原卡片，三个条件均成立。完整图可以滚动，不声称整个图同时位于可见窗口。
+
+**首次Route卡片图保留未完成观察身份。** [route-card.png](screenshots52/route-card.png)在lazy预览解码前采集，图片区空白；root已查看，但不作为成功示图。[route-card-loaded-observations.json](screenshots52/route-card-loaded-observations.json)记录等待真实图片解码及两次动画帧后的重拍，loaded=true、natural1440×1100；下面主图使用root已查看的重拍原件，不覆盖首次材料。
+
+窄屏CSS视口390×844：暗色Diff卡片显示1/52，pageWidth与clientWidth同为375px，无水平溢出；空结果0/52，reset回52/52且焦点回query。375px是包含滚动条条件下的页面宽，整页PNG尺寸按IHDR另记，不由CSS viewport推断。
+
+![已等待解码的Route卡片](screenshots52/route-card-loaded.png)
+
+[Route完整图](screenshots52/route-dialog.png) · [Diff完整图](screenshots52/diff-dialog.png) · [390px暗色Diff卡片](screenshots52/diff-card-narrow-dark.png)。
+
+[两条新增分支远端记录](../../2026-10-28/remote-heads.json)只核Route与Diff的固定head；各0条Actions/check记录不代表CI通过。这里验收的是gallery图片总览，没有重跑两项实验功能、全部52项实验、实体手机触摸、AT、完整Tab遍历、外链导航或效率收益，也不等于真人接受。
+
+## 历史50版静态绑定与浏览器观察
 
 本批收尾固定 hub [`f098176f8d642549acd9b699414df8adcf2c7b4d`](https://github.com/tt-a1i/archify/blob/f098176f8d642549acd9b699414df8adcf2c7b4d/docs/research/2026-10-25/README.md)，50项 / 50张原PNG，分组 **14产品交互 / 15离线适配 / 21内容示例**。固定来源README为64,201 bytes，SHA-256 `c2c335e6b990d166474d3ec82fc88224218d94a4fe48f2af0028a07f661c54df`。
 
@@ -46,7 +76,7 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 - `selection.json`：SHA-256 `141165d55cb5381a5f9b893f4686cf5b4c0bb256beff1f06bd30f02b8f5fba0d`
 - 模板SHA-256仍为 `bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9`。
 
-Root已在Ego/Chromium实际操作上述固定50版HTML，并查看三张原始截图。[browser-evidence.json](browser-evidence.json)记录派生绑定；[screenshots50](screenshots50)保留三张原PNG及四份原始JSON，复制字节与checkout外原件相同。下节49版观察仍仅属于其固定旧HTML。
+Root已在Ego/Chromium实际操作上述固定50版HTML，并查看三张原始截图。[browser-evidence50.json](browser-evidence50.json)记录派生绑定；[screenshots50](screenshots50)保留三张原PNG及四份原始JSON，复制字节与checkout外原件相同。下节49版观察仍仅属于其固定旧HTML。
 
 桌面1440×1100：四筛选实得50/14/15/21，搜索Relation search仅显示新卡片；打开完整图后直接解码data URI，摘要与固定PNG一致，天然尺寸1440×1100，切原始尺寸后的显示尺寸也是1440×1100。Escape后等待弹窗关闭、图片src清空、焦点返回Relation search卡片，三个条件均成立。完整图按宽度缩放时可纵向滚动；没有声称整个图同时位于窗口可见区。
 
