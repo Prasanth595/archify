@@ -2,7 +2,7 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
-**当前状态（2026-10-28）：** 用户明确“继续吧”后目标保持 active。Diff matching blocks 与 Route alternative 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为52项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+**当前状态（2026-10-28）：** 用户明确“继续吧”后目标保持 active。Diff matching blocks、Route alternative 与后续 Diff file navigation 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为53项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
 
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
@@ -20,11 +20,11 @@
 
 第50项已推送 `codex/lab-relation-search`，精确head `e87a858d220c25c97aee4b5920cf59ab77723b41`，远端一致且工作区clean，独立终审READY；协调者报告精确head Actions runs=0、check-runs=0，不能称远端CI通过。索引收尾时间点：`2026-10-26T05:48:55Z`。已推分支不等于合入、发布、部署或人类验收；50项gallery现已补齐并做本批范围的浏览器检查；本批收尾后暂停，不宣布持续探索目标已完成。
 
-## 已推送的 52 个实验
+## 已推送的 53 个实验
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：已更新为52项，分组16产品交互、15离线适配、21内容示例。固定来源hub `50c40e9da7e6029536d9c8df049012de4563483c`，HTML SHA-256 `857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb`。原50项卡片和图片字节不变，旧浏览器证据单独保留。静态核验及root本批实际浏览器检查完成：四分组、新两项搜索、两张原图/原尺寸/Escape焦点、390px暗色卡片与空结果/reset；边界与原始记录见gallery。
+[离线图片浏览页](gallery/README.md)：当前仍为52项，正在增补第53项；历史52版分组16产品交互、15离线适配、21内容示例。固定来源hub `50c40e9da7e6029536d9c8df049012de4563483c`，HTML SHA-256 `857e6e1ec12a9d86cfd7b0cfdbdaaa43dc19a0224ec911e72bf9183c900e02bb`。原50项卡片和图片字节不变，旧浏览器证据单独保留。静态核验及root本批实际浏览器检查完成：四分组、新两项搜索、两张原图/原尺寸/Escape焦点、390px暗色卡片与空结果/reset；边界与原始记录见gallery。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |
@@ -80,6 +80,7 @@
 | [Relation search](https://github.com/tt-a1i/archify/tree/codex/lab-relation-search/experiments/relation-search) | 按关系标签或ID查找，显示两端并精确pin已有关系 | `e87a858d` | [固定README](https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/screenshots/candidate-enqueue.png) | 基线e837；独立READY，root5图/8原观察；enqueue从0节点到1关系、RAG三词精确ID、Route仍node-only；Finder9/FocusRoute22/locale37/core19，Semantic5pass1skip、generated/ZIP macOS通过；无手机/AT/全平台/效率证明，head Actions/checks均0；RAG生成15空白warning保留 |
 | [Route alternative](https://github.com/tt-a1i/archify/tree/codex/lab-route-alternative/experiments/route-alternative) | 在既有有向图中切换另一条等跳数路径，保留默认路线与精确关系身份 | `d61217d8` | [固定README](https://github.com/tt-a1i/archify/blob/d61217d82fd0dd844e77aab7434620b47b792d2b/experiments/route-alternative/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/d61217d82fd0dd844e77aab7434620b47b792d2b/experiments/route-alternative/screenshots/candidate-alternative-blueprint.png) | 固定e837基线；Route10/10与focused388/388、generated/ZIP macOS通过，自动browser-check通过；root五图/四观察含切换、键盘、reload、CSS窄屏；独立READY；不证明流量/failover/最佳路线，无触摸/AT/效率验收 |
 | [Diff matching blocks](https://github.com/tt-a1i/archify/tree/codex/lab-diff-matches/experiments/diff-matches) | 在同一diff的删除与新增片段之间双向跳转，保留完整补丁和原行号 | `a8456ef7` | [固定README](https://github.com/tt-a1i/archify/blob/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png) | 固定e837基线；63focused、9browser及最终同例扩展1pass，base缺链接预期失败；真实9666B历史patch114行双向跳转；四图/五观察，generated/ZIP macOS通过，独立READY；保留基线拆号和窄屏约10px溢出，不证明语义移动或效率 |
+| [Diff file navigation](https://github.com/tt-a1i/archify/tree/codex/lab-diff-file-navigation/experiments/diff-file-navigation) | 完整多文件diff增加局部目录，可直达每个文件段并返回原目录项 | `48f076f9` | [固定README](https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png) | 固定6ca6基线；27focused、39parser/CLI/package、1Chrome扩展及generated/ZIP通过；完整8309B历史patch153行原文不变，root当前5图/3观察及修前原件保留；两类fixture四页仅render/inspect/Ego，未finalize或CLI browser-check；独立READY，保留旧窄屏溢出及拆号，无效率/AT/组合验收 |
 
 上述前33项均经过另一位 Codex agent 的独立代码/证据复核，协调 agent 实际查看图片。测试数对应各实验自己的 focused tests，不是全仓测试；远端 CI、跨平台验证、实际用户效果与人类验收没有因此自动成立。生成 HTML/Markdown 保留原渲染器或适配器字节；源码 whitespace 检查与生成产物的既有空白分开记录。Payload test 和 State source 各清理了一处无语义影响空白，摘要同时保留实际测试 hash 与当前 hash。
 
