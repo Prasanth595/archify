@@ -2,7 +2,7 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
-**当前状态（2026-10-28）：** 人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization正在独立worktree实施，尚未交付、不计第59项。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为58项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+**当前状态（2026-10-28）：** 人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization已完成独立分支交付，计入第59项；gallery59本批观察另行记录。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为59项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
 
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
@@ -20,9 +20,9 @@
 
 第50项已推送 `codex/lab-relation-search`，精确head `e87a858d220c25c97aee4b5920cf59ab77723b41`，远端一致且工作区clean，独立终审READY；协调者报告精确head Actions runs=0、check-runs=0，不能称远端CI通过。索引收尾时间点：`2026-10-26T05:48:55Z`。已推分支不等于合入、发布、部署或人类验收；50项gallery现已补齐并做本批范围的浏览器检查；本批收尾后暂停，不宣布持续探索目标已完成。
 
-## 已推送的 58 个实验
+## 已推送的 59 个实验
 
-第57项Cycle region与第58项Profile contexts的独立远程分支已交付；58版gallery已从56版追加两项，本批gallery观察与远端交付见下方固定记录。
+第59项Profile normalization独立远程分支已交付；已发布58版gallery保持固定历史身份，59版静态增量与本批新卡片浏览器观察另行记录。
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
@@ -88,6 +88,7 @@
 | [Refactoring records](https://github.com/tt-a1i/archify/tree/codex/lab-refactoring-records/experiments/refactoring-records) | 将完整重构报告的4记录8位置投影为4个before/2个after与4条声明边，保留多源同目标和版本未知 | `bec86714` | [固定README](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/browser-evidence/overview-light-final.png) | 固定6ca6基线；离线导入完整3180B历史@Disabled expected，未运行detector；6focused逻辑同源复用，最终两页三阶段通过/独立复核，CLI browser-check未运行；root9原图与R0键盘/R1共享目标、未知base核对；URL-only非verified excerpt，390px局部record317/321、不能fit-readable保留，无语义等价/效率证据 |
 | [Cycle region](https://github.com/tt-a1i/archify/tree/codex/lab-cycle-region/experiments/cycle-region) | 查询作者Architecture图中所选点的整个循环区域，区分全部内部关系与单向跨区关系 | `d0709713` | [固定README](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png) | 固定6ca6基线；完整原创13节点14关系含自环；当前335相关测试及finalize/check/browser/ZIP通过，1552-origin数学oracle按同helper复用；root修后窄屏详情/e4滚动与桌面两次Escape实测；保留旧裁剪失败与base工具栏裁剪，非代码分析/故障/效率结论 |
 | [Profile contexts](https://github.com/tt-a1i/archify/tree/codex/lab-profile-contexts/experiments/profile-contexts) | 保留递归prefix、函数总计与全部原始采样记录，精确回溯贡献并返回入口 | `58935179` | [固定README](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png) | 完整speedscope上游fixture非采集workload；7tests/独立535断言通过，public三阶段通过但browser键盘gate仍fail68；同HTML继续Tab四组445/445，root真实贡献/原行/精确prefix闭环；11上下文与全部记录保留，390px base工具栏裁剪，不改写gate/块回链焦点/速度结论 |
+| [Profile normalization](https://github.com/tt-a1i/archify/tree/codex/lab-profile-normalization/experiments/profile-normalization) | 从完整pprof历史原件重建逐栈归一化差，显示六source共同决定factor及base/diff_base报告分母 | `b3c85c96` | [固定README](https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/evidence/browser/final3-count-light.png) | 固定6ca6基线；有界parser/算术适配而非采集workload；5tests/静态三阶段/strictcheck通过，8writing warnings；最终public browser FAIL164键盘预算，旧658四组真实Tab282/282按legend-only delta复用，不改绑最终035；root来源卡→6项→S2/12maps→factor及3分母节点实链，390px base toolbar裁切保留，非AT/人类/速度证明 |
 
 上述前33项均经过另一位 Codex agent 的独立代码/证据复核，协调 agent 实际查看图片。测试数对应各实验自己的 focused tests，不是全仓测试；远端 CI、跨平台验证、实际用户效果与人类验收没有因此自动成立。生成 HTML/Markdown 保留原渲染器或适配器字节；源码 whitespace 检查与生成产物的既有空白分开记录。Payload test 和 State source 各清理了一处无语义影响空白，摘要同时保留实际测试 hash 与当前 hash。
 

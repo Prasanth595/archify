@@ -1,6 +1,6 @@
 # 2026-10-28 阅读实验交付
 
-人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization正在独立worktree实施，尚未交付、不计第59项。下述各节active、候选、pending及旧pause文字保留相应历史时点。首批完成两个独立实验分支，后续再完成一个多文件Diff导航分支；未创建PR、合入、发布或安装。[最新GitHub排重](resume-status.md)记录dev `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`、main `d6059331abbddb49bca380ff46dca8ce33158b04`；两实验仍绑定原基线 `e837dc4cb83042d2b6c596e039692e25ec62c2da`。
+人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization独立远程分支已交付，现计第59项；gallery本批新卡观察另行记录。下述各节active、候选、pending及旧pause文字保留相应历史时点。首批完成两个独立实验分支，后续再完成一个多文件Diff导航分支；未创建PR、合入、发布或安装。[最新GitHub排重](resume-status.md)记录dev `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`、main `d6059331abbddb49bca380ff46dca8ce33158b04`；两实验仍绑定原基线 `e837dc4cb83042d2b6c596e039692e25ec62c2da`。
 
 | 实验 | 远程提交与图片 | 结果 |
 | --- | --- | --- |
@@ -166,3 +166,18 @@ Cycle region实施范围是当前显式单向authored Architecture图：在单�
 归一化可行性报告保留四份完整固定原件、fence及Apache全文：1551B source、821B base、2025B golden和11358B LICENSE。研究阶段只重新读固定源码与独立算术，未运行上游，渲染probe未启动，未生成可验收图或运行浏览器。Dataflow与报告分母是已选实施合同，不能把报告中的建议图/算术表称为实现已通过。后续必须用完整原件＋全数值表作为对照，实际检查factor→6source贡献→完整原行/maps→返回入口与标签/abs集合；计算、阅读操作和效率证据分别记账。
 
 [after58-candidate-search.json](after58-candidate-search.json)按root现成记录原字节保存：pprof0、normalization总52但只返回50、coverage标题5、folding标题0。它是bounded查询，`incomplete_results=false`不证明分页取完，未取两项不能算已检查，也不证明历史无重叠；查询原文和当时refs都保留。此研究整理未重新查询远端、运行renderer或打开浏览器；本轮记录研究决策，实验仍在实现，图与浏览器证据另行交付。
+
+
+## 第59项：完整profile原件的归一化与报告分母适配
+
+独立分支 `codex/lab-profile-normalization` 已提交并推送，root精确远端读回 `b3c85c9656212a4ba83430844603334132f120a9`，实验工作区clean。[固定README](https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/README.md)及[真实count主图](https://github.com/tt-a1i/archify/blob/b3c85c9656212a4ba83430844603334132f120a9/experiments/profile-normalization/evidence/browser/final3-count-light.png)保留完整pprof source/base/golden/Apache原件、6source＋1base与全部24条maps。它是有界parser/算术适配，归入offline，不是仅将旧图换一种样式或运行上游profiler；最终呈现使用native Architecture＋Explainer，早期Dataflow原件与失败身份保留。
+
+S1绝对差为+1700 count/+608878600ns，先按每metric全局factor逐项round再减B1得到−229/−369；S2/S5为count29/ns0仍保留。两算式见证各13节点/15关系、分母图9节点/8关系，区分base与diff_base的真实abs集合/标签，不用净差1/0作报告分母。最终035 HTML为1776392B，SHA-256 `035db27d3cac4cda94258f839116cc7e72db39cafa5ddb734184118e8e4c0a94`，不修改共享产品、schema或checker。
+
+最终5tests、静态validate/deliver/check与strict provenance check通过，8条writing warning保留。单独public browser gate仍FAIL164，全部keyboard traversal；旧658 HTML四组真实Tab在预算285步241/282，继续334步282/282，按legend-only delta及195 IDs/354静态属性次序不变复用，不能改称最终035的新Tab运行或PASS。独立原件推导/最终审查、完整164诊断和原始/公开副本摘要已在实验分支保存；没有重跑或刷绿历史门禁。
+
+root已逐张查看12张最终原PNG，实际hover/点击完成factor→来源卡→全部6source→S2完整原行/12maps→固定factor入口→native factor→Escape回opener；分母3节点各有实际来源阅读链。普通block返回BODY而不是任意旧焦点，显式focus＋Enter打开Viewer不代表全自然键盘链。1440桌面全部七输入数值可读；390px有too-small fallback和Viewer开/退，但base底部toolbar裁切，不能称mobile全部通过。baseline是完整escaped prose/ledger dump、含原block/node记号而无点击导航，不当作同等交互UX benchmark。沙盒iframe evaluate失败与section-number点击拦截均按原摘要保留。
+
+主图1440×1000、109862B，SHA-256 `14a930b66b43cdc0df0a1b9dab1b6c4d13d5be048078cb45826a875e6ed11457`。[远端派生记录](profile-normalization-remote.json)转述root实际gh API的精确head check-runs=0、Actions runs=0，不是CI通过。依赖仅复用既有匹配lock的临时symlink，root已仅unlink移除，无安装、merge或产品release；TaskSpace16已finish keep=[]一次。
+
+实验总账已为59项（18产品/20离线/21内容）；gallery当前已交付58版保留原身份。接下来仅做59版静态追加与root新卡片实际浏览器检查，不重跑旧58实验；sourceHub文档commit与后续gallery artifact/delivery commit分别固定。持续探索保持恢复状态，折叠边与coverage仍0新实验。
