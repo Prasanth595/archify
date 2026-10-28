@@ -3,6 +3,8 @@
   const data = document.getElementById('archify-edit-data');
   if (!data || !window.Archify?.focus) return;
   const state = JSON.parse(data.textContent), root = document.documentElement;
+  Object.assign(window.archifyI18nData.messages,state.editorMessages);
+  const t=window.viewerText;
   const svg = document.querySelector('.diagram-container svg'), container = svg.closest('.diagram-container');
   let enabled = false, busy = false, drag, releaseMotion, signature = '', frame, savedReload = false, ignoreClick = false, selectedKey = state.selection;
   let history = [structuredClone(state.scene.edges).map(edge=>{
@@ -14,29 +16,29 @@
   const selected = () => edges().find(e => e.key === selectedKey);
   const element = (tag, text) => {const n=document.createElement(tag);if(text)n.textContent=text;return n;};
   const draftControl=element('div');draftControl.className='connection-draft-control';
-  const toggle=element('button','Draft');toggle.id='btn-draft';toggle.type='button';toggle.setAttribute('aria-pressed','false');
-  toggle.setAttribute('aria-controls','connection-draft-panel');toggle.title='Toggle draft editing';
+  const toggle=element('button',t('editor.draft'));toggle.id='btn-draft';toggle.type='button';toggle.setAttribute('aria-pressed','false');toggle.setAttribute('data-toolbar-control','');
+  toggle.setAttribute('aria-controls','connection-draft-panel');toggle.title=t('editor.toggle');
   const panel=element('div');panel.id='connection-draft-panel';panel.className='connection-adjust';panel.hidden=true;
   draftControl.append(toggle,panel);
   document.getElementById('btn-present').before(draftControl);
   const status=element('p');status.className='connection-adjust-status';status.setAttribute('role','status');
   const undo=element('button','↶'),redo=element('button','↷');undo.type=redo.type='button';
-  for(const [button,label,key] of [[undo,'Undo','Ctrl/Cmd+Z'],[redo,'Redo','Ctrl/Cmd+Shift+Z']]) {button.className='connection-draft-history';button.setAttribute('aria-label',label);button.title=label+' ('+key+')';}
+  for(const [button,label,key] of [[undo,t('editor.undo'),'Ctrl/Cmd+Z'],[redo,t('editor.redo'),'Ctrl/Cmd+Shift+Z']]) {button.className='connection-draft-history';button.setAttribute('data-toolbar-control','');button.setAttribute('aria-label',label);button.title=label+' ('+key+')';}
   draftControl.insertBefore(undo,panel);draftControl.insertBefore(redo,panel);
-  const dismiss=element('button','×');dismiss.type='button';dismiss.className='connection-adjust-dismiss';dismiss.setAttribute('aria-label','Dismiss edit message');
-  const details=element('details'),summary=element('summary','Technical details'),diagnostic=element('pre');details.hidden=true;details.append(summary,diagnostic);
+  const dismiss=element('button','×');dismiss.type='button';dismiss.className='connection-adjust-dismiss';dismiss.setAttribute('aria-label',t('viewer.common.close'));
+  const details=element('details'),summary=element('summary',t('editor.details')),diagnostic=element('pre');details.hidden=true;details.append(summary,diagnostic);
   panel.append(dismiss,status,details);
   const handles=element('div');handles.className='connection-adjust-handles';container.append(handles);
   const nodeHandles=element('div');nodeHandles.className='connection-node-handles';container.append(nodeHandles);
   const preview=document.createElementNS(svg.namespaceURI,'svg');preview.classList.add('connection-create-preview');preview.setAttribute('aria-hidden','true');container.append(preview);
-  const createForm=element('form');createForm.className='connection-create-form';createForm.hidden=true;createForm.setAttribute('role','dialog');createForm.setAttribute('aria-label','New connection');
-  const createHeading=element('p'),labelField=element('label','Label'),labelInput=element('input');labelInput.name='label';labelInput.maxLength=240;labelField.append(labelInput);
-  const createButton=element('button','Create'),cancelButton=element('button','Cancel');createButton.type='submit';cancelButton.type='button';createForm.append(createHeading,labelField,createButton,cancelButton);document.body.append(createForm);
+  const createForm=element('form');createForm.className='connection-create-form';createForm.hidden=true;createForm.setAttribute('role','dialog');createForm.setAttribute('aria-label',t('editor.newConnection'));
+  const createHeading=element('p'),labelField=element('label',t('editor.label')),labelInput=element('input');labelInput.name='label';labelInput.maxLength=240;labelField.append(labelInput);
+  const createButton=element('button',t('editor.create')),cancelButton=element('button',t('editor.cancel'));createButton.type='submit';cancelButton.type='button';createForm.append(createHeading,labelField,createButton,cancelButton);document.body.append(createForm);
   let connectionStart,pendingConnection,hoveredNode,portSignature='';
   const createdViews=new Map();
   const save=element('button');save.type='button';save.setAttribute('role','menuitem');save.tabIndex=-1;
-  const copy=element('span');copy.className='export-item-copy';const title=element('strong','Save changes');
-  copy.append(title,element('small','Apply draft to source JSON + verified HTML'));save.append(copy);
+  const copy=element('span');copy.className='export-item-copy';const title=element('strong',t('editor.save'));
+  copy.append(title,element('small',t('editor.saveHint')));save.append(copy);
   document.querySelector('#export-menu .export-menu-section').prepend(save);
   const point=(p)=>new DOMPoint(...p).matrixTransform(svg.getScreenCTM());
   const local=e=>new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());
@@ -54,7 +56,7 @@
       return result;
     });
   }
-  function hint(message, detail='', error=false) {status.textContent=message;details.hidden=!detail;diagnostic.textContent=detail;details.open=false;panel.hidden=!error;}
+  function hint(message, detail='', error=false) {status.textContent=message;status.dataset.error=String(error);details.hidden=!detail;diagnostic.textContent=detail;details.open=false;panel.hidden=!error;}
   function attribute(node,name,value) {
     if(node.getAttribute(name)===value)return;
     if(value===null)node.removeAttribute(name);else node.setAttribute(name,value);
@@ -77,9 +79,9 @@
   }
   function sync() {
     for(const item of paths)item.n.classList.toggle('connection-draft-selected',enabled&&item.key===selectedKey);
-    toggle.disabled=busy;toggle.textContent=busy?'Saving…':enabled?'Draft on':'Draft';toggle.setAttribute('aria-pressed',String(enabled));
+    toggle.disabled=busy;toggle.textContent=t(busy?'editor.saving':enabled?'editor.draftOn':'editor.draft');toggle.setAttribute('aria-pressed',String(enabled));
     undo.hidden=redo.hidden=!enabled;undo.disabled=busy||!!pendingConnection||!!connectionStart||index===0;redo.disabled=busy||!!pendingConnection||!!connectionStart||index===history.length-1;
-    save.disabled=busy||!!pendingConnection||!!connectionStart||!edits().length;title.textContent=edits().length?'Save changes · draft':'Save changes';renderHandles();renderNodePorts();
+    save.disabled=busy||!!pendingConnection||!!connectionStart||!edits().length;title.textContent=t(edits().length?'editor.saveDraft':'editor.save');renderHandles();renderNodePorts();
   }
   function remember(next) {
     for(const edge of next){
@@ -111,11 +113,11 @@
     try {
       const response=await fetch('/edit/save',{method:'POST',headers:{'Content-Type':'application/json','X-Archify-Edit-Token':state.token},body:JSON.stringify({revision:state.revision,key:selected()?.key,edits:edits()})});
       const result=await response.json();
-      if(!response.ok){hint(result.error||'Not saved. Your draft is kept.',result.details||'',true);return;}
+      if(!response.ok){hint(t('editor.saveFailure'),result.details||result.error||'',true);return;}
       history=[structuredClone(result.scene.edges)];index=0;
       savedReload=true;
       location.reload();
-    }catch(error){hint('Not saved. Your draft is kept.',error.message,true);}
+    }catch(error){hint(t('editor.saveFailure'),error.message,true);}
     finally{busy=false;sync();}
   }
   toggle.addEventListener('click',e=>{e.stopPropagation();enable(!enabled);});
@@ -135,7 +137,7 @@
     if(enabled&&svg.contains(e.target)){if(connectionStart)cancelConnection();const target=draftTarget(e);if(target)selectDraft(target.dataset.relationshipHitKey??target.dataset.edgeKey);e.preventDefault();e.stopImmediatePropagation();}
   },true);
   for(const type of ['pointerover','pointerout','focusin','focusout'])window.addEventListener(type,e=>{if(enabled&&svg.contains(e.target))e.stopPropagation();},true);
-  window.addEventListener('keydown',e=>{if(!['Enter',' '].includes(e.key))return;if(inspectCreated(e))return;if(enabled&&svg.contains(e.target)){const target=draftTarget(e);if(target)selectDraft(target.dataset.relationshipHitKey??target.dataset.edgeKey);e.preventDefault();e.stopImmediatePropagation();}},true);
+  window.addEventListener('keydown',e=>{if(e.isComposing||e.keyCode===229||!['Enter',' '].includes(e.key))return;if(inspectCreated(e))return;if(enabled&&svg.contains(e.target)){const target=draftTarget(e);if(target)selectDraft(target.dataset.relationshipHitKey??target.dataset.edgeKey);e.preventDefault();e.stopImmediatePropagation();}},true);
   undo.addEventListener('click',()=>restore(-1));redo.addEventListener('click',()=>restore(1));
   save.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();Archify.exportMenu.close(false);saveDraft();},true);
   function svgElement(tag,attributes){const n=document.createElementNS(svg.namespaceURI,tag);for(const [key,value] of Object.entries(attributes||{}))n.setAttribute(key,String(value));return n;}
@@ -148,7 +150,7 @@
       const attrs={'data-edge-key':edge.key,'data-edge-id':edge.id,'data-edge-from':edge.from,'data-edge-to':edge.to,'data-edge-label':edge.label};
       const d=base.points.map((p,i)=>`${i?'L':'M'}${p.join(',')}`).join(' ');
       const line=svgElement('path',{...attrs,d,'data-composition-points':base.points.map(p=>p.join(',')).join(';'),class:'a-default',fill:'none','stroke-width':1.5,'marker-end':'url(#arrowhead)'});
-      const hit=svgElement('path',{d,'data-relationship-hit-key':edge.key,'data-relationship-hit-overlay':'',class:'connection-draft-hit',tabindex:0,role:'button','aria-label':`Inspect relationship: ${edge.from} to ${edge.to}${edge.label?', '+edge.label:''}`});group.append(line,hit);
+      const hit=svgElement('path',{d,'data-relationship-hit-key':edge.key,'data-relationship-hit-overlay':'',class:'connection-draft-hit',tabindex:0,role:'button','aria-label':t('viewer.passport.relationship.inspect',{index:Number(edge.key)+1,total:edges().length,from:state.scene.nodes.find(n=>n.id===edge.from).label,to:state.scene.nodes.find(n=>n.id===edge.to).label,label:edge.label||t('viewer.passport.relationship.connectsTo')})});group.append(line,hit);
       paths.push({n:line,key:edge.key,d,points:line.getAttribute('data-composition-points'),created:true});hitPaths.push({n:hit,key:edge.key,created:true});
       if(edge.label){const box=base.labelBox,g=svgElement('g',{...attrs,class:'connection-adjust-label'}),mask=svgElement('rect',{x:box.x,y:box.y,width:box.width,height:box.height,rx:3,class:'c-mask'}),text=svgElement('text',{x:base.labelAnchor[0],y:base.labelAnchor[1],class:'t-muted','font-size':8,'text-anchor':'middle'});text.textContent=edge.label;g.append(mask,text);group.append(g);labels.push({n:g,key:edge.key,transform:null,created:true});}
       svg.append(group);createdViews.set(edge.key,{node:group,id:edge.id});
@@ -193,19 +195,19 @@
       const active=connectionStart?.from===candidate.id&&connectionStart.fromSide===side;
       const h=existing.get(key)||portButton(candidate,side);if(!h.parentNode)nodeHandles.append(h);
       h.textContent=active?'−':'+';h.setAttribute('aria-pressed',String(active));
-      h.setAttribute('aria-label',active?'Cancel connection':`Connect ${connectionStart?'to':'from'} ${candidate.label} ${side}`);h.title=active?'Cancel connection':`Select ${connectionStart?'end':'start'}: ${candidate.label} ${side}`;
+      h.setAttribute('aria-label',t(active?'editor.cancelConnection':connectionStart?'editor.end':'editor.start',{label:candidate.label,side:t('editor.side.'+side)}));h.title=h.getAttribute('aria-label');
       const p=point(nodeAnchor(candidate,side));h.style.left=p.x-box.left+'px';h.style.top=p.y-box.top+'px';
     }
   }
   function cancelConnection(){pendingConnection=null;connectionStart=null;createForm.hidden=true;preview.replaceChildren();portSignature='';sync();}
   for(const type of ['pointerover','focusin'])window.addEventListener(type,event=>{if(!enabled||!state.canCreate||connectionStart||pendingConnection)return;const node=event.target.closest?.('[data-node-id]');if(node){hoveredNode=node.dataset.nodeId;renderNodePorts();}},true);
   cancelButton.addEventListener('click',()=>{cancelConnection();toggle.focus();});
-  createForm.addEventListener('keydown',event=>{if(event.key==='Escape'&&!busy){event.preventDefault();event.stopPropagation();cancelConnection();toggle.focus();}});
+  createForm.addEventListener('keydown',event=>{if(event.isComposing||event.keyCode===229)return;if(event.key==='Escape'&&!busy){event.preventDefault();event.stopPropagation();cancelConnection();toggle.focus();}});
   createForm.addEventListener('submit',async event=>{
     event.preventDefault();if(!pendingConnection||busy)return;busy=true;createButton.disabled=cancelButton.disabled=true;sync();
-    try{const response=await fetch('/edit/connect',{method:'POST',headers:{'Content-Type':'application/json','X-Archify-Edit-Token':state.token},body:JSON.stringify({revision:state.revision,edits:edits(),connection:{...pendingConnection,label:labelInput.value}})});const result=await response.json();if(!response.ok){hint(result.error,result.details||'',true);return;}
+    try{const response=await fetch('/edit/connect',{method:'POST',headers:{'Content-Type':'application/json','X-Archify-Edit-Token':state.token},body:JSON.stringify({revision:state.revision,edits:edits(),connection:{...pendingConnection,label:labelInput.value}})});const result=await response.json();if(!response.ok){hint(t('editor.connectBlocked'),result.details||result.error||'',true);return;}
       const edge=result.edge;edge.created=true;edge.base=structuredClone(edge);if(edge.labelAnchor){const q=nearest(edge.labelAnchor,edge.points);edge.labelBinding={segment:q.segment,t:q.t,offset:edge.labelAnchor.map((v,i)=>v-q.point[i])};}selectedKey=edge.key;pendingConnection=null;createForm.hidden=true;preview.replaceChildren();remember([...structuredClone(edges()),edge]);
-    }catch(error){hint('The connection could not be created. The draft is unchanged.',error.message,true);}finally{busy=false;createButton.disabled=cancelButton.disabled=false;sync();}
+    }catch(error){hint(t('editor.connectFailure'),error.message,true);}finally{busy=false;createButton.disabled=cancelButton.disabled=false;sync();}
   });
   function offsetRoute(points,i,delta) {
     const next=points.map(p=>[...p]),a=points[i],b=points[i+1],horizontal=a[1]===b[1];
@@ -349,7 +351,7 @@
     for(let i=0;i<current.points.length-1;i++){
       if(current.points.length!==2&&(i===0||i===current.points.length-2))continue;
       const a=current.points[i],b=current.points[i+1];if((a[0]!==b[0]&&a[1]!==b[1])||Math.hypot(a[0]-b[0],a[1]-b[1])<8)continue;
-      const handle=element('button');handle.type='button';handle.className='connection-adjust-handle';handle.setAttribute('aria-label','Move route segment');
+      const handle=element('button');handle.type='button';handle.className='connection-adjust-handle';handle.setAttribute('aria-label',t('editor.moveSegment'));
       handle.dataset.segment=String(i);
       const p=point([(a[0]+b[0])/2,(a[1]+b[1])/2]);handle.style.left=p.x-box.left+'px';handle.style.top=p.y-box.top+'px';
       const edit={key:current.key,field:'via',segment:i,horizontal:a[1]===b[1]};
@@ -364,6 +366,7 @@
   new ResizeObserver(schedule).observe(container);container.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('beforeunload',e=>{if(!savedReload&&edits().length){e.preventDefault();e.returnValue='';}});
   document.addEventListener('keydown',e=>{
+    if(e.isComposing||e.keyCode===229)return;
     if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.target.isContentEditable)return;
     if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'&&(enabled||edits().length)){e.preventDefault();saveDraft();return;}
     if(!enabled)return;

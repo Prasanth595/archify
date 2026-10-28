@@ -10,6 +10,7 @@ import { captureAtomicOutput, captureRegularFileBinding, publishRegularFileBindi
 import { checkEditScope, editableCollection, readEditScene, sameNativePage, appendEditorControls } from './model.mjs';
 import { prepareEdits, proposeConnection } from './create.mjs';
 import { linkedPages } from './linked-pages.mjs';
+import { resolveCatalog } from '../renderers/shared/i18n.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -81,7 +82,11 @@ export async function startEditor(options) {
   let mainUrl = '';
   const links = await linkedPages(path.dirname(output),path.basename(output),()=>mainUrl);
 
-  function config() { return { token, revision, selection, scene, impact, canCreate:type==='architecture' }; }
+  function config() {
+    const {messages}=resolveCatalog(accepted.meta?.locale,accepted.meta?.translations);
+    const editorMessages=Object.fromEntries(Object.entries(messages).filter(([key])=>key.startsWith('editor.')));
+    return { token, revision, selection, scene, impact, canCreate:type==='architecture', editorMessages };
+  }
   function initialFailure(message) {
     if (!scene) rejectReady(Error(message));
   }

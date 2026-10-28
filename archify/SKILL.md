@@ -30,6 +30,8 @@ When the user supplies a frozen candidate, run `finalize` first as one CLI invoc
 
 `finalize` includes a bounded update check in its delivery receipt; see Update awareness.
 
+For user-driven local line or label adjustments, read [Connection adjustment](references/connection-adjustment.md). It requires the source JSON and saves through the native finalization pipeline.
+
 ## Native diagram authoring
 
 Use this path for ordinary generation. Read branch references only when their stated trigger applies.

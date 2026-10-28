@@ -2,6 +2,7 @@
 // Adjacent heavy suites use opposite indices for CI's two modulo shards.
 export const browserTestFiles = [
   'finalize-browser.test.mjs',
+  'connection-edit-browser.test.mjs',
   'desktop-reader-browser.test.mjs',
   'reader-readability-maintained-browser.test.mjs',
   'reader-layout-browser.test.mjs',

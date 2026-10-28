@@ -5,6 +5,11 @@ Use `--no-open` to print the local URL without launching a browser. Quality and
 repository options are the same as native preview. Architecture, workflow,
 dataflow, class and ERD diagrams expose editable route geometry.
 
+Controls use the source's `meta.locale` and `meta.translations`, through the
+existing locale catalogs. Labels and other authored content are preserved.
+Toolbar navigation and IME handling follow the native Viewer. Engine diagnostics
+remain available unchanged under Technical details.
+
 Architecture diagrams also support new connections. In Draft, hover a node and
 click a **+** on an unused side, then click the destination node's connection
 point. Available destination points appear after selecting the start. Click the

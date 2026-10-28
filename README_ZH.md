@@ -425,6 +425,8 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 
 `preview` 是显式启用的桌面创作模式，不是默认后台服务：它只在随机端口监听 `127.0.0.1`，只观察指定 JSON，失败时保留上一份验证输出，并通过 Ctrl-C 停止。测试或准备手动打开打印出的本地 URL 时可加 `--no-open`。生成的 HTML 不会携带 Preview Runtime。
 
+需要手动微调连线时，运行 `node bin/archify.mjs edit architecture source.json output.html`。本地草稿模式可调整线路和标签；架构图还支持点选两个空闲连接点、填写标签来新增连线。通过 **导出 → 保存更改** 统一回写源 JSON，并重新生成经过核验的原生 HTML。支持范围与限制见[连线调整说明](archify/references/connection-adjustment.md)。
+
 `deliver --open` 适合一次性的本地交互交付。它默认关闭，并且只在验证成品原子提交后执行；系统无法打开时，交付仍保持成功，JSON 只写 stdout，stderr 会给出可手动打开的绝对路径。
 
 失败时，`validate --json` 和 `deliver --json` 仍然只输出一个 JSON 对象。读取 `diagnostics[]`，只修改其中 `subject` 指向的对象，并使用 `supportedFixes` 列出的修复方式；不要整图重写，也不要突破 Skill 最多两轮的聚焦修复上限。确定性诊断仍不等于视觉复核。

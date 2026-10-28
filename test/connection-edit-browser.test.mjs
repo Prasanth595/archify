@@ -143,7 +143,7 @@ test('connection editor uses native selection, drags, undo, and verified source 
   assert.equal(await run(`document.querySelector('g.connection-adjust-label[data-edge-id="first"]').getAttribute('transform')`),labelTransform);
   assert.equal(await run(`document.querySelector('.connection-adjust details').open`),false);
   assert.doesNotMatch(await run(`document.querySelector('.connection-adjust-status').textContent`),/layout validation|clean-flow/);
-  await click(`document.querySelector('[aria-label="Dismiss edit message"]')`);
+  await click(`document.querySelector('.connection-adjust-dismiss')`);
   assert.equal(await run(`document.getElementById('connection-draft-panel').hidden`),true,'the rejection message is dismissible');
   assert.equal(await run(`document.getElementById('btn-draft').getAttribute('aria-pressed')`),'true','dismissing a message keeps editing enabled');
   assert.equal(await route(),moved);
@@ -172,10 +172,10 @@ test('connection editor uses native selection, drags, undo, and verified source 
 });
 
 
-test('two-click connection creation asks only for a label and preserves the old layout', {skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.'}, async t=>{
+for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves native editing and reading (${locale})`, {skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.'}, async t=>{
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-connect-browser-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');
-  const source={schema_version:1,diagram_type:'architecture',meta:{title:'Create a connection',output:'diagram.html',viewBox:[760,480],legend:{mode:'hidden'}},components:[
+  const source={schema_version:1,diagram_type:'architecture',meta:{title:'Create a connection',output:'diagram.html',locale,viewBox:[760,480],legend:{mode:'hidden'}},components:[
     {id:'a',type:'frontend',label:'Intake',pos:[80,180],size:[100,60]},
     {id:'b',type:'backend',label:'Execute',pos:[320,180],size:[100,60]},
     {id:'c',type:'database',label:'Store',pos:[560,180],size:[100,60]},
@@ -205,6 +205,11 @@ test('two-click connection creation asks only for a label and preserves the old 
   await browser.cdp.send('Page.navigate',{url:editor.url},session);await wait(`!!document.getElementById('btn-draft')`);
   const before=editor.state().scene;
   await assertReadings(source);
+  assert.equal(await run(`document.getElementById('btn-draft').textContent`),locale==='en'?'Draft':'草稿');
+  await run(`document.getElementById('btn-motion').focus()`);
+  await browser.cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39},session);
+  await browser.cdp.send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39},session);
+  assert.equal(await run(`document.activeElement.id`),'btn-draft','the existing toolbar navigation includes the edit control');
   await click(`document.getElementById('btn-draft')`);
   const hover=await atNode('c','center');await browser.cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',...hover},session);
   await wait(`!!document.querySelector('.connection-node-port[data-node-id="c"][data-side="top"]')`);
@@ -230,10 +235,16 @@ test('two-click connection creation asks only for a label and preserves the old 
   assert.equal(await run(`(${start})?.getAttribute('aria-pressed')`),'true','the source can be selected again after canceling');
   await click(end);
   await wait(`!document.querySelector('.connection-create-form').hidden`);
+  assert.equal(await run(`document.querySelector('.connection-create-form label').firstChild.textContent`),locale==='en'?'Label':'标签');
+  assert.equal(await run(`document.querySelector('.connection-create-form button[type="submit"]').textContent`),locale==='en'?'Create':'创建');
+  for(const composing of [{isComposing:true},{keyCode:229}]){
+    assert.deepEqual(await run(`(()=>{const n=document.querySelector('.connection-create-form input');n.value='中文草稿';const e=new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true,...${JSON.stringify(composing)}});n.dispatchEvent(e);return{prevented:e.defaultPrevented,open:!document.querySelector('.connection-create-form').hidden,value:n.value};})()`),{prevented:false,open:true,value:'中文草稿'},'IME Escape must not cancel the connection form');
+  }
   assert.deepEqual(await run(`[...document.querySelectorAll('.connection-create-form input')].map(n=>n.name)`),['label']);
   await run(`document.querySelector('.connection-create-form input').value='W'.repeat(240)`);
   await click(`document.querySelector('.connection-create-form button[type="submit"]')`);
-  await wait(`document.querySelector('.connection-adjust-status').textContent.includes('cannot fit')`);
+  await wait(`document.querySelector('.connection-adjust-status').getAttribute('data-error')==='true'`);
+  assert.ok(await run(`document.querySelector('.connection-adjust-status').textContent.includes(${JSON.stringify(locale==='en'?'cannot fit':'现有布局')})`),'the rejection summary uses the document locale');
   assert.equal(await run(`!!document.querySelector('[data-draft-connection]')`),false,'an infeasible label cannot add half a relationship');
   assert.equal(finalized,0);assert.equal(fs.readFileSync(input,'utf8'),original);
   await click(`document.querySelector('.connection-create-form button[type="button"]')`);
@@ -249,9 +260,9 @@ test('two-click connection creation asks only for a label and preserves the old 
   assert.equal(fs.readFileSync(input,'utf8'),original);
   assert.equal(editor.state().revision,0);
   const newId=await run(`document.querySelector('[data-draft-connection]').getAttribute('data-draft-connection')`);
-  await click(`document.querySelector('[aria-label="Undo"]')`);assert.equal(await run(`!!document.querySelector('[data-draft-connection]')`),false);
+  await click(`document.querySelectorAll('.connection-draft-history')[0]`);assert.equal(await run(`!!document.querySelector('[data-draft-connection]')`),false);
   await click(`document.getElementById('btn-draft')`);await assertReadings(source);await click(`document.getElementById('btn-draft')`);
-  await click(`document.querySelector('[aria-label="Redo"]')`);assert.equal(await run(`document.querySelector('[data-draft-connection]').getAttribute('data-draft-connection')`),newId);
+  await click(`document.querySelectorAll('.connection-draft-history')[1]`);assert.equal(await run(`document.querySelector('[data-draft-connection]').getAttribute('data-draft-connection')`),newId);
   await click(`document.getElementById('btn-draft')`);
   await assertReadings({...source,connections:[...source.connections,{id:newId,from:'c',to:'a',label:'Return'}]});
   const middle=await run(`(()=>{const n=document.querySelector('.connection-draft-hit'),p=n.getPointAtLength(n.getTotalLength()/2).matrixTransform(n.getScreenCTM());return{x:p.x,y:p.y};})()`);
