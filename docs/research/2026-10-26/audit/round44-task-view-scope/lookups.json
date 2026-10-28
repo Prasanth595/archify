@@ -1,0 +1,47 @@
+{
+  "taskViewMain": {
+    "ref": "refs/heads/main",
+    "node_id": "REF_kwDOVVQxCa9yZWZzL2hlYWRzL21haW4",
+    "url": "https://api.github.com/repos/gtindo/task-view/git/refs/heads/main",
+    "object": {
+      "sha": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+      "type": "commit",
+      "url": "https://api.github.com/repos/gtindo/task-view/git/commits/a3fa21767bfaeb3077fdda08bddb7249366caa93"
+    }
+  },
+  "search": [
+    {
+      "query": "repo:tt-a1i/archify is:issue \"task-view\"",
+      "totalCount": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr \"task-view\"",
+      "totalCount": 2,
+      "items": [
+        {
+          "number": 1121,
+          "title": "experiment: read authored behavior paths with explicit test associations",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1121"
+        },
+        {
+          "number": 994,
+          "title": "Claude/code analysis sync dev",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/994"
+        }
+      ]
+    }
+  ],
+  "knownFailures": [
+    {
+      "action": "fetch guessed internal/render/viewmodel.go",
+      "result": "HTTP 404; actual render files located through pinned Git tree: data.go and html.go"
+    },
+    {
+      "action": "rg using unquoted scouts/task* glob",
+      "result": "zsh no matches found; scoped search rerun against exact existing round18-task-view-delta.md path"
+    }
+  ]
+}

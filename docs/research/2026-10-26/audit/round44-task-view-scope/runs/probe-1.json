@@ -1,0 +1,353 @@
+{
+  "kind": "pinned-function-probe-not-native-app-run",
+  "sourceCommit": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "experimentCommit": "843c877b251baf89925f99e11594fc5630c1c165",
+  "appSha256": "a7e491033a6c89f755930c4d6b628165d7dbb5dc699511633094994acae99865",
+  "mappingSha256": "e04fea9bb1b29fce4926311c6101ad12d8d8d98efaa5eb2f0659a4828557b4cf",
+  "sidecarSha256": "cd61df03f5182ef43c05a80d7a551000f79af5d86bc93d7ef6a7a56ef8f09d11",
+  "extractedSections": [
+    {
+      "startLine": 6,
+      "sha256": "4299d3370faff64b7f7b55e6fd803f53e195128b5c2486372af30b1c0f63a94d"
+    },
+    {
+      "startLine": 1175,
+      "sha256": "e0496e85085da549efabb5ca32853018432f0eccad1d3df04ae22aa62fd50f50"
+    }
+  ],
+  "expectedRows": [
+    {
+      "flow": "missing",
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "delivered",
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "omitted-link",
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    }
+  ],
+  "shared": [
+    {
+      "flow": "missing",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "delivered",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "omitted-link",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    }
+  ],
+  "legacyOnly": [
+    {
+      "flow": "missing",
+      "visible": [
+        "guard",
+        "report"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "delivered",
+      "visible": [
+        "guard",
+        "report"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "omitted-link",
+      "visible": [
+        "guard",
+        "report"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    }
+  ],
+  "legacyAndEdge": [
+    {
+      "flow": "missing",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "delivered",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "omitted-link",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    }
+  ],
+  "occurrenceRows": [
+    {
+      "flow": "missing",
+      "visible": [
+        "missing:guard",
+        "missing:report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "missing:guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "missing:report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "delivered",
+      "visible": [
+        "delivered:guard",
+        "delivered:report"
+      ],
+      "steps": [
+        {
+          "node": "delivered:guard",
+          "tests": []
+        },
+        {
+          "node": "delivered:report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "omitted-link",
+      "visible": [
+        "omitted-link:guard",
+        "omitted-link:report"
+      ],
+      "steps": [
+        {
+          "node": "omitted-link:guard",
+          "tests": []
+        },
+        {
+          "node": "omitted-link:report",
+          "tests": []
+        }
+      ]
+    }
+  ],
+  "separateDocuments": [
+    {
+      "flow": "missing",
+      "visible": [
+        "guard",
+        "report",
+        "regression"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": [
+            "regression"
+          ]
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "delivered",
+      "visible": [
+        "guard",
+        "report"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    },
+    {
+      "flow": "omitted-link",
+      "visible": [
+        "guard",
+        "report"
+      ],
+      "steps": [
+        {
+          "node": "guard",
+          "tests": []
+        },
+        {
+          "node": "report",
+          "tests": []
+        }
+      ]
+    }
+  ],
+  "assertions": 9,
+  "historicalTests": "not-run",
+  "limits": "Source-level test association differs from an authored per-flow declaration. No native build, schema/Git validation, browser, layout or reader-benefit measurement."
+}
