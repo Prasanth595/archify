@@ -1,0 +1,90 @@
+[p1 "JSON Hero - a beautiful JSON viewer for the web" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "JSON Hero - a beautiful JSON viewer for the web"]
+root
+  container
+    container
+      container
+        anchor "JSON Hero homepage" [ref=927, url=https://jsonhero.io/]
+          svg_root
+        paragraph
+          text "by"
+        anchor "Trigger.dev" [ref=928, loc=css:a[aria-label="Trigger.dev"], url=https://trigger.dev/]
+          svg_root
+      ordered_list
+        button [ref=929]
+          text "TRY NOW"
+        list_item
+          anchor [ref=930, url=https://github.com/triggerdotdev/jsonhero-web]
+            container
+              svg_root
+              paragraph
+                text "Star"
+            paragraph
+              text "10.9k"
+        list_item
+          anchor [ref=931, url=mailto:hello@jsonhero.io]
+            svg_root
+        list_item
+          anchor [ref=932, url=https://discord.gg/JtBAxBr2m3]
+            svg_root
+        list_item
+          anchor [ref=933, url=https://twitter.com/triggerdotdev]
+            svg_root
+    container
+      video
+      container
+        heading
+          text "JSON sucks."
+        heading
+          text "But we're making it better."
+        heading
+          text "Stop staring at thousand line JSON files in your editor and start staring at thousand line JSON files in the world's best JSON viewer. With a few nice features to help make it not"
+          text "the worst"
+          text "."
+        container
+          form
+            textbox [ref=934, loc=css:input[name="jsonUrl"]]
+              text "Enter a JSON URL or paste in JSON here..."
+            button [ref=935]
+              text "..."
+          form
+            container [ref=936]
+              svg_root
+              paragraph
+                text "Drop a JSON file here, or click to select"
+          container
+            heading
+              text "No JSON? Try it out:"
+            container
+              anchor [ref=937, loc=href:/j/d9udW60cLOok?path=data.0.entities.urls.0.expanded_url, url=https://jsonhero.io/j/d9udW60cLOok?path=data.0.entities.urls.0.expanded_url]
+                text "Tweet JSON"
+              anchor [ref=938, loc=href:/j/PjHo1o5MVeH4, url=https://jsonhero.io/j/PjHo1o5MVeH4]
+                text "Github API"
+              anchor [ref=939, loc=href:/j/XKqIsPgCssUN?path=records.3.createdTime, url=https://jsonhero.io/j/XKqIsPgCssUN?path=records.3.createdTime]
+                text "Airtable API"
+              anchor [ref=940, loc=href:/j/bSc7r1Ta0fED?path=4.urls.regular, url=https://jsonhero.io/j/bSc7r1Ta0fED?path=4.urls.regular]
+                text "Unsplash API"
+    container
+      container
+        heading
+          text "Colors"
+          text "are more than just strings"
+        heading
+          text "We figure out what your strings are made of, so you don't have to."
+        unordered_list
+          list_item
+            text "Images"
+          list_item
+            text "Dates"
+          list_item
+            text "Colors"
+          list_item
+            text "URLs"
+          list_item
+            text "Videos"
+      container
+        heading
+          text "Preview"
+        paragraph
+          text "#EAB308"
+
+

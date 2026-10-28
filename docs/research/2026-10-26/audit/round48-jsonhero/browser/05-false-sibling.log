@@ -1,0 +1,740 @@
+AFTER_ALT_LEFT private
+
+false
+
+Copy
+
+bool
+
+JSONSchema
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+{
+  "id": 132935648,
+  "node_id": "MDEwOlJlcG9zaXRvcnkxMzI5MzU2NDg=",
+  "name": "boysenberry-repo-1",
+  "full_name": "octocat/boysenberry-repo-1",
+  "private": false,
+  "owner": {
+    "login": "octocat",
+    "id": 583231,
+    "node_id": "MDQ6VXNlcjU4MzIzMQ==",
+    "avatar_url": "https://avatars.githubusercontent.com/u/583231?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/octocat",
+    "html_url": "https://github.com/octocat",
+    "followers_url": "https://api.github.com/users/octocat/followers",
+    "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+    "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
+    "organizations_url": "https://api.github.com/users/octocat/orgs",
+    "repos_url": "https://api.github.com/users/octocat/repos",
+    "events_url": "https://api.github.com/users/octocat/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/octocat/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "html_url": "https://github.com/octocat/boysenberry-repo-1",
+  "description": "Testing",
+  "fork": true,
+  "url": "https://api.github.com/repos/octocat/boysenberry-repo-1",
+  "forks_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/forks",
+  "keys_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/keys{/key_id}",
+  "collaborators_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/collaborators{/collaborator}",
+  "teams_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/teams",
+  "hooks_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/hooks",
+  "issue_events_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/issues/events{/number}",
+  "events_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/events",
+  "assignees_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/assignees{/user}",
+  "branches_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/branches{/branch}",
+  "tags_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/tags",
+  "blobs_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/git/blobs{/sha}",
+  "git_tags_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/git/tags{/sha}",
+  "git_refs_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/git/refs{/sha}",
+  "trees_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/git/trees{/sha}",
+  "statuses_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/statuses/{sha}",
+  "languages_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/languages",
+  "stargazers_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/stargazers",
+  "contributors_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/contributors",
+  "subscribers_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/subscribers",
+  "subscription_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/subscription",
+  "commits_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/commits{/sha}",
+  "git_commits_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/git/commits{/sha}",
+  "comments_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/comments{/number}",
+  "issue_comment_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/issues/comments{/number}",
+  "contents_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/contents/{+path}",
+  "compare_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/compare/{base}...{head}",
+  "merges_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/merges",
+  "archive_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/{archive_format}{/ref}",
+  "downloads_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/downloads",
+  "issues_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/issues{/number}",
+  "pulls_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/pulls{/number}",
+  "milestones_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/milestones{/number}",
+  "notifications_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/notifications{?since,all,participating}",
+  "labels_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/labels{/name}",
+  "releases_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/releases{/id}",
+  "deployments_url": "https://api.github.com/repos/octocat/boysenberry-repo-1/deployments",
+  "created_at": "2018-05-10T17:51:29Z",
+  "updated_at": "2022-02-11T22:19:51Z",
+  "pushed_at": "2018-05-10T17:52:17Z",
+  "git_url": "git://github.com/octocat/boysenberry-repo-1.git",
+  "ssh_url": "git@github.com:octocat/boysenberry-repo-1.git",
+  "clone_url": "https://github.com/octocat/boysenberry-repo-1.git",
+  "svn_url": "https://github.com/octocat/boysenberry-repo-1",
+  "homepage": "",
+  "size": 4,
+  "stargazers_count": 41,
+  "watchers_count": 41,
+  "language": null,
+  "has_issues": false,
+  "has_projects": true,
+  "has_downloads": true,
+  "has_wiki": true,
+  "has_pages": false,
+  "forks_count": 8,
+  "mirror_url": null,
+  "archived": false,
+  "disabled": false,
+  "open_issues_count": 0,
+  "license": null,
+  "allow_forking": true,
+  "is_template": false,
+  "topics": [],
+  "visibility": "public",
+  "forks": 8,
+  "open_issues": 0,
+  "watchers": 41,
+  "default_branch": "master"
+}
+
+Copy
+
+Related values
+
+8
+
+false
+[p1 "JSON Hero - https://jsonhero.io/j/uf9FVUhrldaa" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "JSON Hero - https://jsonhero.io/j/uf9FVUhrldaa"]
+root
+  container
+    container
+      anchor "JSON Hero homepage" [ref=942, loc=css:a[aria-label="JSON Hero homepage"], url=https://jsonhero.io/]
+        svg_root
+      paragraph
+        text "by"
+      anchor "Trigger.dev" [ref=943, loc=css:a[aria-label="Trigger.dev"], url=https://trigger.dev/]
+        svg_root
+    text "https://jsonhero.io/j/uf9FVUhrldaa"
+    ordered_list
+      button [ref=944]
+        svg_root
+        text "NEW"
+      button [ref=945]
+        svg_root
+        text "SHARE"
+      list_item
+        anchor [ref=946, loc=href:https://github.com/triggerdotdev/jsonhero-web, url=https://github.com/triggerdotdev/jsonhero-web]
+          container
+            svg_root
+            paragraph
+              text "Star"
+          paragraph
+            text "10.9k"
+      list_item
+        anchor [ref=947, loc=href:https://discord.gg/JtBAxBr2m3, url=https://discord.gg/JtBAxBr2m3]
+          svg_root
+  container [ref=948]
+    container
+      ordered_list
+        anchor [ref=949, loc=href:/j/PjHo1o5MVeH4, url=https://jsonhero.io/j/PjHo1o5MVeH4]
+          list_item
+            svg_root
+        anchor [ref=950, loc=href:/j/PjHo1o5MVeH4/editor, url=https://jsonhero.io/j/PjHo1o5MVeH4/editor]
+          list_item
+            svg_root
+        anchor [ref=951, loc=href:/j/PjHo1o5MVeH4/tree, url=https://jsonhero.io/j/PjHo1o5MVeH4/tree]
+          list_item
+            svg_root
+      ordered_list
+        list_item
+          anchor [ref=952, loc=href:/j/PjHo1o5MVeH4.json, url=https://jsonhero.io/j/PjHo1o5MVeH4.json]
+            svg_root
+    container
+      container
+        container
+          button [ref=953]
+            svg_root
+          button [ref=954]
+            svg_root
+        container
+          container
+            container
+              svg_root
+              paragraph
+                text "root"
+            svg_root
+          container
+            svg_root
+            paragraph
+              text "1"
+          button [ref=955]
+            svg_root
+        button [ref=956]
+          container
+            svg_root
+            paragraph
+              text "Search…"
+          container
+            text "⌘"
+            text "K"
+      container
+        container
+          container
+            svg_root
+            heading
+              text "root"
+          container
+            container
+              svg_root
+              container
+                paragraph
+                  text "0"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "1"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "2"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "3"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "4"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "5"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "6"
+                paragraph
+                  text "77 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "7"
+                paragraph
+                  text "77 fields"
+              svg_root
+        container
+          container
+            svg_root
+            heading
+              text "Index 1"
+          container [ref=968]
+            container
+              svg_root
+              container
+                paragraph
+                  text "id"
+                paragraph
+                  text "18,221,276"
+            container
+              svg_root
+              container
+                paragraph
+                  text "node_id"
+                paragraph
+                  text "MDEwOlJlcG9zaXRvcnkxODIyMTI3Ng=="
+            container
+              svg_root
+              container
+                paragraph
+                  text "name"
+                paragraph
+                  text "git-consortium"
+            container
+              svg_root
+              container
+                paragraph
+                  text "full_name"
+                paragraph
+                  text "octocat/git-consortium"
+            container
+              svg_root
+              container
+                paragraph
+                  text "private"
+                paragraph
+                  text "false"
+            container
+              svg_root
+              container
+                paragraph
+                  text "owner"
+                paragraph
+                  text "18 fields"
+              svg_root
+            container
+              svg_root
+              container
+                paragraph
+                  text "html_url"
+                paragraph
+                  text "https://github.com/octocat/git-consortium"
+            container
+              svg_root
+              container
+                paragraph
+                  text "description"
+                paragraph
+                  text "This repo is for demonstration purposes only."
+            container
+              svg_root
+              container
+                paragraph
+                  text "fork"
+                paragraph
+                  text "false"
+            container
+              svg_root
+              container
+                paragraph
+                  text "url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium"
+            container
+              svg_root
+              container
+                paragraph
+                  text "forks_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/forks"
+            container
+              svg_root
+              container
+                paragraph
+                  text "keys_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/keys{/key_id}"
+            container
+              svg_root
+              container
+                paragraph
+                  text "collaborators_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/collaborators{/collaborator}"
+            container
+              svg_root
+              container
+                paragraph
+                  text "teams_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/teams"
+            container
+              svg_root
+              container
+                paragraph
+                  text "hooks_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/hooks"
+            container
+              svg_root
+              container
+                paragraph
+                  text "issue_events_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/issues/events{/number}"
+            container
+              svg_root
+              container
+                paragraph
+                  text "events_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/events"
+            container
+              svg_root
+              container
+                paragraph
+                  text "assignees_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/assignees{/user}"
+            container
+              svg_root
+              container
+                paragraph
+                  text "branches_url"
+                paragraph
+                  text "https://api.github.com/repos/octocat/git-consortium/branches{/branch}"
+    container [ref=958]
+      container
+        container
+          heading
+            text "Index 1"
+          svg_root
+        container
+          svg_root
+          paragraph
+            text "Copy"
+        paragraph
+          text "object"
+      container
+        tablist [ref=969]
+          tab [ref=970]
+            text "JSON"
+          tab [ref=971]
+            text "Schema"
+        tabpanel "JSON" [ref=972, loc=role:tabpanel[name="JSON"]]
+          container [ref=973]
+            container
+              text "1"
+              text "2"
+              text "3"
+              text "4"
+              text "5"
+              text "6"
+              text "7"
+              text "8"
+              text "9"
+              text "10"
+              text "11"
+              text "12"
+              text "13"
+              text "14"
+              text "15"
+              text "16"
+              text "17"
+              text "18"
+              text "19"
+              text "20"
+              text "21"
+              text "22"
+              text "23"
+              text "24"
+              text "25"
+              text "26"
+              text "27"
+              text "28"
+              text "29"
+              text "30"
+              text "31"
+              text "32"
+              text "33"
+              text "34"
+              text "35"
+              text "36"
+            textfield [ref=974]
+              text "{"
+              container
+                text ""id""
+                text ":"
+                text "18221276"
+                text ","
+              container
+                text ""node_id""
+                text ":"
+                text ""MDEwOlJlcG9zaXRvcnkxODIyMTI3Ng==""
+                text ","
+              container
+                text ""name""
+                text ":"
+                text ""git-consortium""
+                text ","
+              container
+                text ""full_name""
+                text ":"
+                text ""octocat/git-consortium""
+                text ","
+              container
+                text ""private""
+                text ":"
+                text "false"
+                text ","
+              container
+                text ""owner""
+                text ": {"
+              container
+                text ""login""
+                text ":"
+                text ""octocat""
+                text ","
+              container
+                text ""id""
+                text ":"
+                text "583231"
+                text ","
+              container
+                text ""node_id""
+                text ":"
+                text ""MDQ6VXNlcjU4MzIzMQ==""
+                text ","
+              container
+                text ""avatar_url""
+                text ":"
+                text ""https://avatars.githubusercontent.com/u/583231?v=4""
+              container
+                text ""gravatar_id""
+                text ":"
+                text """"
+                text ","
+              container
+                text ""url""
+                text ":"
+                text ""https://api.github.com/users/octocat""
+                text ","
+              container
+                text ""html_url""
+                text ":"
+                text ""https://github.com/octocat""
+                text ","
+              container
+                text ""followers_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/followers""
+              container
+                text ""following_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/following{/other_user}""
+              container
+                text ""gists_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/gists{/gist_id}""
+              container
+                text ""starred_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/starred{/owner}{/repo}""
+              container
+                text ""subscriptions_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/subscriptions""
+              container
+                text ""organizations_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/orgs""
+              container
+                text ""repos_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/repos""
+              container
+                text ""events_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/events{/privacy}""
+              container
+                text ""received_events_url""
+                text ":"
+                text ""https://api.github.com/users/octocat/received_events""
+              container
+                text ""type""
+                text ":"
+                text ""User""
+                text ","
+              container
+                text ""site_admin""
+                text ":"
+                text "false"
+              text "},"
+              container
+                text ""html_url""
+                text ":"
+                text ""https://github.com/octocat/git-consortium""
+              container
+                text ""description""
+                text ":"
+                text ""This repo is for demonstration purposes only.""
+              container
+                text ""fork""
+                text ":"
+                text "false"
+                text ","
+              container
+                text ""url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium""
+              container
+                text ""forks_url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium/forks""
+              container
+                text ""keys_url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium/keys{/key_id}""
+              container
+                text ""collaborators_url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium/collaborators{/collaborator}""
+              container
+                text ""teams_url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium/teams""
+              container
+                text ""hooks_url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium/hooks""
+              container
+                text ""issue_events_url""
+                text ":"
+                text ""https://api.github.com/repos/octocat/git-consortium/issues/events{/number}""
+          container
+            svg_root
+            paragraph
+              text "Copy"
+  container
+    ordered_list
+      list_item
+        svg_root
+        paragraph
+          text "Navigate"
+      list_item
+        svg_root
+        paragraph
+          text "History"
+      list_item
+        svg_root
+        paragraph
+          text "Reset path"
+      list_item
+        svg_root
+        paragraph
+          text "Copy "
+          text "selected "
+          text "node"
+    ordered_list
+      list_item
+        paragraph
+          text "Indent"
+        spinbutton [ref=965]
+          text "2"
+      list_item
+        button [ref=966]
+          svg_root
+
+

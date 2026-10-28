@@ -1,0 +1,178 @@
+{
+  "repository": "triggerdotdev/jsonhero-web",
+  "commit": "15157053174ba7a0a79c77b2925fbde7e05a6334",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "size": 11357,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b535297a72da8a96b52a2a8de12758e8d8ff8c6",
+      "size": 7310,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/README.md",
+      "sha256": "01057b90c1324cd8e278accd96f4d09289a144d1c32296593669f30e74d653fe"
+    },
+    {
+      "path": "app/components/SampleUrls.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e600df3a2f47f0677f574f63bf7aa239fd962237",
+      "size": 581,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/SampleUrls.tsx",
+      "sha256": "1083a7fb8e225efafabb11b0398827579623c43ca686d8ab36ddf2491d9eb7bb"
+    },
+    {
+      "path": "app/components/ExampleDoc.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0f4dc4463fa27d19ce94d03e1e4e9cd726cd79e",
+      "size": 368,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/ExampleDoc.tsx",
+      "sha256": "11b52da916eabbd0e1d2dbcdf5f4406f231483451c2eb4269650df895870a533"
+    },
+    {
+      "path": "app/components/RelatedValues.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e3e85ce60ff45af2de4d950dfa1e2f1b968a695e",
+      "size": 3715,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/RelatedValues.tsx",
+      "sha256": "7b59858aac5feaaee3cd5b3c52e323307ef5e66d38ad63aa8fc2d19b8f7b7496"
+    },
+    {
+      "path": "app/utilities/relatedValues.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da426d8b71586d982156738b05145730ae9d2150",
+      "size": 2592,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/utilities/relatedValues.ts",
+      "sha256": "7c537fe8922fd843f4fcce417bab75ff85858a7a9e966333cedc1faa016cd410"
+    },
+    {
+      "path": "tests/relatedValues.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f8693f2a8ada25891e1faad13a236baccf77041",
+      "size": 4654,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/tests/relatedValues.test.ts",
+      "sha256": "d39311fa1cde7133900f89e49bb0696d3d5fb8ae646bafe4a88ef33707fbd36f"
+    },
+    {
+      "path": "app/hooks/useRelatedPaths.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3aa14f68d94ea89287c785db827aa626dabc72b5",
+      "size": 869,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/hooks/useRelatedPaths.ts",
+      "sha256": "e5a053b6ab4707c55d70b64b2b9c8903b38881e16c14943db08b57d2fc3597b2"
+    },
+    {
+      "path": "app/hooks/useJsonSchema.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d145ec6977d5076ba1f466804e2a122b4e7a6091",
+      "size": 862,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/hooks/useJsonSchema.tsx",
+      "sha256": "8470f6aa0cd0fdf8dc4251237380798aee12c4bee223dc15b43778c26f20f9cd"
+    },
+    {
+      "path": "app/hooks/useJsonColumnView.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b309f2b829b86d460f879d6adf9195288dfdbfb",
+      "size": 5243,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/hooks/useJsonColumnView.tsx",
+      "sha256": "00002028a49729503d36e2a99465e41edb9d52ad45477c1f4db6ac5d2b96bcb8"
+    },
+    {
+      "path": "app/utilities/jsonColumnView.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7baaa9755b489ead946f07aa69886e45057ba9b",
+      "size": 6142,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/utilities/jsonColumnView.ts",
+      "sha256": "51b8250a7335e181ccae2d1a65ea5d58a5aa7339371f6eea0f19b24fc2f01d79"
+    },
+    {
+      "path": "app/components/InfoPanel.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af3f9827c6a603608e72fb3dab008d1eb091e2b0",
+      "size": 1154,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/InfoPanel.tsx",
+      "sha256": "72a1d75a8561fb37bda052a528c1c42aa1644e50a3fea4ae12d00bc3205f37ec"
+    },
+    {
+      "path": "app/components/JsonSchemaViewer.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4562861dbaeec454fbfb9324c4e7bfeb75b18069",
+      "size": 1820,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/JsonSchemaViewer.tsx",
+      "sha256": "72b6f0854ff97e58a732fca3c179a21a4e231069e92a8d820350b16ff1261194"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "47fc112afe94c7aa13bd1ff45dccc5ffca8905d7",
+      "size": 4378,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/package.json",
+      "sha256": "dd86ce94bb3f93041a5b3e5a0d57a2a822604e7b8615dac35c150f980f0fceb6"
+    },
+    {
+      "path": "app/components/Preview/Types/PreviewDate.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4387e707950455698a624268e38e02e278be4f8f",
+      "size": 1264,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/Preview/Types/PreviewDate.tsx",
+      "sha256": "1faabeede6d4fbeb3ebfa87ce58bc4a18b4b603e5a12ccc4b2b5b880dff94f68"
+    },
+    {
+      "path": "app/components/Preview/CalendarMonth.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43ad9e0f9131086019b56347a0c629f6157c7582",
+      "size": 4419,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/components/Preview/CalendarMonth.tsx",
+      "sha256": "fe41d38fd6ec54edec83735bad6bad2658ea1062d5cf4b5afc27c5f1e9bb4794"
+    },
+    {
+      "path": "app/utilities/inferredTemporal.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b456cde2417d78a20eb519f0fc02052df23a167a",
+      "size": 1183,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/utilities/inferredTemporal.ts",
+      "sha256": "cee25ce32acbd99fe9380c7916f63784b354b7860c778ba913486d0b98d033c6"
+    },
+    {
+      "path": "app/routes/j/$id.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c44c9bd7978a3e8122e73cda48d76e8b608f704",
+      "size": 8334,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/routes/j/$id.tsx",
+      "sha256": "f4cbc55fd26ee7a256e7f11a1dbb85365d5ab7734c3f94749e8d8e4a3de3c81b"
+    },
+    {
+      "path": "app/routes/j/$id[.json].ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f4f73a558eae09144551374f5daf8eef57faae7",
+      "size": 549,
+      "url": "https://raw.githubusercontent.com/triggerdotdev/jsonhero-web/15157053174ba7a0a79c77b2925fbde7e05a6334/app/routes/j/$id[.json].ts",
+      "sha256": "5881c9f093615ff1b5f32850d50d054af54f9a15afb09a2635ee575f7ccc2925"
+    }
+  ]
+}

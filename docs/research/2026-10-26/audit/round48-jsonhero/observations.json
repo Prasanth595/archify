@@ -1,0 +1,78 @@
+{
+  "scope": "Archived observations plus independently parsed later public JSON download; not a rerun of JSON Hero",
+  "download": {
+    "sha256": "8d81610e98f2ea163fc800fe272c607954b1d476898ffa74545f3c52b44a564c",
+    "bytes": 39882,
+    "rows": 8,
+    "fieldsPerRow": [
+      77,
+      77,
+      77,
+      77,
+      77,
+      77,
+      77,
+      77
+    ]
+  },
+  "samePair": {
+    "from": 1,
+    "to": 2,
+    "gesture": [
+      "Alt+ArrowLeft",
+      "ArrowDown"
+    ],
+    "falseHeadings": [
+      "root",
+      "Index 2",
+      "Index 2"
+    ],
+    "nameHeadings": [
+      "root",
+      "Index 2",
+      "name"
+    ],
+    "values": [
+      {
+        "name": "git-consortium",
+        "private": false
+      },
+      {
+        "name": "hello-worId",
+        "private": false
+      }
+    ]
+  },
+  "falseGroup": {
+    "count": 8,
+    "paths": [
+      "$.0.private",
+      "$.1.private",
+      "$.2.private",
+      "$.3.private",
+      "$.4.private",
+      "$.5.private",
+      "$.6.private",
+      "$.7.private"
+    ],
+    "directJumpHeadings": [
+      "root",
+      "Index 7",
+      "private",
+      "Related values"
+    ]
+  },
+  "date": {
+    "raw": "2014-06-18T21:26:19Z",
+    "jsonType": "string",
+    "observedInferredType": "string/datetime/rfc3339",
+    "epochSeconds": 1403126779,
+    "ShanghaiDate": "2014-06-19",
+    "observedCalendarHighlight": {
+      "text": "18",
+      "dateTimeAttribute": "2014-5-18"
+    },
+    "calendarCorrectnessAccepted": false
+  },
+  "deploymentCommit": "unknown"
+}

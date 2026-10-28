@@ -1,0 +1,34 @@
+{
+  "scope": "Research packet only; no Archify product or upstream runtime tests",
+  "checks": [
+    {
+      "name": "19 unchanged upstream files",
+      "result": "All Git blob IDs, byte sizes and SHA-256 verified"
+    },
+    {
+      "name": "Images",
+      "result": "13 PNGs visually reviewed; all 1440x900; 12 accepted states, 1 excluded early navigation capture"
+    },
+    {
+      "name": "Summary repeatability",
+      "result": "Two independent Python invocations produced byte-identical output"
+    },
+    {
+      "name": "Authored relative links",
+      "result": "10 local links resolved across scout and packet README"
+    },
+    {
+      "name": "Remote base",
+      "result": "Remote codex/research-lab-20261026 remained c4601be856df1a5685956b00adc9f34606468fcf before commit"
+    }
+  ],
+  "notRun": [
+    "Upstream Jest suite",
+    "Native app build",
+    "Archify renderer suite",
+    "Mixed JSON type collision runtime fixtures",
+    "Schema tab browser validation"
+  ],
+  "browser": "12 actual Ego scripts/logs; reused space 3/p1 and ended at about:blank",
+  "decision": "No new implementation promoted; research branch only; no PR"
+}
