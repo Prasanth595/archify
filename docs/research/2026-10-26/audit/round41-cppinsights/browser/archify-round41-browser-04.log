@@ -1,0 +1,576 @@
+[p1 "C++ Insights" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "C++ Insights"]
+root
+  container
+    container
+      text "This website uses cookies. See"
+      anchor [ref=604, loc=href:/cookie-policy.html, url=https://cppinsights.io/cookie-policy.html]
+        text "cookie policy"
+      text "for more information."
+    container
+      anchor [ref=605, url=javascript:void(0);]
+        text "Decline"
+      anchor [ref=606, url=javascript:void(0);]
+        text "Accept"
+  container
+    container
+      container
+        image
+        button [ref=607]
+        button [ref=608]
+        button [ref=609]
+        button [ref=610]
+        anchor [ref=611, loc=href:https://compiler-explorer.com/, url=https://compiler-explorer.com/]
+          image
+        anchor [ref=612, loc=href:http://quick-bench.com/, url=http://quick-bench.com/]
+          image
+        button [ref=613]
+          text "[C++ Standard: C++ 17]"
+          text "▼"
+        button [ref=614]
+          text "Default"
+          text "▼"
+        button [ref=615]
+          text "More"
+      container
+        anchor [ref=616, loc=href:https://fertig.to/plancls, url=https://fertig.to/plancls]
+          text "Planning C++ training for 2027?"
+        button [ref=617]
+          text "×"
+      container
+        text "Made by"
+        anchor [ref=618, url=https://andreasfertig.com/]
+          text "Andreas Fertig"
+    container
+      heading
+        text "Source:"
+      container
+        textbox [ref=624]
+        container [ref=619]
+          container
+            container
+              text "1"
+              text "#include <cstdio>"
+            text "2"
+            container
+              text "3"
+              container
+                text "static"
+                text "void"
+                text "show"
+                text "("
+                text "const"
+                text "char*"
+                text "mode"
+                text ","
+                text "const"
+                text "char*"
+                text "stage"
+                text ","
+                text "int"
+                text "result"
+                text ","
+                text "int"
+                text "outer"
+                text ") {"
+            container
+              text "4"
+              container
+                text "std::printf"
+                text "("
+                text ""%s|%s|result=%d|outer=%d\n""
+                text ","
+                text "mode"
+                text ","
+                text "stage"
+                text ","
+                text "result"
+                text ","
+                text "outer"
+                text ");"
+            container
+              text "5"
+              text "}"
+            text "6"
+            container
+              text "7"
+              container
+                text "int"
+                text "main"
+                text "() {"
+            container
+              text "8"
+              text "{"
+            container
+              text "9"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            container
+              text "10"
+              container
+                text "auto"
+                text "f"
+                text "="
+                text "["
+                text "n"
+                text "]()"
+                text "mutable"
+                text "{"
+                text "return"
+                text "++"
+                text "n"
+                text "; };"
+            container
+              text "11"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "12"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "13"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "14"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+            container
+              text "15"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "16"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""original-after-copy""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "17"
+              container
+                text "result"
+                text "="
+                text "g"
+                text "();"
+            container
+              text "18"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""copied-closure""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "19"
+              text "}"
+            container
+              text "20"
+              text "{"
+            container
+              text "21"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            container
+              text "22"
+              container
+                text "auto"
+                text "f"
+                text "="
+                text "["
+                text "&"
+                text "n"
+                text "]() {"
+                text "return"
+                text "++"
+                text "n"
+                text "; };"
+            container
+              text "23"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "24"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "25"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "26"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+            container
+              text "27"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "28"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""original-after-copy""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "29"
+              container
+                text "result"
+                text "="
+                text "g"
+                text "();"
+            container
+              text "30"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""copied-closure""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "31"
+              text "}"
+            container
+              text "32"
+              text "{"
+            text "33"
+            container
+              text "int"
+              text "n"
+              text "="
+              text "1"
+              text ";"
+            text "34"
+            container
+              text "int"
+              text "&"
+              text "alias"
+              text "="
+              text "n"
+              text ";"
+            text "35"
+            container
+              text "auto"
+              text "f"
+              text "="
+              text "["
+              text "alias"
+              text "]()"
+              text "mutable"
+              text "{"
+              text "return"
+              text "++"
+              text "alias"
+              text "; };"
+    container
+      heading
+        text "Insight:"
+      container
+        textbox [ref=625]
+        container [ref=620]
+          container
+            container
+              text "1"
+              text "#include <cstdio>"
+            text "2"
+            container
+              text "3"
+              container
+                text "static"
+                text "void"
+                text "show"
+                text "("
+                text "const"
+                text "char"
+                text "*"
+                text "mode"
+                text ","
+                text "const"
+                text "char"
+                text "*"
+                text "stage"
+                text ","
+                text "int"
+                text "result"
+                text ","
+                text "int"
+                text "outer"
+                text ")"
+            container
+              text "4"
+              text "{"
+            container
+              text "5"
+              container
+                text "printf"
+                text "("
+                text ""%s|%s|result=%d|outer=%d\n""
+                text ","
+                text "mode"
+                text ","
+                text "stage"
+                text ","
+                text "result"
+                text ","
+                text "outer"
+                text ");"
+            container
+              text "6"
+              text "}"
+            text "7"
+            container
+              text "8"
+              container
+                text "int"
+                text "main"
+                text "()"
+            container
+              text "9"
+              text "{"
+            container
+              text "10"
+              text "{"
+            container
+              text "11"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            text "12"
+            container
+              text "13"
+              container
+                text "class"
+                text "__lambda_10_14"
+            container
+              text "14"
+              text "{"
+            container
+              text "15"
+              container
+                text "public"
+                text ":"
+            container
+              text "16"
+              container
+                text "inline"
+                text "constexpr"
+                text "int"
+                text "operator"
+                text "()()"
+            container
+              text "17"
+              text "{"
+            container
+              text "18"
+              container
+                text "return"
+                text "++"
+                text "n"
+                text ";"
+            container
+              text "19"
+              text "}"
+            text "20"
+            container
+              text "21"
+              text "// private:"
+            container
+              text "22"
+              container
+                text "int"
+                text "n"
+                text ";"
+            container
+              text "23"
+              container
+                text "public"
+                text ":"
+            container
+              text "24"
+              text "// inline constexpr __lambda_10_14(const __lambda_10_14 &) noexcept = default;"
+            container
+              text "25"
+              text "};"
+            text "26"
+            container
+              text "27"
+              container
+                text "__lambda_10_14"
+                text "f"
+                text "="
+                text "__lambda_10_14"
+                text "{"
+                text "n"
+                text "};"
+            container
+              text "28"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "29"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "."
+                text "operator"
+                text "()();"
+            container
+              text "30"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "31"
+              container
+                text "__lambda_10_14"
+                text "g"
+                text "="
+                text "__lambda_10_14"
+                text "("
+                text "f"
+                text ");"
+            container
+              text "32"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "."
+                text "operator"
+                text "()();"
+            text "33"
+            container
+              text "show"
+              text "("
+              text ""value""
+              text ","
+              text ""original-after-copy""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+            text "34"
+            container
+              text "result"
+              text "="
+              text "g"
+              text "."
+              text "operator"
+              text "()();"
+            text "35"
+            container
+              text "show"
+              text "("
+              text ""value""
+              text ","
+              text ""copied-closure""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+    container
+      heading
+        text "Console:"
+        button [ref=621]
+      container
+        textbox [ref=626]
+        container [ref=622]
+          text "Insights exited with result code: 0"
+
+EDITORS [{"id":"cpp-code","length":0,"display":"none","preview":""},{"id":"","length":0,"display":"block","preview":""},{"id":"cpp-code-out","length":0,"display":"none","preview":""},{"id":"","length":0,"display":"block","preview":""},{"id":"stderr-out","length":0,"display":"none","preview":""},{"id":"","length":0,"display":"block","preview":""}]
+CODE_DOM [{"lines":35,"text":" \n1\n#include <cstdio>\n2\n​\n3\nstatic void show(const char* mode, const char* stage, int result, int outer) {\n4\n  std::printf(\"%s|%s|result=%d|outer=%d\\n\", mode, stage, result, outer);\n5\n}\n6\n​\n7\nint main"},{"lines":35,"text":"1\n#include <cstdio>\n2\n​\n3\nstatic void show(const char * mode, const char * stage, int result, int outer)\n4\n{\n5\n  printf(\"%s|%s|result=%d|outer=%d\\n\", mode, stage, result, outer);\n6\n}\n7\n​\n8\nint main()\n"},{"lines":1,"text":"Insights exited with result code: 0"}]
+

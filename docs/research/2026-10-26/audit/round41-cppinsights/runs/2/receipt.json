@@ -1,0 +1,66 @@
+{
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "commands": [
+    {
+      "label": "compiler",
+      "argv": [
+        "/usr/bin/clang++",
+        "--version"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.01147737499923096
+    },
+    {
+      "label": "original-compile",
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-pedantic",
+        "/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round41-cppinsights/fixture/original.cpp",
+        "-o",
+        "/private/tmp/archify-round41-formal-2/original"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.035901166000257945
+    },
+    {
+      "label": "original-run",
+      "argv": [
+        "/private/tmp/archify-round41-formal-2/original"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.18052724999870406
+    },
+    {
+      "label": "transformed-compile",
+      "argv": [
+        "/usr/bin/clang++",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-pedantic",
+        "/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round41-cppinsights/fixture/transformed.cpp",
+        "-o",
+        "/private/tmp/archify-round41-formal-2/transformed"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.057485834000544855
+    },
+    {
+      "label": "transformed-run",
+      "argv": [
+        "/private/tmp/archify-round41-formal-2/transformed"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.18519929200192564
+    }
+  ],
+  "input_sha256": {
+    "original.cpp": "2bff109d35309ee9a194f1fedfec4ae38758436138ebbaabfcb350167e980fd0",
+    "transformed.cpp": "1dd8ea232beb0d44c0a857230ddc48cc1fb44f1319b25c71e12645652daf4e9e"
+  },
+  "matched_rows": 9,
+  "claim": "Only this fixture's printed observations match."
+}

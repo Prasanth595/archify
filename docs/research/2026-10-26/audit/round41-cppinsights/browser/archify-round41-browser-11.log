@@ -1,0 +1,402 @@
+[p1 "C++ Insights" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "C++ Insights"]
+root
+  container
+    container
+      text "This website uses cookies. See"
+      anchor [ref=655, loc=href:/cookie-policy.html, url=https://cppinsights.io/cookie-policy.html]
+        text "cookie policy"
+      text "for more information."
+    container
+      anchor [ref=656, url=javascript:void(0);]
+        text "Decline"
+      anchor [ref=657, url=javascript:void(0);]
+        text "Accept"
+  container
+    container
+      container
+        image
+        button [ref=658]
+        button [ref=659]
+        button [ref=660]
+        button [ref=661]
+        anchor [ref=662, loc=href:https://compiler-explorer.com/, url=https://compiler-explorer.com/]
+          image
+        anchor [ref=663, loc=href:http://quick-bench.com/, url=http://quick-bench.com/]
+          image
+        button [ref=664]
+          text "[C++ Standard: C++ 17]"
+          text "▼"
+        button [ref=665]
+          text "Default"
+          text "▼"
+        button [ref=666]
+          text "More"
+      container
+        anchor [ref=667, loc=href:https://fertig.to/plancls, url=https://fertig.to/plancls]
+          text "Planning C++ training for 2027?"
+        button [ref=668]
+          text "×"
+      container
+        text "Made by"
+        anchor [ref=669, url=https://andreasfertig.com/]
+          text "Andreas Fertig"
+    container
+      heading
+        text "Source:"
+      container [ref=671]
+        container
+          container
+            text "1"
+            text "#include <cstdio>"
+          text "2"
+          container
+            text "3"
+            container
+              text "static"
+              text "void"
+              text "show"
+              text "("
+              text "const"
+              text "char*"
+              text "mode"
+              text ","
+              text "const"
+              text "char*"
+              text "stage"
+              text ","
+              text "int"
+              text "result"
+              text ","
+              text "int"
+              text "outer"
+              text ") {"
+          container
+            text "4"
+            container
+              text "std::printf"
+              text "("
+              text ""%s|%s|result=%d|outer=%d\n""
+              text ","
+              text "mode"
+              text ","
+              text "stage"
+              text ","
+              text "result"
+              text ","
+              text "outer"
+              text ");"
+          container
+            text "5"
+            text "}"
+          text "6"
+          container
+            text "7"
+            container
+              text "int"
+              text "main"
+              text "() {"
+          container
+            text "8"
+            text "{"
+          container
+            text "9"
+            container
+              text "int"
+              text "n"
+              text "="
+              text "1"
+              text ";"
+          container
+            text "10"
+            container
+              text "auto"
+              text "f"
+              text "="
+              text "["
+              text "n"
+              text "]()"
+              text "mutable"
+              text "{"
+              text "return"
+              text "++"
+              text "n"
+              text "; };"
+          container
+            text "11"
+            container
+              text "n"
+              text "="
+              text "10"
+              text ";"
+          container
+            text "12"
+            container
+              text "int"
+              text "result"
+              text "="
+              text "f"
+              text "();"
+          container
+            text "13"
+            container
+              text "show"
+              text "("
+              text ""value""
+              text ","
+              text ""first""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "14"
+            container
+              text "auto"
+              text "g"
+              text "="
+              text "f"
+              text ";"
+          container
+            text "15"
+            container
+              text "result"
+              text "="
+              text "f"
+              text "();"
+          container
+            text "16"
+            container
+              text "show"
+              text "("
+              text ""value""
+              text ","
+              text ""original-after-copy""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "17"
+            container
+              text "result"
+              text "="
+              text "g"
+              text "();"
+          container
+            text "18"
+            container
+              text "show"
+              text "("
+              text ""value""
+              text ","
+              text ""copied-closure""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "19"
+            text "}"
+          container
+            text "20"
+            text "{"
+          container
+            text "21"
+            container
+              text "int"
+              text "n"
+              text "="
+              text "1"
+              text ";"
+          container
+            text "22"
+            container
+              text "auto"
+              text "f"
+              text "="
+              text "["
+              text "&"
+              text "n"
+              text "]() {"
+              text "return"
+              text "++"
+              text "n"
+              text "; };"
+          container
+            text "23"
+            container
+              text "n"
+              text "="
+              text "10"
+              text ";"
+          container
+            text "24"
+            container
+              text "int"
+              text "result"
+              text "="
+              text "f"
+              text "();"
+          container
+            text "25"
+            container
+              text "show"
+              text "("
+              text ""reference""
+              text ","
+              text ""first""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "26"
+            container
+              text "auto"
+              text "g"
+              text "="
+              text "f"
+              text ";"
+    container
+      heading
+        text "Insight:"
+      container [ref=672]
+        container
+          container
+            text "1"
+            text "#include <cstdio>"
+          text "2"
+          container
+            text "3"
+            container
+              text "static"
+              text "void"
+              text "show"
+              text "("
+              text "const"
+              text "char"
+              text "*"
+              text "mode"
+              text ","
+              text "const"
+              text "char"
+              text "*"
+              text "stage"
+              text ","
+              text "int"
+              text "result"
+              text ","
+              text "int"
+              text "outer"
+          container
+            text "4"
+            text "{"
+          container
+            text "5"
+            container
+              text "printf"
+              text "("
+              text ""%s|%s|result=%d|outer=%d\n""
+              text ","
+              text "mode"
+              text ","
+              text "stage"
+              text ","
+              text "result"
+              text ","
+              text "outer"
+              text ");"
+          container
+            text "6"
+            text "}"
+          text "7"
+          container
+            text "8"
+            container
+              text "int"
+              text "main"
+              text "()"
+          container
+            text "9"
+            text "{"
+          container
+            text "10"
+            text "{"
+          container
+            text "11"
+            container
+              text "int"
+              text "n"
+              text "="
+              text "1"
+              text ";"
+          text "12"
+          container
+            text "13"
+            container
+              text "class"
+              text "__lambda_10_14"
+          container
+            text "14"
+            text "{"
+          container
+            text "15"
+            container
+              text "public"
+              text ":"
+          container
+            text "16"
+            container
+              text "inline"
+              text "constexpr"
+              text "int"
+              text "operator"
+              text "()()"
+          container
+            text "17"
+            text "{"
+          container
+            text "18"
+            container
+              text "return"
+              text "++"
+              text "n"
+              text ";"
+          container
+            text "19"
+            text "}"
+          text "20"
+          container
+            text "21"
+            text "// private:"
+          container
+            text "22"
+            container
+              text "int"
+              text "n"
+              text ";"
+          container
+            text "23"
+            container
+              text "public"
+              text ":"
+          container
+            text "24"
+            text "// inline constexpr __lambda_10_14(const __lambda_10_14 &) noexcept = default;"
+          container
+            text "25"
+            text "};"
+          text "26"
+    container
+      heading
+        text "Console:"
+        button [ref=673]
+      container [ref=674]
+        text "Insights exited with result code: 0"
+
+SELECTED_OUTPUT {"selection":"#include <cstdio>\n\nstatic void show(const char * mode, const char * stage, int result, int outer)\n{\n  printf(\"%s|%s|result=%d|outer=%d\\n\", mode, stage, result, outer);\n}\n\nint main()\n{\n  {\n    int n = 1;\n        \n    class __lambda_10_14\n    {\n      public: \n      inline constexpr int operator()()\n      {\n        return ++n;\n      }\n      \n      // private: \n      int n;\n      public: \n      // inline constexpr __lambda_10_14(const __lambda_10_14 &) noexcept = default;\n    };\n    \n    __lambda_10_14 f = __lambda_10_14{n};\n    n = 10;\n    int result = f.operator()();\n    show(\"value\", \"first\", result, n);\n    __lambda_10_14 g = __lambda_10_14(f);\n    result = f.operator()();\n    show(\"value\", \"original-after-copy\", result, n);\n    result = g.operator()();\n    show(\"value\", \"copied-closure\", result, n);\n  }\n  {\n    int n = 1;\n        \n    class __lambda_22_14\n    {\n      public: \n      inline constexpr int operator()() const\n      {\n        return ++n;\n      }\n      \n      // private: \n      int & n;\n      public: \n      // inline constexpr __lambda_22_14(const __lambda_22_14 &) noexcept = default;\n    };\n    \n    __lambda_22_14 f = __lambda_22_14{n};\n    n = 10;\n    int result = f.operator()();\n    show(\"reference\", \"first\", result, n);\n    __lambda_22_14 g = __lambda_22_14(f);\n    result = f.operator()();\n    show(\"reference\", \"original-after-copy\", result, n);\n    result = g.operator()();\n    show(\"reference\", \"copied-closure\", result, n);\n  }\n  {\n    int n = 1;\n    int & alias = n;\n        \n    class __lambda_35_14\n    {\n      public: \n      inline constexpr int operator()()\n      {\n        return ++alias;\n      }\n      \n      // private: \n      int alias;\n      public: \n      // inline constexpr __lambda_35_14(const __lambda_35_14 &) noexcept = default;\n    };\n    \n    __lambda_35_14 f = __lambda_35_14{alias};\n    n = 10;\n    int result = f.operator()();\n    show(\"alias-by-value\", \"first\", result, n);\n    __lambda_35_14 g = __lambda_35_14(f);\n    result = f.operator()();\n    show(\"alias-by-value\", \"original-after-copy\", result, n);\n    result = g.operator()();\n    show(\"alias-by-value\", \"copied-closure\", result, n);\n  }\n  return 0;\n}\n","inputs":[{"value":"","start":0,"end":0},{"value":"#include <cstdio>\n\nstatic void show(const char * mode, const char * stage, int result, int outer)\n{\n  printf(\"%s|%s|result=%d|outer=%d\\n\", mode, stage, result, outer);\n}\n\nint main()\n{\n  {\n    int n = 1;\n        \n    class __lambda_10_14\n    {\n      public: \n      inline constexpr int operator()()\n      {\n        return ++n;\n      }\n      \n      // private: \n      int n;\n      public: \n      // inline constexpr __lambda_10_14(const __lambda_10_14 &) noexcept = default;\n    };\n    \n    __lambda_10_14 f = __lambda_10_14{n};\n    n = 10;\n    int result = f.operator()();\n    show(\"value\", \"first\", result, n);\n    __lambda_10_14 g = __lambda_10_14(f);\n    result = f.operator()();\n    show(\"value\", \"original-after-copy\", result, n);\n    result = g.operator()();\n    show(\"value\", \"copied-closure\", result, n);\n  }\n  {\n    int n = 1;\n        \n    class __lambda_22_14\n    {\n      public: \n      inline constexpr int operator()() const\n      {\n        return ++n;\n      }\n      \n      // private: \n      int & n;\n      public: \n      // inline constexpr __lambda_22_14(const __lambda_22_14 &) noexcept = default;\n    };\n    \n    __lambda_22_14 f = __lambda_22_14{n};\n    n = 10;\n    int result = f.operator()();\n    show(\"reference\", \"first\", result, n);\n    __lambda_22_14 g = __lambda_22_14(f);\n    result = f.operator()();\n    show(\"reference\", \"original-after-copy\", result, n);\n    result = g.operator()();\n    show(\"reference\", \"copied-closure\", result, n);\n  }\n  {\n    int n = 1;\n    int & alias = n;\n        \n    class __lambda_35_14\n    {\n      public: \n      inline constexpr int operator()()\n      {\n        return ++alias;\n      }\n      \n      // private: \n      int alias;\n      public: \n      // inline constexpr __lambda_35_14(const __lambda_35_14 &) noexcept = default;\n    };\n    \n    __lambda_35_14 f = __lambda_35_14{alias};\n    n = 10;\n    int result = f.operator()();\n    show(\"alias-by-value\", \"first\", result, n);\n    __lambda_35_14 g = __lambda_35_14(f);\n    result = f.operator()();\n    show(\"alias-by-value\", \"original-after-copy\", result, n);\n    result = g.operator()();\n    show(\"alias-by-value\", \"copied-closure\", result, n);\n  }\n  return 0;\n}\n","start":0,"end":2174}]}
+

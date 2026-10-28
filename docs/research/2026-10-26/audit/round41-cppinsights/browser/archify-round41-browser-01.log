@@ -1,0 +1,120 @@
+[p1 "C++ Insights" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "C++ Insights"]
+root
+  container
+    container
+      text "This website uses cookies. See"
+      anchor [ref=604, loc=href:/cookie-policy.html, url=https://cppinsights.io/cookie-policy.html]
+        text "cookie policy"
+      text "for more information."
+    container
+      anchor [ref=605, url=javascript:void(0);]
+        text "Decline"
+      anchor [ref=606, url=javascript:void(0);]
+        text "Accept"
+  container
+    container
+      container
+        image
+        button [ref=607]
+        button [ref=608]
+        button [ref=609]
+        button [ref=610]
+        anchor [ref=611, loc=href:https://compiler-explorer.com/, url=https://compiler-explorer.com/]
+          image
+        anchor [ref=612, loc=href:http://quick-bench.com/, url=http://quick-bench.com/]
+          image
+        button [ref=613]
+          text "[C++ Standard: C++ 17]"
+          text "▼"
+        button [ref=614]
+          text "Default"
+          text "▼"
+        button [ref=615]
+          text "More"
+      container
+        anchor [ref=616, loc=href:https://fertig.to/plancls, url=https://fertig.to/plancls]
+          text "Planning C++ training for 2027?"
+        button [ref=617]
+          text "×"
+      container
+        text "Made by"
+        anchor [ref=618, url=https://andreasfertig.com/]
+          text "Andreas Fertig"
+    container
+      heading
+        text "Source:"
+      container [ref=619]
+        container
+          container
+            text "1"
+            text "#include <cstdio>"
+          text "2"
+          container
+            text "3"
+            container
+              text "int"
+              text "main"
+              text "()"
+          container
+            text "4"
+            text "{"
+          container
+            text "5"
+            container
+              text "const"
+              text "char"
+              text "arr"
+              text "["
+              text "10"
+              text "]{"
+              text "2"
+              text ","
+              text "4"
+              text ","
+              text "6"
+              text ","
+              text "8"
+              text "};"
+          text "6"
+          container
+            text "7"
+            container
+              text "for"
+              text "("
+              text "const"
+              text "char"
+              text "&"
+              text "c"
+              text ":"
+              text "arr"
+              text ")"
+          container
+            text "8"
+            text "{"
+          container
+            text "9"
+            container
+              text "printf"
+              text "("
+              text ""c=%c\n""
+              text ","
+              text "c"
+              text ");"
+          container
+            text "10"
+            text "}"
+          container
+            text "11"
+            text "}"
+    container
+      heading
+        text "Insight:"
+      container [ref=620]
+        text "1"
+    container
+      heading
+        text "Console:"
+        button [ref=621]
+      container [ref=622]
+
+

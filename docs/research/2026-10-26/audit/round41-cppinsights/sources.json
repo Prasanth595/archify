@@ -1,0 +1,165 @@
+{
+  "sha": "5374b54f704de8610a2c9150df748577c22eb8cc",
+  "files": [
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab602974d200aa6849e6ad8220951ef9a78d9f08",
+      "size": 1057,
+      "url": "https://github.com/andreasfertig/cppinsights/blob/5374b54f704de8610a2c9150df748577c22eb8cc/LICENSE",
+      "sha256": "83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c"
+    },
+    {
+      "path": "Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce33d8a68eb99e987f90bc73620474f0085cd93d",
+      "size": 12307,
+      "url": "https://github.com/andreasfertig/cppinsights/blob/5374b54f704de8610a2c9150df748577c22eb8cc/Readme.md",
+      "sha256": "c871cf280e5f17992df90990c2430f0c6955b7f48ef83af4801a00ef30ee124f"
+    },
+    {
+      "path": "docs/opt-edu-show-lifetime.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2180dc19342c55436ac169d93f3247585cfdaf15",
+      "size": 1634,
+      "url": "https://github.com/andreasfertig/cppinsights/blob/5374b54f704de8610a2c9150df748577c22eb8cc/docs/opt-edu-show-lifetime.md",
+      "sha256": "1aec5b737b7cdc767148fbec99d6b188f9a34f5ae7692a20601dffd47a8b41ef"
+    },
+    {
+      "path": "docs/examples/generic-lambda.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e32be842cade499022cd99c04d763f11088448a1",
+      "size": 1548,
+      "url": "https://github.com/andreasfertig/cppinsights/blob/5374b54f704de8610a2c9150df748577c22eb8cc/docs/examples/generic-lambda.md",
+      "sha256": "a59ce92cc389c00b5cb260aa88fdcf42901eb57225cd2bdb78504c0eb1be86b5"
+    },
+    {
+      "path": "tests/LambdaWithConstCapture.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c0843342013077d7e16363feed3c08ec722aade",
+      "size": 62,
+      "url": "https://github.com/andreasfertig/cppinsights/blob/5374b54f704de8610a2c9150df748577c22eb8cc/tests/LambdaWithConstCapture.cpp",
+      "sha256": "31a670c4c599ff5010cfd1e0ab3467021ebe577199c1666606ca0c0dd19e2598"
+    },
+    {
+      "path": "tests/Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e37d12e06bf049e20c74ed887014793b07c3a3dc",
+      "size": 2554,
+      "url": "https://github.com/andreasfertig/cppinsights/blob/5374b54f704de8610a2c9150df748577c22eb8cc/tests/Readme.md",
+      "sha256": "59df6cc7d277d45e5e8b40e74897f94ebc0e8873befd3e300bd78c230884193c"
+    }
+  ],
+  "archifyExactQueries": {
+    "issue": {
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    },
+    "pr": {
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    }
+  },
+  "upstreamIssues": [
+    {
+      "number": 640,
+      "title": "Lambda Capture Variable Not Used in Generated Code",
+      "state": "closed",
+      "created_at": "2024-05-17T20:37:43Z",
+      "updated_at": "2024-06-21T16:17:17Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/640"
+    },
+    {
+      "number": 491,
+      "title": "Lambda decay inside lambda capture puts class definition inside constructor arguments",
+      "state": "closed",
+      "created_at": "2022-07-26T01:53:34Z",
+      "updated_at": "2023-09-29T08:34:53Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/491"
+    },
+    {
+      "number": 402,
+      "title": "Initializations with a lambda inside lambda capture",
+      "state": "closed",
+      "created_at": "2021-05-12T22:59:17Z",
+      "updated_at": "2021-10-04T10:31:23Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/402"
+    },
+    {
+      "number": 413,
+      "title": "Capture lambda are missing the deleted copy assignment",
+      "state": "closed",
+      "created_at": "2021-08-24T11:22:19Z",
+      "updated_at": "2021-10-04T07:15:49Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/413"
+    },
+    {
+      "number": 379,
+      "title": "Lambda capture in a member function",
+      "state": "closed",
+      "created_at": "2021-02-23T17:48:24Z",
+      "updated_at": "2021-02-23T19:23:49Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/379"
+    },
+    {
+      "number": 258,
+      "title": "C++14 lambda with init capture does not generate valid code",
+      "state": "closed",
+      "created_at": "2019-10-18T14:24:03Z",
+      "updated_at": "2019-10-27T16:47:50Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/258"
+    },
+    {
+      "number": 64,
+      "title": "Lambda Capture by value for reference typed variables.",
+      "state": "closed",
+      "created_at": "2018-08-28T12:57:38Z",
+      "updated_at": "2018-08-28T19:04:53Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/64"
+    },
+    {
+      "number": 2,
+      "title": "Lambda capture with renamed variables is wrongly instantiated",
+      "state": "closed",
+      "created_at": "2018-05-16T08:04:44Z",
+      "updated_at": "2018-06-04T05:26:02Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/2"
+    },
+    {
+      "number": 4,
+      "title": "Lambda with copy capture with init fails",
+      "state": "closed",
+      "created_at": "2018-05-16T19:30:39Z",
+      "updated_at": "2018-05-18T16:23:53Z",
+      "html_url": "https://github.com/andreasfertig/cppinsights/issues/4"
+    }
+  ],
+  "initialReadmeError": {
+    "content": [
+      {
+        "type": "text",
+        "text": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}"
+      }
+    ],
+    "structuredContent": {
+      "error": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/contents#get-repository-content\",\"status\":\"404\"}",
+      "error_code": "NOT_FOUND",
+      "error_data": {
+        "message": "Not Found",
+        "documentation_url": "https://docs.github.com/rest/repos/contents#get-repository-content",
+        "status": "404"
+      }
+    },
+    "isError": true
+  }
+}

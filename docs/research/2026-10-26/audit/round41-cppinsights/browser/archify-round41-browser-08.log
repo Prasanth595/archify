@@ -1,0 +1,44 @@
+[p1 "C++ Insights - Version Information" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "C++ Insights - Version Information"]
+root
+  container
+    container
+      container
+        image
+        anchor [ref=647, url=https://cppinsights.io/]
+          text "Home"
+        anchor [ref=648, loc=href:/about.html, url=https://cppinsights.io/about.html]
+          text "About"
+        anchor [ref=649, loc=href:/privacy-policy.html, url=https://cppinsights.io/privacy-policy.html]
+          text "Policies"
+        anchor [ref=650, loc=href:/examples.html, url=https://cppinsights.io/examples.html]
+          text "Examples"
+        anchor [ref=651, loc=href:/settings.html, url=https://cppinsights.io/settings.html]
+          text "Settings"
+      container
+        text "Made by"
+        anchor [ref=652, url=https://andreasfertig.com/]
+          text "Andreas Fertig"
+        text "Powered by"
+        anchor [ref=653, url=http://flask.pocoo.org/]
+          text "Flask"
+        text "and"
+        anchor [ref=654, url=https://codemirror.net/]
+          text "CodeMirror"
+    container
+      heading
+        text "C++ Insights Version Information"
+      text "cpp-insights 23.1 https://cppinsights.io (https://github.com/andreasfertig/cppinsights 5374b54f704de8610a2c9150df748577c22eb8cc)"
+      text "LLVM Revision:"
+      text "Clang Revision: Ubuntu Clang 23.1.5 (++20261023090852+395ba2c4d274-1~exp1~20261023090919.90)"
+      text "insights sha256: 141776f52d3f5c22bffaa579acc6daa05f03fce1b161d10cb70c303ac5142f90"
+      text "Used standard libraries:"
+      text "- libstdc++ (the default library): 16"
+      text "- libc++: 23"
+      text "Other available libraries:"
+      text "- Google Benchmark: 1.3.0"
+      text "- boost: 1_83_0"
+      text "Docker image "cppinsights-container" info: c541aa48f6f5 2026-10-25 19:33:29 +0100 CET"
+      text "CodeMirror:"
+
+SELECTED_OUTPUT {"selection":"","inputs":[]}
+

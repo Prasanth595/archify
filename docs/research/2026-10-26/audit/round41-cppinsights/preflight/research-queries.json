@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "git",
+      "grep",
+      "-n",
+      "-i",
+      "-E",
+      "cppinsights|cpp insights|c\\+\\+ insights",
+      "HEAD",
+      "--",
+      "docs/research"
+    ],
+    "exit": 1,
+    "head": "16e3133a28c878e38c09bd0cac98fbe69226a259"
+  },
+  {
+    "argv": [
+      "git",
+      "grep",
+      "-n",
+      "-i",
+      "-E",
+      "cppinsights|cpp insights|c\\+\\+ insights",
+      "origin/codex/research-lab-20261025",
+      "--",
+      "docs/research"
+    ],
+    "exit": 1,
+    "head": "3beb343b8fd6686201bde9b0f307f9a1c6b00246"
+  }
+]

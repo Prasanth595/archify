@@ -1,0 +1,568 @@
+[p1 "C++ Insights" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "C++ Insights"]
+root
+  container
+    container
+      container
+        image
+        button [ref=658]
+        button [ref=659]
+        button [ref=660]
+        button [ref=661]
+        anchor [ref=662, loc=href:https://compiler-explorer.com/, url=https://compiler-explorer.com/]
+          image
+        anchor [ref=663, loc=href:http://quick-bench.com/, url=http://quick-bench.com/]
+          image
+        button [ref=664]
+          text "[C++ Standard: C++ 17]"
+          text "▼"
+        button [ref=665]
+          text "Default"
+          text "▼"
+        button [ref=666]
+          text "More"
+      container
+        anchor [ref=667, loc=href:https://fertig.to/plancls, url=https://fertig.to/plancls]
+          text "Planning C++ training for 2027?"
+        button [ref=668]
+          text "×"
+      container
+        text "Made by"
+        anchor [ref=669, url=https://andreasfertig.com/]
+          text "Andreas Fertig"
+    container
+      heading
+        text "Source:"
+      container
+        container [ref=676]
+        container [ref=671]
+          container
+            container
+              text "12"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "13"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "14"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+            container
+              text "15"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "16"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""original-after-copy""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "17"
+              container
+                text "result"
+                text "="
+                text "g"
+                text "();"
+            container
+              text "18"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""copied-closure""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "19"
+              text "}"
+            container
+              text "20"
+              text "{"
+            container
+              text "21"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            container
+              text "22"
+              container
+                text "auto"
+                text "f"
+                text "="
+                text "["
+                text "&"
+                text "n"
+                text "]() {"
+                text "return"
+                text "++"
+                text "n"
+                text "; };"
+            container
+              text "23"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "24"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "25"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "26"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+            container
+              text "27"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "28"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""original-after-copy""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "29"
+              container
+                text "result"
+                text "="
+                text "g"
+                text "();"
+            container
+              text "30"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""copied-closure""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "31"
+              text "}"
+            container
+              text "32"
+              text "{"
+            container
+              text "33"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            container
+              text "34"
+              container
+                text "int"
+                text "&"
+                text "alias"
+                text "="
+                text "n"
+                text ";"
+            container
+              text "35"
+              container
+                text "auto"
+                text "f"
+                text "="
+                text "["
+                text "alias"
+                text "]()"
+                text "mutable"
+                text "{"
+                text "return"
+                text "++"
+                text "alias"
+                text "; };"
+            container
+              text "36"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "37"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "38"
+              container
+                text "show"
+                text "("
+                text ""alias-by-value""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "39"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+            container
+              text "40"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "41"
+              container
+                text "show"
+                text "("
+                text ""alias-by-value""
+                text ","
+                text ""original-after-copy""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "42"
+              container
+                text "result"
+                text "="
+                text "g"
+                text "();"
+            container
+              text "43"
+              container
+                text "show"
+                text "("
+                text ""alias-by-value""
+                text ","
+                text ""copied-closure""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "44"
+              text "}"
+            container
+              text "45"
+              text "}"
+            text "46"
+    container
+      heading
+        text "Insight:"
+      container [ref=672]
+        container
+          container
+            text "60"
+            container
+              text "show"
+              text "("
+              text ""reference""
+              text ","
+              text ""original-after-copy""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "61"
+            container
+              text "result"
+              text "="
+              text "g"
+              text "."
+              text "operator"
+              text "()();"
+          container
+            text "62"
+            container
+              text "show"
+              text "("
+              text ""reference""
+              text ","
+              text ""copied-closure""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "63"
+            text "}"
+          container
+            text "64"
+            text "{"
+          container
+            text "65"
+            container
+              text "int"
+              text "n"
+              text "="
+              text "1"
+              text ";"
+          container
+            text "66"
+            container
+              text "int"
+              text "&"
+              text "alias"
+              text "="
+              text "n"
+              text ";"
+          text "67"
+          container
+            text "68"
+            container
+              text "class"
+              text "__lambda_35_14"
+          container
+            text "69"
+            text "{"
+          container
+            text "70"
+            container
+              text "public"
+              text ":"
+          container
+            text "71"
+            container
+              text "inline"
+              text "constexpr"
+              text "int"
+              text "operator"
+              text "()()"
+          container
+            text "72"
+            text "{"
+          container
+            text "73"
+            container
+              text "return"
+              text "++"
+              text "alias"
+              text ";"
+          container
+            text "74"
+            text "}"
+          text "75"
+          container
+            text "76"
+            text "// private:"
+          container
+            text "77"
+            container
+              text "int"
+              text "alias"
+              text ";"
+          container
+            text "78"
+            container
+              text "public"
+              text ":"
+          container
+            text "79"
+            text "// inline constexpr __lambda_35_14(const __lambda_35_14 &) noexcept = default;"
+          container
+            text "80"
+            text "};"
+          text "81"
+          container
+            text "82"
+            container
+              text "__lambda_35_14"
+              text "f"
+              text "="
+              text "__lambda_35_14"
+              text "{"
+              text "alias"
+              text "};"
+          container
+            text "83"
+            container
+              text "n"
+              text "="
+              text "10"
+              text ";"
+          container
+            text "84"
+            container
+              text "int"
+              text "result"
+              text "="
+              text "f"
+              text "."
+              text "operator"
+              text "()();"
+          container
+            text "85"
+            container
+              text "show"
+              text "("
+              text ""alias-by-value""
+              text ","
+              text ""first""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "86"
+            container
+              text "__lambda_35_14"
+              text "g"
+              text "="
+              text "__lambda_35_14"
+              text "("
+              text "f"
+              text ");"
+          container
+            text "87"
+            container
+              text "result"
+              text "="
+              text "f"
+              text "."
+              text "operator"
+              text "()();"
+          container
+            text "88"
+            container
+              text "show"
+              text "("
+              text ""alias-by-value""
+              text ","
+              text ""original-after-copy""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "89"
+            container
+              text "result"
+              text "="
+              text "g"
+              text "."
+              text "operator"
+              text "()();"
+          container
+            text "90"
+            container
+              text "show"
+              text "("
+              text ""alias-by-value""
+              text ","
+              text ""copied-closure""
+              text ","
+              text "result"
+              text ","
+              text "n"
+              text ");"
+          container
+            text "91"
+            text "}"
+          container
+            text "92"
+            container
+              text "return"
+              text "0"
+              text ";"
+          container
+            text "93"
+            text "}"
+          text "94"
+    container
+      heading
+        text "Console:"
+        button [ref=673]
+      container [ref=674]
+        text "Insights exited with result code: 0"
+  svg_root
+
+

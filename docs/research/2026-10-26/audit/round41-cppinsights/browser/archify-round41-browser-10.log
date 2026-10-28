@@ -1,0 +1,277 @@
+[p1 "C++ Insights" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "C++ Insights"]
+root
+  container
+    container
+      text "This website uses cookies. See"
+      anchor [ref=655, loc=href:/cookie-policy.html, url=https://cppinsights.io/cookie-policy.html]
+        text "cookie policy"
+      text "for more information."
+    container
+      anchor [ref=656, url=javascript:void(0);]
+        text "Decline"
+      anchor [ref=657, url=javascript:void(0);]
+        text "Accept"
+  container
+    container
+      container
+        image
+        button [ref=658]
+        button [ref=659]
+        button [ref=660]
+        button [ref=661]
+        anchor [ref=662, loc=href:https://compiler-explorer.com/, url=https://compiler-explorer.com/]
+          image
+        anchor [ref=663, loc=href:http://quick-bench.com/, url=http://quick-bench.com/]
+          image
+        button [ref=664]
+          text "[C++ Standard: C++ 17]"
+          text "▼"
+        button [ref=665]
+          text "Default"
+          text "▼"
+        button [ref=666]
+          text "More"
+      container
+        anchor [ref=667, loc=href:https://fertig.to/plancls, url=https://fertig.to/plancls]
+          text "Planning C++ training for 2027?"
+        button [ref=668]
+          text "×"
+      container
+        text "Made by"
+        anchor [ref=669, url=https://andreasfertig.com/]
+          text "Andreas Fertig"
+    container
+      heading
+        text "Source:"
+      container
+        container [ref=670]
+        container [ref=671]
+          container
+            container
+              text "1"
+              text "#include <cstdio>"
+            text "2"
+            container
+              text "3"
+              container
+                text "static"
+                text "void"
+                text "show"
+                text "("
+                text "const"
+                text "char*"
+                text "mode"
+                text ","
+                text "const"
+                text "char*"
+                text "stage"
+                text ","
+                text "int"
+                text "result"
+                text ","
+                text "int"
+                text "outer"
+                text ") {"
+            container
+              text "4"
+              container
+                text "std::printf"
+                text "("
+                text ""%s|%s|result=%d|outer=%d\n""
+                text ","
+                text "mode"
+                text ","
+                text "stage"
+                text ","
+                text "result"
+                text ","
+                text "outer"
+                text ");"
+            container
+              text "5"
+              text "}"
+            text "6"
+            container
+              text "7"
+              container
+                text "int"
+                text "main"
+                text "() {"
+            container
+              text "8"
+              text "{"
+            container
+              text "9"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            container
+              text "10"
+              container
+                text "auto"
+                text "f"
+                text "="
+                text "["
+                text "n"
+                text "]()"
+                text "mutable"
+                text "{"
+                text "return"
+                text "++"
+                text "n"
+                text "; };"
+            container
+              text "11"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "12"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "13"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "14"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+            container
+              text "15"
+              container
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "16"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""original-after-copy""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "17"
+              container
+                text "result"
+                text "="
+                text "g"
+                text "();"
+            container
+              text "18"
+              container
+                text "show"
+                text "("
+                text ""value""
+                text ","
+                text ""copied-closure""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "19"
+              text "}"
+            container
+              text "20"
+              text "{"
+            container
+              text "21"
+              container
+                text "int"
+                text "n"
+                text "="
+                text "1"
+                text ";"
+            container
+              text "22"
+              container
+                text "auto"
+                text "f"
+                text "="
+                text "["
+                text "&"
+                text "n"
+                text "]() {"
+                text "return"
+                text "++"
+                text "n"
+                text "; };"
+            container
+              text "23"
+              container
+                text "n"
+                text "="
+                text "10"
+                text ";"
+            container
+              text "24"
+              container
+                text "int"
+                text "result"
+                text "="
+                text "f"
+                text "();"
+            container
+              text "25"
+              container
+                text "show"
+                text "("
+                text ""reference""
+                text ","
+                text ""first""
+                text ","
+                text "result"
+                text ","
+                text "n"
+                text ");"
+            container
+              text "26"
+              container
+                text "auto"
+                text "g"
+                text "="
+                text "f"
+                text ";"
+    container
+      heading
+        text "Insight:"
+      container [ref=672]
+        text "1"
+    container
+      heading
+        text "Console:"
+        button [ref=673]
+      container [ref=674]
+
+
