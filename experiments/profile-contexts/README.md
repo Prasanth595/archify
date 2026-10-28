@@ -59,7 +59,9 @@ Archify base为`6ca6a5c84439b57ea22e0630fe306e1d91587a6e`，Node v22.23.3，复�
 
 [verification.json](output/verification.json) 是去除本机绝对路径的派生摘要，不是原始receipt。原始stdout/stderr、所有失败、完整CLI/browser receipts保留在协调会话指定的外部证据目录，包括早期label默认值错误、nodeBlocks不能引用comparison row、locale fallback、旧evidence-path conflict。最后使用新的out-dir重跑，未覆写早期失败。原始delivery sidecar留在本地供strict check使用，因含本机路径而不公开提交。
 
-协调者随后在同一个 Ego TaskSpace 12 对冻结candidate与baseline完成真实浏览器观察，9张PNG均已查看，未编辑图片。这是Agent验收记录，不是人类review。浏览器证据与独立静态审查见下一节；较早的output/verification.json仍保留当时“pending root Ego inspection”的派生状态，不将其回填成新的原始receipt。没有CI、commit、push、merge、发布、安装或阅读效率结论。此处仅P1；未实施P2。
+协调者随后在同一个 Ego TaskSpace 12 对冻结candidate与baseline完成真实浏览器观察，9张PNG均已查看，未编辑图片。这是Agent验收记录，不是人类review。浏览器证据与独立静态审查见下一节；较早的output/verification.json仍保留当时“pending root Ego inspection”的派生状态，不将其回填成新的原始receipt。没有人类验收、合并、发布、安装或阅读效率结论。此处仅P1；未实施P2。
+
+2026-10-28，实验与证据提交 [`1f32189ac8fa769008e124d66cf8f41d3a9e6c82`](https://github.com/tt-a1i/archify/commit/1f32189ac8fa769008e124d66cf8f41d3a9e6c82) 已推送到 [`codex/lab-profile-contexts`](https://github.com/tt-a1i/archify/tree/codex/lab-profile-contexts/experiments/profile-contexts)，远程readback一致。该提交查得0个check run、0个commit status；这不是CI通过。后续文档记录不改变已冻结的HTML、输入、算法与图片。生成HTML沿用canonical renderer中的尾部空白，保留已验收原字节；其余提交文件的whitespace检查通过。
 
 ## 冻结产物的真实浏览器与独立审查
 
