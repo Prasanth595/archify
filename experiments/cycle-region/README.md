@@ -77,6 +77,8 @@ baseline 使用 `git archive 6ca6a5c84439b57ea22e0630fe306e1d91587a6e` 在独立
 
 本目录中的实施、检查和审阅收据描述各自运行时点。历史文字中的“未提交/未推送”仅限定该轮动作，不能据此判断后续远端交付状态；提交、push/readback 和实际 CI 由主任务后续的 remote delivery 字段单列。上述本地通过项与 root Ego 观察不代表远端 CI 已运行。
 
+2026-10-28，实验与证据提交 [`7df64d4594486df6670e4b702aa4b3053f0ea095`](https://github.com/tt-a1i/archify/commit/7df64d4594486df6670e4b702aa4b3053f0ea095) 已推送到 [`codex/lab-cycle-region`](https://github.com/tt-a1i/archify/tree/codex/lab-cycle-region/experiments/cycle-region)，远程readback一致。该提交查得0个check run、0个commit status；这不是CI通过。后续文档记录不改变已冻结的f05 HTML、源码、模板、ZIP和图片。基线/候选HTML、SVG和历史原始日志沿用生成结果中的尾部空白，保留证据原字节；其余提交文件的whitespace检查通过。未合并、发布或安装。
+
 ## 来源、许可与 AI
 
 F1 为本实验原创 **synthetic probe**，拓扑来自已确认 scout 合同，不是假称实地用户失败。新实现、fixture 和本文按仓库 [Apache-2.0](../../LICENSE) 贡献；基线与依赖的历史许可见 [NOTICE](../../NOTICE)、[LICENSE-MIT](../../LICENSE-MIT) 和包内 notices。没有复制第三方实现或上游 fixture。
