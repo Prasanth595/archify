@@ -1,0 +1,22 @@
+{"theme":"light","preset":"blueprint","inside":{"opacity":"1","filter":"none"},"outside":{"opacity":"1","filter":"none"},"originFilter":null,"active":null,"region":null}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ undefined
+- 'cycle'
+
+    at file://$RUN/blueprint-check.mjs:11:765
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'cycle',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.3

@@ -1,0 +1,466 @@
+Repository tests: 3 files, concurrency 2
+TAP version 13
+# Subtest: core smoke: public CLI diagrams, compatibility and delivery safety
+    # Subtest: architecture: validate, render and deliver the official example
+    ok 1 - architecture: validate, render and deliver the official example
+      ---
+      duration_ms: 1486.094584
+      type: 'test'
+      ...
+    # Subtest: workflow: validate, render and deliver the official example
+    ok 2 - workflow: validate, render and deliver the official example
+      ---
+      duration_ms: 1805.115667
+      type: 'test'
+      ...
+    # Subtest: sequence: validate, render and deliver the official example
+    ok 3 - sequence: validate, render and deliver the official example
+      ---
+      duration_ms: 1556.570875
+      type: 'test'
+      ...
+    # Subtest: dataflow: validate, render and deliver the official example
+    ok 4 - dataflow: validate, render and deliver the official example
+      ---
+      duration_ms: 1517.556958
+      type: 'test'
+      ...
+    # Subtest: lifecycle: validate, render and deliver the official example
+    ok 5 - lifecycle: validate, render and deliver the official example
+      ---
+      duration_ms: 1502.642584
+      type: 'test'
+      ...
+    # Subtest: erd: validate, render and deliver the official example
+    ok 6 - erd: validate, render and deliver the official example
+      ---
+      duration_ms: 1542.927584
+      type: 'test'
+      ...
+    # Subtest: tree: validate, render and deliver the official example
+    ok 7 - tree: validate, render and deliver the official example
+      ---
+      duration_ms: 1478.61075
+      type: 'test'
+      ...
+    # Subtest: class: validate, render and deliver the official example
+    ok 8 - class: validate, render and deliver the official example
+      ---
+      duration_ms: 1497.704417
+      type: 'test'
+      ...
+    # Subtest: timeline: validate, render and deliver the official example
+    ok 9 - timeline: validate, render and deliver the official example
+      ---
+      duration_ms: 1548.205166
+      type: 'test'
+      ...
+    # Subtest: waterfall: validate, render and deliver the official example
+    ok 10 - waterfall: validate, render and deliver the official example
+      ---
+      duration_ms: 1529.453625
+      type: 'test'
+      ...
+    # Subtest: explainer: validate, render and deliver the official example
+    ok 11 - explainer: validate, render and deliver the official example
+      ---
+      duration_ms: 1122.421959
+      type: 'test'
+      ...
+    # Subtest: architecture: frozen schema-v1 input remains valid and renderable
+    ok 12 - architecture: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 896.689417
+      type: 'test'
+      ...
+    # Subtest: workflow: frozen schema-v1 input remains valid and renderable
+    ok 13 - workflow: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 894.146125
+      type: 'test'
+      ...
+    # Subtest: sequence: frozen schema-v1 input remains valid and renderable
+    ok 14 - sequence: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 895.585917
+      type: 'test'
+      ...
+    # Subtest: dataflow: frozen schema-v1 input remains valid and renderable
+    ok 15 - dataflow: frozen schema-v1 input remains valid and renderable
+      ---
+      duration_ms: 860.783208
+      type: 'test'
+      ...
+    # Subtest: unknown diagram types return a structured diagnostic
+    ok 16 - unknown diagram types return a structured diagnostic
+      ---
+      duration_ms: 60.350333
+      type: 'test'
+      ...
+    # Subtest: strict provenance binds the delivered artifact bytes
+    ok 17 - strict provenance binds the delivered artifact bytes
+      ---
+      duration_ms: 375.306334
+      type: 'test'
+      ...
+    # Subtest: invalid schema preserves the last artifact and marks its delivery as failed
+    ok 18 - invalid schema preserves the last artifact and marks its delivery as failed
+      ---
+      duration_ms: 580.702292
+      type: 'test'
+      ...
+    1..18
+ok 1 - core smoke: public CLI diagrams, compatibility and delivery safety
+  ---
+  duration_ms: 21201.80025
+  type: 'test'
+  ...
+# Subtest: Focus preserves semantic selection, relationships, reachability and shared flow tokens
+    # Subtest: five modes expose the same Focus and flowTokens surfaces at cold start
+    ok 1 - five modes expose the same Focus and flowTokens surfaces at cold start
+      ---
+      duration_ms: 2054.139042
+      type: 'test'
+      ...
+    # Subtest: native node input and option variants preserve selection and cleanup side effects
+    ok 2 - native node input and option variants preserve selection and cleanup side effects
+      ---
+      duration_ms: 608.171542
+      type: 'test'
+      ...
+    # Subtest: Passport rows preserve keyboard navigation, missing metadata and no-neighbor state
+    ok 3 - Passport rows preserve keyboard navigation, missing metadata and no-neighbor state
+      ---
+      duration_ms: 1091.111292
+      type: 'test'
+      ...
+    # Subtest: relationship focus and pointer intents yield to pins and direct keyboard exploration
+    ok 4 - relationship focus and pointer intents yield to pins and direct keyboard exploration
+      ---
+      duration_ms: 1532.851042
+      type: 'test'
+      ...
+    # Subtest: direct pointer delay, touch filtering and background input keep ownership rules
+    ok 5 - direct pointer delay, touch filtering and background input keep ownership rules
+      ---
+      duration_ms: 1283.039417
+      type: 'test'
+      ...
+    # Subtest: authored graph geometry and shared token kinds preserve grouping and direction
+    ok 6 - authored graph geometry and shared token kinds preserve grouping and direction
+      ---
+      duration_ms: 333.026917
+      type: 'test'
+      ...
+    # Subtest: reachability handles cycles, parallel edges, toggles and strict snapshot rejection
+    ok 7 - reachability handles cycles, parallel edges, toggles and strict snapshot rejection
+      ---
+      duration_ms: 1682.802292
+      type: 'test'
+      ...
+    # Subtest: Cycle region preserves the complete F1, exact internal boundaries and empty results
+    ok 8 - Cycle region preserves the complete F1, exact internal boundaries and empty results
+      ---
+      duration_ms: 4416.703458
+      type: 'test'
+      ...
+    # Subtest: Cycle region keyboard, ownership, hash, copy and canonical export retain existing consumers
+    ok 9 - Cycle region keyboard, ownership, hash, copy and canonical export retain existing consumers
+      ---
+      duration_ms: 6920.048458
+      type: 'test'
+      ...
+    # Subtest: cold URLs and hashchange preserve focus, relation, reach and query semantics
+    ok 10 - cold URLs and hashchange preserve focus, relation, reach and query semantics
+      ---
+      duration_ms: 1546.279292
+      type: 'test'
+      ...
+    # Subtest: copy fallback and delayed feedback retain node, reach and relation links
+    ok 11 - copy fallback and delayed feedback retain node, reach and relation links
+      ---
+      duration_ms: 9770.533791
+      type: 'test'
+      ...
+    # Subtest: real pulse completion and motion transitions preserve static relationship state
+    ok 12 - real pulse completion and motion transitions preserve static relationship state
+      ---
+      duration_ms: 1834.49625
+      type: 'test'
+      ...
+    # Subtest: real SVG export strips temporary Focus, Reach and relationship state from clones
+    ok 13 - real SVG export strips temporary Focus, Reach and relationship state from clones
+      ---
+      duration_ms: 720.690958
+      type: 'test'
+      ...
+    # Subtest: Passport layout and dark/light output remain stable through viewport and camera changes
+    ok 14 - Passport layout and dark/light output remain stable through viewport and camera changes
+      ---
+      duration_ms: 3421.072417
+      type: 'test'
+      ...
+    1..14
+ok 2 - Focus preserves semantic selection, relationships, reachability and shared flow tokens
+  ---
+  duration_ms: 39853.377375
+  type: 'test'
+  ...
+# Subtest: zh-CN localizes renderer-owned output across all five modes without translating authored content
+ok 3 - zh-CN localizes renderer-owned output across all five modes without translating authored content
+  ---
+  duration_ms: 1898.756667
+  type: 'test'
+  ...
+# Subtest: explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+ok 4 - explicit en, zh-CN, and ko preserve complete authored field inventories across all five modes
+  ---
+  duration_ms: 5863.931791
+  type: 'test'
+  ...
+# Subtest: omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+ok 5 - omitted locale preserves non-English authored content and the English Viewer contract in all five modes
+  ---
+  duration_ms: 1926.450125
+  type: 'test'
+  ...
+# Subtest: checked-in Korean fixture validates and delivers a ko architecture artifact
+ok 6 - checked-in Korean fixture validates and delivers a ko architecture artifact
+  ---
+  duration_ms: 1483.882333
+  type: 'test'
+  ...
+# Subtest: checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+ok 7 - checked-in Japanese fixture validates and delivers a fully-authored ja architecture artifact
+  ---
+  duration_ms: 1200.493208
+  type: 'test'
+  ...
+# Subtest: malformed locale tags fail schema validation in every mode
+ok 8 - malformed locale tags fail schema validation in every mode
+  ---
+  duration_ms: 938.220959
+  type: 'test'
+  ...
+# Subtest: a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+ok 9 - a well-formed but unregistered locale passes validation, falls back to English chrome, and discloses the fallback
+  ---
+  duration_ms: 7895.498709
+  type: 'test'
+  ...
+# Subtest: a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+ok 10 - a previously unsupported locale localizes renderer-owned output once meta.translations supplies it, with partial coverage falling back to English key by key
+  ---
+  duration_ms: 1953.844166
+  type: 'test'
+  ...
+# Subtest: translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+ok 11 - translations with unknown keys or mismatched interpolation placeholders are reported and fall back to English per key
+  ---
+  duration_ms: 434.844375
+  type: 'test'
+  ...
+# Subtest: bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+ok 12 - bundled es, ko, and ar render from meta.locale alone in all five modes, identical to supplying the full catalog
+  ---
+  duration_ms: 11369.479083
+  type: 'test'
+  ...
+# Subtest: a partial override replaces only its keys and keeps the rest of the selected bundled language
+ok 13 - a partial override replaces only its keys and keeps the rest of the selected bundled language
+  ---
+  duration_ms: 2055.932792
+  type: 'test'
+  ...
+# Subtest: empty translations and equivalent tag casing select the same bundled catalog
+ok 14 - empty translations and equivalent tag casing select the same bundled catalog
+  ---
+  duration_ms: 6314.724375
+  type: 'test'
+  ...
+# Subtest: rejected overrides keep the bundled message and are reported apart from English fallback gaps
+ok 15 - rejected overrides keep the bundled message and are reported apart from English fallback gaps
+  ---
+  duration_ms: 368.243666
+  type: 'test'
+  ...
+# Subtest: an unbundled tag with only unusable translations falls back to English UI and language metadata
+ok 16 - an unbundled tag with only unusable translations falls back to English UI and language metadata
+  ---
+  duration_ms: 359.696458
+  type: 'test'
+  ...
+# Subtest: coverage reports the final resolved catalog with the English source of each gap
+ok 17 - coverage reports the final resolved catalog with the English source of each gap
+  ---
+  duration_ms: 1.399625
+  type: 'test'
+  ...
+# Subtest: a document override never mutates the reusable bundled catalog
+ok 18 - a document override never mutates the reusable bundled catalog
+  ---
+  duration_ms: 0.292958
+  type: 'test'
+  ...
+# Subtest: validate and deliver receipts carry locale warnings as structured diagnostics without failing
+ok 19 - validate and deliver receipts carry locale warnings as structured diagnostics without failing
+  ---
+  duration_ms: 3210.23575
+  type: 'test'
+  ...
+# Subtest: the manifest enrolls exactly the bundled catalogs, and each is complete
+ok 20 - the manifest enrolls exactly the bundled catalogs, and each is complete
+  ---
+  duration_ms: 4.490291
+  type: 'test'
+  ...
+# Subtest: enrolling a catalog is a data-only change and works from an unrelated working directory
+ok 21 - enrolling a catalog is a data-only change and works from an unrelated working directory
+  ---
+  duration_ms: 1147.446083
+  type: 'test'
+  ...
+# Subtest: every Viewer message reference resolves through the shared catalog
+ok 22 - every Viewer message reference resolves through the shared catalog
+  ---
+  duration_ms: 1.900875
+  type: 'test'
+  ...
+# Subtest: every supported catalog is complete and preserves interpolation variables
+not ok 23 - every supported catalog is complete and preserves interpolation variables
+  ---
+  duration_ms: 4.6615
+  type: 'test'
+  location: '$REPO/test/i18n.test.mjs:565:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    zh-CN: viewer.passport.cycle.definition
+    + actual - expected
+    
+      [
+        'label',
+    +   'label'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'label'
+  actual:
+    0: 'label'
+    1: 'label'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file://$REPO/test/i18n.test.mjs:574:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+ok 24 - the bundled Korean catalog is complete and preserves interpolation variables for every canonical key
+  ---
+  duration_ms: 0.342625
+  type: 'test'
+  ...
+# Subtest: the checked-in fr example catalog validates reusable translations and discloses historical gaps
+ok 25 - the checked-in fr example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.7365
+  type: 'test'
+  ...
+# Subtest: fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 26 - fr localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 391.83525
+  type: 'test'
+  ...
+# Subtest: the checked-in pt example catalog validates reusable translations and discloses historical gaps
+ok 27 - the checked-in pt example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.60775
+  type: 'test'
+  ...
+# Subtest: pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 28 - pt localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 367.015334
+  type: 'test'
+  ...
+# Subtest: the checked-in ja example catalog validates reusable translations and discloses historical gaps
+ok 29 - the checked-in ja example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 1.75175
+  type: 'test'
+  ...
+# Subtest: ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 30 - ja localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 374.039042
+  type: 'test'
+  ...
+# Subtest: the checked-in de example catalog validates reusable translations and discloses historical gaps
+ok 31 - the checked-in de example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.742417
+  type: 'test'
+  ...
+# Subtest: de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 32 - de localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 365.062667
+  type: 'test'
+  ...
+# Subtest: the checked-in it example catalog validates reusable translations and discloses historical gaps
+ok 33 - the checked-in it example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.597
+  type: 'test'
+  ...
+# Subtest: it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 34 - it localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 376.625708
+  type: 'test'
+  ...
+# Subtest: the checked-in ru example catalog validates reusable translations and discloses historical gaps
+ok 35 - the checked-in ru example catalog validates reusable translations and discloses historical gaps
+  ---
+  duration_ms: 0.959167
+  type: 'test'
+  ...
+# Subtest: ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+ok 36 - ru localizes renderer-owned output via meta.translations without leaving any renderer-owned English badge or preset name behind
+  ---
+  duration_ms: 374.110375
+  type: 'test'
+  ...
+# Subtest: runtime labels stay localized after composition
+ok 37 - runtime labels stay localized after composition
+  ---
+  duration_ms: 0.168417
+  type: 'test'
+  ...
+# Subtest: Share Card and export failures use catalog messages instead of fixed English
+ok 38 - Share Card and export failures use catalog messages instead of fixed English
+  ---
+  duration_ms: 1.997083
+  type: 'test'
+  ...
+# Subtest: Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+ok 39 - Arabic route and reach summaries use count-neutral labels and preserve direction and maximum depth
+  ---
+  duration_ms: 0.3875
+  type: 'test'
+  ...
+1..39
+# tests 71
+# suites 0
+# pass 70
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 72185.743041

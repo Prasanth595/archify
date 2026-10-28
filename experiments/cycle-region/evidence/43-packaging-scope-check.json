@@ -1,0 +1,95 @@
+{
+  "scope": "Only experiments/cycle-region evidence, README and indexes packaged; no product, test, generated template, candidate HTML or ZIP changes.",
+  "protectedFilesUnchanged": true,
+  "protectedIdentities": {
+    "viewer/focus.js": {
+      "sha256": "75d1d05ec92f2e2dac54328bd333a9193b42c66100c40152f05e033f0b750aa0",
+      "bytes": 102366
+    },
+    "viewer/template.source.html": {
+      "sha256": "8db00dda2eb0826beca492436693b94835064f2799dd93e771f01d4f5b99de48",
+      "bytes": 172698
+    },
+    "viewer/viewer.css": {
+      "sha256": "fd7402e587e7e65942d4800a6e679526e0d5ea840ed148828eb319dda19b643e",
+      "bytes": 192587
+    },
+    "viewer/route-probe.js": {
+      "sha256": "fbcd6374dd2c9b713666ea94980fccc537c92cebb663595fbb2c0852e040d2ee",
+      "bytes": 48059
+    },
+    "viewer/README.md": {
+      "sha256": "fac038fa50d61640ab17eae08a6b8cf8eb417c8765fbaa624365dc6a4407efe7",
+      "bytes": 69759
+    },
+    "test/focus-browser.test.mjs": {
+      "sha256": "87b2366f8635eeb932b234cbce1afa3c40644bcdd4f41aab0af47c8325e183bd",
+      "bytes": 45942
+    },
+    "archify/renderers/architecture/render-architecture.mjs": {
+      "sha256": "508744ae8bae4572f78222671fc8d3b16a222a722fd637fdefa9274cab47aef2",
+      "bytes": 58234
+    },
+    "archify/locales/en.json": {
+      "sha256": "4952851c7afdeddd13105b9f876098d797e951c638a81e3347c3cf8028196362",
+      "bytes": 28949
+    },
+    "archify/locales/zh-CN.json": {
+      "sha256": "84781c6e39f0f12566d769ffb544354a8827728c1d927d7d5596d15841e3a916",
+      "bytes": 28544
+    },
+    "archify/locales/zh-TW.json": {
+      "sha256": "6a9daa01b5808722410225d5f0a327f18f31f981495603438d0219df13422390",
+      "bytes": 28614
+    },
+    "archify/assets/template.html": {
+      "sha256": "5dd9b0a4b32e2788d6d08973c384e60cbc6007b7ee6e8f8fd3f976d1caf14db2",
+      "bytes": 826503
+    },
+    "experiments/cycle-region/f1.architecture.json": {
+      "sha256": "b19d09b30c3b7a83fa20d0e54dd5ce2bfcf6812327aa1e4dd1c8682f3e209ca5",
+      "bytes": 4432
+    },
+    "archify/locales/ar.json": {
+      "sha256": "a515e24d2bde073fdaaa1f7729f45a634badcfbc7542a191f8c0f72a7aced03f",
+      "bytes": 35778
+    },
+    "archify/locales/es.json": {
+      "sha256": "44ce204e5c84e3a216e5b579b0a4959dae27eec37beee906fb3fa099641e718f",
+      "bytes": 31145
+    },
+    "archify/locales/ko.json": {
+      "sha256": "67c8949ef4f749df2b17417fabc02ed56b55272da706e1618bf8fdb5de13200d",
+      "bytes": 32585
+    },
+    "test/i18n.test.mjs": {
+      "sha256": "e89822224a6df40469c3778f804f5e3ab3e6b62ea8e7fdf6a46dfa8aa232a89a",
+      "bytes": 41240
+    },
+    "archify.zip": {
+      "sha256": "624fe9a01fb48045db7dead26d2c0f468c957250f895225294c95828a31a6932",
+      "bytes": 6996967
+    },
+    "experiments/cycle-region/candidate.html": {
+      "sha256": "f05da5e4babffa3572be6443a3d7f89ddfb127d6ec8ec6dbecdbe0070e4f8aca",
+      "bytes": 887171
+    }
+  },
+  "rootPngCount": 14,
+  "allPngBytesAndDimensionsMatchBindings": true,
+  "stageNoteOriginalBytesRetained": true,
+  "rawSourcesRetainedOutsideRepository": true,
+  "primaryImage": {
+    "file": "evidence/root-browser/repaired-c-full-view-light.png",
+    "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+    "bytes": 189972,
+    "width": 1440,
+    "height": 900,
+    "phase": "current-f05-narrow-repair",
+    "artifactSha256": "f05da5e4babffa3572be6443a3d7f89ddfb127d6ec8ec6dbecdbe0070e4f8aca"
+  },
+  "checksRerun": "None; existing applicable test/build evidence reused.",
+  "portableTextPrivatePathScan": "pass",
+  "newReadmeAndIndexLinksResolve": true,
+  "historicalNoCommitNoPushStatements": "Scoped to the original implementation/check time; later remote delivery is recorded separately by the root task."
+}

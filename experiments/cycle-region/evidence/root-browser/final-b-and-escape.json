@@ -1,0 +1,23 @@
+{
+  "candidateSha256": "30b72c87cf502c775e16331784b1bd7498460ca91b6a768336a89a5147ca1f53",
+  "state": {
+    "hash": "#focus=b&region=cycle",
+    "result": "Cycle region · 2 nodes · 2 internal relationships · 2 crossing relationships Each member can reach b and be reached from it.\n\nRegion details\nMembers\nb [id: b]\na [id: a]\nInternal relationships\na → b · e2 [id: e2]\nb → a · e3 [id: e3]\nCrossing relationships\ns → a · e1 [id: e1]\nb → c · e4 [id: e4]",
+    "inside": [
+      "e2",
+      "e3"
+    ],
+    "pressed": "true"
+  },
+  "first": {
+    "hash": "#focus=b",
+    "pressed": "false",
+    "focusedId": "btn-cycle-region",
+    "regionResult": "\n                \n                Region details\n              "
+  },
+  "second": {
+    "hash": "",
+    "focusedId": "node-b",
+    "focusedNode": "b"
+  }
+}

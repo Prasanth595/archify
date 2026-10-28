@@ -1,0 +1,20 @@
+{
+  "hash": "#focus=b&region=cycle",
+  "pressed": "true",
+  "result": "Cycle region · 2 nodes · 2 internal relationships · 2 crossing relationships Each member can reach b and be reached from it.\n\nRegion details\nMembers\nb [id: b]\na [id: a]\nInternal relationships\na → b · e2 [id: e2]\nb → a · e3 [id: e3]\nCrossing relationships\ns → a · e1 [id: e1]\nb → c · e4 [id: e4]",
+  "inside": [
+    "e2",
+    "e3"
+  ],
+  "e4": [
+    {
+      "tag": "path",
+      "matched": false
+    },
+    {
+      "tag": "g",
+      "matched": false
+    }
+  ],
+  "detailsOpen": true
+}

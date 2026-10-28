@@ -1,0 +1,11 @@
+{
+  "hash": "#focus=c&region=cycle",
+  "result": "Cycle region · 4 nodes · 5 internal relationships · 1 crossing relationships Each member can reach c and be reached from it.\n\nRegion details\nMembers\nc [id: c]\nd [id: d]\ne [id: e]\nf [id: f]\nInternal relationships\nc → d · e5 [id: e5]\nd → c · e6 [id: e6]\nd → e · e7 [id: e7]\ne → f · e8 [id: e8]\nf → d · e9 [id: e9]\nCrossing relationships\nb → c · e4 [id: e4]",
+  "inside": [
+    "e5",
+    "e6",
+    "e7",
+    "e8",
+    "e9"
+  ]
+}

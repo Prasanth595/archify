@@ -1,0 +1,88 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ {
++   columnNumber: 472,
++   exception: {
++     className: 'TypeError',
++     description: "TypeError: Failed to execute 'getComputedStyle' on 'Window': parameter 1 is not of type 'Element'.\n" +
++       '    at <anonymous>:1:473\n' +
++       '    at <anonymous>:1:542',
++     objectId: '4982431809662944565.2.2',
++     subtype: 'error',
++     type: 'object'
++   },
++   exceptionId: 1,
++   lineNumber: 0,
++   scriptId: '10',
++   stackTrace: {
++     callFrames: [
++       {
++         columnNumber: 472,
++         functionName: '',
++         lineNumber: 0,
++         scriptId: '10',
++         url: ''
++       },
++       {
++         columnNumber: 541,
++         functionName: '',
++         lineNumber: 0,
++         scriptId: '10',
++         url: ''
++       }
++     ]
++   },
++   text: 'Uncaught'
++ }
+- undefined
+
+    at run (file://$RUN/blueprint-check.mjs:6:126)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async file://$RUN/blueprint-check.mjs:11:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    exceptionId: 1,
+    text: 'Uncaught',
+    lineNumber: 0,
+    columnNumber: 472,
+    scriptId: '10',
+    stackTrace: {
+      callFrames: [
+        {
+          functionName: '',
+          scriptId: '10',
+          url: '',
+          lineNumber: 0,
+          columnNumber: 472
+        },
+        {
+          functionName: '',
+          scriptId: '10',
+          url: '',
+          lineNumber: 0,
+          columnNumber: 541
+        }
+      ]
+    },
+    exception: {
+      type: 'object',
+      subtype: 'error',
+      className: 'TypeError',
+      description: "TypeError: Failed to execute 'getComputedStyle' on 'Window': parameter 1 is not of type 'Element'.\n" +
+        '    at <anonymous>:1:473\n' +
+        '    at <anonymous>:1:542',
+      objectId: '4982431809662944565.2.2'
+    }
+  },
+  expected: undefined,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.3

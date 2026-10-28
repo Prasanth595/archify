@@ -151,9 +151,9 @@ and Lens keep their later positions. Required diagram SVG, Passport controls and
 relationship list remain required DOM. Shared viewerText/viewerCount/viewerKindLabel
 and hasDrawableGeometry stay in the template's classic-script scope.
 
-The interface is thirteen Focus methods: set, setMany, clear, copyLink, reach,
+The Focus interface includes set, setMany, clear, copyLink, explain, explaining, reach,
 clearReach, reachabilitySnapshot, inspectRelationship, inspectRelationshipById,
-reposition, relationship, reachability and active. The same closure also installs
+reposition, relationship, reachability, cycleRegion and active. The same closure also installs
 Archify.flowTokens.create/kind/path before Route can consume them. This shared
 provider is part of Focus ownership, not a second initialization step.
 
@@ -213,6 +213,20 @@ provider is part of Focus ownership, not a second initialization step.
   It requires one selected origin and at least one other reachable node; repeated
   direction toggles unless toggle:false. It clears curated view/relationship state,
   updates Export controls and optionally URL/Camera according to existing options.
+- Architecture single-node Passports also expose `reach('cycle')`. It intersects
+  upstream and downstream over one relationship snapshot, keeping all internal
+  keys and separately listing crossing keys. A singleton requires an authored
+  self-loop; otherwise it returns an explicit empty result and preserves ordinary
+  neighborhood emphasis. It does not move the camera or imply a runtime fault.
+  `cycleRegion()` returns copied node/edge/crossing arrays and `hasCycle`, or null;
+  no depth is assigned. `reachability()` and `reachabilitySnapshot()` remain
+  directional APIs and return null for cycle mode. Reach Share stays hidden.
+  Cycle URLs use `#focus=<id>&region=cycle`, with region taking priority over reach
+  and relation retaining its existing priority. Copy retains the query string.
+  Native button toggle and first Escape leave the node selected; second Escape
+  clears Focus. Node/multi-selection, pin, Route and Lens replace cycle mode.
+  Readable details preserve raw node IDs, edge IDs (or keys), endpoints and labels.
+  Runtime emphasis is removed from canonical exports using existing cleanup.
 - reachabilitySnapshot fails closed when selection, Reach mode/attributes, depths,
   live node multiplicity or edge identity disagree. Each edge key requires exactly
   one drawable fragment, though compatible shapeless fragments are allowed. Extra

@@ -563,8 +563,10 @@ test('every Viewer message reference resolves through the shared catalog', () =>
 });
 
 test('every supported catalog is complete and preserves interpolation variables', () => {
-  const variables = (value) => [...value.matchAll(/\{([a-zA-Z0-9_]+)\}/g)]
-    .map((match) => match[1])
+  // Translations may repeat a variable (for example a subject in Chinese).
+  // The interpolation contract is the set of names, as validateTranslations uses.
+  const variables = (value) => [...new Set([...value.matchAll(/\{([a-zA-Z0-9_]+)\}/g)]
+    .map((match) => match[1]))]
     .sort();
   for (const key of catalogKeys()) {
     const expected = variables(translateMessage('en', key));

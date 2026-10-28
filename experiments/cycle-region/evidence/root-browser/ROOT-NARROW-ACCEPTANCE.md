@@ -1,0 +1,9 @@
+# Root final narrow repair evidence, 2026-10-28
+
+Current candidate f05da5e4babffa3572be6443a3d7f89ddfb127d6ec8ec6dbecdbe0070e4f8aca. Mixed old and current images are explicitly separated in image-bindings.json; filenames starting final- are superseded 30b evidence, not current final claims. d2cc reconstruction provenance remains in stage-note.json.
+
+Ego TaskSpace12, 390x844 dark: cold URL restores c region; after settled collapsed layout, native click on Region details opens the complete lists. Chip top173.148/bottom607.148, height434, client432/scroll475 with native overflow auto; diagram container top164.148/bottom690.477. Genuine wheel inside passport reaches last crossing relationship b->c e4. Last row y589.039..602.844, hit-test true, scrollTop42.5; new tool invocation resized/repositioned chip to193.148..627.148 and the last row remained usable. Top and bottom screenshots both viewed. No records were removed. This closes the reproduced 30b clipped-details blocker.
+
+1440x900 light: native node-index c selection, Space activation, details click and exact complete c/d/e/f, e5-e9 and crossing e4 observed. First Escape exits region retaining focus c and cycle button focus; second Escape clears focus and returns node-c. Genuine desktop screenshots viewed. Primary gallery PNG repaired-c-full-view-light.png is from a new cold query with scrollY0, auto-focus zoom148%, all graph data still present; screenshot is a focus viewport, not a claim that every graph node fits the image.
+
+Earlier base/d2cc/30b screenshots remain historical evidence, including the real mobile failure. New repaired-* screenshots bind only f05. Independent math oracle and author test gates remain separate. No human acceptance or remote CI is implied. The small-screen base toolbar still has horizontal clipping; this fix scopes to cycle-detail reachability.

@@ -1980,6 +1980,20 @@ a.semantic-passport-source:focus-visible {
   color: var(--reach-color, var(--frontend-stroke));
   font-size: 0.625rem;
 }
+#btn-cycle-region { grid-column: 1 / -1; --reach-color: var(--frontend-stroke); }
+#btn-cycle-region[hidden], #focus-cycle-result[hidden] { display: none; }
+#focus-cycle-result { min-width: 0; overflow-wrap: anywhere; }
+.focus-chip[data-reach-mode="cycle"]:has(#focus-cycle-details[open]) {
+  max-height: var(--cycle-passport-max-height, none);
+  overflow-y: auto;
+}
+#focus-cycle-status { margin: 0.2rem 0; }
+#focus-cycle-details { font-size: 0.575rem; line-height: 1.5; }
+#focus-cycle-details summary { cursor: pointer; padding: 0.25rem 0; }
+#focus-cycle-details summary:focus-visible { outline: 2px solid var(--frontend-stroke); }
+#focus-cycle-lists { max-height: min(14rem, 30vh); overflow: auto; padding: 0.2rem; }
+#focus-cycle-lists ul { margin: 0.2rem 0 0.55rem; padding-left: 1.2rem; }
+.relationship-cycle-role { grid-column: 2 / -1; color: var(--text-faint); }
 .semantic-passport-reach-status {
   color: var(--text-faint);
   font-size: 0.525rem;
@@ -4424,6 +4438,12 @@ svg[data-reach-active] [data-edge-from] { opacity: 0.09; }
 svg[data-reach-active] [data-graph-role="automatic-crossover"] > [data-graph-role="automatic-crossover-underlay"] { opacity: 0.09; }
 svg[data-reach-active] [data-reach-match] { opacity: 1; }
 svg[data-reach-active] [data-graph-role="automatic-crossover"]:has(> [data-reach-match]) > [data-graph-role="automatic-crossover-underlay"] { opacity: 1; }
+svg[data-reach-active="cycle"] [data-reach-origin] {
+  filter: drop-shadow(0 0 11px var(--frontend-stroke));
+}
+svg[data-reach-active="cycle"] [data-edge-from][data-reach-match] {
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--frontend-stroke) 72%, transparent));
+}
 svg[data-reach-active="upstream"] [data-reach-origin] {
   filter: drop-shadow(0 0 11px var(--database-stroke));
 }

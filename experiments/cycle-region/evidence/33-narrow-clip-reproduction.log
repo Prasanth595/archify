@@ -1,0 +1,127 @@
+Repository tests: 1 files, concurrency 2
+TAP version 13
+# Subtest: Focus preserves semantic selection, relationships, reachability and shared flow tokens
+    # Subtest: five modes expose the same Focus and flowTokens surfaces at cold start
+    ok 1 - five modes expose the same Focus and flowTokens surfaces at cold start
+      ---
+      duration_ms: 2153.28575
+      type: 'test'
+      ...
+    # Subtest: native node input and option variants preserve selection and cleanup side effects
+    ok 2 - native node input and option variants preserve selection and cleanup side effects
+      ---
+      duration_ms: 586.914167
+      type: 'test'
+      ...
+    # Subtest: Passport rows preserve keyboard navigation, missing metadata and no-neighbor state
+    ok 3 - Passport rows preserve keyboard navigation, missing metadata and no-neighbor state
+      ---
+      duration_ms: 1094.770792
+      type: 'test'
+      ...
+    # Subtest: relationship focus and pointer intents yield to pins and direct keyboard exploration
+    ok 4 - relationship focus and pointer intents yield to pins and direct keyboard exploration
+      ---
+      duration_ms: 1533.696667
+      type: 'test'
+      ...
+    # Subtest: direct pointer delay, touch filtering and background input keep ownership rules
+    ok 5 - direct pointer delay, touch filtering and background input keep ownership rules
+      ---
+      duration_ms: 1283.469334
+      type: 'test'
+      ...
+    # Subtest: authored graph geometry and shared token kinds preserve grouping and direction
+    ok 6 - authored graph geometry and shared token kinds preserve grouping and direction
+      ---
+      duration_ms: 332.79825
+      type: 'test'
+      ...
+    # Subtest: reachability handles cycles, parallel edges, toggles and strict snapshot rejection
+    ok 7 - reachability handles cycles, parallel edges, toggles and strict snapshot rejection
+      ---
+      duration_ms: 1649.256542
+      type: 'test'
+      ...
+    # Subtest: Cycle region preserves the complete F1, exact internal boundaries and empty results
+    ok 8 - Cycle region preserves the complete F1, exact internal boundaries and empty results
+      ---
+      duration_ms: 4433.411792
+      type: 'test'
+      ...
+    # Subtest: Cycle region keyboard, ownership, hash, copy and canonical export retain existing consumers
+    ok 9 - Cycle region keyboard, ownership, hash, copy and canonical export retain existing consumers
+      ---
+      duration_ms: 7669.745208
+      type: 'test'
+      ...
+    # Subtest: Cycle details fit the actual clip after native toggle and expose the last relationship by scrolling
+    not ok 10 - Cycle details fit the actual clip after native toggle and expose the last relationship by scrolling
+      ---
+      duration_ms: 545.724708
+      type: 'test'
+      location: '$REPO/test/focus-browser.test.mjs:234:11'
+      failureType: 'testCodeFailure'
+      error: '{"chip":{"top":311.140625,"bottom":791.03125,"height":479.890625},"clip":{"top":164.140625,"bottom":679.46875,"height":515.328125},"nav":{"top":616.46875,"bottom":670.46875,"height":54},"list":{"top":556.953125,"bottom":778.640625,"height":221.6875}}'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        TestContext.<anonymous> (file://$REPO/test/focus-browser.test.mjs:241:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (file://$REPO/test/focus-browser.test.mjs:234:3)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: cold URLs and hashchange preserve focus, relation, reach and query semantics
+    ok 11 - cold URLs and hashchange preserve focus, relation, reach and query semantics
+      ---
+      duration_ms: 1483.194916
+      type: 'test'
+      ...
+    # Subtest: copy fallback and delayed feedback retain node, reach and relation links
+    ok 12 - copy fallback and delayed feedback retain node, reach and relation links
+      ---
+      duration_ms: 9788.18825
+      type: 'test'
+      ...
+    # Subtest: real pulse completion and motion transitions preserve static relationship state
+    ok 13 - real pulse completion and motion transitions preserve static relationship state
+      ---
+      duration_ms: 1833.005708
+      type: 'test'
+      ...
+    # Subtest: real SVG export strips temporary Focus, Reach and relationship state from clones
+    ok 14 - real SVG export strips temporary Focus, Reach and relationship state from clones
+      ---
+      duration_ms: 671.920292
+      type: 'test'
+      ...
+    # Subtest: Passport layout and dark/light output remain stable through viewport and camera changes
+    ok 15 - Passport layout and dark/light output remain stable through viewport and camera changes
+      ---
+      duration_ms: 3400.909084
+      type: 'test'
+      ...
+    1..15
+not ok 1 - Focus preserves semantic selection, relationships, reachability and shared flow tokens
+  ---
+  duration_ms: 41071.002666
+  type: 'test'
+  location: '$REPO/test/focus-browser.test.mjs:14:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 16
+# suites 0
+# pass 14
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 41170.578167

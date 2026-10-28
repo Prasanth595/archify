@@ -537,6 +537,13 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
                 <button id="btn-reach-downstream" type="button" aria-label="{{i18n:viewer.passport.downstream.trace}}" aria-pressed="false">
                   <span>{{i18n:viewer.passport.downstream}}</span><strong id="focus-reach-downstream-count">0</strong>
                 </button>
+                <button id="btn-cycle-region" type="button" aria-pressed="false" aria-controls="focus-cycle-result" hidden>
+                  <span>{{i18n:viewer.passport.cycle}}</span><strong id="focus-cycle-count">0</strong>
+                </button>
+              </div>
+              <div id="focus-cycle-result" hidden>
+                <p class="semantic-passport-reach-status" id="focus-cycle-status" aria-live="polite"></p>
+                <details id="focus-cycle-details"><summary>{{i18n:viewer.passport.cycle.details}}</summary><div id="focus-cycle-lists"></div></details>
               </div>
               <small class="semantic-passport-reach-status" id="focus-reach-status" hidden aria-live="polite"></small>
             </div>
@@ -1502,6 +1509,10 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       } else if (e.key === 'Escape' && Archify.focus.explaining()) {
         e.preventDefault();
         Archify.focus.explain();
+      } else if (e.key === 'Escape' && Archify.focus.cycleRegion()) {
+        e.preventDefault();
+        Archify.focus.clearReach({ updateUrl: true });
+        document.getElementById('btn-cycle-region').focus({ preventScroll: true });
       } else if (e.key === 'Escape' && Archify.focus.active()) {
         e.preventDefault();
         Archify.focus.clear({ restoreFocus: true });

@@ -1,0 +1,72 @@
+{
+  "baseCommit": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "candidate": "uncommitted codex/lab-cycle-region working tree; file identities below",
+  "artifactIdentities": {
+    "f1.topology.json": {
+      "sha256": "5e5fbf083a65f766dbbdc89fea68b0611658638502605c8fc3243752eef466eb",
+      "bytes": 1097
+    },
+    "f1.architecture.json": {
+      "sha256": "b19d09b30c3b7a83fa20d0e54dd5ce2bfcf6812327aa1e4dd1c8682f3e209ca5",
+      "bytes": 4432
+    },
+    "baseline.html": {
+      "sha256": "655b3d648ac14dd9b473fc866d07cd7034a2d145c3da30389ce3850e96ca6f54",
+      "bytes": 876262
+    },
+    "candidate.html": {
+      "sha256": "f05da5e4babffa3572be6443a3d7f89ddfb127d6ec8ec6dbecdbe0070e4f8aca",
+      "bytes": 887171
+    },
+    "baseline.light.svg": {
+      "sha256": "efc1685a91ca68c109639cea516da243c6540e680d45708a363b0a9fb0aedb6f",
+      "bytes": 198987
+    },
+    "candidate.light.svg": {
+      "sha256": "cd3ff842c15ef8fa06d72b32ccc868226e4cc77ce938009a6317dddb38dad8c2",
+      "bytes": 199289
+    },
+    "svg-comparison.json": {
+      "sha256": "a4c1270c31d492d89bd7256d8bebd1f2ce405c47a44042e50892c8aa3b50c425",
+      "bytes": 43865
+    }
+  },
+  "sourceIdentities": {
+    "viewer/focus.js": "75d1d05ec92f2e2dac54328bd333a9193b42c66100c40152f05e033f0b750aa0",
+    "viewer/template.source.html": "8db00dda2eb0826beca492436693b94835064f2799dd93e771f01d4f5b99de48",
+    "viewer/viewer.css": "fd7402e587e7e65942d4800a6e679526e0d5ea840ed148828eb319dda19b643e",
+    "viewer/route-probe.js": "fbcd6374dd2c9b713666ea94980fccc537c92cebb663595fbb2c0852e040d2ee",
+    "archify/assets/template.html": "5dd9b0a4b32e2788d6d08973c384e60cbc6007b7ee6e8f8fd3f976d1caf14db2",
+    "archify/renderers/architecture/render-architecture.mjs": "508744ae8bae4572f78222671fc8d3b16a222a722fd637fdefa9274cab47aef2",
+    "test/focus-browser.test.mjs": "87b2366f8635eeb932b234cbce1afa3c40644bcdd4f41aab0af47c8325e183bd"
+  },
+  "sourceBundleSha256": "dbfaabcb0fae156f94dc86770b3780d7076613ea1a32d571efe89138b0dc5025",
+  "sourceBundleHashDefinition": "SHA256 of sorted compact JSON of sourceIdentities (UTF-8)",
+  "intermediateCandidates": [
+    {
+      "sha256": "30b72c87cf502c775e16331784b1bd7498460ca91b6a768336a89a5147ca1f53",
+      "status": "Superseded: native details toggle exceeded diagram clip at 390x844; raw original retained in run directory."
+    }
+  ],
+  "primaryImage": {
+    "file": "evidence/root-browser/repaired-c-full-view-light.png",
+    "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+    "bytes": 189972,
+    "width": 1440,
+    "height": 900,
+    "phase": "current-f05-narrow-repair",
+    "artifactSha256": "f05da5e4babffa3572be6443a3d7f89ddfb127d6ec8ec6dbecdbe0070e4f8aca"
+  },
+  "evidenceIndexes": {
+    "root-browser": {
+      "file": "evidence/root-browser/index.json",
+      "sha256": "d74f426fe510f9bbd553a08cc277af0b1c1299e8b0515bc3d0f28e3028ac5752",
+      "bytes": 17152
+    },
+    "independent-review": {
+      "file": "evidence/independent-review/index.json",
+      "sha256": "38247735f22d6aae7e19885ca583408ce6d6a8414b37e1992d9f77c3c8cdb08f",
+      "bytes": 6073
+    }
+  }
+}

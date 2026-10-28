@@ -26,6 +26,10 @@ test('Focus preserves semantic selection, relationships, reachability and shared
     files[mode] = path.join(scratch, mode + '.html');
     execFileSync(process.execPath, [path.join(skillRoot, `renderers/${mode}/render-${mode}.mjs`), path.join(skillRoot, 'examples', example), files[mode]]);
   }
+  const cycleInput = path.resolve(skillRoot, '../experiments/cycle-region/f1.architecture.json');
+  files.cycle = path.join(scratch, 'cycle.html');
+  execFileSync(process.execPath, [path.join(skillRoot, 'bin/archify.mjs'), 'validate', 'architecture', cycleInput, '--quality', 'showcase', '--json']);
+  execFileSync(process.execPath, [path.join(skillRoot, 'renderers/architecture/render-architecture.mjs'), cycleInput, files.cycle]);
   // The graph fixture deliberately exercises DOM fragment contracts outside IR validation.
   const graph = `<g data-edge-key="a" data-edge-id="edge-a" data-edge-from="users" data-edge-to="cdn"></g>
     <path data-edge-key="a" data-edge-id="edge-a" data-edge-from="users" data-edge-to="cdn" d="M 110 180 L 245 180"/>
@@ -66,9 +70,9 @@ test('Focus preserves semantic selection, relationships, reachability and shared
     window.focusWait=predicate=>new Promise((resolve,reject)=>{const start=performance.now();function poll(){if(predicate())return resolve();if(performance.now()-start>12000)return reject(new Error('Focus observation timed out'));requestAnimationFrame(poll);}requestAnimationFrame(poll);});
   ` });
   let navigationId=0;
-  async function load(mode='graph', { theme='dark', reduced=true, width=1440, hash='' }={}) {
+  async function load(mode='graph', { theme='dark', reduced=true, width=1440, height=900, hash='' }={}) {
     await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:0,y:0});
-    await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
+    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
     await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:reduced?'reduce':'no-preference'}]});
     const loaded=browser.cdp.waitFor('Page.loadEventFired',session);
     await send('Page.navigate',{url:pathToFileURL(files[mode]).href+'?theme='+theme+'&keep=yes&run='+(++navigationId)+hash});await loaded;
@@ -104,7 +108,7 @@ test('Focus preserves semantic selection, relationships, reachability and shared
   }
 
   await t.test('five modes expose the same Focus and flowTokens surfaces at cold start',async()=>{
-    const expected=['set','setMany','clear','copyLink','explain','explaining','reach','clearReach','reachabilitySnapshot','inspectRelationship','inspectRelationshipById','reposition','relationship','reachability','active'].sort();
+    const expected=['set','setMany','clear','copyLink','explain','explaining','reach','clearReach','reachabilitySnapshot','inspectRelationship','inspectRelationshipById','reposition','relationship','reachability','cycleRegion','active'].sort();
     for(const mode of Object.keys(cases)) {
       await load(mode);assert.deepEqual(await run('Object.keys(Archify.focus).sort()'),expected);assert.deepEqual(await run('Object.keys(Archify.flowTokens).sort()'),['create','kind','path']);
       const cold=await snapshot(mode+'-cold');assert.equal(cold.active,null);
@@ -172,6 +176,80 @@ test('Focus preserves semantic selection, relationships, reachability and shared
       `svg.appendChild(svg.querySelector('path[data-edge-key="a"]').cloneNode(true))`,
     ]) { await load();await select('cdn');await run(`Archify.focus.reach('downstream',{reveal:false});const svg=document.querySelector('.diagram-container > svg');${mutation}`);assert.equal(await run('Archify.focus.reachabilitySnapshot()'),null); }
     await load();await select('cdn');await run(`Archify.focus.reach('downstream',{reveal:false});Archify.focus.clearReach({updateUrl:true})`);assert.equal((await snapshot('clear-reach')).hash,'#focus=cdn');await select('isolated');assert.equal(await run(`Archify.focus.reach('downstream')`),false);
+  });
+  await t.test('Cycle region preserves the complete F1, exact internal boundaries and empty results',async()=>{
+    await load('cycle');
+    assert.equal(await run(`document.querySelector('.diagram-container > svg').dataset.diagramType`),'architecture');
+    assert.deepEqual(await run(`({nodes:document.querySelectorAll('.diagram-container > svg [data-node-id]').length,edges:new Set([...document.querySelectorAll('.diagram-container > svg [data-edge-from]')].map(e=>e.dataset.edgeKey)).size})`),{nodes:13,edges:14});
+    const answers=[['b',['a','b'],['e2','e3'],['e1','e4']],['a',['a','b'],['e2','e3'],['e1','e4']],...['c','d','e','f'].map(id=>[id,['c','d','e','f'],['e5','e6','e7','e8','e9'],['e4']]),['x',['x'],['e14'],[]],...['s','i','u','v','w','t'].map(id=>[id,[],[],[]])];
+    for(const [id,members,inside,crossing] of answers){
+      await select(id,{toggle:false});await focus('#btn-cycle-region');await key('Enter','Enter',13);
+      const result=await run(`(()=>{const f=Archify.focus,r=f.cycleRegion(),svg=document.querySelector('.diagram-container > svg'),ids=keys=>[...new Set([...svg.querySelectorAll('[data-edge-from]')].filter(e=>keys.includes(e.dataset.edgeKey)).map(e=>e.dataset.edgeId))].sort();return {members:r.nodeIds.slice().sort(),inside:ids(r.edgeKeys),crossing:ids(r.crossingEdgeKeys),hasCycle:r.hasCycle,reach:f.reachability(),snapshot:f.reachabilitySnapshot(),pressed:document.getElementById('btn-cycle-region').getAttribute('aria-pressed'),marked:[...new Set([...svg.querySelectorAll('[data-edge-from][data-reach-match]')].map(e=>e.dataset.edgeId))].sort(),mode:svg.getAttribute('data-reach-active'),depth:svg.querySelectorAll('[data-reach-depth]').length,status:document.getElementById('focus-cycle-status').textContent,details:document.getElementById('focus-cycle-lists').textContent,share:document.querySelector('[data-action="reach-share-card"]').hidden};})()`);
+      assert.deepEqual(result.members,members);assert.deepEqual(result.inside,inside.slice().sort());assert.deepEqual(result.crossing,crossing.slice().sort());assert.equal(result.hasCycle,!!members.length);assert.equal(result.reach,null);assert.equal(result.snapshot,null);assert.equal(result.pressed,'true');assert.equal(result.mode,members.length?'cycle':null);assert.equal(result.depth,0);assert.equal(result.share,true);assert.deepEqual(result.marked,inside.slice().sort());
+      if(members.length){for(const edge of [...inside,...crossing])assert.ok(result.details.includes('id: '+edge),id+' details '+edge);}else assert.match(result.status,/No directed cycle/);
+      assert.equal(await run('location.hash'),'#focus='+id+'&region=cycle');
+      const snap=await snapshot('cycle-'+id);if(!members.length)assert.ok(snap.nodes.filter(n=>'data-focus-match' in n.attrs).length>=1,'empty retains neighborhood');
+    }
+    await select('c',{toggle:false});await run(`Archify.focus.reach('cycle')`);
+    assert.equal(await run(`(()=>{const a=Archify.focus.cycleRegion();a.nodeIds.length=0;a.edgeKeys.length=0;a.crossingEdgeKeys.length=0;return Archify.focus.cycleRegion().nodeIds.length;})()`),4);
+    assert.equal(await run(`document.querySelectorAll('[data-reach-match][data-edge-id="e4"]').length`),0);
+    await focus('#btn-cycle-region');await key(' ','Space',32);assert.equal(await run('Archify.focus.cycleRegion()'),null);assert.equal(await run('document.activeElement.id'),'btn-cycle-region');
+    await key('Enter','Enter',13);await key('Escape','Escape',27);assert.equal(await run('Archify.focus.active()'),'c');assert.equal(await run('Archify.focus.cycleRegion()'),null);assert.equal(await run('document.activeElement.id'),'btn-cycle-region');await key('Escape','Escape',27);assert.equal(await run('Archify.focus.active()'),null);assert.equal(await run('document.activeElement.dataset.nodeId'),'c');
+  });
+  await t.test('Cycle region keyboard, ownership, hash, copy and canonical export retain existing consumers',async()=>{
+    await load('cycle');await select('b');await focus('#btn-reach-downstream');await key('Tab','Tab',9);assert.equal(await run('document.activeElement.id'),'btn-cycle-region');await key('Enter','Enter',13);
+    await run(`document.getElementById('btn-focus-relations').click()`);await stable();
+    assert.match(await run(`document.querySelector('[data-relationship-id="e4"][data-relationship-target]').getAttribute('aria-label')`),/Crosses region/);
+    await focus('#focus-cycle-details summary');await key('Enter','Enter',13);assert.equal(await run(`document.getElementById('focus-cycle-details').open`),true);
+    const ax=await send('Accessibility.getFullAXTree');assert.ok(ax.nodes.some(n=>n.role?.value==='button'&&n.name?.value==='Show the cycle region containing b'&&n.properties?.some(p=>p.name==='pressed'&&p.value.value==='true')));
+    await focus('[data-relationship-id="e4"][data-relationship-target]');await key('Enter','Enter',13);assert.equal(await run('Archify.focus.active()'),'c');assert.equal(await run('Archify.focus.cycleRegion()'),null);
+    for(const action of [`Archify.focus.reach('upstream',{reveal:false})`,`Archify.focus.reach('downstream',{reveal:false})`,`Archify.focus.set('b',{toggle:false})`,`Archify.focus.setMany(['c','d'])`,`Archify.focus.inspectRelationshipById('e4')`,`Archify.routeProbe.begin()`,`Archify.routeProbe.begin({source:'c'});Archify.routeProbe.choose('e');Archify.routeProbe.selectJourneyIndex(0)`,`Archify.semanticLens.select('backend')`,`Archify.focus.clear()`]){
+      await select('c',{toggle:false});await run(`Archify.focus.reach('cycle');${action}`);assert.equal(await run('Archify.focus.cycleRegion()'),null,action);assert.equal(await run(`location.hash.includes('region=')`),false,action);assert.equal(await run(`document.querySelectorAll('.relationship-cycle-role').length`),0,action);
+    }
+    await select('c',{toggle:false});await run(`Archify.focus.reach('downstream',{reveal:false});Archify.focus.reach('cycle')`);assert.equal(await run('Archify.focus.reachability()'),null);assert.equal(await run('Archify.focus.cycleRegion().nodeIds.length'),4);
+    await run(`Archify.routeProbe.begin({source:'c'});Archify.routeProbe.choose('e');Archify.routeProbe.selectJourneyIndex(0);Archify.focus.set('c',{toggle:false});Archify.focus.reach('cycle')`);assert.equal(await run('Archify.routeProbe.active()'),null);assert.equal(await run('Archify.focus.cycleRegion().hasCycle'),true);
+    await load('cycle',{hash:'#focus=c&region=cycle&reach=upstream'});assert.equal(await run('Archify.focus.cycleRegion().originId'),'c');assert.equal(await run('Archify.focus.reachability()'),null);
+    for(const id of ['x','s']){await load('cycle',{hash:'#focus='+id+'&region=cycle'});assert.equal(await run('Archify.focus.cycleRegion().hasCycle'),id==='x');}
+    await load('cycle',{hash:'#relation=e4&focus=c&region=cycle'});assert.equal(await run('Archify.focus.relationship().id'),'e4');assert.equal(await run('Archify.focus.cycleRegion()'),null);
+    await load('cycle',{hash:'#focus=c&region=unknown&reach=upstream'});assert.equal(await run('Archify.focus.cycleRegion()'),null);assert.equal(await run('Archify.focus.reachability()'),null);
+    await run(`new Promise(resolve=>{addEventListener('hashchange',()=>requestAnimationFrame(resolve),{once:true});location.hash='focus=c&region=cycle';})`);await stable();assert.equal(await run('Archify.focus.cycleRegion().nodeIds.length'),4);
+    const copied=await run(`(async()=>{let value;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:text=>{value=text;return Promise.resolve();}}});await Archify.focus.copyLink();return {hash:new URL(value).hash,search:new URL(value).search};})()`);assert.equal(copied.hash,'#focus=c&region=cycle');assert.match(copied.search,/keep=yes/);
+    for(const id of ['c','x','s']){
+      await select(id,{toggle:false});await run(`Archify.focus.reach('cycle')`);
+      const r=await run(`(async()=>{const svg=document.querySelector('.diagram-container > svg');const geometry=root=>[...root.querySelectorAll('[data-edge-from], [data-node-id]')].map(e=>[e.dataset.edgeKey,e.dataset.edgeId,e.dataset.nodeId,e.getAttribute('d'),e.getAttribute('points'),e.dataset.edgeLabel]);let blob;const create=URL.createObjectURL,source=geometry(svg),before=svg.outerHTML;URL.createObjectURL=value=>{if(value.type.startsWith('image/svg+xml'))blob=value;return create.call(URL,value);};try{await Archify.exportMenu.run('svg');}finally{URL.createObjectURL=create;}const root=new DOMParser().parseFromString(await blob.text(),'image/svg+xml').documentElement;return {same:before===svg.outerHTML,geometry:JSON.stringify(source)===JSON.stringify(geometry(root)),clean:![root,...root.querySelectorAll('*')].some(e=>[...e.attributes].some(a=>/^data-(reach|focus|relationship)/.test(a.name)))};})()`);
+      assert.deepEqual(r,{same:true,geometry:true,clean:true});await snapshot('cycle-export-'+id);
+    }
+    for(const width of [390,720,1440])for(const theme of ['dark','light']){
+      await load('cycle',{width,theme});await select('c');await run(`Archify.focus.reach('cycle');document.getElementById('focus-cycle-details').open=true`);await stable();
+      assert.equal(await run(`(()=>{const c=document.getElementById('focus-chip'),b=document.getElementById('btn-cycle-region'),r=c.getBoundingClientRect(),q=b.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1&&q.left>=r.left&&q.right<=r.right&&r.top>=0&&r.bottom<=innerHeight+1&&c.scrollWidth<=c.clientWidth+1;})()`),true,width+' '+theme);
+      await snapshot('cycle-layout-'+width+'-'+theme);
+    }
+    await load('cycle');await select('c');await run(`Archify.focus.reach('cycle')`);await stable();
+    const handle=await point('#btn-focus-move');await send('Input.dispatchMouseEvent',{type:'mouseMoved',...handle});await send('Input.dispatchMouseEvent',{type:'mousePressed',...handle,button:'left',clickCount:1});await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:handle.x,y:850,button:'left',buttons:1});await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:handle.x,y:850,button:'left',clickCount:1});await stable();
+    const collapsedBounds=await run(`(()=>{const r=document.getElementById('focus-chip').getBoundingClientRect();return {top:r.top,bottom:r.bottom,height:innerHeight};})()`);assert.ok(collapsedBounds.bottom>=collapsedBounds.height-32,JSON.stringify(collapsedBounds));
+    await focus('#focus-cycle-details summary');await key('Enter','Enter',13);
+    const expandedBounds=await run(`(()=>{const r=document.getElementById('focus-chip').getBoundingClientRect();return {top:r.top,bottom:r.bottom,height:innerHeight};})()`);assert.ok(expandedBounds.top>=0&&expandedBounds.bottom<=expandedBounds.height+1,JSON.stringify(expandedBounds));records.push({scenario:'cycle-details-bottom',collapsedBounds,expandedBounds});
+    await load('graph');await select('cdn');await run(`Archify.focus.reach('cycle')`);const region=await run('Archify.focus.cycleRegion()');assert.deepEqual(region.nodeIds.slice().sort(),['cdn','lb','users']);assert.deepEqual(region.edgeKeys,['a','b','c']);assert.deepEqual(region.crossingEdgeKeys,['d','e','i']);assert.equal(await run(`document.querySelectorAll('[data-edge-key="a"][data-reach-match]').length`),2,'same-key fragments all marked');
+  });
+  await t.test('Cycle details fit the actual clip after native toggle and expose the last relationship by scrolling',async()=>{
+    for(const theme of ['dark','light']) {
+      await load('cycle',{width:390,height:844,theme,hash:'#focus=c&region=cycle'});
+      assert.equal(await run(`document.getElementById('focus-cycle-details').open`),false);
+      await click('#focus-cycle-details summary');
+      const bounds=await run(`(()=>{const box=e=>{const r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,height:r.height};};return {chip:box(document.getElementById('focus-chip')),clip:box(document.querySelector('.diagram-container')),nav:box(document.querySelector('.diagram-nav')),list:box(document.getElementById('focus-cycle-lists'))};})()`);
+      records.push({scenario:'cycle-details-clip-'+theme,...bounds});
+      assert.ok(bounds.chip.top>=bounds.clip.top&&bounds.chip.bottom<=bounds.clip.bottom,JSON.stringify(bounds));
+      assert.ok(bounds.chip.bottom<=bounds.nav.top-8,JSON.stringify(bounds));
+      const scroll=await run(`(()=>{const list=document.getElementById('focus-cycle-lists'),chip=document.getElementById('focus-chip'),r=list.getBoundingClientRect(),clip=chip.getBoundingClientRect();return {x:r.x+r.width/2,y:(Math.max(r.top,clip.top)+Math.min(r.bottom,clip.bottom))/2,client:chip.clientHeight,scroll:chip.scrollHeight};})()`);
+      assert.ok(scroll.scroll>scroll.client,'Full records must be scrollable inside the clipped stage');
+      await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:scroll.x,y:scroll.y});
+      await send('Input.dispatchMouseEvent',{type:'mouseWheel',x:scroll.x,y:scroll.y,deltaY:1000,deltaX:0});await stable();
+      const last=await run(`(()=>{const list=document.getElementById('focus-cycle-lists'),chip=document.getElementById('focus-chip'),last=list.lastElementChild.lastElementChild,r=last.getBoundingClientRect(),clip=chip.getBoundingClientRect();return {text:last.textContent,top:r.top,bottom:r.bottom,clipTop:clip.top,clipBottom:clip.bottom,scrollTop:chip.scrollTop,hit:list.contains(document.elementFromPoint(r.left+10,(r.top+r.bottom)/2))};})()`);
+      assert.match(last.text,/b → c.*id: e4/);assert.ok(last.scrollTop>0&&last.top>=last.clipTop&&last.bottom<=last.clipBottom+1&&last.hit,JSON.stringify(last));
+      records.push({scenario:'cycle-details-last-record-'+theme,...last});
+      if(evidence){const shot=await send('Page.captureScreenshot',{format:'png'});fs.writeFileSync(path.join(evidence,'cycle-details-narrow-'+theme+'.png'),Buffer.from(shot.data,'base64'));}
+      await snapshot('cycle-details-native-toggle-'+theme);
+    }
   });
   await t.test('cold URLs and hashchange preserve focus, relation, reach and query semantics',async()=>{
     for(const [hash,active,relationId] of [['#focus=cdn&reach=downstream','cdn',null],['#relation=edge-d','cdn','edge-d'],['#relation=unknown',null,null],['#focus=isolated','isolated',null],['#route=users~db',null,null]]) {

@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Cycle region · full F1",
+    "subtitle": "Authored directed relationships · synthetic probe",
+    "output": "candidate.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "s",
+      "label": "s",
+      "type": "backend",
+      "pos": [
+        80,
+        180
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "a",
+      "label": "a",
+      "type": "backend",
+      "pos": [
+        300,
+        180
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "b",
+      "label": "b",
+      "type": "backend",
+      "pos": [
+        520,
+        180
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "c",
+      "label": "c",
+      "type": "backend",
+      "pos": [
+        760,
+        180
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "d",
+      "label": "d",
+      "type": "backend",
+      "pos": [
+        980,
+        180
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "e",
+      "label": "e",
+      "type": "backend",
+      "pos": [
+        980,
+        390
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "f",
+      "label": "f",
+      "type": "backend",
+      "pos": [
+        760,
+        390
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "u",
+      "label": "u",
+      "type": "backend",
+      "pos": [
+        80,
+        600
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "v",
+      "label": "v",
+      "type": "backend",
+      "pos": [
+        300,
+        520
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "w",
+      "label": "w",
+      "type": "backend",
+      "pos": [
+        300,
+        720
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "t",
+      "label": "t",
+      "type": "backend",
+      "pos": [
+        520,
+        600
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "x",
+      "label": "x",
+      "type": "backend",
+      "pos": [
+        1220,
+        180
+      ],
+      "size": [
+        110,
+        60
+      ]
+    },
+    {
+      "id": "i",
+      "label": "i",
+      "type": "backend",
+      "pos": [
+        1220,
+        600
+      ],
+      "size": [
+        110,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "e1",
+      "from": "s",
+      "to": "a",
+      "label": "e1"
+    },
+    {
+      "id": "e2",
+      "from": "a",
+      "to": "b",
+      "label": "e2"
+    },
+    {
+      "id": "e3",
+      "from": "b",
+      "to": "a",
+      "label": "e3",
+      "fromSide": "top",
+      "toSide": "top",
+      "via": [
+        [
+          575,
+          100
+        ],
+        [
+          355,
+          100
+        ]
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "b",
+      "to": "c",
+      "label": "e4"
+    },
+    {
+      "id": "e5",
+      "from": "c",
+      "to": "d",
+      "label": "e5"
+    },
+    {
+      "id": "e6",
+      "from": "d",
+      "to": "c",
+      "label": "e6",
+      "fromSide": "top",
+      "toSide": "top",
+      "via": [
+        [
+          1035,
+          100
+        ],
+        [
+          815,
+          100
+        ]
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "d",
+      "to": "e",
+      "label": "e7",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e8",
+      "from": "e",
+      "to": "f",
+      "label": "e8",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "e9",
+      "from": "f",
+      "to": "d",
+      "label": "e9",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "via": [
+        [
+          815,
+          310
+        ],
+        [
+          1035,
+          310
+        ]
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "u",
+      "to": "v",
+      "label": "e10"
+    },
+    {
+      "id": "e11",
+      "from": "u",
+      "to": "w",
+      "label": "e11"
+    },
+    {
+      "id": "e12",
+      "from": "v",
+      "to": "t",
+      "label": "e12"
+    },
+    {
+      "id": "e13",
+      "from": "w",
+      "to": "t",
+      "label": "e13"
+    },
+    {
+      "id": "e14",
+      "from": "x",
+      "to": "x",
+      "label": "e14",
+      "fromSide": "right",
+      "toSide": "top"
+    }
+  ]
+}

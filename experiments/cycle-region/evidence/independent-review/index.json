@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-review",
+  "currentCandidateSha256": "f05da5e4babffa3572be6443a3d7f89ddfb127d6ec8ec6dbecdbe0070e4f8aca",
+  "externalRawAlias": "$INDEPENDENT_REVIEW_RAW",
+  "note": "Per-file phases are authoritative. A current candidate hash does not relabel historical captures or reviews. Derived copies are explicitly named; original hashes and bytes bind externally retained raw files.",
+  "files": [
+    {
+      "sourceFile": "final-binding.json",
+      "sourceIdentity": {
+        "sha256": "66c6aeed07eb56fe4ab47c0b9edfb828e63984d86d5c05b83a142ec7e1dd2d0b",
+        "bytes": 2523
+      },
+      "phase": "superseded-30b-review-withdrawn",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "final-binding.json",
+      "copyIdentity": {
+        "sha256": "66c6aeed07eb56fe4ab47c0b9edfb828e63984d86d5c05b83a142ec7e1dd2d0b",
+        "bytes": 2523
+      }
+    },
+    {
+      "sourceFile": "final-narrow-binding.json",
+      "sourceIdentity": {
+        "sha256": "6ce7d4ab84c1872f9018ed92e1c3d7fa40ea476e6f74c5f0ad4c706b8445ad43",
+        "bytes": 2523
+      },
+      "phase": "current-f05-narrow-repair",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "final-narrow-binding.json",
+      "copyIdentity": {
+        "sha256": "6ce7d4ab84c1872f9018ed92e1c3d7fa40ea476e6f74c5f0ad4c706b8445ad43",
+        "bytes": 2523
+      }
+    },
+    {
+      "sourceFile": "final-narrow-review.md",
+      "sourceIdentity": {
+        "sha256": "d5cf26b6dee77d8f0074206d5956eac3f57c75f8f18f879cebe577f3c2809117",
+        "bytes": 3504
+      },
+      "phase": "current-f05-narrow-repair",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "final-narrow-review.md",
+      "copyIdentity": {
+        "sha256": "d5cf26b6dee77d8f0074206d5956eac3f57c75f8f18f879cebe577f3c2809117",
+        "bytes": 3504
+      }
+    },
+    {
+      "sourceFile": "final-review.md",
+      "sourceIdentity": {
+        "sha256": "40c02f865d3fd3324135c592cd22bf1a92ab0418a95f914c3c615487002c407e",
+        "bytes": 4471
+      },
+      "phase": "superseded-30b-review-withdrawn",
+      "externalRawRetained": true,
+      "copyKind": "derived-redacted-text",
+      "derivation": "Absolute raw-directory/private paths replaced with portable aliases; raw originals remain outside repository. This copy is evidence, not an executed replacement.",
+      "file": "final-review.derived-redacted.md",
+      "copyIdentity": {
+        "sha256": "e6eeeef8c7ed0edb5f8235e3cbc2495867bdccdf3ff04f6daeab2b6e59d0b641",
+        "bytes": 4441
+      }
+    },
+    {
+      "sourceFile": "initial-binding.json",
+      "sourceIdentity": {
+        "sha256": "1d90c51c216ebcbda62a0da2fa312004e136c262e35bf6830623584e9998d0b9",
+        "bytes": 1216
+      },
+      "phase": "initial-static-review",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "initial-binding.json",
+      "copyIdentity": {
+        "sha256": "1d90c51c216ebcbda62a0da2fa312004e136c262e35bf6830623584e9998d0b9",
+        "bytes": 1216
+      }
+    },
+    {
+      "sourceFile": "initial-review.md",
+      "sourceIdentity": {
+        "sha256": "1646d134f4a1ea9effa129eab7a3a10c7b7ac000ece401ca8333a0ec39a47349",
+        "bytes": 2533
+      },
+      "phase": "initial-static-review",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "initial-review.md",
+      "copyIdentity": {
+        "sha256": "1646d134f4a1ea9effa129eab7a3a10c7b7ac000ece401ca8333a0ec39a47349",
+        "bytes": 2533
+      }
+    },
+    {
+      "sourceFile": "oracle-final.json",
+      "sourceIdentity": {
+        "sha256": "a63071939b0674cbe99202b1113a33500c9293fac088cb5afab7a826fa1f0c90",
+        "bytes": 288
+      },
+      "phase": "mathematical-helper-only-reused-by-identical-function-bytes",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "oracle-final.json",
+      "copyIdentity": {
+        "sha256": "a63071939b0674cbe99202b1113a33500c9293fac088cb5afab7a826fa1f0c90",
+        "bytes": 288
+      }
+    },
+    {
+      "sourceFile": "oracle-function-binding.json",
+      "sourceIdentity": {
+        "sha256": "b9d2b5481e45312c4ecdccda8fab0ba59621b6a8c7afc71d02549cd3e0cc9f95",
+        "bytes": 296
+      },
+      "phase": "mathematical-helper-only-reused-by-identical-function-bytes",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "oracle-function-binding.json",
+      "copyIdentity": {
+        "sha256": "b9d2b5481e45312c4ecdccda8fab0ba59621b6a8c7afc71d02549cd3e0cc9f95",
+        "bytes": 296
+      }
+    },
+    {
+      "sourceFile": "oracle.json",
+      "sourceIdentity": {
+        "sha256": "02618f39bb161b71df85581632b426d93f354f7add7050fd02aac55244c50b28",
+        "bytes": 288
+      },
+      "phase": "mathematical-helper-only-reused-by-identical-function-bytes",
+      "externalRawRetained": true,
+      "copyKind": "original-bytes",
+      "file": "oracle.json",
+      "copyIdentity": {
+        "sha256": "02618f39bb161b71df85581632b426d93f354f7add7050fd02aac55244c50b28",
+        "bytes": 288
+      }
+    },
+    {
+      "sourceFile": "oracle.mjs",
+      "sourceIdentity": {
+        "sha256": "28d81188891dc93d8a49c9288bd06ffd2b3cea575ef19003429ceb37034db5ce",
+        "bytes": 2235
+      },
+      "phase": "mathematical-helper-only-reused-by-identical-function-bytes",
+      "externalRawRetained": true,
+      "copyKind": "derived-redacted-text",
+      "derivation": "Absolute raw-directory/private paths replaced with portable aliases; raw originals remain outside repository. This copy is evidence, not an executed replacement.",
+      "file": "oracle.derived-redacted.mjs",
+      "copyIdentity": {
+        "sha256": "1b75bdb4c189cd38998a413d695caa52dea3095737bc34ea155c91fbc7b1c557",
+        "bytes": 2205
+      }
+    }
+  ],
+  "currentReview": "final-narrow-review.md",
+  "currentBinding": "final-narrow-binding.json",
+  "mathOracle": "oracle-final.json",
+  "mathReuseBinding": "oracle-function-binding.json"
+}

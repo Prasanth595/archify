@@ -1,0 +1,66 @@
+{
+  "open": true,
+  "text": "Cycle region · 4 nodes · 5 internal relationships · 1 crossing relationships Each member can reach c and be reached from it.\n\nRegion details\nMembers\nc [id: c]\nd [id: d]\ne [id: e]\nf [id: f]\nInternal relationships\nc → d · e5 [id: e5]\nd → c · e6 [id: e6]\nd → e · e7 [id: e7]\ne → f · e8 [id: e8]\nf → d · e9 [id: e9]\nCrossing relationships\nb → c · e4 [id: e4]",
+  "rect": {
+    "x": 38,
+    "y": 490.0390625,
+    "width": 236.734375,
+    "height": 285.296875,
+    "top": 490.0390625,
+    "right": 274.734375,
+    "bottom": 775.3359375,
+    "left": 38
+  },
+  "passport": {
+    "x": 25,
+    "y": 311.1484375,
+    "width": 340,
+    "height": 476.5859375,
+    "top": 311.1484375,
+    "right": 365,
+    "bottom": 787.734375,
+    "left": 25
+  },
+  "page": [
+    390,
+    390
+  ],
+  "scroll": [
+    {
+      "id": "focus-chip",
+      "client": 475,
+      "scroll": 475,
+      "overflowY": "hidden"
+    },
+    {
+      "id": "focus-reach",
+      "client": 379,
+      "scroll": 379,
+      "overflowY": "visible"
+    },
+    {
+      "id": "focus-cycle-result",
+      "client": 285,
+      "scroll": 285,
+      "overflowY": "visible"
+    },
+    {
+      "id": "focus-cycle-status",
+      "client": 35,
+      "scroll": 35,
+      "overflowY": "visible"
+    },
+    {
+      "id": "focus-cycle-details",
+      "client": 244,
+      "scroll": 244,
+      "overflowY": "visible"
+    },
+    {
+      "id": "focus-cycle-lists",
+      "client": 222,
+      "scroll": 222,
+      "overflowY": "auto"
+    }
+  ]
+}

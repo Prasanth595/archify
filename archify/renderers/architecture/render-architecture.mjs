@@ -1127,14 +1127,14 @@ function renderSvg() {
   // threshold. Authored viewBoxes keep their geometry and existing Reader width policy;
   // their declared height may use readable document scrolling without reflow.
   const readerFit = arch.meta?.viewBox
-    ? ' data-diagram-type="architecture" data-reader-fit="authored-height"'
+    ? ' data-reader-fit="authored-height"'
     : ' data-reader-fit="intrinsic-height"';
   // A complete repository architecture is allowed to use normal page scroll;
   // keep its common-desktop text at a comfortable reading size instead of
   // shrinking a semantically rich graph to the universal emergency floor.
   const readerMinimumText = arch.meta?.viewBox ? '' : ' data-reader-min-text="7.5"';
   const readerPrimaryText = arch.meta?.viewBox ? '' : ' data-reader-primary-text="14"';
-  return `      <svg viewBox="0 0 ${viewBox[0]} ${viewBox[1]}" ${svgRootAttrs(arch.meta)} ${NODE_CARD_ATTR}${readerFit}${readerMinimumText}${readerPrimaryText}>
+  return `      <svg viewBox="0 0 ${viewBox[0]} ${viewBox[1]}" ${svgRootAttrs(arch.meta)} ${NODE_CARD_ATTR} data-diagram-type="architecture"${readerFit}${readerMinimumText}${readerPrimaryText}>
 ${svgAccessibleText(arch.meta, 'architecture')}
 ${renderDefinitions()}
 ${nodeCardStyle()}
