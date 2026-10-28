@@ -81,6 +81,7 @@ export function validateExplainer(document, {sourceMap = {}, inputPath, writingM
     }
   }
   for(const sourceId of sourceIds.keys())if(targets.has(`source-${sourceId}`))fail('reserved-id',targets.get(`source-${sourceId}`).pointer,'source','This identity collides with a generated source anchor.','id=reader-section');
+  references(document.answer.evidence,'/answer/evidence','answer',undefined,new Map([...targets,...[...sourceIds].map(([id,value])=>[id,{...value,component:'source'}])]),'evidence:["chart-id"]');
   function reference(value,pointer,component,panelId,registry,example) {
     if(!registry.has(value))fail('unresolved-reference',pointer,component,'The referenced identity does not exist or has the wrong component type.',example,panelId);
   }

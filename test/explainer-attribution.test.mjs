@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { renderExplainer } from '../archify/explainer/render.mjs';
+import { validateExplainer } from '../archify/explainer/validate.mjs';
+
+function documentOf(evidence) {
+  return {
+    schema_version: 1,
+    diagram_type: 'explainer',
+    meta: { id: 'claim-page', title: 'Claim evidence' },
+    answer: { summary: 'Latency improved.', ...(evidence ? { evidence } : {}) },
+    panels: [{ id: 'results', title: 'Results', blocks: [{ id: 'latency-chart', type: 'chart', text: 'pie title Latency\n  "Improved" : 80\n  "Baseline" : 120', title: 'Latency' }] }],
+    sources: [{ id: 'runbook', title: 'Runbook', url: 'https://example.com/runbook' }],
+  };
+}
+
+test('claim evidence accepts stable block and source IDs and exposes navigable HTML mapping', () => {
+  const document = documentOf(['latency-chart', 'runbook']);
+  assert.equal(validateExplainer(document).ok, true);
+  const html = renderExplainer(document, { sourceText: JSON.stringify(document), preparedSources: { sources: {} }, preparedDiagrams: { diagrams: {} } });
+  assert.match(html, /data-claim-evidence="latency-chart"/);
+  assert.match(html, /href="#latency-chart"/);
+  assert.match(html, /data-claim-evidence="runbook"/);
+  assert.match(html, /href="#source-runbook"/);
+});
+
+test('claim evidence reports dangling IDs without changing legacy documents', () => {
+  const invalid = validateExplainer(documentOf(['missing-evidence']));
+  assert.equal(invalid.ok, false);
+  assert.ok(invalid.diagnostics.some(diagnostic => diagnostic.code === 'explainer/unresolved-reference'));
+  assert.equal(validateExplainer(documentOf()).ok, true);
+});
