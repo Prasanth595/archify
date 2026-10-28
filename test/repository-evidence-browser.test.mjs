@@ -91,8 +91,8 @@ test('browser renders local-only sources as searchable text and web sources as l
         assert.equal(observed.relationship.locations[0], local ? 'L1–3' : 'L1–3 ↗');
         assert.equal(observed.relationship.legacySelected, true);
         assert.equal(observed.relationship.pinned.id, 'cdn-to-lb');
-        assert.equal(observed.relationship.legacyVisible, true);
-        assert.deepEqual(observed.relationship.legacyPaths, ['src/router.js', 'src/store.js']);
+        assert.equal(observed.relationship.legacyVisible, false);
+        assert.deepEqual(observed.relationship.legacyPaths, []);
       }
     }
   } finally { await browser.close(); }
