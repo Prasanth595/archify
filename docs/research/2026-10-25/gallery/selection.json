@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+  "hubCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -562,6 +562,16 @@
       "inputKind": "完整公开Archify authored示例（12节点12边）",
       "imagePath": "experiments/shared-reach/browser-evidence/downstream-overview-light.png",
       "imageCaption": "两个API共同下游4项；完整图保留并给出双路径见证，不代表因果关系或真实运行证据。"
+    },
+    {
+      "id": "mandatory-paths",
+      "commit": "f79704cb63f1577246752c93f8d648a000ea978b",
+      "branch": "codex/lab-mandatory-paths",
+      "directory": "experiments/mandatory-paths",
+      "group": "offline",
+      "inputKind": "完整公开Archify authored示例（12节点12边）",
+      "imagePath": "experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png",
+      "imageCaption": "clients到audit的4个必经内部点与API绕行见证；保留完整原图，不代表故障、因果或真实运行依赖。"
     }
   ],
   "deferred": {

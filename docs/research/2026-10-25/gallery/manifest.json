@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
-    "sha256": "c6b406d62878c6ee37c7c558ca03222fd042ad475f2806811196eae38a6c66f1",
-    "bytes": 67799,
-    "gitBlob": "fa84c9545fccb3f2031d437a06264a70b5436711"
+    "commit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
+    "sha256": "9ad6adb7fff8efaa250070f3bc70a5f25584824cfec663455b2c70a96ff1c705",
+    "bytes": 68966,
+    "gitBlob": "8bd2517d9d13ece3fee2552e1a23dbe1e9657ac7"
   },
-  "policy": "54 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "55 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+      "commit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+      "commit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+      "commit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -1938,6 +1938,41 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-shared-reach/experiments/shared-reach",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/browser-evidence/downstream-overview-light.png"
+    },
+    {
+      "id": "mandatory-paths",
+      "commit": "f79704cb63f1577246752c93f8d648a000ea978b",
+      "branch": "codex/lab-mandatory-paths",
+      "directory": "experiments/mandatory-paths",
+      "group": "offline",
+      "inputKind": "完整公开Archify authored示例（12节点12边）",
+      "imagePath": "experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png",
+      "imageCaption": "clients到audit的4个必经内部点与API绕行见证；保留完整原图，不代表故障、因果或真实运行依赖。",
+      "title": "Mandatory paths",
+      "value": "给定两个端点求有向路径必经内部点，并给非必经点可点绕行见证；保留完整原图",
+      "limits": "固定6ca6基线；离线CLI，完整12节点12边输入原字节不变；Node22 focused9/9，独立49154查询/61448绕行见证；validate/deliver/check通过，CLI browser-check未运行；root浅深色/双路/键盘/Escape原图已存；390px client375/scroll400溢出保留，非故障/因果/运行依赖/效率证据",
+      "readme": {
+        "path": "experiments/mandatory-paths/README.md",
+        "commit": "f79704cb63f1577246752c93f8d648a000ea978b",
+        "sha256": "2961cf4102c6084182ec5c968ec5b8a3a6c03fd27cba8233326ac3014547c71c",
+        "bytes": 8957,
+        "gitBlob": "e06c7472f1df3ade604df3a56b7263bee74970bf"
+      },
+      "image": {
+        "path": "experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png",
+        "commit": "f79704cb63f1577246752c93f8d648a000ea978b",
+        "sha256": "50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e",
+        "bytes": 147115,
+        "gitBlob": "a40abb272caf6c11c6cf671f1a6ed080c313f837",
+        "width": 1440,
+        "height": 1250,
+        "mime": "image/png",
+        "caption": "clients到audit的4个必经内部点与API绕行见证；保留完整原图，不代表故障、因果或真实运行依赖。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-mandatory-paths/experiments/mandatory-paths",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png"
     }
   ],
   "deferred": {
@@ -1948,12 +1983,12 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 54,
-    "images": 54,
-    "pngBytes": 13064964,
+    "experiments": 55,
+    "images": 55,
+    "pngBytes": 13212079,
     "groupCounts": {
       "product": 17,
-      "offline": 16,
+      "offline": 17,
       "content": 21
     },
     "deferredCountedAsPublished": false

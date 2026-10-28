@@ -1,0 +1,252 @@
+{
+  "kind": "derived browser evidence for fixed 54-item gallery; original JSON and PNG linked separately",
+  "status": "root-browser-observed-scoped-gallery",
+  "hubSourceCommit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+  "hubReadme": {
+    "path": "docs/research/2026-10-25/README.md",
+    "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+    "sha256": "c6b406d62878c6ee37c7c558ca03222fd042ad475f2806811196eae38a6c66f1",
+    "bytes": 67799,
+    "gitBlob": "fa84c9545fccb3f2031d437a06264a70b5436711"
+  },
+  "artifacts": {
+    "index.html": {
+      "path": "index.html",
+      "sha256": "9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a",
+      "bytes": 17559456
+    },
+    "manifest.json": {
+      "path": "manifest.json",
+      "sha256": "946caf2d12f597220762b2304dc092cbfca1a1e76a37d017c0a1b5c8a660718e",
+      "bytes": 123624
+    },
+    "selection.json": {
+      "path": "selection.json",
+      "sha256": "de593607239529cb4718c43682b13da2e8dbb5f024bc2e1de7c8b574f1743ed4",
+      "bytes": 27448
+    },
+    "verification.json": {
+      "path": "verification.json",
+      "sha256": "a4b17ad56810a7aa4bbefe2020abee86de7cbf2d99931c70a331d7baae46344c",
+      "bytes": 800
+    },
+    "README.md": {
+      "path": "README.md",
+      "sha256": "90d2f485c58aa54c3bd98f121027831544bef3c5d89816fa3ab4229156b1ad04",
+      "bytes": 44082
+    },
+    "template.html": {
+      "path": "template.html",
+      "sha256": "bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9",
+      "bytes": 16951
+    },
+    "build.py": {
+      "path": "build.py",
+      "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e",
+      "bytes": 9748
+    },
+    "verify.py": {
+      "path": "verify.py",
+      "sha256": "d806985fcb08bdb071f2b528c35953aca80e522267a32b0611a2f8199617ab46",
+      "bytes": 4853
+    }
+  },
+  "summary": {
+    "experiments": 54,
+    "images": 54,
+    "pngBytes": 13064964,
+    "groupCounts": {
+      "product": 17,
+      "offline": 16,
+      "content": 21
+    },
+    "deferredCountedAsPublished": false
+  },
+  "rawSources": [
+    {
+      "path": "screenshots54/capture-note.json",
+      "sha256": "e81147cb283423468075782c37803a30e813f54a2739888687cb1151ef649a24",
+      "bytes": 304
+    },
+    {
+      "path": "screenshots54/dialog.json",
+      "sha256": "b4ddf4c8f0c49822eacd08b39da6e082af56a5f0ea660960c78933dc4755b561",
+      "bytes": 568
+    },
+    {
+      "path": "screenshots54/filters.json",
+      "sha256": "52966591b368d2efea437a10b4645338193ceff2753ad9ae0fa9dae64273d792",
+      "bytes": 549
+    },
+    {
+      "path": "screenshots54/narrow-card.json",
+      "sha256": "7e7e07061a9a836d92ae61e84fecb5388f3bbaff6f2b50def46ce5bf210194fc",
+      "bytes": 134
+    },
+    {
+      "path": "screenshots54/narrow.json",
+      "sha256": "28f7274e7f7f2e6b1da3e621b9162beb42e9b091188272de465c42a0f650d33a",
+      "bytes": 443
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots54/card-light-before-decode.png",
+      "sha256": "1a0c32114364b3b504a60e719be593647258d3087297093703f8d76aa47d9402",
+      "bytes": 196780,
+      "width": 1425,
+      "height": 1501,
+      "boundHtmlSha256": "9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a",
+      "status": "incomplete-lazy-preview-not-decoded",
+      "successfulIllustration": false,
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "observationSource": "screenshots54/capture-note.json"
+    },
+    {
+      "path": "screenshots54/card-light.png",
+      "sha256": "c26888f9e9a6b550bfeb2fb750867fa0c35d3ec2d3fcb63a19a0c805af7879bd",
+      "bytes": 215041,
+      "width": 1425,
+      "height": 1501,
+      "boundHtmlSha256": "9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "rootViewed": true,
+      "observationSource": "screenshots54/capture-note.json"
+    },
+    {
+      "path": "screenshots54/card-narrow-dark.png",
+      "sha256": "e75d1df25c5468aec69cedc117c7f3effb65745d21fe050eb24956a347a6644a",
+      "bytes": 184408,
+      "width": 375,
+      "height": 1751,
+      "boundHtmlSha256": "9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "rootViewed": true,
+      "observationSource": "screenshots54/narrow.json"
+    },
+    {
+      "path": "screenshots54/dialog-light.png",
+      "sha256": "b2b4476807ec2ba524e196849a2957e18eb61cdaed1beb9ace0eb4e9eb7c65e8",
+      "bytes": 197514,
+      "width": 1440,
+      "height": 1100,
+      "boundHtmlSha256": "9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a",
+      "status": "root-viewed-completed-capture",
+      "successfulIllustration": true,
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "rootViewed": true,
+      "observationSource": "screenshots54/dialog.json"
+    }
+  ],
+  "observations": {
+    "capture-note": {
+      "observation": "Initial full-page card capture preceded image decode and was blank. It is retained as card-light-before-decode.png; final card-light.png waits for the actual embedded image to decode.",
+      "imageState": {
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 1250
+      }
+    },
+    "dialog": {
+      "observedAt": "2026-10-28T04:44:49.097Z",
+      "natural": [
+        1440,
+        1250
+      ],
+      "title": "Shared reach",
+      "source": "https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/browser-evidence/downstream-overview-light.png",
+      "original": {
+        "width": 1440,
+        "height": 1250,
+        "mode": "true"
+      },
+      "closed": {
+        "closed": true,
+        "src": null,
+        "focus": "查看 Shared reach 完整原图"
+      },
+      "pngSha256": "ea70a5c260938652c1cccbd7b7121875c3aa6263aac3d34b84142939eb967cd1",
+      "pngBytes": 158360
+    },
+    "filters": {
+      "observedAt": "2026-10-28T04:44:25.255Z",
+      "counts": [
+        {
+          "name": "全部",
+          "count": "显示 54 / 54 项"
+        },
+        {
+          "name": "产品交互",
+          "count": "显示 17 / 54 项"
+        },
+        {
+          "name": "离线适配",
+          "count": "显示 16 / 54 项"
+        },
+        {
+          "name": "内容示例",
+          "count": "显示 21 / 54 项"
+        },
+        {
+          "name": "全部",
+          "count": "显示 54 / 54 项"
+        }
+      ],
+      "search": "Shared reach",
+      "result": "显示 1 / 54 项",
+      "viewport": [
+        1440,
+        1100
+      ]
+    },
+    "narrow-card": {
+      "viewport": [
+        390,
+        844
+      ],
+      "clientWidth": 375,
+      "pageWidth": 375,
+      "theme": "dark",
+      "count": "显示 1 / 54 项"
+    },
+    "narrow": {
+      "observedAt": "2026-10-28T04:44:56.707Z",
+      "card": {
+        "viewport": [
+          390,
+          844
+        ],
+        "clientWidth": 375,
+        "pageWidth": 375,
+        "theme": "dark",
+        "count": "显示 1 / 54 项"
+      },
+      "empty": {
+        "count": "显示 0 / 54 项",
+        "emptyVisible": true
+      },
+      "reset": {
+        "count": "显示 54 / 54 项",
+        "focus": "query",
+        "query": ""
+      },
+      "scope": "Desktop Chromium CSS viewport, not physical touch."
+    }
+  },
+  "historical53": {
+    "path": "browser-evidence53.json",
+    "sha256": "e6d1dfff5c88189164f45642c8c59d37c917be213e85a0a36dda008628061cfe",
+    "bytes": 6177
+  },
+  "scope": "Current new card and common controls only; original 53 selection, full manifest items, full card HTML and PNG bytes unchanged. Earlier browser evidence remains historical.",
+  "limits": [
+    "Initial card-light-before-decode.png is an incomplete lazy-preview capture, retained unchanged and not counted as a completed screenshot.",
+    "Three final screenshots were viewed by root; final card-light.png waits for actual image decode.",
+    "Gallery image viewing does not rerun Shared reach or the preceding 53 experiment features and does not erase original experiment narrow-screen or iframe limits.",
+    "Desktop Chromium CSS viewport is not physical touch; no AT, full Tab traversal, external navigation, causal/runtime or efficiency result, or human acceptance claim."
+  ]
+}

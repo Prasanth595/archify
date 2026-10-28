@@ -1,0 +1,25 @@
+{
+  "kind": "actual-browser-artifact-binding",
+  "source": {
+    "index.html": {
+      "bytes": 17758320,
+      "sha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d"
+    },
+    "manifest.json": {
+      "bytes": 126153,
+      "sha256": "ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96"
+    },
+    "selection.json": {
+      "bytes": 28003,
+      "sha256": "1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8"
+    }
+  },
+  "taskSpaceId": 10,
+  "sourceCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
+  "experimentCommit": "f79704cb63f1577246752c93f8d648a000ea978b",
+  "imageSha256": "50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e",
+  "limits": [
+    "Actual desktop browser plus narrow desktop viewport; not touch/AT/human acceptance",
+    "Gallery UI observation does not retest 54 prior experiments"
+  ]
+}
