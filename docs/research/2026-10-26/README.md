@@ -4,6 +4,8 @@
 
 **当前审查入口：[七个既有研究分支](review-index-20261028.md)**（2026-10-28）。先看源码链接名称、键盘检查器、Tree 结构角色三个产品候选；task-view、Kconfig 等内容实验另列。入口绑定当前远程 head、真实产物和各自验证边界，下方各批记录保留当时状态。
 
+**新增内容候选：[CUE defaults 阅读顺序实验](scouts/cue-defaults-round29.md)**（第 29 批，已推送独立分支；桌面观察与移动端限制分别记录）。
+
 本批从远程现状开始去重，再为有明确阅读价值的剩余问题制作小实验。用户已授权持续调研、隔离实现和独立 `codex/` 远程分支。**2026-10-27 用户更新交付要求：完成的实验只推送远程分支，附产物、图片和验证记录，后续不新建 PR。** 下方已创建的 Draft 属于此前交付历史。不自动合并、发布版本、部署或安装。此前研究记录中的暂停属于上一轮历史，本次明确继续。
 
 ## 开始前核对
@@ -680,3 +682,19 @@ Ohm页面报告引擎 **17.5.0**，编辑器部署commit未知，与固定编辑
 三态记录、五张真实图片和原始失败保存在本地；因用户片段许可未明，远程仅收录[派生身份与状态](audit/round28-native-summary.json)、[清单](audit/round28-local-evidence-manifest.json)、来源许可和[复现步骤](audit/round28-native-reproduction.md)。没有将同一个原生开关包装成新的 Archify 功能。
 
 [远程316分支](audit/remote-branches-round28.txt)与[issue／PR归属](audit/round28-owner-snapshot.json)已刷新：窄屏工具栏有 #1076，不重复实现；Sequence 类型本来由作者声明；profile 上下文没有新的同输入问题。本批不新建实验分支或 PR，不修改贡献者分支、合并、发布或安装。
+
+## 第 29 批：CUE 默认值的阅读顺序实验
+
+先核对了 316 条远程 head、已有研究，以及四个跨状态的 CUE issue/PR 查询；本批查询均无匹配，范围见 [去重记录](audit/round29-dedup.json) 和 [分支快照](audit/round29-remote-heads.tsv)。这不等于所有同义方向都不存在。DeviceTree 的原生工具和测试仍缺同一自然项目的完整证据，暂缓实现；Tree 属性/引用表示和 Explainer 控件状态也没有形成新的产品修改理由。
+
+[CUE 自然问题及筛选](scouts/cue-defaults-round29.md) 支持一个内容实验：用原创四案例区分有效 string 值域、默认偏好与可具体导出。先在官方 Playground 记录完整 def/eval/export，再让两份 Archify 页面包含相同输入、结果与来源，仅调整面板顺序。它检验既有 Explainer 在另一类问题上的呈现方式，不增加解析器、schema 或共享运行时。
+
+独立远程分支 [`codex/lab-cue-defaults@a1ad749d`](https://github.com/tt-a1i/archify/tree/a1ad749dd11a1c650211f86e3c3dc8ea0c2c9c59/experiments/cue-defaults) 已推送并核对 head。包含首稿、一次修复、两个最终 standalone HTML、16 张真实页面图片、原生记录与 86 项文件哈希清单。查看 [复现说明](https://github.com/tt-a1i/archify/blob/a1ad749dd11a1c650211f86e3c3dc8ea0c2c9c59/experiments/cue-defaults/README.md) 与 [完整验证边界](https://github.com/tt-a1i/archify/blob/a1ad749dd11a1c650211f86e3c3dc8ea0c2c9c59/experiments/cue-defaults/evidence/validation.md)。
+
+两版静态 finalize 均通过，保留一条句长提示，自动 browser-check 未执行。实际检查了桌面全页、候选深色主题与键盘来源跳转；390px 下工具栏延伸到 401px，移动端未验收。数字引用的键盘跳转正常，且不属于既有 Native Passport 名称修复的覆盖范围。没有读者理解或效率提升结论。
+
+新目录重放退出 0；完整 HTML 字节不同，五项来源路径/诊断/摘要元数据发生变化，其余嵌入值和非 JSON 标记相同。失败的字节一致断言及相关限制已保留，不能写成完全相同的 HTML。输入和原生输出篡改均被拒绝。
+
+![CUE 问题先行候选的真实桌面截图](https://raw.githubusercontent.com/tt-a1i/archify/a1ad749dd11a1c650211f86e3c3dc8ea0c2c9c59/experiments/cue-defaults/evidence/screenshots/final-comparison-desktop.png)
+
+本批末 dev 已从冻结基线 d5d97949 移至 6ca6a5c8；[范围核查](audit/round29-base-drift.md) 未发现 Explainer/Viewer/作者输入变更，仍不冒称在新 head 重放。源码、许可与状态边界见 [来源审计](audit/round29-source-audit.md)。仅推送分支，未建 PR、合并、发布或安装；持续目标保持进行。

@@ -1,0 +1,41 @@
+{
+  "phase": "Before CUE implementation in batch29",
+  "searches": [
+    {
+      "query": "repo:tt-a1i/archify is:issue \"cue-lang\"",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20%22cue-lang%22&per_page=50",
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pull-request \"cue-lang\"",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20%22cue-lang%22&per_page=50",
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    },
+    {
+      "query": "repo:tt-a1i/archify is:issue \"CUE defaults\"",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20%22CUE%20defaults%22&per_page=50",
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pull-request \"CUE defaults\"",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20%22CUE%20defaults%22&per_page=50",
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    }
+  ],
+  "remoteHeadCountAtStart": 316,
+  "experimentBase": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "devAtPrePush": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "scope": "Lexical CUE-specific queries across issue and PR states plus remote/historical research comparison; not exhaustive proof of no conceptual overlap."
+}

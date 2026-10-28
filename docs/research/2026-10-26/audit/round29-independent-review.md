@@ -1,0 +1,9 @@
+# Round 29 consolidation review
+
+**Scoped pass; no blocking correction found.** Read the new hub section, both scouts and round29 source/base-drift/dedup/delivery records against the committed CUE branch README, native packet and `evidence/validation.md`. No runtime, native UI, browser, build or new research was performed.
+
+Independently read all 86 entries in the experiment manifest from commit `a1ad749dd11a1c650211f86e3c3dc8ea0c2c9c59`: every committed file matches recorded bytes and SHA-256; Git tree contains exactly those 86 plus the manifest. New section's local references and its links to paths at that commit resolve to existing local/Git objects, including the linked screenshot. This checks Git objects, not public HTTP or visual acceptance. README uses GitHub `/tree/` URLs for two file links; `/blob/` would be more conventional, but their pinned target objects exist.
+
+The hub correctly records browser-check not run, the separately observed desktop/keyboard cases, 390px overflow and no mobile acceptance or reader-benefit finding. It distinguishes successful fresh-directory replay from byte-identical HTML: five metadata leaves differ per arm, not an exact replay. It separates frozen d5 from later dev `6ca6a5c8`, and does not assert a new-head rerun. Existing Native Passport source-link fix is explicitly not coverage for Explainer citation anchors; actual citation navigation is a limited observation rather than screen-reader acceptance.
+
+Native Playground identity is a UI label/site link, not WASM attestation, and the authored teaching fixture is separate from the user's historical issue input. DeviceTree native test is a synthetic expectation, not an executed board build. Branch-only delivery/no PR and continued goal status remain explicit. This audit does not independently verify the root's remote push, all upstream HTTP links, or future hub manifest/validation, which root owns.
