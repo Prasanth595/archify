@@ -26,6 +26,9 @@ const defaultDebounceMs = 400;
 const defaultPollMs = 800;
 const defaultStopGraceMs = 3000;
 const defaultStopKillMs = 750;
+// Preview only needs a change fingerprint. The Explainer resource loader owns
+// type-specific validation; keep polling below its smallest resource budget.
+const maxPreviewDependencyHashBytes = 2 * 1024 * 1024;
 const diagramTypes = new Set(['architecture', 'workflow', 'sequence', 'dataflow', 'lifecycle', 'erd', 'tree', 'class', 'timeline', 'waterfall', 'explainer']);
 let previewCommitSequence = 0;
 
@@ -38,6 +41,9 @@ function sourceDigest(inputPath, dependencyPaths = [inputPath]) {
     try {
       const stat = fs.statSync(sourcePath);
       if (!stat.isFile()) return `${sourcePath}\0unreadable:not-a-regular-file`;
+      if (stat.size > maxPreviewDependencyHashBytes) {
+        return `${sourcePath}\0oversized:${stat.size}:${stat.mtimeMs}:${stat.ctimeMs}`;
+      }
       return `${sourcePath}\0${sha256(fs.readFileSync(sourcePath))}`;
     }
     catch (error) { return `${sourcePath}\0unreadable:${error.code || 'unknown'}`; }

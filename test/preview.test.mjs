@@ -1321,6 +1321,9 @@ test('preview: Explainer rebuilds for image dependencies and preserves the last 
     fs.rmSync(image);
     await waitForState(preview.url, (state) => state.status === 'needs-fix', 'missing image did not surface as a preview failure');
     assert.equal(sha256(output), second, 'a failed dependency rebuild must preserve the last verified artifact');
+    fs.writeFileSync(image, Buffer.alloc(2 * 1024 * 1024 + 1));
+    await waitForState(preview.url, (state) => state.status === 'needs-fix' && state.revision === 2, 'an oversized dependency did not preserve the last verified Explainer artifact');
+    assert.equal(sha256(output), second, 'an oversized dependency must not replace the last verified artifact');
   } finally {
     await preview.stop();
   }
