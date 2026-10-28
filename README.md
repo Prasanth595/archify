@@ -424,7 +424,7 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 
 `preview` is an explicit loopback-only desktop mode: it watches one JSON file on a random `127.0.0.1` port, keeps the last verified output through failures, stops with Ctrl-C, and adds no generated-HTML runtime. Use `--no-open` for tests or manual URL opening.
 
-For small manual connection changes, run `node bin/archify.mjs edit architecture source.json output.html`. The local Draft controls adjust routes and labels; Architecture also supports selecting two free connection points to add a labelled link. **Export → Save changes** writes the source JSON and rebuilds verified native HTML. See [Connection adjustment](archify/references/connection-adjustment.md) for supported types and limits.
+For small manual connection changes, run `node bin/archify.mjs edit architecture source.json output.html`. Architecture, Workflow and Dataflow support local Draft controls for routes and labels, plus selecting two free connection points to add a labelled link. **Export → Save changes** writes the source JSON and rebuilds verified native HTML. See [Connection adjustment](archify/references/connection-adjustment.md) for limits.
 
 `deliver --open` is an opt-in one-shot handoff after commit. Opener failure preserves success; JSON remains on stdout and the absolute fallback path goes to stderr.
 

@@ -2,10 +2,11 @@ import { parse, serializeOuter } from '../story/vendor/html-parser.mjs';
 import { captureWorkflowLayout } from '../renderers/workflow/workflow-migration-geometry.mjs';
 import { segmentIntersectsRect, properSegmentIntersection } from '../renderers/shared/geometry.mjs';
 
-const collections = { architecture: 'connections', workflow: 'edges', dataflow: 'flows', class: 'relationships', erd: 'relationships' };
+const collections = { architecture: 'connections', workflow: 'edges', dataflow: 'flows' };
 const attr = (node, name) => node.attrs?.find(a => a.name === name)?.value;
 const walk = node => [node, ...(node.childNodes || []).flatMap(walk)];
 const same = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+export const sameRelationship = (left,right) => left.id ? left.id===right.id : !right.id&&left.from===right.from&&left.to===right.to&&left.label===right.label;
 const rect = node => {
   const box = Object.fromEntries(['x','y','width','height'].map(k => [k, Number(attr(node, k))]));
   if (!Object.values(box).every(Number.isFinite)) throw Error('A rendered box has no finite geometry.');
@@ -72,7 +73,7 @@ export function appendEditorControls(html, addon) {
   return source.slice(0, at) + addon + source.slice(at);
 }
 
-function binding(source, type, edge) {
+export function connectionBinding(source, type, edge) {
   const collection = editableCollection(type), list = source[collection];
   const matches = list.map((item, index) => ({ item, index })).filter(({ item }) => edge.id
     ? item.id === edge.id
@@ -93,7 +94,7 @@ export function applyConnectionEdit(source, type, scene, command) {
   const edge = scene.edges.find(e => e.key === command.key);
   if (!edge) throw Error('Select a current relationship.');
   const next = type === 'workflow' ? captureWorkflowLayout(source) : structuredClone(source);
-  const { item } = binding(next, type, edge);
+  const { item } = connectionBinding(next, type, edge);
   if (command.field === 'labelAt') {
     if (!edge.label || !finitePoint(edge.labelAnchor) || !finitePoint(command.value)) throw Error('A label position requires two finite coordinates and an existing label.');
     if (item.labelAt || command.pin) {
@@ -158,6 +159,15 @@ function touches(a, b) {
 export function checkEditScope(source, type, before, after, command) {
   const commands = Array.isArray(command) ? command : [command];
   const additions=commands.filter(c=>c.field==='create');
+  const expected=[...before.edges,...additions.map(c=>({...c.value,key:c.key}))];
+  const actualEdges=after.edges;
+  const matched=new Set();
+  after={...after,edges:expected.map(edge=>{
+    const candidates=actualEdges.filter(next=>sameRelationship(edge,next));
+    if(candidates.length!==1||matched.has(candidates[0]))throw Error('This edit changed the diagram relationships; a unique source binding is required.');
+    matched.add(candidates[0]);return {...candidates[0],key:edge.key};
+  })};
+  if(matched.size!==actualEdges.length)throw Error('The rebuilt diagram changed the relationship count.');
   if(additions.length){
     const edits=commands.filter(c=>c.field!=='create'),addedKeys=new Set(additions.map(c=>c.key));
     const oldAfter={...after,edges:after.edges.filter(e=>!addedKeys.has(e.key))};
@@ -209,7 +219,7 @@ export function checkEditScope(source, type, before, after, command) {
   for (const old of before.edges) {
     const next = nextEdges.get(old.key);
     if (same(old.points, next.points) && same(old.labelBox, next.labelBox)) continue;
-    const { item } = binding(source, type, old);
+    const { item } = connectionBinding(source, type, old);
     if (!allowed.has(old.key)) throw Error('The native router changed a relationship outside the visual constraint scope.');
     if (!commands.some(e => e.key === old.key && e.field === 'via') && (item.via || item.channelX !== undefined || item.channelY !== undefined || (item.route && item.route !== 'auto')) && !same(old.points, next.points)) throw Error('This edit would change another authored route.');
     if (!commands.some(e => e.key === old.key && e.field === 'labelAt') && item.labelAt && !same(old.labelBox, next.labelBox)) throw Error('This edit would change another authored label position.');

@@ -7,7 +7,7 @@ import { runFinalize } from '../bin/finalize.mjs';
 import { openLoopbackUrl } from '../bin/open-artifact.mjs';
 import { resolveOutputPath, canonicalFuturePath } from '../renderers/shared/output-path.mjs';
 import { captureAtomicOutput, captureRegularFileBinding, publishRegularFileBinding, releaseRegularFileBinding, removeOwnedRegularFile, quarantineRemoveRegularFileBinding } from '../renderers/shared/atomic-output.mjs';
-import { checkEditScope, editableCollection, readEditScene, sameNativePage, appendEditorControls } from './model.mjs';
+import { checkEditScope, editableCollection, readEditScene, sameNativePage, sameRelationship, appendEditorControls } from './model.mjs';
 import { prepareEdits, proposeConnection } from './create.mjs';
 import { linkedPages } from './linked-pages.mjs';
 import { resolveCatalog } from '../renderers/shared/i18n.mjs';
@@ -106,7 +106,7 @@ export async function startEditor(options) {
   function config() {
     const {messages}=resolveCatalog(accepted.meta?.locale,accepted.meta?.translations);
     const editorMessages=Object.fromEntries(Object.entries(messages).filter(([key])=>key.startsWith('editor.')));
-    return { token, revision, selection, scene, impact, canCreate:type==='architecture', editorMessages };
+    return { token, revision, selection, scene, impact, canCreate:true, editorMessages };
   }
   function initialFailure(message) {
     if (!scene) rejectReady(Error(message));
@@ -115,6 +115,7 @@ export async function startEditor(options) {
     if (!Array.isArray(commands) || commands.length > 256) throw Error('Save requires a bounded list of connection adjustments.');
     if (!commands.length) return;
     const {source:next}=prepareEdits(accepted,type,scene,commands,quality);
+    const selected=scene.edges.find(e=>e.key===selection)||commands.find(c=>c.field==='create'&&c.key===selection)?.value;
     if (!equalBytes(bytesAt(input), originalBytes) || !equalBytes(bytesAt(output), outputBytes)) throw Error('The original source or HTML changed outside this session. Reload before saving.');
     const nextBytes = jsonBytes(next), deliveryPath = output.replace(/\.html?$/i, '.delivery.json');
     const oldDelivery = bytesAt(deliveryPath);
@@ -131,6 +132,7 @@ export async function startEditor(options) {
       if (!fs.readFileSync(input).equals(nextBytes)) throw Error('The source changed while saving.');
       originalBytes = nextBytes; outputBytes = html; artifact = html;
       accepted = next; scene = nextScene; impact = nextImpact; revision++;
+      selection=selected?(nextScene.edges.find(e=>sameRelationship(selected,e))?.key||''):'';
       links.register(html);
     } catch (error) {
       const recoveryErrors = [];
@@ -205,7 +207,6 @@ export async function startEditor(options) {
         await ready;
         if (route === '/edit/save') { selection = command.key || selection; await save(command.edits); }
         else if(route==='/edit/connect'){
-          if(type!=='architecture')throw Error('New connections currently require an architecture diagram.');
           const draft=prepareEdits(accepted,type,scene,command.edits||[],quality);
           const proposal=proposeConnection(draft.source,draft.scene,command.connection,quality);
           send(200,{ok:true,...proposal});return;

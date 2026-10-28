@@ -12,6 +12,7 @@ import { cleanFlowProblems } from '../archify/renderers/shared/geometry.mjs';
 import { findChrome } from '../archify/bin/visual-check.mjs';
 import { desktopBrowser } from './helpers/desktop-browser.mjs';
 import { createViewerClick } from './helpers/viewer-click.mjs';
+import {connectionDiagram} from './helpers/connection-diagrams.mjs';
 
 const chrome = process.env.ARCHIFY_CHROME ? findChrome() : null;
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -177,7 +178,7 @@ test('connection editor uses native selection, drags, undo, and verified source 
 });
 
 
-for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves native editing and reading (${locale})`, {timeout:120000,skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.'}, async t=>{
+for(const type of ['architecture','workflow','dataflow'])for(const locale of ['en','zh-CN'])test(`${type} two-click connection creation preserves native editing and reading (${locale})`, {timeout:120000,skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.'}, async t=>{
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-connect-browser-'));
   let editor,browser,phase='editor startup';
   t.after(async()=>{
@@ -186,13 +187,9 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
     finally { await editor?.stop({force:true}); fs.rmSync(dir,{recursive:true,force:true}); }
   },{timeout:15000});
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');
-  const source={schema_version:1,diagram_type:'architecture',meta:{title:'Create a connection',output:'diagram.html',locale,viewBox:[760,480],legend:{mode:'hidden'}},components:[
-    {id:'a',type:'frontend',label:'Intake',pos:[80,180],size:[100,60]},
-    {id:'b',type:'backend',label:'Execute',pos:[320,180],size:[100,60]},
-    {id:'c',type:'database',label:'Store',pos:[560,180],size:[100,60]},
-    {id:'d',type:'external',label:'Separate',pos:[320,350],size:[100,60]}],connections:[{id:'first',from:'a',to:'b',label:'Request'},{id:'second',from:'b',to:'c',label:'Result'}]};
+  const source=connectionDiagram(type,locale),collection=type==='architecture'?'connections':type==='workflow'?'edges':'flows',nodeCollection=type==='architecture'?'components':'nodes',side=type==='architecture'?'top':'bottom';
   const original=JSON.stringify(source);fs.writeFileSync(input,original);let finalized=0;
-  editor=await startEditor({type:'architecture',input,output,open:false,finalize:options=>{finalized++;return runFinalize(options);}});
+  editor=await startEditor({type,input,output,open:false,finalize:options=>{finalized++;return runFinalize(options);}});
   phase='browser startup';browser=desktopBrowser(chrome);const session=await browser.sessionPromise;
   await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false},session);
   async function run(expression){phase=expression.slice(0,240);const r=await browser.cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},session);assert.equal(r.exceptionDetails,undefined,JSON.stringify(r.exceptionDetails));return r.result.value;}
@@ -204,12 +201,12 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
   }
   async function atNode(id,side){return run(`(()=>{const n=JSON.parse(document.querySelector('#archify-edit-data').textContent).scene.nodes.find(n=>n.id===${JSON.stringify(id)}),b=n.box;const p=new DOMPoint(b.x+b.width/2,${side==='top'?'b.y':'b.y+b.height/2'}).matrixTransform(document.querySelector('.diagram-container>svg').getScreenCTM());return{x:p.x,y:p.y};})()`);}
   async function assertReadings(model){
-    for(const node of model.components)for(const direction of ['upstream','downstream']){
+    for(const node of model[nodeCollection])for(const direction of ['upstream','downstream']){
       const reachable=new Set([node.id]);let changed=true;
-      while(changed){changed=false;for(const edge of model.connections){const [from,to]=direction==='downstream'?[edge.from,edge.to]:[edge.to,edge.from];if(reachable.has(from)&&!reachable.has(to)){reachable.add(to);changed=true;}}}
-      const actual=await run(`(()=>{Archify.focus.set(${JSON.stringify(node.id)},{toggle:false,updateUrl:false});Archify.focus.reach(${JSON.stringify(direction)},{toggle:false,updateUrl:false,reveal:false});return Archify.focus.reachability();})()`);
+      while(changed){changed=false;for(const edge of model[collection]){const [from,to]=direction==='downstream'?[edge.from,edge.to]:[edge.to,edge.from];if(reachable.has(from)&&!reachable.has(to)){reachable.add(to);changed=true;}}}
+      const actual=await run(`(()=>{Archify.focus.set(${JSON.stringify(node.id)},{toggle:false,updateUrl:false});Archify.focus.reach(${JSON.stringify(direction)},{toggle:false,updateUrl:false,reveal:false});const reach=Archify.focus.reachability();return reach&&{nodeIds:reach.nodeIds,edgeIds:reach.edgeKeys.map(key=>document.querySelector('path[data-edge-key="'+key+'"][data-edge-id]')?.getAttribute('data-edge-id'))};})()`);
       assert.deepEqual((actual?.nodeIds||[node.id]).sort(),[...reachable].sort(),`${node.id} ${direction} matches the current source graph`);
-      assert.deepEqual((actual?.edgeKeys||[]).sort(),model.connections.flatMap((edge,i)=>reachable.has(edge.from)&&reachable.has(edge.to)?[String(i)]:[]).sort(),`${node.id} ${direction} preserves exactly the reachable relationships`);
+      assert.deepEqual((actual?.edgeIds||[]).sort(),model[collection].flatMap(edge=>reachable.has(edge.from)&&reachable.has(edge.to)?[edge.id]:[]).sort(),`${node.id} ${direction} preserves exactly the reachable relationships`);
     }
     await run(`Archify.focus.clear({updateUrl:false})`);
   }
@@ -223,9 +220,9 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
   assert.equal(await run(`document.activeElement.id`),'btn-draft','the existing toolbar navigation includes the edit control');
   await click(`document.getElementById('btn-draft')`);
   const hover=await atNode('c','center');await browser.cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',...hover},session);
-  await wait(`!!document.querySelector('.connection-node-port[data-node-id="c"][data-side="top"]')`);
+  await wait(`!!document.querySelector('.connection-node-port[data-node-id="c"][data-side="${side}"]')`);
   assert.equal(await run(`!!document.querySelector('.connection-node-port[data-node-id="c"][data-side="left"]')`),false,'occupied sides are not offered');
-  const start=`document.querySelector('.connection-node-port[data-node-id="c"][data-side="top"]')`,end=`document.querySelector('.connection-node-port[data-node-id="a"][data-side="top"]')`;
+  const start=`document.querySelector('.connection-node-port[data-node-id="c"][data-side="${side}"]')`,end=`document.querySelector('.connection-node-port[data-node-id="a"][data-side="${side}"]')`;
   await click(start);
   assert.equal(await run(`(${start}).getAttribute('aria-pressed')`),'true','the first click remains selected after releasing the mouse');
   assert.equal(await run(`document.activeElement===(${start})`),true,'the selected start retains keyboard focus when target ports appear');
@@ -259,6 +256,8 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
   assert.equal(await run(`!!document.querySelector('[data-draft-connection]')`),false,'an infeasible label cannot add half a relationship');
   assert.equal(finalized,0);assert.equal(fs.readFileSync(input,'utf8'),original);
   await click(`document.querySelector('.connection-create-form button[type="button"]')`);
+  await browser.cdp.send('Input.dispatchMouseEvent',{type:'mouseMoved',...await atNode('c','center')},session);
+  await wait(`!!(${start})`);
   await click(start);
   await run(`(${end}).focus()`);
   await browser.cdp.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',windowsVirtualKeyCode:13},session);
@@ -275,7 +274,7 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
   await click(`document.getElementById('btn-draft')`);await assertReadings(source);await click(`document.getElementById('btn-draft')`);
   await click(`document.querySelectorAll('.connection-draft-history')[1]`);assert.equal(await run(`document.querySelector('[data-draft-connection]').getAttribute('data-draft-connection')`),newId);
   await click(`document.getElementById('btn-draft')`);
-  await assertReadings({...source,connections:[...source.connections,{id:newId,from:'c',to:'a',label:'Return'}]});
+  await assertReadings({...source,[collection]:[...source[collection],{id:newId,from:'c',to:'a',label:'Return'}]});
   const middle=await run(`(()=>{const n=document.querySelector('.connection-draft-hit'),p=n.getPointAtLength(n.getTotalLength()/2).matrixTransform(n.getScreenCTM());return{x:p.x,y:p.y};})()`);
   for(const type of ['mousePressed','mouseReleased'])await browser.cdp.send('Input.dispatchMouseEvent',{type,button:'left',clickCount:1,...middle},session);
   assert.equal(await run(`Archify.focus.relationship()?.id`),newId,'native inspection can read the new relation before saving');
@@ -285,9 +284,11 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
   await click(`document.getElementById('btn-export')`);await click(`document.querySelector('#export-menu button')`);
   await wait(`JSON.parse(document.querySelector('#archify-edit-data')?.textContent||'{}').revision===1`);
   const saved=JSON.parse(fs.readFileSync(input));assert.equal(finalized,1);
-  assert.deepEqual(saved.connections.slice(0,2),source.connections);assert.deepEqual(saved.components,source.components);
-  assert.equal(saved.connections.at(-1).id,newId);assert.equal(saved.connections.at(-1).label,'Return');
-  assert.deepEqual(editor.state().scene.nodes,before.nodes);assert.deepEqual(editor.state().scene.edges.slice(0,2),before.edges);
+  assert.deepEqual(saved[collection].slice(0,2),source[collection]);assert.deepEqual(saved[nodeCollection],source[nodeCollection]);
+  assert.equal(saved[collection].at(-1).id,newId);assert.equal(saved[collection].at(-1).label,'Return');
+  assert.deepEqual(editor.state().scene.nodes,before.nodes);
+  for(const edge of before.edges)assert.deepEqual({...editor.state().scene.edges.find(e=>e.id===edge.id),key:edge.key},edge);
+  assert.equal(editor.state().selection,editor.state().scene.edges.find(e=>e.id===newId).key,'selection follows the saved relationship when native rendering reorders it');
   await assertReadings(saved);
   await run(`Archify.focus.set('c',{toggle:false,updateUrl:false});Archify.focus.reach('downstream')`);
   assert.deepEqual((await run(`Archify.focus.reachability().nodeIds`)).sort(),['a','b','c'],'native reachability includes the newly saved relation');

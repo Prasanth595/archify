@@ -2,26 +2,28 @@
 
 Run `node archify/bin/archify.mjs edit <type> <source.json> [output.html]`.
 Use `--no-open` to print the local URL without launching a browser. Quality and
-repository options are the same as native preview. Architecture, workflow,
-dataflow, class and ERD diagrams expose editable route geometry.
+repository options are the same as native preview. Editing is available only
+for Architecture, Workflow and Dataflow. Other diagram types do not expose it.
 
 Controls use the source's `meta.locale` and `meta.translations`, through the
 existing locale catalogs. Labels and other authored content are preserved.
 Toolbar navigation and IME handling follow the native Viewer. Engine diagnostics
 remain available unchanged under Technical details.
 
-Architecture diagrams also support new connections. In Draft, hover a node and
+All three supported types can add connections. In Draft, hover a node and
 click a **+** on an unused side, then click the destination node's connection
 point. Available destination points appear after selecting the start. Click the
 selected start again or press Escape to cancel. The popup asks only for an
 optional label. Direction follows the two selected points. The native router and label placer
 must find room without moving existing nodes, routes or labels; otherwise the
 connection is not added. This first slice uses one connection per node side and
-does not infer the extra relationship fields required by Class or ERD diagrams.
-Creation makes one local planning request, not a full render. The new connection
+does not infer new nodes or additional relationship semantics.
+Creation makes one local planning request through the renderers' shared path
+search and label placement, not a full render. The new connection
 joins the same draft and Undo/Redo history. Toggle Draft off to inspect the
 displayed draft with the native relationship and reachability controls. Save
-writes JSON and rebuilds the native Viewer with the same relationships.
+writes JSON and rebuilds the native Viewer with the same relationships. Source
+identity binds each relationship independently of the renderer's drawing order.
 
 Choose **Draft** in the existing top-right control group, then select a
 connection. Drag an interior segment, or drag the label itself along its

@@ -12,6 +12,7 @@ import { captureWorkflowLayout } from '../archify/renderers/workflow/workflow-mi
 import { applyConnectionEdit, checkEditScope, readEditScene } from '../archify/editor/model.mjs';
 import { startEditor } from '../archify/editor/session.mjs';
 import { proposeConnection, prepareEdits } from '../archify/editor/create.mjs';
+import {connectionDiagram} from './helpers/connection-diagrams.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 function stackedWorkflow() {
@@ -49,7 +50,7 @@ test('adding a native connection preserves every existing relationship and its g
   const impact=checkEditScope(source,'architecture',before,after,[command]);
   assert.deepEqual(impact.added,[proposal.value.id]);assert.deepEqual(impact.changed,[]);
   assert.throws(()=>proposeConnection(source,before,{from:'a',to:'c',fromSide:'right',toSide:'left',label:'Busy'},'standard'),/existing route|already in use/);
-  assert.throws(()=>prepareEdits(source,'workflow',before,[command],'standard'),/architecture/);
+  assert.throws(()=>prepareEdits(source,'erd',before,[command],'standard'),/not supported/);
   const forged=structuredClone(command);forged.value.points[0][0]+=10;
   assert.throws(()=>prepareEdits(source,'architecture',before,[forged],'standard'),/anchors/);
 });
@@ -272,6 +273,10 @@ test('unchanged relationships cannot bridge an edit scope to a distant change', 
   const after=structuredClone(before);
   const renamed=structuredClone(before);renamed.edges[0].id='different';
   assert.throws(()=>checkEditScope(source,'architecture',before,renamed,[]),/changed the diagram relationships/,'stable relationship IDs belong to the preserved graph');
+  const reordered={...before,edges:[...before.edges].reverse().map((edge,i)=>({...edge,key:String(i)}))};
+  assert.deepEqual(checkEditScope(source,'architecture',before,reordered,[]),{changed:[],witnesses:[]},'drawing order and native keys are not relationship identity');
+  const extra=structuredClone(before);extra.edges.push({...extra.edges[0],key:'extra',id:'extra'});
+  assert.throws(()=>checkEditScope(source,'architecture',before,extra,[]),/relationship count/,'an unbound relationship cannot disappear during alignment');
   after.edges[0].points=[[100,100],[140,100],[140,150],[260,150],[260,100],[300,100]];
   after.edges[2].points[1][0]=940;after.edges[2].points[2][0]=940;
   assert.throws(()=>checkEditScope(source,'architecture',before,after,{key:'edit',field:'via',value:after.edges[0].points}),/outside the visual/);
@@ -341,7 +346,7 @@ for(const changedElsewhere of [false,true])test(`unidentifiable output ${changed
 test('official geometry families bind explicit label drafts to the native source', async t => {
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-families-'));
   t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
-  const examples={architecture:'web-app',workflow:'agent-tool-call',dataflow:'product-analytics',class:'payments',erd:'orders'};
+  const examples={architecture:'web-app',workflow:'agent-tool-call',dataflow:'product-analytics'};
   for(const [type,name] of Object.entries(examples)) {
     const original=path.join(root,`archify/examples/${name}.${type}.json`),input=path.join(dir,type+'.json'),output=path.join(dir,type+'.html');
     const render=path.join(root,`archify/renderers/${type}/render-${type}.mjs`);
@@ -354,4 +359,26 @@ test('official geometry families bind explicit label drafts to the native source
     const after=readEditScene(fs.readFileSync(output));
     checkEditScope(JSON.parse(fs.readFileSync(original)),type,before,after,[command]);
   }
+});
+
+for(const type of ['architecture','workflow','dataflow'])test(`${type} connection creation uses native routing and survives a cold rebuild`,t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-create-native-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html'),source=connectionDiagram(type);
+  const renderer=path.join(root,`archify/renderers/${type}/render-${type}.mjs`),collection=type==='architecture'?'connections':type==='workflow'?'edges':'flows';
+  fs.writeFileSync(input,JSON.stringify(source));execFileSync(process.execPath,[renderer,input,output]);
+  const before=readEditScene(fs.readFileSync(output)),side=type==='architecture'?'top':'bottom';
+  const proposal=proposeConnection(source,before,{from:'c',to:'a',fromSide:side,toSide:side,label:'Return'},'standard');
+  const command={key:proposal.edge.key,field:'create',value:proposal.value},draft=prepareEdits(source,type,before,[command],'standard');
+  assert.deepEqual(draft.source[collection].slice(0,2),source[collection]);
+  fs.writeFileSync(input,JSON.stringify(draft.source));execFileSync(process.execPath,[renderer,input,output]);
+  const after=readEditScene(fs.readFileSync(output));
+  assert.deepEqual(checkEditScope(source,type,before,after,[command]).added,[proposal.value.id]);
+  for(const edge of before.edges)assert.deepEqual({...after.edges.find(e=>e.id===edge.id),key:edge.key},edge,'adding a relationship preserves every existing route and label independently of render order');
+});
+
+test('unsupported diagram types cannot start editing or touch their source files',async t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-unsupported-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const input=path.join(dir,'source.json');fs.writeFileSync(input,'source must remain intact');
+  for(const type of ['class','erd','sequence','lifecycle','tree','timeline','waterfall'])await assert.rejects(startEditor({type,input,output:path.join(dir,'diagram.html'),open:false}),/not supported/);
+  assert.deepEqual(fs.readdirSync(dir),['source.json']);assert.equal(fs.readFileSync(input,'utf8'),'source must remain intact');
 });
