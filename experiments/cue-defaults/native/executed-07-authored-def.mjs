@@ -1,0 +1,11 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(38);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('text="def"');await page.click('text="OK"');
+await page.waitForFunction(()=>document.querySelector('.cm-content[contenteditable="false"]')?.textContent.includes('#Reader:'),undefined,{timeout:15000});
+const state=await page.evaluate(()=>({url:location.href,editors:[...document.querySelectorAll('.cm-content')].map(x=>({editable:x.getAttribute('contenteditable'),lines:[...x.querySelectorAll('.cm-line')].map(l=>l.textContent)}))}));
+await fs.writeFile('/tmp/archify-round29-cue/authored-def.json',JSON.stringify(state,null,2)+'\n');
+await page.screenshot({path:'/tmp/archify-round29-cue/authored-def.png'});console.log(state);
+await page.click('text="Function"');await page.click('text="def"');await page.click('text="export"');await page.click('text="OK"');
+await page.waitForFunction(()=>document.body.innerText.includes('incomplete'),undefined,{timeout:15000});
+console.log(await page.snapshot());

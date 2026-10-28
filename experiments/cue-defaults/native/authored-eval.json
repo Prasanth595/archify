@@ -1,0 +1,54 @@
+{
+  "url": "https://cuelang.org/play/#w=function&i=cue&f=eval&o=cue",
+  "editors": [
+    {
+      "editable": "true",
+      "lines": [
+        "// Authored teaching fixture; mode names are strings, not an Archify schema.",
+        "#Reader: {",
+        "    mode: *\"overview\" | string",
+        "}",
+        "",
+        "preferred: *\"detail\" | string",
+        "",
+        "viaReference: #Reader & {",
+        "    mode: preferred",
+        "}",
+        "",
+        "viaInterpolation: #Reader & {",
+        "    mode: \"\\(preferred)\"",
+        "}",
+        "",
+        "explicitValue: viaReference & {",
+        "    mode: \"audit\"",
+        "}",
+        "",
+        "reversedOperands: {",
+        "    mode: preferred",
+        "} & #Reader",
+        ""
+      ]
+    },
+    {
+      "editable": "false",
+      "lines": [
+        "preferred: \"detail\"",
+        "viaReference: {",
+        "\tmode: \"overview\" | \"detail\" | string",
+        "}",
+        "viaInterpolation: {",
+        "\tmode: \"detail\"",
+        "}",
+        "explicitValue: {",
+        "\tmode: \"audit\"",
+        "}",
+        "reversedOperands: {",
+        "\tmode: \"overview\" | \"detail\" | string",
+        "}",
+        ""
+      ]
+    }
+  ],
+  "submittedBytes": 365,
+  "submittedSha256": "3d378446b37f35eb300218ccb695c91404a71b81beefa2e79d95ac58fb93629d"
+}

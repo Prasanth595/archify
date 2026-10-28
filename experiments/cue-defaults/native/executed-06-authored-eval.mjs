@@ -1,0 +1,16 @@
+const fs=await import('node:fs/promises');const crypto=await import('node:crypto');
+const task=await taskSpace(38);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+const identity=await page.evaluate(()=>({text:document.body.innerText,reportIssue:[...document.querySelectorAll('a')].find(x=>x.textContent==='Report an issue')?.href,userAgent:navigator.userAgent,wasmResources:performance.getEntriesByType('resource').map(x=>x.name).filter(x=>/\.wasm/.test(x))}));
+await fs.writeFile('/tmp/archify-round29-cue/visible-version.json',JSON.stringify(identity,null,2)+'\n');
+await page.click('loc=role:button[name="Menu"]');
+const input=await fs.readFile('/Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/input/reader-modes.cue','utf8');
+await page.fill('loc=css:.cm-content[contenteditable="true"]',input);
+await page.waitForFunction(()=>{const s=document.querySelector('.cm-content[contenteditable="false"]')?.textContent||'';return s.includes('reversedOperands:')&&s.includes('audit');},undefined,{timeout:15000});
+const state=await page.evaluate(()=>({url:location.href,editors:[...document.querySelectorAll('.cm-content')].map(x=>({editable:x.getAttribute('contenteditable'),lines:[...x.querySelectorAll('.cm-line')].map(l=>l.textContent)}))}));
+state.submittedBytes=Buffer.byteLength(input);state.submittedSha256=crypto.createHash('sha256').update(input).digest('hex');
+await fs.writeFile('/tmp/archify-round29-cue/authored-eval.json',JSON.stringify(state,null,2)+'\n');
+await page.screenshot({path:'/tmp/archify-round29-cue/authored-eval.png'});
+console.log(state);
+await page.click('text="Function"');await page.click('text="eval"');
+console.log(await page.snapshot());

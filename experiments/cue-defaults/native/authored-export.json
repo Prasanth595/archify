@@ -1,0 +1,41 @@
+{
+  "url": "https://cuelang.org/play/#w=function&i=cue&f=export&o=cue",
+  "editors": [
+    {
+      "editable": "true",
+      "lines": [
+        "// Authored teaching fixture; mode names are strings, not an Archify schema.",
+        "#Reader: {",
+        "    mode: *\"overview\" | string",
+        "}",
+        "",
+        "preferred: *\"detail\" | string",
+        "",
+        "viaReference: #Reader & {",
+        "    mode: preferred",
+        "}",
+        "",
+        "viaInterpolation: #Reader & {",
+        "    mode: \"\\(preferred)\"",
+        "}",
+        "",
+        "explicitValue: viaReference & {",
+        "    mode: \"audit\"",
+        "}",
+        "",
+        "reversedOperands: {",
+        "    mode: preferred",
+        "} & #Reader",
+        ""
+      ]
+    },
+    {
+      "editable": "false",
+      "lines": [
+        "reversedOperands.mode: incomplete value \"overview\" | \"detail\" | string",
+        "viaReference.mode: incomplete value \"overview\" | \"detail\" | string",
+        ""
+      ]
+    }
+  ]
+}

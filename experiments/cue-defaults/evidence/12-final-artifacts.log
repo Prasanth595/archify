@@ -1,0 +1,60 @@
+{ desktop: { baseline: { viewport: { width: 1440, height: 900 }, width: 1440, height: 2453, codeBlocks: 4 }, comparison: { viewport: { width: 1440, height: 900 }, width: 1440, height: 2576, codeBlocks: 4 } }, dark: { rootAttributes: [ [ 'lang', 'en' ], [ 'data-style', 'clean' ], [ 'data-archify-artifact', 'explainer' ], [ 'data-artifact', 'cue-defaults' ], [ 'data-revision', '2108fd66d0f5f41908e502178df5b37a56a8bfdd3f78235df6ebddb534c3edc4' ], [ 'class', 'js' ], [ 'data-theme', 'dark' ] ], background: 'rgb(12, 13, 16)', buttons: [ { text: 'System', pressed: 'false', active: '' }, { text: 'Light', pressed: 'false', active: '' }, { text: 'Dark', pressed: 'true', active: '' } ] }, source: { hash: '#source-spec', active: { tag: 'A', text: 'CUE v0.17.0 language specification', href: 'https://github.com/cue-lang/cue/blob/0fc639bbe9819f08ed132d3981a13ac2e3bf330f/doc/ref/spec.md' }, sourceText: 'CUE v0.17.0 language specification', scrollY: 1676 }, narrow: { baseline: { requestedWidth: 390, viewport: { width: 390, height: 844 }, clientWidth: 390, scrollWidth: 401, buttons: [ { text: 'System', left: 15, right: 80.65625 }, { text: 'Light', left: 82.65625, right: 132.1796875 }, { text: 'Dark', left: 134.1796875, right: 181.5625 }, { text: 'Clean', left: 192.5625, right: 289.828125 }, { text: 'Clean', left: 0, right: 0 }, { text: 'Editorial', left: 0, right: 0 }, { text: 'Product', left: 0, right: 0 }, { text: 'Swiss', left: 0, right: 0 }, { text: 'Export', left: 297.828125, right: 401.0546875 }, { text: 'PNGSharpest', left: 0, right: 0 }, { text: 'WebPSmallest', left: 0, right: 0 }, { text: 'JPGOpens anywhere', left: 0, right: 0 }, { text: 'Print / PDF', left: 0, right: 0 }, { text: 'CloseEsc', left: 0, right: 0 }, { text: '', left: 0, right: 0 }, { text: 'I do not follow this part', left: 0, right: 0 }, { text: 'Go deeper', left: 0, right: 0 }, { text: 'Give an example', left: 0, right: 0 }, { text: 'What is this based on?', left: 0, right: 0 }, { text: 'Cancel', left: 0, right: 0 }, { text: 'Copy question⌘↵', left: 0, right: 0 }, { text: 'Ask about this', left: 0, right: 0 } ] }, comparison: { requestedWidth: 390, viewport: { width: 390, height: 844 }, clientWidth: 390, scrollWidth: 401, buttons: [ { text: 'System', left: 15, right: 80.65625 }, { text: 'Light', left: 82.65625, right: 132.1796875 }, { text: 'Dark', left: 134.1796875, right: 181.5625 }, { text: 'Clean', left: 192.5625, right: 289.828125 }, { text: 'Clean', left: 0, right: 0 }, { text: 'Editorial', left: 0, right: 0 }, { text: 'Product', left: 0, right: 0 }, { text: 'Swiss', left: 0, right: 0 }, { text: 'Export', left: 297.828125, right: 401.0546875 }, { text: 'PNGSharpest', left: 0, right: 0 }, { text: 'WebPSmallest', left: 0, right: 0 }, { text: 'JPGOpens anywhere', left: 0, right: 0 }, { text: 'Print / PDF', left: 0, right: 0 }, { text: 'CloseEsc', left: 0, right: 0 }, { text: '', left: 0, right: 0 }, { text: 'I do not follow this part', left: 0, right: 0 }, { text: 'Go deeper', left: 0, right: 0 }, { text: 'Give an example', left: 0, right: 0 }, { text: 'What is this based on?', left: 0, right: 0 }, { text: 'Cancel', left: 0, right: 0 }, { text: 'Copy question⌘↵', left: 0, right: 0 }, { text: 'Ask about this', left: 0, right: 0 } ] } }, narrowTable: { panelWidth: 366, tableWidth: 332, containerWidth: 332, containerScrollWidth: 332, overflow: 'auto' } }
+[p1 "Why does a CUE reference lose its default? · Archify" | space "Archify research 20261026"(38): 1 managed, 0 untracked — p1* "Why does a CUE reference lose its default? · Archify"]
+root
+  container
+    container
+      container
+        anchor "Is audit valid, and does order choose a winner?" [ref=102, loc=css:a[aria-label="Is audit valid, and does order choose a winner?"], url=file:///Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/artifacts/comparison.html#controls]
+          text "3"
+        heading
+          text "Is audit valid, and does order choose a winner?"
+        button [ref=103]
+          text "Ask"
+      container
+        table
+          table_row
+            table_cell
+              text "Question"
+            table_cell
+              text "Observed result"
+            table_cell
+              text "Meaning"
+          table_row
+            table_cell
+              text "Is"
+              text "audit"
+              text "valid?"
+            table_cell
+              text "explicitValue.mode: "audit""
+            table_cell
+              text "Yes: an explicit string narrows the remaining domain."
+          table_row
+            table_cell
+              text "Does reversing operands pick a winner?"
+            table_cell
+              text "Both references show the same unresolved disjunction."
+            table_cell
+              text "No winner is selected by operand order in this example."
+        paragraph
+          text "Unification is commutative; the result is composition rather than last-writer precedence."
+          anchor [ref=104, url=file:///Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/artifacts/comparison.html#source-spec]
+            text "1"
+    container
+      container
+        anchor "Complete authored input" [ref=105, loc=css:a[aria-label="Complete authored input"], url=file:///Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/artifacts/comparison.html#input]
+          text "4"
+        heading
+          text "Complete authored input"
+        button [ref=106]
+          text "Ask"
+      container
+        container
+          container
+            text "reader-modes.cue"
+            text "cue"
+          button [ref=107]
+            text "Copy"
+        container [ref=108]
+          text "// Authored teaching fixture; mode names are strings, not an Archify schema. #Reader: { mode: *"overview" | string } preferred: *"detail" | string viaReference: #Reader & { mode: preferred } viaInterp..."
+
+

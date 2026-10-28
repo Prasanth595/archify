@@ -1,0 +1,347 @@
+{
+  "desktop": {
+    "baseline": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "clientWidth": 1440,
+      "scrollWidth": 1440,
+      "scrollHeight": 2453,
+      "code": [
+        "// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n    mode: *\"overview\" | string\n}\n\npreferred: *\"detail\" | string\n\nviaReference: #Reader & {\n    mode: preferred\n}\n\nviaInterpolation: #Reader & {\n    mode: \"\\(preferred)\"\n}\n\nexplicitValue: viaReference & {\n    mode: \"audit\"\n}\n\nreversedOperands: {\n    mode: preferred\n} & #Reader",
+        "// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n\tmode: *\"overview\" | string\n}\npreferred: *\"detail\" | string\nviaReference: #Reader & {\n\tmode: preferred\n}\nviaInterpolation: #Reader & {\n\tmode: \"\\(preferred)\"\n}\nexplicitValue: viaReference & {\n\tmode: \"audit\"\n}\nreversedOperands: #Reader & {\n\tmode: preferred\n}",
+        "preferred: \"detail\"\nviaReference: {\n\tmode: \"overview\" | \"detail\" | string\n}\nviaInterpolation: {\n\tmode: \"detail\"\n}\nexplicitValue: {\n\tmode: \"audit\"\n}\nreversedOperands: {\n\tmode: \"overview\" | \"detail\" | string\n}",
+        "reversedOperands.mode: incomplete value \"overview\" | \"detail\" | string\nviaReference.mode: incomplete value \"overview\" | \"detail\" | string"
+      ],
+      "text": "Skip to content\nWhy does a CUE reference lose its default?\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nThe reference has no usable default after the two preferences meet, but the field still accepts strings. Interpolation resolves to a concrete value in this fixture.1\n\nApplies to\nAuthored teaching fixture\nPlayground v0.17.0 label\nGo API\n\n1\nComplete authored input\nAsk\nreader-modes.cue\ncue\nCopy\n// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n    mode: *\"overview\" | string\n}\n\npreferred: *\"detail\" | string\n\nviaReference: #Reader & {\n    mode: preferred\n}\n\nviaInterpolation: #Reader & {\n    mode: \"\\(preferred)\"\n}\n\nexplicitValue: viaReference & {\n    mode: \"audit\"\n}\n\nreversedOperands: {\n    mode: preferred\n} & #Reader\n2\nComplete Playground output\nAsk\n\nThe Playground displayed these results for the same input. Displayed code omits the final newline; the raw files are authoritative. Export shows two incomplete-value diagnostics; this is not a CLI exit status.2\n\ndef\ncue\nCopy\n// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n\tmode: *\"overview\" | string\n}\npreferred: *\"detail\" | string\nviaReference: #Reader & {\n\tmode: preferred\n}\nviaInterpolation: #Reader & {\n\tmode: \"\\(preferred)\"\n}\nexplicitValue: viaReference & {\n\tmode: \"audit\"\n}\nreversedOperands: #Reader & {\n\tmode: preferred\n}\neval\ncue\nCopy\npreferred: \"detail\"\nviaReference: {\n\tmode: \"overview\" | \"detail\" | string\n}\nviaInterpolation: {\n\tmode: \"detail\"\n}\nexplicitValue: {\n\tmode: \"audit\"\n}\nreversedOperands: {\n\tmode: \"overview\" | \"detail\" | string\n}\nexport\ncue\nCopy\nreversedOperands.mode: incomplete value \"overview\" | \"detail\" | string\nviaReference.mode: incomplete value \"overview\" | \"detail\" | string\n3\nOfficial context and boundaries\nAsk\n\nUnification is commutative. Values and default preferences are separate. For this fixture U2 intersects the valid string domains to string while the incompatible overview/detail default components meet at bottom: no usable default, not an empty valid-value domain. Interpolation needs a concrete expression result; it is not a universal override mechanism.1\n\nThe natural question compares a direct reference with string interpolation. The maintainer explains composition without operand precedence and recommends considering schema/default separation. The reporter accepted that explanation and requested examples. The authored fixture here is a separate teaching adaptation.3\n\nAn open umbrella tracks defaults redesign. This experiment freezes a v0.17.0-labelled Playground observation, not future compatibility.4\n\nThe UI wraps CUE Go API in WASM using a synthetic stdin/module context. Eval selects defaults for rendering; def preserves expressions; export requires concrete values. No issue CLI command or exit was reproduced.2\n\nThe fixture is authored for teaching, distinct from issue 1449. The Playground label is v0.17.0; its WASM bytes were not independently identified. The observations are Go API output, not CLI execution or an exit status. No human comprehension benefit has been measured.\n\n4\nWhy does the reference lack a usable default?\nAsk\n\nThe two input preferences disagree. Their default component has no usable result, while the allowed-value domain remains string. This is not a conflict that removes all valid values. The displayed disjunction is not a set of surviving defaults.1\n\n5\nWhy does interpolation resolve here?\nAsk\n\nInterpolation requires a concrete expression result. In this fixture, the preference for detail supplies that result, producing a concrete string compatible with the reader constraint. This is a different expression, not a general override rule.1\n\n6\nIs audit valid, and does order choose a winner?\nAsk\nQuestion\tObserved result\tMeaning\nIs audit valid?\t\nexplicitValue.mode: \"audit\"\n\t\nYes: an explicit string narrows the remaining domain.\n\nDoes reversing operands pick a winner?\t\nBoth references show the same unresolved disjunction.\n\t\nNo winner is selected by operand order in this example.\n\nUnification is commutative; the result is composition rather than last-writer precedence.1\n\nSources\nCUE v0.17.0 language specification\nOfficial Playground implementation\nCUE issue1449 and maintainer explanation\nDefaults design remains under discussion\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n6 panels\n4 sources"
+    },
+    "comparison": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "clientWidth": 1440,
+      "scrollWidth": 1440,
+      "scrollHeight": 2576,
+      "code": [
+        "// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n    mode: *\"overview\" | string\n}\n\npreferred: *\"detail\" | string\n\nviaReference: #Reader & {\n    mode: preferred\n}\n\nviaInterpolation: #Reader & {\n    mode: \"\\(preferred)\"\n}\n\nexplicitValue: viaReference & {\n    mode: \"audit\"\n}\n\nreversedOperands: {\n    mode: preferred\n} & #Reader",
+        "// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n\tmode: *\"overview\" | string\n}\npreferred: *\"detail\" | string\nviaReference: #Reader & {\n\tmode: preferred\n}\nviaInterpolation: #Reader & {\n\tmode: \"\\(preferred)\"\n}\nexplicitValue: viaReference & {\n\tmode: \"audit\"\n}\nreversedOperands: #Reader & {\n\tmode: preferred\n}",
+        "preferred: \"detail\"\nviaReference: {\n\tmode: \"overview\" | \"detail\" | string\n}\nviaInterpolation: {\n\tmode: \"detail\"\n}\nexplicitValue: {\n\tmode: \"audit\"\n}\nreversedOperands: {\n\tmode: \"overview\" | \"detail\" | string\n}",
+        "reversedOperands.mode: incomplete value \"overview\" | \"detail\" | string\nviaReference.mode: incomplete value \"overview\" | \"detail\" | string"
+      ],
+      "text": "Skip to content\nWhy does a CUE reference lose its default?\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nThe reference has no usable default after the two preferences meet, but the field still accepts strings. Interpolation resolves to a concrete value in this fixture.1\n\nApplies to\nAuthored teaching fixture\nPlayground v0.17.0 label\nGo API\n\n1\nWhy does the reference lack a usable default?\nAsk\n\nThe two input preferences disagree. Their default component has no usable result, while the allowed-value domain remains string. This is not a conflict that removes all valid values. The displayed disjunction is not a set of surviving defaults.1\n\n2\nWhy does interpolation resolve here?\nAsk\n\nInterpolation requires a concrete expression result. In this fixture, the preference for detail supplies that result, producing a concrete string compatible with the reader constraint. This is a different expression, not a general override rule.1\n\n3\nIs audit valid, and does order choose a winner?\nAsk\nQuestion\tObserved result\tMeaning\nIs audit valid?\t\nexplicitValue.mode: \"audit\"\n\t\nYes: an explicit string narrows the remaining domain.\n\nDoes reversing operands pick a winner?\t\nBoth references show the same unresolved disjunction.\n\t\nNo winner is selected by operand order in this example.\n\nUnification is commutative; the result is composition rather than last-writer precedence.1\n\n4\nComplete authored input\nAsk\nreader-modes.cue\ncue\nCopy\n// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n    mode: *\"overview\" | string\n}\n\npreferred: *\"detail\" | string\n\nviaReference: #Reader & {\n    mode: preferred\n}\n\nviaInterpolation: #Reader & {\n    mode: \"\\(preferred)\"\n}\n\nexplicitValue: viaReference & {\n    mode: \"audit\"\n}\n\nreversedOperands: {\n    mode: preferred\n} & #Reader\n5\nComplete Playground output\nAsk\n\nThe Playground displayed these results for the same input. Displayed code omits the final newline; the raw files are authoritative. Export shows two incomplete-value diagnostics; this is not a CLI exit status.2\n\ndef\ncue\nCopy\n// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n\tmode: *\"overview\" | string\n}\npreferred: *\"detail\" | string\nviaReference: #Reader & {\n\tmode: preferred\n}\nviaInterpolation: #Reader & {\n\tmode: \"\\(preferred)\"\n}\nexplicitValue: viaReference & {\n\tmode: \"audit\"\n}\nreversedOperands: #Reader & {\n\tmode: preferred\n}\neval\ncue\nCopy\npreferred: \"detail\"\nviaReference: {\n\tmode: \"overview\" | \"detail\" | string\n}\nviaInterpolation: {\n\tmode: \"detail\"\n}\nexplicitValue: {\n\tmode: \"audit\"\n}\nreversedOperands: {\n\tmode: \"overview\" | \"detail\" | string\n}\nexport\ncue\nCopy\nreversedOperands.mode: incomplete value \"overview\" | \"detail\" | string\nviaReference.mode: incomplete value \"overview\" | \"detail\" | string\n6\nOfficial context and boundaries\nAsk\n\nUnification is commutative. Values and default preferences are separate. For this fixture U2 intersects the valid string domains to string while the incompatible overview/detail default components meet at bottom: no usable default, not an empty valid-value domain. Interpolation needs a concrete expression result; it is not a universal override mechanism.1\n\nThe natural question compares a direct reference with string interpolation. The maintainer explains composition without operand precedence and recommends considering schema/default separation. The reporter accepted that explanation and requested examples. The authored fixture here is a separate teaching adaptation.3\n\nAn open umbrella tracks defaults redesign. This experiment freezes a v0.17.0-labelled Playground observation, not future compatibility.4\n\nThe UI wraps CUE Go API in WASM using a synthetic stdin/module context. Eval selects defaults for rendering; def preserves expressions; export requires concrete values. No issue CLI command or exit was reproduced.2\n\nThe fixture is authored for teaching, distinct from issue 1449. The Playground label is v0.17.0; its WASM bytes were not independently identified. The observations are Go API output, not CLI execution or an exit status. No human comprehension benefit has been measured.\n\nSources\nCUE v0.17.0 language specification\nOfficial Playground implementation\nCUE issue1449 and maintainer explanation\nDefaults design remains under discussion\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n6 panels\n4 sources"
+    }
+  },
+  "narrow": {
+    "baseline": {
+      "requestedWidth": 390,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "clientWidth": 390,
+      "scrollWidth": 401,
+      "buttons": [
+        {
+          "text": "System",
+          "left": 15,
+          "right": 80.65625
+        },
+        {
+          "text": "Light",
+          "left": 82.65625,
+          "right": 132.1796875
+        },
+        {
+          "text": "Dark",
+          "left": 134.1796875,
+          "right": 181.5625
+        },
+        {
+          "text": "Clean",
+          "left": 192.5625,
+          "right": 289.828125
+        },
+        {
+          "text": "Clean",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Editorial",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Product",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Swiss",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Export",
+          "left": 297.828125,
+          "right": 401.0546875
+        },
+        {
+          "text": "PNGSharpest",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "WebPSmallest",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "JPGOpens anywhere",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Print / PDF",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "CloseEsc",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "I do not follow this part",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Go deeper",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Give an example",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "What is this based on?",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Cancel",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Copy question⌘↵",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Ask about this",
+          "left": 0,
+          "right": 0
+        }
+      ]
+    },
+    "comparison": {
+      "requestedWidth": 390,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "clientWidth": 390,
+      "scrollWidth": 401,
+      "buttons": [
+        {
+          "text": "System",
+          "left": 15,
+          "right": 80.65625
+        },
+        {
+          "text": "Light",
+          "left": 82.65625,
+          "right": 132.1796875
+        },
+        {
+          "text": "Dark",
+          "left": 134.1796875,
+          "right": 181.5625
+        },
+        {
+          "text": "Clean",
+          "left": 192.5625,
+          "right": 289.828125
+        },
+        {
+          "text": "Clean",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Editorial",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Product",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Swiss",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Export",
+          "left": 297.828125,
+          "right": 401.0546875
+        },
+        {
+          "text": "PNGSharpest",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "WebPSmallest",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "JPGOpens anywhere",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Print / PDF",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "CloseEsc",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "I do not follow this part",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Go deeper",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Give an example",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "What is this based on?",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Cancel",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Copy question⌘↵",
+          "left": 0,
+          "right": 0
+        },
+        {
+          "text": "Ask about this",
+          "left": 0,
+          "right": 0
+        }
+      ]
+    }
+  },
+  "dark": {
+    "rootAttributes": [
+      [
+        "lang",
+        "en"
+      ],
+      [
+        "data-style",
+        "clean"
+      ],
+      [
+        "data-archify-artifact",
+        "explainer"
+      ],
+      [
+        "data-artifact",
+        "cue-defaults"
+      ],
+      [
+        "data-revision",
+        "2108fd66d0f5f41908e502178df5b37a56a8bfdd3f78235df6ebddb534c3edc4"
+      ],
+      [
+        "class",
+        "js"
+      ],
+      [
+        "data-theme",
+        "dark"
+      ]
+    ],
+    "background": "rgb(12, 13, 16)",
+    "buttons": [
+      {
+        "text": "System",
+        "pressed": "false",
+        "active": ""
+      },
+      {
+        "text": "Light",
+        "pressed": "false",
+        "active": ""
+      },
+      {
+        "text": "Dark",
+        "pressed": "true",
+        "active": ""
+      }
+    ]
+  },
+  "source": {
+    "hash": "#source-spec",
+    "active": {
+      "tag": "A",
+      "text": "CUE v0.17.0 language specification",
+      "href": "https://github.com/cue-lang/cue/blob/0fc639bbe9819f08ed132d3981a13ac2e3bf330f/doc/ref/spec.md"
+    },
+    "sourceText": "CUE v0.17.0 language specification",
+    "scrollY": 1676
+  },
+  "narrowTable": {
+    "panelWidth": 366,
+    "tableWidth": 332,
+    "containerWidth": 332,
+    "containerScrollWidth": 332,
+    "overflow": "auto"
+  }
+}

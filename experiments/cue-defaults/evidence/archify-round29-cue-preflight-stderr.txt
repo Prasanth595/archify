@@ -1,0 +1,11 @@
+file:///private/tmp/archify-round29-cue-preflight/experiments/cue-defaults/build.mjs:18
+if (hash('input/reader-modes.cue') !== observation.inputSha256 || fs.statSync(path.join(dir, 'input/reader-modes.cue')).size !== observation.inputBytes) throw new Error('Input bytes do not match observation');
+                                                                                                                                                               ^
+
+Error: Input bytes do not match observation
+    at file:///private/tmp/archify-round29-cue-preflight/experiments/cue-defaults/build.mjs:18:160
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.3

@@ -1,0 +1,13 @@
+preferred: "detail"
+viaReference: {
+	mode: "overview" | "detail" | string
+}
+viaInterpolation: {
+	mode: "detail"
+}
+explicitValue: {
+	mode: "audit"
+}
+reversedOperands: {
+	mode: "overview" | "detail" | string
+}

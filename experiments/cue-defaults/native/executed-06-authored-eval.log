@@ -1,0 +1,166 @@
+{ url: 'https://cuelang.org/play/#w=function&i=cue&f=eval&o=cue', editors: [ { editable: 'true', lines: [ '// Authored teaching fixture; mode names are strings, not an Archify schema.', '#Reader: {', '    mode: *"overview" | string', '}', '', 'preferred: *"detail" | string', '', 'viaReference: #Reader & {', '    mode: preferred', '}', '', 'viaInterpolation: #Reader & {', '    mode: "\\(preferred)"', '}', '', 'explicitValue: viaReference & {', '    mode: "audit"', '}', '', 'reversedOperands: {', '    mode: preferred', '} & #Reader', '' ] }, { editable: 'false', lines: [ 'preferred: "detail"', 'viaReference: {', '\tmode: "overview" | "detail" | string', '}', 'viaInterpolation: {', '\tmode: "detail"', '}', 'explicitValue: {', '\tmode: "audit"', '}', 'reversedOperands: {', '\tmode: "overview" | "detail" | string', '}', '' ] } ], submittedBytes: 365, submittedSha256: '3d378446b37f35eb300218ccb695c91404a71b81beefa2e79d95ac58fb93629d' }
+[p1 "CUE Playground | CUE" | space "Archify research 20261026"(38): 1 managed, 0 untracked — p1* "CUE Playground | CUE"]
+root
+  container
+    container
+      anchor [ref=36, loc=href:/, url=https://cuelang.org/]
+        svg_root
+      container
+        container
+          button [ref=37]
+            svg_root
+            text "Function"
+            svg_root
+          container "Function"
+            container
+              paragraph
+                text "Workspaces"
+              unordered_list
+                list_item
+                  button [ref=60]
+                    svg_root
+                    text "Function"
+                list_item
+                  button [ref=61]
+                    svg_root
+                    text "Policy"
+                list_item
+                  button [ref=62]
+                    svg_root
+                    text "JSON Validation"
+            container
+              paragraph
+                text "Function"
+              paragraph
+                text "In the Function Workspace you can play around with the Export, Eval, or Def options. You can also change the output language"
+              container
+                paragraph
+                  text "Options"
+                unordered_list
+                  list_item
+                    paragraph
+                      text "Input"
+                    button [ref=63]
+                      text "CUE"
+                  list_item
+                    paragraph
+                      text "Function"
+                    container
+                      button [ref=64]
+                        text "eval"
+                        svg_root
+                      container "eval"
+                        unordered_list
+                          list_item
+                            button [ref=65]
+                              text "export"
+                          list_item
+                            button [ref=66]
+                              image
+                              text "eval"
+                          list_item
+                            button [ref=67]
+                              text "def"
+                  list_item
+                    paragraph
+                      text "Output"
+                    button [ref=68]
+                      text "CUE"
+                button [ref=69]
+                  text "OK"
+        button [ref=38]
+          text "Examples"
+          svg_root
+      container
+        button [ref=39]
+          text "Share"
+          svg_root
+        button [ref=40]
+          svg_root
+    container
+      container
+        tablist
+          list_item
+            button [ref=41]
+              text "Input: CUE"
+              svg_root
+        container [ref=42]
+          container
+            text "1"
+            text "2"
+            text "3"
+            text "4"
+            text "5"
+            text "6"
+            text "7"
+            text "8"
+            text "9"
+            text "10"
+            text "11"
+            text "12"
+            text "13"
+            text "14"
+            text "15"
+            text "16"
+            text "17"
+            text "18"
+            text "19"
+            text "20"
+            text "21"
+            text "22"
+            text "23"
+          textfield [ref=43]
+            text "// Authored teaching fixture; mode names are strings, not an Archify schema."
+            text "#Reader: {"
+            text "mode: *"overview" | string"
+            text "}"
+            text "preferred: *"detail" | string"
+            text "viaReference: #Reader & {"
+            text "mode: preferred"
+            text "}"
+            text "viaInterpolation: #Reader & {"
+            text "mode: "\(preferred)""
+            text "}"
+            text "explicitValue: viaReference & {"
+            text "mode: "audit""
+            text "}"
+            text "reversedOperands: {"
+            text "mode: preferred"
+            text "} & #Reader"
+      container
+        tablist
+          list_item
+            button [ref=44]
+              text "Output: CUE"
+        container [ref=45]
+          container
+            text "1"
+            text "2"
+            text "3"
+            text "4"
+            text "5"
+            text "6"
+            text "7"
+            text "8"
+            text "9"
+            text "10"
+            text "11"
+            text "12"
+            text "13"
+            text "14"
+          textfield [ref=46]
+            text "preferred: "detail""
+            text "viaReference: {"
+            text "mode: "overview" | "detail" | string"
+            text "}"
+            text "viaInterpolation: {"
+            text "mode: "detail""
+            text "}"
+            text "explicitValue: {"
+            text "mode: "audit""
+            text "}"
+            text "reversedOperands: {"
+            text "mode: "overview" | "detail" | string"
+            text "}"
+
+

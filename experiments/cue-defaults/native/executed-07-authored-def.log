@@ -1,0 +1,87 @@
+{ url: 'https://cuelang.org/play/#w=function&i=cue&f=def&o=cue', editors: [ { editable: 'true', lines: [ '// Authored teaching fixture; mode names are strings, not an Archify schema.', '#Reader: {', '    mode: *"overview" | string', '}', '', 'preferred: *"detail" | string', '', 'viaReference: #Reader & {', '    mode: preferred', '}', '', 'viaInterpolation: #Reader & {', '    mode: "\\(preferred)"', '}', '', 'explicitValue: viaReference & {', '    mode: "audit"', '}', '', 'reversedOperands: {', '    mode: preferred', '} & #Reader', '' ] }, { editable: 'false', lines: [ '// Authored teaching fixture; mode names are strings, not an Archify schema.', '#Reader: {', '\tmode: *"overview" | string', '}', 'preferred: *"detail" | string', 'viaReference: #Reader & {', '\tmode: preferred', '}', 'viaInterpolation: #Reader & {', '\tmode: "\\(preferred)"', '}', 'explicitValue: viaReference & {', '\tmode: "audit"', '}', 'reversedOperands: #Reader & {', '\tmode: preferred', '}', '' ] } ] }
+[p1 "CUE Playground | CUE" | space "Archify research 20261026"(38): 1 managed, 0 untracked — p1* "CUE Playground | CUE"]
+root
+  container
+    container
+      anchor [ref=36, loc=href:/, url=https://cuelang.org/]
+        svg_root
+      container
+        button [ref=37]
+          svg_root
+          text "Function"
+          svg_root
+        button [ref=38]
+          text "Examples"
+          svg_root
+      container
+        button [ref=39]
+          text "Share"
+          svg_root
+        button [ref=40]
+          svg_root
+    container
+      container
+        tablist
+          list_item
+            button [ref=41]
+              text "Input: CUE"
+              svg_root
+        container [ref=42]
+          container
+            text "1"
+            text "2"
+            text "3"
+            text "4"
+            text "5"
+            text "6"
+            text "7"
+            text "8"
+            text "9"
+            text "10"
+            text "11"
+            text "12"
+            text "13"
+            text "14"
+            text "15"
+            text "16"
+            text "17"
+            text "18"
+            text "19"
+            text "20"
+            text "21"
+            text "22"
+            text "23"
+          textfield [ref=43]
+            text "// Authored teaching fixture; mode names are strings, not an Archify schema."
+            text "#Reader: {"
+            text "mode: *"overview" | string"
+            text "}"
+            text "preferred: *"detail" | string"
+            text "viaReference: #Reader & {"
+            text "mode: preferred"
+            text "}"
+            text "viaInterpolation: #Reader & {"
+            text "mode: "\(preferred)""
+            text "}"
+            text "explicitValue: viaReference & {"
+            text "mode: "audit""
+            text "}"
+            text "reversedOperands: {"
+            text "mode: preferred"
+            text "} & #Reader"
+      container
+        tablist
+          list_item
+            button [ref=70]
+              text "Output: CUE"
+              svg_root
+        container [ref=45]
+          container
+            text "1"
+            text "2"
+            text "3"
+          textfield [ref=46]
+            text "reversedOperands.mode: incomplete value "overview" | "detail" | string"
+            text "viaReference.mode: incomplete value "overview" | "detail" | string"
+
+

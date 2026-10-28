@@ -1,0 +1,51 @@
+{
+  "observedAt": "2026-10-28T00:23:15.696009+00:00",
+  "input": "../input/reader-modes.cue",
+  "inputBytes": 365,
+  "inputSha256": "3d378446b37f35eb300218ccb695c91404a71b81beefa2e79d95ac58fb93629d",
+  "authorship": "Original authored teaching fixture, inspired by the distinction in CUE issue1449; not the reporter fixture or real Archify schema.",
+  "versionLabel": "v0.17.0",
+  "siteCommitReportedByUI": "957f004c34a71982b5773e86126d9df2a5c6d48f",
+  "wasmByteIdentity": "not independently captured",
+  "method": "Official CUE Playground Function workspace; CUE input and CUE output; actual UI operations. Go API in WASM, not command-line execution.",
+  "viewport": [
+    1440,
+    900
+  ],
+  "modes": {
+    "def": {
+      "url": "https://cuelang.org/play/#w=function&i=cue&f=def&o=cue",
+      "capture": "authored-def.json",
+      "output": "def.txt",
+      "outputSha256": "18f34f835d7d9e166a8ffd95d3a39ccec04e62b9b7f2cbccf2ecf0592c342772",
+      "resultKind": "displayed CUE output",
+      "cliExitCode": null,
+      "completeDomLinesCaptured": true
+    },
+    "eval": {
+      "url": "https://cuelang.org/play/#w=function&i=cue&f=eval&o=cue",
+      "capture": "authored-eval.json",
+      "output": "eval.txt",
+      "outputSha256": "1a647fa9b9a3f8bc044958d6656a0b212c17cb5d3b9acecaeab7e0d3f8d13a5b",
+      "resultKind": "displayed CUE output",
+      "cliExitCode": null,
+      "completeDomLinesCaptured": true
+    },
+    "export": {
+      "url": "https://cuelang.org/play/#w=function&i=cue&f=export&o=cue",
+      "capture": "authored-export.json",
+      "output": "export.txt",
+      "outputSha256": "50456169629b439ff3596c1ea72c51f89a97ff9a512b58ad36312217f2568c3f",
+      "resultKind": "displayed incomplete-value diagnostics",
+      "cliExitCode": null,
+      "completeDomLinesCaptured": true
+    }
+  },
+  "noExecutionClaims": [
+    "No CUE CLI was installed or run.",
+    "No claim of CLI exit status or byte-for-byte CLI equivalence.",
+    "No human reading-speed/comprehension result.",
+    "Displayed site/version identity is not a binary attestation."
+  ],
+  "note": "08 log versionText regex returned undefined; raw DOM text and version.png do show v0.17.0. Input matches full DOM lines across all three modes."
+}

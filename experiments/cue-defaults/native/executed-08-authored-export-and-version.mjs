@@ -1,0 +1,12 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(38);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+const state=await page.evaluate(()=>({url:location.href,editors:[...document.querySelectorAll('.cm-content')].map(x=>({editable:x.getAttribute('contenteditable'),lines:[...x.querySelectorAll('.cm-line')].map(l=>l.textContent)}))}));
+await fs.writeFile('/tmp/archify-round29-cue/authored-export.json',JSON.stringify(state,null,2)+'\n');
+await page.screenshot({path:'/tmp/archify-round29-cue/authored-export.png'});
+await page.click('loc=role:button[name="Menu"]');
+const identity=await page.evaluate(()=>({url:location.href,text:document.body.innerText,reportIssue:[...document.querySelectorAll('a')].find(x=>x.textContent==='Report an issue')?.href,userAgent:navigator.userAgent,wasmResources:performance.getEntriesByType('resource').map(x=>x.name).filter(x=>/\.wasm/.test(x))}));
+await fs.writeFile('/tmp/archify-round29-cue/authored-visible-version.json',JSON.stringify(identity,null,2)+'\n');
+await page.screenshot({path:'/tmp/archify-round29-cue/authored-version.png'});
+await page.click('loc=role:button[name="Menu"]');
+console.log(state);console.log({reportIssue:identity.reportIssue,versionText:identity.text.match(/CUE\nv[^\n]+/)?.[0],userAgent:identity.userAgent});

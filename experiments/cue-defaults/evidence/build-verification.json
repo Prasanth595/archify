@@ -1,0 +1,26 @@
+{
+  "observedAt": "2026-10-28T00:37:53.562619+00:00",
+  "node": "v22.23.3",
+  "replayExit": 0,
+  "replayOutput": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round29-replay-gp3dyryq/run",
+  "artifacts": {
+    "baseline": {
+      "bytes": 164927,
+      "checkedInSha256": "5452e3c64a430a1f0c2643f73483b345b6205c5c0e714b127b660c1a486e0f27",
+      "replaySha256": "2382818143a8b3aef99eac4618f8e8e7795100e9e14efa5a1edd36577a36f7a8",
+      "identical": false
+    },
+    "comparison": {
+      "bytes": 164922,
+      "checkedInSha256": "545503023c4cd14af6fea2ba0865bd7d703a4fec6382c410712cd64f31854ebc",
+      "replaySha256": "089e0e210be7391335e5a9056ac1b14f65f2fc2c65a5e9b234f88fefb1310ed2",
+      "identical": false
+    }
+  },
+  "nativeOutputTamper": {
+    "change": "Append changed plus LF to eval.txt, leave observation unchanged",
+    "exit": 1,
+    "outputCreated": false,
+    "expectedErrorObserved": true
+  }
+}

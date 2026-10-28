@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/drafts/comparison.archify.md",
+    "sha256": "90455575f5fda5aa15a45079f43ac52ef69d614355d06c225edd07dcb0906a54",
+    "bytes": 4958
+  },
+  "artifact": {
+    "path": "/Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/artifacts/comparison.html",
+    "sha256": "545503023c4cd14af6fea2ba0865bd7d703a4fec6382c410712cd64f31854ebc",
+    "bytes": 164922
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "not-run"
+  },
+  "diagnostics": [
+    {
+      "code": "explainer/writing-sentence-length",
+      "severity": "warning",
+      "message": "Sentence has 29 reading units, above the configured en limit of 28.",
+      "subject": {
+        "input": "/Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/drafts/comparison.archify.md",
+        "line": 101,
+        "component": "prose",
+        "panelId": "context"
+      },
+      "evidence": {
+        "reason": "Sentence has 29 reading units, above the configured en limit of 28.",
+        "example": "先查缓存。未命中时再查数据库。 / Check the cache first. Query the database on a miss.",
+        "rule": "sentence-length",
+        "units": 29,
+        "limit": 28
+      },
+      "supportedFixes": [
+        "Split at a logical action or condition boundary while preserving qualifications and causal links."
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/artifacts/comparison.finalize.json",
+    "summaryReceipt": "/Users/tsk/.codex/worktrees/lab-cue-defaults/archify/experiments/cue-defaults/final/artifacts/comparison.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-26T23:50:51.017Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1042,
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  }
+}

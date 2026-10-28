@@ -1,0 +1,9 @@
+{
+  "url": "https://cuelang.org/play/#w=function&i=cue&f=export&o=cue",
+  "text": "Homepage of CUE\nFunction\nExamples\nShare\nMenu\n\nCUE Playground\n\nCUE v0.17.0\n\nCUE Homepage\nDocumentation\nDownload CUE\nCommunity\nGithub\nReport an issue\nInput: CUE\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n// Authored teaching fixture; mode names are strings, not an Archify schema.\n#Reader: {\n    mode: *\"overview\" | string\n}\n\n\npreferred: *\"detail\" | string\n\n\nviaReference: #Reader & {\n    mode: preferred\n}\n\n\nviaInterpolation: #Reader & {\n    mode: \"\\(preferred)\"\n}\n\n\nexplicitValue: viaReference & {\n    mode: \"audit\"\n}\n\n\nreversedOperands: {\n    mode: preferred\n} & #Reader\n\n\nOutput: CUE\n1\n2\n3\nreversedOperands.mode: incomplete value \"overview\" | \"detail\" | string\nviaReference.mode: incomplete value \"overview\" | \"detail\" | string\n\n",
+  "reportIssue": "https://github.com/cue-lang/cue/issues/new?labels=Triage,NeedsInvestigation,cuelang.org&title=cuelang.org:%20&template=bug_report.md&body=%23%23%23+What+page+were+you+looking+at%3F%0A%0Ahttps%3A%2F%2Fcuelang.org%2Fplay%2F%0A%0A%23%23%23+What+version+of+the+site+were+you+looking+at%3F%0A%0Ahttps%3A%2F%2Fgithub.com%2Fcue-lang%2Fcuelang.org%2Fcommit%2F957f004c34a71982b5773e86126d9df2a5c6d48f%0A%0A%23%23%23+What+did+you+do%3F%0A%0A%0A%0A%23%23%23+What+did+you+expect%3F%0A%0A%0A%0A%23%23%23+What+did+you+see+instead%3F%0A%0A",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "wasmResources": [
+    "https://cuelang.org/playground/main.wasm"
+  ]
+}

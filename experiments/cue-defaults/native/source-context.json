@@ -1,0 +1,31 @@
+{
+  "interpretationNotRuntimeTrace": true,
+  "sources": [
+    {
+      "id": "spec",
+      "label": "CUE v0.17.0 language specification",
+      "url": "https://github.com/cue-lang/cue/blob/0fc639bbe9819f08ed132d3981a13ac2e3bf330f/doc/ref/spec.md",
+      "license": "Apache-2.0",
+      "text": "Unification is commutative. Values and default preferences are separate. For this fixture U2 intersects the valid string domains to string while the incompatible overview/detail default components meet at bottom: no usable default, not an empty valid-value domain. Interpolation needs a concrete expression result; it is not a universal override mechanism."
+    },
+    {
+      "id": "natural",
+      "label": "CUE issue1449 and maintainer explanation",
+      "url": "https://github.com/cue-lang/cue/issues/1449#issuecomment-1010034806",
+      "text": "The natural question compares a direct reference with string interpolation. The maintainer explains composition without operand precedence and recommends considering schema/default separation. The reporter accepted that explanation and requested examples. The authored fixture here is a separate teaching adaptation."
+    },
+    {
+      "id": "redesign",
+      "label": "Defaults design remains under discussion",
+      "url": "https://github.com/cue-lang/cue/issues/3751",
+      "text": "An open umbrella tracks defaults redesign. This experiment freezes a v0.17.0-labelled Playground observation, not future compatibility."
+    },
+    {
+      "id": "playground",
+      "label": "Official Playground implementation",
+      "url": "https://github.com/cue-lang/cuelang.org/blob/957f004c34a71982b5773e86126d9df2a5c6d48f/playground/impl.go",
+      "license": "Apache-2.0",
+      "text": "The UI wraps CUE Go API in WASM using a synthetic stdin/module context. Eval selects defaults for rendering; def preserves expressions; export requires concrete values. No issue CLI command or exit was reproduced."
+    }
+  ]
+}
