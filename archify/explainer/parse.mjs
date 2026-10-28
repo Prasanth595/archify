@@ -291,7 +291,7 @@ export function parseExplainer(sourceText, { inputPath, output } = {}) {
       if(!panel) {
         if(!titleSeen)fail(at+1,'answer','The document title must precede the short answer.','# A title\n\nA direct answer.');
         if(answerSeen)fail(at+1,'answer','The short answer is one paragraph before the panels.','A direct answer in one paragraph.\n\n## Why?');
-        document.answer.summary=text;answerSeen=true;reasonsAllowed=true;if(!sourceMap.has('/answer/evidence'))map('/answer',document.answer,descriptor(at,cursor));
+        document.answer.summary=text;answerSeen=true;reasonsAllowed=true;if(!Object.prototype.hasOwnProperty.call(sourceMap,'/answer/evidence'))map('/answer',document.answer,descriptor(at,cursor));
       } else addBlock({type:'prose',text},at,cursor);
     }
     closePanel(sourceText.length);
