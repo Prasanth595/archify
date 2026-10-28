@@ -16,24 +16,29 @@ import { createViewerClick } from './helpers/viewer-click.mjs';
 const chrome = process.env.ARCHIFY_CHROME ? findChrome() : null;
 const root = fileURLToPath(new URL('../', import.meta.url));
 
-test('connection editor uses native selection, drags, undo, and verified source save', { skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.' }, async t => {
+test('connection editor uses native selection, drags, undo, and verified source save', { timeout:120000, skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.' }, async t => {
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-browser-'));
-  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  let editor,browser,phase='editor startup';
+  t.after(async()=>{
+    if(t.signal.aborted)t.diagnostic('Last editor operation: '+phase);
+    try { await browser?.close(); }
+    finally { await editor?.stop({force:true}); fs.rmSync(dir,{recursive:true,force:true}); }
+  },{timeout:15000});
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');
   const source={schema_version:1,diagram_type:'architecture',meta:{title:'Connection adjustment',output:'diagram.html',legend:{mode:'hidden'}},
     components:[{id:'a',type:'frontend',label:'Intake',pos:[80,120],size:[100,60]},{id:'b',type:'backend',label:'Execute',pos:[320,120],size:[100,60]},{id:'c',type:'database',label:'Store',pos:[560,120],size:[100,60]},{id:'obstacle',type:'external',label:'Other module',pos:[230,230],size:[80,60]}],
     connections:[{id:'first',from:'a',to:'b',label:'Request'},{id:'second',from:'b',to:'c',label:'Result'}]};
   const original=JSON.stringify(source);fs.writeFileSync(input,original);
   let finalizeCount=0;
-  const editor=await startEditor({type:'architecture',input,output,open:false,debounceMs:5,pollMs:20,finalize:options=>{
+  editor=await startEditor({type:'architecture',input,output,open:false,debounceMs:5,pollMs:20,finalize:options=>{
     finalizeCount++;
     if(finalizeCount===1)return {receipt:{ok:false,failedStage:'deliver',diagnostics:[{message:'Architecture layout validation failed: [clean-flow/edge-through-node] connection crosses component "cache" on segment 2'}]}};
     return runFinalize(options);
   }});
-  t.after(()=>editor.stop({force:true}));
-  const browser=desktopBrowser(chrome);t.after(()=>browser.close());const session=await browser.sessionPromise;
+  phase='browser startup';browser=desktopBrowser(chrome);const session=await browser.sessionPromise;
   await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false},session);
   async function run(expression) {
+    phase=expression.slice(0,240);
     let r;
     try { r=await browser.cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},session); }
     catch(error) {throw Error(expression.slice(0,240)+'\n'+error.message);}
@@ -168,12 +173,18 @@ test('connection editor uses native selection, drags, undo, and verified source 
     const capture=await browser.cdp.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false},session);
     fs.writeFileSync(path.join(process.env.ARCHIFY_EDIT_EVIDENCE,'editor.png'),Buffer.from(capture.data,'base64'));
   }
-  await editor.stop();await browser.close();
+  phase='browser shutdown';await browser.close();phase='editor shutdown';await editor.stop();
 });
 
 
-for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves native editing and reading (${locale})`, {skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.'}, async t=>{
-  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-connect-browser-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves native editing and reading (${locale})`, {timeout:120000,skip:chrome?false:'Set ARCHIFY_CHROME for native browser editing.'}, async t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-connect-browser-'));
+  let editor,browser,phase='editor startup';
+  t.after(async()=>{
+    if(t.signal.aborted)t.diagnostic('Last editor operation: '+phase);
+    try { await browser?.close(); }
+    finally { await editor?.stop({force:true}); fs.rmSync(dir,{recursive:true,force:true}); }
+  },{timeout:15000});
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');
   const source={schema_version:1,diagram_type:'architecture',meta:{title:'Create a connection',output:'diagram.html',locale,viewBox:[760,480],legend:{mode:'hidden'}},components:[
     {id:'a',type:'frontend',label:'Intake',pos:[80,180],size:[100,60]},
@@ -181,10 +192,10 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
     {id:'c',type:'database',label:'Store',pos:[560,180],size:[100,60]},
     {id:'d',type:'external',label:'Separate',pos:[320,350],size:[100,60]}],connections:[{id:'first',from:'a',to:'b',label:'Request'},{id:'second',from:'b',to:'c',label:'Result'}]};
   const original=JSON.stringify(source);fs.writeFileSync(input,original);let finalized=0;
-  const editor=await startEditor({type:'architecture',input,output,open:false,finalize:options=>{finalized++;return runFinalize(options);}});t.after(()=>editor.stop({force:true}));
-  const browser=desktopBrowser(chrome);t.after(()=>browser.close());const session=await browser.sessionPromise;
+  editor=await startEditor({type:'architecture',input,output,open:false,finalize:options=>{finalized++;return runFinalize(options);}});
+  phase='browser startup';browser=desktopBrowser(chrome);const session=await browser.sessionPromise;
   await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false},session);
-  async function run(expression){const r=await browser.cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},session);assert.equal(r.exceptionDetails,undefined,JSON.stringify(r.exceptionDetails));return r.result.value;}
+  async function run(expression){phase=expression.slice(0,240);const r=await browser.cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},session);assert.equal(r.exceptionDetails,undefined,JSON.stringify(r.exceptionDetails));return r.result.value;}
   async function wait(expression){const until=Date.now()+30000;while(Date.now()<until){if(await run(expression))return;await new Promise(r=>setTimeout(r,50));}assert.fail(expression+'; '+await run(`document.querySelector('.connection-adjust-status')?.textContent+' '+document.querySelector('.connection-adjust pre')?.textContent`));}
   const clickTarget=await createViewerClick({send:(method,params)=>browser.cdp.send(method,params,session),run,timeout:10000});
   async function click(expression){
@@ -282,5 +293,5 @@ for(const locale of ['en','zh-CN'])test(`two-click connection creation preserves
   assert.deepEqual((await run(`Archify.focus.reachability().nodeIds`)).sort(),['a','b','c'],'native reachability includes the newly saved relation');
   const checked=JSON.parse(execFileSync(process.execPath,[path.join(root,'archify/bin/archify.mjs'),'check',output,'--require-provenance','--json'],{encoding:'utf8'}));assert.equal(checked.ok,true);
   if(process.env.ARCHIFY_EDIT_EVIDENCE){fs.mkdirSync(process.env.ARCHIFY_EDIT_EVIDENCE,{recursive:true});const capture=await browser.cdp.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false},session);fs.writeFileSync(path.join(process.env.ARCHIFY_EDIT_EVIDENCE,'new-connection.png'),Buffer.from(capture.data,'base64'));}
-  await editor.stop();await browser.close();
+  phase='browser shutdown';await browser.close();phase='editor shutdown';await editor.stop();
 });
