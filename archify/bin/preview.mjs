@@ -35,10 +35,16 @@ function sha256(value) {
 
 function sourceDigest(inputPath, dependencyPaths = [inputPath]) {
   const combined = dependencyPaths.map(sourcePath => {
-    try { return `${sourcePath}\0${sha256(fs.readFileSync(sourcePath))}`; }
+    try {
+      const stat = fs.lstatSync(sourcePath);
+      if (!stat.isFile()) return `${sourcePath}\0unreadable:not-a-regular-file`;
+      return `${sourcePath}\0${sha256(fs.readFileSync(sourcePath))}`;
+    }
     catch (error) { return `${sourcePath}\0unreadable:${error.code || 'unknown'}`; }
   }).join('\0');
   try {
+    const stat = fs.lstatSync(inputPath);
+    if (!stat.isFile()) throw Object.assign(new Error('not-a-regular-file'), { code: 'not-a-regular-file' });
     const bytes = fs.readFileSync(inputPath);
     return { hash: sha256(Buffer.from(`${combined}\0${sha256(bytes)}`)), bytes, missing: false };
   } catch (error) {
@@ -357,13 +363,17 @@ export async function startPreview(options) {
   }
   const inputPath = path.resolve(options.input);
   let dependencyPaths = [inputPath];
-  if (type === 'explainer') {
+  const getDependencyPaths = async () => {
+    if (type !== 'explainer') return [inputPath];
     try {
       const { declaredExplainerInputPaths } = await import('../explainer/prepare.mjs');
-      dependencyPaths = declaredExplainerInputPaths(fs.readFileSync(inputPath, 'utf8'), inputPath);
+      return declaredExplainerInputPaths(fs.readFileSync(inputPath, 'utf8'), inputPath);
     } catch {
-      // The delivery child reports draft diagnostics; keep watching the draft.
+      return [inputPath];
     }
+  };
+  if (type === 'explainer') {
+    dependencyPaths = await getDependencyPaths();
   }
   const outputRequest = {
     requestedOutput: options.output,
@@ -648,7 +658,7 @@ export async function startPreview(options) {
     broadcast();
   }
 
-  function commitCandidate(candidatePath, receipt, generationHash, outputCapture) {
+  async function commitCandidate(candidatePath, receipt, generationHash, outputCapture) {
     let candidate;
     let sourceCandidateBinding;
     let sourceCandidateIdentity;
@@ -672,6 +682,7 @@ export async function startPreview(options) {
       if (releasedSource.status !== 'released') throw atomicOutputError(releasedSource);
       resolveOutputPath(outputRequest);
       const sameArtifact = state.lastVerified?.sha256 === digest;
+      dependencyPaths = await getDependencyPaths();
       const currentSource = sourceDigest(inputPath, dependencyPaths);
       if (currentSource.hash !== generationHash) {
         return {
@@ -805,7 +816,13 @@ export async function startPreview(options) {
     let stderr = '';
     child = spawn(process.execPath, args, {
       cwd: options.cwd || process.cwd(),
-      env: process.env,
+      env: {
+        ...process.env,
+        ...(type === 'explainer' ? {
+          ARCHIFY_UPDATE_CHECK_DISABLED: '1',
+          ARCHIFY_EXPLAINER_RESOURCE_BASE: path.dirname(inputPath),
+        } : {}),
+      },
       stdio: ['ignore', 'pipe', 'pipe'],
       detached: process.platform !== 'win32',
     });
@@ -814,7 +831,7 @@ export async function startPreview(options) {
     child.stdout.on('data', (chunk) => { stdout += chunk; });
     child.stderr.on('data', (chunk) => { stderr += chunk; });
     child.on('error', (error) => { stderr += error.message; });
-    child.on('close', (code) => {
+    child.on('close', async (code) => {
       const receipt = parseReceipt(stdout);
       const generationEpoch = activeEpoch;
       const generationHash = activeHash;
@@ -832,7 +849,7 @@ export async function startPreview(options) {
       stopGraceTimer = undefined;
       stopKillTimer = undefined;
       if (!stopping && !stale && code === 0 && receipt?.ok) {
-        ({ supersededBy, candidateIdentity } = commitCandidate(
+        ({ supersededBy, candidateIdentity } = await commitCandidate(
           candidatePath,
           receipt,
           generationHash,
@@ -864,6 +881,7 @@ export async function startPreview(options) {
       } else if (pendingBuild || stale || supersededBy) {
         pendingBuild = false;
         if (supersededBy && sourceEpoch === generationEpoch) sourceEpoch += 1;
+        dependencyPaths = await getDependencyPaths();
         const digest = supersededBy || sourceDigest(inputPath, dependencyPaths);
         queueStableBuild(digest.hash, true);
       }
@@ -873,8 +891,9 @@ export async function startPreview(options) {
   function queueStableBuild(hash, immediate = false) {
     queuedHash = hash;
     clearTimeout(debounceTimer);
-    const launch = () => {
+    const launch = async () => {
       if (stopping) return;
+      dependencyPaths = await getDependencyPaths();
       const digest = sourceDigest(inputPath, dependencyPaths);
       if (digest.hash !== queuedHash) {
         queueStableBuild(digest.hash);
@@ -897,7 +916,8 @@ export async function startPreview(options) {
     debounceTimer = setTimeout(launch, immediate ? 0 : debounceMs);
   }
 
-  function observeSource({ immediate = false } = {}) {
+  async function observeSource({ immediate = false } = {}) {
+    dependencyPaths = await getDependencyPaths();
     const digest = sourceDigest(inputPath, dependencyPaths);
     if (!immediate && digest.hash === queuedHash) return;
     sourceEpoch += 1;
