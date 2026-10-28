@@ -1,0 +1,207 @@
+{
+  "observedAt": "2026-10-28T04:51:10.299729+00:00",
+  "initialAttempt": "gh search issues with a combined repo qualifier was rejected as malformed; not counted as no-match.",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify dominator",
+      "totalCount": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify \"mandatory path\"",
+      "totalCount": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify articulation",
+      "totalCount": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify \"all paths\"",
+      "totalCount": 102,
+      "items": [
+        {
+          "number": 661,
+          "title": "Direct-edge clearance fails with vertical node stacking offset",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/661"
+        },
+        {
+          "number": 917,
+          "title": "docs: expand README discovery and previews to all ten released diagram types",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/917"
+        },
+        {
+          "number": 228,
+          "title": "feat(cli): add api-inventory command for Spring MVC endpoint inventories",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/228"
+        },
+        {
+          "number": 47,
+          "title": "docs: add Japanese README translation",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/47"
+        },
+        {
+          "number": 841,
+          "title": "fix(tooling): reject missing repository checker option values",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/841"
+        },
+        {
+          "number": 920,
+          "title": "[Bug]: browser discovery ignores Microsoft Edge on Windows (ARCHIFY_CHROME required)",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/issues/920"
+        },
+        {
+          "number": 533,
+          "title": "feat(packaging): prepare scoped @tt-a1i/archify CLI package",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/533"
+        },
+        {
+          "number": 964,
+          "title": "docs(website): add bilingual coding-agent diagramming guide",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/964"
+        },
+        {
+          "number": 938,
+          "title": "docs: clarify finalize --out-dir moves only evidence (#921)",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/938"
+        },
+        {
+          "number": 820,
+          "title": "fix: integrate bounded renderer and reading-link followups",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/820"
+        },
+        {
+          "number": 72,
+          "title": "feat(drawio): export Archify diagrams as editable draw.io files",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/72"
+        },
+        {
+          "number": 223,
+          "title": "fix(architecture): prefer 2-point straight routes for near-aligned facing port spreads",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/223"
+        },
+        {
+          "number": 436,
+          "title": "chore(review): focus CodeRabbit on material evidence gaps",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/436"
+        },
+        {
+          "number": 9,
+          "title": "[P1] Add dry-run/validate-only mode to renderers",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/issues/9"
+        },
+        {
+          "number": 478,
+          "title": "feat: extend adaptive canvas and large-world browsing to five diagram types",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/478"
+        },
+        {
+          "number": 1143,
+          "title": "feat: add Workflow semantic comparison",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1143"
+        },
+        {
+          "number": 487,
+          "title": "docs: add community links",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/487"
+        },
+        {
+          "number": 346,
+          "title": "docs: align contribution and bot review with change impact",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/346"
+        },
+        {
+          "number": 474,
+          "title": "[Bug]: Unify Windows path identity, portable-path contracts, and release gates",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/474"
+        },
+        {
+          "number": 944,
+          "title": "fix(browser): discover Windows Edge after Chrome and Chromium",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/944"
+        },
+        {
+          "number": 70,
+          "title": "fix: make DSH packaging portable on Windows",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/70"
+        },
+        {
+          "number": 456,
+          "title": "fix(brands): decode icon URLs and respect HTML head contexts",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/456"
+        },
+        {
+          "number": 111,
+          "title": "Viewer bottom navigation dock overlaps diagram content",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/issues/111"
+        },
+        {
+          "number": 348,
+          "title": "chore: add advisory CodeRabbit contribution reviews",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/348"
+        },
+        {
+          "number": 940,
+          "title": "fix(dsh): preserve personal and project skills through upgrades",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/940"
+        },
+        {
+          "number": 308,
+          "title": "feat(geometry): suggest a verified via elbow for clean-flow routing diagnostics",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/308"
+        },
+        {
+          "number": 150,
+          "title": "feat(cognition): add cognition diagram type for reasoning-route diagrams",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/150"
+        },
+        {
+          "number": 770,
+          "title": "fix(dataflow): keep two-line labels from hiding their connectors",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/770"
+        },
+        {
+          "number": 385,
+          "title": "fix(packaging): make the canonical archify.zip reproducible on Windows",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/385"
+        },
+        {
+          "number": 365,
+          "title": "feat(recipes): add layout-repair scenario so guide answers repair questions",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/365"
+        }
+      ]
+    }
+  ]
+}

@@ -57,3 +57,18 @@ Route不推断真实流量、故障切换或最佳路线。Diff不证明语义�
 Node22集中7/7通过；独立审查以传递闭包核对512张三节点有向图的6144次查询，验证共同集合及见证箭头/身份，未冒称穷举最短跳数或平行边tie。上下游和空答案三页finalize的validate/deliver/check通过，自动browser-check未运行。root实际点击两侧到Observability路径、上游clients→B，核对Escape回焦及Tab/Enter打开；成功空集和390px深色视图均有原图。390px仍有400px页面宽度、scope/hash截断及iframe横向探索限制，没有移动端/AT/效率接受结论。
 
 [精确远端核对](shared-reach-remote.json)确认GitHub head一致，Actions/check-runs为0，不表示CI通过。最新dev仍6ca6、main仍d605；未创建PR、合入、发布或安装。主索引与图片画廊均已更新54项（17产品/16离线/21内容），固定来源hub `d265744ea580ca0dd36590ff32d05c8e6a0dc68d`。原53卡片及PNG原字节不变，旧浏览器记录保留原身份；root已完成新卡搜索、原图SHA/原始1440×1250尺寸/Escape回焦、390px暗色与空结果/reset。首次图像未解码截图保留，最终完成图另存，不把早期空预览算通过。Ego TaskSpace9已finish且无保留页面。持续探索目标保持active。
+
+
+## 本批收尾：必经点、循环区域与结构变更
+
+Root已读完本批三份报告。下表区分研究建议与当前实施状态；报告正文保留各自调研时点，不将后续验证状态回写成研究阶段已经完成的交付。
+
+| 报告 | 具体问题与边界 | 当前状态 |
+| --- | --- | --- |
+| [Mandatory paths](scouts/mandatory-paths.md) | 给定两个不同端点，判断哪些内部点出现在每条有向路径上，并为非必经点保留避开它的精确路径；不是无向割点、运行依赖或系统单点故障。 | 本批唯一已实施方向，新独立分支正在验证；尚未作为第55项提交、推送或纳入画廊，等待最终证据与远端身份。 |
+| [Cycle regions](scouts/cycle-regions.md) | 区分所选点所在循环区域、区域内部关系与通向其他区域的单向边；一条环见证不等于整个区域。 | 保留为候选，本批不实施；没有把报告的静态拓扑答案称为已运行的Viewer功能。 |
+| [Structural changes next](scouts/structural-changes-next.md) | 保留结构变更报告的每条记录、两侧位置与多源同目标关系；上游expected与动作序列化不证明当前检测准确率或语义移动。 | 保留离线声明投影候选，本批不实施；不新增AST服务、跨版本源码合同或第二个adapter。 |
+
+[Mandatory paths有界排重原始记录](mandatory-path-search.json)保留三个关键词0条结果及“all paths”102条中前30条；首次malformed查询未计入absence。它只记录当次搜索范围，不证明全历史没有重叠。
+
+已发布基准仍为54项（17产品/16离线/21内容），hub `2a36207e431d6b05911d6ceefbdeda767e66d3df`。本次仅补研究入口及保存画廊golden，未改54项实验表、卡片、原图或浏览器证据，没有构建55版。本批不启动另外两项候选；Mandatory paths验证结果、原图与精确远端提交另行补齐后，才决定后续增量身份。
