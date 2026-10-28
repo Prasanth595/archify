@@ -112,3 +112,21 @@ root已查看9张原PNG，实际R0键盘Enter、R1指针共享目标及Escape回
 
 
 第56项gallery本批范围已完成：56/17/18/21四分组、新卡1/56、Enter展开、PNG摘要/173243B/天然及原始1440×1400尺寸、Escape关闭清src并返回新卡焦点。390px暗色页client/scroll375/375，空0/reset56且query空回搜索框。原始4PNG/9JSON见 [screenshots56](../2026-10-25/gallery/screenshots56/)；root逐张查看，窄屏header图与滚到卡片实际图片的图分别记录。初次立即decode的EncodingError未截PNG，失败说明原样保留；后续图片完成并decode成功后才截最终桌面卡片。旧55项selection/items/card/PNG原字节不变；本批未重跑全部旧实验，不证明实体触摸/AT/人类或速度收益。TaskSpace11已finish一次且closedSpace=true/keep=[]，不可resume；持续目标active。source hub/gallery当前已远端交付固定artifact commit `d1142f5fedb482d0e6974cdfa9218d373eccafbe`，root精确读回；该提交内原local-bound说明保留为推送前阶段。此跟进没有新CI/browser证据，也没有合入、安装或产品发布；持续目标保持active。
+
+
+## 新一轮：循环区域实施、采样上下文与折叠边账目
+
+已交付基准仍为56项；本节只整理研究与正在进行的工作，不构建第57项画廊。Root已完整阅读 [采样剖析上下文](scouts/profile-context-reading.md) 与 [分组折叠和汇总边身份](scouts/graph-folding-reading.md)，共11个项目条目（5项＋6项，包含旧来源复核），不是11个全新发现。各报告的固定来源、完整fixture、许可与未执行边界保留原文；源码推导和独立算术不称上游运行或浏览器通过。
+
+| 方向 | 本轮决策与当前状态 |
+| --- | --- |
+| [Cycle regions](scouts/cycle-regions.md) | 真实Viewer方案已在隔离 `codex/lab-cycle-region` 实施中，尚未交付，不计入实验或gallery数量。旧研究报告保留当时“候选”身份，本节单独记录后续决策。 |
+| [Profile P1：递归上下文与函数总计](scouts/profile-context-reading.md#p1递归上下文与函数总计的可分享读图) | 进入实施可行性核对，尚未作为新实验交付。完整prefix身份、每样本函数去重total及leaf self需分别保存；不能把各上下文total相加当函数总计，也不把无单位folded权重标成秒。 |
+| [Profile P2：归一化差分](scouts/profile-context-reading.md#p2同一对-profile绝对差与占比差的双读法) | 仅保留候选。本轮未选择实施；绝对差与归一化占比差回答不同问题，count与ns分母分开，负差不表示版本变快。 |
+| [折叠后这条边代表谁](scouts/graph-folding-reading.md#一个可做成实图的有界候选) | 保留独立离线内容候选，本轮未选实施。原始pair、组内记录、参与/排除与显示边的组成账目需分开，不扩成通用Architecture折叠引擎。 |
+
+Cycle region实施范围是当前显式单向authored Architecture图：在单节点Passport内求所选点上游与下游交集，保留完整F1的13节点14边，按精确edge key区分全部内部关系与跨区关系。自环是一节点非空循环，孤点/菱形没有循环；不枚举全部简单环，不把一条见证冒称整个区域，不新增代码parser、SCC finding服务或Atlas。沿用现有Focus状态、原生按钮/details、URL及清除/导出合同；`#1139`未来both/none语义仍需由其共享投影决定。本段是采用的实施边界，不是测试、浏览器或交付收据；未发布本机可行性memo或其中私有路径。
+
+[本轮GitHub有界快照](next-round-github.json)为root提供的公开原字节副本，捕获于2026-10-28 05:38:16 UTC，仅查询open PR前25项，用作排重和范围对照：#1144 `19e7619c15ebcb50eaaf1efc0b27203422ed4e2e`、#1143 `649550292e9d9df7e3a3e140d9c1a5ea3bcbf678`、#1142 `7155281fc1e22154f0c88bd8349df3a1b0680f79`。这些head只属于该快照，不证明PR正确、CI、当前merge readiness或全历史无重叠。没有把open列表的新提交当作Archify必须跟进的理由。
+
+本次提交只纳入两份报告、研究入口和GitHub快照。gallery及其56项selection/manifest/cards/PNG/历史证据均不修改；没有新增浏览器、renderer测试、上游执行或效率/人类验收结论。持续探索目标保持active，后续交付按各自固定远端提交与实际证据另记。
