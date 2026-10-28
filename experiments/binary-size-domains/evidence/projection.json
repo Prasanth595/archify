@@ -1,0 +1,173 @@
+{
+  "scope": "Only these four original fixtures; permitted segment bytes are static metadata, not RSS. Bloaty not executed.",
+  "cases": [
+    {
+      "name": "zero-4k",
+      "payloadBytes": 4096,
+      "firstInitializer": 0,
+      "logicalFileBytes": 16888,
+      "sizeMTotal": 4295016448,
+      "permittedSegmentBytes": 49152,
+      "payloadSection": "__common",
+      "sectionType": 1,
+      "segments": [
+        {
+          "segname": "__PAGEZERO",
+          "vmsize": 4294967296,
+          "filesize": 0,
+          "maxprot": 0,
+          "initprot": 0
+        },
+        {
+          "segname": "__TEXT",
+          "vmsize": 16384,
+          "filesize": 16384,
+          "maxprot": 5,
+          "initprot": 5
+        },
+        {
+          "segname": "__DATA",
+          "vmsize": 16384,
+          "filesize": 0,
+          "maxprot": 3,
+          "initprot": 3
+        },
+        {
+          "segname": "__LINKEDIT",
+          "vmsize": 16384,
+          "filesize": 504,
+          "maxprot": 1,
+          "initprot": 1
+        }
+      ],
+      "residentMemoryBytes": null,
+      "residentMemoryStatus": "not measured; executable was not run"
+    },
+    {
+      "name": "zero-1m",
+      "payloadBytes": 1048576,
+      "firstInitializer": 0,
+      "logicalFileBytes": 16888,
+      "sizeMTotal": 4296048640,
+      "permittedSegmentBytes": 1081344,
+      "payloadSection": "__common",
+      "sectionType": 1,
+      "segments": [
+        {
+          "segname": "__PAGEZERO",
+          "vmsize": 4294967296,
+          "filesize": 0,
+          "maxprot": 0,
+          "initprot": 0
+        },
+        {
+          "segname": "__TEXT",
+          "vmsize": 16384,
+          "filesize": 16384,
+          "maxprot": 5,
+          "initprot": 5
+        },
+        {
+          "segname": "__DATA",
+          "vmsize": 1048576,
+          "filesize": 0,
+          "maxprot": 3,
+          "initprot": 3
+        },
+        {
+          "segname": "__LINKEDIT",
+          "vmsize": 16384,
+          "filesize": 504,
+          "maxprot": 1,
+          "initprot": 1
+        }
+      ],
+      "residentMemoryBytes": null,
+      "residentMemoryStatus": "not measured; executable was not run"
+    },
+    {
+      "name": "data-4k",
+      "payloadBytes": 4096,
+      "firstInitializer": 1,
+      "logicalFileBytes": 33400,
+      "sizeMTotal": 4295016448,
+      "permittedSegmentBytes": 49152,
+      "payloadSection": "__data",
+      "sectionType": 0,
+      "segments": [
+        {
+          "segname": "__PAGEZERO",
+          "vmsize": 4294967296,
+          "filesize": 0,
+          "maxprot": 0,
+          "initprot": 0
+        },
+        {
+          "segname": "__TEXT",
+          "vmsize": 16384,
+          "filesize": 16384,
+          "maxprot": 5,
+          "initprot": 5
+        },
+        {
+          "segname": "__DATA",
+          "vmsize": 16384,
+          "filesize": 16384,
+          "maxprot": 3,
+          "initprot": 3
+        },
+        {
+          "segname": "__LINKEDIT",
+          "vmsize": 16384,
+          "filesize": 632,
+          "maxprot": 1,
+          "initprot": 1
+        }
+      ],
+      "residentMemoryBytes": null,
+      "residentMemoryStatus": "not measured; executable was not run"
+    },
+    {
+      "name": "data-1m",
+      "payloadBytes": 1048576,
+      "firstInitializer": 1,
+      "logicalFileBytes": 1073656,
+      "sizeMTotal": 4296048640,
+      "permittedSegmentBytes": 1081344,
+      "payloadSection": "__data",
+      "sectionType": 0,
+      "segments": [
+        {
+          "segname": "__PAGEZERO",
+          "vmsize": 4294967296,
+          "filesize": 0,
+          "maxprot": 0,
+          "initprot": 0
+        },
+        {
+          "segname": "__TEXT",
+          "vmsize": 16384,
+          "filesize": 16384,
+          "maxprot": 5,
+          "initprot": 5
+        },
+        {
+          "segname": "__DATA",
+          "vmsize": 1048576,
+          "filesize": 1048576,
+          "maxprot": 3,
+          "initprot": 3
+        },
+        {
+          "segname": "__LINKEDIT",
+          "vmsize": 16384,
+          "filesize": 8696,
+          "maxprot": 1,
+          "initprot": 1
+        }
+      ],
+      "residentMemoryBytes": null,
+      "residentMemoryStatus": "not measured; executable was not run"
+    }
+  ]
+}

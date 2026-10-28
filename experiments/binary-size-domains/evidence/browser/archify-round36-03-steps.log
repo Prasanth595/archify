@@ -1,0 +1,134 @@
+LIGHT { width: 1440, height: 900, scrollWidth: 1440, guided: [ { display: 'flex', direction: 'row-reverse', width: 1278 } ] }
+STEP1 [ '1 / 5' ]
+STEP2 [ '2 / 5' ]
+STEP3 [ '3 / 5' ]
+STEP4 [ '4 / 5' ]
+STEP5 [ '5 / 5' ]
+[p1 "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify"]
+root
+  container
+    paragraph
+      text "适用于"
+      text "原创四例"
+      text "Apple clang 17 / arm64"
+      text "静态观察，未运行程序"
+    container
+      container
+        anchor "zero-1m 的数字分别从哪里来？" [ref=153, loc=css:a[aria-label="zero-1m 的数字分别从哪里来？"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domains]
+          text "1"
+        heading
+          text "zero-1m 的数字分别从哪里来？"
+        button [ref=154]
+          text "追问"
+      container
+        text "同一个文件，三种不同口径"
+        button [ref=155]
+          svg_root
+          text "打开交互图"
+        image "同一个文件，三种不同口径"
+          image "zero-1m 同一文件，三种读数 16,888 B 文件长度 4,296,048,640 B size -m total 未测量 实际驻留内存（未运行） 4,294,967,296 B __PAGEZERO 1,081,344 B 其余三个段 文件字节 ..."
+            text "zero-1m"
+            text "同一文件，三种读数"
+            text "16,888 B"
+            text "文件长度"
+            text "4,296,048,640 B"
+            text "size -m total"
+            text "未测量"
+            text "实际驻留内存（未运行）"
+            text "4,294,967,296 B"
+            text "__PAGEZERO"
+            text "1,081,344 B"
+            text "其余三个段"
+            text "文件字节"
+            text "静态报告"
+            text "未运行"
+            text "maxprot = 0"
+            text "maxprot ≠ 0"
+      paragraph
+        text "图中的分支是阅读口径，不是执行顺序或调用关系。只有报告"
+        text "total"
+        text "的两个子项在同一口径内相加；文件长度与运行时内存不能加入这个合计。"
+        anchor [ref=156, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+          text "1"
+      button [ref=157]
+        text "▶ 逐步看"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=158, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+            text "先看文件长度"
+            text "↗"
+          paragraph
+            text "16,888 B"
+            text "是整个文件的逻辑长度，不是 payload 的大小，也不是磁盘已分配块数。"
+        list_item
+          text "2"
+          anchor [ref=159, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+            text "再读报告 total"
+            text "↗"
+          paragraph
+            text "size -m 累加段的 vmsize；此例连 4 GiB 的 PAGEZERO 都计入。"
+        list_item
+          text "3"
+          anchor [ref=160, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+            text "分出不可访问区域"
+            text "↗"
+          paragraph
+            text "PAGEZERO 的 maxprot 与 initprot 均为 0，filesize 也为 0；Bloaty 源码不将此类区域计入 VM。"
+  dialog_modal "同一个文件，三种不同口径" [ref=161]
+    button [ref=162]
+      svg_root
+      text "关闭"
+      text "Esc"
+    iframe [ref=163]
+      root
+        toolbar "图表操作"
+          container
+            button "切换颜色主题" [ref=164, loc=css:button[aria-label="切换颜色主题"]]
+            button "当前视觉风格：经典。选择视觉风格" [ref=165, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+              text "经典"
+            button "恢复动效" [ref=166, loc=css:button[aria-label="恢复动效"]]
+              text "静态"
+            button "进入演示模式" [ref=167]
+          button "导出图表" [ref=168, loc=css:button[aria-label="导出图表"]]
+            text "导出"
+        container
+          heading
+            text "同一个文件，三种不同口径"
+          container
+            image "zero-1m 同一文件，三种读数 16,888 B 文件长度 4,296,048,640 B size -m total 未测量 实际驻留内存（未运行） 4,294,967,296 B __PAGEZERO 1,081,344 B 其余三个段 文件字节 ..." [ref=169, loc=role:image[name="同一个文件，三种不同口径 由 Archify 生成的架构图。"]]
+              text "zero-1m"
+              text "同一文件，三种读数"
+              text "16,888 B"
+              text "文件长度"
+              text "4,296,048,640 B"
+              text "size -m total"
+              text "未测量"
+              text "实际驻留内存（未运行）"
+              text "4,294,967,296 B"
+              text "__PAGEZERO"
+              text "1,081,344 B"
+              text "其余三个段"
+              text "文件字节"
+              text "静态报告"
+              text "未运行"
+              text "maxprot = 0"
+              text "maxprot ≠ 0"
+              text "图例"
+              text "静态记录"
+              text "5"
+              text "未测量"
+              text "1"
+            toolbar "图表视图控制"
+              button "追踪有向路径" [ref=170]
+                text "路径"
+              button "打开语义透镜" [ref=171, loc=css:button[aria-label="打开语义透镜"]]
+                text "透镜"
+              button "查找节点" [ref=172, loc=css:button[aria-label="查找节点"]]
+              button "打开图表指南" [ref=173, loc=css:button[aria-label="打开图表指南"]]
+              button "缩小" [ref=174, loc=css:button[aria-label="缩小"]]
+              button "100% · 再次放大以显示标签和注释。重置图表视图" [ref=175, loc=css:button[aria-label="100% · 再次放大以显示标签和注释。重置图表视图"]]
+                text "100%"
+              button "放大" [ref=176, loc=css:button[aria-label="放大"]]
+
+

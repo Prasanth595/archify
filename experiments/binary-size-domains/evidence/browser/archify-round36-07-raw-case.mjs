@@ -1,0 +1,11 @@
+const task=await taskSpace(3);const page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('loc=role:link[name="zero-1m"]');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/evidence/raw-zero-1m.png"});
+await page.click('#zero-1m summary');
+console.log('RAW DETAIL',await page.evaluate(()=>({hash:location.hash,open:document.querySelector('#zero-1m details').open,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,completeTextBytes:document.querySelector('#zero-1m details pre').textContent.length})));
+await page.mouse.move(1200,600);await page.mouse.wheel(0,640,{label:"Read complete native load commands"});
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/evidence/raw-load-commands.png"});
+await page.goto("file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html");
+await page.keyboard.press('Home');
+console.log('Research space retained',task.spaceId,await page.url());

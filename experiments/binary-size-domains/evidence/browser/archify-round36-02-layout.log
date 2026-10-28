@@ -1,0 +1,99 @@
+[p1 "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify"]
+root
+  container
+    container
+      heading
+        text "文件只有 16,888 B，total 为何超过 4 GiB？"
+      container
+        group "主题"
+          button [ref=144]
+            text "系统"
+          button [ref=145]
+            text "浅色"
+          button [ref=146]
+            text "深色"
+        button "样式" [ref=147, loc=css:button[aria-label="样式"]]
+          text "简洁"
+          svg_root
+        button [ref=148]
+          svg_root
+          text "导出"
+          svg_root
+    container
+      container
+        container
+          text "答"
+          heading
+            text "结论"
+          button [ref=149]
+            text "追问"
+        container
+          paragraph
+            text "zero-1m"
+            text "的文件只有"
+            text "16,888 B"
+            text "。"
+            text "size -m"
+            text "的"
+            text "total"
+            text "包含不可访问的"
+            text "4 GiB PAGEZERO"
+            text "，不能当成实际内存用量。"
+          ordered_list
+            list_item
+              text "1"
+              text "报告 total 是静态段尺寸之和，不是文件长度。"
+              anchor [ref=150, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+                text "1"
+            list_item
+              text "2"
+              text "排除 PAGEZERO 后的"
+              text "1,081,344 B"
+              text "仍是静态尺寸。"
+              anchor [ref=151, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-macho]
+                text "2"
+            list_item
+              text "3"
+              text "这四个程序没有运行，实际驻留内存保持未知。"
+              anchor [ref=152, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+                text "1"
+        paragraph
+          text "适用于"
+          text "原创四例"
+          text "Apple clang 17 / arm64"
+          text "静态观察，未运行程序"
+      container
+        container
+          anchor "zero-1m 的数字分别从哪里来？" [ref=153, loc=css:a[aria-label="zero-1m 的数字分别从哪里来？"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domains]
+            text "1"
+          heading
+            text "zero-1m 的数字分别从哪里来？"
+          button [ref=154]
+            text "追问"
+        container
+          container
+            text "同一个文件，三种不同口径"
+            button [ref=155]
+              svg_root
+              text "打开交互图"
+          image "同一个文件，三种不同口径"
+            image "zero-1m 同一文件，三种读数 16,888 B 文件长度 4,296,048,640 B size -m total 未测量 实际驻留内存（未运行） 4,294,967,296 B __PAGEZERO 1,081,344 B 其余三个段 文件字节 ..."
+              text "zero-1m"
+              text "同一文件，三种读数"
+              text "16,888 B"
+              text "文件长度"
+              text "4,296,048,640 B"
+              text "size -m total"
+              text "未测量"
+              text "实际驻留内存（未运行）"
+              text "4,294,967,296 B"
+              text "__PAGEZERO"
+              text "1,081,344 B"
+              text "其余三个段"
+              text "文件字节"
+              text "静态报告"
+              text "未运行"
+              text "maxprot = 0"
+              text "maxprot ≠ 0"
+
+

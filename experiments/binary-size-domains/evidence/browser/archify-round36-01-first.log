@@ -1,0 +1,138 @@
+[p1 "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify"]
+root
+  container
+    container
+      heading
+        text "文件只有 16,888 B，total 为何超过 4 GiB？"
+      container
+        group "主题"
+          button [ref=125]
+            text "系统"
+          button [ref=126]
+            text "浅色"
+          button [ref=127]
+            text "深色"
+        button "样式" [ref=128, loc=css:button[aria-label="样式"]]
+          text "简洁"
+          svg_root
+        button [ref=129]
+          svg_root
+          text "导出"
+          svg_root
+    container
+      container
+        container
+          text "答"
+          heading
+            text "结论"
+          button [ref=130]
+            text "追问"
+        container
+          paragraph
+            text "zero-1m"
+            text "的文件只有"
+            text "16,888 B"
+            text "。"
+            text "size -m"
+            text "的"
+            text "total"
+            text "包含不可访问的"
+            text "4 GiB PAGEZERO"
+            text "，不能当成实际内存用量。"
+          ordered_list
+            list_item
+              text "1"
+              text "报告 total 是静态段尺寸之和，不是文件长度。"
+              anchor [ref=131, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+                text "1"
+            list_item
+              text "2"
+              text "排除 PAGEZERO 后的 1,081,344 B 仍是静态尺寸。"
+              anchor [ref=132, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-macho]
+                text "2"
+            list_item
+              text "3"
+              text "这四个程序没有运行，实际驻留内存保持未知。"
+              anchor [ref=133, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+                text "1"
+        paragraph
+          text "适用于"
+          text "原创四例"
+          text "Apple clang 17 / arm64"
+          text "静态观察，未运行程序"
+      container
+        container
+          anchor "zero-1m 的数字分别从哪里来？" [ref=134, loc=css:a[aria-label="zero-1m 的数字分别从哪里来？"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domains]
+            text "1"
+          heading
+            text "zero-1m 的数字分别从哪里来？"
+          button [ref=135]
+            text "追问"
+        container
+          container
+            container
+              text "同一个文件，三种不同口径"
+              button [ref=136]
+                svg_root
+                text "打开交互图"
+            image "同一个文件，三种不同口径"
+              image "zero-1m 的三种读数 文件长度 16,888 B size -m total 4,296,048,640 B 实际驻留内存 未运行 · 未知 __PAGEZERO 4,294,967,296 B 其余三个段 1,081,344 B 文件字节 静态报告 未�..."
+                text "zero-1m 的三种读数"
+                text "文件长度 16,888 B"
+                text "size -m total 4,296,048,640 B"
+                text "实际驻留内存 未运行 · 未知"
+                text "__PAGEZERO 4,294,967,296 B"
+                text "其余三个段 1,081,344 B"
+                text "文件字节"
+                text "静态报告"
+                text "未运行"
+                text "maxprot = 0"
+                text "maxprot ≠ 0"
+          container
+            paragraph
+              text "图中的分支是阅读口径，不是执行顺序或调用关系。只有报告"
+              text "total"
+              text "的两个子项在同一口径内相加；文件长度与运行时内存不能加入这个合计。"
+              anchor [ref=137, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+                text "1"
+            container
+              button [ref=138]
+                text "▶ 逐步看"
+              ordered_list
+                list_item
+                  text "1"
+                  anchor [ref=139, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+                    text "先看文件长度"
+                    text "↗"
+                  paragraph
+                    text "16,888 B 是整个文件的逻辑长度，不是 payload 的大小，也不是磁盘已分配块数。"
+                list_item
+                  text "2"
+                  anchor [ref=140, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+                    text "再读报告 total"
+                    text "↗"
+                  paragraph
+                    text "size -m 累加段的 vmsize；此例连 4 GiB 的 PAGEZERO 都计入。"
+                list_item
+                  text "3"
+                  anchor [ref=141, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+                    text "分出不可访问区域"
+                    text "↗"
+                  paragraph
+                    text "PAGEZERO 的 maxprot 与 initprot 均为 0，filesize 也为 0；Bloaty 源码不将此类区域计入 VM。"
+                list_item
+                  text "4"
+                  anchor [ref=142, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+                    text "其余尺寸仍是静态信息"
+                    text "↗"
+                  paragraph
+                    text "三个 maxprot 非零的段合计 1,081,344 B。这不是运行时 RSS。"
+                list_item
+                  text "5"
+                  anchor [ref=143, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#domain-map]
+                    text "保留尚未测量的结论"
+                    text "↗"
+                  paragraph
+                    text "没有执行这四个程序，不能从文件或段尺寸推出实际驻留内存。"
+
+

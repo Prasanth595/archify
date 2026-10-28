@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "nativeCommands": 46,
+  "pairedStreamsIdentical": 46,
+  "pairedBinaryHashesIdentical": 4,
+  "sourceFilesVerified": [
+    {
+      "path": "README.md",
+      "gitBlob": "98d9c80a5136bbaec7e25025b5fd9b4b03a02d8b",
+      "sha256": "522ffaf800f4cf61b3d7e2f7157c2a8d8355629a222fcb6327944156810eb183",
+      "bytes": 4334
+    },
+    {
+      "path": "doc/how-bloaty-works.md",
+      "gitBlob": "099f54095f460616abac87ed36e30c08498c5f3d",
+      "sha256": "bcbec75f2d7eb8eec7977b24b0150f06616c933524b6d9bceeea4d1929340aee",
+      "bytes": 18878
+    },
+    {
+      "path": "LICENSE",
+      "gitBlob": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "src/macho.cc",
+      "gitBlob": "9466bd4f47e1dd5186140c381857fddd14e0777a",
+      "sha256": "7fac9075b3994722821954b8c08dfd03f8d183d2a47de7323f564ae44db38d16",
+      "bytes": 27137
+    },
+    {
+      "path": "src/range_map.h",
+      "gitBlob": "42df5bcc7738cde75050f9a0be788b9388474ddc",
+      "sha256": "07445ee3a323a3ab1b051ef7c637dad2f7a3aed90478462a6f274740759bd4f4",
+      "bytes": 13935
+    }
+  ],
+  "fixtureComparisons": 4,
+  "artifactCheck": "pass: tables, graph numeric labels, unknown memory and embedded input match"
+}

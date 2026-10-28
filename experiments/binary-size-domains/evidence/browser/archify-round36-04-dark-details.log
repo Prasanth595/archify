@@ -1,0 +1,185 @@
+ANCHORS [ { label: 'zero-1m 的数字分别从哪里来？', href: '#domains' }, { label: '改变数组长度或初值，会发生什么？', href: '#contrasts' }, { label: '保留完整段记录，避免只挑有利数字', href: '#segments' }, { label: 'Bloaty 提供的阅读边界', href: '#source-rule' }, { label: '如何复核与继续测量？', href: '#verify' } ]
+TABLES { width: 1440, height: 900, pageWidth: 1440, tables: [ '输入\t数组长度\t首个初值\t文件长度\t__DATA vmsize\t__DATA filesize\nzero-4k\t\n4,096\n\t\n0\n\t\n16,888\n\t\n16,384\n\t\n0\n\nzero-1m\t\n1,048,576\n\t\n0\n\t\n16,888\n\t\n1,048,576\n\t\n0\n\ndata-4k\t\n4,096\n\t\n1\n\t\n33,400\n\t\n16,384\n\t\n16,384\n\ndata-1m\t\n1,048,576\n\t\n1\n\t\n1,073,656\n\t\n1,048,576\n\t\n1,048,576', 'zero-1m 的段\tvmsize / B\tfilesize / B\tmaxprot\n__PAGEZERO\t\n4,294,967,296\n\t\n0\n\t\n0\n\n__TEXT\t\n16,384\n\t\n16,384\n\t\n5\n\n__DATA\t\n1,048,576\n\t\n0\n\t\n3\n\n__LINKEDIT\t\n16,384\n\t\n504\n\t\n1' ] }
+[p1 "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify"]
+root
+  container
+    container
+      container
+        anchor "改变数组长度或初值，会发生什么？" [ref=177, loc=css:a[aria-label="改变数组长度或初值，会发生什么？"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#contrasts]
+          text "2"
+        heading
+          text "改变数组长度或初值，会发生什么？"
+        button [ref=178]
+          text "追问"
+      container
+        paragraph
+          text "四个输入均为原创三行 C 程序，仅改变数组长度和首个初值；用同一 Apple clang 编译。数值来自本机静态输出，两次独立构建一致。所有字节列单位为 B�..."
+          anchor [ref=179, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+            text "1"
+        table
+          table_row
+            table_cell
+              text "输入"
+            table_cell
+              text "数组长度"
+            table_cell
+              text "首个初值"
+            table_cell
+              text "文件长度"
+            table_cell
+              text "__DATA vmsize"
+            table_cell
+              text "__DATA filesize"
+          table_row
+            table_cell
+              text "zero-4k"
+            table_cell
+              text "4,096"
+            table_cell
+              text "0"
+            table_cell
+              text "16,888"
+            table_cell
+              text "16,384"
+            table_cell
+              text "0"
+          table_row
+            table_cell
+              text "zero-1m"
+            table_cell
+              text "1,048,576"
+            table_cell
+              text "0"
+            table_cell
+              text "16,888"
+            table_cell
+              text "1,048,576"
+            table_cell
+              text "0"
+          table_row
+            table_cell
+              text "data-4k"
+            table_cell
+              text "4,096"
+            table_cell
+              text "1"
+            table_cell
+              text "33,400"
+            table_cell
+              text "16,384"
+            table_cell
+              text "16,384"
+          table_row
+            table_cell
+              text "data-1m"
+            table_cell
+              text "1,048,576"
+            table_cell
+              text "1"
+            table_cell
+              text "1,073,656"
+            table_cell
+              text "1,048,576"
+            table_cell
+              text "1,048,576"
+        container
+          heading
+            text "零初始化数组变大，文件可以不变大"
+          paragraph
+            text "两份 zero 输入的文件长度都为"
+            text "16,888 B"
+            text "，而 __DATA 的静态 vmsize 从 16,384 B 增至 1,048,576 B。非零初值的 data 对照则有文件数据；其中还包含段对齐与元数据开销。"
+    container
+      container
+        anchor "保留完整段记录，避免只挑有利数字" [ref=180, loc=css:a[aria-label="保留完整段记录，避免只挑有利数字"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#segments]
+          text "3"
+        heading
+          text "保留完整段记录，避免只挑有利数字"
+        button [ref=181]
+          text "追问"
+      container
+        table
+          table_row
+            table_cell
+              text "zero-1m 的段"
+            table_cell
+              text "vmsize / B"
+            table_cell
+              text "filesize / B"
+            table_cell
+              text "maxprot"
+          table_row
+            table_cell
+              text "__PAGEZERO"
+            table_cell
+              text "4,294,967,296"
+            table_cell
+              text "0"
+            table_cell
+              text "0"
+          table_row
+            table_cell
+              text "__TEXT"
+            table_cell
+              text "16,384"
+            table_cell
+              text "16,384"
+            table_cell
+              text "5"
+          table_row
+            table_cell
+              text "__DATA"
+            table_cell
+              text "1,048,576"
+            table_cell
+              text "0"
+            table_cell
+              text "3"
+          table_row
+            table_cell
+              text "__LINKEDIT"
+            table_cell
+              text "16,384"
+            table_cell
+              text "504"
+            table_cell
+              text "1"
+        paragraph
+          text "报告合计：4,294,967,296 + 1,081,344 ="
+          text "4,296,048,640 B"
+          text "。文件合计：0 + 16,384 + 0 + 504 ="
+          text "16,888 B"
+          text "。这里两组加法分别成立，不把它们混成一个“总大小”。"
+          anchor [ref=182, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-run]
+            text "1"
+    container
+      container
+        anchor "Bloaty 提供的阅读边界" [ref=183, loc=css:a[aria-label="Bloaty 提供的阅读边界"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-rule]
+          text "4"
+        heading
+          text "Bloaty 提供的阅读边界"
+        button [ref=184]
+          text "追问"
+      container
+        paragraph
+          text "固定源码对 maxprot 为 NONE 的段只记文件范围；零填充节的文件大小设为 0。本机零初始化数据实际节名为 __common、类型为 S_ZEROFILL，不能只靠节名猜测是�..."
+          anchor [ref=185, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-macho]
+            text "2"
+        paragraph
+          text "Bloaty 的归属图还有回退标签与启发式分配；每个字节归给一个标签，不代表删除这个符号就能省下相同字节。该边界与既有 retained-size 阅读有关，本实�..."
+          anchor [ref=186, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-design]
+            text "3"
+    container
+      container
+        anchor "如何复核与继续测量？" [ref=187, loc=css:a[aria-label="如何复核与继续测量？"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#verify]
+          text "5"
+        heading
+          text "如何复核与继续测量？"
+        button [ref=188]
+          text "追问"
+      unordered_list
+        list_item
+          checkbox [ref=189]
+          text "检查四个完整 C 输入和 clang 参数。"
+
+

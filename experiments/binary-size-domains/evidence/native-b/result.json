@@ -1,0 +1,50 @@
+{
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "buildDirectory": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-svubrt2o",
+  "nativeTool": "Apple clang / size / otool / nm; Bloaty not executed",
+  "scope": "four authored inputs; static file/load-command observations, not measured resident memory",
+  "artifacts": [
+    {
+      "name": "zero-4k",
+      "declaredPayloadBytes": 4096,
+      "firstInitializer": 0,
+      "fileBytes": 16888,
+      "sha256": "466ca9acdd0d947935767196f86c5412e594f3b25224a8c6a5baf475d4e86915",
+      "localBinaryPath": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-svubrt2o/zero-4k",
+      "sourceSha256": "15c8139c0f4d4a75575617cdce47dd9a96ff3c001769c3f9a6fb493ae5d0922e",
+      "executed": false
+    },
+    {
+      "name": "zero-1m",
+      "declaredPayloadBytes": 1048576,
+      "firstInitializer": 0,
+      "fileBytes": 16888,
+      "sha256": "f8712aa2f88c09da283658e0c70cde820e16b7a2761c20227c6eb69dbd121c91",
+      "localBinaryPath": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-svubrt2o/zero-1m",
+      "sourceSha256": "0b81c208fe7d5e6cd36096239096c99f0b7ccd898b68dbb8615a15f0cda68221",
+      "executed": false
+    },
+    {
+      "name": "data-4k",
+      "declaredPayloadBytes": 4096,
+      "firstInitializer": 1,
+      "fileBytes": 33400,
+      "sha256": "9b5684ca9d3229e1defe8948eae587f10882f5eaa9bbcaf6935ae22ab3914fd5",
+      "localBinaryPath": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-svubrt2o/data-4k",
+      "sourceSha256": "753961dd3334d0436ccbcabac8b5c9537d9e01c523dc18ce40afeb42834aab44",
+      "executed": false
+    },
+    {
+      "name": "data-1m",
+      "declaredPayloadBytes": 1048576,
+      "firstInitializer": 1,
+      "fileBytes": 1073656,
+      "sha256": "5e8e75ee7d451c17bc4dcc1692bde24d496b2614a246159d2936e8fa111c1114",
+      "localBinaryPath": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-svubrt2o/data-1m",
+      "sourceSha256": "21b94aae872ca0c9911ffb7fd038e51e704eb2839e349c3e25b2165b7a4d42da",
+      "executed": false
+    }
+  ],
+  "commands": 23
+}

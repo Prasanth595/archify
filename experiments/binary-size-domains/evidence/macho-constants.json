@@ -1,0 +1,16 @@
+{
+  "kind": "installed Apple SDK header inspection; not additional Bloaty execution",
+  "sdk": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+  "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/mach-o/loader.h",
+  "sha256": "ce7e318ab069fb20f6ecb6c356ab1aa18ce1cd15a413f37787b9184a7eb416e7",
+  "definitions": [
+    {
+      "line": 494,
+      "text": "#define SECTION_TYPE\t\t 0x000000ff\t/* 256 section types */"
+    },
+    {
+      "line": 499,
+      "text": "#define\tS_ZEROFILL\t\t0x1\t/* zero fill on demand section */"
+    }
+  ]
+}

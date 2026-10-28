@@ -1,0 +1,13 @@
+const task=await taskSpace(3);const page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:false});
+await page.click('input[type="checkbox"] >> nth=0');
+console.log('CHECKLIST',await page.evaluate(()=>[...document.querySelectorAll('input[type="checkbox"]')].map(x=>x.checked)));
+await page.click('loc=role:button[name="打开交互图"]');
+await page.waitForFunction(()=>!document.body.innerText.includes('正在打开交互图'),undefined,{timeout:10000});
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/evidence/final-narrow-native.png"});
+await page.click('loc=role:button[name*="关闭"]');
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.goto("file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/raw-records.html");
+await page.evaluate(()=>document.fonts.ready);
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/evidence/raw-desktop.png"});
+console.log(await page.snapshot());

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "c634203d-b469-4204-b6a2-db3639961b19",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/candidate.explainer.json",
+  "output": "/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html",
+  "specification": {
+    "sha256": "6d3b22dd33d52c93ee5c3c1be31be999685e584b71c959adfd76b9ce25e76283",
+    "bytes": 15057
+  },
+  "artifact": {
+    "sha256": "c3819e32dbf53ce15f5fcf4af1a2b7c6ef3836d798fc7785af74c8f118cfa44c",
+    "bytes": 592234
+  },
+  "explainer": {
+    "preparedSha256": "fb049ecb2a5424eb74a838363d5c5ee2094db518d7438afcd524837bbb33ab58",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "domain-map",
+        "inline": true,
+        "sha256": "534426a87d424eb92c9f95a9903fb82f7e349a5e03ff095c3630e5015d6fb3a2",
+        "bytes": 1512
+      }
+    ]
+  }
+}

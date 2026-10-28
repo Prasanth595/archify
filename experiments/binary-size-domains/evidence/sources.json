@@ -1,0 +1,70 @@
+{
+  "revision": "f1a83e63f36beb628dcf022e1201a2eb391a22a6",
+  "license": "Apache-2.0",
+  "attribution": "Bloaty authors; src files Copyright 2016 Google Inc. All Rights Reserved.",
+  "rootNoticePresent": false,
+  "files": [
+    {
+      "path": "README.md",
+      "sha": "98d9c80a5136bbaec7e25025b5fd9b4b03a02d8b",
+      "bytes": 4334,
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/README.md"
+    },
+    {
+      "path": "doc/how-bloaty-works.md",
+      "sha": "099f54095f460616abac87ed36e30c08498c5f3d",
+      "bytes": 18878,
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/doc/how-bloaty-works.md"
+    },
+    {
+      "path": "LICENSE",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "bytes": 11358,
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/LICENSE"
+    },
+    {
+      "path": "src/macho.cc",
+      "sha": "9466bd4f47e1dd5186140c381857fddd14e0777a",
+      "bytes": 27137,
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/src/macho.cc"
+    },
+    {
+      "path": "src/range_map.h",
+      "sha": "42df5bcc7738cde75050f9a0be788b9388474ddc",
+      "bytes": 13935,
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/src/range_map.h"
+    }
+  ],
+  "dedup": {
+    "headsBefore": 331,
+    "addedSince35": [
+      "codex/lab-schema-annotations"
+    ],
+    "changedSince35": [
+      "codex/research-lab-20261026"
+    ],
+    "queries": [
+      {
+        "query": "repo:tt-a1i/archify is:issue bloaty",
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": [],
+        "search_type": "lexical"
+      },
+      {
+        "query": "repo:tt-a1i/archify is:pr bloaty",
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": [],
+        "search_type": "lexical"
+      }
+    ],
+    "priorWork": "Compared native-code-reading-smalltools, retained-size and binary-reading-round6 in research-lab-20261025; no new parser or retained-size variant.",
+    "failedProbes": [
+      "Unqualified issue search rejected with 422; corrected separate issue/PR queries above.",
+      "size --version unsupported on this Apple size; preserve tool identity through installed clang/otool and OS records.",
+      "Old hub filesystem path absent; read exact Git objects instead."
+    ]
+  },
+  "scope": "Bloaty source inspected, not compiled/executed. Native commands are Apple toolchain observations of original fixtures."
+}

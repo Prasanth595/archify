@@ -1,0 +1,489 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "title": "文件只有 16,888 B，total 为何超过 4 GiB？",
+    "id": "binary-size-domains",
+    "locale": "zh-CN",
+    "quality_profile": "showcase"
+  },
+  "answer": {
+    "summary": "`zero-1m` 的文件只有 **16,888 B**。`size -m` 的 total 包含不可访问的 **4 GiB PAGEZERO**，不能当成实际内存用量。",
+    "reasons": [
+      "报告 total 是静态段尺寸之和，不是文件长度。[](source:run)",
+      "排除 PAGEZERO 后的 1,081,344 B 仍是静态尺寸。[](source:macho)",
+      "这四个程序没有运行，实际驻留内存保持未知。[](source:run)"
+    ],
+    "scope": "原创四例 · Apple clang 17 / arm64 · 静态观察，未运行程序"
+  },
+  "panels": [
+    {
+      "id": "domains",
+      "title": "zero-1m 的数字分别从哪里来？",
+      "blocks": [
+        {
+          "id": "domain-note",
+          "type": "prose",
+          "text": "图中的分支是阅读口径，不是执行顺序或调用关系。只有报告 total 的两个子项在同一口径内相加；文件长度与运行时内存不能加入这个合计。[](source:run)"
+        },
+        {
+          "id": "domain-map",
+          "type": "diagram",
+          "diagramType": "architecture",
+          "spec": {
+            "schema_version": 1,
+            "diagram_type": "architecture",
+            "meta": {
+              "title": "同一个文件，三种不同口径",
+              "locale": "zh-CN",
+              "quality_profile": "showcase",
+              "output": "experiments/binary-size-domains/domains.html",
+              "legend": {
+                "entries": {
+                  "backend": {
+                    "label": "静态记录"
+                  },
+                  "external": {
+                    "label": "未测量"
+                  }
+                }
+              }
+            },
+            "components": [
+              {
+                "id": "input",
+                "label": "zero-1m 的三种读数",
+                "pos": [
+                  320,
+                  40
+                ],
+                "size": [
+                  190,
+                  76
+                ],
+                "type": "backend",
+                "icon": "none"
+              },
+              {
+                "id": "file",
+                "label": "文件长度\n16,888 B",
+                "pos": [
+                  40,
+                  220
+                ],
+                "size": [
+                  190,
+                  76
+                ],
+                "type": "backend",
+                "icon": "none"
+              },
+              {
+                "id": "total",
+                "label": "size -m total\n4,296,048,640 B",
+                "pos": [
+                  320,
+                  220
+                ],
+                "size": [
+                  190,
+                  76
+                ],
+                "type": "backend",
+                "icon": "none"
+              },
+              {
+                "id": "resident",
+                "label": "实际驻留内存\n未运行 · 未知",
+                "pos": [
+                  600,
+                  220
+                ],
+                "size": [
+                  190,
+                  76
+                ],
+                "type": "external",
+                "icon": "none"
+              },
+              {
+                "id": "guard",
+                "label": "__PAGEZERO\n4,294,967,296 B",
+                "pos": [
+                  180,
+                  410
+                ],
+                "size": [
+                  190,
+                  76
+                ],
+                "type": "backend",
+                "icon": "none"
+              },
+              {
+                "id": "permitted",
+                "label": "其余三个段\n1,081,344 B",
+                "pos": [
+                  460,
+                  410
+                ],
+                "size": [
+                  190,
+                  76
+                ],
+                "type": "backend",
+                "icon": "none"
+              }
+            ],
+            "connections": [
+              {
+                "id": "input-to-file",
+                "from": "input",
+                "to": "file",
+                "label": "文件字节"
+              },
+              {
+                "id": "input-to-total",
+                "from": "input",
+                "to": "total",
+                "label": "静态报告"
+              },
+              {
+                "id": "input-to-resident",
+                "from": "input",
+                "to": "resident",
+                "label": "未运行"
+              },
+              {
+                "id": "total-to-guard",
+                "from": "total",
+                "to": "guard",
+                "label": "maxprot = 0"
+              },
+              {
+                "id": "total-to-permitted",
+                "from": "total",
+                "to": "permitted",
+                "label": "maxprot ≠ 0"
+              }
+            ]
+          },
+          "nodeSources": {
+            "input": "run",
+            "file": "run",
+            "total": "run",
+            "resident": "run",
+            "guard": "macho",
+            "permitted": "run"
+          }
+        },
+        {
+          "id": "domain-steps",
+          "type": "steps",
+          "items": [
+            {
+              "id": "step-file",
+              "text": "先看文件长度",
+              "detail": "16,888 B 是整个文件的逻辑长度，不是 payload 的大小，也不是磁盘已分配块数。",
+              "target": {
+                "diagram": "domain-map",
+                "node": "file"
+              }
+            },
+            {
+              "id": "step-total",
+              "text": "再读报告 total",
+              "detail": "size -m 累加段的 vmsize；此例连 4 GiB 的 PAGEZERO 都计入。",
+              "target": {
+                "diagram": "domain-map",
+                "node": "total"
+              }
+            },
+            {
+              "id": "step-guard",
+              "text": "分出不可访问区域",
+              "detail": "PAGEZERO 的 maxprot 与 initprot 均为 0，filesize 也为 0；Bloaty 源码不将此类区域计入 VM。",
+              "target": {
+                "diagram": "domain-map",
+                "node": "guard"
+              }
+            },
+            {
+              "id": "step-permitted",
+              "text": "其余尺寸仍是静态信息",
+              "detail": "三个 maxprot 非零的段合计 1,081,344 B。这不是运行时 RSS。",
+              "target": {
+                "diagram": "domain-map",
+                "node": "permitted"
+              }
+            },
+            {
+              "id": "step-resident",
+              "text": "保留尚未测量的结论",
+              "detail": "没有执行这四个程序，不能从文件或段尺寸推出实际驻留内存。",
+              "target": {
+                "diagram": "domain-map",
+                "node": "resident"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contrasts",
+      "title": "改变数组长度或初值，会发生什么？",
+      "blocks": [
+        {
+          "id": "fixture-note",
+          "type": "prose",
+          "text": "四个输入均为原创三行 C 程序，仅改变数组长度和首个初值；用同一 Apple clang 编译。数值来自本机静态输出，两次独立构建一致。所有字节列单位为 B。[](source:run)"
+        },
+        {
+          "id": "cases",
+          "type": "comparison",
+          "labelColumn": "输入",
+          "columns": [
+            "数组长度",
+            "首个初值",
+            "文件长度",
+            "__DATA vmsize",
+            "__DATA filesize"
+          ],
+          "rows": [
+            {
+              "id": "cases-0",
+              "label": "zero-4k",
+              "cells": [
+                {
+                  "text": "4,096"
+                },
+                {
+                  "text": "0"
+                },
+                {
+                  "text": "16,888"
+                },
+                {
+                  "text": "16,384"
+                },
+                {
+                  "text": "0"
+                }
+              ]
+            },
+            {
+              "id": "cases-1",
+              "label": "zero-1m",
+              "cells": [
+                {
+                  "text": "1,048,576"
+                },
+                {
+                  "text": "0"
+                },
+                {
+                  "text": "16,888"
+                },
+                {
+                  "text": "1,048,576"
+                },
+                {
+                  "text": "0"
+                }
+              ]
+            },
+            {
+              "id": "cases-2",
+              "label": "data-4k",
+              "cells": [
+                {
+                  "text": "4,096"
+                },
+                {
+                  "text": "1"
+                },
+                {
+                  "text": "33,400"
+                },
+                {
+                  "text": "16,384"
+                },
+                {
+                  "text": "16,384"
+                }
+              ]
+            },
+            {
+              "id": "cases-3",
+              "label": "data-1m",
+              "cells": [
+                {
+                  "text": "1,048,576"
+                },
+                {
+                  "text": "1"
+                },
+                {
+                  "text": "1,073,656"
+                },
+                {
+                  "text": "1,048,576"
+                },
+                {
+                  "text": "1,048,576"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zero-fill-note",
+          "type": "callout",
+          "level": "note",
+          "title": "零初始化数组变大，文件可以不变大",
+          "text": "两份 zero 输入的文件长度都为 16,888 B，而 __DATA 的静态 vmsize 从 16,384 B 增至 1,048,576 B。非零初值的 data 对照则有文件数据；其中还包含段对齐与元数据开销。"
+        }
+      ]
+    },
+    {
+      "id": "segments",
+      "title": "保留完整段记录，避免只挑有利数字",
+      "blocks": [
+        {
+          "id": "segments-table",
+          "type": "comparison",
+          "labelColumn": "zero-1m 的段",
+          "columns": [
+            "vmsize / B",
+            "filesize / B",
+            "maxprot"
+          ],
+          "rows": [
+            {
+              "id": "segments-table-0",
+              "label": "__PAGEZERO",
+              "cells": [
+                {
+                  "text": "4,294,967,296"
+                },
+                {
+                  "text": "0"
+                },
+                {
+                  "text": "0"
+                }
+              ]
+            },
+            {
+              "id": "segments-table-1",
+              "label": "__TEXT",
+              "cells": [
+                {
+                  "text": "16,384"
+                },
+                {
+                  "text": "16,384"
+                },
+                {
+                  "text": "5"
+                }
+              ]
+            },
+            {
+              "id": "segments-table-2",
+              "label": "__DATA",
+              "cells": [
+                {
+                  "text": "1,048,576"
+                },
+                {
+                  "text": "0"
+                },
+                {
+                  "text": "3"
+                }
+              ]
+            },
+            {
+              "id": "segments-table-3",
+              "label": "__LINKEDIT",
+              "cells": [
+                {
+                  "text": "16,384"
+                },
+                {
+                  "text": "504"
+                },
+                {
+                  "text": "1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "segment-equation",
+          "type": "prose",
+          "text": "报告合计：4,294,967,296 + 1,081,344 = 4,296,048,640 B。文件合计：0 + 16,384 + 0 + 504 = 16,888 B。这里两组加法分别成立，不把它们混成一个“总大小”。[](source:run)"
+        }
+      ]
+    },
+    {
+      "id": "source-rule",
+      "title": "Bloaty 提供的阅读边界",
+      "blocks": [
+        {
+          "id": "bloaty-rule",
+          "type": "prose",
+          "text": "固定源码对 maxprot 为 NONE 的段只记文件范围；零填充节的文件大小设为 0。本机零初始化数据实际节名为 __common、类型为 S_ZEROFILL，不能只靠节名猜测是否占文件字节。[](source:macho)"
+        },
+        {
+          "id": "provenance-limit",
+          "type": "prose",
+          "text": "Bloaty 的归属图还有回退标签与启发式分配；每个字节归给一个标签，不代表删除这个符号就能省下相同字节。该边界与既有 retained-size 阅读有关，本实验没有再做符号归属或删除收益推算。[](source:design)"
+        }
+      ]
+    },
+    {
+      "id": "verify",
+      "title": "如何复核与继续测量？",
+      "blocks": [
+        {
+          "id": "checks",
+          "type": "list",
+          "ordered": false,
+          "checklist": true,
+          "items": [
+            "检查四个完整 C 输入和 clang 参数。",
+            "对照 size 与 otool 原文，保留 PAGEZERO 行及保护位。",
+            "区分文件长度、静态段尺寸和未测的驻留内存。",
+            "如需 RSS，另行设计实际运行与采样；本记录不作推断。"
+          ]
+        },
+        {
+          "id": "limitations",
+          "type": "prose",
+          "text": "仅验证这四个 arm64 Mach-O 文件。没有执行 Bloaty、没有通用二进制导入器、没有人类阅读效率测量。所有原始流和两次构建的文件哈希保留在观察包。"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "run",
+      "title": "本机完整命令、输入与两次构建观察",
+      "url": "https://github.com/tt-a1i/archify/tree/codex/lab-binary-size-domains/experiments/binary-size-domains/evidence"
+    },
+    {
+      "id": "macho",
+      "title": "Bloaty Mach-O：保护位与零填充处理 · Google · Apache 2.0",
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/src/macho.cc#L305-L361"
+    },
+    {
+      "id": "design",
+      "title": "Bloaty：独立的文件与 VM 范围、归属限制",
+      "url": "https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/doc/how-bloaty-works.md"
+    }
+  ]
+}

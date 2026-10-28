@@ -1,0 +1,66 @@
+NARROW { width: 390, height: 844, pageWidth: 390, tables: [ { width: 657.0859375, parentWidth: 332, overflow: 'auto' }, { width: 434.65625, parentWidth: 332, overflow: 'auto' } ] }
+[p1 "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "文件只有 16,888 B，total 为何超过 4 GiB？ · Archify"]
+root
+  container
+    container
+      container
+        paragraph
+          text "固定源码对 maxprot 为 NONE 的段只记文件范围；零填充节的文件大小设为 0。本机零初始化数据实际节名为 __common、类型为 S_ZEROFILL，不能只靠节名猜测是�..."
+        paragraph
+          text "Bloaty 的归属图还有回退标签与启发式分配；每个字节归给一个标签，不代表删除这个符号就能省下相同字节。该边界与既有 retained-size 阅读有关，本实�..."
+          anchor [ref=186, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#source-design]
+            text "3"
+      container
+        container
+          anchor "如何复核与继续测量？" [ref=187, loc=css:a[aria-label="如何复核与继续测量？"], url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html#verify]
+            text "5"
+          heading
+            text "如何复核与继续测量？"
+          button [ref=188]
+            text "追问"
+        container
+          unordered_list
+            list_item
+              checkbox [ref=189]
+              text "检查四个完整 C 输入和 clang 参数。"
+            list_item
+              checkbox [ref=190]
+              text "对照 size 与 otool 原文，保留 PAGEZERO 行及保护位。"
+            list_item
+              checkbox [ref=191]
+              text "区分文件长度、静态段尺寸和未测的驻留内存。"
+            list_item
+              checkbox [ref=192]
+              text "如需 RSS，另行设计实际运行与采样；本记录不作推断。"
+          paragraph
+            text "仅验证这四个 arm64 Mach-O 文件。没有执行 Bloaty、没有通用二进制导入器、没有人类阅读效率测量。所有原始流和两次构建的文件哈希保留在观察包。"
+    container
+      container
+        heading
+          text "来源"
+        ordered_list
+          list_item
+            anchor [ref=193, url=https://github.com/tt-a1i/archify/tree/codex/lab-binary-size-domains/experiments/binary-size-domains/evidence]
+              text "本机完整命令、输入与两次构建观察"
+          list_item
+            anchor [ref=194, url=https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/src/macho.cc#L305-L361]
+              text "Bloaty Mach-O：保护位与零填充处理 · Google · Apache 2.0"
+          list_item
+            anchor [ref=195, url=https://github.com/google/bloaty/blob/f1a83e63f36beb628dcf022e1201a2eb391a22a6/doc/how-bloaty-works.md]
+              text "Bloaty：独立的文件与 VM 范围、归属限制"
+      container
+        anchor [ref=196, url=https://github.com/tt-a1i/archify]
+          svg_root
+          container
+            text "Archify"
+            text "把你想理解、规划或分享的事，变成可以互动的可视化作品。"
+        paragraph
+          text "5 个面板"
+          container
+            text "·"
+            text "1 张图已通过结构校验"
+          container
+            text "·"
+            text "3 个来源"
+
+

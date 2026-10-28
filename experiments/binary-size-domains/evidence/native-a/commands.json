@@ -1,0 +1,305 @@
+[
+  {
+    "label": "clang-version",
+    "argv": [
+      "/usr/bin/clang",
+      "--version"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.010106583000379032,
+    "stdout": "streams/clang-version.stdout",
+    "stderr": "streams/clang-version.stderr"
+  },
+  {
+    "label": "otool-version",
+    "argv": [
+      "/usr/bin/otool",
+      "--version"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.01030279199949291,
+    "stdout": "streams/otool-version.stdout",
+    "stderr": "streams/otool-version.stderr"
+  },
+  {
+    "label": "os-version",
+    "argv": [
+      "/usr/bin/sw_vers"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.005702459000531235,
+    "stdout": "streams/os-version.stdout",
+    "stderr": "streams/os-version.stderr"
+  },
+  {
+    "label": "zero-4k-compile",
+    "argv": [
+      "/usr/bin/clang",
+      "-Os",
+      "-fno-common",
+      "zero-4k.c",
+      "-o",
+      "zero-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.14736312500099302,
+    "stdout": "streams/zero-4k-compile.stdout",
+    "stderr": "streams/zero-4k-compile.stderr"
+  },
+  {
+    "label": "zero-4k-size",
+    "argv": [
+      "/usr/bin/size",
+      "-m",
+      "zero-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.007510333000027458,
+    "stdout": "streams/zero-4k-size.stdout",
+    "stderr": "streams/zero-4k-size.stderr"
+  },
+  {
+    "label": "zero-4k-load-commands",
+    "argv": [
+      "/usr/bin/otool",
+      "-l",
+      "zero-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.008660000001327717,
+    "stdout": "streams/zero-4k-load-commands.stdout",
+    "stderr": "streams/zero-4k-load-commands.stderr"
+  },
+  {
+    "label": "zero-4k-symbols",
+    "argv": [
+      "/usr/bin/nm",
+      "-nm",
+      "zero-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.48974012500002573,
+    "stdout": "streams/zero-4k-symbols.stdout",
+    "stderr": "streams/zero-4k-symbols.stderr"
+  },
+  {
+    "label": "zero-4k-format",
+    "argv": [
+      "/usr/bin/file",
+      "zero-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.009312291998867295,
+    "stdout": "streams/zero-4k-format.stdout",
+    "stderr": "streams/zero-4k-format.stderr"
+  },
+  {
+    "label": "zero-1m-compile",
+    "argv": [
+      "/usr/bin/clang",
+      "-Os",
+      "-fno-common",
+      "zero-1m.c",
+      "-o",
+      "zero-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.04731874999924912,
+    "stdout": "streams/zero-1m-compile.stdout",
+    "stderr": "streams/zero-1m-compile.stderr"
+  },
+  {
+    "label": "zero-1m-size",
+    "argv": [
+      "/usr/bin/size",
+      "-m",
+      "zero-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.008630125001218403,
+    "stdout": "streams/zero-1m-size.stdout",
+    "stderr": "streams/zero-1m-size.stderr"
+  },
+  {
+    "label": "zero-1m-load-commands",
+    "argv": [
+      "/usr/bin/otool",
+      "-l",
+      "zero-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.008959791999586741,
+    "stdout": "streams/zero-1m-load-commands.stdout",
+    "stderr": "streams/zero-1m-load-commands.stderr"
+  },
+  {
+    "label": "zero-1m-symbols",
+    "argv": [
+      "/usr/bin/nm",
+      "-nm",
+      "zero-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.007573708000563784,
+    "stdout": "streams/zero-1m-symbols.stdout",
+    "stderr": "streams/zero-1m-symbols.stderr"
+  },
+  {
+    "label": "zero-1m-format",
+    "argv": [
+      "/usr/bin/file",
+      "zero-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.0017868329996417742,
+    "stdout": "streams/zero-1m-format.stdout",
+    "stderr": "streams/zero-1m-format.stderr"
+  },
+  {
+    "label": "data-4k-compile",
+    "argv": [
+      "/usr/bin/clang",
+      "-Os",
+      "-fno-common",
+      "data-4k.c",
+      "-o",
+      "data-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.030714750000697677,
+    "stdout": "streams/data-4k-compile.stdout",
+    "stderr": "streams/data-4k-compile.stderr"
+  },
+  {
+    "label": "data-4k-size",
+    "argv": [
+      "/usr/bin/size",
+      "-m",
+      "data-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.007278125000084401,
+    "stdout": "streams/data-4k-size.stdout",
+    "stderr": "streams/data-4k-size.stderr"
+  },
+  {
+    "label": "data-4k-load-commands",
+    "argv": [
+      "/usr/bin/otool",
+      "-l",
+      "data-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.008167416999640409,
+    "stdout": "streams/data-4k-load-commands.stdout",
+    "stderr": "streams/data-4k-load-commands.stderr"
+  },
+  {
+    "label": "data-4k-symbols",
+    "argv": [
+      "/usr/bin/nm",
+      "-nm",
+      "data-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.007254625001223758,
+    "stdout": "streams/data-4k-symbols.stdout",
+    "stderr": "streams/data-4k-symbols.stderr"
+  },
+  {
+    "label": "data-4k-format",
+    "argv": [
+      "/usr/bin/file",
+      "data-4k"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.0018002919987338828,
+    "stdout": "streams/data-4k-format.stdout",
+    "stderr": "streams/data-4k-format.stderr"
+  },
+  {
+    "label": "data-1m-compile",
+    "argv": [
+      "/usr/bin/clang",
+      "-Os",
+      "-fno-common",
+      "data-1m.c",
+      "-o",
+      "data-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.03092133399877639,
+    "stdout": "streams/data-1m-compile.stdout",
+    "stderr": "streams/data-1m-compile.stderr"
+  },
+  {
+    "label": "data-1m-size",
+    "argv": [
+      "/usr/bin/size",
+      "-m",
+      "data-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.007411291999233072,
+    "stdout": "streams/data-1m-size.stdout",
+    "stderr": "streams/data-1m-size.stderr"
+  },
+  {
+    "label": "data-1m-load-commands",
+    "argv": [
+      "/usr/bin/otool",
+      "-l",
+      "data-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.008105417000479065,
+    "stdout": "streams/data-1m-load-commands.stdout",
+    "stderr": "streams/data-1m-load-commands.stderr"
+  },
+  {
+    "label": "data-1m-symbols",
+    "argv": [
+      "/usr/bin/nm",
+      "-nm",
+      "data-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.007047249999232008,
+    "stdout": "streams/data-1m-symbols.stdout",
+    "stderr": "streams/data-1m-symbols.stderr"
+  },
+  {
+    "label": "data-1m-format",
+    "argv": [
+      "/usr/bin/file",
+      "data-1m"
+    ],
+    "cwd": "/var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-round36-build-4t0x0po2",
+    "exitCode": 0,
+    "elapsedSeconds": 0.0018818329990608618,
+    "stdout": "streams/data-1m-format.stdout",
+    "stderr": "streams/data-1m-format.stderr"
+  }
+]

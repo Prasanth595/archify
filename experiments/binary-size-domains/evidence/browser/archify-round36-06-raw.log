@@ -1,0 +1,33 @@
+CHECKLIST [ true, false, false, false ]
+[p1 "二进制大小 · 同源原文" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "二进制大小 · 同源原文"]
+root
+  heading
+    text "文件只有 16,888 B，total 为何超过 4 GiB？"
+  paragraph
+    text "zero-1m 的文件长度是 16,888 B；size -m 的 total 为 4,296,048,640 B，其中 4 GiB 是不可访问的 PAGEZERO。剩余静态段尺寸也不等于实测驻留内存。"
+  paragraph
+    text "这是本实验的原文包装，不是 Bloaty UI。四个 C 输入为原创；实际执行 Apple clang、size、otool 和 nm，未运行 Bloaty 或生成的可执行文件。"
+  container
+    anchor [ref=197, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/raw-records.html#zero-4k]
+      text "zero-4k"
+    anchor [ref=198, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/raw-records.html#zero-1m]
+      text "zero-1m"
+    anchor [ref=199, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/raw-records.html#data-4k]
+      text "data-4k"
+    anchor [ref=200, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/raw-records.html#data-1m]
+      text "data-1m"
+    anchor [ref=201, url=file:///Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/explanation.html]
+      text "解释页"
+  container
+    heading
+      text "zero-4k"
+    paragraph
+      text "完整文件长度：16,888 B。未执行此文件。"
+    text "/* Original Archify research fixture; not upstream Bloaty test data. */ volatile unsigned char payload[4096] = {0}; int main(void) { return payload[0]; }"
+    heading
+      text "完整 size -m 输出"
+    text "Segment __PAGEZERO: 4294967296 (zero fill) Segment __TEXT: 16384 Section __text: 12 Section __unwind_info: 88 total 100 Segment __DATA: 16384 Section __common: 4096 (zerofill) total 4096 Segment __LIN..."
+    container [ref=202]
+      text "展开完整 otool -l 输出"
+
+

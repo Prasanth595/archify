@@ -1,0 +1,10 @@
+Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 12
+	Section __unwind_info: 88
+	total 100
+Segment __DATA: 1048576
+	Section __common: 1048576 (zerofill)
+	total 1048576
+Segment __LINKEDIT: 16384
+total 4296048640

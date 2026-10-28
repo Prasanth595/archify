@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "同一个文件，三种不同口径",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": "experiments/binary-size-domains/domains.html",
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "静态记录"
+        },
+        "external": {
+          "label": "未测量"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "input",
+      "label": "zero-1m 的三种读数",
+      "pos": [
+        320,
+        40
+      ],
+      "size": [
+        190,
+        76
+      ],
+      "type": "backend",
+      "icon": "none"
+    },
+    {
+      "id": "file",
+      "label": "文件长度\n16,888 B",
+      "pos": [
+        40,
+        220
+      ],
+      "size": [
+        190,
+        76
+      ],
+      "type": "backend",
+      "icon": "none"
+    },
+    {
+      "id": "total",
+      "label": "size -m total\n4,296,048,640 B",
+      "pos": [
+        320,
+        220
+      ],
+      "size": [
+        190,
+        76
+      ],
+      "type": "backend",
+      "icon": "none"
+    },
+    {
+      "id": "resident",
+      "label": "实际驻留内存\n未运行 · 未知",
+      "pos": [
+        600,
+        220
+      ],
+      "size": [
+        190,
+        76
+      ],
+      "type": "external",
+      "icon": "none"
+    },
+    {
+      "id": "guard",
+      "label": "__PAGEZERO\n4,294,967,296 B",
+      "pos": [
+        180,
+        410
+      ],
+      "size": [
+        190,
+        76
+      ],
+      "type": "backend",
+      "icon": "none"
+    },
+    {
+      "id": "permitted",
+      "label": "其余三个段\n1,081,344 B",
+      "pos": [
+        460,
+        410
+      ],
+      "size": [
+        190,
+        76
+      ],
+      "type": "backend",
+      "icon": "none"
+    }
+  ],
+  "connections": [
+    {
+      "id": "input-to-file",
+      "from": "input",
+      "to": "file",
+      "label": "文件字节"
+    },
+    {
+      "id": "input-to-total",
+      "from": "input",
+      "to": "total",
+      "label": "静态报告"
+    },
+    {
+      "id": "input-to-resident",
+      "from": "input",
+      "to": "resident",
+      "label": "未运行"
+    },
+    {
+      "id": "total-to-guard",
+      "from": "total",
+      "to": "guard",
+      "label": "maxprot = 0"
+    },
+    {
+      "id": "total-to-permitted",
+      "from": "total",
+      "to": "permitted",
+      "label": "maxprot ≠ 0"
+    }
+  ]
+}

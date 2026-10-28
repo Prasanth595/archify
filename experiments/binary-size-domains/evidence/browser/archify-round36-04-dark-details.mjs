@@ -1,0 +1,12 @@
+const task=await taskSpace(3);const page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('loc=role:button[name*="关闭"]');
+await page.click('loc=role:button[name="深色"]');await page.keyboard.press('Home');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/evidence/final-dark.png"});
+const anchors=await page.evaluate(()=>[...document.querySelectorAll('a[aria-label]')].map(a=>({label:a.getAttribute('aria-label'),href:a.getAttribute('href')})));
+console.log('ANCHORS',anchors);
+const target=anchors.find(a=>a.href==='#contrasts');if(!target)throw new Error('No observed contrasts anchor');
+await page.click(`loc=css:a[aria-label="${target.label}"]`);
+console.log('TABLES',await page.evaluate(()=>({width:innerWidth,height:innerHeight,pageWidth:document.documentElement.scrollWidth,tables:[...document.querySelectorAll('table')].map(t=>t.innerText)})));
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-binary-size-domains/archify/experiments/binary-size-domains/evidence/final-tables-dark.png"});
+console.log(await page.snapshot());

@@ -1,0 +1,737 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>二进制大小 · 同源原文</title><style>body{font:16px/1.6 system-ui;max-width:1100px;margin:32px auto;padding:0 20px;background:#f5f7fa;color:#142135}section{background:white;border:1px solid #d4deea;border-radius:12px;padding:20px;margin:24px 0}pre{white-space:pre;overflow:auto;padding:16px;background:#edf1f6;font:14px/1.5 ui-monospace,monospace}nav{display:flex;gap:20px;flex-wrap:wrap}a{color:#1466bb}summary{cursor:pointer}</style><h1>文件只有 16,888 B，total 为何超过 4 GiB？</h1><p>zero-1m 的文件长度是 16,888 B；size -m 的 total 为 4,296,048,640 B，其中 4 GiB 是不可访问的 PAGEZERO。剩余静态段尺寸也不等于实测驻留内存。</p><p>这是本实验的原文包装，不是 Bloaty UI。四个 C 输入为原创；实际执行 Apple clang、size、otool 和 nm，未运行 Bloaty 或生成的可执行文件。</p><nav><a href="#zero-4k">zero-4k</a><a href="#zero-1m">zero-1m</a><a href="#data-4k">data-4k</a><a href="#data-1m">data-1m</a><a href="explanation.html">解释页</a></nav><section id="zero-4k"><h2>zero-4k</h2><p>完整文件长度：16,888 B。未执行此文件。</p><pre>/* Original Archify research fixture; not upstream Bloaty test data. */
+volatile unsigned char payload[4096] = {0};
+int main(void) { return payload[0]; }
+</pre><h3>完整 size -m 输出</h3><pre>Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 12
+	Section __unwind_info: 88
+	total 100
+Segment __DATA: 16384
+	Section __common: 4096 (zerofill)
+	total 4096
+Segment __LINKEDIT: 16384
+total 4295016448
+</pre><details><summary>展开完整 otool -l 输出</summary><pre>zero-4k:
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __PAGEZERO
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000100000000
+  fileoff 0
+ filesize 0
+  maxprot 0x00000000
+ initprot 0x00000000
+   nsects 0
+    flags 0x0
+Load command 1
+      cmd LC_SEGMENT_64
+  cmdsize 232
+  segname __TEXT
+   vmaddr 0x0000000100000000
+   vmsize 0x0000000000004000
+  fileoff 0
+ filesize 16384
+  maxprot 0x00000005
+ initprot 0x00000005
+   nsects 2
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x00000001000003c0
+      size 0x000000000000000c
+    offset 960
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __unwind_info
+   segname __TEXT
+      addr 0x00000001000003cc
+      size 0x0000000000000058
+    offset 972
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 2
+      cmd LC_SEGMENT_64
+  cmdsize 152
+  segname __DATA
+   vmaddr 0x0000000100004000
+   vmsize 0x0000000000004000
+  fileoff 0
+ filesize 0
+  maxprot 0x00000003
+ initprot 0x00000003
+   nsects 1
+    flags 0x0
+Section
+  sectname __common
+   segname __DATA
+      addr 0x0000000100004000
+      size 0x0000000000001000
+    offset 0
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000001
+ reserved1 0
+ reserved2 0
+Load command 3
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __LINKEDIT
+   vmaddr 0x0000000100008000
+   vmsize 0x0000000000004000
+  fileoff 16384
+ filesize 504
+  maxprot 0x00000001
+ initprot 0x00000001
+   nsects 0
+    flags 0x0
+Load command 4
+      cmd LC_DYLD_CHAINED_FIXUPS
+  cmdsize 16
+  dataoff 16384
+ datasize 56
+Load command 5
+      cmd LC_DYLD_EXPORTS_TRIE
+  cmdsize 16
+  dataoff 16440
+ datasize 64
+Load command 6
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 16512
+   nsyms 3
+  stroff 16560
+ strsize 40
+Load command 7
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 0
+     iextdefsym 0
+     nextdefsym 3
+      iundefsym 3
+      nundefsym 0
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
+Load command 8
+          cmd LC_LOAD_DYLINKER
+      cmdsize 32
+         name /usr/lib/dyld (offset 12)
+Load command 9
+     cmd LC_UUID
+ cmdsize 24
+    uuid C3155E8F-F8C8-3D63-8E2C-9E7B41E910FD
+Load command 10
+      cmd LC_BUILD_VERSION
+  cmdsize 32
+ platform 1
+    minos 26.0
+      sdk 26.2
+   ntools 1
+     tool 3
+  version 1230.1
+Load command 11
+      cmd LC_SOURCE_VERSION
+  cmdsize 16
+  version 0.0
+Load command 12
+       cmd LC_MAIN
+   cmdsize 24
+  entryoff 960
+ stacksize 0
+Load command 13
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 08:00:02 1970
+      current version 1356.0.0
+compatibility version 1.0.0
+Load command 14
+      cmd LC_FUNCTION_STARTS
+  cmdsize 16
+  dataoff 16504
+ datasize 8
+Load command 15
+      cmd LC_DATA_IN_CODE
+  cmdsize 16
+  dataoff 16512
+ datasize 0
+Load command 16
+      cmd LC_CODE_SIGNATURE
+  cmdsize 16
+  dataoff 16608
+ datasize 280
+</pre></details></section><section id="zero-1m"><h2>zero-1m</h2><p>完整文件长度：16,888 B。未执行此文件。</p><pre>/* Original Archify research fixture; not upstream Bloaty test data. */
+volatile unsigned char payload[1048576] = {0};
+int main(void) { return payload[0]; }
+</pre><h3>完整 size -m 输出</h3><pre>Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 12
+	Section __unwind_info: 88
+	total 100
+Segment __DATA: 1048576
+	Section __common: 1048576 (zerofill)
+	total 1048576
+Segment __LINKEDIT: 16384
+total 4296048640
+</pre><details><summary>展开完整 otool -l 输出</summary><pre>zero-1m:
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __PAGEZERO
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000100000000
+  fileoff 0
+ filesize 0
+  maxprot 0x00000000
+ initprot 0x00000000
+   nsects 0
+    flags 0x0
+Load command 1
+      cmd LC_SEGMENT_64
+  cmdsize 232
+  segname __TEXT
+   vmaddr 0x0000000100000000
+   vmsize 0x0000000000004000
+  fileoff 0
+ filesize 16384
+  maxprot 0x00000005
+ initprot 0x00000005
+   nsects 2
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x00000001000003c0
+      size 0x000000000000000c
+    offset 960
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __unwind_info
+   segname __TEXT
+      addr 0x00000001000003cc
+      size 0x0000000000000058
+    offset 972
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 2
+      cmd LC_SEGMENT_64
+  cmdsize 152
+  segname __DATA
+   vmaddr 0x0000000100004000
+   vmsize 0x0000000000100000
+  fileoff 0
+ filesize 0
+  maxprot 0x00000003
+ initprot 0x00000003
+   nsects 1
+    flags 0x0
+Section
+  sectname __common
+   segname __DATA
+      addr 0x0000000100004000
+      size 0x0000000000100000
+    offset 0
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000001
+ reserved1 0
+ reserved2 0
+Load command 3
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __LINKEDIT
+   vmaddr 0x0000000100104000
+   vmsize 0x0000000000004000
+  fileoff 16384
+ filesize 504
+  maxprot 0x00000001
+ initprot 0x00000001
+   nsects 0
+    flags 0x0
+Load command 4
+      cmd LC_DYLD_CHAINED_FIXUPS
+  cmdsize 16
+  dataoff 16384
+ datasize 56
+Load command 5
+      cmd LC_DYLD_EXPORTS_TRIE
+  cmdsize 16
+  dataoff 16440
+ datasize 64
+Load command 6
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 16512
+   nsyms 3
+  stroff 16560
+ strsize 40
+Load command 7
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 0
+     iextdefsym 0
+     nextdefsym 3
+      iundefsym 3
+      nundefsym 0
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
+Load command 8
+          cmd LC_LOAD_DYLINKER
+      cmdsize 32
+         name /usr/lib/dyld (offset 12)
+Load command 9
+     cmd LC_UUID
+ cmdsize 24
+    uuid 4EBE7945-0A6F-3094-BE6C-47EC685D0AA8
+Load command 10
+      cmd LC_BUILD_VERSION
+  cmdsize 32
+ platform 1
+    minos 26.0
+      sdk 26.2
+   ntools 1
+     tool 3
+  version 1230.1
+Load command 11
+      cmd LC_SOURCE_VERSION
+  cmdsize 16
+  version 0.0
+Load command 12
+       cmd LC_MAIN
+   cmdsize 24
+  entryoff 960
+ stacksize 0
+Load command 13
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 08:00:02 1970
+      current version 1356.0.0
+compatibility version 1.0.0
+Load command 14
+      cmd LC_FUNCTION_STARTS
+  cmdsize 16
+  dataoff 16504
+ datasize 8
+Load command 15
+      cmd LC_DATA_IN_CODE
+  cmdsize 16
+  dataoff 16512
+ datasize 0
+Load command 16
+      cmd LC_CODE_SIGNATURE
+  cmdsize 16
+  dataoff 16608
+ datasize 280
+</pre></details></section><section id="data-4k"><h2>data-4k</h2><p>完整文件长度：33,400 B。未执行此文件。</p><pre>/* Original Archify research fixture; not upstream Bloaty test data. */
+volatile unsigned char payload[4096] = {1};
+int main(void) { return payload[0]; }
+</pre><h3>完整 size -m 输出</h3><pre>Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 12
+	Section __unwind_info: 88
+	total 100
+Segment __DATA: 16384
+	Section __data: 4096
+	total 4096
+Segment __LINKEDIT: 16384
+total 4295016448
+</pre><details><summary>展开完整 otool -l 输出</summary><pre>data-4k:
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __PAGEZERO
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000100000000
+  fileoff 0
+ filesize 0
+  maxprot 0x00000000
+ initprot 0x00000000
+   nsects 0
+    flags 0x0
+Load command 1
+      cmd LC_SEGMENT_64
+  cmdsize 232
+  segname __TEXT
+   vmaddr 0x0000000100000000
+   vmsize 0x0000000000004000
+  fileoff 0
+ filesize 16384
+  maxprot 0x00000005
+ initprot 0x00000005
+   nsects 2
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x00000001000003c0
+      size 0x000000000000000c
+    offset 960
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __unwind_info
+   segname __TEXT
+      addr 0x00000001000003cc
+      size 0x0000000000000058
+    offset 972
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 2
+      cmd LC_SEGMENT_64
+  cmdsize 152
+  segname __DATA
+   vmaddr 0x0000000100004000
+   vmsize 0x0000000000004000
+  fileoff 16384
+ filesize 16384
+  maxprot 0x00000003
+ initprot 0x00000003
+   nsects 1
+    flags 0x0
+Section
+  sectname __data
+   segname __DATA
+      addr 0x0000000100004000
+      size 0x0000000000001000
+    offset 16384
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 3
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __LINKEDIT
+   vmaddr 0x0000000100008000
+   vmsize 0x0000000000004000
+  fileoff 32768
+ filesize 632
+  maxprot 0x00000001
+ initprot 0x00000001
+   nsects 0
+    flags 0x0
+Load command 4
+      cmd LC_DYLD_CHAINED_FIXUPS
+  cmdsize 16
+  dataoff 32768
+ datasize 56
+Load command 5
+      cmd LC_DYLD_EXPORTS_TRIE
+  cmdsize 16
+  dataoff 32824
+ datasize 64
+Load command 6
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 32896
+   nsyms 3
+  stroff 32944
+ strsize 40
+Load command 7
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 0
+     iextdefsym 0
+     nextdefsym 3
+      iundefsym 3
+      nundefsym 0
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
+Load command 8
+          cmd LC_LOAD_DYLINKER
+      cmdsize 32
+         name /usr/lib/dyld (offset 12)
+Load command 9
+     cmd LC_UUID
+ cmdsize 24
+    uuid E0243203-BA74-3778-B272-6E2A7616FAE1
+Load command 10
+      cmd LC_BUILD_VERSION
+  cmdsize 32
+ platform 1
+    minos 26.0
+      sdk 26.2
+   ntools 1
+     tool 3
+  version 1230.1
+Load command 11
+      cmd LC_SOURCE_VERSION
+  cmdsize 16
+  version 0.0
+Load command 12
+       cmd LC_MAIN
+   cmdsize 24
+  entryoff 960
+ stacksize 0
+Load command 13
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 08:00:02 1970
+      current version 1356.0.0
+compatibility version 1.0.0
+Load command 14
+      cmd LC_FUNCTION_STARTS
+  cmdsize 16
+  dataoff 32888
+ datasize 8
+Load command 15
+      cmd LC_DATA_IN_CODE
+  cmdsize 16
+  dataoff 32896
+ datasize 0
+Load command 16
+      cmd LC_CODE_SIGNATURE
+  cmdsize 16
+  dataoff 32992
+ datasize 408
+</pre></details></section><section id="data-1m"><h2>data-1m</h2><p>完整文件长度：1,073,656 B。未执行此文件。</p><pre>/* Original Archify research fixture; not upstream Bloaty test data. */
+volatile unsigned char payload[1048576] = {1};
+int main(void) { return payload[0]; }
+</pre><h3>完整 size -m 输出</h3><pre>Segment __PAGEZERO: 4294967296 (zero fill) 
+Segment __TEXT: 16384
+	Section __text: 12
+	Section __unwind_info: 88
+	total 100
+Segment __DATA: 1048576
+	Section __data: 1048576
+	total 1048576
+Segment __LINKEDIT: 16384
+total 4296048640
+</pre><details><summary>展开完整 otool -l 输出</summary><pre>data-1m:
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __PAGEZERO
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000100000000
+  fileoff 0
+ filesize 0
+  maxprot 0x00000000
+ initprot 0x00000000
+   nsects 0
+    flags 0x0
+Load command 1
+      cmd LC_SEGMENT_64
+  cmdsize 232
+  segname __TEXT
+   vmaddr 0x0000000100000000
+   vmsize 0x0000000000004000
+  fileoff 0
+ filesize 16384
+  maxprot 0x00000005
+ initprot 0x00000005
+   nsects 2
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x00000001000003c0
+      size 0x000000000000000c
+    offset 960
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __unwind_info
+   segname __TEXT
+      addr 0x00000001000003cc
+      size 0x0000000000000058
+    offset 972
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 2
+      cmd LC_SEGMENT_64
+  cmdsize 152
+  segname __DATA
+   vmaddr 0x0000000100004000
+   vmsize 0x0000000000100000
+  fileoff 16384
+ filesize 1048576
+  maxprot 0x00000003
+ initprot 0x00000003
+   nsects 1
+    flags 0x0
+Section
+  sectname __data
+   segname __DATA
+      addr 0x0000000100004000
+      size 0x0000000000100000
+    offset 16384
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 3
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __LINKEDIT
+   vmaddr 0x0000000100104000
+   vmsize 0x0000000000004000
+  fileoff 1064960
+ filesize 8696
+  maxprot 0x00000001
+ initprot 0x00000001
+   nsects 0
+    flags 0x0
+Load command 4
+      cmd LC_DYLD_CHAINED_FIXUPS
+  cmdsize 16
+  dataoff 1064960
+ datasize 56
+Load command 5
+      cmd LC_DYLD_EXPORTS_TRIE
+  cmdsize 16
+  dataoff 1065016
+ datasize 64
+Load command 6
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 1065088
+   nsyms 3
+  stroff 1065136
+ strsize 40
+Load command 7
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 0
+     iextdefsym 0
+     nextdefsym 3
+      iundefsym 3
+      nundefsym 0
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 0
+  nindirectsyms 0
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
+Load command 8
+          cmd LC_LOAD_DYLINKER
+      cmdsize 32
+         name /usr/lib/dyld (offset 12)
+Load command 9
+     cmd LC_UUID
+ cmdsize 24
+    uuid 1181C6FB-B879-3642-ADE5-91D7B81997DB
+Load command 10
+      cmd LC_BUILD_VERSION
+  cmdsize 32
+ platform 1
+    minos 26.0
+      sdk 26.2
+   ntools 1
+     tool 3
+  version 1230.1
+Load command 11
+      cmd LC_SOURCE_VERSION
+  cmdsize 16
+  version 0.0
+Load command 12
+       cmd LC_MAIN
+   cmdsize 24
+  entryoff 960
+ stacksize 0
+Load command 13
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 08:00:02 1970
+      current version 1356.0.0
+compatibility version 1.0.0
+Load command 14
+      cmd LC_FUNCTION_STARTS
+  cmdsize 16
+  dataoff 1065080
+ datasize 8
+Load command 15
+      cmd LC_DATA_IN_CODE
+  cmdsize 16
+  dataoff 1065088
+ datasize 0
+Load command 16
+      cmd LC_CODE_SIGNATURE
+  cmdsize 16
+  dataoff 1065184
+ datasize 8472
+</pre></details></section><section><h2>完整证据</h2><p><a href="evidence/native-a/commands.json">首次命令</a> · <a href="evidence/native-b/commands.json">独立重放</a> · <a href="evidence/projection.json">受限投影</a> · <a href="upstream/LICENSE">Bloaty Apache 2.0 许可</a></p><p>Bloaty 作者；源码 Copyright 2016 Google Inc. All Rights Reserved. 固定来源 f1a83e63f36beb628dcf022e1201a2eb391a22a6。仅源码研究，没有复制实现到产品。</p></section></html>
