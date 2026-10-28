@@ -1,0 +1,78 @@
+{ source: [ '-- Authored fixture: conjunction order, not a runtime trace.', 'example (p q : Prop) : p ∧ q → q ∧ p := by', '  intro h', '    constructor', '      · exact h.right', '        · exact h.left', '        ' ], infoview: 'mathlib-stable.lean:1:0\nNo info found.\nAll Messages\nRestart File' }
+[p1 "Lean Web" | space "Archify research 20261026"(38): 1 managed, 0 untracked — p1* "Lean Web"]
+root
+  container
+    svg_root
+    combobox [ref=113, loc=css:select[name="leanVersion"]]
+      text "Stable Release (v4.35.0 with mathlib, cslib)"
+    button [ref=109]
+      image
+      text "Examples"
+    button [ref=110]
+      image
+      text "Load"
+    button [ref=111]
+      image
+      text "Can I Trust This Proof?"
+    button [ref=112]
+      image
+  container
+    code
+      container
+        text "1"
+        text "2"
+        text "3"
+        text "4"
+        text "5"
+        text "6"
+        text "7"
+      container
+        container
+          container
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+          container
+            container
+              text "-- Authored fixture: conjunction order, not a runt"
+              text "ime trace."
+            container
+              text "example "
+              text "("
+              text "p q : Prop"
+              text ")"
+              text " : p ∧ q → q ∧ p := by"
+            text "  intro h"
+            text "    constructor"
+            text "      · exact h.right"
+            text "        · exact h.left"
+        canvas
+      textfield "Editor content;Press Alt+F1 for Accessibility Options." [ref=124, loc=css:textarea[aria-label="Editor content;Press Alt+F1 for Accessibility Options."]]
+    container [ref=125]
+      iframe [ref=126]
+        root
+          container
+            container [ref=127]
+              text "mathlib-stable.lean:1:0"
+              text ""
+              container
+                anchor [ref=128]
+                  text ""
+                anchor [ref=129]
+                  text ""
+            text "No info found."
+          container [ref=130]
+            text "All Messages"
+            container
+              anchor [ref=131]
+                text ""
+              anchor [ref=132]
+                text ""
+          button [ref=133]
+            text "Restart File"
+
+

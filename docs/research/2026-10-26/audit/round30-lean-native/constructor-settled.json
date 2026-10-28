@@ -1,0 +1,27 @@
+{
+  "url": "https://live.lean-lang.org/#project=mathlib-stable&codez=LTAEEEFcBcAsHsBOBTAJqAZgSwB7UigFygDG8AdgFaTknRYWhKrKIA0o580oAhqIhr0AtslDREvEsgB0AKGQ5ewgA4AbMQAoVoAI6hiABUTwVASgOgdgciI9oQEmEd2zsIBeUACMAnnNCgs5BLwoLC%2BpBQAzhKQdEhhAO2gilI8sDKIWADmsNAJSUp0ITIaGLlAA",
+  "selectedVersion": "Stable Release (v4.35.0 with mathlib, cslib)",
+  "sourceLines": [
+    "-- Authored fixture: conjunction order, not a runtime trace.",
+    "example (p q : Prop) : p ∧ q → q ∧ p := by",
+    "  intro h",
+    "  constructor",
+    "  · exact h.right",
+    "  · exact h.left",
+    ""
+  ],
+  "infoview": "mathlib-stable.lean:4:13\nTactic state\n2 goals\ncase left\np q : Prop\nh : p ∧ q\n⊢ q\ncase right\np q : Prop\nh : p ∧ q\n⊢ p\nAll Messages\nRestart File",
+  "loadingOpacity": [
+    "0"
+  ],
+  "controlTitles": [
+    "Pin state to top",
+    "Pause state",
+    "Sort by message location",
+    "Pause 'All Messages'"
+  ],
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  }
+}

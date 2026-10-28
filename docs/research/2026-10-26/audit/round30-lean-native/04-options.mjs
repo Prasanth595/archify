@@ -1,0 +1,1 @@
+const task=await taskSpace(38);const page=task.page('p1');console.log(await page.evaluate(()=>[...document.querySelector('select[name="leanVersion"]').options].map(x=>({value:x.value,text:x.text,selected:x.selected}))));help('page.selectOption');

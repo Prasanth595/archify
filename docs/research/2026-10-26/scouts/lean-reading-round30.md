@@ -1,0 +1,17 @@
+# Round 30：Lean 4 Infoview / proof state 源码调查
+
+结论：**暂缓，不实现**。自然问题是真实的：“我修改假设后，为什么 pinned Infoview 中的 goal 没变化，仍能否信任它？”[vscode-lean4 #616](https://github.com/leanprover/vscode-lean4/issues/616) 的用户报告扩展 0.0.200 / Lean 4.20 nightly 的 pinned state 不更新，附录屏；[评论](https://github.com/leanprover/vscode-lean4/issues/616#issuecomment-2838784868) 后补短 MWE。该报告是 2025 年特定版本的用户陈述，作者当时表示影响小；无当前实测、解决状态推论或可分发的用户代码授权。静态说明页无法修复其 stale UI。不要把停更视为 proof 已完成或 Lean kernel 已重新验证。
+
+另有可再现的**官方教材案例**作为之后阅读对照的候选，而不是冒称 issue 的同一输入：[完整教材源文件 `book/TPiL/Tactics.lean`](https://github.com/leanprover/theorem_proving_in_lean4/blob/4e28129fdd58037f8f5857548d5e99fe4fb0cc57/book/TPiL/Tactics.lean#L689-L720)，其中从 `p ∧ q → q ∧ p` 经 `intro`、`cases`、`constructor` 和两个 `exact` 完成证明。[官方渲染章节](https://lean-lang.org/theorem_proving_in_lean4/find/?domain=Verso.Genre.Manual.section&name=Theorem-Proving-in-Lean-4--Tactics) 已直接列出每一阶段上下文和目标：拆解后 `hp : p, hq : q`；`constructor` 产生 `q` 与 `p` 两个目标；分别以 `hq` 与 `hp` 关闭。完整原文件和呈现一并保留链接；不把不同版本的页面称同一构建或本轮运行。教材版权见[仓库许可](https://github.com/leanprover/theorem_proving_in_lean4/blob/4e28129fdd58037f8f5857548d5e99fe4fb0cc57/LICENSE)。这是教学输入，非 #616 截屏/MWE。
+
+强原生基线：[官方扩展固定版手册](https://github.com/leanprover/vscode-lean4/blob/58cafcaaaee83298e865cd2570a6d78b53776388/vscode-lean4/manual/manual.md#infoview) 在证明位置显示所有开放目标、局部假设、expected type、可跳回源码的诊断；提供 goal 折叠、目标与假设顺序、类型信息悬浮、pin、pause、refresh 和返回 pinned 位置，以及 All Messages。源码说明 [TacticInfo](https://github.com/leanprover/lean4/blob/98f7251cadc5535891d2221e13b3854af4b76e08/src/Lean/Elab/InfoTree/Types.lean) 保存 tactic 执行前后 goal 列表及各自 metavariable context；这是 elaboration 中对应源码位置的状态，不是程序运行时堆或必然的线性事件时间线。当前 UI 内容以实际光标位置、处理状态与选项为准，不能从 tactic 名称猜测精确光标两侧输出。上述扩展和 Lean 核心均 [Apache-2.0](https://github.com/leanprover/vscode-lean4/blob/58cafcaaaee83298e865cd2570a6d78b53776388/LICENSE)、[核心许可](https://github.com/leanprover/lean4/blob/98f7251cadc5535891d2221e13b3854af4b76e08/LICENSE)。两个源码 head 独立固定，不保证它们组成已测试产品版本。
+
+处理与新鲜度另需显式核对：手册 [file processing](https://github.com/leanprover/vscode-lean4/blob/58cafcaaaee83298e865cd2570a6d78b53776388/vscode-lean4/manual/manual.md#file-processing) 指出编辑后相关后续声明需重处理，未处理部分不能提供当前 goal；[dependency changes](https://github.com/leanprover/vscode-lean4/blob/58cafcaaaee83298e865cd2570a6d78b53776388/vscode-lean4/manual/manual.md#dependencies) 指出已打开文件在依赖变更后可能继续使用旧依赖状态直到重启。Pause 故意冻结显示，与 #616 意外未更新、异步处理未完成及依赖旧状态不是同一原因。
+
+官方浏览器候选 [Lean Web](https://live.lean-lang.org/) 由 Lean Lang 自身[隐私政策](https://lean-lang.org/privacy/)列为托管服务；页面需 JavaScript，文字检索无法确认实际可用、内置版本、Infoview 行为或保存状态。本轮没有控制浏览器、安装、运行 Lean 或证明输出。后续若考虑一项有界对照，先用同一完整官方证明在固定可辨版本的原生 editor 中保留每个精确光标位置、显示的 goal/context、处理完成状态、错误、原始截图和文本，再与离线 Explainer 的相同事实比较。教材本身已提供相当强的逐步展示；只有回答明确读者问题且能在不牺牲交互与保真时超出它，才值得进一步测试。现有 Explainer 可手工放版本/来源、逐步文本；Sequence 可作者标注顺序，但 proof 分支不是消息流，不能冒充语义自动解析、执行记录或实时证明。维护 Lean server、InfoTree/RPC 版本、异步/诊断和快照一致性成本高，不建议新增运行时或解析器。
+
+查重：当前 hub `docs/research` 与历史 `origin/codex/research-lab-20261025`（研究编译）按 `lean4|lean 4|infoview|proof.state|theorem.prov` 搜索无命中；已查本轮 319-head `/tmp/archify-round30-remote-heads.tsv` 同词无命中，不代表其他词一定不存在。Archify issue/PR 有界搜索 `lean OR infoview OR proof` 未给出同题；单独 `proof` 混入 Proof Lab、证据等无关结果。没有任何产品编辑、运行或新 PR。
+
+## 后续原生观察（协调人）
+
+以上保留源码阶段的判断。随后在官方 Lean Web 使用另行原创的完整 171-byte fixture，观察三个位置并固定 constructor 状态；原生 UI 能同时保留两个目标并显示当前分支的 No goals。输入、稳定等待、七张真实截图、失败记录及版本边界见 [原生记录](../audit/round30-lean-native/README.md)。这加强了暂缓额外实现的判断；并未复现 #616 的编辑后更新问题。

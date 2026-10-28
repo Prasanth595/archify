@@ -1,0 +1,141 @@
+{ label: 'last-branch', infoview: 'mathlib-stable.lean:6:16\nTactic state\nNo goals\nExpected type\nAll Messages\nRestart File', inputMatches: true }
+{ label: 'first-branch', infoview: 'mathlib-stable.lean:5:17\nTactic state\nNo goals\nExpected type\nAll Messages\nRestart File', inputMatches: true }
+{ label: 'constructor', infoview: 'mathlib-stable.lean:4:13\nTactic state\n2 goals\ncase left\np q : Prop\nh : p ∧ q\n⊢ q\ncase right\np q : Prop\nh : p ∧ q\n⊢ p\nAll Messages\nRestart File', inputMatches: true }
+[p1 "Lean Web" | space "Archify research 20261026"(38): 1 managed, 0 untracked — p1* "Lean Web"]
+root
+  container
+    svg_root
+    combobox [ref=113, loc=css:select[name="leanVersion"]]
+      text "Stable Release (v4.35.0 with mathlib, cslib)"
+    button [ref=109]
+      image
+      text "Examples"
+    button [ref=110]
+      image
+      text "Load"
+    button [ref=111]
+      image
+      text "Can I Trust This Proof?"
+    button [ref=112]
+      image
+  container
+    code
+      container
+        text "1"
+        text "2"
+        text "3"
+        text "4"
+        text "5"
+        text "6"
+        text "7"
+      container
+        container
+          container
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+            svg_root
+          container
+            container
+              text "-- Authored fixture: conjunction order, not a runt"
+              text "ime trace."
+            container
+              text "example"
+              text "("
+              text "p q : "
+              text "Prop"
+              text ")"
+              text " : p ∧ q → q ∧ p := "
+              text "by"
+            container
+              text "intro"
+              text " h"
+            text "constructor"
+            container
+              text "  · "
+              text "exact"
+              text " h.right"
+            container
+              text "  · "
+              text "exact"
+              text " h.left"
+        canvas
+      textfield "Editor content;Press Alt+F1 for Accessibility Options." [ref=124, loc=css:textarea[aria-label="Editor content;Press Alt+F1 for Accessibility Options."]]
+        text "constructor"
+    container [ref=125]
+      iframe [ref=126]
+        root
+          container
+            container [ref=127]
+              text "mathlib-stable.lean:4:13"
+              text ""
+              container
+                anchor [ref=128]
+                  text ""
+                anchor [ref=129]
+                  text ""
+            container
+              container [ref=134]
+                text "Tactic state"
+                anchor [ref=135]
+                  text ""
+              container
+                container
+                  text "2"
+                  text "goals"
+                container
+                  container [ref=136]
+                    text "case"
+                    text "left"
+                  container
+                    container
+                      container
+                        text "p"
+                        text "q"
+                      text ": "
+                      text "Prop"
+                    container
+                      text "h"
+                      text ": "
+                      container
+                        text "p"
+                        text "∧"
+                        text "q"
+                    container
+                      text "⊢"
+                      text "q"
+                container
+                  container [ref=137]
+                    text "case"
+                    text "right"
+                  container
+                    container
+                      container
+                        text "p"
+                        text "q"
+                      text ": "
+                      text "Prop"
+                    container
+                      text "h"
+                      text ": "
+                      container
+                        text "p"
+                        text "∧"
+                        text "q"
+                    container
+                      text "⊢"
+                      text "p"
+          container [ref=130]
+            text "All Messages"
+            container
+              anchor [ref=131]
+                text ""
+              anchor [ref=132]
+                text ""
+          button [ref=133]
+            text "Restart File"
+
+

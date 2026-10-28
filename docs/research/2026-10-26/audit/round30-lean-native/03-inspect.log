@@ -1,0 +1,49 @@
+{ url: 'https://live.lean-lang.org/', text: 'Latest Mathlib with Lean v4.36.0-rc2\nLatest Release (v4.36.0-rc1 with mathlib, cslib)\nStable Release (v4.35.0 with mathlib, cslib)\nNightly Testing (2026-10-27 without mathlib)\nNightly Testing (2026-10-20 with mathlib)\nLean v4.28.1 with mathlib\nLean v4.31.0 with Verso\n Examples\n Load\n Can I Trust This Proof?\n \n1', inputs: [ { tag: 'INPUT', role: null, label: null, class: '', value: '' }, { tag: 'TEXTAREA', role: 'textbox', label: 'Editor content;Press Alt+F1 for Accessibility Options.', class: 'inputarea monaco-mouse-cursor-text', value: '' } ], frames: [ { title: '', src: '' } ] }
+[p1 "Lean Web" | space "Archify research 20261026"(38): 1 managed, 0 untracked — p1* "Lean Web"]
+root
+  container
+    svg_root
+    combobox [ref=113, loc=css:select[name="leanVersion"]]
+      text "Latest Mathlib with Lean v4.36.0-rc2"
+    button [ref=109]
+      image
+      text "Examples"
+    button [ref=110]
+      image
+      text "Load"
+    button [ref=111]
+      image
+      text "Can I Trust This Proof?"
+    button [ref=112]
+      image
+  container
+    code
+      text "1"
+      container
+        svg_root
+        canvas
+      textfield "Editor content;Press Alt+F1 for Accessibility Options." [ref=114, loc=css:textarea[aria-label="Editor content;Press Alt+F1 for Accessibility Options."]]
+    container [ref=115]
+      iframe [ref=116]
+        root
+          container
+            container [ref=117]
+              text "MathlibDemo.lean:1:0"
+              text ""
+              container
+                anchor [ref=118]
+                  text ""
+                anchor [ref=119]
+                  text ""
+            text "No info found."
+          container [ref=120]
+            text "All Messages"
+            container
+              anchor [ref=121]
+                text ""
+              anchor [ref=122]
+                text ""
+          button [ref=123]
+            text "Restart File"
+
+

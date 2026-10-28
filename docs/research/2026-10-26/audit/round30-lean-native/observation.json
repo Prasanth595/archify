@@ -1,0 +1,79 @@
+{
+  "recordedOn": "2026-10-28",
+  "fixtureBytes": 171,
+  "fixtureSha256": "79bea7652842be1bb52b896355024ff70481754f6cf7ef621fdb0f873d490b73",
+  "kind": "Original authored teaching proof, not issue616 input",
+  "selectedVersionLabel": "Stable Release (v4.35.0 with mathlib, cslib)",
+  "deploymentCommit": null,
+  "serverBinaryIdentity": null,
+  "inputNormalization": "Visible Monaco view-line NBSP characters mapped to ASCII spaces, lines joined by LF; no other normalization",
+  "states": {
+    "constructor-settled": {
+      "completeInputMatchesAfterNbspNormalization": true,
+      "loadingOpacity": [
+        "0"
+      ],
+      "infoview": "mathlib-stable.lean:4:13\nTactic state\n2 goals\ncase left\np q : Prop\nh : p ∧ q\n⊢ q\ncase right\np q : Prop\nh : p ∧ q\n⊢ p\nAll Messages\nRestart File"
+    },
+    "pinned-first-branch": {
+      "completeInputMatchesAfterNbspNormalization": true,
+      "loadingOpacity": [
+        "0",
+        "0"
+      ],
+      "infoview": "mathlib-stable.lean:4:13 (pinned)\nTactic state\n2 goals\ncase left\np q : Prop\nh : p ∧ q\n⊢ q\ncase right\np q : Prop\nh : p ∧ q\n⊢ p\nmathlib-stable.lean:5:17\nTactic state\nNo goals\nExpected type\nAll Messages\nRestart File"
+    },
+    "pinned-last-branch": {
+      "completeInputMatchesAfterNbspNormalization": true,
+      "loadingOpacity": [
+        "0",
+        "0"
+      ],
+      "infoview": "mathlib-stable.lean:4:13 (pinned)\nTactic state\n2 goals\ncase left\np q : Prop\nh : p ∧ q\n⊢ q\ncase right\np q : Prop\nh : p ∧ q\n⊢ p\nmathlib-stable.lean:6:16\nTactic state\nNo goals\nExpected type\nAll Messages\nRestart File"
+    }
+  },
+  "copiedFiles": [
+    "02-open.log",
+    "02-open.mjs",
+    "03-inspect.log",
+    "03-inspect.mjs",
+    "04-options.log",
+    "04-options.mjs",
+    "05-input.log",
+    "05-input.mjs",
+    "06-inspect-version-change.log",
+    "06-inspect-version-change.mjs",
+    "07-insert-proof.log",
+    "07-insert-proof.mjs",
+    "08-preserve-and-paste.log",
+    "08-preserve-and-paste.mjs",
+    "09-cursor-states.log",
+    "09-cursor-states.mjs",
+    "10-inspect-controls.log",
+    "10-inspect-controls.mjs",
+    "11-loading-style.log",
+    "11-loading-style.mjs",
+    "12-settled-and-pin.log",
+    "12-settled-and-pin.mjs",
+    "conjunction.lean",
+    "constructor-settled.json",
+    "constructor-settled.png",
+    "constructor.json",
+    "constructor.png",
+    "first-branch.json",
+    "first-branch.png",
+    "initial.json",
+    "inserttext-attempt.json",
+    "inserttext-attempt.png",
+    "last-branch.json",
+    "last-branch.png",
+    "paste-attempt.json",
+    "pinned-first-branch.json",
+    "pinned-first-branch.png",
+    "pinned-last-branch.json",
+    "pinned-last-branch.png"
+  ],
+  "screenshots": 7,
+  "noBrowserInventoryPublished": true,
+  "newArchifyImplementation": false
+}

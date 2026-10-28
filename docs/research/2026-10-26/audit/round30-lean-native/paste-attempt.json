@@ -1,0 +1,12 @@
+{
+  "source": [
+    "-- Authored fixture: conjunction order, not a runtime trace.",
+    "example (p q : Prop) : p ∧ q → q ∧ p := by",
+    "  intro h",
+    "  constructor",
+    "  · exact h.right",
+    "  · exact h.left",
+    ""
+  ],
+  "infoview": "mathlib-stable.lean:6:22\nTactic state\n1 goal\np q : Prop\nh : p ∧ q\n⊢ q ∧ p\nAll Messages ( 1)\nRestart File"
+}

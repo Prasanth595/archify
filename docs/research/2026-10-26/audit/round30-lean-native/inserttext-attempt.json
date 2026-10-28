@@ -1,0 +1,13 @@
+{
+  "url": "https://live.lean-lang.org/#project=mathlib-stable&codez=LTAEEEFcBcAsHsBOBTAJqAZgSwB7UigFygDG8AdgFaTknRYWhKrKIA0o580oAhqIhr0AtslDREvEsgB0AKGQ5ewgA4AbMQAoVoAI6hiABUTwVASgOgdgciI9oQEmEd2zsIBeUACMAnnNCgs5BLwoLC%2BfqQUAM4SkHRIYeGgAO2gilI8sDKIWADmsNAJicmpSnQhMhoYBUXhQA",
+  "source": [
+    "-- Authored fixture: conjunction order, not a runtime trace.",
+    "example (p q : Prop) : p ∧ q → q ∧ p := by",
+    "  intro h",
+    "    constructor",
+    "      · exact h.right",
+    "        · exact h.left",
+    "        "
+  ],
+  "infoview": "mathlib-stable.lean:6:22\nTactic state\n1 goal\np q : Prop\nh : p ∧ q\n⊢ q ∧ p\nAll Messages ( 1)\nRestart File"
+}

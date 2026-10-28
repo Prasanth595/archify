@@ -1,0 +1,23 @@
+# Round 30: SWISH backtracking and cut — defer
+
+**Decision:** do not build an interpreter or another trace diagram. A natural SWISH user asks to show only exiting or failing calls for a query, but the report supplies no complete source/query/trace. Official examples provide semantics and expected answers, and native SWISH already offers an actual source-linked debugger. No same-input observation yet shows a remaining handoff or reading failure beyond that baseline.
+
+## Dedup and scope
+
+Keyword search of current `docs/research/2026-10-26` Markdown and historical `60342aa9e40618aeb7c33bdb8d65889fea3a588e` scouts found no direct SWISH/Prolog research. Prior `matching-reading-round8` covers a regex simulator's backtracking, not SWI predicate choicepoints or cut scope; PEG/Ohm has ordered choices but cannot establish Prolog execution. Rule-matching focuses configuration/conditions; trace-waterfall and trace-flow address different data. 319-head supplied snapshot has decision-thread and trace branches but no named Prolog/SWISH branch; bounded Archify issue/PR keyword query `prolog OR swish OR backtracking` returned zero. These searches do not prove no semantic duplicate exists.
+
+## Natural task and strongest native baseline
+
+[SWISH issue #118](https://github.com/SWI-Prolog/swish/issues/118) asks to filter a trace by exit/fail to understand proofs or why a goal cannot be proven. Maintainer explains `trace/2` wraps specified predicates to print on ports; it is distinct from filtering the interactive tracer, and shared predicates raise multi-user implications. The issue is closed, which does not itself prove that the requested filtering shipped. The report has no complete original goal/program or resulting trace. Exit-only is not automatically a complete proof and fail-only is not automatically all reasons a goal is unprovable.
+
+Pinned [SWISH `716a4e1435378be386f0e96fce85662e30801517`](https://github.com/SWI-Prolog/swish/tree/716a4e1435378be386f0e96fce85662e30801517), [Simplified BSD license](https://github.com/SWI-Prolog/swish/blob/716a4e1435378be386f0e96fce85662e30801517/LICENSE), has [debug help](https://github.com/SWI-Prolog/swish/blob/716a4e1435378be386f0e96fce85662e30801517/web/help/debug.html): Solutions → Debug (trace), source gutter breakpoints and step into/over/out, retry, continue and abort; it explicitly says only calls appearing in current source files are shown and details of called predicates are hidden. [trace.pl](https://github.com/SWI-Prolog/swish/blob/716a4e1435378be386f0e96fce85662e30801517/lib/trace.pl) intercepts actual Prolog ports and frames. Strong comparison must include complete answer enumeration, source-linked interactive tracing and its documented filtering scope. These are source/docs findings, not live deployed-version or executed-browser claims.
+
+## Complete bounded official example, distinct from #118
+
+The [SWI-Prolog control reference](https://www.swi-prolog.org/pldoc/man?section=control) gives complete predicate `optional(Goal) :- ( Goal *-> true ; true ).` and two queries: `optional(member(X,[a,b]))` has answers `X=a`, `X=b`; `optional(member(X,[]))` succeeds without binding `X`. That is documented expected behavior, not this round's execution or a captured step-by-step trace. The same manual gives cut-scope examples `t1 :- (a, !, fail ; b).` and `t4 :- call((a, !, fail ; b)).` and explicitly distinguishes enclosing predicate and meta-call scopes, but leaves `a` and `b` undefined, so it is not a complete runnable same-input answer fixture. `->` commits choices in its condition differently from `!`; do not draw an unobserved search path or infer which choicepoints were physically allocated.
+
+The manual is a rolling web page, not proof of current deployment; fixed [SWI-Prolog source `0612809c639d2f5b57cc3dc6557d55986f06d67d`](https://github.com/SWI-Prolog/swipl-devel/tree/0612809c639d2f5b57cc3dc6557d55986f06d67d) has [Simplified BSD license and linked-library caveats](https://github.com/SWI-Prolog/swipl-devel/blob/0612809c639d2f5b57cc3dc6557d55986f06d67d/LICENSE). Do not assume third-party user submissions inherit repo licenses.
+
+## Remaining seam
+
+Obtain a public complete source and exact query tied to the user's question, plus native version, full answers and observed ports/interactive steps. Compare source scope, retry, multiple answers, filtered/unfiltered trace and any hidden built-in calls before proposing a source-linked static explanation. If the native experience already answers it, stop; an authored diagram can only annotate witnessed events and cut semantics, not invent choicepoint history or prove all alternate paths. No browser operation, execution, installation, new repo files or PR in this scout.

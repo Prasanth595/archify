@@ -1,0 +1,41 @@
+{
+  "checkedOn": "2026-10-28",
+  "latestHead": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "latestCommitTime": "2026-10-27T18:36:15Z",
+  "previousExperimentPin": "f27b8bef63ec336b8e3487e90ccd484a2fa7a235",
+  "comparison": {
+    "ahead": 2,
+    "behind": 0,
+    "commits": [
+      {
+        "sha": "45eb908440d21037864ca12863d19d48afb85d44",
+        "title": "Track review progress and draw flows as branching graphs",
+        "url": "https://github.com/gtindo/task-view/commit/45eb908440d21037864ca12863d19d48afb85d44"
+      },
+      {
+        "sha": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+        "title": "Scope the graph to what is picked in Flows",
+        "url": "https://github.com/gtindo/task-view/commit/a3fa21767bfaeb3077fdda08bddb7249366caa93"
+      }
+    ],
+    "changedFiles": [
+      "README.md",
+      "cmd/task-view/testdata/valid.golden.json",
+      "demo/change-broken.json",
+      "demo/change-show-code-after.json",
+      "docs/TASK_REVIEW.md",
+      "docs/USER_GUIDE.md",
+      "internal/instructions/TASK_REVIEW.md",
+      "internal/render/assets/app.css",
+      "internal/render/assets/app.js",
+      "internal/review/findings.go",
+      "internal/review/load.go",
+      "internal/review/load_test.go",
+      "internal/review/types.go",
+      "specs/init.md"
+    ]
+  },
+  "alreadyCoveredBy": "audit/round18-task-view-native/README.md and audit/round18-task-view-delta.md",
+  "nativeBrowserRerunThisBatch": false,
+  "correction": "Latest relative to the early experiment pin is not new relative to round18; initial novelty inference corrected before implementation."
+}

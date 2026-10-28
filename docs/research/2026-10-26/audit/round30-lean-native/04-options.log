@@ -1,0 +1,7 @@
+[ { value: 'MathlibDemo', text: 'Latest Mathlib with Lean v4.36.0-rc2', selected: true }, { value: 'mathlib-release', text: 'Latest Release (v4.36.0-rc1 with mathlib, cslib)', selected: false }, { value: 'mathlib-stable', text: 'Stable Release (v4.35.0 with mathlib, cslib)', selected: false }, { value: 'lean-nightly', text: 'Nightly Testing (2026-10-27 without mathlib)', selected: false }, { value: 'nightly-with-mathlib', text: 'Nightly Testing (2026-10-20 with mathlib)', selected: false }, { value: 'mathlib-v4.28.0', text: 'Lean v4.28.1 with mathlib', selected: false }, { value: 'verso-demo', text: 'Lean v4.31.0 with Verso', selected: false } ]
+Page.selectOption
+
+Select by a value-or-label string or { value?, label?, index? }; arrays select multiple options, while null or [] clears the selection. The select must be enabled, but disabled options remain programmatically selectable. Options: timeout: Maximum wait for the element to become usable in milliseconds; defaults to 3000.
+
+await page.selectOption(selector, valueOrValues, { timeout? })
+

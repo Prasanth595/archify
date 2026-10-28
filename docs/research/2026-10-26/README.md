@@ -698,3 +698,15 @@ Ohm页面报告引擎 **17.5.0**，编辑器部署commit未知，与固定编辑
 ![CUE 问题先行候选的真实桌面截图](https://raw.githubusercontent.com/tt-a1i/archify/a1ad749dd11a1c650211f86e3c3dc8ea0c2c9c59/experiments/cue-defaults/evidence/screenshots/final-comparison-desktop.png)
 
 本批末 dev 已从冻结基线 d5d97949 移至 6ca6a5c8；[范围核查](audit/round29-base-drift.md) 未发现 Explainer/Viewer/作者输入变更，仍不冒称在新 head 重放。源码、许可与状态边界见 [来源审计](audit/round29-source-audit.md)。仅推送分支，未建 PR、合并、发布或安装；持续目标保持进行。
+
+## 第 30 批：原生状态对照与既有覆盖复核
+
+开始前刷新 [319 条远程 head](audit/round30-remote-heads.tsv)。task-view 当前 a3fa217 相对最早实验的 f27b8 多两个提交，但[同一版本已在第 18 批原生检查](audit/round18-task-view-native/README.md)。本轮最初误把这当新方向，随后在实现前纠正；没有重跑相同浏览器流程或新增同义分支。[当前源码核查](audit/round30-taskview-scope-audit.md)进一步区分了共享邻居的收起语义、声明测试关联和 URL 不保存展开集合的边界；[当前 head](audit/round30-taskview-head.json)不能被当作新的功能缺口。
+
+[Lean 原生检查](audit/round30-lean-native/README.md)使用原创 171-byte 证明，核对完整输入与三个光标位置，再固定 constructor 的两个目标，与第一、第二分支的 No goals 并列。三份稳定状态均等待 Updating opacity 为 0；七张实拍和首次自动缩进失败都保留。原生工具已能提供这组上下文对照，当前不足以支持维护另一套证明状态视图。No goals 是对应位置的展示，不能擅自推广成整份证明的执行完成或独立 kernel 验证。
+
+[SWISH 调查](scouts/swish-reading-round30.md)仍缺与自然问题相同的完整程序/查询及实际 trace；官方教学案例和原生 debugger 是强基线，本批没有运行它或新增解释器。
+
+CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS 的 /var 链接到 /private/var，两种拼写产生较长相对路径，但所有归档/重放 sourcePath 与 baseDir 均解析到正确文件，源稿字节、hash 与嵌入文本一致。现有实验分支已更新到 [`04550c4f`](https://github.com/tt-a1i/archify/tree/04550c4f83141557cf58164e5a7eb1886c0f871c/experiments/cue-defaults)，只增加[核查报告](https://github.com/tt-a1i/archify/blob/04550c4f83141557cf58164e5a7eb1886c0f871c/experiments/cue-defaults/evidence/round30-origin-resolution.md)和验证说明，未重建页面。完整 HTML 字节仍不同，也没有新增跨机器或 patch 操作验收。
+
+本批未出现通过筛选的新产品实现方向；补证与既有实验跟进已保存，目标继续进行。未新建 PR、合并、发布、部署或安装。
