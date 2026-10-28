@@ -1,0 +1,76 @@
+[
+  {
+    "variant": "original",
+    "nodeCount": 7,
+    "portCount": 2,
+    "edgeCount": 6,
+    "routedEdges": 6,
+    "missingSections": [],
+    "width": 330,
+    "height": 222,
+    "ports": [
+      {
+        "node": "n2",
+        "id": "p1",
+        "x": -10,
+        "y": 154
+      },
+      {
+        "node": "n2",
+        "id": "p2",
+        "x": -10,
+        "y": 47
+      }
+    ]
+  },
+  {
+    "variant": "fixed-side",
+    "nodeCount": 7,
+    "portCount": 2,
+    "edgeCount": 6,
+    "routedEdges": 6,
+    "missingSections": [],
+    "width": 410,
+    "height": 253,
+    "ports": [
+      {
+        "node": "n2",
+        "id": "p1",
+        "x": -10,
+        "y": 114
+      },
+      {
+        "node": "n2",
+        "id": "p2",
+        "x": 91.5,
+        "y": -10
+      }
+    ]
+  },
+  {
+    "variant": "separate-children",
+    "nodeCount": 7,
+    "portCount": 2,
+    "edgeCount": 6,
+    "routedEdges": 5,
+    "missingSections": [
+      "e2"
+    ],
+    "width": 405,
+    "height": 182,
+    "ports": [
+      {
+        "node": "n2",
+        "id": "p1",
+        "x": -10,
+        "y": 12
+      },
+      {
+        "node": "n2",
+        "id": "p2",
+        "x": -10,
+        "y": 98
+      }
+    ]
+  }
+]

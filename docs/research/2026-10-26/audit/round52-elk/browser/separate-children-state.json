@@ -1,0 +1,37 @@
+{
+  "url": "http://127.0.0.1:8872/separate-children.html",
+  "title": "ELK port / hierarchy audit — separate-children",
+  "viewport": {
+    "width": 1291,
+    "height": 762
+  },
+  "text": "C · Separate children\nSame graph; SEPARATE_CHILDREN · elkjs 0.12.1 · 7 nodes / 2 named ports / 6 edges\noriginal\nfixed-side\nseparate-children\nn0\nn1\nn2\np1\np2\nn3\nn4\nn5\nn6\nInspect the same relationships\n\ne2 remains in JSON but has no route sections.\n\ne2: n0 → n4 crosses both n2 and n3 boundaries. When routed, its line is teal.\ne3: n1 → p2 enters the named port; e4: p2 → n6 continues inside n2.\ne5: n6 → n6 is the self-loop.\nGeometry extent: 405 × 182; routed edges: 5/6.\n\ninput · output\n\nActual ELK engine output, drawn by a small research harness. Node and port labels are harness styling; all node/port coordinates and routed points come from the saved output. This is not the ELK Live UI or an Archify rendering.\nFixture: kieler/elkjs 624ae90aa37110033a8af59c5ccbb292708b4317, test/examples/test-browser-draw2.html. EPL-2.0 / conditional secondary GPL terms retained in sources/.",
+  "renderedEdges": [
+    {
+      "id": "e1",
+      "points": "72,42 115,42"
+    },
+    {
+      "id": "e3",
+      "points": "72,128 115,128"
+    },
+    {
+      "id": "e4",
+      "points": "125,128 137,128"
+    },
+    {
+      "id": "e5",
+      "points": "157,98 157,88 177,88 177,98"
+    },
+    {
+      "id": "e6",
+      "points": "289,79 309,79"
+    }
+  ],
+  "svgBox": {
+    "x": 30.5,
+    "y": 181,
+    "width": 625,
+    "height": 395
+  }
+}

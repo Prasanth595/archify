@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:8872/fixed-side.html",
+  "title": "ELK port / hierarchy audit — fixed-side",
+  "viewport": {
+    "width": 1291,
+    "height": 762
+  },
+  "text": "B · Fixed port sides\nSame graph; p1 WEST, p2 NORTH · elkjs 0.12.1 · 7 nodes / 2 named ports / 6 edges\noriginal\nfixed-side\nseparate-children\nn0\nn1\nn2\np1\np2\nn3\nn4\nn5\nn6\nInspect the same relationships\n\nAll six edges have route sections.\n\ne2: n0 → n4 crosses both n2 and n3 boundaries. When routed, its line is teal.\ne3: n1 → p2 enters the named port; e4: p2 → n6 continues inside n2.\ne5: n6 → n6 is the self-loop.\nGeometry extent: 410 × 253; routed edges: 6/6.\n\ninput · output\n\nActual ELK engine output, drawn by a small research harness. Node and port labels are harness styling; all node/port coordinates and routed points come from the saved output. This is not the ELK Live UI or an Archify rendering.\nFixture: kieler/elkjs 624ae90aa37110033a8af59c5ccbb292708b4317, test/examples/test-browser-draw2.html. EPL-2.0 / conditional secondary GPL terms retained in sources/.",
+  "renderedEdges": [
+    {
+      "id": "e1",
+      "points": "72,207 82,207 82,202 115,202"
+    },
+    {
+      "id": "e2",
+      "points": "72,187 154,187"
+    },
+    {
+      "id": "e3",
+      "points": "72,42 221.5,42 221.5,73"
+    },
+    {
+      "id": "e4",
+      "points": "221.5,73 221.5,135 326,135"
+    },
+    {
+      "id": "e5",
+      "points": "346,105 346,95 366,95 366,105"
+    },
+    {
+      "id": "e6",
+      "points": "214,187 234,187"
+    }
+  ],
+  "svgBox": {
+    "x": 30.5,
+    "y": 181,
+    "width": 625,
+    "height": 395
+  }
+}

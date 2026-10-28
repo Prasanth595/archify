@@ -1,0 +1,160 @@
+[p1 "ELK port / hierarchy audit — original" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "ELK port / hierarchy audit — original"]
+root
+  container
+    heading
+      text "A · Official fixture"
+    text "INCLUDE_CHILDREN; ports may move · elkjs 0.12.1 · 7 nodes / 2 named ports / 6 edges"
+    container
+      anchor [ref=1367, loc=href:/original.html, url=http://127.0.0.1:8872/original.html]
+        text "original"
+      anchor [ref=1368, loc=href:/fixed-side.html, url=http://127.0.0.1:8872/fixed-side.html]
+        text "fixed-side"
+      anchor [ref=1369, loc=href:/separate-children.html, url=http://127.0.0.1:8872/separate-children.html]
+        text "separate-children"
+    container
+      image "n0 n1 n2 p1 p2 n3 n4 n5 n6"
+        text "n0"
+        text "n1"
+        text "n2"
+        text "p1"
+        text "p2"
+        text "n3"
+        text "n4"
+        text "n5"
+        text "n6"
+      container
+        heading
+          text "Inspect the same relationships"
+        paragraph
+          text "All six edges have route sections."
+        unordered_list
+          list_item
+            text "e2: n0 → n4"
+            text "crosses both n2 and n3 boundaries. When routed, its line is teal."
+          list_item
+            text "e3: n1 → p2"
+            text "enters the named port;"
+            text "e4: p2 → n6"
+            text "continues inside n2."
+          list_item
+            text "e5: n6 → n6"
+            text "is the self-loop."
+          list_item
+            text "Geometry extent: 330 × 222; routed edges: 6/6."
+        paragraph
+          anchor [ref=1370, loc=href:/input-original.json, url=http://127.0.0.1:8872/input-original.json]
+            text "input"
+          text "·"
+          anchor [ref=1371, loc=href:/output-original.json, url=http://127.0.0.1:8872/output-original.json]
+            text "output"
+    container
+      text "Actual ELK engine output, drawn by a small research harness. Node and port labels are harness styling; all node/port coordinates and routed points come from the saved output. This is not the ELK Live ..."
+      text "Fixture: kieler/elkjs 624ae90aa37110033a8af59c5ccbb292708b4317, test/examples/test-browser-draw2.html. EPL-2.0 / conditional secondary GPL terms retained in sources/."
+
+[p1 "ELK port / hierarchy audit — fixed-side" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "ELK port / hierarchy audit — fixed-side"]
+root
+  container
+    heading
+      text "B · Fixed port sides"
+    text "Same graph; p1 WEST, p2 NORTH · elkjs 0.12.1 · 7 nodes / 2 named ports / 6 edges"
+    container
+      anchor [ref=1372, loc=href:/original.html, url=http://127.0.0.1:8872/original.html]
+        text "original"
+      anchor [ref=1373, loc=href:/fixed-side.html, url=http://127.0.0.1:8872/fixed-side.html]
+        text "fixed-side"
+      anchor [ref=1374, loc=href:/separate-children.html, url=http://127.0.0.1:8872/separate-children.html]
+        text "separate-children"
+    container
+      image "n0 n1 n2 p1 p2 n3 n4 n5 n6"
+        text "n0"
+        text "n1"
+        text "n2"
+        text "p1"
+        text "p2"
+        text "n3"
+        text "n4"
+        text "n5"
+        text "n6"
+      container
+        heading
+          text "Inspect the same relationships"
+        paragraph
+          text "All six edges have route sections."
+        unordered_list
+          list_item
+            text "e2: n0 → n4"
+            text "crosses both n2 and n3 boundaries. When routed, its line is teal."
+          list_item
+            text "e3: n1 → p2"
+            text "enters the named port;"
+            text "e4: p2 → n6"
+            text "continues inside n2."
+          list_item
+            text "e5: n6 → n6"
+            text "is the self-loop."
+          list_item
+            text "Geometry extent: 410 × 253; routed edges: 6/6."
+        paragraph
+          anchor [ref=1375, loc=href:/input-fixed-side.json, url=http://127.0.0.1:8872/input-fixed-side.json]
+            text "input"
+          text "·"
+          anchor [ref=1376, loc=href:/output-fixed-side.json, url=http://127.0.0.1:8872/output-fixed-side.json]
+            text "output"
+    container
+      text "Actual ELK engine output, drawn by a small research harness. Node and port labels are harness styling; all node/port coordinates and routed points come from the saved output. This is not the ELK Live ..."
+      text "Fixture: kieler/elkjs 624ae90aa37110033a8af59c5ccbb292708b4317, test/examples/test-browser-draw2.html. EPL-2.0 / conditional secondary GPL terms retained in sources/."
+
+[p1 "ELK port / hierarchy audit — separate-children" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "ELK port / hierarchy audit — separate-children"]
+root
+  container
+    heading
+      text "C · Separate children"
+    text "Same graph; SEPARATE_CHILDREN · elkjs 0.12.1 · 7 nodes / 2 named ports / 6 edges"
+    container
+      anchor [ref=1377, loc=href:/original.html, url=http://127.0.0.1:8872/original.html]
+        text "original"
+      anchor [ref=1378, loc=href:/fixed-side.html, url=http://127.0.0.1:8872/fixed-side.html]
+        text "fixed-side"
+      anchor [ref=1379, loc=href:/separate-children.html, url=http://127.0.0.1:8872/separate-children.html]
+        text "separate-children"
+    container
+      image "n0 n1 n2 p1 p2 n3 n4 n5 n6"
+        text "n0"
+        text "n1"
+        text "n2"
+        text "p1"
+        text "p2"
+        text "n3"
+        text "n4"
+        text "n5"
+        text "n6"
+      container
+        heading
+          text "Inspect the same relationships"
+        paragraph
+          text "e2 remains in JSON but has no route sections."
+        unordered_list
+          list_item
+            text "e2: n0 → n4"
+            text "crosses both n2 and n3 boundaries. When routed, its line is teal."
+          list_item
+            text "e3: n1 → p2"
+            text "enters the named port;"
+            text "e4: p2 → n6"
+            text "continues inside n2."
+          list_item
+            text "e5: n6 → n6"
+            text "is the self-loop."
+          list_item
+            text "Geometry extent: 405 × 182; routed edges: 5/6."
+        paragraph
+          anchor [ref=1380, loc=href:/input-separate-children.json, url=http://127.0.0.1:8872/input-separate-children.json]
+            text "input"
+          text "·"
+          anchor [ref=1381, loc=href:/output-separate-children.json, url=http://127.0.0.1:8872/output-separate-children.json]
+            text "output"
+    container
+      text "Actual ELK engine output, drawn by a small research harness. Node and port labels are harness styling; all node/port coordinates and routed points come from the saved output. This is not the ELK Live ..."
+      text "Fixture: kieler/elkjs 624ae90aa37110033a8af59c5ccbb292708b4317, test/examples/test-browser-draw2.html. EPL-2.0 / conditional secondary GPL terms retained in sources/."
+
+

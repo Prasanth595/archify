@@ -1,0 +1,25 @@
+{
+  "node": "v26.12.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "elkVersion": "0.12.1",
+  "fixture": "Official upstream test/examples/test-browser-draw2.html; researcher-selected example, not an independent user task",
+  "scope": "Sequential exploratory layouts. Durations are call observations only, not authoring speed or a benchmark.",
+  "records": [
+    {
+      "variant": "original",
+      "status": "resolved",
+      "elapsedMs": 50.923666
+    },
+    {
+      "variant": "fixed-side",
+      "status": "resolved",
+      "elapsedMs": 10.038749999999993
+    },
+    {
+      "variant": "separate-children",
+      "status": "resolved",
+      "elapsedMs": 10.336250000000007
+    }
+  ]
+}

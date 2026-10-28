@@ -1,0 +1,10 @@
+/Users/tsk/.local/share/archify-tuning/evidence/2026-10-29-round52-elk/elk.bundled.js:177
+        this.worker.terminate();
+                    ^
+
+TypeError: this.worker.terminate is not a function
+    at PromisedWorker.terminate (/Users/tsk/.local/share/archify-tuning/evidence/2026-10-29-round52-elk/elk.bundled.js:177:21)
+    at ELKNode.terminateWorker (/Users/tsk/.local/share/archify-tuning/evidence/2026-10-29-round52-elk/elk.bundled.js:118:36)
+    at file:///Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round52-elk/run.mjs:30:18
+
+Node.js v26.12.0
