@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-29",
+  "initialQueryError": {
+    "query": "repo:tt-a1i/archify blame",
+    "status": 422,
+    "message": "Query must include is:issue or is:pull-request; corrected queries below."
+  },
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:issue blame",
+      "total": 1,
+      "incomplete": false,
+      "items": [
+        {
+          "number": 590,
+          "title": "validate fails on large workflows: checker report exceeds spawnSync's default 1 MiB buffer",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/issues/590"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pull-request blame",
+      "total": 2,
+      "incomplete": false,
+      "items": [
+        {
+          "number": 963,
+          "title": "docs(license): relicense to AGPL-3.0 starting with 4.0.0 (draft)",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/963"
+        },
+        {
+          "number": 1080,
+          "title": "Add llms.txt install brief and contributors wall",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/1080"
+        }
+      ]
+    }
+  ],
+  "taskView": {
+    "sha": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+    "date": "2026-10-27T18:36:15Z",
+    "url": "https://github.com/gtindo/task-view/commit/a3fa21767bfaeb3077fdda08bddb7249366caa93"
+  },
+  "sources": [
+    {
+      "project": "git/git",
+      "commit": "d82adb61ba2fd11d8f2587fca1b6bd7925ce4044",
+      "path": "Documentation/blame-options.adoc",
+      "lines": "118-136",
+      "readCharacterCount": 6090,
+      "url": "https://github.com/git/git/blob/d82adb61ba2fd11d8f2587fca1b6bd7925ce4044/Documentation/blame-options.adoc",
+      "license": "GPL-2.0; source linked only; not copied or executed"
+    },
+    {
+      "project": "git/git",
+      "commit": "d82adb61ba2fd11d8f2587fca1b6bd7925ce4044",
+      "path": "builtin/blame.c",
+      "lines": "361-364,515-521,753-758",
+      "readCharacterCount": 35589,
+      "url": "https://github.com/git/git/blob/d82adb61ba2fd11d8f2587fca1b6bd7925ce4044/builtin/blame.c",
+      "license": "GPL-2.0; source linked only; not copied or executed"
+    },
+    {
+      "project": "git/git",
+      "commit": "d82adb61ba2fd11d8f2587fca1b6bd7925ce4044",
+      "path": "t/t8013-blame-ignore-revs.sh",
+      "lines": "143-238",
+      "readCharacterCount": 9479,
+      "url": "https://github.com/git/git/blob/d82adb61ba2fd11d8f2587fca1b6bd7925ce4044/t/t8013-blame-ignore-revs.sh",
+      "license": "GPL-2.0; source linked only; not copied or executed"
+    }
+  ]
+}

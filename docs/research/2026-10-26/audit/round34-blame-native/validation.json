@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "runs": 2,
+  "commandsPerRun": 24,
+  "readbackCommandsPerRun": 3,
+  "identicalCommitIds": 4,
+  "pairedStreamsCompared": 46,
+  "excluded": "init paths and elapsed timings",
+  "observed": {
+    "ordinaryBlameCommit": "C for all five lines",
+    "reassignedLines": 4,
+    "unblamableLines": 1,
+    "flagsPresentWithMarkingDisabled": false,
+    "line2AttributedTo": "B",
+    "line2AtB": "retry_limit=5",
+    "line2Current": "retry_limit = 4",
+    "explicitIgnoreFileEqualsIgnoreRev": true,
+    "repositoryClean": true
+  }
+}

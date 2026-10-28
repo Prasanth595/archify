@@ -730,3 +730,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 33 批 · Finder 独立关系计数
 
 [Jless 源码研究、原生复现与交付记录](scouts/finder-relationship-count-round33.md)：已推送独立 `codex/lab-finder-link-count@b91366b99e75fd3157fb4fed98489099eb89a383`，没有创建 PR。原始 Cache Miss 示例中 Redis 2→3、API 9→10，与 Passport 对齐；保留真实前后页面、29 项本地测试、生成物与归档验证、失败夹具和许可来源。详见固定版本报告中的范围与限制。
+
+## 第 34 批 · blame 归属边界
+
+[原生对照与筛选结论](scouts/blame-attribution-round34.md)：两份新临时仓库共 54 条命令验证忽略提交后的行归属；当前文本不必存在于被归属提交，porcelain 也需显式开启标记。原生工具已回答本例，暂不新增 parser 或图形实验。task-view HEAD 仍为既有固定版本。只更新研究分支，无新 PR。
