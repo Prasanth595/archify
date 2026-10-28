@@ -1,0 +1,271 @@
+{
+  "kind": "derived browser evidence for fixed 55-item gallery; original JSON and PNG linked separately",
+  "status": "root-browser-observed-and-artifact-remote-verified",
+  "delivery": {
+    "sourceHub": "Published as ancestor of independently verified remote gallery commit.",
+    "gallery": "Artifact published; git ls-remote returned exact commit 640943883a94e52e8b7d6ea3f97cfe35673c8ba6. This follow-up only records delivery.",
+    "experiment": "Root reported exact remote head f79704cb63f1577246752c93f8d648a000ea978b verified; zero Actions/check runs is not CI success.",
+    "verifiedPublishedCommit": "640943883a94e52e8b7d6ea3f97cfe35673c8ba6",
+    "remoteBranch": "codex/research-lab-20261025",
+    "priorLocalObservationCommit": "640943883a94e52e8b7d6ea3f97cfe35673c8ba6"
+  },
+  "hubSourceCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
+  "hubReadme": {
+    "path": "docs/research/2026-10-25/README.md",
+    "commit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
+    "sha256": "9ad6adb7fff8efaa250070f3bc70a5f25584824cfec663455b2c70a96ff1c705",
+    "bytes": 68966,
+    "gitBlob": "8bd2517d9d13ece3fee2552e1a23dbe1e9657ac7"
+  },
+  "artifacts": {
+    "index.html": {
+      "path": "index.html",
+      "sha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "bytes": 17758320
+    },
+    "manifest.json": {
+      "path": "manifest.json",
+      "sha256": "ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96",
+      "bytes": 126153
+    },
+    "selection.json": {
+      "path": "selection.json",
+      "sha256": "1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8",
+      "bytes": 28003
+    },
+    "verification.json": {
+      "path": "verification.json",
+      "sha256": "3bdef7e9eccb0878f7f67222b7faf44004f32bc335ac4cb024438ba68ac5ced4",
+      "bytes": 800
+    },
+    "README.md": {
+      "path": "README.md",
+      "sha256": "7ce1d506074fadf89c76af79568f2c84f23f3c4cae0077e2b22a0b9e5038e606",
+      "bytes": 49308
+    },
+    "template.html": {
+      "path": "template.html",
+      "sha256": "bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9",
+      "bytes": 16951
+    },
+    "build.py": {
+      "path": "build.py",
+      "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e",
+      "bytes": 9748
+    },
+    "verify.py": {
+      "path": "verify.py",
+      "sha256": "d806985fcb08bdb071f2b528c35953aca80e522267a32b0611a2f8199617ab46",
+      "bytes": 4853
+    }
+  },
+  "summary": {
+    "experiments": 55,
+    "images": 55,
+    "pngBytes": 13212079,
+    "groupCounts": {
+      "product": 17,
+      "offline": 17,
+      "content": 21
+    },
+    "deferredCountedAsPublished": false
+  },
+  "rawSources": [
+    {
+      "path": "screenshots55/dialog.json",
+      "sha256": "232e9b2c846b12f7e2db69b82b1f1186435afe34c5c1b74bace88d9f5b93654c",
+      "bytes": 472
+    },
+    {
+      "path": "screenshots55/empty-reset.json",
+      "sha256": "048bf5a5379c5393812f48819d0325ab50e3dee4bded73b3ce8ff9147ebbd691",
+      "bytes": 172
+    },
+    {
+      "path": "screenshots55/filters-and-card.json",
+      "sha256": "ad83050f460c7cc1a52a3e0906fd45cc3991499c2c92cfda85195e7b2b126a4a",
+      "bytes": 553
+    },
+    {
+      "path": "screenshots55/narrow.json",
+      "sha256": "e29712fe87b4f6ca5c9a9a868c35fdaf2ccb28a1928e89ef51b430739d07993a",
+      "bytes": 216
+    },
+    {
+      "path": "screenshots55/source-binding.json",
+      "sha256": "32c9796bc96d0c490bc5d1d5bcc4604abd77e696bedfc2c28544b962848c270e",
+      "bytes": 882
+    },
+    {
+      "path": "screenshots55/task-finished.json",
+      "sha256": "60db7905f7daef5821eef3800e070f30b89edece8a3f956508e5d5f58db1fa1e",
+      "bytes": 100
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots55/card-light.png",
+      "sha256": "2279986081c84fa7a8e25a2a3f22ad612ff3828386afa96179b54082e9424be2",
+      "bytes": 159432,
+      "width": 1440,
+      "height": 1100,
+      "boundHtmlSha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "rootViewed": true,
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "observationSource": "screenshots55/filters-and-card.json"
+    },
+    {
+      "path": "screenshots55/dialog-light.png",
+      "sha256": "11de2a35a0f9174834b1dc22335c0fd4f782be76f534e3220a3b9b39ca55aaec",
+      "bytes": 189536,
+      "width": 1440,
+      "height": 1100,
+      "boundHtmlSha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "rootViewed": true,
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "observationSource": "screenshots55/dialog.json"
+    },
+    {
+      "path": "screenshots55/narrow-dark.png",
+      "sha256": "2090411b022cd5a6b666a53fb01ac832c1c6d31a66a330e6ff48ebf07cded366",
+      "bytes": 84244,
+      "width": 390,
+      "height": 844,
+      "boundHtmlSha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "rootViewed": true,
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
+      "observationSource": "screenshots55/narrow.json"
+    }
+  ],
+  "observations": {
+    "dialog": {
+      "kind": "actual-ego-browser-observation",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "keyboardEnterOpened": true,
+      "decoded": {
+        "width": 1440,
+        "height": 1250,
+        "bytes": 147115,
+        "sha256": "50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e"
+      },
+      "originalSize": {
+        "width": 1440,
+        "height": 1250
+      },
+      "afterEscape": {
+        "open": false,
+        "src": null,
+        "focus": "查看 Mandatory paths 完整原图"
+      }
+    },
+    "empty-reset": {
+      "kind": "actual-ego-browser-observation",
+      "before": "显示 0 / 55 项",
+      "after": {
+        "status": "显示 55 / 55 项",
+        "value": "",
+        "focus": "INPUT"
+      }
+    },
+    "filters-and-card": {
+      "kind": "actual-ego-browser-observation",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "counts": [
+        {
+          "name": "产品交互",
+          "status": "显示 17 / 55 项"
+        },
+        {
+          "name": "离线适配",
+          "status": "显示 17 / 55 项"
+        },
+        {
+          "name": "内容示例",
+          "status": "显示 21 / 55 项"
+        },
+        {
+          "name": "全部",
+          "status": "显示 55 / 55 项"
+        }
+      ],
+      "decoded": {
+        "width": 1440,
+        "height": 1250,
+        "complete": true,
+        "status": "显示 1 / 55 项"
+      }
+    },
+    "narrow": {
+      "kind": "actual-ego-browser-observation",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "mobile": false
+      },
+      "narrow": {
+        "client": 375,
+        "scroll": 375,
+        "status": "显示 1 / 55 项"
+      }
+    },
+    "source-binding": {
+      "kind": "actual-browser-artifact-binding",
+      "source": {
+        "index.html": {
+          "bytes": 17758320,
+          "sha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d"
+        },
+        "manifest.json": {
+          "bytes": 126153,
+          "sha256": "ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96"
+        },
+        "selection.json": {
+          "bytes": 28003,
+          "sha256": "1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8"
+        }
+      },
+      "taskSpaceId": 10,
+      "sourceCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
+      "experimentCommit": "f79704cb63f1577246752c93f8d648a000ea978b",
+      "imageSha256": "50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e",
+      "limits": [
+        "Actual desktop browser plus narrow desktop viewport; not touch/AT/human acceptance",
+        "Gallery UI observation does not retest 54 prior experiments"
+      ]
+    },
+    "task-finished": {
+      "taskSpaceId": 10,
+      "finishReturned": true,
+      "keep": [],
+      "continuedPageOperations": false
+    }
+  },
+  "historical54": {
+    "path": "browser-evidence54.json",
+    "sha256": "a6cf0479d4c0fa56a22c9f3f876afc196c555528aef32ab27096bbf6955b65ec",
+    "bytes": 8551
+  },
+  "completion": {
+    "taskSpaceId": 10,
+    "browserRoundFinished": true,
+    "keep": [],
+    "continuedPageOperations": false,
+    "scope": "Only this browser round is finished. Continuing research remains active; no second implementation in this batch."
+  },
+  "scope": "Only new Mandatory paths card and common controls; 54 preceding selections/items/cards/PNG bytes unchanged. No browser reuse from prior gallery as current evidence.",
+  "limits": [
+    "Three completed screenshots were viewed by root; card capture waited for actual image decode.",
+    "Desktop Chromium and narrow desktop CSS viewport, not physical touch, AT or human acceptance.",
+    "No previous54 experiment rerun, full Tab traversal, external navigation, efficiency or runtime/causal result.",
+    "No gallery horizontal overflow does not erase original experiment toolbar overflow at390px."
+  ]
+}

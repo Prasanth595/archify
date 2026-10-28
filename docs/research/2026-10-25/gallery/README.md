@@ -29,7 +29,37 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前55版静态绑定与实际浏览器观察
+## 当前56版静态绑定与实际浏览器观察（待远端交付）
+
+固定source hub为 [`26fa35b2d2080305105f6ebbedb08054327a2ba0`](https://github.com/tt-a1i/archify/blob/26fa35b2d2080305105f6ebbedb08054327a2ba0/docs/research/2026-10-25/README.md)：**56项 / 56张原PNG，17产品交互 / 18离线适配 / 21内容示例**。来源README为69,757 bytes，SHA-256 `a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3`。source hub与本次gallery目前仅prepared/local-bound，尚未推送，不冒充远端交付。
+
+新增Refactoring records为离线适配，实验分支 `codex/lab-refactoring-records` 固定head `bec8671465ff9ce6a2c471196907fc741f52dc53` 已由root读回远端。完整3180B历史@Disabled expected JSON保留4记录、8位置occurrences、4 before端点、2 after端点及4独立声明边；R0/R1共享Dog method，R2/R3共享另一个field。它不运行detector、不推导语义移动或行为等价。未知base保留版本未知且不生成before链接，toy源码保持URL-only，不称verified excerpts。
+
+主图固定为 `experiments/refactoring-records/browser-evidence/overview-light-final.png`，173,243 bytes、1440×1400，SHA-256 `b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea`，Git blob `4b3b9906b125c590114cbd2972a50b3decb48d9f`。作者6focused结果在最终legend-only变更后按同逻辑复用，两最终页validate/deliver/check通过，独立在最终projector重做变体与实际CLI/finalize；CLI browser-check未运行。root实验级9原PNG及R0键盘/R1共享目标、未知base观察属于实验固定README，不作为本批gallery操作。390px页面375/375但局部record317/321、inline图cannot-fit-readable限制保留。旧legend图与未显示瞬时SourceCard的截图不补称最终图或卡片可见证据。
+
+[远端派生记录](../../2026-10-28/refactoring-records-remote.json)转述root的精确head与API计数：check-runs=0、Actions runs=0，不表示CI通过；该文件明确不是原始API响应。
+
+原builder的 `--source-repo` 读取56项固定Git blob并核本地origin跟踪引用，不恢复旧工作区或核工作文件，不将本地引用当作本批旧55远端重新查询。前55项selection、manifest完整item字段、完整card HTML及嵌入PNG bytes均与已发布golden逐项不变；历史browser文件与截图原bytes保留。原55绑定逐字另存 [browser-evidence55.json](browser-evidence55.json)，9,255 bytes，SHA-256 `5f5794e5af6e3dd74d730aaad8eabf573cdc3a4f307c63f9ba7133c69f8be175`。
+
+Node **22.23.3** 静态verify通过：56张嵌图摘要、56/17/18/21卡片与筛选计数、固定链接、JS语法均通过，外部资源引用0；原PNG共13,385,322 bytes。模板、build及verify均未改，模板SHA-256仍为 `bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9`。
+
+- `index.html`：17,992,189 bytes；SHA-256 `8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378`
+- `manifest.json`：SHA-256 `af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8`
+- `selection.json`：SHA-256 `cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c`
+
+Root已在Ego/Chromium实际操作冻结56版gallery，并逐张查看四张原PNG；四张PNG和九份JSON按原字节保存在 [screenshots56](screenshots56/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、最终README、原件bytes/SHA、PNG IHDR尺寸和查看范围，不冒称原始receipt。source hub与gallery目前仍prepared/local-bound，待root推送和远端读回；实验分支已推送不代表hub/gallery已远端交付。
+
+桌面1440×1100：四筛选为56/17/18/21，搜索Refactoring records为1/56。初次fill后立即decode报EncodingError，未截图片，原始 [capture-note.json](screenshots56/capture-note.json)保留失败；之后实际可见图片complete=true、天然1440×1400且decode成功，再截card-light。失败没有被改写成成功，也没有对应失败PNG。
+
+Enter实际打开新卡弹窗，直接解码原PNG为173243B，SHA与固定实验主图相同；天然及切原始尺寸后的DOM显示均1440×1400。Escape后open=false、src=null，焦点回“查看 Refactoring records 完整原图”按钮。原图高度超过桌面视口，不声称整图同时可见。
+
+390×844暗色桌面CSS视口client/scroll同为375px，gallery页面无横向溢出；新卡1/56，空结果0/56，reset回56/56、query空且焦点INPUT/search。窄屏 [narrow-dark.png](screenshots56/narrow-dark.png)只显示header与卡片开头，不能用它证明实际预览可见；另滚到卡片图片后保存 [narrow-card-dark.png](screenshots56/narrow-card-dark.png)，root也实际查看。整张PNG尺寸按IHDR记录，不把CSS viewport当作整图尺寸。此gallery结果不抵消实验本身局部record317/321和inline不能fit-readable的限制。
+
+![已解码的第56项卡片](screenshots56/card-light.png)
+
+[完整图弹窗](screenshots56/dialog-light.png) · [390px暗色页头](screenshots56/narrow-dark.png) · [滚到实际图片的暗色卡片](screenshots56/narrow-card-dark.png)。本次只操作新增卡片与上述通用控件，未重测旧55项实验或逐项图片交互；没有外链导航、实体触摸、AT、跨浏览器、人类接受或阅读速度证明。TaskSpace11仅finish一次、closedSpace=true、keep=[]，见 [task-finished.json](screenshots56/task-finished.json)，没有resume。本批不把0实验源码路径报告计入第57项，持续目标保持active。
+
+## 历史55版静态绑定与实际浏览器观察
 
 固定 source hub 为 [`cc347773a8474fb1bf3c6329b15f378d6493da75`](https://github.com/tt-a1i/archify/blob/cc347773a8474fb1bf3c6329b15f378d6493da75/docs/research/2026-10-25/README.md)：**55项 / 55张原PNG，17产品交互 / 17离线适配 / 21内容示例**。来源README为68,966 bytes，SHA-256 `9ad6adb7fff8efaa250070f3bc70a5f25584824cfec663455b2c70a96ff1c705`。source commit与55版产物已随 [`640943883a94e52e8b7d6ea3f97cfe35673c8ba6`](https://github.com/tt-a1i/archify/tree/640943883a94e52e8b7d6ea3f97cfe35673c8ba6/docs/research/2026-10-25/gallery) 推送；root用 `git ls-remote` 核对了该远端提交。本次后续只更新交付说明，页面、manifest和selection原字节未改。
 
@@ -45,7 +75,7 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 - `manifest.json`：SHA-256 `ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96`
 - `selection.json`：SHA-256 `1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8`
 
-Root已在Ego/Chromium实际操作冻结55版gallery，并逐张查看本批三张原PNG；三张PNG及六份JSON按原字节保存在 [screenshots55](screenshots55/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、README最终字节、原始观察和PNG的bytes/SHA及尺寸，不冒称原始receipt。固定source commit与本批gallery的远端交付已独立确认，见上方固定提交。发布前的local-bound观察快照仍保存在该提交中；当前派生绑定补记远端核对，不把远端推送当成新一轮浏览器或CI验证。
+Root已在Ego/Chromium实际操作冻结55版gallery，并逐张查看本批三张原PNG；三张PNG及六份JSON按原字节保存在 [screenshots55](screenshots55/)。[browser-evidence55.json](browser-evidence55.json)是派生绑定，记录当前产物、README最终字节、原始观察和PNG的bytes/SHA及尺寸，不冒称原始receipt。固定source commit与本批gallery的远端交付已独立确认，见上方固定提交。发布前的local-bound观察快照仍保存在该提交中；当前派生绑定补记远端核对，不把远端推送当成新一轮浏览器或CI验证。
 
 桌面1440×1100四筛选为55/17/17/21，Mandatory paths搜索得到1/55。卡片等待实际图片decode后截取，complete=true、天然1440×1250。Enter实际打开弹窗，直接解码PNG为147115B，SHA与实验固定主图相同；切原始尺寸后DOM尺寸1440×1250。Escape后open=false、src=null，焦点回到新卡原按钮。原图高度超过视口，不声称整个图片同时位于可见窗口。
 

@@ -22,11 +22,11 @@
 
 ## 已推送的 56 个实验
 
-第56项Refactoring records远程分支已交付；当前55版画廊观察保留固定身份，56版静态增量与本批新卡片浏览器观察另行记录。
+第56项Refactoring records远程分支已交付；56版画廊的静态构建与本批浏览器观察已完成，hub/gallery仍待root推送和远端核对。
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：已发布55版为17产品交互、17离线适配、21内容示例，source hub `cc347773a8474fb1bf3c6329b15f378d6493da75`，HTML SHA-256 `73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d`。root已完成Mandatory paths新卡片与通用控件的实际浏览器检查；旧54项记录、卡片与PNG原字节不变。第56项增量尚待单独构建和本批gallery检查，不复用实验截图冒充gallery观察。
+[离线图片浏览页](gallery/README.md)：56版静态产物已完成并经root本批新增卡片与通用控件实际观察，17产品交互、18离线适配、21内容示例。固定source hub `26fa35b2d2080305105f6ebbedb08054327a2ba0`，HTML SHA-256 `8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378`。旧55项selection/item/card和PNG原字节不变，浏览器证据保留历史身份。4张本批原PNG和9份JSON记录Enter展开、摘要/原始尺寸/Escape回焦、390px暗色与空结果/reset；首次decode失败未截图、最终decode成功及窄屏截图可见范围分别记账。source hub及gallery仍prepared/local-bound，待root推送和远端核对，不冒称已远端交付。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |

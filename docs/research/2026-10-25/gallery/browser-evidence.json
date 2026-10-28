@@ -1,47 +1,44 @@
 {
-  "kind": "derived browser evidence for fixed 55-item gallery; original JSON and PNG linked separately",
-  "status": "root-browser-observed-and-artifact-remote-verified",
+  "kind": "derived browser evidence for fixed56 gallery; original JSON and PNG linked separately",
+  "status": "root-browser-observed-prepared-local-bound",
   "delivery": {
-    "sourceHub": "Published as ancestor of independently verified remote gallery commit.",
-    "gallery": "Artifact published; git ls-remote returned exact commit 640943883a94e52e8b7d6ea3f97cfe35673c8ba6. This follow-up only records delivery.",
-    "experiment": "Root reported exact remote head f79704cb63f1577246752c93f8d648a000ea978b verified; zero Actions/check runs is not CI success.",
-    "verifiedPublishedCommit": "640943883a94e52e8b7d6ea3f97cfe35673c8ba6",
-    "remoteBranch": "codex/research-lab-20261025",
-    "priorLocalObservationCommit": "640943883a94e52e8b7d6ea3f97cfe35673c8ba6"
+    "sourceHub": "prepared/local-bound; awaiting root push and remote verification",
+    "gallery": "prepared/local-bound; awaiting root push and remote verification",
+    "experiment": "Root verified remote head bec8671465ff9ce6a2c471196907fc741f52dc53; zero checks/runs is not CI success."
   },
-  "hubSourceCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
+  "hubSourceCommit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
   "hubReadme": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
-    "sha256": "9ad6adb7fff8efaa250070f3bc70a5f25584824cfec663455b2c70a96ff1c705",
-    "bytes": 68966,
-    "gitBlob": "8bd2517d9d13ece3fee2552e1a23dbe1e9657ac7"
+    "commit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+    "sha256": "a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3",
+    "bytes": 69757,
+    "gitBlob": "a6b63ef8da8a0478bae5cec94b15ba0c0ff75be6"
   },
   "artifacts": {
     "index.html": {
       "path": "index.html",
-      "sha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
-      "bytes": 17758320
+      "sha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
+      "bytes": 17992189
     },
     "manifest.json": {
       "path": "manifest.json",
-      "sha256": "ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96",
-      "bytes": 126153
+      "sha256": "af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8",
+      "bytes": 128772
     },
     "selection.json": {
       "path": "selection.json",
-      "sha256": "1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8",
-      "bytes": 28003
+      "sha256": "cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c",
+      "bytes": 28576
     },
     "verification.json": {
       "path": "verification.json",
-      "sha256": "3bdef7e9eccb0878f7f67222b7faf44004f32bc335ac4cb024438ba68ac5ced4",
+      "sha256": "2f730f58304e60fdf05a5ea373013ccc6d67bbb7ae8ef5ed77932e25dd1dbcbd",
       "bytes": 800
     },
     "README.md": {
       "path": "README.md",
-      "sha256": "7ce1d506074fadf89c76af79568f2c84f23f3c4cae0077e2b22a0b9e5038e606",
-      "bytes": 49308
+      "sha256": "476c7bd3aaca0ed0a7ac057e457401bb1fbd9153881236cd7ab1187af9f623b5",
+      "bytes": 54836
     },
     "template.html": {
       "path": "template.html",
@@ -60,212 +57,253 @@
     }
   },
   "summary": {
-    "experiments": 55,
-    "images": 55,
-    "pngBytes": 13212079,
+    "experiments": 56,
+    "images": 56,
+    "pngBytes": 13385322,
     "groupCounts": {
       "product": 17,
-      "offline": 17,
+      "offline": 18,
       "content": 21
     },
     "deferredCountedAsPublished": false
   },
   "rawSources": [
     {
-      "path": "screenshots55/dialog.json",
-      "sha256": "232e9b2c846b12f7e2db69b82b1f1186435afe34c5c1b74bace88d9f5b93654c",
-      "bytes": 472
+      "path": "screenshots56/capture-note.json",
+      "sha256": "00ab22e8aa83cb92956c8cdd5f71986b1ed50194b1109f330f93e2bb9f622ce5",
+      "bytes": 239
     },
     {
-      "path": "screenshots55/empty-reset.json",
-      "sha256": "048bf5a5379c5393812f48819d0325ab50e3dee4bded73b3ce8ff9147ebbd691",
-      "bytes": 172
+      "path": "screenshots56/card-light.json",
+      "sha256": "8787280c89e76e56b0adf36accf7928d3ceb3a8a44ad31a60f5927fecedd2bc2",
+      "bytes": 176
     },
     {
-      "path": "screenshots55/filters-and-card.json",
-      "sha256": "ad83050f460c7cc1a52a3e0906fd45cc3991499c2c92cfda85195e7b2b126a4a",
-      "bytes": 553
+      "path": "screenshots56/dialog-closed.json",
+      "sha256": "3009da5e5daf9745db6f864a42e743460aa77a0d63c0250c6ba58ceca0d9c886",
+      "bytes": 96
     },
     {
-      "path": "screenshots55/narrow.json",
-      "sha256": "e29712fe87b4f6ca5c9a9a868c35fdaf2ccb28a1928e89ef51b430739d07993a",
-      "bytes": 216
+      "path": "screenshots56/dialog.json",
+      "sha256": "67d0deac48f21e665d13332f8e9a966b0bbf9e4c5ee726b341435060d6426503",
+      "bytes": 293
     },
     {
-      "path": "screenshots55/source-binding.json",
-      "sha256": "32c9796bc96d0c490bc5d1d5bcc4604abd77e696bedfc2c28544b962848c270e",
-      "bytes": 882
+      "path": "screenshots56/filters.json",
+      "sha256": "ebff4d71c024751e1088a628fbcece784a76d87dd0d155995840a246ddff6dbb",
+      "bytes": 275
     },
     {
-      "path": "screenshots55/task-finished.json",
-      "sha256": "60db7905f7daef5821eef3800e070f30b89edece8a3f956508e5d5f58db1fa1e",
-      "bytes": 100
+      "path": "screenshots56/narrow-dark.json",
+      "sha256": "9b88a49ef4242e078fe694f9aef56f04f12d792188bf22cfc943ddc55dfa8840",
+      "bytes": 137
+    },
+    {
+      "path": "screenshots56/reset.json",
+      "sha256": "17be553759652165ff2e23068887cf0c85c000c1277154275ba6a77075c11c60",
+      "bytes": 219
+    },
+    {
+      "path": "screenshots56/source-binding.json",
+      "sha256": "2c54f5d335640443c4f81c6b0a1298160f8988d97693cf12dc5828edf05898ef",
+      "bytes": 1079
+    },
+    {
+      "path": "screenshots56/task-finished.json",
+      "sha256": "187e0aeff71284ef53a9f2b98936c54b8e0d7e1d6fad1f7149fed058498fbec2",
+      "bytes": 206
     }
   ],
   "screenshots": [
     {
-      "path": "screenshots55/card-light.png",
-      "sha256": "2279986081c84fa7a8e25a2a3f22ad612ff3828386afa96179b54082e9424be2",
-      "bytes": 159432,
+      "path": "screenshots56/card-light.png",
+      "sha256": "1cecfd82713e0205f4c5433d78ee83223291888599cfcd868ae99e0b60723f93",
+      "bytes": 160675,
       "width": 1440,
       "height": 1100,
-      "boundHtmlSha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
       "rootViewed": true,
       "status": "root-viewed-completed-capture",
-      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
-      "observationSource": "screenshots55/filters-and-card.json"
+      "visibleScope": "Desktop card after completed image decode.",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
+      "observationSource": "screenshots56/card-light.json"
     },
     {
-      "path": "screenshots55/dialog-light.png",
-      "sha256": "11de2a35a0f9174834b1dc22335c0fd4f782be76f534e3220a3b9b39ca55aaec",
-      "bytes": 189536,
+      "path": "screenshots56/dialog-light.png",
+      "sha256": "5fc0d05475679ab697148bcffe4a08e496b14767b98ec648c05140afcba39f5f",
+      "bytes": 157166,
       "width": 1440,
       "height": 1100,
-      "boundHtmlSha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
       "rootViewed": true,
       "status": "root-viewed-completed-capture",
-      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
-      "observationSource": "screenshots55/dialog.json"
+      "visibleScope": "Desktop dialog at original image size; full image exceeds viewport.",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
+      "observationSource": "screenshots56/dialog.json"
     },
     {
-      "path": "screenshots55/narrow-dark.png",
-      "sha256": "2090411b022cd5a6b666a53fb01ac832c1c6d31a66a330e6ff48ebf07cded366",
-      "bytes": 84244,
+      "path": "screenshots56/narrow-card-dark.png",
+      "sha256": "2cb7702fc07b80cf9a27513f7a1ac1dad5ae4ffa2b3b276f23d41454166541ef",
+      "bytes": 94690,
       "width": 390,
       "height": 844,
-      "boundHtmlSha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d",
+      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
       "rootViewed": true,
       "status": "root-viewed-completed-capture",
-      "semantics": "Original PNG copied unchanged; actual dimensions from IHDR.",
-      "observationSource": "screenshots55/narrow.json"
+      "visibleScope": "Narrow card after scrolling to actual image preview.",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
+      "observationSource": "screenshots56/source-binding.json"
+    },
+    {
+      "path": "screenshots56/narrow-dark.png",
+      "sha256": "610cf302d90cefe3c90184fc941da975a589777685fb811c26d50fd3eef86bbf",
+      "bytes": 89264,
+      "width": 390,
+      "height": 844,
+      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
+      "rootViewed": true,
+      "status": "root-viewed-completed-capture",
+      "visibleScope": "Narrow header and card beginning only; does not show actual card image.",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
+      "observationSource": "screenshots56/narrow-dark.json"
     }
   ],
   "observations": {
-    "dialog": {
-      "kind": "actual-ego-browser-observation",
-      "viewport": {
-        "width": 1440,
-        "height": 1100
-      },
-      "keyboardEnterOpened": true,
-      "decoded": {
-        "width": 1440,
-        "height": 1250,
-        "bytes": 147115,
-        "sha256": "50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e"
-      },
-      "originalSize": {
-        "width": 1440,
-        "height": 1250
-      },
-      "afterEscape": {
-        "open": false,
-        "src": null,
-        "focus": "查看 Mandatory paths 完整原图"
-      }
+    "capture-note": {
+      "stage": "card initial decode",
+      "error": "EncodingError: The source image cannot be decoded.",
+      "screenshotTaken": false,
+      "interpretation": "Initial immediate decode attempt failed; inspect visible image state before retrying."
     },
-    "empty-reset": {
-      "kind": "actual-ego-browser-observation",
-      "before": "显示 0 / 55 项",
-      "after": {
-        "status": "显示 55 / 55 项",
-        "value": "",
-        "focus": "INPUT"
-      }
-    },
-    "filters-and-card": {
-      "kind": "actual-ego-browser-observation",
-      "viewport": {
-        "width": 1440,
-        "height": 1100
-      },
-      "counts": [
-        {
-          "name": "产品交互",
-          "status": "显示 17 / 55 项"
-        },
-        {
-          "name": "离线适配",
-          "status": "显示 17 / 55 项"
-        },
-        {
-          "name": "内容示例",
-          "status": "显示 21 / 55 项"
-        },
-        {
-          "name": "全部",
-          "status": "显示 55 / 55 项"
-        }
-      ],
-      "decoded": {
-        "width": 1440,
-        "height": 1250,
+    "card-light": {
+      "status": "显示 1 / 56 项",
+      "buttonId": "",
+      "image": {
         "complete": true,
-        "status": "显示 1 / 55 项"
-      }
-    },
-    "narrow": {
-      "kind": "actual-ego-browser-observation",
-      "viewport": {
-        "width": 390,
-        "height": 844,
-        "mobile": false
+        "width": 1440,
+        "height": 1400
       },
-      "narrow": {
-        "client": 375,
-        "scroll": 375,
-        "status": "显示 1 / 55 项"
+      "pageWidth": 1425,
+      "clientWidth": 1425
+    },
+    "dialog-closed": {
+      "open": false,
+      "src": null,
+      "focusedLabel": "查看 Refactoring records 完整原图"
+    },
+    "dialog": {
+      "open": true,
+      "natural": [
+        1440,
+        1400
+      ],
+      "display": [
+        1440,
+        1400
+      ],
+      "imageId": "full-image",
+      "dialogId": "image-dialog",
+      "title": "Refactoring records",
+      "pngBytes": 173243,
+      "pngSha256": "b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea"
+    },
+    "filters": [
+      {
+        "filter": "product",
+        "status": "显示 17 / 56 项"
+      },
+      {
+        "filter": "offline",
+        "status": "显示 18 / 56 项"
+      },
+      {
+        "filter": "content",
+        "status": "显示 21 / 56 项"
+      },
+      {
+        "filter": "all",
+        "status": "显示 56 / 56 项"
+      }
+    ],
+    "narrow-dark": {
+      "status": "显示 1 / 56 项",
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "theme": "dark",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    "reset": {
+      "empty": {
+        "status": "显示 0 / 56 项",
+        "query": "no-such-experiment-56"
+      },
+      "reset": {
+        "status": "显示 56 / 56 项",
+        "query": "",
+        "focusedTag": "INPUT",
+        "focusedType": "search"
       }
     },
     "source-binding": {
-      "kind": "actual-browser-artifact-binding",
-      "source": {
-        "index.html": {
-          "bytes": 17758320,
-          "sha256": "73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d"
+      "sourceHubCommit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+      "experimentCommit": "bec8671465ff9ce6a2c471196907fc741f52dc53",
+      "files": {
+        "docs/research/2026-10-25/gallery/index.html": {
+          "bytes": 17992189,
+          "sha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378"
         },
-        "manifest.json": {
-          "bytes": 126153,
-          "sha256": "ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96"
+        "docs/research/2026-10-25/gallery/manifest.json": {
+          "bytes": 128772,
+          "sha256": "af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8"
         },
-        "selection.json": {
-          "bytes": 28003,
-          "sha256": "1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8"
+        "docs/research/2026-10-25/gallery/selection.json": {
+          "bytes": 28576,
+          "sha256": "cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c"
         }
       },
-      "taskSpaceId": 10,
-      "sourceCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
-      "experimentCommit": "f79704cb63f1577246752c93f8d648a000ea978b",
-      "imageSha256": "50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e",
-      "limits": [
-        "Actual desktop browser plus narrow desktop viewport; not touch/AT/human acceptance",
-        "Gallery UI observation does not retest 54 prior experiments"
-      ]
+      "observations": "Root operated the frozen local gallery in Ego Chromium and viewed all four original PNGs. Browser evidence does not claim CI, touch, AT, external navigation, reading speed or human acceptance. Initial immediate decode failure retained; later visible image completed and decoded before capture. The narrow-dark image shows the header and card heading; narrow-card-dark shows the scrolled card preview."
     },
     "task-finished": {
-      "taskSpaceId": 10,
-      "finishReturned": true,
+      "spaceId": 11,
       "keep": [],
-      "continuedPageOperations": false
+      "result": {
+        "spaceId": 11,
+        "closedSpace": true,
+        "keptManagedLabels": [],
+        "closedManagedLabels": [
+          "p1"
+        ],
+        "preservedUnmanagedCount": 0
+      }
     }
   },
-  "historical54": {
-    "path": "browser-evidence54.json",
-    "sha256": "a6cf0479d4c0fa56a22c9f3f876afc196c555528aef32ab27096bbf6955b65ec",
-    "bytes": 8551
+  "historical55": {
+    "path": "browser-evidence55.json",
+    "sha256": "5f5794e5af6e3dd74d730aaad8eabf573cdc3a4f307c63f9ba7133c69f8be175",
+    "bytes": 9255
+  },
+  "remoteHeadReceipt": {
+    "path": "../../2026-10-28/refactoring-records-remote.json",
+    "sha256": "4c0e6ea618908dd615a8bc4057e33644dc96c1a3c5729c748181bd8cf20d0b32",
+    "bytes": 801
   },
   "completion": {
-    "taskSpaceId": 10,
-    "browserRoundFinished": true,
+    "taskSpaceId": 11,
+    "finishCount": 1,
+    "closedSpace": true,
     "keep": [],
-    "continuedPageOperations": false,
-    "scope": "Only this browser round is finished. Continuing research remains active; no second implementation in this batch."
+    "resumeAllowed": false,
+    "scope": "Only browser round ended; continuing research active."
   },
-  "scope": "Only new Mandatory paths card and common controls; 54 preceding selections/items/cards/PNG bytes unchanged. No browser reuse from prior gallery as current evidence.",
+  "scope": "Only new Refactoring records card and common controls. Previous55 selections/items/cards/PNG bytes unchanged; historical browser evidence retains original identity.",
   "limits": [
-    "Three completed screenshots were viewed by root; card capture waited for actual image decode.",
-    "Desktop Chromium and narrow desktop CSS viewport, not physical touch, AT or human acceptance.",
-    "No previous54 experiment rerun, full Tab traversal, external navigation, efficiency or runtime/causal result.",
-    "No gallery horizontal overflow does not erase original experiment toolbar overflow at390px."
+    "Initial immediate decode failed with EncodingError, no screenshot taken; original capture-note preserved. Later visible image completed and decoded before desktop card capture.",
+    "Narrow-dark.png shows only header and beginning of card. Narrow-card-dark.png separately shows scrolled actual image.",
+    "Root viewed all4 original PNGs; browser round finished exactly once and will not resume.",
+    "No previous55 experiment rerun, external navigation, physical touch, AT, human acceptance or reading speed proof.",
+    "Gallery viewport no-overflow does not erase experimental record local overflow or inline cannot-fit-readable."
   ]
 }

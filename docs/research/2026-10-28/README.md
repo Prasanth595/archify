@@ -106,6 +106,9 @@ Root已完整阅读 [Source path witnesses](scouts/source-path-witnesses.md)，�
 
 root已查看9张原PNG，实际R0键盘Enter、R1指针共享目标及Escape回原record，核对4条known-base记录各两citations、unknown-base仅after链接。iframe nativeFocus runtime IDs未提取；旧legend图保留历史身份，名为source-card的截图不展示瞬时卡片，卡片URL由之前snapshot和DOM观察单独支持。390px暗色页client/scroll375/375，但record局部317/321；inline图cannot-fit-readable，不能称触摸/AT/跨浏览器或效率验收。
 
-主图1440×1400、173243B，SHA-256 `b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea`；packaging index SHA-256 `7e7b61c68bf6dce90c09b0c870662cae4d584bdac33ab32392b65f6ab75643f5`，root核49总文件/48清单条目。实验分支交付不等于合入、发布或安装；56版画廊将按固定source hub生成，旧55项golden与历史浏览器身份保留，本批gallery新卡片操作尚待root单独记录。源码路径报告维持0新实验；持续目标继续。
+主图1440×1400、173243B，SHA-256 `b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea`；packaging index SHA-256 `7e7b61c68bf6dce90c09b0c870662cae4d584bdac33ab32392b65f6ab75643f5`，root核49总文件/48清单条目。实验分支交付不等于合入、发布或安装；56版画廊已按固定source hub `26fa35b2d2080305105f6ebbedb08054327a2ba0` 生成并由root实际操作新增卡片及通用控件，旧55项golden与历史浏览器身份保留；hub/gallery待本次提交后由root推送和远端读回。源码路径报告维持0新实验；持续目标继续。
 
 [第56项远端派生记录](refactoring-records-remote.json)保存root报告的精确head核对与GitHub API计数：check-runs=0、Actions runs=0，不是CI通过。dev仍 `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`，main仍 `d6059331abbddb49bca380ff46dca8ce33158b04`；该JSON明确为转述的派生receipt，不冒称原始API响应。持续目标保持active。
+
+
+第56项gallery本批范围已完成：56/17/18/21四分组、新卡1/56、Enter展开、PNG摘要/173243B/天然及原始1440×1400尺寸、Escape关闭清src并返回新卡焦点。390px暗色页client/scroll375/375，空0/reset56且query空回搜索框。原始4PNG/9JSON见 [screenshots56](../2026-10-25/gallery/screenshots56/)；root逐张查看，窄屏header图与滚到卡片实际图片的图分别记录。初次立即decode的EncodingError未截PNG，失败说明原样保留；后续图片完成并decode成功后才截最终桌面卡片。旧55项selection/items/card/PNG原字节不变；本批未重跑全部旧实验，不证明实体触摸/AT/人类或速度收益。TaskSpace11已finish一次且closedSpace=true/keep=[]，不可resume；持续目标active。source hub/gallery目前prepared/local-bound，最终远端交付由root另行核对。
