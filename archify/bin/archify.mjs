@@ -2192,7 +2192,7 @@ function invalidProvenance(artifactPath, sidecar, reason, evidence = {}) {
 const COMMAND_USAGE = {
   story: ['scan <native.html> [--json]', 'draft <native.html> <brief.json> [--json]', 'attach <native.html> <brief.json> <enhanced.html> [--json] [--repo-root path]'],
   render: '<type> <input.json> [output.html] [--quality standard|showcase] [--repo-root path]',
-  compare: 'architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path]',
+  compare: 'architecture <base.json> <head.json> [output.html] [--receipt path] [--json] [--quality standard|showcase] [--repo-root path] | workflow <base.json> <head.json> [output.json] [--json]',
   deliver: '<type> <input.json> [output.html] [--json] [--open] [--quality standard|showcase] [--repo-root path]',
   patch: 'explainer <artifact.html> <panel-id> <replacement-file> <output.html> [--json] [--quality standard|showcase] [--repo-root path]',
   finalize: '<type> <input.json> <output.html> [--json] [--browser-check] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]',
@@ -3674,7 +3674,60 @@ function renderValidatedArchitecture(inputPath, outputPath, quality, repoRoot, c
   };
 }
 
+async function commandCompareWorkflow(args) {
+  const json = args.includes('--json');
+  const positional = args.filter(arg => !arg.startsWith('--'));
+  const [, baseInput, headInput, output] = positional;
+  const failWorkflow = (code, message, details = {}) => {
+    const receipt = { schemaVersion: 1, ok: false, command: 'compare', type: 'workflow', code, error: message, details };
+    if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`);
+    else process.stderr.write(`${message}\n`);
+    if (output) fs.writeFileSync(output, `${JSON.stringify(receipt, null, 2)}\n`);
+    process.exitCode = 1;
+  };
+  if (!baseInput || !headInput || positional.length > 4) return failWorkflow('workflow/usage', 'Usage: compare workflow <base.json> <head.json> [output.json] [--json]');
+  let base;
+  let head;
+  try { base = JSON.parse(fs.readFileSync(baseInput, 'utf8')); } catch (error) { return failWorkflow('workflow/base-read', `Could not read base Workflow input: ${error.message}`); }
+  try { head = JSON.parse(fs.readFileSync(headInput, 'utf8')); } catch (error) { return failWorkflow('workflow/head-read', `Could not read head Workflow input: ${error.message}`); }
+  if (base.diagram_type !== 'workflow' || head.diagram_type !== 'workflow') return failWorkflow('workflow/type', 'Both inputs must declare diagram_type: workflow.');
+  const { validateSchema } = await import('../renderers/shared/validator.mjs');
+  try { validateSchema('workflow', base); } catch (error) { return failWorkflow('workflow/base-invalid', 'Base Workflow input is invalid.', { diagnostics: error.archifyDiagnostics || [] }); }
+  try { validateSchema('workflow', head); } catch (error) { return failWorkflow('workflow/head-invalid', 'Head Workflow input is invalid.', { diagnostics: error.archifyDiagnostics || [] }); }
+  const stable = (items, field) => {
+    const map = new Map();
+    for (const item of items || []) {
+      if (!item.id || map.has(item.id)) return null;
+      map.set(item.id, item);
+    }
+    return map;
+  };
+  const baseNodes = stable(base.nodes, 'nodes');
+  const headNodes = stable(head.nodes, 'nodes');
+  const baseEdges = stable(base.edges, 'edges');
+  const headEdges = stable(head.edges, 'edges');
+  if (!baseNodes || !headNodes || !baseEdges || !headEdges) return failWorkflow('workflow/identity', 'Workflow nodes and edges require unique stable ids.');
+  const semantic = (value, ignored) => Object.fromEntries(Object.entries(value || {}).filter(([key]) => !ignored.has(key)));
+  const changes = { nodes: [], edges: [] };
+  for (const id of [...new Set([...baseNodes.keys(), ...headNodes.keys()])].sort()) {
+    const before = baseNodes.get(id); const after = headNodes.get(id);
+    if (!before) changes.nodes.push({ id, change: 'added', head: semantic(after, new Set(['row', 'col', 'pos', 'width', 'height'])) });
+    else if (!after) changes.nodes.push({ id, change: 'removed', base: semantic(before, new Set(['row', 'col', 'pos', 'width', 'height'])) });
+    else if (JSON.stringify(semantic(before, new Set(['row', 'col', 'pos', 'width', 'height']))) !== JSON.stringify(semantic(after, new Set(['row', 'col', 'pos', 'width', 'height'])))) changes.nodes.push({ id, change: 'modified', base: semantic(before, new Set(['row', 'col', 'pos', 'width', 'height'])), head: semantic(after, new Set(['row', 'col', 'pos', 'width', 'height'])) });
+  }
+  for (const id of [...new Set([...baseEdges.keys(), ...headEdges.keys()])].sort()) {
+    const before = baseEdges.get(id); const after = headEdges.get(id);
+    if (!before) changes.edges.push({ id, change: 'added', head: after });
+    else if (!after) changes.edges.push({ id, change: 'removed', base: before });
+    else if (JSON.stringify(before) !== JSON.stringify(after)) changes.edges.push({ id, change: before.from !== after.from || before.to !== after.to ? 'endpoint-changed' : 'modified', base: before, head: after });
+  }
+  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length } };
+  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${changes.nodes.length + changes.edges.length}\n`);
+  if (output) fs.writeFileSync(output, `${JSON.stringify(receipt, null, 2)}\n`);
+}
+
 async function commandCompare(args) {
+  if (args[0] === 'workflow') return commandCompareWorkflow(args);
   await loadSidecarPathRuntime();
   const {
     canonicalFuturePath,
