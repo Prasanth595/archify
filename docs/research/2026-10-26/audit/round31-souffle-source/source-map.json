@@ -1,0 +1,124 @@
+{
+  "revision": "f53dab8bf4bbf2395a26d2771f6b75395825cc46",
+  "files": [
+    {
+      "path": "src/include/souffle/provenance/Explain.h",
+      "blob": "d223e1a761ce3767c0d65b35c4b20ec7aeafca61",
+      "bytes": 23048,
+      "sha256": "f340c093c7c735ec700e2f1f90fe4cf8d10ea5e9ce1785ca82fe7fa9943c5730",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/src/include/souffle/provenance/Explain.h"
+    },
+    {
+      "path": "src/include/souffle/provenance/ExplainTree.h",
+      "blob": "5497db9a838bf4a5bb104fe2655977b6ef827521",
+      "bytes": 5839,
+      "sha256": "b5b0784189288f4df8573d23c279ec70c63ee7310f33ec6dc36c7872444daa7a",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/src/include/souffle/provenance/ExplainTree.h"
+    },
+    {
+      "path": "src/include/souffle/provenance/ExplainProvenanceImpl.h",
+      "blob": "11e620cc6515b229575906d7b41c213a105a56bd",
+      "bytes": 35938,
+      "sha256": "97b56de040f388ed4fe9aa381a535021ab23b542103e20f872413f03b3fe4b9b",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/src/include/souffle/provenance/ExplainProvenanceImpl.h"
+    },
+    {
+      "path": "src/ast2ram/provenance/SubproofGenerator.cpp",
+      "blob": "c7761ddca6b7f09beaea4d680c4d95d56bfa2a28",
+      "bytes": 11504,
+      "sha256": "a9db4b9a7c4fd2473b42b4195b843e9ca5a967b8345230f2adfc93d27d7848f6",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/src/ast2ram/provenance/SubproofGenerator.cpp"
+    },
+    {
+      "path": "tests/provenance/path_explain_output/path_explain_output.dl",
+      "blob": "1ce0690c2054fa5f6aad837cce35cb48ee783318",
+      "bytes": 558,
+      "sha256": "a1a2c55573c15e16c3d9f56d1b3d5a11571084f24707ef8c0726f5a3631a2125",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_output/path_explain_output.dl"
+    },
+    {
+      "path": "tests/provenance/path_explain_output/path_explain_output.in",
+      "blob": "b85d784b2d959c3fb7068c38d31699dfe549f3ae",
+      "bytes": 62,
+      "sha256": "ebd31b1b76cb3c920bb289698cb64cd5c173e0cf71df8505dbcb0e35dde4e693",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_output/path_explain_output.in"
+    },
+    {
+      "path": "tests/provenance/path_explain_output/path_explain_output.out",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_output/path_explain_output.out"
+    },
+    {
+      "path": "tests/provenance/path_explain_output/path.csv",
+      "blob": "7a04b7b2d7c930809ed5465b987a808607c1a600",
+      "bytes": 24,
+      "sha256": "0e5b41711b6d91d5d3332417317e7d33503a40072e17f5cee4630f3c79cf539e",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_output/path.csv"
+    },
+    {
+      "path": "tests/provenance/path_explain_output/provenance.txt",
+      "blob": "c162fd8515d2b1ea23a7818d39b5a7955a17b05c",
+      "bytes": 554,
+      "sha256": "5b3454fb9e0f55de30fbfd94ca30cfa6693385aeddb6dcd55d1c67eaa75dd404",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_output/provenance.txt"
+    },
+    {
+      "path": "tests/provenance/path_explain_negation/path_explain_negation.dl",
+      "blob": "63176400bb436482991036f60a47f0f8299cdbb4",
+      "bytes": 558,
+      "sha256": "277f5c8d521c588bee89b701d6296d33680cd2d9c5b86f40d3161f2f8f3bedd0",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_negation/path_explain_negation.dl"
+    },
+    {
+      "path": "tests/provenance/path_explain_negation/path_explain_negation.in",
+      "blob": "9c602d276ce77e1acff0d23356330d00cd6cd0a8",
+      "bytes": 42,
+      "sha256": "66e40ebe7b761caeb10d83966620ef00a1153216d6c5a0917162f92f7a908925",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_negation/path_explain_negation.in"
+    },
+    {
+      "path": "tests/provenance/path_explain_negation/path_explain_negation.out",
+      "blob": "9e52c8ff18f9ba3bd04a77d8785ef4a98ef09891",
+      "bytes": 111,
+      "sha256": "ff9aaa8b37862b415dd2eed0b042121251de8f9018ff2156d537617e7419ec26",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_negation/path_explain_negation.out"
+    },
+    {
+      "path": "tests/provenance/path_explain_negation/path.csv",
+      "blob": "7a04b7b2d7c930809ed5465b987a808607c1a600",
+      "bytes": 24,
+      "sha256": "0e5b41711b6d91d5d3332417317e7d33503a40072e17f5cee4630f3c79cf539e",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_negation/path.csv"
+    },
+    {
+      "path": "LICENSE",
+      "blob": "e750332665d88a0daa713c4f86dcacb5ea686ec0",
+      "bytes": 1868,
+      "sha256": "a8fa2b59b71f4bf1aaf8713e9fd8015becf1dcab9d77330799f0641135367526",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/LICENSE"
+    },
+    {
+      "path": "licenses/SOUFFLE-UPL.txt",
+      "blob": "6b0c6a02cf9569ebb145d092bee5aad19afb2a60",
+      "bytes": 1937,
+      "sha256": "aa4f73de4f7e297f209261ac9eb88f81fbc8107e5ac9b3e058a937b8ff0729d2",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/licenses/SOUFFLE-UPL.txt"
+    },
+    {
+      "path": "tests/provenance/path_explain_output/path_explain_output.err",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_output/path_explain_output.err"
+    },
+    {
+      "path": "tests/provenance/path_explain_negation/path_explain_negation.err",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "url": "https://github.com/souffle-lang/souffle/blob/f53dab8bf4bbf2395a26d2771f6b75395825cc46/tests/provenance/path_explain_negation/path_explain_negation.err"
+    }
+  ]
+}

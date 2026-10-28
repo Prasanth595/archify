@@ -1,0 +1,23 @@
+{
+  "scope": "research prose, remote coverage and exact upstream source archive",
+  "dateUTC": "2026-10-28",
+  "devObserved": "847146aeb93b492592adb78dc220f57e4a8b4636",
+  "remoteHeads": 329,
+  "newExperimentBranchesComparedWithRound30Start": 10,
+  "sourceFilesVerified": 17,
+  "sourceVerification": "round31-souffle-source/verification.json",
+  "localLinks": "new scout, coverage and source README local targets resolve",
+  "whitespace": {
+    "notices": 12,
+    "scope": "unaltered upstream license and negation expected whitespace",
+    "log": "round31-whitespace.txt",
+    "preserved": true
+  },
+  "notRun": [
+    "Souffle runtime or compilation",
+    "Archify renderer/product tests",
+    "browser or screenshots",
+    "tests or image review on the other 10 experiment branches"
+  ],
+  "changes": "No new implementation candidate or PR; research branch only."
+}

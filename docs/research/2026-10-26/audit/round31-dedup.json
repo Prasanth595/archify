@@ -1,0 +1,125 @@
+{
+  "observedAt": "2026-10-28T15:56:11.260Z",
+  "queries": [
+    {
+      "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+      "title": "issues",
+      "modified_date": null,
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20souffle&per_page=50",
+      "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20souffle&per_page=50",
+      "display_title": "issues",
+      "structuredContent": {
+        "title": "issues",
+        "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+        "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20souffle&per_page=50"
+      }
+    },
+    {
+      "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+      "title": "issues",
+      "modified_date": null,
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20souffle&per_page=50",
+      "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20souffle&per_page=50",
+      "display_title": "issues",
+      "structuredContent": {
+        "title": "issues",
+        "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+        "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20souffle&per_page=50"
+      }
+    },
+    {
+      "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+      "title": "issues",
+      "modified_date": null,
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20datalog&per_page=50",
+      "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20datalog&per_page=50",
+      "display_title": "issues",
+      "structuredContent": {
+        "title": "issues",
+        "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+        "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20datalog&per_page=50"
+      }
+    },
+    {
+      "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+      "title": "issues",
+      "modified_date": null,
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20datalog&per_page=50",
+      "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20datalog&per_page=50",
+      "display_title": "issues",
+      "structuredContent": {
+        "title": "issues",
+        "content": "{\"total_count\":0,\"incomplete_results\":false,\"items\":[],\"search_type\":\"lexical\"}",
+        "display_url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apull-request%20datalog&per_page=50"
+      }
+    }
+  ],
+  "initialSearchErrors": [
+    "missing is:issue/is:pull-request returned422; corrected queries succeeded"
+  ],
+  "hubSha": "3beb343b8fd6686201bde9b0f307f9a1c6b00246",
+  "branches": [
+    {
+      "name": "codex/lab-route-alternative",
+      "sha": "d61217d82fd0dd844e77aab7434620b47b792d2b",
+      "readme": "experiments/route-alternative/README.md",
+      "readmeSha256": "d6c50bc145cc180ecf43cf8de3844eb5fd0c1f0dcc5a918cff56749b3f54bbbd"
+    },
+    {
+      "name": "codex/lab-diff-matches",
+      "sha": "a8456ef796ab62ba490b03fa0c896ae206edb5ea",
+      "readme": "experiments/diff-matches/README.md",
+      "readmeSha256": "ad76e25a4facd38408cc2d4f49715398776f504982d54d691afd14294a3e2534"
+    },
+    {
+      "name": "codex/lab-diff-file-navigation",
+      "sha": "48f076f9c87fc87d36af20ddd24464e71d798fea",
+      "readme": "experiments/diff-file-navigation/README.md",
+      "readmeSha256": "8abfd0ea7966f2f94ca5f705d9d1ec4c8cceb561f0e3f52a86bd40f30a7e98bb"
+    },
+    {
+      "name": "codex/lab-shared-reach",
+      "sha": "b160b948541f541394457fec3005e2d10b281dea",
+      "readme": "experiments/shared-reach/README.md",
+      "readmeSha256": "fcc629505cdcb1b9718cab4a27f2d5a6b407e1aa1fbb9a6e1bd4304f16933a77"
+    },
+    {
+      "name": "codex/lab-mandatory-paths",
+      "sha": "f79704cb63f1577246752c93f8d648a000ea978b",
+      "readme": "experiments/mandatory-paths/README.md",
+      "readmeSha256": "2961cf4102c6084182ec5c968ec5b8a3a6c03fd27cba8233326ac3014547c71c"
+    },
+    {
+      "name": "codex/lab-cycle-region",
+      "sha": "d07097138c96dd34ecbfde09d19861b645b19818",
+      "readme": "experiments/cycle-region/README.md",
+      "readmeSha256": "90ffbc0e6395fe7c906cc4a0ba0a797a247fe00161d77772ce52041d27ec9599"
+    },
+    {
+      "name": "codex/lab-refactoring-records",
+      "sha": "bec8671465ff9ce6a2c471196907fc741f52dc53",
+      "readme": "experiments/refactoring-records/README.md",
+      "readmeSha256": "930118667e606e3fcfe03aa00637962265ab6497921959a1906b37f0a0f6fd45"
+    },
+    {
+      "name": "codex/lab-profile-contexts",
+      "sha": "589351790b32173269f6a8e22da836130e31989a",
+      "readme": "experiments/profile-contexts/README.md",
+      "readmeSha256": "a0d3bfc212243aedaabb2287d154cec5394f4396e7cae11fa7a7087c7cb6a2c2"
+    },
+    {
+      "name": "codex/lab-profile-normalization",
+      "sha": "b3c85c9656212a4ba83430844603334132f120a9",
+      "readme": "experiments/profile-normalization/README.md",
+      "readmeSha256": "aa143065f74cf8ed54d2bfc5b2bd8ef6d0f702fca86ae33fe9bc20a3362ff351"
+    },
+    {
+      "name": "codex/lab-checklist-progress",
+      "sha": "7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5",
+      "readme": "experiments/checklist-progress/README.md",
+      "readmeSha256": "00ffcd0840ae71332a20cc655babe44e86ea4ab1c67db55a2789140a03db7158"
+    }
+  ],
+  "hubReadmeSha256": "374743be4f66946e3ca6930126daa6b747d1544a63bac0639e81b3bc3b6c981a",
+  "coverage": "Read the scope and deliverable sections returned from each of the 10 fixed README files and the other hub index; did not rerun tests, inspect images, or independently accept all README assertions."
+}

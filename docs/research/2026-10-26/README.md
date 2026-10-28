@@ -710,3 +710,11 @@ Ohm页面报告引擎 **17.5.0**，编辑器部署commit未知，与固定编辑
 CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS 的 /var 链接到 /private/var，两种拼写产生较长相对路径，但所有归档/重放 sourcePath 与 baseDir 均解析到正确文件，源稿字节、hash 与嵌入文本一致。现有实验分支已更新到 [`04550c4f`](https://github.com/tt-a1i/archify/tree/04550c4f83141557cf58164e5a7eb1886c0f871c/experiments/cue-defaults)，只增加[核查报告](https://github.com/tt-a1i/archify/blob/04550c4f83141557cf58164e5a7eb1886c0f871c/experiments/cue-defaults/evidence/round30-origin-resolution.md)和验证说明，未重建页面。完整 HTML 字节仍不同，也没有新增跨机器或 patch 操作验收。
 
 本批未出现通过筛选的新产品实现方向；补证与既有实验跟进已保存，目标继续进行。未新建 PR、合并、发布、部署或安装。
+
+## 第31批：先吸收十个已有分支，再核对证明输出合同
+
+[远程覆盖刷新](audit/round31-coverage.md)记录329个head及另外一个研究总账的十项新增交付，包括task-view清单身份、差异导航、循环区域与性能上下文。已阅读固定README的范围说明；本批没有重跑它们的测试或把旧结果重标为当前dev。dev已推进到847146ae，既有实验继续保留原比较基线。
+
+[Soufflé筛选](scouts/souffle-proof-reading-round31.md)核对既有JSON导出、深度限制与否定条件解释。一个关键边界是JSON的axiom字段同时用于普通叶子、折叠子证明和带失败标记的条件，不能按字段名全部绘为已成立事实。[17份完整上游来源](audit/round31-souffle-source/README.md)的Git blob／字节／SHA核对通过，expected JSON包含3个规则应用和3个叶子。这里是源码与expected检查，没有运行引擎或证明其当前部署行为。
+
+原生功能已能解答当前小例，泛化导入还需维护类型、深度、选择与多查询输出合同，本批暂缓新增适配器或内容实验。没有新图片、产品测试或新实验分支；只推研究总账，不创建PR。持续目标保持进行中。

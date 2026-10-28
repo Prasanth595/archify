@@ -1,0 +1,16 @@
+{
+  "kind": "source identity and expected-file inspection; not engine execution",
+  "revision": "f53dab8bf4bbf2395a26d2771f6b75395825cc46",
+  "filesVerified": 17,
+  "expectedProof": "tests/provenance/path_explain_output/provenance.txt",
+  "nodeOccurrences": 6,
+  "innerOccurrences": 3,
+  "axiomFieldOccurrences": 3,
+  "ruleDefinitions": 2,
+  "leafLabels": [
+    "edge(\"a\", \"b\")",
+    "edge(\"b\", \"c\")",
+    "edge(\"c\", \"d\")"
+  ],
+  "negationExpectedText": "edge(\"a\", \"b\") ✓ path(\"b\", \"3\") x \n--------------------------------(R2)\n           path(\"a\",\"3\")            \n"
+}
