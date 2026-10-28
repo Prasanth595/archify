@@ -3731,9 +3731,9 @@ async function commandCompareWorkflow(args) {
   }
   for (const id of [...new Set([...baseEdges.keys(), ...headEdges.keys()])].sort()) {
     const before = baseEdges.get(id); const after = headEdges.get(id);
-    if (!before) changes.edges.push({ id, change: 'added', head: after });
-    else if (!after) changes.edges.push({ id, change: 'removed', base: before });
-    else if (JSON.stringify(before) !== JSON.stringify(after)) changes.edges.push({ id, change: before.from !== after.from || before.to !== after.to ? 'endpoint-changed' : 'modified', base: before, head: after });
+    if (!before) changes.edges.push({ id, change: 'added', head: semantic(after) });
+    else if (!after) changes.edges.push({ id, change: 'removed', base: semantic(before) });
+    else if (JSON.stringify(semantic(before)) !== JSON.stringify(semantic(after))) changes.edges.push({ id, change: before.from !== after.from || before.to !== after.to ? 'endpoint-changed' : 'modified', base: semantic(before), head: semantic(after) });
   }
   const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length } };
   if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${changes.nodes.length + changes.edges.length}\n`);
