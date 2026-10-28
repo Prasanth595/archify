@@ -33,6 +33,18 @@ test('Workflow compare reports authored semantic changes and ignores coordinates
   assert.deepEqual(receipt.changes.edges, []);
 });
 
+test('Workflow compare ignores presentation-only fields and remains deterministic', () => {
+  const base = fixture();
+  const head = structuredClone(base);
+  head.nodes[0].col = (head.nodes[0].col || 0) + 2;
+  head.nodes[0].yOffset = 4;
+  if (head.edges[0]) head.edges[0].labelDx = 8;
+  const first = run(base, head).receipt;
+  const second = run(base, head).receipt;
+  assert.deepEqual(first.changes, { nodes: [], edges: [] });
+  assert.deepEqual(first, second);
+});
+
 test('Workflow compare rejects invalid inputs with stable diagnostics', () => {
   const base = fixture();
   const invalid = structuredClone(base);

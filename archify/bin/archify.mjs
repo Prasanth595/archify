@@ -3678,11 +3678,19 @@ async function commandCompareWorkflow(args) {
   const json = args.includes('--json');
   const positional = args.filter(arg => !arg.startsWith('--'));
   const [, baseInput, headInput, output] = positional;
+  const writeReceipt = (destination, receipt) => {
+    if (!destination) return;
+    const resolved = path.resolve(destination);
+    const temporary = `${resolved}.tmp-${process.pid}-${randomUUID()}`;
+    fs.writeFileSync(temporary, `${JSON.stringify(receipt, null, 2)}\n`, { flag: 'wx' });
+    fs.renameSync(temporary, resolved);
+  };
   const failWorkflow = (code, message, details = {}) => {
-    const receipt = { schemaVersion: 1, ok: false, command: 'compare', type: 'workflow', code, error: message, details };
+    const diagnostics = details.diagnostics || [{ code, message }];
+    const receipt = { schemaVersion: 1, ok: false, command: 'compare', type: 'workflow', code, error: message, diagnostics, details };
     if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`);
     else process.stderr.write(`${message}\n`);
-    if (output) fs.writeFileSync(output, `${JSON.stringify(receipt, null, 2)}\n`);
+    writeReceipt(output, receipt);
     process.exitCode = 1;
   };
   if (!baseInput || !headInput || positional.length > 4) return failWorkflow('workflow/usage', 'Usage: compare workflow <base.json> <head.json> [output.json] [--json]');
@@ -3690,6 +3698,7 @@ async function commandCompareWorkflow(args) {
   let head;
   try { base = JSON.parse(fs.readFileSync(baseInput, 'utf8')); } catch (error) { return failWorkflow('workflow/base-read', `Could not read base Workflow input: ${error.message}`); }
   try { head = JSON.parse(fs.readFileSync(headInput, 'utf8')); } catch (error) { return failWorkflow('workflow/head-read', `Could not read head Workflow input: ${error.message}`); }
+  if (!base || typeof base !== 'object' || Array.isArray(base) || !head || typeof head !== 'object' || Array.isArray(head)) return failWorkflow('workflow/shape', 'Both inputs must be JSON objects.');
   if (base.diagram_type !== 'workflow' || head.diagram_type !== 'workflow') return failWorkflow('workflow/type', 'Both inputs must declare diagram_type: workflow.');
   const { validateSchema } = await import('../renderers/shared/validator.mjs');
   try { validateSchema('workflow', base); } catch (error) { return failWorkflow('workflow/base-invalid', 'Base Workflow input is invalid.', { diagnostics: error.archifyDiagnostics || [] }); }
@@ -3707,7 +3716,12 @@ async function commandCompareWorkflow(args) {
   const baseEdges = stable(base.edges, 'edges');
   const headEdges = stable(head.edges, 'edges');
   if (!baseNodes || !headNodes || !baseEdges || !headEdges) return failWorkflow('workflow/identity', 'Workflow nodes and edges require unique stable ids.');
-  const semantic = (value, ignored) => Object.fromEntries(Object.entries(value || {}).filter(([key]) => !ignored.has(key)));
+  const presentationKeys = new Set(['row', 'col', 'pos', 'width', 'height', 'x', 'y', 'xOffset', 'yOffset', 'labelDx', 'labelDy']);
+  const semantic = (value, ignored = presentationKeys) => {
+    if (Array.isArray(value)) return value.map(entry => semantic(entry, ignored));
+    if (!value || typeof value !== 'object') return value;
+    return Object.fromEntries(Object.keys(value).filter(key => !ignored.has(key)).sort().map(key => [key, semantic(value[key], ignored)]));
+  };
   const changes = { nodes: [], edges: [] };
   for (const id of [...new Set([...baseNodes.keys(), ...headNodes.keys()])].sort()) {
     const before = baseNodes.get(id); const after = headNodes.get(id);
@@ -3721,9 +3735,9 @@ async function commandCompareWorkflow(args) {
     else if (!after) changes.edges.push({ id, change: 'removed', base: before });
     else if (JSON.stringify(before) !== JSON.stringify(after)) changes.edges.push({ id, change: before.from !== after.from || before.to !== after.to ? 'endpoint-changed' : 'modified', base: before, head: after });
   }
-  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length } };
+  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length } };
   if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${changes.nodes.length + changes.edges.length}\n`);
-  if (output) fs.writeFileSync(output, `${JSON.stringify(receipt, null, 2)}\n`);
+  writeReceipt(output, receipt);
 }
 
 async function commandCompare(args) {
