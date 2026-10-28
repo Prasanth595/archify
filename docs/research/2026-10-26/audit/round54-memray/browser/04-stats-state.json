@@ -1,0 +1,13 @@
+{
+  "url": "http://127.0.0.1:8874/report.html",
+  "viewport": {
+    "width": 1291,
+    "height": 762
+  },
+  "dialogs": [
+    {
+      "id": "statsModal",
+      "text": "Memray run stats\n×\nCommand line: /home/mwoznisk/repos/memray/.311venv/bin/memray run --trace-python-allocators --native -f -o lel.bin example.py\nStart time: 2023-01-19 11:53:30.151000\nEnd time: 2023-01-19 11:53:32.233000\nTotal number of allocations: 3602050\nTotal number of frames seen: 404\nPeak memory usage: 71.7 MiB\nPython allocator: pymalloc\n\nClose"
+    }
+  ]
+}

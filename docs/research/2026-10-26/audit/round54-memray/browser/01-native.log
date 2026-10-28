@@ -1,0 +1,32 @@
+[p1 "memray - flamegraph report" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "memray - flamegraph report"]
+root
+  container
+    anchor [ref=1493, url=https://bloomberg.github.io/memray/_static/flamegraphs/memray-flamegraph-sqlite.html#]
+      text "memray"
+      text "flamegraph report"
+    container
+      text "Python Allocator: pymalloc"
+      container
+        container
+          checkbox [ref=1494]
+          text "Hide Irrelevant Frames"
+        container
+          checkbox [ref=1495]
+          text "Hide Import System Frames"
+        button [ref=1496]
+          text "Reset Zoom"
+        button [ref=1497]
+          text "Invert"
+        button [ref=1498]
+          text "Stats"
+        button [ref=1499]
+          text "Help"
+      searchbox [ref=1500, loc=css:input[placeholder="Search"]]
+        text "Search"
+  container
+    svg_root "00:53:30.5Jan 20, 2023 00:53:31 00:53:31.5 00:53:32 0B 50MB 100MB"
+    svg_root
+    svg_root
+  svg_root
+
+

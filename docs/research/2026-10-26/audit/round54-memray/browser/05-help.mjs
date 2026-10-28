@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+const task=await taskSpace(3),page=task.page('p1');
+await page.click('#statsModal .modal-footer button');
+await page.waitForFunction(()=>!document.querySelector('.modal.show'),undefined,{timeout:5000});
+await page.click('text="Help"');
+await page.waitForFunction(()=>{const e=document.querySelector('#helpModal.show');return e&&getComputedStyle(e).opacity==='1';},undefined,{timeout:5000});
+console.log(await page.snapshot());
+await page.screenshot({path:'/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round54-memray/browser/05-help.png'});
+await fs.writeFile('/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round54-memray/browser/05-help-state.json',JSON.stringify(await page.evaluate(()=>({text:document.querySelector('#helpModal').innerText,viewport:{width:innerWidth,height:innerHeight}})),null,2));
+await page.click('#helpModal .modal-footer button');
+await page.waitForFunction(()=>!document.querySelector('.modal.show'),undefined,{timeout:5000});
+console.log(await page.evaluate(()=>({chart:document.querySelector('#chart').outerHTML.slice(0,2400)})));

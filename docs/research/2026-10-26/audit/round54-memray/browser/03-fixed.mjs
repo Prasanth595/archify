@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+const task=await taskSpace(3),page=task.page('p1');
+await page.goto('http://127.0.0.1:8874/report.html');
+await page.waitForFunction(()=>document.body.innerText.includes('<root>'),undefined,{timeout:15000});
+console.log(await page.snapshot());
+await page.screenshot({path:'/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round54-memray/browser/03-default.png'});
+console.log(await page.evaluate(()=>({inputs:[...document.querySelectorAll('input')].map(e=>({id:e.id,type:e.type,checked:e.checked})),buttons:[...document.querySelectorAll('button')].map(e=>({id:e.id,text:e.textContent})),resources:[...document.querySelectorAll('script[src],link[href]')].map(e=>e.src||e.href)})));
+await page.click('text="Stats"');console.log(await page.snapshot());
+await page.screenshot({path:'/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round54-memray/browser/03-stats.png'});
+await fs.writeFile('/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round54-memray/browser/03-stats-state.json',JSON.stringify(await page.evaluate(()=>({viewport:{width:innerWidth,height:innerHeight},url:location.href,text:document.body.innerText})),null,2));

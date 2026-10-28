@@ -1,0 +1,23 @@
+{
+  "reportSha256": "e1916ee0a1f40e98f1c3f8efde7a13322d0e03c67d4024f9574bb508f3e51b13",
+  "excerpts": [
+    {
+      "needle": "function v(){I.inverted",
+      "byteOffset": 1350508,
+      "bytes": 240,
+      "text": "function v(){I.inverted(!I.inverted()),I.resetZoom()}function g(){I.resetZoom()}function d(){const n=parseFloat(getComputedStyle(document.documentElement).fontSize);return window.innerWidth-2*n}function y(){const n=d();document.getElementBy"
+    },
+    {
+      "needle": "function w(){",
+      "byteOffset": 1351169,
+      "bytes": 850,
+      "text": "function w(){void 0===this.hideUninterestingFrames&&(this.hideUninterestingFrames=!0),!0===this.hideUninterestingFrames?(this.hideUninterestingFrames=!0,c.registerFilter(o,(n=>i(n,(n=>n.interesting))))):c.unRegisterFilter(o),this.hideUninterestingFrames=!this.hideUninterestingFrames,c.drawChart(data)}function b(){void 0===this.hideImportSystemFrames&&(this.hideImportSystemFrames=!0),!0===this.hideImportSystemFrames?(this.hideImportSystemFrames=!0,c.registerFilter(a,(n=>i(n,(n=>!n.import_system))))):c.unRegisterFilter(a),this.hideImportSystemFrames=!this.hideImportSystemFrames,c.drawChart(data)}function x(){return d3.tip().attr(\"class\",\"d3-flame-graph-tip\").html((n=>{const t=function(n,t=1){if(Math.abs(n)<1024)return n+\" B\";const r=[\"KiB\",\"MiB\",\"GiB\",\"TiB\",\"PiB\",\"EiB\",\"ZiB\",\"YiB\"];let e=-1;const u=10**t;do{n/=1024,++e}while(Math.round(Math"
+    },
+    {
+      "needle": "The flame graph displays a snapshot",
+      "byteOffset": 6840,
+      "bytes": 240,
+      "text": "The flame graph displays a snapshot of memory used across stack frames at the time <b>when the memory usage was at its peak</b>.\n</p>\n\n<p>\n  The vertical ordering of the stack frames corresponds to the order of function calls, from parent t"
+    }
+  ]
+}

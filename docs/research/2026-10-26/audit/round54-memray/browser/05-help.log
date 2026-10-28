@@ -1,0 +1,170 @@
+[p1 "memray - flamegraph report" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "memray - flamegraph report"]
+root
+  container
+    anchor [ref=1501, url=http://127.0.0.1:8874/report.html#]
+      text "memray"
+      text "flamegraph report"
+    container
+      text "Python Allocator: pymalloc"
+      container
+        container
+          checkbox [ref=1502]
+          text "Hide Irrelevant Frames"
+        container
+          checkbox [ref=1503]
+          text "Hide Import System Frames"
+        button [ref=1504]
+          text "Reset Zoom"
+        button [ref=1505]
+          text "Invert"
+        button [ref=1506]
+          text "Stats"
+        button [ref=1507]
+          text "Help"
+      searchbox [ref=1508, loc=css:input[placeholder="Search"]]
+        text "Search"
+  container
+    svg_root "00:53:30.5Jan 20, 2023 00:53:31 00:53:31.5 00:53:32 0B 50MB 100MB"
+    svg_root
+    svg_root
+  svg_root "<root> runpy.run_path(args.script, run_name="__main__") run_path at <frozen runpy>:291 _run_module_code at <frozen runpy>:98 _run_code at <frozen runpy>:88 return_value = builtin_exec_impl(module, sou..."
+    text "<root>"
+    text "runpy.run_path(args.script, run_name="__main__")"
+    text "run_path at <frozen runpy>:291"
+    text "_run_module_code at <frozen runpy>:98"
+    text "_run_code at <frozen runpy>:88"
+    text "return_value = builtin_exec_impl(module, source, globals, locals, closure);"
+    text "v = PyEval_EvalCode(source, globals, locals);"
+    text "main()"
+    text "lst = generate_values_list()"
+    text "results = conn.execute(select_statement).fetchall()"
+    text "conn.executemany(insert_statement, lst)"
+    text "values.extend(generate_values(count))"
+    text "return pysqlite_cursor_fetchall_impl(self);"
+    text "return_value = pysqlite_connection_executemany_impl(self, sql, parameters);"
+    text "PyObject *item = iternext(it);"
+    text "while ((row = pysqlite_cursor_iternext(self))) {"
+    text "result = _pysqlite_query_execute((pysqlite_Cursor *)cursor, 1, sql, parameters);"
+    text "if (gen_send_ex2(gen, NULL, &result, 0, 0) == PYGEN_RETURN) {"
+    text "PyObject *row = _pysqlite_fetch_one_row(self);"
+    text "rc = stmt_step(self->statement->st);"
+    text "result = _PyEval_EvalFrame(tstate, frame, exc);"
+    text "converted = PyFloat_FromDouble(sqlite3_column_double(self->statement->st, i));"
+    text "row = PyTuple_New(numcols);"
+    text "converted = PyLong_FromLongLong(sqlite3_column_int64(self->statement->st, i));"
+    text "converted = PyUnicode_FromStringAndSize(text, nbytes);"
+    text "rc = sqlite3_step(statement);"
+    text "random.random() * 1e5,"
+    text "ts = list(range(end - count * 900, end, 900))"
+    text "yield ("
+    text "random.random() * 1000,"
+    text "random.random() * 1000,"
+    text "random.random() * 1000,"
+    text "random.random() * 1000,"
+    text "random.random() * 1e9,"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "op = tuple_alloc(size);"
+    text "PyLong_FromLongLong at <unknown>:0"
+    text "PyObject *u = PyUnicode_New(size, 127);"
+    text "sqlite3_step at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:85202"
+    text "PyObject *result = BINARY_OP1(v, w, NB_SLOT(nb_multiply), "*");"
+    text "PyObject *rv = list_extend(self, iterable);"
+    text "op = tuple_alloc(size);"
+    text "PyObject *result = BINARY_OP1(v, w, NB_SLOT(nb_multiply), "*");"
+    text "PyObject *result = BINARY_OP1(v, w, NB_SLOT(nb_multiply), "*");"
+    text "PyObject *result = BINARY_OP1(v, w, NB_SLOT(nb_multiply), "*");"
+    text "PyObject *result = BINARY_OP1(v, w, NB_SLOT(nb_multiply), "*");"
+    text "PyObject *result = BINARY_OP1(v, w, NB_SLOT(nb_multiply), "*");"
+    text "op = PyObject_GC_NewVar(PyTupleObject, &PyTuple_Type, size);"
+    text "return _PyObject.malloc(_PyObject.ctx, size);"
+    text "obj = (PyObject *) PyObject_Malloc(struct_size + (size + 1) * char_size);"
+    text "sqlite3_step at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:85214"
+    text "x = slotv(v, w);"
+    text "PyObject *item = iternext(it);"
+    text "op = PyObject_GC_NewVar(PyTupleObject, &PyTuple_Type, size);"
+    text "x = slotv(v, w);"
+    text "x = slotv(v, w);"
+    text "x = slotv(v, w);"
+    text "x = slotv(v, w);"
+    text "x = slotv(v, w);"
+    text "char *mem = PyObject_Malloc(size);"
+    text "return _PyObject.malloc(_PyObject.ctx, size);"
+    text "sqlite3Step at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:85157"
+    text "return PyFloat_FromDouble(a);"
+    text "return PyLong_FromLong((long)(r->start +"
+    text "char *mem = PyObject_Malloc(size);"
+    text "return PyFloat_FromDouble(a);"
+    text "return PyFloat_FromDouble(a);"
+    text "return PyFloat_FromDouble(a);"
+    text "return PyFloat_FromDouble(a);"
+    text "return PyFloat_FromDouble(a);"
+    text "return _PyObject.malloc(_PyObject.ctx, size);"
+    text "sqlite3VdbeExec at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:92016"
+    text "sqlite3VdbeExec at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:92728"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "v = _PyLong_New(ndigits);"
+    text "return _PyObject.malloc(_PyObject.ctx, size);"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "op = PyObject_Malloc(sizeof(PyFloatObject));"
+    text "sqlite3BtreeInsert at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:74643"
+    text "sqlite3BtreeInsert at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:74643"
+    text "return _PyObject.malloc(_PyObject.ctx, size);"
+    text "balance at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:74198"
+    text "balance at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:74220"
+    text "balance_quick at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:73033"
+    text "balance_nonroot at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:73686"
+    text "allocateBtreePage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:71922"
+    text "allocateBtreePage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:71922"
+    text "btreeGetUnusedPage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:67863"
+    text "btreeGetUnusedPage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:67863"
+    text "btreeGetPage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:67720"
+    text "btreeGetPage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:67720"
+    text "sqlite3PagerGet at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:58325"
+    text "sqlite3PagerGet at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:58325"
+    text "getPageNormal at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:58149"
+    text "getPageNormal at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:58149"
+    text "sqlite3PcacheFetch at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:50213"
+    text "sqlite3PcacheFetch at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:50213"
+    text "pcache1FetchStage2 at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:51637"
+    text "pcache1FetchStage2 at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:51637"
+    text "pcache1AllocPage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:51161"
+    text "pcache1AllocPage at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:51161"
+    text "pcache1Alloc at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:51064"
+    text "pcache1Alloc at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:51064"
+    text "sqlite3Malloc at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:28361"
+    text "sqlite3Malloc at /tmp/sqlite3-3.37.2-2/build64/sqlite3.c:28361"
+  dialog "How to interpret flamegraph reports" [ref=1512, loc=role:dialog[name="How to interpret flamegraph reports"]]
+    container
+      heading
+        text "How to interpret flamegraph reports"
+      button "Close" [ref=1513]
+        text "×"
+    container
+      paragraph
+        text "The flame graph displays a snapshot of memory used across stack frames at the time"
+        text "when the memory usage was at its peak"
+        text "."
+      paragraph
+        text "The vertical ordering of the stack frames corresponds to the order of function calls, from parent to children. The horizontal ordering does not represent the passage of time in the application: they s..."
+      paragraph
+        text "On the flame graph, each bar represents a stack frame and shows the code which triggered the memory allocation. Hovering over the frame you can also see the overall memory allocated in the given frame..."
+      paragraph
+        text "The"
+        text "Show/Hide Irrelevant Frames"
+        text "button can be used to reveal and hide frames which contain allocations in code which might not be relevant for the application. These include frames in the CPython eval loop as well as frames introduc..."
+      paragraph
+        text "You can find more information in the"
+        anchor [ref=1514, loc=href:https://bloomberg.github.io/memray/flamegraph.html, url=https://bloomberg.github.io/memray/flamegraph.html]
+          text "documentation"
+        text "."
+    button [ref=1515]
+      text "Close"
+  text "File example.py, line 56 in main"
+  text "33.1 MiB total"
+  text "900013 allocations"
+
+{ chart: '<div id="chart"><svg width="1259" class="partition d3-flame-graph" height="700"><text class="title" text-anchor="middle" y="25" x="629.5" fill="#808080"></text><g transform="translate(0,0)" width="1259" height="20" name="&lt;root&gt;" class="frame"><rect height="20" fill="#f2f2f2" width="1259"></rect><foreignObject width="1259" height="20"><div class="d3-flame-graph-label" style="display: block;">&lt;root&gt;</div></foreignObject></g><g transform="translate(0,20)" width="1258.900820408586" height="20" name="                runpy.run_path(args.script, run_name=&quot;__main__&quot;)\n" class="frame"><rect height="20" fill="#ccebc5" width="1258.900820408586"></rect><foreignObject width="1258.900820408586" height="20"><div class="d3-flame-graph-label" style="display: block;">                runpy.run_path(args.script, run_name="__main__")\n</div></foreignObject></g><g transform="translate(0,40)" width="1257.351405116819" height="20" name="run_path at &lt;frozen runpy&gt;:291" class="frame"><rect height="20" fill="#f2f2f2" width="1257.351405116819"></rect><foreignObject width="1257.351405116819" height="20"><div class="d3-flame-graph-label" style="display: block;">run_path at &lt;frozen runpy&gt;:291</div></foreignObject></g><g transform="translate(0,60)" width="1257.318819689689" height="20" name="_run_module_code at &lt;frozen runpy&gt;:98" class="frame"><rect height="20" fill="#f2f2f2" width="1257.318819689689"></rect><foreignObject width="1257.318819689689" height="20"><div class="d3-flame-graph-label" style="display: block;">_run_module_code at &lt;frozen runpy&gt;:98</div></foreignObject></g><g transform="translate(0,80)" width="1257.303648879319" height="20" name="_run_code at &lt;frozen runpy&gt;:88" class="frame"><rect height="20" fill="#f2f2f2" width="1257.303648879319"></rect><foreignObject width="1257.303648879319" height="20"><div class="d3-flame-graph-label" style="display: block;">_run_code at &lt;frozen runpy&gt;:88</div></foreignObject></g><g transform="translate(0,100)" width="1257.303648879319" height="20" name="    return_value = builtin_exec_impl(module, source, globals, locals, closure);\n" class="frame"><rect height="20" fill="#ffffcc" width="1257.303648879319"></rect><foreignObject width="1257.303648879319" height="20"><div class="d3-flame-graph-label" style="display: block;">    return_value = builtin_exec_impl(module, source, globals, local' }
+

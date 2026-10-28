@@ -1,0 +1,7 @@
+{
+  "text": "How to interpret flamegraph reports\n×\n\nThe flame graph displays a snapshot of memory used across stack frames at the time when the memory usage was at its peak.\n\nThe vertical ordering of the stack frames corresponds to the order of function calls, from parent to children. The horizontal ordering does not represent the passage of time in the application: they simply represent child frames in arbitrary order.\n\nOn the flame graph, each bar represents a stack frame and shows the code which triggered the memory allocation. Hovering over the frame you can also see the overall memory allocated in the given frame and its children and the number of times allocations have occurred.\n\nThe Show/Hide Irrelevant Frames button can be used to reveal and hide frames which contain allocations in code which might not be relevant for the application. These include frames in the CPython eval loop as well as frames introduced by memray during the analysis.\n\nYou can find more information in the documentation.\n\nClose",
+  "viewport": {
+    "width": 1291,
+    "height": 762
+  }
+}
