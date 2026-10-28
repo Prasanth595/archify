@@ -342,12 +342,12 @@
         element.textContent = normalized;
         element.hidden = !normalized;
       }
-      function renderSourceEvidence(id) {
+      function renderSourceEvidence(id, relationship) {
         evidenceLinks.textContent = '';
         repositoryLink.removeAttribute('href');
         repositoryLink.removeAttribute('aria-label');
         repositoryLink.textContent = '';
-        var sources = Archify.sourceEvidence.node(id);
+        var sources = relationship ? Archify.sourceEvidence.relationship(id) : Archify.sourceEvidence.node(id);
         var repository = Archify.sourceEvidence.repository();
         if (!repository || !sources.length) {
           evidence.hidden = true;
@@ -1033,6 +1033,7 @@
         var target = relationshipHitTarget(key);
         if (target) target.setAttribute('aria-pressed', 'true');
         renderRelationshipCopyAction();
+        renderSourceEvidence(record.id, true);
         summary.textContent = viewerText('viewer.passport.relationship.pinned', {
           from: record.fromLabel,
           to: record.toLabel,

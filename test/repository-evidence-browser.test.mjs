@@ -10,6 +10,7 @@ test('browser renders local-only sources as searchable text and web sources as l
   timeout: 60000,
 }, async () => {
   const data = fixture();
+  data.diagram.connections[0].sources = [{ path: 'src/router.js', line: 1, end_line: 3, label: 'Request handoff' }];
   const browser = new ChromeVisualBrowser(findChrome());
   try {
     for (const mode of ['github', 'gitee', 'gitlab', 'local-only']) {
@@ -32,7 +33,7 @@ test('browser renders local-only sources as searchable text and web sources as l
             const input = document.getElementById('node-finder-input');
             input.value = 'src/router.js';
             input.dispatchEvent(new Event('input', { bubbles: true }));
-            return {
+            const nodeEvidence = {
               visible: !panel.hidden,
               links: rows.filter(row => row.tagName === 'A').map(row => row.getAttribute('href')),
               paths: rows.map(row => row.querySelector('small').textContent),
@@ -44,6 +45,19 @@ test('browser renders local-only sources as searchable text and web sources as l
               sourceAria: document.querySelector('[data-node-id="users"]').getAttribute('aria-label'),
               invalidLinks: [...panel.querySelectorAll('a[href]')].some(a => /undefined|javascript:/.test(a.getAttribute('href'))),
               search: document.getElementById('node-finder-results').textContent
+            };
+            const selected = Archify.focus.inspectRelationshipById('users-to-cdn', { toggle: false });
+            const relationshipRows = [...panel.querySelectorAll('.semantic-passport-source')];
+            return {
+              ...nodeEvidence,
+              relationship: {
+                selected,
+                pinned: Archify.focus.relationship(),
+                visible: !panel.hidden,
+                paths: relationshipRows.map(row => row.querySelector('small').textContent),
+                locations: relationshipRows.map(row => row.querySelector('code').textContent),
+                labels: relationshipRows.map(row => row.querySelector('strong').textContent)
+              }
             };
           })()`, returnByValue: true,
         }, sessionId);
@@ -60,6 +74,12 @@ test('browser renders local-only sources as searchable text and web sources as l
         assert.equal(observed.links.length, local ? 0 : 2);
         assert.equal(observed.locations[0], local ? 'L1–3' : 'L1–3 ↗');
         assert.equal(observed.repositoryHref, local ? null : `${url}/${mode === 'gitlab' ? '-/' : ''}tree/${data.revision}`);
+        assert.equal(observed.relationship.selected, true);
+        assert.equal(observed.relationship.pinned.id, 'users-to-cdn');
+        assert.equal(observed.relationship.visible, true);
+        assert.deepEqual(observed.relationship.paths, ['src/router.js']);
+        assert.equal(observed.relationship.labels[0], 'Request handoff');
+        assert.equal(observed.relationship.locations[0], local ? 'L1–3' : 'L1–3 ↗');
       }
     }
   } finally { await browser.close(); }
