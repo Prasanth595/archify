@@ -65,10 +65,21 @@ Root已读完本批三份报告。下表区分研究建议与当前实施状态�
 
 | 报告 | 具体问题与边界 | 当前状态 |
 | --- | --- | --- |
-| [Mandatory paths](scouts/mandatory-paths.md) | 给定两个不同端点，判断哪些内部点出现在每条有向路径上，并为非必经点保留避开它的精确路径；不是无向割点、运行依赖或系统单点故障。 | 本批唯一已实施方向，新独立分支正在验证；尚未作为第55项提交、推送或纳入画廊，等待最终证据与远端身份。 |
+| [Mandatory paths](scouts/mandatory-paths.md) | 给定两个不同端点，判断哪些内部点出现在每条有向路径上，并为非必经点保留避开它的精确路径；不是无向割点、运行依赖或系统单点故障。 | 本批唯一已实施方向，独立验证与root真实浏览器观察完成；已推送第55项实验分支，精确身份见下节。画廊增量另行记录。 |
 | [Cycle regions](scouts/cycle-regions.md) | 区分所选点所在循环区域、区域内部关系与通向其他区域的单向边；一条环见证不等于整个区域。 | 保留为候选，本批不实施；没有把报告的静态拓扑答案称为已运行的Viewer功能。 |
 | [Structural changes next](scouts/structural-changes-next.md) | 保留结构变更报告的每条记录、两侧位置与多源同目标关系；上游expected与动作序列化不证明当前检测准确率或语义移动。 | 保留离线声明投影候选，本批不实施；不新增AST服务、跨版本源码合同或第二个adapter。 |
 
 [Mandatory paths有界排重原始记录](mandatory-path-search.json)保留三个关键词0条结果及“all paths”102条中前30条；首次malformed查询未计入absence。它只记录当次搜索范围，不证明全历史没有重叠。
 
 已发布基准仍为54项（17产品/16离线/21内容），hub `2a36207e431d6b05911d6ceefbdeda767e66d3df`。本次仅补研究入口及保存画廊golden，未改54项实验表、卡片、原图或浏览器证据，没有构建55版。本批不启动另外两项候选；Mandatory paths验证结果、原图与精确远端提交另行补齐后，才决定后续增量身份。
+
+
+## 第55项：两端点间的必经内部点
+
+[Mandatory paths固定README](https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/README.md)及[实际主图](https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png)已随 `codex/lab-mandatory-paths` 推送，精确head `f79704cb63f1577246752c93f8d648a000ea978b` 经root的远端ls-remote核对。独立实验保留6ca6基线和完整12节点12边输入，SHA-256 `610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda`；离线查询不修改共享Viewer或schema。
+
+`clients → audit`的必经内部点为edge、gateway、events、worker；api_a/api_b各有使用另一API的可点绕行见证，Redis等其他点仍在完整图中。反向 `audit → clients` 明确返回不可达，不将其误列为所有点必经。九项focused tests通过，独立审查的49154次查询与61448条绕行见证通过；validate/deliver/check通过，CLI browser-check未运行。这些结果不代表故障、因果、运行依赖、性能或阅读效率结论。
+
+root已实际查看浅深色overview、指针双路、键盘/Enter/Escape与不可达结果，原图与派生观察在实验分支持久保存。主图1440×1250、147115B，SHA-256 `50d3a154b91c1b0204fee94122804556a482099a271deaaec02227f532bb666e`。早期生成中overview与iframe未paint的空键盘截图保留原身份，不算最终成功图。390px桌面CSS视口仍有client375/scroll400的toolbar溢出，不称移动端、触摸或AT通过。
+
+实验总账已为55项，画廊原54版golden已保存，55版静态增量及本批gallery新卡片UI待分别记录，不复用实验截图或旧54版交互冒充本批gallery检查。未创建PR、合入、发布或安装；本批不再增加第二个实现。用户最新“继续吧”恢复持续目标，本批收尾后目标继续，不将交付一个实验写成目标结束。
