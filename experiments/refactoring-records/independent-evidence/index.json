@@ -1,0 +1,66 @@
+{
+  "kind": "evidence packaging provenance index",
+  "rawEvidenceRetention": "Original unmodified logs remain in the local evidence directories; public text is explicitly derived.",
+  "files": [
+    {
+      "file": "bind.stdout.txt",
+      "original": {
+        "sha256": "546cef002d0def86566246706ca187a3f8a538faf831c11d68b5803412f88ac2",
+        "bytes": 755
+      },
+      "sourceKind": "derived text: private local paths replaced; not raw original",
+      "public": {
+        "sha256": "546cef002d0def86566246706ca187a3f8a538faf831c11d68b5803412f88ac2",
+        "bytes": 755
+      }
+    },
+    {
+      "file": "binding.json",
+      "original": {
+        "sha256": "546cef002d0def86566246706ca187a3f8a538faf831c11d68b5803412f88ac2",
+        "bytes": 755
+      },
+      "sourceKind": "derived text: private local paths replaced; not raw original",
+      "public": {
+        "sha256": "546cef002d0def86566246706ca187a3f8a538faf831c11d68b5803412f88ac2",
+        "bytes": 755
+      }
+    },
+    {
+      "file": "receipt.json",
+      "original": {
+        "sha256": "7dcdeeea8e82e0765c75f57798357906399d3c89262dc0f94c78addb0cf909ec",
+        "bytes": 855
+      },
+      "sourceKind": "derived text: private local paths replaced; not raw original",
+      "public": {
+        "sha256": "7dcdeeea8e82e0765c75f57798357906399d3c89262dc0f94c78addb0cf909ec",
+        "bytes": 855
+      }
+    },
+    {
+      "file": "review.md",
+      "original": {
+        "sha256": "c6225ea4dd32b82c8fab7604b943f4023d162faf78a8086b51d2db3216c2c60e",
+        "bytes": 5081
+      },
+      "sourceKind": "derived text: private local paths replaced; not raw original",
+      "public": {
+        "sha256": "f1f8aef705aa100fd2bc2d9832a31aa6f8f7ce73267053b1d968dc8444dc7bc2",
+        "bytes": 4997
+      }
+    },
+    {
+      "file": "review.stdout.txt",
+      "original": {
+        "sha256": "7dcdeeea8e82e0765c75f57798357906399d3c89262dc0f94c78addb0cf909ec",
+        "bytes": 855
+      },
+      "sourceKind": "derived text: private local paths replaced; not raw original",
+      "public": {
+        "sha256": "7dcdeeea8e82e0765c75f57798357906399d3c89262dc0f94c78addb0cf909ec",
+        "bytes": 855
+      }
+    }
+  ]
+}

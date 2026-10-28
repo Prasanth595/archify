@@ -1,0 +1,55 @@
+{
+  "kind": "actual-browser-observation",
+  "viewport": {
+    "width": 1440,
+    "height": 1100
+  },
+  "dom": {
+    "client": 1425,
+    "scroll": 1425,
+    "recordLinks": [
+      {
+        "text": "R0 · Pull Up Method ↗",
+        "edges": "[\"record-0\"]"
+      },
+      {
+        "text": "R1 · Pull Up Method ↗",
+        "edges": "[\"record-1\"]"
+      },
+      {
+        "text": "R2 · Pull Up Attribute ↗",
+        "edges": "[\"record-2\"]"
+      },
+      {
+        "text": "R3 · Pull Up Attribute ↗",
+        "edges": "[\"record-3\"]"
+      }
+    ],
+    "sources": [
+      {
+        "text": "before · src/org/animals/Labrador.java · cd61fd2",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Labrador.java#L7-L9"
+      },
+      {
+        "text": "after · src/org/animals/Dog.java · 36287f7",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L7-L9"
+      },
+      {
+        "text": "before · src/org/animals/Poodle.java · cd61fd2",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Poodle.java#L7-L9"
+      },
+      {
+        "text": "before · src/org/animals/Labrador.java · cd61fd2",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Labrador.java#L5-L5"
+      },
+      {
+        "text": "after · src/org/animals/Dog.java · 36287f7",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L5-L5"
+      },
+      {
+        "text": "before · src/org/animals/Poodle.java · cd61fd2",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Poodle.java#L5-L5"
+      }
+    ]
+  }
+}

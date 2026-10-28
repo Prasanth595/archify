@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "sourceSha256": "e8171be679a8e5c1e6b531450618002c1440169de8f82b849fdd8eb4dc75376d",
+  "inputSha256": "abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d",
+  "independentArtifactSha256": "5edb3895d800aff4f69ba8f9ea34da22339229f0c65a1a444a5a09a776fcc848",
+  "checks": [
+    "4 records/8 occurrences/4 before/2 after/4 edges",
+    "full raw preservation and original order",
+    "shared target source links in every record",
+    "version-pinned URL-only sources",
+    "mixed unsupported raw/accounting preservation",
+    "multicommit retains all 8 records without graph",
+    "unknown base does not fabricate before URLs",
+    "public finalize validate/deliver/check",
+    "prepared document exact equality",
+    "4 exact edges-only HTML openers",
+    "receipt binds current artifact/spec bytes"
+  ],
+  "browser": "not run"
+}

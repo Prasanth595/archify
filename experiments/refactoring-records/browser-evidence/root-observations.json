@@ -1,0 +1,33 @@
+{
+  "kind": "root-browser-summary",
+  "taskSpaceId": 11,
+  "scope": "Actual browser artifact observation, not a public finalize browser-check",
+  "primaryScreenshot": "overview-light-final.png",
+  "observations": [
+    "Baseline pre text exactly equals complete 3180-byte input",
+    "Final Light and Dark overview preserve 4 records, 8 locations, 6 endpoints and 4 labeled record edges",
+    "Keyboard Enter on R0 opens highlighted Labrador method → Dog method",
+    "Pointer R1 opens highlighted Poodle method → the same Dog method; independent prepared semantic binding separately verifies edge IDs",
+    "Escape returns focus to each originating record link",
+    "Final graph legend visibly says before 声明 / after 声明",
+    "All four final record DOM rows retain two source citations in known-base page",
+    "R1 shared target SourceCard snapshot/DOM points to exact child SHA Dog.java L7-L9 as URL-only, no external navigation",
+    "Unknown-base page visibly says 版本未知 and only two after-source URLs remain",
+    "390px dark desktop viewport page client/scroll 375/375; full R1 roles, paths and columns wrap visibly"
+  ],
+  "superseded": {
+    "overview-light.png": "Pre-legend artifact capture, source-binding.json is its historical binding",
+    "shared-target-source-card.png": "Screenshot shows record-details page after transient card disappeared; source card claim relies on preceding UI snapshot and source-card.json DOM, not this image"
+  },
+  "limitations": [
+    "Inline diagram reports cannot-fit-readable; interactive view used for selection inspection",
+    "Narrow record client317/scroll321 local excess; no overall page overflow observed",
+    "No direct iframe runtime nativeFocus-ID extraction, no arbitrary diagram-to-record return",
+    "No touch, AT, cross-browser or human acceptance",
+    "Historical expected fixture, no detector execution or semantic-equivalence proof",
+    "Gallery still pending; TaskSpace11 intentionally remains active"
+  ],
+  "automationErrors": [
+    "First R0-open snapshot reported Page changed during snapshot; next snapshot succeeded in same space before screenshot"
+  ]
+}

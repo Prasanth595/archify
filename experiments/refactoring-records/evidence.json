@@ -1,0 +1,148 @@
+{
+  "kind": "derived local execution summary; original logs retained outside public evidence",
+  "node": "22",
+  "baseRevision": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "tests": {
+    "command": "node --test experiments/refactoring-records/project.test.mjs",
+    "passed": 6,
+    "failed": 0,
+    "browserRun": false,
+    "reuse": "6 passing tests reused from tests-2.log at priorTestedSha256; not rerun for metadata-only legend delta. Final finalize/check run on both final artifacts."
+  },
+  "artifacts": {
+    "known-base": {
+      "input": {
+        "sha256": "abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d",
+        "bytes": 3180
+      },
+      "explainer": {
+        "sha256": "9cb95bbce32eb8731df5455bbc1d002fe31b1a8404a01887ba2695fb41a72b27",
+        "bytes": 11111
+      },
+      "html": {
+        "sha256": "1c4caabe26ab0af88a5463de38564391b67bbc84111471af599bcecf351052ce",
+        "bytes": 578752
+      },
+      "quality": "standard",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "diagnostics": []
+    },
+    "unknown-base": {
+      "input": {
+        "sha256": "abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d",
+        "bytes": 3180
+      },
+      "explainer": {
+        "sha256": "b2c7d7941be3832f031eef6076ec622328c4b2b48baaead9fb637d62b54607be",
+        "bytes": 9983
+      },
+      "html": {
+        "sha256": "caee35eef44b8b39fb9049ca3ae82681b6d169a614a64345de3bd4ce77110306",
+        "bytes": 572317
+      },
+      "quality": "standard",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "diagnostics": []
+    }
+  },
+  "priorArtifactsBeforeLegend": {
+    "known-base": {
+      "input": {
+        "sha256": "abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d",
+        "bytes": 3180
+      },
+      "explainer": {
+        "sha256": "6b0ac600e3dded30c67e6750c4aa38916fd96eeca41ff7325b8fc5335c0d24bb",
+        "bytes": 10828
+      },
+      "html": {
+        "sha256": "c1b7fd364718be22f5cdfd0c975f83ef5c1fc13a04c705a76ab4d2f9fef06a40",
+        "bytes": 577351
+      },
+      "quality": "standard",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "diagnostics": []
+    },
+    "unknown-base": {
+      "input": {
+        "sha256": "abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d",
+        "bytes": 3180
+      },
+      "explainer": {
+        "sha256": "bf3d04ba852b4497fe9ba541b73534626d818ce77529bbe903c8d61123ee6c42",
+        "bytes": 9700
+      },
+      "html": {
+        "sha256": "e56d6f7d9e111f40d314c872657d618890c832a4fcacb97ce3bb4b2f0524807d",
+        "bytes": 570926
+      },
+      "quality": "standard",
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "diagnostics": []
+    }
+  },
+  "implementation": {
+    "sha256": "e8171be679a8e5c1e6b531450618002c1440169de8f82b849fdd8eb4dc75376d",
+    "priorTestedSha256": "9198b0e1fcc839bd8950b9c06006e79ac523df750823b5dbcaf5d681365b9c8e",
+    "delta": "Only native architecture meta.legend.entries labels changed: external=before 声明, backend=after 声明. No layout or projection changes."
+  },
+  "historicalAuthorStageFilesBeforeEvidencePackaging": {
+    "README.md": {
+      "sha256": "0a78700b1777f73ab8d904c53d29ba70cfcf81fe788004b860aadcaec6d8b0eb",
+      "bytes": 10761
+    },
+    "evidence.json": {
+      "sha256": "0ee8b88a117eeba5996e40b458b8438952725cd797e75ab7052ed6cec3a7c9b8",
+      "bytes": 3433
+    }
+  },
+  "browserEvidence": {
+    "kind": "root actual browser observations; separate from public finalize browser-check",
+    "summary": "browser-evidence/root-observations.json",
+    "sourceBinding": "browser-evidence/final-source-binding.json",
+    "primaryScreenshot": {
+      "path": "browser-evidence/overview-light-final.png",
+      "sha256": "b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea",
+      "bytes": 173243
+    },
+    "imageCount": 9,
+    "imageBytesPreserved": true,
+    "nativeFocusRuntimeIdsExtracted": false,
+    "historicalCaveats": {
+      "overview-light.png": "pre-legend historical screenshot",
+      "shared-target-source-card.png": "record details after transient SourceCard vanished; card claim comes from snapshot/DOM source-card.json, not PNG"
+    }
+  },
+  "independentEvidence": {
+    "review": "independent-evidence/review.md",
+    "receipt": "independent-evidence/receipt.json",
+    "binding": "independent-evidence/binding.json",
+    "sourceSha256": "e8171be679a8e5c1e6b531450618002c1440169de8f82b849fdd8eb4dc75376d",
+    "rawHtmlEquality": false,
+    "normalizationScope": [
+      "prepared.sourcePath",
+      "prepared.baseDir",
+      "prepared.digest"
+    ]
+  }
+}

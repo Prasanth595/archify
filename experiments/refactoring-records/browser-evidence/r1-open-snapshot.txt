@@ -1,0 +1,344 @@
+[p1 "结构变更记录：逐条读取报告声明 · Archify" | space "Archify refactoring records and gallery56 acceptance 20261028"(11): 1 managed, 0 untracked — p1* "结构变更记录：逐条读取报告声明 · Archify"]
+root
+  anchor [ref=51, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#board]
+    text "跳至正文"
+  container
+    heading
+      text "结构变更记录：逐条读取报告声明"
+    button [ref=35]
+      text "系统"
+    button [ref=36]
+      text "浅色"
+    button [ref=37]
+      text "深色"
+    button "样式" [ref=38, loc=css:button[aria-label="样式"]]
+      text "简洁"
+      svg_root
+    button [ref=39]
+      svg_root
+      text "导出"
+      svg_root
+  container
+    container
+      container
+        text "答"
+        heading
+          text "结论"
+        button [ref=40]
+          text "追问"
+      paragraph
+        text "4 条原记录，8 个位置；4 条已投影，0 条未投影。图中保留 4 个 before、2 个 after 端点。"
+      paragraph
+        text "适用于"
+        text "离线读取上游明确记录；R 编号表示报告声明关系，不代表调用、执行或行为等价。缺少 base 时保留 before 坐标并标注版本未知。"
+    container
+      container
+        anchor "逐条读取报告声明" [ref=41, loc=css:a[aria-label="逐条读取报告声明"], url=repository-relative:experiments/refactoring-records/output/known-base/index.html#reading]
+          text "1"
+        heading
+          text "逐条读取报告声明"
+        button [ref=42]
+          text "追问"
+      container
+        text "报告声明：before → after"
+        button [ref=43]
+          svg_root
+          text "打开交互图"
+        image "报告声明：before → after"
+          image "before · Labrador.java method · L7–9 cd61fd2 after · Dog.java method · L7–9 36287f7 before · Poodle.java method · L7–9 cd61fd2 before · Labrador.java attribute · L5–5 cd61fd2 after · ..."
+            text "before · Labrador.java"
+            text "method · L7–9"
+            text "cd61fd2"
+            text "after · Dog.java"
+            text "method · L7–9"
+            text "36287f7"
+            text "before · Poodle.java"
+            text "method · L7–9"
+            text "cd61fd2"
+            text "before · Labrador.java"
+            text "attribute · L5–5"
+            text "cd61fd2"
+            text "after · Dog.java"
+            text "attribute · L5–5"
+            text "36287f7"
+            text "before · Poodle.java"
+            text "attribute · L5–5"
+            text "cd61fd2"
+            text "R0"
+            text "R1"
+            text "R2"
+            text "R3"
+            text "图例"
+            text "after 声明"
+            text "before 声明"
+      status
+        text "此图在当前页宽下放不下且文字会太小，请打开交互图查看。"
+      button [ref=44]
+        text "▶ 逐步看"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=45, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#refactoring-map]
+            text "R0 · Pull Up Method"
+            text "↗"
+          paragraph
+            text "报告描述："
+            text "Pull Up Method public getAge() : int from class org.animals.Labrador to public getAge() : int from class org.animals.Dog"
+            text "before · cd61fd2 ·"
+            text "original method declaration"
+            text "·"
+            text "src/org/animals/Labrador.java"
+            text "· L7–9 C2–3 ·"
+            text "METHOD_DECLARATION"
+            text "·"
+            text "public getAge() : int"
+            anchor [ref=46, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-0]
+              text "1"
+            text "after · 36287f7 ·"
+            text "pulled up method declaration"
+            text "·"
+            text "src/org/animals/Dog.java"
+            text "· L7–9 C2–3 ·"
+            text "METHOD_DECLARATION"
+            text "·"
+            text "public getAge() : int"
+            anchor [ref=47, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-1]
+              text "2"
+        list_item
+          text "2"
+          anchor [ref=48, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#refactoring-map]
+            text "R1 · Pull Up Method"
+            text "↗"
+          paragraph
+            text "报告描述："
+            text "Pull Up Method public getAge() : int from class org.animals.Poodle to public getAge() : int from class org.animals.Dog"
+            text "before · cd61fd2 ·"
+            text "original method declaration"
+            text "·"
+            text "src/org/animals/Poodle.java"
+            text "· L7–9 C2–3 ·"
+            text "METHOD_DECLARATION"
+            text "·"
+            text "public getAge() : int"
+            anchor [ref=49, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-2]
+              text "3"
+            text "after · 36287f7 ·"
+            text "pulled up method declaration"
+            text "·"
+            text "src/org/animals/Dog.java"
+            text "· L7–9 C2–3 ·"
+            text "METHOD_DECLARATION"
+            text "·"
+            text "public getAge() : int"
+            anchor [ref=50, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-1]
+              text "2"
+        list_item
+          text "3"
+          anchor [ref=52, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#refactoring-map]
+            text "R2 · Pull Up Attribute"
+            text "↗"
+          paragraph
+            text "报告描述："
+            text "Pull Up Attribute private age : int from class org.animals.Labrador to private age : int from class org.animals.Dog"
+            text "before · cd61fd2 ·"
+            text "original attribute declaration"
+            text "·"
+            text "src/org/animals/Labrador.java"
+            text "· L5–5 C14–21 ·"
+            text "FIELD_DECLARATION"
+            text "·"
+            text "private age : int"
+            anchor [ref=53, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-3]
+              text "4"
+            text "after · 36287f7 ·"
+            text "pulled up attribute declaration"
+            text "·"
+            text "src/org/animals/Dog.java"
+            text "· L5–5 C14–21 ·"
+            text "FIELD_DECLARATION"
+            text "·"
+            text "private age : int"
+            anchor [ref=54, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-4]
+              text "5"
+        list_item
+          text "4"
+          anchor [ref=55, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#refactoring-map]
+            text "R3 · Pull Up Attribute"
+            text "↗"
+          paragraph
+            text "报告描述："
+            text "Pull Up Attribute private age : int from class org.animals.Poodle to private age : int from class org.animals.Dog"
+            text "before · cd61fd2 ·"
+            text "original attribute declaration"
+            text "·"
+            text "src/org/animals/Poodle.java"
+            text "· L5–5 C14–21 ·"
+            text "FIELD_DECLARATION"
+            text "·"
+            text "private age : int"
+            anchor [ref=56, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-5]
+              text "6"
+            text "after · 36287f7 ·"
+            text "pulled up attribute declaration"
+            text "·"
+            text "src/org/animals/Dog.java"
+            text "· L5–5 C14–21 ·"
+            text "FIELD_DECLARATION"
+            text "·"
+            text "private age : int"
+            anchor [ref=57, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-source-endpoint-4]
+              text "5"
+    container
+      container
+        anchor "输入与阅读边界" [ref=58, loc=css:a[aria-label="输入与阅读边界"], url=repository-relative:experiments/refactoring-records/output/known-base/index.html#provenance]
+          text "2"
+        heading
+          text "输入与阅读边界"
+        button [ref=59]
+          text "追问"
+      unordered_list
+        list_item
+          text "完整输入：input.json（3180 bytes）；原账目：ledger.json；原文阅读基线：baseline.html。"
+        list_item
+          text "原始顺序与重复记录均保留；只投影单 commit、每侧一个位置的 Pull Up Method / Attribute。"
+        list_item
+          text "source 卡只提供固定版本外链，不是已核验代码摘录。"
+        list_item
+          text "输入身份："
+          text "Historical expected fixture associated with an @Disabled test; not a detector run in this experiment."
+          anchor [ref=60, url=repository-relative:experiments/refactoring-records/output/known-base/index.html#source-input-evidence]
+            text "7"
+      paragraph
+        text "点击记录标题，原生 Viewer 选择该声明边与两端；关闭或 Escape 返回发起记录。任意图节点/边直接跳回记录不在本实验范围。"
+  container
+    container
+      heading
+        text "来源"
+      ordered_list
+        list_item
+          anchor [ref=61, url=https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Labrador.java#L7-L9]
+            text "before · src/org/animals/Labrador.java · cd61fd2"
+        list_item
+          anchor [ref=62, url=https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L7-L9]
+            text "after · src/org/animals/Dog.java · 36287f7"
+        list_item
+          anchor [ref=63, url=https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Poodle.java#L7-L9]
+            text "before · src/org/animals/Poodle.java · cd61fd2"
+        list_item
+          anchor [ref=64, url=https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Labrador.java#L5-L5]
+            text "before · src/org/animals/Labrador.java · cd61fd2"
+        list_item
+          anchor [ref=65, url=https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L5-L5]
+            text "after · src/org/animals/Dog.java · 36287f7"
+        list_item
+          anchor [ref=66, url=https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Poodle.java#L5-L5]
+            text "before · src/org/animals/Poodle.java · cd61fd2"
+        list_item
+          anchor [ref=67, url=https://raw.githubusercontent.com/tsantalis/RefactoringMiner/de0a67f9f690914e6c1ac1ed1b2a850c4ff6068d/src/test/resources/commandline/refactoring-toy-example-commit-expected.json]
+            text "上游完整输入来源（非本轮检测）"
+    anchor [ref=68, url=https://github.com/tt-a1i/archify]
+      svg_root
+      text "Archify"
+      text "把你想理解、规划或分享的事，变成可以互动的可视化作品。"
+    paragraph
+      text "2 个面板"
+      text "·"
+      text "1 张图已通过结构校验"
+      text "·"
+      text "7 个来源"
+  dialog_modal "报告声明：before → after" [ref=69]
+    container
+      heading
+        text "报告声明：before → after"
+      button [ref=70]
+        svg_root
+        text "关闭"
+        text "Esc"
+    iframe [ref=71]
+      root
+        toolbar "图表操作"
+          button "切换颜色主题" [ref=72, loc=css:button[aria-label="切换颜色主题"]]
+            text "浅色"
+          button "当前视觉风格：经典。选择视觉风格" [ref=73, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+            text "经典"
+          button "恢复动效" [ref=74, loc=css:button[aria-label="恢复动效"]]
+            text "静态"
+          button "进入演示模式" [ref=75]
+            text "演示"
+          button "导出图表" [ref=76, loc=css:button[aria-label="导出图表"]]
+            text "导出"
+        heading
+          text "报告声明：before → after"
+        image "before · Labrador.java method · L7–9 cd61fd2 after · Dog.java method · L7–9 36287f7 before · Poodle.java method · L7–9 cd61fd2 before · Labrador.java attribute · L5–5 cd61fd2 after · ..." [ref=77, loc=role:image[name="报告声明：before → after 由 Archify 生成的架构图。"]]
+          text "before · Labrador.java"
+          text "method · L7–9"
+          text "cd61fd2"
+          text "after · Dog.java"
+          text "method · L7–9"
+          text "36287f7"
+          text "before · Poodle.java"
+          text "method · L7–9"
+          text "cd61fd2"
+          text "before · Labrador.java"
+          text "attribute · L5–5"
+          text "cd61fd2"
+          text "after · Dog.java"
+          text "attribute · L5–5"
+          text "36287f7"
+          text "before · Poodle.java"
+          text "attribute · L5–5"
+          text "cd61fd2"
+          text "R0"
+          text "R1"
+          text "R2"
+          text "R3"
+          text "图例"
+          text "after 声明"
+          text "2"
+          text "before 声明"
+          text "4"
+        status
+        toolbar "图表视图控制"
+          button "追踪有向路径" [ref=78]
+            text "路径"
+          button "打开语义透镜" [ref=79, loc=css:button[aria-label="打开语义透镜"]]
+            text "透镜"
+          button "查找节点" [ref=80, loc=css:button[aria-label="查找节点"]]
+          button "打开图表指南" [ref=81, loc=css:button[aria-label="打开图表指南"]]
+          button "缩小" [ref=82, loc=css:button[aria-label="缩小"]]
+          button "100% · 再次放大以显示标签和注释。重置图表视图" [ref=83, loc=css:button[aria-label="100% · 再次放大以显示标签和注释。重置图表视图"]]
+            text "100%"
+          button "放大" [ref=84, loc=css:button[aria-label="放大"]]
+        container
+          toolbar "侧栏"
+            button "移到图右侧" [ref=91, loc=css:button[aria-label="移到图右侧"]]
+          container "节点索引"
+            text "节点索引"
+            text "6"
+            ordered_list
+              list_item
+                unordered_list
+                  list_item
+                    button [ref=85]
+                      text "before · Labrador.java"
+                      text "method · L7–9"
+                  list_item
+                    button [ref=86]
+                      text "after · Dog.java"
+                      text "method · L7–9"
+                  list_item
+                    button [ref=87]
+                      text "before · Poodle.java"
+                      text "method · L7–9"
+                  list_item
+                    button [ref=88]
+                      text "before · Labrador.java"
+                      text "attribute · L5–5"
+                  list_item
+                    button [ref=89]
+                      text "after · Dog.java"
+                      text "attribute · L5–5"
+                  list_item
+                    button [ref=90]
+                      text "before · Poodle.java"
+                      text "attribute · L5–5"

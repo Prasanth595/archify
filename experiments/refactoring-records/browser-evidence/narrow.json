@@ -1,0 +1,23 @@
+{
+  "kind": "actual-browser-observation",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "mobile": false
+  },
+  "narrow": {
+    "client": 375,
+    "scroll": 375,
+    "record": {
+      "text": "R1 · Pull Up Method ↗\n\n报告描述：Pull Up Method public getAge() : int from class org.animals.Poodle to public getAge() : int from class org.animals.Dog before · cd61fd2 · original method declaration · src/org/animals/Poodle.java · L7–9 C2–3 · METHOD_DECLARATION · public getAge() : int 3 after · 36287f7 · pulled up method declaration · src/org/animals/Dog.java · L7–9 C2–3 · METHOD_DECLARATION · public getAge() : int 2",
+      "client": 317,
+      "scroll": 321
+    },
+    "scope": [
+      {
+        "client": 349,
+        "scroll": 349
+      }
+    ]
+  }
+}

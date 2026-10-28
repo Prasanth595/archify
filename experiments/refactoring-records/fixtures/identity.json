@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "inputSha256": "abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d",
+  "repository": "https://github.com/danilofes/refactoring-toy-example.git",
+  "head": "36287f7c3b09eff78395267a3ac0d7da067863fd",
+  "base": "cd61fd2a70828030ccb3cf46d8719f8b204c52ed",
+  "baseEvidence": {
+    "url": "https://api.github.com/repos/danilofes/refactoring-toy-example/commits/36287f7c3b09eff78395267a3ac0d7da067863fd",
+    "note": "Independent read-only research observed exactly one parent. The report itself does not contain base; this manifest binds that observation to the complete input hash, repository, and head."
+  },
+  "inputEvidence": {
+    "url": "https://raw.githubusercontent.com/tsantalis/RefactoringMiner/de0a67f9f690914e6c1ac1ed1b2a850c4ff6068d/src/test/resources/commandline/refactoring-toy-example-commit-expected.json",
+    "kind": "Historical expected fixture associated with an @Disabled test; not a detector run in this experiment.",
+    "bytes": 3180
+  }
+}

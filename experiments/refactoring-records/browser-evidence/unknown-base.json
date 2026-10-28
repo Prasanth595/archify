@@ -1,0 +1,47 @@
+{
+  "kind": "actual-browser-observation",
+  "viewport": {
+    "width": 1440,
+    "height": 1400
+  },
+  "source": {
+    "path": "repository-relative:experiments/refactoring-records/output/unknown-base/index.html",
+    "sha256": "caee35eef44b8b39fb9049ca3ae82681b6d169a614a64345de3bd4ce77110306",
+    "bytes": 572317
+  },
+  "unknown": {
+    "unknownCount": 9,
+    "sources": [
+      {
+        "text": "after · src/org/animals/Dog.java · 36287f7",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L7-L9"
+      },
+      {
+        "text": "after · src/org/animals/Dog.java · 36287f7",
+        "href": "https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L5-L5"
+      }
+    ],
+    "records": [
+      {
+        "id": "step-record-0",
+        "text": "R0 · Pull Up Method ↗\n\n报告描述：Pull Up Method public getAge() : int from class org.animals.Labrador to public getAge() : int from class org.animals.Dog before · 版本未知 · original method declaration · src/org/animals/Labrador.java · L7–9 C2–3 · METHOD_DECLARATION · public getAge() : int after · 36287f7 · pulled up method declaration · src/org/animals/Dog.java · L7–9 C2–3 · METHOD_DECLARATION · public getAge() : int 1",
+        "citations": 1
+      },
+      {
+        "id": "step-record-1",
+        "text": "R1 · Pull Up Method ↗\n\n报告描述：Pull Up Method public getAge() : int from class org.animals.Poodle to public getAge() : int from class org.animals.Dog before · 版本未知 · original method declaration · src/org/animals/Poodle.java · L7–9 C2–3 · METHOD_DECLARATION · public getAge() : int after · 36287f7 · pulled up method declaration · src/org/animals/Dog.java · L7–9 C2–3 · METHOD_DECLARATION · public getAge() : int 1",
+        "citations": 1
+      },
+      {
+        "id": "step-record-2",
+        "text": "R2 · Pull Up Attribute ↗\n\n报告描述：Pull Up Attribute private age : int from class org.animals.Labrador to private age : int from class org.animals.Dog before · 版本未知 · original attribute declaration · src/org/animals/Labrador.java · L5–5 C14–21 · FIELD_DECLARATION · private age : int after · 36287f7 · pulled up attribute declaration · src/org/animals/Dog.java · L5–5 C14–21 · FIELD_DECLARATION · private age : int 2",
+        "citations": 1
+      },
+      {
+        "id": "step-record-3",
+        "text": "R3 · Pull Up Attribute ↗\n\n报告描述：Pull Up Attribute private age : int from class org.animals.Poodle to private age : int from class org.animals.Dog before · 版本未知 · original attribute declaration · src/org/animals/Poodle.java · L5–5 C14–21 · FIELD_DECLARATION · private age : int after · 36287f7 · pulled up attribute declaration · src/org/animals/Dog.java · L5–5 C14–21 · FIELD_DECLARATION · private age : int 2",
+        "citations": 1
+      }
+    ]
+  }
+}

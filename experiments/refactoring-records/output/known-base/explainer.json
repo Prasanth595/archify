@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "id": "refactoring-records",
+    "title": "结构变更记录：逐条读取报告声明",
+    "locale": "zh-CN",
+    "quality_profile": "standard"
+  },
+  "answer": {
+    "summary": "4 条原记录，8 个位置；4 条已投影，0 条未投影。图中保留 4 个 before、2 个 after 端点。",
+    "scope": "离线读取上游明确记录；R 编号表示报告声明关系，不代表调用、执行或行为等价。缺少 base 时保留 before 坐标并标注版本未知。"
+  },
+  "panels": [
+    {
+      "id": "reading",
+      "title": "逐条读取报告声明",
+      "blocks": [
+        {
+          "id": "refactoring-map",
+          "type": "diagram",
+          "diagramType": "architecture",
+          "spec": {
+            "schema_version": 1,
+            "diagram_type": "architecture",
+            "meta": {
+              "title": "报告声明：before → after",
+              "output": "refactoring-map.html",
+              "quality_profile": "standard",
+              "legend": {
+                "entries": {
+                  "external": {
+                    "label": "before 声明"
+                  },
+                  "backend": {
+                    "label": "after 声明"
+                  }
+                }
+              }
+            },
+            "components": [
+              {
+                "id": "endpoint-0",
+                "type": "external",
+                "label": "before · Labrador.java",
+                "sublabel": "method · L7–9",
+                "tag": "cd61fd2",
+                "pos": [
+                  40,
+                  60
+                ],
+                "size": [
+                  300,
+                  100
+                ]
+              },
+              {
+                "id": "endpoint-1",
+                "type": "backend",
+                "label": "after · Dog.java",
+                "sublabel": "method · L7–9",
+                "tag": "36287f7",
+                "pos": [
+                  620,
+                  60
+                ],
+                "size": [
+                  300,
+                  100
+                ]
+              },
+              {
+                "id": "endpoint-2",
+                "type": "external",
+                "label": "before · Poodle.java",
+                "sublabel": "method · L7–9",
+                "tag": "cd61fd2",
+                "pos": [
+                  40,
+                  210
+                ],
+                "size": [
+                  300,
+                  100
+                ]
+              },
+              {
+                "id": "endpoint-3",
+                "type": "external",
+                "label": "before · Labrador.java",
+                "sublabel": "attribute · L5–5",
+                "tag": "cd61fd2",
+                "pos": [
+                  40,
+                  360
+                ],
+                "size": [
+                  300,
+                  100
+                ]
+              },
+              {
+                "id": "endpoint-4",
+                "type": "backend",
+                "label": "after · Dog.java",
+                "sublabel": "attribute · L5–5",
+                "tag": "36287f7",
+                "pos": [
+                  620,
+                  210
+                ],
+                "size": [
+                  300,
+                  100
+                ]
+              },
+              {
+                "id": "endpoint-5",
+                "type": "external",
+                "label": "before · Poodle.java",
+                "sublabel": "attribute · L5–5",
+                "tag": "cd61fd2",
+                "pos": [
+                  40,
+                  510
+                ],
+                "size": [
+                  300,
+                  100
+                ]
+              }
+            ],
+            "connections": [
+              {
+                "id": "record-0",
+                "from": "endpoint-0",
+                "to": "endpoint-1",
+                "label": "R0",
+                "fromSide": "right",
+                "toSide": "left"
+              },
+              {
+                "id": "record-1",
+                "from": "endpoint-2",
+                "to": "endpoint-1",
+                "label": "R1",
+                "fromSide": "right",
+                "toSide": "left"
+              },
+              {
+                "id": "record-2",
+                "from": "endpoint-3",
+                "to": "endpoint-4",
+                "label": "R2",
+                "fromSide": "right",
+                "toSide": "left"
+              },
+              {
+                "id": "record-3",
+                "from": "endpoint-5",
+                "to": "endpoint-4",
+                "label": "R3",
+                "fromSide": "right",
+                "toSide": "left"
+              }
+            ]
+          }
+        },
+        {
+          "id": "records",
+          "type": "steps",
+          "items": [
+            {
+              "id": "step-record-0",
+              "text": "R0 · Pull Up Method",
+              "detail": "报告描述：`Pull Up Method public getAge() : int from class org.animals.Labrador to public getAge() : int from class org.animals.Dog`\n\nbefore · cd61fd2 · `original method declaration` · `src/org/animals/Labrador.java` · L7–9 C2–3 · `METHOD_DECLARATION` · `public getAge() : int` [](source:source-endpoint-0)\n\nafter · 36287f7 · `pulled up method declaration` · `src/org/animals/Dog.java` · L7–9 C2–3 · `METHOD_DECLARATION` · `public getAge() : int` [](source:source-endpoint-1)",
+              "target": {
+                "diagram": "refactoring-map",
+                "edges": [
+                  "record-0"
+                ]
+              }
+            },
+            {
+              "id": "step-record-1",
+              "text": "R1 · Pull Up Method",
+              "detail": "报告描述：`Pull Up Method public getAge() : int from class org.animals.Poodle to public getAge() : int from class org.animals.Dog`\n\nbefore · cd61fd2 · `original method declaration` · `src/org/animals/Poodle.java` · L7–9 C2–3 · `METHOD_DECLARATION` · `public getAge() : int` [](source:source-endpoint-2)\n\nafter · 36287f7 · `pulled up method declaration` · `src/org/animals/Dog.java` · L7–9 C2–3 · `METHOD_DECLARATION` · `public getAge() : int` [](source:source-endpoint-1)",
+              "target": {
+                "diagram": "refactoring-map",
+                "edges": [
+                  "record-1"
+                ]
+              }
+            },
+            {
+              "id": "step-record-2",
+              "text": "R2 · Pull Up Attribute",
+              "detail": "报告描述：`Pull Up Attribute private age : int from class org.animals.Labrador to private age : int from class org.animals.Dog`\n\nbefore · cd61fd2 · `original attribute declaration` · `src/org/animals/Labrador.java` · L5–5 C14–21 · `FIELD_DECLARATION` · `private age : int` [](source:source-endpoint-3)\n\nafter · 36287f7 · `pulled up attribute declaration` · `src/org/animals/Dog.java` · L5–5 C14–21 · `FIELD_DECLARATION` · `private age : int` [](source:source-endpoint-4)",
+              "target": {
+                "diagram": "refactoring-map",
+                "edges": [
+                  "record-2"
+                ]
+              }
+            },
+            {
+              "id": "step-record-3",
+              "text": "R3 · Pull Up Attribute",
+              "detail": "报告描述：`Pull Up Attribute private age : int from class org.animals.Poodle to private age : int from class org.animals.Dog`\n\nbefore · cd61fd2 · `original attribute declaration` · `src/org/animals/Poodle.java` · L5–5 C14–21 · `FIELD_DECLARATION` · `private age : int` [](source:source-endpoint-5)\n\nafter · 36287f7 · `pulled up attribute declaration` · `src/org/animals/Dog.java` · L5–5 C14–21 · `FIELD_DECLARATION` · `private age : int` [](source:source-endpoint-4)",
+              "target": {
+                "diagram": "refactoring-map",
+                "edges": [
+                  "record-3"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "provenance",
+      "title": "输入与阅读边界",
+      "blocks": [
+        {
+          "id": "provenance-note",
+          "type": "list",
+          "items": [
+            "完整输入：input.json（3180 bytes）；原账目：ledger.json；原文阅读基线：baseline.html。",
+            "原始顺序与重复记录均保留；只投影单 commit、每侧一个位置的 Pull Up Method / Attribute。",
+            "source 卡只提供固定版本外链，不是已核验代码摘录。",
+            "输入身份：`Historical expected fixture associated with an @Disabled test; not a detector run in this experiment.` [](source:input-evidence)"
+          ]
+        },
+        {
+          "id": "interaction-note",
+          "type": "prose",
+          "text": "点击记录标题，原生 Viewer 选择该声明边与两端；关闭或 Escape 返回发起记录。任意图节点/边直接跳回记录不在本实验范围。"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "source-endpoint-0",
+      "title": "before · src/org/animals/Labrador.java · cd61fd2",
+      "url": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Labrador.java#L7-L9"
+    },
+    {
+      "id": "source-endpoint-1",
+      "title": "after · src/org/animals/Dog.java · 36287f7",
+      "url": "https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L7-L9"
+    },
+    {
+      "id": "source-endpoint-2",
+      "title": "before · src/org/animals/Poodle.java · cd61fd2",
+      "url": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Poodle.java#L7-L9"
+    },
+    {
+      "id": "source-endpoint-3",
+      "title": "before · src/org/animals/Labrador.java · cd61fd2",
+      "url": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Labrador.java#L5-L5"
+    },
+    {
+      "id": "source-endpoint-4",
+      "title": "after · src/org/animals/Dog.java · 36287f7",
+      "url": "https://github.com/danilofes/refactoring-toy-example/blob/36287f7c3b09eff78395267a3ac0d7da067863fd/src/org/animals/Dog.java#L5-L5"
+    },
+    {
+      "id": "source-endpoint-5",
+      "title": "before · src/org/animals/Poodle.java · cd61fd2",
+      "url": "https://github.com/danilofes/refactoring-toy-example/blob/cd61fd2a70828030ccb3cf46d8719f8b204c52ed/src/org/animals/Poodle.java#L5-L5"
+    },
+    {
+      "id": "input-evidence",
+      "title": "上游完整输入来源（非本轮检测）",
+      "url": "https://raw.githubusercontent.com/tsantalis/RefactoringMiner/de0a67f9f690914e6c1ac1ed1b2a850c4ff6068d/src/test/resources/commandline/refactoring-toy-example-commit-expected.json"
+    }
+  ]
+}
