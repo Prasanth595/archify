@@ -3689,7 +3689,7 @@ async function commandCompareWorkflow(args) {
     const { sameLocation } = await import('../renderers/shared/path-semantics.mjs');
     for (const input of [baseInput, headInput].filter(Boolean)) {
       const relation = sameLocation(resolved, path.resolve(input));
-      if (relation.status === 'same') {
+      if (relation.status === 'match') {
         outputFailure = { code: 'output/cli-alias', message: 'Workflow comparison output must not replace either input, including through an alias.' };
         return;
       }
