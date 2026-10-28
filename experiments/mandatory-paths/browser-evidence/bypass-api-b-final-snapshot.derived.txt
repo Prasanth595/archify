@@ -1,0 +1,478 @@
+PUBLIC DERIVED RECORD
+{"sourceName": "bypass-api-b-final-snapshot.txt", "originalSha256": "984b180d8b02bbba9561935ccc87d1fdeefb108cc9c41c1fdbc95e24e4e9beb8", "originalBytes": 18465, "derived": true, "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."}
+
+[p1 "Mandatory paths · Archify" | space "Archify mandatory paths and gallery55 acceptance 20261028"(10): 1 managed, 0 untracked — p1* "Mandatory paths · Archify"]
+root
+  anchor [ref=19, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#board]
+    text "Skip to content"
+  container
+    heading
+      text "Mandatory paths"
+    button [ref=20]
+      text "System"
+    button [ref=21]
+      text "Light"
+    button [ref=22]
+      text "Dark"
+    button "Style" [ref=23, loc=css:button[aria-label="Style"]]
+      text "Clean"
+      svg_root
+    button [ref=24]
+      svg_root
+      text "Export"
+      svg_root
+  container
+    container
+      container
+        text "A"
+        heading
+          text "Answer"
+        button [ref=25]
+          text "Ask"
+      paragraph
+        text "clients"
+        text "→"
+        text "audit"
+        text ":"
+        text "4 required internal nodes"
+        text "."
+      ordered_list
+        list_item
+          text "1"
+          text "Required:"
+          text "edge"
+          text ","
+          text "gateway"
+          text ","
+          text "events"
+          text ","
+          text "worker"
+          text "."
+        list_item
+          text "2"
+          text "Each nonmandatory node has an exact bypass witness below."
+      paragraph
+        text "Applies to"
+        text "Directed topology only; no runtime dependency, fault or causality inference. Endpoints excluded. Each bypass minimizes hops, with native connection order breaking ties."
+    container
+      container
+        anchor "Complete graph and inspectable answers" [ref=26, loc=css:a[aria-label="Complete graph and inspectable answers"], url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#graph-and-results]
+          text "1"
+        heading
+          text "Complete graph and inspectable answers"
+        button [ref=27]
+          text "Ask"
+      container
+        text "Production Deployment Ownership"
+        button [ref=28]
+          svg_root
+          text "Open interactive view"
+        image "Production Deployment Ownership"
+          image "Customers web + mobile Global Edge CDN + WAF edge team API Gateway public :443 platform API Pods / AZ-a private subnet app team API Pods / AZ-b private subnet app team Redis multi-AZ cache platform Po..."
+            text "Customers"
+            text "web + mobile"
+            text "Global Edge"
+            text "CDN + WAF"
+            text "edge team"
+            text "API Gateway"
+            text "public :443"
+            text "platform"
+            text "API Pods / AZ-a"
+            text "private subnet"
+            text "app team"
+            text "API Pods / AZ-b"
+            text "private subnet"
+            text "app team"
+            text "Redis"
+            text "multi-AZ cache"
+            text "platform"
+            text "PostgreSQL"
+            text "primary / encrypted"
+            text "data team"
+            text "Event Bus"
+            text "orders.v1"
+            text "platform"
+            text "Workers"
+            text "private workload"
+            text "app team"
+            text "DR Replica"
+            text "eu-west-1"
+            text "data team"
+            text "Audit Archive"
+            text "immutable objects"
+            text "security"
+            text "Observability"
+            text "metrics + traces"
+            text "SRE"
+            text "HTTPS"
+            text "mTLS"
+            text "VPC route"
+            text "VPC route"
+            text "cache"
+            text "SQL"
+            text "publish"
+            text "cross-region WAL"
+            text "evidence"
+            text "OTLP"
+            text "AWS us-east-1 / production"
+            text "private application network"
+            text "AWS eu-west-1 / disaster recovery"
+            text "DR private subnet"
+            text "Legend"
+            text "Backend"
+            text "Database"
+            text "Cloud"
+            text "Security"
+            text "Message bus"
+            text "External"
+      status
+        text "This diagram cannot fit this page width with readable text. Open the interactive view to inspect it."
+      paragraph
+        text "Required internal nodes:"
+        text "edge"
+        text ","
+        text "gateway"
+        text ","
+        text "events"
+        text ","
+        text "worker"
+        text ". Endpoints"
+        text "clients"
+        text "and"
+        text "audit"
+        text "are excluded."
+      table
+        table_row
+          table_cell
+            text "Internal node"
+          table_cell
+            text "Answer"
+          table_cell
+            text "Evidence"
+        table_row
+          table_cell
+            text "edge"
+          table_cell
+            text "Required"
+          table_cell
+            text "Ignoring edge makes audit unreachable from clients."
+        table_row
+          table_cell
+            text "gateway"
+          table_cell
+            text "Required"
+          table_cell
+            text "Ignoring gateway makes audit unreachable from clients."
+        table_row
+          table_cell
+            text "api_a"
+          table_cell
+            text "Nonmandatory"
+          table_cell
+            text "Avoiding it: clients → edge → gateway → api_b → events → worker → audit"
+        table_row
+          table_cell
+            text "api_b"
+          table_cell
+            text "Nonmandatory"
+          table_cell
+            text "Avoiding it: clients → edge → gateway → api_a → events → worker → audit"
+        table_row
+          table_cell
+            text "redis"
+          table_cell
+            text "Nonmandatory"
+          table_cell
+            text "Avoiding it: clients → edge → gateway → api_a → events → worker → audit"
+        table_row
+          table_cell
+            text "postgres"
+          table_cell
+            text "Nonmandatory"
+          table_cell
+            text "Avoiding it: clients → edge → gateway → api_a → events → worker → audit"
+        table_row
+          table_cell
+            text "events"
+          table_cell
+            text "Required"
+          table_cell
+            text "Ignoring events makes audit unreachable from clients."
+        table_row
+          table_cell
+            text "worker"
+          table_cell
+            text "Required"
+          table_cell
+            text "Ignoring worker makes audit unreachable from clients."
+        table_row
+          table_cell
+            text "replica"
+          table_cell
+            text "Nonmandatory"
+          table_cell
+            text "Avoiding it: clients → edge → gateway → api_a → events → worker → audit"
+        table_row
+          table_cell
+            text "observability"
+          table_cell
+            text "Nonmandatory"
+          table_cell
+            text "Avoiding it: clients → edge → gateway → api_a → events → worker → audit"
+      button [ref=29]
+        text "▶ Step through"
+      ordered_list
+        list_item
+          text "1"
+          anchor [ref=30, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#full-graph]
+            text "Avoid api_a: clients → edge → gateway → api_b → events → worker → audit"
+            text "↗"
+          paragraph
+            text "6 hops. Original edge keys: 0, 1, 3, 7, 8, 10. Select to inspect this exact bypass."
+        list_item
+          text "2"
+          anchor [ref=31, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#full-graph]
+            text "Avoid api_b: clients → edge → gateway → api_a → events → worker → audit"
+            text "↗"
+          paragraph
+            text "6 hops. Original edge keys: 0, 1, 2, 6, 8, 10. Select to inspect this exact bypass."
+        list_item
+          text "3"
+          anchor [ref=32, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#full-graph]
+            text "Avoid redis: clients → edge → gateway → api_a → events → worker → audit"
+            text "↗"
+          paragraph
+            text "6 hops. Original edge keys: 0, 1, 2, 6, 8, 10. Select to inspect this exact bypass."
+        list_item
+          text "4"
+          anchor [ref=33, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#full-graph]
+            text "Avoid postgres: clients → edge → gateway → api_a → events → worker → audit"
+            text "↗"
+          paragraph
+            text "6 hops. Original edge keys: 0, 1, 2, 6, 8, 10. Select to inspect this exact bypass."
+        list_item
+          text "5"
+          anchor [ref=34, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#full-graph]
+            text "Avoid replica: clients → edge → gateway → api_a → events → worker → audit"
+            text "↗"
+          paragraph
+            text "6 hops. Original edge keys: 0, 1, 2, 6, 8, 10. Select to inspect this exact bypass."
+        list_item
+          text "6"
+          anchor [ref=35, url=file://<EXPERIMENT_ROOT>/evidence/reachable/explainer.html#full-graph]
+            text "Avoid observability: clients → edge → gateway → api_a → events → worker → audit"
+            text "↗"
+          paragraph
+            text "6 hops. Original edge keys: 0, 1, 2, 6, 8, 10. Select to inspect this exact bypass."
+      paragraph
+        text "The complete graph is retained. Only missing connection IDs are annotated for exact selection; answer.json maps original keys and IDs. A nonmandatory node need not lie on any route to the endpoint."
+  container
+    anchor [ref=36, url=https://github.com/tt-a1i/archify]
+      svg_root
+      text "Archify"
+      text "Turn anything you want to understand, plan, or share into an interactive visual."
+    paragraph
+      text "1 panel"
+      text "·"
+      text "1 diagram validated"
+  dialog_modal "Production Deployment Ownership" [ref=37]
+    container
+      heading
+        text "Production Deployment Ownership"
+      button [ref=38]
+        svg_root
+        text "Close"
+        text "Esc"
+    iframe [ref=39]
+      root
+        toolbar "Diagram actions"
+          container
+            button "Toggle color theme" [ref=40, loc=css:button[aria-label="Toggle color theme"]]
+              text "Light"
+            button "Visual style: Classic. Choose visual style" [ref=41, loc=css:button[aria-label="Visual style: Classic. Choose visual style"]]
+              text "Classic"
+            button "Resume motion" [ref=42, loc=css:button[aria-label="Resume motion"]]
+              text "Still"
+            button "Enter presentation stage" [ref=43]
+              text "Present"
+          button "Export diagram" [ref=44, loc=css:button[aria-label="Export diagram"]]
+            text "Export"
+        container
+          heading
+            text "Production Deployment Ownership"
+          container
+            image "Customers web + mobile Global Edge CDN + WAF edge team API Gateway public :443 platform API Pods / AZ-a private subnet app team API Pods / AZ-b private subnet app team Redis multi-AZ cache platform Po..." [ref=45, loc=role:image[name="Production Deployment Ownership An architecture diagram generated by Archify."]]
+              text "Customers"
+              text "web + mobile"
+              text "Global Edge"
+              text "CDN + WAF"
+              text "edge team"
+              text "API Gateway"
+              text "public :443"
+              text "platform"
+              text "API Pods / AZ-a"
+              text "private subnet"
+              text "app team"
+              text "API Pods / AZ-b"
+              text "private subnet"
+              text "app team"
+              text "Redis"
+              text "multi-AZ cache"
+              text "platform"
+              text "PostgreSQL"
+              text "primary / encrypted"
+              text "data team"
+              text "Event Bus"
+              text "orders.v1"
+              text "platform"
+              text "Workers"
+              text "private workload"
+              text "app team"
+              text "DR Replica"
+              text "eu-west-1"
+              text "data team"
+              text "Audit Archive"
+              text "immutable objects"
+              text "security"
+              text "Observability"
+              text "metrics + traces"
+              text "SRE"
+              text "HTTPS"
+              text "mTLS"
+              text "VPC route"
+              text "VPC route"
+              text "cache"
+              text "SQL"
+              text "publish"
+              text "cross-region WAL"
+              text "evidence"
+              text "OTLP"
+              text "AWS us-east-1 / production"
+              text "private application network"
+              text "AWS eu-west-1 / disaster recovery"
+              text "DR private subnet"
+              text "Legend"
+              text "Backend"
+              text "3"
+              text "Database"
+              text "3"
+              text "Cloud"
+              text "2"
+              text "Security"
+              text "1"
+              text "Message bus"
+              text "1"
+              text "External"
+              text "2"
+            status
+            toolbar "Diagram view controls"
+              button "Trace a directed route" [ref=46]
+                text "ROUTE"
+              button "Open semantic lens" [ref=47, loc=css:button[aria-label="Open semantic lens"]]
+                text "LENS"
+              button "Find a node" [ref=48, loc=css:button[aria-label="Find a node"]]
+              button "Open diagram guide" [ref=49, loc=css:button[aria-label="Open diagram guide"]]
+              button "Zoom out" [ref=50, loc=css:button[aria-label="Zoom out"]]
+              button "100% · Zoom in again to reveal tags and annotations. Reset diagram view" [ref=51, loc=css:button[aria-label="100% · Zoom in again to reveal tags and annotations. Reset diagram view"]]
+                text "100%"
+              button "Zoom in" [ref=52, loc=css:button[aria-label="Zoom in"]]
+          container
+            toolbar "Side panel"
+            container
+              container
+                heading
+                  text "Runtime Ownership"
+                unordered_list
+                  list_item
+                    text "Platform owns the edge, gateway, cache, and event bus"
+                  list_item
+                    text "Application teams own API pods and workers"
+                  list_item
+                    text "Data owns primary and disaster-recovery state"
+              container
+                heading
+                  text "Named Crossings"
+                unordered_list
+                  list_item
+                    text "Public HTTPS terminates at the managed edge"
+                  list_item
+                    text "mTLS crosses into the application network"
+                  list_item
+                    text "Cross-region WAL is explicit and encrypted"
+              container
+                heading
+                  text "Operational Evidence"
+                unordered_list
+                  list_item
+                    text "Workers emit traces to SRE-owned observability"
+                  list_item
+                    text "Audit evidence lands in immutable storage"
+                  list_item
+                    text "Unknown placement should remain marked, never invented"
+            container "Node index"
+              container
+                text "Node index"
+                text "12"
+              ordered_list
+                list_item
+                  container
+                    text "Architecture component"
+                    text "2"
+                  unordered_list
+                    list_item
+                      button [ref=53]
+                        text "Customers"
+                        text "web + mobile"
+                    list_item
+                      button [ref=54]
+                        text "Observability"
+                        text "metrics + traces"
+                list_item
+                  container
+                    text "AWS us-east-1 / production"
+                    text "9"
+                  unordered_list
+                    list_item
+                      button [ref=55]
+                        text "Global Edge"
+                        text "CDN + WAF"
+                    list_item
+                      button [ref=56]
+                        text "API Gateway"
+                        text "public :443"
+                    list_item
+                      button [ref=57]
+                        text "API Pods / AZ-a"
+                        text "private subnet"
+                    list_item
+                      button [ref=58]
+                        text "API Pods / AZ-b"
+                        text "private subnet"
+                    list_item
+                      button [ref=59]
+                        text "Redis"
+                        text "multi-AZ cache"
+                    list_item
+                      button [ref=60]
+                        text "PostgreSQL"
+                        text "primary / encrypted"
+                    list_item
+                      button [ref=61]
+                        text "Event Bus"
+                        text "orders.v1"
+                    list_item
+                      button [ref=62]
+                        text "Workers"
+                        text "private workload"
+                    list_item
+                      button [ref=63]
+                        text "Audit Archive"
+                        text "immutable objects"
+                list_item
+                  text "AWS eu-west-1 / disaster recovery"
+                  text "1"
+                  unordered_list
+                    list_item
+                      button [ref=64]
+                        text "DR Replica"
+                        text "eu-west-1"

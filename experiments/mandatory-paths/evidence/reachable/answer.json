@@ -1,0 +1,650 @@
+{
+  "format": "mandatory-paths-experiment-v1",
+  "input": {
+    "sha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+    "bytes": 4734
+  },
+  "semantics": "Directed topology reachability only; no runtime dependency or failure inference.",
+  "presentation": {
+    "description": "Complete topology copy: only missing connection IDs are annotated for existing Explainer exact edge targets. Original semantic IDs and keys remain unchanged in this answer.",
+    "edgeTargets": [
+      {
+        "key": "0",
+        "originalId": null,
+        "semanticId": "0",
+        "presentationId": "e-0"
+      },
+      {
+        "key": "1",
+        "originalId": null,
+        "semanticId": "1",
+        "presentationId": "e-1"
+      },
+      {
+        "key": "2",
+        "originalId": null,
+        "semanticId": "2",
+        "presentationId": "e-2"
+      },
+      {
+        "key": "3",
+        "originalId": null,
+        "semanticId": "3",
+        "presentationId": "e-3"
+      },
+      {
+        "key": "4",
+        "originalId": null,
+        "semanticId": "4",
+        "presentationId": "e-4"
+      },
+      {
+        "key": "5",
+        "originalId": null,
+        "semanticId": "5",
+        "presentationId": "e-5"
+      },
+      {
+        "key": "6",
+        "originalId": null,
+        "semanticId": "6",
+        "presentationId": "e-6"
+      },
+      {
+        "key": "7",
+        "originalId": null,
+        "semanticId": "7",
+        "presentationId": "e-7"
+      },
+      {
+        "key": "8",
+        "originalId": null,
+        "semanticId": "8",
+        "presentationId": "e-8"
+      },
+      {
+        "key": "9",
+        "originalId": null,
+        "semanticId": "9",
+        "presentationId": "e-9"
+      },
+      {
+        "key": "10",
+        "originalId": null,
+        "semanticId": "10",
+        "presentationId": "e-10"
+      },
+      {
+        "key": "11",
+        "originalId": null,
+        "semanticId": "11",
+        "presentationId": "e-11"
+      }
+    ]
+  },
+  "semantic": {
+    "nodes": [
+      {
+        "id": "clients",
+        "label": "Customers",
+        "svgId": "node-clients"
+      },
+      {
+        "id": "edge",
+        "label": "Global Edge",
+        "svgId": "node-edge"
+      },
+      {
+        "id": "gateway",
+        "label": "API Gateway",
+        "svgId": "node-gateway"
+      },
+      {
+        "id": "api_a",
+        "label": "API Pods / AZ-a",
+        "svgId": "node-api_a"
+      },
+      {
+        "id": "api_b",
+        "label": "API Pods / AZ-b",
+        "svgId": "node-api_b"
+      },
+      {
+        "id": "redis",
+        "label": "Redis",
+        "svgId": "node-redis"
+      },
+      {
+        "id": "postgres",
+        "label": "PostgreSQL",
+        "svgId": "node-postgres"
+      },
+      {
+        "id": "events",
+        "label": "Event Bus",
+        "svgId": "node-events"
+      },
+      {
+        "id": "worker",
+        "label": "Workers",
+        "svgId": "node-worker"
+      },
+      {
+        "id": "replica",
+        "label": "DR Replica",
+        "svgId": "node-replica"
+      },
+      {
+        "id": "audit",
+        "label": "Audit Archive",
+        "svgId": "node-audit"
+      },
+      {
+        "id": "observability",
+        "label": "Observability",
+        "svgId": "node-observability"
+      }
+    ],
+    "edges": [
+      {
+        "id": "0",
+        "from": "clients",
+        "to": "edge",
+        "label": "HTTPS",
+        "key": "0"
+      },
+      {
+        "id": "1",
+        "from": "edge",
+        "to": "gateway",
+        "label": "mTLS",
+        "key": "1"
+      },
+      {
+        "id": "2",
+        "from": "gateway",
+        "to": "api_a",
+        "label": "VPC route",
+        "key": "2"
+      },
+      {
+        "id": "3",
+        "from": "gateway",
+        "to": "api_b",
+        "label": "VPC route",
+        "key": "3"
+      },
+      {
+        "id": "4",
+        "from": "api_a",
+        "to": "redis",
+        "label": "cache",
+        "key": "4"
+      },
+      {
+        "id": "5",
+        "from": "api_b",
+        "to": "postgres",
+        "label": "SQL",
+        "key": "5"
+      },
+      {
+        "id": "6",
+        "from": "api_a",
+        "to": "events",
+        "label": "publish",
+        "key": "6"
+      },
+      {
+        "id": "7",
+        "from": "api_b",
+        "to": "events",
+        "label": "",
+        "key": "7"
+      },
+      {
+        "id": "8",
+        "from": "events",
+        "to": "worker",
+        "label": "",
+        "key": "8"
+      },
+      {
+        "id": "9",
+        "from": "postgres",
+        "to": "replica",
+        "label": "cross-region WAL",
+        "key": "9"
+      },
+      {
+        "id": "10",
+        "from": "worker",
+        "to": "audit",
+        "label": "evidence",
+        "key": "10"
+      },
+      {
+        "id": "11",
+        "from": "worker",
+        "to": "observability",
+        "label": "OTLP",
+        "key": "11"
+      }
+    ]
+  },
+  "status": "reachable",
+  "query": {
+    "s": "clients",
+    "t": "audit",
+    "excludeEndpoints": true,
+    "tieBreak": "native connection order"
+  },
+  "baselinePath": {
+    "nodes": [
+      "clients",
+      "edge",
+      "gateway",
+      "api_a",
+      "events",
+      "worker",
+      "audit"
+    ],
+    "edges": [
+      {
+        "id": "0",
+        "from": "clients",
+        "to": "edge",
+        "label": "HTTPS",
+        "key": "0"
+      },
+      {
+        "id": "1",
+        "from": "edge",
+        "to": "gateway",
+        "label": "mTLS",
+        "key": "1"
+      },
+      {
+        "id": "2",
+        "from": "gateway",
+        "to": "api_a",
+        "label": "VPC route",
+        "key": "2"
+      },
+      {
+        "id": "6",
+        "from": "api_a",
+        "to": "events",
+        "label": "publish",
+        "key": "6"
+      },
+      {
+        "id": "8",
+        "from": "events",
+        "to": "worker",
+        "label": "",
+        "key": "8"
+      },
+      {
+        "id": "10",
+        "from": "worker",
+        "to": "audit",
+        "label": "evidence",
+        "key": "10"
+      }
+    ],
+    "hops": 6
+  },
+  "requiredInternalNodes": [
+    "edge",
+    "gateway",
+    "events",
+    "worker"
+  ],
+  "nonmandatoryNodes": [
+    "api_a",
+    "api_b",
+    "redis",
+    "postgres",
+    "replica",
+    "observability"
+  ],
+  "bypassPaths": {
+    "api_a": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_b",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edges": [
+        {
+          "id": "0",
+          "from": "clients",
+          "to": "edge",
+          "label": "HTTPS",
+          "key": "0"
+        },
+        {
+          "id": "1",
+          "from": "edge",
+          "to": "gateway",
+          "label": "mTLS",
+          "key": "1"
+        },
+        {
+          "id": "3",
+          "from": "gateway",
+          "to": "api_b",
+          "label": "VPC route",
+          "key": "3"
+        },
+        {
+          "id": "7",
+          "from": "api_b",
+          "to": "events",
+          "label": "",
+          "key": "7"
+        },
+        {
+          "id": "8",
+          "from": "events",
+          "to": "worker",
+          "label": "",
+          "key": "8"
+        },
+        {
+          "id": "10",
+          "from": "worker",
+          "to": "audit",
+          "label": "evidence",
+          "key": "10"
+        }
+      ],
+      "hops": 6
+    },
+    "api_b": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edges": [
+        {
+          "id": "0",
+          "from": "clients",
+          "to": "edge",
+          "label": "HTTPS",
+          "key": "0"
+        },
+        {
+          "id": "1",
+          "from": "edge",
+          "to": "gateway",
+          "label": "mTLS",
+          "key": "1"
+        },
+        {
+          "id": "2",
+          "from": "gateway",
+          "to": "api_a",
+          "label": "VPC route",
+          "key": "2"
+        },
+        {
+          "id": "6",
+          "from": "api_a",
+          "to": "events",
+          "label": "publish",
+          "key": "6"
+        },
+        {
+          "id": "8",
+          "from": "events",
+          "to": "worker",
+          "label": "",
+          "key": "8"
+        },
+        {
+          "id": "10",
+          "from": "worker",
+          "to": "audit",
+          "label": "evidence",
+          "key": "10"
+        }
+      ],
+      "hops": 6
+    },
+    "redis": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edges": [
+        {
+          "id": "0",
+          "from": "clients",
+          "to": "edge",
+          "label": "HTTPS",
+          "key": "0"
+        },
+        {
+          "id": "1",
+          "from": "edge",
+          "to": "gateway",
+          "label": "mTLS",
+          "key": "1"
+        },
+        {
+          "id": "2",
+          "from": "gateway",
+          "to": "api_a",
+          "label": "VPC route",
+          "key": "2"
+        },
+        {
+          "id": "6",
+          "from": "api_a",
+          "to": "events",
+          "label": "publish",
+          "key": "6"
+        },
+        {
+          "id": "8",
+          "from": "events",
+          "to": "worker",
+          "label": "",
+          "key": "8"
+        },
+        {
+          "id": "10",
+          "from": "worker",
+          "to": "audit",
+          "label": "evidence",
+          "key": "10"
+        }
+      ],
+      "hops": 6
+    },
+    "postgres": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edges": [
+        {
+          "id": "0",
+          "from": "clients",
+          "to": "edge",
+          "label": "HTTPS",
+          "key": "0"
+        },
+        {
+          "id": "1",
+          "from": "edge",
+          "to": "gateway",
+          "label": "mTLS",
+          "key": "1"
+        },
+        {
+          "id": "2",
+          "from": "gateway",
+          "to": "api_a",
+          "label": "VPC route",
+          "key": "2"
+        },
+        {
+          "id": "6",
+          "from": "api_a",
+          "to": "events",
+          "label": "publish",
+          "key": "6"
+        },
+        {
+          "id": "8",
+          "from": "events",
+          "to": "worker",
+          "label": "",
+          "key": "8"
+        },
+        {
+          "id": "10",
+          "from": "worker",
+          "to": "audit",
+          "label": "evidence",
+          "key": "10"
+        }
+      ],
+      "hops": 6
+    },
+    "replica": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edges": [
+        {
+          "id": "0",
+          "from": "clients",
+          "to": "edge",
+          "label": "HTTPS",
+          "key": "0"
+        },
+        {
+          "id": "1",
+          "from": "edge",
+          "to": "gateway",
+          "label": "mTLS",
+          "key": "1"
+        },
+        {
+          "id": "2",
+          "from": "gateway",
+          "to": "api_a",
+          "label": "VPC route",
+          "key": "2"
+        },
+        {
+          "id": "6",
+          "from": "api_a",
+          "to": "events",
+          "label": "publish",
+          "key": "6"
+        },
+        {
+          "id": "8",
+          "from": "events",
+          "to": "worker",
+          "label": "",
+          "key": "8"
+        },
+        {
+          "id": "10",
+          "from": "worker",
+          "to": "audit",
+          "label": "evidence",
+          "key": "10"
+        }
+      ],
+      "hops": 6
+    },
+    "observability": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edges": [
+        {
+          "id": "0",
+          "from": "clients",
+          "to": "edge",
+          "label": "HTTPS",
+          "key": "0"
+        },
+        {
+          "id": "1",
+          "from": "edge",
+          "to": "gateway",
+          "label": "mTLS",
+          "key": "1"
+        },
+        {
+          "id": "2",
+          "from": "gateway",
+          "to": "api_a",
+          "label": "VPC route",
+          "key": "2"
+        },
+        {
+          "id": "6",
+          "from": "api_a",
+          "to": "events",
+          "label": "publish",
+          "key": "6"
+        },
+        {
+          "id": "8",
+          "from": "events",
+          "to": "worker",
+          "label": "",
+          "key": "8"
+        },
+        {
+          "id": "10",
+          "from": "worker",
+          "to": "audit",
+          "label": "evidence",
+          "key": "10"
+        }
+      ],
+      "hops": 6
+    }
+  }
+}

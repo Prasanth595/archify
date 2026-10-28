@@ -1,0 +1,41 @@
+{
+  "provenance": {
+    "sourceName": "root-observations.json",
+    "originalSha256": "a86fd9fb9f5b558ac2ade4be100a55827ae8f6a9a90fa0c72479f20346e7ce04",
+    "originalBytes": 1546,
+    "derived": true,
+    "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."
+  },
+  "data": {
+    "kind": "root-browser-review-summary",
+    "taskSpaceId": 10,
+    "scope": "Browser artifact acceptance only. Space remains active for gallery55.",
+    "claims": [
+      "Complete native raw graph inspected in Classic Light",
+      "Final reachable answer names edge,gateway,events,worker",
+      "Pointer API A bypass visibly uses API B",
+      "Keyboard Enter on API B bypass visibly uses API A",
+      "Escape restores triggering witness focus",
+      "Unreachable audit\u2192clients is explicit and has no bypass links",
+      "Light and dark desktop results inspected"
+    ],
+    "screenshots": {
+      "primary": "reachable-overview-light-final.png",
+      "superseded": {
+        "reachable-overview-light.png": "Captured during author finalization; superseded by stable-source screenshot",
+        "bypass-api-b-keyboard-light.png": "Captured before new iframe paint, blank. Preserved as failed capture; final screenshot inspected after iframe snapshot confirmed ready."
+      }
+    },
+    "limitations": [
+      "Native inline graph reports cannot-fit-readable; interactive view required",
+      "390px desktop viewport: client375/scroll400, toolbar overflow; scope wraps correctly, table scroll317/324. Not mobile acceptance",
+      "No touch/AT/cross-browser/human acceptance",
+      "No detector/runtime/dependency/failure inference",
+      "Not a public finalize browser-check result"
+    ],
+    "automationErrors": [
+      "Invalid loc=role:dialog syntax recovered by fresh snapshot",
+      "Early API B screenshot blank despite selector available; final loaded iframe recaptured"
+    ]
+  }
+}

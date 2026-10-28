@@ -1,0 +1,29 @@
+{
+  "provenance": {
+    "sourceName": "native-baseline.json",
+    "originalSha256": "9dc8536b52c57de3a9cf882536e4b50b5437372b44d46ec088c6490a2fbf249a",
+    "originalBytes": 697,
+    "derived": true,
+    "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."
+  },
+  "data": {
+    "kind": "actual-ego-browser-observation",
+    "viewport": {
+      "width": 1440,
+      "height": 1250
+    },
+    "source": {
+      "path": "<EXPERIMENT_ROOT>/evidence/reachable/full-native.html",
+      "bytes": 883501,
+      "sha256": "9ed55b99b1e81bad4d043c712bf6d999c6aab7fb4be0c3433cb5c79c234b3d25"
+    },
+    "baseline": {
+      "title": "Production Deployment Ownership Diagram",
+      "client": 1425,
+      "scroll": 1425,
+      "theme": "light",
+      "style": null
+    },
+    "comparison": "Complete original graph has no required-node result or avoidance witness links. Candidate adds derived answer and exact-edge links to the same topology."
+  }
+}

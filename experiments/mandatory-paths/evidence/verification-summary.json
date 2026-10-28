@@ -1,0 +1,64 @@
+{
+  "base": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "node": "22",
+  "tests": {
+    "command": "node --test experiments/mandatory-paths/mandatory-paths.test.mjs",
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "rawLogSha256": "df3ee853296036a5c1043f9322e79582af807e13c65f6a20059727571151f62a",
+    "durationMs": 7814.330875
+  },
+  "sources": {
+    "README.md": "215d8b8ed3ccc86bd4deffb4bdab5b9ccfe86a72a151e62ad5023f204fd85e83",
+    "cli.mjs": "cc980d1c2f7bdf8ecf758e0f27421b57ff8c7617c3b4781fdf9f0fd4eb5b2325",
+    "fixtures/full-fixture-oracle.json": "a8e26fde8322544099db498cda9b2c6845712a3d05e47498cabdf7f3c7043970",
+    "fixtures/production-deployment.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+    "mandatory-paths.mjs": "73338da8329400c09bb2ae494e3c6347323f78d23d3ae1cf9f81984f4a176be8",
+    "mandatory-paths.test.mjs": "d73ac36f6212b4ebd644a953de11f3041ab81273cdf46477a2ed9c21c76e5705"
+  },
+  "outputs": {
+    "reachable": {
+      "sha256": {
+        "answer.json": "429fe4bdfd1f6a747dc21fc65efa4f9cbcc2f95c064bb21a6d5f8ece1aa978c8",
+        "explainer.html": "6009815830ab0bd0fed6f71ad34b9290896cec31cd4aaab4d1a2891024f4f69d",
+        "explainer.json": "4c23c249e2b4317c3fb3b4fb9d5d05b487ed5f4975fdd59eab2e60dd262a210d",
+        "full-native.html": "9ed55b99b1e81bad4d043c712bf6d999c6aab7fb4be0c3433cb5c79c234b3d25",
+        "input.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+      },
+      "finalize": {
+        "ok": true,
+        "check": "pass",
+        "browserCheckRan": false,
+        "diagnostics": []
+      }
+    },
+    "unreachable": {
+      "sha256": {
+        "answer.json": "7772e95f5bd56035285e2d7444a1568cd9396b1b034178f68a0347b9b6c33e48",
+        "explainer.html": "c827b67425d076cd3479282bdb72034f40213ae6421ae039fba8eef6a2c58e86",
+        "explainer.json": "f08241b04040dd929b36b79b2893156acf442864fc1ced18069c767e05ea7659",
+        "full-native.html": "9ed55b99b1e81bad4d043c712bf6d999c6aab7fb4be0c3433cb5c79c234b3d25",
+        "input.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+      },
+      "finalize": {
+        "ok": true,
+        "check": "pass",
+        "browserCheckRan": false,
+        "diagnostics": []
+      }
+    }
+  },
+  "limits": [
+    "No browser or visual acceptance",
+    "No human acceptance",
+    "No performance measurement",
+    "No upstream implementation executed",
+    "No commit or push"
+  ],
+  "dependencyReuse": {
+    "rootLockSha256": "7cec877ea7be13bd585387e8707c1fc3fa00b60139fbbbdbd0314430e17d39f3",
+    "rendererLockSha256": "5ee16783f03b92da1864f3c15435513d20844fe0436f7d840bd7301ba616015c",
+    "method": "Verified lockfile equality before symlinking existing dependency directories; no install"
+  }
+}

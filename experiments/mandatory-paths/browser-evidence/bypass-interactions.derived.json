@@ -1,0 +1,33 @@
+{
+  "provenance": {
+    "sourceName": "bypass-interactions.json",
+    "originalSha256": "e0240113097f8117f5682bc2a17c7920d9ded2c3ac6ce4d01233c99e3ab74622",
+    "originalBytes": 990,
+    "derived": true,
+    "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."
+  },
+  "data": {
+    "kind": "actual-ego-browser-observation",
+    "viewport": {
+      "width": 1440,
+      "height": 1250
+    },
+    "actions": [
+      "pointer api_a witness",
+      "Escape",
+      "focus api_a witness then Tab",
+      "Enter api_b witness",
+      "Escape"
+    ],
+    "afterA": {
+      "open": 0,
+      "focus": "Avoid api_a: clients \u2192 edge \u2192 gateway \u2192 api_b \u2192 events \u2192 worker \u2192 audit \u2197"
+    },
+    "keyboardFocusBeforeOpen": "Avoid api_b: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197",
+    "afterB": {
+      "focus": "Avoid api_b: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197"
+    },
+    "limits": "Cross-origin sandbox iframe DOM not read from parent; visual witness selection inspected in screenshots and target identity separately bound to original input. No touch or assistive-technology acceptance.",
+    "automationError": "Initial loc=role:dialog without accessible name was invalid; action had opened dialog. Inspected snapshot then continued."
+  }
+}

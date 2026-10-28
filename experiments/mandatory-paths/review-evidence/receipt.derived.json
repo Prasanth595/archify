@@ -1,0 +1,141 @@
+{
+  "provenance": {
+    "sourceName": "receipt.json",
+    "originalSha256": "7a46acc702745aa05b00a70800601ec6c801a3d75f4c3f82051a0ced2fd8d232",
+    "originalBytes": 5213,
+    "derived": true,
+    "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."
+  },
+  "data": {
+    "ok": true,
+    "base": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+    "runtime": "v22.23.3",
+    "hashes": {
+      "mandatory-paths.mjs": "73338da8329400c09bb2ae494e3c6347323f78d23d3ae1cf9f81984f4a176be8",
+      "cli.mjs": "cc980d1c2f7bdf8ecf758e0f27421b57ff8c7617c3b4781fdf9f0fd4eb5b2325",
+      "mandatory-paths.test.mjs": "d73ac36f6212b4ebd644a953de11f3041ab81273cdf46477a2ed9c21c76e5705",
+      "README.md": "215d8b8ed3ccc86bd4deffb4bdab5b9ccfe86a72a151e62ad5023f204fd85e83",
+      "fixtures/full-fixture-oracle.json": "a8e26fde8322544099db498cda9b2c6845712a3d05e47498cabdf7f3c7043970",
+      "fixtures/production-deployment.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+    },
+    "oracle": {
+      "method": "Enumerate all simple paths, intersect nodes; select avoidance path by hop count then lexicographic native edge order.",
+      "directedGraphs": 4096,
+      "queries": 49154,
+      "witnesses": 61448,
+      "additional": "Self loops, parallel identities, reverse cycles, object-property node ID, complete fixture"
+    },
+    "rejectedDirections": [
+      "forward",
+      "both",
+      "none",
+      "reverse",
+      "",
+      null,
+      false,
+      0,
+      {}
+    ],
+    "runs": [
+      {
+        "s": "clients",
+        "t": "audit",
+        "status": "reachable",
+        "commands": [
+          {
+            "executable": "<NODE22_EXECUTABLE>",
+            "args": [
+              "<CHECKOUT_ROOT>/archify/bin/archify.mjs",
+              "render",
+              "architecture",
+              "<RAW_REVIEW_ROOT>/reachable/input.architecture.json",
+              "<RAW_REVIEW_ROOT>/reachable/full-native.html",
+              "--quality",
+              "standard"
+            ],
+            "status": 0
+          },
+          {
+            "executable": "<NODE22_EXECUTABLE>",
+            "args": [
+              "<CHECKOUT_ROOT>/archify/bin/archify.mjs",
+              "finalize",
+              "explainer",
+              "<RAW_REVIEW_ROOT>/reachable/explainer.json",
+              "<RAW_REVIEW_ROOT>/reachable/explainer.html",
+              "--quality",
+              "standard",
+              "--json"
+            ],
+            "status": 0
+          }
+        ],
+        "targets": 6,
+        "finalize": {
+          "ok": true,
+          "check": "pass",
+          "browserCheckRan": false
+        },
+        "artifacts": {
+          "input.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+          "answer.json": "429fe4bdfd1f6a747dc21fc65efa4f9cbcc2f95c064bb21a6d5f8ece1aa978c8",
+          "explainer.json": "4c23c249e2b4317c3fb3b4fb9d5d05b487ed5f4975fdd59eab2e60dd262a210d",
+          "explainer.html": "3a287b8576e7c80b62cb9548b5bc975a07c676e7dfada46aab0912f2e063b921",
+          "full-native.html": "9ed55b99b1e81bad4d043c712bf6d999c6aab7fb4be0c3433cb5c79c234b3d25"
+        }
+      },
+      {
+        "s": "audit",
+        "t": "clients",
+        "status": "unreachable",
+        "commands": [
+          {
+            "executable": "<NODE22_EXECUTABLE>",
+            "args": [
+              "<CHECKOUT_ROOT>/archify/bin/archify.mjs",
+              "render",
+              "architecture",
+              "<RAW_REVIEW_ROOT>/unreachable/input.architecture.json",
+              "<RAW_REVIEW_ROOT>/unreachable/full-native.html",
+              "--quality",
+              "standard"
+            ],
+            "status": 0
+          },
+          {
+            "executable": "<NODE22_EXECUTABLE>",
+            "args": [
+              "<CHECKOUT_ROOT>/archify/bin/archify.mjs",
+              "finalize",
+              "explainer",
+              "<RAW_REVIEW_ROOT>/unreachable/explainer.json",
+              "<RAW_REVIEW_ROOT>/unreachable/explainer.html",
+              "--quality",
+              "standard",
+              "--json"
+            ],
+            "status": 0
+          }
+        ],
+        "targets": 0,
+        "finalize": {
+          "ok": true,
+          "check": "pass",
+          "browserCheckRan": false
+        },
+        "artifacts": {
+          "input.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+          "answer.json": "7772e95f5bd56035285e2d7444a1568cd9396b1b034178f68a0347b9b6c33e48",
+          "explainer.json": "f08241b04040dd929b36b79b2893156acf442864fc1ced18069c767e05ea7659",
+          "explainer.html": "f38fdf8c539ae8aa4d491dec0a86eb965b54db54d3df4b3a70891e6cc3e50d51",
+          "full-native.html": "9ed55b99b1e81bad4d043c712bf6d999c6aab7fb4be0c3433cb5c79c234b3d25"
+        }
+      }
+    ],
+    "limits": [
+      "Independent automated local review only",
+      "No browser, visual, human acceptance, performance, upstream execution, commit, push or installation",
+      "QuerySemantic assumes canonical validated graph; malformed semantic objects are outside CLI boundary"
+    ]
+  }
+}

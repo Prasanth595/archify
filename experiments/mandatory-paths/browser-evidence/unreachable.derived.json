@@ -1,0 +1,28 @@
+{
+  "provenance": {
+    "sourceName": "unreachable.json",
+    "originalSha256": "0b4550dc77706a1d32788233bc8c48191bd79b4d74fdd51e12e4eb7ee08bd77b",
+    "originalBytes": 2204,
+    "derived": true,
+    "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."
+  },
+  "data": {
+    "kind": "actual-ego-browser-observation",
+    "viewport": {
+      "width": 1440,
+      "height": 1250
+    },
+    "source": {
+      "path": "<EXPERIMENT_ROOT>/evidence/unreachable/explainer.html",
+      "bytes": 636958,
+      "sha256": "c827b67425d076cd3479282bdb72034f40213ae6421ae039fba8eef6a2c58e86"
+    },
+    "dom": {
+      "title": "Mandatory paths \u00b7 Archify",
+      "text": "Skip to content\nMandatory paths\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\naudit \u2192 clients: unreachable.\n\nNo directed path exists in the complete authored graph.\n\nApplies to\nDirected topology only; no runtime dependency, fault or causality inference. Endpoints excluded. Each bypass minimizes hops, with native connection order breaking ties.\n\n1\nComplete graph and inspectable answers\nAsk\n\nNo directed path from audit to clients. Required-node classification does not apply.\n\nProduction Deployment Ownership\nOpen interactive view\nCustomers\nweb + mobile\nGlobal Edge\nCDN + WAF\nedge team\nAPI Gateway\npublic :443\nplatform\nAPI Pods / AZ-a\nprivate subnet\napp team\nAPI Pods / AZ-b\nprivate subnet\napp team\nRedis\nmulti-AZ cache\nplatform\nPostgreSQL\nprimary / encrypted\ndata team\nEvent Bus\norders.v1\nplatform\nWorkers\nprivate workload\napp team\nDR Replica\neu-west-1\ndata team\nAudit Archive\nimmutable objects\nsecurity\nObservability\nmetrics + traces\nSRE\nHTTPS\nmTLS\nVPC route\nVPC route\ncache\nSQL\npublish\ncross-region WAL\nevidence\nOTLP\nAWS us-east-1 / production\nprivate application network\nAWS eu-west-1 / disaster recovery\nDR private subnet\nLegend\nBackend\nDatabase\nCloud\nSecurity\nMessage bus\nExternal\n\nThis diagram cannot fit this page width with readable text. Open the interactive view to inspect it.\n\nThe complete graph is retained. Only missing connection IDs are annotated for exact selection; answer.json maps original keys and IDs. A nonmandatory node need not lie on any route to the endpoint.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n1 panel\n1 diagram validated",
+      "client": 1425,
+      "scroll": 1425,
+      "bypassLinks": 0
+    }
+  }
+}

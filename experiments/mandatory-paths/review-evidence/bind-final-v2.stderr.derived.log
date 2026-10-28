@@ -1,0 +1,26 @@
+PUBLIC DERIVED RECORD
+{"sourceName": "bind-final-v2.stderr.log", "originalSha256": "ba2d4ca5886dc0eedc0f88cf4709a156d4c7747f3c8a0445d55246142a7b58b5", "originalBytes": 918, "derived": true, "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."}
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '3a287b8576e7c80b62cb9548b5bc975a07c676e7dfada46aab0912f2e063b921'
+- '6009815830ab0bd0fed6f71ad34b9290896cec31cd4aaab4d1a2891024f4f69d'
+
+    at file://<RAW_REVIEW_ROOT>/bind-final-v2.mjs:24:87
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '3a287b8576e7c80b62cb9548b5bc975a07c676e7dfada46aab0912f2e063b921',
+  expected: '6009815830ab0bd0fed6f71ad34b9290896cec31cd4aaab4d1a2891024f4f69d',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.3

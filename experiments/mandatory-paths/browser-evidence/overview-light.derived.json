@@ -1,0 +1,55 @@
+{
+  "provenance": {
+    "sourceName": "overview-light.json",
+    "originalSha256": "c45095a5f184906ba8a5141ea526b9e945866f62006f2e45ffd66d4c78228740",
+    "originalBytes": 3604,
+    "derived": true,
+    "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."
+  },
+  "data": {
+    "kind": "actual-ego-browser-observation",
+    "taskSpaceId": 10,
+    "viewport": {
+      "width": 1440,
+      "height": 1250
+    },
+    "source": {
+      "path": "<EXPERIMENT_ROOT>/evidence/reachable/explainer.html",
+      "sha256": "6009815830ab0bd0fed6f71ad34b9290896cec31cd4aaab4d1a2891024f4f69d",
+      "bytes": 668678
+    },
+    "dom": {
+      "title": "Mandatory paths \u00b7 Archify",
+      "client": 1425,
+      "scroll": 1425,
+      "anchors": [
+        {
+          "text": "Avoid api_a: clients \u2192 edge \u2192 gateway \u2192 api_b \u2192 events \u2192 worker \u2192 audit \u2197",
+          "html": "<a class=\"diagram-link\" href=\"#full-graph\" data-diagram-link=\"full-graph\" data-diagram-hash=\"\" data-diagram-edges=\"[&quot;e-0&quot;,&quot;e-1&quot;,&quot;e-3&quot;,&quot;e-7&quot;,&quot;e-8&quot;,&quot;e-10&quot;]\">Avoid api_a: clients \u2192 edge \u2192 gateway \u2192 api_b \u2192 events \u2192 worker \u2192 audit<span aria-hidden=\"true\"> \u2197</span></a>"
+        },
+        {
+          "text": "Avoid api_b: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197",
+          "html": "<a class=\"diagram-link\" href=\"#full-graph\" data-diagram-link=\"full-graph\" data-diagram-hash=\"\" data-diagram-edges=\"[&quot;e-0&quot;,&quot;e-1&quot;,&quot;e-2&quot;,&quot;e-6&quot;,&quot;e-8&quot;,&quot;e-10&quot;]\">Avoid api_b: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit<span aria-hidden=\"true\"> \u2197</span></a>"
+        },
+        {
+          "text": "Avoid redis: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197",
+          "html": "<a class=\"diagram-link\" href=\"#full-graph\" data-diagram-link=\"full-graph\" data-diagram-hash=\"\" data-diagram-edges=\"[&quot;e-0&quot;,&quot;e-1&quot;,&quot;e-2&quot;,&quot;e-6&quot;,&quot;e-8&quot;,&quot;e-10&quot;]\">Avoid redis: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit<span aria-hidden=\"true\"> \u2197</span></a>"
+        },
+        {
+          "text": "Avoid postgres: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197",
+          "html": "<a class=\"diagram-link\" href=\"#full-graph\" data-diagram-link=\"full-graph\" data-diagram-hash=\"\" data-diagram-edges=\"[&quot;e-0&quot;,&quot;e-1&quot;,&quot;e-2&quot;,&quot;e-6&quot;,&quot;e-8&quot;,&quot;e-10&quot;]\">Avoid postgres: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit<span aria-hidden=\"true\"> \u2197</span></a>"
+        },
+        {
+          "text": "Avoid replica: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197",
+          "html": "<a class=\"diagram-link\" href=\"#full-graph\" data-diagram-link=\"full-graph\" data-diagram-hash=\"\" data-diagram-edges=\"[&quot;e-0&quot;,&quot;e-1&quot;,&quot;e-2&quot;,&quot;e-6&quot;,&quot;e-8&quot;,&quot;e-10&quot;]\">Avoid replica: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit<span aria-hidden=\"true\"> \u2197</span></a>"
+        },
+        {
+          "text": "Avoid observability: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit \u2197",
+          "html": "<a class=\"diagram-link\" href=\"#full-graph\" data-diagram-link=\"full-graph\" data-diagram-hash=\"\" data-diagram-edges=\"[&quot;e-0&quot;,&quot;e-1&quot;,&quot;e-2&quot;,&quot;e-6&quot;,&quot;e-8&quot;,&quot;e-10&quot;]\">Avoid observability: clients \u2192 edge \u2192 gateway \u2192 api_a \u2192 events \u2192 worker \u2192 audit<span aria-hidden=\"true\"> \u2197</span></a>"
+        }
+      ],
+      "iframes": 0
+    },
+    "screenshot": "<RAW_BROWSER_ROOT>/reachable-overview-light.png"
+  }
+}

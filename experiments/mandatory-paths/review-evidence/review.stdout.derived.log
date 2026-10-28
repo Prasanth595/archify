@@ -1,0 +1,30 @@
+PUBLIC DERIVED RECORD
+{"sourceName": "review.stdout.log", "originalSha256": "95d2e24ac5e2eeaf7df80096b07865223f781fe951a66185e4a128784c42f564", "originalBytes": 895, "derived": true, "transformation": "Local absolute paths replaced by explicit placeholders; public derivative, not an original receipt."}
+
+{
+  "ok": true,
+  "cases": 49154,
+  "witnesses": 61448,
+  "hashes": {
+    "mandatory-paths.mjs": "73338da8329400c09bb2ae494e3c6347323f78d23d3ae1cf9f81984f4a176be8",
+    "cli.mjs": "cc980d1c2f7bdf8ecf758e0f27421b57ff8c7617c3b4781fdf9f0fd4eb5b2325",
+    "mandatory-paths.test.mjs": "d73ac36f6212b4ebd644a953de11f3041ab81273cdf46477a2ed9c21c76e5705",
+    "README.md": "215d8b8ed3ccc86bd4deffb4bdab5b9ccfe86a72a151e62ad5023f204fd85e83",
+    "fixtures/full-fixture-oracle.json": "a8e26fde8322544099db498cda9b2c6845712a3d05e47498cabdf7f3c7043970",
+    "fixtures/production-deployment.architecture.json": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda"
+  },
+  "runs": [
+    {
+      "s": "clients",
+      "t": "audit",
+      "status": "reachable",
+      "targets": 6
+    },
+    {
+      "s": "audit",
+      "t": "clients",
+      "status": "unreachable",
+      "targets": 0
+    }
+  ]
+}

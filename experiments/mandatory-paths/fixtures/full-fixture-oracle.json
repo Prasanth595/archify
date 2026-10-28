@@ -1,0 +1,151 @@
+{
+  "base": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "origin": "Complete public authored production-deployment example; not observed runtime",
+  "nodes": 12,
+  "edges": 12,
+  "query": {
+    "from": "clients",
+    "to": "audit"
+  },
+  "baselinePath": {
+    "nodes": [
+      "clients",
+      "edge",
+      "gateway",
+      "api_a",
+      "events",
+      "worker",
+      "audit"
+    ],
+    "edgeKeys": [
+      0,
+      1,
+      2,
+      6,
+      8,
+      10
+    ]
+  },
+  "requiredInternalNodes": [
+    "edge",
+    "gateway",
+    "events",
+    "worker"
+  ],
+  "bypassPaths": {
+    "api_a": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_b",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edgeKeys": [
+        0,
+        1,
+        3,
+        7,
+        8,
+        10
+      ]
+    },
+    "api_b": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edgeKeys": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        10
+      ]
+    },
+    "redis": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edgeKeys": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        10
+      ]
+    },
+    "postgres": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edgeKeys": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        10
+      ]
+    },
+    "replica": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edgeKeys": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        10
+      ]
+    },
+    "observability": {
+      "nodes": [
+        "clients",
+        "edge",
+        "gateway",
+        "api_a",
+        "events",
+        "worker",
+        "audit"
+      ],
+      "edgeKeys": [
+        0,
+        1,
+        2,
+        6,
+        8,
+        10
+      ]
+    }
+  }
+}
