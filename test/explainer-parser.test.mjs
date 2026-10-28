@@ -132,6 +132,7 @@ test('answer evidence does not hide the conclusion source location',()=>{
  const result=parseExplainer('# Title\n\n@answer evidence=panel\n\nA direct answer.\n\n## Why?\n\n@prose id=panel text="Evidence"\n');
  assert.equal(result.sourceMap['/answer/evidence'].line,3);
  assert.equal(result.sourceMap['/answer/summary'].line,5);
+ assert.equal(result.sourceMap['/answer'].line,5);
 });
 
 test('comparison row IDs stay stable',()=>{
