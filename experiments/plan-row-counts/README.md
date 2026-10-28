@@ -57,3 +57,7 @@ node archify/bin/archify.mjs finalize explainer experiments/plan-row-counts/plan
 这是固定内容样例，没有通用执行逻辑；没有新增泛化reader测试或运行全仓suite。实际静态核对包括：完整原source/license字节hash、精确substring、三节点source pointer和原字段、3×352算式、完整embedded spec与独立JSON一致、prepared sourceText逐字匹配草稿、公开本机路径扫描、所有产物和截图hash绑定。生成HTML保留renderer原始字节，没有后处理；其既有尾随空白会使全目录whitespace检查失败，作者输入/来源文件排除生成HTML后的检查另行记录。
 
 AI协助：Codex核对来源、编写固定图和解释页、运行public CLI；协调agent实际截图并查看，另一agent只读复核来源/字段/模型/证据。此处不声明上游实际执行、远端CI或人类验收。
+
+## 2026-10-29 原生对照补充
+
+[PEV2 v1.25.0 原生对照](native-comparison/README.md) 已用同一字节输入完成：PEV2 本身显示累计行数、loops 和平均值近似提示。本实验因此只保留三节点定向讲解与来源说明的价值，不扩展通用计划解析器。补充包含真实页面图片、发布资产校验、复现步骤和验证边界；既有作者输入、模型和两份 HTML 未改，未创建 PR。

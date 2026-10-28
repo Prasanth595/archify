@@ -1,0 +1,193 @@
+{
+  "kind": "derived browser observation receipt; not raw logs or automated acceptance",
+  "date": "2026-10-29",
+  "experimentBefore": "91e2ffadb5cd46fc72d5da978a4b83f8c7dfe521",
+  "sourceCommit": "e41d4e8b3006c479f9364d68a5d538d81cb7d110",
+  "release": {
+    "tag": "v1.25.0",
+    "commit": "e41d4e8b3006c479f9364d68a5d538d81cb7d110",
+    "publishedAt": "2026-10-20T11:56:17Z",
+    "releaseUrl": "https://github.com/dalibo/pev2/releases/tag/v1.25.0",
+    "assets": [
+      {
+        "id": 659196025,
+        "name": "index.html",
+        "bytes": 1308080,
+        "url": "https://github.com/dalibo/pev2/releases/download/v1.25.0/index.html",
+        "digest": "sha256:a9c992a85aa111b4442ece08b1f1abcd92f5a651cb41fc9510a74ad4b3bba99f"
+      },
+      {
+        "id": 659196021,
+        "name": "pev2.html",
+        "bytes": 1308080,
+        "url": "https://github.com/dalibo/pev2/releases/download/v1.25.0/pev2.html",
+        "digest": "sha256:a9c992a85aa111b4442ece08b1f1abcd92f5a651cb41fc9510a74ad4b3bba99f"
+      }
+    ]
+  },
+  "environment": {
+    "url": "http://127.0.0.1:18750/native/pev2.html#raw",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1
+    },
+    "resources": [
+      {
+        "url": "https://api.github.com/repos/dalibo/pev2/releases/latest",
+        "initiatorType": "fetch"
+      }
+    ]
+  },
+  "originalFixture": {
+    "path": "../upstream/plan_many_ctes.json",
+    "bytes": 67418,
+    "sha256": "a1c79b5782086474c73bd5ad2f7dd3265d73663f9030f5769638a4c2633cf6b4"
+  },
+  "nativeInputAndRaw": {
+    "bytes": 67418,
+    "sha256": "a1c79b5782086474c73bd5ad2f7dd3265d73663f9030f5769638a4c2633cf6b4",
+    "equalToOriginalFixture": true
+  },
+  "grid": [
+    {
+      "text": "#6\t\n0.562\n\t\n1,056\n\t\n2 × ▾\n\t\n245.31\n\t1\t\t     ├ Nested Loop\n\t",
+      "cells": [
+        "#6",
+        "0.562",
+        "1,056",
+        "2 × ▾",
+        "245.31",
+        "1",
+        "",
+        "     ├ Nested Loop\n",
+        ""
+      ]
+    },
+    {
+      "text": "#7\t\n0.170\n\t\n352\n\t\n2 × ▾\n\t\n7.34\n\t1\t\t     │ ├ Hash Join on sv_1.variant_id = catalog_variants.variant_id\n\t",
+      "cells": [
+        "#7",
+        "0.170",
+        "352",
+        "2 × ▾",
+        "7.34",
+        "1",
+        "",
+        "     │ ├ Hash Join on sv_1.variant_id = catalog_variants.variant_id\n",
+        ""
+      ]
+    },
+    {
+      "text": "#12\t\n1.056\n\t\n~1,056\n\t\n\t\n1.37\n\t352\t\t     │ └ Index Scan on public.spree_option_values_variants as sov_sv using index_spree_option_values_variants_on_variant_id\n\t\n1,284",
+      "cells": [
+        "#12",
+        "1.056",
+        "~1,056",
+        "",
+        "1.37",
+        "352",
+        "",
+        "     │ └ Index Scan on public.spree_option_values_variants as sov_sv using index_spree_option_values_variants_on_variant_id\n",
+        "1,284"
+      ]
+    }
+  ],
+  "warning": {
+    "url": "http://127.0.0.1:18750/native/pev2.html#plan/node/12",
+    "selected": " Index Scan\n#12\non public.spree_option_values_variants as sov_sv\nusing index_spree_option_values_variants_on_variant_id\nIndex Scan Node finds relevant records based on an Index. Index Scans perform 2 read operations: one to read the index and another to read the actual value from the table.\nGeneral\nIO & Buffers\nOutput\nWorkers\nMisc\n Timing: 1.06ms | 7%\n Rows: ~1,056 (Planned: ~1,056) \n Cost: 1.37 (Total: 1.37)\n Loops: 352",
+    "selectedRect": {
+      "x": 784.810546875,
+      "y": 504.64459228515625,
+      "width": 288.022216796875,
+      "height": 190.45465087890625,
+      "top": 504.64459228515625,
+      "right": 1072.832763671875,
+      "bottom": 695.0992431640625,
+      "left": 784.810546875
+    },
+    "tooltip": [
+      {
+        "text": "Value may not be accurate.\nIt couldn't be computed precisely because there are several loops and rows count is an average value.",
+        "opacity": "1",
+        "visibility": "visible",
+        "rect": {
+          "x": 769,
+          "y": 551,
+          "width": 350,
+          "height": 90.375,
+          "top": 551,
+          "right": 1119,
+          "bottom": 641.375,
+          "left": 769
+        }
+      }
+    ]
+  },
+  "existingArtifacts": [
+    {
+      "path": "../output/explainer.html",
+      "bytes": 504359,
+      "sha256": "93b01fa9523cb1ce71c39772d2447301c116a8a261d35cc7225df1f0f62cc3d6"
+    },
+    {
+      "path": "../output/plan-row-counts.html",
+      "bytes": 811482,
+      "sha256": "18196acf61ad5e7f212ac08290c57ac7b55b76bf2e0caddd2ce88b31f28f6c25"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "grid.png",
+      "bytes": 188013,
+      "sha256": "bc180774aae49098f2268a078fd27313fd20e7441ea0c5a2060bf62b583601e1",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sourceAuditImage": "01-grid-rows.png",
+      "reviewedBy": "Codex visual inspection"
+    },
+    {
+      "path": "average-warning.png",
+      "bytes": 188998,
+      "sha256": "06867a6b512158374e9541a7b5fafd8ef75f2dde19983683ae3180f24c16a029",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sourceAuditImage": "04-zoomed-warning.png",
+      "reviewedBy": "Codex visual inspection"
+    },
+    {
+      "path": "archify-explainer.png",
+      "bytes": 193833,
+      "sha256": "0123c55e88651eeb327678b7fdbac2b0f31aa182a4181d5ec3fe008b0a33de37",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sourceAuditImage": "06-archify-existing-explainer.png",
+      "reviewedBy": "Codex visual inspection"
+    },
+    {
+      "path": "archify-tree.png",
+      "bytes": 85478,
+      "sha256": "dce16b434ed6983fb5b3c60543df58e33ee19d78a1320ff8555f12ecbff69e98",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sourceAuditImage": "07-archify-existing-tree.png",
+      "reviewedBy": "Codex visual inspection"
+    }
+  ],
+  "limits": [
+    "Same committed upstream sample; no database execution.",
+    "Existing authored HTML reopened, not regenerated.",
+    "No reader study, timing benchmark, product/upstream test run, CI claim or PR.",
+    "Source tag and release asset verified separately; no reproducible-build claim.",
+    "04-zoomed-warning filename records an attempted zoom; node width did not change. Stable visible tooltip was captured."
+  ]
+}
