@@ -766,3 +766,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 42 批 · 箭头外观与方向语义
 
 [GraphvizOnline 原生图与 JSON 对照](scouts/graphviz-direction-round42.md)：五个完整输入、两轮一致的 JSON、五张真实截图，展示箭头数、边记录数和 directed 标志可以不同。补充 #1139 的实际需求证据，尊重已有方向调查；未执行遍历算法，也不替 Archify 决定 none/both 的含义。无新产品实现，只推研究分支，无新 PR。
+
+## 第 43 批 · Shell 解释覆盖与帮助来源
+
+[explainshell 原生阅读补证](scouts/explainshell-native-round43.md)：补上旧研究未操作的原生页面，保留引用悬停、未匹配帮助、缺少命令手册及 rust-wc/GNU 手册选择，附七张实拍。原始输入二次提交的六个片段结构一致；没有执行这些 Shell 命令，不把帮助覆盖当运行有效性。暂不新增解析器或同义教学页，只推研究分支，无新 PR。

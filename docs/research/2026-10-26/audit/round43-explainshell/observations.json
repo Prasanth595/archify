@@ -1,0 +1,341 @@
+{
+  "DOM": {
+    "log": "archify-round43-browser-02.log",
+    "data": {
+      "command": "<div id=\"command\">\n                    <span class=\"dropdown\">\n                    <span style=\"word-spacing: 0px;\">\n                    <b class=\"caret\" data-toggle=\"dropdown\"></b>\n                    <span class=\"command0 simplecommandstart\" helpref=\"help-1\"><a href=\"/explain/1/grep\">grep(1)</a></span>\n                    <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dropdownMenu\">\n                      \n                      <li class=\"dropdown-header\">other manpages</li>\n                      <li><a tabindex=\"-1\" rel=\"nofollow\" href=\"/explain?cmd=grep.1plan9%20-e%20%27-foo%27%20notes.txt%20%7C%20wc%20-l\">grep(1plan9)</a></li><li><a tabindex=\"-1\" rel=\"nofollow\" href=\"/explain?cmd=grep.1posix%20-e%20%27-foo%27%20notes.txt%20%7C%20wc%20-l\">grep(1posix)</a></li>\n                      \n                      \n                    </ul>\n                    </span>\n                </span> <span class=\"command0\" helpref=\"help-2\">-e '-foo'</span> <span class=\"command0 unknown\">notes.txt</span> <span class=\"shell\" helpref=\"help-0\">|</span> <span class=\"dropdown\">\n                    <span style=\"word-spacing: 0px;\">\n                    <b class=\"caret\" data-toggle=\"dropdown\"></b>\n                    <span class=\"command1 simplecommandstart\" helpref=\"help-3\"><a href=\"/explain/1/rust-wc\">wc(1)</a></span>\n                    <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dropdownMenu\">\n                      \n                      <li class=\"dropdown-header\">other manpages</li>\n                      <li><a tabindex=\"-1\" rel=\"nofollow\" href=\"/explain?cmd=grep%20-e%20%27-foo%27%20notes.txt%20%7C%20gnuwc.1%20-l\">gnuwc(1)</a></li><li><a tabindex=\"-1\" rel=\"nofollow\" href=\"/explain?cmd=grep%20-e%20%27-foo%27%20notes.txt%20%7C%20wc.1posix%20-l\">wc(1posix)</a></li>\n                      \n                      \n                    </ul>\n                    </span>\n                </span> <span class=\"command1\" helpref=\"help-4\">-l</span>\n                    </div>",
+      "help": [
+        {
+          "id": "help-1",
+          "text": "print lines that match patterns\n"
+        },
+        {
+          "id": "help-2",
+          "text": "-e PATTERNS**, --regexp=**PATTERNS\nUse\nPATTERNS as the patterns. If this option is used multiple times or is combined with the\n-f\n(--file) option, search for all patterns given. This option can be used to protect a pattern beginning with \u201c-\u201d.\n"
+        },
+        {
+          "id": "help-0",
+          "text": "A pipeline is a sequence of one or more commands separated by one of the control operators\n| or |&. The format for a pipeline is:\n\n[time [-p]] [ ! ] command1 [ [|||&] command2 ... ]\n\nThe standard output of\ncommand1 is connected via a pipe to the stan"
+        },
+        {
+          "id": "help-3",
+          "text": "Print newline, word, and byte counts for each FILE, and a total line if more than one FILE is specified\n"
+        },
+        {
+          "id": "help-4",
+          "text": "-l, --lines\nprint the newline counts\n"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "INPUT",
+          "name": "cmd",
+          "id": "top-search",
+          "value": ""
+        }
+      ]
+    }
+  },
+  "HOVER": {
+    "log": "archify-round43-browser-03.log",
+    "data": {
+      "spans": [
+        {
+          "text": "grep(1)",
+          "helpref": "help-1",
+          "class": "command0 simplecommandstart",
+          "title": "",
+          "opacity": "0.4"
+        },
+        {
+          "text": "-e '-foo'",
+          "helpref": "help-2",
+          "class": "command0",
+          "title": "",
+          "opacity": "1"
+        },
+        {
+          "text": "notes.txt",
+          "helpref": null,
+          "class": "command0 unknown",
+          "title": "No matching help text found for this argument",
+          "opacity": "1"
+        },
+        {
+          "text": "|",
+          "helpref": "help-0",
+          "class": "shell",
+          "title": "",
+          "opacity": "0.4"
+        },
+        {
+          "text": "wc(1)",
+          "helpref": "help-3",
+          "class": "command1 simplecommandstart",
+          "title": "",
+          "opacity": "0.4"
+        },
+        {
+          "text": "-l",
+          "helpref": "help-4",
+          "class": "command1",
+          "title": "",
+          "opacity": "0.4"
+        }
+      ],
+      "help": [
+        {
+          "id": "help-1",
+          "opacity": "0.4",
+          "display": "block"
+        },
+        {
+          "id": "help-2",
+          "opacity": "1",
+          "display": "block"
+        },
+        {
+          "id": "help-0",
+          "opacity": "0.4",
+          "display": "block"
+        },
+        {
+          "id": "help-3",
+          "opacity": "0.4",
+          "display": "block"
+        },
+        {
+          "id": "help-4",
+          "opacity": "0.4",
+          "display": "block"
+        }
+      ]
+    }
+  },
+  "UNKNOWN": {
+    "log": "archify-round43-browser-03.log",
+    "data": [
+      {
+        "text": "notes.txt",
+        "title": "No matching help text found for this argument",
+        "class": "command0 unknown"
+      }
+    ]
+  },
+  "ALTERNATIVE": {
+    "log": "archify-round43-browser-04.log",
+    "data": {
+      "url": "https://explainshell.com/explain?cmd=grep%20-e%20%27-foo%27%20notes.txt%20%7C%20gnuwc.1%20-l",
+      "spans": [
+        {
+          "text": "grep(1)",
+          "helpref": "help-1",
+          "href": "/explain/1/grep"
+        },
+        {
+          "text": "-e '-foo'",
+          "helpref": "help-2"
+        },
+        {
+          "text": "notes.txt",
+          "helpref": null
+        },
+        {
+          "text": "|",
+          "helpref": "help-0"
+        },
+        {
+          "text": "gnuwc.1",
+          "helpref": "help-3",
+          "href": "/explain/1/gnuwc"
+        },
+        {
+          "text": "-l",
+          "helpref": "help-4"
+        }
+      ]
+    }
+  },
+  "UNKNOWN_CASE": {
+    "log": "archify-round43-browser-05.log",
+    "data": {
+      "url": "https://explainshell.com/explain?cmd=grep+--archify-unknown+-e+%27-foo%27+notes.txt+%7C+wc+-l",
+      "spans": [
+        {
+          "text": "grep(1)",
+          "helpref": "help-1",
+          "class": "command0 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/grep"
+        },
+        {
+          "text": "--archify-unknown",
+          "helpref": null,
+          "class": "command0 unknown",
+          "title": "No matching help text found for this argument"
+        },
+        {
+          "text": "-e '-foo'",
+          "helpref": "help-2",
+          "class": "command0",
+          "title": ""
+        },
+        {
+          "text": "notes.txt",
+          "helpref": null,
+          "class": "command0 unknown",
+          "title": "No matching help text found for this argument"
+        },
+        {
+          "text": "|",
+          "helpref": "help-0",
+          "class": "shell",
+          "title": ""
+        },
+        {
+          "text": "wc(1)",
+          "helpref": "help-3",
+          "class": "command1 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/rust-wc"
+        },
+        {
+          "text": "-l",
+          "helpref": "help-4",
+          "class": "command1",
+          "title": ""
+        }
+      ]
+    }
+  },
+  "UNKNOWN_READY": {
+    "log": "archify-round43-browser-06.log",
+    "data": {
+      "url": "https://explainshell.com/explain?cmd=grep+--archify-unknown+-e+%27-foo%27+notes.txt+%7C+wc+-l",
+      "spans": [
+        {
+          "text": "grep(1)",
+          "helpref": "help-1",
+          "class": "command0 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/grep"
+        },
+        {
+          "text": "--archify-unknown",
+          "helpref": null,
+          "class": "command0 unknown",
+          "title": "No matching help text found for this argument"
+        },
+        {
+          "text": "-e '-foo'",
+          "helpref": "help-2",
+          "class": "command0",
+          "title": ""
+        },
+        {
+          "text": "notes.txt",
+          "helpref": null,
+          "class": "command0 unknown",
+          "title": "No matching help text found for this argument"
+        },
+        {
+          "text": "|",
+          "helpref": "help-0",
+          "class": "shell",
+          "title": ""
+        },
+        {
+          "text": "wc(1)",
+          "helpref": "help-3",
+          "class": "command1 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/rust-wc"
+        },
+        {
+          "text": "-l",
+          "helpref": "help-4",
+          "class": "command1",
+          "title": ""
+        }
+      ]
+    }
+  },
+  "MISSING": {
+    "log": "archify-round43-browser-06.log",
+    "data": {
+      "url": "https://explainshell.com/explain?cmd=archify_missing_command+notes.txt+%7C+wc+-l",
+      "spans": [
+        {
+          "text": "archify_missing_command notes.txt",
+          "helpref": null,
+          "class": "command0 unknown simplecommandstart",
+          "title": "This man page seems to be missing..."
+        },
+        {
+          "text": "|",
+          "helpref": "help-0",
+          "class": "shell",
+          "title": ""
+        },
+        {
+          "text": "wc(1)",
+          "helpref": "help-1",
+          "class": "command1 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/rust-wc"
+        },
+        {
+          "text": "-l",
+          "helpref": "help-2",
+          "class": "command1",
+          "title": ""
+        }
+      ]
+    }
+  },
+  "REPLAY": {
+    "log": "archify-round43-browser-07.log",
+    "data": {
+      "url": "https://explainshell.com/explain?cmd=grep+-e+%27-foo%27+notes.txt+%7C+wc+-l",
+      "spans": [
+        {
+          "text": "grep(1)",
+          "helpref": "help-1",
+          "class": "command0 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/grep"
+        },
+        {
+          "text": "-e '-foo'",
+          "helpref": "help-2",
+          "class": "command0",
+          "title": ""
+        },
+        {
+          "text": "notes.txt",
+          "helpref": null,
+          "class": "command0 unknown",
+          "title": "No matching help text found for this argument"
+        },
+        {
+          "text": "|",
+          "helpref": "help-0",
+          "class": "shell",
+          "title": ""
+        },
+        {
+          "text": "wc(1)",
+          "helpref": "help-3",
+          "class": "command1 simplecommandstart",
+          "title": "",
+          "href": "/explain/1/rust-wc"
+        },
+        {
+          "text": "-l",
+          "helpref": "help-4",
+          "class": "command1",
+          "title": ""
+        }
+      ]
+    }
+  }
+}

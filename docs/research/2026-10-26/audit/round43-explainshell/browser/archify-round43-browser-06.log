@@ -1,0 +1,112 @@
+UNKNOWN_READY {"url":"https://explainshell.com/explain?cmd=grep+--archify-unknown+-e+%27-foo%27+notes.txt+%7C+wc+-l","spans":[{"text":"grep(1)","helpref":"help-1","class":"command0 simplecommandstart","title":"","href":"/explain/1/grep"},{"text":"--archify-unknown","helpref":null,"class":"command0 unknown","title":"No matching help text found for this argument"},{"text":"-e '-foo'","helpref":"help-2","class":"command0","title":""},{"text":"notes.txt","helpref":null,"class":"command0 unknown","title":"No matching help text found for this argument"},{"text":"|","helpref":"help-0","class":"shell","title":""},{"text":"wc(1)","helpref":"help-3","class":"command1 simplecommandstart","title":"","href":"/explain/1/rust-wc"},{"text":"-l","helpref":"help-4","class":"command1","title":""}]}
+[p1 "explainshell.com - archify_missing_command notes.txt | wc -l" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "explainshell.com - archify_missing_command notes.txt | wc -l"]
+root
+  container
+    container
+      anchor [ref=724, loc=href:/, url=https://explainshell.com/]
+        text "explain"
+        text "shell"
+        text "."
+        text "com"
+      unordered_list
+        list_item
+          form
+            textbox [ref=725, loc=css:input[name="cmd"]]
+              text "archify_missing_command notes.txt | wc -l"
+      container
+        anchor [ref=726, loc=href:https://github.com/idank/explainshell, url=https://github.com/idank/explainshell]
+          text ""
+        anchor [ref=727, url=https://explainshell.com/explain?cmd=archify_missing_command+notes.txt+%7C+wc+-l#]
+          text ""
+    unordered_list
+      list_item
+        text "showing"
+        text "all"
+        text ", navigate:"
+      list_item
+        text ""
+        text "explain wc(1)"
+      list_item
+        text ""
+        text "explain shell syntax"
+    container
+      svg_root "?"
+        text "?"
+      container
+        text "archify_missing_command notes.txt"
+        text "|"
+        anchor [ref=728, loc=href:/explain/1/rust-wc, url=https://explainshell.com/explain/1/rust-wc]
+          text "wc(1)"
+        text "-l"
+    table
+      table_row
+        table_cell
+          paragraph
+            text "A"
+            text "pipeline"
+            text "is a sequence of one or more commands separated by one of the control operators"
+            text "|"
+            text "or"
+            text "|&"
+            text ". The format for a pipeline is:"
+          paragraph
+            text "["
+            text "time"
+            text "["
+            text "-p"
+            text "]] [ ! ]"
+            text "command1"
+            text "[ ["
+            text "|"
+            text "|"
+            text "|&"
+            text "]"
+            text "command2"
+            text "... ]"
+          paragraph
+            text "The standard output of"
+            text "command1"
+            text "is connected via a pipe to the standard input of"
+            text "command2"
+            text ". This connection is performed before any redirections specified by the"
+            text "command1"
+            text "(see"
+            text "REDIRECTION"
+            text "below). If"
+            text "|&"
+            text "is used,"
+            text "command1"
+            text "'s standard error, in addition to its standard output, is connected to"
+            text "command2"
+            text "'s standard input through the pipe; it is shorthand for"
+            text "2>&1 |"
+            text ". This implicit redirection of the standard error to the standard output is performed after any redirections specified by"
+            text "command1"
+            text "."
+          paragraph
+            text "The return status of a pipeline is the exit status of the last command, unless the"
+            text "pipefail"
+            text "option is enabled. If"
+            text "pipefail"
+            text "is enabled, the pipeline's return status is the value of the last (rightmost) command to exit with a non-zero status, or zero if all commands exit successfully. If the reserved word"
+            text "!"
+            text "precedes a pipeline, the exit status of that pipeline is the logical negation of the exit status as described above. The shell waits for all commands in the pipeline to terminate before returning a va..."
+          paragraph
+            text "If the"
+            text "time"
+            text "reserved word precedes a pipeline, the elapsed as well as user and system time consumed by its execution are reported when the pipeline terminates. The"
+            text "-p"
+            text "option changes the output format to that specified by POSIX. When the shell is in"
+            text "posix mode"
+            text ", it does not recognize"
+            text "time"
+            text "as a reserved word if the next token begins with a `-'. The"
+            text "TIMEFORMAT"
+            text "variable may be set to a format string that specifies how the timing information should be displayed; see the description of"
+            text "TIMEFORMAT"
+            text "under"
+            text "Shell Variables"
+            text "below."
+
+MISSING {"url":"https://explainshell.com/explain?cmd=archify_missing_command+notes.txt+%7C+wc+-l","spans":[{"text":"archify_missing_command notes.txt","helpref":null,"class":"command0 unknown simplecommandstart","title":"This man page seems to be missing..."},{"text":"|","helpref":"help-0","class":"shell","title":""},{"text":"wc(1)","helpref":"help-1","class":"command1 simplecommandstart","title":"","href":"/explain/1/rust-wc"},{"text":"-l","helpref":"help-2","class":"command1","title":""}]}
+

@@ -1,0 +1,6 @@
+{
+  "known": "grep -e '-foo' notes.txt | wc -l",
+  "unknown_option": "grep --archify-unknown -e '-foo' notes.txt | wc -l",
+  "missing_manual": "archify_missing_command notes.txt | wc -l",
+  "manual_alternative": "grep -e '-foo' notes.txt | gnuwc.1 -l"
+}

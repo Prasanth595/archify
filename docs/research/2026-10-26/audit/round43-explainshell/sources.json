@@ -1,0 +1,88 @@
+{
+  "sha": "827ebe38da9822a10e89946551e377330a9de35e",
+  "files": [
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94a9ed024d3859793618152ea559a168bbcbb5e2",
+      "size": 35147,
+      "url": "https://github.com/idank/explainshell/blob/827ebe38da9822a10e89946551e377330a9de35e/LICENSE",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "747dd6fa3c3c320128200da8549dfee22364afca",
+      "size": 10648,
+      "url": "https://github.com/idank/explainshell/blob/827ebe38da9822a10e89946551e377330a9de35e/README.md",
+      "sha256": "4ded230818e3c90f0c934dc085478ea33fb2517f9c841008f521821222475337"
+    },
+    {
+      "path": "explainshell/web/static/js/es.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3754ccc06484802fdd9dfe60f439ad63358dfde",
+      "size": 41056,
+      "url": "https://github.com/idank/explainshell/blob/827ebe38da9822a10e89946551e377330a9de35e/explainshell/web/static/js/es.js",
+      "sha256": "17af611f058867fe0458ef3206a74074cb39793f1f49b37894148251156a5799"
+    },
+    {
+      "path": "explainshell/web/templates/explain.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0aa7c910abddba52653c30bca97d227ec3364e7",
+      "size": 5492,
+      "url": "https://github.com/idank/explainshell/blob/827ebe38da9822a10e89946551e377330a9de35e/explainshell/web/templates/explain.html",
+      "sha256": "59adcb36cda02bec5b9e694e733d48e1ce11c8871c77ac2ba38b16a72ee0125a"
+    },
+    {
+      "path": "explainshell/matcher.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c114f3e7339ebb00ef4b709095fd719e8cf3d15",
+      "size": 36604,
+      "url": "https://github.com/idank/explainshell/blob/827ebe38da9822a10e89946551e377330a9de35e/explainshell/matcher.py",
+      "sha256": "5c2b1d597632086f75f2457bcf0099ff029a23895e24ffc9f474d4956fc83150"
+    },
+    {
+      "path": "tests/test_matcher.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1886b3d68d7a003a96976c181d3225fb0e41f881",
+      "size": 33303,
+      "url": "https://github.com/idank/explainshell/blob/827ebe38da9822a10e89946551e377330a9de35e/tests/test_matcher.py",
+      "sha256": "da9ed4b245ddef37b82c871036d38fd5f7f66bb87930d2ed6ee74fd86061c0ae"
+    }
+  ],
+  "priorResearch": "https://github.com/tt-a1i/archify/blob/3beb343b8fd6686201bde9b0f307f9a1c6b00246/docs/research/2026-10-25/scouts/shell-reading-round9.md",
+  "deploymentCommit": "unknown",
+  "manpageDatabaseVersion": "unknown",
+  "initialSearchFailure": {
+    "content": [
+      {
+        "type": "text",
+        "text": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}"
+      }
+    ],
+    "structuredContent": {
+      "error": "GitHub API error 422: {\"message\":\"Query must include 'is:issue' or 'is:pull-request'\",\"documentation_url\":\"https://docs.github.com/rest/search/search#search-issues-and-pull-requests\",\"status\":\"422\"}",
+      "error_code": "INVALID_ARGUMENT",
+      "error_data": {
+        "message": "Query must include 'is:issue' or 'is:pull-request'",
+        "documentation_url": "https://docs.github.com/rest/search/search#search-issues-and-pull-requests",
+        "status": "422"
+      }
+    },
+    "isError": true
+  },
+  "queries": [
+    "repo:tt-a1i/archify is:issue explainshell",
+    "repo:tt-a1i/archify is:pr explainshell"
+  ],
+  "queryResults": {
+    "issues": 0,
+    "pullRequests": 0
+  }
+}
