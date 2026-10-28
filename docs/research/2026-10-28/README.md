@@ -1,6 +1,6 @@
 # 2026-10-28 阅读实验交付
 
-本批57/58已收齐；持续目标仍active，后续范围待最新确认。下述各节active、候选、pending及旧pause文字保留相应历史时点。首批完成两个独立实验分支，后续再完成一个多文件Diff导航分支；未创建PR、合入、发布或安装。[最新GitHub排重](resume-status.md)记录dev `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`、main `d6059331abbddb49bca380ff46dca8ce33158b04`；两实验仍绑定原基线 `e837dc4cb83042d2b6c596e039692e25ec62c2da`。
+人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization正在独立worktree实施，尚未交付、不计第59项。下述各节active、候选、pending及旧pause文字保留相应历史时点。首批完成两个独立实验分支，后续再完成一个多文件Diff导航分支；未创建PR、合入、发布或安装。[最新GitHub排重](resume-status.md)记录dev `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`、main `d6059331abbddb49bca380ff46dca8ce33158b04`；两实验仍绑定原基线 `e837dc4cb83042d2b6c596e039692e25ec62c2da`。
 
 | 实验 | 远程提交与图片 | 结果 |
 | --- | --- | --- |
@@ -151,3 +151,18 @@ Cycle region实施范围是当前显式单向authored Architecture图：在单�
 收尾搜索清空、浅色恢复、58 articles和58/58状态、弹窗关闭；TaskSpace12已finish keep=[]成功一次，不再resume。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6` 推送且root精确readback一致；artifact中原prepared/local-bound文字保留为推送前阶段，实验远程分支与hub交付分别记账。本批57/58已收齐；持续目标仍active，后续范围待最新确认。答复前不启动新研究；P2与折叠边账目仍仅候选。
 
 本批gallery58交付最终补记：root实际gh查询artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6` 为0个check run、0个commit status，不是CI通过；git ls-remote读回精确一致。浏览器中只观察分组计数58/18/19/21，实际操作两个新搜索，未声称点击四个group filter。此delivery跟进无新浏览器或测试运行，没有merge、产品release或安装。本批57/58已收齐；持续目标仍active，后续范围待最新确认。旧“本批后暂停”为较早阶段范围，不能据此宣称目标已paused。
+
+
+## 58项后：三项可行性筛选与归一化实施
+
+人类最新“继续吧”已恢复持续探索，旧“待最新确认/本批后暂停”只属于前述阶段，不再阻塞后续授权工作。第57/58项已经交付；本轮只整合研究入口及可行性决定。已发布实验与gallery仍为58项，不改58行表格、selection、卡片、图片或历史证据。
+
+| 报告 | 结论、来源边界与当前状态 |
+| --- | --- |
+| [Folded edge membership feasibility](scouts/folded-edge-membership-feasibility.md) | 技术上可用既有原生图解释完整CodeCharta输入，但本例两文件/唯一有向pair的成员集合恰等于来源节点全部outgoing，与已交付profile贡献回查和dependency账目同构。收敛为REJECT FOR NEW EXPERIMENT，本轮0新候选；不加edgeBlocks、summary面板或通用folding状态。现有Cycle真实ID为cycle-region。 |
+| [Coverage context reading](scouts/coverage-context-reading.md) | 完整官方coverage.py context fixture补足旧synthetic来源边界，但原生报告已有context展开/missing行；全量arcs不能推导逐test/context经过哪个arc，不能把不同fixtures拼成同run输入。本轮0新候选，不新建coverage reader或执行采集器；完整官方原件、许可和NOTICE均保留，结论为0新候选。 |
+| [Profile normalization feasibility](scouts/profile-normalization-feasibility.md) | 拒绝P1 Tree换fixture＋彩色正负表，选定不同任务：原生Dataflow解释全部6条source共同决定selected S1的global factor，及base/diff_base报告百分比分母分支。完整source6＋base1、stack/maps、四组分母和两metric独立算术需保留；不是采样调用图或性能改善。Root已派独立profile-normalization worktree实施，尚未交付、不计第59项。 |
+
+归一化可行性报告保留四份完整固定原件、fence及Apache全文：1551B source、821B base、2025B golden和11358B LICENSE。研究阶段只重新读固定源码与独立算术，未运行上游，渲染probe未启动，未生成可验收图或运行浏览器。Dataflow与报告分母是已选实施合同，不能把报告中的建议图/算术表称为实现已通过。后续必须用完整原件＋全数值表作为对照，实际检查factor→6source贡献→完整原行/maps→返回入口与标签/abs集合；计算、阅读操作和效率证据分别记账。
+
+[after58-candidate-search.json](after58-candidate-search.json)按root现成记录原字节保存：pprof0、normalization总52但只返回50、coverage标题5、folding标题0。它是bounded查询，`incomplete_results=false`不证明分页取完，未取两项不能算已检查，也不证明历史无重叠；查询原文和当时refs都保留。此研究整理未重新查询远端、运行renderer或打开浏览器；本轮记录研究决策，实验仍在实现，图与浏览器证据另行交付。

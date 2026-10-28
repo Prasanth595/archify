@@ -2,7 +2,7 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
-**当前状态（2026-10-28）：** 本批57/58已收齐；持续目标仍active，后续范围待最新确认。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为58项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+**当前状态（2026-10-28）：** 人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization正在独立worktree实施，尚未交付、不计第59项。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为58项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
 
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
@@ -22,11 +22,11 @@
 
 ## 已推送的 58 个实验
 
-第57项Cycle region与第58项Profile contexts的独立远程分支已交付；58版gallery已从56版追加两项，本批gallery观察与远端交付见下方固定记录。本批57/58已收齐；持续目标仍active，后续范围待最新确认。
+第57项Cycle region与第58项Profile contexts的独立远程分支已交付；58版gallery已从56版追加两项，本批gallery观察与远端交付见下方固定记录。
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：58版已从固定source hub `fd4fee4986b45470042f54771c1fe2019a641467` 构建，18产品交互、19离线适配、21内容示例，HTML SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`。原56项完整item/card/PNG字节不变，历史证据保留。root在TaskSpace12观察分组计数58/18/19/21，实际操作两新卡搜索、嵌图摘要/尺寸、Cycle原尺寸与Escape回焦、Profile深色、390px原尺寸shell/可见关闭/原生overflow；4PNG与4JSON分别绑定，收尾清查询/浅色/关闭弹窗并finish keep[]一次。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6` 远端交付，root以git ls-remote精确读回；其实际gh查询0个check run/0个commit status，不是CI通过。artifact中原local-bound文字保留推送前阶段，本次不新增浏览器/CI结果，没有合入、产品release或安装。本批57/58已收齐；持续目标仍active，后续范围待最新确认。
+[离线图片浏览页](gallery/README.md)：58版已从固定source hub `fd4fee4986b45470042f54771c1fe2019a641467` 构建，18产品交互、19离线适配、21内容示例，HTML SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`。原56项完整item/card/PNG字节不变，历史证据保留。root在TaskSpace12观察分组计数58/18/19/21，实际操作两新卡搜索、嵌图摘要/尺寸、Cycle原尺寸与Escape回焦、Profile深色、390px原尺寸shell/可见关闭/原生overflow；4PNG与4JSON分别绑定，收尾清查询/浅色/关闭弹窗并finish keep[]一次。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6` 远端交付，root以git ls-remote精确读回；其实际gh查询0个check run/0个commit status，不是CI通过。artifact中原local-bound文字保留推送前阶段，本次不新增浏览器/CI结果，没有合入、产品release或安装。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |
@@ -296,6 +296,10 @@ GitHub CI 单独核实：截至 2026-10-25 13:01（台北），前 11 个精确�
 | 15个适配器对新dev的实际影响 | [Round 17 adapter dev impact](scouts/round17-adapter-dev-impact.md) |
 | 源码定位、调用与返回、图形作者辅助（2026-10-28） | [三方向筛查](../2026-10-28/README.md#新一轮筛查源码定位调用序列与图形作者辅助)（本轮0新增实施；19项目条目含复核） |
 | 共同可达集合复核（2026-10-28） | [Shared reach revisited](../2026-10-28/scouts/shared-reach-revisited.md)（完整公开图支持一个离线实验） |
+| 折叠边成员可行性深化（2026-10-28） | [Folded edge membership feasibility](../2026-10-28/scouts/folded-edge-membership-feasibility.md)（拒绝新实验；两文件单pair与既有贡献回查同构） |
+| 覆盖上下文与分支证据（2026-10-28） | [Coverage context reading](../2026-10-28/scouts/coverage-context-reading.md)（0新候选；现有context UI与未导出逐context arcs分开） |
+| 全局归一化依赖与报告分母（2026-10-28） | [Profile normalization feasibility](../2026-10-28/scouts/profile-normalization-feasibility.md)（原生Dataflow方向已选实施，未交付、不计59） |
+| 58项后的有界候选检索 | [after58-candidate-search.json](../2026-10-28/after58-candidate-search.json)（normalization总52、返回50；非全历史排重证明） |
 | 当前 Archify 集成切口 | [Integration map](integration-map.md) |
 
 报告中的上游声明、局部源码核实、计划中的实验和已经执行的结果分别标注。未推荐方向也保留原因，避免反复研究；没有把上游宣传、星数或作者截图当作 Archify 的效果证明。
