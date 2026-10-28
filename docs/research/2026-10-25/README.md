@@ -2,7 +2,7 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
-**当前状态（2026-10-28）：** 用户明确“继续吧”后目标保持 active。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths 与 Refactoring records 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为56项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+**当前状态（2026-10-28）：** 当前批次按用户要求继续收尾，完成后暂停，不新增研究或实验。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为58项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
 
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
@@ -20,9 +20,9 @@
 
 第50项已推送 `codex/lab-relation-search`，精确head `e87a858d220c25c97aee4b5920cf59ab77723b41`，远端一致且工作区clean，独立终审READY；协调者报告精确head Actions runs=0、check-runs=0，不能称远端CI通过。索引收尾时间点：`2026-10-26T05:48:55Z`。已推分支不等于合入、发布、部署或人类验收；50项gallery现已补齐并做本批范围的浏览器检查；本批收尾后暂停，不宣布持续探索目标已完成。
 
-## 已推送的 56 个实验
+## 已推送的 58 个实验
 
-第56项Refactoring records远程分支已交付；56版画廊的静态构建与本批浏览器观察已完成，hub/gallery已推送固定artifact commit `d1142f5fedb482d0e6974cdfa9218d373eccafbe`，root以git ls-remote读回一致。
+第57项Cycle region与第58项Profile contexts的独立远程分支已交付；58版gallery增量将从当前已发布56版追加两项，实际gallery检查另记。本批完成后暂停，不启动新一轮研究或实施。
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
@@ -86,6 +86,8 @@
 | [Shared reach](https://github.com/tt-a1i/archify/tree/codex/lab-shared-reach/experiments/shared-reach) | 对完整原生Architecture求两个节点的共同上下游，列出单侧结果及每项两条精确路径 | `b160b948` | [固定README](https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/browser-evidence/downstream-overview-light.png) | 固定6ca6基线；离线CLI，保留完整12节点12边及原输入hash；Node22 focused7/7、独立6144查询共同集合/见证核对；三页finalize三阶段通过，自动browser未请求；root13原PNG含桌面双路/上游/空集/键盘，390px溢出与iframe横向阅读限制保留；非因果/运行依赖/效率证据 |
 | [Mandatory paths](https://github.com/tt-a1i/archify/tree/codex/lab-mandatory-paths/experiments/mandatory-paths) | 给定两个端点求有向路径必经内部点，并给非必经点可点绕行见证；保留完整原图 | `f79704cb` | [固定README](https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png) | 固定6ca6基线；离线CLI，完整12节点12边输入原字节不变；Node22 focused9/9，独立49154查询/61448绕行见证；validate/deliver/check通过，CLI browser-check未运行；root浅深色/双路/键盘/Escape原图已存；390px client375/scroll400溢出保留，非故障/因果/运行依赖/效率证据 |
 | [Refactoring records](https://github.com/tt-a1i/archify/tree/codex/lab-refactoring-records/experiments/refactoring-records) | 将完整重构报告的4记录8位置投影为4个before/2个after与4条声明边，保留多源同目标和版本未知 | `bec86714` | [固定README](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/browser-evidence/overview-light-final.png) | 固定6ca6基线；离线导入完整3180B历史@Disabled expected，未运行detector；6focused逻辑同源复用，最终两页三阶段通过/独立复核，CLI browser-check未运行；root9原图与R0键盘/R1共享目标、未知base核对；URL-only非verified excerpt，390px局部record317/321、不能fit-readable保留，无语义等价/效率证据 |
+| [Cycle region](https://github.com/tt-a1i/archify/tree/codex/lab-cycle-region/experiments/cycle-region) | 查询作者Architecture图中所选点的整个循环区域，区分全部内部关系与单向跨区关系 | `d0709713` | [固定README](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png) | 固定6ca6基线；完整原创13节点14关系含自环；当前335相关测试及finalize/check/browser/ZIP通过，1552-origin数学oracle按同helper复用；root修后窄屏详情/e4滚动与桌面两次Escape实测；保留旧裁剪失败与base工具栏裁剪，非代码分析/故障/效率结论 |
+| [Profile contexts](https://github.com/tt-a1i/archify/tree/codex/lab-profile-contexts/experiments/profile-contexts) | 保留递归prefix、函数总计与全部原始采样记录，精确回溯贡献并返回入口 | `58935179` | [固定README](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png) | 完整speedscope上游fixture非采集workload；7tests/独立535断言通过，public三阶段通过但browser键盘gate仍fail68；同HTML继续Tab四组445/445，root真实贡献/原行/精确prefix闭环；11上下文与全部记录保留，390px base工具栏裁剪，不改写gate/块回链焦点/速度结论 |
 
 上述前33项均经过另一位 Codex agent 的独立代码/证据复核，协调 agent 实际查看图片。测试数对应各实验自己的 focused tests，不是全仓测试；远端 CI、跨平台验证、实际用户效果与人类验收没有因此自动成立。生成 HTML/Markdown 保留原渲染器或适配器字节；源码 whitespace 检查与生成产物的既有空白分开记录。Payload test 和 State source 各清理了一处无语义影响空白，摘要同时保留实际测试 hash 与当前 hash。
 

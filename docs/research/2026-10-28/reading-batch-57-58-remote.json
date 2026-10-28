@@ -1,0 +1,24 @@
+{
+  "kind": "derived root-reported remote delivery record",
+  "recordedAtUTC": "2026-10-28T06:22:59.771161+00:00",
+  "repository": "tt-a1i/archify",
+  "startHubCommit": "d82d3b5539523355ea3f2f6d9c46adf2806164eb",
+  "branches": [
+    {
+      "branch": "codex/lab-cycle-region",
+      "finalRemoteHead": "d07097138c96dd34ecbfde09d19861b645b19818",
+      "artifactCommit": "7df64d4594486df6670e4b702aa4b3053f0ea095",
+      "checkRuns": 0,
+      "commitStatuses": 0
+    },
+    {
+      "branch": "codex/lab-profile-contexts",
+      "finalRemoteHead": "589351790b32173269f6a8e22da836130e31989a",
+      "artifactCommit": "1f32189ac8fa769008e124d66cf8f41d3a9e6c82",
+      "checkRuns": 0,
+      "commitStatuses": 0
+    }
+  ],
+  "interpretation": "Root reported both final branch heads pushed and exact remote readback. Zero check runs/statuses is not CI success.",
+  "provenance": "Derived from root task messages; not raw GitHub API responses or a new remote query by the packaging agent."
+}

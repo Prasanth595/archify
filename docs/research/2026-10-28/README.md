@@ -130,3 +130,17 @@ Cycle region实施范围是当前显式单向authored Architecture图：在单�
 [本轮GitHub有界快照](next-round-github.json)为root提供的公开原字节副本，捕获于2026-10-28 05:38:16 UTC，仅查询open PR前25项，用作排重和范围对照：#1144 `19e7619c15ebcb50eaaf1efc0b27203422ed4e2e`、#1143 `649550292e9d9df7e3a3e140d9c1a5ea3bcbf678`、#1142 `7155281fc1e22154f0c88bd8349df3a1b0680f79`。这些head只属于该快照，不证明PR正确、CI、当前merge readiness或全历史无重叠。没有把open列表的新提交当作Archify必须跟进的理由。
 
 本次提交只纳入两份报告、研究入口和GitHub快照。gallery及其56项selection/manifest/cards/PNG/历史证据均不修改；没有新增浏览器、renderer测试、上游执行或效率/人类验收结论。持续探索目标保持active，后续交付按各自固定远端提交与实际证据另记。
+
+
+## 当前批交付：第57项循环区域与第58项采样上下文
+
+本批以hub `d82d3b5539523355ea3f2f6d9c46adf2806164eb` 为开始基准，root已完成两实验验收、证据包装、push及精确远端读回；[远端派生记录](reading-batch-57-58-remote.json)保留final文档head与artifact提交的区别。两finalhead均0个check run、0个commit status，不表示CI通过或合入就绪。没有合入、安装或产品release。
+
+| 实验 | 固定远端身份 | 交付与保留限制 |
+| --- | --- | --- |
+| [Cycle region](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/README.md) | `codex/lab-cycle-region` final `d07097138c96dd34ecbfde09d19861b645b19818`；artifact `7df64d4594486df6670e4b702aa4b3053f0ea095` | 真实Architecture Viewer产品候选，完整原创F1的13节点14关系含自环；c区域4成员/5内部/1跨区关系，e4保持外部。当前335相关测试及public finalize/check/自动browser/ZIP通过；1552-origin数学oracle按相同helper复用。root修后390px详情原生滚动至e4，桌面两次Escape边界实测。旧window-only readiness已撤回，裁剪失败图保留；base底部工具栏局部裁剪未修，不声称完整手机/AT/效率验收。 |
+| [Profile contexts](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/README.md) | `codex/lab-profile-contexts` final `589351790b32173269f6a8e22da836130e31989a`；artifact `1f32189ac8fa769008e124d66cf8f41d3a9e6c82` | P1离线实验，原生Tree＋Explainer保留11个raw prefix、10条raw及5条JSON记录、全部贡献回链，区分无单位raw权重与14 sampled seconds。7tests与独立535断言通过；public validate/deliver/check通过但browser keyboard gate仍fail68，独立同HTML继续Tab四组445/445不改写失败。root实际来源卡→R04/R08→固定prefix入口→精确Viewer闭环；普通块回链activeElement=body，不恢复最初preview焦点。390px基线Viewer底部toolbar裁剪保留，非采集workload或速度证明。 |
+
+主图均为真实原PNG：[Cycle c区域](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png)1440×900、189972B、SHA-256 `b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1`；[完整raw上下文树](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png)1440×1000、90219B、SHA-256 `0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f`。Cycle完整图仍在HTML，主图不保证13节点全在同一视口；Profile不把折叠prefix数当Frame数或调用次数。
+
+58项分组预期18产品/19离线/21内容。当前gallery仍为已交付56版；接下来仅追加两项，保留golden56旧item/card/PNG与历史证据原字节，再单独记录root本批gallery观察。P2 normalize差分和折叠组成账目未实施，source-path报告仍0实验。本批完成后暂停，不再启动后续研究或实现；上节active仅记录先前阶段。
