@@ -48,6 +48,8 @@ test('browser renders local-only sources as searchable text and web sources as l
             };
             const selected = Archify.focus.inspectRelationshipById('users-to-cdn', { toggle: false });
             const relationshipRows = [...panel.querySelectorAll('.semantic-passport-source')];
+            const legacySelected = Archify.focus.inspectRelationshipById('cdn-to-lb', { toggle: false });
+            const legacyRows = [...panel.querySelectorAll('.semantic-passport-source')];
             return {
               ...nodeEvidence,
               relationship: {
@@ -56,7 +58,10 @@ test('browser renders local-only sources as searchable text and web sources as l
                 visible: !panel.hidden,
                 paths: relationshipRows.map(row => row.querySelector('small').textContent),
                 locations: relationshipRows.map(row => row.querySelector('code').textContent),
-                labels: relationshipRows.map(row => row.querySelector('strong').textContent)
+                labels: relationshipRows.map(row => row.querySelector('strong').textContent),
+                legacySelected,
+                legacyVisible: !panel.hidden,
+                legacyPaths: legacyRows.map(row => row.querySelector('small').textContent)
               }
             };
           })()`, returnByValue: true,
@@ -80,6 +85,9 @@ test('browser renders local-only sources as searchable text and web sources as l
         assert.deepEqual(observed.relationship.paths, ['src/router.js']);
         assert.equal(observed.relationship.labels[0], 'Request handoff');
         assert.equal(observed.relationship.locations[0], local ? 'L1–3' : 'L1–3 ↗');
+        assert.equal(observed.relationship.legacySelected, true);
+        assert.equal(observed.relationship.legacyVisible, true);
+        assert.deepEqual(observed.relationship.legacyPaths, ['src/router.js', 'src/store.js']);
       }
     }
   } finally { await browser.close(); }

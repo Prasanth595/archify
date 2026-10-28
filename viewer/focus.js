@@ -1033,7 +1033,9 @@
         var target = relationshipHitTarget(key);
         if (target) target.setAttribute('aria-pressed', 'true');
         renderRelationshipCopyAction();
-        renderSourceEvidence(record.id, true);
+        if (record.id && Archify.sourceEvidence.relationship(record.id).length) {
+          renderSourceEvidence(record.id, true);
+        }
         summary.textContent = viewerText('viewer.passport.relationship.pinned', {
           from: record.fromLabel,
           to: record.toLabel,
