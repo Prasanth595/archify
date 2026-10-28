@@ -29,9 +29,9 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前56版静态绑定与实际浏览器观察（待远端交付）
+## 当前56版静态绑定与实际浏览器观察（远端已交付）
 
-固定source hub为 [`26fa35b2d2080305105f6ebbedb08054327a2ba0`](https://github.com/tt-a1i/archify/blob/26fa35b2d2080305105f6ebbedb08054327a2ba0/docs/research/2026-10-25/README.md)：**56项 / 56张原PNG，17产品交互 / 18离线适配 / 21内容示例**。来源README为69,757 bytes，SHA-256 `a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3`。source hub与本次gallery目前仅prepared/local-bound，尚未推送，不冒充远端交付。
+固定source hub为 [`26fa35b2d2080305105f6ebbedb08054327a2ba0`](https://github.com/tt-a1i/archify/blob/26fa35b2d2080305105f6ebbedb08054327a2ba0/docs/research/2026-10-25/README.md)：**56项 / 56张原PNG，17产品交互 / 18离线适配 / 21内容示例**。来源README为69,757 bytes，SHA-256 `a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3`。source hub与本次gallery已随固定artifact commit [`d1142f5fedb482d0e6974cdfa9218d373eccafbe`](https://github.com/tt-a1i/archify/tree/d1142f5fedb482d0e6974cdfa9218d373eccafbe/docs/research/2026-10-25/gallery) 推送；root以git ls-remote读回精确一致。
 
 新增Refactoring records为离线适配，实验分支 `codex/lab-refactoring-records` 固定head `bec8671465ff9ce6a2c471196907fc741f52dc53` 已由root读回远端。完整3180B历史@Disabled expected JSON保留4记录、8位置occurrences、4 before端点、2 after端点及4独立声明边；R0/R1共享Dog method，R2/R3共享另一个field。它不运行detector、不推导语义移动或行为等价。未知base保留版本未知且不生成before链接，toy源码保持URL-only，不称verified excerpts。
 
@@ -47,7 +47,7 @@ Node **22.23.3** 静态verify通过：56张嵌图摘要、56/17/18/21卡片与�
 - `manifest.json`：SHA-256 `af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8`
 - `selection.json`：SHA-256 `cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c`
 
-Root已在Ego/Chromium实际操作冻结56版gallery，并逐张查看四张原PNG；四张PNG和九份JSON按原字节保存在 [screenshots56](screenshots56/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、最终README、原件bytes/SHA、PNG IHDR尺寸和查看范围，不冒称原始receipt。source hub与gallery目前仍prepared/local-bound，待root推送和远端读回；实验分支已推送不代表hub/gallery已远端交付。
+Root已在Ego/Chromium实际操作冻结56版gallery，并逐张查看四张原PNG；四张PNG和九份JSON按原字节保存在 [screenshots56](screenshots56/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、最终README、原件bytes/SHA、PNG IHDR尺寸和查看范围，不冒称原始receipt。当前hub/gallery远端交付固定为 `d1142f5fedb482d0e6974cdfa9218d373eccafbe`，不自指本次delivery文档提交。该artifact commit中原README与派生绑定仍保留推送前prepared/local-bound阶段；当前只补记root远端核对，不新增浏览器或CI验证。
 
 桌面1440×1100：四筛选为56/17/18/21，搜索Refactoring records为1/56。初次fill后立即decode报EncodingError，未截图片，原始 [capture-note.json](screenshots56/capture-note.json)保留失败；之后实际可见图片complete=true、天然1440×1400且decode成功，再截card-light。失败没有被改写成成功，也没有对应失败PNG。
 

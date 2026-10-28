@@ -1,10 +1,13 @@
 {
   "kind": "derived browser evidence for fixed56 gallery; original JSON and PNG linked separately",
-  "status": "root-browser-observed-prepared-local-bound",
+  "status": "root-browser-observed-remote-delivered",
   "delivery": {
-    "sourceHub": "prepared/local-bound; awaiting root push and remote verification",
-    "gallery": "prepared/local-bound; awaiting root push and remote verification",
-    "experiment": "Root verified remote head bec8671465ff9ce6a2c471196907fc741f52dc53; zero checks/runs is not CI success."
+    "artifactCommit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
+    "sourceHub": "Remote delivered within fixed artifact commit; sourceHubCommit remains the immutable build input.",
+    "gallery": "Root pushed and git ls-remote read back the exact artifact commit.",
+    "remoteVerificationProvenance": "Derived from root-reported read-only git ls-remote verification; no raw response embedded.",
+    "experiment": "Root verified remote head bec8671465ff9ce6a2c471196907fc741f52dc53; zero checks/runs is not CI success.",
+    "limits": "Remote push/readback is not a merge, installation, product release, new CI pass or new browser observation."
   },
   "hubSourceCommit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
   "hubReadme": {
@@ -37,8 +40,8 @@
     },
     "README.md": {
       "path": "README.md",
-      "sha256": "476c7bd3aaca0ed0a7ac057e457401bb1fbd9153881236cd7ab1187af9f623b5",
-      "bytes": 54836
+      "bytes": 55140,
+      "sha256": "50f68e7a898586e76e50a02095c6f2c834cd44baf2472e40e0284ea057c3f281"
     },
     "template.html": {
       "path": "template.html",
@@ -305,5 +308,24 @@
     "Root viewed all4 original PNGs; browser round finished exactly once and will not resume.",
     "No previous55 experiment rerun, external navigation, physical touch, AT, human acceptance or reading speed proof.",
     "Gallery viewport no-overflow does not erase experimental record local overflow or inline cannot-fit-readable."
-  ]
+  ],
+  "artifactCommit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
+  "deliveryHistory": {
+    "artifactCommit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
+    "stage": "prepared/local-bound before artifact push",
+    "status": "root-browser-observed-prepared-local-bound",
+    "delivery": {
+      "sourceHub": "prepared/local-bound; awaiting root push and remote verification",
+      "gallery": "prepared/local-bound; awaiting root push and remote verification",
+      "experiment": "Root verified remote head bec8671465ff9ce6a2c471196907fc741f52dc53; zero checks/runs is not CI success."
+    },
+    "record": {
+      "path": "docs/research/2026-10-25/gallery/browser-evidence.json",
+      "commit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
+      "bytes": 10992,
+      "sha256": "ff880fd2dda0832801f5ee54b406016cc7b7599826b25fae480f0882dcab41d8",
+      "url": "https://github.com/tt-a1i/archify/blob/d1142f5fedb482d0e6974cdfa9218d373eccafbe/docs/research/2026-10-25/gallery/browser-evidence.json"
+    },
+    "semantics": "Original local-bound snapshot remains unchanged in fixed artifact commit; current delivery note does not rewrite its historical status."
+  }
 }
