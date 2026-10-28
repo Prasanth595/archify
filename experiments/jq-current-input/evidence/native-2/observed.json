@@ -1,0 +1,240 @@
+{
+  "bind-owners": [
+    {
+      "stage": "entry",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "bound-owners",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      },
+      "owners": {
+        "u1": "Mina",
+        "u2": "Bo"
+      }
+    },
+    {
+      "stage": "job",
+      "current": {
+        "id": "compile",
+        "owner": "u1"
+      },
+      "owners": {
+        "u1": "Mina",
+        "u2": "Bo"
+      }
+    },
+    {
+      "stage": "result",
+      "current": {
+        "job": "compile",
+        "owner": "Mina"
+      }
+    },
+    {
+      "stage": "job",
+      "current": {
+        "id": "test",
+        "owner": "u2"
+      },
+      "owners": {
+        "u1": "Mina",
+        "u2": "Bo"
+      }
+    },
+    {
+      "stage": "result",
+      "current": {
+        "job": "test",
+        "owner": "Bo"
+      }
+    }
+  ],
+  "pipe-owners": [
+    {
+      "stage": "entry",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "piped-owners",
+      "current": {
+        "u1": "Mina",
+        "u2": "Bo"
+      }
+    }
+  ],
+  "bind-jobs": [
+    {
+      "stage": "entry",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "bound-job",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      },
+      "job": {
+        "id": "compile",
+        "owner": "u1"
+      }
+    },
+    {
+      "stage": "result",
+      "current": {
+        "job": "compile",
+        "owner": "Mina"
+      }
+    },
+    {
+      "stage": "bound-job",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      },
+      "job": {
+        "id": "test",
+        "owner": "u2"
+      }
+    },
+    {
+      "stage": "result",
+      "current": {
+        "job": "test",
+        "owner": "Bo"
+      }
+    }
+  ],
+  "lost-root": [
+    {
+      "stage": "entry",
+      "current": {
+        "owners": {
+          "u1": "Mina",
+          "u2": "Bo"
+        },
+        "jobs": [
+          {
+            "id": "compile",
+            "owner": "u1"
+          },
+          {
+            "id": "test",
+            "owner": "u2"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "job",
+      "current": {
+        "id": "compile",
+        "owner": "u1"
+      }
+    },
+    {
+      "stage": "result",
+      "current": {
+        "job": "compile",
+        "owner": null
+      }
+    },
+    {
+      "stage": "job",
+      "current": {
+        "id": "test",
+        "owner": "u2"
+      }
+    },
+    {
+      "stage": "result",
+      "current": {
+        "job": "test",
+        "owner": null
+      }
+    }
+  ]
+}

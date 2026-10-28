@@ -1,0 +1,111 @@
+{
+  "binary": "/usr/bin/jq",
+  "binary_sha256": "6f03b0af90ec8a71e1d708bab7e704196fc4de6245094199364093edf093740e",
+  "commands": [
+    {
+      "name": "version",
+      "argv": [
+        "/usr/bin/jq",
+        "--version"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0017073330000130227
+    },
+    {
+      "name": "bind-owners-plain",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/bind-owners.plain.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0019527500007825438
+    },
+    {
+      "name": "bind-owners-marked",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/bind-owners.marked.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0020478749993344536
+    },
+    {
+      "name": "pipe-owners-plain",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/pipe-owners.plain.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 5,
+      "elapsed_seconds": 0.0017990409996855306
+    },
+    {
+      "name": "pipe-owners-marked",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/pipe-owners.marked.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 5,
+      "elapsed_seconds": 0.0018013330009125639
+    },
+    {
+      "name": "bind-jobs-plain",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/bind-jobs.plain.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.001833915999668534
+    },
+    {
+      "name": "bind-jobs-marked",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/bind-jobs.marked.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0020497909990808694
+    },
+    {
+      "name": "lost-root-plain",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/lost-root.plain.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.001826708999942639
+    },
+    {
+      "name": "lost-root-marked",
+      "argv": [
+        "/usr/bin/jq",
+        "-c",
+        "-f",
+        "/private/tmp/archify-round39-native-2/lost-root.marked.jq",
+        "/private/tmp/archify-round39-native-2/input.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.001930000000356813
+    }
+  ]
+}

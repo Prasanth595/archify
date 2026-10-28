@@ -1,0 +1,1 @@
+debug({stage:"entry", current:.}) | .owners as $owners | debug({stage:"bound-owners", current:., owners:$owners}) | .jobs[] | debug({stage:"job", current:., owners:$owners}) | {job: .id, owner: $owners[.owner]} | debug({stage:"result", current:.})

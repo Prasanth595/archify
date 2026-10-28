@@ -1,0 +1,6 @@
+["DEBUG:",{"stage":"entry","current":{"owners":{"u1":"Mina","u2":"Bo"},"jobs":[{"id":"compile","owner":"u1"},{"id":"test","owner":"u2"}]}}]
+["DEBUG:",{"stage":"bound-owners","current":{"owners":{"u1":"Mina","u2":"Bo"},"jobs":[{"id":"compile","owner":"u1"},{"id":"test","owner":"u2"}]},"owners":{"u1":"Mina","u2":"Bo"}}]
+["DEBUG:",{"stage":"job","current":{"id":"compile","owner":"u1"},"owners":{"u1":"Mina","u2":"Bo"}}]
+["DEBUG:",{"stage":"result","current":{"job":"compile","owner":"Mina"}}]
+["DEBUG:",{"stage":"job","current":{"id":"test","owner":"u2"},"owners":{"u1":"Mina","u2":"Bo"}}]
+["DEBUG:",{"stage":"result","current":{"job":"test","owner":"Bo"}}]

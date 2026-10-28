@@ -1,0 +1,3 @@
+["DEBUG:",{"stage":"entry","current":{"owners":{"u1":"Mina","u2":"Bo"},"jobs":[{"id":"compile","owner":"u1"},{"id":"test","owner":"u2"}]}}]
+["DEBUG:",{"stage":"piped-owners","current":{"u1":"Mina","u2":"Bo"}}]
+jq: error (at /private/tmp/archify-round39-native-1/input.json:16): Cannot iterate over null (null)
