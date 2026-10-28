@@ -46,7 +46,7 @@ node experiments/diff-file-navigation/verify-evidence.mjs
 - `npm run test:focus -- test/explainer-parser.test.mjs test/explainer-cli.test.mjs test/explainer-packaging.test.mjs`：[39/39](logs/integration.log)。
 - `npm run test:generated`：[通过](logs/generated-narrow.log)。没有需要更新的 gallery / viewer / schema 输出。
 - 官方 Node 22 下 `scripts/build-zip.sh`：[通过](logs/zip-narrow.log)，更新根目录 `archify.zip`；未安装到任何 agent。
-- `git diff --check` 通过。
+- 源码、测试和自写文档的 whitespace 检查通过。完整 staged 检查另报告原始 patch 空白上下文行及失败日志中的行尾空白；这些原件逐字保留，没有为消除提示改写证据。
 
 按 test-value 保留既有 byte/secret 验证，增加最便宜的分段/渲染断言及一项真实浏览器交互，不增加无关测试族。Focused simplify survey 追踪 parse → render → 原生 anchor：没有第二个分段 parser 或 JS 状态，未发现值得另做抽象的重复路径。
 
