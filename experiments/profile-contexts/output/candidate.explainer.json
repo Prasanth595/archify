@@ -1,0 +1,2025 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "id": "profile-contexts",
+    "title": "同一个 a，为什么这里是 7，函数表却是 9？",
+    "locale": "zh-CN",
+    "style": "clean"
+  },
+  "answer": {
+    "summary": "递归上下文 a;b;a 的 node total 是 7；函数 a 的 total 是 9。前者保留完整前缀，后者每条原始记录只计算一次 a。",
+    "reasons": [
+      "上下文身份 = fixture namespace + 完整 frame key prefix；显示同名不会合并。",
+      "递归折叠改变节点 self，函数 Frame self/total 按上游规则保留。",
+      "完整原件、贡献记录、权重算式和固定返回入口一起保存。"
+    ],
+    "scope": "上游示例 fixture；非实测 workload；非调用次数；未运行 speedscope"
+  },
+  "sources": [
+    {
+      "id": "folded-source",
+      "title": "speedscope 完整 folded fixture（固定 SHA；URL-only provenance）",
+      "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/sample/profiles/stackcollapse/recursion.txt"
+    },
+    {
+      "id": "json-source",
+      "title": "speedscope 完整 sampled fixture（固定 SHA；URL-only provenance）",
+      "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/sample/profiles/speedscope/0.1.2/simple-sampled.speedscope.json"
+    },
+    {
+      "id": "rule-source",
+      "title": "profile.ts 递归折叠与 Frame overwrite（规则阅读；未执行上游）",
+      "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/src/lib/profile.ts#L222-L330"
+    },
+    {
+      "id": "license-source",
+      "title": "Jamie Wong · 完整 MIT License",
+      "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/LICENSE"
+    }
+  ],
+  "panels": [
+    {
+      "id": "read-first",
+      "title": "先读图，再核对原始贡献",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "navigation",
+          "type": "prose",
+          "text": "preview 节点 hover / focus 后，“阅读这段”进入贡献账目；点击节点打开原生 Viewer。每个贡献明细返回同 prefix 的固定入口。Viewer 内后来选中的节点不会反向联动父页；关闭 Viewer 回到打开它的链接。"
+        },
+        {
+          "id": "jump-index",
+          "type": "prose",
+          "text": "[完整 raw 图](block:raw-view) · [函数表](block:frame-view) · [递归折叠](block:flat-view) · [JSON 赋权](block:json-view) · [全量贡献与回链](block:raw-contributions) · [完整原件](block:originals)"
+        }
+      ]
+    },
+    {
+      "id": "raw-view",
+      "title": "01 · 原始递归树：11 个上下文都保留",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "raw-tree",
+          "type": "diagram",
+          "diagramType": "tree",
+          "spec": {
+            "schema_version": 1,
+            "diagram_type": "tree",
+            "meta": {
+              "title": "raw · 完整上下文",
+              "locale": "zh-CN",
+              "subtitle": "node self / total · unknown"
+            },
+            "layout": {
+              "direction": "down",
+              "nodeW": 170,
+              "gapX": 24,
+              "gapY": 28
+            },
+            "nodes": [
+              {
+                "id": "raw-root",
+                "label": "技术 root",
+                "sublabel": "总权重 10 · 非函数"
+              },
+              {
+                "id": "raw-p01",
+                "label": "a",
+                "parent": "raw-root",
+                "sublabel": "self 0 / total 9"
+              },
+              {
+                "id": "raw-p02",
+                "label": "a;a",
+                "parent": "raw-p01",
+                "sublabel": "self 1 / total 1"
+              },
+              {
+                "id": "raw-p03",
+                "label": "b",
+                "parent": "raw-root",
+                "sublabel": "self 0 / total 1"
+              },
+              {
+                "id": "raw-p04",
+                "label": "b;b",
+                "parent": "raw-p03",
+                "sublabel": "self 1 / total 1"
+              },
+              {
+                "id": "raw-p05",
+                "label": "a;b",
+                "parent": "raw-p01",
+                "sublabel": "self 1 / total 8"
+              },
+              {
+                "id": "raw-p06",
+                "label": "a;b;a",
+                "parent": "raw-p05",
+                "sublabel": "self 0 / total 7"
+              },
+              {
+                "id": "raw-p07",
+                "label": "a;b;a;b",
+                "parent": "raw-p06",
+                "sublabel": "self 2 / total 5"
+              },
+              {
+                "id": "raw-p08",
+                "label": "a;b;a;c",
+                "parent": "raw-p06",
+                "sublabel": "self 2 / total 2"
+              },
+              {
+                "id": "raw-p09",
+                "label": "a;b;a;b;a",
+                "parent": "raw-p07",
+                "sublabel": "self 0 / total 1"
+              },
+              {
+                "id": "raw-p10",
+                "label": "a;b;a;b;a;b",
+                "parent": "raw-p09",
+                "sublabel": "self 1 / total 1"
+              },
+              {
+                "id": "raw-p11",
+                "label": "a;b;a;b;c",
+                "parent": "raw-p07",
+                "sublabel": "self 2 / total 2"
+              }
+            ]
+          },
+          "nodeBlocks": {
+            "raw-p01": "contrib-raw-p01",
+            "raw-p02": "contrib-raw-p02",
+            "raw-p03": "contrib-raw-p03",
+            "raw-p04": "contrib-raw-p04",
+            "raw-p05": "contrib-raw-p05",
+            "raw-p06": "contrib-raw-p06",
+            "raw-p07": "contrib-raw-p07",
+            "raw-p08": "contrib-raw-p08",
+            "raw-p09": "contrib-raw-p09",
+            "raw-p10": "contrib-raw-p10",
+            "raw-p11": "contrib-raw-p11"
+          }
+        },
+        {
+          "id": "raw-note",
+          "type": "prose",
+          "text": "11 个完整 prefix；10 条输入 occurrence；权重和 10，unit=unknown。技术 root 不计为函数。"
+        }
+      ]
+    },
+    {
+      "id": "frame-view",
+      "title": "02 · 函数总计：每条记录对每个 Frame 去重",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "raw-frames",
+          "type": "comparison",
+          "labelColumn": "Frame key / name",
+          "columns": [
+            "self / 原始 leaf 记录",
+            "total / 去重原始记录"
+          ],
+          "rows": [
+            {
+              "id": "raw-frame-0",
+              "label": "a / a",
+              "cells": [
+                {
+                  "text": "1 / R01"
+                },
+                {
+                  "text": "9 / R01, R03, R04, R05, R06, R07, R08, R09, R10"
+                }
+              ]
+            },
+            {
+              "id": "raw-frame-1",
+              "label": "b / b",
+              "cells": [
+                {
+                  "text": "5 / R02, R03, R04, R06, R08"
+                },
+                {
+                  "text": "9 / R02, R03, R04, R05, R06, R07, R08, R09, R10"
+                }
+              ]
+            },
+            {
+              "id": "raw-frame-2",
+              "label": "c / c",
+              "cells": [
+                {
+                  "text": "4 / R05, R07, R09, R10"
+                },
+                {
+                  "text": "4 / R05, R07, R09, R10"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "frame-warning",
+          "type": "prose",
+          "text": "a 的全部上下文 node total 相加 = 18，不能当函数 a total。函数 totals 之和 = 22，也不是互斥分母；一条记录可经过多个函数。"
+        }
+      ]
+    },
+    {
+      "id": "flat-view",
+      "title": "03 · 递归折叠后：4 个上下文，Frame 总计仍来自原始栈",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "flat-tree",
+          "type": "diagram",
+          "diagramType": "tree",
+          "spec": {
+            "schema_version": 1,
+            "diagram_type": "tree",
+            "meta": {
+              "title": "flat · 完整上下文",
+              "locale": "zh-CN",
+              "subtitle": "node self / total · unknown"
+            },
+            "layout": {
+              "direction": "down",
+              "nodeW": 170,
+              "gapX": 24,
+              "gapY": 28
+            },
+            "nodes": [
+              {
+                "id": "flat-root",
+                "label": "技术 root",
+                "sublabel": "总权重 10 · 非函数"
+              },
+              {
+                "id": "flat-p01",
+                "label": "a",
+                "parent": "flat-root",
+                "sublabel": "self 1 / total 9"
+              },
+              {
+                "id": "flat-p02",
+                "label": "b",
+                "parent": "flat-root",
+                "sublabel": "self 1 / total 1"
+              },
+              {
+                "id": "flat-p03",
+                "label": "a;b",
+                "parent": "flat-p01",
+                "sublabel": "self 4 / total 8"
+              },
+              {
+                "id": "flat-p04",
+                "label": "a;b;c",
+                "parent": "flat-p03",
+                "sublabel": "self 4 / total 4"
+              }
+            ]
+          },
+          "nodeBlocks": {
+            "flat-p01": "contrib-flat-p01",
+            "flat-p02": "contrib-flat-p02",
+            "flat-p03": "contrib-flat-p03",
+            "flat-p04": "contrib-flat-p04"
+          }
+        },
+        {
+          "id": "flat-note",
+          "type": "prose",
+          "text": "4 个完整 prefix；10 条输入 occurrence；权重和 10，unit=unknown。技术 root 不计为函数。"
+        }
+      ]
+    },
+    {
+      "id": "flatten-rules",
+      "title": "折叠追踪：权重区间，不是时间戳",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "flatten-trace",
+          "type": "comparison",
+          "labelColumn": "原始记录",
+          "columns": [
+            "完整原栈 → 保留栈",
+            "区间 / 抑制层"
+          ],
+          "rows": [
+            {
+              "id": "trace-R01",
+              "label": "R01",
+              "cells": [
+                {
+                  "text": "a;a → a"
+                },
+                {
+                  "text": "[0, 1) / 2"
+                }
+              ]
+            },
+            {
+              "id": "trace-R02",
+              "label": "R02",
+              "cells": [
+                {
+                  "text": "b;b → b"
+                },
+                {
+                  "text": "[1, 2) / 2"
+                }
+              ]
+            },
+            {
+              "id": "trace-R03",
+              "label": "R03",
+              "cells": [
+                {
+                  "text": "a;b → a;b"
+                },
+                {
+                  "text": "[2, 3) / 无"
+                }
+              ]
+            },
+            {
+              "id": "trace-R04",
+              "label": "R04",
+              "cells": [
+                {
+                  "text": "a;b;a;b → a;b"
+                },
+                {
+                  "text": "[3, 4) / 3, 4"
+                }
+              ]
+            },
+            {
+              "id": "trace-R05",
+              "label": "R05",
+              "cells": [
+                {
+                  "text": "a;b;a;c → a;b;c"
+                },
+                {
+                  "text": "[4, 5) / 3"
+                }
+              ]
+            },
+            {
+              "id": "trace-R06",
+              "label": "R06",
+              "cells": [
+                {
+                  "text": "a;b;a;b;a;b → a;b"
+                },
+                {
+                  "text": "[5, 6) / 3, 4, 5, 6"
+                }
+              ]
+            },
+            {
+              "id": "trace-R07",
+              "label": "R07",
+              "cells": [
+                {
+                  "text": "a;b;a;b;c → a;b;c"
+                },
+                {
+                  "text": "[6, 7) / 3, 4"
+                }
+              ]
+            },
+            {
+              "id": "trace-R08",
+              "label": "R08",
+              "cells": [
+                {
+                  "text": "a;b;a;b → a;b"
+                },
+                {
+                  "text": "[7, 8) / 3, 4"
+                }
+              ]
+            },
+            {
+              "id": "trace-R09",
+              "label": "R09",
+              "cells": [
+                {
+                  "text": "a;b;a;c → a;b;c"
+                },
+                {
+                  "text": "[8, 9) / 3"
+                }
+              ]
+            },
+            {
+              "id": "trace-R10",
+              "label": "R10",
+              "cells": [
+                {
+                  "text": "a;b;a;b;c → a;b;c"
+                },
+                {
+                  "text": "[9, 10) / 3, 4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "flat-frames",
+          "type": "comparison",
+          "labelColumn": "Frame key / name",
+          "columns": [
+            "self / 原始 leaf 记录",
+            "total / 去重原始记录"
+          ],
+          "rows": [
+            {
+              "id": "flat-frame-0",
+              "label": "a / a",
+              "cells": [
+                {
+                  "text": "1 / R01"
+                },
+                {
+                  "text": "9 / R01, R03, R04, R05, R06, R07, R08, R09, R10"
+                }
+              ]
+            },
+            {
+              "id": "flat-frame-1",
+              "label": "b / b",
+              "cells": [
+                {
+                  "text": "5 / R02, R03, R04, R06, R08"
+                },
+                {
+                  "text": "9 / R02, R03, R04, R05, R06, R07, R08, R09, R10"
+                }
+              ]
+            },
+            {
+              "id": "flat-frame-2",
+              "label": "c / c",
+              "cells": [
+                {
+                  "text": "4 / R05, R07, R09, R10"
+                },
+                {
+                  "text": "4 / R05, R07, R09, R10"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "counter-intro",
+          "type": "prose",
+          "text": "以下是上游 profile.ts 注释的完整四行反例，不是新采集记录。折叠 node a;b self=3，而函数 b self 仍为0。"
+        },
+        {
+          "id": "counter-source",
+          "type": "snippet",
+          "title": "完整四行注释反例",
+          "text": "a 1\na;b;a 1\na;b;a;b;a 1\na;b;a 1\n"
+        },
+        {
+          "id": "counter-weights",
+          "type": "comparison",
+          "labelColumn": "层次",
+          "columns": [
+            "self / total"
+          ],
+          "rows": [
+            {
+              "id": "counter-node-0",
+              "label": "node a",
+              "cells": [
+                {
+                  "text": "1 / 4"
+                }
+              ]
+            },
+            {
+              "id": "counter-node-1",
+              "label": "node a;b",
+              "cells": [
+                {
+                  "text": "3 / 3"
+                }
+              ]
+            },
+            {
+              "id": "counter-frame-0",
+              "label": "Frame a",
+              "cells": [
+                {
+                  "text": "4 / 4"
+                }
+              ]
+            },
+            {
+              "id": "counter-frame-1",
+              "label": "Frame b",
+              "cells": [
+                {
+                  "text": "0 / 3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "rule-reference",
+          "type": "prose",
+          "text": "规则见 [固定源码](source:rule-source)。完整 open/close/null-layer trace 在 output/ledger.json；按源码合同独立重建，未执行上游。"
+        }
+      ]
+    },
+    {
+      "id": "json-view",
+      "title": "04 · JSON：5 条 occurrence，14 seconds 采样赋权",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "json-tree",
+          "type": "diagram",
+          "diagramType": "tree",
+          "spec": {
+            "schema_version": 1,
+            "diagram_type": "tree",
+            "meta": {
+              "title": "json · 完整上下文",
+              "locale": "zh-CN",
+              "subtitle": "node self / total · seconds"
+            },
+            "layout": {
+              "direction": "down",
+              "nodeW": 170,
+              "gapX": 24,
+              "gapY": 28
+            },
+            "nodes": [
+              {
+                "id": "json-root",
+                "label": "技术 root",
+                "sublabel": "总权重 14 · 非函数"
+              },
+              {
+                "id": "json-p01",
+                "label": "a",
+                "parent": "json-root",
+                "sublabel": "self 0 / total 14"
+              },
+              {
+                "id": "json-p02",
+                "label": "a;b",
+                "parent": "json-p01",
+                "sublabel": "self 5 / total 14"
+              },
+              {
+                "id": "json-p03",
+                "label": "a;b;c",
+                "parent": "json-p02",
+                "sublabel": "self 5 / total 5"
+              },
+              {
+                "id": "json-p04",
+                "label": "a;b;d",
+                "parent": "json-p02",
+                "sublabel": "self 4 / total 4"
+              }
+            ]
+          },
+          "nodeBlocks": {
+            "json-p01": "contrib-json-p01",
+            "json-p02": "contrib-json-p02",
+            "json-p03": "contrib-json-p03",
+            "json-p04": "contrib-json-p04"
+          }
+        },
+        {
+          "id": "json-note",
+          "type": "prose",
+          "text": "4 个完整 prefix；5 条输入 occurrence；权重和 14，unit=seconds。技术 root 不计为函数。"
+        }
+      ]
+    },
+    {
+      "id": "json-weights",
+      "title": "frame index 保身份；相同栈仍是两条原始记录",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "json-frames",
+          "type": "comparison",
+          "labelColumn": "Frame key / name",
+          "columns": [
+            "self / 原始 leaf 记录",
+            "total / 去重原始记录"
+          ],
+          "rows": [
+            {
+              "id": "json-frame-0",
+              "label": "0 / a",
+              "cells": [
+                {
+                  "text": "0 / 无"
+                },
+                {
+                  "text": "14 / J01, J02, J03, J04, J05"
+                }
+              ]
+            },
+            {
+              "id": "json-frame-1",
+              "label": "1 / b",
+              "cells": [
+                {
+                  "text": "5 / J05"
+                },
+                {
+                  "text": "14 / J01, J02, J03, J04, J05"
+                }
+              ]
+            },
+            {
+              "id": "json-frame-2",
+              "label": "2 / c",
+              "cells": [
+                {
+                  "text": "5 / J01, J02, J04"
+                },
+                {
+                  "text": "5 / J01, J02, J04"
+                }
+              ]
+            },
+            {
+              "id": "json-frame-3",
+              "label": "3 / d",
+              "cells": [
+                {
+                  "text": "4 / J03"
+                },
+                {
+                  "text": "4 / J03"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "json-unit",
+          "type": "prose",
+          "text": "J01 与 J02 同栈同权重，仍各自保留 source pointer。unit=seconds 表示采样赋权；不能解释为5次调用，也不能证明精确执行14秒。所有 samples 在原件第11行，weights在第12行。此 fixture 无递归，折叠结构与权重不变。"
+        }
+      ]
+    },
+    {
+      "id": "raw-entries",
+      "title": "raw · 每个 prefix 的固定阅读入口",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "raw-entry-list",
+          "type": "steps",
+          "items": [
+            {
+              "id": "entry-raw-p01",
+              "text": "a",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p01"
+              },
+              "detail": "self 0 / total 9 · [全部贡献](block:contrib-raw-p01)"
+            },
+            {
+              "id": "entry-raw-p02",
+              "text": "a;a",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p02"
+              },
+              "detail": "self 1 / total 1 · [全部贡献](block:contrib-raw-p02)"
+            },
+            {
+              "id": "entry-raw-p03",
+              "text": "b",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p03"
+              },
+              "detail": "self 0 / total 1 · [全部贡献](block:contrib-raw-p03)"
+            },
+            {
+              "id": "entry-raw-p04",
+              "text": "b;b",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p04"
+              },
+              "detail": "self 1 / total 1 · [全部贡献](block:contrib-raw-p04)"
+            },
+            {
+              "id": "entry-raw-p05",
+              "text": "a;b",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p05"
+              },
+              "detail": "self 1 / total 8 · [全部贡献](block:contrib-raw-p05)"
+            },
+            {
+              "id": "entry-raw-p06",
+              "text": "a;b;a",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p06"
+              },
+              "detail": "self 0 / total 7 · [全部贡献](block:contrib-raw-p06)"
+            },
+            {
+              "id": "entry-raw-p07",
+              "text": "a;b;a;b",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p07"
+              },
+              "detail": "self 2 / total 5 · [全部贡献](block:contrib-raw-p07)"
+            },
+            {
+              "id": "entry-raw-p08",
+              "text": "a;b;a;c",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p08"
+              },
+              "detail": "self 2 / total 2 · [全部贡献](block:contrib-raw-p08)"
+            },
+            {
+              "id": "entry-raw-p09",
+              "text": "a;b;a;b;a",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p09"
+              },
+              "detail": "self 0 / total 1 · [全部贡献](block:contrib-raw-p09)"
+            },
+            {
+              "id": "entry-raw-p10",
+              "text": "a;b;a;b;a;b",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p10"
+              },
+              "detail": "self 1 / total 1 · [全部贡献](block:contrib-raw-p10)"
+            },
+            {
+              "id": "entry-raw-p11",
+              "text": "a;b;a;b;c",
+              "target": {
+                "diagram": "raw-tree",
+                "node": "raw-p11"
+              },
+              "detail": "self 2 / total 2 · [全部贡献](block:contrib-raw-p11)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "raw-contributions",
+      "title": "raw · 完整贡献账目",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "contrib-raw-p01",
+          "type": "prose",
+          "text": "**a** · node self 0 / total 9。self 来源 无。全部 total 贡献：[R01 × 1](block:detail-raw-p01-r01) + [R03 × 1](block:detail-raw-p01-r03) + [R04 × 1](block:detail-raw-p01-r04) + [R05 × 1](block:detail-raw-p01-r05) + [R06 × 1](block:detail-raw-p01-r06) + [R07 × 1](block:detail-raw-p01-r07) + [R08 × 1](block:detail-raw-p01-r08) + [R09 × 1](block:detail-raw-p01-r09) + [R10 × 1](block:detail-raw-p01-r10) = 9 unknown。[返回入口](block:entry-raw-p01)"
+        },
+        {
+          "id": "contrib-raw-p02",
+          "type": "prose",
+          "text": "**a;a** · node self 1 / total 1。self 来源 R01。全部 total 贡献：[R01 × 1](block:detail-raw-p02-r01) = 1 unknown。[返回入口](block:entry-raw-p02)"
+        },
+        {
+          "id": "contrib-raw-p03",
+          "type": "prose",
+          "text": "**b** · node self 0 / total 1。self 来源 无。全部 total 贡献：[R02 × 1](block:detail-raw-p03-r02) = 1 unknown。[返回入口](block:entry-raw-p03)"
+        },
+        {
+          "id": "contrib-raw-p04",
+          "type": "prose",
+          "text": "**b;b** · node self 1 / total 1。self 来源 R02。全部 total 贡献：[R02 × 1](block:detail-raw-p04-r02) = 1 unknown。[返回入口](block:entry-raw-p04)"
+        },
+        {
+          "id": "contrib-raw-p05",
+          "type": "prose",
+          "text": "**a;b** · node self 1 / total 8。self 来源 R03。全部 total 贡献：[R03 × 1](block:detail-raw-p05-r03) + [R04 × 1](block:detail-raw-p05-r04) + [R05 × 1](block:detail-raw-p05-r05) + [R06 × 1](block:detail-raw-p05-r06) + [R07 × 1](block:detail-raw-p05-r07) + [R08 × 1](block:detail-raw-p05-r08) + [R09 × 1](block:detail-raw-p05-r09) + [R10 × 1](block:detail-raw-p05-r10) = 8 unknown。[返回入口](block:entry-raw-p05)"
+        },
+        {
+          "id": "contrib-raw-p06",
+          "type": "prose",
+          "text": "**a;b;a** · node self 0 / total 7。self 来源 无。全部 total 贡献：[R04 × 1](block:detail-raw-p06-r04) + [R05 × 1](block:detail-raw-p06-r05) + [R06 × 1](block:detail-raw-p06-r06) + [R07 × 1](block:detail-raw-p06-r07) + [R08 × 1](block:detail-raw-p06-r08) + [R09 × 1](block:detail-raw-p06-r09) + [R10 × 1](block:detail-raw-p06-r10) = 7 unknown。[返回入口](block:entry-raw-p06)"
+        },
+        {
+          "id": "contrib-raw-p07",
+          "type": "prose",
+          "text": "**a;b;a;b** · node self 2 / total 5。self 来源 R04, R08。全部 total 贡献：[R04 × 1](block:detail-raw-p07-r04) + [R06 × 1](block:detail-raw-p07-r06) + [R07 × 1](block:detail-raw-p07-r07) + [R08 × 1](block:detail-raw-p07-r08) + [R10 × 1](block:detail-raw-p07-r10) = 5 unknown。[返回入口](block:entry-raw-p07)"
+        },
+        {
+          "id": "contrib-raw-p08",
+          "type": "prose",
+          "text": "**a;b;a;c** · node self 2 / total 2。self 来源 R05, R09。全部 total 贡献：[R05 × 1](block:detail-raw-p08-r05) + [R09 × 1](block:detail-raw-p08-r09) = 2 unknown。[返回入口](block:entry-raw-p08)"
+        },
+        {
+          "id": "contrib-raw-p09",
+          "type": "prose",
+          "text": "**a;b;a;b;a** · node self 0 / total 1。self 来源 无。全部 total 贡献：[R06 × 1](block:detail-raw-p09-r06) = 1 unknown。[返回入口](block:entry-raw-p09)"
+        },
+        {
+          "id": "contrib-raw-p10",
+          "type": "prose",
+          "text": "**a;b;a;b;a;b** · node self 1 / total 1。self 来源 R06。全部 total 贡献：[R06 × 1](block:detail-raw-p10-r06) = 1 unknown。[返回入口](block:entry-raw-p10)"
+        },
+        {
+          "id": "contrib-raw-p11",
+          "type": "prose",
+          "text": "**a;b;a;b;c** · node self 2 / total 2。self 来源 R07, R10。全部 total 贡献：[R07 × 1](block:detail-raw-p11-r07) + [R10 × 1](block:detail-raw-p11-r10) = 2 unknown。[返回入口](block:entry-raw-p11)"
+        }
+      ]
+    },
+    {
+      "id": "raw-details",
+      "title": "raw · 每对 prefix / occurrence 的完整返回链",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "raw-detail-table",
+          "type": "comparison",
+          "labelColumn": "记录归属",
+          "columns": [
+            "完整原始记录 / 原位",
+            "固定返回"
+          ],
+          "rows": [
+            {
+              "id": "detail-raw-p01-r01",
+              "label": "a / R01",
+              "cells": [
+                {
+                  "text": "`a;a 1` · weight=1 unknown · 原始第1行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r03",
+              "label": "a / R03",
+              "cells": [
+                {
+                  "text": "`a;b 1` · weight=1 unknown · 原始第3行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r04",
+              "label": "a / R04",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第4行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r05",
+              "label": "a / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r06",
+              "label": "a / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r07",
+              "label": "a / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r08",
+              "label": "a / R08",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第8行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r09",
+              "label": "a / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p01-r10",
+              "label": "a / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-raw-p01) · [打开此精确 prefix](node:raw-tree.raw-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p02-r01",
+              "label": "a;a / R01",
+              "cells": [
+                {
+                  "text": "`a;a 1` · weight=1 unknown · 原始第1行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;a 入口](block:entry-raw-p02) · [打开此精确 prefix](node:raw-tree.raw-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p03-r02",
+              "label": "b / R02",
+              "cells": [
+                {
+                  "text": "`b;b 1` · weight=1 unknown · 原始第2行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 b 入口](block:entry-raw-p03) · [打开此精确 prefix](node:raw-tree.raw-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p04-r02",
+              "label": "b;b / R02",
+              "cells": [
+                {
+                  "text": "`b;b 1` · weight=1 unknown · 原始第2行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 b;b 入口](block:entry-raw-p04) · [打开此精确 prefix](node:raw-tree.raw-p04)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r03",
+              "label": "a;b / R03",
+              "cells": [
+                {
+                  "text": "`a;b 1` · weight=1 unknown · 原始第3行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r04",
+              "label": "a;b / R04",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第4行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r05",
+              "label": "a;b / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r06",
+              "label": "a;b / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r07",
+              "label": "a;b / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r08",
+              "label": "a;b / R08",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第8行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r09",
+              "label": "a;b / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p05-r10",
+              "label": "a;b / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-raw-p05) · [打开此精确 prefix](node:raw-tree.raw-p05)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r04",
+              "label": "a;b;a / R04",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第4行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r05",
+              "label": "a;b;a / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r06",
+              "label": "a;b;a / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r07",
+              "label": "a;b;a / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r08",
+              "label": "a;b;a / R08",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第8行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r09",
+              "label": "a;b;a / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p06-r10",
+              "label": "a;b;a / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a 入口](block:entry-raw-p06) · [打开此精确 prefix](node:raw-tree.raw-p06)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p07-r04",
+              "label": "a;b;a;b / R04",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第4行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b 入口](block:entry-raw-p07) · [打开此精确 prefix](node:raw-tree.raw-p07)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p07-r06",
+              "label": "a;b;a;b / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b 入口](block:entry-raw-p07) · [打开此精确 prefix](node:raw-tree.raw-p07)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p07-r07",
+              "label": "a;b;a;b / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b 入口](block:entry-raw-p07) · [打开此精确 prefix](node:raw-tree.raw-p07)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p07-r08",
+              "label": "a;b;a;b / R08",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第8行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b 入口](block:entry-raw-p07) · [打开此精确 prefix](node:raw-tree.raw-p07)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p07-r10",
+              "label": "a;b;a;b / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b 入口](block:entry-raw-p07) · [打开此精确 prefix](node:raw-tree.raw-p07)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p08-r05",
+              "label": "a;b;a;c / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;c 入口](block:entry-raw-p08) · [打开此精确 prefix](node:raw-tree.raw-p08)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p08-r09",
+              "label": "a;b;a;c / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;c 入口](block:entry-raw-p08) · [打开此精确 prefix](node:raw-tree.raw-p08)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p09-r06",
+              "label": "a;b;a;b;a / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b;a 入口](block:entry-raw-p09) · [打开此精确 prefix](node:raw-tree.raw-p09)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p10-r06",
+              "label": "a;b;a;b;a;b / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b;a;b 入口](block:entry-raw-p10) · [打开此精确 prefix](node:raw-tree.raw-p10)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p11-r07",
+              "label": "a;b;a;b;c / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b;c 入口](block:entry-raw-p11) · [打开此精确 prefix](node:raw-tree.raw-p11)"
+                }
+              ]
+            },
+            {
+              "id": "detail-raw-p11-r10",
+              "label": "a;b;a;b;c / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;a;b;c 入口](block:entry-raw-p11) · [打开此精确 prefix](node:raw-tree.raw-p11)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flat-entries",
+      "title": "flat · 每个 prefix 的固定阅读入口",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "flat-entry-list",
+          "type": "steps",
+          "items": [
+            {
+              "id": "entry-flat-p01",
+              "text": "a",
+              "target": {
+                "diagram": "flat-tree",
+                "node": "flat-p01"
+              },
+              "detail": "self 1 / total 9 · [全部贡献](block:contrib-flat-p01)"
+            },
+            {
+              "id": "entry-flat-p02",
+              "text": "b",
+              "target": {
+                "diagram": "flat-tree",
+                "node": "flat-p02"
+              },
+              "detail": "self 1 / total 1 · [全部贡献](block:contrib-flat-p02)"
+            },
+            {
+              "id": "entry-flat-p03",
+              "text": "a;b",
+              "target": {
+                "diagram": "flat-tree",
+                "node": "flat-p03"
+              },
+              "detail": "self 4 / total 8 · [全部贡献](block:contrib-flat-p03)"
+            },
+            {
+              "id": "entry-flat-p04",
+              "text": "a;b;c",
+              "target": {
+                "diagram": "flat-tree",
+                "node": "flat-p04"
+              },
+              "detail": "self 4 / total 4 · [全部贡献](block:contrib-flat-p04)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flat-contributions",
+      "title": "flat · 完整贡献账目",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "contrib-flat-p01",
+          "type": "prose",
+          "text": "**a** · node self 1 / total 9。self 来源 R01。全部 total 贡献：[R01 × 1](block:detail-flat-p01-r01) + [R03 × 1](block:detail-flat-p01-r03) + [R04 × 1](block:detail-flat-p01-r04) + [R05 × 1](block:detail-flat-p01-r05) + [R06 × 1](block:detail-flat-p01-r06) + [R07 × 1](block:detail-flat-p01-r07) + [R08 × 1](block:detail-flat-p01-r08) + [R09 × 1](block:detail-flat-p01-r09) + [R10 × 1](block:detail-flat-p01-r10) = 9 unknown。[返回入口](block:entry-flat-p01)"
+        },
+        {
+          "id": "contrib-flat-p02",
+          "type": "prose",
+          "text": "**b** · node self 1 / total 1。self 来源 R02。全部 total 贡献：[R02 × 1](block:detail-flat-p02-r02) = 1 unknown。[返回入口](block:entry-flat-p02)"
+        },
+        {
+          "id": "contrib-flat-p03",
+          "type": "prose",
+          "text": "**a;b** · node self 4 / total 8。self 来源 R03, R04, R06, R08。全部 total 贡献：[R03 × 1](block:detail-flat-p03-r03) + [R04 × 1](block:detail-flat-p03-r04) + [R05 × 1](block:detail-flat-p03-r05) + [R06 × 1](block:detail-flat-p03-r06) + [R07 × 1](block:detail-flat-p03-r07) + [R08 × 1](block:detail-flat-p03-r08) + [R09 × 1](block:detail-flat-p03-r09) + [R10 × 1](block:detail-flat-p03-r10) = 8 unknown。[返回入口](block:entry-flat-p03)"
+        },
+        {
+          "id": "contrib-flat-p04",
+          "type": "prose",
+          "text": "**a;b;c** · node self 4 / total 4。self 来源 R05, R07, R09, R10。全部 total 贡献：[R05 × 1](block:detail-flat-p04-r05) + [R07 × 1](block:detail-flat-p04-r07) + [R09 × 1](block:detail-flat-p04-r09) + [R10 × 1](block:detail-flat-p04-r10) = 4 unknown。[返回入口](block:entry-flat-p04)"
+        }
+      ]
+    },
+    {
+      "id": "flat-details",
+      "title": "flat · 每对 prefix / occurrence 的完整返回链",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "flat-detail-table",
+          "type": "comparison",
+          "labelColumn": "记录归属",
+          "columns": [
+            "完整原始记录 / 原位",
+            "固定返回"
+          ],
+          "rows": [
+            {
+              "id": "detail-flat-p01-r01",
+              "label": "a / R01",
+              "cells": [
+                {
+                  "text": "`a;a 1` · weight=1 unknown · 原始第1行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r03",
+              "label": "a / R03",
+              "cells": [
+                {
+                  "text": "`a;b 1` · weight=1 unknown · 原始第3行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r04",
+              "label": "a / R04",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第4行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r05",
+              "label": "a / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r06",
+              "label": "a / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r07",
+              "label": "a / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r08",
+              "label": "a / R08",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第8行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r09",
+              "label": "a / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p01-r10",
+              "label": "a / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-flat-p01) · [打开此精确 prefix](node:flat-tree.flat-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p02-r02",
+              "label": "b / R02",
+              "cells": [
+                {
+                  "text": "`b;b 1` · weight=1 unknown · 原始第2行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 b 入口](block:entry-flat-p02) · [打开此精确 prefix](node:flat-tree.flat-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r03",
+              "label": "a;b / R03",
+              "cells": [
+                {
+                  "text": "`a;b 1` · weight=1 unknown · 原始第3行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r04",
+              "label": "a;b / R04",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第4行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r05",
+              "label": "a;b / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r06",
+              "label": "a;b / R06",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;a;b 1` · weight=1 unknown · 原始第6行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r07",
+              "label": "a;b / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r08",
+              "label": "a;b / R08",
+              "cells": [
+                {
+                  "text": "`a;b;a;b 1` · weight=1 unknown · 原始第8行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r09",
+              "label": "a;b / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p03-r10",
+              "label": "a;b / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-flat-p03) · [打开此精确 prefix](node:flat-tree.flat-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p04-r05",
+              "label": "a;b;c / R05",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第5行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-flat-p04) · [打开此精确 prefix](node:flat-tree.flat-p04)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p04-r07",
+              "label": "a;b;c / R07",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第7行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-flat-p04) · [打开此精确 prefix](node:flat-tree.flat-p04)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p04-r09",
+              "label": "a;b;c / R09",
+              "cells": [
+                {
+                  "text": "`a;b;a;c 1` · weight=1 unknown · 原始第9行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-flat-p04) · [打开此精确 prefix](node:flat-tree.flat-p04)"
+                }
+              ]
+            },
+            {
+              "id": "detail-flat-p04-r10",
+              "label": "a;b;c / R10",
+              "cells": [
+                {
+                  "text": "`a;b;a;b;c 1` · weight=1 unknown · 原始第10行；[完整原件](block:original-raw)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-flat-p04) · [打开此精确 prefix](node:flat-tree.flat-p04)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "json-entries",
+      "title": "json · 每个 prefix 的固定阅读入口",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "json-entry-list",
+          "type": "steps",
+          "items": [
+            {
+              "id": "entry-json-p01",
+              "text": "a",
+              "target": {
+                "diagram": "json-tree",
+                "node": "json-p01"
+              },
+              "detail": "self 0 / total 14 · [全部贡献](block:contrib-json-p01)"
+            },
+            {
+              "id": "entry-json-p02",
+              "text": "a;b",
+              "target": {
+                "diagram": "json-tree",
+                "node": "json-p02"
+              },
+              "detail": "self 5 / total 14 · [全部贡献](block:contrib-json-p02)"
+            },
+            {
+              "id": "entry-json-p03",
+              "text": "a;b;c",
+              "target": {
+                "diagram": "json-tree",
+                "node": "json-p03"
+              },
+              "detail": "self 5 / total 5 · [全部贡献](block:contrib-json-p03)"
+            },
+            {
+              "id": "entry-json-p04",
+              "text": "a;b;d",
+              "target": {
+                "diagram": "json-tree",
+                "node": "json-p04"
+              },
+              "detail": "self 4 / total 4 · [全部贡献](block:contrib-json-p04)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "json-contributions",
+      "title": "json · 完整贡献账目",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "contrib-json-p01",
+          "type": "prose",
+          "text": "**a** · node self 0 / total 14。self 来源 无。全部 total 贡献：[J01 × 1](block:detail-json-p01-j01) + [J02 × 1](block:detail-json-p01-j02) + [J03 × 4](block:detail-json-p01-j03) + [J04 × 3](block:detail-json-p01-j04) + [J05 × 5](block:detail-json-p01-j05) = 14 seconds。[返回入口](block:entry-json-p01)"
+        },
+        {
+          "id": "contrib-json-p02",
+          "type": "prose",
+          "text": "**a;b** · node self 5 / total 14。self 来源 J05。全部 total 贡献：[J01 × 1](block:detail-json-p02-j01) + [J02 × 1](block:detail-json-p02-j02) + [J03 × 4](block:detail-json-p02-j03) + [J04 × 3](block:detail-json-p02-j04) + [J05 × 5](block:detail-json-p02-j05) = 14 seconds。[返回入口](block:entry-json-p02)"
+        },
+        {
+          "id": "contrib-json-p03",
+          "type": "prose",
+          "text": "**a;b;c** · node self 5 / total 5。self 来源 J01, J02, J04。全部 total 贡献：[J01 × 1](block:detail-json-p03-j01) + [J02 × 1](block:detail-json-p03-j02) + [J04 × 3](block:detail-json-p03-j04) = 5 seconds。[返回入口](block:entry-json-p03)"
+        },
+        {
+          "id": "contrib-json-p04",
+          "type": "prose",
+          "text": "**a;b;d** · node self 4 / total 4。self 来源 J03。全部 total 贡献：[J03 × 4](block:detail-json-p04-j03) = 4 seconds。[返回入口](block:entry-json-p04)"
+        }
+      ]
+    },
+    {
+      "id": "json-details",
+      "title": "json · 每对 prefix / occurrence 的完整返回链",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "json-detail-table",
+          "type": "comparison",
+          "labelColumn": "记录归属",
+          "columns": [
+            "完整原始记录 / 原位",
+            "固定返回"
+          ],
+          "rows": [
+            {
+              "id": "detail-json-p01-j01",
+              "label": "a / J01",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=1 seconds · samples 第11行 /profiles/0/samples/0；weights 第12行 /profiles/0/weights/0；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-json-p01) · [打开此精确 prefix](node:json-tree.json-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p01-j02",
+              "label": "a / J02",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=1 seconds · samples 第11行 /profiles/0/samples/1；weights 第12行 /profiles/0/weights/1；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-json-p01) · [打开此精确 prefix](node:json-tree.json-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p01-j03",
+              "label": "a / J03",
+              "cells": [
+                {
+                  "text": "`[0,1,3]` · weight=4 seconds · samples 第11行 /profiles/0/samples/2；weights 第12行 /profiles/0/weights/2；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-json-p01) · [打开此精确 prefix](node:json-tree.json-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p01-j04",
+              "label": "a / J04",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=3 seconds · samples 第11行 /profiles/0/samples/3；weights 第12行 /profiles/0/weights/3；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-json-p01) · [打开此精确 prefix](node:json-tree.json-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p01-j05",
+              "label": "a / J05",
+              "cells": [
+                {
+                  "text": "`[0,1]` · weight=5 seconds · samples 第11行 /profiles/0/samples/4；weights 第12行 /profiles/0/weights/4；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a 入口](block:entry-json-p01) · [打开此精确 prefix](node:json-tree.json-p01)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p02-j01",
+              "label": "a;b / J01",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=1 seconds · samples 第11行 /profiles/0/samples/0；weights 第12行 /profiles/0/weights/0；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-json-p02) · [打开此精确 prefix](node:json-tree.json-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p02-j02",
+              "label": "a;b / J02",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=1 seconds · samples 第11行 /profiles/0/samples/1；weights 第12行 /profiles/0/weights/1；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-json-p02) · [打开此精确 prefix](node:json-tree.json-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p02-j03",
+              "label": "a;b / J03",
+              "cells": [
+                {
+                  "text": "`[0,1,3]` · weight=4 seconds · samples 第11行 /profiles/0/samples/2；weights 第12行 /profiles/0/weights/2；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-json-p02) · [打开此精确 prefix](node:json-tree.json-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p02-j04",
+              "label": "a;b / J04",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=3 seconds · samples 第11行 /profiles/0/samples/3；weights 第12行 /profiles/0/weights/3；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-json-p02) · [打开此精确 prefix](node:json-tree.json-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p02-j05",
+              "label": "a;b / J05",
+              "cells": [
+                {
+                  "text": "`[0,1]` · weight=5 seconds · samples 第11行 /profiles/0/samples/4；weights 第12行 /profiles/0/weights/4；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b 入口](block:entry-json-p02) · [打开此精确 prefix](node:json-tree.json-p02)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p03-j01",
+              "label": "a;b;c / J01",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=1 seconds · samples 第11行 /profiles/0/samples/0；weights 第12行 /profiles/0/weights/0；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-json-p03) · [打开此精确 prefix](node:json-tree.json-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p03-j02",
+              "label": "a;b;c / J02",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=1 seconds · samples 第11行 /profiles/0/samples/1；weights 第12行 /profiles/0/weights/1；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-json-p03) · [打开此精确 prefix](node:json-tree.json-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p03-j04",
+              "label": "a;b;c / J04",
+              "cells": [
+                {
+                  "text": "`[0,1,2]` · weight=3 seconds · samples 第11行 /profiles/0/samples/3；weights 第12行 /profiles/0/weights/3；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b;c 入口](block:entry-json-p03) · [打开此精确 prefix](node:json-tree.json-p03)"
+                }
+              ]
+            },
+            {
+              "id": "detail-json-p04-j03",
+              "label": "a;b;d / J03",
+              "cells": [
+                {
+                  "text": "`[0,1,3]` · weight=4 seconds · samples 第11行 /profiles/0/samples/2；weights 第12行 /profiles/0/weights/2；[完整原件](block:original-json)"
+                },
+                {
+                  "text": "[返回 a;b;d 入口](block:entry-json-p04) · [打开此精确 prefix](node:json-tree.json-p04)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cross-mapping",
+      "title": "两个 raw c 上下文汇合到一个 flat c",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "c-mapping",
+          "type": "prose",
+          "text": "[a;b;a;c](node:raw-tree.raw-p08) 与 [a;b;a;b;c](node:raw-tree.raw-p11) → [a;b;c](node:flat-tree.flat-p04)。这是两个不同上下文的折叠映射；raw 与 flat ID namespace 分开。"
+        }
+      ]
+    },
+    {
+      "id": "originals",
+      "title": "完整原件与字节指纹：下方为原 bytes 的派生展示",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "source-meta-0",
+          "type": "prose",
+          "text": "recursion.txt · 96 bytes · SHA-256 `5e6da30ddbe1e66f4e8a326236f2c9016484c61a6a7022b60389d94920fc4a57` · [固定原件](source:folded-source)"
+        },
+        {
+          "id": "original-raw",
+          "type": "snippet",
+          "title": "完整 recursion.txt（未裁剪）",
+          "text": "a;a 1\nb;b 1\na;b 1\na;b;a;b 1\na;b;a;c 1\na;b;a;b;a;b 1\na;b;a;b;c 1\na;b;a;b 1\na;b;a;c 1\na;b;a;b;c 1\n"
+        },
+        {
+          "id": "source-meta-1",
+          "type": "prose",
+          "text": "simple-sampled.speedscope.json · 458 bytes · SHA-256 `6a4508cd712ee7a1a80929009d4a1b212cadfafd30831722ae6f195601f8967c` · [固定原件](source:json-source)"
+        },
+        {
+          "id": "original-json",
+          "type": "snippet",
+          "title": "完整 simple-sampled.speedscope.json（未裁剪）",
+          "text": "{\n  \"version\": \"0.1.2\",\n  \"$schema\": \"https://www.speedscope.app/file-format-schema.json\",\n  \"profiles\": [\n    {\n      \"type\": \"sampled\",\n      \"name\": \"simple.speedscope.json\",\n      \"unit\": \"seconds\",\n      \"startValue\": 0,\n      \"endValue\": 14,\n      \"samples\": [[0, 1, 2], [0, 1, 2], [0, 1, 3], [0, 1, 2], [0, 1]],\n      \"weights\": [1, 1, 4, 3, 5]\n    }\n  ],\n  \"shared\": {\n    \"frames\": [{\"name\": \"a\"}, {\"name\": \"b\"}, {\"name\": \"c\"}, {\"name\": \"d\"}]\n  }\n}\n"
+        },
+        {
+          "id": "source-meta-2",
+          "type": "prose",
+          "text": "LICENSE-speedscope · 1067 bytes · SHA-256 `6244b13e9bf25cfd42d81c939d6c535d932596e8c320050234f2c2ac5a6f36a0` · [固定原件](source:license-source)"
+        },
+        {
+          "id": "original-license",
+          "type": "snippet",
+          "title": "完整 LICENSE-speedscope（未裁剪）",
+          "text": "MIT License\n\nCopyright (c) 2018 Jamie Wong\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+        }
+      ]
+    },
+    {
+      "id": "boundaries",
+      "title": "证据边界",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "limits",
+          "type": "prose",
+          "text": "本页由离线脚本从两份完整原件生成；并非通用 profiler/parser。URL 来源声明不等于 Archify Git excerpt 验证。静态固定回链不保存任意旧 DOM opener，不宣称全屏 Viewer 改选会联动父页。浏览器实图、键盘/指针闭环与 CI 状态另见 README；机器 gate 不等于人工视觉验收。"
+        }
+      ]
+    }
+  ]
+}

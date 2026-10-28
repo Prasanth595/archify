@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "diagram_type": "tree",
+  "meta": {
+    "title": "raw · 完整上下文",
+    "locale": "zh-CN",
+    "subtitle": "node self / total · unknown"
+  },
+  "layout": {
+    "direction": "down",
+    "nodeW": 170,
+    "gapX": 24,
+    "gapY": 28
+  },
+  "nodes": [
+    {
+      "id": "raw-root",
+      "label": "技术 root",
+      "sublabel": "总权重 10 · 非函数"
+    },
+    {
+      "id": "raw-p01",
+      "label": "a",
+      "parent": "raw-root",
+      "sublabel": "self 0 / total 9"
+    },
+    {
+      "id": "raw-p02",
+      "label": "a;a",
+      "parent": "raw-p01",
+      "sublabel": "self 1 / total 1"
+    },
+    {
+      "id": "raw-p03",
+      "label": "b",
+      "parent": "raw-root",
+      "sublabel": "self 0 / total 1"
+    },
+    {
+      "id": "raw-p04",
+      "label": "b;b",
+      "parent": "raw-p03",
+      "sublabel": "self 1 / total 1"
+    },
+    {
+      "id": "raw-p05",
+      "label": "a;b",
+      "parent": "raw-p01",
+      "sublabel": "self 1 / total 8"
+    },
+    {
+      "id": "raw-p06",
+      "label": "a;b;a",
+      "parent": "raw-p05",
+      "sublabel": "self 0 / total 7"
+    },
+    {
+      "id": "raw-p07",
+      "label": "a;b;a;b",
+      "parent": "raw-p06",
+      "sublabel": "self 2 / total 5"
+    },
+    {
+      "id": "raw-p08",
+      "label": "a;b;a;c",
+      "parent": "raw-p06",
+      "sublabel": "self 2 / total 2"
+    },
+    {
+      "id": "raw-p09",
+      "label": "a;b;a;b;a",
+      "parent": "raw-p07",
+      "sublabel": "self 0 / total 1"
+    },
+    {
+      "id": "raw-p10",
+      "label": "a;b;a;b;a;b",
+      "parent": "raw-p09",
+      "sublabel": "self 1 / total 1"
+    },
+    {
+      "id": "raw-p11",
+      "label": "a;b;a;b;c",
+      "parent": "raw-p07",
+      "sublabel": "self 2 / total 2"
+    }
+  ]
+}

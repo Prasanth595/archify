@@ -1,0 +1,6 @@
+# Raw local provenance/evidence contains absolute machine paths. Keep on disk for CLI checks;
+# public verification.json is a labeled derived summary, never a replacement raw receipt.
+output/*.delivery.json
+output/*.finalize.json
+output/*.finalize-summary.json
+output/*.browser-check.json

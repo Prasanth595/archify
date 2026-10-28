@@ -1,0 +1,749 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>完整原输入 baseline</title><style>body{font:17px/1.6 system-ui;max-width:1000px;margin:40px auto;padding:20px;color:#182236;background:#fafbfd}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef1f5;padding:20px}a{color:#124ec5}</style><h1>完整原输入 baseline</h1><p>两份上游 fixture 完整原文；未执行上游、未采集 workload。与候选使用同一原件。下方账目由独立离线算法派生，不是上游运行输出。</p><h2>recursion.txt</h2><p>96 bytes · SHA-256 5e6da30ddbe1e66f4e8a326236f2c9016484c61a6a7022b60389d94920fc4a57 · <a href="https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/sample/profiles/stackcollapse/recursion.txt">固定来源</a></p><pre>a;a 1
+b;b 1
+a;b 1
+a;b;a;b 1
+a;b;a;c 1
+a;b;a;b;a;b 1
+a;b;a;b;c 1
+a;b;a;b 1
+a;b;a;c 1
+a;b;a;b;c 1
+</pre><h2>simple-sampled.speedscope.json</h2><p>458 bytes · SHA-256 6a4508cd712ee7a1a80929009d4a1b212cadfafd30831722ae6f195601f8967c · <a href="https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/sample/profiles/speedscope/0.1.2/simple-sampled.speedscope.json">固定来源</a></p><pre>{
+  &quot;version&quot;: &quot;0.1.2&quot;,
+  &quot;$schema&quot;: &quot;https://www.speedscope.app/file-format-schema.json&quot;,
+  &quot;profiles&quot;: [
+    {
+      &quot;type&quot;: &quot;sampled&quot;,
+      &quot;name&quot;: &quot;simple.speedscope.json&quot;,
+      &quot;unit&quot;: &quot;seconds&quot;,
+      &quot;startValue&quot;: 0,
+      &quot;endValue&quot;: 14,
+      &quot;samples&quot;: [[0, 1, 2], [0, 1, 2], [0, 1, 3], [0, 1, 2], [0, 1]],
+      &quot;weights&quot;: [1, 1, 4, 3, 5]
+    }
+  ],
+  &quot;shared&quot;: {
+    &quot;frames&quot;: [{&quot;name&quot;: &quot;a&quot;}, {&quot;name&quot;: &quot;b&quot;}, {&quot;name&quot;: &quot;c&quot;}, {&quot;name&quot;: &quot;d&quot;}]
+  }
+}
+</pre><h2>LICENSE-speedscope</h2><p>1067 bytes · SHA-256 6244b13e9bf25cfd42d81c939d6c535d932596e8c320050234f2c2ac5a6f36a0 · <a href="https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/LICENSE">固定来源</a></p><pre>MIT License
+
+Copyright (c) 2018 Jamie Wong
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</pre><h2>派生完整账目</h2><pre>{
+  &quot;raw&quot;: {
+    &quot;namespace&quot;: &quot;raw&quot;,
+    &quot;unit&quot;: &quot;unknown&quot;,
+    &quot;totalWeight&quot;: 10,
+    &quot;occurrenceCount&quot;: 10,
+    &quot;contexts&quot;: [
+      {
+        &quot;id&quot;: &quot;raw-p01&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;
+        ],
+        &quot;self&quot;: 0,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R01&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;raw-p02&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;a&quot;
+        ],
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 1,
+        &quot;rows&quot;: [
+          &quot;R01&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R01&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;raw-p03&quot;,
+        &quot;prefix&quot;: [
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 0,
+        &quot;total&quot;: 1,
+        &quot;rows&quot;: [
+          &quot;R02&quot;
+        ],
+        &quot;selfRows&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;raw-p04&quot;,
+        &quot;prefix&quot;: [
+          &quot;b&quot;,
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 1,
+        &quot;rows&quot;: [
+          &quot;R02&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R02&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;raw-p05&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 8,
+        &quot;rows&quot;: [
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R03&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;raw-p06&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;
+        ],
+        &quot;self&quot;: 0,
+        &quot;total&quot;: 7,
+        &quot;rows&quot;: [
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;raw-p07&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 2,
+        &quot;total&quot;: 5,
+        &quot;rows&quot;: [
+          &quot;R04&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R04&quot;,
+          &quot;R08&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;raw-p08&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;,
+          &quot;c&quot;
+        ],
+        &quot;self&quot;: 2,
+        &quot;total&quot;: 2,
+        &quot;rows&quot;: [
+          &quot;R05&quot;,
+          &quot;R09&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R05&quot;,
+          &quot;R09&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;raw-p09&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;
+        ],
+        &quot;self&quot;: 0,
+        &quot;total&quot;: 1,
+        &quot;rows&quot;: [
+          &quot;R06&quot;
+        ],
+        &quot;selfRows&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;raw-p10&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 1,
+        &quot;rows&quot;: [
+          &quot;R06&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R06&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;raw-p11&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;c&quot;
+        ],
+        &quot;self&quot;: 2,
+        &quot;total&quot;: 2,
+        &quot;rows&quot;: [
+          &quot;R07&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R07&quot;,
+          &quot;R10&quot;
+        ]
+      }
+    ],
+    &quot;frames&quot;: [
+      {
+        &quot;key&quot;: &quot;a&quot;,
+        &quot;name&quot;: &quot;a&quot;,
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R01&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R01&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: &quot;b&quot;,
+        &quot;name&quot;: &quot;b&quot;,
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R02&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R02&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R06&quot;,
+          &quot;R08&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: &quot;c&quot;,
+        &quot;name&quot;: &quot;c&quot;,
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 4,
+        &quot;rows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ]
+      }
+    ]
+  },
+  &quot;json&quot;: {
+    &quot;namespace&quot;: &quot;json&quot;,
+    &quot;unit&quot;: &quot;seconds&quot;,
+    &quot;totalWeight&quot;: 14,
+    &quot;occurrenceCount&quot;: 5,
+    &quot;contexts&quot;: [
+      {
+        &quot;id&quot;: &quot;json-p01&quot;,
+        &quot;prefix&quot;: [
+          0
+        ],
+        &quot;self&quot;: 0,
+        &quot;total&quot;: 14,
+        &quot;rows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J03&quot;,
+          &quot;J04&quot;,
+          &quot;J05&quot;
+        ],
+        &quot;selfRows&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;json-p02&quot;,
+        &quot;prefix&quot;: [
+          0,
+          1
+        ],
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 14,
+        &quot;rows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J03&quot;,
+          &quot;J04&quot;,
+          &quot;J05&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;J05&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;json-p03&quot;,
+        &quot;prefix&quot;: [
+          0,
+          1,
+          2
+        ],
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 5,
+        &quot;rows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J04&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J04&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;json-p04&quot;,
+        &quot;prefix&quot;: [
+          0,
+          1,
+          3
+        ],
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 4,
+        &quot;rows&quot;: [
+          &quot;J03&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;J03&quot;
+        ]
+      }
+    ],
+    &quot;frames&quot;: [
+      {
+        &quot;key&quot;: 0,
+        &quot;name&quot;: &quot;a&quot;,
+        &quot;self&quot;: 0,
+        &quot;total&quot;: 14,
+        &quot;rows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J03&quot;,
+          &quot;J04&quot;,
+          &quot;J05&quot;
+        ],
+        &quot;selfRows&quot;: []
+      },
+      {
+        &quot;key&quot;: 1,
+        &quot;name&quot;: &quot;b&quot;,
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 14,
+        &quot;rows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J03&quot;,
+          &quot;J04&quot;,
+          &quot;J05&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;J05&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: 2,
+        &quot;name&quot;: &quot;c&quot;,
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 5,
+        &quot;rows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J04&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;J01&quot;,
+          &quot;J02&quot;,
+          &quot;J04&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: 3,
+        &quot;name&quot;: &quot;d&quot;,
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 4,
+        &quot;rows&quot;: [
+          &quot;J03&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;J03&quot;
+        ]
+      }
+    ]
+  },
+  &quot;flattened&quot;: {
+    &quot;namespace&quot;: &quot;flat&quot;,
+    &quot;unit&quot;: &quot;unknown&quot;,
+    &quot;totalWeight&quot;: 10,
+    &quot;occurrenceCount&quot;: 10,
+    &quot;contexts&quot;: [
+      {
+        &quot;id&quot;: &quot;flat-p01&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;
+        ],
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R01&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R01&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;flat-p02&quot;,
+        &quot;prefix&quot;: [
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 1,
+        &quot;rows&quot;: [
+          &quot;R02&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R02&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;flat-p03&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 8,
+        &quot;rows&quot;: [
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R06&quot;,
+          &quot;R08&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;flat-p04&quot;,
+        &quot;prefix&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;c&quot;
+        ],
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 4,
+        &quot;rows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ]
+      }
+    ],
+    &quot;frames&quot;: [
+      {
+        &quot;key&quot;: &quot;a&quot;,
+        &quot;name&quot;: &quot;a&quot;,
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R01&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R01&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: &quot;b&quot;,
+        &quot;name&quot;: &quot;b&quot;,
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R02&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R02&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R06&quot;,
+          &quot;R08&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: &quot;c&quot;,
+        &quot;name&quot;: &quot;c&quot;,
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 4,
+        &quot;rows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ]
+      }
+    ],
+    &quot;framesBeforeOverwrite&quot;: [
+      {
+        &quot;key&quot;: &quot;a&quot;,
+        &quot;name&quot;: &quot;a&quot;,
+        &quot;self&quot;: 1,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R01&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R01&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: &quot;b&quot;,
+        &quot;name&quot;: &quot;b&quot;,
+        &quot;self&quot;: 5,
+        &quot;total&quot;: 9,
+        &quot;rows&quot;: [
+          &quot;R02&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R05&quot;,
+          &quot;R06&quot;,
+          &quot;R07&quot;,
+          &quot;R08&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R02&quot;,
+          &quot;R03&quot;,
+          &quot;R04&quot;,
+          &quot;R06&quot;,
+          &quot;R08&quot;
+        ]
+      },
+      {
+        &quot;key&quot;: &quot;c&quot;,
+        &quot;name&quot;: &quot;c&quot;,
+        &quot;self&quot;: 4,
+        &quot;total&quot;: 4,
+        &quot;rows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ],
+        &quot;selfRows&quot;: [
+          &quot;R05&quot;,
+          &quot;R07&quot;,
+          &quot;R09&quot;,
+          &quot;R10&quot;
+        ]
+      }
+    ],
+    &quot;frameWeightPolicy&quot;: &quot;original Frame self/total overwrite; context node weights stay flattened&quot;,
+    &quot;eventIntervals&quot;: [
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;b&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;weight&quot;: 2
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;c&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;c&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;c&quot;
+        ],
+        &quot;weight&quot;: 1
+      },
+      {
+        &quot;stack&quot;: [
+          &quot;a&quot;,
+          &quot;b&quot;,
+          &quot;c&quot;
+        ],
+        &quot;weight&quot;: 1
+      }
+    ]
+  }
+}</pre></html>

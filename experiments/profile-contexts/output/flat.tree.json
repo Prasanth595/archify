@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "diagram_type": "tree",
+  "meta": {
+    "title": "flat · 完整上下文",
+    "locale": "zh-CN",
+    "subtitle": "node self / total · unknown"
+  },
+  "layout": {
+    "direction": "down",
+    "nodeW": 170,
+    "gapX": 24,
+    "gapY": 28
+  },
+  "nodes": [
+    {
+      "id": "flat-root",
+      "label": "技术 root",
+      "sublabel": "总权重 10 · 非函数"
+    },
+    {
+      "id": "flat-p01",
+      "label": "a",
+      "parent": "flat-root",
+      "sublabel": "self 1 / total 9"
+    },
+    {
+      "id": "flat-p02",
+      "label": "b",
+      "parent": "flat-root",
+      "sublabel": "self 1 / total 1"
+    },
+    {
+      "id": "flat-p03",
+      "label": "a;b",
+      "parent": "flat-p01",
+      "sublabel": "self 4 / total 8"
+    },
+    {
+      "id": "flat-p04",
+      "label": "a;b;c",
+      "parent": "flat-p03",
+      "sublabel": "self 4 / total 4"
+    }
+  ]
+}

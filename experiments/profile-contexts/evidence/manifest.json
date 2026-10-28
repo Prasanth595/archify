@@ -1,0 +1,448 @@
+{
+  "kind": "evidence packaging index; not a CLI receipt or new runtime observation",
+  "candidate": {
+    "path": "output/candidate.html",
+    "bytes": 1661053,
+    "sha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42"
+  },
+  "baseline": {
+    "path": "output/baseline.html",
+    "bytes": 20093,
+    "sha256": "c5d99514b65aa429bf7648b8bf200eaf7f882189816891aa3faa0831c50b0605"
+  },
+  "primaryImage": "evidence/browser/candidate-raw-tree-light.png",
+  "inspection": "All nine PNGs were viewed by coordinating Agent in Ego TaskSpace 12; no human acceptance claimed.",
+  "redaction": "Known private checkout and external evidence paths are replaced with angle-bracket placeholders. Raw originals remain external; raw/public hashes are separate. No image bytes changed.",
+  "files": [
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "ROOT-ACCEPTANCE.md",
+      "publicPath": "evidence/browser/ROOT-ACCEPTANCE.md",
+      "raw": {
+        "bytes": 2598,
+        "sha256": "41ec31bb411a376fb6e3e2f50ad18346e6758c647c77850dcb7a4c6b7d033a55"
+      },
+      "public": {
+        "bytes": 2598,
+        "sha256": "41ec31bb411a376fb6e3e2f50ad18346e6758c647c77850dcb7a4c6b7d033a55"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "baseline-complete-input-top.png",
+      "publicPath": "evidence/browser/baseline-complete-input-top.png",
+      "raw": {
+        "bytes": 104728,
+        "sha256": "fedadb893cfada9b95199c0ca099d2216c5e40f4e3540f4ccb4b2156b2fee130"
+      },
+      "public": {
+        "bytes": 104728,
+        "sha256": "fedadb893cfada9b95199c0ca099d2216c5e40f4e3540f4ccb4b2156b2fee130"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "c5d99514b65aa429bf7648b8bf200eaf7f882189816891aa3faa0831c50b0605",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "baseline-state.json",
+      "publicPath": "evidence/browser/baseline-state.json",
+      "raw": {
+        "bytes": 15152,
+        "sha256": "1c3ad5640ba8d88f11dacf324ae58f085a95a4b08e38aa55d0fe14db0aefd034"
+      },
+      "public": {
+        "bytes": 15100,
+        "sha256": "6e153ae6e12aa1fd1e84a23640ff5cc1c773786936df5c0dca19b9d12d56e20a"
+      },
+      "representation": "derived redacted text; original retained externally"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-exact-prefix-viewer.png",
+      "publicPath": "evidence/browser/candidate-exact-prefix-viewer.png",
+      "raw": {
+        "bytes": 120839,
+        "sha256": "3c8b21ce4429a3dbbfdda221f496e4c68c9cdbf36928484ea41afb2de6a09856"
+      },
+      "public": {
+        "bytes": 120839,
+        "sha256": "3c8b21ce4429a3dbbfdda221f496e4c68c9cdbf36928484ea41afb2de6a09856"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-flat-exact-context.png",
+      "publicPath": "evidence/browser/candidate-flat-exact-context.png",
+      "raw": {
+        "bytes": 123196,
+        "sha256": "c4a5e86c76a3b8474eca2c326597656e4e9519680f32ff29f4fe525695297756"
+      },
+      "public": {
+        "bytes": 123196,
+        "sha256": "c4a5e86c76a3b8474eca2c326597656e4e9519680f32ff29f4fe525695297756"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-json-tree-light.png",
+      "publicPath": "evidence/browser/candidate-json-tree-light.png",
+      "raw": {
+        "bytes": 111726,
+        "sha256": "fe0ac75d508b24e7fe5e2dd7f74a38c7fe6808cc2fde485e489ffdd5a3b208f2"
+      },
+      "public": {
+        "bytes": 111726,
+        "sha256": "fe0ac75d508b24e7fe5e2dd7f74a38c7fe6808cc2fde485e489ffdd5a3b208f2"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-mobile-viewer-dark.png",
+      "publicPath": "evidence/browser/candidate-mobile-viewer-dark.png",
+      "raw": {
+        "bytes": 45201,
+        "sha256": "de6d8cc68b30dc0380443f304ffcfd76429b7d41a442f7ac9ed166e83f2ddcb3"
+      },
+      "public": {
+        "bytes": 45201,
+        "sha256": "de6d8cc68b30dc0380443f304ffcfd76429b7d41a442f7ac9ed166e83f2ddcb3"
+      },
+      "representation": "unaltered original bytes",
+      "width": 390,
+      "height": 844,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-prefix-source-card.png",
+      "publicPath": "evidence/browser/candidate-prefix-source-card.png",
+      "raw": {
+        "bytes": 108258,
+        "sha256": "8ce1146d23718b8b5a76390b3247a689762332dffff3b94008518806f5ba3515"
+      },
+      "public": {
+        "bytes": 108258,
+        "sha256": "8ce1146d23718b8b5a76390b3247a689762332dffff3b94008518806f5ba3515"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-r04-detail-light.png",
+      "publicPath": "evidence/browser/candidate-r04-detail-light.png",
+      "raw": {
+        "bytes": 228306,
+        "sha256": "983ad999ec67c7626fe66e26dd281e02edaf9a3a8345b6dcb802713637fe27a7"
+      },
+      "public": {
+        "bytes": 228306,
+        "sha256": "983ad999ec67c7626fe66e26dd281e02edaf9a3a8345b6dcb802713637fe27a7"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-raw-mobile-dark.png",
+      "publicPath": "evidence/browser/candidate-raw-mobile-dark.png",
+      "raw": {
+        "bytes": 63231,
+        "sha256": "6d7b5e03cafb833eb8fe032f57f94c07d47234414c2e1acfdf1234bc08fce3ee"
+      },
+      "public": {
+        "bytes": 63231,
+        "sha256": "6d7b5e03cafb833eb8fe032f57f94c07d47234414c2e1acfdf1234bc08fce3ee"
+      },
+      "representation": "unaltered original bytes",
+      "width": 390,
+      "height": 844,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "candidate-raw-tree-light.png",
+      "publicPath": "evidence/browser/candidate-raw-tree-light.png",
+      "raw": {
+        "bytes": 90219,
+        "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f"
+      },
+      "public": {
+        "bytes": 90219,
+        "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f"
+      },
+      "representation": "unaltered original bytes",
+      "width": 1440,
+      "height": 1000,
+      "artifactSha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+      "imageEdited": false
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "image-bindings.json",
+      "publicPath": "evidence/browser/image-bindings.json",
+      "raw": {
+        "bytes": 2870,
+        "sha256": "27c139cf4ba392d5bb75a370aaf348edfb7d19ff8c945f64cc6707a5cbe426eb"
+      },
+      "public": {
+        "bytes": 2870,
+        "sha256": "27c139cf4ba392d5bb75a370aaf348edfb7d19ff8c945f64cc6707a5cbe426eb"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "keyboard-card-entry.json",
+      "publicPath": "evidence/browser/keyboard-card-entry.json",
+      "raw": {
+        "bytes": 929,
+        "sha256": "0bce229dd89afde24c7b5eb2acc22d618b15b0a0f9bf7afc81053969ce20b9eb"
+      },
+      "public": {
+        "bytes": 929,
+        "sha256": "0bce229dd89afde24c7b5eb2acc22d618b15b0a0f9bf7afc81053969ce20b9eb"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "mobile-fallback.json",
+      "publicPath": "evidence/browser/mobile-fallback.json",
+      "raw": {
+        "bytes": 609,
+        "sha256": "ba2cdc12599b8025d827020c63b9ad0e4036f2d676fcaaf7a6163fbd159975a7"
+      },
+      "public": {
+        "bytes": 609,
+        "sha256": "ba2cdc12599b8025d827020c63b9ad0e4036f2d676fcaaf7a6163fbd159975a7"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "native-viewer-return.json",
+      "publicPath": "evidence/browser/native-viewer-return.json",
+      "raw": {
+        "bytes": 228,
+        "sha256": "6bf15aad3f15ab42f74214b1548ad8c81173397d89a7b494dc82ee0a6cd2b7ce"
+      },
+      "public": {
+        "bytes": 228,
+        "sha256": "6bf15aad3f15ab42f74214b1548ad8c81173397d89a7b494dc82ee0a6cd2b7ce"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "raw-fixed-return.json",
+      "publicPath": "evidence/browser/raw-fixed-return.json",
+      "raw": {
+        "bytes": 848,
+        "sha256": "4107e4afae408af83667c17e01a7ce901dd68078e5d7af2b4d8bfeecdaec0956"
+      },
+      "public": {
+        "bytes": 848,
+        "sha256": "4107e4afae408af83667c17e01a7ce901dd68078e5d7af2b4d8bfeecdaec0956"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "raw-r04-r08-detail.json",
+      "publicPath": "evidence/browser/raw-r04-r08-detail.json",
+      "raw": {
+        "bytes": 638,
+        "sha256": "01e7c42eeafb18dafe492762799a8b2c8f240216820f543834d71e4cc71bff8b"
+      },
+      "public": {
+        "bytes": 638,
+        "sha256": "01e7c42eeafb18dafe492762799a8b2c8f240216820f543834d71e4cc71bff8b"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "coordinator Ego TaskSpace 12",
+      "sourceName": "raw-to-flat-viewer-mapping.json",
+      "publicPath": "evidence/browser/raw-to-flat-viewer-mapping.json",
+      "raw": {
+        "bytes": 222,
+        "sha256": "aef1144ada6bfd126fe56d032ac47f36de24891e58324993c57f916d5e3510d5"
+      },
+      "public": {
+        "bytes": 222,
+        "sha256": "aef1144ada6bfd126fe56d032ac47f36de24891e58324993c57f916d5e3510d5"
+      },
+      "representation": "unaltered original bytes"
+    },
+    {
+      "sourceCollection": "independent read-only Agent review",
+      "sourceName": "REVIEW.md",
+      "publicPath": "evidence/review/REVIEW.md",
+      "raw": {
+        "bytes": 9233,
+        "sha256": "096751f76fda037f95ab51d365b659a9e05ce3f10cc6c0684ed27424bb06d09c"
+      },
+      "public": {
+        "bytes": 9160,
+        "sha256": "a7c5a8dc1b277396abc3bf45288c3b2b025d086a3b425054fb52cefbf4591b25"
+      },
+      "representation": "derived redacted text; original retained externally",
+      "replayBoundary": "does not claim human review"
+    },
+    {
+      "sourceCollection": "independent read-only Agent review",
+      "sourceName": "final-delta.json",
+      "publicPath": "evidence/review/final-delta.json",
+      "raw": {
+        "bytes": 1865,
+        "sha256": "60578f265133a97fa58efcf6256d1fdeb84d679071f19dc20eef55010aa39b9f"
+      },
+      "public": {
+        "bytes": 1846,
+        "sha256": "c441f0ef137da55361fbe41016b3aa19b6fb27d3f9eff2c943a02839fa67317d"
+      },
+      "representation": "derived redacted text; original retained externally",
+      "replayBoundary": "does not claim human review"
+    },
+    {
+      "sourceCollection": "independent read-only Agent review",
+      "sourceName": "independent-oracle.json",
+      "publicPath": "evidence/review/independent-oracle.json",
+      "raw": {
+        "bytes": 29250,
+        "sha256": "566957cb7eb267ccca4dc8e9d555285b9f3611255d950ca97358c03b336f1244"
+      },
+      "public": {
+        "bytes": 29250,
+        "sha256": "566957cb7eb267ccca4dc8e9d555285b9f3611255d950ca97358c03b336f1244"
+      },
+      "representation": "unaltered original bytes",
+      "replayBoundary": "does not claim human review"
+    },
+    {
+      "sourceCollection": "independent read-only Agent review",
+      "sourceName": "independent_oracle.py",
+      "publicPath": "evidence/review/independent_oracle.py",
+      "raw": {
+        "bytes": 8042,
+        "sha256": "e95f0cecae9e4bfd183261eb12bed2d2e4db1b2c47e8bc330ef311e8497a1628"
+      },
+      "public": {
+        "bytes": 7959,
+        "sha256": "8b0027049e070d3c1b767c7adcb156dd0c537cf1f77f316dfe7da6e661d34dde"
+      },
+      "representation": "derived redacted text; original retained externally",
+      "replayBoundary": "recorded reviewer result; Python paths/snapshot locations require adaptation before replay"
+    }
+  ],
+  "preservedCore": {
+    "traverse.mjs": {
+      "bytes": 4131,
+      "sha256": "a43a773efc5d1d8fb54d9ec22afb60e82bf931f34b198f7fff145be3c5425cdc"
+    },
+    "profile-contexts.test.mjs": {
+      "bytes": 9179,
+      "sha256": "80794b693507e009533b76a86db9003780d86ab0ba1a9d9c88538001a513ab2e"
+    },
+    "verify.mjs": {
+      "bytes": 2223,
+      "sha256": "9f6514a2d779242dcef70d846de6488d3bc952cc1b999b8da0b1f694c3493f47"
+    },
+    "generate.mjs": {
+      "bytes": 17547,
+      "sha256": "5fb5aaeed41f520190ba40107051fac2783d5feaea23a124722ca381bcd6daf3"
+    },
+    "output/json.tree.json": {
+      "bytes": 904,
+      "sha256": "0b95afc89c8eb3f227d0c2346c0cad491364a1108e4fe45d8576188a9ba84edb"
+    },
+    "output/flat.tree.json": {
+      "bytes": 899,
+      "sha256": "575f7d46fb6750a6488e88add4292fc84f8c40d150b4ae856d37ef9ee3228cec"
+    },
+    "output/candidate.finalize-summary.json": {
+      "bytes": 2941,
+      "sha256": "98e90312817f2273ac06aee654d897ffbcacbac7f65db4594bd6c5a71106f19c"
+    },
+    "output/baseline.html": {
+      "bytes": 20093,
+      "sha256": "c5d99514b65aa429bf7648b8bf200eaf7f882189816891aa3faa0831c50b0605"
+    },
+    "output/candidate.explainer.json": {
+      "bytes": 74840,
+      "sha256": "a7c851ac9b936965a7e5bce72b9c77a4a03a40946b2d3143083d1590652c1500"
+    },
+    "output/candidate.finalize.json": {
+      "bytes": 26016,
+      "sha256": "47d4829ecc7443942372c6a475fe72b55e655390c12f04c3ad80150ad0bbe79c"
+    },
+    "output/raw.tree.json": {
+      "bytes": 1771,
+      "sha256": "7c9d884ac83be85ab5bbe2f1bd65aa699121518ba0926fadb0ad313aebcce2fa"
+    },
+    "output/keyboard-traversal.json": {
+      "bytes": 713601,
+      "sha256": "8e6c2c7df5a130996611e7795216ed11d8d03282714a367e8e6b3cbc3b5b2d8c"
+    },
+    "output/candidate.browser-check.json": {
+      "bytes": 4087410,
+      "sha256": "accaee36c3ed7d54225aa78d184f1d4b588a828e6323a4c35280e46a7b521ae3"
+    },
+    "output/candidate.html": {
+      "bytes": 1661053,
+      "sha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42"
+    },
+    "output/verification.json": {
+      "bytes": 890,
+      "sha256": "cc321a55e933083aa5aa2939d8f7466a92de10ba523a19639923d0ddbb3e0f56"
+    },
+    "output/ledger.json": {
+      "bytes": 50295,
+      "sha256": "a9c56435f79e035f39878d35db91863bedccf57e789b91ced3e76c1e23a4ee4a"
+    },
+    "output/candidate.delivery.json": {
+      "bytes": 1428,
+      "sha256": "bb5efc87d60f05f9d16207b25dd8ca419e1e0766e2db927a73f66c7e2355c00b"
+    },
+    "fixtures/recursion.txt": {
+      "bytes": 96,
+      "sha256": "5e6da30ddbe1e66f4e8a326236f2c9016484c61a6a7022b60389d94920fc4a57"
+    },
+    "fixtures/simple-sampled.speedscope.json": {
+      "bytes": 458,
+      "sha256": "6a4508cd712ee7a1a80929009d4a1b212cadfafd30831722ae6f195601f8967c"
+    },
+    "fixtures/LICENSE-speedscope": {
+      "bytes": 1067,
+      "sha256": "6244b13e9bf25cfd42d81c939d6c535d932596e8c320050234f2c2ac5a6f36a0"
+    }
+  }
+}

@@ -1,0 +1,2953 @@
+{
+  "provenance": {
+    "upstreamSHA": "fe804e6281cf847713448c2c3e0faec3e1f62b2d",
+    "sourceType": "complete upstream fixtures; no upstream execution",
+    "sources": [
+      {
+        "file": "recursion.txt",
+        "source": "sample/profiles/stackcollapse/recursion.txt",
+        "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/sample/profiles/stackcollapse/recursion.txt",
+        "bytes": 96,
+        "sha256": "5e6da30ddbe1e66f4e8a326236f2c9016484c61a6a7022b60389d94920fc4a57"
+      },
+      {
+        "file": "simple-sampled.speedscope.json",
+        "source": "sample/profiles/speedscope/0.1.2/simple-sampled.speedscope.json",
+        "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/sample/profiles/speedscope/0.1.2/simple-sampled.speedscope.json",
+        "bytes": 458,
+        "sha256": "6a4508cd712ee7a1a80929009d4a1b212cadfafd30831722ae6f195601f8967c"
+      },
+      {
+        "file": "LICENSE-speedscope",
+        "source": "LICENSE",
+        "url": "https://github.com/jlfwong/speedscope/blob/fe804e6281cf847713448c2c3e0faec3e1f62b2d/LICENSE",
+        "bytes": 1067,
+        "sha256": "6244b13e9bf25cfd42d81c939d6c535d932596e8c320050234f2c2ac5a6f36a0"
+      }
+    ]
+  },
+  "rawOccurrences": [
+    {
+      "id": "R01",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "a"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 1
+      },
+      "literal": "a;a 1"
+    },
+    {
+      "id": "R02",
+      "fixture": "raw",
+      "stack": [
+        "b",
+        "b"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 2
+      },
+      "literal": "b;b 1"
+    },
+    {
+      "id": "R03",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 3
+      },
+      "literal": "a;b 1"
+    },
+    {
+      "id": "R04",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 4
+      },
+      "literal": "a;b;a;b 1"
+    },
+    {
+      "id": "R05",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 5
+      },
+      "literal": "a;b;a;c 1"
+    },
+    {
+      "id": "R06",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 6
+      },
+      "literal": "a;b;a;b;a;b 1"
+    },
+    {
+      "id": "R07",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 7
+      },
+      "literal": "a;b;a;b;c 1"
+    },
+    {
+      "id": "R08",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 8
+      },
+      "literal": "a;b;a;b 1"
+    },
+    {
+      "id": "R09",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 9
+      },
+      "literal": "a;b;a;c 1"
+    },
+    {
+      "id": "R10",
+      "fixture": "raw",
+      "stack": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c"
+      ],
+      "weight": 1,
+      "unit": "unknown",
+      "source": {
+        "line": 10
+      },
+      "literal": "a;b;a;b;c 1"
+    }
+  ],
+  "jsonOccurrences": [
+    {
+      "id": "J01",
+      "fixture": "json",
+      "stack": [
+        0,
+        1,
+        2
+      ],
+      "weight": 1,
+      "unit": "seconds",
+      "source": {
+        "samplesLine": 11,
+        "weightsLine": 12,
+        "samplePointer": "/profiles/0/samples/0",
+        "weightPointer": "/profiles/0/weights/0"
+      },
+      "literal": "[0,1,2]",
+      "names": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "J02",
+      "fixture": "json",
+      "stack": [
+        0,
+        1,
+        2
+      ],
+      "weight": 1,
+      "unit": "seconds",
+      "source": {
+        "samplesLine": 11,
+        "weightsLine": 12,
+        "samplePointer": "/profiles/0/samples/1",
+        "weightPointer": "/profiles/0/weights/1"
+      },
+      "literal": "[0,1,2]",
+      "names": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "J03",
+      "fixture": "json",
+      "stack": [
+        0,
+        1,
+        3
+      ],
+      "weight": 4,
+      "unit": "seconds",
+      "source": {
+        "samplesLine": 11,
+        "weightsLine": 12,
+        "samplePointer": "/profiles/0/samples/2",
+        "weightPointer": "/profiles/0/weights/2"
+      },
+      "literal": "[0,1,3]",
+      "names": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    {
+      "id": "J04",
+      "fixture": "json",
+      "stack": [
+        0,
+        1,
+        2
+      ],
+      "weight": 3,
+      "unit": "seconds",
+      "source": {
+        "samplesLine": 11,
+        "weightsLine": 12,
+        "samplePointer": "/profiles/0/samples/3",
+        "weightPointer": "/profiles/0/weights/3"
+      },
+      "literal": "[0,1,2]",
+      "names": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "J05",
+      "fixture": "json",
+      "stack": [
+        0,
+        1
+      ],
+      "weight": 5,
+      "unit": "seconds",
+      "source": {
+        "samplesLine": 11,
+        "weightsLine": 12,
+        "samplePointer": "/profiles/0/samples/4",
+        "weightPointer": "/profiles/0/weights/4"
+      },
+      "literal": "[0,1]",
+      "names": [
+        "a",
+        "b"
+      ]
+    }
+  ],
+  "raw": {
+    "namespace": "raw",
+    "unit": "unknown",
+    "totalWeight": 10,
+    "occurrenceCount": 10,
+    "contexts": [
+      {
+        "id": "raw-p01",
+        "prefix": [
+          "a"
+        ],
+        "self": 0,
+        "total": 9,
+        "rows": [
+          "R01",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10"
+        ],
+        "selfRows": []
+      },
+      {
+        "id": "raw-p02",
+        "prefix": [
+          "a",
+          "a"
+        ],
+        "self": 1,
+        "total": 1,
+        "rows": [
+          "R01"
+        ],
+        "selfRows": [
+          "R01"
+        ]
+      },
+      {
+        "id": "raw-p03",
+        "prefix": [
+          "b"
+        ],
+        "self": 0,
+        "total": 1,
+        "rows": [
+          "R02"
+        ],
+        "selfRows": []
+      },
+      {
+        "id": "raw-p04",
+        "prefix": [
+          "b",
+          "b"
+        ],
+        "self": 1,
+        "total": 1,
+        "rows": [
+          "R02"
+        ],
+        "selfRows": [
+          "R02"
+        ]
+      },
+      {
+        "id": "raw-p05",
+        "prefix": [
+          "a",
+          "b"
+        ],
+        "self": 1,
+        "total": 8,
+        "rows": [
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10"
+        ],
+        "selfRows": [
+          "R03"
+        ]
+      },
+      {
+        "id": "raw-p06",
+        "prefix": [
+          "a",
+          "b",
+          "a"
+        ],
+        "self": 0,
+        "total": 7,
+        "rows": [
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10"
+        ],
+        "selfRows": []
+      },
+      {
+        "id": "raw-p07",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "self": 2,
+        "total": 5,
+        "rows": [
+          "R04",
+          "R06",
+          "R07",
+          "R08",
+          "R10"
+        ],
+        "selfRows": [
+          "R04",
+          "R08"
+        ]
+      },
+      {
+        "id": "raw-p08",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "self": 2,
+        "total": 2,
+        "rows": [
+          "R05",
+          "R09"
+        ],
+        "selfRows": [
+          "R05",
+          "R09"
+        ]
+      },
+      {
+        "id": "raw-p09",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        "self": 0,
+        "total": 1,
+        "rows": [
+          "R06"
+        ],
+        "selfRows": []
+      },
+      {
+        "id": "raw-p10",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "self": 1,
+        "total": 1,
+        "rows": [
+          "R06"
+        ],
+        "selfRows": [
+          "R06"
+        ]
+      },
+      {
+        "id": "raw-p11",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "self": 2,
+        "total": 2,
+        "rows": [
+          "R07",
+          "R10"
+        ],
+        "selfRows": [
+          "R07",
+          "R10"
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "key": "a",
+        "name": "a",
+        "self": 1,
+        "total": 9,
+        "rows": [
+          "R01",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10"
+        ],
+        "selfRows": [
+          "R01"
+        ]
+      },
+      {
+        "key": "b",
+        "name": "b",
+        "self": 5,
+        "total": 9,
+        "rows": [
+          "R02",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10"
+        ],
+        "selfRows": [
+          "R02",
+          "R03",
+          "R04",
+          "R06",
+          "R08"
+        ]
+      },
+      {
+        "key": "c",
+        "name": "c",
+        "self": 4,
+        "total": 4,
+        "rows": [
+          "R05",
+          "R07",
+          "R09",
+          "R10"
+        ],
+        "selfRows": [
+          "R05",
+          "R07",
+          "R09",
+          "R10"
+        ]
+      }
+    ]
+  },
+  "flat": {
+    "model": {
+      "namespace": "flat",
+      "unit": "unknown",
+      "totalWeight": 10,
+      "occurrenceCount": 10,
+      "contexts": [
+        {
+          "id": "flat-p01",
+          "prefix": [
+            "a"
+          ],
+          "self": 1,
+          "total": 9,
+          "rows": [
+            "R01",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R01"
+          ]
+        },
+        {
+          "id": "flat-p02",
+          "prefix": [
+            "b"
+          ],
+          "self": 1,
+          "total": 1,
+          "rows": [
+            "R02"
+          ],
+          "selfRows": [
+            "R02"
+          ]
+        },
+        {
+          "id": "flat-p03",
+          "prefix": [
+            "a",
+            "b"
+          ],
+          "self": 4,
+          "total": 8,
+          "rows": [
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R03",
+            "R04",
+            "R06",
+            "R08"
+          ]
+        },
+        {
+          "id": "flat-p04",
+          "prefix": [
+            "a",
+            "b",
+            "c"
+          ],
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "R05",
+            "R07",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R05",
+            "R07",
+            "R09",
+            "R10"
+          ]
+        }
+      ],
+      "frames": [
+        {
+          "key": "a",
+          "name": "a",
+          "self": 1,
+          "total": 9,
+          "rows": [
+            "R01",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R01"
+          ]
+        },
+        {
+          "key": "b",
+          "name": "b",
+          "self": 5,
+          "total": 9,
+          "rows": [
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R02",
+            "R03",
+            "R04",
+            "R06",
+            "R08"
+          ]
+        },
+        {
+          "key": "c",
+          "name": "c",
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "R05",
+            "R07",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R05",
+            "R07",
+            "R09",
+            "R10"
+          ]
+        }
+      ],
+      "framesBeforeOverwrite": [
+        {
+          "key": "a",
+          "name": "a",
+          "self": 1,
+          "total": 9,
+          "rows": [
+            "R01",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R01"
+          ]
+        },
+        {
+          "key": "b",
+          "name": "b",
+          "self": 5,
+          "total": 9,
+          "rows": [
+            "R02",
+            "R03",
+            "R04",
+            "R05",
+            "R06",
+            "R07",
+            "R08",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R02",
+            "R03",
+            "R04",
+            "R06",
+            "R08"
+          ]
+        },
+        {
+          "key": "c",
+          "name": "c",
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "R05",
+            "R07",
+            "R09",
+            "R10"
+          ],
+          "selfRows": [
+            "R05",
+            "R07",
+            "R09",
+            "R10"
+          ]
+        }
+      ],
+      "frameWeightPolicy": "original Frame self/total overwrite; context node weights stay flattened",
+      "eventIntervals": [
+        {
+          "stack": [
+            "a"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "b"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b"
+          ],
+          "weight": 2
+        },
+        {
+          "stack": [
+            "a",
+            "b",
+            "c"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b",
+            "c"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b",
+            "c"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b",
+            "c"
+          ],
+          "weight": 1
+        }
+      ]
+    },
+    "occurrences": [
+      {
+        "id": "R01",
+        "fixture": "raw",
+        "stack": [
+          "a"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 1
+        },
+        "literal": "a;a 1"
+      },
+      {
+        "id": "R02",
+        "fixture": "raw",
+        "stack": [
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 2
+        },
+        "literal": "b;b 1"
+      },
+      {
+        "id": "R03",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 3
+        },
+        "literal": "a;b 1"
+      },
+      {
+        "id": "R04",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 4
+        },
+        "literal": "a;b;a;b 1"
+      },
+      {
+        "id": "R05",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b",
+          "c"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 5
+        },
+        "literal": "a;b;a;c 1"
+      },
+      {
+        "id": "R06",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 6
+        },
+        "literal": "a;b;a;b;a;b 1"
+      },
+      {
+        "id": "R07",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b",
+          "c"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 7
+        },
+        "literal": "a;b;a;b;c 1"
+      },
+      {
+        "id": "R08",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 8
+        },
+        "literal": "a;b;a;b 1"
+      },
+      {
+        "id": "R09",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b",
+          "c"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 9
+        },
+        "literal": "a;b;a;c 1"
+      },
+      {
+        "id": "R10",
+        "fixture": "raw",
+        "stack": [
+          "a",
+          "b",
+          "c"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 10
+        },
+        "literal": "a;b;a;b;c 1"
+      }
+    ],
+    "trace": [
+      {
+        "id": "R01",
+        "interval": [
+          0,
+          1
+        ],
+        "original": [
+          "a",
+          "a"
+        ],
+        "retained": [
+          "a"
+        ],
+        "suppressed": [
+          2
+        ]
+      },
+      {
+        "id": "R02",
+        "interval": [
+          1,
+          2
+        ],
+        "original": [
+          "b",
+          "b"
+        ],
+        "retained": [
+          "b"
+        ],
+        "suppressed": [
+          2
+        ]
+      },
+      {
+        "id": "R03",
+        "interval": [
+          2,
+          3
+        ],
+        "original": [
+          "a",
+          "b"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": []
+      },
+      {
+        "id": "R04",
+        "interval": [
+          3,
+          4
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "R05",
+        "interval": [
+          4,
+          5
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "retained": [
+          "a",
+          "b",
+          "c"
+        ],
+        "suppressed": [
+          3
+        ]
+      },
+      {
+        "id": "R06",
+        "interval": [
+          5,
+          6
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": [
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "id": "R07",
+        "interval": [
+          6,
+          7
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "retained": [
+          "a",
+          "b",
+          "c"
+        ],
+        "suppressed": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "R08",
+        "interval": [
+          7,
+          8
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "R09",
+        "interval": [
+          8,
+          9
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "retained": [
+          "a",
+          "b",
+          "c"
+        ],
+        "suppressed": [
+          3
+        ]
+      },
+      {
+        "id": "R10",
+        "interval": [
+          9,
+          10
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "retained": [
+          "a",
+          "b",
+          "c"
+        ],
+        "suppressed": [
+          3,
+          4
+        ]
+      }
+    ],
+    "events": [
+      {
+        "at": 0,
+        "action": "open",
+        "prefix": [
+          "a"
+        ],
+        "frame": "a",
+        "effect": "enter",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 0,
+        "action": "open",
+        "prefix": [
+          "a",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppress: push null",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 1,
+        "action": "close",
+        "prefix": [
+          "a",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 1,
+        "action": "close",
+        "prefix": [
+          "a"
+        ],
+        "frame": "a",
+        "effect": "leave",
+        "active": []
+      },
+      {
+        "at": 1,
+        "action": "open",
+        "prefix": [
+          "b"
+        ],
+        "frame": "b",
+        "effect": "enter",
+        "active": [
+          "b"
+        ]
+      },
+      {
+        "at": 1,
+        "action": "open",
+        "prefix": [
+          "b",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppress: push null",
+        "active": [
+          "b"
+        ]
+      },
+      {
+        "at": 2,
+        "action": "close",
+        "prefix": [
+          "b",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppressed: no leave",
+        "active": [
+          "b"
+        ]
+      },
+      {
+        "at": 2,
+        "action": "close",
+        "prefix": [
+          "b"
+        ],
+        "frame": "b",
+        "effect": "leave",
+        "active": []
+      },
+      {
+        "at": 2,
+        "action": "open",
+        "prefix": [
+          "a"
+        ],
+        "frame": "a",
+        "effect": "enter",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 2,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "enter",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 3,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 3,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 4,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 4,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "enter",
+        "active": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "at": 5,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 5,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 5,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 5,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 6,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 6,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 6,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "enter",
+        "active": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "at": 7,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 8,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 8,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "enter",
+        "active": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "at": 9,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 9,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 9,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "enter",
+        "active": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "at": 10,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "c"
+        ],
+        "frame": "c",
+        "effect": "leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 10,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 10,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 10,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "leave",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 10,
+        "action": "close",
+        "prefix": [
+          "a"
+        ],
+        "frame": "a",
+        "effect": "leave",
+        "active": []
+      }
+    ]
+  },
+  "json": {
+    "namespace": "json",
+    "unit": "seconds",
+    "totalWeight": 14,
+    "occurrenceCount": 5,
+    "contexts": [
+      {
+        "id": "json-p01",
+        "prefix": [
+          0
+        ],
+        "self": 0,
+        "total": 14,
+        "rows": [
+          "J01",
+          "J02",
+          "J03",
+          "J04",
+          "J05"
+        ],
+        "selfRows": []
+      },
+      {
+        "id": "json-p02",
+        "prefix": [
+          0,
+          1
+        ],
+        "self": 5,
+        "total": 14,
+        "rows": [
+          "J01",
+          "J02",
+          "J03",
+          "J04",
+          "J05"
+        ],
+        "selfRows": [
+          "J05"
+        ]
+      },
+      {
+        "id": "json-p03",
+        "prefix": [
+          0,
+          1,
+          2
+        ],
+        "self": 5,
+        "total": 5,
+        "rows": [
+          "J01",
+          "J02",
+          "J04"
+        ],
+        "selfRows": [
+          "J01",
+          "J02",
+          "J04"
+        ]
+      },
+      {
+        "id": "json-p04",
+        "prefix": [
+          0,
+          1,
+          3
+        ],
+        "self": 4,
+        "total": 4,
+        "rows": [
+          "J03"
+        ],
+        "selfRows": [
+          "J03"
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "key": 0,
+        "name": "a",
+        "self": 0,
+        "total": 14,
+        "rows": [
+          "J01",
+          "J02",
+          "J03",
+          "J04",
+          "J05"
+        ],
+        "selfRows": []
+      },
+      {
+        "key": 1,
+        "name": "b",
+        "self": 5,
+        "total": 14,
+        "rows": [
+          "J01",
+          "J02",
+          "J03",
+          "J04",
+          "J05"
+        ],
+        "selfRows": [
+          "J05"
+        ]
+      },
+      {
+        "key": 2,
+        "name": "c",
+        "self": 5,
+        "total": 5,
+        "rows": [
+          "J01",
+          "J02",
+          "J04"
+        ],
+        "selfRows": [
+          "J01",
+          "J02",
+          "J04"
+        ]
+      },
+      {
+        "key": 3,
+        "name": "d",
+        "self": 4,
+        "total": 4,
+        "rows": [
+          "J03"
+        ],
+        "selfRows": [
+          "J03"
+        ]
+      }
+    ]
+  },
+  "jsonFlat": {
+    "model": {
+      "namespace": "json-flat",
+      "unit": "seconds",
+      "totalWeight": 14,
+      "occurrenceCount": 5,
+      "contexts": [
+        {
+          "id": "json-flat-p01",
+          "prefix": [
+            0
+          ],
+          "self": 0,
+          "total": 14,
+          "rows": [
+            "J01",
+            "J02",
+            "J03",
+            "J04",
+            "J05"
+          ],
+          "selfRows": []
+        },
+        {
+          "id": "json-flat-p02",
+          "prefix": [
+            0,
+            1
+          ],
+          "self": 5,
+          "total": 14,
+          "rows": [
+            "J01",
+            "J02",
+            "J03",
+            "J04",
+            "J05"
+          ],
+          "selfRows": [
+            "J05"
+          ]
+        },
+        {
+          "id": "json-flat-p03",
+          "prefix": [
+            0,
+            1,
+            2
+          ],
+          "self": 5,
+          "total": 5,
+          "rows": [
+            "J01",
+            "J02",
+            "J04"
+          ],
+          "selfRows": [
+            "J01",
+            "J02",
+            "J04"
+          ]
+        },
+        {
+          "id": "json-flat-p04",
+          "prefix": [
+            0,
+            1,
+            3
+          ],
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "J03"
+          ],
+          "selfRows": [
+            "J03"
+          ]
+        }
+      ],
+      "frames": [
+        {
+          "key": 0,
+          "name": "a",
+          "self": 0,
+          "total": 14,
+          "rows": [
+            "J01",
+            "J02",
+            "J03",
+            "J04",
+            "J05"
+          ],
+          "selfRows": []
+        },
+        {
+          "key": 1,
+          "name": "b",
+          "self": 5,
+          "total": 14,
+          "rows": [
+            "J01",
+            "J02",
+            "J03",
+            "J04",
+            "J05"
+          ],
+          "selfRows": [
+            "J05"
+          ]
+        },
+        {
+          "key": 2,
+          "name": "c",
+          "self": 5,
+          "total": 5,
+          "rows": [
+            "J01",
+            "J02",
+            "J04"
+          ],
+          "selfRows": [
+            "J01",
+            "J02",
+            "J04"
+          ]
+        },
+        {
+          "key": 3,
+          "name": "d",
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "J03"
+          ],
+          "selfRows": [
+            "J03"
+          ]
+        }
+      ],
+      "framesBeforeOverwrite": [
+        {
+          "key": 0,
+          "name": "a",
+          "self": 0,
+          "total": 14,
+          "rows": [
+            "J01",
+            "J02",
+            "J03",
+            "J04",
+            "J05"
+          ],
+          "selfRows": []
+        },
+        {
+          "key": 1,
+          "name": "b",
+          "self": 5,
+          "total": 14,
+          "rows": [
+            "J01",
+            "J02",
+            "J03",
+            "J04",
+            "J05"
+          ],
+          "selfRows": [
+            "J05"
+          ]
+        },
+        {
+          "key": 2,
+          "name": "c",
+          "self": 5,
+          "total": 5,
+          "rows": [
+            "J01",
+            "J02",
+            "J04"
+          ],
+          "selfRows": [
+            "J01",
+            "J02",
+            "J04"
+          ]
+        },
+        {
+          "key": 3,
+          "name": "d",
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "J03"
+          ],
+          "selfRows": [
+            "J03"
+          ]
+        }
+      ],
+      "frameWeightPolicy": "original Frame self/total overwrite; context node weights stay flattened",
+      "eventIntervals": [
+        {
+          "stack": [
+            0,
+            1,
+            2
+          ],
+          "weight": 2
+        },
+        {
+          "stack": [
+            0,
+            1,
+            3
+          ],
+          "weight": 4
+        },
+        {
+          "stack": [
+            0,
+            1,
+            2
+          ],
+          "weight": 3
+        },
+        {
+          "stack": [
+            0,
+            1
+          ],
+          "weight": 5
+        }
+      ]
+    },
+    "occurrences": [
+      {
+        "id": "J01",
+        "fixture": "json",
+        "stack": [
+          0,
+          1,
+          2
+        ],
+        "weight": 1,
+        "unit": "seconds",
+        "source": {
+          "samplesLine": 11,
+          "weightsLine": 12,
+          "samplePointer": "/profiles/0/samples/0",
+          "weightPointer": "/profiles/0/weights/0"
+        },
+        "literal": "[0,1,2]",
+        "names": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "J02",
+        "fixture": "json",
+        "stack": [
+          0,
+          1,
+          2
+        ],
+        "weight": 1,
+        "unit": "seconds",
+        "source": {
+          "samplesLine": 11,
+          "weightsLine": 12,
+          "samplePointer": "/profiles/0/samples/1",
+          "weightPointer": "/profiles/0/weights/1"
+        },
+        "literal": "[0,1,2]",
+        "names": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "J03",
+        "fixture": "json",
+        "stack": [
+          0,
+          1,
+          3
+        ],
+        "weight": 4,
+        "unit": "seconds",
+        "source": {
+          "samplesLine": 11,
+          "weightsLine": 12,
+          "samplePointer": "/profiles/0/samples/2",
+          "weightPointer": "/profiles/0/weights/2"
+        },
+        "literal": "[0,1,3]",
+        "names": [
+          "a",
+          "b",
+          "d"
+        ]
+      },
+      {
+        "id": "J04",
+        "fixture": "json",
+        "stack": [
+          0,
+          1,
+          2
+        ],
+        "weight": 3,
+        "unit": "seconds",
+        "source": {
+          "samplesLine": 11,
+          "weightsLine": 12,
+          "samplePointer": "/profiles/0/samples/3",
+          "weightPointer": "/profiles/0/weights/3"
+        },
+        "literal": "[0,1,2]",
+        "names": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      {
+        "id": "J05",
+        "fixture": "json",
+        "stack": [
+          0,
+          1
+        ],
+        "weight": 5,
+        "unit": "seconds",
+        "source": {
+          "samplesLine": 11,
+          "weightsLine": 12,
+          "samplePointer": "/profiles/0/samples/4",
+          "weightPointer": "/profiles/0/weights/4"
+        },
+        "literal": "[0,1]",
+        "names": [
+          "a",
+          "b"
+        ]
+      }
+    ],
+    "trace": [
+      {
+        "id": "J01",
+        "interval": [
+          0,
+          1
+        ],
+        "original": [
+          0,
+          1,
+          2
+        ],
+        "retained": [
+          0,
+          1,
+          2
+        ],
+        "suppressed": []
+      },
+      {
+        "id": "J02",
+        "interval": [
+          1,
+          2
+        ],
+        "original": [
+          0,
+          1,
+          2
+        ],
+        "retained": [
+          0,
+          1,
+          2
+        ],
+        "suppressed": []
+      },
+      {
+        "id": "J03",
+        "interval": [
+          2,
+          6
+        ],
+        "original": [
+          0,
+          1,
+          3
+        ],
+        "retained": [
+          0,
+          1,
+          3
+        ],
+        "suppressed": []
+      },
+      {
+        "id": "J04",
+        "interval": [
+          6,
+          9
+        ],
+        "original": [
+          0,
+          1,
+          2
+        ],
+        "retained": [
+          0,
+          1,
+          2
+        ],
+        "suppressed": []
+      },
+      {
+        "id": "J05",
+        "interval": [
+          9,
+          14
+        ],
+        "original": [
+          0,
+          1
+        ],
+        "retained": [
+          0,
+          1
+        ],
+        "suppressed": []
+      }
+    ],
+    "events": [
+      {
+        "at": 0,
+        "action": "open",
+        "prefix": [
+          0
+        ],
+        "frame": 0,
+        "effect": "enter",
+        "active": [
+          0
+        ]
+      },
+      {
+        "at": 0,
+        "action": "open",
+        "prefix": [
+          0,
+          1
+        ],
+        "frame": 1,
+        "effect": "enter",
+        "active": [
+          0,
+          1
+        ]
+      },
+      {
+        "at": 0,
+        "action": "open",
+        "prefix": [
+          0,
+          1,
+          2
+        ],
+        "frame": 2,
+        "effect": "enter",
+        "active": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "at": 2,
+        "action": "close",
+        "prefix": [
+          0,
+          1,
+          2
+        ],
+        "frame": 2,
+        "effect": "leave",
+        "active": [
+          0,
+          1
+        ]
+      },
+      {
+        "at": 2,
+        "action": "open",
+        "prefix": [
+          0,
+          1,
+          3
+        ],
+        "frame": 3,
+        "effect": "enter",
+        "active": [
+          0,
+          1,
+          3
+        ]
+      },
+      {
+        "at": 6,
+        "action": "close",
+        "prefix": [
+          0,
+          1,
+          3
+        ],
+        "frame": 3,
+        "effect": "leave",
+        "active": [
+          0,
+          1
+        ]
+      },
+      {
+        "at": 6,
+        "action": "open",
+        "prefix": [
+          0,
+          1,
+          2
+        ],
+        "frame": 2,
+        "effect": "enter",
+        "active": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "at": 9,
+        "action": "close",
+        "prefix": [
+          0,
+          1,
+          2
+        ],
+        "frame": 2,
+        "effect": "leave",
+        "active": [
+          0,
+          1
+        ]
+      },
+      {
+        "at": 14,
+        "action": "close",
+        "prefix": [
+          0,
+          1
+        ],
+        "frame": 1,
+        "effect": "leave",
+        "active": [
+          0
+        ]
+      },
+      {
+        "at": 14,
+        "action": "close",
+        "prefix": [
+          0
+        ],
+        "frame": 0,
+        "effect": "leave",
+        "active": []
+      }
+    ]
+  },
+  "counterexample": {
+    "kind": "complete four-line source comment, not a captured fixture",
+    "text": "a 1\na;b;a 1\na;b;a;b;a 1\na;b;a 1\n",
+    "model": {
+      "namespace": "comment-flat",
+      "unit": "unknown",
+      "totalWeight": 4,
+      "occurrenceCount": 4,
+      "contexts": [
+        {
+          "id": "comment-flat-p01",
+          "prefix": [
+            "a"
+          ],
+          "self": 1,
+          "total": 4,
+          "rows": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "selfRows": [
+            "R01"
+          ]
+        },
+        {
+          "id": "comment-flat-p02",
+          "prefix": [
+            "a",
+            "b"
+          ],
+          "self": 3,
+          "total": 3,
+          "rows": [
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "selfRows": [
+            "R02",
+            "R03",
+            "R04"
+          ]
+        }
+      ],
+      "frames": [
+        {
+          "key": "a",
+          "name": "a",
+          "self": 4,
+          "total": 4,
+          "rows": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "selfRows": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ]
+        },
+        {
+          "key": "b",
+          "name": "b",
+          "self": 0,
+          "total": 3,
+          "rows": [
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "selfRows": []
+        }
+      ],
+      "framesBeforeOverwrite": [
+        {
+          "key": "a",
+          "name": "a",
+          "self": 1,
+          "total": 4,
+          "rows": [
+            "R01",
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "selfRows": [
+            "R01"
+          ]
+        },
+        {
+          "key": "b",
+          "name": "b",
+          "self": 3,
+          "total": 3,
+          "rows": [
+            "R02",
+            "R03",
+            "R04"
+          ],
+          "selfRows": [
+            "R02",
+            "R03",
+            "R04"
+          ]
+        }
+      ],
+      "frameWeightPolicy": "original Frame self/total overwrite; context node weights stay flattened",
+      "eventIntervals": [
+        {
+          "stack": [
+            "a"
+          ],
+          "weight": 1
+        },
+        {
+          "stack": [
+            "a",
+            "b"
+          ],
+          "weight": 3
+        }
+      ]
+    },
+    "occurrences": [
+      {
+        "id": "R01",
+        "fixture": "comment",
+        "stack": [
+          "a"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 1
+        },
+        "literal": "a 1"
+      },
+      {
+        "id": "R02",
+        "fixture": "comment",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 2
+        },
+        "literal": "a;b;a 1"
+      },
+      {
+        "id": "R03",
+        "fixture": "comment",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 3
+        },
+        "literal": "a;b;a;b;a 1"
+      },
+      {
+        "id": "R04",
+        "fixture": "comment",
+        "stack": [
+          "a",
+          "b"
+        ],
+        "weight": 1,
+        "unit": "unknown",
+        "source": {
+          "line": 4
+        },
+        "literal": "a;b;a 1"
+      }
+    ],
+    "trace": [
+      {
+        "id": "R01",
+        "interval": [
+          0,
+          1
+        ],
+        "original": [
+          "a"
+        ],
+        "retained": [
+          "a"
+        ],
+        "suppressed": []
+      },
+      {
+        "id": "R02",
+        "interval": [
+          1,
+          2
+        ],
+        "original": [
+          "a",
+          "b",
+          "a"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": [
+          3
+        ]
+      },
+      {
+        "id": "R03",
+        "interval": [
+          2,
+          3
+        ],
+        "original": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": [
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "id": "R04",
+        "interval": [
+          3,
+          4
+        ],
+        "original": [
+          "a",
+          "b",
+          "a"
+        ],
+        "retained": [
+          "a",
+          "b"
+        ],
+        "suppressed": [
+          3
+        ]
+      }
+    ],
+    "events": [
+      {
+        "at": 0,
+        "action": "open",
+        "prefix": [
+          "a"
+        ],
+        "frame": "a",
+        "effect": "enter",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 1,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "enter",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 1,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 2,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 2,
+        "action": "open",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppress: push null",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 3,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 3,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 4,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b",
+          "a"
+        ],
+        "frame": "a",
+        "effect": "suppressed: no leave",
+        "active": [
+          "a",
+          "b"
+        ]
+      },
+      {
+        "at": 4,
+        "action": "close",
+        "prefix": [
+          "a",
+          "b"
+        ],
+        "frame": "b",
+        "effect": "leave",
+        "active": [
+          "a"
+        ]
+      },
+      {
+        "at": 4,
+        "action": "close",
+        "prefix": [
+          "a"
+        ],
+        "frame": "a",
+        "effect": "leave",
+        "active": []
+      }
+    ]
+  },
+  "rawToFlat": [
+    {
+      "raw": "raw-p01",
+      "prefix": [
+        "a"
+      ],
+      "targets": [
+        "flat-p01"
+      ]
+    },
+    {
+      "raw": "raw-p02",
+      "prefix": [
+        "a",
+        "a"
+      ],
+      "targets": [
+        "flat-p01"
+      ]
+    },
+    {
+      "raw": "raw-p03",
+      "prefix": [
+        "b"
+      ],
+      "targets": [
+        "flat-p02"
+      ]
+    },
+    {
+      "raw": "raw-p04",
+      "prefix": [
+        "b",
+        "b"
+      ],
+      "targets": [
+        "flat-p02"
+      ]
+    },
+    {
+      "raw": "raw-p05",
+      "prefix": [
+        "a",
+        "b"
+      ],
+      "targets": [
+        "flat-p03"
+      ]
+    },
+    {
+      "raw": "raw-p06",
+      "prefix": [
+        "a",
+        "b",
+        "a"
+      ],
+      "targets": [
+        "flat-p03"
+      ]
+    },
+    {
+      "raw": "raw-p07",
+      "prefix": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "targets": [
+        "flat-p03"
+      ]
+    },
+    {
+      "raw": "raw-p08",
+      "prefix": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ],
+      "targets": [
+        "flat-p04"
+      ]
+    },
+    {
+      "raw": "raw-p09",
+      "prefix": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "targets": [
+        "flat-p03"
+      ]
+    },
+    {
+      "raw": "raw-p10",
+      "prefix": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "targets": [
+        "flat-p03"
+      ]
+    },
+    {
+      "raw": "raw-p11",
+      "prefix": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c"
+      ],
+      "targets": [
+        "flat-p04"
+      ]
+    }
+  ]
+}

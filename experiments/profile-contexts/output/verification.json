@@ -1,0 +1,33 @@
+{
+  "kind": "derived portable summary; raw CLI receipts retained outside public output",
+  "node": "v22.23.3",
+  "base": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "tests": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "finalizeStatus": "fail",
+  "standaloneCheck": {
+    "ok": true
+  },
+  "artifact": {
+    "path": "candidate.html",
+    "sha256": "5d03c4718122850733b5db2e72d6fb8148c5faa3b9dd55dbf31e685862996c42",
+    "bytes": 1661053
+  },
+  "diagnosticCodes": [
+    "explainer/browser-keyboard-traversal"
+  ],
+  "diagnosticCount": 68,
+  "keyboardEvidence": "keyboard-traversal.json",
+  "visualReview": "pending root Ego inspection",
+  "ci": "not-run",
+  "limitations": "Continued actual Tab evidence does not rewrite a failed public browser-check gate."
+}

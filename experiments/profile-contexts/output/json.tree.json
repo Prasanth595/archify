@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "diagram_type": "tree",
+  "meta": {
+    "title": "json · 完整上下文",
+    "locale": "zh-CN",
+    "subtitle": "node self / total · seconds"
+  },
+  "layout": {
+    "direction": "down",
+    "nodeW": 170,
+    "gapX": 24,
+    "gapY": 28
+  },
+  "nodes": [
+    {
+      "id": "json-root",
+      "label": "技术 root",
+      "sublabel": "总权重 14 · 非函数"
+    },
+    {
+      "id": "json-p01",
+      "label": "a",
+      "parent": "json-root",
+      "sublabel": "self 0 / total 14"
+    },
+    {
+      "id": "json-p02",
+      "label": "a;b",
+      "parent": "json-p01",
+      "sublabel": "self 5 / total 14"
+    },
+    {
+      "id": "json-p03",
+      "label": "a;b;c",
+      "parent": "json-p02",
+      "sublabel": "self 5 / total 5"
+    },
+    {
+      "id": "json-p04",
+      "label": "a;b;d",
+      "parent": "json-p02",
+      "sublabel": "self 4 / total 4"
+    }
+  ]
+}
