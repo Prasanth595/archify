@@ -1,47 +1,44 @@
 {
-  "kind": "derived browser evidence for fixed56 gallery; original JSON and PNG linked separately",
-  "status": "root-browser-observed-remote-delivered",
+  "kind": "derived browser evidence for fixed58 gallery; root receipt and original scenario JSON/PNG linked separately",
+  "status": "root-browser-observed-prepared-local-bound",
   "delivery": {
-    "artifactCommit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
-    "sourceHub": "Remote delivered within fixed artifact commit; sourceHubCommit remains the immutable build input.",
-    "gallery": "Root pushed and git ls-remote read back the exact artifact commit.",
-    "remoteVerificationProvenance": "Derived from root-reported read-only git ls-remote verification; no raw response embedded.",
-    "experiment": "Root verified remote head bec8671465ff9ce6a2c471196907fc741f52dc53; zero checks/runs is not CI success.",
-    "limits": "Remote push/readback is not a merge, installation, product release, new CI pass or new browser observation."
+    "sourceHub": "prepared/local-bound; awaiting root push and exact remote verification",
+    "gallery": "prepared/local-bound; awaiting root push and exact remote verification",
+    "experiments": "Root verified both final branch heads; zero checks/statuses is not CI success."
   },
-  "hubSourceCommit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+  "hubSourceCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
   "hubReadme": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
-    "sha256": "a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3",
-    "bytes": 69757,
-    "gitBlob": "a6b63ef8da8a0478bae5cec94b15ba0c0ff75be6"
+    "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
+    "sha256": "2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a",
+    "bytes": 71968,
+    "gitBlob": "42cea00d10437099cd5de3080ba65e70f8bbf855"
   },
   "artifacts": {
     "index.html": {
       "path": "index.html",
-      "sha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
-      "bytes": 17992189
+      "sha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "bytes": 18371338
     },
     "manifest.json": {
       "path": "manifest.json",
-      "sha256": "af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8",
-      "bytes": 128772
+      "sha256": "609724470184cf4544fcdc8f72786d473b96d5c5b1d4c8cab45c0ff46a73a9ac",
+      "bytes": 133921
     },
     "selection.json": {
       "path": "selection.json",
-      "sha256": "cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c",
-      "bytes": 28576
+      "sha256": "cda2bcc9fd1c70a8cf83781f7809ef4547ec0616f686c41988a39e01eb86ebdc",
+      "bytes": 29756
     },
     "verification.json": {
       "path": "verification.json",
-      "sha256": "2f730f58304e60fdf05a5ea373013ccc6d67bbb7ae8ef5ed77932e25dd1dbcbd",
+      "sha256": "45eed4ad589077e7f3a6682912c384f9309df91c2dd47bb7edcf092ba3568fb1",
       "bytes": 800
     },
     "README.md": {
       "path": "README.md",
-      "bytes": 55140,
-      "sha256": "50f68e7a898586e76e50a02095c6f2c834cd44baf2472e40e0284ea057c3f281"
+      "sha256": "5f31f08fc7b60c30638d5bb2f37065ed71db0fcaa4d697f7f2387b2a8fdbc912",
+      "bytes": 61323
     },
     "template.html": {
       "path": "template.html",
@@ -60,272 +57,318 @@
     }
   },
   "summary": {
-    "experiments": 56,
-    "images": 56,
-    "pngBytes": 13385322,
+    "experiments": 58,
+    "images": 58,
+    "pngBytes": 13665513,
     "groupCounts": {
-      "product": 17,
-      "offline": 18,
+      "product": 18,
+      "offline": 19,
       "content": 21
     },
     "deferredCountedAsPublished": false
   },
   "rawSources": [
     {
-      "path": "screenshots56/capture-note.json",
-      "sha256": "00ab22e8aa83cb92956c8cdd5f71986b1ed50194b1109f330f93e2bb9f622ce5",
-      "bytes": 239
+      "path": "screenshots58/ROOT-gallery58.json",
+      "sha256": "ec9a70c5663aa3e58cedf7439ae47271798900e496ffc5547750045f7c820569",
+      "bytes": 3825
     },
     {
-      "path": "screenshots56/card-light.json",
-      "sha256": "8787280c89e76e56b0adf36accf7928d3ceb3a8a44ad31a60f5927fecedd2bc2",
-      "bytes": 176
+      "path": "screenshots58/cycle-dialog.json",
+      "sha256": "4154d1482e1f049c35f2d3301f90612a9a3216e7be1a3352cd50a152f105eca8",
+      "bytes": 349
     },
     {
-      "path": "screenshots56/dialog-closed.json",
-      "sha256": "3009da5e5daf9745db6f864a42e743460aa77a0d63c0250c6ba58ceca0d9c886",
-      "bytes": 96
+      "path": "screenshots58/mobile-dialog.json",
+      "sha256": "4d0336f0ff002215da5900912e1b0f7b59e12273763a9115ca5b4ab534d9cd08",
+      "bytes": 566
     },
     {
-      "path": "screenshots56/dialog.json",
-      "sha256": "67d0deac48f21e665d13332f8e9a966b0bbf9e4c5ee726b341435060d6426503",
-      "bytes": 293
-    },
-    {
-      "path": "screenshots56/filters.json",
-      "sha256": "ebff4d71c024751e1088a628fbcece784a76d87dd0d155995840a246ddff6dbb",
-      "bytes": 275
-    },
-    {
-      "path": "screenshots56/narrow-dark.json",
-      "sha256": "9b88a49ef4242e078fe694f9aef56f04f12d792188bf22cfc943ddc55dfa8840",
-      "bytes": 137
-    },
-    {
-      "path": "screenshots56/reset.json",
-      "sha256": "17be553759652165ff2e23068887cf0c85c000c1277154275ba6a77075c11c60",
-      "bytes": 219
-    },
-    {
-      "path": "screenshots56/source-binding.json",
-      "sha256": "2c54f5d335640443c4f81c6b0a1298160f8988d97693cf12dc5828edf05898ef",
-      "bytes": 1079
-    },
-    {
-      "path": "screenshots56/task-finished.json",
-      "sha256": "187e0aeff71284ef53a9f2b98936c54b8e0d7e1d6fad1f7149fed058498fbec2",
-      "bytes": 206
+      "path": "screenshots58/profile-dialog.json",
+      "sha256": "c558366511cafae00e932f007c5766423dbecee53c5fc1356bdfccef2f12fbb6",
+      "bytes": 491
     }
   ],
   "screenshots": [
     {
-      "path": "screenshots56/card-light.png",
-      "sha256": "1cecfd82713e0205f4c5433d78ee83223291888599cfcd868ae99e0b60723f93",
-      "bytes": 160675,
+      "path": "screenshots58/gallery58-cycle-region-full-image.png",
+      "sha256": "0469efa498d88e0aaa20dda4b3dacb973e06e3b38504c0520336ad5c7ab32e14",
+      "bytes": 240835,
+      "originalFileName": "cycle-region-full-image.png",
       "width": 1440,
-      "height": 1100,
-      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
+      "height": 1000,
       "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
       "status": "root-viewed-completed-capture",
-      "visibleScope": "Desktop card after completed image decode.",
-      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
-      "observationSource": "screenshots56/card-light.json"
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
     },
     {
-      "path": "screenshots56/dialog-light.png",
-      "sha256": "5fc0d05475679ab697148bcffe4a08e496b14767b98ec648c05140afcba39f5f",
-      "bytes": 157166,
-      "width": 1440,
-      "height": 1100,
-      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
-      "rootViewed": true,
-      "status": "root-viewed-completed-capture",
-      "visibleScope": "Desktop dialog at original image size; full image exceeds viewport.",
-      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
-      "observationSource": "screenshots56/dialog.json"
-    },
-    {
-      "path": "screenshots56/narrow-card-dark.png",
-      "sha256": "2cb7702fc07b80cf9a27513f7a1ac1dad5ae4ffa2b3b276f23d41454166541ef",
-      "bytes": 94690,
+      "path": "screenshots58/gallery58-mobile-original-dark.png",
+      "sha256": "494231752defc0e16050426ff60d2ec44076635ca7abdeaf76a9da1908a68380",
+      "bytes": 46118,
+      "originalFileName": "gallery58-mobile-original-dark.png",
       "width": 390,
       "height": 844,
-      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
       "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
       "status": "root-viewed-completed-capture",
-      "visibleScope": "Narrow card after scrolling to actual image preview.",
-      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
-      "observationSource": "screenshots56/source-binding.json"
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
     },
     {
-      "path": "screenshots56/narrow-dark.png",
-      "sha256": "610cf302d90cefe3c90184fc941da975a589777685fb811c26d50fd3eef86bbf",
-      "bytes": 89264,
-      "width": 390,
-      "height": 844,
-      "boundHtmlSha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378",
+      "path": "screenshots58/gallery58-overview-light.png",
+      "sha256": "fc343d5f9385a0d2559c638e604e0bc34a8ea3bf0cebdf3a498cae6e1f53eb9c",
+      "bytes": 250641,
+      "originalFileName": "gallery58-overview-light.png",
+      "width": 1440,
+      "height": 1000,
       "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
       "status": "root-viewed-completed-capture",
-      "visibleScope": "Narrow header and card beginning only; does not show actual card image.",
-      "semantics": "Original PNG copied unchanged; dimensions from IHDR.",
-      "observationSource": "screenshots56/narrow-dark.json"
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
+    },
+    {
+      "path": "screenshots58/gallery58-profile-contexts-full-image-dark.png",
+      "sha256": "f8dcbf1b49bfb7b80a116ee04feddc63cd91d17343c56123fdb84ef292acd31e",
+      "bytes": 120819,
+      "originalFileName": "profile-contexts-full-image-dark.png",
+      "width": 1440,
+      "height": 1000,
+      "rootViewed": true,
+      "boundHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG bytes unchanged; public filename includes gallery58 to avoid collisions. Dimensions from IHDR."
     }
   ],
   "observations": {
-    "capture-note": {
-      "stage": "card initial decode",
-      "error": "EncodingError: The source image cannot be decoded.",
-      "screenshotTaken": false,
-      "interpretation": "Initial immediate decode attempt failed; inspect visible image state before retrying."
-    },
-    "card-light": {
-      "status": "显示 1 / 56 项",
-      "buttonId": "",
-      "image": {
-        "complete": true,
-        "width": 1440,
-        "height": 1400
+    "ROOT-gallery58": {
+      "schemaVersion": 1,
+      "kind": "root-browser-observations",
+      "date": "2026-10-28",
+      "tool": "ego-browser",
+      "taskSpace": 12,
+      "taskSpaceFinished": true,
+      "finishKeep": [],
+      "humanAcceptance": false,
+      "galleryHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+      "sourceHub": "fd4fee4986b45470042f54771c1fe2019a641467",
+      "counts": {
+        "all": 58,
+        "product": 18,
+        "offline": 19,
+        "content": 21
       },
-      "pageWidth": 1425,
-      "clientWidth": 1425
-    },
-    "dialog-closed": {
-      "open": false,
-      "src": null,
-      "focusedLabel": "查看 Refactoring records 完整原图"
-    },
-    "dialog": {
-      "open": true,
-      "natural": [
-        1440,
-        1400
+      "cycle": {
+        "title": "Cycle region",
+        "dimensions": [
+          1440,
+          900
+        ],
+        "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+        "bytes": 189972,
+        "original": {
+          "pressed": "true",
+          "mode": "true"
+        },
+        "closed": {
+          "open": false,
+          "opener": "cycle-region",
+          "active": "查看 Cycle region 完整原图"
+        }
+      },
+      "profile": {
+        "title": "Profile contexts",
+        "dimensions": [
+          1440,
+          1000
+        ],
+        "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f",
+        "bytes": 90219,
+        "description": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑",
+        "closed": {
+          "open": false,
+          "opener": "profile-contexts"
+        }
+      },
+      "mobile": {
+        "viewport": [
+          390,
+          844
+        ],
+        "page": [
+          390,
+          375
+        ],
+        "dialog": {
+          "x": 8,
+          "y": 8,
+          "width": 359,
+          "height": 828,
+          "top": 8,
+          "right": 367,
+          "bottom": 836,
+          "left": 8
+        },
+        "original": "true",
+        "scroller": {
+          "client": 342,
+          "scroll": 1460
+        },
+        "close": {
+          "x": 263.328125,
+          "y": 142.5859375,
+          "width": 90.671875,
+          "height": 44,
+          "top": 142.5859375,
+          "right": 354,
+          "bottom": 186.5859375,
+          "left": 263.328125
+        },
+        "closed": {
+          "open": false,
+          "opener": "profile-contexts"
+        }
+      },
+      "observations": [
+        "1440x1000 light overview reports58; both new query filters each show1/58.",
+        "Both new dialogs decode embedded PNG with exact bytes/sha/dimensions matched to branch artifacts.",
+        "Cycle original-size native toggle works; Escape returns to Cycle opener.",
+        "Profile dark dialog opens original light PNG without image editing; Escape returns to Profile opener.",
+        "390x844 original-size dialog has bounded shell/visible close button and native image overflow; Escape restores correct opener.",
+        "All four screenshots viewed by coordinating Agent.",
+        "Before finishing, search cleared and light theme restored; DOM58 articles, status58/58, dialog closed.",
+        "No external GitHub links clicked; exact pinned URLs observed and immutable source commits verified separately."
       ],
-      "display": [
-        1440,
-        1400
-      ],
-      "imageId": "full-image",
-      "dialogId": "image-dialog",
-      "title": "Refactoring records",
-      "pngBytes": 173243,
-      "pngSha256": "b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea"
+      "screenshots": [
+        {
+          "file": "cycle-region-full-image.png",
+          "bytes": 240835,
+          "sha256": "0469efa498d88e0aaa20dda4b3dacb973e06e3b38504c0520336ad5c7ab32e14",
+          "width": 1440,
+          "height": 1000,
+          "agentViewed": true
+        },
+        {
+          "file": "gallery58-mobile-original-dark.png",
+          "bytes": 46118,
+          "sha256": "494231752defc0e16050426ff60d2ec44076635ca7abdeaf76a9da1908a68380",
+          "width": 390,
+          "height": 844,
+          "agentViewed": true
+        },
+        {
+          "file": "gallery58-overview-light.png",
+          "bytes": 250641,
+          "sha256": "fc343d5f9385a0d2559c638e604e0bc34a8ea3bf0cebdf3a498cae6e1f53eb9c",
+          "width": 1440,
+          "height": 1000,
+          "agentViewed": true
+        },
+        {
+          "file": "profile-contexts-full-image-dark.png",
+          "bytes": 120819,
+          "sha256": "f8dcbf1b49bfb7b80a116ee04feddc63cd91d17343c56123fdb84ef292acd31e",
+          "width": 1440,
+          "height": 1000,
+          "agentViewed": true
+        }
+      ]
     },
-    "filters": [
-      {
-        "filter": "product",
-        "status": "显示 17 / 56 项"
+    "cycle-dialog": {
+      "title": "Cycle region",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+      "bytes": 189972,
+      "original": {
+        "pressed": "true",
+        "mode": "true"
       },
-      {
-        "filter": "offline",
-        "status": "显示 18 / 56 项"
-      },
-      {
-        "filter": "content",
-        "status": "显示 21 / 56 项"
-      },
-      {
-        "filter": "all",
-        "status": "显示 56 / 56 项"
+      "closed": {
+        "open": false,
+        "opener": "cycle-region",
+        "active": "查看 Cycle region 完整原图"
       }
-    ],
-    "narrow-dark": {
-      "status": "显示 1 / 56 项",
-      "clientWidth": 375,
-      "scrollWidth": 375,
-      "theme": "dark",
+    },
+    "mobile-dialog": {
       "viewport": [
         390,
         844
-      ]
-    },
-    "reset": {
-      "empty": {
-        "status": "显示 0 / 56 项",
-        "query": "no-such-experiment-56"
+      ],
+      "page": [
+        390,
+        375
+      ],
+      "dialog": {
+        "x": 8,
+        "y": 8,
+        "width": 359,
+        "height": 828,
+        "top": 8,
+        "right": 367,
+        "bottom": 836,
+        "left": 8
       },
-      "reset": {
-        "status": "显示 56 / 56 项",
-        "query": "",
-        "focusedTag": "INPUT",
-        "focusedType": "search"
+      "original": "true",
+      "scroller": {
+        "client": 342,
+        "scroll": 1460
+      },
+      "close": {
+        "x": 263.328125,
+        "y": 142.5859375,
+        "width": 90.671875,
+        "height": 44,
+        "top": 142.5859375,
+        "right": 354,
+        "bottom": 186.5859375,
+        "left": 263.328125
+      },
+      "closed": {
+        "open": false,
+        "opener": "profile-contexts"
       }
     },
-    "source-binding": {
-      "sourceHubCommit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
-      "experimentCommit": "bec8671465ff9ce6a2c471196907fc741f52dc53",
-      "files": {
-        "docs/research/2026-10-25/gallery/index.html": {
-          "bytes": 17992189,
-          "sha256": "8fb75584e09dce85eb3a2f29bdd9513f948fbbd397fefb7799f4f17aa3da5378"
-        },
-        "docs/research/2026-10-25/gallery/manifest.json": {
-          "bytes": 128772,
-          "sha256": "af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8"
-        },
-        "docs/research/2026-10-25/gallery/selection.json": {
-          "bytes": 28576,
-          "sha256": "cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c"
-        }
-      },
-      "observations": "Root operated the frozen local gallery in Ego Chromium and viewed all four original PNGs. Browser evidence does not claim CI, touch, AT, external navigation, reading speed or human acceptance. Initial immediate decode failure retained; later visible image completed and decoded before capture. The narrow-dark image shows the header and card heading; narrow-card-dark shows the scrolled card preview."
-    },
-    "task-finished": {
-      "spaceId": 11,
-      "keep": [],
-      "result": {
-        "spaceId": 11,
-        "closedSpace": true,
-        "keptManagedLabels": [],
-        "closedManagedLabels": [
-          "p1"
-        ],
-        "preservedUnmanagedCount": 0
+    "profile-dialog": {
+      "title": "Profile contexts",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f",
+      "bytes": 90219,
+      "description": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑",
+      "closed": {
+        "open": false,
+        "opener": "profile-contexts"
       }
     }
   },
-  "historical55": {
-    "path": "browser-evidence55.json",
-    "sha256": "5f5794e5af6e3dd74d730aaad8eabf573cdc3a4f307c63f9ba7133c69f8be175",
-    "bytes": 9255
+  "historical56": {
+    "path": "browser-evidence56.json",
+    "sha256": "57574b0b47646e74248f5adcfa558c919af798994298ea8f0ddc825524c545b7",
+    "bytes": 12509
   },
   "remoteHeadReceipt": {
-    "path": "../../2026-10-28/refactoring-records-remote.json",
-    "sha256": "4c0e6ea618908dd615a8bc4057e33644dc96c1a3c5729c748181bd8cf20d0b32",
-    "bytes": 801
+    "path": "../../2026-10-28/reading-batch-57-58-remote.json",
+    "sha256": "10329ce9b435dabdb31915c5fe3caac7ecccdc20a81576101fba0f512213d378",
+    "bytes": 984
   },
   "completion": {
-    "taskSpaceId": 11,
+    "taskSpaceId": 12,
     "finishCount": 1,
-    "closedSpace": true,
+    "finished": true,
     "keep": [],
     "resumeAllowed": false,
-    "scope": "Only browser round ended; continuing research active."
+    "finalState": "Query cleared, light theme,58 articles/status58 of58, dialog closed.",
+    "scope": "Current batch complete; pause further research/implementation."
   },
-  "scope": "Only new Refactoring records card and common controls. Previous55 selections/items/cards/PNG bytes unchanged; historical browser evidence retains original identity.",
+  "scope": "Two new cards and shared gallery controls only; previous56 item/card/PNG bytes and historical evidence unchanged.",
   "limits": [
-    "Initial immediate decode failed with EncodingError, no screenshot taken; original capture-note preserved. Later visible image completed and decoded before desktop card capture.",
-    "Narrow-dark.png shows only header and beginning of card. Narrow-card-dark.png separately shows scrolled actual image.",
-    "Root viewed all4 original PNGs; browser round finished exactly once and will not resume.",
-    "No previous55 experiment rerun, external navigation, physical touch, AT, human acceptance or reading speed proof.",
-    "Gallery viewport no-overflow does not erase experimental record local overflow or inline cannot-fit-readable."
-  ],
-  "artifactCommit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
-  "deliveryHistory": {
-    "artifactCommit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
-    "stage": "prepared/local-bound before artifact push",
-    "status": "root-browser-observed-prepared-local-bound",
-    "delivery": {
-      "sourceHub": "prepared/local-bound; awaiting root push and remote verification",
-      "gallery": "prepared/local-bound; awaiting root push and remote verification",
-      "experiment": "Root verified remote head bec8671465ff9ce6a2c471196907fc741f52dc53; zero checks/runs is not CI success."
-    },
-    "record": {
-      "path": "docs/research/2026-10-25/gallery/browser-evidence.json",
-      "commit": "d1142f5fedb482d0e6974cdfa9218d373eccafbe",
-      "bytes": 10992,
-      "sha256": "ff880fd2dda0832801f5ee54b406016cc7b7599826b25fae480f0882dcab41d8",
-      "url": "https://github.com/tt-a1i/archify/blob/d1142f5fedb482d0e6974cdfa9218d373eccafbe/docs/research/2026-10-25/gallery/browser-evidence.json"
-    },
-    "semantics": "Original local-bound snapshot remains unchanged in fixed artifact commit; current delivery note does not rewrite its historical status."
-  }
+    "Four original PNGs viewed by root; public filenames map to original names without image edits.",
+    "Native original-size image overflow is expected; mobile shell/close visibility is not all-image visibility or no-horizontal-scroll claim.",
+    "Gallery image reading does not remove either experiment base-toolbar clipping; Profile public keyboard gate remains fail68, independent continuation445/445 distinct.",
+    "No external links clicked, old56 experiment rerun, physical touch, AT, human acceptance, efficiency or new CI result."
+  ]
 }

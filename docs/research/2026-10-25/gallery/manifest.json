@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
-    "sha256": "a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3",
-    "bytes": 69757,
-    "gitBlob": "a6b63ef8da8a0478bae5cec94b15ba0c0ff75be6"
+    "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
+    "sha256": "2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a",
+    "bytes": 71968,
+    "gitBlob": "42cea00d10437099cd5de3080ba65e70f8bbf855"
   },
-  "policy": "56 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "58 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+      "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+      "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+      "commit": "fd4fee4986b45470042f54771c1fe2019a641467",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -2008,6 +2008,76 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-refactoring-records/experiments/refactoring-records",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/browser-evidence/overview-light-final.png"
+    },
+    {
+      "id": "cycle-region",
+      "commit": "d07097138c96dd34ecbfde09d19861b645b19818",
+      "branch": "codex/lab-cycle-region",
+      "directory": "experiments/cycle-region",
+      "group": "product",
+      "inputKind": "完整原创F1作者图 / Architecture Viewer候选",
+      "imagePath": "experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png",
+      "imageCaption": "完整13节点14关系；选中c的循环区域含4成员、5内部关系与1跨区关系，窄屏详情可滚动。作者图查询，不分析代码。",
+      "title": "Cycle region",
+      "value": "查询作者Architecture图中所选点的整个循环区域，区分全部内部关系与单向跨区关系",
+      "limits": "固定6ca6基线；完整原创13节点14关系含自环；当前335相关测试及finalize/check/browser/ZIP通过，1552-origin数学oracle按同helper复用；root修后窄屏详情/e4滚动与桌面两次Escape实测；保留旧裁剪失败与base工具栏裁剪，非代码分析/故障/效率结论",
+      "readme": {
+        "path": "experiments/cycle-region/README.md",
+        "commit": "d07097138c96dd34ecbfde09d19861b645b19818",
+        "sha256": "90ffbc0e6395fe7c906cc4a0ba0a797a247fe00161d77772ce52041d27ec9599",
+        "bytes": 15522,
+        "gitBlob": "c22ff42614c20b0124eca0a3b892ca3bf5a4a48a"
+      },
+      "image": {
+        "path": "experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png",
+        "commit": "d07097138c96dd34ecbfde09d19861b645b19818",
+        "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+        "bytes": 189972,
+        "gitBlob": "55126f96eba1a78fceb06357d7326c0ead85d687",
+        "width": 1440,
+        "height": 900,
+        "mime": "image/png",
+        "caption": "完整13节点14关系；选中c的循环区域含4成员、5内部关系与1跨区关系，窄屏详情可滚动。作者图查询，不分析代码。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-cycle-region/experiments/cycle-region",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png"
+    },
+    {
+      "id": "profile-contexts",
+      "commit": "589351790b32173269f6a8e22da836130e31989a",
+      "branch": "codex/lab-profile-contexts",
+      "directory": "experiments/profile-contexts",
+      "group": "offline",
+      "inputKind": "完整speedscope上游fixture / 原生Tree＋Explainer",
+      "imagePath": "experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png",
+      "imageCaption": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。",
+      "title": "Profile contexts",
+      "value": "保留递归prefix、函数总计与全部原始采样记录，精确回溯贡献并返回入口",
+      "limits": "完整speedscope上游fixture非采集workload；7tests/独立535断言通过，public三阶段通过但browser键盘gate仍fail68；同HTML继续Tab四组445/445，root真实贡献/原行/精确prefix闭环；11上下文与全部记录保留，390px base工具栏裁剪，不改写gate/块回链焦点/速度结论",
+      "readme": {
+        "path": "experiments/profile-contexts/README.md",
+        "commit": "589351790b32173269f6a8e22da836130e31989a",
+        "sha256": "a0d3bfc212243aedaabb2287d154cec5394f4396e7cae11fa7a7087c7cb6a2c2",
+        "bytes": 12923,
+        "gitBlob": "760d249aa0375abdcc0747e9a9cf84a7eec86f57"
+      },
+      "image": {
+        "path": "experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png",
+        "commit": "589351790b32173269f6a8e22da836130e31989a",
+        "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f",
+        "bytes": 90219,
+        "gitBlob": "f9f3b094ef01b0432746d6c928ab3c60c13e06aa",
+        "width": 1440,
+        "height": 1000,
+        "mime": "image/png",
+        "caption": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-profile-contexts/experiments/profile-contexts",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png"
     }
   ],
   "deferred": {
@@ -2018,12 +2088,12 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 56,
-    "images": 56,
-    "pngBytes": 13385322,
+    "experiments": 58,
+    "images": 58,
+    "pngBytes": 13665513,
     "groupCounts": {
-      "product": 17,
-      "offline": 18,
+      "product": 18,
+      "offline": 19,
       "content": 21
     },
     "deferredCountedAsPublished": false

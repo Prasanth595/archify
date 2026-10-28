@@ -29,7 +29,37 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前56版静态绑定与实际浏览器观察（远端已交付）
+## 当前58版静态绑定与实际浏览器观察（待远端交付）
+
+以已发布hub `d82d3b5539523355ea3f2f6d9c46adf2806164eb` 为开始基准，追加第57/58两行source inputs，固定新source hub为 [`fd4fee4986b45470042f54771c1fe2019a641467`](https://github.com/tt-a1i/archify/blob/fd4fee4986b45470042f54771c1fe2019a641467/docs/research/2026-10-25/README.md)：**58项 / 58张原PNG，18产品交互 / 19离线适配 / 21内容示例**。固定README为71,968 bytes，SHA-256 `2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a`。source hub与gallery目前prepared/local-bound，未推送；不把旧d82的56行表冒称58行，也没有修改builder读取规则。
+
+第57项Cycle region为Architecture Viewer产品候选，固定final remote `d07097138c96dd34ecbfde09d19861b645b19818`（artifact `7df64d4594486df6670e4b702aa4b3053f0ea095`）。完整原创F1含13节点14关系与自环；c区域4成员、5内部关系、1跨区关系，不以一条闭合见证代替整个区域。主图 `experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png` 为189,972 bytes、1440×900，SHA-256 `b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1`；完整13节点仍在HTML中，不保证同时位于主图视口。当前335相关测试、public finalize/check/自动browser及ZIP通过，1552-origin数学oracle按同helper复用。root修后详情原生滚动至e4与两次Escape已在实验实测；旧裁剪失败保留，base工具栏局部水平裁剪仍未修。作者图查询不分析代码、运行故障或效率。
+
+第58项Profile contexts为P1离线适配，固定final remote `589351790b32173269f6a8e22da836130e31989a`（artifact `1f32189ac8fa769008e124d66cf8f41d3a9e6c82`）。完整speedscope上游fixture保留11个raw递归上下文、全部10条raw/5条JSON原始记录与贡献回链，区分节点权重、函数total和单位；不是本轮采集workload。主图 `experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png` 为90,219 bytes、1440×1000，SHA-256 `0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f`。7tests及独立535断言通过，public三阶段通过但browser键盘gate仍fail68；同HTML继续Tab四组445/445与root真实阅读闭环不改写gate失败。块返回同prefix时activeElement=body，不恢复最初preview焦点；精确Viewer关闭回其opener。390px base工具栏裁剪保留，不声称完整手机/AT/速度验收。P2未实施。
+
+[本批远端派生记录](../../2026-10-28/reading-batch-57-58-remote.json)转述root的两finalhead精确readback及0个check run/0个commit status；不是原始GitHub响应，也不是CI通过。本批实验级原图与实际操作继续按各固定README身份，不冒称新gallery UI证据。
+
+原builder `--source-repo`核58个本地origin跟踪引用并从固定提交读取README/PNG Git blob；没有恢复旧工作区或核工作文件，不冒充本批旧56远端重查。golden56的旧56 selection完整记录、manifest完整item、完整card HTML与嵌入PNG逐字不变，旧PNG及历史evidence/shots保留原bytes。原56版当前绑定逐字另存 [browser-evidence56.json](browser-evidence56.json)，12,509 bytes，SHA-256 `57574b0b47646e74248f5adcfa558c919af798994298ea8f0ddc825524c545b7`。
+
+Node **22.23.3** 静态verify通过：58张PNG摘要、58/18/19/21卡片与筛选计数、固定链接、内联JS语法均通过，外部资源引用0，原PNG共13,665,513 bytes。模板、build及verify均未改；模板SHA-256仍为 `bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9`。
+
+- `index.html`：18,371,338 bytes；SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`
+- `manifest.json`：SHA-256 `609724470184cf4544fcdc8f72786d473b96d5c5b1d4c8cab45c0ff46a73a9ac`
+- `selection.json`：SHA-256 `cda2bcc9fd1c70a8cf83781f7809ef4547ec0616f686c41988a39e01eb86ebdc`
+
+Root在同一Ego TaskSpace12实际操作冻结58版gallery，并逐张查看4张原PNG。四张PNG、[ROOT-gallery58.json](screenshots58/ROOT-gallery58.json)观察收据及3份场景JSON按原字节保存在 [screenshots58](screenshots58/)；PNG公开文件名统一带gallery58，派生绑定保留原始文件名映射，不改图片bytes。[browser-evidence.json](browser-evidence.json)绑定当前产物、最终README及8份原件的bytes/SHA与PNG IHDR尺寸，不冒称新的API响应。source hub及gallery仍prepared/local-bound，待root推送和远端精确读回。
+
+1440×1000浅色总览实际为58/18/19/21；Cycle region与Profile contexts各自查询1/58。两弹窗直接解码嵌入PNG的bytes/SHA/天然尺寸分别与固定实验主图相同：Cycle189972B/1440×900，Profile90219B/1440×1000。Cycle原始尺寸原生toggle实际pressed=true/mode=true；Escape回Cycle原卡按钮。Profile切深色后仍显示未编辑的原浅色PNG，Escape回Profile原卡；没有把深色shell说成重绘深色图。
+
+390×844深色原始尺寸弹窗的shell为x8/y8、359×828，close按钮边界可见；图片scroller为client342/scroll1460，保留原生overflow，不把原始图缩成全图可见或承诺无图片横滚。Escape正常回Profile opener。这仅是gallery容器与原图阅读，不能抵消两个实验自身的base工具栏裁剪限制，也不是实体触屏/AT接受。页面宽记录原值[390,375]，未补造全页scrollWidth结论。
+
+![58项浅色总览](screenshots58/gallery58-overview-light.png)
+
+[Cycle原图弹窗](screenshots58/gallery58-cycle-region-full-image.png) · [Profile深色shell中的原浅色图](screenshots58/gallery58-profile-contexts-full-image-dark.png) · [390px原尺寸图及可见关闭按钮](screenshots58/gallery58-mobile-original-dark.png)。
+
+收尾已清搜索、恢复浅色，DOM58 articles、状态58/58、dialog closed。TaskSpace12以finish keep=[]成功结束一次，不再resume。本次未点击外部GitHub链接，未重跑旧56项实验/逐项图片交互，没有新CI、实体触摸、AT、人类接受或速度结论；Profile public gate仍fail68、独立445/445继续Tab身份不变。本批收尾后暂停，不启动新研究或实施；最终远端交付由root推送/读回单独记账。
+
+## 历史56版静态绑定与实际浏览器观察
 
 固定source hub为 [`26fa35b2d2080305105f6ebbedb08054327a2ba0`](https://github.com/tt-a1i/archify/blob/26fa35b2d2080305105f6ebbedb08054327a2ba0/docs/research/2026-10-25/README.md)：**56项 / 56张原PNG，17产品交互 / 18离线适配 / 21内容示例**。来源README为69,757 bytes，SHA-256 `a4ab85215816248ad1690650092d0b5619caaa1fd0603963cd767cfcb4c7f6f3`。source hub与本次gallery已随固定artifact commit [`d1142f5fedb482d0e6974cdfa9218d373eccafbe`](https://github.com/tt-a1i/archify/tree/d1142f5fedb482d0e6974cdfa9218d373eccafbe/docs/research/2026-10-25/gallery) 推送；root以git ls-remote读回精确一致。
 
@@ -47,7 +77,7 @@ Node **22.23.3** 静态verify通过：56张嵌图摘要、56/17/18/21卡片与�
 - `manifest.json`：SHA-256 `af3d440af60fec1f129e53e2669e59eded3a895de33f62ffd0630db41c8aafa8`
 - `selection.json`：SHA-256 `cdd5ddb5d257da8af843bd7d6dac3066525096d24d13caf4dc6b9d8bb8d1a76c`
 
-Root已在Ego/Chromium实际操作冻结56版gallery，并逐张查看四张原PNG；四张PNG和九份JSON按原字节保存在 [screenshots56](screenshots56/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、最终README、原件bytes/SHA、PNG IHDR尺寸和查看范围，不冒称原始receipt。当前hub/gallery远端交付固定为 `d1142f5fedb482d0e6974cdfa9218d373eccafbe`，不自指本次delivery文档提交。该artifact commit中原README与派生绑定仍保留推送前prepared/local-bound阶段；当前只补记root远端核对，不新增浏览器或CI验证。
+Root已在Ego/Chromium实际操作冻结56版gallery，并逐张查看四张原PNG；四张PNG和九份JSON按原字节保存在 [screenshots56](screenshots56/)。[browser-evidence56.json](browser-evidence56.json)是派生绑定，记录当前产物、最终README、原件bytes/SHA、PNG IHDR尺寸和查看范围，不冒称原始receipt。当前hub/gallery远端交付固定为 `d1142f5fedb482d0e6974cdfa9218d373eccafbe`，不自指本次delivery文档提交。该artifact commit中原README与派生绑定仍保留推送前prepared/local-bound阶段；当前只补记root远端核对，不新增浏览器或CI验证。
 
 桌面1440×1100：四筛选为56/17/18/21，搜索Refactoring records为1/56。初次fill后立即decode报EncodingError，未截图片，原始 [capture-note.json](screenshots56/capture-note.json)保留失败；之后实际可见图片complete=true、天然1440×1400且decode成功，再截card-light。失败没有被改写成成功，也没有对应失败PNG。
 

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "26fa35b2d2080305105f6ebbedb08054327a2ba0",
+  "hubCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -582,6 +582,26 @@
       "inputKind": "完整历史RefactoringMiner expected / URL-only来源",
       "imagePath": "experiments/refactoring-records/browser-evidence/overview-light-final.png",
       "imageCaption": "4记录8位置、4个before与2个after端点、4条报告声明边；多源同目标保留，未运行detector，不证明语义移动。"
+    },
+    {
+      "id": "cycle-region",
+      "commit": "d07097138c96dd34ecbfde09d19861b645b19818",
+      "branch": "codex/lab-cycle-region",
+      "directory": "experiments/cycle-region",
+      "group": "product",
+      "inputKind": "完整原创F1作者图 / Architecture Viewer候选",
+      "imagePath": "experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png",
+      "imageCaption": "完整13节点14关系；选中c的循环区域含4成员、5内部关系与1跨区关系，窄屏详情可滚动。作者图查询，不分析代码。"
+    },
+    {
+      "id": "profile-contexts",
+      "commit": "589351790b32173269f6a8e22da836130e31989a",
+      "branch": "codex/lab-profile-contexts",
+      "directory": "experiments/profile-contexts",
+      "group": "offline",
+      "inputKind": "完整speedscope上游fixture / 原生Tree＋Explainer",
+      "imagePath": "experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png",
+      "imageCaption": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。"
     }
   ],
   "deferred": {

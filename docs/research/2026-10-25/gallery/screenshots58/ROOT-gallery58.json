@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "kind": "root-browser-observations",
+  "date": "2026-10-28",
+  "tool": "ego-browser",
+  "taskSpace": 12,
+  "taskSpaceFinished": true,
+  "finishKeep": [],
+  "humanAcceptance": false,
+  "galleryHtmlSha256": "7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce",
+  "sourceHub": "fd4fee4986b45470042f54771c1fe2019a641467",
+  "counts": {
+    "all": 58,
+    "product": 18,
+    "offline": 19,
+    "content": 21
+  },
+  "cycle": {
+    "title": "Cycle region",
+    "dimensions": [
+      1440,
+      900
+    ],
+    "sha256": "b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1",
+    "bytes": 189972,
+    "original": {
+      "pressed": "true",
+      "mode": "true"
+    },
+    "closed": {
+      "open": false,
+      "opener": "cycle-region",
+      "active": "查看 Cycle region 完整原图"
+    }
+  },
+  "profile": {
+    "title": "Profile contexts",
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "sha256": "0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f",
+    "bytes": 90219,
+    "description": "保留11个递归上下文和全部原始记录，区分节点权重与函数总计，并回溯贡献来源。public键盘gate保留失败，独立Tab完成445/445；非采集workload。 · 1440 × 1000 px · 原 PNG 未编辑",
+    "closed": {
+      "open": false,
+      "opener": "profile-contexts"
+    }
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "page": [
+      390,
+      375
+    ],
+    "dialog": {
+      "x": 8,
+      "y": 8,
+      "width": 359,
+      "height": 828,
+      "top": 8,
+      "right": 367,
+      "bottom": 836,
+      "left": 8
+    },
+    "original": "true",
+    "scroller": {
+      "client": 342,
+      "scroll": 1460
+    },
+    "close": {
+      "x": 263.328125,
+      "y": 142.5859375,
+      "width": 90.671875,
+      "height": 44,
+      "top": 142.5859375,
+      "right": 354,
+      "bottom": 186.5859375,
+      "left": 263.328125
+    },
+    "closed": {
+      "open": false,
+      "opener": "profile-contexts"
+    }
+  },
+  "observations": [
+    "1440x1000 light overview reports58; both new query filters each show1/58.",
+    "Both new dialogs decode embedded PNG with exact bytes/sha/dimensions matched to branch artifacts.",
+    "Cycle original-size native toggle works; Escape returns to Cycle opener.",
+    "Profile dark dialog opens original light PNG without image editing; Escape returns to Profile opener.",
+    "390x844 original-size dialog has bounded shell/visible close button and native image overflow; Escape restores correct opener.",
+    "All four screenshots viewed by coordinating Agent.",
+    "Before finishing, search cleared and light theme restored; DOM58 articles, status58/58, dialog closed.",
+    "No external GitHub links clicked; exact pinned URLs observed and immutable source commits verified separately."
+  ],
+  "screenshots": [
+    {
+      "file": "cycle-region-full-image.png",
+      "bytes": 240835,
+      "sha256": "0469efa498d88e0aaa20dda4b3dacb973e06e3b38504c0520336ad5c7ab32e14",
+      "width": 1440,
+      "height": 1000,
+      "agentViewed": true
+    },
+    {
+      "file": "gallery58-mobile-original-dark.png",
+      "bytes": 46118,
+      "sha256": "494231752defc0e16050426ff60d2ec44076635ca7abdeaf76a9da1908a68380",
+      "width": 390,
+      "height": 844,
+      "agentViewed": true
+    },
+    {
+      "file": "gallery58-overview-light.png",
+      "bytes": 250641,
+      "sha256": "fc343d5f9385a0d2559c638e604e0bc34a8ea3bf0cebdf3a498cae6e1f53eb9c",
+      "width": 1440,
+      "height": 1000,
+      "agentViewed": true
+    },
+    {
+      "file": "profile-contexts-full-image-dark.png",
+      "bytes": 120819,
+      "sha256": "f8dcbf1b49bfb7b80a116ee04feddc63cd91d17343c56123fdb84ef292acd31e",
+      "width": 1440,
+      "height": 1000,
+      "agentViewed": true
+    }
+  ]
+}

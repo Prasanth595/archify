@@ -144,3 +144,8 @@ Cycle region实施范围是当前显式单向authored Architecture图：在单�
 主图均为真实原PNG：[Cycle c区域](https://github.com/tt-a1i/archify/blob/d07097138c96dd34ecbfde09d19861b645b19818/experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png)1440×900、189972B、SHA-256 `b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1`；[完整raw上下文树](https://github.com/tt-a1i/archify/blob/589351790b32173269f6a8e22da836130e31989a/experiments/profile-contexts/evidence/browser/candidate-raw-tree-light.png)1440×1000、90219B、SHA-256 `0558f1e04895f79da3cd4f78d105ea6ef6b9475da3996cc3e76e0461b808ef5f`。Cycle完整图仍在HTML，主图不保证13节点全在同一视口；Profile不把折叠prefix数当Frame数或调用次数。
 
 58项分组预期18产品/19离线/21内容。当前gallery仍为已交付56版；接下来仅追加两项，保留golden56旧item/card/PNG与历史证据原字节，再单独记录root本批gallery观察。P2 normalize差分和折叠组成账目未实施，source-path报告仍0实验。本批完成后暂停，不再启动后续研究或实现；上节active仅记录先前阶段。
+
+
+第57/58项gallery本批已完成：固定source hub `fd4fee4986b45470042f54771c1fe2019a641467`，冻结HTML SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`，58＝18产品/19离线/21内容。root在同一TaskSpace12实际操作两新卡与通用控件，4张原PNG全部查看；[观察收据及原始场景JSON](../2026-10-25/gallery/screenshots58/)记录两项1/58、嵌入PNG摘要/bytes/尺寸、Cycle原尺寸、两项Escape回正确opener、Profile深色shell及390px原尺寸图的可见关闭按钮/原生overflow。没有外链访问、实体触摸、AT、人类或速度验收，也没有用图片查看改写Profile public gate的fail68。旧56项完整记录、卡片与PNG原字节不变。
+
+收尾搜索清空、浅色恢复、58 articles和58/58状态、弹窗关闭；TaskSpace12已finish keep=[]成功一次，不再resume。source hub及gallery仍prepared/local-bound，待root最终push/readback；实验远程分支与hub交付分别记账。本批至此收尾后暂停，不再启动下批研究、实验或代理；P2与折叠边账目仍仅候选。
