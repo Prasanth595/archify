@@ -1,0 +1,964 @@
+{
+  "correlated": {
+    "sql": "SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers LIMIT 10",
+    "meta": "10 row(s) in 0.4 ms",
+    "rows": [
+      [
+        "name",
+        "order_count"
+      ],
+      [
+        "Customer 1",
+        "4"
+      ],
+      [
+        "Customer 2",
+        "12"
+      ],
+      [
+        "Customer 3",
+        "13"
+      ],
+      [
+        "Customer 4",
+        "10"
+      ],
+      [
+        "Customer 5",
+        "5"
+      ],
+      [
+        "Customer 6",
+        "7"
+      ],
+      [
+        "Customer 7",
+        "11"
+      ],
+      [
+        "Customer 8",
+        "12"
+      ],
+      [
+        "Customer 9",
+        "15"
+      ],
+      [
+        "Customer 10",
+        "15"
+      ]
+    ],
+    "status": ""
+  },
+  "register": [
+    {
+      "row": "op-1",
+      "text": "r[1]",
+      "classes": "reg hl-token",
+      "background": "rgb(187, 247, 208)"
+    },
+    {
+      "row": "op-21",
+      "text": "r[1]",
+      "classes": "reg hl-token",
+      "background": "rgb(187, 247, 208)"
+    }
+  ],
+  "version": {
+    "sql": "SELECT sqlite_version() AS version, sqlite_source_id() AS source_id;",
+    "meta": "1 row(s) in 0.3 ms",
+    "rows": [
+      [
+        "version",
+        "source_id"
+      ],
+      [
+        "3.39.0",
+        "2022-06-25 14:57:57 14e166f40dbfa6e055543f8301525f2ca2e96a02a57269818b9e69e162e98918"
+      ]
+    ]
+  },
+  "scanstatus": [
+    [
+      "scanstatus"
+    ],
+    [
+      "0"
+    ]
+  ],
+  "all": {
+    "sql": "SELECT name, (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count FROM customers;",
+    "meta": "200+ row(s) in 0.5 ms — showing the first 200",
+    "rows": [
+      [
+        "name",
+        "order_count"
+      ],
+      [
+        "Customer 1",
+        "4"
+      ],
+      [
+        "Customer 2",
+        "12"
+      ],
+      [
+        "Customer 3",
+        "13"
+      ],
+      [
+        "Customer 4",
+        "10"
+      ],
+      [
+        "Customer 5",
+        "5"
+      ],
+      [
+        "Customer 6",
+        "7"
+      ],
+      [
+        "Customer 7",
+        "11"
+      ],
+      [
+        "Customer 8",
+        "12"
+      ],
+      [
+        "Customer 9",
+        "15"
+      ],
+      [
+        "Customer 10",
+        "15"
+      ],
+      [
+        "Customer 11",
+        "9"
+      ],
+      [
+        "Customer 12",
+        "11"
+      ],
+      [
+        "Customer 13",
+        "7"
+      ],
+      [
+        "Customer 14",
+        "8"
+      ],
+      [
+        "Customer 15",
+        "16"
+      ],
+      [
+        "Customer 16",
+        "11"
+      ],
+      [
+        "Customer 17",
+        "7"
+      ],
+      [
+        "Customer 18",
+        "8"
+      ],
+      [
+        "Customer 19",
+        "8"
+      ],
+      [
+        "Customer 20",
+        "8"
+      ],
+      [
+        "Customer 21",
+        "15"
+      ],
+      [
+        "Customer 22",
+        "10"
+      ],
+      [
+        "Customer 23",
+        "3"
+      ],
+      [
+        "Customer 24",
+        "9"
+      ],
+      [
+        "Customer 25",
+        "12"
+      ],
+      [
+        "Customer 26",
+        "6"
+      ],
+      [
+        "Customer 27",
+        "11"
+      ],
+      [
+        "Customer 28",
+        "13"
+      ],
+      [
+        "Customer 29",
+        "9"
+      ],
+      [
+        "Customer 30",
+        "16"
+      ],
+      [
+        "Customer 31",
+        "10"
+      ],
+      [
+        "Customer 32",
+        "8"
+      ],
+      [
+        "Customer 33",
+        "12"
+      ],
+      [
+        "Customer 34",
+        "12"
+      ],
+      [
+        "Customer 35",
+        "6"
+      ],
+      [
+        "Customer 36",
+        "14"
+      ],
+      [
+        "Customer 37",
+        "12"
+      ],
+      [
+        "Customer 38",
+        "11"
+      ],
+      [
+        "Customer 39",
+        "10"
+      ],
+      [
+        "Customer 40",
+        "8"
+      ],
+      [
+        "Customer 41",
+        "10"
+      ],
+      [
+        "Customer 42",
+        "8"
+      ],
+      [
+        "Customer 43",
+        "7"
+      ],
+      [
+        "Customer 44",
+        "14"
+      ],
+      [
+        "Customer 45",
+        "6"
+      ],
+      [
+        "Customer 46",
+        "11"
+      ],
+      [
+        "Customer 47",
+        "10"
+      ],
+      [
+        "Customer 48",
+        "15"
+      ],
+      [
+        "Customer 49",
+        "7"
+      ],
+      [
+        "Customer 50",
+        "12"
+      ],
+      [
+        "Customer 51",
+        "13"
+      ],
+      [
+        "Customer 52",
+        "7"
+      ],
+      [
+        "Customer 53",
+        "15"
+      ],
+      [
+        "Customer 54",
+        "4"
+      ],
+      [
+        "Customer 55",
+        "11"
+      ],
+      [
+        "Customer 56",
+        "7"
+      ],
+      [
+        "Customer 57",
+        "10"
+      ],
+      [
+        "Customer 58",
+        "9"
+      ],
+      [
+        "Customer 59",
+        "10"
+      ],
+      [
+        "Customer 60",
+        "12"
+      ],
+      [
+        "Customer 61",
+        "10"
+      ],
+      [
+        "Customer 62",
+        "11"
+      ],
+      [
+        "Customer 63",
+        "11"
+      ],
+      [
+        "Customer 64",
+        "4"
+      ],
+      [
+        "Customer 65",
+        "10"
+      ],
+      [
+        "Customer 66",
+        "11"
+      ],
+      [
+        "Customer 67",
+        "16"
+      ],
+      [
+        "Customer 68",
+        "8"
+      ],
+      [
+        "Customer 69",
+        "11"
+      ],
+      [
+        "Customer 70",
+        "4"
+      ],
+      [
+        "Customer 71",
+        "10"
+      ],
+      [
+        "Customer 72",
+        "9"
+      ],
+      [
+        "Customer 73",
+        "13"
+      ],
+      [
+        "Customer 74",
+        "9"
+      ],
+      [
+        "Customer 75",
+        "6"
+      ],
+      [
+        "Customer 76",
+        "11"
+      ],
+      [
+        "Customer 77",
+        "9"
+      ],
+      [
+        "Customer 78",
+        "15"
+      ],
+      [
+        "Customer 79",
+        "7"
+      ],
+      [
+        "Customer 80",
+        "6"
+      ],
+      [
+        "Customer 81",
+        "11"
+      ],
+      [
+        "Customer 82",
+        "5"
+      ],
+      [
+        "Customer 83",
+        "9"
+      ],
+      [
+        "Customer 84",
+        "10"
+      ],
+      [
+        "Customer 85",
+        "15"
+      ],
+      [
+        "Customer 86",
+        "16"
+      ],
+      [
+        "Customer 87",
+        "8"
+      ],
+      [
+        "Customer 88",
+        "8"
+      ],
+      [
+        "Customer 89",
+        "9"
+      ],
+      [
+        "Customer 90",
+        "9"
+      ],
+      [
+        "Customer 91",
+        "15"
+      ],
+      [
+        "Customer 92",
+        "11"
+      ],
+      [
+        "Customer 93",
+        "12"
+      ],
+      [
+        "Customer 94",
+        "11"
+      ],
+      [
+        "Customer 95",
+        "5"
+      ],
+      [
+        "Customer 96",
+        "10"
+      ],
+      [
+        "Customer 97",
+        "15"
+      ],
+      [
+        "Customer 98",
+        "7"
+      ],
+      [
+        "Customer 99",
+        "8"
+      ],
+      [
+        "Customer 100",
+        "6"
+      ],
+      [
+        "Customer 101",
+        "10"
+      ],
+      [
+        "Customer 102",
+        "5"
+      ],
+      [
+        "Customer 103",
+        "12"
+      ],
+      [
+        "Customer 104",
+        "7"
+      ],
+      [
+        "Customer 105",
+        "7"
+      ],
+      [
+        "Customer 106",
+        "5"
+      ],
+      [
+        "Customer 107",
+        "9"
+      ],
+      [
+        "Customer 108",
+        "11"
+      ],
+      [
+        "Customer 109",
+        "11"
+      ],
+      [
+        "Customer 110",
+        "11"
+      ],
+      [
+        "Customer 111",
+        "9"
+      ],
+      [
+        "Customer 112",
+        "11"
+      ],
+      [
+        "Customer 113",
+        "12"
+      ],
+      [
+        "Customer 114",
+        "13"
+      ],
+      [
+        "Customer 115",
+        "13"
+      ],
+      [
+        "Customer 116",
+        "12"
+      ],
+      [
+        "Customer 117",
+        "8"
+      ],
+      [
+        "Customer 118",
+        "11"
+      ],
+      [
+        "Customer 119",
+        "10"
+      ],
+      [
+        "Customer 120",
+        "7"
+      ],
+      [
+        "Customer 121",
+        "10"
+      ],
+      [
+        "Customer 122",
+        "12"
+      ],
+      [
+        "Customer 123",
+        "14"
+      ],
+      [
+        "Customer 124",
+        "12"
+      ],
+      [
+        "Customer 125",
+        "9"
+      ],
+      [
+        "Customer 126",
+        "12"
+      ],
+      [
+        "Customer 127",
+        "9"
+      ],
+      [
+        "Customer 128",
+        "12"
+      ],
+      [
+        "Customer 129",
+        "7"
+      ],
+      [
+        "Customer 130",
+        "14"
+      ],
+      [
+        "Customer 131",
+        "7"
+      ],
+      [
+        "Customer 132",
+        "9"
+      ],
+      [
+        "Customer 133",
+        "12"
+      ],
+      [
+        "Customer 134",
+        "4"
+      ],
+      [
+        "Customer 135",
+        "8"
+      ],
+      [
+        "Customer 136",
+        "14"
+      ],
+      [
+        "Customer 137",
+        "10"
+      ],
+      [
+        "Customer 138",
+        "13"
+      ],
+      [
+        "Customer 139",
+        "13"
+      ],
+      [
+        "Customer 140",
+        "7"
+      ],
+      [
+        "Customer 141",
+        "1"
+      ],
+      [
+        "Customer 142",
+        "7"
+      ],
+      [
+        "Customer 143",
+        "10"
+      ],
+      [
+        "Customer 144",
+        "12"
+      ],
+      [
+        "Customer 145",
+        "10"
+      ],
+      [
+        "Customer 146",
+        "11"
+      ],
+      [
+        "Customer 147",
+        "8"
+      ],
+      [
+        "Customer 148",
+        "7"
+      ],
+      [
+        "Customer 149",
+        "7"
+      ],
+      [
+        "Customer 150",
+        "12"
+      ],
+      [
+        "Customer 151",
+        "9"
+      ],
+      [
+        "Customer 152",
+        "8"
+      ],
+      [
+        "Customer 153",
+        "11"
+      ],
+      [
+        "Customer 154",
+        "11"
+      ],
+      [
+        "Customer 155",
+        "7"
+      ],
+      [
+        "Customer 156",
+        "6"
+      ],
+      [
+        "Customer 157",
+        "12"
+      ],
+      [
+        "Customer 158",
+        "12"
+      ],
+      [
+        "Customer 159",
+        "11"
+      ],
+      [
+        "Customer 160",
+        "8"
+      ],
+      [
+        "Customer 161",
+        "14"
+      ],
+      [
+        "Customer 162",
+        "14"
+      ],
+      [
+        "Customer 163",
+        "11"
+      ],
+      [
+        "Customer 164",
+        "13"
+      ],
+      [
+        "Customer 165",
+        "12"
+      ],
+      [
+        "Customer 166",
+        "13"
+      ],
+      [
+        "Customer 167",
+        "7"
+      ],
+      [
+        "Customer 168",
+        "4"
+      ],
+      [
+        "Customer 169",
+        "7"
+      ],
+      [
+        "Customer 170",
+        "8"
+      ],
+      [
+        "Customer 171",
+        "8"
+      ],
+      [
+        "Customer 172",
+        "9"
+      ],
+      [
+        "Customer 173",
+        "5"
+      ],
+      [
+        "Customer 174",
+        "9"
+      ],
+      [
+        "Customer 175",
+        "17"
+      ],
+      [
+        "Customer 176",
+        "9"
+      ],
+      [
+        "Customer 177",
+        "9"
+      ],
+      [
+        "Customer 178",
+        "8"
+      ],
+      [
+        "Customer 179",
+        "12"
+      ],
+      [
+        "Customer 180",
+        "11"
+      ],
+      [
+        "Customer 181",
+        "13"
+      ],
+      [
+        "Customer 182",
+        "14"
+      ],
+      [
+        "Customer 183",
+        "11"
+      ],
+      [
+        "Customer 184",
+        "15"
+      ],
+      [
+        "Customer 185",
+        "12"
+      ],
+      [
+        "Customer 186",
+        "15"
+      ],
+      [
+        "Customer 187",
+        "5"
+      ],
+      [
+        "Customer 188",
+        "5"
+      ],
+      [
+        "Customer 189",
+        "12"
+      ],
+      [
+        "Customer 190",
+        "10"
+      ],
+      [
+        "Customer 191",
+        "9"
+      ],
+      [
+        "Customer 192",
+        "13"
+      ],
+      [
+        "Customer 193",
+        "10"
+      ],
+      [
+        "Customer 194",
+        "8"
+      ],
+      [
+        "Customer 195",
+        "9"
+      ],
+      [
+        "Customer 196",
+        "4"
+      ],
+      [
+        "Customer 197",
+        "12"
+      ],
+      [
+        "Customer 198",
+        "11"
+      ],
+      [
+        "Customer 199",
+        "8"
+      ],
+      [
+        "Customer 200",
+        "11"
+      ]
+    ]
+  },
+  "jump": {
+    "text": "24⇐ 0\t\tTransaction\t0\t0\t11\t0\t1\tBegin a read transaction on database 0. Every statement that touches the database needs this.",
+    "top": 675.984375,
+    "bottom": 704.359375,
+    "height": 900,
+    "classes": "jump-target-hl flash"
+  },
+  "images": [
+    {
+      "path": "archify-round40-browser-version.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "archify-round40-correlated.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "archify-round40-default-scan.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "archify-round40-jump-target.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "archify-round40-native-plan.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "archify-round40-register-hover.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "archify-round40-truncated-result.png",
+      "size": [
+        1440,
+        900
+      ],
+      "visually_inspected": true
+    }
+  ]
+}

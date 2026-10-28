@@ -1,0 +1,4 @@
+QUERY PLAN
+|--SCAN customers                                                                (loops=0 rows=0)
+`--CORRELATED SCALAR SUBQUERY 1                                                  (loops=0)
+   `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=0 rows=0)

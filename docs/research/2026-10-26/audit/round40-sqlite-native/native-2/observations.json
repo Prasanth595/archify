@@ -1,0 +1,112 @@
+{
+  "limit-10": {
+    "result_rows": 10,
+    "orders_index_loops": 10,
+    "orders_index_rows": 104,
+    "eqp": [
+      {
+        "id": 3,
+        "parent": 0,
+        "notused": 125,
+        "detail": "SCAN customers"
+      },
+      {
+        "id": 7,
+        "parent": 0,
+        "notused": 0,
+        "detail": "CORRELATED SCALAR SUBQUERY 1"
+      },
+      {
+        "id": 12,
+        "parent": 7,
+        "notused": 50,
+        "detail": "SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)"
+      }
+    ],
+    "raw_profile": "|--SCAN customers                                                                (loops=1 rows=10)\n`--CORRELATED SCALAR SUBQUERY 1                                                  (loops=10)\n   `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=10 rows=104)\n"
+  },
+  "limit-0": {
+    "result_rows": 0,
+    "orders_index_loops": 0,
+    "orders_index_rows": 0,
+    "eqp": [
+      {
+        "id": 4,
+        "parent": 0,
+        "notused": 125,
+        "detail": "SCAN customers"
+      },
+      {
+        "id": 8,
+        "parent": 0,
+        "notused": 0,
+        "detail": "CORRELATED SCALAR SUBQUERY 1"
+      },
+      {
+        "id": 13,
+        "parent": 8,
+        "notused": 50,
+        "detail": "SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)"
+      }
+    ],
+    "raw_profile": "|--SCAN customers                                                                (loops=0 rows=0)\n`--CORRELATED SCALAR SUBQUERY 1                                                  (loops=0)\n   `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=0 rows=0)\n"
+  },
+  "all": {
+    "result_rows": 2000,
+    "orders_index_loops": 2000,
+    "orders_index_rows": 20000,
+    "eqp": [
+      {
+        "id": 2,
+        "parent": 0,
+        "notused": 125,
+        "detail": "SCAN customers"
+      },
+      {
+        "id": 6,
+        "parent": 0,
+        "notused": 0,
+        "detail": "CORRELATED SCALAR SUBQUERY 1"
+      },
+      {
+        "id": 11,
+        "parent": 6,
+        "notused": 50,
+        "detail": "SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)"
+      }
+    ],
+    "raw_profile": "|--SCAN customers                                                                (loops=1 rows=2000)\n`--CORRELATED SCALAR SUBQUERY 1                                                  (loops=2000)\n   `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=2000 rows=20000)\n"
+  },
+  "sorted-10": {
+    "result_rows": 10,
+    "orders_index_loops": 2000,
+    "orders_index_rows": 20000,
+    "eqp": [
+      {
+        "id": 4,
+        "parent": 0,
+        "notused": 125,
+        "detail": "SCAN customers"
+      },
+      {
+        "id": 7,
+        "parent": 0,
+        "notused": 0,
+        "detail": "CORRELATED SCALAR SUBQUERY 1"
+      },
+      {
+        "id": 12,
+        "parent": 7,
+        "notused": 50,
+        "detail": "SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)"
+      },
+      {
+        "id": 32,
+        "parent": 0,
+        "notused": 0,
+        "detail": "USE TEMP B-TREE FOR ORDER BY"
+      }
+    ],
+    "raw_profile": "|--SCAN customers                                                                (loops=1 rows=2000)\n|--CORRELATED SCALAR SUBQUERY 1                                                  (loops=2000)\n|  `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=2000 rows=20000)\n`--USE TEMP B-TREE FOR ORDER BY                                                  (loops=1 rows=2000)\n"
+  }
+}

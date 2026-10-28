@@ -1,0 +1,2 @@
+const task=await taskSpace(3),page=task.page("p1");
+console.log(await page.evaluate(()=>({registers:[...document.querySelectorAll('span[data-reg]')].slice(0,12).map(x=>({text:x.textContent,reg:x.getAttribute('data-reg'),row:x.closest('tr')?.id})),links:[...document.querySelectorAll('a')].filter(x=>x.textContent.trim()==='24').map(x=>({text:x.textContent,href:x.getAttribute('href'),attributes:Object.fromEntries(x.getAttributeNames().map(k=>[k,x.getAttribute(k)]))}))})));

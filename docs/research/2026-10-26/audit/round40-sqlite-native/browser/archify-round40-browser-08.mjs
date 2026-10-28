@@ -1,0 +1,11 @@
+const task=await taskSpace(3),page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.hover('#op-1 span[data-reg="1"]');
+console.log("REGISTER",JSON.stringify(await page.evaluate(()=>[...document.querySelectorAll('span[data-reg="1"]')].map(x=>({row:x.closest('tr').id,text:x.textContent,classes:x.className,background:getComputedStyle(x).backgroundColor})))));
+await page.screenshot({path:"/tmp/archify-round40-register-hover.png"});
+await page.mouse.move(1400,80);
+await page.fill('#sql','SELECT sqlite_version() AS version, sqlite_source_id() AS source_id;');
+await page.click('loc=role:button[name="Run & explain"]');
+await page.waitForFunction(()=>document.querySelector('#results-table')?.innerText.includes('source_id'),undefined,{timeout:10000});
+console.log("VERSION",JSON.stringify(await page.evaluate(()=>({sql:document.querySelector('#sql').value,meta:document.querySelector('#results-meta').textContent,rows:[...document.querySelector('#results-table').rows].map(r=>[...r.cells].map(c=>c.textContent))}))));
+await page.screenshot({path:"/tmp/archify-round40-browser-version.png"});

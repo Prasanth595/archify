@@ -1,0 +1,10 @@
+const task=await taskSpace(3),page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.selectOption('select',{value:"13"});
+await page.waitForFunction(()=>document.querySelector('#results-table')?.innerText.includes('Customer 1'),undefined,{timeout:10000});
+console.log("CORRELATED",JSON.stringify(await page.evaluate(()=>({sql:document.querySelector('#sql').value,meta:document.querySelector('#results-meta').textContent,rows:[...document.querySelector('#results-table').rows].map(r=>[...r.cells].map(c=>c.textContent)),status:document.querySelector('#status').textContent}))));
+await page.click('#sql');
+await page.screenshot({path:"/tmp/archify-round40-correlated.png"});
+await page.evaluate(()=>[...document.querySelectorAll('h2,h3')].find(x=>x.textContent.includes('Query plan')).scrollIntoView());
+await page.screenshot({path:"/tmp/archify-round40-native-plan.png"});
+console.log(await page.snapshot());

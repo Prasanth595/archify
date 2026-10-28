@@ -1,0 +1,12 @@
+const task=await taskSpace(3),page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.fill('#sql',"SELECT sqlite_compileoption_used('ENABLE_STMT_SCANSTATUS') AS scanstatus;");
+await page.click('loc=role:button[name="Run & explain"]');
+await page.waitForFunction(()=>document.querySelector('#results-table')?.innerText.includes('scanstatus'),undefined,{timeout:10000});
+console.log("SCANSTATUS",JSON.stringify(await page.evaluate(()=>[...document.querySelector('#results-table').rows].map(r=>[...r.cells].map(c=>c.textContent)))));
+await page.fill('#sql','SELECT name, (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count FROM customers;');
+await page.click('loc=role:button[name="Run & explain"]');
+await page.waitForFunction(()=>document.querySelector('#results-table')?.innerText.includes('Customer 200\t'),undefined,{timeout:10000});
+console.log("ALL",JSON.stringify(await page.evaluate(()=>({sql:document.querySelector('#sql').value,meta:document.querySelector('#results-meta').textContent,rows:[...document.querySelector('#results-table').rows].map(r=>[...r.cells].map(c=>c.textContent))}))));
+await page.screenshot({path:"/tmp/archify-round40-truncated-result.png"});
+console.log(await page.snapshot());

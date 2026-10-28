@@ -1,0 +1,15 @@
+Customer 642|23
+Customer 432|22
+Customer 1563|21
+Customer 1017|20
+Customer 1790|20
+Customer 444|19
+Customer 1243|19
+Customer 1328|19
+Customer 1661|19
+Customer 425|18
+QUERY PLAN
+|--SCAN customers                                                                (loops=1 rows=2000)
+|--CORRELATED SCALAR SUBQUERY 1                                                  (loops=2000)
+|  `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=2000 rows=20000)
+`--USE TEMP B-TREE FOR ORDER BY                                                  (loops=1 rows=2000)

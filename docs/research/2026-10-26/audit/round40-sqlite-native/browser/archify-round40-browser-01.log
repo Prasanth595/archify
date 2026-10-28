@@ -1,0 +1,47 @@
+[p1 "SQLite Query Explainer" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "SQLite Query Explainer"]
+root
+  container
+    heading
+      text "SQLite Query Explainer"
+    paragraph
+      text "Run SQL against a SQLite database and see what the query planner is really doing: the tool executes your query, then runs"
+      text "EXPLAIN QUERY PLAN"
+      text "and"
+      text "EXPLAIN"
+      text "against it and annotates every line of their output with a plain-English description. Powered by Python's"
+      text "sqlite3"
+      text "module running in your browser via"
+      anchor [ref=544, loc=href:https://pyodide.org/, url=https://pyodide.org/]
+        text "Pyodide"
+      text "— nothing you load or type leaves your machine."
+    container
+      heading
+        text "1. Choose a database"
+      container
+        button [ref=545]
+          text "Load example database"
+        text "or"
+        button [ref=546]
+          text "Open your own SQLite database…"
+    paragraph
+      text "All processing happens in your browser. Reference: SQLite docs for"
+      anchor [ref=547, loc=href:https://sqlite.org/eqp.html, url=https://sqlite.org/eqp.html]
+        text "EXPLAIN QUERY PLAN"
+      text "and"
+      anchor [ref=548, loc=href:https://sqlite.org/opcode.html, url=https://sqlite.org/opcode.html]
+        text "VDBE opcodes"
+      text ". More tools at"
+      anchor [ref=549, url=https://tools.simonwillison.net/]
+        text "tools.simonwillison.net"
+      text "."
+  container
+    anchor [ref=550, url=https://tools.simonwillison.net/]
+      text "Home"
+    anchor [ref=551, loc=href:/colophon#sqlite-query-explainer.html, url=https://tools.simonwillison.net/colophon#sqlite-query-explainer.html]
+      text "About sqlite-query-explainer"
+    anchor [ref=552, loc=href:https://github.com/simonw/tools/blob/main/sqlite-query-explainer.html, url=https://github.com/simonw/tools/blob/main/sqlite-query-explainer.html]
+      text "View source"
+    anchor [ref=553, loc=href:https://github.com/simonw/tools/commits/main/sqlite-query-explainer.html, url=https://github.com/simonw/tools/commits/main/sqlite-query-explainer.html]
+      text "Changes"
+
+

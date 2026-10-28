@@ -1,0 +1,6 @@
+Page.selectOption
+
+Select by a value-or-label string or { value?, label?, index? }; arrays select multiple options, while null or [] clears the selection. The select must be enabled, but disabled options remain programmatically selectable. Options: timeout: Maximum wait for the element to become usable in milliseconds; defaults to 3000.
+
+await page.selectOption(selector, valueOrValues, { timeout? })
+

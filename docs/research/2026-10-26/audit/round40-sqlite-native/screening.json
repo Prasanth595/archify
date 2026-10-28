@@ -1,0 +1,24 @@
+{
+  "remote_heads": 333,
+  "task_view": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "pr_query": {
+    "query": "repo:tt-a1i/archify is:pr \"SQLite\" in:title,body",
+    "count": 0
+  },
+  "issue_query": {
+    "query": "repo:tt-a1i/archify is:issue \"SQLite\" in:title,body",
+    "count": 0
+  },
+  "current_vs_old_html_identical": true,
+  "old_revision": "e410e25efd604bf897b476443f406da47b578264",
+  "docs": [
+    {
+      "url": "https://sqlite.org/profile.html",
+      "note": "Actual loop/row metrics require scanstatus-enabled build; checked this batch."
+    },
+    {
+      "url": "https://sqlite.org/eqp.html",
+      "note": "EQP is an interactive-debugging plan format; not a stable metric protocol; checked this batch."
+    }
+  ]
+}

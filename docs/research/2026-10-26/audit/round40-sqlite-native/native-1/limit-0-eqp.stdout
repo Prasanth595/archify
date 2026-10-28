@@ -1,0 +1,3 @@
+[{"id":4,"parent":0,"notused":125,"detail":"SCAN customers"},
+{"id":8,"parent":0,"notused":0,"detail":"CORRELATED SCALAR SUBQUERY 1"},
+{"id":13,"parent":8,"notused":50,"detail":"SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)"}]

@@ -1,0 +1,649 @@
+[p1 "SQLite Query Explainer" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "SQLite Query Explainer"]
+root
+  container
+    heading
+      text "SQLite Query Explainer"
+    paragraph
+      text "Run SQL against a SQLite database and see what the query planner is really doing: the tool executes your query, then runs"
+      text "EXPLAIN QUERY PLAN"
+      text "and"
+      text "EXPLAIN"
+      text "against it and annotates every line of their output with a plain-English description. Powered by Python's"
+      text "sqlite3"
+      text "module running in your browser via"
+      anchor [ref=544, loc=href:https://pyodide.org/, url=https://pyodide.org/]
+        text "Pyodide"
+      text "— nothing you load or type leaves your machine."
+    container
+      heading
+        text "1. Choose a database"
+      container
+        button [ref=545]
+          text "Load example database"
+        text "or"
+        button [ref=546]
+          text "Open your own SQLite database…"
+      paragraph
+        text "The data is generated with a fixed random seed, so results are reproducible — and queries you run are stored in the page URL, so you can bookmark or share them."
+      container
+        container [ref=554]
+          text "Database schema"
+        container
+          container
+            text "TABLE"
+            text "customers"
+            text "— 2,000 rows"
+          text "CREATE TABLE customers ( id INTEGER PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE, country TEXT, signup_date TEXT )"
+          container
+            text "TABLE"
+            text "events"
+            text "— 50,000 rows"
+          text "CREATE TABLE events ( id INTEGER PRIMARY KEY, customer_id INTEGER, event_type TEXT, created_at TEXT )"
+          container
+            text "TABLE"
+            text "order_items"
+            text "— 39,907 rows"
+          text "CREATE TABLE order_items ( order_id INTEGER REFERENCES orders(id), product_id INTEGER REFERENCES products(id), quantity INTEGER, unit_price REAL, PRIMARY KEY (order_id, product_id) ) WITHOUT ROWID"
+          container
+            text "TABLE"
+            text "orders"
+            text "— 20,000 rows"
+          text "CREATE TABLE orders ( id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), order_date TEXT, status TEXT )"
+          container
+            text "TABLE"
+            text "products"
+            text "— 200 rows"
+          text "CREATE TABLE products ( id INTEGER PRIMARY KEY, name TEXT NOT NULL, category TEXT, price REAL )"
+          container
+            text "INDEX"
+            text "idx_customers_country"
+            text "on customers"
+          text "CREATE INDEX idx_customers_country ON customers(country)"
+          container
+            text "INDEX"
+            text "idx_orders_customer"
+            text "on orders"
+          text "CREATE INDEX idx_orders_customer ON orders(customer_id)"
+          container
+            text "INDEX"
+            text "idx_orders_date"
+            text "on orders"
+          text "CREATE INDEX idx_orders_date ON orders(order_date)"
+          container
+            text "INDEX"
+            text "idx_products_category_price"
+            text "on products"
+          text "CREATE INDEX idx_products_category_price ON products(category, price)"
+          container
+            text "VIEW"
+            text "order_totals"
+          text "CREATE VIEW order_totals AS SELECT o.id AS order_id, o.customer_id, SUM(oi.quantity * oi.unit_price) AS total FROM orders o JOIN order_items oi ON oi.order_id = o.id GROUP BY o.id"
+    container
+      heading
+        text "2. Run a query"
+      container
+        text "Example queries:"
+        combobox [ref=555]
+          text "1. Full table scan"
+        paragraph
+          text "The events table has no index on event_type, so SQLite has to visit all 50,000 rows and test each one."
+      textbox [ref=556, loc=css:textarea[placeholder="SELECT ..."]]
+        text "SELECT * FROM events WHERE event_type = 'purchase' LIMIT 10"
+      container
+        button [ref=557]
+          text "Run & explain"
+        text "Ctrl/Cmd + Enter"
+    container
+      container
+        heading
+          text "Results"
+        paragraph
+          text "10 row(s) in 0 ms"
+        table
+          table_row
+            table_cell
+              text "id"
+            table_cell
+              text "customer_id"
+            table_cell
+              text "event_type"
+            table_cell
+              text "created_at"
+          table_row
+            table_cell
+              text "4"
+            table_cell
+              text "1382"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-07-02"
+          table_row
+            table_cell
+              text "5"
+            table_cell
+              text "1789"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-10-09"
+          table_row
+            table_cell
+              text "12"
+            table_cell
+              text "1436"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-03-21"
+          table_row
+            table_cell
+              text "14"
+            table_cell
+              text "674"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-09-07"
+          table_row
+            table_cell
+              text "15"
+            table_cell
+              text "552"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-09-06"
+          table_row
+            table_cell
+              text "16"
+            table_cell
+              text "371"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-10-15"
+          table_row
+            table_cell
+              text "19"
+            table_cell
+              text "285"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-12-23"
+          table_row
+            table_cell
+              text "24"
+            table_cell
+              text "931"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-06-12"
+          table_row
+            table_cell
+              text "33"
+            table_cell
+              text "459"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-05-13"
+          table_row
+            table_cell
+              text "39"
+            table_cell
+              text "783"
+            table_cell
+              text "purchase"
+            table_cell
+              text "2024-05-03"
+      heading
+        text "Query plan —"
+        text "EXPLAIN QUERY PLAN"
+      paragraph
+        text "The high-level strategy SQLite chose for this query. Indented items run"
+        text "inside"
+        text "their parent; sibling loops form nested joins, with each row from an outer loop driving a full pass of the loops below it."
+      text "SCAN"
+      text "SCAN events"
+      text "Full table scan of “events”: SQLite visits every row in the table and tests it against the WHERE clause. Cost grows linearly with table size — fine for small tables, but on big tables this is th..."
+      heading
+        text "Bytecode —"
+        text "EXPLAIN"
+      paragraph
+        text "SQLite compiles every statement into a program for its virtual machine (the VDBE); this is that program, one instruction per row. The"
+        text "|"
+        text "bars mark loop bodies. Instruction numbers are links — click one to jump to it, and the"
+        text "↖ from n"
+        text "badge on an instruction shows which other instructions jump to it. Hover a register like"
+        text "r[3]"
+        text "or a cursor to highlight everywhere else it is used."
+      container
+        checkbox [ref=558]
+        text "Show explanations"
+      table
+        table_row
+          table_cell
+            text "addr"
+          table_cell
+            text "loop"
+          table_cell
+            text "opcode"
+          table_cell
+            text "p1"
+          table_cell
+            text "p2"
+          table_cell
+            text "p3"
+          table_cell
+            text "p4"
+          table_cell
+            text "p5"
+          table_cell
+            text "explanation"
+        table_row
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "Init"
+          table_cell
+            text "0"
+          table_cell
+            anchor [ref=559]
+              text "14"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Start of the program: jump to instruction"
+            anchor [ref=560]
+              text "14"
+            text "(the one-time setup code placed at the end), which will jump back to the top. Every compiled statement begins with Init."
+        table_row
+          table_cell
+            text "1"
+            text "⇐"
+            anchor [ref=561]
+              text "16"
+          table_cell
+          table_cell
+            text "Integer"
+          table_cell
+            text "10"
+          table_cell
+            text "1"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Load the integer 10 into"
+            text "r[1]"
+            text "."
+        table_row
+          table_cell
+            text "2"
+          table_cell
+          table_cell
+            text "OpenRead"
+          table_cell
+            text "0"
+          table_cell
+            text "7"
+          table_cell
+            text "0"
+          table_cell
+            text "4"
+          table_cell
+            text "0"
+          table_cell
+            text "Open read-only"
+            text "cursor 0"
+            text "on the b-tree rooted at page 7, a table with 4 columns. Cursors are SQLite's handles for walking tables and indexes."
+        table_row
+          table_cell
+            text "3"
+          table_cell
+          table_cell
+            text "Rewind"
+          table_cell
+            text "0"
+          table_cell
+            anchor [ref=562]
+              text "13"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Position"
+            text "cursor 0"
+            text "on its first row — the start of a loop over the whole table/index. If it's empty, jump past the loop body to"
+            anchor [ref=563]
+              text "13"
+            text "."
+        table_row
+          table_cell
+            text "4"
+            text "⇐"
+            anchor [ref=564]
+              text "12"
+          table_cell
+            text "│"
+          table_cell
+            text "Column"
+          table_cell
+            text "0"
+          table_cell
+            text "2"
+          table_cell
+            text "2"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Read column 2 of the row"
+            text "cursor 0"
+            text "is on, into"
+            text "r[2]"
+            text "."
+        table_row
+          table_cell
+            text "5"
+          table_cell
+            text "│"
+          table_cell
+            text "Ne"
+          table_cell
+            text "3"
+          table_cell
+            anchor [ref=565]
+              text "12"
+          table_cell
+            text "2"
+          table_cell
+            text "BINARY-8"
+          table_cell
+            text "82"
+          table_cell
+            text "If"
+            text "r[2]"
+            text "!="
+            text "r[3]"
+            text ", jump to"
+            anchor [ref=566]
+              text "12"
+            text "."
+        table_row
+          table_cell
+            text "6"
+          table_cell
+            text "│"
+          table_cell
+            text "Rowid"
+          table_cell
+            text "0"
+          table_cell
+            text "4"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Store the rowid of the row"
+            text "cursor 0"
+            text "is on into"
+            text "r[4]"
+            text "."
+        table_row
+          table_cell
+            text "7"
+          table_cell
+            text "│"
+          table_cell
+            text "Column"
+          table_cell
+            text "0"
+          table_cell
+            text "1"
+          table_cell
+            text "5"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Read column 1 of the row"
+            text "cursor 0"
+            text "is on, into"
+            text "r[5]"
+            text "."
+        table_row
+          table_cell
+            text "8"
+          table_cell
+            text "│"
+          table_cell
+            text "Column"
+          table_cell
+            text "0"
+          table_cell
+            text "2"
+          table_cell
+            text "6"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Read column 2 of the row"
+            text "cursor 0"
+            text "is on, into"
+            text "r[6]"
+            text "."
+        table_row
+          table_cell
+            text "9"
+          table_cell
+            text "│"
+          table_cell
+            text "Column"
+          table_cell
+            text "0"
+          table_cell
+            text "3"
+          table_cell
+            text "7"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Read column 3 of the row"
+            text "cursor 0"
+            text "is on, into"
+            text "r[7]"
+            text "."
+        table_row
+          table_cell
+            text "10"
+          table_cell
+            text "│"
+          table_cell
+            text "ResultRow"
+          table_cell
+            text "4"
+          table_cell
+            text "4"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Emit one result row to the caller, made of registers"
+            text "r[4]..r[7]"
+            text ". Execution pauses here until the caller asks for the next row."
+        table_row
+          table_cell
+            text "11"
+          table_cell
+            text "│"
+          table_cell
+            text "DecrJumpZero"
+          table_cell
+            text "1"
+          table_cell
+            anchor [ref=567]
+              text "13"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Decrement"
+            text "r[1]"
+            text "; when it reaches zero, jump to"
+            anchor [ref=568]
+              text "13"
+            text ". Typically the LIMIT counter running out and exiting the loop."
+        table_row
+          table_cell
+            text "12"
+            text "⇐"
+            anchor [ref=569]
+              text "5"
+          table_cell
+            text "│"
+          table_cell
+            text "Next"
+          table_cell
+            text "0"
+          table_cell
+            anchor [ref=570]
+              text "4"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "1"
+          table_cell
+            text "Step"
+            text "cursor 0"
+            text "forward to its next row; if there is one, jump back to"
+            anchor [ref=571]
+              text "4"
+            text "to run the loop body again — this is the bottom of a scan loop. Otherwise fall through: the loop is done."
+        table_row
+          table_cell
+            text "13"
+            text "⇐"
+            anchor [ref=572]
+              text "3"
+            text ","
+            anchor [ref=573]
+              text "11"
+          table_cell
+          table_cell
+            text "Halt"
+          table_cell
+            text "0"
+          table_cell
+            text "0"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "End of the program — execution stops here. The instructions after this are one-time setup, jumped to from Init."
+        table_row
+          table_cell
+            text "14"
+            text "⇐"
+            anchor [ref=574]
+              text "0"
+          table_cell
+          table_cell
+            text "Transaction"
+          table_cell
+            text "0"
+          table_cell
+            text "0"
+          table_cell
+            text "11"
+          table_cell
+            text "0"
+          table_cell
+            text "1"
+          table_cell
+            text "Begin a read transaction on database 0. Every statement that touches the database needs this."
+        table_row
+          table_cell
+            text "15"
+          table_cell
+          table_cell
+            text "String8"
+          table_cell
+            text "0"
+          table_cell
+            text "3"
+          table_cell
+            text "0"
+          table_cell
+            text "purchase"
+          table_cell
+            text "0"
+          table_cell
+            text "Load the string ‘purchase’ into"
+            text "r[3]"
+            text "."
+        table_row
+          table_cell
+            text "16"
+          table_cell
+          table_cell
+            text "Goto"
+          table_cell
+            text "0"
+          table_cell
+            anchor [ref=575]
+              text "1"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Unconditional jump to instruction"
+            anchor [ref=576]
+              text "1"
+            text "— the glue for loops and skipping sections."
+    paragraph
+      text "All processing happens in your browser. Reference: SQLite docs for"
+      anchor [ref=547, loc=href:https://sqlite.org/eqp.html, url=https://sqlite.org/eqp.html]
+        text "EXPLAIN QUERY PLAN"
+      text "and"
+      anchor [ref=548, loc=href:https://sqlite.org/opcode.html, url=https://sqlite.org/opcode.html]
+        text "VDBE opcodes"
+      text ". More tools at"
+      anchor [ref=549, url=https://tools.simonwillison.net/]
+        text "tools.simonwillison.net"
+      text "."
+  container
+    anchor [ref=550, url=https://tools.simonwillison.net/]
+      text "Home"
+    anchor [ref=551, loc=href:/colophon#sqlite-query-explainer.html, url=https://tools.simonwillison.net/colophon#sqlite-query-explainer.html]
+      text "About sqlite-query-explainer"
+    anchor [ref=552, loc=href:https://github.com/simonw/tools/blob/main/sqlite-query-explainer.html, url=https://github.com/simonw/tools/blob/main/sqlite-query-explainer.html]
+      text "View source"
+    anchor [ref=553, loc=href:https://github.com/simonw/tools/commits/main/sqlite-query-explainer.html, url=https://github.com/simonw/tools/commits/main/sqlite-query-explainer.html]
+      text "Updated 2026-07-18"
+
+

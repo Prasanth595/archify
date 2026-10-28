@@ -1,0 +1,258 @@
+CORRELATED {"sql":"SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers LIMIT 10","meta":"10 row(s) in 0.4 ms","rows":[["name","order_count"],["Customer 1","4"],["Customer 2","12"],["Customer 3","13"],["Customer 4","10"],["Customer 5","5"],["Customer 6","7"],["Customer 7","11"],["Customer 8","12"],["Customer 9","15"],["Customer 10","15"]],"status":""}
+[p1 "SQLite Query Explainer" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "SQLite Query Explainer"]
+root
+  container
+    container
+      heading
+        text "Query plan —"
+        text "EXPLAIN QUERY PLAN"
+      paragraph
+        text "The high-level strategy SQLite chose for this query. Indented items run"
+        text "inside"
+        text "their parent; sibling loops form nested joins, with each row from an outer loop driving a full pass of the loops below it."
+      container
+        container
+          container
+            text "SCAN"
+            text "SCAN customers"
+          text "Full table scan of “customers”: SQLite visits every row in the table and tests it against the WHERE clause. Cost grows linearly with table size — fine for small tables, but on big tables this is..."
+        container
+          container
+            text "SUBQUERY"
+            text "CORRELATED SCALAR SUBQUERY 1"
+          text "Subquery 1 returns a single value and is correlated — it references columns from the outer query, so it must be re-run for every candidate row of the outer query. Inside a scan of a large table this..."
+          container
+            container
+              text "SEARCH"
+              text "SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)"
+            text "Index search using covering index “idx_orders_customer”: SQLite descends the index b-tree to the first matching entry and reads only the matching range. The index contains every column the query n..."
+    container
+      heading
+        text "Bytecode —"
+        text "EXPLAIN"
+      paragraph
+        text "SQLite compiles every statement into a program for its virtual machine (the VDBE); this is that program, one instruction per row. The"
+        text "|"
+        text "bars mark loop bodies. Instruction numbers are links — click one to jump to it, and the"
+        text "↖ from n"
+        text "badge on an instruction shows which other instructions jump to it. Hover a register like"
+        text "r[3]"
+        text "or a cursor to highlight everywhere else it is used."
+      container
+        checkbox [ref=558]
+        text "Show explanations"
+      table
+        table_row
+          table_cell
+            text "addr"
+          table_cell
+            text "loop"
+          table_cell
+            text "opcode"
+          table_cell
+            text "p1"
+          table_cell
+            text "p2"
+          table_cell
+            text "p3"
+          table_cell
+            text "p4"
+          table_cell
+            text "p5"
+          table_cell
+            text "explanation"
+        table_row
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "Init"
+          table_cell
+            text "0"
+          table_cell
+            anchor [ref=577]
+              text "24"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Start of the program: jump to instruction"
+            anchor [ref=578]
+              text "24"
+            text "(the one-time setup code placed at the end), which will jump back to the top. Every compiled statement begins with Init."
+        table_row
+          table_cell
+            text "1"
+            container
+              text "⇐"
+              anchor [ref=579]
+                text "25"
+          table_cell
+          table_cell
+            text "Integer"
+          table_cell
+            text "10"
+          table_cell
+            text "1"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Load the integer 10 into"
+            text "r[1]"
+            text "."
+        table_row
+          table_cell
+            text "2"
+          table_cell
+          table_cell
+            text "OpenRead"
+          table_cell
+            text "0"
+          table_cell
+            text "2"
+          table_cell
+            text "0"
+          table_cell
+            text "2"
+          table_cell
+            text "0"
+          table_cell
+            text "Open read-only"
+            text "cursor 0"
+            text "on the b-tree rooted at page 2, a table with 2 columns. Cursors are SQLite's handles for walking tables and indexes."
+        table_row
+          table_cell
+            text "3"
+          table_cell
+          table_cell
+            text "Rewind"
+          table_cell
+            text "0"
+          table_cell
+            anchor [ref=580]
+              text "23"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Position"
+            text "cursor 0"
+            text "on its first row — the start of a loop over the whole table/index. If it's empty, jump past the loop body to"
+            anchor [ref=581]
+              text "23"
+            text "."
+        table_row
+          table_cell
+            text "4"
+            container
+              text "⇐"
+              anchor [ref=582]
+                text "22"
+          table_cell
+            text "│"
+          table_cell
+            text "Column"
+          table_cell
+            text "0"
+          table_cell
+            text "1"
+          table_cell
+            text "2"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Read column 1 of the row"
+            text "cursor 0"
+            text "is on, into"
+            text "r[2]"
+            text "."
+        table_row
+          table_cell
+            text "5"
+          table_cell
+            text "│"
+          table_cell
+            text "BeginSubrtn"
+          table_cell
+            text "0"
+          table_cell
+            text "4"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Mark the start of a subroutine; initialize its return-address register"
+            text "r[4]"
+            text "to NULL."
+        table_row
+          table_cell
+            text "6"
+          table_cell
+            text "│"
+          table_cell
+            text "Null"
+          table_cell
+            text "0"
+          table_cell
+            text "5"
+          table_cell
+            text "5"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Set"
+            text "r[5]"
+            text "to NULL."
+        table_row
+          table_cell
+            text "7"
+          table_cell
+            text "│"
+          table_cell
+            text "Integer"
+          table_cell
+            text "1"
+          table_cell
+            text "6"
+          table_cell
+            text "0"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Load the integer 1 into"
+            text "r[6]"
+            text "."
+        table_row
+          table_cell
+            text "8"
+          table_cell
+            text "│"
+          table_cell
+            text "Null"
+          table_cell
+            text "0"
+          table_cell
+            text "7"
+          table_cell
+            text "7"
+          table_cell
+          table_cell
+            text "0"
+          table_cell
+            text "Set"
+            text "r[7]"
+            text "to NULL."
+
+

@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/usr/bin/sqlite3",
+    "/tmp/archify-round40-native-2/fixture.db",
+    ".scanstats on",
+    "SELECT * FROM events WHERE event_type = 'purchase' LIMIT 10"
+  ],
+  "exit": 0,
+  "reason": "Default native page claims visits all50000rows; one supplemental read-only profile after formal replay."
+}

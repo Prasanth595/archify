@@ -1,0 +1,2 @@
+const task=await taskSpace(3),page=task.page("p1");
+console.log(await page.evaluate(()=>({options:[...document.querySelectorAll('select option')].map(x=>({value:x.value,text:x.textContent})),status:document.body.innerText.match(/SQLite[^\n]*|Python[^\n]*/g)?.slice(-6),sections:[...document.querySelectorAll('[id]')].map(x=>({tag:x.tagName,id:x.id})).filter(x=>/result|sql|query|status|plan/i.test(x.id))})));

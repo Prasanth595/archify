@@ -1,0 +1,133 @@
+{
+  "python": "3.15.0 (main, Oct  9 2026, 11:16:41) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "fixture_sqlite_version": "3.54.1",
+  "fixture_creation": "only reviewed EXAMPLE_SCHEMA and load_example_database; get_schema return stubbed",
+  "binary": "/usr/bin/sqlite3",
+  "binary_sha256": "4b62a8604abc19830f49716c478b038665ece3f5706cb94075a9222f907bf5dc",
+  "database_sha256": "f1b5a3945e52641295ae83caa8c414dcb002f92fc6621fbc7b2f9a7f2272562e",
+  "database_bytes": 3813376,
+  "commands": [
+    {
+      "name": "version",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "--version"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0037010830019426066
+    },
+    {
+      "name": "compile-options",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        "SELECT sqlite_source_id(); PRAGMA compile_options;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.002980000001116423
+    },
+    {
+      "name": "cardinality",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        "-json",
+        "SELECT (SELECT count(*) FROM customers) AS customers, (SELECT count(*) FROM orders) AS orders;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.002645833999849856
+    },
+    {
+      "name": "limit-10-eqp",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        "-json",
+        ".explain off",
+        "EXPLAIN QUERY PLAN SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers LIMIT 10;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0023853750026319176
+    },
+    {
+      "name": "limit-10-profile",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        ".scanstats on",
+        "SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers LIMIT 10;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0023639579994778614
+    },
+    {
+      "name": "limit-0-eqp",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        "-json",
+        ".explain off",
+        "EXPLAIN QUERY PLAN SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers LIMIT 0;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.002281542001583148
+    },
+    {
+      "name": "limit-0-profile",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        ".scanstats on",
+        "SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers LIMIT 0;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.002351582999835955
+    },
+    {
+      "name": "all-eqp",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        "-json",
+        ".explain off",
+        "EXPLAIN QUERY PLAN SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0025889169992296956
+    },
+    {
+      "name": "all-profile",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        ".scanstats on",
+        "SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.003212667001207592
+    },
+    {
+      "name": "sorted-10-eqp",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        "-json",
+        ".explain off",
+        "EXPLAIN QUERY PLAN SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers ORDER BY order_count DESC LIMIT 10;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0023357089994533453
+    },
+    {
+      "name": "sorted-10-profile",
+      "argv": [
+        "/usr/bin/sqlite3",
+        "/private/tmp/archify-round40-native-2/fixture.db",
+        ".scanstats on",
+        "SELECT name,\n  (SELECT COUNT(*) FROM orders WHERE customer_id = customers.id) AS order_count\nFROM customers ORDER BY order_count DESC LIMIT 10;"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0032596660021226853
+    }
+  ]
+}

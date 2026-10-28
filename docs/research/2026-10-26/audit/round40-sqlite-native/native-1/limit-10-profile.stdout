@@ -1,0 +1,14 @@
+Customer 1|4
+Customer 2|12
+Customer 3|13
+Customer 4|10
+Customer 5|5
+Customer 6|7
+Customer 7|11
+Customer 8|12
+Customer 9|15
+Customer 10|15
+QUERY PLAN
+|--SCAN customers                                                                (loops=1 rows=10)
+`--CORRELATED SCALAR SUBQUERY 1                                                  (loops=10)
+   `--SEARCH orders USING COVERING INDEX idx_orders_customer (customer_id=?)     (loops=10 rows=104)
