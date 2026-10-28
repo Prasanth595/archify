@@ -11,7 +11,7 @@ import { brandLabelFitWidth, brandMetadataFor, brandTopRailProblem, renderBrandM
 import { minimumReadableSourceTextPx } from '../shared/desktop-readability.mjs';
 import { translateMessage as i18nText } from '../shared/i18n.mjs';
 import { gridLayout, resolveComponentPos, validateGridPlacement } from './grid.mjs';
-import { createArchitectureRouter, connectionLabelBoxAt } from './routing.mjs';
+import { createArchitectureRouter, connectionLabelBoxAt, hasAutomaticRouteGeometry } from './routing.mjs';
 import { placeAutomaticLabels } from '../shared/automatic-labels.mjs';
 import { cleanRouteDetourProblems } from '../shared/route-quality.mjs';
 import {
@@ -357,12 +357,6 @@ const { pathFor, connectionSides, connectionEndpointSide } = createArchitectureR
     radius: boundary.kind === 'security-group' ? 8 : 12,
   })),
 });
-function hasAutomaticRouteGeometry(connection) {
-  return !Array.isArray(connection?.via)
-    && (!connection?.route || connection.route === 'auto')
-    && connection?.channelX === undefined
-    && connection?.channelY === undefined;
-}
 // The auto canvas has to cover these rects; an authored viewBox is never
 // resized to fit them — there the containment rule reports the clipping.
 let connectionLabels = connectionLabelRects();

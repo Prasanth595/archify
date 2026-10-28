@@ -26,6 +26,13 @@ import { shortestOrthogonalGridRoute } from '../shared/route-quality.mjs';
 import { textUnits } from '../shared/utils.mjs';
 import { reservedLabelRect } from '../shared/automatic-labels.mjs';
 
+export function hasAutomaticRouteGeometry(connection) {
+  return !Array.isArray(connection?.via)
+    && (!connection?.route || connection.route === 'auto')
+    && connection?.channelX === undefined
+    && connection?.channelY === undefined;
+}
+
 export function connectionLabelBoxAt(conn, [lx, ly]) {
   const width = Math.max(30, textUnits(conn.label) * 4.8 + 10);
   return { x: lx - width / 2, y: ly - 10, width, height: 14, lx, ly };

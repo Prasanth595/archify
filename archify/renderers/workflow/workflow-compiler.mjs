@@ -37,6 +37,9 @@ import {
   intrinsicWorkflow,
   planningWorkflow,
   preservesWorkflowAbsoluteGeometry,
+  usesIndependentLaneMeasurement,
+  hasVerticalStack,
+  hasAbsoluteWorkflowPins,
 } from './workflow-migration-geometry.mjs';
 import {
   joinRoutePoints,
@@ -136,34 +139,6 @@ function createLegacyLayout() {
     nodeH: 52,
     defaultViewBoxWidth: 720,
   };
-}
-
-function hasAbsoluteWorkflowPins(workflow) {
-  return asArray(workflow.edges).some((edge) => (
-    Array.isArray(edge.via)
-    || Array.isArray(edge.labelAt)
-    || edge.channelX !== undefined
-    || edge.channelY !== undefined
-  ));
-}
-
-function hasVerticalStack(workflow) {
-  const offsetsByLaneAndColumn = new Map();
-  for (const node of asArray(workflow.nodes)) {
-    if (!Number.isInteger(node.col)) continue;
-    const key = `${node.lane}\u0000${node.col}`;
-    const offsets = offsetsByLaneAndColumn.get(key) || new Set();
-    offsets.add(Number(node.yOffset) || 0);
-    if (offsets.size > 1) return true;
-    offsetsByLaneAndColumn.set(key, offsets);
-  }
-  return false;
-}
-
-function usesIndependentLaneMeasurement(workflow) {
-  return hasVerticalStack(workflow)
-    && !workflow.meta?.viewBox
-    && !hasAbsoluteWorkflowPins(workflow);
 }
 
 // A readable-v2 node without an authored width grows to fit its label, up to

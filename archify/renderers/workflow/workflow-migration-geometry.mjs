@@ -5,11 +5,43 @@ const TARGET_SCHEMA_VERSION = 2;
 // An authored canvas likewise keeps its established plan: draft-only optional
 // corridor growth must not consume space that a valid fixed canvas lacks.
 const absoluteGeometryPolicy = Symbol('workflow absolute geometry policy');
-export function preservesWorkflowAbsoluteGeometry(workflow) {
-  return workflow[absoluteGeometryPolicy] ?? (Array.isArray(workflow.meta?.viewBox) || (workflow.edges || []).some((edge) => (
+export function hasAbsoluteWorkflowPins(workflow) {
+  return (workflow.edges || []).some((edge) => (
     Array.isArray(edge.via) || Array.isArray(edge.labelAt)
     || edge.channelX !== undefined || edge.channelY !== undefined
-  )));
+  ));
+}
+
+export function preservesWorkflowAbsoluteGeometry(workflow) {
+  return workflow[absoluteGeometryPolicy] ?? (workflow.layout?.sizing
+    ? workflow.layout.sizing === 'absolute'
+    : Array.isArray(workflow.meta?.viewBox) || hasAbsoluteWorkflowPins(workflow));
+}
+
+export function hasVerticalStack(workflow) {
+  const offsets = new Map();
+  return (workflow.nodes || []).some((node) => {
+    if (!Number.isInteger(node.col)) return false;
+    const key = `${node.lane}\u0000${node.col}`;
+    const values = offsets.get(key) || new Set();
+    values.add(Number(node.yOffset) || 0);
+    offsets.set(key, values);
+    return values.size > 1;
+  });
+}
+
+export function usesIndependentLaneMeasurement(workflow) {
+  if (workflow.layout?.lanes) return workflow.layout.lanes === 'independent';
+  return hasVerticalStack(workflow) && !workflow.meta?.viewBox && !hasAbsoluteWorkflowPins(workflow);
+}
+
+export function captureWorkflowLayout(workflow) {
+  if (workflow.schema_version !== 2 || workflow.layout) return clone(workflow);
+  return { ...clone(workflow), layout: {
+    contract: 'readable-v2',
+    lanes: usesIndependentLaneMeasurement(workflow) ? 'independent' : 'shared',
+    sizing: preservesWorkflowAbsoluteGeometry(workflow) ? 'absolute' : 'adaptive',
+  } };
 }
 
 function clone(value) {

@@ -55,7 +55,7 @@ function initialAuthoredOutput(inputPath) {
   return undefined;
 }
 
-function previewPage() {
+export function previewPage(artifactPath = '/artifact.html') {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -118,7 +118,7 @@ function previewPage() {
           failure.open = false;
           if (state.revision !== lastRevision) {
             lastRevision = state.revision;
-            artifact.src = '/artifact.html?revision=' + encodeURIComponent(state.revision) + '&sha=' + encodeURIComponent(state.lastVerified.sha256.slice(0, 12));
+            artifact.src = ${JSON.stringify(artifactPath + '?revision=')} + encodeURIComponent(state.revision) + '&sha=' + encodeURIComponent(state.lastVerified.sha256.slice(0, 12));
             body.dataset.hasArtifact = 'true';
           }
         } else if (state.status === 'needs-fix') {
@@ -429,12 +429,21 @@ export async function startPreview(options) {
     for (const res of clients) sendState(res);
   }
 
-  const page = Buffer.from(previewPage());
+  const artifactPath = options.editor?.pagePath || '/artifact.html';
+  const page = Buffer.from(previewPage(artifactPath));
   const server = http.createServer((req, res) => {
     const expectedHost = `${loopbackHost}:${port}`;
     if (req.headers.host !== expectedHost) {
       res.writeHead(403, responseHeaders('text/plain; charset=utf-8'));
       res.end('Forbidden host');
+      return;
+    }
+    if (options.editor && req.url?.startsWith('/edit/')) {
+      Promise.resolve(options.editor.request(req, res, `http://${expectedHost}`)).catch(error => {
+        if (res.headersSent) return res.end();
+        res.writeHead(400, responseHeaders('application/json; charset=utf-8'));
+        res.end(safeJson({ error: error.message }));
+      });
       return;
     }
     if (req.method !== 'GET' && req.method !== 'HEAD') {
@@ -469,15 +478,16 @@ export async function startPreview(options) {
       else res.end(body);
       return;
     }
-    if (url.pathname === '/artifact.html') {
+    if (url.pathname === artifactPath) {
       if (!artifactBuffer) {
         res.writeHead(404, responseHeaders('text/plain; charset=utf-8'));
         res.end('No verified artifact yet');
         return;
       }
-      res.writeHead(200, { ...responseHeaders('text/html; charset=utf-8'), 'Content-Length': artifactBuffer.byteLength });
+      const served = options.editor ? Buffer.from(options.editor.decorate(artifactBuffer)) : artifactBuffer;
+      res.writeHead(200, { ...responseHeaders('text/html; charset=utf-8'), 'Content-Length': served.byteLength });
       if (req.method === 'HEAD') res.end();
-      else res.end(artifactBuffer);
+      else res.end(served);
       return;
     }
     if (url.pathname === '/events' && req.method === 'GET') {
@@ -492,6 +502,12 @@ export async function startPreview(options) {
       return;
     }
 
+    const linked = options.editor?.linkedPage?.(url);
+    if (linked) {
+      res.writeHead(302, { ...responseHeaders('text/plain; charset=utf-8'), Location: linked });
+      res.end();
+      return;
+    }
     res.writeHead(404, responseHeaders('text/plain; charset=utf-8'));
     res.end('Not found');
   });
@@ -575,6 +591,7 @@ export async function startPreview(options) {
     if (force) forceStopping = true;
     if (!stopping) {
       stopping = true;
+      options.editor?.stop();
       clearTimeout(debounceTimer);
       clearInterval(pollTimer);
       watcher?.close();
@@ -633,6 +650,7 @@ export async function startPreview(options) {
       ),
     };
     broadcast();
+    options.editor?.failed(state.failure.message);
   }
 
   function commitCandidate(candidatePath, receipt, generationHash, outputCapture) {
@@ -667,6 +685,7 @@ export async function startPreview(options) {
           candidateIdentity: sourceCandidateIdentity,
         };
       }
+      options.editor?.check(candidate, currentSource.bytes);
       const beforeStage = verifyAtomicOutput(outputCapture.snapshot);
       if (beforeStage.status !== 'match') throw atomicOutputError(beforeStage);
       ({
@@ -713,6 +732,7 @@ export async function startPreview(options) {
         };
       }
       state.failure = null;
+      options.editor?.committed(candidate, currentSource.bytes);
       broadcast();
       return { committed: true, supersededBy: null, candidateIdentity: sourceCandidateIdentity };
     } catch (error) {

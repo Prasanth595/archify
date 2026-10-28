@@ -1,42 +1,10 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
-import { softwareNoticesHtml } from '../archify/renderers/shared/software-notices.mjs';
-
-const here = path.dirname(fileURLToPath(import.meta.url));
-const previewPath = path.resolve(here, '..', 'archify', 'bin', 'preview.mjs');
-
-// The preview server serves previewPage() verbatim. That function is a
-// template literal with its inert license payload supplied, so cooking it yields the
-// HTML a browser receives, without starting a server or a build.
-function shellPage() {
-  const source = fs.readFileSync(previewPath, 'utf8');
-  const fnStart = source.indexOf('function previewPage()');
-  assert.ok(fnStart >= 0, 'previewPage() not found in preview.mjs');
-  const openTick = source.indexOf('`', source.indexOf('return', fnStart));
-  assert.ok(openTick > fnStart, 'previewPage() template literal not found');
-  let i = openTick + 1;
-  let closeTick = -1;
-  while (i < source.length) {
-    if (source[i] === '\\') {
-      i += 2;
-      continue;
-    }
-    if (source[i] === '`') {
-      closeTick = i;
-      break;
-    }
-    i += 1;
-  }
-  assert.ok(closeTick > openTick, 'previewPage() template literal not terminated');
-  return vm.runInNewContext(source.slice(openTick, closeTick + 1), { softwareNoticesHtml });
-}
+import { previewPage } from '../archify/bin/preview.mjs';
 
 function shellScript() {
-  const page = shellPage();
+  const page = previewPage();
   const script = page.match(/<script>\n([\s\S]*?)\n  <\/script>/)?.[1];
   assert.ok(script, 'preview shell script missing');
   assert.doesNotThrow(() => new vm.Script(script));
