@@ -1,6 +1,6 @@
 # 2026-10-28 阅读实验交付
 
-人类最新“继续吧”已恢复持续探索；第57/58项已完成，profile-normalization独立远程分支已交付，现计第59项；gallery本批新卡观察另行记录。下述各节active、候选、pending及旧pause文字保留相应历史时点。首批完成两个独立实验分支，后续再完成一个多文件Diff导航分支；未创建PR、合入、发布或安装。[最新GitHub排重](resume-status.md)记录dev `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`、main `d6059331abbddb49bca380ff46dca8ce33158b04`；两实验仍绑定原基线 `e837dc4cb83042d2b6c596e039692e25ec62c2da`。
+人类最新“继续吧”已恢复持续探索；第59项已交付，Checklist progress独立远程修复已交付并计第60项；gallery60本批新卡观察另记。下述各节active、候选、pending及旧pause文字保留相应历史时点。首批完成两个独立实验分支，后续再完成一个多文件Diff导航分支；未创建PR、合入、发布或安装。[最新GitHub排重](resume-status.md)记录dev `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`、main `d6059331abbddb49bca380ff46dca8ce33158b04`；两实验仍绑定原基线 `e837dc4cb83042d2b6c596e039692e25ec62c2da`。
 
 | 实验 | 远程提交与图片 | 结果 |
 | --- | --- | --- |
@@ -186,3 +186,28 @@ source input阶段记录：实验总账已为59项（18产品/20离线/21内容�
 第59项gallery静态与本批UI已完成：sourceHub `c0d514eb4f393be46633ce4440d466bc8560fa52`，冻结HTML `780c794011745e0830928fdf320b92d081d7a166da40356bb661af4ccbb83846`，59＝18产品/20离线/21内容。root在TaskSpace20观察分组标签、新卡query1/59及原PNG14a930…1457/109862B；第一张lazy截图natural0×0保留为中间记录，等待完成1440×1000后另拍最终图。桌面原尺寸1440×1000，Escape回精确新卡opener；390px暗色原尺寸shell与可见close实际点击、原生overflow均有原图。没有移动整图fit或AT结论。
 
 [本批6原PNG与6JSON](../2026-10-25/gallery/screenshots59/)均按原字节保存，root已逐张看图；旧58完整selection/items/card/PNG与历史证据保持原字节。empty0→reset59、offline20、最后all59/light/空query/dialog closed，TaskSpace20 finish keep[]一次。sourceHub与gallery artifact此阶段仍prepared/local-bound，随后按授权提交、push和精确readback；不混同已交付实验head与hub artifact，不新增研究、产品测试或浏览器。持续探索已恢复，后续范围依当前授权推进。
+
+
+## 新一轮五报告：四项不实施与清单错项修复
+
+五份冻结scouts保留各自研究时点，不将上游源码/golden推导称为本轮上游执行或UI验收，也不把来源复核计作全新项目。以下只有JSON显式ID checklist错项建议转入本批独立修复；其余四方向均0实施，不为换fixture或现有UI换版式另建实验。
+
+| 报告 | 结论与具体边界 |
+| --- | --- |
+| [Resolution proof reading](scouts/resolution-proof-reading.md) | Mixology完整官方fixture区分非空版本范围交集与为空的provider离散目录交集；官方expected和两约束/目录表已足够回答，不新建solver、parser或证明树reader。 |
+| [Execution provenance reading](scouts/execution-provenance-reading.md) | Cyberbrain完整7事件提供值来源，不补齐控制依赖或完整执行解释；原viewer已有上游值导航，不新建采集器或以未记录推断未执行。 |
+| [Build scheduling reading](scouts/build-scheduling-reading.md) | ninjago的critical path/float/drag来自观测时长与依赖模型，不等于真实ready/queue/pool阻塞归属；自然完整状态序列不足且上游已有阅读工具，本轮不建调度adapter。 |
+| [Task-view refresh reading](scouts/task-view-refresh-reading.md) | 阅读状态内容身份促成Archify JSON同artifact/block ID下重排清单的源码缺陷发现；Markdown已有内容换ID不能误称毫无失效。唯一修复不扩为Flows子图范围、代码变化自动撤销或审批系统。 |
+| [PRLens data-model refresh](scouts/prlens-data-model-refresh.md) | 列状态、旧类型、列端点关系与billing归属迁移的上游能力真实；当前已有UI/普通before-after ERD和列清单能够回答，声明schema不证明数据库迁移执行，本轮0实施。 |
+
+## 第60项：JSON显式ID清单的勾选身份
+
+`codex/lab-checklist-progress`已推送并由root精确读回 `7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5`；产品修复、回归及canonical ZIP固定源码提交 `88e7e64b8e5d8ae7bafd754e60ece33c5d59dd58`，基线6ca6。[固定README](https://github.com/tt-a1i/archify/blob/7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5/experiments/checklist-progress/README.md)明确这是源码发现后以完整构造输入复现的Archify缺陷，不是生产事故。reader存储键新增整份清单有序文字摘要，沿用个人origin进度，不改schema或依赖。
+
+同清单刷新、无关段落编辑仍保留；重排、改字、增删使整份新清单未勾选，不猜逐item迁移。回到完全相同旧清单可恢复它的进度，artifact/block互相隔离。首次新生成HTML因旧键缺内容身份会一次性重置进度，旧记录不删除；已生成旧HTML需重新渲染才获得修复。进度不是代码审批、测试结果或验收，引用代码/source变化不会自动清勾。
+
+新Chrome回归在基线0pass/1fail，候选1pass/0fail/0skip；charts7、CLI smoke19、候选公共finalize含browser-check四阶段零diagnostics通过。独立复查四文件无阻塞，但未重复浏览器。官方Node22.23.2/zlib canonical ZIP两次逐字相同，独立解包CLI三阶段通过、未跑解包browser gate。root另在同一HTTP origin实际勾选→刷新→重排，基线错项、候选清空；无关段落保留也有实际原图。390×844暗色可键盘勾选并刷新保持，但base/candidate均400px scrollWidth，原有约10px横向溢出，不能称完整移动端布局通过；刷新回浅色是原有主题不持久化，中间图保留。
+
+[主图](https://github.com/tt-a1i/archify/blob/7d1f2fe40c6fe7bd50e81aa1bcab6c2135c116e5/experiments/checklist-progress/screenshots/candidate-reordered.png)原始1440×1000、67357B，SHA-256 `fc2789d7630112735cbcdc2671ec10b728c948f85f9ee6ee791e227254309ba1`；candidate-reordered完整HTML136837B，SHA-256 `3e73d9a296d98d4b3d972a773de0613f611d26dd4f3bf87cbcc8036c1ee89663`。root逐项重核42个实验manifest文件和5个产品文件hash；该head实时check-runs=0、Actions runs=0，不是远端CI通过。实验工作区clean、临时依赖symlink已移除，无安装、合入、产品release或人类接受结论。
+
+实验总账60＝19产品/20离线/21内容；当前已交付gallery59仍保留固定身份。接下来只做60项sourceHub提交、静态追加和root新卡Ego，旧59的完整字段、卡片、PNG及历史证据保留原字节；sourceHub与后续gallery artifact提交分别固定。旧red原日志的两处尾空白按原字节保留，不为whitespace刷零改写证据。持续探索保持已恢复状态。
