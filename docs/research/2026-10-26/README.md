@@ -738,3 +738,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 35 批 · 成功分支的属性覆盖
 
 [官方四例、原生观察与内容实验](scouts/schema-annotations-round35.md)：`codex/lab-schema-annotations@7eed924b945554e18e30344cfa1454032925d80a` 已推送。48 次固定范围校验、实际交互页、14 张真实图片和来源许可完整保留；零产品运行时代码。独立分支检查不冒充执行轨迹，窄屏图阅读限制和未测读者收益均明确记录。只交付远程分支，没有新 PR。
+
+## 第 36 批 · 文件大小与静态 VM 范围
+
+[Bloaty 源码、Apple 原生观察与解释实验](scouts/binary-size-domains-round36.md)：`codex/lab-binary-size-domains@e005965d931c850c5eb2e027970ff95604e7da1f` 已推送。16,888 B 文件的 size total 含 4 GiB PAGEZERO；四例两轮构建、46 对相同输出和 13 张真实截图完整保留。零公共运行时代码，未运行 Bloaty 或被编译程序，不把静态尺寸当 RSS。只推远程分支，无新 PR。
