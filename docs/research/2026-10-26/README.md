@@ -1,4 +1,14 @@
-# 2026-10-26 本批收尾索引
+# 2026-10-26 研究与实验索引
+
+## 当前：用户明确继续，目标active
+
+50项批次收尾后，用户明确说“继续吧”。最新[06:03 UTC GitHub核对](github-status-resumed.md)确认dev/main及重点PR heads未变。本轮深读[代码差异匹配](scouts/change-reading-resumed.md)、[图上局部结构](scouts/graph-local-structure.md)和[运行时引用图](scouts/runtime-code-reading.md)，不按星数筛选。
+
+两个隔离实验 Diff matching blocks 和 Route alternative 已于10月28日完成独立审查、实际浏览器对照并推送，完整结果见[交付记录](../2026-10-28/README.md)。二者继续绑定10月26日 dev `e837dc4cb83042d2b6c596e039692e25ec62c2da`；最新GitHub状态另见[10月28日排重](../2026-10-28/resume-status.md)，没有将历史产物称为新dev验收。
+
+Pympler已做独立受控生产链实测，但DOT对普通引号、反斜线及换行字符串的输出不够可靠。本批不做一个只能处理漂亮样例的DOT适配器；保存实际证据，JSON导出路线另行评估。
+
+## 上一批：50项收尾记录
 
 今日曾恢复持续探索，随后用户明确要求本批完成后暂停。第50项实验、研究报告和图片总览现已收齐；**停止启动新研究或实施，后续等待用户明确继续**。昨日49项暂停记录保留为历史。[历史主索引与全部50个已推实验](../2026-10-25/README.md)继续作为总账。本批完成不表示持续探索目标已完成。
 

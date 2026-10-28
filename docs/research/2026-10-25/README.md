@@ -2,6 +2,8 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
+**当前状态（2026-10-28）：** 用户明确“继续吧”后目标保持 active。Diff matching blocks 与 Route alternative 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为52项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
 前 30 项首次产出的共同实验基线：[dev `82c7e0f0`](https://github.com/tt-a1i/archify/commit/82c7e0f089a02a4d514714adf37dc2061682da5f)。2026-10-25 15:41（台北）重新核对 GitHub，dev 已推进到 [`3f95f034`](https://github.com/tt-a1i/archify/commit/3f95f0349c8276db71509ca239461b6fe9d00f9f)，main 为 [`51a29177`](https://github.com/tt-a1i/archify/commit/51a291770851ad27a400cca73c753c166b5e0c65)，分别合入 #1098 / #1099 的 Apache-2.0 与软件声明更新。已有产物及测试继续绑定原基线，不能据此宣称已验证新 dev；后续新实验从更新后的 dev 开始；DBML后续更新已纳入新dev，版本与证据另列。下面的“已推送”只表示远程实验分支可审查，不能等同于合入、发布或人类验收。
@@ -12,17 +14,17 @@
 
 最新状态另见[19:20–19:21晚间GitHub快照](github-status-latest-evening.md)：main/dev、部署等待、实验精确head和PR状态分别记账，不把Actions/check-runs为0当通过。 20:53:28（台北）最新只读快照确认dev/main仍为10b4/51a29177，CI状态与19:20相同（dev成功、main部署等待）；#1103/#1015/#998 heads不变，未发现晚间新增PR。原始API响应留checkout外，不补造部署完成或候选CI通过。 最新核对见[22:07–22:09 GitHub状态](github-status-2207.md)：main51a29177/dev10b4及重点PR身份不变，dev CI成功、main部署仍waiting；最新release仍v3.2.0。
 
-## 2026-10-26 本批收尾，按要求暂停后续探索
+## 2026-10-26 第50项收尾与暂停（历史）
 
 今日曾按用户要求恢复持续探索；昨日暂停和今日恢复均保留为历史。**本批第50项实验、报告和图片总览已收齐；按最新要求停止后续探索，等待用户明确继续。**今日状态与三个有界只读报告见[2026-10-26 日报](../2026-10-26/README.md)，GitHub基线为dev `e837dc4cb83042d2b6c596e039692e25ec62c2da`。原研究没有直接推荐实施候选；协调者随后在既有图上实际对照，选定Relation search作为第50个独立实验，未将构造复现称为自然用户痛点。
 
 第50项已推送 `codex/lab-relation-search`，精确head `e87a858d220c25c97aee4b5920cf59ab77723b41`，远端一致且工作区clean，独立终审READY；协调者报告精确head Actions runs=0、check-runs=0，不能称远端CI通过。索引收尾时间点：`2026-10-26T05:48:55Z`。已推分支不等于合入、发布、部署或人类验收；50项gallery现已补齐并做本批范围的浏览器检查；本批收尾后暂停，不宣布持续探索目标已完成。
 
-## 已推送的 50 个实验
+## 已推送的 52 个实验
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：已收录50个远程实验的50张原始PNG，固定来源hub为 `f098176f8d642549acd9b699414df8adcf2c7b4d`，HTML SHA-256为 `9056e0331cb90a21be6913f5fef8920a8fad9d095cda6c251b0d89d5d65b793b`。本批加入Relation search，前49张嵌图字节与来源不变；旧工作区不齐，因此直接从固定Git对象构建，不冒称当前工作文件已核验。静态构建、独立复核和本批实际浏览器检查已完成：四分组50/14/15/21、新卡片搜索、桌面完整图/原尺寸/Escape焦点、窄屏深色卡片及空结果/reset；root查看3张新截图。50个分支远端head与固定提交一致。49版及更早观察继续按各自原身份保留，不称所有实验重新验收；原失败、未运行阶段和无远端CI证据仍有效。
+[离线图片浏览页](gallery/README.md)：当前50项版本保留原固定来源和浏览器记录；本次新增两条远程分支，52项画廊正在增量构建。原50项图像与来源保持不变；新版本的静态检查与实际浏览器观察另记，不把历史观察改称重新验收。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |
@@ -76,6 +78,8 @@
 | [Patch outcome](https://github.com/tt-a1i/archify/tree/codex/lab-patch-outcome/experiments/patch-outcome) | 官方两个true不证明结果等于最初目标B，A/B/I/E完整literal分列 | `b5f7d7b1` | [固定README](https://github.com/tt-a1i/archify/blob/b5f7d7b11482fb272fb88fbfdcb9e864407eabdf/experiments/patch-outcome/README.md) / [中文页面](https://github.com/tt-a1i/archify/blob/b5f7d7b11482fb272fb88fbfdcb9e864407eabdf/experiments/patch-outcome/explainer.html) / [原PNG](https://github.com/tt-a1i/archify/blob/b5f7d7b11482fb272fb88fbfdcb9e864407eabdf/experiments/patch-outcome/screenshots/desktop-light.png) | 基线10b4；19文件/18binding，完整Apache-2.0来源与固定literal位置；normal三阶段+1writing warning/browser未请求，10事实/root4图；无上游patch运行，不是任意补丁parser或等价证明 |
 | [Segment origins](https://github.com/tt-a1i/archify/tree/codex/lab-segment-origins/experiments/segment-origins) | 同一source-map查询因GLB/LUB选择不同段原点，不补逐字符偏移 | `6d2b0312` | [固定README](https://github.com/tt-a1i/archify/blob/6d2b0312ebf011e3aa51835f52f9427125f0f2a3/experiments/segment-origins/README.md) / [中文页面](https://github.com/tt-a1i/archify/blob/6d2b0312ebf011e3aa51835f52f9427125f0f2a3/experiments/segment-origins/explainer.html) / [原PNG](https://github.com/tt-a1i/archify/blob/6d2b0312ebf011e3aa51835f52f9427125f0f2a3/experiments/segment-origins/screenshots/desktop-light.png) | 基线10b4；19文件/18ledger、独立READY；normal三阶段0诊断/browser未请求、7事实/root4图；仅来源元数据，未mapper运行；手机首表432/332横滚0→100后右name可读左query裁掉，完整source JSON未横滚 |
 | [Relation search](https://github.com/tt-a1i/archify/tree/codex/lab-relation-search/experiments/relation-search) | 按关系标签或ID查找，显示两端并精确pin已有关系 | `e87a858d` | [固定README](https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/e87a858d220c25c97aee4b5920cf59ab77723b41/experiments/relation-search/screenshots/candidate-enqueue.png) | 基线e837；独立READY，root5图/8原观察；enqueue从0节点到1关系、RAG三词精确ID、Route仍node-only；Finder9/FocusRoute22/locale37/core19，Semantic5pass1skip、generated/ZIP macOS通过；无手机/AT/全平台/效率证明，head Actions/checks均0；RAG生成15空白warning保留 |
+| [Route alternative](https://github.com/tt-a1i/archify/tree/codex/lab-route-alternative/experiments/route-alternative) | 在既有有向图中切换另一条等跳数路径，保留默认路线与精确关系身份 | `d61217d8` | [固定README](https://github.com/tt-a1i/archify/blob/d61217d82fd0dd844e77aab7434620b47b792d2b/experiments/route-alternative/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/d61217d82fd0dd844e77aab7434620b47b792d2b/experiments/route-alternative/screenshots/candidate-alternative-blueprint.png) | 固定e837基线；Route10/10与focused388/388、generated/ZIP macOS通过，自动browser-check通过；root五图/四观察含切换、键盘、reload、CSS窄屏；独立READY；不证明流量/failover/最佳路线，无触摸/AT/效率验收 |
+| [Diff matching blocks](https://github.com/tt-a1i/archify/tree/codex/lab-diff-matches/experiments/diff-matches) | 在同一diff的删除与新增片段之间双向跳转，保留完整补丁和原行号 | `a8456ef7` | [固定README](https://github.com/tt-a1i/archify/blob/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png) | 固定e837基线；63focused、9browser及最终同例扩展1pass，base缺链接预期失败；真实9666B历史patch114行双向跳转；四图/五观察，generated/ZIP macOS通过，独立READY；保留基线拆号和窄屏约10px溢出，不证明语义移动或效率 |
 
 上述前33项均经过另一位 Codex agent 的独立代码/证据复核，协调 agent 实际查看图片。测试数对应各实验自己的 focused tests，不是全仓测试；远端 CI、跨平台验证、实际用户效果与人类验收没有因此自动成立。生成 HTML/Markdown 保留原渲染器或适配器字节；源码 whitespace 检查与生成产物的既有空白分开记录。Payload test 和 State source 各清理了一处无语义影响空白，摘要同时保留实际测试 hash 与当前 hash。
 
