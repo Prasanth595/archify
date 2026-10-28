@@ -1,4 +1,4 @@
-# Archify research continuation · 2026-10-26–28
+# Archify research continuation · 2026-10-26–29
 
 > 当前交付规则：按用户最新要求，后续实验只推送独立 `codex/` 远程分支，不新建 PR；已有历史 PR 不作自动合并或关闭。
 
@@ -726,3 +726,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 [range-diff阅读研究](scouts/range-diff-reading-round32.md)在两个全新临时仓库实际运行原创fixture，各71条命令。原生输出显示logging从旧2移到新1并标为相同patch，但两份完整快照中的retry值不同；message-only控制标为修改，源码树却完全相同。creation-factor=0使修改patch的配对变成删除／新增，不能将启发式配对当作永久身份或自动继承已读状态。
 
 [完整原生观察包](audit/round32-range-diff-native/README.md)保留8个固定提交、全部输入快照、命令与输出字节、时长、许可来源和复现脚本。两次运行的8个提交身份及22份关键输出流逐字一致；没有执行应用代码、上游suite或真实rebase，也没有阅读效率结论。原生命令已经能回答本例，本批不新增parser、图形实验、图片或PR，只推研究分支。
+
+## 第 33 批 · Finder 独立关系计数
+
+[Jless 源码研究、原生复现与交付记录](scouts/finder-relationship-count-round33.md)：已推送独立 `codex/lab-finder-link-count@b91366b99e75fd3157fb4fed98489099eb89a383`，没有创建 PR。原始 Cache Miss 示例中 Redis 2→3、API 9→10，与 Passport 对齐；保留真实前后页面、29 项本地测试、生成物与归档验证、失败夹具和许可来源。详见固定版本报告中的范围与限制。
