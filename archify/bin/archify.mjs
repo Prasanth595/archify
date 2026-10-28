@@ -3725,9 +3725,9 @@ async function commandCompareWorkflow(args) {
   const changes = { nodes: [], edges: [] };
   for (const id of [...new Set([...baseNodes.keys(), ...headNodes.keys()])].sort()) {
     const before = baseNodes.get(id); const after = headNodes.get(id);
-    if (!before) changes.nodes.push({ id, change: 'added', head: semantic(after, new Set(['row', 'col', 'pos', 'width', 'height'])) });
-    else if (!after) changes.nodes.push({ id, change: 'removed', base: semantic(before, new Set(['row', 'col', 'pos', 'width', 'height'])) });
-    else if (JSON.stringify(semantic(before, new Set(['row', 'col', 'pos', 'width', 'height']))) !== JSON.stringify(semantic(after, new Set(['row', 'col', 'pos', 'width', 'height'])))) changes.nodes.push({ id, change: 'modified', base: semantic(before, new Set(['row', 'col', 'pos', 'width', 'height'])), head: semantic(after, new Set(['row', 'col', 'pos', 'width', 'height'])) });
+    if (!before) changes.nodes.push({ id, change: 'added', head: semantic(after) });
+    else if (!after) changes.nodes.push({ id, change: 'removed', base: semantic(before) });
+    else if (JSON.stringify(semantic(before)) !== JSON.stringify(semantic(after))) changes.nodes.push({ id, change: 'modified', base: semantic(before), head: semantic(after) });
   }
   for (const id of [...new Set([...baseEdges.keys(), ...headEdges.keys()])].sort()) {
     const before = baseEdges.get(id); const after = headEdges.get(id);
