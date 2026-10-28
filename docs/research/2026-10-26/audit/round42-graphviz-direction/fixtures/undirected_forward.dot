@@ -1,0 +1,6 @@
+graph undirected_forward {
+  rankdir=LR;
+  label="undirected_forward";
+  node [shape=box];
+  CRM -- ERP [dir=forward, label="shared ID"];
+}

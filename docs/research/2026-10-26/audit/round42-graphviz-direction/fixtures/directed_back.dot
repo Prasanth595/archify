@@ -1,0 +1,6 @@
+digraph directed_back {
+  rankdir=LR;
+  label="directed_back";
+  node [shape=box];
+  CRM -> ERP [dir=back, label="shared ID"];
+}

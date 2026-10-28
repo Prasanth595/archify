@@ -1,0 +1,31 @@
+{
+  "issue": {
+    "number": 1139,
+    "title": "[Proposal]: Per-connection direction (both / none) for reference and two-way links",
+    "state": "open",
+    "updated_at": "2026-10-28T03:01:10Z",
+    "url": "https://github.com/tt-a1i/archify/issues/1139"
+  },
+  "ownerDiscussion": [
+    {
+      "url": "https://github.com/tt-a1i/archify/issues/1139#issuecomment-6459490388",
+      "created_at": "2026-10-28T03:01:09Z",
+      "summary": "Contributor proposes Architecture-only investigation; separates arrowhead appearance from traversal and does not assume field/traversal/animation approval."
+    }
+  ],
+  "relatedPR": {
+    "number": 1145,
+    "title": "feat: add opt-in native connection adjustment",
+    "state": "open",
+    "head": "50568c662d5227d292f030d4b7520a47ce28fe64",
+    "url": "https://github.com/tt-a1i/archify/pull/1145",
+    "scope": "Explicitly separates #1139; new links are forward."
+  },
+  "queries": {
+    "issues": "repo:tt-a1i/archify is:issue is:open sort:updated-desc (first 15)",
+    "prs": "repo:tt-a1i/archify is:pr 1139 (one result)"
+  },
+  "archifyDev": "847146aeb93b492592adb78dc220f57e4a8b4636",
+  "priorResearch": "3beb343b8fd6686201bde9b0f307f9a1c6b00246",
+  "remoteHeads": 333
+}

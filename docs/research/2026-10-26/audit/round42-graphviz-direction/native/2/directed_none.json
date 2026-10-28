@@ -1,0 +1,177 @@
+{
+  "name": "directed_none",
+  "directed": true,
+  "strict": false,
+  "_draw_": 
+  [
+    {
+      "op": "c",
+      "grad": "none",
+      "color": "#fffffe00"
+    },
+    {
+      "op": "C",
+      "grad": "none",
+      "color": "#ffffff"
+    },
+    {
+      "op": "P",
+      "points": [[0.000,0.000],[0.000,60.800],[198.810,60.800],[198.810,0.000]]
+    }
+  ],
+  "_ldraw_": 
+  [
+    {
+      "op": "F",
+      "size": 14.000,
+      "face": "Times-Roman"
+    },
+    {
+      "op": "c",
+      "grad": "none",
+      "color": "#000000"
+    },
+    {
+      "op": "T",
+      "pt": [99.410,8.200],
+      "align": "c",
+      "width": 79.300,
+      "text": "directed_none"
+    }
+  ],
+  "bb": "0,0,198.81,60.8",
+  "label": "directed_none",
+  "lheight": "0.23",
+  "lp": "99.405,12.4",
+  "lwidth": "1.10",
+  "rankdir": "LR",
+  "xdotversion": "1.7",
+  "_subgraph_cnt": 0,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "CRM",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[54.000,60.800],[0.000,60.800],[0.000,24.800],[54.000,24.800]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 14.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [27.000,38.600],
+          "align": "c",
+          "width": 31.120,
+          "text": "CRM"
+        }
+      ],
+      "height": "0.5",
+      "label": "\\N",
+      "pos": "27,42.8",
+      "shape": "box",
+      "width": "0.75"
+    },
+    {
+      "_gvid": 1,
+      "name": "ERP",
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "p",
+          "points": [[198.810,60.800],[144.810,60.800],[144.810,24.800],[198.810,24.800]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 14.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [171.810,38.600],
+          "align": "c",
+          "width": 25.680,
+          "text": "ERP"
+        }
+      ],
+      "height": "0.5",
+      "label": "\\N",
+      "pos": "171.81,42.8",
+      "shape": "box",
+      "width": "0.75"
+    }
+  ],
+  "edges": [
+    {
+      "_gvid": 0,
+      "tail": 0,
+      "head": 1,
+      "_draw_": 
+      [
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "b",
+          "points": [[54.190,42.800],[79.960,42.800],[119.070,42.800],[144.780,42.800]]
+        }
+      ],
+      "_ldraw_": 
+      [
+        {
+          "op": "F",
+          "size": 14.000,
+          "face": "Times-Roman"
+        },
+        {
+          "op": "c",
+          "grad": "none",
+          "color": "#000000"
+        },
+        {
+          "op": "T",
+          "pt": [99.410,47.000],
+          "align": "c",
+          "width": 54.810,
+          "text": "shared ID"
+        }
+      ],
+      "dir": "none",
+      "label": "shared ID",
+      "lp": "99.405,51.2",
+      "pos": "54.194,42.8 79.961,42.8 119.07,42.8 144.78,42.8"
+    }
+  ]
+}

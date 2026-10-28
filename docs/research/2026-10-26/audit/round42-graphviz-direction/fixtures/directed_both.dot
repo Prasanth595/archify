@@ -1,0 +1,6 @@
+digraph directed_both {
+  rankdir=LR;
+  label="directed_both";
+  node [shape=box];
+  CRM -> ERP [dir=both, label="shared ID"];
+}

@@ -1,0 +1,6 @@
+digraph directed_none {
+  rankdir=LR;
+  label="directed_none";
+  node [shape=box];
+  CRM -> ERP [dir=none, label="shared ID"];
+}
