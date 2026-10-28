@@ -1,0 +1,96 @@
+[
+  {
+    "name": "upstream",
+    "variant": "base",
+    "sha256": "84391c8080ae7f521959237b54ae9cb7d3db06e9019a40a38367bd3c94cde40f",
+    "bytes": 141956,
+    "rawLines": 24,
+    "counts": {
+      "added": 1,
+      "removed": 2,
+      "context": 11,
+      "hunks": 2,
+      "files": 2
+    },
+    "observation": {
+      "secondFileTop": 842.390625,
+      "viewportHeight": 900,
+      "links": []
+    }
+  },
+  {
+    "name": "upstream",
+    "variant": "candidate",
+    "sha256": "738c250a36b7cd3b764930487567677bb62117184b7ec4f5cd62f7019ee5a385",
+    "bytes": 143145,
+    "rawLines": 24,
+    "counts": {
+      "added": 1,
+      "removed": 2,
+      "context": 11,
+      "hunks": 2,
+      "files": 2
+    },
+    "observation": {
+      "secondFileTop": 937.359375,
+      "viewportHeight": 900,
+      "links": [
+        {
+          "text": "src/core/init.js",
+          "href": "#explainer-diff-file-patch--row-0"
+        },
+        {
+          "text": "src/event.js",
+          "href": "#explainer-diff-file-patch--row-13"
+        }
+      ]
+    }
+  },
+  {
+    "name": "history",
+    "variant": "base",
+    "sha256": "bb6dd4824c2bbb4e7cb4afbc942833b837dae748f726554938479a398f41241c",
+    "bytes": 187551,
+    "rawLines": 153,
+    "counts": {
+      "added": 67,
+      "removed": 7,
+      "context": 62,
+      "hunks": 9,
+      "files": 2
+    },
+    "observation": {
+      "secondFileTop": 4798.171875,
+      "viewportHeight": 900,
+      "links": []
+    }
+  },
+  {
+    "name": "history",
+    "variant": "candidate",
+    "sha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+    "bytes": 188783,
+    "rawLines": 153,
+    "counts": {
+      "added": 67,
+      "removed": 7,
+      "context": 62,
+      "hunks": 9,
+      "files": 2
+    },
+    "observation": {
+      "secondFileTop": 4893.140625,
+      "viewportHeight": 900,
+      "links": [
+        {
+          "text": "archify/scripts/check-render-output.mjs",
+          "href": "#explainer-diff-file-patch--row-0"
+        },
+        {
+          "text": "test/svg-path-checker.test.mjs",
+          "href": "#explainer-diff-file-patch--row-121"
+        }
+      ]
+    }
+  }
+]

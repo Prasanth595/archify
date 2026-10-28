@@ -1,0 +1,12 @@
+npm notice run test:focus
+npm notice run node scripts/run-tests.mjs --require-files test/explainer-browser.test.mjs --test-name-pattern=diff file links
+Repository tests: 1 files, concurrency 4
+✔ diff file links and return links navigate with Enter, focus and no JavaScript (3693.5545ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3781.314666

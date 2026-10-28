@@ -1,0 +1,61 @@
+npm notice run test:focus
+npm notice run node scripts/run-tests.mjs --require-files test/explainer-diff.test.mjs test/explainer-renderer.test.mjs
+Repository tests: 2 files, concurrency 4
+✔ real git unified diff preserves bytes, real line numbers, file changes and git numstat counts (158.277792ms)
+✔ simple diff fragments retain CRLF and never invent old or new line numbers (0.185917ms)
+✔ hunk ranges support zero-count insertions and deletions plus implicit count one (0.126ms)
+✔ hunk size mismatches, illegal rows and ranges produce actionable original-line diagnostics (0.266458ms)
+✔ binary and combined diffs are rejected explicitly instead of being interpreted as text changes (0.073625ms)
+✔ git mode and rename-only metadata stay valid without invented content line numbers (0.156875ms)
+✔ diff validation uses the shared secret scanner without leaking rejected values (0.508625ms)
+✔ fenced diff source locations use actual content lines and preserve internal CRLF (5.022625ms)
+✔ hunk content resembling file headers is counted as literal removed and added data (0.114667ms)
+✔ a renamed file retains the old credential syntax for removed lines (0.121041ms)
+✔ file sections preserve boundaries and labels even for repeated paths and metadata-only changes (0.136875ms)
+✔ renderer: every shape remains statically readable and authored text cannot become markup (20.333584ms)
+✔ renderer: canonical input, draft, child bytes and prepared bundle survive script-breaking contents (7.317375ms)
+✔ renderer: resources fail closed and native previews preserve identity without leaking styles (5.72325ms)
+✔ renderer: no-script content includes scope, system theme and inert operation controls (5.162458ms)
+✔ renderer: multiple native diagrams retain independent preview IDs and original payload hashes (5.061541ms)
+✔ renderer: content revision changes for frozen resources but ignores dependency filesystem relocation (29.972958ms)
+✔ renderer: over-limit metrics disclose the excess and limit-only metrics imply no measurement (3.117042ms)
+✔ renderer: only Chinese pages get Chinese controls; other languages fall back to English (11.021834ms)
+✔ renderer: native diagram panels receive responsive space without changing the frozen native diagram (3.67025ms)
+✔ renderer: native system-dark aliases exclude print rules and printing overrides the noJS dark selector (7.736333ms)
+✔ renderer: source markers number first appearances including blank labels and remain plain text (2.765166ms)
+✔ literal snippets render as copyable code and table corners keep their header (3.248916ms)
+✔ renderer: shared pages omit disposable native checker filenames but retain evidence (3.071125ms)
+✔ renderer: manifest warnings use the same portable locations as the prepared bundle (6.201625ms)
+✔ renderer: Windows cross-volume source locations are omitted instead of exposed (3.066458ms)
+✖ renderer: multi-file navigation targets each literal section within its own diff instance (1.974416ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 268.307333
+
+✖ failing tests:
+
+test at test/explainer-renderer.test.mjs:237:1
+✖ renderer: multi-file navigation targets each literal section within its own diff instance (1.974416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/test/explainer-renderer.test.mjs:241:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

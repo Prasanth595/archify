@@ -1,0 +1,83 @@
+npm notice run test:focus
+npm notice run node scripts/run-tests.mjs --require-files test/explainer-diff.test.mjs test/explainer-renderer.test.mjs
+Repository tests: 2 files, concurrency 4
+✔ real git unified diff preserves bytes, real line numbers, file changes and git numstat counts (163.148583ms)
+✔ simple diff fragments retain CRLF and never invent old or new line numbers (0.278625ms)
+✔ hunk ranges support zero-count insertions and deletions plus implicit count one (0.265875ms)
+✔ hunk size mismatches, illegal rows and ranges produce actionable original-line diagnostics (0.376833ms)
+✔ binary and combined diffs are rejected explicitly instead of being interpreted as text changes (0.091875ms)
+✔ git mode and rename-only metadata stay valid without invented content line numbers (0.126709ms)
+✔ diff validation uses the shared secret scanner without leaking rejected values (0.317459ms)
+✔ fenced diff source locations use actual content lines and preserve internal CRLF (4.821125ms)
+✔ hunk content resembling file headers is counted as literal removed and added data (0.109334ms)
+✔ a renamed file retains the old credential syntax for removed lines (0.118541ms)
+✖ file sections preserve boundaries and labels even for repeated paths and metadata-only changes (0.74675ms)
+✔ renderer: every shape remains statically readable and authored text cannot become markup (21.374416ms)
+✔ renderer: canonical input, draft, child bytes and prepared bundle survive script-breaking contents (8.005416ms)
+✔ renderer: resources fail closed and native previews preserve identity without leaking styles (6.034208ms)
+✔ renderer: no-script content includes scope, system theme and inert operation controls (5.761792ms)
+✔ renderer: multiple native diagrams retain independent preview IDs and original payload hashes (6.032958ms)
+✔ renderer: content revision changes for frozen resources but ignores dependency filesystem relocation (30.1235ms)
+✔ renderer: over-limit metrics disclose the excess and limit-only metrics imply no measurement (3.898333ms)
+✔ renderer: only Chinese pages get Chinese controls; other languages fall back to English (12.030708ms)
+✔ renderer: native diagram panels receive responsive space without changing the frozen native diagram (4.350834ms)
+✔ renderer: native system-dark aliases exclude print rules and printing overrides the noJS dark selector (7.44325ms)
+✔ renderer: source markers number first appearances including blank labels and remain plain text (2.703958ms)
+✔ literal snippets render as copyable code and table corners keep their header (2.833291ms)
+✔ renderer: shared pages omit disposable native checker filenames but retain evidence (3.617459ms)
+✔ renderer: manifest warnings use the same portable locations as the prepared bundle (5.964417ms)
+✔ renderer: Windows cross-volume source locations are omitted instead of exposed (3.236708ms)
+✔ renderer: multi-file navigation targets each literal section within its own diff instance (3.344333ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 278.867917
+
+✖ failing tests:
+
+test at test/explainer-diff.test.mjs:106:1
+✖ file sections preserve boundaries and labels even for repeated paths and metadata-only changes (0.74675ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        newPath: 'same.txt',
+        oldPath: 'same.txt',
+        rowIndex: 0
+  ...
+      {
+  -     newPath: 'cop y.txt',
+  -     oldPath: 'sp ace.txt',
+  -     rowIndex: 13
+  -   },
+  -   {
+        newPath: 'added.txt',
+        oldPath: null,
+  +     rowIndex: 13
+  -     rowIndex: 17
+      },
+      {
+        newPath: null,
+        oldPath: 'removed.txt',
+        rowIndex: 21
+  
+      at TestContext.<anonymous> (file:///Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/test/explainer-diff.test.mjs:118:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { rowIndex: 0, oldPath: 'same.txt', newPath: 'same.txt' }, { rowIndex: 6, oldPath: 'same.txt', newPath: 'same.txt' }, { rowIndex: 9, oldPath: 'old.txt', newPath: 'new.txt' }, { rowIndex: 13, oldPath: null, newPath: 'added.txt' }, { rowIndex: 21, oldPath: 'removed.txt', newPath: null } ],
+    expected: [ { rowIndex: 0, oldPath: 'same.txt', newPath: 'same.txt' }, { rowIndex: 6, oldPath: 'same.txt', newPath: 'same.txt' }, { rowIndex: 9, oldPath: 'old.txt', newPath: 'new.txt' }, { rowIndex: 13, oldPath: 'sp ace.txt', newPath: 'cop y.txt' }, { rowIndex: 17, oldPath: null, newPath: 'added.txt' }, { rowIndex: 21, oldPath: 'removed.txt', newPath: null } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

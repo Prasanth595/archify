@@ -12,21 +12,21 @@ function sourceLines(text) {
   return result;
 }
 
-function fileName(value) {
+function fileName(value, stripPrefix=true) {
   let name=value.split('\t')[0];
   if (name.startsWith('"') && name.endsWith('"')) {
     try { name=JSON.parse(name); } catch { name=name.slice(1,-1); }
   }
   if (name==='/dev/null') return null;
-  return name.replace(/^[ab]\//u,'');
+  return stripPrefix ? name.replace(/^[ab]\//u,'') : name;
 }
 
 /** Parse unified diff without rewriting its literal bytes. Fragment line numbers stay null.
- * File paths identify credential syntax only; this parser performs no filesystem reads.
+ * File paths label sections and identify credential syntax; this parser performs no filesystem reads.
  */
 export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,path} = {}) {
   if (typeof text!=='string') throw new TypeError('Diff input must be a string');
-  const rows=[],diagnostics=[],counts={added:0,removed:0,context:0,hunks:0,files:0};
+  const rows=[],files=[],diagnostics=[],counts={added:0,removed:0,context:0,hunks:0,files:0};
   let hunk=null,oldPath=null,newPath=null,fileIndex=-1,oldHeader=false,newHeader=false,oldHeaderLine=line,lastBody=null,markerFor=null;
   let format='fragment';
   const groups=new Map();
@@ -43,7 +43,7 @@ export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,
   }
   function startFile() {
     if(oldHeader&&!newHeader)fail('header-order',oldHeaderLine,'An old-file header needs its matching new-file header.','--- a/file.txt\n+++ b/file.txt\n'+EXAMPLE);
-    finishHunk();fileIndex++;counts.files++;oldPath=null;newPath=null;oldHeader=false;newHeader=false;lastBody=null;markerFor=null;format='unified';
+    finishHunk();fileIndex++;counts.files++;files.push({rowIndex:rows.length,oldPath:null,newPath:null});oldPath=null;newPath=null;oldHeader=false;newHeader=false;lastBody=null;markerFor=null;format='unified';
   }
   function row(kind,value,index,extra={}) {
     const entry={kind,raw:value.raw,text:value.raw,ending:value.ending,sourceLine:line+index,oldLine:null,newLine:null,...extra};
@@ -59,7 +59,12 @@ export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,
     if (/^(?:GIT binary patch|Binary files .+ differ|literal \d+$|delta \d+$)/u.test(raw)) {finishHunk();fail('binary',sourceLine,'Binary patches are unsupported. Describe the binary change separately.');row('header',value,index);continue;}
     if (raw.startsWith('diff --git ')) {
       if(!/^diff --git .+ .+$/u.test(raw))fail('header',sourceLine,'A git diff header must identify old and new paths.','diff --git a/file.txt b/file.txt\n--- a/file.txt\n+++ b/file.txt\n'+EXAMPLE);
-      startFile();row('header',value,index);continue;
+      startFile();
+      // Only use unambiguous git tokens; ordinary ---/+++ or rename/copy headers
+      // below supply paths when an unquoted git header contains spaces.
+      const paths=raw.match(/^diff --git ("(?:[^"\\]|\\.)*"|[^\s"]+) ("(?:[^"\\]|\\.)*"|[^\s"]+)$/u);
+      if(paths){files[fileIndex].oldPath=fileName(paths[1]);files[fileIndex].newPath=fileName(paths[2]);}
+      row('header',value,index);continue;
     }
     if (raw.startsWith('@@')) {
       finishHunk();format='unified';
@@ -78,11 +83,11 @@ export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,
     const within=hunk&&(hunk.usedOld<hunk.oldCount||hunk.usedNew<hunk.newCount);
     if(!within && /^--- /u.test(raw)) {
       finishHunk();if(oldHeader&&newHeader)startFile();else if(fileIndex<0)startFile();
-      oldPath=fileName(raw.slice(4));oldHeader=true;oldHeaderLine=sourceLine;newHeader=false;row('header',value,index);continue;
+      oldPath=fileName(raw.slice(4));files[fileIndex].oldPath=oldPath;oldHeader=true;oldHeaderLine=sourceLine;newHeader=false;row('header',value,index);continue;
     }
     if(!within && /^\+\+\+ /u.test(raw)) {
       finishHunk();format='unified';if(!oldHeader)fail('header-order',sourceLine,'A new-file header needs its preceding old-file header.','--- a/file.txt\n+++ b/file.txt\n'+EXAMPLE);
-      newPath=fileName(raw.slice(4));newHeader=true;row('header',value,index);continue;
+      newPath=fileName(raw.slice(4));if(fileIndex>=0)files[fileIndex].newPath=newPath;newHeader=true;row('header',value,index);continue;
     }
     if (/^(?:index |(?:new file|deleted file|old|new) mode |(?:similarity|dissimilarity) index |(?:rename|copy) (?:from|to) )/u.test(raw)) {
       finishHunk();format='unified';
@@ -91,6 +96,8 @@ export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,
         ||/^(?:rename|copy) (?:from|to) .+$/u.test(raw)
         ||(/^(?:similarity|dissimilarity) index (\d+)%$/u.test(raw)&&Number(raw.match(/(\d+)%$/u)[1])<=100);
       if(!valid)fail('header',sourceLine,'This git metadata header is malformed.','diff --git a/file.txt b/file.txt\nindex 1234567..abcdef0 100644\n--- a/file.txt\n+++ b/file.txt\n'+EXAMPLE);
+      const moved=raw.match(/^(?:rename|copy) (from|to) (.+)$/u);
+      if(moved&&fileIndex>=0)files[fileIndex][moved[1]==='from'?'oldPath':'newPath']=fileName(moved[2],false);
       row('header',value,index);lastBody=null;markerFor=null;continue;
     }
     if(raw==='\\ No newline at end of file') {
@@ -120,5 +127,5 @@ export function parseExplainerDiff(text, {line=1,component='diff',input,panelId,
       fail('secret',matched?.sourceLine||group[0].sourceLine,'The diff contains a credential or sensitive secret value. Remove or redact it before rendering.','-const timeout = 100;\n+const timeout = 200;');
     }
   }
-  return {rows,counts,diagnostics,format};
+  return {rows,files,counts,diagnostics,format};
 }

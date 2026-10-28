@@ -1,0 +1,38 @@
+npm notice run test:focus
+npm notice run node scripts/run-tests.mjs --require-files test/explainer-diff.test.mjs test/explainer-renderer.test.mjs
+Repository tests: 2 files, concurrency 4
+✔ real git unified diff preserves bytes, real line numbers, file changes and git numstat counts (163.839291ms)
+✔ simple diff fragments retain CRLF and never invent old or new line numbers (0.182333ms)
+✔ hunk ranges support zero-count insertions and deletions plus implicit count one (0.12775ms)
+✔ hunk size mismatches, illegal rows and ranges produce actionable original-line diagnostics (0.2655ms)
+✔ binary and combined diffs are rejected explicitly instead of being interpreted as text changes (0.069208ms)
+✔ git mode and rename-only metadata stay valid without invented content line numbers (0.110292ms)
+✔ diff validation uses the shared secret scanner without leaking rejected values (0.283417ms)
+✔ fenced diff source locations use actual content lines and preserve internal CRLF (5.28975ms)
+✔ hunk content resembling file headers is counted as literal removed and added data (0.200625ms)
+✔ a renamed file retains the old credential syntax for removed lines (0.155041ms)
+✔ file sections preserve boundaries and labels even for repeated paths and metadata-only changes (0.154667ms)
+✔ renderer: every shape remains statically readable and authored text cannot become markup (20.741084ms)
+✔ renderer: canonical input, draft, child bytes and prepared bundle survive script-breaking contents (8.174833ms)
+✔ renderer: resources fail closed and native previews preserve identity without leaking styles (5.605541ms)
+✔ renderer: no-script content includes scope, system theme and inert operation controls (4.985ms)
+✔ renderer: multiple native diagrams retain independent preview IDs and original payload hashes (4.697958ms)
+✔ renderer: content revision changes for frozen resources but ignores dependency filesystem relocation (29.678042ms)
+✔ renderer: over-limit metrics disclose the excess and limit-only metrics imply no measurement (3.278583ms)
+✔ renderer: only Chinese pages get Chinese controls; other languages fall back to English (12.339458ms)
+✔ renderer: native diagram panels receive responsive space without changing the frozen native diagram (3.9435ms)
+✔ renderer: native system-dark aliases exclude print rules and printing overrides the noJS dark selector (7.5315ms)
+✔ renderer: source markers number first appearances including blank labels and remain plain text (3.058208ms)
+✔ literal snippets render as copyable code and table corners keep their header (3.106459ms)
+✔ renderer: shared pages omit disposable native checker filenames but retain evidence (3.216958ms)
+✔ renderer: manifest warnings use the same portable locations as the prepared bundle (5.748292ms)
+✔ renderer: Windows cross-volume source locations are omitted instead of exposed (3.082916ms)
+✔ renderer: multi-file navigation targets each literal section within its own diff instance (6.90275ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 272.016458

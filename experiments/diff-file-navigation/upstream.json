@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "id": "file-navigation-upstream",
+    "title": "diff2html: complete two-file fixture",
+    "locale": "en"
+  },
+  "answer": {
+    "summary": "Inspect the complete change to each file.",
+    "scope": "Baseline keeps the original table; candidate adds a file list. Original patch preserved in full."
+  },
+  "panels": [
+    {
+      "id": "changes",
+      "title": "What changed in each file?",
+      "span": 12,
+      "blocks": [
+        {
+          "id": "patch",
+          "type": "diff",
+          "text": "diff --git a/src/core/init.js b/src/core/init.js\nindex e49196a..50f310c 100644\n--- a/src/core/init.js\n+++ b/src/core/init.js\n@@ -101,7 +101,7 @@ var rootjQuery,\n     // HANDLE: $(function)\n     // Shortcut for document ready\n     } else if ( jQuery.isFunction( selector ) ) {\n-      return typeof rootjQuery.ready !== \"undefined\" ?\n+      return rootjQuery.ready !== undefined ?\n         rootjQuery.ready( selector ) :\n         // Execute immediately if ready is not present\n         selector( jQuery );\ndiff --git a/src/event.js b/src/event.js\nindex 7336f4d..6183f70 100644\n--- a/src/event.js\n+++ b/src/event.js\n@@ -1,6 +1,5 @@\n define([\n   \"./core\",\n-  \"./var/strundefined\",\n   \"./var/rnotwhite\",\n   \"./var/hasOwn\",\n   \"./var/slice\",\n",
+          "caption": "diff2html-multiple-files.diff"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "fixture",
+      "title": "diff2html-multiple-files.diff"
+    }
+  ]
+}

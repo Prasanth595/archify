@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { parse } from 'parse5';
 import { renderExplainer } from '../archify/explainer/render.mjs';
+import { validateExplainer } from '../archify/explainer/validate.mjs';
 import { computeExplainerRevision } from '../archify/explainer/revision.mjs';
 import { unpackPageBundle } from '../archify/explainer/page-bundle.mjs';
 
@@ -231,4 +232,34 @@ test('renderer: Windows cross-volume source locations are omitted instead of exp
   const tree=parse(renderExplainer(document,{...prepared,sourceText,preparedBundle,diagnostics,pageDirectory:'C:\\published'}));
   const frozen=payload(tree,'archify-explainer-prepared'),manifest=JSON.parse(text(find(tree,'explainer-manifest')));
   assert.equal(frozen.sourcePath,null);assert.equal(frozen.baseDir,null);assert.equal(frozen.dependencies[0].path,null);assert.equal(manifest.diagnostics[0].subject.input,null);
+});
+
+test('renderer: multi-file navigation targets each literal section within its own diff instance',()=>{
+  const document=fixture();
+  const part='--- a/same.txt\n+++ b/same.txt\n@@ -1 +1 @@\n-old\n+<new>\n';
+  document.panels[0].blocks=[{id:'first-diff',type:'diff',text:part+part},{id:'second-diff',type:'diff',text:part+part},{id:'single',type:'diff',text:part},{id:'fragment',type:'diff',text:'-old\n+new'},{id:'first-diff--diff-row-5',type:'prose',text:'Author target remains independent.'},{id:'first-diff--diff-files-1',type:'prose',text:'Author directory-like target.'}];
+  document.meta.title='File section navigation';
+  document.sources=[];
+  assert.equal(validateExplainer(document).ok,true,JSON.stringify(validateExplainer(document).diagnostics));
+  const tree=parse(renderExplainer(document));
+  const navigation=all(tree,n=>n.tagName==='nav'&&attr(n,'class')==='diff-files');
+  assert.equal(navigation.length,2);
+  const ids=all(tree,n=>attr(n,'id')).map(n=>attr(n,'id'));
+  assert.equal(new Set(ids).size,ids.length);
+  for(const id of ['first-diff','second-diff']){
+    const block=find(tree,id);
+    const links=all(block,n=>n.tagName==='a'&&attr(n,'id'));
+    assert.deepEqual(links.map(text),['same.txt','same.txt']);
+    const targets=links.map(link=>find(tree,attr(link,'href').slice(1)));
+    assert.equal(new Set(targets).size,2);
+    for(const [index,target] of targets.entries()){
+      assert.equal(attr(target,'tabindex'),'-1');
+      assert.equal(text(all(target,n=>n.tagName==='code')[0]),'--- a/same.txt');
+      const back=all(target,n=>n.tagName==='a')[0];
+      assert.equal(attr(back,'href'),'#'+attr(links[index],'id'));
+    }
+    assert.deepEqual(all(block,n=>n.tagName==='code').map(text),part.trimEnd().split('\n').concat(part.trimEnd().split('\n')));
+  }
+  assert.equal(all(find(tree,'single'),n=>attr(n,'class')==='diff-files').length,0);
+  assert.equal(all(find(tree,'fragment'),n=>attr(n,'class')==='diff-files').length,0);
 });

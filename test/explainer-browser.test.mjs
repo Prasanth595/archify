@@ -223,3 +223,34 @@ test('text names light their diagram nodes and walk-throughs step through steps 
   assert.equal(image.type,'image/png');assert.ok(image.size>20000,'the long image carries the rendered page');
  }finally{await browser.close();}
 });
+
+test('diff file links and return links navigate with Enter, focus and no JavaScript',{skip:!chrome},async()=>{
+ const {renderExplainer}=await import('../archify/explainer/render.mjs');
+ const document=formalDocument();
+ const longPath='very-long-directory/'.repeat(12)+'same.txt';
+ const part=`--- a/${longPath}\n+++ b/${longPath}\n@@ -1 +1 @@\n-old\n+new\n`;
+ document.panels[0].blocks=[{id:'diff-one',type:'diff',text:part+part},{id:'diff-two',type:'diff',text:part+part}];
+ const file=artifact('diff-files',renderExplainer(document));
+ const browser=new ChromeVisualBrowser(chrome);
+ try {
+  for(const javascript of [true,false])for(const width of [1280,390]){
+   await browser.resetPage();
+   const measured=await inspectPublicHtml(browser,{artifactPath:file,width,height:844,theme:'dark',javascript,keyboard:false});
+   assert.deepEqual(measured.references,[]);assert.deepEqual(measured.consoleErrors,[]);if(width===1280)assert.deepEqual(measured.overflowElements,[]);
+   for(const id of ['diff-one','diff-two']){
+    const link=`#${id} .diff-files li:last-child a`;
+    await keyboardActivate(browser,link);
+    assert.deepEqual(await pageValue(browser,`({hash:location.hash,focused:document.activeElement.id,visible:document.activeElement.getBoundingClientRect().top>=0&&document.activeElement.getBoundingClientRect().top<innerHeight})`),{hash:`#explainer-diff-file-${id}--row-5`,focused:`explainer-diff-file-${id}--row-5`,visible:true});
+    for(const type of ['keyDown','keyUp'])await browser.cdp.send('Input.dispatchKeyEvent',{type,key:'Tab',code:'Tab',windowsVirtualKeyCode:9},await browser.sessionPromise);
+    const returnLink=await pageValue(browser,`(()=>{const a=document.activeElement,r=a.getBoundingClientRect();return {isReturn:a.classList.contains('diff-file-return'),left:r.left,right:r.right,scrollLeft:a.closest('.diff-scroll').scrollLeft};})()`);
+    assert.equal(returnLink.isReturn,true);
+    assert.ok(returnLink.left>=0&&returnLink.right<=width,JSON.stringify(returnLink));
+    assert.equal(returnLink.scrollLeft,0,'Tab to the return control does not move the code sideways');
+    await keyboardActivate(browser,`#explainer-diff-file-${id}--row-5 .diff-file-return`);
+    assert.equal(await pageValue(browser,'document.activeElement.id'),`explainer-diff-files-${id}-1`);
+    const returned=await pageValue(browser,`({scrollLeft:document.querySelector('#${id} .diff-scroll').scrollLeft,top:document.activeElement.getBoundingClientRect().top})`);
+    assert.equal(returned.scrollLeft,0);assert.ok(returned.top>=80,JSON.stringify(returned));
+   }
+  }
+ }finally{await browser.close();}
+});

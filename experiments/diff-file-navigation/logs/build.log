@@ -1,0 +1,56 @@
+node:internal/child_process:1175
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync git ENOBUFS
+    at Object.spawnSync (node:internal/child_process:1175:20)
+    at spawnSync (node:child_process:976:24)
+    at execFileSync (node:child_process:1019:15)
+    at file:///Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/build-evidence.mjs:13:50
+    at #evaluateSync (node:internal/modules/esm/module_job:702:24)
+    at ModuleJobSync.runSync (node:internal/modules/esm/module_job:717:43)
+    at node:internal/modules/esm/loader:383:11
+    at TracingChannel.traceSync (node:diagnostics_channel:557:14)
+    at ModuleLoader.importForEntryPoint (node:internal/modules/esm/loader:372:21)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:184:34) {
+  errno: -55,
+  code: 'ENOBUFS',
+  syscall: 'spawnSync git',
+  path: 'git',
+  spawnargs: [ 'archive', '6ca6a5c84439b57ea22e0630fe306e1d91587a6e' ],
+  error: [Circular *1],
+  status: null,
+  signal: 'SIGTERM',
+  output: [
+    null,
+    Buffer(104923136) [Uint8Array] [
+      112, 97, 120,  95, 103, 108, 111, 98, 97, 108, 95, 104,
+      101, 97, 100, 101, 114,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+        0,  0,   0,   0,
+      ... 104923036 more items
+    ],
+    Buffer(0) [Uint8Array] []
+  ],
+  pid: 96662,
+  stdout: Buffer(104923136) [Uint8Array] [
+    112, 97, 120,  95, 103, 108, 111, 98, 97, 108, 95, 104,
+    101, 97, 100, 101, 114,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,   0,   0,   0,  0,  0,   0,  0,   0,
+      0,  0,   0,   0,
+    ... 104923036 more items
+  ],
+  stderr: Buffer(0) [Uint8Array] []
+}
+
+Node.js v26.12.0

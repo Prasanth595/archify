@@ -1,0 +1,35 @@
+Explainer draft is invalid.
+[explainer/schema-required] /sources must have required property 'sources' Fix: Use a valid form, for example: Add sources to the document..
+node:internal/errors:999
+  const err = new Error(message);
+              ^
+
+Error: Command failed: /opt/homebrew/Cellar/node/26.12.0/bin/node /var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-file-nav-base-JLFckW/archify/bin/archify.mjs render explainer /Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/upstream.json /Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/upstream-base.html
+Explainer draft is invalid.
+[explainer/schema-required] /sources must have required property 'sources' Fix: Use a valid form, for example: Add sources to the document..
+
+    at genericNodeError (node:internal/errors:999:15)
+    at wrappedFn (node:internal/errors:544:14)
+    at checkExecSyncError (node:child_process:990:11)
+    at execFileSync (node:child_process:1026:15)
+    at file:///Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/build-evidence.mjs:25:17
+    at #evaluateSync (node:internal/modules/esm/module_job:702:24)
+    at ModuleJobSync.runSync (node:internal/modules/esm/module_job:717:43)
+    at node:internal/modules/esm/loader:383:11
+    at TracingChannel.traceSync (node:diagnostics_channel:557:14)
+    at ModuleLoader.importForEntryPoint (node:internal/modules/esm/loader:372:21) {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'Explainer draft is invalid.\n' +
+      "[explainer/schema-required] /sources must have required property 'sources' Fix: Use a valid form, for example: Add sources to the document..\n"
+  ],
+  pid: 96704,
+  stdout: '',
+  stderr: 'Explainer draft is invalid.\n' +
+    "[explainer/schema-required] /sources must have required property 'sources' Fix: Use a valid form, for example: Add sources to the document..\n"
+}
+
+Node.js v26.12.0

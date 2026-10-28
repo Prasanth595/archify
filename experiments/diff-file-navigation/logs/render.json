@@ -1,0 +1,63 @@
+{
+  "base": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "runtime": {
+    "node": "26.12.0",
+    "acorn": "8.19.0",
+    "ada": "4.0.0",
+    "amaro": "1.1.11",
+    "ares": "1.34.8",
+    "brotli": "1.2.1",
+    "cldr": "48.0",
+    "icu": "78.3",
+    "libffi": "3.8.0",
+    "llhttp": "9.4.3",
+    "merve": "1.2.2",
+    "modules": "147",
+    "napi": "10",
+    "nbytes": "0.1.4",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.70.0",
+    "nghttp3": "",
+    "ngtcp2": "",
+    "openssl": "4.0.3",
+    "simdjson": "5.0.5",
+    "simdutf": "9.3.0",
+    "sqlite": "3.54.0",
+    "tz": "2026a",
+    "undici": "8.11.2",
+    "unicode": "17.0",
+    "uv": "1.53.0",
+    "uvwasi": "0.0.23",
+    "v8": "14.6.202.34-node.39",
+    "zlib": "1.2.12",
+    "zstd": "1.5.7"
+  },
+  "logs": [
+    {
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/archify/bin/archify.mjs",
+        "render",
+        "explainer",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/upstream.json",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/upstream-candidate.html"
+      ],
+      "stdout": "",
+      "output": "upstream-candidate.html",
+      "sha256": "738c250a36b7cd3b764930487567677bb62117184b7ec4f5cd62f7019ee5a385"
+    },
+    {
+      "command": [
+        "/opt/homebrew/Cellar/node/26.12.0/bin/node",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/archify/bin/archify.mjs",
+        "render",
+        "explainer",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/history.json",
+        "/Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/experiments/diff-file-navigation/history-candidate.html"
+      ],
+      "stdout": "",
+      "output": "history-candidate.html",
+      "sha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "kind": "derived-browser-evidence-binding",
+  "primaryImage": "browser-evidence/current/final-history-file-list-light.png",
+  "baseSha256": "bb6dd4824c2bbb4e7cb4afbc942833b837dae748f726554938479a398f41241c",
+  "candidateSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+  "archivedCandidateSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+  "evidence": [
+    {
+      "file": "browser-evidence/current/base-observations.json",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/base-observations.json",
+      "bytes": 11253,
+      "sha256": "4f89a0d69ab7c314ee9c7ba528ef90435b7f156b197e2c8af39ca570e4afd414",
+      "artifact": "history-base.html",
+      "artifactSha256": "bb6dd4824c2bbb4e7cb4afbc942833b837dae748f726554938479a398f41241c",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/archive-before-narrow-fix/candidate-desktop-observations.json",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/candidate-desktop-observations.json",
+      "bytes": 11226,
+      "sha256": "6ac3165811f011ef38e48fbea66838a76570b27f1fe4765cd15c2ec41a725fff",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+      "status": "archived-before-narrow-fix",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/archive-before-narrow-fix/candidate-narrow-observations.json",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/candidate-narrow-observations.json",
+      "bytes": 1069,
+      "sha256": "62d4004ccdbf9546da8b78d35af0ea43e49a241ed71656cd47a7981a4cb7ebe4",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+      "status": "archived-before-narrow-fix",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/final-desktop-observations.json",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/final-desktop-observations.json",
+      "bytes": 10751,
+      "sha256": "d8ad4e4365ebbb9d8ca2404ca5a01f866085a6fe7bd614bce9c920d473020585",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/final-history-file-list-light.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/final-history-file-list-light.png",
+      "bytes": 164393,
+      "sha256": "f6db0ef874a1970f29e187ef9e0503c7c9f461734ec561df7cecb259935fbc7c",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/final-history-file-list-narrow-dark.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/final-history-file-list-narrow-dark.png",
+      "bytes": 83178,
+      "sha256": "b9392b4dd9c2d8929c128ebacb13ea15da8cb7c94d4c43f3bccd7f6a89ec07c1",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/final-history-second-file-light.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/final-history-second-file-light.png",
+      "bytes": 134282,
+      "sha256": "5a0ae3339973319f43444d0e9849502f0bda01f06723f9b6011db5946ca80369",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/final-history-second-file-narrow-dark.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/final-history-second-file-narrow-dark.png",
+      "bytes": 59034,
+      "sha256": "11a90aa4c3d6fa941a2f676e3fbb0b5295accbba31ab4d57355031c2bc297cae",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/final-narrow-observations.json",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/final-narrow-observations.json",
+      "bytes": 1251,
+      "sha256": "c77a9acf5786cad66f1b0b37f1fcf9bf6a0fc58f38899f486d7daeb226b813a1",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "64aea5b3a90bd34c51011a053a320a75bc7dfd1291cb81de4e27403d66d39ae2",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/current/history-base-light.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/history-base-light.png",
+      "bytes": 165185,
+      "sha256": "d82e233f860979a25100d8d34fdac51a9e9683e5248079e4a24f6dbe98aa2bf6",
+      "artifact": "history-base.html",
+      "artifactSha256": "bb6dd4824c2bbb4e7cb4afbc942833b837dae748f726554938479a398f41241c",
+      "status": "current",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/archive-before-narrow-fix/history-file-list-light.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/history-file-list-light.png",
+      "bytes": 169494,
+      "sha256": "e3f6b93d7dac9a966f36011a84842874bfb2b149dc4a8ad97be8a8e9ef4be945",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+      "status": "archived-before-narrow-fix",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/archive-before-narrow-fix/history-file-list-narrow-dark.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/history-file-list-narrow-dark.png",
+      "bytes": 22201,
+      "sha256": "9dec854de5385520f50c6a10c113406bf0c3d9338538a239d65c1344d1ccdf28",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+      "status": "archived-before-narrow-fix",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/archive-before-narrow-fix/history-second-file-light.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/history-second-file-light.png",
+      "bytes": 139025,
+      "sha256": "29a7703fbc30fa639b30fbedaaf7ccbc73d9de490245c9c53080b4ce0f845e19",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+      "status": "archived-before-narrow-fix",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    },
+    {
+      "file": "browser-evidence/archive-before-narrow-fix/history-second-file-narrow-dark.png",
+      "source": "/tmp/archify-diff-file-navigation-browser-20261028/history-second-file-narrow-dark.png",
+      "bytes": 59380,
+      "sha256": "5df1d0c4d1e015fc5170b0ba88f18107f7fa0692685d6fdd7b7156145974a953",
+      "artifact": "history-candidate.html",
+      "artifactSha256": "c5a4e6e910aa2ed6f5ea02b52893a7f488efdf891228db14b03ad8503b25af97",
+      "status": "archived-before-narrow-fix",
+      "binding": "Derived from root browser session; raw screenshot/JSON bytes copied unchanged."
+    }
+  ],
+  "uiResult": {
+    "performedBy": "root agent using actual Ego browser UI, followed by root visual inspection",
+    "desktop": "1440x1100 light: file list has two entries; second selects file section; native return restores directory focus with scrollLeft 0.",
+    "narrow": "390x844 dark: return control visible; actual Tab/Enter keeps scrollLeft 0; returned second directory link top 120.0703125 px.",
+    "content": "Final desktop observation rawRowsEqualToBase is true; 153 original code rows retained.",
+    "acceptance": "Independent code/evidence review READY; root visual review READY. No human preference or reading-efficiency measurement claimed."
+  },
+  "limitations": [
+    "Desktop Chromium CSS viewport emulation, not physical touch.",
+    "At CSS width 390 the existing page scrollWidth is 400. The experiment preserves the approximately 10 px baseline overflow.",
+    "Long original diff code remains horizontally scrollable. Existing narrow-view line-number wrapping remains unchanged.",
+    "Final artifacts used render CLI, direct browser inspection and Ego UI. No finalize or CLI browser-check receipt was produced for these four comparison pages."
+  ]
+}

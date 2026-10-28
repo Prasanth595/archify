@@ -102,3 +102,30 @@ test('a renamed file retains the old credential syntax for removed lines',()=>{
   const literal='diff --git a/config.yaml b/notes.txt\n--- a/config.yaml\n+++ b/notes.txt\n@@ -1 +1 @@\n-api_key: example-private-credential\n+Public notes';
   const result=parseExplainerDiff(literal);assert.equal(result.rows.find(row=>row.kind==='removed').filePath,'config.yaml');assert.equal(result.rows.find(row=>row.kind==='added').filePath,'notes.txt');assert.ok(result.diagnostics.some(issue=>issue.code==='explainer/diff-secret'));assert.ok(!JSON.stringify(result.diagnostics).includes('example-private-credential'));
 });
+
+test('file sections preserve boundaries and labels even for repeated paths and metadata-only changes',()=>{
+  const literal=[
+    'diff --git a/same.txt b/same.txt','--- a/same.txt','+++ b/same.txt','@@ -1 +1 @@','-old','+new',
+    'diff --git a/same.txt b/same.txt','old mode 100644','new mode 100755',
+    'diff --git a/old.txt b/new.txt','similarity index 100%','rename from old.txt','rename to new.txt',
+    'diff --git "a/sp ace.txt" "b/cop y.txt"','similarity index 100%','copy from "sp ace.txt"','copy to "cop y.txt"',
+    'diff --git a/added.txt b/added.txt','--- /dev/null','+++ b/added.txt','@@ -0,0 +1 @@','+fresh',
+    '--- a/removed.txt','+++ /dev/null','@@ -1 +0,0 @@','-gone',
+  ].join('\r\n')+'\r\n';
+  const result=parseExplainerDiff(literal);
+  assert.deepEqual(result.diagnostics,[]);
+  assert.equal(reconstruction(result),literal);
+  assert.deepEqual(result.files,[
+    {rowIndex:0,oldPath:'same.txt',newPath:'same.txt'},
+    {rowIndex:6,oldPath:'same.txt',newPath:'same.txt'},
+    {rowIndex:9,oldPath:'old.txt',newPath:'new.txt'},
+    {rowIndex:13,oldPath:'sp ace.txt',newPath:'cop y.txt'},
+    {rowIndex:17,oldPath:null,newPath:'added.txt'},
+    {rowIndex:22,oldPath:'removed.txt',newPath:null},
+  ]);
+  assert.equal(result.counts.files,6);
+  assert.equal(parseExplainerDiff('--- a/one\n+++ b/one\n--- a/two\n+++ b/two').files.length,2);
+  assert.deepEqual(parseExplainerDiff('-old\n+new').files,[]);
+  const ambiguous=parseExplainerDiff('diff --git a/sp ace b/sp ace\nold mode 100644\nnew mode 100755');
+  assert.deepEqual(ambiguous.files,[{rowIndex:0,oldPath:null,newPath:null}]);
+});

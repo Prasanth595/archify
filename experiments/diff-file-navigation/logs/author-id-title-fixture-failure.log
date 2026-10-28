@@ -1,0 +1,61 @@
+npm notice run test:focus
+npm notice run node scripts/run-tests.mjs --require-files test/explainer-diff.test.mjs test/explainer-renderer.test.mjs
+Repository tests: 2 files, concurrency 4
+✔ real git unified diff preserves bytes, real line numbers, file changes and git numstat counts (147.0385ms)
+✔ simple diff fragments retain CRLF and never invent old or new line numbers (0.173292ms)
+✔ hunk ranges support zero-count insertions and deletions plus implicit count one (0.211917ms)
+✔ hunk size mismatches, illegal rows and ranges produce actionable original-line diagnostics (0.312333ms)
+✔ binary and combined diffs are rejected explicitly instead of being interpreted as text changes (0.091541ms)
+✔ git mode and rename-only metadata stay valid without invented content line numbers (0.119458ms)
+✔ diff validation uses the shared secret scanner without leaking rejected values (0.298375ms)
+✔ fenced diff source locations use actual content lines and preserve internal CRLF (4.917583ms)
+✔ hunk content resembling file headers is counted as literal removed and added data (0.104125ms)
+✔ a renamed file retains the old credential syntax for removed lines (0.115834ms)
+✔ file sections preserve boundaries and labels even for repeated paths and metadata-only changes (0.1325ms)
+✔ renderer: every shape remains statically readable and authored text cannot become markup (20.871875ms)
+✔ renderer: canonical input, draft, child bytes and prepared bundle survive script-breaking contents (8.012916ms)
+✔ renderer: resources fail closed and native previews preserve identity without leaking styles (5.720375ms)
+✔ renderer: no-script content includes scope, system theme and inert operation controls (5.604ms)
+✔ renderer: multiple native diagrams retain independent preview IDs and original payload hashes (5.394916ms)
+✔ renderer: content revision changes for frozen resources but ignores dependency filesystem relocation (27.573667ms)
+✔ renderer: over-limit metrics disclose the excess and limit-only metrics imply no measurement (3.257834ms)
+✔ renderer: only Chinese pages get Chinese controls; other languages fall back to English (11.350167ms)
+✔ renderer: native diagram panels receive responsive space without changing the frozen native diagram (3.847625ms)
+✔ renderer: native system-dark aliases exclude print rules and printing overrides the noJS dark selector (3.932458ms)
+✔ renderer: source markers number first appearances including blank labels and remain plain text (5.477375ms)
+✔ literal snippets render as copyable code and table corners keep their header (3.152916ms)
+✔ renderer: shared pages omit disposable native checker filenames but retain evidence (3.094584ms)
+✔ renderer: manifest warnings use the same portable locations as the prepared bundle (3.462208ms)
+✔ renderer: Windows cross-volume source locations are omitted instead of exposed (5.785875ms)
+✖ renderer: multi-file navigation targets each literal section within its own diff instance (4.229625ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 245.078
+
+✖ failing tests:
+
+test at test/explainer-renderer.test.mjs:237:1
+✖ renderer: multi-file navigation targets each literal section within its own diff instance (4.229625ms)
+  AssertionError [ERR_ASSERTION]: [{"code":"explainer/inline-html","severity":"error","message":"Raw HTML is not part of the explainer inline language.","subject":{"line":1,"column":5,"component":"title","path":"/meta/title"},"evidence":{"reason":"Raw HTML is not part of the explainer inline language.","example":"**Important** or `[literal <tag>]`"},"supportedFixes":["Use the supported form: **Important** or `[literal <tag>]`"]}]
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///Users/tushaokun/.codex/worktrees/lab-diff-file-navigation/archify/test/explainer-renderer.test.mjs:242:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

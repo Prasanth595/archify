@@ -266,6 +266,13 @@ pre code{background:none;border:0;padding:0;white-space:pre;font-size:inherit}
 .diff-code .header,.diff-code .no-newline{color:var(--muted)}
 .diff-code tbody tr>*,.diff-code tbody tr:hover>*{background:inherit}
 .diff-summary{white-space:nowrap}
+.diff-files{margin-top:10px;padding:8px 10px;border:1px solid var(--rule);border-radius:8px;font:12px/1.6 var(--mono)}
+.diff-files>span{font-family:var(--sans);color:var(--muted)}
+.diff-files ol{display:flex;flex-wrap:wrap;gap:4px 18px;list-style:none;margin:4px 0 0;padding:0}
+.diff-files a{overflow-wrap:anywhere;scroll-margin-top:120px}
+.diff-file-return{display:block;width:max-content;margin:2px 0 4px;font:11px/1.6 var(--sans);white-space:nowrap}
+.diff-code tr[id]{scroll-margin-top:80px}
+.diff-code tr:target{outline:2px solid var(--accent);outline-offset:-2px}
 .image img{display:block;max-width:100%;height:auto;border-radius:8px}
 
 /* Footer */
