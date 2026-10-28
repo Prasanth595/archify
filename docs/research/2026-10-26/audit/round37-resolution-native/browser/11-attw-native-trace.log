@@ -1,0 +1,552 @@
+[p1 "Are The Types Wrong? - Tool for analyzing TypeScript types of npm packages" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Are The Types Wrong? - Tool for analyzing TypeScript types of npm packages"]
+root
+  container
+    container
+      heading
+        text "Are the types wrong?"
+      anchor [ref=203, loc=href:https://github.com/arethetypeswrong/arethetypeswrong.github.io, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io]
+        text "GitHub / About"
+    form
+      paragraph
+        container
+          text "npm package"
+          textbox [ref=204]
+        button [ref=205]
+          text "Check"
+      paragraph
+        text "or"
+        text "npm pack"
+        text "output"
+        textbox [ref=206]
+          button [ref=207]
+            text "选择文件"
+          text "missing-runtime-target.tgz"
+    heading
+      text "archify-resolution-probe v0.0.0"
+      text "("
+      anchor [ref=217, loc=href:https://npmjs.com/archify-resolution-probe, url=https://npmjs.com/archify-resolution-probe]
+        text "npm"
+      text ","
+      anchor [ref=218, loc=href:https://unpkg.com/browse/archify-resolution-probe@0.0.0/, url=https://unpkg.com/browse/archify-resolution-probe@0.0.0/]
+        text "unpkg"
+      text ")"
+    paragraph
+      heading
+        text "Problems"
+      unordered_list
+        list_item
+          text "👺"
+        list_item
+          paragraph
+            anchor [ref=219, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseESM.md]
+              text "Masquerading as ESM"
+          paragraph
+            text "Import resolved to an ESM type declaration file, but a CommonJS JavaScript file."
+    table
+      table_row
+        table_cell
+        table_cell
+          text ""archify-resolution-probe""
+      table_row
+        table_cell
+          text "node10"
+        table_cell
+          text "✅"
+      table_row
+        table_cell
+          text "node16"
+          text "(from CJS)"
+        table_cell
+          text "✅ (CJS)"
+      table_row
+        table_cell
+          text "node16"
+          text "(from ESM)"
+        table_cell
+          text "👺 Masquerading as ESM"
+      table_row
+        table_cell
+          text "bundler"
+        table_cell
+          text "✅"
+    container
+      text "▼"
+      text "Details"
+      text ":"
+      text "Object[7]"
+      container
+        container
+          text "packageName"
+          text ":"
+          container
+            text """
+            text "archify-resolution-probe"
+            text """
+        container
+          text "packageVersion"
+          text ":"
+          container
+            text """
+            text "0.0.0"
+            text """
+        container
+          text "▶"
+          text "types"
+          text ":"
+          text "Object[1]"
+        container
+          text "▶"
+          text "buildTools"
+          text ":"
+          text "Object[0]"
+        container
+          text "▼"
+          text "entrypoints"
+          text ":"
+          text "Object[1]"
+          container
+            text "▼"
+            text "."
+            text ":"
+            text "Object[4]"
+            container
+              container
+                text "subpath"
+                text ":"
+                container
+                  text """
+                  text "."
+                  text """
+              container
+                text "▼"
+                text "resolutions"
+                text ":"
+                text "Object[4]"
+                container
+                  container
+                    text "▶"
+                    text "node10"
+                    text ":"
+                    text "Object[6]"
+                  container
+                    text "▶"
+                    text "node16-cjs"
+                    text ":"
+                    text "Object[6]"
+                  container
+                    text "▼"
+                    text "node16-esm"
+                    text ":"
+                    text "Object[6]"
+                    container
+                      container
+                        text "name"
+                        text ":"
+                        container
+                          text """
+                          text "."
+                          text """
+                      container
+                        text "resolutionKind"
+                        text ":"
+                        container
+                          text """
+                          text "node16-esm"
+                          text """
+                      container
+                        text "▶"
+                        text "resolution"
+                        text ":"
+                        text "Object[4]"
+                      container
+                        text "▼"
+                        text "implementationResolution"
+                        text ":"
+                        text "Object[4]"
+                        container
+                          container
+                            text "fileName"
+                            text ":"
+                            container
+                              text """
+                              text "/node_modules/archify-resolution-probe/index.js"
+                              text """
+                          container
+                            text "isJson"
+                            text ":"
+                            text "false"
+                          container
+                            text "isTypeScript"
+                            text ":"
+                            text "false"
+                          container
+                            text "▼"
+                            text "trace"
+                            text ":"
+                            text "Array[52]"
+                            container
+                              container
+                                text "0"
+                                text ":"
+                                container
+                                  text """
+                                  text "======== Resolving module 'archify-resolution-probe' from '/index.mts'. ========"
+                                  text """
+                              container
+                                text "1"
+                                text ":"
+                                container
+                                  text """
+                                  text "Explicitly specified module resolution kind: 'Node16'."
+                                  text """
+                              container
+                                text "2"
+                                text ":"
+                                container
+                                  text """
+                                  text "Resolving in ESM mode with conditions 'import', 'node'."
+                                  text """
+                              container
+                                text "3"
+                                text ":"
+                                container
+                                  text """
+                                  text "File '/package.json' does not exist according to earlier cached lookups."
+                                  text """
+                              container
+                                text "4"
+                                text ":"
+                                container
+                                  text """
+                                  text "Loading module 'archify-resolution-probe' from 'node_modules' folder, target file types: TypeScript, JavaScript, JSON."
+                                  text """
+                              container
+                                text "5"
+                                text ":"
+                                container
+                                  text """
+                                  text "Searching all ancestor node_modules directories for preferred extensions: TypeScript."
+                                  text """
+                              container
+                                text "6"
+                                text ":"
+                                container
+                                  text """
+                                  text "File '/node_modules/archify-resolution-probe/package.json' exists according to earlier cached lookups."
+                                  text """
+                              container
+                                text "7"
+                                text ":"
+                                container
+                                  text """
+                                  text "Entering conditional exports."
+                                  text """
+                              container
+                                text "8"
+                                text ":"
+                                container
+                                  text """
+                                  text "Matched 'exports' condition 'import'."
+                                  text """
+                              container
+                                text "9"
+                                text ":"
+                                container
+                                  text """
+                                  text "Using 'exports' subpath '.' with target './index.mjs'."
+                                  text """
+                              container
+                                text "10"
+                                text ":"
+                                container
+                                  text """
+                                  text "File name '/node_modules/archify-resolution-probe/index.mjs' has a '.mjs' extension - stripping it."
+                                  text """
+                              container
+                                text "11"
+                                text ":"
+                                container
+                                  text """
+                                  text "File '/node_modules/archify-resolution-probe/index.mts' does not exist."
+                                  text """
+                              container
+                                text "12"
+                                text ":"
+                                container
+                                  text """
+                                  text "Failed to resolve under condition 'import'."
+                                  text """
+                              container
+                                text "13"
+                                text ":"
+                                container
+                                  text """
+                                  text "Matched 'exports' condition 'default'."
+                                  text """
+                              container
+                                text "14"
+                                text ":"
+                                container
+                                  text """
+                                  text "Using 'exports' subpath '.' with target './index.js'."
+                                  text """
+                              container
+                                text "15"
+                                text ":"
+                                container
+                                  text """
+                                  text "File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it."
+                                  text """
+                              text "16"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.ts' does not exist."
+                                text """
+                              text "17"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.tsx' does not exist."
+                                text """
+                              text "18"
+                              text ":"
+                              container
+                                text """
+                                text "Failed to resolve under condition 'default'."
+                                text """
+                              text "19"
+                              text ":"
+                              container
+                                text """
+                                text "Exiting conditional exports."
+                                text """
+                              text "20"
+                              text ":"
+                              container
+                                text """
+                                text "Searching all ancestor node_modules directories for fallback extensions: JavaScript, JSON."
+                                text """
+                              text "21"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/package.json' exists according to earlier cached lookups."
+                                text """
+                              text "22"
+                              text ":"
+                              container
+                                text """
+                                text "Entering conditional exports."
+                                text """
+                              text "23"
+                              text ":"
+                              container
+                                text """
+                                text "Matched 'exports' condition 'import'."
+                                text """
+                              text "24"
+                              text ":"
+                              container
+                                text """
+                                text "Using 'exports' subpath '.' with target './index.mjs'."
+                                text """
+                              text "25"
+                              text ":"
+                              container
+                                text """
+                                text "File name '/node_modules/archify-resolution-probe/index.mjs' has a '.mjs' extension - stripping it."
+                                text """
+                              text "26"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.mjs' does not exist."
+                                text """
+                              text "27"
+                              text ":"
+                              container
+                                text """
+                                text "Failed to resolve under condition 'import'."
+                                text """
+                              text "28"
+                              text ":"
+                              container
+                                text """
+                                text "Matched 'exports' condition 'default'."
+                                text """
+                              text "29"
+                              text ":"
+                              container
+                                text """
+                                text "Using 'exports' subpath '.' with target './index.js'."
+                                text """
+                              text "30"
+                              text ":"
+                              container
+                                text """
+                                text "File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it."
+                                text """
+                              text "31"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.js' exists - use it as a name resolution result."
+                                text """
+                              text "32"
+                              text ":"
+                              container
+                                text """
+                                text "Resolved under condition 'default'."
+                                text """
+                              text "33"
+                              text ":"
+                              container
+                                text """
+                                text "Exiting conditional exports."
+                                text """
+                              text "34"
+                              text ":"
+                              container
+                                text """
+                                text "Resolution of non-relative name failed; trying with modern Node resolution features disabled to see if npm library needs configuration update."
+                                text """
+                              text "35"
+                              text ":"
+                              container
+                                text """
+                                text "File '/package.json' does not exist according to earlier cached lookups."
+                                text """
+                              text "36"
+                              text ":"
+                              container
+                                text """
+                                text "Loading module 'archify-resolution-probe' from 'node_modules' folder, target file types: TypeScript."
+                                text """
+                              text "37"
+                              text ":"
+                              container
+                                text """
+                                text "Searching all ancestor node_modules directories for preferred extensions: TypeScript."
+                                text """
+                              text "38"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/package.json' exists according to earlier cached lookups."
+                                text """
+                              text "39"
+                              text ":"
+                              container
+                                text """
+                                text "'package.json' does not have a 'typesVersions' field."
+                                text """
+                              text "40"
+                              text ":"
+                              container
+                                text """
+                                text "'package.json' has 'main' field './index.js' that references '/node_modules/archify-resolution-probe/index.js'."
+                                text """
+                              text "41"
+                              text ":"
+                              container
+                                text """
+                                text "File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it."
+                                text """
+                              text "42"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.ts' does not exist."
+                                text """
+                              text "43"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.tsx' does not exist."
+                                text """
+                              text "44"
+                              text ":"
+                              container
+                                text """
+                                text "Loading module as file / folder, candidate module location '/node_modules/archify-resolution-probe/index.js', target file types: TypeScript."
+                                text """
+                              text "45"
+                              text ":"
+                              container
+                                text """
+                                text "File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it."
+                                text """
+                              text "46"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.ts' does not exist."
+                                text """
+                              text "47"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.tsx' does not exist."
+                                text """
+                              text "48"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.js.ts' does not exist."
+                                text """
+                              text "49"
+                              text ":"
+                              container
+                                text """
+                                text "File '/node_modules/archify-resolution-probe/index.js.tsx' does not exist."
+                                text """
+                              text "50"
+                              text ":"
+                              container
+                                text """
+                                text "Directory '/node_modules/archify-resolution-probe/index.js' does not exist, skipping all lookups in it."
+                                text """
+                              text "51"
+                              text ":"
+                              container
+                                text """
+                                text "======== Module name 'archify-resolution-probe' was successfully resolved to '/node_modules/archify-resolution-probe/index.js' with Package ID 'archify-resolution-probe/index.js@0.0.0'. ========"
+                                text """
+                      text "▶"
+                      text "files"
+                      text ":"
+                      text "Array[2]"
+                      text "▶"
+                      text "visibleProblems"
+                      text ":"
+                      text "Array[1]"
+                  text "▶"
+                  text "bundler"
+                  text ":"
+                  text "Object[6]"
+              text "hasTypes"
+              text ":"
+              text "true"
+              text "isWildcard"
+              text ":"
+              text "false"
+        text "▶"
+        text "programInfo"
+        text ":"
+        text "Object[3]"
+        text "▶"
+        text "problems"
+        text ":"
+        text "Array[1]"
+  container
+    text "core:"
+    anchor [ref=208, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/packages/core/CHANGELOG.md]
+      text "v0.18.5"
+    text "web:"
+    anchor [ref=209, loc=href:https://github.com/arethetypeswrong/arethetypeswrong.github.io/commit/ee85fca, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/commit/ee85fca]
+      text "ee85fca"
+    text "typescript:"
+    text "v5.6.1-rc"
+
+

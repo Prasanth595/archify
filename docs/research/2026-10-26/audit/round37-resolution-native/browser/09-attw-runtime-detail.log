@@ -1,0 +1,203 @@
+[p1 "Are The Types Wrong? - Tool for analyzing TypeScript types of npm packages" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Are The Types Wrong? - Tool for analyzing TypeScript types of npm packages"]
+root
+  container
+    container
+      heading
+        text "Are the types wrong?"
+      anchor [ref=203, loc=href:https://github.com/arethetypeswrong/arethetypeswrong.github.io, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io]
+        text "GitHub / About"
+    form
+      paragraph
+        container
+          text "npm package"
+          textbox [ref=204]
+        button [ref=205]
+          text "Check"
+      paragraph
+        text "or"
+        text "npm pack"
+        text "output"
+        textbox [ref=206]
+          button [ref=207]
+            text "选择文件"
+          text "missing-runtime-target.tgz"
+    heading
+      text "archify-resolution-probe v0.0.0"
+      container
+        text "("
+        anchor [ref=217, loc=href:https://npmjs.com/archify-resolution-probe, url=https://npmjs.com/archify-resolution-probe]
+          text "npm"
+        text ","
+        anchor [ref=218, loc=href:https://unpkg.com/browse/archify-resolution-probe@0.0.0/, url=https://unpkg.com/browse/archify-resolution-probe@0.0.0/]
+          text "unpkg"
+        text ")"
+    paragraph
+      heading
+        text "Problems"
+      unordered_list
+        list_item
+          text "👺"
+        list_item
+          paragraph
+            anchor [ref=219, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseESM.md]
+              text "Masquerading as ESM"
+          paragraph
+            text "Import resolved to an ESM type declaration file, but a CommonJS JavaScript file."
+    table
+      table_row
+        table_cell
+        table_cell
+          text ""archify-resolution-probe""
+      table_row
+        table_cell
+          text "node10"
+        table_cell
+          text "✅"
+      table_row
+        table_cell
+          text "node16"
+          text "(from CJS)"
+        table_cell
+          text "✅ (CJS)"
+      table_row
+        table_cell
+          text "node16"
+          text "(from ESM)"
+        table_cell
+          text "👺 Masquerading as ESM"
+      table_row
+        table_cell
+          text "bundler"
+        table_cell
+          text "✅"
+    container
+      text "▼"
+      text "Details"
+      text ":"
+      text "Object[7]"
+      container
+        container
+          text "packageName"
+          text ":"
+          container
+            text """
+            text "archify-resolution-probe"
+            text """
+        container
+          text "packageVersion"
+          text ":"
+          container
+            text """
+            text "0.0.0"
+            text """
+        container
+          text "▶"
+          text "types"
+          text ":"
+          text "Object[1]"
+        container
+          text "▶"
+          text "buildTools"
+          text ":"
+          text "Object[0]"
+        container
+          text "▼"
+          text "entrypoints"
+          text ":"
+          text "Object[1]"
+          container
+            text "▼"
+            text "."
+            text ":"
+            text "Object[4]"
+            container
+              container
+                text "subpath"
+                text ":"
+                container
+                  text """
+                  text "."
+                  text """
+              container
+                text "▼"
+                text "resolutions"
+                text ":"
+                text "Object[4]"
+                container
+                  container
+                    text "▶"
+                    text "node10"
+                    text ":"
+                    text "Object[6]"
+                  container
+                    text "▶"
+                    text "node16-cjs"
+                    text ":"
+                    text "Object[6]"
+                  container
+                    text "▼"
+                    text "node16-esm"
+                    text ":"
+                    text "Object[6]"
+                    container
+                      container
+                        text "name"
+                        text ":"
+                        container
+                          text """
+                          text "."
+                          text """
+                      container
+                        text "resolutionKind"
+                        text ":"
+                        container
+                          text """
+                          text "node16-esm"
+                          text """
+                      container
+                        text "▶"
+                        text "resolution"
+                        text ":"
+                        text "Object[4]"
+                      container
+                        text "▶"
+                        text "implementationResolution"
+                        text ":"
+                        text "Object[4]"
+                      text "▶"
+                      text "files"
+                      text ":"
+                      text "Array[2]"
+                      text "▶"
+                      text "visibleProblems"
+                      text ":"
+                      text "Array[1]"
+                  text "▶"
+                  text "bundler"
+                  text ":"
+                  text "Object[6]"
+              text "hasTypes"
+              text ":"
+              text "true"
+              text "isWildcard"
+              text ":"
+              text "false"
+        text "▶"
+        text "programInfo"
+        text ":"
+        text "Object[3]"
+        text "▶"
+        text "problems"
+        text ":"
+        text "Array[1]"
+  container
+    text "core:"
+    anchor [ref=208, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/packages/core/CHANGELOG.md]
+      text "v0.18.5"
+    text "web:"
+    anchor [ref=209, loc=href:https://github.com/arethetypeswrong/arethetypeswrong.github.io/commit/ee85fca, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/commit/ee85fca]
+      text "ee85fca"
+    text "typescript:"
+    text "v5.6.1-rc"
+
+

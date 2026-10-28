@@ -1,0 +1,45 @@
+{
+  "commands": 16,
+  "streamsComparedAfterExplicitRunRootReplacement": [
+    "matched-esm-types-node.stderr.txt",
+    "matched-esm-types-node.stdout.txt",
+    "matched-esm-types-tsc.stderr.txt",
+    "matched-esm-types-tsc.stdout.txt",
+    "missing-esm-types-node.stderr.txt",
+    "missing-esm-types-node.stdout.txt",
+    "missing-esm-types-tsc.stderr.txt",
+    "missing-esm-types-tsc.stdout.txt",
+    "missing-runtime-target-node.stderr.txt",
+    "missing-runtime-target-node.stdout.txt",
+    "missing-runtime-target-tsc.stderr.txt",
+    "missing-runtime-target-tsc.stdout.txt",
+    "node-version.stderr.txt",
+    "node-version.stdout.txt",
+    "tsc-version.stderr.txt",
+    "tsc-version.stdout.txt"
+  ],
+  "equalArchivePairs": 3,
+  "expectedCompilerRuntimeExits": {
+    "missing-esm-types": [
+      2,
+      0
+    ],
+    "matched-esm-types": [
+      0,
+      0
+    ],
+    "missing-runtime-target": [
+      0,
+      1
+    ]
+  },
+  "runtimeValues": [
+    "esm",
+    "esm",
+    null
+  ],
+  "normalization": [
+    "/private/tmp/archify-round37-native-1 -> <RUN>",
+    "/private/tmp/archify-round37-native-2 -> <RUN>"
+  ]
+}

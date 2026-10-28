@@ -1,0 +1,124 @@
+{
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "node": "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+  "tsc": "/usr/local/lib/node_modules/typescript/bin/tsc",
+  "commands": [
+    {
+      "label": "node-version",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "--version"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1",
+      "exit": 0,
+      "durationSeconds": 0.00998,
+      "stdout": "node-version.stdout.txt",
+      "stderr": "node-version.stderr.txt"
+    },
+    {
+      "label": "tsc-version",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "/usr/local/lib/node_modules/typescript/bin/tsc",
+        "--version"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1",
+      "exit": 0,
+      "durationSeconds": 0.028985,
+      "stdout": "tsc-version.stdout.txt",
+      "stderr": "tsc-version.stderr.txt"
+    },
+    {
+      "label": "missing-esm-types-tsc",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "/usr/local/lib/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1/missing-esm-types",
+      "exit": 2,
+      "durationSeconds": 0.153126,
+      "stdout": "missing-esm-types-tsc.stdout.txt",
+      "stderr": "missing-esm-types-tsc.stderr.txt"
+    },
+    {
+      "label": "missing-esm-types-node",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "runtime.mjs"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1/missing-esm-types",
+      "exit": 0,
+      "durationSeconds": 0.020278,
+      "stdout": "missing-esm-types-node.stdout.txt",
+      "stderr": "missing-esm-types-node.stderr.txt"
+    },
+    {
+      "label": "matched-esm-types-tsc",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "/usr/local/lib/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1/matched-esm-types",
+      "exit": 0,
+      "durationSeconds": 0.153363,
+      "stdout": "matched-esm-types-tsc.stdout.txt",
+      "stderr": "matched-esm-types-tsc.stderr.txt"
+    },
+    {
+      "label": "matched-esm-types-node",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "runtime.mjs"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1/matched-esm-types",
+      "exit": 0,
+      "durationSeconds": 0.034368,
+      "stdout": "matched-esm-types-node.stdout.txt",
+      "stderr": "matched-esm-types-node.stderr.txt"
+    },
+    {
+      "label": "missing-runtime-target-tsc",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "/usr/local/lib/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1/missing-runtime-target",
+      "exit": 0,
+      "durationSeconds": 0.142679,
+      "stdout": "missing-runtime-target-tsc.stdout.txt",
+      "stderr": "missing-runtime-target-tsc.stderr.txt"
+    },
+    {
+      "label": "missing-runtime-target-node",
+      "argv": [
+        "/Users/tsk/.local/share/archify-tuning/rounds/pr671-20261025/tools/node-v22.23.3-darwin-arm64/bin/node",
+        "runtime.mjs"
+      ],
+      "cwd": "/private/tmp/archify-round37-native-1/missing-runtime-target",
+      "exit": 1,
+      "durationSeconds": 0.020172,
+      "stdout": "missing-runtime-target-node.stdout.txt",
+      "stderr": "missing-runtime-target-node.stderr.txt"
+    }
+  ],
+  "results": {
+    "missing-esm-types": {
+      "tscExit": 2,
+      "nodeExit": 0
+    },
+    "matched-esm-types": {
+      "tscExit": 0,
+      "nodeExit": 0
+    },
+    "missing-runtime-target": {
+      "tscExit": 0,
+      "nodeExit": 1
+    }
+  }
+}

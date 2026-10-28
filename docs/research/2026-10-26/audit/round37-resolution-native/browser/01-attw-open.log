@@ -1,0 +1,37 @@
+[p1 "Are The Types Wrong? - Tool for analyzing TypeScript types of npm packages" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Are The Types Wrong? - Tool for analyzing TypeScript types of npm packages"]
+root
+  container
+    container
+      heading
+        text "Are the types wrong?"
+      anchor [ref=203, loc=href:https://github.com/arethetypeswrong/arethetypeswrong.github.io, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io]
+        text "GitHub / About"
+    form
+      paragraph
+        container
+          text "npm package"
+          textbox [ref=204]
+        button [ref=205]
+          text "Check"
+      paragraph
+        text "or"
+        text "npm pack"
+        text "output"
+        textbox [ref=206]
+          button [ref=207]
+            text "选择文件"
+          text "未选择任何文件"
+  container
+    container
+      text "core:"
+      anchor [ref=208, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/packages/core/CHANGELOG.md]
+        text "v0.18.5"
+    container
+      text "web:"
+      anchor [ref=209, loc=href:https://github.com/arethetypeswrong/arethetypeswrong.github.io/commit/ee85fca, url=https://github.com/arethetypeswrong/arethetypeswrong.github.io/commit/ee85fca]
+        text "ee85fca"
+    container
+      text "typescript:"
+      text "v5.6.1-rc"
+
+

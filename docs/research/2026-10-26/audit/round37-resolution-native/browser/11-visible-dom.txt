@@ -1,0 +1,101 @@
+Are the types wrong?
+GitHub / About
+
+npm package  Check
+
+or npm pack output 
+
+archify-resolution-probe v0.0.0 (npm, unpkg)
+
+Problems
+👺
+
+Masquerading as ESM
+
+Import resolved to an ESM type declaration file, but a CommonJS JavaScript file.
+
+	"archify-resolution-probe"
+node10	✅
+node16 (from CJS)	✅ (CJS)
+node16 (from ESM)	👺 Masquerading as ESM
+bundler	✅
+DetailsObject[7]
+packageNamearchify-resolution-probe
+packageVersion0.0.0
+typesObject[1]
+buildToolsObject[0]
+entrypointsObject[1]
+.Object[4]
+subpath.
+resolutionsObject[4]
+node10Object[6]
+node16-cjsObject[6]
+node16-esmObject[6]
+name.
+resolutionKindnode16-esm
+resolutionObject[4]
+implementationResolutionObject[4]
+fileName/node_modules/archify-resolution-probe/index.js
+isJsonfalse
+isTypeScriptfalse
+traceArray[52]
+0======== Resolving module 'archify-resolution-probe' from '/index.mts'. ========
+1Explicitly specified module resolution kind: 'Node16'.
+2Resolving in ESM mode with conditions 'import', 'node'.
+3File '/package.json' does not exist according to earlier cached lookups.
+4Loading module 'archify-resolution-probe' from 'node_modules' folder, target file types: TypeScript, JavaScript, JSON.
+5Searching all ancestor node_modules directories for preferred extensions: TypeScript.
+6File '/node_modules/archify-resolution-probe/package.json' exists according to earlier cached lookups.
+7Entering conditional exports.
+8Matched 'exports' condition 'import'.
+9Using 'exports' subpath '.' with target './index.mjs'.
+10File name '/node_modules/archify-resolution-probe/index.mjs' has a '.mjs' extension - stripping it.
+11File '/node_modules/archify-resolution-probe/index.mts' does not exist.
+12Failed to resolve under condition 'import'.
+13Matched 'exports' condition 'default'.
+14Using 'exports' subpath '.' with target './index.js'.
+15File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it.
+16File '/node_modules/archify-resolution-probe/index.ts' does not exist.
+17File '/node_modules/archify-resolution-probe/index.tsx' does not exist.
+18Failed to resolve under condition 'default'.
+19Exiting conditional exports.
+20Searching all ancestor node_modules directories for fallback extensions: JavaScript, JSON.
+21File '/node_modules/archify-resolution-probe/package.json' exists according to earlier cached lookups.
+22Entering conditional exports.
+23Matched 'exports' condition 'import'.
+24Using 'exports' subpath '.' with target './index.mjs'.
+25File name '/node_modules/archify-resolution-probe/index.mjs' has a '.mjs' extension - stripping it.
+26File '/node_modules/archify-resolution-probe/index.mjs' does not exist.
+27Failed to resolve under condition 'import'.
+28Matched 'exports' condition 'default'.
+29Using 'exports' subpath '.' with target './index.js'.
+30File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it.
+31File '/node_modules/archify-resolution-probe/index.js' exists - use it as a name resolution result.
+32Resolved under condition 'default'.
+33Exiting conditional exports.
+34Resolution of non-relative name failed; trying with modern Node resolution features disabled to see if npm library needs configuration update.
+35File '/package.json' does not exist according to earlier cached lookups.
+36Loading module 'archify-resolution-probe' from 'node_modules' folder, target file types: TypeScript.
+37Searching all ancestor node_modules directories for preferred extensions: TypeScript.
+38File '/node_modules/archify-resolution-probe/package.json' exists according to earlier cached lookups.
+39'package.json' does not have a 'typesVersions' field.
+40'package.json' has 'main' field './index.js' that references '/node_modules/archify-resolution-probe/index.js'.
+41File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it.
+42File '/node_modules/archify-resolution-probe/index.ts' does not exist.
+43File '/node_modules/archify-resolution-probe/index.tsx' does not exist.
+44Loading module as file / folder, candidate module location '/node_modules/archify-resolution-probe/index.js', target file types: TypeScript.
+45File name '/node_modules/archify-resolution-probe/index.js' has a '.js' extension - stripping it.
+46File '/node_modules/archify-resolution-probe/index.ts' does not exist.
+47File '/node_modules/archify-resolution-probe/index.tsx' does not exist.
+48File '/node_modules/archify-resolution-probe/index.js.ts' does not exist.
+49File '/node_modules/archify-resolution-probe/index.js.tsx' does not exist.
+50Directory '/node_modules/archify-resolution-probe/index.js' does not exist, skipping all lookups in it.
+51======== Module name 'archify-resolution-probe' was successfully resolved to '/node_modules/archify-resolution-probe/index.js' with Package ID 'archify-resolution-probe/index.js@0.0.0'. ========
+filesArray[2]
+visibleProblemsArray[1]
+bundlerObject[6]
+hasTypestrue
+isWildcardfalse
+programInfoObject[3]
+problemsArray[1]
+core: v0.18.5 web: ee85fca typescript: v5.6.1-rc

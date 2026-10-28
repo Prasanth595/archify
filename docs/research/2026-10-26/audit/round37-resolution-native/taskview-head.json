@@ -1,0 +1,37 @@
+{
+  "sha": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "html_url": "https://github.com/gtindo/task-view/commit/a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "commit": {
+    "author": {
+      "name": "gtindo",
+      "email": "gtyletindo@gmail.com",
+      "date": "2026-10-27T18:36:15Z"
+    },
+    "committer": {
+      "name": "gtindo",
+      "email": "gtyletindo@gmail.com",
+      "date": "2026-10-27T18:36:15Z"
+    },
+    "message": "Scope the graph to what is picked in Flows\n\nOn a big change the graph drew every node at once and became\nunreadable. It now shows only what the reviewer picked in Flows: a\nstep, an edge's two ends, or a whole flow through its title, plus the\ntests of every node it shows, since flows hold none. Each node with\nhidden neighbours shows +N to add them, and a node it opened shows \u2212\nto remove what it added and what those nodes opened. With nothing\npicked the graph shows a prompt to go to Flows; a review without\nflows keeps the whole graph.\n\nSelecting inside the graph only changes the inspector, so Flows keeps\nits pick and marks it. The pick is named in a toolbar chip, goes into\nthe link as focus=, and a finding's Show node or Show edge scopes the\ngraph to its target. A node selected outside the scope is added to the\ngraph, and the Tests switch starts on when the review has flows.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+    "tree": {
+      "sha": "ef7645df273d6e1ecb58f3ae1d822f7592a9c3d5",
+      "url": "https://api.github.com/repos/gtindo/task-view/git/trees/ef7645df273d6e1ecb58f3ae1d822f7592a9c3d5"
+    },
+    "url": "https://api.github.com/repos/gtindo/task-view/git/commits/a3fa21767bfaeb3077fdda08bddb7249366caa93",
+    "comment_count": 0,
+    "verification": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    }
+  },
+  "parents": [
+    {
+      "sha": "45eb908440d21037864ca12863d19d48afb85d44",
+      "url": "https://api.github.com/repos/gtindo/task-view/commits/45eb908440d21037864ca12863d19d48afb85d44",
+      "html_url": "https://github.com/gtindo/task-view/commit/45eb908440d21037864ca12863d19d48afb85d44"
+    }
+  ]
+}

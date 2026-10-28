@@ -742,3 +742,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 36 批 · 文件大小与静态 VM 范围
 
 [Bloaty 源码、Apple 原生观察与解释实验](scouts/binary-size-domains-round36.md)：`codex/lab-binary-size-domains@e005965d931c850c5eb2e027970ff95604e7da1f` 已推送。16,888 B 文件的 size total 含 4 GiB PAGEZERO；四例两轮构建、46 对相同输出和 13 张真实截图完整保留。零公共运行时代码，未运行 Bloaty 或被编译程序，不把静态尺寸当 RSS。只推远程分支，无新 PR。
+
+## 第 37 批 · 解析模型与实际加载
+
+[Are the Types Wrong / publint 筛选与原生对照](scouts/resolution-models-round37.md)：刷新 332 个远程 head，task-view 无新版本。三个原创包在两份目录共 16 条命令，另有原生网页三例与六张实拍。缺失 ESM 文件时，页面的 implementationResolution 模型指向 fallback 的 index.js，Node 22 实际却报 index.mjs 缺失；生产者版本和语境不能混成执行图。16 个完整来源经 Git blob/长度/SHA 核对。保留可复现观察包，暂缓通用转换器和新增图解页；本批只推研究分支，无新 PR。
