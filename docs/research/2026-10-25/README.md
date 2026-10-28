@@ -287,6 +287,7 @@ GitHub CI 单独核实：截至 2026-10-25 13:01（台北），前 11 个精确�
 | 覆盖数字背后的计量对象 | [Round 26 coverage reading](scouts/round26-coverage-reading.md)（研究完成，仅原创URL-only候选未实施，GPL原件私有） |
 | 异常分组、cause与重复呈现 | [Round 27 error reading](scouts/round27-error-reading.md)（报告冻结，内容方向待定、不启动） |
 | 15个适配器对新dev的实际影响 | [Round 17 adapter dev impact](scouts/round17-adapter-dev-impact.md) |
+| 源码定位、调用与返回、图形作者辅助（2026-10-28） | [三方向筛查](../2026-10-28/README.md#新一轮筛查源码定位调用序列与图形作者辅助)（本轮0新增实施；19项目条目含复核） |
 | 当前 Archify 集成切口 | [Integration map](integration-map.md) |
 
 报告中的上游声明、局部源码核实、计划中的实验和已经执行的结果分别标注。未推荐方向也保留原因，避免反复研究；没有把上游宣传、星数或作者截图当作 Archify 的效果证明。
