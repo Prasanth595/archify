@@ -169,11 +169,17 @@ export function verifyRepositoryEvidence(diagramType, diagram, repoRootInput) {
   if (!hasRepositoryEvidence(diagramType, diagram)) return null;
   const collections = evidenceCollections(diagramType, diagram);
   const primaryCollection = collections[0].collection;
+  const sourcedCollections = collections
+    .filter(({ targets }) => targets.some((target) => Array.isArray(target?.sources) && target.sources.length))
+    .map(({ collection }) => collection);
+  const missingRepositoryCollection = sourcedCollections.length === 1
+    ? sourcedCollections[0]
+    : primaryCollection;
 
   const repository = diagram.meta?.repository;
   if (!repository) evidenceFailure('repository-evidence/repository-required', 'Repository evidence requires /meta/repository.', {
-    subject: { path: '/meta/repository', diagramType, collection: primaryCollection },
-    supportedFixes: [`add the pinned repository metadata or remove /${primaryCollection} sources`],
+    subject: { path: '/meta/repository', diagramType, collection: missingRepositoryCollection },
+    supportedFixes: [`add the pinned repository metadata or remove /${missingRepositoryCollection} sources`],
   });
   if (!FULL_SHA_RE.test(repository.revision || '')) {
     evidenceFailure('repository-evidence/revision-invalid', '/meta/repository/revision must be a full 40-character commit SHA.', {
