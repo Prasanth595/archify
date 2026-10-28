@@ -1,0 +1,308 @@
+{
+  "archifyBase": "86c37724811a4aa137201e58f4f285d19df7b10d",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:issue quarto",
+      "total": 0,
+      "returnedCount": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:issue \"code\" \"highlight\"",
+      "total": 3,
+      "returnedCount": 3,
+      "items": [
+        {
+          "number": 452,
+          "title": "Feature request — author-ordered relationships: highlight a node's outgoing calls in call order",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/452"
+        },
+        {
+          "number": 312,
+          "title": "[Proposal] Formal logical operators for workflow: decision node + edge conditions (AND/OR)",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/312"
+        },
+        {
+          "number": 1128,
+          "title": "[Bug]: GitHub Markdown source citations omit plain view for line anchors",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/issues/1128"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr quarto",
+      "total": 0,
+      "returnedCount": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr \"code\" \"highlight\"",
+      "total": 125,
+      "returnedCount": 30,
+      "items": [
+        {
+          "number": 1015,
+          "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1015"
+        },
+        {
+          "number": 998,
+          "title": "Code analysis Main branch",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/998"
+        },
+        {
+          "number": 419,
+          "title": "Codex/code analysis module",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/419"
+        },
+        {
+          "number": 1049,
+          "title": "feat(compare): read Architecture snapshots from Git refs",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1049"
+        },
+        {
+          "number": 388,
+          "title": "feat(import): add Mermaid stateDiagram importer for typed lifecycle IR",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/388"
+        },
+        {
+          "number": 653,
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/653"
+        },
+        {
+          "number": 478,
+          "title": "feat: extend adaptive canvas and large-world browsing to five diagram types",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/478"
+        },
+        {
+          "number": 1142,
+          "title": "feat: add explainer claim evidence attribution",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1142"
+        },
+        {
+          "number": 960,
+          "title": "feat(workflow): surface partialLayout on --layout-json when validation fails (#934)",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/960"
+        },
+        {
+          "number": 308,
+          "title": "feat(geometry): suggest a verified via elbow for clean-flow routing diagnostics",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/308"
+        },
+        {
+          "number": 140,
+          "title": "feat(import): add Mermaid flowchart importer for typed architecture IR",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/140"
+        },
+        {
+          "number": 955,
+          "title": "ci: add npmscan dependency security check",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/955"
+        },
+        {
+          "number": 180,
+          "title": "Add 'Full diagram page' export: title + diagram + cards in one PNG, without viewer chrome",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/180"
+        },
+        {
+          "number": 533,
+          "title": "feat(packaging): prepare scoped @tt-a1i/archify CLI package",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/533"
+        },
+        {
+          "number": 573,
+          "title": "Claude/repository explanation 4iapi2",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/573"
+        },
+        {
+          "number": 923,
+          "title": "fix(sequence): emit the whole ordered adjustment when a note reaches several messages",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/923"
+        },
+        {
+          "number": 387,
+          "title": "feat(import): add Mermaid sequenceDiagram importer for typed sequence IR",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/387"
+        },
+        {
+          "number": 539,
+          "title": "feat: support nested boundaries via wraps referencing boundary id",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/539"
+        },
+        {
+          "number": 329,
+          "title": "feat(viewer): add pointer-anchored wheel zoom",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/329"
+        },
+        {
+          "number": 352,
+          "title": "feat(code analyzers): M1: add extract step producing raw-facts.json ",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/352"
+        },
+        {
+          "number": 480,
+          "title": "feat: open the renderer without changing a single existing artifact",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/480"
+        },
+        {
+          "number": 732,
+          "title": "feat(viewer): add GIF motion export alongside WebM",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/732"
+        },
+        {
+          "number": 1066,
+          "title": "feat: add standalone artifact update notice",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1066"
+        },
+        {
+          "number": 1027,
+          "title": "fix(viewer): mobile nav reachability, dock clearance and presentation scroll",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/1027"
+        },
+        {
+          "number": 577,
+          "title": "fix(website): replace stale hero story links",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/577"
+        },
+        {
+          "number": 993,
+          "title": "feat(explainer): conclusion-first answer pages with validated diagrams, sources and reader tools",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/993"
+        },
+        {
+          "number": 328,
+          "title": "Add archify export svg for a standalone, styled SVG",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/328"
+        },
+        {
+          "number": 995,
+          "title": "Present maps and one-page answers on the site and READMEs, and fix explainer export and paths",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/995"
+        },
+        {
+          "number": 767,
+          "title": "fix: improve first-draft layout and tuning evidence",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/767"
+        },
+        {
+          "number": 693,
+          "title": "feat: add class, tree, timeline, and waterfall diagrams",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/693"
+        }
+      ]
+    }
+  ],
+  "pullRequests": [
+    {
+      "number": 1015,
+      "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+      "url": "https://github.com/tt-a1i/archify/pull/1015",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "fe4f80d2195e0a7b49b7cfe6d3dba7ffd31a7ac8",
+      "branch": "cursor/explainer-visual-comprehension-ed94"
+    },
+    {
+      "number": 1142,
+      "title": "feat: add explainer claim evidence attribution",
+      "url": "https://github.com/tt-a1i/archify/pull/1142",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "head": "bd782b46c4f4f8d5c947e7f5638d30d34fe4989f",
+      "branch": "feat/1133-explainer-claim-attribution"
+    }
+  ],
+  "scopeEvidence": [
+    {
+      "file": "archify/explainer/render.mjs",
+      "sha": "7c5d7d2f1ddbb2d4a63f6c18d86fcca163e17d59",
+      "patch": "@@ -69,14 +69,36 @@ export function renderExplainer(document, options = {}) {\n       case 'metric': {\n         const over = block.value !== undefined && block.limit !== undefined && block.value > block.limit;\n         const unit = escape(block.unit || '');\n-        body = `<div class=\"metric${over ? ' metric-over-limit' : ''}\" data-metric-status=\"${over ? 'over-limit' : block.value === undefined ? 'limit-only' : 'within-limit'}\"><span class=\"metric-label\">${i(block.label)}</span><p class=\"metric-value\">${block.value === undefined ? `${english?'Limit':'上限'} ${escape(block.limit)}<span>${unit}</span>` : `${escape(block.value)}${block.unit ? `<span>${unit}</span>` : ''}${block.limit === undefined ? '' : `<small> / ${escape(block.limit)}${unit}</small>`}`}</p>${block.value !== undefined && block.limit > 0 ? `<meter min=\"0\" max=\"${escape(block.limit)}\" value=\"${escape(Math.max(0, Math.min(block.value,block.limit)))}\" aria-label=\"${escape(block.label)}\">${escape(block.value)} / ${escape(block.limit)}</meter>` : ''}${over ? `<p class=\"metric-overflow\">${english?'Over limit by':'超限'} ${escape(block.value - block.limit)}${block.unit ? ` ${unit}` : ''}</p>` : ''}${block.typical ? `<span class=\"typical\">${words.typical}</span>` : ''}${block.note ? `<p class=\"fine\">${i(block.note)}</p>` : ''}</div>`;\n+        let deltaHtml = '';\n+        if (block.before !== undefined && block.value !== undefined) {\n+          const diff = block.value - block.before;\n+          const pct = block.before !== 0 ? Math.round((diff / Math.abs(block.before)) * 100) : null;\n+          const ratio = block.before > 0 && block.value > 0 && (block.value / block.before >= 2 || block.before / block.value >= 2) ? Number((block.value / block.before).toFixed(1)) : null;\n+          const sign = diff > 0 ? '+' : diff < 0 ? '−' : '';\n+          const badge = ratio !== null && ratio >= 2 ? `×${ratio}` : pct !== null ? `${sign}${Math.abs(pct)}%` : `${sign}${Math.abs(Number(diff.toFixed(2)))}`;\n+          const direction = diff > 0 ? 'up' : diff < 0 ? 'down' : 'flat';\n+          deltaHtml = `<p class=\"metric-delta\" data-delta-direction=\"${direction}\"><span class=\"delta-from\">${escape(block.before)}${unit ? ` ${unit}` : ''} → ${escape(block.value)}${unit ? ` ${unit}` : ''}</span><span class=\"delta-badge\">${escape(badge)}</span></p>`;\n+        }\n+        body = `<div class=\"metric${over ? ' metric-over-limit' : ''}\" data-metric-status=\"${over ? 'over-limit' : block.value === undefined ? 'limit-only' : 'within-limit'}\"><span class=\"metric-label\">${i(block.label)}</span><p class=\"metric-value\">${block.value === undefined ? `${english?'Limit':'上限'} ${escape(block.limit)}<span>${unit}</span>` : `${escape(block.value)}${block.unit ? `<span>${unit}</span>` : ''}${block.limit === undefined ? '' : `<small> / ${escape(block.limit)}${unit}</small>`}`}</p>${deltaHtml}${block.value !== undefined && block.limit > 0 ? `<meter min=\"0\" max=\"${escape(block.limit)}\" value=\"${escape(Math.max(0, Math.min(block.value,block.limit)))}\" aria-label=\"${escape(block.label)}\">${escape(block.value)} / ${escape(block.limit)}</meter>` : ''}${over ? `<p class=\"metric-overflow\">${english?'Over limit by':'超限'} ${escape(Number((block.value - block.limit).toFixed(2)))}${block.unit ? ` ${unit}` : ''}</p>` : ''}${block.typical ? `<span class=\"typical\">${words.typical}</span>` : ''}${block.note ? `<p class=\"fine\">${i(block.note)}</p>` : ''}</div>`;\n         break;\n       }\n       case 'steps': body = `<ol class=\"steps\">${block.items.map(item => `<li id=\"${escape(item.id)}\"><b>${item.target ? nativeLink(item.target,i(item.text)) : i(item.text)}</b>${item.detail ? `<p>${i(item.detail)}</p>` : ''}</li>`).join('')}</ol>`; break;\n       case 'diagram': { const diagram = diagrams[block.id]; if (!diagram?.svg || !diagram?.html) unavailable(block,`Missing prepared native diagram: ${block.id}`); const title = diagram.spec?.meta?.title || block.id; const svg = staticSvg(diagram.svg, block.id); const previewClass = previewPrefix(block.id); const nativeStyle = scopeNativeCss(diagram.styles ?? nativeStyles(diagram.html), '.' + previewClass, previewClass + '-', diagram.svg); const nativeWidth = Number(diagram.svg.match(/viewBox=[\"'][^\"']*?[\\d.-]+[ ,]+[\\d.-]+[ ,]+([\\d.]+)/)?.[1]); const lanes = diagram.spec?.lanes || [], singleLane = lanes.length === 1 ? ' single-lane bare-lanes' : lanes.length && lanes.every(lane => /^lane-\\d+$/.test(lane.id)) ? ' bare-lanes' : ''; body = `<figure class=\"diagram\"><figcaption><span class=\"diagram-title\">${escape(title)}</span><span class=\"diagram-actions interactive\"><button class=\"tool-button explore-button\" type=\"button\" data-open-diagram=\"${escape(block.id)}\" title=\"${words.exploreTitle}\">${icons.expand}<span>${words.explore}</span></button></span></figcaption><div class=\"diagram-preview ${previewClass}${singleLane}\" role=\"img\" aria-label=\"${escape(title)}\"${block.nodeSources ? ` data-node-sources=\"${escape(JSON.stringify(block.nodeSources))}\"` : ''}${nativeWidth > 0 ? ` style=\"--native-width:${Math.round(nativeWidth)}px\"` : ''}><style>${nativeStyle}</style>${svg}</div></figure><p class=\"diagram-fit-status fine\" role=\"status\" hidden></p><details class=\"diagram-semantics\" open><summary>${words.graph}</summary><ul>${(diagram.semantic?.nodes || []).map(node => `<li>${escape(node.label || node.id)} <code>${escape(node.id)}</code></li>`).join('')}${(diagram.semantic?.edges || []).map(edge => `<li><code>${escape(edge.from)}</code> → <code>${escape(edge.to)}</code>${edge.label ? ` · ${escape(edge.label)}` : ''}</li>`).join('')}</ul></details>${block.changes?.length ? `<dl class=\"changes\"><dt>${words.changes}</dt>${block.changes.map(change => `<dd><span class=\"chip ${escape(change.change)}\">${words[change.change]}</span> <code>${escape(change.target)}</code></dd>`).join('')}</dl>` : ''}`; break; }\n       case 'chart': { const text = block.text ?? preparedSources.charts?.[block.id]; if (typeof text !== 'string') unavailable(block,`Missing prepared chart data: ${block.id}`); const chart = compileExplainerChart(text); if (chart.error) unavailable(block, chart.error); body = `<figure class=\"chart\" style=\"--native-width:${Math.round(chart.width)}px\">${chart.svg.replace(/^<svg\\b[^>]*>/, tag => tag.replace(/\\s(?:width|height)=\"[^\"]*\"/g, ''))}${block.title ? `<figcaption>${i(block.title)}</figcaption>` : ''}</figure>`; break; }\n       case 'snippet': body = `<figure class=\"snippet\"><figcaption><span class=\"snippet-label\">${block.title ? i(block.title) : ''}${block.language ? `<code class=\"snippet-language\">${escape(block.language)}</code>` : ''}</span><button class=\"text-button interactive\" type=\"button\" data-copy>${words.copy}</button></figcaption><pre><code${block.language ? ` class=\"language-${escape(block.language)}\"` : ''}>${escape(block.text)}</code></pre></figure>`; break;\n-      case 'code': { const source = sources[block.source]; if (!source?.path || typeof source.text !== 'string') unavailable(block,`Code requires a Git excerpt: ${block.source}`); body = `<figure class=\"code\"><figcaption>${i(`[](source:${block.source})`)}<span>${escape(source.path)}:${escape(source.lines?.join('–'))}</span></figcaption><pre><code${block.language ? ` class=\"language-${escape(block.language)}\"` : ''}>${escape(source.text)}</code></pre></figure>`; break; }\n+      case 'code': {\n+        const source = sources[block.source];\n+        if (!source?.path || typeof source.text !== 'string') unavailable(block,`Code requires a Git excerpt: ${block.source}`);\n+        const first = source.lines?.[0] || 1;\n+        const focus = block.focus || source.focus;\n+        const codeLines = source.text.split('\\n').map((line, index) => {\n+          const num = first + index;\n+          const isFocus = Array.isArray(focus) && num >= focus[0] && num <= focus[1];\n+          return `<span class=\"code-line${isFocus ? ' line-focus' : ''}\" data-line=\"${num}\">${escape(line)}</span>`;\n+        }).join('\\n');\n+        body = `<figure class=\"code\"${Array.isArray(focus) ? ' data-has-focus=\"true\"' : ''}><figcaption><span class=\"code-meta\">${i(`[](source:${block.source})`)}<span>${escape(source.path)}:${escape(source.lines?.join('–'))}</span></span><button class=\"text-button interactive\" type=\"button\" data-copy>${words.copy}</button></figcaption><pre><code${block.language ? ` class=\"language-${escape(block.language)}\"` : ''}>${codeLines}</code></pre></figure>`;\n+        break;\n+      }\n       case 'diff': {\n         const parsed = parseExplainerDiff(block.text,{component:'diff',input:sourcePath,panelId});\n         if(parsed.diagnostics.some(diagnostic=>diagnostic.severity === 'error')) throw Object.assign(new Error(`Malformed diff: ${block.id}`),{diagnostics:parsed.diagnostics,archifyDiagnostics:parsed.diagnostics});"
+    },
+    {
+      "file": "archify/references/explainer-authoring.md",
+      "sha": "9347c542f8396979e2b5573a7ff746ad65eb26e5",
+      "patch": "@@ -215,15 +215,15 @@ A chart states where its numbers come from the same way text does: measured, fro\n | --- | --- | --- |\n | `@answer` | `scope=\"...\"` | none |\n | `@meta` | `locale` (`en`, `zh-CN`, `zh-TW`, `es`, `ko`, `ar`), `quality_profile`, `style` (`clean`, `editorial`, `product`, `swiss`; readers can switch), `repo_url`, `repo_revision` | none |\n-| `@source <id>` | `title`, `url`, or `path` with `lines=start:end` | none |\n+| `@source <id>` | `title`, `url`, or `path` with `lines=start:end` and optional `focus=start:end` | none |\n | `@steps` | `id` | `id | title | detail? | diagram-id? | node? | from~to? | edge-ids?` (node and route are exclusive) |\n | `@callout` | `id`, `level=note|warning|open-question`, `title` | one cell per row; rows join into paragraphs |\n | `@facts` | `id` | `label | value` |\n-| `@metric` | `id`, `label`, `value`, `limit`, `unit`, `note`, `typical=true` | none; `value` or `limit` required |\n+| `@metric` | `id`, `label`, `value`, `before`, `limit`, `unit`, `note`, `typical=true` | none; `value` or `limit` required |\n | `@comparison` | `id`, `columns=\"A,B\"`, `label` | `criterion | cell per option` |\n | `@prose` | `id`, `text` | one cell per row |\n | `@list` | `id`, `ordered=true` | one cell per row |\n-| `@code` | `id`, `source=<source-id>`, `language` | none |\n+| `@code` | `id`, `source=<source-id>`, `language`, `focus=start:end` | none |\n | `@diff` | `id`, `caption` | a following ```` ```diff ```` fence |\n | `@image` | `id`, `path`, `alt`, `caption` | none |\n | `@chart` | `type` (`bar`, `line`, `pie`), `data` (`.csv` or `.json`), `x`, `y`, `unit`, `title`, `id` | none |"
+    },
+    {
+      "file": "archify/schemas/explainer.schema.json",
+      "sha": "032165576342733c52031a84d3dd755dea7e871e",
+      "patch": "@@ -362,6 +362,9 @@\n         \"value\": {\n           \"type\": \"number\"\n         },\n+        \"before\": {\n+          \"type\": \"number\"\n+        },\n         \"limit\": {\n           \"type\": \"number\",\n           \"exclusiveMinimum\": 0\n@@ -560,6 +563,22 @@\n         },\n         \"language\": {\n           \"$ref\": \"#/$defs/short\"\n+        },\n+        \"focus\": {\n+          \"type\": \"array\",\n+          \"prefixItems\": [\n+            {\n+              \"type\": \"integer\",\n+              \"minimum\": 1\n+            },\n+            {\n+              \"type\": \"integer\",\n+              \"minimum\": 1\n+            }\n+          ],\n+          \"items\": false,\n+          \"minItems\": 2,\n+          \"maxItems\": 2\n         }\n       }\n     },\n@@ -859,6 +878,22 @@\n           \"minItems\": 2,\n           \"maxItems\": 2\n         },\n+        \"focus\": {\n+          \"type\": \"array\",\n+          \"prefixItems\": [\n+            {\n+              \"type\": \"integer\",\n+              \"minimum\": 1\n+            },\n+            {\n+              \"type\": \"integer\",\n+              \"minimum\": 1\n+            }\n+          ],\n+          \"items\": false,\n+          \"minItems\": 2,\n+          \"maxItems\": 2\n+        },\n         \"revision\": {\n           \"type\": \"string\",\n           \"pattern\": \"^[a-fA-F0-9]{40}$\""
+    }
+  ],
+  "upstreamIssue": {
+    "number": 13448,
+    "title": "Code annotation line highlight overflow and gutter miss-alignment",
+    "url": "https://github.com/quarto-dev/quarto-cli/issues/13448",
+    "state": "closed",
+    "stateReason": "completed",
+    "closedAt": "2026-10-28T13:19:15Z"
+  },
+  "webSource": {
+    "repository": "quarto-dev/quarto-web",
+    "commit": "781af76ce83db51b4b02ddcb5a871de1b20f2cba",
+    "documents": [
+      {
+        "path": "license.qmd",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "72d1dbd888025187b6dfe55b1b014bdecc11e86d",
+        "size": 3065,
+        "url": "https://github.com/quarto-dev/quarto-web/blob/781af76ce83db51b4b02ddcb5a871de1b20f2cba/license.qmd"
+      },
+      {
+        "path": "docs/authoring/code-annotation.qmd",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "794689f5516fbdccd726ff0ab615fa6cf6ed249e",
+        "size": 5605,
+        "url": "https://github.com/quarto-dev/quarto-web/blob/781af76ce83db51b4b02ddcb5a871de1b20f2cba/docs/authoring/code-annotation.qmd"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7a4f6724f5546567675b9e4f7df70a9bab77ac4e",
+        "size": 10453,
+        "url": "https://github.com/quarto-dev/quarto-web/blob/781af76ce83db51b4b02ddcb5a871de1b20f2cba/README.md"
+      }
+    ],
+    "archived": false,
+    "note": "Read as documentation; its license page describes CLI/components, not an explicit whole-site documentation license."
+  }
+}

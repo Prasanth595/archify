@@ -1,0 +1,53 @@
+{
+  "repository": "quarto-dev/quarto-cli",
+  "commit": "623cd99e8c66ec29c9ef1fe17e4469c11c3c14eb",
+  "license": "MIT",
+  "copyright": "2020-2024 Posit Software, PBC",
+  "files": [
+    {
+      "path": "COPYING.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0e81c1ae69074cae586b26e1217f0bad0e8c264",
+      "size": 1081,
+      "url": "https://raw.githubusercontent.com/quarto-dev/quarto-cli/623cd99e8c66ec29c9ef1fe17e4469c11c3c14eb/COPYING.md",
+      "sha256": "6b985ce085f33a39f96d12321cfbcee03aa2ad4249755f534537f38019dfa123"
+    },
+    {
+      "path": "src/resources/formats/html/templates/quarto-html-after-body.ejs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ca5ca28ecc19a468f08f2d0ee52cc50adc39983",
+      "size": 31161,
+      "url": "https://raw.githubusercontent.com/quarto-dev/quarto-cli/623cd99e8c66ec29c9ef1fe17e4469c11c3c14eb/src/resources/formats/html/templates/quarto-html-after-body.ejs",
+      "sha256": "150091909b44bf9904858b7dd33e4a010bb2d90f745e6d16fc8c27b9e01f0851"
+    },
+    {
+      "path": "src/resources/filters/quarto-pre/code-annotation.lua",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a56df4cae35b6f54ec5a67860167acac0f96489",
+      "size": 21529,
+      "url": "https://raw.githubusercontent.com/quarto-dev/quarto-cli/623cd99e8c66ec29c9ef1fe17e4469c11c3c14eb/src/resources/filters/quarto-pre/code-annotation.lua",
+      "sha256": "74301ef00e93f93aa96da86bf42b65ddbc018133650481489999c96028e7acaa"
+    },
+    {
+      "path": "tests/integration/playwright/tests/html-code-annotation-highlight.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53c7b104cfde2dd5f8ded0ea082f8a1bfcfd2260",
+      "size": 7821,
+      "url": "https://raw.githubusercontent.com/quarto-dev/quarto-cli/623cd99e8c66ec29c9ef1fe17e4469c11c3c14eb/tests/integration/playwright/tests/html-code-annotation-highlight.spec.ts",
+      "sha256": "e7616b5f156bd9c074280995457b5b143c23b007b1d869ce31b11e184ea84b37"
+    },
+    {
+      "path": "tests/docs/playwright/html/code-annotation-highlight.qmd",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e8fed11a1192abb69bd0c80d762d52c0b06f888",
+      "size": 564,
+      "url": "https://raw.githubusercontent.com/quarto-dev/quarto-cli/623cd99e8c66ec29c9ef1fe17e4469c11c3c14eb/tests/docs/playwright/html/code-annotation-highlight.qmd",
+      "sha256": "3d7f3e0cfb463d3754ac4ab53c58baebb5d857914fc03e561439b8c6216a3049"
+    }
+  ]
+}

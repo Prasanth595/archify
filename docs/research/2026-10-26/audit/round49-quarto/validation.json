@@ -1,0 +1,21 @@
+{
+  "scope": "Research evidence only; no product behavior change",
+  "checks": {
+    "sourceGitBlobs": 5,
+    "localFiles": 18,
+    "reviewedLocalPngs": 5,
+    "pngDimensions": [
+      1440,
+      900
+    ],
+    "summaryTwoRunsByteIdentical": true,
+    "resolvedRelativeLinks": 9
+  },
+  "notRun": [
+    "Quarto build/render/Playwright tests",
+    "Archify renderer suite",
+    "contributor PR validation"
+  ],
+  "nativeResult": "Selection/toggle recorded; left band overflow and keyboard Tab skip observed, not acceptance",
+  "ownership": "Draft #1015 at fe4f80d2195e0a7b49b7cfe6d3dba7ffd31a7ac8 overlaps focus-line implementation; no duplicate branch"
+}
