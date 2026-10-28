@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
-    "sha256": "cf0d1f5db543b3b34e7368e17b9488a5d68e18b63c9aed9568aaa332a2aa4bd4",
-    "bytes": 65389,
-    "gitBlob": "415cb4d174b6d9451135bda2ff2c3859d4360f72"
+    "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
+    "sha256": "19cdf6b168ffbd1071bd0b7a95be74a9aa0cca53dc3a49d9212d8dfc3bcdf80c",
+    "bytes": 66570,
+    "gitBlob": "2d4409f7d220937484bddaaa4df6f0a72ccc8046"
   },
-  "policy": "52 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "53 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
+      "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
+      "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "50c40e9da7e6029536d9c8df049012de4563483c",
+      "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -1868,6 +1868,41 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-diff-matches/experiments/diff-matches",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/a8456ef796ab62ba490b03fa0c896ae206edb5ea/experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png"
+    },
+    {
+      "id": "diff-file-navigation",
+      "commit": "48f076f9c87fc87d36af20ddd24464e71d798fea",
+      "branch": "codex/lab-diff-file-navigation",
+      "directory": "experiments/diff-file-navigation",
+      "group": "product",
+      "inputKind": "完整历史patch / 多文件目录",
+      "imagePath": "experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png",
+      "imageCaption": "完整多文件diff的局部目录，可直达文件段并返回原目录项；不证明阅读效率或与其他实验组合验收。",
+      "title": "Diff file navigation",
+      "value": "完整多文件diff增加局部目录，可直达每个文件段并返回原目录项",
+      "limits": "固定6ca6基线；27focused、39parser/CLI/package、1Chrome扩展及generated/ZIP通过；完整8309B历史patch153行原文不变，root当前5图/3观察及修前原件保留；两类fixture四页仅render/inspect/Ego，未finalize或CLI browser-check；独立READY，保留旧窄屏溢出及拆号，无效率/AT/组合验收",
+      "readme": {
+        "path": "experiments/diff-file-navigation/README.md",
+        "commit": "48f076f9c87fc87d36af20ddd24464e71d798fea",
+        "sha256": "8abfd0ea7966f2f94ca5f705d9d1ec4c8cceb561f0e3f52a86bd40f30a7e98bb",
+        "bytes": 9190,
+        "gitBlob": "10c5e1b70b4f6158eb0eb93be37a3ddaf78dada1"
+      },
+      "image": {
+        "path": "experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png",
+        "commit": "48f076f9c87fc87d36af20ddd24464e71d798fea",
+        "sha256": "f6db0ef874a1970f29e187ef9e0503c7c9f461734ec561df7cecb259935fbc7c",
+        "bytes": 164393,
+        "gitBlob": "ca560a30b0c406cb3c762402d85a3909133b7b68",
+        "width": 1440,
+        "height": 1100,
+        "mime": "image/png",
+        "caption": "完整多文件diff的局部目录，可直达文件段并返回原目录项；不证明阅读效率或与其他实验组合验收。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-diff-file-navigation/experiments/diff-file-navigation",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png"
     }
   ],
   "deferred": {
@@ -1878,11 +1913,11 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 52,
-    "images": 52,
-    "pngBytes": 12742211,
+    "experiments": 53,
+    "images": 53,
+    "pngBytes": 12906604,
     "groupCounts": {
-      "product": 16,
+      "product": 17,
       "offline": 15,
       "content": 21
     },

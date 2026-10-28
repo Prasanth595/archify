@@ -29,7 +29,31 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前52版静态绑定与实际浏览器观察
+## 当前53版静态绑定与实际浏览器观察
+
+固定 hub 为 [`63541c0adac1a47609e20c4854a202b15afacb89`](https://github.com/tt-a1i/archify/blob/63541c0adac1a47609e20c4854a202b15afacb89/docs/research/2026-10-25/README.md)：**53项 / 53张原PNG，17产品交互 / 15离线适配 / 21内容示例**。来源README为66,570 bytes，SHA-256 `19cdf6b168ffbd1071bd0b7a95be74a9aa0cca53dc3a49d9212d8dfc3bcdf80c`。此处固定来源身份，不随工作树后续更新。
+
+唯一新增项Diff file navigation固定实验提交 `48f076f9c87fc87d36af20ddd24464e71d798fea`，在完整多文件diff中增加局部文件目录，直达文件段并返回原目录项。主图是固定提交中的 `experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png`：164,393 bytes、1440×1100，SHA-256 `f6db0ef874a1970f29e187ef9e0503c7c9f461734ec561df7cecb259935fbc7c`。完整8309B历史patch的153行原文保留。实验四页仅render/inspect/Ego，未finalize或执行CLI browser-check；旧窄屏溢出与拆号仍保留，不证明效率、AT或与其他实验组合验收。
+
+沿用原builder的 `--source-repo`，从本hub仓库读取固定Git blob，53个本地origin跟踪引用均与selection提交相同；未恢复旧工作区或检查旧工作文件，不将本地跟踪引用当作本批旧52远端head重新查询。前52项selection记录、manifest完整item字段、完整卡片HTML及PNG原bytes逐项与已发布52版golden完全相同。模板、builder及verify均未修改；模板SHA-256仍为 `bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9`。
+
+52版浏览器绑定按原字节另存为 [browser-evidence52.json](browser-evidence52.json)，11,508 bytes，SHA-256 `f88917f99f81a575acb4d5275be9cffef200117422b8e94f07221b0bda21abb2`；screenshots52与更早原件保留。历史浏览器证据仅属于各自固定页面。
+
+Python标准库构建与现有Node **22.23.3** 静态verify通过：53张嵌图摘要、53/17/15/21卡片与筛选计数、固定链接、内联JS语法均通过，外部资源引用0；原PNG合计12,906,604 bytes。
+
+- `index.html`：17,345,659 bytes；SHA-256 `99478ba013cf219c7ee224bb2f60fa09a4896565db6ac30b2661ae7b4b628897`
+- `manifest.json`：SHA-256 `eaf20d7c06bb088d394ee4c7c94821d77d01d883e8b849b2bf62216e5d3d7fc4`
+- `selection.json`：SHA-256 `6bffc235d64826b91c1c231db90851b0e18d13dfd574c78d420c601f919016ab`
+
+Root已在Ego/Chromium实际操作上述冻结53版HTML，并逐张查看本批三张原始PNG；三份原始JSON及三张PNG按原字节保存在 [screenshots53](screenshots53/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前静态产物及原件摘要、PNG尺寸和查看状态，不冒称原始receipt。
+
+桌面1440×1100：四筛选显示53/17/15/21，搜索Diff file navigation得到1/53。新项弹窗内PNG直接解码所得SHA与固定原图相同，天然尺寸及切原始尺寸后的显示尺寸均1440×1100。Escape后弹窗关闭、图片src清空、焦点返回新卡片。390×844深色CSS视口：卡片显示1/53，pageWidth与clientWidth同为375px；空结果0/53，reset回53/53且query聚焦。整页截图尺寸按PNG IHDR记录，不把CSS viewport当作整图尺寸。
+
+![第53项卡片](screenshots53/card-light.png)
+
+[完整图弹窗](screenshots53/dialog-light.png) · [390px深色卡片](screenshots53/card-narrow-dark.png)。本次仅复验新增卡片和上述共用操作，没有重跑前52项实验或图片逐项交互，没有实体触屏、AT、完整Tab遍历、外链访问或效率验收。
+
+## 历史52版静态绑定与实际浏览器观察
 
 固定 hub 为 [`50c40e9da7e6029536d9c8df049012de4563483c`](https://github.com/tt-a1i/archify/blob/50c40e9da7e6029536d9c8df049012de4563483c/docs/research/2026-10-25/README.md)：**52项 / 52张原PNG，16产品交互 / 15离线适配 / 21内容示例**。来源README为65,389 bytes，SHA-256 `cf0d1f5db543b3b34e7368e17b9488a5d68e18b63c9aed9568aaa332a2aa4bd4`。后续研究中心工作树变化不改变此固定快照。
 
@@ -45,7 +69,7 @@ Python标准库构建与现有Node **22.23.3** 静态verify通过：52张PNG摘�
 - `manifest.json`：SHA-256 `aa82f6fbb2b02addfb529f0b049542190bbdf93dc8707f53dc38745ee489ec3b`
 - `selection.json`：SHA-256 `ee12c2f5a8d51b2ff8be9cf5c1bb6df562c81c551963421997e653082be87a43`
 
-Root在Ego/Chromium实际操作上述冻结52版HTML，并逐张查看本次5张原始PNG。四份原始观察JSON与5张PNG按原字节保存在 [screenshots52](screenshots52/)；[browser-evidence.json](browser-evidence.json)是派生绑定，列当前静态产物、原件bytes/SHA、PNG IHDR尺寸及root查看状态，不冒称原始receipt。下节50版及更早观察仍仅属于其历史固定页面。
+Root在Ego/Chromium实际操作上述冻结52版HTML，并逐张查看本次5张原始PNG。四份原始观察JSON与5张PNG按原字节保存在 [screenshots52](screenshots52/)；[browser-evidence52.json](browser-evidence52.json)是派生绑定，列当前静态产物、原件bytes/SHA、PNG IHDR尺寸及root查看状态，不冒称原始receipt。下节50版及更早观察仍仅属于其历史固定页面。
 
 桌面1440×1100：实际四筛选为52/16/15/21；Route与Diff均可搜索到一张卡片。两项完整图均直接解码嵌入data URI，SHA分别与固定PNG一致，天然尺寸与切原始尺寸后的显示尺寸均为1440×1100。Escape后弹窗关闭、图片src清空、焦点回到各自原卡片，三个条件均成立。完整图可以滚动，不声称整个图同时位于可见窗口。
 

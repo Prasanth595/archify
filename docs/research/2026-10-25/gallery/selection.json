@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "50c40e9da7e6029536d9c8df049012de4563483c",
+  "hubCommit": "63541c0adac1a47609e20c4854a202b15afacb89",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -542,6 +542,16 @@
       "inputKind": "固定上游fixture / diff文本对应",
       "imagePath": "experiments/diff-matches/evidence/20261026/candidate-matched-helper-light.png",
       "imageCaption": "同一diff中从删除文本跳到对应新增文本并返回；文本对应不证明语义移动或行为等价。"
+    },
+    {
+      "id": "diff-file-navigation",
+      "commit": "48f076f9c87fc87d36af20ddd24464e71d798fea",
+      "branch": "codex/lab-diff-file-navigation",
+      "directory": "experiments/diff-file-navigation",
+      "group": "product",
+      "inputKind": "完整历史patch / 多文件目录",
+      "imagePath": "experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png",
+      "imageCaption": "完整多文件diff的局部目录，可直达文件段并返回原目录项；不证明阅读效率或与其他实验组合验收。"
     }
   ],
   "deferred": {

@@ -29,4 +29,4 @@ Route不推断真实流量、故障切换或最佳路线。Diff不证明语义�
 
 独立审查和root实际浏览器检查发现并修正了生成ID冲突与窄屏返回链接带偏横向滚动两个问题。最终桌面/390px深色下返回入口可见、Tab/Enter往返scrollLeft为0；保留基线行号换行和390px页面约10px溢出，不宣称跨浏览器、AT或阅读效率验收。9张原PNG和5份JSON分为当前及修前证据，未经改写。共享源码/测试diff摘要仍为 `941c679caa28835d01b7fbe3ef07cdc44501ba4b8d74073e2179347b47cb4840`。
 
-[第53项远端核对](diff-file-navigation-remote.json)确认GitHub精确head一致；Actions/check-runs为0，不算CI通过。画廊53版在此源码索引提交之后增量生成。
+[第53项远端核对](diff-file-navigation-remote.json)确认GitHub精确head一致；Actions/check-runs为0，不算CI通过。[53项画廊](../2026-10-25/gallery/README.md)已按固定来源hub `63541c0adac1a47609e20c4854a202b15afacb89` 增量生成并完成本批浏览器检查：新卡片搜索、原图摘要、原始尺寸、Escape返回焦点、390px暗色卡片及空结果/reset；前52项卡片与PNG原字节保持不变。
