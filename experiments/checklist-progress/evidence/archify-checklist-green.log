@@ -1,0 +1,21 @@
+
+> test:browser
+> node scripts/run-browser-tests.mjs test/explainer-browser.test.mjs --test-name-pattern=checklist progress
+
+Browser tests: 1 files, concurrency 2
+TAP version 13
+# Subtest: checklist progress follows ordered content while artifact and block identities stay independent
+ok 1 - checklist progress follows ordered content while artifact and block identities stay independent
+  ---
+  duration_ms: 2064.174834
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2160.281833

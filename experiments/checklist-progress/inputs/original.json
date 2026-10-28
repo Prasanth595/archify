@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "id": "checklist-content-20261028",
+    "title": "Keep progress with the right checklist",
+    "locale": "en"
+  },
+  "answer": {
+    "summary": "A checkmark belongs to the list you read.",
+    "scope": "Constructed regression: the page and checklist IDs stay the same while the two items swap places."
+  },
+  "panels": [
+    {
+      "id": "next",
+      "title": "Next checks",
+      "blocks": [
+        {
+          "id": "checks",
+          "type": "list",
+          "checklist": true,
+          "items": [
+            "Read the retry path",
+            "Inspect the failure report"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "title": "Personal reading progress",
+      "blocks": [
+        {
+          "id": "note",
+          "type": "prose",
+          "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+        }
+      ]
+    }
+  ],
+  "sources": []
+}

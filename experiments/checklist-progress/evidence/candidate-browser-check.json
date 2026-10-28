@@ -1,0 +1,3735 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "browser-check",
+  "evidenceKind": "automated-browser",
+  "status": "pass",
+  "visualReview": "not-requested",
+  "provenance": "current",
+  "deliveryReceiptId": "3e359baa-633f-419e-a948-22b3471dfe4e",
+  "artifact": {
+    "path": "/Users/tushaokun/.codex/worktrees/lab-checklist-progress/archify/experiments/checklist-progress/artifacts/candidate-reordered.html",
+    "sha256": "3e73d9a296d98d4b3d972a773de0613f611d26dd4f3bf87cbcc8036c1ee89663",
+    "bytes": 136837
+  },
+  "state": {
+    "detail": "read",
+    "motion": "still"
+  },
+  "chrome": {
+    "status": "available",
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  },
+  "diagnostics": [],
+  "containment": {
+    "status": "pass",
+    "policy": "horizontal-containment-readable-document-scroll",
+    "viewports": [
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1280,
+        "innerHeight": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(244, 245, 247)",
+        "resolvedTheme": "light",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 8
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=light",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 1
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1281,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 9
+          }
+        },
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(244, 245, 247)",
+        "resolvedTheme": "light",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 7
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=light",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1441,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 6
+          }
+        },
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1280,
+        "innerHeight": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(12, 13, 16)",
+        "resolvedTheme": "dark",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 6
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=dark",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1281,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 5
+          }
+        },
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(12, 13, 16)",
+        "resolvedTheme": "dark",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 10
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=dark",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 2
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1441,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 10
+          }
+        },
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      }
+    ]
+  },
+  "themeStates": {
+    "status": "pass",
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900,
+        "requestedTheme": "light",
+        "resolvedTheme": "light",
+        "ok": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "requestedTheme": "light",
+        "resolvedTheme": "light",
+        "ok": true
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "requestedTheme": "dark",
+        "resolvedTheme": "dark",
+        "ok": true
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "requestedTheme": "dark",
+        "resolvedTheme": "dark",
+        "ok": true
+      }
+    ]
+  },
+  "readability": {
+    "status": "pass",
+    "minimumProjectedNodeTextPx": 6,
+    "viewports": [
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1280,
+        "innerHeight": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(244, 245, 247)",
+        "resolvedTheme": "light",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 8
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=light",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 1
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1281,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 9
+          }
+        },
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(244, 245, 247)",
+        "resolvedTheme": "light",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 7
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=light",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1441,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 6
+          }
+        },
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1280,
+        "innerHeight": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(12, 13, 16)",
+        "resolvedTheme": "dark",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 6
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=dark",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1281,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 5
+          }
+        },
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(12, 13, 16)",
+        "resolvedTheme": "dark",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 10
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=dark",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 2
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1441,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 10
+          }
+        },
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      }
+    ]
+  },
+  "viewerChrome": {
+    "status": "pass",
+    "viewports": [
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1280,
+        "innerHeight": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(244, 245, 247)",
+        "resolvedTheme": "light",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 8
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=light",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 1
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1281,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 9
+          }
+        },
+        "width": 1280,
+        "height": 900,
+        "theme": "light",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(244, 245, 247)",
+        "resolvedTheme": "light",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 7
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=light",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1441,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 6
+          }
+        },
+        "width": 1440,
+        "height": 900,
+        "theme": "light",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1280,
+        "innerHeight": 900,
+        "scrollWidth": 1280,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(12, 13, 16)",
+        "resolvedTheme": "dark",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 6
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=dark",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1281,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 5
+          }
+        },
+        "width": 1280,
+        "height": 900,
+        "theme": "dark",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      },
+      {
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "staticReading": [
+          {
+            "component": "answer",
+            "visible": true,
+            "text": "AAnswerAskA checkmark belongs to the list you read.Applies toConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          }
+        ],
+        "innerWidth": 1440,
+        "innerHeight": 900,
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "overflowElements": [],
+        "localClipping": [],
+        "references": [],
+        "duplicateIds": [],
+        "keyboardIssues": [],
+        "controlCount": 14,
+        "occluded": [],
+        "smallText": [],
+        "bodyText": "Skip to content\nKeep progress with the right checklist\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places.\n\n1\nNext checks\nAsk\nInspect the failure report\nRead the retry path\n2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n2 panels",
+        "background": "rgb(12, 13, 16)",
+        "resolvedTheme": "dark",
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\nAsk\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nAsk\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\nAsk\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [
+          "div",
+          "answer",
+          "next",
+          "context"
+        ],
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 10
+        },
+        "themeControl": "query",
+        "navigationUrl": "file:///var/folders/25/mpff0p7j7slgl5fj961tl7480000gp/T/archify-inspection-PcOh4H/artifact-snapshot.html?theme=dark",
+        "keyboardTraversal": {
+          "count": 14,
+          "reached": 14,
+          "missing": [],
+          "ok": true
+        },
+        "consoleErrors": [],
+        "nativeText": [],
+        "interactionFailures": [],
+        "noJavaScript": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 2
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          }
+        ],
+        "print": {
+          "ok": true,
+          "panels": [
+            {
+              "id": "answer",
+              "visible": true,
+              "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+            },
+            {
+              "id": "next",
+              "visible": true,
+              "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "checks",
+              "visible": true,
+              "text": "Inspect the failure report\nRead the retry path"
+            },
+            {
+              "id": "context",
+              "visible": true,
+              "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            },
+            {
+              "id": "note",
+              "visible": true,
+              "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+            }
+          ],
+          "interactiveVisible": [],
+          "typical": {
+            "links": [],
+            "notes": []
+          },
+          "measurementMethod": {
+            "version": "public-html-qa-v2",
+            "clipping": "native-intersection-observer-expanded-root",
+            "clippingMeasured": true,
+            "clipCoverage": "native-clip-chain",
+            "documentExtentMeasured": true,
+            "rootMargin": 1441,
+            "limits": [
+              "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+              "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+            ]
+          },
+          "fontReadiness": {
+            "status": "loaded",
+            "waitMs": 10
+          }
+        },
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "overflowX": false,
+        "overflowY": false,
+        "verticalScrollAccepted": true,
+        "ok": true,
+        "readabilityOk": true,
+        "viewerChromeOk": true
+      }
+    ]
+  },
+  "captures": {
+    "status": "not-requested",
+    "screenshots": [],
+    "contactSheet": null
+  },
+  "sidecars": {
+    "directory": "/tmp/archify-checklist-public-gate-20261028",
+    "receipt": "candidate-reordered.browser-check.json",
+    "files": []
+  },
+  "family": "explainer",
+  "viewportPolicy": "explainer-desktop-v1",
+  "commonQa": {
+    "status": "pass",
+    "observations": [
+      {
+        "width": 1280,
+        "theme": "light",
+        "ok": true
+      },
+      {
+        "width": 1440,
+        "theme": "light",
+        "ok": true
+      },
+      {
+        "width": 1280,
+        "theme": "dark",
+        "ok": true
+      },
+      {
+        "width": 1440,
+        "theme": "dark",
+        "ok": true
+      }
+    ]
+  },
+  "interactions": {
+    "status": "pass",
+    "observations": [
+      {
+        "width": 1280,
+        "theme": "light",
+        "ok": true,
+        "failures": []
+      },
+      {
+        "width": 1440,
+        "theme": "light",
+        "ok": true,
+        "failures": []
+      },
+      {
+        "width": 1280,
+        "theme": "dark",
+        "ok": true,
+        "failures": []
+      },
+      {
+        "width": 1440,
+        "theme": "dark",
+        "ok": true,
+        "failures": []
+      }
+    ]
+  },
+  "references": {
+    "status": "pass",
+    "observations": [
+      {
+        "width": 1280,
+        "theme": "light",
+        "ok": true,
+        "failures": []
+      },
+      {
+        "width": 1440,
+        "theme": "light",
+        "ok": true,
+        "failures": []
+      },
+      {
+        "width": 1280,
+        "theme": "dark",
+        "ok": true,
+        "failures": []
+      },
+      {
+        "width": 1440,
+        "theme": "dark",
+        "ok": true,
+        "failures": []
+      }
+    ]
+  },
+  "noJavaScript": {
+    "status": "pass",
+    "observations": [
+      {
+        "width": 1280,
+        "theme": "light",
+        "ok": true,
+        "states": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 1
+            }
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "theme": "light",
+        "ok": true,
+        "states": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 6
+            }
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "theme": "dark",
+        "ok": true,
+        "states": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 9
+            }
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "theme": "dark",
+        "ok": true,
+        "states": [
+          {
+            "theme": "light",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(244, 245, 247)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 2
+            }
+          },
+          {
+            "theme": "dark",
+            "ok": true,
+            "panels": [
+              {
+                "id": "answer",
+                "visible": true,
+                "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+              },
+              {
+                "id": "next",
+                "visible": true,
+                "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "checks",
+                "visible": true,
+                "text": "Inspect the failure report\nRead the retry path"
+              },
+              {
+                "id": "context",
+                "visible": true,
+                "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              },
+              {
+                "id": "note",
+                "visible": true,
+                "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+              }
+            ],
+            "interactiveVisible": [],
+            "background": "rgb(12, 13, 16)",
+            "measurementMethod": {
+              "version": "public-html-qa-v2",
+              "clipping": "not-measured-script-execution-disabled",
+              "clippingMeasured": false,
+              "clipCoverage": "not-measured-script-disabled",
+              "documentExtentMeasured": true,
+              "rootMargin": null,
+              "limits": [
+                "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+                "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+              ]
+            },
+            "fontReadiness": {
+              "status": "loaded",
+              "waitMs": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "print": {
+    "status": "pass",
+    "observations": [
+      {
+        "width": 1280,
+        "ok": true,
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [],
+        "typical": {
+          "links": [],
+          "notes": []
+        },
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 9
+        }
+      },
+      {
+        "width": 1440,
+        "ok": true,
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [],
+        "typical": {
+          "links": [],
+          "notes": []
+        },
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 6
+        }
+      },
+      {
+        "width": 1280,
+        "ok": true,
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [],
+        "typical": {
+          "links": [],
+          "notes": []
+        },
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1281,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 5
+        }
+      },
+      {
+        "width": 1440,
+        "ok": true,
+        "panels": [
+          {
+            "id": "answer",
+            "visible": true,
+            "text": "A\nAnswer\n\nA checkmark belongs to the list you read.\n\nApplies to\nConstructed regression: the page and checklist IDs stay the same while the two items swap places."
+          },
+          {
+            "id": "next",
+            "visible": true,
+            "text": "1\nNext checks\nInspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "checks",
+            "visible": true,
+            "text": "Inspect the failure report\nRead the retry path"
+          },
+          {
+            "id": "context",
+            "visible": true,
+            "text": "2\nPersonal reading progress\n\nTick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          },
+          {
+            "id": "note",
+            "visible": true,
+            "text": "Tick an item, reload this page, then compare the reordered list. A tick records your own progress; it is not approval or proof that the code is correct."
+          }
+        ],
+        "interactiveVisible": [],
+        "typical": {
+          "links": [],
+          "notes": []
+        },
+        "measurementMethod": {
+          "version": "public-html-qa-v2",
+          "clipping": "native-intersection-observer-expanded-root",
+          "clippingMeasured": true,
+          "clipCoverage": "native-clip-chain",
+          "documentExtentMeasured": true,
+          "rootMargin": 1441,
+          "limits": [
+            "Axis-aligned element intersections; does not inspect pixels, shadows, masks or visual quality.",
+            "Local clipping access classification uses ancestor axis-aligned bounds; mixed clips and non-rectangular clipping need human review. Keyboard traversal is separate."
+          ]
+        },
+        "fontReadiness": {
+          "status": "loaded",
+          "waitMs": 10
+        }
+      }
+    ]
+  }
+}
