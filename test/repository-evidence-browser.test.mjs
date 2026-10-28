@@ -47,6 +47,8 @@ test('browser renders local-only sources as searchable text and web sources as l
               search: document.getElementById('node-finder-results').textContent
             };
             const selected = Archify.focus.inspectRelationshipById('users-to-cdn', { toggle: false });
+            const selectedPinned = Archify.focus.relationship();
+            const selectedVisible = !panel.hidden;
             const relationshipRows = [...panel.querySelectorAll('.semantic-passport-source')];
             const legacySelected = Archify.focus.inspectRelationshipById('cdn-to-lb', { toggle: false });
             const legacyRows = [...panel.querySelectorAll('.semantic-passport-source')];
@@ -54,6 +56,8 @@ test('browser renders local-only sources as searchable text and web sources as l
               ...nodeEvidence,
               relationship: {
                 selected,
+                selectedPinned,
+                selectedVisible,
                 pinned: Archify.focus.relationship(),
                 visible: !panel.hidden,
                 paths: relationshipRows.map(row => row.querySelector('small').textContent),
@@ -80,12 +84,13 @@ test('browser renders local-only sources as searchable text and web sources as l
         assert.equal(observed.locations[0], local ? 'L1–3' : 'L1–3 ↗');
         assert.equal(observed.repositoryHref, local ? null : `${url}/${mode === 'gitlab' ? '-/' : ''}tree/${data.revision}`);
         assert.equal(observed.relationship.selected, true);
-        assert.equal(observed.relationship.pinned.id, 'users-to-cdn');
-        assert.equal(observed.relationship.visible, true);
+        assert.equal(observed.relationship.selectedPinned.id, 'users-to-cdn');
+        assert.equal(observed.relationship.selectedVisible, true);
         assert.deepEqual(observed.relationship.paths, ['src/router.js']);
         assert.equal(observed.relationship.labels[0], 'Request handoff');
         assert.equal(observed.relationship.locations[0], local ? 'L1–3' : 'L1–3 ↗');
         assert.equal(observed.relationship.legacySelected, true);
+        assert.equal(observed.relationship.pinned.id, 'cdn-to-lb');
         assert.equal(observed.relationship.legacyVisible, true);
         assert.deepEqual(observed.relationship.legacyPaths, ['src/router.js', 'src/store.js']);
       }
