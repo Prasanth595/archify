@@ -1,0 +1,559 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Schema annotations · 同源原文视图</title><style>body{font:16px/1.6 system-ui;margin:32px auto;padding:0 20px;max-width:1100px;color:#142135;background:#f5f7fa}h1{font-size:30px}a{color:#1466bb}nav{display:flex;gap:18px;flex-wrap:wrap}section{margin:24px 0;padding:20px;background:white;border:1px solid #d4deea;border-radius:12px;min-width:0}pre{overflow:auto;white-space:pre;font:14px/1.5 ui-monospace,monospace;padding:16px;background:#edf1f6;border-radius:8px}code{font-family:ui-monospace,monospace}</style><h1>baz 写进 schema，为什么仍被拒绝？</h1><p>案例 2 中，baz 分支失败，不能贡献属性覆盖。anyOf 成功，但 baz 仍未覆盖，整体校验失败。</p><p>这是原文材料的阅读包装，不是 Ajv 官方界面。与解释页使用同一完整 schema、四个官方案例和本机记录；分支检查不是执行轨迹。</p><nav><a href="#schema">完整 schema</a><a href="#case-1">案例 1</a><a href="#case-2">案例 2</a><a href="#case-3">案例 3</a><a href="#case-4">案例 4</a><a href="explanation.html">解释页</a></nav><section id="schema"><h2>完整 schema</h2><pre>{
+  &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
+  &quot;properties&quot;: {
+    &quot;foo&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    }
+  },
+  &quot;anyOf&quot;: [
+    {
+      &quot;properties&quot;: {
+        &quot;bar&quot;: {
+          &quot;const&quot;: &quot;bar&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;bar&quot;
+      ]
+    },
+    {
+      &quot;properties&quot;: {
+        &quot;baz&quot;: {
+          &quot;const&quot;: &quot;baz&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;baz&quot;
+      ]
+    },
+    {
+      &quot;properties&quot;: {
+        &quot;quux&quot;: {
+          &quot;const&quot;: &quot;quux&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;quux&quot;
+      ]
+    }
+  ],
+  &quot;unevaluatedProperties&quot;: false
+}</pre></section><section id="case-1"><h2>案例 1：when one matches and has no unevaluated properties</h2><h3>完整输入</h3><pre>{
+  &quot;foo&quot;: &quot;foo&quot;,
+  &quot;bar&quot;: &quot;bar&quot;
+}</pre><h3>完整记录：主校验、独立检查、有限集合推导</h3><pre>[
+  {
+    &quot;caseIndex&quot;: 0,
+    &quot;allErrors&quot;: false,
+    &quot;description&quot;: &quot;when one matches and has no unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;
+    },
+    &quot;expected&quot;: true,
+    &quot;valid&quot;: true,
+    &quot;errors&quot;: null,
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;baz&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'baz'&quot;
+          }
+        ]
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'quux'&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  },
+  {
+    &quot;caseIndex&quot;: 0,
+    &quot;allErrors&quot;: true,
+    &quot;description&quot;: &quot;when one matches and has no unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;
+    },
+    &quot;expected&quot;: true,
+    &quot;valid&quot;: true,
+    &quot;errors&quot;: null,
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;baz&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'baz'&quot;
+          }
+        ]
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'quux'&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  }
+]</pre></section>
+<section id="case-2"><h2>案例 2：when one matches and has unevaluated properties</h2><h3>完整输入</h3><pre>{
+  &quot;foo&quot;: &quot;foo&quot;,
+  &quot;bar&quot;: &quot;bar&quot;,
+  &quot;baz&quot;: &quot;not-baz&quot;
+}</pre><h3>完整记录：主校验、独立检查、有限集合推导</h3><pre>[
+  {
+    &quot;caseIndex&quot;: 1,
+    &quot;allErrors&quot;: false,
+    &quot;description&quot;: &quot;when one matches and has unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;,
+      &quot;baz&quot;: &quot;not-baz&quot;
+    },
+    &quot;expected&quot;: false,
+    &quot;valid&quot;: false,
+    &quot;errors&quot;: [
+      {
+        &quot;instancePath&quot;: &quot;&quot;,
+        &quot;schemaPath&quot;: &quot;#/unevaluatedProperties&quot;,
+        &quot;keyword&quot;: &quot;unevaluatedProperties&quot;,
+        &quot;params&quot;: {
+          &quot;unevaluatedProperty&quot;: &quot;baz&quot;
+        },
+        &quot;message&quot;: &quot;must NOT have unevaluated properties&quot;
+      }
+    ],
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;/baz&quot;,
+            &quot;schemaPath&quot;: &quot;#/properties/baz/const&quot;,
+            &quot;keyword&quot;: &quot;const&quot;,
+            &quot;params&quot;: {
+              &quot;allowedValue&quot;: &quot;baz&quot;
+            },
+            &quot;message&quot;: &quot;must be equal to constant&quot;
+          }
+        ]
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'quux'&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [
+        &quot;baz&quot;
+      ],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  },
+  {
+    &quot;caseIndex&quot;: 1,
+    &quot;allErrors&quot;: true,
+    &quot;description&quot;: &quot;when one matches and has unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;,
+      &quot;baz&quot;: &quot;not-baz&quot;
+    },
+    &quot;expected&quot;: false,
+    &quot;valid&quot;: false,
+    &quot;errors&quot;: [
+      {
+        &quot;instancePath&quot;: &quot;&quot;,
+        &quot;schemaPath&quot;: &quot;#/unevaluatedProperties&quot;,
+        &quot;keyword&quot;: &quot;unevaluatedProperties&quot;,
+        &quot;params&quot;: {
+          &quot;unevaluatedProperty&quot;: &quot;baz&quot;
+        },
+        &quot;message&quot;: &quot;must NOT have unevaluated properties&quot;
+      }
+    ],
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;/baz&quot;,
+            &quot;schemaPath&quot;: &quot;#/properties/baz/const&quot;,
+            &quot;keyword&quot;: &quot;const&quot;,
+            &quot;params&quot;: {
+              &quot;allowedValue&quot;: &quot;baz&quot;
+            },
+            &quot;message&quot;: &quot;must be equal to constant&quot;
+          }
+        ]
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'quux'&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [
+        &quot;baz&quot;
+      ],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  }
+]</pre></section>
+<section id="case-3"><h2>案例 3：when two match and has no unevaluated properties</h2><h3>完整输入</h3><pre>{
+  &quot;foo&quot;: &quot;foo&quot;,
+  &quot;bar&quot;: &quot;bar&quot;,
+  &quot;baz&quot;: &quot;baz&quot;
+}</pre><h3>完整记录：主校验、独立检查、有限集合推导</h3><pre>[
+  {
+    &quot;caseIndex&quot;: 2,
+    &quot;allErrors&quot;: false,
+    &quot;description&quot;: &quot;when two match and has no unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;,
+      &quot;baz&quot;: &quot;baz&quot;
+    },
+    &quot;expected&quot;: true,
+    &quot;valid&quot;: true,
+    &quot;errors&quot;: null,
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'quux'&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;baz&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  },
+  {
+    &quot;caseIndex&quot;: 2,
+    &quot;allErrors&quot;: true,
+    &quot;description&quot;: &quot;when two match and has no unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;,
+      &quot;baz&quot;: &quot;baz&quot;
+    },
+    &quot;expected&quot;: true,
+    &quot;valid&quot;: true,
+    &quot;errors&quot;: null,
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;&quot;,
+            &quot;schemaPath&quot;: &quot;#/required&quot;,
+            &quot;keyword&quot;: &quot;required&quot;,
+            &quot;params&quot;: {
+              &quot;missingProperty&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must have required property 'quux'&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;baz&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  }
+]</pre></section>
+<section id="case-4"><h2>案例 4：when two match and has unevaluated properties</h2><h3>完整输入</h3><pre>{
+  &quot;foo&quot;: &quot;foo&quot;,
+  &quot;bar&quot;: &quot;bar&quot;,
+  &quot;baz&quot;: &quot;baz&quot;,
+  &quot;quux&quot;: &quot;not-quux&quot;
+}</pre><h3>完整记录：主校验、独立检查、有限集合推导</h3><pre>[
+  {
+    &quot;caseIndex&quot;: 3,
+    &quot;allErrors&quot;: false,
+    &quot;description&quot;: &quot;when two match and has unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;,
+      &quot;baz&quot;: &quot;baz&quot;,
+      &quot;quux&quot;: &quot;not-quux&quot;
+    },
+    &quot;expected&quot;: false,
+    &quot;valid&quot;: false,
+    &quot;errors&quot;: [
+      {
+        &quot;instancePath&quot;: &quot;&quot;,
+        &quot;schemaPath&quot;: &quot;#/unevaluatedProperties&quot;,
+        &quot;keyword&quot;: &quot;unevaluatedProperties&quot;,
+        &quot;params&quot;: {
+          &quot;unevaluatedProperty&quot;: &quot;quux&quot;
+        },
+        &quot;message&quot;: &quot;must NOT have unevaluated properties&quot;
+      }
+    ],
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;/quux&quot;,
+            &quot;schemaPath&quot;: &quot;#/properties/quux/const&quot;,
+            &quot;keyword&quot;: &quot;const&quot;,
+            &quot;params&quot;: {
+              &quot;allowedValue&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must be equal to constant&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;baz&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [
+        &quot;quux&quot;
+      ],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  },
+  {
+    &quot;caseIndex&quot;: 3,
+    &quot;allErrors&quot;: true,
+    &quot;description&quot;: &quot;when two match and has unevaluated properties&quot;,
+    &quot;data&quot;: {
+      &quot;foo&quot;: &quot;foo&quot;,
+      &quot;bar&quot;: &quot;bar&quot;,
+      &quot;baz&quot;: &quot;baz&quot;,
+      &quot;quux&quot;: &quot;not-quux&quot;
+    },
+    &quot;expected&quot;: false,
+    &quot;valid&quot;: false,
+    &quot;errors&quot;: [
+      {
+        &quot;instancePath&quot;: &quot;&quot;,
+        &quot;schemaPath&quot;: &quot;#/unevaluatedProperties&quot;,
+        &quot;keyword&quot;: &quot;unevaluatedProperties&quot;,
+        &quot;params&quot;: {
+          &quot;unevaluatedProperty&quot;: &quot;quux&quot;
+        },
+        &quot;message&quot;: &quot;must NOT have unevaluated properties&quot;
+      }
+    ],
+    &quot;independentAnyOfValid&quot;: true,
+    &quot;independentRootPropertiesValid&quot;: true,
+    &quot;independentBranchChecks&quot;: [
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/0&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/1&quot;,
+        &quot;valid&quot;: true,
+        &quot;errors&quot;: null
+      },
+      {
+        &quot;schemaPointer&quot;: &quot;#/anyOf/2&quot;,
+        &quot;valid&quot;: false,
+        &quot;errors&quot;: [
+          {
+            &quot;instancePath&quot;: &quot;/quux&quot;,
+            &quot;schemaPath&quot;: &quot;#/properties/quux/const&quot;,
+            &quot;keyword&quot;: &quot;const&quot;,
+            &quot;params&quot;: {
+              &quot;allowedValue&quot;: &quot;quux&quot;
+            },
+            &quot;message&quot;: &quot;must be equal to constant&quot;
+          }
+        ]
+      }
+    ],
+    &quot;derived&quot;: {
+      &quot;coveredProperties&quot;: [
+        &quot;bar&quot;,
+        &quot;baz&quot;,
+        &quot;foo&quot;
+      ],
+      &quot;remainingProperties&quot;: [
+        &quot;quux&quot;
+      ],
+      &quot;method&quot;: &quot;fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations&quot;
+    }
+  }
+]</pre></section><section><h2>来源与许可</h2><p>JSON-Schema-Test-Suite · Julian Berman · MIT；固定 revision 89e83a74014617ffbe79a56d83d14d054cd11417，group /11。</p><p><a href="https://github.com/json-schema-org/JSON-Schema-Test-Suite/blob/89e83a74014617ffbe79a56d83d14d054cd11417/tests/draft2020-12/unevaluatedProperties.json">官方原件</a> · <a href="upstream/LICENSE">许可全文</a> · <a href="evidence/observations.json">完整本机记录</a></p><pre>{
+  &quot;node&quot;: &quot;22.23.3&quot;,
+  &quot;ajv&quot;: &quot;8.20.0&quot;
+}</pre></section></html>

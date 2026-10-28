@@ -1,0 +1,14 @@
+const task=await taskSpace(3);const page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('loc=role:link[name="案例 2"]');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/evidence/raw-case2.png"});
+console.log('RAW CASE2',await page.evaluate(()=>({hash:location.hash,heading:document.querySelector('#case-2').textContent.slice(0,140)})));
+await page.goto("file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:false});
+await page.click('loc=role:button[name="打开交互图"]');
+await page.waitForFunction(()=>!document.body.innerText.includes('正在打开交互图'),undefined,{timeout:10000});
+await page.click('loc=role:button[name="缩小"]');
+await page.click('loc=role:button[name="缩小"]');
+await page.click('loc=role:button[name="缩小"]');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/evidence/final-narrow-zoom-out.png"});
+console.log(await page.snapshot());

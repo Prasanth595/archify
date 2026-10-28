@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "5aeb6fe1-39bd-43eb-8274-4956deb4f77e",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "/Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/candidate.explainer.json",
+  "output": "/Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html",
+  "specification": {
+    "sha256": "040ccdfca3b70cb809417143a7da132c72362270d7a1a785a1ebd72c612239a0",
+    "bytes": 13260
+  },
+  "artifact": {
+    "sha256": "7448b0d81c4acc8fe8456ae8075340c62ea93cb48d5acb15de3edb1629ccc7a5",
+    "bytes": 588543
+  },
+  "explainer": {
+    "preparedSha256": "771002f5442d1e9bfd65a681480a4b9c529b8f8addc20a22e80a261b98a0cdb4",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "coverage-map",
+        "inline": true,
+        "sha256": "50a1191d3e0407a7bebb349e09c273f85200f646d43bf4374eb92be321bfb5c6",
+        "bytes": 1444
+      }
+    ]
+  }
+}

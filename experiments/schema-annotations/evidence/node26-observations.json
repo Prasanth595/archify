@@ -1,0 +1,515 @@
+{
+  "toolchain": {
+    "node": "26.12.0",
+    "ajv": "8.20.0"
+  },
+  "source": {
+    "repository": "json-schema-org/JSON-Schema-Test-Suite",
+    "revision": "89e83a74014617ffbe79a56d83d14d054cd11417",
+    "path": "tests/draft2020-12/unevaluatedProperties.json",
+    "groupPointer": "/11",
+    "sha256": "dbd5b401b09de49215f33ed7b30f4b9cd4a27e439624ad2a6aeb3a3879cac1dd"
+  },
+  "options": {
+    "strict": false,
+    "allErrors": [
+      false,
+      true
+    ],
+    "defaults": "remaining Ajv defaults; no data coercion"
+  },
+  "runs": [
+    {
+      "caseIndex": 0,
+      "allErrors": false,
+      "description": "when one matches and has no unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar"
+      },
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "baz"
+              },
+              "message": "must have required property 'baz'"
+            }
+          ]
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "foo"
+        ],
+        "remainingProperties": [],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 1,
+      "allErrors": false,
+      "description": "when one matches and has unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar",
+        "baz": "not-baz"
+      },
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "baz"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/baz",
+              "schemaPath": "#/properties/baz/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "baz"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "foo"
+        ],
+        "remainingProperties": [
+          "baz"
+        ],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 2,
+      "allErrors": false,
+      "description": "when two match and has no unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar",
+        "baz": "baz"
+      },
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "baz",
+          "foo"
+        ],
+        "remainingProperties": [],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 3,
+      "allErrors": false,
+      "description": "when two match and has unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar",
+        "baz": "baz",
+        "quux": "not-quux"
+      },
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "quux"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/quux",
+              "schemaPath": "#/properties/quux/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "quux"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "baz",
+          "foo"
+        ],
+        "remainingProperties": [
+          "quux"
+        ],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 0,
+      "allErrors": true,
+      "description": "when one matches and has no unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar"
+      },
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "baz"
+              },
+              "message": "must have required property 'baz'"
+            }
+          ]
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "foo"
+        ],
+        "remainingProperties": [],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 1,
+      "allErrors": true,
+      "description": "when one matches and has unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar",
+        "baz": "not-baz"
+      },
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "baz"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/baz",
+              "schemaPath": "#/properties/baz/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "baz"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "foo"
+        ],
+        "remainingProperties": [
+          "baz"
+        ],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 2,
+      "allErrors": true,
+      "description": "when two match and has no unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar",
+        "baz": "baz"
+      },
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "baz",
+          "foo"
+        ],
+        "remainingProperties": [],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    },
+    {
+      "caseIndex": 3,
+      "allErrors": true,
+      "description": "when two match and has unevaluated properties",
+      "data": {
+        "foo": "foo",
+        "bar": "bar",
+        "baz": "baz",
+        "quux": "not-quux"
+      },
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "quux"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentAnyOfValid": true,
+      "independentRootPropertiesValid": true,
+      "independentBranchChecks": [
+        {
+          "schemaPointer": "#/anyOf/0",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/1",
+          "valid": true,
+          "errors": null
+        },
+        {
+          "schemaPointer": "#/anyOf/2",
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/quux",
+              "schemaPath": "#/properties/quux/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "quux"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        }
+      ],
+      "derived": {
+        "coveredProperties": [
+          "bar",
+          "baz",
+          "foo"
+        ],
+        "remainingProperties": [
+          "quux"
+        ],
+        "method": "fixed-fixture projection from independent checks and the 2020-12 rule; not native annotations"
+      }
+    }
+  ]
+}

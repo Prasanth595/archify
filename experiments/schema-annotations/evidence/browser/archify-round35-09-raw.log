@@ -1,0 +1,28 @@
+RAW { width: 1440, height: 900, overflow: false, anchors: [ { text: '完整 schema', href: '#schema' }, { text: '案例 1', href: '#case-1' }, { text: '案例 2', href: '#case-2' }, { text: '案例 3', href: '#case-3' }, { text: '案例 4', href: '#case-4' }, { text: '解释页', href: 'explanation.html' }, { text: '官方原件', href: 'https://github.com/json-schema-org/JSON-Schema-Test-Suite/blob/89e83a74014617ffbe79a56d83d14d054cd11417/tests/draft2020-12/unevaluatedProperties.json' }, { text: '许可全文', href: 'upstream/LICENSE' }, { text: '完整本机记录', href: 'evidence/observations.json' } ] }
+[p1 "Schema annotations · 同源原文视图" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Schema annotations · 同源原文视图"]
+root
+  heading
+    text "baz 写进 schema，为什么仍被拒绝？"
+  paragraph
+    text "案例 2 中，baz 分支失败，不能贡献属性覆盖。anyOf 成功，但 baz 仍未覆盖，整体校验失败。"
+  paragraph
+    text "这是原文材料的阅读包装，不是 Ajv 官方界面。与解释页使用同一完整 schema、四个官方案例和本机记录；分支检查不是执行轨迹。"
+  container
+    anchor [ref=90, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/raw-records.html#schema]
+      text "完整 schema"
+    anchor [ref=91, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/raw-records.html#case-1]
+      text "案例 1"
+    anchor [ref=92, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/raw-records.html#case-2]
+      text "案例 2"
+    anchor [ref=93, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/raw-records.html#case-3]
+      text "案例 3"
+    anchor [ref=94, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/raw-records.html#case-4]
+      text "案例 4"
+    anchor [ref=95, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html]
+      text "解释页"
+  container
+    heading
+      text "完整 schema"
+    text "{ "$schema": "https://json-schema.org/draft/2020-12/schema", "properties": { "foo": { "type": "string" } }, "anyOf": [ { "properties": { "bar": { "const": "bar" } }, "required": [ "bar" ] }, { "proper..."
+
+

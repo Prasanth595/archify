@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "案例 2：成功分支贡献覆盖",
+    "output": "experiments/schema-annotations/coverage.html",
+    "quality_profile": "showcase",
+    "locale": "zh-CN",
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "解释项"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "root-foo",
+      "label": "根属性 foo",
+      "type": "backend",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "bar-ok",
+      "label": "bar 分支成功",
+      "type": "backend",
+      "pos": [
+        40,
+        150
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "baz-no",
+      "label": "baz 分支失败",
+      "type": "backend",
+      "pos": [
+        40,
+        260
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "quux-no",
+      "label": "quux 分支失败",
+      "type": "backend",
+      "pos": [
+        40,
+        370
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "covered",
+      "label": "覆盖 foo、bar",
+      "type": "backend",
+      "pos": [
+        360,
+        95
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "discarded",
+      "label": "不贡献覆盖",
+      "type": "backend",
+      "pos": [
+        360,
+        315
+      ],
+      "size": [
+        170,
+        64
+      ]
+    },
+    {
+      "id": "remaining",
+      "label": "baz 未覆盖",
+      "type": "backend",
+      "pos": [
+        680,
+        205
+      ],
+      "size": [
+        170,
+        64
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "root-foo",
+      "to": "covered",
+      "label": "foo",
+      "id": "root-foo-to-covered-1"
+    },
+    {
+      "from": "bar-ok",
+      "to": "covered",
+      "label": "bar",
+      "id": "bar-ok-to-covered-1"
+    },
+    {
+      "from": "baz-no",
+      "to": "discarded",
+      "label": "const 不符",
+      "id": "baz-no-to-discarded-1"
+    },
+    {
+      "from": "quux-no",
+      "to": "discarded",
+      "label": "属性缺失",
+      "id": "quux-no-to-discarded-1"
+    },
+    {
+      "from": "covered",
+      "to": "remaining",
+      "label": "缺少 baz",
+      "id": "covered-to-remaining-1"
+    },
+    {
+      "from": "discarded",
+      "to": "remaining",
+      "label": "baz 未贡献",
+      "id": "discarded-to-remaining-1"
+    }
+  ]
+}

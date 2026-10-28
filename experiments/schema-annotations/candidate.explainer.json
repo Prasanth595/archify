@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "diagram_type": "explainer",
+  "meta": {
+    "title": "baz 写进 schema，为什么仍被拒绝？",
+    "id": "schema-coverage",
+    "locale": "zh-CN",
+    "quality_profile": "showcase"
+  },
+  "answer": {
+    "summary": "案例 2 中，`baz` 分支失败，不能贡献属性覆盖。`anyOf` 成功，但 `baz` 仍未覆盖，整体校验失败。",
+    "reasons": [
+      "写在 schema 中，不等于被成功分支覆盖。[](source:core)",
+      "两个分支同时成功时，`anyOf` 汇总两者的覆盖。[](source:core)",
+      "主错误只指出遗漏属性；分支原因来自额外的独立检查。[](source:run)"
+    ],
+    "scope": "2020-12 固定四例 · Ajv 8.20.0 · 独立检查非执行轨迹"
+  },
+  "panels": [
+    {
+      "id": "coverage",
+      "title": "案例 2 的覆盖如何汇总？",
+      "blocks": [
+        {
+          "type": "prose",
+          "text": "输入为 `foo=foo`、`bar=bar`、`baz=not-baz`。图表示依据规范与独立检查得出的覆盖关系，不表示 Ajv 内部执行顺序。[](source:suite)",
+          "id": "prose-a0e499fcbc34"
+        },
+        {
+          "type": "diagram",
+          "id": "coverage-map",
+          "diagramType": "architecture",
+          "spec": {
+            "schema_version": 1,
+            "diagram_type": "architecture",
+            "meta": {
+              "title": "案例 2：成功分支贡献覆盖",
+              "output": "experiments/schema-annotations/coverage.html",
+              "quality_profile": "showcase",
+              "locale": "zh-CN",
+              "legend": {
+                "entries": {
+                  "backend": {
+                    "label": "解释项"
+                  }
+                }
+              }
+            },
+            "components": [
+              {
+                "id": "root-foo",
+                "label": "根属性 foo",
+                "type": "backend",
+                "pos": [
+                  40,
+                  40
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              },
+              {
+                "id": "bar-ok",
+                "label": "bar 分支成功",
+                "type": "backend",
+                "pos": [
+                  40,
+                  150
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              },
+              {
+                "id": "baz-no",
+                "label": "baz 分支失败",
+                "type": "backend",
+                "pos": [
+                  40,
+                  260
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              },
+              {
+                "id": "quux-no",
+                "label": "quux 分支失败",
+                "type": "backend",
+                "pos": [
+                  40,
+                  370
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              },
+              {
+                "id": "covered",
+                "label": "覆盖 foo、bar",
+                "type": "backend",
+                "pos": [
+                  360,
+                  95
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              },
+              {
+                "id": "discarded",
+                "label": "不贡献覆盖",
+                "type": "backend",
+                "pos": [
+                  360,
+                  315
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              },
+              {
+                "id": "remaining",
+                "label": "baz 未覆盖",
+                "type": "backend",
+                "pos": [
+                  680,
+                  205
+                ],
+                "size": [
+                  170,
+                  64
+                ]
+              }
+            ],
+            "connections": [
+              {
+                "from": "root-foo",
+                "to": "covered",
+                "label": "foo",
+                "id": "root-foo-to-covered-1"
+              },
+              {
+                "from": "bar-ok",
+                "to": "covered",
+                "label": "bar",
+                "id": "bar-ok-to-covered-1"
+              },
+              {
+                "from": "baz-no",
+                "to": "discarded",
+                "label": "const 不符",
+                "id": "baz-no-to-discarded-1"
+              },
+              {
+                "from": "quux-no",
+                "to": "discarded",
+                "label": "属性缺失",
+                "id": "quux-no-to-discarded-1"
+              },
+              {
+                "from": "covered",
+                "to": "remaining",
+                "label": "缺少 baz",
+                "id": "covered-to-remaining-1"
+              },
+              {
+                "from": "discarded",
+                "to": "remaining",
+                "label": "baz 未贡献",
+                "id": "discarded-to-remaining-1"
+              }
+            ]
+          },
+          "nodeSources": {
+            "root-foo": "core",
+            "bar-ok": "run",
+            "baz-no": "run",
+            "quux-no": "run",
+            "covered": "core",
+            "discarded": "core",
+            "remaining": "run"
+          }
+        },
+        {
+          "type": "steps",
+          "id": "coverage-steps",
+          "items": [
+            {
+              "id": "step-bar",
+              "text": "bar 分支成功",
+              "detail": "bar 等于要求的常量 bar，分支通过；anyOf 已满足。",
+              "target": {
+                "diagram": "coverage-map",
+                "node": "bar-ok"
+              }
+            },
+            {
+              "id": "step-baz",
+              "text": "baz 分支失败",
+              "detail": "baz 是 not-baz，不等于常量 baz；该分支不能贡献覆盖。",
+              "target": {
+                "diagram": "coverage-map",
+                "node": "baz-no"
+              }
+            },
+            {
+              "id": "step-quux",
+              "text": "quux 分支失败",
+              "detail": "输入没有 quux，required 失败；缺失属性本身不会成为多余属性。",
+              "target": {
+                "diagram": "coverage-map",
+                "node": "quux-no"
+              }
+            },
+            {
+              "id": "step-covered",
+              "text": "覆盖 foo、bar",
+              "detail": "根 properties 覆盖 foo，成功分支覆盖 bar。",
+              "target": {
+                "diagram": "coverage-map",
+                "node": "covered"
+              }
+            },
+            {
+              "id": "step-remaining",
+              "text": "baz 未覆盖",
+              "detail": "输入属性减去覆盖集合，余下 baz；unevaluatedProperties 为 false，因此整体失败。",
+              "target": {
+                "diagram": "coverage-map",
+                "node": "remaining"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contrasts",
+      "title": "四个原始案例如何对照？",
+      "blocks": [
+        {
+          "type": "prose",
+          "text": "四例均含 `foo=foo`、`bar=bar`；其他字段如下。两种 `allErrors` 设置得到相同的整体结果。[](source:run)",
+          "id": "prose-5dfd884bef3c"
+        },
+        {
+          "type": "comparison",
+          "labelColumn": "案例",
+          "columns": [
+            "额外输入字段",
+            "成功分支",
+            "覆盖属性",
+            "未覆盖属性",
+            "整体结果"
+          ],
+          "rows": [
+            {
+              "label": "1",
+              "cells": [
+                {
+                  "text": "无"
+                },
+                {
+                  "text": "bar"
+                },
+                {
+                  "text": "foo、bar"
+                },
+                {
+                  "text": "无"
+                },
+                {
+                  "text": "通过",
+                  "assessment": "good",
+                  "verdict": "通过"
+                }
+              ],
+              "id": "row-2ac8f57397bd"
+            },
+            {
+              "label": "2",
+              "cells": [
+                {
+                  "text": "baz=not-baz"
+                },
+                {
+                  "text": "bar"
+                },
+                {
+                  "text": "foo、bar"
+                },
+                {
+                  "text": "baz"
+                },
+                {
+                  "text": "失败",
+                  "assessment": "bad",
+                  "verdict": "失败"
+                }
+              ],
+              "id": "row-0fe5f3cdd1c4"
+            },
+            {
+              "label": "3",
+              "cells": [
+                {
+                  "text": "baz=baz"
+                },
+                {
+                  "text": "bar、baz"
+                },
+                {
+                  "text": "foo、bar、baz"
+                },
+                {
+                  "text": "无"
+                },
+                {
+                  "text": "通过",
+                  "assessment": "good",
+                  "verdict": "通过"
+                }
+              ],
+              "id": "row-ab0632b55685"
+            },
+            {
+              "label": "4",
+              "cells": [
+                {
+                  "text": "baz=baz，quux=not-quux"
+                },
+                {
+                  "text": "bar、baz"
+                },
+                {
+                  "text": "foo、bar、baz"
+                },
+                {
+                  "text": "quux"
+                },
+                {
+                  "text": "失败",
+                  "assessment": "bad",
+                  "verdict": "失败"
+                }
+              ],
+              "id": "row-2c32d6741161"
+            }
+          ],
+          "id": "comparison-17cf16e9f067"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "主诊断没有说出的原因是什么？",
+      "blocks": [
+        {
+          "type": "prose",
+          "text": "案例 2 的完整主错误如下。开启 `allErrors` 后仍是这个结果。[](source:run)",
+          "id": "prose-e79f5c0823fd"
+        },
+        {
+          "type": "snippet",
+          "language": "json",
+          "title": "案例 2：Ajv 主校验 errors",
+          "text": "[{\"instancePath\":\"\",\"schemaPath\":\"#/unevaluatedProperties\",\"keyword\":\"unevaluatedProperties\",\"params\":{\"unevaluatedProperty\":\"baz\"},\"message\":\"must NOT have unevaluated properties\"}]",
+          "id": "snippet-59318b30df2b"
+        },
+        {
+          "type": "prose",
+          "text": "独立校验 `#/anyOf/1` 得到 `const` 失败，要求值为 `baz`。这是额外诊断，不能冒充主校验输出或执行轨迹。完整输入、schema 和两种配置的原始记录保留在 [观察包](source:run)。",
+          "id": "prose-92baa8ad6280"
+        },
+        {
+          "type": "callout",
+          "level": "note",
+          "title": "anyOf 不是只保留第一个成功分支",
+          "text": "案例 3 同时成功的 bar、baz 分支都贡献覆盖。把它改读成 oneOf 或遇到第一次成功就停止收集，会误判此例。",
+          "id": "callout-e590e535c154"
+        }
+      ]
+    },
+    {
+      "id": "verify",
+      "title": "如何复核这份解释？",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "checklist": true,
+          "items": [
+            "对照官方原件，确认四个输入和 schema 没有被修改。",
+            "区分主校验结果、独立分支检查和固定四例的覆盖集合推导。",
+            "检查案例 3：两个分支成功时，整体仍通过。",
+            "检查案例 4：失败分支中的 quux 没有贡献覆盖。"
+          ],
+          "id": "list-ec60052d000e"
+        },
+        {
+          "type": "prose",
+          "text": "范围只含这组固定 schema。没有模拟通用求值器，没有测量读者提效，也没有改变 Archify 的校验合同。",
+          "id": "prose-7c72a4aaffc9"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "core",
+      "title": "JSON Schema 2020-12：anyOf 与 unevaluatedProperties",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core"
+    },
+    {
+      "id": "suite",
+      "title": "官方四例 · JSON-Schema-Test-Suite · Julian Berman · MIT",
+      "url": "https://github.com/json-schema-org/JSON-Schema-Test-Suite/blob/89e83a74014617ffbe79a56d83d14d054cd11417/tests/draft2020-12/unevaluatedProperties.json"
+    },
+    {
+      "id": "run",
+      "title": "本机完整校验与独立分支记录",
+      "url": "https://github.com/tt-a1i/archify/blob/codex/lab-schema-annotations/experiments/schema-annotations/evidence/observations.json"
+    }
+  ]
+}

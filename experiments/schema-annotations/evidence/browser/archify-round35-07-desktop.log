@@ -1,0 +1,159 @@
+DARK { width: 1440, height: 900, overflow: false, theme: 'dark' }
+[p1 "baz 写进 schema，为什么仍被拒绝？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "baz 写进 schema，为什么仍被拒绝？ · Archify"]
+root
+  container
+    container
+      image "案例 2：成功分支贡献覆盖"
+        image "根属性 foo bar 分支成功 baz 分支失败 quux 分支失败 覆盖 foo、bar 不贡献覆盖 baz 未覆盖 foo bar const 不符 属性缺失 缺少 baz baz 未贡献 图例 解释项"
+          text "quux 分支失败"
+      ordered_list
+        list_item
+          text "5"
+          anchor [ref=73, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#coverage-map]
+            text "baz 未覆盖"
+            text "↗"
+          paragraph
+            text "输入属性减去覆盖集合，余下 baz；unevaluatedProperties 为 false，因此整体失败。"
+    container
+      container
+        anchor "四个原始案例如何对照？" [ref=74, loc=css:a[aria-label="四个原始案例如何对照？"], url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#contrasts]
+          text "2"
+        heading
+          text "四个原始案例如何对照？"
+        button [ref=75]
+          text "追问"
+      container
+        paragraph
+          text "四例均含"
+          text "foo=foo"
+          text "、"
+          text "bar=bar"
+          text "；其他字段如下。两种"
+          text "allErrors"
+          text "设置得到相同的整体结果。"
+          anchor [ref=76, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-run]
+            text "2"
+        table
+          table_row
+            table_cell
+              text "案例"
+            table_cell
+              text "额外输入字段"
+            table_cell
+              text "成功分支"
+            table_cell
+              text "覆盖属性"
+            table_cell
+              text "未覆盖属性"
+            table_cell
+              text "整体结果"
+          table_row
+            table_cell
+              text "1"
+            table_cell
+              text "无"
+            table_cell
+              text "bar"
+            table_cell
+              text "foo、bar"
+            table_cell
+              text "无"
+            table_cell
+              text "✓"
+              text "通过"
+          table_row
+            table_cell
+              text "2"
+            table_cell
+              text "baz=not-baz"
+            table_cell
+              text "bar"
+            table_cell
+              text "foo、bar"
+            table_cell
+              text "baz"
+            table_cell
+              text "✕"
+              text "失败"
+          table_row
+            table_cell
+              text "3"
+            table_cell
+              text "baz=baz"
+            table_cell
+              text "bar、baz"
+            table_cell
+              text "foo、bar、baz"
+            table_cell
+              text "无"
+            table_cell
+              text "✓"
+              text "通过"
+          table_row
+            table_cell
+              text "4"
+            table_cell
+              text "baz=baz，quux=not-quux"
+            table_cell
+              text "bar、baz"
+            table_cell
+              text "foo、bar、baz"
+            table_cell
+              text "quux"
+            table_cell
+              text "✕"
+              text "失败"
+    container
+      container
+        anchor "主诊断没有说出的原因是什么？" [ref=77, loc=css:a[aria-label="主诊断没有说出的原因是什么？"], url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#diagnostics]
+          text "3"
+        heading
+          text "主诊断没有说出的原因是什么？"
+        button [ref=78]
+          text "追问"
+      container
+        paragraph
+          text "案例 2 的完整主错误如下。开启"
+          text "allErrors"
+          text "后仍是这个结果。"
+          anchor [ref=79, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-run]
+            text "2"
+        container
+          container
+            container
+              text "案例 2：Ajv 主校验 errors"
+              text "json"
+            button [ref=80]
+              text "复制"
+          container [ref=81]
+            text "[{"instancePath":"","schemaPath":"#/unevaluatedProperties","keyword":"unevaluatedProperties","params":{"unevaluatedProperty":"baz"},"message":"must NOT have unevaluated properties"}]"
+        paragraph
+          text "独立校验"
+          text "#/anyOf/1"
+          text "得到"
+          text "const"
+          text "失败，要求值为"
+          text "baz"
+          text "。这是额外诊断，不能冒充主校验输出或执行轨迹。完整输入、schema 和两种配置的原始记录保留在 观察包"
+          anchor [ref=82, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-run]
+            text "2"
+          text "。"
+        container
+          heading
+            text "anyOf 不是只保留第一个成功分支"
+          paragraph
+            text "案例 3 同时成功的 bar、baz 分支都贡献覆盖。把它改读成 oneOf 或遇到第一次成功就停止收集，会误判此例。"
+    container
+      container
+        anchor "如何复核这份解释？" [ref=83, loc=css:a[aria-label="如何复核这份解释？"], url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#verify]
+          text "4"
+        heading
+          text "如何复核这份解释？"
+        button [ref=84]
+          text "追问"
+      unordered_list
+        list_item
+          checkbox [ref=85]
+          text "对照官方原件，确认四个输入和 schema 没有被修改。"
+
+

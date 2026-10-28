@@ -1,0 +1,13 @@
+const task=await taskSpace(3);const page=task.page("p1");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:false});
+await page.keyboard.press('Home');
+await page.click('loc=role:button[name="浅色"]');
+console.log('NARROW',await page.evaluate(()=>({width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollY,tableWidths:[...document.querySelectorAll('table')].map(t=>({width:t.getBoundingClientRect().width,parentWidth:t.parentElement.clientWidth,parentOverflow:getComputedStyle(t.parentElement).overflowX}))})));
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/evidence/final-narrow-top.png"});
+await page.click('loc=role:button[name="打开交互图"]');
+await page.waitForFunction(()=>!document.body.innerText.includes('正在打开交互图'),undefined,{timeout:10000});
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/evidence/final-narrow-native.png"});
+await page.click('loc=role:button[name*="关闭"]');
+await page.click('input[type="checkbox"] >> nth=0');
+console.log('CHECKLIST',await page.evaluate(()=>[...document.querySelectorAll('input[type="checkbox"]')].map(e=>e.checked)));
+console.log(await page.snapshot());

@@ -1,0 +1,39 @@
+{
+  "batch": 35,
+  "base": "847146aeb93b492592adb78dc220f57e4a8b4636",
+  "schemaSuite": {
+    "revision": "89e83a74014617ffbe79a56d83d14d054cd11417",
+    "date": "2026-10-21T20:11:46Z",
+    "source": "https://github.com/json-schema-org/JSON-Schema-Test-Suite/blob/89e83a74014617ffbe79a56d83d14d054cd11417/tests/draft2020-12/unevaluatedProperties.json",
+    "group": "/11",
+    "license": "MIT",
+    "copyright": "2012 Julian Berman"
+  },
+  "ajv": {
+    "version": "8.20.0",
+    "sha": "0fba0b8e649909613cfce0999b149cd08f4a4987",
+    "url": "https://github.com/ajv-validator/ajv/commit/0fba0b8e649909613cfce0999b149cd08f4a4987",
+    "date": "2026-04-24T13:11:54Z"
+  },
+  "normative": "https://json-schema.org/draft/2020-12/json-schema-core",
+  "dedup": {
+    "remoteHeadsBefore": 330,
+    "issueQuery": "repo:tt-a1i/archify is:issue unevaluatedProperties",
+    "issueResult": {
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    },
+    "prQuery": "repo:tt-a1i/archify is:pr unevaluatedProperties",
+    "prResult": {
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": [],
+      "search_type": "lexical"
+    },
+    "localSearch": "both existing research hubs; no unevaluatedProperties report found; ajv-errors candidate preserved errors but did not explain successful-branch coverage",
+    "limit": "bounded keywords and existing report comparison; not proof that every conceptual overlap is absent"
+  },
+  "authorization": "Remote branch only; no new PR."
+}

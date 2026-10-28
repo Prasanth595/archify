@@ -1,0 +1,63 @@
+NARROW { width: 390, height: 844, scrollWidth: 390, scrollY: 0, tableWidths: [ { width: 656, parentWidth: 332, parentOverflow: 'auto' } ] }
+CHECKLIST [ true, false, false, false ]
+[p1 "baz 写进 schema，为什么仍被拒绝？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "baz 写进 schema，为什么仍被拒绝？ · Archify"]
+root
+  container
+    container
+      container
+        container
+          container
+            text "案例 2：Ajv 主校验 errors"
+            button [ref=80]
+              text "复制"
+          container [ref=81]
+            text "[{"instancePath":"","schemaPath":"#/unevaluatedProperties","keyword":"unevaluatedProperties","params":{"unevaluatedProperty":"baz"},"message":"must NOT have unevaluated properties"}]"
+        paragraph
+          text "独立校验"
+          text "#/anyOf/1"
+          text "得到"
+          text "const"
+          text "失败，要求值为"
+          text "baz"
+          text "。这是额外诊断，不能冒充主校验输出或执行轨迹。完整输入、schema 和两种配置的原始记录保留在 观察包"
+          anchor [ref=82, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-run]
+            text "2"
+          text "。"
+        container
+          heading
+            text "anyOf 不是只保留第一个成功分支"
+          paragraph
+            text "案例 3 同时成功的 bar、baz 分支都贡献覆盖。把它改读成 oneOf 或遇到第一次成功就停止收集，会误判此例。"
+      container
+        container
+          anchor "如何复核这份解释？" [ref=83, loc=css:a[aria-label="如何复核这份解释？"], url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#verify]
+            text "4"
+          heading
+            text "如何复核这份解释？"
+          button [ref=84]
+            text "追问"
+        container
+          unordered_list
+            list_item
+              checkbox [ref=85]
+              text "对照官方原件，确认四个输入和 schema 没有被修改。"
+            list_item
+              checkbox [ref=86]
+              text "区分主校验结果、独立分支检查和固定四例的覆盖集合推导。"
+            list_item
+              checkbox [ref=87]
+              text "检查案例 3：两个分支成功时，整体仍通过。"
+            list_item
+              checkbox [ref=88]
+              text "检查案例 4：失败分支中的 quux 没有贡献覆盖。"
+          paragraph
+            text "范围只含这组固定 schema。没有模拟通用求值器，没有测量读者提效，也没有改变 Archify 的校验合同。"
+    container
+      heading
+        text "来源"
+      ordered_list
+        list_item
+          anchor [ref=89, loc=href:https://json-schema.org/draft/2020-12/json-schema-core, url=https://json-schema.org/draft/2020-12/json-schema-core]
+            text "JSON Schema 2020-12：anyOf 与 unevaluatedProperties"
+
+

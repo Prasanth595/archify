@@ -1,0 +1,91 @@
+[p1 "baz 写进 schema，为什么仍被拒绝？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "baz 写进 schema，为什么仍被拒绝？ · Archify"]
+root
+  container
+    container
+      heading
+        text "baz 写进 schema，为什么仍被拒绝？"
+      container
+        group "主题"
+          button [ref=20]
+            text "系统"
+          button [ref=21]
+            text "浅色"
+          button [ref=22]
+            text "深色"
+        button "样式" [ref=23, loc=css:button[aria-label="样式"]]
+          text "简洁"
+          svg_root
+        button [ref=24]
+          svg_root
+          text "导出"
+          svg_root
+    container
+      container
+        container
+          text "答"
+          heading
+            text "结论"
+          button [ref=25]
+            text "追问"
+        container
+          paragraph
+            text "案例 2 中，"
+            text "baz"
+            text "分支失败，不能贡献属性覆盖。"
+            text "anyOf"
+            text "成功，但"
+            text "baz"
+            text "仍未覆盖，整体校验失败。"
+          ordered_list
+            list_item
+              text "1"
+              text "写在 schema 中，不等于被成功分支覆盖。"
+              anchor [ref=26, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-core]
+                text "1"
+            list_item
+              text "2"
+              text "两个分支同时成功时，"
+              text "anyOf"
+              text "汇总两者的覆盖。"
+              anchor [ref=27, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-core]
+                text "1"
+            list_item
+              text "3"
+              text "主错误只指出遗漏属性；分支原因来自额外的独立检查。"
+              anchor [ref=28, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-run]
+                text "2"
+        paragraph
+          text "适用于"
+          text "2020-12 固定四例"
+          text "Ajv 8.20.0"
+          text "独立检查非执行轨迹"
+      container
+        container
+          anchor "案例 2 的覆盖如何汇总？" [ref=29, loc=css:a[aria-label="案例 2 的覆盖如何汇总？"], url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#coverage]
+            text "1"
+          heading
+            text "案例 2 的覆盖如何汇总？"
+          button [ref=30]
+            text "追问"
+        container
+          container
+            text "案例 2：成功分支贡献覆盖"
+            button [ref=31]
+              svg_root
+              text "打开交互图"
+          image "案例 2：成功分支贡献覆盖"
+            image "根属性 foo bar 分支成功 baz 分支失败 quux 分支失败 覆盖 foo、bar 不贡献覆盖 baz 未覆盖 foo bar const 不符 属性缺失 缺少 baz baz 未贡献 图例 后端"
+              text "根属性 foo"
+              text "bar 分支成功"
+              text "baz 分支失败"
+              text "覆盖 foo、bar"
+              text "不贡献覆盖"
+              text "baz 未覆盖"
+              text "foo"
+              text "bar"
+              text "const 不符"
+              text "属性缺失"
+              text "缺少 baz"
+              text "baz 未贡献"
+
+

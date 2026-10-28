@@ -1,0 +1,135 @@
+RAW CASE2 { hash: '#case-2', heading: '案例 2：when one matches and has unevaluated properties完整输入{\n  "foo": "foo",\n  "bar": "bar",\n  "baz": "not-baz"\n}完整记录：主校验、独立检查、有限集合推导[\n  {\n    ' }
+[p1 "baz 写进 schema，为什么仍被拒绝？ · Archify" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "baz 写进 schema，为什么仍被拒绝？ · Archify"]
+root
+  container
+    heading
+      text "baz 写进 schema，为什么仍被拒绝？"
+    button [ref=96]
+      text "系统"
+    button [ref=97]
+      text "浅色"
+    button [ref=98]
+      text "深色"
+    button "样式" [ref=99, loc=css:button[aria-label="样式"]]
+      text "简洁"
+      svg_root
+    button [ref=100]
+      svg_root
+      text "导出"
+      svg_root
+  container
+    container
+      container
+        text "答"
+        heading
+          text "结论"
+        button [ref=101]
+          text "追问"
+      paragraph
+        text "案例 2 中，"
+        text "baz"
+        text "分支失败，不能贡献属性覆盖。"
+        text "anyOf"
+        text "成功，但"
+        text "baz"
+        text "仍未覆盖，整体校验失败。"
+      ordered_list
+        list_item
+          text "1"
+          text "写在 schema 中，不等于被成功分支覆盖。"
+          anchor [ref=102, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-core]
+            text "1"
+        list_item
+          text "2"
+          text "两个分支同时成功时，"
+          text "anyOf"
+          text "汇总两者的覆盖。"
+          anchor [ref=103, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-core]
+            text "1"
+        list_item
+          text "3"
+          text "主错误只指出遗漏属性；分支原因来自额外的独立检查。"
+          anchor [ref=104, url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#source-run]
+            text "2"
+      paragraph
+        text "适用于"
+        text "2020-12 固定四例"
+        text "Ajv 8.20.0"
+        text "独立检查非执行轨迹"
+    container
+      container
+        anchor "案例 2 的覆盖如何汇总？" [ref=105, loc=css:a[aria-label="案例 2 的覆盖如何汇总？"], url=file:///Users/tsk/.codex/worktrees/lab-schema-annotations/archify/experiments/schema-annotations/explanation.html#coverage]
+          text "1"
+        heading
+          text "案例 2 的覆盖如何汇总？"
+        button [ref=106]
+          text "追问"
+      container
+        text "案例 2：成功分支贡献覆盖"
+        button [ref=107]
+          svg_root
+          text "打开交互图"
+        image "案例 2：成功分支贡献覆盖"
+          image "根属性 foo bar 分支成功 baz 分支失败 quux 分支失败 覆盖 foo、bar 不贡献覆盖 baz 未覆盖 foo bar const 不符 属性缺失 缺少 baz baz 未贡献 图例 解释项"
+            text "根属性 foo"
+            text "bar 分支成功"
+            text "baz 分支失败"
+            text "quux 分支失败"
+            text "覆盖 foo、bar"
+            text "不贡献覆盖"
+            text "baz 未覆盖"
+            text "foo"
+            text "bar"
+            text "const 不符"
+            text "属性缺失"
+            text "缺少 baz"
+            text "baz 未贡献"
+  dialog_modal "案例 2：成功分支贡献覆盖" [ref=108]
+    button [ref=109]
+      svg_root
+      text "关闭"
+      text "Esc"
+    iframe [ref=110]
+      root
+        toolbar "图表操作"
+          container
+            button "切换颜色主题" [ref=111, loc=css:button[aria-label="切换颜色主题"]]
+            button "当前视觉风格：经典。选择视觉风格" [ref=112, loc=css:button[aria-label="当前视觉风格：经典。选择视觉风格"]]
+            button "恢复动效" [ref=113, loc=css:button[aria-label="恢复动效"]]
+              text "静态"
+            button "进入演示模式" [ref=114]
+          button "导出图表" [ref=115, loc=css:button[aria-label="导出图表"]]
+            text "导出"
+        container
+          heading
+            text "案例 2：成功分支贡献覆盖"
+          container [ref=116]
+            image "根属性 foo bar 分支成功 baz 分支失败 quux 分支失败 覆盖 foo、bar 不贡献覆盖 baz 未覆盖 foo bar const 不符 属性缺失 缺少 baz baz 未贡献 图例 解释项 7" [ref=117, loc=role:image[name="案例 2：成功分支贡献覆盖 由 Archify 生成的架构图。"]]
+              text "根属性 foo"
+              text "bar 分支成功"
+              text "baz 分支失败"
+              text "quux 分支失败"
+              text "覆盖 foo、bar"
+              text "不贡献覆盖"
+              text "baz 未覆盖"
+              text "foo"
+              text "bar"
+              text "const 不符"
+              text "属性缺失"
+              text "缺少 baz"
+              text "baz 未贡献"
+              text "图例"
+              text "解释项"
+              text "7"
+            toolbar "图表视图控制" [ref=118, loc=role:toolbar[name="图表视图控制"]]
+              button "追踪有向路径" [ref=119]
+                text "路径"
+              button "打开语义透镜" [ref=120, loc=css:button[aria-label="打开语义透镜"]]
+                text "透镜"
+              button "查找节点" [ref=121, loc=css:button[aria-label="查找节点"]]
+              button "打开图表指南" [ref=122, loc=css:button[aria-label="打开图表指南"]]
+              button "缩小" [ref=123, loc=css:button[aria-label="缩小"]]
+              button "概览 25% · 放大以显示关系标签和节点上下文。重置图表视图" [ref=124, loc=css:button[aria-label="概览 25% · 放大以显示关系标签和节点上下文。重置图表视图"]]
+                text "概览"
+
+

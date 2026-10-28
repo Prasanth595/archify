@@ -1,0 +1,26 @@
+{
+  "preservedNodes": 7,
+  "preservedRelations": 6,
+  "preservedNodeSources": 7,
+  "artifactReceiptHashChecks": {
+    "explanation.html": {
+      "validate": "pass",
+      "deliver": "pass",
+      "check": "pass",
+      "browser-check": "not-run"
+    },
+    "coverage.html": {
+      "validate": "pass",
+      "deliver": "pass",
+      "check": "pass",
+      "browser-check": "pass"
+    }
+  },
+  "mainExpectedMatches": 8,
+  "nativeCalls": 48,
+  "toolchain": {
+    "node": "22.23.3",
+    "ajv": "8.20.0"
+  },
+  "scope": "fixed official four cases; no human benefit measurement"
+}

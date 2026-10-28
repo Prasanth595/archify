@@ -1,0 +1,334 @@
+{
+  "node": "22.23.3",
+  "ajv": "8.20.0",
+  "runs": [
+    {
+      "allErrors": false,
+      "description": "when one matches and has no unevaluated properties",
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "baz"
+              },
+              "message": "must have required property 'baz'"
+            }
+          ]
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": false,
+      "description": "when one matches and has unevaluated properties",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "baz"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/baz",
+              "schemaPath": "#/properties/baz/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "baz"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": false,
+      "description": "when two match and has no unevaluated properties",
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": false,
+      "description": "when two match and has unevaluated properties",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "quux"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/quux",
+              "schemaPath": "#/properties/quux/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "quux"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": true,
+      "description": "when one matches and has no unevaluated properties",
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "baz"
+              },
+              "message": "must have required property 'baz'"
+            }
+          ]
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": true,
+      "description": "when one matches and has unevaluated properties",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "baz"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/baz",
+              "schemaPath": "#/properties/baz/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "baz"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": true,
+      "description": "when two match and has no unevaluated properties",
+      "expected": true,
+      "valid": true,
+      "errors": null,
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "",
+              "schemaPath": "#/required",
+              "keyword": "required",
+              "params": {
+                "missingProperty": "quux"
+              },
+              "message": "must have required property 'quux'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "allErrors": true,
+      "description": "when two match and has unevaluated properties",
+      "expected": false,
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "",
+          "schemaPath": "#/unevaluatedProperties",
+          "keyword": "unevaluatedProperties",
+          "params": {
+            "unevaluatedProperty": "quux"
+          },
+          "message": "must NOT have unevaluated properties"
+        }
+      ],
+      "independentBranchChecks": [
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": true,
+          "errors": null
+        },
+        {
+          "valid": false,
+          "errors": [
+            {
+              "instancePath": "/quux",
+              "schemaPath": "#/properties/quux/const",
+              "keyword": "const",
+              "params": {
+                "allowedValue": "quux"
+              },
+              "message": "must be equal to constant"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
