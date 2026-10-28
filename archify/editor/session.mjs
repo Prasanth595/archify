@@ -64,6 +64,7 @@ function restore(file, previous, expected) {
 }
 
 export async function startEditor(options) {
+  options.signal?.throwIfAborted();
   const type = options.type;
   editableCollection(type);
   const input = fs.realpathSync.native(path.resolve(options.input)), original = fs.readFileSync(input), source = JSON.parse(original);
@@ -106,7 +107,7 @@ export async function startEditor(options) {
   function config() {
     const {messages}=resolveCatalog(accepted.meta?.locale,accepted.meta?.translations);
     const editorMessages=Object.fromEntries(Object.entries(messages).filter(([key])=>key.startsWith('editor.')));
-    return { token, revision, selection, scene, impact, canCreate:true, editorMessages };
+    return { token, revision, selection, scene, impact, canCreate:true, labelRequired:type==='dataflow', editorMessages };
   }
   function initialFailure(message) {
     if (!scene) rejectReady(Error(message));
@@ -226,22 +227,27 @@ export async function startEditor(options) {
       finally { pendingRequest = undefined; finishRequest(); }
     },
   };
+  const abortStartup = () => rejectReady(options.signal.reason);
+  options.signal?.addEventListener('abort', abortStartup, { once: true });
   try {
     fs.writeFileSync(working, original, { mode: 0o600 });
     links = await linkedPages(path.dirname(output),path.basename(output),()=>mainUrl);
     preview = await startPreview({ ...options, quality, input: working, output: path.join(work, 'preview.html'), open: false, editor });
     await ready;
+    options.signal?.throwIfAborted();
     const url = new URL(editor.pagePath, preview.url).href; mainUrl = url;
     const opener = options.open !== false ? openLoopbackUrl(url, { ...options.opener, allowedPath: editor.pagePath }) : null;
     const closed = Promise.all([preview.closed,links.closed]).then(async () => { await pendingRequest; cleanWork(); });
     return { url, input, output, work, opener, state: () => config(), closed, stop: async (...args) => {await preview.stop(...args);await closed;} };
   } catch (error) {
     links?.stop();
-    if (preview) await preview.stop();
+    if (preview) await preview.stop({ force: !!options.signal?.aborted });
     await links?.closed;
     await pendingRequest;
     cleanWork();
     throw error;
+  } finally {
+    options.signal?.removeEventListener('abort', abortStartup);
   }
 }
 

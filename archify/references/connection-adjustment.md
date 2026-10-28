@@ -13,8 +13,9 @@ remain available unchanged under Technical details.
 All three supported types can add connections. In Draft, hover a node and
 click a **+** on an unused side, then click the destination node's connection
 point. Available destination points appear after selecting the start. Click the
-selected start again or press Escape to cancel. The popup asks only for an
-optional label. Direction follows the two selected points. The native router and label placer
+selected start again or press Escape to cancel. The popup asks only for a
+label, required for Dataflow and optional for Architecture and Workflow.
+Direction follows the two selected points. The native router and label placer
 must find room without moving existing nodes, routes or labels; otherwise the
 connection is not added. This first slice uses one connection per node side and
 does not infer new nodes or additional relationship semantics.

@@ -9,6 +9,10 @@ import { applyConnectionEdit, editableCollection, connectionBinding } from './mo
 
 const same = (a,b) => JSON.stringify(a) === JSON.stringify(b);
 const sides = ['left','right','top','bottom'];
+function validateLabel(type,label) {
+  if(typeof label!=='string'||label.length>240)throw Error('Use a label of at most 240 characters.');
+  if(type==='dataflow'&&!label.length)throw Error('Dataflow connections require a label.');
+}
 const endpointSide = (edge,end,node) => {
   const p=end==='from'?edge.points[0]:edge.points.at(-1),box=node.box;
   return sides.find(side=>side==='left'?Math.abs(p[0]-box.x)<1e-6:side==='right'?Math.abs(p[0]-box.x-box.width)<1e-6:side==='top'?Math.abs(p[1]-box.y)<1e-6:Math.abs(p[1]-box.y-box.height)<1e-6);
@@ -72,7 +76,7 @@ function assertGeometry(source,scene,edge,quality) {
 export function appendConnection(source,type,scene,value,quality) {
   const collection=editableCollection(type);
   if(!value||typeof value.id!=='string'||!/^edge-[a-zA-Z0-9_-]{1,80}$/.test(value.id)||source[collection].some(e=>e.id===value.id))throw Error('The new connection needs a unique ID.');
-  if(typeof value.label!=='string'||value.label.length>240)throw Error('Use a label of at most 240 characters.');
+  validateLabel(type,value.label);
   const nodes=availableEndpoints(source,scene,value),from=nodes.get(value.from),to=nodes.get(value.to);
   const points=value.points;
   if(!Array.isArray(points)||points.length<2||points.length>64||points.some(p=>!Array.isArray(p)||p.length!==2||p.some(v=>!Number.isFinite(v)||Math.abs(v)>1e7)))throw Error('The new route has invalid geometry.');
@@ -118,7 +122,8 @@ export function prepareEdits(source,type,scene,commands,quality) {
 
 export function proposeConnection(source,scene,request,quality) {
   const type=source.diagram_type,collection=editableCollection(type),relations=source[collection];
-  if(!request||typeof request.label!=='string'||request.label.length>240||!sides.includes(request.fromSide)||!sides.includes(request.toSide))throw Error('Choose connection sides and a label of at most 240 characters.');
+  if(!request||!sides.includes(request.fromSide)||!sides.includes(request.toSide))throw Error('Choose valid connection sides.');
+  validateLabel(type,request.label);
   const relation={id:'edge-'+randomUUID(),from:request.from,to:request.to,label:request.label||'',fromSide:request.fromSide,toSide:request.toSide};
   const nodes=availableEndpoints(source,scene,relation);
   const frames=context(source,scene,quality).frames;

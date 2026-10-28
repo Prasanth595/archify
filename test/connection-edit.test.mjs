@@ -109,6 +109,31 @@ async function post(editor, operation, command={}, overrides={}) {
   return { status:response.status, body:await response.json() };
 }
 
+test('aborting editor startup stops a stalled renderer and removes session files', {timeout:15000}, async t => {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-abort-'));
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html'),deliveryCli=path.join(dir,'stalled.mjs'),marker=path.join(dir,'pid');
+  const original=JSON.stringify(architecture()),controller=new AbortController(),reason=Error('Cancel editor startup');
+  fs.writeFileSync(input,original);
+  fs.writeFileSync(deliveryCli,`import fs from 'node:fs';process.on('SIGTERM',()=>{});fs.writeFileSync(${JSON.stringify(marker)},String(process.pid));setInterval(()=>{},1000);`);
+  const starting=startEditor({type:'architecture',input,output,open:false,deliveryCli,signal:AbortSignal.any([controller.signal,t.signal])});
+  starting.catch(()=>{});
+  t.after(async()=>{
+    controller.abort(reason);
+    if(fs.existsSync(marker)){try{process.kill(Number(fs.readFileSync(marker)),'SIGKILL');}catch(error){if(error.code!=='ESRCH')throw error;}}
+    await starting.catch(()=>{});
+    fs.rmSync(dir,{recursive:true,force:true});
+  });
+  const deadline=Date.now()+5000;
+  while(!fs.existsSync(marker)&&Date.now()<deadline)await new Promise(resolve=>setTimeout(resolve,20));
+  assert.ok(fs.existsSync(marker),'the initial renderer is running before cancellation');
+  controller.abort(reason);
+  await assert.rejects(starting,error=>error===reason);
+  assert.throws(()=>process.kill(Number(fs.readFileSync(marker)),0),{code:'ESRCH'},'the renderer cannot outlive canceled startup');
+  assert.equal(fs.readdirSync(dir).some(name=>name.startsWith('.archify-edit-')),false);
+  assert.equal(fs.existsSync(output),false);assert.equal(fs.readFileSync(input,'utf8'),original);
+  await assert.rejects(startEditor({input:path.join(dir,'missing.json'),signal:AbortSignal.abort(reason)}),error=>error===reason,'an already canceled startup touches no source');
+});
+
 test('default editor opening uses the native opener and discarding leaves the source intact', async t => {
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-open-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram review.html'),original=JSON.stringify(architecture());
@@ -367,8 +392,20 @@ for(const type of ['architecture','workflow','dataflow'])test(`${type} connectio
   const renderer=path.join(root,`archify/renderers/${type}/render-${type}.mjs`),collection=type==='architecture'?'connections':type==='workflow'?'edges':'flows';
   fs.writeFileSync(input,JSON.stringify(source));execFileSync(process.execPath,[renderer,input,output]);
   const before=readEditScene(fs.readFileSync(output)),side=type==='architecture'?'top':'bottom';
+  const unlabeled={from:'c',to:'a',fromSide:side,toSide:side,label:''};
+  if(type==='dataflow')assert.throws(()=>proposeConnection(source,before,unlabeled,'standard'),/require a label/);
+  else {
+    const empty=proposeConnection(source,before,unlabeled,'standard');
+    const emptyDraft=prepareEdits(source,type,before,[{key:empty.edge.key,field:'create',value:empty.value}],'standard');
+    fs.writeFileSync(input,JSON.stringify(emptyDraft.source));execFileSync(process.execPath,[renderer,input,output]);
+    assert.equal(readEditScene(fs.readFileSync(output)).edges.find(edge=>edge.id===empty.value.id).label,'');
+  }
   const proposal=proposeConnection(source,before,{from:'c',to:'a',fromSide:side,toSide:side,label:'Return'},'standard');
   const command={key:proposal.edge.key,field:'create',value:proposal.value},draft=prepareEdits(source,type,before,[command],'standard');
+  if(type==='dataflow'){
+    const forged=structuredClone(command);forged.value.label='';
+    assert.throws(()=>prepareEdits(source,type,before,[forged],'standard'),/require a label/,'save cannot bypass the required label');
+  }
   assert.deepEqual(draft.source[collection].slice(0,2),source[collection]);
   fs.writeFileSync(input,JSON.stringify(draft.source));execFileSync(process.execPath,[renderer,input,output]);
   const after=readEditScene(fs.readFileSync(output));
@@ -389,6 +426,7 @@ test('reordered workflow labels retain their native clearance relationships',t=>
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');fs.writeFileSync(input,JSON.stringify(source));
   execFileSync(process.execPath,[path.join(root,'archify/renderers/workflow/render-workflow.mjs'),input,output]);
   const scene=readEditScene(fs.readFileSync(output));
+  assert.notDeepEqual(scene.edges.map(edge=>edge.id),source.edges.map(edge=>edge.id),'the native compiler sorts relationships independently of source order');
   const proposal=proposeConnection(source,scene,{from:'c',to:'a',fromSide:'bottom',toSide:'bottom',label:'Return'},'showcase');
   const command={key:proposal.edge.key,field:'create',value:proposal.value};
   fs.writeFileSync(input,JSON.stringify(prepareEdits(source,'workflow',scene,[command],'showcase').source));

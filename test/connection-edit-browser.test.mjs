@@ -31,7 +31,7 @@ test('connection editor uses native selection, drags, undo, and verified source 
     connections:[{id:'first',from:'a',to:'b',label:'Request'},{id:'second',from:'b',to:'c',label:'Result'}]};
   const original=JSON.stringify(source);fs.writeFileSync(input,original);
   let finalizeCount=0;
-  editor=await startEditor({type:'architecture',input,output,open:false,debounceMs:5,pollMs:20,finalize:options=>{
+  editor=await startEditor({type:'architecture',input,output,signal:t.signal,open:false,debounceMs:5,pollMs:20,finalize:options=>{
     finalizeCount++;
     if(finalizeCount===1)return {receipt:{ok:false,failedStage:'deliver',diagnostics:[{message:'Architecture layout validation failed: [clean-flow/edge-through-node] connection crosses component "cache" on segment 2'}]}};
     return runFinalize(options);
@@ -165,9 +165,9 @@ test('connection editor uses native selection, drags, undo, and verified source 
   assert.ok(saved.connections[0].labelAt,'route and label edits are saved together');
   const delivered=fs.readFileSync(output,'utf8');assert.doesNotMatch(delivered,/archify-edit-data/);
   const cold=path.join(dir,'cold.html');
-  execFileSync(process.execPath,[path.join(root,'archify/renderers/architecture/render-architecture.mjs'),input,cold]);
+  execFileSync(process.execPath,[path.join(root,'archify/renderers/architecture/render-architecture.mjs'),input,cold],{timeout:60000,killSignal:'SIGKILL'});
   assert.deepEqual(readEditScene(fs.readFileSync(cold)),readEditScene(delivered));
-  const checked=JSON.parse(execFileSync(process.execPath,[path.join(root,'archify/bin/archify.mjs'),'check',output,'--require-provenance','--json'],{encoding:'utf8'}));
+  const checked=JSON.parse(execFileSync(process.execPath,[path.join(root,'archify/bin/archify.mjs'),'check',output,'--require-provenance','--json'],{encoding:'utf8',timeout:60000,killSignal:'SIGKILL'}));
   assert.equal(checked.ok,true);
   if(process.env.ARCHIFY_EDIT_EVIDENCE) {
     fs.mkdirSync(process.env.ARCHIFY_EDIT_EVIDENCE,{recursive:true});
@@ -189,7 +189,7 @@ for(const type of ['architecture','workflow','dataflow'])for(const locale of ['e
   const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');
   const source=connectionDiagram(type,locale),collection=type==='architecture'?'connections':type==='workflow'?'edges':'flows',nodeCollection=type==='architecture'?'components':'nodes',side=type==='architecture'?'top':'bottom';
   const original=JSON.stringify(source);fs.writeFileSync(input,original);let finalized=0;
-  editor=await startEditor({type,input,output,open:false,finalize:options=>{finalized++;return runFinalize(options);}});
+  editor=await startEditor({type,input,output,signal:t.signal,open:false,finalize:options=>{finalized++;return runFinalize(options);}});
   phase='browser startup';browser=desktopBrowser(chrome);const session=await browser.sessionPromise;
   await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false},session);
   async function run(expression){phase=expression.slice(0,240);const r=await browser.cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},session);assert.equal(r.exceptionDetails,undefined,JSON.stringify(r.exceptionDetails));return r.result.value;}
@@ -249,6 +249,14 @@ for(const type of ['architecture','workflow','dataflow'])for(const locale of ['e
     assert.deepEqual(await run(`(()=>{const n=document.querySelector('.connection-create-form input');n.value='中文草稿';const e=new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true,...${JSON.stringify(composing)}});n.dispatchEvent(e);return{prevented:e.defaultPrevented,open:!document.querySelector('.connection-create-form').hidden,value:n.value};})()`),{prevented:false,open:true,value:'中文草稿'},'IME Escape must not cancel the connection form');
   }
   assert.deepEqual(await run(`[...document.querySelectorAll('.connection-create-form input')].map(n=>n.name)`),['label']);
+  assert.equal(await run(`document.querySelector('.connection-create-form input').required`),type==='dataflow');
+  await run(`document.querySelector('.connection-create-form input').value=''`);
+  assert.equal(await run(`document.querySelector('.connection-create-form').checkValidity()`),type!=='dataflow','label requirements follow the native diagram schema');
+  if(type==='dataflow'){
+    await click(`document.querySelector('.connection-create-form button[type="submit"]')`);
+    assert.equal(await run(`!!document.querySelector('[data-draft-connection]')`),false,'empty Dataflow labels cannot enter the draft');
+    assert.equal(await run(`document.querySelector('.connection-create-form').hidden`),false);
+  }
   await run(`document.querySelector('.connection-create-form input').value='W'.repeat(240)`);
   await click(`document.querySelector('.connection-create-form button[type="submit"]')`);
   await wait(`document.querySelector('.connection-adjust-status').getAttribute('data-error')==='true'`);
@@ -292,7 +300,7 @@ for(const type of ['architecture','workflow','dataflow'])for(const locale of ['e
   await assertReadings(saved);
   await run(`Archify.focus.set('c',{toggle:false,updateUrl:false});Archify.focus.reach('downstream')`);
   assert.deepEqual((await run(`Archify.focus.reachability().nodeIds`)).sort(),['a','b','c'],'native reachability includes the newly saved relation');
-  const checked=JSON.parse(execFileSync(process.execPath,[path.join(root,'archify/bin/archify.mjs'),'check',output,'--require-provenance','--json'],{encoding:'utf8'}));assert.equal(checked.ok,true);
+  const checked=JSON.parse(execFileSync(process.execPath,[path.join(root,'archify/bin/archify.mjs'),'check',output,'--require-provenance','--json'],{encoding:'utf8',timeout:60000,killSignal:'SIGKILL'}));assert.equal(checked.ok,true);
   if(process.env.ARCHIFY_EDIT_EVIDENCE){fs.mkdirSync(process.env.ARCHIFY_EDIT_EVIDENCE,{recursive:true});const capture=await browser.cdp.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false},session);fs.writeFileSync(path.join(process.env.ARCHIFY_EDIT_EVIDENCE,'new-connection.png'),Buffer.from(capture.data,'base64'));}
   phase='browser shutdown';await browser.close();phase='editor shutdown';await editor.stop();
 });

@@ -32,7 +32,7 @@
   const nodeHandles=element('div');nodeHandles.className='connection-node-handles';container.append(nodeHandles);
   const preview=document.createElementNS(svg.namespaceURI,'svg');preview.classList.add('connection-create-preview');preview.setAttribute('aria-hidden','true');container.append(preview);
   const createForm=element('form');createForm.className='connection-create-form';createForm.hidden=true;createForm.setAttribute('role','dialog');createForm.setAttribute('aria-label',t('editor.newConnection'));
-  const createHeading=element('p'),labelField=element('label',t('editor.label')),labelInput=element('input');labelInput.name='label';labelInput.maxLength=240;labelField.append(labelInput);
+  const createHeading=element('p'),labelField=element('label',t('editor.label')),labelInput=element('input');labelInput.name='label';labelInput.maxLength=240;labelInput.required=!!state.labelRequired;labelField.append(labelInput);
   const createButton=element('button',t('editor.create')),cancelButton=element('button',t('editor.cancel'));createButton.type='submit';cancelButton.type='button';createForm.append(createHeading,labelField,createButton,cancelButton);document.body.append(createForm);
   let connectionStart,pendingConnection,hoveredNode,portSignature='';
   const createdViews=new Map();
