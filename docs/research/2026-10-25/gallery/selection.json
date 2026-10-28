@@ -1,7 +1,7 @@
 {
   "version": 1,
   "repository": "https://github.com/tt-a1i/archify",
-  "hubCommit": "63541c0adac1a47609e20c4854a202b15afacb89",
+  "hubCommit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
   "hubPath": "docs/research/2026-10-25/README.md",
   "visualSourcePaths": [
     "website/src/styles/site.css",
@@ -552,6 +552,16 @@
       "inputKind": "完整历史patch / 多文件目录",
       "imagePath": "experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png",
       "imageCaption": "完整多文件diff的局部目录，可直达文件段并返回原目录项；不证明阅读效率或与其他实验组合验收。"
+    },
+    {
+      "id": "shared-reach",
+      "commit": "b160b948541f541394457fec3005e2d10b281dea",
+      "branch": "codex/lab-shared-reach",
+      "directory": "experiments/shared-reach",
+      "group": "offline",
+      "inputKind": "完整公开Archify authored示例（12节点12边）",
+      "imagePath": "experiments/shared-reach/browser-evidence/downstream-overview-light.png",
+      "imageCaption": "两个API共同下游4项；完整图保留并给出双路径见证，不代表因果关系或真实运行证据。"
     }
   ],
   "deferred": {

@@ -5,12 +5,12 @@
   "repository": "https://github.com/tt-a1i/archify",
   "hub": {
     "path": "docs/research/2026-10-25/README.md",
-    "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
-    "sha256": "19cdf6b168ffbd1071bd0b7a95be74a9aa0cca53dc3a49d9212d8dfc3bcdf80c",
-    "bytes": 66570,
-    "gitBlob": "2d4409f7d220937484bddaaa4df6f0a72ccc8046"
+    "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
+    "sha256": "c6b406d62878c6ee37c7c558ca03222fd042ad475f2806811196eae38a6c66f1",
+    "bytes": 67799,
+    "gitBlob": "fa84c9545fccb3f2031d437a06264a70b5436711"
   },
-  "policy": "53 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
+  "policy": "54 published experiments from the fixed hub. Original PNG bytes only; card previews are CSS crops. No network request, analytics, dependency or experiment execution. Branch publication is not merge, release, CI success or human acceptance.",
   "groups": {
     "product": {
       "label": "产品交互",
@@ -28,21 +28,21 @@
   "visualSources": [
     {
       "path": "website/src/styles/site.css",
-      "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
+      "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
       "sha256": "4a79d3c00465cc93d2fdfe602c5d870523ae6ee033e3f75e61481585f86f89e4",
       "bytes": 15945,
       "gitBlob": "49c84bb5900a5eb98b057e9af76bbc1066c8d0b5"
     },
     {
       "path": "website/src/styles/index.css",
-      "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
+      "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
       "sha256": "f3aaf38823b91e63d08cf1e521ea606331be580a86e20cc9e2cadab38c1bd0fe",
       "bytes": 59111,
       "gitBlob": "e076e38179140bac537a75efaca75c356350a8a2"
     },
     {
       "path": "website/src/styles/gallery.css",
-      "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
+      "commit": "d265744ea580ca0dd36590ff32d05c8e6a0dc68d",
       "sha256": "a1c896cab6ca6f99baedb6d8d6a608e97e719b02bb763494bd58e3461f8c9eb1",
       "bytes": 23691,
       "gitBlob": "36adfa4eda35c948b0f07bd9fe144beb8ac66656"
@@ -1903,6 +1903,41 @@
       "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation",
       "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-diff-file-navigation/experiments/diff-file-navigation",
       "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png"
+    },
+    {
+      "id": "shared-reach",
+      "commit": "b160b948541f541394457fec3005e2d10b281dea",
+      "branch": "codex/lab-shared-reach",
+      "directory": "experiments/shared-reach",
+      "group": "offline",
+      "inputKind": "完整公开Archify authored示例（12节点12边）",
+      "imagePath": "experiments/shared-reach/browser-evidence/downstream-overview-light.png",
+      "imageCaption": "两个API共同下游4项；完整图保留并给出双路径见证，不代表因果关系或真实运行证据。",
+      "title": "Shared reach",
+      "value": "对完整原生Architecture求两个节点的共同上下游，列出单侧结果及每项两条精确路径",
+      "limits": "固定6ca6基线；离线CLI，保留完整12节点12边及原输入hash；Node22 focused7/7、独立6144查询共同集合/见证核对；三页finalize三阶段通过，自动browser未请求；root13原PNG含桌面双路/上游/空集/键盘，390px溢出与iframe横向阅读限制保留；非因果/运行依赖/效率证据",
+      "readme": {
+        "path": "experiments/shared-reach/README.md",
+        "commit": "b160b948541f541394457fec3005e2d10b281dea",
+        "sha256": "fcc629505cdcb1b9718cab4a27f2d5a6b407e1aa1fbb9a6e1bd4304f16933a77",
+        "bytes": 13275,
+        "gitBlob": "14a65686a6151d77db9ae75228e40baf170e3289"
+      },
+      "image": {
+        "path": "experiments/shared-reach/browser-evidence/downstream-overview-light.png",
+        "commit": "b160b948541f541394457fec3005e2d10b281dea",
+        "sha256": "ea70a5c260938652c1cccbd7b7121875c3aa6263aac3d34b84142939eb967cd1",
+        "bytes": 158360,
+        "gitBlob": "f575e982d8ec42630397aa44f007408d16851b65",
+        "width": 1440,
+        "height": 1250,
+        "mime": "image/png",
+        "caption": "两个API共同下游4项；完整图保留并给出双路径见证，不代表因果关系或真实运行证据。",
+        "byteIdentity": "Fixed commit Git blob read from source repository; embedded unchanged. Working file bytes not checked."
+      },
+      "fixedSourceUrl": "https://github.com/tt-a1i/archify/tree/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach",
+      "branchUrl": "https://github.com/tt-a1i/archify/tree/codex/lab-shared-reach/experiments/shared-reach",
+      "imageSourceUrl": "https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/browser-evidence/downstream-overview-light.png"
     }
   ],
   "deferred": {
@@ -1913,12 +1948,12 @@
     "reason": "既有 Incoming 行已能一步回到来源；兼容测试通过没有证明额外 Back 按钮更好用。暂不引入额外状态，不计入已发布数量。"
   },
   "summary": {
-    "experiments": 53,
-    "images": 53,
-    "pngBytes": 12906604,
+    "experiments": 54,
+    "images": 54,
+    "pngBytes": 13064964,
     "groupCounts": {
       "product": 17,
-      "offline": 15,
+      "offline": 16,
       "content": 21
     },
     "deferredCountedAsPublished": false

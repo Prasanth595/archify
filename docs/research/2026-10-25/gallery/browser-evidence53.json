@@ -1,0 +1,196 @@
+{
+  "kind": "derived browser evidence for fixed 53-item gallery; original JSON and PNG linked separately",
+  "status": "root-browser-observed-scoped-gallery",
+  "taskSpace": 8,
+  "hubSourceCommit": "63541c0adac1a47609e20c4854a202b15afacb89",
+  "hubReadme": {
+    "path": "docs/research/2026-10-25/README.md",
+    "commit": "63541c0adac1a47609e20c4854a202b15afacb89",
+    "sha256": "19cdf6b168ffbd1071bd0b7a95be74a9aa0cca53dc3a49d9212d8dfc3bcdf80c",
+    "bytes": 66570,
+    "gitBlob": "2d4409f7d220937484bddaaa4df6f0a72ccc8046"
+  },
+  "artifacts": {
+    "index.html": {
+      "path": "index.html",
+      "sha256": "99478ba013cf219c7ee224bb2f60fa09a4896565db6ac30b2661ae7b4b628897",
+      "bytes": 17345659
+    },
+    "manifest.json": {
+      "path": "manifest.json",
+      "sha256": "eaf20d7c06bb088d394ee4c7c94821d77d01d883e8b849b2bf62216e5d3d7fc4",
+      "bytes": 121160
+    },
+    "selection.json": {
+      "path": "selection.json",
+      "sha256": "6bffc235d64826b91c1c231db90851b0e18d13dfd574c78d420c601f919016ab",
+      "bytes": 26922
+    },
+    "verification.json": {
+      "path": "verification.json",
+      "sha256": "d962baa3a9659243ae63a40b284996dc12be91dc654dc90e10e9264516915989",
+      "bytes": 800
+    },
+    "README.md": {
+      "path": "README.md",
+      "sha256": "51b58caa3cedea26a525d6d0db2786e7dc9e3876420109a722bf62bd189c5b3f",
+      "bytes": 39576
+    },
+    "template.html": {
+      "path": "template.html",
+      "sha256": "bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9",
+      "bytes": 16951
+    },
+    "build.py": {
+      "path": "build.py",
+      "sha256": "56ff7e4cd8d7c285051508f33c302d3ea9cbd763dd633604112f2e85fc76019e",
+      "bytes": 9748
+    },
+    "verify.py": {
+      "path": "verify.py",
+      "sha256": "d806985fcb08bdb071f2b528c35953aca80e522267a32b0611a2f8199617ab46",
+      "bytes": 4853
+    }
+  },
+  "summary": {
+    "experiments": 53,
+    "images": 53,
+    "pngBytes": 12906604,
+    "groupCounts": {
+      "product": 17,
+      "offline": 15,
+      "content": 21
+    },
+    "deferredCountedAsPublished": false
+  },
+  "rawSources": [
+    {
+      "path": "screenshots53/dialog.json",
+      "sha256": "d29ee83fcd0445f8a4902ad1e200dd0b1110ff9f183407553c366b9772264c01",
+      "bytes": 604
+    },
+    {
+      "path": "screenshots53/filters.json",
+      "sha256": "d8faf6bb603e86a24a64c0226fe2a54ae98da2e9be3070059ff2fe6b1e0dfcc1",
+      "bytes": 546
+    },
+    {
+      "path": "screenshots53/narrow.json",
+      "sha256": "0629d376886170b99046097ac4256f2006a3e05b217aaf72c72fdafae291e8d4",
+      "bytes": 443
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "screenshots53/card-light.png",
+      "sha256": "9982bf74d35833e0d61eae19789894edd1275edd61975eb5a932ba4ada8ce802",
+      "bytes": 214376,
+      "width": 1425,
+      "height": 1520,
+      "rootViewed": true,
+      "boundHtmlSha256": "99478ba013cf219c7ee224bb2f60fa09a4896565db6ac30b2661ae7b4b628897",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR."
+    },
+    {
+      "path": "screenshots53/card-narrow-dark.png",
+      "sha256": "f2f7fce11fd0bb58029a824848141f51e3da41b238cc249197dab6ddcaada733",
+      "bytes": 184333,
+      "width": 375,
+      "height": 1771,
+      "rootViewed": true,
+      "boundHtmlSha256": "99478ba013cf219c7ee224bb2f60fa09a4896565db6ac30b2661ae7b4b628897",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR."
+    },
+    {
+      "path": "screenshots53/dialog-light.png",
+      "sha256": "5bc7ca58c804199363d7f48727c844cebbae2465263387589f8853b076683cfc",
+      "bytes": 206009,
+      "width": 1440,
+      "height": 1100,
+      "rootViewed": true,
+      "boundHtmlSha256": "99478ba013cf219c7ee224bb2f60fa09a4896565db6ac30b2661ae7b4b628897",
+      "status": "root-viewed-completed-capture",
+      "semantics": "Original PNG copied unchanged; dimensions from IHDR."
+    }
+  ],
+  "observations": {
+    "dialog": {
+      "observedAt": "2026-10-28T04:07:02.884Z",
+      "natural": [
+        1440,
+        1100
+      ],
+      "source": "https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png",
+      "title": "Diff file navigation",
+      "pngSha256": "f6db0ef874a1970f29e187ef9e0503c7c9f461734ec561df7cecb259935fbc7c",
+      "pngBytes": 164393,
+      "original": {
+        "width": 1440,
+        "height": 1100,
+        "mode": "true"
+      },
+      "closed": {
+        "closed": true,
+        "src": null,
+        "focus": "查看 Diff file navigation 完整原图"
+      }
+    },
+    "filters": {
+      "observedAt": "2026-10-28T04:06:43.198Z",
+      "counts": [
+        {
+          "filter": "all",
+          "count": "显示 53 / 53 项"
+        },
+        {
+          "filter": "product",
+          "count": "显示 17 / 53 项"
+        },
+        {
+          "filter": "offline",
+          "count": "显示 15 / 53 项"
+        },
+        {
+          "filter": "content",
+          "count": "显示 21 / 53 项"
+        },
+        {
+          "filter": "all",
+          "count": "显示 53 / 53 项"
+        }
+      ],
+      "viewport": [
+        1440,
+        1100
+      ],
+      "search": "Diff file navigation",
+      "result": "显示 1 / 53 项"
+    },
+    "narrow": {
+      "observedAt": "2026-10-28T04:07:17.645Z",
+      "card": {
+        "viewport": [
+          390,
+          844
+        ],
+        "clientWidth": 375,
+        "pageWidth": 375,
+        "theme": "dark",
+        "count": "显示 1 / 53 项"
+      },
+      "empty": {
+        "count": "显示 0 / 53 项",
+        "emptyVisible": true
+      },
+      "reset": {
+        "count": "显示 53 / 53 项",
+        "focus": "query",
+        "query": ""
+      },
+      "scope": "Desktop Chromium CSS viewport, not physical touch."
+    }
+  },
+  "scope": "Current new card and common controls only. Original 52 selection, manifest items, card HTML and PNG bytes unchanged. Earlier browser evidence remains historical. No physical touch, AT, full Tab traversal, external link navigation, or efficiency claim."
+}

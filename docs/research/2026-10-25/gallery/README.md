@@ -29,7 +29,35 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前53版静态绑定与实际浏览器观察
+## 当前54版静态绑定与实际浏览器观察
+
+固定 hub 为 [`d265744ea580ca0dd36590ff32d05c8e6a0dc68d`](https://github.com/tt-a1i/archify/blob/d265744ea580ca0dd36590ff32d05c8e6a0dc68d/docs/research/2026-10-25/README.md)：**54项 / 54张原PNG，17产品交互 / 16离线适配 / 21内容示例**。来源README为67,799 bytes，SHA-256 `c6b406d62878c6ee37c7c558ca03222fd042ad475f2806811196eae38a6c66f1`。此处来源身份固定，不随工作树后续文字变化。
+
+唯一新增项Shared reach归入离线适配，固定实验提交 `b160b948541f541394457fec3005e2d10b281dea`。它对完整公开Archify authored示例的12节点12边离线求共同上下游，列出单侧结果及每项双路径见证，保留完整原图和输入hash。主图显示两个API的共同下游4项：`experiments/shared-reach/browser-evidence/downstream-overview-light.png`，158,360 bytes、1440×1250，SHA-256 `ea70a5c260938652c1cccbd7b7121875c3aa6263aac3d34b84142939eb967cd1`。这是离线查询实验，不新增共享产品能力，不代表因果、真实运行依赖或效率收益。实验三页finalize三阶段通过但自动browser未请求；原实验390px溢出与iframe横向阅读限制继续保留，gallery图片查看不抵消这些边界。
+
+沿用原builder的 `--source-repo` 直接读取固定Git blob，54个本地origin跟踪引用均与selection固定提交相同；未恢复旧工作区或检查旧工作文件，不将本地跟踪引用当作本批旧53远端head重新查询。前53项selection记录、manifest完整item字段、完整卡片HTML及嵌入PNG原bytes逐项与已发布53版golden完全相同。模板、builder和verify均未修改，模板SHA-256仍为 `bc7d0445a2c11578de09b89afb0a3f57e468d8923dbfcc1d98978b203b7f5ce9`。
+
+原53版浏览器JSON逐字另存为 [browser-evidence53.json](browser-evidence53.json)，SHA-256 `e6d1dfff5c88189164f45642c8c59d37c917be213e85a0a36dda008628061cfe`；screenshots53及更早原件保留。历史浏览器观察仅属于各自固定页面。
+
+Python标准库构建与现有Node **22.23.3** 静态verify通过：54张嵌图摘要、54/17/16/21卡片与筛选计数、固定链接和内联JS语法均通过，外部资源引用0；原PNG共13,064,964 bytes。
+
+- `index.html`：17,559,456 bytes；SHA-256 `9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a`
+- `manifest.json`：SHA-256 `946caf2d12f597220762b2304dc092cbfca1a1e76a37d017c0a1b5c8a660718e`
+- `selection.json`：SHA-256 `de593607239529cb4718c43682b13da2e8dbb5f024bc2e1de7c8b574f1743ed4`
+
+Root已在Ego/Chromium实际操作上述冻结54版HTML，并查看最终三张完成截图：桌面新卡片、完整图弹窗与390px暗色卡片。四张PNG及五份JSON按原字节保存在 [screenshots54](screenshots54/)；[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前静态产物、原件bytes/SHA、PNG IHDR尺寸及观察身份，不冒称原始receipt。
+
+桌面1440×1100四筛选为54/17/16/21，搜索Shared reach得到1/54。新项弹窗直接解码嵌入PNG，SHA与固定主图相同，天然尺寸及切原始尺寸后的显示尺寸均1440×1250。Escape后弹窗关闭、src清空、焦点返回Shared reach卡片。图片高度超过桌面CSS视口，不声称完整原图同时位于可见窗口。
+
+**首次预览是未完成截取。** [card-light-before-decode.png](screenshots54/card-light-before-decode.png)在lazy图片解码前截得空预览，保留原字节，不作为完成截图；[capture-note.json](screenshots54/capture-note.json)记录这一时点差异。最终 [card-light.png](screenshots54/card-light.png)等待实际嵌入图片解码后采集，complete=true、天然1440×1250，root已实际查看。首次材料没有被覆盖或补称通过。
+
+390×844暗色CSS视口下新卡1/54，pageWidth与clientWidth均375px，没有gallery页面水平溢出；空结果0/54，reset回54/54且query聚焦。整页截图尺寸按PNG IHDR另记，不把CSS viewport当作整图尺寸。这里检查图片索引，不能抵消Shared reach实验本身390px与iframe横向阅读限制。
+
+![等待解码后的第54项卡片](screenshots54/card-light.png)
+
+[完整图弹窗](screenshots54/dialog-light.png) · [390px暗色卡片](screenshots54/card-narrow-dark.png)。本次只操作新增卡片与上述通用控件，未重跑旧53项实验或逐项图片交互，没有实体触摸、AT、完整Tab遍历、外链导航、因果或真实运行证据，也没有效率或真人验收声明。
+
+## 历史53版静态绑定与实际浏览器观察
 
 固定 hub 为 [`63541c0adac1a47609e20c4854a202b15afacb89`](https://github.com/tt-a1i/archify/blob/63541c0adac1a47609e20c4854a202b15afacb89/docs/research/2026-10-25/README.md)：**53项 / 53张原PNG，17产品交互 / 15离线适配 / 21内容示例**。来源README为66,570 bytes，SHA-256 `19cdf6b168ffbd1071bd0b7a95be74a9aa0cca53dc3a49d9212d8dfc3bcdf80c`。此处固定来源身份，不随工作树后续更新。
 
@@ -45,7 +73,7 @@ Python标准库构建与现有Node **22.23.3** 静态verify通过：53张嵌图�
 - `manifest.json`：SHA-256 `eaf20d7c06bb088d394ee4c7c94821d77d01d883e8b849b2bf62216e5d3d7fc4`
 - `selection.json`：SHA-256 `6bffc235d64826b91c1c231db90851b0e18d13dfd574c78d420c601f919016ab`
 
-Root已在Ego/Chromium实际操作上述冻结53版HTML，并逐张查看本批三张原始PNG；三份原始JSON及三张PNG按原字节保存在 [screenshots53](screenshots53/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前静态产物及原件摘要、PNG尺寸和查看状态，不冒称原始receipt。
+Root已在Ego/Chromium实际操作上述冻结53版HTML，并逐张查看本批三张原始PNG；三份原始JSON及三张PNG按原字节保存在 [screenshots53](screenshots53/)。[browser-evidence53.json](browser-evidence53.json)是派生绑定，记录当前静态产物及原件摘要、PNG尺寸和查看状态，不冒称原始receipt。
 
 桌面1440×1100：四筛选显示53/17/15/21，搜索Diff file navigation得到1/53。新项弹窗内PNG直接解码所得SHA与固定原图相同，天然尺寸及切原始尺寸后的显示尺寸均1440×1100。Escape后弹窗关闭、图片src清空、焦点返回新卡片。390×844深色CSS视口：卡片显示1/53，pageWidth与clientWidth同为375px；空结果0/53，reset回53/53且query聚焦。整页截图尺寸按PNG IHDR记录，不把CSS viewport当作整图尺寸。
 

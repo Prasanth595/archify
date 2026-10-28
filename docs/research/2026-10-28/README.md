@@ -56,4 +56,4 @@ Route不推断真实流量、故障切换或最佳路线。Diff不证明语义�
 
 Node22集中7/7通过；独立审查以传递闭包核对512张三节点有向图的6144次查询，验证共同集合及见证箭头/身份，未冒称穷举最短跳数或平行边tie。上下游和空答案三页finalize的validate/deliver/check通过，自动browser-check未运行。root实际点击两侧到Observability路径、上游clients→B，核对Escape回焦及Tab/Enter打开；成功空集和390px深色视图均有原图。390px仍有400px页面宽度、scope/hash截断及iframe横向探索限制，没有移动端/AT/效率接受结论。
 
-[精确远端核对](shared-reach-remote.json)确认GitHub head一致，Actions/check-runs为0，不表示CI通过。最新dev仍6ca6、main仍d605；未创建PR、合入、发布或安装。主索引已追加第54行；画廊当前53项证据仍绑定原revision，下一步增量构建第54卡并核对原53项字节。持续探索目标保持active。
+[精确远端核对](shared-reach-remote.json)确认GitHub head一致，Actions/check-runs为0，不表示CI通过。最新dev仍6ca6、main仍d605；未创建PR、合入、发布或安装。主索引与图片画廊均已更新54项（17产品/16离线/21内容），固定来源hub `d265744ea580ca0dd36590ff32d05c8e6a0dc68d`。原53卡片及PNG原字节不变，旧浏览器记录保留原身份；root已完成新卡搜索、原图SHA/原始1440×1250尺寸/Escape回焦、390px暗色与空结果/reset。首次图像未解码截图保留，最终完成图另存，不把早期空预览算通过。Ego TaskSpace9已finish且无保留页面。持续探索目标保持active。
