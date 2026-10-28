@@ -12,7 +12,21 @@
     "nodes",
     "edges"
   ],
+  "allOf": [{
+    "if": { "properties": { "layout": {} }, "required": ["layout"] },
+    "then": { "properties": { "schema_version": { "const": 2 } } }
+  }],
   "properties": {
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract", "lanes", "sizing"],
+      "properties": {
+        "contract": { "const": "readable-v2" },
+        "lanes": { "enum": ["independent", "shared"] },
+        "sizing": { "enum": ["adaptive", "absolute"] }
+      }
+    },
     "schema_version": {
       "enum": [
         1,

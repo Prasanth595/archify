@@ -6027,7 +6027,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       function attachToolbarNavigation(toolbar, selector) {
         if (!toolbar) return;
         toolbar.addEventListener('keydown', function (event) {
-          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          if (event.isComposing || event.keyCode === 229 || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
           if (event.ctrlKey || event.altKey || event.metaKey || event.shiftKey) return;
           var controls = Array.from(toolbar.querySelectorAll(selector)).filter(function (control) {
             return !control.disabled && !control.hidden && control.getClientRects().length;
@@ -6045,7 +6045,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
       attachToolbarNavigation(
         document.querySelector('.toolbar'),
-        ':scope > .toolbar-group > button, :scope > .toolbar-group > .preset-wrap > #btn-preset, :scope > .export-wrap > #btn-export'
+        ':scope > .toolbar-group > button, :scope > .toolbar-group [data-toolbar-control], :scope > .toolbar-group > .preset-wrap > #btn-preset, :scope > .export-wrap > #btn-export'
       );
       attachToolbarNavigation(document.querySelector('.diagram-nav'), ':scope > button');
       attachToolbarNavigation(document.querySelector('.rail-controls'), ':scope > button');

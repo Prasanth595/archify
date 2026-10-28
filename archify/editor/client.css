@@ -1,0 +1,38 @@
+.connection-draft-control { position: relative; display: flex; align-items: center; }
+.connection-draft-control > button[hidden] { display: none; }
+.toolbar .connection-draft-history { padding-inline: 8px; font-size: 18px; }
+.connection-draft-history:disabled { opacity: .35; cursor: default; }
+#btn-draft { min-width: 76px; justify-content: center; }
+.connection-adjust { position: absolute; top: calc(100% + 8px); right: 0; width: min(320px, calc(100vw - 32px)); box-sizing: border-box; padding: 12px 16px; color: var(--text-muted); background: var(--panel); border: 1px solid var(--panel-border); border-radius: 12px; box-shadow: 0 12px 30px rgba(15,23,42,.16); font-size: 12px; }
+.connection-adjust[hidden] { display: none; }
+.connection-adjust p { margin: 8px 0; line-height: 1.5; }
+.connection-adjust details { margin-top: 8px; }
+.connection-adjust pre { max-height: 150px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.5 monospace; }
+.connection-adjust summary { cursor: pointer; }
+[data-connection-adjust] .connection-adjust-label { cursor: grab; pointer-events: all; touch-action: none; }
+[data-connection-adjust] .connection-adjust-label:active { cursor: grabbing; }
+[data-connection-adjust] #focus-chip { display: none !important; }
+[data-connection-adjust] .connection-draft-selected { stroke-width: 2.5; }
+[data-connection-adjust] .diagram-container > svg:focus { outline: none; }
+.toolbar .connection-adjust button { display: inline-flex; min-height: 30px; font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--panel-border); border-radius: 6px; padding: 5px 12px; margin-right: 6px; cursor: pointer; }
+.toolbar .connection-adjust-dismiss { float: right; margin: -6px -8px 0 6px; padding: 2px 7px; font-size: 18px; border: 0; }
+.connection-adjust button:disabled { opacity: .4; cursor: default; }
+.connection-adjust-status[data-error="true"] { color: var(--c-security-text, #c64d54); }
+.connection-adjust-handles { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 25; overflow: hidden; }
+.connection-adjust-handle { position: absolute; transform: translate(-50%,-50%); padding: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-card, white); border: 2px solid var(--accent, #0891b2); pointer-events: auto; cursor: move; touch-action: none; }
+.connection-adjust-handle:focus-visible { outline: 2px solid var(--accent, #0891b2); outline-offset: 3px; }
+.connection-adjust-handle[data-blocked="true"] { border-color: #b7791f; }
+.connection-node-handles,.connection-create-preview { position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:26;overflow:hidden; }
+.connection-node-port { position:absolute;transform:translate(-50%,-50%);width:18px;height:18px;padding:0;border:1px solid var(--accent,#0891b2);border-radius:50%;background:var(--panel,#fff);color:var(--accent,#0891b2);font:14px/16px sans-serif;pointer-events:auto;cursor:crosshair;touch-action:none; }
+.connection-node-port[aria-pressed="true"] { background:var(--accent,#0891b2);color:var(--panel,#fff);box-shadow:0 0 0 3px var(--panel,#fff); }
+.connection-node-port:focus-visible { outline:2px solid var(--accent,#0891b2);outline-offset:3px; }
+.connection-create-preview path { fill:none;stroke:var(--accent,#0891b2);stroke-width:2;stroke-dasharray:5 4; }
+.connection-create-form { position:fixed;z-index:150;width:280px;box-sizing:border-box;padding:16px;border:1px solid var(--panel-border);border-radius:12px;background:var(--panel);color:var(--text);box-shadow:0 12px 30px rgba(15,23,42,.16);font-family:inherit;font-size:13px;line-height:1.5; }
+.connection-create-form[hidden] { display:none; }
+.connection-create-form p { margin:0 0 10px;font-size:12px;color:var(--text-muted); }
+.connection-create-form label { display:block;font-size:13px; }
+.connection-create-form input { display:block;box-sizing:border-box;width:100%;margin:6px 0 12px;padding:7px;border:1px solid var(--panel-border);border-radius:6px;background:var(--bg);color:inherit;font:inherit; }
+.connection-create-form button { padding:6px 12px;margin-right:8px;border:1px solid var(--panel-border);border-radius:6px;background:var(--panel);color:inherit;cursor:pointer; }
+.connection-draft-hit { fill:none;stroke:transparent;stroke-width:14;pointer-events:stroke; }
+@media print { .connection-node-handles,.connection-create-preview,.connection-create-form { display:none !important; } }
+@media print { .connection-draft-control, .connection-adjust-handles { display: none !important; } }

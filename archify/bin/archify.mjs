@@ -2196,6 +2196,7 @@ const COMMAND_USAGE = {
   deliver: '<type> <input.json> [output.html] [--json] [--open] [--quality standard|showcase] [--repo-root path]',
   patch: 'explainer <artifact.html> <panel-id> <replacement-file> <output.html> [--json] [--quality standard|showcase] [--repo-root path]',
   finalize: '<type> <input.json> <output.html> [--json] [--browser-check] [--receipt path] [--out-dir <dir>] [--quality standard|showcase] [--repo-root path] [--candidate-sha256 hex]',
+  edit: '<type> <input.json> [output.html] [--no-open] [--quality standard|showcase] [--repo-root path]',
   preview: '<type> <input.json> [output.html] [--no-open] [--quality standard|showcase] [--repo-root path]',
   validate: '<type> <input.json> [--json] [--layout-json] [--quality standard|showcase] [--repo-root path]',
   migrate: 'workflow <old.json> <new.json> --to-schema 2 [--output portable.html] [--json] [--repo-root path]',
@@ -5429,6 +5430,19 @@ async function commandPreview(args) {
   }
 }
 
+async function commandEdit(args) {
+  const qualityArgs = extractQualityArgs(args);
+  const repoArgs = extractRepoRootArgs(qualityArgs.rest);
+  const positional = repoArgs.rest.filter(arg => arg !== '--no-open');
+  if (positional.some(arg => arg.startsWith('--')) || positional.length < 2 || positional.length > 3) fail(usage());
+  const [type, input, output] = positional;
+  try {
+    const { runEditor } = await import('../editor/session.mjs');
+    await runEditor({ type, input, output, quality: qualityArgs.quality, repoRoot: repoArgs.repoRoot,
+      open: !repoArgs.rest.includes('--no-open') });
+  } catch (error) { fail(`Could not adjust diagram: ${error.message}`, 1); }
+}
+
 async function loadPathIdentityRuntime() {
   try {
     await loadSidecarPathRuntime();
@@ -6220,6 +6234,9 @@ async function commandDoctor(args) {
   const storyRuntime = ['cli.mjs','tool.mjs','output.mjs','story-plan.mjs','story.js','story.css','story-audio.js','story-webm.js','story-export.js','story-attachment.mjs','story-attachment.js','story-attachment.css','messages.json','scope-field.js','brand.svg','native-motion.js','vendor/html-parser.mjs'];
   const missingStoryRuntime = storyRuntime.filter(file => !fs.existsSync(path.join(skillRoot, 'story', file))).length;
   checks.push({label:'Story runtime and playback assets',ok:missingStoryRuntime===0,missing:missingStoryRuntime});
+  const editRuntime = ['model.mjs','create.mjs','session.mjs','linked-pages.mjs','client.js','client.css'];
+  const missingEditRuntime = editRuntime.filter(file => !fs.existsSync(path.join(skillRoot, 'editor', file))).length;
+  checks.push({label:'Connection adjustment runtime',ok:missingEditRuntime===0,missing:missingEditRuntime});
 
   console.log('Archify doctor\n');
   for (const check of checks) {
@@ -7290,6 +7307,9 @@ try {
       break;
     case 'preview':
       await commandPreview(args);
+      break;
+    case 'edit':
+      await commandEdit(args);
       break;
     case 'validate':
       await commandValidate(args);
