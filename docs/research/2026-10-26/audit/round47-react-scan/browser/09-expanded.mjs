@@ -1,0 +1,10 @@
+const fs=await import('node:fs/promises');
+const task=await taskSpace(3),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('button:has-text("hook") >> nth=0',{label:'expand tab state change'});
+await page.click('button:has-text("hook") >> nth=1',{label:'expand height state change'});
+await page.waitForTimeout(1500);
+const dom=await page.evaluate(()=>({viewport:[innerWidth,innerHeight],url:location.href,text:document.body.innerText,scan:[...document.getElementById('react-scan-root').shadowRoot.children].filter(x=>x instanceof HTMLElement&&!['STYLE','SCRIPT'].includes(x.tagName)).map(x=>x.innerText).join('\n'),scripts:[...document.scripts].filter(x=>x.src).map(x=>x.src)}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round47-react-scan/browser/09-expanded.json",JSON.stringify(dom,null,2)+'\n');
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round47-react-scan/images/09-expanded.png"});
+console.log(await page.snapshot());

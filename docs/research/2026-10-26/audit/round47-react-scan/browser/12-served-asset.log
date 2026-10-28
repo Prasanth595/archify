@@ -1,0 +1,12 @@
+ElementResolutionError: Invalid locator: loc=role:checkbox. Expected loc=role:<role>[name="<exact name>"], loc=role:<role>[name*="<name part>"], loc=css:<selector>, loc=href:<substring>, text=..., css=..., a terminal :has-text(...) or :text-is(...), or a terminal >> nth=N
+    at parseLocatorOrThrow (file:////[eval1]:11219:15)
+    at resolveElementObjectId (file:////[eval1]:9836:21)
+    at clickInPage (file:////[eval1]:14298:26)
+    at #runAction.actionName (file:////[eval1]:18927:91)
+    at file:////[eval1]:19104:270
+    at #retryElementAction (file:////[eval1]:19141:30)
+    at async file:////[eval1]:19242:29
+    at async file:////[eval1]:16940:28
+{ url: 'https://react-scan.com/auto.global.js', status: 200, bytes: 391118, sha256: 'fb0b2e8f4e428cbb5eeb4987a20c34bbe8cce45b532e6fb4093a6c7509480c37', gitBlob: '19cd02bcbd9682f47251038c8abbd396850b8f8b', scope: 'Fetched after UI actions from observed script URL; not an intercepted initial response' }
+
+ego's nodejs process exited with code 1.

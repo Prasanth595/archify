@@ -1,0 +1,10 @@
+const fs=await import('node:fs/promises'),crypto=await import('node:crypto');
+const task=await taskSpace(3),page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+const response=await page.fetch('https://react-scan.com/auto.global.js',{saveAs:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round47-react-scan/served/auto.global.js"});
+const b=await fs.readFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round47-react-scan/served/auto.global.js");
+const record={url:response.url,status:response.status,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex'),gitBlob:crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex'),scope:'Fetched after UI actions from observed script URL; not an intercepted initial response'};
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round47-react-scan/served/metadata.json",JSON.stringify(record,null,2)+'\n');
+console.log(record);
+await page.click('loc=role:checkbox',{label:'pause native scan after capture'});
+console.log(await page.snapshot());

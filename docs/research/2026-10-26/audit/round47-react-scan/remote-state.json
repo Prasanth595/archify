@@ -1,0 +1,69 @@
+{
+  "asOf": "2026-10-29 Asia/Shanghai",
+  "remoteHeads": 333,
+  "changedSince46": [
+    "refs/heads/codex/research-lab-20261026"
+  ],
+  "repository": "aidenybai/react-scan",
+  "revision": "0fb31862b697ef3ed2d8ed6990878a35a4ca8a75",
+  "archifyQueries": [
+    {
+      "query": "repo:tt-a1i/archify is:issue \"react-scan\"",
+      "total": 0,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr \"react-scan\"",
+      "total": 2,
+      "items": [
+        {
+          "number": 992,
+          "title": "Add evidence-backed AI task handoff to Code Analysis",
+          "url": "https://github.com/tt-a1i/archify/pull/992"
+        },
+        {
+          "number": 942,
+          "title": "feat(document): render Markdown using supplied HTML designs",
+          "url": "https://github.com/tt-a1i/archify/pull/942"
+        }
+      ]
+    }
+  ],
+  "upstream": [
+    {
+      "number": 198,
+      "title": "Can we start collection render count in the first render?",
+      "state": "closed",
+      "stateReason": "not_planned",
+      "url": "https://github.com/aidenybai/react-scan/issues/198",
+      "updatedAt": "2025-07-22T11:52:02Z"
+    },
+    {
+      "number": 6,
+      "title": "Feature Idea: Component Render Counter",
+      "state": "closed",
+      "stateReason": "completed",
+      "url": "https://github.com/aidenybai/react-scan/issues/6",
+      "updatedAt": "2024-11-18T20:57:52Z"
+    }
+  ],
+  "scope": "Read-only research. Search matches do not prove implementation ownership.",
+  "archifyPRs": [
+    {
+      "number": 992,
+      "state": "closed",
+      "merged": false,
+      "head": "c5d33a667bfce7a9cf3cc679b9d35a4cab45f873",
+      "url": "https://github.com/tt-a1i/archify/pull/992",
+      "title": "Add evidence-backed AI task handoff to Code Analysis"
+    },
+    {
+      "number": 942,
+      "state": "closed",
+      "merged": false,
+      "head": "757a6720785de6fb5625eb64235407eb1838ebd9",
+      "url": "https://github.com/tt-a1i/archify/pull/942",
+      "title": "feat(document): render Markdown using supplied HTML designs"
+    }
+  ]
+}

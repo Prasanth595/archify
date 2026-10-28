@@ -1,0 +1,116 @@
+{
+  "observations": [
+    {
+      "state": "08-before",
+      "selectedComponent": "InstallGuide",
+      "noChangesSinceSelecting": true,
+      "changes": [],
+      "installGuideTreeBadge": 1,
+      "historyPresent": true
+    },
+    {
+      "state": "09-expanded",
+      "selectedComponent": "InstallGuide",
+      "noChangesSinceSelecting": false,
+      "changes": [
+        {
+          "hook": 0,
+          "count": 1,
+          "previous": "script",
+          "current": "vite"
+        },
+        {
+          "hook": 2,
+          "count": 1,
+          "previous": "138px",
+          "current": "307px"
+        }
+      ],
+      "installGuideTreeBadge": 2,
+      "historyPresent": true
+    },
+    {
+      "state": "10-copyicon",
+      "selectedComponent": "CopyIcon",
+      "noChangesSinceSelecting": true,
+      "changes": [],
+      "installGuideTreeBadge": 2,
+      "historyPresent": true
+    },
+    {
+      "state": "10-reselected",
+      "selectedComponent": "InstallGuide",
+      "noChangesSinceSelecting": true,
+      "changes": [],
+      "installGuideTreeBadge": 2,
+      "historyPresent": true
+    },
+    {
+      "state": "11-script",
+      "selectedComponent": "InstallGuide",
+      "noChangesSinceSelecting": false,
+      "changes": [
+        {
+          "hook": 0,
+          "count": 1,
+          "previous": "vite",
+          "current": "script"
+        },
+        {
+          "hook": 2,
+          "count": 1,
+          "previous": "307px",
+          "current": "138px"
+        }
+      ],
+      "installGuideTreeBadge": 4,
+      "historyPresent": true
+    },
+    {
+      "state": "11-vite",
+      "selectedComponent": "InstallGuide",
+      "noChangesSinceSelecting": false,
+      "changes": [
+        {
+          "hook": 0,
+          "count": 2,
+          "previous": "script",
+          "current": "vite"
+        },
+        {
+          "hook": 2,
+          "count": 2,
+          "previous": "138px",
+          "current": "307px"
+        }
+      ],
+      "installGuideTreeBadge": 5,
+      "historyPresent": true
+    }
+  ],
+  "fixedBundle": {
+    "path": "source/packages/website/public/auto.global.js",
+    "bytes": 387683,
+    "sha256": "54ca59646f948ccebc43c6b644ee9c189cd4291a5e49ef69a10ffe7444aa233f",
+    "gitBlob": "33d2f266103f73883c467ce244cd82cb56e714a2",
+    "declaredVersions": [
+      "0.5.7"
+    ]
+  },
+  "servedLaterBundle": {
+    "path": "served/auto.global.js",
+    "bytes": 391118,
+    "sha256": "fb0b2e8f4e428cbb5eeb4987a20c34bbe8cce45b532e6fb4093a6c7509480c37",
+    "gitBlob": "19cd02bcbd9682f47251038c8abbd396850b8f8b",
+    "declaredVersions": [
+      "0.5.7"
+    ]
+  },
+  "sameBundleBytes": false,
+  "limits": [
+    "served asset fetched after actions, not captured initial response",
+    "no reader benchmark or causal/performance conclusion",
+    "counts are UI observations, not independently measured React calls",
+    "source revision not established as deployment revision"
+  ]
+}

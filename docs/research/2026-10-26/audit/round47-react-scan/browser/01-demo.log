@@ -1,0 +1,79 @@
+[p1 "React Scan" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "React Scan"]
+root
+  container
+    container
+      anchor [ref=863, url=https://react-scan.com/]
+        image
+      container
+        anchor [ref=864, loc=href:https://github.com/aidenybai/react-scan#readme, url=https://github.com/aidenybai/react-scan#readme]
+          text "docs"
+        anchor [ref=865, loc=href:https://github.com/aidenybai/react-scan, url=https://github.com/aidenybai/react-scan]
+          text "github"
+    container
+      container
+        text "You can still use React Scan, but we recommend React Doctor"
+        container
+          text "React Doctor brings React Scan’s performance focus to coding agents, with static checks for architecture, security, accessibility & more."
+          anchor [ref=866, loc=href:https://react.doctor/, url=https://react.doctor/]
+            text "Try React Doctor →"
+      container
+        text "React Scan"
+        text "automatically detects performance issues in your React app."
+      text "Previously, existing tools required lots of code change, lacked simple visual cues, and didn't have a simple, portable API."
+      text "Instead, React Scan:"
+      unordered_list
+        list_item
+          text "Requires no code changes"
+        list_item
+          text "Highlights exactly the components you need to optimize"
+        list_item
+          text "Available via script tag, npm, you name it!"
+      container
+        container
+          text "Run this command to get started:"
+          button [ref=867]
+            text "Prefer manual install?"
+        container
+          container
+            button [ref=868]
+              text "CLI"
+            button [ref=869]
+              text "Script Tag"
+            button [ref=870]
+              text "Next.js (App)"
+            button [ref=871]
+              text "Next.js (Pages)"
+            button [ref=872]
+              text "Vite"
+            button [ref=873]
+              text "Remix"
+          button [ref=874]
+            text "npx -y react-scan@latest init"
+            svg_root
+      container
+        anchor [ref=875, loc=href:https://github.com/aidenybai/react-scan#install, url=https://github.com/aidenybai/react-scan#install]
+          svg_root
+          text "Star on GitHub"
+        anchor [ref=876, loc=href:https://discord.gg/KV3FhDq7FA, url=https://discord.gg/KV3FhDq7FA]
+          svg_root
+          text "Join Discord"
+      container
+        text "Trusted by engineering teams at:"
+        container
+          image
+          image
+          image
+  canvas
+  canvas
+  canvas
+  container
+    button [ref=877]
+      svg_root
+    button [ref=878]
+      svg_root
+    checkbox [ref=879]
+    container
+      text "60"
+      text "FPS"
+
+

@@ -1,0 +1,9 @@
+{
+  "url": "https://react-scan.com/",
+  "viewport": [
+    1440,
+    900
+  ],
+  "text": "docs\ngithub\nYou can still use React Scan, but we recommend React Doctor\nReact Doctor brings React Scan’s performance focus to coding agents, with static checks for architecture, security, accessibility & more. Try React Doctor →\nReact Scan automatically detects performance issues in your React app.\nPreviously, existing tools required lots of code change, lacked simple visual cues, and didn't have a simple, portable API.\nInstead, React Scan:\nRequires no code changes\nHighlights exactly the components you need to optimize\nAvailable via script tag, npm, you name it!\nIt takes 1 script tag to get started:\nCLI\nScript Tag\nNext.js (App)\nNext.js (Pages)\nVite\nRemix\n<!doctype html>\n<html lang=\"en\">\n  <head>\n    <script\n      crossOrigin=\"anonymous\"\n      src=\"//unpkg.com/react-scan/dist/auto.global.js\"\n    ></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\n  </body>\n</html>\nExample index.html with React Scan enabled\nStar on GitHub\nJoin Discord\nTrusted by engineering teams at:",
+  "scan": "InstallGuide\nWhat changed?\nprops\nstate\ncontext\nWhy did InstallGuide render?\nNo changes detected since selecting\nThe props, state, and context changes within your component will be reported here\n18\nUnknown\ny\ny\nHome\ny\nInstallGuide\n×2\nCopyIcon\n×2\nInlineCode\n×1\ny\nIconGithub\ny\nIconDiscord\nCompanies\nUnknown\nUnknown\nUnknown\nHistory\nFPS Drops\nx3\nInstallGuide\n48ms\nFPS Drops\nx164\nInstallGuide\n32ms\nFPS Drops\nx13\nD\n16ms\nFPS Drops\nx17\nScanning for slowdowns\n\nClick on an item in the History list to get started\n\nYou don't need to keep this panel open for React Scan to record slowdowns\n\nEnable audio alerts to hear a delightful ding every time a large slowdown is recorded\n\nEnable audio alerts\n>99\n16\nFPS"
+}

@@ -1,0 +1,9 @@
+{
+  "fullStagedWhitespaceExit": 2,
+  "rawWhitespaceDiagnostics": "docs/research/2026-10-26/audit/round47-react-scan/browser/01-demo.log:78: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/02-inspect-mode.log:79: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/03-selected.log:89: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/04-controls.log:309: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/06-overlay.log:89: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/07-component.log:198: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/08-vite.log:285: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/09-expanded.log:300: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/10-reselect.log:255: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/11-roundtrip.log:295: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/13-toggle-state.log:2: new blank line at EOF.\ndocs/research/2026-10-26/audit/round47-react-scan/browser/14-close-demo.log:2: new blank line at EOF.\n",
+  "authoredScopedWhitespaceExit": 0,
+  "links": "new report and packet links resolve",
+  "summary": "two runs byte-identical; assertions cover archived DOM and bundle identity, not runtime performance",
+  "initialSummaryFailure": "First regex was double-escaped, so no hook rows matched; corrected before generating observations.json. Original DOM unchanged.",
+  "productTests": "not run; evidence package only"
+}

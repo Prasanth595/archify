@@ -1,0 +1,74 @@
+[
+  {
+    "path": "images/01-demo.png",
+    "role": "supporting",
+    "visuallyReviewed": true,
+    "note": "Startup render outlines; not a performance benchmark"
+  },
+  {
+    "path": "images/03-selected.png",
+    "role": "supporting",
+    "visuallyReviewed": true,
+    "note": "Script tab changed; initial attempt did not open the component inspector"
+  },
+  {
+    "path": "images/06-inspect-overlay.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Actual component selection overlay"
+  },
+  {
+    "path": "images/07-component.png",
+    "role": "excluded",
+    "visuallyReviewed": true,
+    "note": "Inspector content had not painted in screenshot; use 08-before"
+  },
+  {
+    "path": "images/08-before.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Stable selected component before tracked changes"
+  },
+  {
+    "path": "images/08-vite.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "State-change rows visible, values collapsed"
+  },
+  {
+    "path": "images/09-expanded.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Both state value pairs visibly expanded"
+  },
+  {
+    "path": "images/10-copyicon.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Switch selection to child component"
+  },
+  {
+    "path": "images/10-reselected.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Return clears change list while tree counts remain"
+  },
+  {
+    "path": "images/11-script.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Reverse transition visibly expanded"
+  },
+  {
+    "path": "images/11-vite.png",
+    "role": "accepted",
+    "visuallyReviewed": true,
+    "note": "Second transition counts and latest pair visibly expanded"
+  },
+  {
+    "path": "images/11-expanded.png",
+    "role": "supporting",
+    "visuallyReviewed": true,
+    "note": "Misleading filename: click toggled already expanded rows closed; use 11-vite for expanded values"
+  }
+]
