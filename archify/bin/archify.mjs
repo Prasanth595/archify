@@ -3678,8 +3678,25 @@ async function commandCompareWorkflow(args) {
   const json = args.includes('--json');
   const positional = args.filter(arg => !arg.startsWith('--'));
   const [, baseInput, headInput, output] = positional;
+  let outputFailure;
+  const validateOutput = async () => {
+    if (!output) return;
+    const resolved = path.resolve(output);
+    if (path.extname(resolved).toLowerCase() !== '.json') {
+      outputFailure = { code: 'output/cli-extension', message: 'Workflow comparison output must use a .json extension.' };
+      return;
+    }
+    const { sameLocation } = await import('../renderers/shared/path-semantics.mjs');
+    for (const input of [baseInput, headInput].filter(Boolean)) {
+      const relation = sameLocation(resolved, path.resolve(input));
+      if (relation.status === 'same') {
+        outputFailure = { code: 'output/cli-alias', message: 'Workflow comparison output must not replace either input, including through an alias.' };
+        return;
+      }
+    }
+  };
   const writeReceipt = (destination, receipt) => {
-    if (!destination) return;
+    if (!destination || outputFailure) return;
     const resolved = path.resolve(destination);
     const temporary = `${resolved}.tmp-${process.pid}-${randomUUID()}`;
     fs.writeFileSync(temporary, `${JSON.stringify(receipt, null, 2)}\n`, { flag: 'wx' });
@@ -3694,6 +3711,8 @@ async function commandCompareWorkflow(args) {
     process.exitCode = 1;
   };
   if (!baseInput || !headInput || positional.length > 4) return failWorkflow('workflow/usage', 'Usage: compare workflow <base.json> <head.json> [output.json] [--json]');
+  await validateOutput();
+  if (outputFailure) return failWorkflow(outputFailure.code, outputFailure.message);
   let base;
   let head;
   try { base = JSON.parse(fs.readFileSync(baseInput, 'utf8')); } catch (error) { return failWorkflow('workflow/base-read', `Could not read base Workflow input: ${error.message}`); }
@@ -3703,6 +3722,26 @@ async function commandCompareWorkflow(args) {
   const { validateSchema } = await import('../renderers/shared/validator.mjs');
   try { validateSchema('workflow', base); } catch (error) { return failWorkflow('workflow/base-invalid', 'Base Workflow input is invalid.', { diagnostics: error.archifyDiagnostics || [] }); }
   try { validateSchema('workflow', head); } catch (error) { return failWorkflow('workflow/head-invalid', 'Head Workflow input is invalid.', { diagnostics: error.archifyDiagnostics || [] }); }
+  const semanticDiagnostics = (workflow) => {
+    const nodeIds = new Set((workflow.nodes || []).map((node) => node.id));
+    const edgePairs = new Set((workflow.edges || []).map((edge) => `${edge.from}\0${edge.to}`));
+    const diagnostics = [];
+    for (const [index, edge] of (workflow.edges || []).entries()) {
+      for (const field of ['from', 'to']) if (!nodeIds.has(edge[field])) diagnostics.push({
+        code: 'workflow/unknown-endpoint', severity: 'error', message: `Edge "${edge.id}" references unknown ${field} node "${edge[field]}".`,
+        subject: { path: `/edges/${index}/${field}`, edge: edge.id }, evidence: { nodeId: edge[field] }, supportedFixes: [],
+      });
+    }
+    for (const [index, nodeId] of (workflow.mainPath || []).entries()) {
+      if (!nodeIds.has(nodeId)) diagnostics.push({ code: 'workflow/unknown-endpoint', severity: 'error', message: `mainPath references unknown node "${nodeId}".`, subject: { path: `/mainPath/${index}`, mainPath: nodeId }, evidence: { nodeId }, supportedFixes: [] });
+      if (index && !edgePairs.has(`${workflow.mainPath[index - 1]}\0${nodeId}`)) diagnostics.push({ code: 'workflow/main-path-edge', severity: 'error', message: `mainPath step "${workflow.mainPath[index - 1]}" -> "${nodeId}" has no matching edge.`, subject: { path: `/mainPath/${index}` }, evidence: {}, supportedFixes: [] });
+    }
+    return diagnostics;
+  };
+  for (const [label, workflow] of [['base', base], ['head', head]]) {
+    const diagnostics = semanticDiagnostics(workflow);
+    if (diagnostics.length) return failWorkflow(`workflow/${label}-invalid`, `${label === 'base' ? 'Base' : 'Head'} Workflow input is semantically invalid.`, { diagnostics });
+  }
   const stable = (items, field) => {
     const map = new Map();
     for (const item of items || []) {
@@ -3722,7 +3761,7 @@ async function commandCompareWorkflow(args) {
     if (!value || typeof value !== 'object') return value;
     return Object.fromEntries(Object.keys(value).filter(key => !ignored.has(key)).sort().map(key => [key, semantic(value[key], ignored)]));
   };
-  const changes = { nodes: [], edges: [] };
+  const changes = { nodes: [], edges: [], mainPath: [] };
   for (const id of [...new Set([...baseNodes.keys(), ...headNodes.keys()])].sort()) {
     const before = baseNodes.get(id); const after = headNodes.get(id);
     if (!before) changes.nodes.push({ id, change: 'added', head: semantic(after) });
@@ -3735,9 +3774,10 @@ async function commandCompareWorkflow(args) {
     else if (!after) changes.edges.push({ id, change: 'removed', base: semantic(before) });
     else if (JSON.stringify(semantic(before)) !== JSON.stringify(semantic(after))) changes.edges.push({ id, change: before.from !== after.from || before.to !== after.to ? 'endpoint-changed' : 'modified', base: semantic(before), head: semantic(after) });
   }
-  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length } };
-  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${changes.nodes.length + changes.edges.length}\n`);
+  if (JSON.stringify(base.mainPath || []) !== JSON.stringify(head.mainPath || [])) changes.mainPath.push({ change: 'modified', base: base.mainPath || [], head: head.mainPath || [] });
+  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length, mainPath: changes.mainPath.length } };
   writeReceipt(output, receipt);
+  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${changes.nodes.length + changes.edges.length + changes.mainPath.length}\n`);
 }
 
 async function commandCompare(args) {
