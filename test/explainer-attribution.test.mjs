@@ -22,6 +22,8 @@ test('claim evidence accepts stable block and source IDs and exposes navigable H
   assert.match(html, /href="#latency-chart"/);
   assert.match(html, /data-claim-evidence="runbook"/);
   assert.match(html, /href="#source-runbook"/);
+  assert.match(html, /class="answer-verdict"/);
+  assert.match(html, /aria-hidden="true"> · <\/span>/);
 });
 
 test('claim evidence reports dangling IDs without changing legacy documents', () => {
