@@ -44,3 +44,16 @@ Route不推断真实流量、故障切换或最佳路线。Diff不证明语义�
 [本轮GitHub排重快照](navigation-research-overlap.json)记录04:13 UTC的#571、#1141、#1103、#1015精确head和未合入状态。dev初始重查仍为 `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`。这里核的是范围重叠，不是PR正确性、CI或合并就绪。图形作者报告另记录#960/#308/#838/#891/#923/#1135的有界核查。
 
 本轮完成三份调研，未选出需要实施的新方向；已交付实验及图片画廊保持53项，未为新增调研改写旧实验或图片，也没有运行无关renderer测试。研究不是功能交付，不计第54项。持续探索目标保持active，下一轮仍可用完整公开输入或明确标明的构造复现比较具体阅读任务，不要求先出现生产事故或证明阅读效率。
+
+
+## 第54项：共同可达查询
+
+[Shared reach revisited](scouts/shared-reach-revisited.md)重新审视两个节点的交集问题，核对GID、BitBom及npmgraph的真实集合语义。完整公开输入足以支持探索，不要求先有真实用户失败；不复制外部实现，也不沿用common-cause作为故障结论。
+
+新独立分支 [codex/lab-shared-reach](https://github.com/tt-a1i/archify/tree/codex/lab-shared-reach/experiments/shared-reach) 已推送，精确head `b160b948541f541394457fec3005e2d10b281dea`，固定dev基线 `6ca6a5c84439b57ea22e0630fe306e1d91587a6e`。这是离线查询CLI，不改共享Viewer、schema或安装包。完整生产部署示例12节点/12边，api_a/api_b共同下游精确为events、worker、audit、observability；单侧分别为redis及postgres/replica。共同上游为clients、edge、gateway，路径保持原箭头。原输入与原生HTML保留；展示副本只给缺失edge id添加稳定标识以兼容既有exact targets，映射公开可核对。
+
+[实际主图](https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/browser-evidence/downstream-overview-light.png)为原始1440×1250 PNG，158360B，SHA-256 `ea70a5c260938652c1cccbd7b7121875c3aa6263aac3d34b84142939eb967cd1`。完整[README及证据](https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/README.md)包含13张原PNG、输入/答案、三次公共finalize、真实失败及路径替换派生记录；含本机路径的原始记录留checkout外。
+
+Node22集中7/7通过；独立审查以传递闭包核对512张三节点有向图的6144次查询，验证共同集合及见证箭头/身份，未冒称穷举最短跳数或平行边tie。上下游和空答案三页finalize的validate/deliver/check通过，自动browser-check未运行。root实际点击两侧到Observability路径、上游clients→B，核对Escape回焦及Tab/Enter打开；成功空集和390px深色视图均有原图。390px仍有400px页面宽度、scope/hash截断及iframe横向探索限制，没有移动端/AT/效率接受结论。
+
+[精确远端核对](shared-reach-remote.json)确认GitHub head一致，Actions/check-runs为0，不表示CI通过。最新dev仍6ca6、main仍d605；未创建PR、合入、发布或安装。主索引已追加第54行；画廊当前53项证据仍绑定原revision，下一步增量构建第54卡并核对原53项字节。持续探索目标保持active。
