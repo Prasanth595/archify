@@ -1,0 +1,41 @@
+# DERIVED PATH-REDACTED RECORD; original SHA-256 aec5a44a2b7bbe28d10f51e11068cbf25e6c5470914c58c2f868852abad00196; original bytes 2538. Original is retained outside checkout; stage/failure/hash values preserved.
+✔ fixed native fixture preserves all semantics and exact shortest downstream witnesses (395.878208ms)
+✔ upstream witnesses follow original common-to-seed arrow direction (457.972791ms)
+✔ cycles terminate, origins are excluded, parallel edges keep identity and stable shortest ties (0.229208ms)
+✔ empty intersection is a successful answer and only-side sets remain available (0.074834ms)
+✖ reject invalid queries, malformed/non-Architecture input and unsupported direction (1.16775ms)
+✔ public experiment CLI delivers a normal finalized Explainer (2603.284583ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3541.904125
+
+✖ failing tests:
+
+test at experiments/shared-reach/shared-reach.test.mjs:60:1
+✖ reject invalid queries, malformed/non-Architecture input and unsupported direction (1.16775ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /unsupported/. Input:
+  
+  'Error: The current native Architecture schema does not support connection.direction (including forward, both and none). Omit direction; traversal uses authored from → to.'
+  
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file://<workspace>/experiments/shared-reach/shared-reach.test.mjs:69:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: The current native Architecture schema does not support connection.direction (including forward, both and none). Omit direction; traversal uses authored from → to.
+        at reject (file://<workspace>/experiments/shared-reach/shared-reach.mjs:6:23)
+        at analyzeArchitecture (file://<workspace>/experiments/shared-reach/shared-reach.mjs:49:5)
+        at TestContext.<anonymous> (file://<workspace>/experiments/shared-reach/shared-reach.test.mjs:69:26)
+        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+        at async Test.run (node:internal/test_runner/test:1409:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:974:7),
+    expected: /unsupported/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

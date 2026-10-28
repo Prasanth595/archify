@@ -1,0 +1,27 @@
+{
+  "executable": "<node-runtime>",
+  "args": [
+    "<workspace>/archify/bin/archify.mjs",
+    "finalize",
+    "explainer",
+    "<workspace>/experiments/shared-reach/evidence/empty/explainer.json",
+    "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+    "--quality",
+    "standard",
+    "--json"
+  ],
+  "status": 0,
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "experiment/evidence/empty/finalize-command.json",
+    "originalSha256": "649c2f80d8afdaa140684a421fce5d9547be089c45ab914eef4ec93de9440af2",
+    "originalBytes": 508,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

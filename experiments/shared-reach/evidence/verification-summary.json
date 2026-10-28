@@ -1,0 +1,75 @@
+{
+  "baseRevision": "6ca6a5c84439b57ea22e0630fe306e1d91587a6e",
+  "node": "v26.12.0",
+  "testCommand": "node --test experiments/shared-reach/shared-reach.test.mjs",
+  "testResults": {
+    "passed": 7,
+    "failed": 0
+  },
+  "visualAcceptance": "pending-root-review",
+  "records": [
+    {
+      "name": "downstream",
+      "inputSha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+      "common": [
+        "events",
+        "worker",
+        "audit",
+        "observability"
+      ],
+      "answerStatus": "ok",
+      "finalizeOk": true,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "browserCheck": {
+        "requested": false,
+        "ran": false
+      },
+      "htmlSha256": "20ff256593eb866b528c8d6862f294960dd088dcf201b8f9f40859b5c320688a"
+    },
+    {
+      "name": "upstream",
+      "inputSha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+      "common": [
+        "clients",
+        "edge",
+        "gateway"
+      ],
+      "answerStatus": "ok",
+      "finalizeOk": true,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "browserCheck": {
+        "requested": false,
+        "ran": false
+      },
+      "htmlSha256": "d26a59639de468765075904d7e918d5f67cd2280ff7dd0409c66515e69cfa72e"
+    },
+    {
+      "name": "empty",
+      "inputSha256": "610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda",
+      "common": [],
+      "answerStatus": "ok",
+      "finalizeOk": true,
+      "gates": {
+        "validate": "pass",
+        "deliver": "pass",
+        "check": "pass",
+        "browser-check": "not-run"
+      },
+      "browserCheck": {
+        "requested": false,
+        "ran": false
+      },
+      "htmlSha256": "3b533b49b411eee3f9d6882bdfa49a3f612523589a076c91f49d3f3e61dc5441"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "executable": "<node-runtime>",
+  "args": [
+    "experiments/shared-reach/cli.mjs",
+    "experiments/shared-reach/fixtures/production-deployment.architecture.json",
+    "missing",
+    "api_b",
+    "downstream",
+    "experiments/shared-reach/evidence/rejected-queries/unused-output"
+  ],
+  "cwd": "<workspace>",
+  "status": 1,
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "experiment/evidence/rejected-queries/unknown-node.command.json",
+    "originalSha256": "7c8f2e13e696f2989db6bb635311706e88fd6fafaa0abea5059022c60ec74aa0",
+    "originalBytes": 406,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

@@ -1,0 +1,528 @@
+{
+  "observation": "After pointer activation of observability: api_b — 3 hops",
+  "nodesAndEdges": [
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "clients",
+        "data-edge-to": "edge",
+        "data-edge-label": "HTTPS",
+        "data-edge-key": "0",
+        "data-edge-id": "e-0",
+        "data-composition-points": "160,330;230,330",
+        "data-composition-crossover": "halo",
+        "data-composition-independent": "true",
+        "d": "M 160 330 L 230 330",
+        "class": "a-emphasis",
+        "data-animate": "edge",
+        "style": "--step:0",
+        "stroke-width": "1.8",
+        "marker-end": "url(#preview-full-graph-arrowhead-emphasis)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "edge",
+        "data-edge-to": "gateway",
+        "data-edge-label": "mTLS",
+        "data-edge-key": "1",
+        "data-edge-id": "e-1",
+        "data-composition-points": "356,330;430,330",
+        "data-composition-crossover": "halo",
+        "data-composition-independent": "true",
+        "d": "M 356 330 L 430 330",
+        "class": "a-security",
+        "data-animate": "edge",
+        "style": "--step:1",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead-security)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "gateway",
+        "data-edge-to": "api_a",
+        "data-edge-label": "VPC route",
+        "data-edge-key": "2",
+        "data-edge-id": "e-2",
+        "data-composition-points": "558,330;594,330;594,226;630,226",
+        "d": "M 558 330 L 586 330 Q 594 330 594 322 L 594 234 Q 594 226 602 226 L 630 226",
+        "class": "a-emphasis",
+        "data-animate": "edge",
+        "style": "--step:2",
+        "stroke-width": "1.8",
+        "marker-end": "url(#preview-full-graph-arrowhead-emphasis)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "gateway",
+        "data-edge-to": "api_b",
+        "data-edge-label": "VPC route",
+        "data-edge-key": "3",
+        "data-edge-id": "e-3",
+        "data-composition-points": "558,330;594,330;594,436;630,436",
+        "d": "M 558 330 L 586 330 Q 594 330 594 338 L 594 428 Q 594 436 602 436 L 630 436",
+        "class": "a-emphasis",
+        "data-animate": "edge",
+        "style": "--step:3",
+        "stroke-width": "1.8",
+        "marker-end": "url(#preview-full-graph-arrowhead-emphasis)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "api_a",
+        "data-edge-to": "redis",
+        "data-edge-label": "cache",
+        "data-edge-key": "4",
+        "data-edge-id": "e-4",
+        "data-composition-points": "766,226;840,226",
+        "d": "M 766 226 L 840 226",
+        "class": "a-default",
+        "data-animate": "edge",
+        "style": "--step:4",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "api_b",
+        "data-edge-to": "postgres",
+        "data-edge-label": "SQL",
+        "data-edge-key": "5",
+        "data-edge-id": "e-5",
+        "data-composition-points": "766,436;840,436",
+        "d": "M 766 436 L 840 436",
+        "class": "a-default",
+        "data-animate": "edge",
+        "style": "--step:5",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "api_a",
+        "data-edge-to": "events",
+        "data-edge-label": "publish",
+        "data-edge-key": "6",
+        "data-edge-id": "e-6",
+        "data-composition-points": "698,195;698,170;1103,170;1103,300",
+        "d": "M 698 195 L 698 178 Q 698 170 706 170 L 1095 170 Q 1103 170 1103 178 L 1103 300",
+        "class": "a-dashed",
+        "data-animate": "edge",
+        "style": "--step:6",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead-dashed)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "api_b",
+        "data-edge-to": "events",
+        "data-edge-key": "7",
+        "data-edge-id": "e-7",
+        "data-composition-points": "698,405;698,380;1103,380;1103,360",
+        "d": "M 698 405 L 698 388 Q 698 380 706 380 L 1095 380 Q 1103 380 1103 372 L 1103 360",
+        "class": "a-dashed",
+        "data-animate": "edge",
+        "style": "--step:7",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead-dashed)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "events",
+        "data-edge-to": "worker",
+        "data-edge-key": "8",
+        "data-edge-id": "e-8",
+        "data-composition-points": "1166,330;1190,330",
+        "data-composition-crossover": "halo",
+        "data-composition-independent": "true",
+        "d": "M 1166 330 L 1190 330",
+        "class": "a-emphasis",
+        "data-animate": "edge",
+        "style": "--step:8",
+        "stroke-width": "1.8",
+        "marker-end": "url(#preview-full-graph-arrowhead-emphasis)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "postgres",
+        "data-edge-to": "replica",
+        "data-edge-label": "cross-region WAL",
+        "data-edge-key": "9",
+        "data-edge-id": "e-9",
+        "data-composition-points": "903,467;903,553.5;1103,553.5;1103,640",
+        "d": "M 903 467 L 903 545.5 Q 903 553.5 911 553.5 L 1095 553.5 Q 1103 553.5 1103 561.5 L 1103 640",
+        "class": "a-security",
+        "data-animate": "edge",
+        "style": "--step:9",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead-security)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "worker",
+        "data-edge-to": "audit",
+        "data-edge-label": "evidence",
+        "data-edge-key": "10",
+        "data-edge-id": "e-10",
+        "data-composition-points": "1253,360;1253,492",
+        "data-composition-crossover": "halo",
+        "data-composition-independent": "true",
+        "d": "M 1253 360 L 1253 492",
+        "class": "a-dashed",
+        "data-animate": "edge",
+        "style": "--step:10",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead-dashed)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "path",
+      "attributes": {
+        "data-edge-from": "worker",
+        "data-edge-to": "observability",
+        "data-edge-label": "OTLP",
+        "data-edge-key": "11",
+        "data-edge-id": "e-11",
+        "data-composition-points": "1253,300;1253,223.5;1253,223.5;1253,147",
+        "d": "M 1253 300 L 1253 223.5 L 1253 223.5 L 1253 147",
+        "class": "a-dashed",
+        "data-animate": "edge",
+        "style": "--step:11",
+        "stroke-width": "1.5",
+        "marker-end": "url(#preview-full-graph-arrowhead-dashed)"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-clients",
+        "data-node-id": "clients",
+        "data-node-label": "Customers",
+        "aria-label": "Focus Customers, web + mobile, Architecture component",
+        "data-node-kind": "external",
+        "data-node-sublabel": "web + mobile",
+        "data-node-context": "Architecture component"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-edge",
+        "data-node-id": "edge",
+        "data-node-label": "Global Edge",
+        "aria-label": "Focus Global Edge, CDN + WAF, AWS us-east-1 / production",
+        "data-node-kind": "cloud",
+        "data-node-sublabel": "CDN + WAF",
+        "data-node-tag": "edge team",
+        "data-node-context": "AWS us-east-1 / production"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-gateway",
+        "data-node-id": "gateway",
+        "data-node-label": "API Gateway",
+        "aria-label": "Focus API Gateway, public :443, AWS us-east-1 / production",
+        "data-node-kind": "security",
+        "data-node-sublabel": "public :443",
+        "data-node-tag": "platform",
+        "data-node-context": "AWS us-east-1 / production"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-api_a",
+        "data-node-id": "api_a",
+        "data-node-label": "API Pods / AZ-a",
+        "aria-label": "Focus API Pods / AZ-a, private subnet, AWS us-east-1 / production › private application network",
+        "data-node-kind": "backend",
+        "data-node-sublabel": "private subnet",
+        "data-node-tag": "app team",
+        "data-node-context": "AWS us-east-1 / production › private application network"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-api_b",
+        "data-node-id": "api_b",
+        "data-node-label": "API Pods / AZ-b",
+        "aria-label": "Focus API Pods / AZ-b, private subnet, AWS us-east-1 / production › private application network",
+        "data-node-kind": "backend",
+        "data-node-sublabel": "private subnet",
+        "data-node-tag": "app team",
+        "data-node-context": "AWS us-east-1 / production › private application network"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-redis",
+        "data-node-id": "redis",
+        "data-node-label": "Redis",
+        "aria-label": "Focus Redis, multi-AZ cache, AWS us-east-1 / production › private application network",
+        "data-node-kind": "database",
+        "data-node-sublabel": "multi-AZ cache",
+        "data-node-tag": "platform",
+        "data-node-context": "AWS us-east-1 / production › private application network"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-postgres",
+        "data-node-id": "postgres",
+        "data-node-label": "PostgreSQL",
+        "aria-label": "Focus PostgreSQL, primary / encrypted, AWS us-east-1 / production › private application network",
+        "data-node-kind": "database",
+        "data-node-sublabel": "primary / encrypted",
+        "data-node-tag": "data team",
+        "data-node-context": "AWS us-east-1 / production › private application network"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-events",
+        "data-node-id": "events",
+        "data-node-label": "Event Bus",
+        "aria-label": "Focus Event Bus, orders.v1, AWS us-east-1 / production › private application network",
+        "data-node-kind": "messagebus",
+        "data-node-sublabel": "orders.v1",
+        "data-node-tag": "platform",
+        "data-node-context": "AWS us-east-1 / production › private application network"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-worker",
+        "data-node-id": "worker",
+        "data-node-label": "Workers",
+        "aria-label": "Focus Workers, private workload, AWS us-east-1 / production › private application network",
+        "data-node-kind": "backend",
+        "data-node-sublabel": "private workload",
+        "data-node-tag": "app team",
+        "data-node-context": "AWS us-east-1 / production › private application network"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-replica",
+        "data-node-id": "replica",
+        "data-node-label": "DR Replica",
+        "aria-label": "Focus DR Replica, eu-west-1, AWS eu-west-1 / disaster recovery › DR private subnet",
+        "data-node-kind": "database",
+        "data-node-sublabel": "eu-west-1",
+        "data-node-tag": "data team",
+        "data-node-context": "AWS eu-west-1 / disaster recovery › DR private subnet"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-audit",
+        "data-node-id": "audit",
+        "data-node-label": "Audit Archive",
+        "aria-label": "Focus Audit Archive, immutable objects, AWS us-east-1 / production",
+        "data-node-kind": "cloud",
+        "data-node-sublabel": "immutable objects",
+        "data-node-tag": "security",
+        "data-node-context": "AWS us-east-1 / production"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "id": "preview-full-graph-node-observability",
+        "data-node-id": "observability",
+        "data-node-label": "Observability",
+        "aria-label": "Focus Observability, metrics + traces, Architecture component",
+        "data-node-kind": "external",
+        "data-node-sublabel": "metrics + traces",
+        "data-node-tag": "SRE",
+        "data-node-context": "Architecture component"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "clients",
+        "data-edge-to": "edge",
+        "data-edge-label": "HTTPS",
+        "data-edge-key": "0",
+        "data-edge-id": "e-0"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "edge",
+        "data-edge-to": "gateway",
+        "data-edge-label": "mTLS",
+        "data-edge-key": "1",
+        "data-edge-id": "e-1"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "gateway",
+        "data-edge-to": "api_a",
+        "data-edge-label": "VPC route",
+        "data-edge-key": "2",
+        "data-edge-id": "e-2"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "gateway",
+        "data-edge-to": "api_b",
+        "data-edge-label": "VPC route",
+        "data-edge-key": "3",
+        "data-edge-id": "e-3"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "api_a",
+        "data-edge-to": "redis",
+        "data-edge-label": "cache",
+        "data-edge-key": "4",
+        "data-edge-id": "e-4"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "api_b",
+        "data-edge-to": "postgres",
+        "data-edge-label": "SQL",
+        "data-edge-key": "5",
+        "data-edge-id": "e-5"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "api_a",
+        "data-edge-to": "events",
+        "data-edge-label": "publish",
+        "data-edge-key": "6",
+        "data-edge-id": "e-6"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "postgres",
+        "data-edge-to": "replica",
+        "data-edge-label": "cross-region WAL",
+        "data-edge-key": "9",
+        "data-edge-id": "e-9"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "worker",
+        "data-edge-to": "audit",
+        "data-edge-label": "evidence",
+        "data-edge-key": "10",
+        "data-edge-id": "e-10"
+      }
+    },
+    {
+      "doc": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+      "tag": "g",
+      "attributes": {
+        "data-detail": "context",
+        "data-edge-from": "worker",
+        "data-edge-to": "observability",
+        "data-edge-label": "OTLP",
+        "data-edge-key": "11",
+        "data-edge-id": "e-11",
+        "class": ""
+      }
+    }
+  ],
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "browser-capture/downstream-path-b.json",
+    "originalSha256": "dea47def507b1dc1626cbc6239f328fd095ac528e59cad8c2becf420759d5b4e",
+    "originalBytes": 20296,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

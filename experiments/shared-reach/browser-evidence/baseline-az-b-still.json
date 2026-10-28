@@ -1,0 +1,65 @@
+{
+  "url": "file://<workspace>/experiments/shared-reach/evidence/full-native.html#focus=api_b&reach=downstream",
+  "theme": "light",
+  "text": "Light\nBlueprint\nStill\nPresent\nExport\nProduction Deployment Ownership\nCustomers\nweb + mobile\nGlobal Edge\nCDN + WAF\nedge team\nAPI Gateway\npublic :443\nplatform\nAPI Pods / AZ-a\nprivate subnet\napp team\nAPI Pods / AZ-b\nprivate subnet\napp team\nRedis\nmulti-AZ cache\nplatform\nPostgreSQL\nprimary / encrypted\ndata team\nEvent Bus\norders.v1\nplatform\nWorkers\nprivate workload\napp team\nDR Replica\neu-west-1\ndata team\nAudit Archive\nimmutable objects\nsecurity\nObservability\nmetrics + traces\nSRE\nHTTPS\nmTLS\nVPC route\nVPC route\ncache\nSQL\npublish\ncross-region WAL\nevidence\nOTLP\nAWS us-east-1 / production\nprivate application network\nAWS eu-west-1 / disaster recovery\nDR private subnet\nLegend\nBackend\n3\nDatabase\n3\nCloud\n2\nSecurity\n1\nMessage bus\n1\nExternal\n2\n\nSEMANTIC PASSPORT\nAPI Pods / AZ-b\nprivate subnet\nBACKEND\nAWS us-east-1 / production › private application network\napp team\napi_b\n2 outgoing · 1 incoming\nAUTHORED REACH\nUpstream\n3\nDownstream\n6\nDownstream · 6 nodes · 6 links · max 3 hops\n×\nCopy link\nOUTGOING · 2\nOUT →\nPostgreSQL\nSQL\nOUT →\nEvent Bus\nconnects to\nINCOMING · 1\n← IN\nAPI Gateway\nVPC route\nROUTE\nMAP\nLENS\nAUTO\n113%\nRuntime Ownership\nPlatform owns the edge, gateway, cache, and event bus\nApplication teams own API pods and workers\nData owns primary and disaster-recovery state\nNamed Crossings\nPublic HTTPS terminates at the managed edge\nmTLS crosses into the application network\nCross-region WAL is explicit and encrypted\nOperational Evidence\nWorkers emit traces to SRE-owned observability\nAudit evidence lands in immutable storage\nUnknown placement should remain marked, never invented\nNode index\n12\nArchitecture component\n2\nCustomers\nweb + mobile\nObservability\nmetrics + traces\nAWS us-east-1 / production\n9\nGlobal Edge\nCDN + WAF\nAPI Gateway\npublic :443\nAPI Pods / AZ-a\nprivate subnet\nAPI Pods / AZ-b\nprivate subnet\nRedis\nmulti-AZ cache\nPostgreSQL\nprimary / encrypted\nEvent Bus\norders.v1\nWorkers\nprivate workload\nAudit Archive\nimmutable objects\nAWS eu-west-1 / disaster recovery\n1\nDR Replica\neu-west-1",
+  "reach": [
+    "api_b",
+    "postgres",
+    "events",
+    "worker",
+    "replica",
+    "audit",
+    "observability"
+  ],
+  "allNodes": [
+    "clients",
+    "edge",
+    "gateway",
+    "api_a",
+    "api_b",
+    "redis",
+    "postgres",
+    "events",
+    "worker",
+    "replica",
+    "audit",
+    "observability"
+  ],
+  "allEdgeKeys": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "9",
+    "10",
+    "11"
+  ],
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "browser-capture/baseline-az-b-still.json",
+    "originalSha256": "96f6215fc4212e0d70d33ab2a7715f6d3fbd03b38d1e61412c33c861fe61dacc",
+    "originalBytes": 2895,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

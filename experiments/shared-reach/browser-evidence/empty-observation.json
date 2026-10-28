@@ -1,0 +1,18 @@
+{
+  "url": "file://<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+  "text": "Skip to content\nShared reach\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\nredis and replica have 0 common downstream nodes.\n\nCommon: none.\nOnly redis: none; only replica: none.\n\nApplies to\nDirected topology only. Both origins excluded. Each witness minimizes hop count; ties use native connection order. Upstream witnesses preserve original arrows, common node → seed. Input SHA-256: 610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda. No runtime or failure inference.\n\n1\nComplete graph and exact shortest witnesses\nAsk\n\nComplete input topology, with missing edge IDs annotated only for exact witness selection. All nodes and all relationships are retained. Original input and native HTML remain alongside this page; answer.json maps original edge keys and IDs to these presentation IDs.\n\nProduction Deployment Ownership\nOpen interactive view\nCustomers\nweb + mobile\nGlobal Edge\nCDN + WAF\nedge team\nAPI Gateway\npublic :443\nplatform\nAPI Pods / AZ-a\nprivate subnet\napp team\nAPI Pods / AZ-b\nprivate subnet\napp team\nRedis\nmulti-AZ cache\nplatform\nPostgreSQL\nprimary / encrypted\ndata team\nEvent Bus\norders.v1\nplatform\nWorkers\nprivate workload\napp team\nDR Replica\neu-west-1\ndata team\nAudit Archive\nimmutable objects\nsecurity\nObservability\nmetrics + traces\nSRE\nHTTPS\nmTLS\nVPC route\nVPC route\ncache\nSQL\npublish\ncross-region WAL\nevidence\nOTLP\nAWS us-east-1 / production\nprivate application network\nAWS eu-west-1 / disaster recovery\nDR private subnet\nLegend\nBackend\nDatabase\nCloud\nSecurity\nMessage bus\nExternal\n\nThis diagram cannot fit this page width with readable text. Open the interactive view to inspect it.\n\nSuccess: no shared reachable nodes after excluding both origins.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n1 panel\n1 diagram validated",
+  "stepTargets": 0,
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "browser-capture/empty-observation.json",
+    "originalSha256": "607fe84bc46e38ea70c1321cea0b8ac4a27cd772de3f8c371f0847a1e5e3cb43",
+    "originalBytes": 2063,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

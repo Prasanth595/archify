@@ -1,0 +1,27 @@
+{
+  "afterA": {
+    "dialogOpen": false,
+    "focus": "observability: api_a — 3 hops ↗"
+  },
+  "next": {
+    "focus": "observability: api_b — 3 hops ↗",
+    "target": null
+  },
+  "afterEnter": {
+    "dialogOpen": true,
+    "iframePresent": true
+  },
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "browser-capture/keyboard-observation.json",
+    "originalSha256": "abb9e10e1466c44ed0004cd32b7cea18d49e7a8220456795ab80db903fd58fdb",
+    "originalBytes": 259,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "explainer",
+  "quality": "showcase",
+  "specification": {
+    "path": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+  },
+  "artifact": {
+    "path": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.html"
+  },
+  "gates": {
+    "validate": "not-run",
+    "deliver": "not-run",
+    "check": "not-run",
+    "browser-check": "not-run"
+  },
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "explainer/schema-required",
+      "severity": "error",
+      "message": "/sources must have required property 'sources'",
+      "subject": {
+        "line": 1,
+        "column": 1,
+        "component": "document",
+        "path": "/sources",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/sources must have required property 'sources'",
+        "example": "Add sources to the document."
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: Add sources to the document."
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/0/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 481,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/0/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/0/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/1/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 492,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/1/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/1/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/2/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 503,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/2/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/2/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/2/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 504,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/2/target/edges/1",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/2/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/3/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 515,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/3/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/3/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/3/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 516,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/3/target/edges/1",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/3/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/4/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 527,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/4/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/4/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/4/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 528,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/4/target/edges/1",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/4/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/4/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 529,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/4/target/edges/2",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/4/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/5/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 540,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/5/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/5/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/5/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 541,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/5/target/edges/1",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/5/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/5/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 542,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/5/target/edges/2",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/5/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/6/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 553,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/6/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/6/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/6/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 554,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/6/target/edges/1",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/6/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/6/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 555,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/6/target/edges/2",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/6/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/7/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 566,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/7/target/edges/0",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/7/target/edges/0 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/7/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 567,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/7/target/edges/1",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/7/target/edges/1 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    },
+    {
+      "code": "explainer/schema-pattern",
+      "severity": "error",
+      "message": "/panels/0/blocks/2/items/7/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+      "subject": {
+        "line": 568,
+        "column": 19,
+        "component": "steps",
+        "path": "/panels/0/blocks/2/items/7/target/edges/2",
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json"
+      },
+      "evidence": {
+        "reason": "/panels/0/blocks/2/items/7/target/edges/2 must match pattern \"^[a-zA-Z][a-zA-Z0-9_-]*$\"",
+        "example": "id=request-path"
+      },
+      "supportedFixes": [
+        "Use a valid form, for example: id=request-path"
+      ]
+    }
+  ],
+  "visualReview": "not-requested",
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "experiment/evidence/failed-numeric-targets/finalize.stdout.log",
+    "originalSha256": "1a0f2e4972c4270f6bac04183143bd5890649656c800a95506b505f1e35decc8",
+    "originalBytes": 11930,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

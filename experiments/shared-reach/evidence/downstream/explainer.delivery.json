@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "dc071f0b-b787-4cea-9653-1e0ae487c416",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json",
+  "output": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+  "specification": {
+    "sha256": "97704f48229774b492f73d99d388fbfe6208a7ce2f8b9426bcee440a85eefdd8",
+    "bytes": 17858
+  },
+  "artifact": {
+    "sha256": "20ff256593eb866b528c8d6862f294960dd088dcf201b8f9f40859b5c320688a",
+    "bytes": 659842
+  },
+  "explainer": {
+    "preparedSha256": "1eee466e23e24c1d1377879e313f36bc6be0f0ebfbf5cdb69574fc72df7fc1e8",
+    "dependencies": [
+      {
+        "kind": "diagram-spec",
+        "id": "full-graph",
+        "inline": true,
+        "sha256": "b1aff2dd04eafd0319185a20ec51f51ce62dd002945c0de476b72c709e74fd10",
+        "bytes": 4211
+      }
+    ]
+  },
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "experiment/evidence/downstream/explainer.delivery.json",
+    "originalSha256": "372d791c32b8e00b65942b5f88c88d14cd31c651a93edbc162b3293888926e24",
+    "originalBytes": 1015,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

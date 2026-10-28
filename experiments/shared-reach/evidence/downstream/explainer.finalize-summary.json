@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "standard",
+  "specification": {
+    "path": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json",
+    "sha256": "97704f48229774b492f73d99d388fbfe6208a7ce2f8b9426bcee440a85eefdd8",
+    "bytes": 17858
+  },
+  "artifact": {
+    "path": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+    "sha256": "20ff256593eb866b528c8d6862f294960dd088dcf201b8f9f40859b5c320688a",
+    "bytes": 659842
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "not-run"
+  },
+  "diagnostics": [
+    {
+      "code": "i18n/locale-fallback",
+      "severity": "warning",
+      "message": "meta.locale \"en-US\" has no bundled catalog and no usable meta.translations; the Viewer chrome and <html lang> fall back to English.",
+      "subject": {
+        "input": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.json",
+        "line": 7,
+        "component": "document",
+        "diagramType": "explainer",
+        "path": "/meta/locale"
+      },
+      "evidence": {
+        "reason": "i18n/locale-fallback",
+        "example": "Supply meta.translations for this locale.",
+        "locale": "en-US",
+        "bundledLocales": [
+          "en",
+          "zh-CN",
+          "zh-TW",
+          "es",
+          "ko",
+          "ar"
+        ]
+      },
+      "supportedFixes": [
+        "Supply meta.translations for this locale.",
+        "Use a bundled locale: en, zh-CN, zh-TW, es, ko, ar."
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.finalize.json",
+    "summaryReceipt": "<workspace>/experiments/shared-reach/evidence/downstream/explainer.finalize-summary.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-28T03:52:47.554Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 1214,
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "experiment/evidence/downstream/explainer.finalize-summary.json",
+    "originalSha256": "3a3c432e50f322a1d77343ad394e87b5e6ee88e1438d222ee36969554f87b454",
+    "originalBytes": 2557,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

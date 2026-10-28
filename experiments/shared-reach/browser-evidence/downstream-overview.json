@@ -1,0 +1,260 @@
+{
+  "url": "file://<workspace>/experiments/shared-reach/evidence/downstream/explainer.html",
+  "width": 1440,
+  "height": 1250,
+  "theme": "light",
+  "text": "Skip to content\nShared reach\nSystem\nLight\nDark\nClean\nExport\nA\nAnswer\nAsk\n\napi_a and api_b have 4 common downstream nodes.\n\nCommon: events, worker, audit, observability.\nOnly api_a: redis; only api_b: postgres, replica.\n\nApplies to\nDirected topology only. Both origins excluded. Each witness minimizes hop count; ties use native connection order. Upstream witnesses preserve original arrows, common node → seed. Input SHA-256: 610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda. No runtime or failure inference.\n\n1\nComplete graph and exact shortest witnesses\nAsk\nProduction Deployment Ownership\nOpen interactive view\nCustomers\nweb + mobile\nGlobal Edge\nCDN + WAF\nedge team\nAPI Gateway\npublic :443\nplatform\nAPI Pods / AZ-a\nprivate subnet\napp team\nAPI Pods / AZ-b\nprivate subnet\napp team\nRedis\nmulti-AZ cache\nplatform\nPostgreSQL\nprimary / encrypted\ndata team\nEvent Bus\norders.v1\nplatform\nWorkers\nprivate workload\napp team\nDR Replica\neu-west-1\ndata team\nAudit Archive\nimmutable objects\nsecurity\nObservability\nmetrics + traces\nSRE\nHTTPS\nmTLS\nVPC route\nVPC route\ncache\nSQL\npublish\ncross-region WAL\nevidence\nOTLP\nAWS us-east-1 / production\nprivate application network\nAWS eu-west-1 / disaster recovery\nDR private subnet\nLegend\nBackend\nDatabase\nCloud\nSecurity\nMessage bus\nExternal\n\nThis diagram cannot fit this page width with readable text. Open the interactive view to inspect it.\n\nComplete input topology, with missing edge IDs annotated only for exact witness selection. All nodes and all relationships are retained. Original input and native HTML remain alongside this page; answer.json maps original edge keys and IDs to these presentation IDs.\n\nCommon node\tapi_a witness\tapi_b witness\nevents\t\napi_a → events (1 hops)\n\t\napi_b → events (1 hops)\n\nworker\t\napi_a → events → worker (2 hops)\n\t\napi_b → events → worker (2 hops)\n\naudit\t\napi_a → events → worker → audit (3 hops)\n\t\napi_b → events → worker → audit (3 hops)\n\nobservability\t\napi_a → events → worker → observability (3 hops)\n\t\napi_b → events → worker → observability (3 hops)\n▶ Step through\nevents: api_a — 1 hops ↗\n\napi_a → events. Exact native edge keys: 6. Select to highlight this witness in the complete graph.\n\nevents: api_b — 1 hops ↗\n\napi_b → events. Exact native edge keys: 7. Select to highlight this witness in the complete graph.\n\nworker: api_a — 2 hops ↗\n\napi_a → events → worker. Exact native edge keys: 6, 8. Select to highlight this witness in the complete graph.\n\nworker: api_b — 2 hops ↗\n\napi_b → events → worker. Exact native edge keys: 7, 8. Select to highlight this witness in the complete graph.\n\naudit: api_a — 3 hops ↗\n\napi_a → events → worker → audit. Exact native edge keys: 6, 8, 10. Select to highlight this witness in the complete graph.\n\naudit: api_b — 3 hops ↗\n\napi_b → events → worker → audit. Exact native edge keys: 7, 8, 10. Select to highlight this witness in the complete graph.\n\nobservability: api_a — 3 hops ↗\n\napi_a → events → worker → observability. Exact native edge keys: 6, 8, 11. Select to highlight this witness in the complete graph.\n\nobservability: api_b — 3 hops ↗\n\napi_b → events → worker → observability. Exact native edge keys: 7, 8, 11. Select to highlight this witness in the complete graph.\n\nArchify\nTurn anything you want to understand, plan, or share into an interactive visual.\n\n1 panel\n1 diagram validated",
+  "diagramNodes": [
+    "clients",
+    "edge",
+    "gateway",
+    "api_a",
+    "api_b",
+    "redis",
+    "postgres",
+    "events",
+    "worker",
+    "replica",
+    "audit",
+    "observability"
+  ],
+  "diagramEdges": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "9",
+    "10",
+    "11"
+  ],
+  "targets": [
+    {
+      "text": "events: api_a — 1 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-6\"]"
+        ]
+      ]
+    },
+    {
+      "text": "events: api_b — 1 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-7\"]"
+        ]
+      ]
+    },
+    {
+      "text": "worker: api_a — 2 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-6\",\"e-8\"]"
+        ]
+      ]
+    },
+    {
+      "text": "worker: api_b — 2 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-7\",\"e-8\"]"
+        ]
+      ]
+    },
+    {
+      "text": "audit: api_a — 3 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-6\",\"e-8\",\"e-10\"]"
+        ]
+      ]
+    },
+    {
+      "text": "audit: api_b — 3 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-7\",\"e-8\",\"e-10\"]"
+        ]
+      ]
+    },
+    {
+      "text": "observability: api_a — 3 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-6\",\"e-8\",\"e-11\"]"
+        ]
+      ]
+    },
+    {
+      "text": "observability: api_b — 3 hops ↗",
+      "attributes": [
+        [
+          "class",
+          "diagram-link"
+        ],
+        [
+          "href",
+          "#full-graph"
+        ],
+        [
+          "data-diagram-link",
+          "full-graph"
+        ],
+        [
+          "data-diagram-hash",
+          ""
+        ],
+        [
+          "data-diagram-edges",
+          "[\"e-7\",\"e-8\",\"e-11\"]"
+        ]
+      ]
+    }
+  ],
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "browser-capture/downstream-overview.json",
+    "originalSha256": "7a34e08441b455accf634fcb638b4ddc3762a512d75e907011c4acc7e05e3807",
+    "originalBytes": 7785,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

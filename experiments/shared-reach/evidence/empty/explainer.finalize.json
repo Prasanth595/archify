@@ -1,0 +1,417 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "explainer",
+  "quality": "standard",
+  "startedAt": "2026-10-28T04:33:10.115Z",
+  "specification": {
+    "path": "<workspace>/experiments/shared-reach/evidence/empty/explainer.json",
+    "sha256": "552ad2a095712d4ee14fce7f9a3376b3a7e65f102e17a53b4dfe62f2ba16430c",
+    "bytes": 12703
+  },
+  "artifact": {
+    "path": "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+    "sha256": "3b533b49b411eee3f9d6882bdfa49a3f612523589a076c91f49d3f3e61dc5441",
+    "bytes": 637553
+  },
+  "stages": {
+    "browser-check": {
+      "status": "not-run",
+      "execution": "not-requested"
+    },
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "<node-runtime>",
+        "<workspace>/archify/bin/archify.mjs",
+        "deliver",
+        "explainer",
+        "<workspace>/experiments/shared-reach/evidence/empty/explainer.json",
+        "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+        "--quality",
+        "standard",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "552ad2a095712d4ee14fce7f9a3376b3a7e65f102e17a53b4dfe62f2ba16430c",
+          "bytes": 12703
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "standard",
+          "compositionStatus": "pass",
+          "engineeringProfile": "deployment-ownership",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 617,
+      "command": [
+        "<node-runtime>",
+        "<workspace>/archify/bin/archify.mjs",
+        "deliver",
+        "explainer",
+        "<workspace>/experiments/shared-reach/evidence/empty/explainer.json",
+        "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+        "--quality",
+        "standard",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "f595a1b6-cff4-4b3e-8baf-995c8dd96ea0",
+        "ok": true,
+        "command": "deliver",
+        "type": "explainer",
+        "input": "<workspace>/experiments/shared-reach/evidence/empty/explainer.json",
+        "output": "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+        "explainer": {
+          "preparedSha256": "45ad6c95740bd1f6a97b4f7c19b8fd53dfcd11d478d60b8f504ba148dbb2ce8d",
+          "dependencies": [
+            {
+              "kind": "diagram-spec",
+              "id": "full-graph",
+              "inline": true,
+              "sha256": "b1aff2dd04eafd0319185a20ec51f51ce62dd002945c0de476b72c709e74fd10",
+              "bytes": 4211
+            }
+          ]
+        },
+        "specification": {
+          "sha256": "552ad2a095712d4ee14fce7f9a3376b3a7e65f102e17a53b4dfe62f2ba16430c",
+          "bytes": 12703
+        },
+        "artifact": {
+          "sha256": "3b533b49b411eee3f9d6882bdfa49a3f612523589a076c91f49d3f3e61dc5441",
+          "bytes": 637553
+        },
+        "validation": {
+          "checksPassed": 4,
+          "checkCount": 4,
+          "compositionProfile": "standard",
+          "compositionStatus": "pass",
+          "engineeringProfile": "deployment-ownership",
+          "errors": 0,
+          "warnings": 0
+        },
+        "diagnostics": [
+          {
+            "code": "i18n/locale-fallback",
+            "severity": "warning",
+            "message": "meta.locale \"en-US\" has no bundled catalog and no usable meta.translations; the Viewer chrome and <html lang> fall back to English.",
+            "subject": {
+              "diagramType": "explainer",
+              "path": "/meta/locale"
+            },
+            "evidence": {
+              "locale": "en-US",
+              "bundledLocales": [
+                "en",
+                "zh-CN",
+                "zh-TW",
+                "es",
+                "ko",
+                "ar"
+              ]
+            },
+            "supportedFixes": [
+              "Supply meta.translations for this locale.",
+              "Use a bundled locale: en, zh-CN, zh-TW, es, ko, ar."
+            ]
+          }
+        ],
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      },
+      "stderr": "archify: meta.locale \"en-US\" has no bundled catalog and no usable meta.translations; the Viewer chrome and <html lang> fall back to English."
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 396,
+      "command": [
+        "<node-runtime>",
+        "<workspace>/archify/bin/archify.mjs",
+        "check",
+        "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "<workspace>/experiments/shared-reach/evidence/empty/explainer.html",
+        "family": "explainer",
+        "artifact": {
+          "sha256": "3b533b49b411eee3f9d6882bdfa49a3f612523589a076c91f49d3f3e61dc5441",
+          "bytes": 637553
+        },
+        "checks": [
+          {
+            "name": "explainer_structure",
+            "ok": true,
+            "details": [
+              "32 unique DOM IDs"
+            ]
+          },
+          {
+            "name": "explainer_payload_identity",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "explainer_dependencies",
+            "ok": true,
+            "details": [
+              "1 frozen dependencies"
+            ]
+          },
+          {
+            "name": "explainer_native_diagrams",
+            "ok": true,
+            "details": [
+              "full-graph: pass"
+            ]
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "standard",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "issues": [],
+          "nativeDiagrams": [
+            {
+              "id": "full-graph",
+              "receipt": {
+                "ok": true,
+                "file": "<temporary-directory>/archify-explainer-check-5X6Tpa/child.html",
+                "artifact": {
+                  "sha256": "40571468e50bbcae42e79dcd96716498cdd1b5651c1d694f1c84f0cb35935fa1",
+                  "bytes": 883923
+                },
+                "checks": [
+                  {
+                    "name": "single_svg",
+                    "ok": true,
+                    "details": [
+                      "found 1 <svg> block(s)"
+                    ]
+                  },
+                  {
+                    "name": "finite_svg",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "orthogonal_arrows",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "label_route_clearance",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_crossings",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "relationship_corridors",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "container_border_runs",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "route_rhythm",
+                    "ok": true,
+                    "details": []
+                  },
+                  {
+                    "name": "legend_clearance",
+                    "ok": true,
+                    "details": []
+                  }
+                ],
+                "composition": {
+                  "schemaVersion": 1,
+                  "profile": "standard",
+                  "status": "pass",
+                  "summary": {
+                    "errors": 0,
+                    "warnings": 0
+                  },
+                  "metrics": {
+                    "properCrossings": 0,
+                    "resolvedCrossovers": 0,
+                    "ambiguousCorridors": 0,
+                    "arrowheadCollisions": 0,
+                    "containerBorderRuns": 0,
+                    "labelRouteClearanceIssues": 0,
+                    "labelCanvasOverflowIssues": 0,
+                    "minLabelRouteClearance": 36,
+                    "desktopReadabilityIssues": 0,
+                    "viewportHeightIssues": 0,
+                    "minProjectedNodeTextPx": 7.5,
+                    "maxBends": 2,
+                    "routesOverSuggestedBends": 0,
+                    "maxStretch": 1.098,
+                    "routesOverSuggestedStretch": 0,
+                    "minSegmentPx": 20,
+                    "minInteriorSegmentPx": 104,
+                    "shortSegmentCount": 0,
+                    "shortEndpointSegmentCount": 0,
+                    "shortInteriorSegmentCount": 0,
+                    "microSegmentCount": 0
+                  },
+                  "suggestedLimits": {
+                    "bendsPerRelationship": 2,
+                    "stretch": 1.35,
+                    "segmentPx": 16,
+                    "microSegmentPx": 8
+                  },
+                  "routeReview": {
+                    "crossings": [],
+                    "detours": []
+                  },
+                  "leadingSpace": {
+                    "measured": true,
+                    "emptyTopPx": 85,
+                    "emptyTopRatio": 0.108,
+                    "occupiedTop": 85,
+                    "viewBoxTop": 0,
+                    "canvasHeight": 790,
+                    "typicalNodeHeight": 62,
+                    "reviewSuggested": false
+                  },
+                  "desktopReadability": {
+                    "budgetBasis": "recognized-declared-wide",
+                    "readerContract": "declared-wide-v1",
+                    "availableDiagramWidth": 1290,
+                    "actualBudgetPx": 1290,
+                    "actualReaderWidth": 1320,
+                    "desiredReaderWidth": 1320,
+                    "viewportCap": 1376,
+                    "limit": "source-size",
+                    "requestedTargetPx": 7.5,
+                    "requestedTargetMet": true,
+                    "hardFloorPx": 6,
+                    "hardFloorMet": true,
+                    "minimumOwner": {
+                      "kind": "edge",
+                      "id": "e-0",
+                      "from": "clients",
+                      "to": "edge"
+                    },
+                    "minimumSourceTextPx": 8,
+                    "minimumProjectedTextPx": 7.5,
+                    "semanticTextCount": 38
+                  },
+                  "issues": []
+                }
+              }
+            }
+          ]
+        },
+        "diagnostics": [],
+        "provenance": "current",
+        "deliveryReceiptId": "f595a1b6-cff4-4b3e-8baf-995c8dd96ea0"
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": false,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "i18n/locale-fallback",
+      "severity": "warning",
+      "message": "meta.locale \"en-US\" has no bundled catalog and no usable meta.translations; the Viewer chrome and <html lang> fall back to English.",
+      "subject": {
+        "input": "<workspace>/experiments/shared-reach/evidence/empty/explainer.json",
+        "line": 7,
+        "component": "document",
+        "diagramType": "explainer",
+        "path": "/meta/locale"
+      },
+      "evidence": {
+        "reason": "i18n/locale-fallback",
+        "example": "Supply meta.translations for this locale.",
+        "locale": "en-US",
+        "bundledLocales": [
+          "en",
+          "zh-CN",
+          "zh-TW",
+          "es",
+          "ko",
+          "ar"
+        ]
+      },
+      "supportedFixes": [
+        "Supply meta.translations for this locale.",
+        "Use a bundled locale: en, zh-CN, zh-TW, es, ko, ar."
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "<workspace>/experiments/shared-reach/evidence/empty/explainer.finalize.json",
+    "summaryReceipt": "<workspace>/experiments/shared-reach/evidence/empty/explainer.finalize-summary.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-28T04:33:11.363Z",
+  "durationMs": 1248,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.1-dev.1",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-28T03:52:47.554Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "experiment/evidence/empty/explainer.finalize.json",
+    "originalSha256": "93ce8e9022945afa532ccf3f420fce9d930f07e4f52435cdcbcad34f731bcddf",
+    "originalBytes": 14019,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "url": "file://<workspace>/experiments/shared-reach/evidence/full-native.html#focus=api_a&reach=downstream",
+  "theme": "light",
+  "text": "Light\nBlueprint\nLive\nPresent\nExport\nProduction Deployment Ownership\nCustomers\nweb + mobile\nGlobal Edge\nCDN + WAF\nedge team\nAPI Gateway\npublic :443\nplatform\nAPI Pods / AZ-a\nprivate subnet\napp team\nAPI Pods / AZ-b\nprivate subnet\napp team\nRedis\nmulti-AZ cache\nplatform\nPostgreSQL\nprimary / encrypted\ndata team\nEvent Bus\norders.v1\nplatform\nWorkers\nprivate workload\napp team\nDR Replica\neu-west-1\ndata team\nAudit Archive\nimmutable objects\nsecurity\nObservability\nmetrics + traces\nSRE\nHTTPS\nmTLS\nVPC route\nVPC route\ncache\nSQL\npublish\ncross-region WAL\nevidence\nOTLP\nAWS us-east-1 / production\nprivate application network\nAWS eu-west-1 / disaster recovery\nDR private subnet\nLegend\nBackend\n3\nDatabase\n3\nCloud\n2\nSecurity\n1\nMessage bus\n1\nExternal\n2\n\nSEMANTIC PASSPORT\nAPI Pods / AZ-a\nprivate subnet\nBACKEND\nAWS us-east-1 / production › private application network\napp team\napi_a\n2 outgoing · 1 incoming\nAUTHORED REACH\nUpstream\n3\nDownstream\n5\nDownstream · 5 nodes · 5 links · max 3 hops\n×\nCopy link\nOUTGOING · 2\nOUT →\nRedis\ncache\nOUT →\nEvent Bus\npublish\nINCOMING · 1\n← IN\nAPI Gateway\nVPC route\nROUTE\nLENS\nFULL\n100%\nRuntime Ownership\nPlatform owns the edge, gateway, cache, and event bus\nApplication teams own API pods and workers\nData owns primary and disaster-recovery state\nNamed Crossings\nPublic HTTPS terminates at the managed edge\nmTLS crosses into the application network\nCross-region WAL is explicit and encrypted\nOperational Evidence\nWorkers emit traces to SRE-owned observability\nAudit evidence lands in immutable storage\nUnknown placement should remain marked, never invented\nNode index\n12\nArchitecture component\n2\nCustomers\nweb + mobile\nObservability\nmetrics + traces\nAWS us-east-1 / production\n9\nGlobal Edge\nCDN + WAF\nAPI Gateway\npublic :443\nAPI Pods / AZ-a\nprivate subnet\nAPI Pods / AZ-b\nprivate subnet\nRedis\nmulti-AZ cache\nPostgreSQL\nprimary / encrypted\nEvent Bus\norders.v1\nWorkers\nprivate workload\nAudit Archive\nimmutable objects\nAWS eu-west-1 / disaster recovery\n1\nDR Replica\neu-west-1",
+  "nodes": [
+    {
+      "id": "clients",
+      "attributes": [
+        [
+          "data-node-id",
+          "clients"
+        ],
+        [
+          "data-node-label",
+          "Customers"
+        ],
+        [
+          "data-node-kind",
+          "external"
+        ],
+        [
+          "data-node-sublabel",
+          "web + mobile"
+        ],
+        [
+          "data-node-context",
+          "Architecture component"
+        ]
+      ]
+    },
+    {
+      "id": "edge",
+      "attributes": [
+        [
+          "data-node-id",
+          "edge"
+        ],
+        [
+          "data-node-label",
+          "Global Edge"
+        ],
+        [
+          "data-node-kind",
+          "cloud"
+        ],
+        [
+          "data-node-sublabel",
+          "CDN + WAF"
+        ],
+        [
+          "data-node-tag",
+          "edge team"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production"
+        ]
+      ]
+    },
+    {
+      "id": "gateway",
+      "attributes": [
+        [
+          "data-node-id",
+          "gateway"
+        ],
+        [
+          "data-node-label",
+          "API Gateway"
+        ],
+        [
+          "data-node-kind",
+          "security"
+        ],
+        [
+          "data-node-sublabel",
+          "public :443"
+        ],
+        [
+          "data-node-tag",
+          "platform"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production"
+        ],
+        [
+          "data-focus-match",
+          ""
+        ]
+      ]
+    },
+    {
+      "id": "api_a",
+      "attributes": [
+        [
+          "data-node-id",
+          "api_a"
+        ],
+        [
+          "data-node-label",
+          "API Pods / AZ-a"
+        ],
+        [
+          "data-node-kind",
+          "backend"
+        ],
+        [
+          "data-node-sublabel",
+          "private subnet"
+        ],
+        [
+          "data-node-tag",
+          "app team"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production › private application network"
+        ],
+        [
+          "data-focus-match",
+          ""
+        ],
+        [
+          "data-focus-selected",
+          ""
+        ],
+        [
+          "data-reach-match",
+          ""
+        ],
+        [
+          "data-reach-depth",
+          "0"
+        ],
+        [
+          "data-reach-origin",
+          ""
+        ]
+      ]
+    },
+    {
+      "id": "api_b",
+      "attributes": [
+        [
+          "data-node-id",
+          "api_b"
+        ],
+        [
+          "data-node-label",
+          "API Pods / AZ-b"
+        ],
+        [
+          "data-node-kind",
+          "backend"
+        ],
+        [
+          "data-node-sublabel",
+          "private subnet"
+        ],
+        [
+          "data-node-tag",
+          "app team"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production › private application network"
+        ]
+      ]
+    },
+    {
+      "id": "redis",
+      "attributes": [
+        [
+          "data-node-id",
+          "redis"
+        ],
+        [
+          "data-node-label",
+          "Redis"
+        ],
+        [
+          "data-node-kind",
+          "database"
+        ],
+        [
+          "data-node-sublabel",
+          "multi-AZ cache"
+        ],
+        [
+          "data-node-tag",
+          "platform"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production › private application network"
+        ],
+        [
+          "data-focus-match",
+          ""
+        ],
+        [
+          "data-reach-match",
+          ""
+        ],
+        [
+          "data-reach-depth",
+          "1"
+        ]
+      ]
+    },
+    {
+      "id": "postgres",
+      "attributes": [
+        [
+          "data-node-id",
+          "postgres"
+        ],
+        [
+          "data-node-label",
+          "PostgreSQL"
+        ],
+        [
+          "data-node-kind",
+          "database"
+        ],
+        [
+          "data-node-sublabel",
+          "primary / encrypted"
+        ],
+        [
+          "data-node-tag",
+          "data team"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production › private application network"
+        ]
+      ]
+    },
+    {
+      "id": "events",
+      "attributes": [
+        [
+          "data-node-id",
+          "events"
+        ],
+        [
+          "data-node-label",
+          "Event Bus"
+        ],
+        [
+          "data-node-kind",
+          "messagebus"
+        ],
+        [
+          "data-node-sublabel",
+          "orders.v1"
+        ],
+        [
+          "data-node-tag",
+          "platform"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production › private application network"
+        ],
+        [
+          "data-focus-match",
+          ""
+        ],
+        [
+          "data-reach-match",
+          ""
+        ],
+        [
+          "data-reach-depth",
+          "1"
+        ]
+      ]
+    },
+    {
+      "id": "worker",
+      "attributes": [
+        [
+          "data-node-id",
+          "worker"
+        ],
+        [
+          "data-node-label",
+          "Workers"
+        ],
+        [
+          "data-node-kind",
+          "backend"
+        ],
+        [
+          "data-node-sublabel",
+          "private workload"
+        ],
+        [
+          "data-node-tag",
+          "app team"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production › private application network"
+        ],
+        [
+          "data-reach-match",
+          ""
+        ],
+        [
+          "data-reach-depth",
+          "2"
+        ]
+      ]
+    },
+    {
+      "id": "replica",
+      "attributes": [
+        [
+          "data-node-id",
+          "replica"
+        ],
+        [
+          "data-node-label",
+          "DR Replica"
+        ],
+        [
+          "data-node-kind",
+          "database"
+        ],
+        [
+          "data-node-sublabel",
+          "eu-west-1"
+        ],
+        [
+          "data-node-tag",
+          "data team"
+        ],
+        [
+          "data-node-context",
+          "AWS eu-west-1 / disaster recovery › DR private subnet"
+        ]
+      ]
+    },
+    {
+      "id": "audit",
+      "attributes": [
+        [
+          "data-node-id",
+          "audit"
+        ],
+        [
+          "data-node-label",
+          "Audit Archive"
+        ],
+        [
+          "data-node-kind",
+          "cloud"
+        ],
+        [
+          "data-node-sublabel",
+          "immutable objects"
+        ],
+        [
+          "data-node-tag",
+          "security"
+        ],
+        [
+          "data-node-context",
+          "AWS us-east-1 / production"
+        ],
+        [
+          "data-reach-match",
+          ""
+        ],
+        [
+          "data-reach-depth",
+          "3"
+        ]
+      ]
+    },
+    {
+      "id": "observability",
+      "attributes": [
+        [
+          "data-node-id",
+          "observability"
+        ],
+        [
+          "data-node-label",
+          "Observability"
+        ],
+        [
+          "data-node-kind",
+          "external"
+        ],
+        [
+          "data-node-sublabel",
+          "metrics + traces"
+        ],
+        [
+          "data-node-tag",
+          "SRE"
+        ],
+        [
+          "data-node-context",
+          "Architecture component"
+        ],
+        [
+          "data-reach-match",
+          ""
+        ],
+        [
+          "data-reach-depth",
+          "3"
+        ]
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "key": "0",
+      "class": "a-emphasis"
+    },
+    {
+      "key": "1",
+      "class": "a-security"
+    },
+    {
+      "key": "2",
+      "class": "a-emphasis"
+    },
+    {
+      "key": "3",
+      "class": "a-emphasis"
+    },
+    {
+      "key": "4",
+      "class": "a-default"
+    },
+    {
+      "key": "5",
+      "class": "a-default"
+    },
+    {
+      "key": "6",
+      "class": "a-dashed"
+    },
+    {
+      "key": "7",
+      "class": "a-dashed"
+    },
+    {
+      "key": "8",
+      "class": "a-emphasis"
+    },
+    {
+      "key": "9",
+      "class": "a-security"
+    },
+    {
+      "key": "10",
+      "class": "a-dashed"
+    },
+    {
+      "key": "11",
+      "class": "a-dashed"
+    },
+    {
+      "key": "0",
+      "class": null
+    },
+    {
+      "key": "1",
+      "class": null
+    },
+    {
+      "key": "2",
+      "class": null
+    },
+    {
+      "key": "3",
+      "class": null
+    },
+    {
+      "key": "4",
+      "class": null
+    },
+    {
+      "key": "5",
+      "class": null
+    },
+    {
+      "key": "6",
+      "class": null
+    },
+    {
+      "key": "9",
+      "class": null
+    },
+    {
+      "key": "10",
+      "class": null
+    },
+    {
+      "key": "11",
+      "class": null
+    }
+  ],
+  "_evidenceRecord": {
+    "kind": "derived-path-redacted-record",
+    "originalFile": "browser-capture/baseline-az-a.json",
+    "originalSha256": "ebd0b99bbb9adda776ea32bf469c13fc6209ada41162999693ace915374a4fb7",
+    "originalBytes": 11051,
+    "originalRetained": "checkout-external private backup",
+    "transformations": [
+      "Local workspace paths replaced with <workspace>.",
+      "Node executable paths replaced with <node-runtime>.",
+      "Native checker temporary directory paths replaced with <temporary-directory>."
+    ],
+    "notice": "This published record is derived, not the original receipt bytes. Stage, status, failure, artifact hashes and byte-count values are preserved."
+  }
+}
