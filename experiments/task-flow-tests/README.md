@@ -2,7 +2,7 @@
 
 [实际阅读页](final/review.html) 把同一张变更地图编成明确路径：每一步关联哪个测试、哪些步骤未声明关联、哪个已知测试没有分配到本路径。点击关联测试可以跳到原始源码摘录；步骤沿用现有原生图节点身份。
 
-**历史测试未执行。路径和测试关联是实验作者声明，不是运行轨迹或测试覆盖结论。** 本实验也没有执行 task-view、历史项目代码、测试、构建或安装脚本。
+**历史测试未执行。路径和测试关联是实验作者声明，不是运行轨迹或测试覆盖结论。** 初版没有执行 task-view、历史项目代码、测试、构建或安装脚本。后续第 45 批仅运行固定 task-view 前端，未运行其 CLI 校验器；见文末对照证据。
 
 ## 与已有能力的区别
 
@@ -56,6 +56,13 @@
 
 收益假设是读者能少做一步“测试属于哪个行为步骤”的脑内配对；尚未测量审阅时间。生产采用前需要真实使用者比较这一任务。
 
-维护范围只有固定输入、sidecar、一个 projector 和构建入口。没有 AST、Git 读取层、新 runtime、测试执行器或自动覆盖推断。Focused simplification 检查保留同一映射为事实来源、共享一份投影给页面；未找到值得新增抽象或复制产品能力的理由。
+原始实现的维护范围只有固定输入、sidecar、一个 projector 和构建入口。没有 AST、Git 读取层、新 runtime、测试执行器或自动覆盖推断。Focused simplification 检查保留同一映射为事实来源、共享一份投影给页面；未找到值得新增抽象或复制产品能力的理由。后续前端对照包的额外成本单独记录，不属于该最小实现。
 
 ![缺产物路径的声明测试关联](final/captures/review.visual-check.1280x900.light.png)
+
+## Later comparison evidence
+
+[Round 45: pinned task-view front-end fixture](upstream-frontend/README.md) adds
+same-fact graph-scope observations, actual screenshots and reproducible pages.
+It does not replace the original artifact or constitute a task-view CLI/Git/schema
+validation run. No new PR was created for this follow-up.

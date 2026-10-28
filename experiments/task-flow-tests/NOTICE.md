@@ -1,7 +1,14 @@
 # Sources and permissions
 
 This experiment independently implements an authored path/test-association projection.
-No task-view source, screenshots, icons, or vendored browser libraries are copied.
+The original projector and final Archify artifact do not copy task-view source,
+screenshots, icons, or vendored browser libraries.
+
+The later `upstream-frontend/` comparison separately archives unmodified task-view
+front-end source and vendor libraries at a3fa21767bfaeb3077fdda08bddb7249366caa93.
+Its MIT and EPL-2.0 notices, authorship, source URLs and byte identities are kept
+in that directory. They are research fixtures, not Archify runtime dependencies;
+see `upstream-frontend/README.md` for the manually projected data and limitations.
 
 Inspiration: gtindo/task-view, commit f27b8bef63ec336b8e3487e90ccd484a2fa7a235.
 The top-level project is MIT. Its vendor/LICENSES.txt separately lists Cytoscape.js
