@@ -29,9 +29,9 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前58版静态绑定与实际浏览器观察（待远端交付）
+## 当前58版静态绑定与实际浏览器观察（远端已交付）
 
-以已发布hub `d82d3b5539523355ea3f2f6d9c46adf2806164eb` 为开始基准，追加第57/58两行source inputs，固定新source hub为 [`fd4fee4986b45470042f54771c1fe2019a641467`](https://github.com/tt-a1i/archify/blob/fd4fee4986b45470042f54771c1fe2019a641467/docs/research/2026-10-25/README.md)：**58项 / 58张原PNG，18产品交互 / 19离线适配 / 21内容示例**。固定README为71,968 bytes，SHA-256 `2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a`。source hub与gallery目前prepared/local-bound，未推送；不把旧d82的56行表冒称58行，也没有修改builder读取规则。
+以已发布hub `d82d3b5539523355ea3f2f6d9c46adf2806164eb` 为开始基准，追加第57/58两行source inputs，固定新source hub为 [`fd4fee4986b45470042f54771c1fe2019a641467`](https://github.com/tt-a1i/archify/blob/fd4fee4986b45470042f54771c1fe2019a641467/docs/research/2026-10-25/README.md)：**58项 / 58张原PNG，18产品交互 / 19离线适配 / 21内容示例**。固定README为71,968 bytes，SHA-256 `2ce4e3624d46f5c7781e58898898e3e30299e5d4e77e38002dd5f927ea47230a`。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随固定artifact commit [`70065a0ce2a14e040e98f6ceceae731367c4fec6`](https://github.com/tt-a1i/archify/tree/70065a0ce2a14e040e98f6ceceae731367c4fec6/docs/research/2026-10-25/gallery) 推送，root以git ls-remote精确读回一致；未将旧d82的56行表冒称58行，也没有修改builder读取规则。
 
 第57项Cycle region为Architecture Viewer产品候选，固定final remote `d07097138c96dd34ecbfde09d19861b645b19818`（artifact `7df64d4594486df6670e4b702aa4b3053f0ea095`）。完整原创F1含13节点14关系与自环；c区域4成员、5内部关系、1跨区关系，不以一条闭合见证代替整个区域。主图 `experiments/cycle-region/evidence/root-browser/repaired-c-full-view-light.png` 为189,972 bytes、1440×900，SHA-256 `b31474a9c0c00ae85650d6fe6c106e943f5546dd9ec2a3e285a0f43f07aa28b1`；完整13节点仍在HTML中，不保证同时位于主图视口。当前335相关测试、public finalize/check/自动browser及ZIP通过，1552-origin数学oracle按同helper复用。root修后详情原生滚动至e4与两次Escape已在实验实测；旧裁剪失败保留，base工具栏局部水平裁剪仍未修。作者图查询不分析代码、运行故障或效率。
 
@@ -47,9 +47,9 @@ Node **22.23.3** 静态verify通过：58张PNG摘要、58/18/19/21卡片与筛�
 - `manifest.json`：SHA-256 `609724470184cf4544fcdc8f72786d473b96d5c5b1d4c8cab45c0ff46a73a9ac`
 - `selection.json`：SHA-256 `cda2bcc9fd1c70a8cf83781f7809ef4547ec0616f686c41988a39e01eb86ebdc`
 
-Root在同一Ego TaskSpace12实际操作冻结58版gallery，并逐张查看4张原PNG。四张PNG、[ROOT-gallery58.json](screenshots58/ROOT-gallery58.json)观察收据及3份场景JSON按原字节保存在 [screenshots58](screenshots58/)；PNG公开文件名统一带gallery58，派生绑定保留原始文件名映射，不改图片bytes。[browser-evidence.json](browser-evidence.json)绑定当前产物、最终README及8份原件的bytes/SHA与PNG IHDR尺寸，不冒称新的API响应。source hub及gallery仍prepared/local-bound，待root推送和远端精确读回。
+Root在同一Ego TaskSpace12实际操作冻结58版gallery，并逐张查看4张原PNG。四张PNG、[ROOT-gallery58.json](screenshots58/ROOT-gallery58.json)观察收据及3份场景JSON按原字节保存在 [screenshots58](screenshots58/)；PNG公开文件名统一带gallery58，派生绑定保留原始文件名映射，不改图片bytes。[browser-evidence.json](browser-evidence.json)绑定当前产物、最终README及8份原件的bytes/SHA与PNG IHDR尺寸，不冒称新的API响应。当前source hub与gallery远端交付固定为 `70065a0ce2a14e040e98f6ceceae731367c4fec6`，不自指本次delivery文档commit。该artifact提交中的原README和派生绑定仍保留推送前prepared/local-bound阶段，本次只补记root实际远端核对。
 
-1440×1000浅色总览实际为58/18/19/21；Cycle region与Profile contexts各自查询1/58。两弹窗直接解码嵌入PNG的bytes/SHA/天然尺寸分别与固定实验主图相同：Cycle189972B/1440×900，Profile90219B/1440×1000。Cycle原始尺寸原生toggle实际pressed=true/mode=true；Escape回Cycle原卡按钮。Profile切深色后仍显示未编辑的原浅色PNG，Escape回Profile原卡；没有把深色shell说成重绘深色图。
+1440×1000浅色总览观察到分组计数58/18/19/21；本批实际操作的是Cycle region与Profile contexts两个搜索，各为1/58，不声称点击了四个group filter。两弹窗直接解码嵌入PNG的bytes/SHA/天然尺寸分别与固定实验主图相同：Cycle189972B/1440×900，Profile90219B/1440×1000。Cycle原始尺寸原生toggle实际pressed=true/mode=true；Escape回Cycle原卡按钮。Profile切深色后仍显示未编辑的原浅色PNG，Escape回Profile原卡；没有把深色shell说成重绘深色图。
 
 390×844深色原始尺寸弹窗的shell为x8/y8、359×828，close按钮边界可见；图片scroller为client342/scroll1460，保留原生overflow，不把原始图缩成全图可见或承诺无图片横滚。Escape正常回Profile opener。这仅是gallery容器与原图阅读，不能抵消两个实验自身的base工具栏裁剪限制，也不是实体触屏/AT接受。页面宽记录原值[390,375]，未补造全页scrollWidth结论。
 
@@ -57,7 +57,7 @@ Root在同一Ego TaskSpace12实际操作冻结58版gallery，并逐张查看4张
 
 [Cycle原图弹窗](screenshots58/gallery58-cycle-region-full-image.png) · [Profile深色shell中的原浅色图](screenshots58/gallery58-profile-contexts-full-image-dark.png) · [390px原尺寸图及可见关闭按钮](screenshots58/gallery58-mobile-original-dark.png)。
 
-收尾已清搜索、恢复浅色，DOM58 articles、状态58/58、dialog closed。TaskSpace12以finish keep=[]成功结束一次，不再resume。本次未点击外部GitHub链接，未重跑旧56项实验/逐项图片交互，没有新CI、实体触摸、AT、人类接受或速度结论；Profile public gate仍fail68、独立445/445继续Tab身份不变。本批收尾后暂停，不启动新研究或实施；最终远端交付由root推送/读回单独记账。
+收尾已清搜索、恢复浅色，DOM58 articles、状态58/58、dialog closed。TaskSpace12以finish keep=[]成功结束一次，不再resume。本次未点击外部GitHub链接，未重跑旧56项实验/逐项图片交互，没有新CI、实体触摸、AT、人类接受或速度结论；Profile public gate仍fail68、独立445/445继续Tab身份不变。root已推送并精确读回artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6`；其实际gh查询为0个check run、0个commit status，不是CI通过。没有合入、产品release或安装，本批57/58已收齐；持续目标仍active，后续范围待最新确认。
 
 ## 历史56版静态绑定与实际浏览器观察
 

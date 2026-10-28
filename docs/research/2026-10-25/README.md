@@ -2,7 +2,7 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
-**当前状态（2026-10-28）：** 当前批次按用户要求继续收尾，完成后暂停，不新增研究或实验。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为58项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+**当前状态（2026-10-28）：** 本批57/58已收齐；持续目标仍active，后续范围待最新确认。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths、Refactoring records、Cycle region 与 Profile contexts 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为58项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
 
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
@@ -22,11 +22,11 @@
 
 ## 已推送的 58 个实验
 
-第57项Cycle region与第58项Profile contexts的独立远程分支已交付；58版gallery增量将从当前已发布56版追加两项，实际gallery检查另记。本批完成后暂停，不启动新一轮研究或实施。
+第57项Cycle region与第58项Profile contexts的独立远程分支已交付；58版gallery已从56版追加两项，本批gallery观察与远端交付见下方固定记录。本批57/58已收齐；持续目标仍active，后续范围待最新确认。
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：58版已从固定source hub `fd4fee4986b45470042f54771c1fe2019a641467` 构建，18产品交互、19离线适配、21内容示例，HTML SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`。原56项完整item/card/PNG字节不变，历史证据保留。root在TaskSpace12实际核四筛选、两新卡搜索、嵌图摘要/尺寸、Cycle原尺寸与Escape回焦、Profile深色、390px原尺寸shell/可见关闭/原生overflow；4PNG与4JSON分别绑定，收尾清查询/浅色/关闭弹窗并finish keep[]一次。source hub/gallery仍prepared/local-bound待root推送读回；本批完成后暂停，不新增研究或实施。
+[离线图片浏览页](gallery/README.md)：58版已从固定source hub `fd4fee4986b45470042f54771c1fe2019a641467` 构建，18产品交互、19离线适配、21内容示例，HTML SHA-256 `7e9d9baec76b2ee5959f766f2149f67d9e8bbe49f3917a42f0c1e2e7e3af81ce`。原56项完整item/card/PNG字节不变，历史证据保留。root在TaskSpace12观察分组计数58/18/19/21，实际操作两新卡搜索、嵌图摘要/尺寸、Cycle原尺寸与Escape回焦、Profile深色、390px原尺寸shell/可见关闭/原生overflow；4PNG与4JSON分别绑定，收尾清查询/浅色/关闭弹窗并finish keep[]一次。source hub `fd4fee4986b45470042f54771c1fe2019a641467` 与gallery已随artifact `70065a0ce2a14e040e98f6ceceae731367c4fec6` 远端交付，root以git ls-remote精确读回；其实际gh查询0个check run/0个commit status，不是CI通过。artifact中原local-bound文字保留推送前阶段，本次不新增浏览器/CI结果，没有合入、产品release或安装。本批57/58已收齐；持续目标仍active，后续范围待最新确认。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |

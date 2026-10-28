@@ -1,10 +1,22 @@
 {
   "kind": "derived browser evidence for fixed58 gallery; root receipt and original scenario JSON/PNG linked separately",
-  "status": "root-browser-observed-prepared-local-bound",
+  "status": "root-browser-observed-remote-delivered",
   "delivery": {
-    "sourceHub": "prepared/local-bound; awaiting root push and exact remote verification",
-    "gallery": "prepared/local-bound; awaiting root push and exact remote verification",
-    "experiments": "Root verified both final branch heads; zero checks/statuses is not CI success."
+    "artifactCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+    "sourceHubCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
+    "sourceHub": "Remote delivered as ancestor included in the fixed artifact commit. Build source identity unchanged.",
+    "gallery": "Root pushed and git ls-remote read back the exact fixed artifact commit.",
+    "experiments": "Root verified both final branch heads; zero checks/statuses is not CI success.",
+    "remoteVerification": {
+      "performedBy": "root",
+      "method": "git push plus exact git ls-remote readback; actual gh API queries for artifact check runs and commit statuses",
+      "readbackCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+      "checkRuns": 0,
+      "commitStatuses": 0,
+      "provenance": "Derived from root task message, not raw API responses or a repeated query by this packaging agent.",
+      "interpretation": "Zero records is not CI success; no new tests/browser, merge, product release or installation."
+    },
+    "batchState": "Current57/58 batch collected; continuing goal remains active, later scope awaiting latest confirmation."
   },
   "hubSourceCommit": "fd4fee4986b45470042f54771c1fe2019a641467",
   "hubReadme": {
@@ -37,8 +49,8 @@
     },
     "README.md": {
       "path": "README.md",
-      "sha256": "5f31f08fc7b60c30638d5bb2f37065ed71db0fcaa4d697f7f2387b2a8fdbc912",
-      "bytes": 61323
+      "bytes": 61994,
+      "sha256": "749b7916111c44f70e29a8c9fa4fa5c87b8b4052563fa248f0ed66f0758043f2"
     },
     "template.html": {
       "path": "template.html",
@@ -362,7 +374,7 @@
     "keep": [],
     "resumeAllowed": false,
     "finalState": "Query cleared, light theme,58 articles/status58 of58, dialog closed.",
-    "scope": "Current batch complete; pause further research/implementation."
+    "scope": "Only TaskSpace12 browser round ended. Current57/58 batch collected; continuing goal remains active, later scope awaiting latest confirmation."
   },
   "scope": "Two new cards and shared gallery controls only; previous56 item/card/PNG bytes and historical evidence unchanged.",
   "limits": [
@@ -370,5 +382,43 @@
     "Native original-size image overflow is expected; mobile shell/close visibility is not all-image visibility or no-horizontal-scroll claim.",
     "Gallery image reading does not remove either experiment base-toolbar clipping; Profile public keyboard gate remains fail68, independent continuation445/445 distinct.",
     "No external links clicked, old56 experiment rerun, physical touch, AT, human acceptance, efficiency or new CI result."
-  ]
+  ],
+  "artifactCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+  "deliveryHistory": {
+    "artifactCommit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+    "stage": "prepared/local-bound before push",
+    "status": "root-browser-observed-prepared-local-bound",
+    "delivery": {
+      "sourceHub": "prepared/local-bound; awaiting root push and exact remote verification",
+      "gallery": "prepared/local-bound; awaiting root push and exact remote verification",
+      "experiments": "Root verified both final branch heads; zero checks/statuses is not CI success."
+    },
+    "record": {
+      "path": "docs/research/2026-10-25/gallery/browser-evidence.json",
+      "commit": "70065a0ce2a14e040e98f6ceceae731367c4fec6",
+      "bytes": 12946,
+      "sha256": "2fb2ab6a349b37bddf7d6e06993460ac43554bdf847213085f880c6bc43c6d25",
+      "url": "https://github.com/tt-a1i/archify/blob/70065a0ce2a14e040e98f6ceceae731367c4fec6/docs/research/2026-10-25/gallery/browser-evidence.json"
+    },
+    "semantics": "Original prepared/local-bound snapshot remains unchanged in the fixed artifact commit."
+  },
+  "observationBoundary": {
+    "groupCountsObserved": {
+      "all": 58,
+      "product": 18,
+      "offline": 19,
+      "content": 21
+    },
+    "actualSearches": [
+      "Cycle region",
+      "Profile contexts"
+    ],
+    "groupFilterClicksClaimed": false,
+    "semantics": "Observed group counts do not establish clicks of all four group filters. Original browser receipt remains unchanged."
+  },
+  "scopeDecision": {
+    "current": "Current57/58 batch collected; continuing goal remains active, later scope awaiting latest confirmation.",
+    "history": "Earlier pause-after-batch instructions in fixed source/artifact snapshots record that earlier stage; they are not a claim that the goal is now paused.",
+    "pendingScope": "No new research started while waiting for the latest clarification."
+  }
 }
