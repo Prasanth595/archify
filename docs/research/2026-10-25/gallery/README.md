@@ -29,9 +29,9 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 
 各实验自己的失败与未运行阶段保留在卡片及固定来源中。例如 Task review map 的 ZIP unresolved 和键盘遍历失败，不会因为有截图而变为通过。
 
-## 当前55版静态绑定与实际浏览器观察（待远端交付）
+## 当前55版静态绑定与实际浏览器观察
 
-固定 source hub 为 [`cc347773a8474fb1bf3c6329b15f378d6493da75`](https://github.com/tt-a1i/archify/blob/cc347773a8474fb1bf3c6329b15f378d6493da75/docs/research/2026-10-25/README.md)：**55项 / 55张原PNG，17产品交互 / 17离线适配 / 21内容示例**。来源README为68,966 bytes，SHA-256 `9ad6adb7fff8efaa250070f3bc70a5f25584824cfec663455b2c70a96ff1c705`。source commit已在本地固定；本段不把本地文档提交称为已推送。
+固定 source hub 为 [`cc347773a8474fb1bf3c6329b15f378d6493da75`](https://github.com/tt-a1i/archify/blob/cc347773a8474fb1bf3c6329b15f378d6493da75/docs/research/2026-10-25/README.md)：**55项 / 55张原PNG，17产品交互 / 17离线适配 / 21内容示例**。来源README为68,966 bytes，SHA-256 `9ad6adb7fff8efaa250070f3bc70a5f25584824cfec663455b2c70a96ff1c705`。source commit与55版产物已随 [`640943883a94e52e8b7d6ea3f97cfe35673c8ba6`](https://github.com/tt-a1i/archify/tree/640943883a94e52e8b7d6ea3f97cfe35673c8ba6/docs/research/2026-10-25/gallery) 推送；root用 `git ls-remote` 核对了该远端提交。本次后续只更新交付说明，页面、manifest和selection原字节未改。
 
 新增Mandatory paths归入离线适配，固定实验head `f79704cb63f1577246752c93f8d648a000ea978b`，远端由root精确核对。它对完整公开12节点12边authored图查询两端点间必经内部点：`clients → audit`得到edge、gateway、events、worker，api_a/api_b分别有可点绕行见证，反向 `audit → clients` 明确不可达。完整输入SHA-256 `610a5614667e8f108bdcf1769c9d7af5c3ce0fb62be3ea50550b10eb752e4bda`，不删改原图，不新增共享Viewer能力，不推导故障、因果、真实运行依赖或效率结论。
 
@@ -45,7 +45,7 @@ python3 docs/research/2026-10-25/gallery/verify.py --node '<node-executable>'
 - `manifest.json`：SHA-256 `ca199462a0bcdc42b7af681de0ea548d8bcb9e7f7238999ffb1852cefafadb96`
 - `selection.json`：SHA-256 `1dae2ae28fc3ba04504b27f99d1479212230854a21519fe67b45c7b9f142e7c8`
 
-Root已在Ego/Chromium实际操作冻结55版gallery，并逐张查看本批三张原PNG；三张PNG及六份JSON按原字节保存在 [screenshots55](screenshots55/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、README最终字节、原始观察和PNG的bytes/SHA及尺寸，不冒称原始receipt。固定source commit与本批gallery仍为prepared/local-bound，待root推送和远端验证；实验分支已推送不代表hub与gallery已远端交付。
+Root已在Ego/Chromium实际操作冻结55版gallery，并逐张查看本批三张原PNG；三张PNG及六份JSON按原字节保存在 [screenshots55](screenshots55/)。[browser-evidence.json](browser-evidence.json)是派生绑定，记录当前产物、README最终字节、原始观察和PNG的bytes/SHA及尺寸，不冒称原始receipt。固定source commit与本批gallery的远端交付已独立确认，见上方固定提交。发布前的local-bound观察快照仍保存在该提交中；当前派生绑定补记远端核对，不把远端推送当成新一轮浏览器或CI验证。
 
 桌面1440×1100四筛选为55/17/17/21，Mandatory paths搜索得到1/55。卡片等待实际图片decode后截取，complete=true、天然1440×1250。Enter实际打开弹窗，直接解码PNG为147115B，SHA与实验固定主图相同；切原始尺寸后DOM尺寸1440×1250。Escape后open=false、src=null，焦点回到新卡原按钮。原图高度超过视口，不声称整个图片同时位于可见窗口。
 

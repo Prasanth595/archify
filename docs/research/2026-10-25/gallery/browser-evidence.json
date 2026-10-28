@@ -1,10 +1,13 @@
 {
   "kind": "derived browser evidence for fixed 55-item gallery; original JSON and PNG linked separately",
-  "status": "root-browser-observed-prepared-local-bound",
+  "status": "root-browser-observed-and-artifact-remote-verified",
   "delivery": {
-    "sourceHub": "prepared/local-bound; not yet pushed or remotely verified in this observation",
-    "gallery": "prepared/local-bound; awaiting root remote delivery",
-    "experiment": "Root reported exact remote head f79704cb63f1577246752c93f8d648a000ea978b verified; zero Actions/check runs is not CI success."
+    "sourceHub": "Published as ancestor of independently verified remote gallery commit.",
+    "gallery": "Artifact published; git ls-remote returned exact commit 640943883a94e52e8b7d6ea3f97cfe35673c8ba6. This follow-up only records delivery.",
+    "experiment": "Root reported exact remote head f79704cb63f1577246752c93f8d648a000ea978b verified; zero Actions/check runs is not CI success.",
+    "verifiedPublishedCommit": "640943883a94e52e8b7d6ea3f97cfe35673c8ba6",
+    "remoteBranch": "codex/research-lab-20261025",
+    "priorLocalObservationCommit": "640943883a94e52e8b7d6ea3f97cfe35673c8ba6"
   },
   "hubSourceCommit": "cc347773a8474fb1bf3c6329b15f378d6493da75",
   "hubReadme": {
@@ -37,8 +40,8 @@
     },
     "README.md": {
       "path": "README.md",
-      "sha256": "3ed96a57bb4bba063f0e3026f7c298a005893496fbd425600a0808a5706a1d8c",
-      "bytes": 48982
+      "sha256": "7ce1d506074fadf89c76af79568f2c84f23f3c4cae0077e2b22a0b9e5038e606",
+      "bytes": 49308
     },
     "template.html": {
       "path": "template.html",
