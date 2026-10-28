@@ -26,19 +26,23 @@ const defaultDebounceMs = 400;
 const defaultPollMs = 800;
 const defaultStopGraceMs = 3000;
 const defaultStopKillMs = 750;
-const diagramTypes = new Set(['architecture', 'workflow', 'sequence', 'dataflow', 'lifecycle', 'erd', 'tree', 'class', 'timeline', 'waterfall']);
+const diagramTypes = new Set(['architecture', 'workflow', 'sequence', 'dataflow', 'lifecycle', 'erd', 'tree', 'class', 'timeline', 'waterfall', 'explainer']);
 let previewCommitSequence = 0;
 
 function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
 }
 
-function sourceDigest(inputPath) {
+function sourceDigest(inputPath, dependencyPaths = [inputPath]) {
+  const combined = dependencyPaths.map(sourcePath => {
+    try { return `${sourcePath}\0${sha256(fs.readFileSync(sourcePath))}`; }
+    catch (error) { return `${sourcePath}\0unreadable:${error.code || 'unknown'}`; }
+  }).join('\0');
   try {
     const bytes = fs.readFileSync(inputPath);
-    return { hash: sha256(bytes), bytes, missing: false };
+    return { hash: sha256(Buffer.from(`${combined}\0${sha256(bytes)}`)), bytes, missing: false };
   } catch (error) {
-    return { hash: `unreadable:${error.code || 'unknown'}`, bytes: null, missing: true };
+    return { hash: sha256(`${combined}\0unreadable:${error.code || 'unknown'}`), bytes: null, missing: true };
   }
 }
 
@@ -352,6 +356,15 @@ export async function startPreview(options) {
     throw new Error(`Unknown quality profile "${options.quality}".`);
   }
   const inputPath = path.resolve(options.input);
+  let dependencyPaths = [inputPath];
+  if (type === 'explainer') {
+    try {
+      const { declaredExplainerInputPaths } = await import('../explainer/prepare.mjs');
+      dependencyPaths = declaredExplainerInputPaths(fs.readFileSync(inputPath, 'utf8'), inputPath);
+    } catch {
+      // The delivery child reports draft diagnostics; keep watching the draft.
+    }
+  }
   const outputRequest = {
     requestedOutput: options.output,
     authoredOutput: initialAuthoredOutput(inputPath),
@@ -659,7 +672,7 @@ export async function startPreview(options) {
       if (releasedSource.status !== 'released') throw atomicOutputError(releasedSource);
       resolveOutputPath(outputRequest);
       const sameArtifact = state.lastVerified?.sha256 === digest;
-      const currentSource = sourceDigest(inputPath);
+      const currentSource = sourceDigest(inputPath, dependencyPaths);
       if (currentSource.hash !== generationHash) {
         return {
           committed: false,
@@ -851,7 +864,7 @@ export async function startPreview(options) {
       } else if (pendingBuild || stale || supersededBy) {
         pendingBuild = false;
         if (supersededBy && sourceEpoch === generationEpoch) sourceEpoch += 1;
-        const digest = supersededBy || sourceDigest(inputPath);
+        const digest = supersededBy || sourceDigest(inputPath, dependencyPaths);
         queueStableBuild(digest.hash, true);
       }
     });
@@ -862,7 +875,7 @@ export async function startPreview(options) {
     clearTimeout(debounceTimer);
     const launch = () => {
       if (stopping) return;
-      const digest = sourceDigest(inputPath);
+      const digest = sourceDigest(inputPath, dependencyPaths);
       if (digest.hash !== queuedHash) {
         queueStableBuild(digest.hash);
         return;
@@ -885,7 +898,7 @@ export async function startPreview(options) {
   }
 
   function observeSource({ immediate = false } = {}) {
-    const digest = sourceDigest(inputPath);
+    const digest = sourceDigest(inputPath, dependencyPaths);
     if (!immediate && digest.hash === queuedHash) return;
     sourceEpoch += 1;
     queueStableBuild(digest.hash, immediate);
