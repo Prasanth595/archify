@@ -91,4 +91,17 @@ Root已完整阅读 [Source path witnesses](scouts/source-path-witnesses.md)，�
 
 报告保留ToB reader只取第一条codeFlow/threadFlow的限制：完整教程输入含两条threadFlows，取第一条会遗漏另一分支。该结论来自固定源码与输入的静态核对，尚非运行兼容证据；它是以后可重新筛选的方向，本轮不启动SARIF adapter或第57项实验。报告是该scout停止后的唯一产物。
 
-先前结构变更报告对应的第56项Refactoring records已完成实现、独立审查和root真实浏览器检查，当前等待证据封装及精确远端head；这与本轮源码路径报告分开记账。已发布画廊仍为55项，待root提供第56项固定head和主图后再提交source hub与构建增量，不把研究报告计入实验数量。
+先前结构变更报告对应第56项Refactoring records，当前远端交付身份见下节；这与本轮源码路径报告分开记账。已发布画廊仍为55项，第56项source hub与gallery增量另行固定，不把研究报告计入实验数量。
+
+
+## 第56项：离线重构记录声明投影
+
+独立分支 `codex/lab-refactoring-records` 已推送，root读回远端精确head `bec8671465ff9ce6a2c471196907fc741f52dc53`，工作区clean。[固定README](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/README.md)及[known-base原生主图](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/browser-evidence/overview-light-final.png)绑定完整RefactoringMiner历史@Disabled expected JSON：3180B，SHA-256 `abb1a93274946a7db8bd81de10feb925a3fc5a8107788390e44766028e3a381d`。未运行检测器，不把报告声明称为语义移动、重构准确率或行为等价。
+
+完整账目保留4记录、8位置occurrences、4 before端点、2 after端点和4独立边。R0/R1指向同一个Dog method，R2/R3指向另一个Dog field；相同codeElement不会合并不同文件/范围。known-base来自独立固定parent，unknown-base明确版本未知且不生成before链接；toy源码只保留URL，不复制Java，也不称verified excerpts。实现仅在独立实验中离线投影，未扩共享schema/Reader。
+
+作者6项focused tests通过，最终legend仅metadata变更后复用逻辑相同的测试结果；两份最终原生页面重新经过validate/deliver/check且零诊断。独立审查在最终projector上重做变体、真实CLI与finalize；不同目录重建的原HTML摘要不同，仅独立比较时归一化prepared来源字段，不冒称raw HTML相同。CLI browser-check未运行。
+
+root已查看9张原PNG，实际R0键盘Enter、R1指针共享目标及Escape回原record，核对4条known-base记录各两citations、unknown-base仅after链接。iframe nativeFocus runtime IDs未提取；旧legend图保留历史身份，名为source-card的截图不展示瞬时卡片，卡片URL由之前snapshot和DOM观察单独支持。390px暗色页client/scroll375/375，但record局部317/321；inline图cannot-fit-readable，不能称触摸/AT/跨浏览器或效率验收。
+
+主图1440×1400、173243B，SHA-256 `b4d06c353e16f0299b5f9737bc8674dc8b1a2d3b31a438da8fd24bbf7010b6ea`；packaging index SHA-256 `7e7b61c68bf6dce90c09b0c870662cae4d584bdac33ab32392b65f6ab75643f5`，root核49总文件/48清单条目。实验分支交付不等于合入、发布或安装；56版画廊将按固定source hub生成，旧55项golden与历史浏览器身份保留，本批gallery新卡片操作尚待root单独记录。源码路径报告维持0新实验；持续目标继续。

@@ -2,7 +2,7 @@
 
 2026-10-25 启动。项目维护者要求持续寻找代码理解、图形表达与交互阅读项目，把有价值的点做成独立远程分支，附真实产物图片供审阅；直到维护者明确说停才停止。完成某一批并不结束目标。
 
-**当前状态（2026-10-28）：** 用户明确“继续吧”后目标保持 active。Diff matching blocks、Route alternative、Diff file navigation、Shared reach 与 Mandatory paths 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为55项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
+**当前状态（2026-10-28）：** 用户明确“继续吧”后目标保持 active。Diff matching blocks、Route alternative、Diff file navigation、Shared reach、Mandatory paths 与 Refactoring records 已完成独立审查、真实浏览器对照和各自远程分支交付；总账现为56项。新证据与最新GitHub排重见[本批交付](../2026-10-28/README.md)。以下暂停段落仅保留历史。
 
 **星数不作为门槛或排序依据。** 每个方向都看实际问题、现有能力、维护成本和来源证据；小项目、早期项目同样纳入。与已有 issue/PR 重复的方向先排除或明确剩余差异。
 
@@ -20,13 +20,13 @@
 
 第50项已推送 `codex/lab-relation-search`，精确head `e87a858d220c25c97aee4b5920cf59ab77723b41`，远端一致且工作区clean，独立终审READY；协调者报告精确head Actions runs=0、check-runs=0，不能称远端CI通过。索引收尾时间点：`2026-10-26T05:48:55Z`。已推分支不等于合入、发布、部署或人类验收；50项gallery现已补齐并做本批范围的浏览器检查；本批收尾后暂停，不宣布持续探索目标已完成。
 
-## 已推送的 55 个实验
+## 已推送的 56 个实验
 
-第55项Mandatory paths远程分支已交付；下述画廊54版观察仍保留原身份，55版静态增量与本批新卡片浏览器观察随后单独记录。
+第56项Refactoring records远程分支已交付；当前55版画廊观察保留固定身份，56版静态增量与本批新卡片浏览器观察另行记录。
 
 分支里的 README 含实际图片、原始/示例输入、生成 JSON/HTML、复现命令、来源许可与验证边界。
 
-[离线图片浏览页](gallery/README.md)：已更新为54项，分组17产品交互、16离线适配、21内容示例。固定来源hub `d265744ea580ca0dd36590ff32d05c8e6a0dc68d`，HTML SHA-256 `9dd74a645e0f16c529d5af77a36a381633495107368ddb9bd06c52ab46c0511a`。原53项卡片和图片字节不变，历史浏览器证据单独保留。静态核验及root本批实际浏览器检查完成：四分组、新Shared reach卡搜索、原图摘要/原始尺寸/Escape焦点、390px暗色卡片与空结果/reset。首次预览截图在图片解码前截取，保留原件并另附等待解码后的完成图；范围与实际记录见gallery。
+[离线图片浏览页](gallery/README.md)：已发布55版为17产品交互、17离线适配、21内容示例，source hub `cc347773a8474fb1bf3c6329b15f378d6493da75`，HTML SHA-256 `73201d0fa2195d7c361d2dbacf503b4a68a4749e53614f6c21c7f3fb875a426d`。root已完成Mandatory paths新卡片与通用控件的实际浏览器检查；旧54项记录、卡片与PNG原字节不变。第56项增量尚待单独构建和本批gallery检查，不复用实验截图冒充gallery观察。
 
 | 实验与远程分支 | 具体价值 | 发布 revision | 实际图片 | 验证与限制 |
 | --- | --- | --- | --- | --- |
@@ -85,6 +85,7 @@
 | [Diff file navigation](https://github.com/tt-a1i/archify/tree/codex/lab-diff-file-navigation/experiments/diff-file-navigation) | 完整多文件diff增加局部目录，可直达每个文件段并返回原目录项 | `48f076f9` | [固定README](https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/48f076f9c87fc87d36af20ddd24464e71d798fea/experiments/diff-file-navigation/browser-evidence/current/final-history-file-list-light.png) | 固定6ca6基线；27focused、39parser/CLI/package、1Chrome扩展及generated/ZIP通过；完整8309B历史patch153行原文不变，root当前5图/3观察及修前原件保留；两类fixture四页仅render/inspect/Ego，未finalize或CLI browser-check；独立READY，保留旧窄屏溢出及拆号，无效率/AT/组合验收 |
 | [Shared reach](https://github.com/tt-a1i/archify/tree/codex/lab-shared-reach/experiments/shared-reach) | 对完整原生Architecture求两个节点的共同上下游，列出单侧结果及每项两条精确路径 | `b160b948` | [固定README](https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/b160b948541f541394457fec3005e2d10b281dea/experiments/shared-reach/browser-evidence/downstream-overview-light.png) | 固定6ca6基线；离线CLI，保留完整12节点12边及原输入hash；Node22 focused7/7、独立6144查询共同集合/见证核对；三页finalize三阶段通过，自动browser未请求；root13原PNG含桌面双路/上游/空集/键盘，390px溢出与iframe横向阅读限制保留；非因果/运行依赖/效率证据 |
 | [Mandatory paths](https://github.com/tt-a1i/archify/tree/codex/lab-mandatory-paths/experiments/mandatory-paths) | 给定两个端点求有向路径必经内部点，并给非必经点可点绕行见证；保留完整原图 | `f79704cb` | [固定README](https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/f79704cb63f1577246752c93f8d648a000ea978b/experiments/mandatory-paths/browser-evidence/reachable-overview-light-final.png) | 固定6ca6基线；离线CLI，完整12节点12边输入原字节不变；Node22 focused9/9，独立49154查询/61448绕行见证；validate/deliver/check通过，CLI browser-check未运行；root浅深色/双路/键盘/Escape原图已存；390px client375/scroll400溢出保留，非故障/因果/运行依赖/效率证据 |
+| [Refactoring records](https://github.com/tt-a1i/archify/tree/codex/lab-refactoring-records/experiments/refactoring-records) | 将完整重构报告的4记录8位置投影为4个before/2个after与4条声明边，保留多源同目标和版本未知 | `bec86714` | [固定README](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/README.md) / [原PNG](https://github.com/tt-a1i/archify/blob/bec8671465ff9ce6a2c471196907fc741f52dc53/experiments/refactoring-records/browser-evidence/overview-light-final.png) | 固定6ca6基线；离线导入完整3180B历史@Disabled expected，未运行detector；6focused逻辑同源复用，最终两页三阶段通过/独立复核，CLI browser-check未运行；root9原图与R0键盘/R1共享目标、未知base核对；URL-only非verified excerpt，390px局部record317/321、不能fit-readable保留，无语义等价/效率证据 |
 
 上述前33项均经过另一位 Codex agent 的独立代码/证据复核，协调 agent 实际查看图片。测试数对应各实验自己的 focused tests，不是全仓测试；远端 CI、跨平台验证、实际用户效果与人类验收没有因此自动成立。生成 HTML/Markdown 保留原渲染器或适配器字节；源码 whitespace 检查与生成产物的既有空白分开记录。Payload test 和 State source 各清理了一处无语义影响空白，摘要同时保留实际测试 hash 与当前 hash。
 
