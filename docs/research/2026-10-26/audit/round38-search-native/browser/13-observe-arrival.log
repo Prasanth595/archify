@@ -1,0 +1,246 @@
+[p1 "Online Boutique System - LikeC4 Template" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Online Boutique System - LikeC4 Template"]
+root
+  container
+    container
+      application "Interactive diagram" [ref=220, loc=role:application[name="Interactive diagram"]]
+        container
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          svg_root
+          container
+            text "browses and buys products"
+            button "Navigate to view" [ref=313]
+              svg_root
+          text "sends order confirmation"
+          text "sends activity data"
+          container
+            text "sends payment request"
+            button "Navigate to view" [ref=314]
+              svg_root
+          container
+            text "sends checkout data"
+            button "Navigate to view" [ref=315]
+              svg_root
+          container
+            text "sends checkout information"
+            button "Navigate to view" [ref=316]
+              svg_root
+          text "sends activity data"
+          text "gets product data"
+          text "gets cart data"
+          text "updates order status"
+          text "gets exchange rates"
+          text "gets shipping cost"
+          text "gets products"
+          text "gets product data"
+          group "Customer. Node kind: actor. Opens view customer." [ref=223, loc=role:group[name="Customer. Node kind: actor. Opens view customer."]]
+            container [ref=224]
+              svg_root
+              text "Customer"
+              container
+                button "Navigate to view" [ref=225]
+                  svg_root
+                button "Browse Customer relationships" [ref=226, loc=css:button[aria-label="Browse Customer relationships"]]
+                  svg_root
+              button "Open details" [ref=227]
+                svg_root
+          group "Online Boutique System. Node kind: system. Description: E-commerce app for browsing and purchasing various items." [ref=228]
+            text "ONLINE BOUTIQUE SYSTEM"
+            button "Open details" [ref=317]
+              svg_root
+          group "Frontend. Node kind: webapp. Technology: Vue.js / TypeScript. Description: Provides access to the services via the web interface. Opens view frontend." [ref=318]
+            container [ref=319]
+              svg_root
+              svg_root
+              svg_root
+              text "Frontend"
+              text "Vue.js / TypeScript"
+              paragraph
+                text "Provides access to the services via the web interface"
+              container
+                button "Navigate to view" [ref=320]
+                  svg_root
+                button "Browse Frontend relationships" [ref=321, loc=css:button[aria-label="Browse Frontend relationships"]]
+                  svg_root
+              button "Open details" [ref=322]
+                svg_root
+          group "Checkout Service. Node kind: service. Technology: Node.js. Description: Retrieves user cart, prepares order and orchestrates payment, shipping and email notifications. Opens view checkout." [ref=323]
+            container [ref=324]
+              svg_root
+              text "Checkout Service"
+              text "Node.js"
+              paragraph
+                text "Retrieves"
+                text "user cart"
+                text ", prepares"
+                text "order"
+                text "and orchestrates"
+                text "payment"
+                text ","
+                text "shipping"
+                text "and"
+                text "email"
+                text "notifications."
+              container
+                button "Navigate to view" [ref=325]
+                  svg_root
+                button "Browse Checkout Service relationships" [ref=326, loc=css:button[aria-label="Browse Checkout Service relationships"]]
+                  svg_root
+              button "Open details" [ref=327]
+                svg_root
+          group "Cart Service. Node kind: service. Technology: Node.js. Description: Stores the items in the user's shopping cart in Redis and retrieves it. Opens view cart." [ref=328]
+            container [ref=329]
+              svg_root
+              text "Cart Service"
+              text "Node.js"
+              paragraph
+                text "Stores the items in the user's shopping cart in Redis and retrieves it."
+              container
+                button "Navigate to view" [ref=330]
+                  svg_root
+                button "Browse Cart Service relationships" [ref=331, loc=css:button[aria-label="Browse Cart Service relationships"]]
+                  svg_root
+              button "Open details" [ref=332]
+                svg_root
+          group "Email Service. Node kind: service. Description: Sends emails to customers using templates and customer data." [ref=333]
+            container [ref=334]
+              text "Email Service"
+              paragraph
+                text "Sends emails to customers using templates and customer data."
+              button "Browse Email Service relationships" [ref=335, loc=css:button[aria-label="Browse Email Service relationships"]]
+                svg_root
+              button "Open details" [ref=336]
+                svg_root
+          group "Payment Service. Node kind: service. Technology: Scala. Description: Charges the given credit card info with the given amount and returns a transaction ID. Opens view payments." [ref=337]
+            container [ref=338]
+              svg_root
+              text "Payment Service"
+              text "Scala"
+              paragraph
+                text "Charges the given credit card info with the given amount and returns a transaction ID."
+              container
+                button "Navigate to view" [ref=339]
+                  svg_root
+                button "Browse Payment Service relationships" [ref=340, loc=css:button[aria-label="Browse Payment Service relationships"]]
+                  svg_root
+              button "Open details" [ref=341]
+                svg_root
+          group "Shipping Service. Node kind: service. Technology: .NET Service. Description: Gives shipping cost estimates based on the shopping cart. Ships items to the given address. Opens view shipping." [ref=342]
+            container [ref=343]
+              svg_root
+              text "Shipping Service"
+              text ".NET Service"
+              paragraph
+                text "Gives shipping cost estimates based on the shopping cart. Ships items to the given address."
+              container
+                button "Navigate to view" [ref=344]
+                  svg_root
+                button "Browse Shipping Service relationships" [ref=345, loc=css:button[aria-label="Browse Shipping Service relationships"]]
+                  svg_root
+              button "Open details" [ref=346]
+                svg_root
+          group "Action Log Service. Node kind: service. Technology: Go. Description: Manages user activity and search history. Opens view actionLog." [ref=347]
+            container [ref=348]
+              svg_root
+              text "Action Log Service"
+              text "Go"
+              paragraph
+                text "Manages user activity and search history."
+              container
+                button "Navigate to view" [ref=349]
+                  svg_root
+                button "Browse Action Log Service relationships" [ref=350, loc=css:button[aria-label="Browse Action Log Service relationships"]]
+                  svg_root
+              button "Open details" [ref=351]
+                svg_root
+          group "Product Catalogue Service. Node kind: service. Technology: Laravel. Description: Provides a list of products and ability to search products and get individual products. Opens view catalogue." [ref=352]
+            container [ref=353]
+              svg_root
+              text "Product Catalogue Service"
+              text "Laravel"
+              paragraph
+                text "Provides a list of products and ability to search products and get individual products."
+              container
+                button "Navigate to view" [ref=354]
+                  svg_root
+                button "Browse Product Catalogue Service relationships" [ref=355, loc=css:button[aria-label="Browse Product Catalogue Service relationships"]]
+                  svg_root
+              button "Open details" [ref=356]
+                svg_root
+          group "Boutique Database. Node kind: database. Technology: PostgreSQL. Description: Stores all products, orders, and user data. Opens view database." [ref=357]
+            container [ref=358]
+              svg_root
+              svg_root
+              svg_root
+              text "Boutique Database"
+              text "PostgreSQL"
+              paragraph
+                text "Stores"
+                text "all"
+                text "products"
+                text ","
+                text "orders"
+                text ", and"
+                text "user data"
+                text "."
+              container
+                button "Navigate to view" [ref=359]
+                  svg_root
+                button "Browse Boutique Database relationships" [ref=360, loc=css:button[aria-label="Browse Boutique Database relationships"]]
+                  svg_root
+              button "Open details" [ref=361]
+                svg_root
+        svg_root
+        container "Control Panel"
+          button "Zoom In" [ref=241, loc=css:button[aria-label="Zoom In"]]
+            svg_root
+          button "Zoom Out" [ref=242, loc=css:button[aria-label="Zoom Out"]]
+            svg_root
+          button "Fit View" [ref=243, loc=css:button[aria-label="Fit View"]]
+            svg_root
+        anchor "React Flow attribution" [ref=244, loc=css:a[aria-label="React Flow attribution"], url=https://reactflow.dev/?utm_source=attribution]
+          text "React Flow"
+      container
+        button [ref=245]
+          svg_root
+        container
+          button [ref=246]
+            svg_root
+          button [ref=247]
+            svg_root
+        button [ref=248]
+          text "Online Boutique System"
+        container
+          button [ref=249]
+            svg_root
+          radiogroup
+            text "Diagram"
+            text "Graph"
+          button [ref=252]
+            svg_root
+            text "⌘ + K"
+      button [ref=253]
+        svg_root
+    container
+      button [ref=254]
+        svg_root
+        text "Share"
+      button [ref=255]
+        text "Export"
+        svg_root
+      splitter
+      button "Toggle color scheme" [ref=256, loc=css:button[aria-label="Toggle color scheme"]]
+        svg_root
+
+

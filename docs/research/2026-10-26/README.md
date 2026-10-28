@@ -746,3 +746,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 37 批 · 解析模型与实际加载
 
 [Are the Types Wrong / publint 筛选与原生对照](scouts/resolution-models-round37.md)：刷新 332 个远程 head，task-view 无新版本。三个原创包在两份目录共 16 条命令，另有原生网页三例与六张实拍。缺失 ESM 文件时，页面的 implementationResolution 模型指向 fallback 的 index.js，Node 22 实际却报 index.mjs 缺失；生产者版本和语境不能混成执行图。16 个完整来源经 Git blob/长度/SHA 核对。保留可复现观察包，暂缓通用转换器和新增图解页；本批只推研究分支，无新 PR。
+
+## 第 38 批 · 跨视图搜索原生补证
+
+[LikeC4 搜索、选图与定位观察](scouts/search-reveal-native-round38.md)补上第 26 批未执行的原生页面检查。24 个完整来源文件、19 份操作记录和 11 张实拍保存；包括一次成功到图、未导航对照和错误等待谓词。新旧源码的自动退焦配置为 3000/0ms，不能混为同一版本或直接当成部署时序。未取得稳定导航验收，也未证明 Archify 缺口，本批不新增导航状态或自动退焦，只推研究分支，无新 PR。

@@ -1,0 +1,201 @@
+[p1 "System Landscape - LikeC4 Template" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "System Landscape - LikeC4 Template"]
+root
+  svg_root
+  svg_root
+  svg_root
+  text "uses"
+  button "Navigate to view" [ref=221]
+    svg_root
+  text "processes payments"
+  button "Navigate to view" [ref=222]
+    svg_root
+  text "delegates email sending"
+  svg_root
+  text "Customer"
+  button "Navigate to view" [ref=225]
+    svg_root
+  button "Browse Customer relationships" [ref=226, loc=css:button[aria-label="Browse Customer relationships"]]
+    svg_root
+  button "Open details" [ref=227]
+    svg_root
+  text "Online Boutique System"
+  paragraph
+    text "E-commerce app for browsing and purchasing various items."
+  button "Navigate to view" [ref=230]
+    svg_root
+  button "Browse Online Boutique System relationships" [ref=231, loc=css:button[aria-label="Browse Online Boutique System relationships"]]
+    svg_root
+  button "Open details" [ref=232]
+    svg_root
+  text "Payment Gateway"
+  text "Stripe"
+  paragraph
+    text "3rd-party"
+    text "Platform to process"
+    text "online payments"
+  button "Browse Payment Gateway relationships" [ref=235, loc=css:button[aria-label="Browse Payment Gateway relationships"]]
+    svg_root
+  button "Open details" [ref=236]
+    svg_root
+  text "Email Provider"
+  text "SendGrid"
+  paragraph
+    text "3rd-party"
+    text "Platform to send"
+    text "transactional emails"
+  button "Browse Email Provider relationships" [ref=239, loc=css:button[aria-label="Browse Email Provider relationships"]]
+    svg_root
+  button "Open details" [ref=240]
+    svg_root
+  svg_root
+  button "Zoom In" [ref=241, loc=css:button[aria-label="Zoom In"]]
+    svg_root
+  button "Zoom Out" [ref=242, loc=css:button[aria-label="Zoom Out"]]
+    svg_root
+  button "Fit View" [ref=243, loc=css:button[aria-label="Fit View"]]
+    svg_root
+  anchor "React Flow attribution" [ref=244, loc=css:a[aria-label="React Flow attribution"], url=https://reactflow.dev/?utm_source=attribution]
+    text "React Flow"
+  button [ref=245]
+    svg_root
+  button [ref=246]
+    svg_root
+  button [ref=247]
+    svg_root
+  button [ref=248]
+    text "System Landscape"
+  button [ref=249]
+    svg_root
+  text "Diagram"
+  text "Graph"
+  button [ref=252]
+    svg_root
+    text "⌘ + K"
+  button [ref=253]
+    svg_root
+  button [ref=254]
+    svg_root
+    text "Share"
+  button [ref=255]
+    text "Export"
+    svg_root
+  button "Toggle color scheme" [ref=256, loc=css:button[aria-label="Toggle color scheme"]]
+    svg_root
+  dialog_modal [ref=257]
+    container
+      container
+        svg_root
+        textbox [ref=258, loc=css:input[placeholder="Search by title, description or start with # or kind:"]]
+          text "Checkout Service"
+        button [ref=259]
+          svg_root
+      container
+        container
+          text "#"
+          text "teamA"
+        container
+          text "#"
+          text "v2"
+        container
+          text "#"
+          text "v1_1"
+        container
+          text "#"
+          text "teamB"
+        container
+          text "#"
+          text "v1"
+        container
+          text "#"
+          text "next"
+        container
+          text "#"
+          text "deprecated"
+    container
+      text "Elements"
+      text "Views"
+    container
+      tree
+        treeitem [ref=281]
+          button [ref=282]
+            svg_root
+            container
+              container
+                text "Checkout Service"
+                text "checkout"
+              text "Retrieves user cart, prepares order and orchestrates payment, shipping and email notifications."
+            container
+              text "10"
+              text "view"
+              text "s"
+      button [ref=274]
+        svg_root
+        container
+          text "Checkout Service"
+          container
+            text "Interactions of"
+            text "Checkout Service"
+            text "with other components."
+            text "Checkout Service"
+            text "does:Retrieves user cartPrepares orderOrchestrates the payment, shipping and the email notification."
+    container
+      container
+        heading
+          text "Select view"
+        button [ref=283]
+          svg_root
+      container [ref=284]
+        container
+          heading
+            text "scoped views of the element"
+          button [ref=285]
+            svg_root
+            container
+              text "Checkout Service"
+              text "Interactions of Checkout Service with other components.Checkout Service does:Retrieves user cartPrepares orderOrchestrates the payment, shipping and the email notification."
+        container
+          heading
+            text "views including this element"
+          button [ref=286]
+            svg_root
+            container
+              text "Online Boutique System"
+              text "E-commerce app for browsing items, add them to the cart, and purchasing them."
+          button [ref=287]
+            svg_root
+            container
+              text "Frontend"
+              text "No description"
+          button [ref=288]
+            svg_root
+            container
+              text "Payment Service"
+              text "No description"
+          button [ref=289]
+            svg_root
+            container
+              text "Action Log Service"
+              text "No description"
+          button [ref=290]
+            svg_root
+            container
+              text "Shipping Service"
+              text "No description"
+          button [ref=291]
+            svg_root
+            container
+              text "Environment: Development"
+              text "Overview of the development environment."
+          button [ref=292]
+            svg_root
+            container
+              text "Environment: Production"
+              text "Overview of the production environment."
+          button [ref=293]
+            svg_root
+            container
+              text "Usecase 01: Placing an Order"
+              text "This view describes the process of placing an order."
+          button [ref=294]
+
+

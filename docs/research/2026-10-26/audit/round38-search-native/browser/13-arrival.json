@@ -1,0 +1,622 @@
+{
+  "url": "https://template.likec4.dev/view/boutique/",
+  "title": "Online Boutique System - LikeC4 Template",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "groups": [
+    {
+      "label": "Relationship from Customer to Frontend. Label: browses and buys products. Opens view place-order.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "1t4263u",
+        "data-testid": "rf__edge-1t4263u",
+        "aria-label": "Relationship from Customer to Frontend. Label: browses and buys products. Opens view place-order.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 655.1571044921875,
+        "y": 130.08091735839844,
+        "width": 3.56036376953125,
+        "height": 63.19621276855469,
+        "top": 130.08091735839844,
+        "right": 658.7174682617188,
+        "bottom": 193.27713012695312,
+        "left": 655.1571044921875
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Checkout Service to Email Service. Label: sends order confirmation.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "1m10lim",
+        "data-testid": "rf__edge-1m10lim",
+        "aria-label": "Relationship from Checkout Service to Email Service. Label: sends order confirmation.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 442.4261779785156,
+        "y": 421.5846252441406,
+        "width": 16.911651611328125,
+        "height": 59.190826416015625,
+        "top": 421.5846252441406,
+        "right": 459.33782958984375,
+        "bottom": 480.77545166015625,
+        "left": 442.4261779785156
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Checkout Service to Action Log Service. Label: sends activity data.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "6641tk",
+        "data-testid": "rf__edge-6641tk",
+        "aria-label": "Relationship from Checkout Service to Action Log Service. Label: sends activity data.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 559.0276489257812,
+        "y": 411.7936706542969,
+        "width": 215.84625244140625,
+        "height": 80.99795532226562,
+        "top": 411.7936706542969,
+        "right": 774.8739013671875,
+        "bottom": 492.7916259765625,
+        "left": 559.0276489257812
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Checkout Service to Payment Service. Label: sends payment request. Opens view place-order.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "31s6dn",
+        "data-testid": "rf__edge-31s6dn",
+        "aria-label": "Relationship from Checkout Service to Payment Service. Label: sends payment request. Opens view place-order.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 301.3472900390625,
+        "y": 421.5846252441406,
+        "width": 107.70059204101562,
+        "height": 61.416046142578125,
+        "top": 421.5846252441406,
+        "right": 409.0478820800781,
+        "bottom": 483.00067138671875,
+        "left": 301.3472900390625
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Checkout Service to Shipping Service. Label: sends checkout data. Opens view order-fulfillment.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "4ntdao",
+        "data-testid": "rf__edge-4ntdao",
+        "aria-label": "Relationship from Checkout Service to Shipping Service. Label: sends checkout data. Opens view order-fulfillment.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 525.6493530273438,
+        "y": 421.5846252441406,
+        "width": 72.09710693359375,
+        "height": 60.525970458984375,
+        "top": 421.5846252441406,
+        "right": 597.7464599609375,
+        "bottom": 482.110595703125,
+        "left": 525.6493530273438
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Frontend to Checkout Service. Label: sends checkout information. Opens view place-order.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "17gdyuk",
+        "data-testid": "rf__edge-17gdyuk",
+        "aria-label": "Relationship from Frontend to Checkout Service. Label: sends checkout information. Opens view place-order.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 525.6493530273438,
+        "y": 277.83544921875,
+        "width": 75.21240234375,
+        "height": 60.525970458984375,
+        "top": 277.83544921875,
+        "right": 600.8617553710938,
+        "bottom": 338.3614196777344,
+        "left": 525.6493530273438
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Cart Service to Action Log Service. Label: sends activity data.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "1jw3p04",
+        "data-testid": "rf__edge-1jw3p04",
+        "aria-label": "Relationship from Cart Service to Action Log Service. Label: sends activity data.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 849.8253784179688,
+        "y": 421.5846252441406,
+        "width": 3.8212890625,
+        "height": 58.74578857421875,
+        "top": 421.5846252441406,
+        "right": 853.6466674804688,
+        "bottom": 480.3304138183594,
+        "left": 849.8253784179688
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Cart Service to Product Catalogue Service. Label: gets product data.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "13v6wi5",
+        "data-testid": "rf__edge-13v6wi5",
+        "aria-label": "Relationship from Cart Service to Product Catalogue Service. Label: gets product data.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 907.0519409179688,
+        "y": 421.5846252441406,
+        "width": 92.569091796875,
+        "height": 60.97100830078125,
+        "top": 421.5846252441406,
+        "right": 999.6210327148438,
+        "bottom": 482.5556335449219,
+        "left": 907.0519409179688
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Frontend to Cart Service. Label: gets cart data.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "rfeugw",
+        "data-testid": "rf__edge-rfeugw",
+        "aria-label": "Relationship from Frontend to Cart Service. Label: gets cart data.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 709.8975219726562,
+        "y": 277.83544921875,
+        "width": 80.99798583984375,
+        "height": 60.971038818359375,
+        "top": 277.83544921875,
+        "right": 790.8955078125,
+        "bottom": 338.8064880371094,
+        "left": 709.8975219726562
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Payment Service to Boutique Database. Label: updates order status.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "ogjkxx",
+        "data-testid": "rf__edge-ogjkxx",
+        "aria-label": "Relationship from Payment Service to Boutique Database. Label: updates order status.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 293.33648681640625,
+        "y": 565.333740234375,
+        "width": 104.58529663085938,
+        "height": 62.751220703125,
+        "top": 565.333740234375,
+        "right": 397.9217834472656,
+        "bottom": 628.0849609375,
+        "left": 293.33648681640625
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Frontend to Payment Service. Label: gets exchange rates.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "1u3y7fx",
+        "data-testid": "rf__edge-1u3y7fx",
+        "aria-label": "Relationship from Frontend to Payment Service. Label: gets exchange rates.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 237.70599365234375,
+        "y": 244.0121307373047,
+        "width": 340.01348876953125,
+        "height": 236.76332092285156,
+        "top": 244.0121307373047,
+        "right": 577.719482421875,
+        "bottom": 480.77545166015625,
+        "left": 237.70599365234375
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Frontend to Shipping Service. Label: gets shipping cost.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "nxkvw6",
+        "data-testid": "rf__edge-nxkvw6",
+        "aria-label": "Relationship from Frontend to Shipping Service. Label: gets shipping cost.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 649.3715209960938,
+        "y": 277.83544921875,
+        "width": 6.23065185546875,
+        "height": 202.49496459960938,
+        "top": 277.83544921875,
+        "right": 655.6021728515625,
+        "bottom": 480.3304138183594,
+        "left": 649.3715209960938
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Product Catalogue Service to Boutique Database. Label: gets products.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "1dwi1gv",
+        "data-testid": "rf__edge-1dwi1gv",
+        "aria-label": "Relationship from Product Catalogue Service to Boutique Database. Label: gets products.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 543.006103515625,
+        "y": 557.322998046875,
+        "width": 439.7032470703125,
+        "height": 98.35467529296875,
+        "top": 557.322998046875,
+        "right": 982.7093505859375,
+        "bottom": 655.6776733398438,
+        "left": 543.006103515625
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Relationship from Frontend to Product Catalogue Service. Label: gets product data.",
+      "attrs": {
+        "class": "react-flow__edge react-flow__edge-relationship nopan selectable",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "edge",
+        "data-id": "1az8kuf",
+        "data-testid": "rf__edge-1az8kuf",
+        "aria-label": "Relationship from Frontend to Product Catalogue Service. Label: gets product data.",
+        "aria-describedby": "react-flow__edge-desc-1"
+      },
+      "rect": {
+        "x": 736.6001586914062,
+        "y": 253.8031005859375,
+        "width": 308.86041259765625,
+        "height": 226.97235107421875,
+        "top": 253.8031005859375,
+        "right": 1045.4605712890625,
+        "bottom": 480.77545166015625,
+        "left": 736.6001586914062
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Customer. Node kind: actor. Opens view customer.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "customer",
+        "data-testid": "rf__node-customer",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Customer. Node kind: actor. Opens view customer.",
+        "style": "z-index: 20; transform: translate(1073px, 0px); pointer-events: all; visibility: visible; width: 240px; height: 135px;"
+      },
+      "rect": {
+        "x": 603.5320434570312,
+        "y": 70,
+        "width": 106.81048583984375,
+        "height": 60.08091735839844,
+        "top": 70,
+        "right": 710.342529296875,
+        "bottom": 130.08091735839844,
+        "left": 603.5320434570312
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Online Boutique System. Node kind: system. Description: E-commerce app for browsing and purchasing various items.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-compound-element selectable parent",
+        "data-id": "boutique",
+        "data-testid": "rf__node-boutique",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Online Boutique System. Node kind: system. Description: E-commerce app for browsing and purchasing various items.",
+        "style": "z-index: 1; transform: translate(8px, 226px); pointer-events: all; visibility: visible; width: 2319px; height: 1249px;"
+      },
+      "rect": {
+        "x": 129.5603485107422,
+        "y": 170.57989501953125,
+        "width": 1032.056640625,
+        "height": 555.8597412109375,
+        "top": 170.57989501953125,
+        "right": 1161.6169891357422,
+        "bottom": 726.4396362304688,
+        "left": 129.5603485107422
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Frontend. Node kind: webapp. Technology: Vue.js / TypeScript. Description: Provides access to the services via the web interface. Opens view frontend.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.frontend",
+        "data-testid": "rf__node-boutique.frontend",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Frontend. Node kind: webapp. Technology: Vue.js / TypeScript. Description: Provides access to the services via the web interface. Opens view frontend.",
+        "style": "z-index: 20; transform: translate(1014px, 287px); pointer-events: all; visibility: visible; width: 357px; height: 180px;"
+      },
+      "rect": {
+        "x": 577.2744140625,
+        "y": 197.72756958007812,
+        "width": 158.88067626953125,
+        "height": 80.10787963867188,
+        "top": 197.72756958007812,
+        "right": 736.1550903320312,
+        "bottom": 277.83544921875,
+        "left": 577.2744140625
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Checkout Service. Node kind: service. Technology: Node.js. Description: Retrieves user cart, prepares order and orchestrates payment, shipping and email notifications. Opens view checkout.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.checkout",
+        "data-testid": "rf__node-boutique.checkout",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Checkout Service. Node kind: service. Technology: Node.js. Description: Retrieves user cart, prepares order and orchestrates payment, shipping and email notifications. Opens view checkout.",
+        "style": "z-index: 20; transform: translate(611px, 610px); pointer-events: all; visibility: visible; width: 361px; height: 180px;"
+      },
+      "rect": {
+        "x": 397.9217834472656,
+        "y": 341.47674560546875,
+        "width": 160.66085815429688,
+        "height": 80.10787963867188,
+        "top": 341.47674560546875,
+        "right": 558.5826416015625,
+        "bottom": 421.5846252441406,
+        "left": 397.9217834472656
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Cart Service. Node kind: service. Technology: Node.js. Description: Stores the items in the user's shopping cart in Redis and retrieves it. Opens view cart.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.cart",
+        "data-testid": "rf__node-boutique.cart",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Cart Service. Node kind: service. Technology: Node.js. Description: Stores the items in the user's shopping cart in Redis and retrieves it. Opens view cart.",
+        "style": "z-index: 20; transform: translate(1461px, 610px); pointer-events: all; visibility: visible; width: 320px; height: 180px;"
+      },
+      "rect": {
+        "x": 776.2090454101562,
+        "y": 341.47674560546875,
+        "width": 142.41400146484375,
+        "height": 80.10787963867188,
+        "top": 341.47674560546875,
+        "right": 918.623046875,
+        "bottom": 421.5846252441406,
+        "left": 776.2090454101562
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Email Service. Node kind: service. Description: Sends emails to customers using templates and customer data.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.email",
+        "data-testid": "rf__node-boutique.email",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Email Service. Node kind: service. Description: Sends emails to customers using templates and customer data.",
+        "style": "z-index: 20; transform: translate(521px, 933px); pointer-events: all; visibility: visible; width: 358px; height: 180px;"
+      },
+      "rect": {
+        "x": 357.86785888671875,
+        "y": 485.22589111328125,
+        "width": 159.32568359375,
+        "height": 80.10784912109375,
+        "top": 485.22589111328125,
+        "right": 517.1935424804688,
+        "bottom": 565.333740234375,
+        "left": 357.86785888671875
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Payment Service. Node kind: service. Technology: Scala. Description: Charges the given credit card info with the given amount and returns a transaction ID. Opens view payments.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.payments",
+        "data-testid": "rf__node-boutique.payments",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Payment Service. Node kind: service. Technology: Scala. Description: Charges the given credit card info with the given amount and returns a transaction ID. Opens view payments.",
+        "style": "z-index: 20; transform: translate(48px, 933px); pointer-events: all; visibility: visible; width: 362px; height: 180px;"
+      },
+      "rect": {
+        "x": 147.3621063232422,
+        "y": 485.22589111328125,
+        "width": 161.10585021972656,
+        "height": 80.10784912109375,
+        "top": 485.22589111328125,
+        "right": 308.46795654296875,
+        "bottom": 565.333740234375,
+        "left": 147.3621063232422
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Shipping Service. Node kind: service. Technology: .NET Service. Description: Gives shipping cost estimates based on the shopping cart. Ships items to the given address. Opens view shipping.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.shipping",
+        "data-testid": "rf__node-boutique.shipping",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Shipping Service. Node kind: service. Technology: .NET Service. Description: Gives shipping cost estimates based on the shopping cart. Ships items to the given address. Opens view shipping.",
+        "style": "z-index: 20; transform: translate(989px, 933px); pointer-events: all; visibility: visible; width: 367px; height: 180px;"
+      },
+      "rect": {
+        "x": 566.1483154296875,
+        "y": 485.22589111328125,
+        "width": 163.33111572265625,
+        "height": 80.10784912109375,
+        "top": 485.22589111328125,
+        "right": 729.4794311523438,
+        "bottom": 565.333740234375,
+        "left": 566.1483154296875
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Action Log Service. Node kind: service. Technology: Go. Description: Manages user activity and search history. Opens view actionLog.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.actionLog",
+        "data-testid": "rf__node-boutique.actionLog",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Action Log Service. Node kind: service. Technology: Go. Description: Manages user activity and search history. Opens view actionLog.",
+        "style": "z-index: 20; transform: translate(1467px, 933px); pointer-events: all; visibility: visible; width: 347px; height: 180px;"
+      },
+      "rect": {
+        "x": 778.8792724609375,
+        "y": 485.22589111328125,
+        "width": 154.43023681640625,
+        "height": 80.10784912109375,
+        "top": 485.22589111328125,
+        "right": 933.3095092773438,
+        "bottom": 565.333740234375,
+        "left": 778.8792724609375
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Product Catalogue Service. Node kind: service. Technology: Laravel. Description: Provides a list of products and ability to search products and get individual products. Opens view catalogue.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.catalogue",
+        "data-testid": "rf__node-boutique.catalogue",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Product Catalogue Service. Node kind: service. Technology: Laravel. Description: Provides a list of products and ability to search products and get individual products. Opens view catalogue.",
+        "style": "z-index: 20; transform: translate(1925px, 933px); pointer-events: all; visibility: visible; width: 362px; height: 180px;"
+      },
+      "rect": {
+        "x": 982.7093505859375,
+        "y": 485.22589111328125,
+        "width": 161.1058349609375,
+        "height": 80.10784912109375,
+        "top": 485.22589111328125,
+        "right": 1143.815185546875,
+        "bottom": 565.333740234375,
+        "left": 982.7093505859375
+      },
+      "opacity": "1"
+    },
+    {
+      "label": "Boutique Database. Node kind: database. Technology: PostgreSQL. Description: Stores all products, orders, and user data. Opens view database.",
+      "attrs": {
+        "class": "react-flow__node react-flow__node-element selectable",
+        "data-id": "boutique.db",
+        "data-testid": "rf__node-boutique.db",
+        "tabindex": "0",
+        "role": "group",
+        "aria-roledescription": "node",
+        "aria-describedby": "react-flow__node-desc-1",
+        "aria-label": "Boutique Database. Node kind: database. Technology: PostgreSQL. Description: Stores all products, orders, and user data. Opens view database.",
+        "style": "z-index: 20; transform: translate(594px, 1255px); pointer-events: all; visibility: visible; width: 332px; height: 180px;"
+      },
+      "rect": {
+        "x": 390.3560485839844,
+        "y": 628.530029296875,
+        "width": 147.75454711914062,
+        "height": 80.10784912109375,
+        "top": 628.530029296875,
+        "right": 538.110595703125,
+        "bottom": 708.6378784179688,
+        "left": 390.3560485839844
+      },
+      "opacity": "1"
+    }
+  ],
+  "active": "<body>\n  <div id=\"likec4-root\"><style data-mantine-styles=\"true\">:root, :host{--mantine-cursor-type: pointer;--mantine-line-height: var(--line-heights-md);--mantine-font-family: var(--fonts-body);--mantine-font-family-monospace: var(--fonts-mono);--mantine-font-family-headings: var(--fonts-display);--mantine-heading-font-weight: var(--font-weights-bold);--mantine-radius-default: var(--radii-sm);--"
+}

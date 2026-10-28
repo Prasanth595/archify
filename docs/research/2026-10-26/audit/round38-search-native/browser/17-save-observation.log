@@ -1,0 +1,109 @@
+{ url: 'https://template.likec4.dev/view/index', samples: 1, done: true }
+[p1 "System Landscape - LikeC4 Template" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "System Landscape - LikeC4 Template"]
+root
+  container
+    container
+      application "Interactive diagram" [ref=380, loc=role:application[name="Interactive diagram"]]
+        container
+          svg_root
+          svg_root
+          svg_root
+          container
+            text "uses"
+            button "Navigate to view" [ref=381]
+              svg_root
+          container
+            text "processes payments"
+            button "Navigate to view" [ref=382]
+              svg_root
+          text "delegates email sending"
+          group "Customer. Node kind: actor. Opens view customer." [ref=383, loc=role:group[name="Customer. Node kind: actor. Opens view customer."]]
+            container [ref=384]
+              svg_root
+              text "Customer"
+              container
+                button "Navigate to view" [ref=385]
+                  svg_root
+                button "Browse Customer relationships" [ref=386, loc=css:button[aria-label="Browse Customer relationships"]]
+                  svg_root
+              button "Open details" [ref=387]
+                svg_root
+          group "Online Boutique System. Node kind: system. Description: E-commerce app for browsing and purchasing various items. Opens view boutique." [ref=388]
+            container [ref=389]
+              text "Online Boutique System"
+              paragraph
+                text "E-commerce app for browsing and purchasing various items."
+              container
+                button "Navigate to view" [ref=390]
+                  svg_root
+                button "Browse Online Boutique System relationships" [ref=391, loc=css:button[aria-label="Browse Online Boutique System relationships"]]
+                  svg_root
+              button "Open details" [ref=392]
+                svg_root
+          group "Payment Gateway. Node kind: external-system. Technology: Stripe. Description: 3rd-party Platform to processonline payments." [ref=393]
+            container [ref=394]
+              text "Payment Gateway"
+              text "Stripe"
+              paragraph
+                text "3rd-party"
+                text "Platform to process"
+                text "online payments"
+              button "Browse Payment Gateway relationships" [ref=395, loc=css:button[aria-label="Browse Payment Gateway relationships"]]
+                svg_root
+              button "Open details" [ref=396]
+                svg_root
+          group "Email Provider. Node kind: external-system. Technology: SendGrid. Description: 3rd-party Platform to sendtransactional emails." [ref=397]
+            container [ref=398]
+              text "Email Provider"
+              text "SendGrid"
+              paragraph
+                text "3rd-party"
+                text "Platform to send"
+                text "transactional emails"
+              button "Browse Email Provider relationships" [ref=399, loc=css:button[aria-label="Browse Email Provider relationships"]]
+                svg_root
+              button "Open details" [ref=400]
+                svg_root
+        svg_root
+        container "Control Panel"
+          button "Zoom In" [ref=401, loc=css:button[aria-label="Zoom In"]]
+            svg_root
+          button "Zoom Out" [ref=402, loc=css:button[aria-label="Zoom Out"]]
+            svg_root
+          button "Fit View" [ref=403, loc=css:button[aria-label="Fit View"]]
+            svg_root
+        anchor "React Flow attribution" [ref=404, loc=css:a[aria-label="React Flow attribution"], url=https://reactflow.dev/?utm_source=attribution]
+          text "React Flow"
+      container
+        button [ref=405]
+          svg_root
+        container
+          button [ref=406]
+            svg_root
+          button [ref=407]
+            svg_root
+        button [ref=408]
+          text "System Landscape"
+        container
+          button [ref=409]
+            svg_root
+          radiogroup
+            text "Diagram"
+            text "Graph"
+          button [ref=410]
+            svg_root
+            text "⌘ + K"
+      button [ref=411]
+        svg_root
+    container
+      button [ref=412]
+        svg_root
+        text "Share"
+      button [ref=413]
+        text "Export"
+        svg_root
+      splitter
+      button "Toggle color scheme" [ref=414, loc=css:button[aria-label="Toggle color scheme"]]
+        svg_root
+
+

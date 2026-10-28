@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+const task=await taskSpace(3);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.mouse.move(1200,800);
+await page.click('text="⌘ + K"');
+await page.waitForSelector('input[placeholder="Search by title, description or start with # or kind:"]',{state:'visible'});
+await page.fill('input[placeholder="Search by title, description or start with # or kind:"]','Checkout Service');
+await page.click('button[data-value="boutique.checkout"]');
+await page.waitForFunction(()=>{const b=[...document.querySelectorAll('button')].find(x=>x.innerText.startsWith('Online Boutique System'));if(!b)return false;for(let e=b;e;e=e.parentElement){if(Number(getComputedStyle(e).opacity)<.99)return false;}return b.getBoundingClientRect().width>0;},undefined,{timeout:10000});
+await page.screenshot({path:'/tmp/archify-round38-browser/12-stable-picker.png'});
+console.log('PICKER',await page.snapshot());
+await page.click('button:has-text("Online Boutique System")');
+await page.waitForFunction(()=>location.pathname.endsWith('/boutique')&&document.querySelector('[role="group"][aria-label^="Checkout Service."]'),undefined,{timeout:15000});
+console.log('ARRIVAL',await page.snapshot());
+fs.writeFileSync('/tmp/archify-round38-browser/12-arrival.json',JSON.stringify(await page.evaluate(()=>({url:location.href,title:document.title,groups:[...document.querySelectorAll('[role="group"]')].map(x=>({attrs:Object.fromEntries([...x.attributes].map(a=>[a.name,a.value])),rect:x.getBoundingClientRect().toJSON(),opacity:getComputedStyle(x).opacity}))})),null,2));
+await page.screenshot({path:'/tmp/archify-round38-browser/12-arrival.png'});

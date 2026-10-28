@@ -1,0 +1,159 @@
+{
+  "url": "https://template.likec4.dev/view/boutique/",
+  "nodes": [
+    {
+      "id": "customer",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"customer\" data-testid=\"rf__node-customer\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Customer. Node kind: actor. Opens view customer.\" style=\"z-index: 20; transform: translate(1073px, 0px); pointer-events: all; visibility: visible; width: 240px; height: 135px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"green\" data-likec4-shape=\"person\" data-likec4-shape-size=\"sm\" data-likec4-spacing=\"sm\" data-likec4-text-size=\"lg\" tabindex=\"-1\" style=\"transform: none;\"><svg aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_svg\" viewBox=\"0 0 240 135\"><g class=\"likec4-shape-outline\"><rect x=\"-3\" y=\"-3\" width=\"246\" height=\"141\" rx=\"8\"></rect></g><rect width=\"240\" height=\"135\" rx=\"6\" stroke-width=\"0\"></rect><svg x=\"119\" y=\"15\" width=\"115\" height=\"120\" viewBox=\"0 0 115 120\" data-likec4-fill=\"mix-stroke\"><path stroke-width=\"0\" d=\"M57.9197 0C10.9124 0 33.5766 54.75 33.5766 54.75C38.6131 62.25 45.3285 60.75 45.3285 66C4",
+      "rect": {
+        "x": 669.379638671875,
+        "y": 70,
+        "width": 129.14361572265625,
+        "height": 72.64328002929688,
+        "top": 70,
+        "right": 798.5232543945312,
+        "bottom": 142.64328002929688,
+        "left": 669.379638671875
+      }
+    },
+    {
+      "id": "boutique",
+      "html": "<div class=\"react-flow__node react-flow__node-compound-element selectable parent\" data-id=\"boutique\" data-testid=\"rf__node-boutique\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Online Boutique System. Node kind: system. Description: E-commerce app for browsing and purchasing various items.\" style=\"z-index: 1; transform: translate(8px, 226px); pointer-events: all; visibility: visible; width: 2319px; height: 1249px;\"><div class=\"likec4-compound-node likec4-compound-node--isTransparent_true likec4-compound-node--inverseColor_true likec4-compound-node--borderStyle_dashed\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-compound-depth=\"1\" tabindex=\"-1\" style=\"--_border-transparency: 50%; --_compound-transparency: 0%;\"><div class=\"likec4-compound-title-container\" aria-hidden=\"true\"><div class=\"likec4-compound-title\">Online Boutique System</div></div><div class=\"likec4-compound-details details-button\" tabindex=\"-1\" style=\"transform: none;\"><button class=\"mantine-focus-auto mantine-active nodrag nopan trs-dur_medium action-btn action-btn--size_md action-btn--radius_md action-btn--variant_transparent m_8d3f4000 ma",
+      "rect": {
+        "x": 96.3047866821289,
+        "y": 191.61026000976562,
+        "width": 1247.850341796875,
+        "height": 672.0849609375,
+        "top": 191.61026000976562,
+        "right": 1344.155128479004,
+        "bottom": 863.6952209472656,
+        "left": 96.3047866821289
+      }
+    },
+    {
+      "id": "boutique.frontend",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.frontend\" data-testid=\"rf__node-boutique.frontend\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Frontend. Node kind: webapp. Technology: Vue.js / TypeScript. Description: Provides access to the services via the web interface. Opens view frontend.\" style=\"z-index: 20; transform: translate(1014px, 287px); pointer-events: all; visibility: visible; width: 357px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"browser\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><svg aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_svg\" data-likec4-shape-multiple=\"true\" viewBox=\"0 0 357 180\"><rect width=\"357\" height=\"180\" rx=\"6\" data-likec4-fill=\"mix-stroke\" stroke-width=\"0\"></rect><g data-likec4-fill=\"fill\" stroke-width=\"0\"><circle cx=\"16\" cy=\"17\" r=\"7\"></circle><circle cx=\"36\" cy=\"17\" r=\"7\"></cir",
+      "rect": {
+        "x": 637.6318359375,
+        "y": 224.4342498779297,
+        "width": 192.10113525390625,
+        "height": 96.85774230957031,
+        "top": 224.4342498779297,
+        "right": 829.7329711914062,
+        "bottom": 321.2919921875,
+        "left": 637.6318359375
+      }
+    },
+    {
+      "id": "boutique.checkout",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.checkout\" data-testid=\"rf__node-boutique.checkout\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Checkout Service. Node kind: service. Technology: Node.js. Description: Retrieves user cart, prepares order and orchestrates payment, shipping and email notifications. Opens view checkout.\" style=\"z-index: 20; transform: translate(611px, 610px); pointer-events: all; visibility: visible; width: 361px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false likec4",
+      "rect": {
+        "x": 420.7781677246094,
+        "y": 398.24005126953125,
+        "width": 194.25350952148438,
+        "height": 96.85772705078125,
+        "top": 398.24005126953125,
+        "right": 615.0316772460938,
+        "bottom": 495.0977783203125,
+        "left": 420.7781677246094
+      }
+    },
+    {
+      "id": "boutique.cart",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.cart\" data-testid=\"rf__node-boutique.cart\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Cart Service. Node kind: service. Technology: Node.js. Description: Stores the items in the user's shopping cart in Redis and retrieves it. Opens view cart.\" style=\"z-index: 20; transform: translate(1461px, 610px); pointer-events: all; visibility: visible; width: 320px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false likec4-element-node-data--withIconBlend_false",
+      "rect": {
+        "x": 878.161865234375,
+        "y": 398.24005126953125,
+        "width": 172.19140625,
+        "height": 96.85772705078125,
+        "top": 398.24005126953125,
+        "right": 1050.353271484375,
+        "bottom": 495.0977783203125,
+        "left": 878.161865234375
+      }
+    },
+    {
+      "id": "boutique.email",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.email\" data-testid=\"rf__node-boutique.email\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Email Service. Node kind: service. Description: Sends emails to customers using templates and customer data.\" style=\"z-index: 20; transform: translate(521px, 933px); pointer-events: all; visibility: visible; width: 358px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false likec4-element-node-data--withIconBlend_false likec4-element-node-data--sizing_auto likec4-e",
+      "rect": {
+        "x": 372.34930419921875,
+        "y": 572.0458984375,
+        "width": 192.63922119140625,
+        "height": 96.857666015625,
+        "top": 572.0458984375,
+        "right": 564.988525390625,
+        "bottom": 668.903564453125,
+        "left": 372.34930419921875
+      }
+    },
+    {
+      "id": "boutique.payments",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.payments\" data-testid=\"rf__node-boutique.payments\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Payment Service. Node kind: service. Technology: Scala. Description: Charges the given credit card info with the given amount and returns a transaction ID. Opens view payments.\" style=\"z-index: 20; transform: translate(48px, 933px); pointer-events: all; visibility: visible; width: 362px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false likec4-element-node",
+      "rect": {
+        "x": 117.82872772216797,
+        "y": 572.0458984375,
+        "width": 194.7916259765625,
+        "height": 96.857666015625,
+        "top": 572.0458984375,
+        "right": 312.62035369873047,
+        "bottom": 668.903564453125,
+        "left": 117.82872772216797
+      }
+    },
+    {
+      "id": "boutique.shipping",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.shipping\" data-testid=\"rf__node-boutique.shipping\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Shipping Service. Node kind: service. Technology: .NET Service. Description: Gives shipping cost estimates based on the shopping cart. Ships items to the given address. Opens view shipping.\" style=\"z-index: 20; transform: translate(989px, 933px); pointer-events: all; visibility: visible; width: 367px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false likec",
+      "rect": {
+        "x": 624.1793823242188,
+        "y": 572.0458984375,
+        "width": 197.48211669921875,
+        "height": 96.857666015625,
+        "top": 572.0458984375,
+        "right": 821.6614990234375,
+        "bottom": 668.903564453125,
+        "left": 624.1793823242188
+      }
+    },
+    {
+      "id": "boutique.actionLog",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.actionLog\" data-testid=\"rf__node-boutique.actionLog\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Action Log Service. Node kind: service. Technology: Go. Description: Manages user activity and search history. Opens view actionLog.\" style=\"z-index: 20; transform: translate(1467px, 933px); pointer-events: all; visibility: visible; width: 347px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false likec4-element-node-data--withIconBlend_false likec4-elemen",
+      "rect": {
+        "x": 881.3904418945312,
+        "y": 572.0458984375,
+        "width": 186.72015380859375,
+        "height": 96.857666015625,
+        "top": 572.0458984375,
+        "right": 1068.110595703125,
+        "bottom": 668.903564453125,
+        "left": 881.3904418945312
+      }
+    },
+    {
+      "id": "boutique.catalogue",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.catalogue\" data-testid=\"rf__node-boutique.catalogue\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Product Catalogue Service. Node kind: service. Technology: Laravel. Description: Provides a list of products and ability to search products and get individual products. Opens view catalogue.\" style=\"z-index: 20; transform: translate(1925px, 933px); pointer-events: all; visibility: visible; width: 362px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"rectangle\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><div aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_html\" style=\"border-style: none;\"><div class=\"likec4-shape-outline\"></div></div><div aria-hidden=\"true\" class=\"likec4-element-node-data likec4-element-node-data--iconPosition_left likec4-element-node-data--withIconColor_false l",
+      "rect": {
+        "x": 1127.8394775390625,
+        "y": 572.0458984375,
+        "width": 194.791748046875,
+        "height": 96.857666015625,
+        "top": 572.0458984375,
+        "right": 1322.6312255859375,
+        "bottom": 668.903564453125,
+        "left": 1127.8394775390625
+      }
+    },
+    {
+      "id": "boutique.db",
+      "html": "<div class=\"react-flow__node react-flow__node-element selectable\" data-id=\"boutique.db\" data-testid=\"rf__node-boutique.db\" tabindex=\"0\" role=\"group\" aria-roledescription=\"node\" aria-describedby=\"react-flow__node-desc-1\" aria-label=\"Boutique Database. Node kind: database. Technology: PostgreSQL. Description: Stores all products, orders, and user data. Opens view database.\" style=\"z-index: 20; transform: translate(594px, 1255px); pointer-events: all; visibility: visible; width: 332px; height: 180px;\"><div class=\"likec4-element-node group\" data-likec4-hovered=\"false\" data-likec4-color=\"primary\" data-likec4-shape=\"storage\" data-likec4-shape-size=\"md\" data-likec4-spacing=\"md\" data-likec4-text-size=\"md\" tabindex=\"-1\" style=\"transform: none;\"><svg aria-hidden=\"true\" class=\"likec4-element-shape likec4-element-shape--withBorder_false likec4-element-shape--withOutline_true likec4-element-shape--shapetype_svg\" data-likec4-shape-multiple=\"true\" viewBox=\"0 0 332 180\"><path d=\"M 332,11.5 a 166,11.5 0,0,0 -332 0 l 0,157 a 166,11.5 0,0,0 332 0 l 0,-157 z\" stroke-width=\"2\"></path><ellipse cx=\"166\" cy=\"11.5\" ry=\"11.5\" rx=\"165.25\" data-likec4-fill=\"mix-stroke\" stroke-width=\"2\"></ellipse></svg><svg ar",
+      "rect": {
+        "x": 411.6304931640625,
+        "y": 745.3135375976562,
+        "width": 178.648681640625,
+        "height": 96.85772705078125,
+        "top": 745.3135375976562,
+        "right": 590.2791748046875,
+        "bottom": 842.1712646484375,
+        "left": 411.6304931640625
+      }
+    }
+  ]
+}

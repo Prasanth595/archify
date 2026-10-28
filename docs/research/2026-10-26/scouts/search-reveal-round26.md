@@ -27,3 +27,7 @@
 Structurizr [filtered view 讨论 #117](https://github.com/structurizr/ui/discussions/117) 是用户要重新布局隐藏元素后的图，维护者解释过滤视图共享原布局并建议独立视图；它是另一真实需求，不是搜索 reveal 的测试，也不证明搜索会移除过滤。
 
 上游 LikeC4 完整 [MIT 许可](https://github.com/likec4/likec4/blob/b7a69c46e2bf67b9ee1f5b691004cd629a85245a/LICENSE)，所有完整固定源码/测试以上链接，不复制产物。远程 refs 与 issue 搜索仅限本轮关键词，非全量语义穷举。
+
+## 第 38 批后续
+
+[原生页面补证与源码版本差异](search-reveal-native-round38.md)保留实际成功到图、未跳转和观察器错误。当前 main 自动退焦配置已变为 3000ms；本报告关于 0ms 的结论仅针对当时固定 revision。原生跨图定位仍未获得稳定验收，不据此新增 Archify 功能。

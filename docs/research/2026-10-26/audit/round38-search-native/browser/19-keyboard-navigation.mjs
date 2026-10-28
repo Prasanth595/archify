@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+const task=await taskSpace(3);const page=task.page('p1');
+await page.cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.click('text="⌘ + K"');
+await page.waitForSelector('input[placeholder="Search by title, description or start with # or kind:"]',{state:'visible'});
+await page.fill('input[placeholder="Search by title, description or start with # or kind:"]','Checkout Service');
+await page.click('button[data-value="boutique.checkout"]');
+await page.waitForFunction(()=>{const b=[...document.querySelectorAll('[data-likec4-search-views] button')].find(x=>x.innerText.startsWith('Online Boutique System'));if(!b)return false;for(let e=b;e;e=e.parentElement){if(Number(getComputedStyle(e).opacity)<.99)return false;}return true;},undefined,{timeout:10000});
+await page.evaluate(()=>{const start=performance.now();window.__r38Keyboard={samples:[],done:false};let last=0;function sample(t){if(t-last>100){last=t;window.__r38Keyboard.samples.push({ms:Math.round(t-start),url:location.href,visibility:document.visibilityState,nodes:[...document.querySelectorAll('[aria-roledescription="node"]')].map(n=>({id:n.getAttribute('data-id'),classes:n.className,innerClass:n.firstElementChild?.className,attrs:n.firstElementChild?Object.fromEntries([...n.firstElementChild.attributes].filter(a=>a.name.startsWith('data-')).map(a=>[a.name,a.value])):{},rect:n.getBoundingClientRect().toJSON()}))});}if(t-start<7000)requestAnimationFrame(sample);else window.__r38Keyboard.done=true;}requestAnimationFrame(sample);});
+console.log('ACTIVATE',Date.now());
+await page.press('[data-likec4-search-views] button:has-text("Online Boutique System")','Enter');
+console.log('RETURN',Date.now());
+await page.screenshot({path:'/tmp/archify-round38-browser/19-immediate.png'});
+await page.waitForFunction(()=>window.__r38Keyboard.done,undefined,{timeout:10000});
+fs.writeFileSync('/tmp/archify-round38-browser/19-timeline.json',JSON.stringify(await page.evaluate(()=>window.__r38Keyboard),null,2));
+await page.screenshot({path:'/tmp/archify-round38-browser/19-late.png'});
+console.log(await page.snapshot());

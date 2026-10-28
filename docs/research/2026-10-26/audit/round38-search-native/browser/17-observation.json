@@ -1,0 +1,154 @@
+{
+  "url": "https://template.likec4.dev/view/index",
+  "timeline": {
+    "samples": [
+      {
+        "ms": 11,
+        "url": "https://template.likec4.dev/view/index",
+        "nodes": [
+          {
+            "id": "customer",
+            "classes": "react-flow__node react-flow__node-element selectable",
+            "rect": {
+              "x": 579.4749755859375,
+              "y": 70,
+              "width": 290.181884765625,
+              "height": 163.22727966308594,
+              "top": 70,
+              "right": 869.6568603515625,
+              "bottom": 233.22727966308594,
+              "left": 579.4749755859375
+            },
+            "descendants": [
+              {
+                "classes": "likec4-element-node group",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "data-likec4-color": "green",
+                  "data-likec4-shape": "person",
+                  "data-likec4-shape-size": "md",
+                  "data-likec4-spacing": "md",
+                  "data-likec4-text-size": "md",
+                  "style": "transform: none;"
+                }
+              },
+              {
+                "classes": "nodrag nopan",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "style": "opacity: 0.75; transform: scale(0.8); transform-origin: 50% 0% 0px;"
+                }
+              }
+            ]
+          },
+          {
+            "id": "boutique",
+            "classes": "react-flow__node react-flow__node-element selectable",
+            "rect": {
+              "x": 532.3204345703125,
+              "y": 362.90228271484375,
+              "width": 384.490966796875,
+              "height": 212.19549560546875,
+              "top": 362.90228271484375,
+              "right": 916.8114013671875,
+              "bottom": 575.0977783203125,
+              "left": 532.3204345703125
+            },
+            "descendants": [
+              {
+                "classes": "likec4-element-node group",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "data-likec4-color": "primary",
+                  "data-likec4-shape": "rectangle",
+                  "data-likec4-shape-size": "lg",
+                  "data-likec4-spacing": "lg",
+                  "data-likec4-text-size": "lg",
+                  "style": "transform: none;"
+                }
+              },
+              {
+                "classes": "nodrag nopan",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "style": "opacity: 0.75; transform: scale(0.8); transform-origin: 50% 0% 0px;"
+                }
+              }
+            ]
+          },
+          {
+            "id": "payment-gateway",
+            "classes": "react-flow__node react-flow__node-element selectable",
+            "rect": {
+              "x": 370,
+              "y": 704.7727661132812,
+              "width": 310.1318359375,
+              "height": 163.22723388671875,
+              "top": 704.7727661132812,
+              "right": 680.1318359375,
+              "bottom": 868,
+              "left": 370
+            },
+            "descendants": [
+              {
+                "classes": "likec4-element-node group",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "data-likec4-color": "muted",
+                  "data-likec4-shape": "rectangle",
+                  "data-likec4-shape-size": "md",
+                  "data-likec4-spacing": "md",
+                  "data-likec4-text-size": "md",
+                  "style": "transform: none;"
+                }
+              },
+              {
+                "classes": "nodrag nopan",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "style": "opacity: 0.75; transform: scale(0.8); transform-origin: 50% 0% 0px;"
+                }
+              }
+            ]
+          },
+          {
+            "id": "email-provider",
+            "classes": "react-flow__node react-flow__node-element selectable",
+            "rect": {
+              "x": 779.8818359375,
+              "y": 704.7727661132812,
+              "width": 290.181884765625,
+              "height": 163.22723388671875,
+              "top": 704.7727661132812,
+              "right": 1070.063720703125,
+              "bottom": 868,
+              "left": 779.8818359375
+            },
+            "descendants": [
+              {
+                "classes": "likec4-element-node group",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "data-likec4-color": "muted",
+                  "data-likec4-shape": "rectangle",
+                  "data-likec4-shape-size": "md",
+                  "data-likec4-spacing": "md",
+                  "data-likec4-text-size": "md",
+                  "style": "transform: none;"
+                }
+              },
+              {
+                "classes": "nodrag nopan",
+                "attrs": {
+                  "data-likec4-hovered": "false",
+                  "style": "opacity: 0.75; transform: scale(0.8); transform-origin: 50% 0% 0px;"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "done": true
+  }
+}
