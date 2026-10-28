@@ -1299,6 +1299,55 @@ test('preview: all five typed renderers reach a verified first revision', { time
   }
 });
 
+test('preview: Explainer rebuilds for image dependencies and preserves the last good artifact', { timeout: 60000 }, async (t) => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-preview-explainer-resource-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
+  const input = path.join(tmp, 'draft.explainer.json');
+  const image = path.join(tmp, 'figure.png');
+  const output = path.join(tmp, 'draft.html');
+  const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9J6BIAAAAASUVORK5CYII=', 'base64');
+  const document = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples', 'delivery.explainer.json'), 'utf8'));
+  document.panels[0].blocks.push({ type: 'image', id: 'preview-image', path: 'figure.png', alt: 'Preview resource' });
+  fs.writeFileSync(input, JSON.stringify(document));
+  fs.writeFileSync(image, png);
+  const preview = await startPreview({ type: 'explainer', input, output, open: false, debounceMs: 10, pollMs: 80 });
+  try {
+    await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 1, 'Explainer did not publish its first revision');
+    const first = sha256(output);
+    fs.writeFileSync(image, Buffer.concat([png, Buffer.from('changed')]));
+    await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 2, 'image dependency change did not rebuild Explainer preview');
+    const second = sha256(output);
+    assert.notEqual(second, first, 'the refreshed artifact must reflect the image dependency change');
+    fs.rmSync(image);
+    await waitForState(preview.url, (state) => state.status === 'needs-fix', 'missing image did not surface as a preview failure');
+    assert.equal(sha256(output), second, 'a failed dependency rebuild must preserve the last verified artifact');
+  } finally {
+    await preview.stop();
+  }
+});
+
+test('preview: follows a regular-file input symlink when the platform permits it', { timeout: 30000 }, async (t) => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-preview-input-symlink-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
+  const target = path.join(tmp, 'target.architecture.json');
+  const input = path.join(tmp, 'linked.architecture.json');
+  const output = path.join(tmp, 'diagram.html');
+  fs.copyFileSync(path.join(skillRoot, 'examples', 'web-app.architecture.json'), target);
+  try {
+    fs.symlinkSync(target, input, process.platform === 'win32' ? 'file' : undefined);
+  } catch (error) {
+    if (error?.code === 'EPERM' || error?.code === 'EACCES') t.skip(`file symlink creation is unavailable: ${error.code}`);
+    else throw error;
+    return;
+  }
+  const preview = await startPreview({ type: 'architecture', input, output, open: false, watch: false, debounceMs: 10, pollMs: 80 });
+  try {
+    await waitForState(preview.url, (state) => state.status === 'verified', 'symlinked input did not publish a verified preview');
+  } finally {
+    await preview.stop();
+  }
+});
+
 
 test('preview: polling continues after an asynchronous watcher error', { timeout: 30000 }, async (t) => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-preview-watch-error-'));

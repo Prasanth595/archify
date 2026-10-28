@@ -36,14 +36,14 @@ function sha256(value) {
 function sourceDigest(inputPath, dependencyPaths = [inputPath]) {
   const combined = dependencyPaths.map(sourcePath => {
     try {
-      const stat = fs.lstatSync(sourcePath);
+      const stat = fs.statSync(sourcePath);
       if (!stat.isFile()) return `${sourcePath}\0unreadable:not-a-regular-file`;
       return `${sourcePath}\0${sha256(fs.readFileSync(sourcePath))}`;
     }
     catch (error) { return `${sourcePath}\0unreadable:${error.code || 'unknown'}`; }
   }).join('\0');
   try {
-    const stat = fs.lstatSync(inputPath);
+    const stat = fs.statSync(inputPath);
     if (!stat.isFile()) throw Object.assign(new Error('not-a-regular-file'), { code: 'not-a-regular-file' });
     const bytes = fs.readFileSync(inputPath);
     return { hash: sha256(Buffer.from(`${combined}\0${sha256(bytes)}`)), bytes, missing: false };
