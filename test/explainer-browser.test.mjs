@@ -32,6 +32,44 @@ test('formal renderer retains keyboard navigation, static reading and print mode
 });
 test.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
 
+test('checklist progress follows ordered content while artifact and block identities stay independent',{skip:!chrome},async()=>{
+ const {renderExplainer}=await import('../archify/explainer/render.mjs');
+ const document=formalDocument();document.meta.id='checklist-progress';
+ const original=['Review deposit terms','Record meter readings'];
+ const checklist={id:'tasks',type:'list',checklist:true,items:[...original]};
+ document.panels[0].blocks.push(checklist,{...checklist,id:'other-tasks'});
+ const render=()=>renderExplainer(document,{sourceText:JSON.stringify(document),preparedSources:{sources:{example:{title:'Example'}}}});
+ const file=artifact('checklist-progress',render());
+ const browser=new ChromeVisualBrowser(chrome);try {
+  await inspectPublicHtml(browser,{artifactPath:file,width:1440,keyboard:false});
+  const state=()=>pageValue(browser,"Array.from(document.querySelectorAll('.checklist')).map(list=>Array.from(list.querySelectorAll('input')).map(box=>box.checked))");
+  const reload=async()=>{
+   fs.writeFileSync(file,render());
+   const session=await browser.sessionPromise,loaded=browser.cdp.waitFor('Page.loadEventFired',session);loaded.catch(()=>{});
+   await browser.cdp.send('Page.reload',{ignoreCache:true},session);await loaded;
+  };
+  await keyboardActivate(browser,'#tasks input',' ');
+  assert.deepEqual(await state(),[[true,false],[false,false]],'Space toggles only the selected block');
+  await reload();assert.deepEqual(await state(),[[true,false],[false,false]],'unchanged content survives reload');
+  document.panels[0].blocks[0].text='An unrelated paragraph has changed.';
+  await reload();assert.deepEqual(await state(),[[true,false],[false,false]],'prose edits preserve checklist progress');
+  for(const items of [[...original].reverse(),['Review new deposit terms',original[1]],[...original,'Return keys'],[original[0]]]){
+   checklist.items=items;await reload();
+   assert.deepEqual(await state(),[items.map(()=>false),[false,false]],'changed checklist content starts with no completed tasks');
+   checklist.items=[...original];await reload();
+   assert.deepEqual(await state(),[[true,false],[false,false]],'returning to the original ordered content restores its progress');
+  }
+  checklist.id='replacement-tasks';await reload();assert.deepEqual(await state(),[[false,false],[false,false]],'a new block does not inherit progress');
+  checklist.id='tasks';document.meta.id='another-artifact';await reload();assert.deepEqual(await state(),[[false,false],[false,false]],'a new artifact does not inherit progress');
+  document.meta.id='checklist-progress';await reload();assert.deepEqual(await state(),[[true,false],[false,false]],'the original artifact retains its progress');
+  document.meta.id='legacy-checklist';
+  await pageValue(browser,`localStorage.setItem('archify-checklist:legacy-checklist:tasks','[1,0]')`);
+  await reload();assert.deepEqual(await state(),[[false,false],[false,false]],'legacy progress without content identity resets once');
+  await keyboardActivate(browser,'#tasks input',' ');await reload();
+  assert.deepEqual(await state(),[[true,false],[false,false]],'new progress persists after the legacy reset');
+ }finally{await browser.close();}
+});
+
 test('retry layout and referenced node explanations remain readable and keyboard accessible after a prose edit',{skip:!chrome},async()=>{
  const {renderExplainer}=await import('../archify/explainer/render.mjs');
  const {compileExplainerDiagram,prepareExplainerDiagrams}=await import('../archify/explainer/diagrams.mjs');

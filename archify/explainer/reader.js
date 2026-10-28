@@ -664,9 +664,9 @@
       }
     });
   }
-  // Checklist ticks are the reader's own progress; keep them per page and block across reloads.
+  // Keep reader progress per artifact, block and ordered checklist content across reloads.
   all('.checklist').forEach(list=>{
-    const key = `archify-checklist:${root.dataset.artifact}:${list.closest('.block').id}`, boxes = all('input',list);
+    const key = `archify-checklist:${root.dataset.artifact}:${list.closest('.block').id}:${list.dataset.checklistRevision}`, boxes = all('input',list);
     let saved = []; try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch {}
     boxes.forEach((box,index)=>{ box.checked = saved[index] === 1; box.addEventListener('change',()=>{ try { localStorage.setItem(key,JSON.stringify(boxes.map(b=>b.checked ? 1 : 0))); } catch {} }); });
   });
