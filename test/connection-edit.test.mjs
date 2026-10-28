@@ -108,6 +108,87 @@ async function post(editor, operation, command={}, overrides={}) {
   return { status:response.status, body:await response.json() };
 }
 
+test('default editor opening uses the native opener and discarding leaves the source intact', async t => {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-open-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram review.html'),original=JSON.stringify(architecture());
+  fs.writeFileSync(input,original);
+  let opened;
+  const editor=await startEditor({type:'architecture',input,output,opener:{platform:'linux',spawn:(_command,args)=>{opened=args[0];return {status:0};}}});
+  t.after(()=>editor.stop({force:true}));
+  assert.equal(opened,editor.url);assert.equal(editor.opener.status,'opened');
+  assert.equal(new URL(opened).pathname,'/diagram%20review.html');
+  assert.match(await (await fetch(opened)).text(),/archify-edit-data/);
+  await editor.stop();await editor.closed;
+  assert.equal(fs.existsSync(editor.work),false);
+  assert.equal(fs.readFileSync(input,'utf8'),original);
+  assert.equal(fs.existsSync(output),false);
+});
+
+test('failed editor startup removes its work without replacing existing files', async t => {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-startup-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html'),original=JSON.stringify(architecture());
+  fs.writeFileSync(input,original);fs.writeFileSync(output,'existing custom HTML');
+  await assert.rejects(startEditor({type:'architecture',input,output,open:false}),/do not reproduce/);
+  assert.equal(fs.readFileSync(input,'utf8'),original);
+  assert.equal(fs.readFileSync(output,'utf8'),'existing custom HTML');
+  assert.deepEqual(fs.readdirSync(dir).sort(),['diagram.html','source.json']);
+});
+
+test('closing waits for an accepted save before removing its working files', async t => {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-close-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html');fs.writeFileSync(input,JSON.stringify(architecture()));
+  let begin,release;
+  const entered=new Promise(resolve=>{begin=resolve;}),resume=new Promise(resolve=>{release=resolve;});
+  t.after(()=>release());
+  const editor=await startEditor({type:'architecture',input,output,open:false,finalize:async options=>{
+    begin();await resume;
+    assert.equal(fs.existsSync(editor.work),true,'an active save still owns its workspace');
+    fs.mkdirSync(options.outDir,{recursive:true});
+    execFileSync(process.execPath,[path.join(root,'archify/renderers/architecture/render-architecture.mjs'),input,output]);
+    return {receipt:{ok:true}};
+  }});
+  t.after(()=>editor.stop({force:true}));
+  const edge=editor.state().scene.edges[0];
+  const saving=post(editor,'save',{edits:[{key:edge.key,field:'labelAt',value:[edge.labelAnchor[0],edge.labelAnchor[1]-2]}]}).catch(()=>null);
+  await entered;
+  const closing=editor.stop({force:true});
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(fs.existsSync(editor.work),true);
+  release();await closing;await saving;
+  assert.equal(editor.state().revision,1);
+  assert.equal(fs.existsSync(editor.work),false);
+  assert.equal(fs.existsSync(output),true);
+});
+
+test('publication and cleanup failures retain both diagnostics and the accepted source', async t => {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-errors-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const input=path.join(dir,'source.json'),output=path.join(dir,'diagram.html'),original=JSON.stringify(architecture());fs.writeFileSync(input,original);
+  const editor=await startEditor({type:'architecture',input,output,open:false});t.after(()=>editor.stop({force:true}));
+  const open=fs.openSync,close=fs.closeSync,link=fs.linkSync;
+  let descriptor,failed=false,cleanupFailed=false;
+  t.mock.method(fs,'openSync',(file,...args)=>{
+    const fd=open(file,...args);
+    if(descriptor===undefined && /^\.archify-edit-.+\.tmp$/.test(path.basename(String(file))))descriptor=fd;
+    return fd;
+  });
+  t.mock.method(fs,'linkSync',(from,to)=>{
+    if(to===input && !failed){failed=true;throw Object.assign(Error('publication interrupted'),{code:'EIO'});}
+    return link(from,to);
+  });
+  t.mock.method(fs,'closeSync',fd=>{
+    close(fd);
+    if(failed && fd===descriptor && !cleanupFailed){cleanupFailed=true;throw Object.assign(Error('close interrupted'),{code:'EIO'});}
+  });
+  const edge=editor.state().scene.edges[0];
+  const response=await post(editor,'save',{edits:[{key:edge.key,field:'labelAt',value:[edge.labelAnchor[0],edge.labelAnchor[1]-2]}]});
+  t.mock.restoreAll();
+  assert.equal(response.status,409);assert.equal(failed,true);assert.equal(cleanupFailed,true);
+  assert.match(response.body.details,/Save publication: edit-save-publication-link-failed/);
+  assert.match(response.body.details,/save binding could not be released/);
+  assert.equal(fs.readFileSync(input,'utf8'),original);assert.equal(fs.existsSync(output),false);
+  assert.equal(editor.state().revision,0);
+});
+
 test('native linked pages retain navigation on a separate read-only origin', async t => {
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'archify-edit-links-'));
   t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
@@ -254,6 +335,7 @@ for(const changedElsewhere of [false,true])test(`unidentifiable output ${changed
   const recovery=response.body.details.match(/Recovery copy: (.+)$/)[1];
   assert.equal(fs.readFileSync(recovery,'utf8'),lastSaved,'recovery restores the latest accepted source rather than the session starting point');
   await editor.stop();
+  assert.equal(fs.readFileSync(recovery,'utf8'),lastSaved,'session shutdown preserves recovery material');
 });
 
 test('official geometry families bind explicit label drafts to the native source', async t => {

@@ -139,8 +139,8 @@ export function openLoopbackUrl(target, options = {}) {
   if (url.protocol !== 'http:' || url.hostname !== '127.0.0.1' || !url.port) {
     throw new TypeError('Preview URL must be a loopback URL using http://127.0.0.1:<port>.');
   }
-  if (url.username || url.password || url.pathname !== '/' || url.search || url.hash) {
-    throw new TypeError('Preview URL must target the loopback preview root.');
+  if (url.username || url.password || url.pathname !== (options.allowedPath ?? '/') || url.search || url.hash) {
+    throw new TypeError('Preview URL must target the selected loopback preview page.');
   }
   return launchTarget(url.href, options);
 }

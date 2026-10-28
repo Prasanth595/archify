@@ -28,7 +28,7 @@ function publish(file, bytes, previous) {
   };
   guard();
   const temporary = path.join(path.dirname(capture.commitPath), `.archify-edit-${randomUUID()}.tmp`);
-  let identity, binding;
+  let identity, binding, failure;
   try {
     fs.writeFileSync(temporary, bytes, { flag: 'wx', mode: capture.mode ?? 0o600 });
     const stat = fs.lstatSync(temporary, { bigint: true });
@@ -39,12 +39,18 @@ function publish(file, bytes, previous) {
     guard();
     const saved = publishRegularFileBinding(binding, temporary, capture.snapshot, { subject: 'edit-save' });
     if (saved.status !== 'committed') throw Error(`Save publication: ${saved.cleanupState?.code || saved.reason?.code || saved.status}${saved.recoveryDirectory ? `; recovery: ${saved.recoveryDirectory}` : ''}`);
-  } finally {
-    const released = binding && releaseRegularFileBinding(binding);
-    const removed = identity && removeOwnedRegularFile(temporary, identity);
-    if (released && released.status !== 'released') throw Error('The save binding could not be released. Inspect the saved files before retrying.');
-    if (removed && !['removed','absent','preserved'].includes(removed.status)) throw Error('The staged save could not be cleaned up.');
+  } catch (error) { failure = error; }
+  const released = binding && releaseRegularFileBinding(binding);
+  const removed = identity && removeOwnedRegularFile(temporary, identity);
+  const cleanup = [
+    released && released.status !== 'released' && 'The save binding could not be released. Inspect the saved files before retrying.',
+    removed && !['removed','absent','preserved'].includes(removed.status) && 'The staged save could not be cleaned up.',
+  ].filter(Boolean).join(' ');
+  if (failure) {
+    if (cleanup) failure.message += ` ${cleanup}`;
+    throw failure;
   }
+  if (cleanup) throw Error(cleanup);
 }
 
 function restore(file, previous, expected) {
@@ -68,19 +74,34 @@ export async function startEditor(options) {
   const initialOutput = bytesAt(output);
   if (initialOutput?.includes('id="archify-story-payload"')) throw Error('This HTML has an attached story. Keep it intact and select a separate native output for adjustment.');
   const work = fs.mkdtempSync(path.join(fs.realpathSync.native(path.dirname(output)), '.archify-edit-'));
+  const workIdentity = fs.lstatSync(work, { bigint: true });
   const working = path.join(work, 'input.json');
-  fs.writeFileSync(working, original, { mode: 0o600 });
   const token = randomUUID();
-  let accepted = source, scene, artifact, revision = 0, busy = false, stopped = false;
+  let accepted = source, scene, artifact, revision = 0, pendingRequest, stopped = false;
+  let retainWork = false, workCleaned = false;
   let originalBytes = original, outputBytes = initialOutput, selection = '';
   let impact = { changed: [], witnesses: [] };
   let resolveReady, rejectReady;
   const ready = new Promise((resolve, reject) => { resolveReady = resolve; rejectReady = reject; });
   // Initial build failure is also visible through the preview state.
   ready.catch(() => {});
-  let preview;
+  let preview, links;
   let mainUrl = '';
-  const links = await linkedPages(path.dirname(output),path.basename(output),()=>mainUrl);
+
+  function cleanWork() {
+    if (workCleaned) return;
+    workCleaned = true;
+    try {
+      const current = fs.lstatSync(work, { bigint: true });
+      if (retainWork || !current.isDirectory() || current.dev !== workIdentity.dev || current.ino !== workIdentity.ino) {
+        console.error(`Editor recovery files retained at ${work}`);
+        return;
+      }
+      fs.rmSync(work, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
+    } catch (error) {
+      if (error.code !== 'ENOENT') console.error(`Editor files retained at ${work}: ${error.message}`);
+    }
+  }
 
   function config() {
     const {messages}=resolveCatalog(accepted.meta?.locale,accepted.meta?.translations);
@@ -132,6 +153,7 @@ export async function startEditor(options) {
         else if (!equalBytes(current, originalBytes)) throw Error('The source changed while saving and was preserved.');
       } catch (rollback) { recoveryErrors.push(rollback.message); }
       if (recoveryErrors.length) {
+        retainWork = true;
         let copyMessage;
         try {
           const recovery = path.join(work, `recovery-${randomUUID()}.json`);
@@ -171,8 +193,9 @@ export async function startEditor(options) {
         return send(200, fs.readFileSync(path.join(here, path.basename(route))), route.endsWith('.js') ? 'text/javascript; charset=utf-8' : 'text/css; charset=utf-8');
       }
       if (req.method !== 'POST' || req.headers.origin !== origin || req.headers['x-archify-edit-token'] !== token || !req.headers['content-type']?.startsWith('application/json')) return send(403, { error: 'Forbidden edit request.' });
-      if (stopped || busy) return send(409, { error: 'An edit or save is already running.' });
-      busy = true;
+      if (stopped || pendingRequest) return send(409, { error: 'An edit or save is already running.' });
+      let finishRequest;
+      pendingRequest = new Promise(resolve => { finishRequest = resolve; });
       try {
         let body = '';
         req.setEncoding('utf8');
@@ -199,16 +222,26 @@ export async function startEditor(options) {
           : 'The adjustments could not be saved. Review the draft or see the details.';
         send(409, { error: route==='/edit/connect'?'This connection cannot fit without changing the existing layout. Choose another free side or adjust a route first.':reason + ' Your draft is kept.', details:error.message });
       }
-      finally { busy = false; }
+      finally { pendingRequest = undefined; finishRequest(); }
     },
   };
   try {
+    fs.writeFileSync(working, original, { mode: 0o600 });
+    links = await linkedPages(path.dirname(output),path.basename(output),()=>mainUrl);
     preview = await startPreview({ ...options, quality, input: working, output: path.join(work, 'preview.html'), open: false, editor });
     await ready;
     const url = new URL(editor.pagePath, preview.url).href; mainUrl = url;
-    if (options.open !== false) openLoopbackUrl(url);
-    return { url, input, output, work, state: () => config(), closed: Promise.all([preview.closed,links.closed]), stop: async (...args) => {await preview.stop(...args);await links.closed;} };
-  } catch (error) { links.stop(); if (preview) await preview.stop(); await links.closed; throw error; }
+    const opener = options.open !== false ? openLoopbackUrl(url, { ...options.opener, allowedPath: editor.pagePath }) : null;
+    const closed = Promise.all([preview.closed,links.closed]).then(async () => { await pendingRequest; cleanWork(); });
+    return { url, input, output, work, opener, state: () => config(), closed, stop: async (...args) => {await preview.stop(...args);await closed;} };
+  } catch (error) {
+    links?.stop();
+    if (preview) await preview.stop();
+    await links?.closed;
+    await pendingRequest;
+    cleanWork();
+    throw error;
+  }
 }
 
 export async function runEditor(options) {

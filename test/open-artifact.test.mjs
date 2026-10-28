@@ -238,3 +238,17 @@ test('open artifact: live preview opens only an exact loopback HTTP root', () =>
     assert.throws(() => openLoopbackUrl(rejected), /loopback|valid/i, rejected);
   }
 });
+
+test('open artifact: an editor may explicitly select one loopback page', () => {
+  const allowedPath = '/diagram%20review.html';
+  const url = `http://127.0.0.1:43127${allowedPath}`;
+  const options = { allowedPath, platform: 'linux', spawn: () => ({ status: 0 }) };
+  assert.equal(openLoopbackUrl(url, options).target, url);
+  assert.throws(() => openLoopbackUrl(url), /loopback/i);
+  for (const rejected of [
+    'http://127.0.0.1:43127/other.html',
+    url + '?source=secret', url + '#focus=node',
+    url.replace('http:', 'https:'), url.replace('127.0.0.1', 'localhost'),
+    url.replace('127.0.0.1', 'user:password@127.0.0.1'),
+  ]) assert.throws(() => openLoopbackUrl(rejected, options), /loopback/i);
+});
