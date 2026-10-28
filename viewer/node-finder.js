@@ -45,7 +45,8 @@
         Array.prototype.forEach.call(svg.querySelectorAll('[data-edge-from][data-edge-to]'), function (edge) {
           var from = edge.getAttribute('data-edge-from');
           var to = edge.getAttribute('data-edge-to');
-          var key = from + '\u0000' + to;
+          var label = edge.getAttribute('data-edge-label') || '';
+          var key = edge.getAttribute('data-edge-key') || (from + '\u0000' + to + '\u0000' + label);
           if ((from === id || to === id) && !seen[key]) {
             seen[key] = true;
             count += 1;

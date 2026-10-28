@@ -1,0 +1,80 @@
+{
+  "capturedDate": "2026-10-29",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:issue Finder parallel",
+      "total": 0,
+      "incomplete": false,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pull-request Finder parallel",
+      "total": 6,
+      "incomplete": false,
+      "items": [
+        {
+          "number": 795,
+          "title": "fix(viewer): declare unavailable relationship queries honestly",
+          "state": "open",
+          "url": "https://github.com/tt-a1i/archify/pull/795"
+        },
+        {
+          "number": 814,
+          "title": "feat(viewer): cascade Live motion with eased comet choreography",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/814"
+        },
+        {
+          "number": 738,
+          "title": "feat(lifecycle)!: lay out state machines from a main path",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/738"
+        },
+        {
+          "number": 865,
+          "title": "feat(evidence): support public Gitea source links",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/865"
+        },
+        {
+          "number": 1102,
+          "title": "Integrate reviewed maintenance fixes and Viewer contracts into dev",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/1102"
+        },
+        {
+          "number": 383,
+          "title": "chore: remove unused proof artifacts and archive research notes",
+          "state": "closed",
+          "url": "https://github.com/tt-a1i/archify/pull/383"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:issue connectionsFor",
+      "total": 0,
+      "incomplete": false,
+      "items": []
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pull-request connectionsFor",
+      "total": 0,
+      "incomplete": false,
+      "items": []
+    }
+  ],
+  "relatedPR": {
+    "number": 795,
+    "state": "open",
+    "draft": true,
+    "head": "879300698a51ef78fcab40bf4e98b89968760fb0",
+    "url": "https://github.com/tt-a1i/archify/pull/795"
+  },
+  "source": {
+    "project": "PaulJuliusMartinez/jless",
+    "sha": "e6cdef719c7319020391d6bbf838ab272ce44cf0",
+    "license": "MIT",
+    "sourcePath": "src/search.rs",
+    "runtimeExecuted": false
+  }
+}

@@ -32,11 +32,33 @@ test('Finder preserves search, keyboard, contextual Route selection and cleanup'
     lifecycle: 'agent-run.lifecycle.json',
   };
   const files = {};
+  const relationships = {};
+  const collections = { architecture:'connections', workflow:'edges', sequence:'messages', dataflow:'flows', lifecycle:'transitions' };
   for (const [mode, example] of Object.entries(cases)) {
+    relationships[mode] = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples', example), 'utf8'))[collections[mode]];
     files[mode] = path.join(scratch, mode + '.html');
     execFileSync(process.execPath, [path.join(skillRoot, `renderers/${mode}/render-${mode}.mjs`),
       path.join(skillRoot, 'examples', example), files[mode]]);
   }
+  // Native repeated labels and an isolated participant cover
+  // relationship identity independently of the count implementation.
+  const parallel = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples', cases.sequence), 'utf8'));
+  parallel.meta.viewBox[1] = 620;
+  parallel.messages.push({ ...parallel.messages[4], id:'read-cache-again', y:490 });
+  parallel.participants.push({ id:'isolated', type:'backend', label:'Isolated' });
+  const parallelInput = path.join(scratch, 'parallel.sequence.json');
+  fs.writeFileSync(parallelInput, JSON.stringify(parallel));
+  files.parallel = path.join(scratch, 'parallel.html');
+  relationships.parallel = parallel.messages;
+  execFileSync(process.execPath, [path.join(skillRoot, 'renderers/sequence/render-sequence.mjs'), parallelInput, files.parallel]);
+  const finderAnchor = '    Archify.finder = (function () {';
+  const parallelHtml = fs.readFileSync(files.parallel, 'utf8');
+  assert.ok(parallelHtml.includes(finderAnchor), 'parallel Finder fixture anchor');
+  fs.writeFileSync(files.parallel, parallelHtml.replace(finderAnchor,
+    `document.querySelector('.diagram-container svg').appendChild(document.querySelector('[data-edge-key="4"]').cloneNode(true));\n` + finderAnchor));
+  files.legacy = path.join(scratch, 'legacy.html');
+  relationships.legacy = relationships.sequence;
+  fs.writeFileSync(files.legacy, fs.readFileSync(files.sequence, 'utf8').replace(/ data-edge-key="[^"]*"/g, ''));
   // A controlled metadata fixture exercises the Finder's input boundary;
   // repository verification and brand rendering have their own tests.
   files.metadata = path.join(scratch, 'metadata.html');
@@ -122,6 +144,18 @@ test('Finder preserves search, keyboard, contextual Route selection and cleanup'
     return value;
   }
   const ids = state => state.results.map(item => item.id);
+
+  await t.test('connection badges and accessible names count authored relationships', async () => {
+    for (const [mode, authored] of Object.entries(relationships)) {
+      await load(mode); await click('#btn-node-finder'); await opened();
+      const state = await snapshot(mode + '-relationship-counts');
+      for (const result of state.results) {
+        const count = authored.filter(edge => edge.from === result.id || edge.to === result.id).length;
+        assert.equal(result.badge, `${count} ${count === 1 ? 'link' : 'links'}`, `${mode}/${result.id}`);
+        assert.match(result.aria, new RegExp(`, ${count} related connection${count === 1 ? '' : 's'}$`), `${mode}/${result.id} accessible count`);
+      }
+    }
+  });
 
   await t.test('five modes initialize one index and no external resources', async () => {
     for (const mode of Object.keys(cases)) {

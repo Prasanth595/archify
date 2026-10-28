@@ -1,0 +1,12 @@
+const task=await taskSpace(2);const page=task.page("p1");
+const root="/Users/tsk/.codex/worktrees/lab-finder-link-count/archify/experiments/finder-link-count";
+await page.goto("file://"+root+"/after.html?theme=dark");
+await page.cdp("Emulation.setDeviceMetricsOverride",{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await page.evaluate(async()=>{await document.fonts.ready;await Archify.viewerChromeLayout.whenStable();});
+await page.click("#btn-node-finder",{label:"Check corrected relationship counts"});
+console.log(await page.snapshot());
+await page.screenshot({path:root+"/evidence/after-finder-dark.png"});
+await page.click('button[aria-label="Focus Redis, 3 related connections"]',{label:"Check unchanged Redis Passport"});
+await page.evaluate(()=>Archify.viewerChromeLayout.whenStable());
+console.log(await page.snapshot());
+await page.screenshot({path:root+"/evidence/after-passport-dark.png"});

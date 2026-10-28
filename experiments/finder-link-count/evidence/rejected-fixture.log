@@ -1,0 +1,55 @@
+
+> test:focus
+> node scripts/run-tests.mjs --require-files test/finder-browser.test.mjs
+
+Repository tests: 1 files, concurrency 2
+Sequence layout validation failed:
+- Message "read cache" sits outside the readable timeline — keep y between 160 and 497.
+- Message "expire" sits outside the readable timeline — keep y between 160 and 497.
+- Message "expire" is a self-message on participant "redis"; this Sequence renderer supports only messages between distinct participants. Participant spacing cannot repair it. Preserve the internal step's meaning and order in a supported representation such as a note on a real message or a card; do not invent a participant.
+- Sequence content ends at y=536, leaving no room for the legend below it — set meta.viewBox[1] to at least 634 or omit meta.viewBox so the canvas grows.
+[layout/constraint] Message "read cache" sits outside the readable timeline — keep y between 160 and 497.
+[layout/constraint] Message "expire" sits outside the readable timeline — keep y between 160 and 497.
+[sequence/self-message-unsupported] Message "expire" is a self-message on participant "redis"; this Sequence renderer supports only messages between distinct participants. Participant spacing cannot repair it. Preserve the internal step's meaning and order in a supported representation such as a note on a real message or a card; do not invent a participant.
+[layout/constraint] Sequence content ends at y=536, leaving no room for the legend below it — set meta.viewBox[1] to at least 634 or omit meta.viewBox so the canvas grows.
+✖ Finder preserves search, keyboard, contextual Route selection and cleanup (510.914625ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 572.773709
+
+✖ failing tests:
+
+test at test/finder-browser.test.mjs:18:1
+✖ Finder preserves search, keyboard, contextual Route selection and cleanup (510.914625ms)
+  Error: Command failed: /opt/homebrew/Cellar/node/26.12.0/bin/node /Users/tsk/.codex/worktrees/lab-finder-link-count/archify/archify/renderers/sequence/render-sequence.mjs /var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-finder-browser-JBlDWq/parallel.sequence.json /var/folders/v1/6vx82zzx32q7y_s1w4sx84j00000gp/T/archify-finder-browser-JBlDWq/parallel.html
+  Sequence layout validation failed:
+  - Message "read cache" sits outside the readable timeline — keep y between 160 and 497.
+  - Message "expire" sits outside the readable timeline — keep y between 160 and 497.
+  - Message "expire" is a self-message on participant "redis"; this Sequence renderer supports only messages between distinct participants. Participant spacing cannot repair it. Preserve the internal step's meaning and order in a supported representation such as a note on a real message or a card; do not invent a participant.
+  - Sequence content ends at y=536, leaving no room for the legend below it — set meta.viewBox[1] to at least 634 or omit meta.viewBox so the canvas grows.
+  [layout/constraint] Message "read cache" sits outside the readable timeline — keep y between 160 and 497.
+  [layout/constraint] Message "expire" sits outside the readable timeline — keep y between 160 and 497.
+  [sequence/self-message-unsupported] Message "expire" is a self-message on participant "redis"; this Sequence renderer supports only messages between distinct participants. Participant spacing cannot repair it. Preserve the internal step's meaning and order in a supported representation such as a note on a real message or a card; do not invent a participant.
+  [layout/constraint] Sequence content ends at y=536, leaving no room for the legend below it — set meta.viewBox[1] to at least 634 or omit meta.viewBox so the canvas grows.
+  
+      at genericNodeError (node:internal/errors:999:15)
+      at wrappedFn (node:internal/errors:544:14)
+      at checkExecSyncError (node:child_process:990:11)
+      at execFileSync (node:child_process:1026:15)
+      at TestContext.<anonymous> (file:///Users/tsk/.codex/worktrees/lab-finder-link-count/archify/test/finder-browser.test.mjs:53:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    status: 1,
+    signal: null,
+    output: [ null, <Buffer >, <Buffer 53 65 71 75 65 6e 63 65 20 6c 61 79 6f 75 74 20 76 61 6c 69 64 61 74 69 6f 6e 20 66 61 69 6c 65 64 3a 0a 2d 20 4d 65 73 73 61 67 65 20 22 72 65 61 64 ... 1389 more bytes> ],
+    pid: 11377,
+    stdout: <Buffer >,
+    stderr: <Buffer 53 65 71 75 65 6e 63 65 20 6c 61 79 6f 75 74 20 76 61 6c 69 64 61 74 69 6f 6e 20 66 61 69 6c 65 64 3a 0a 2d 20 4d 65 73 73 61 67 65 20 22 72 65 61 64 ... 1389 more bytes>
+  }
