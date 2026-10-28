@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-29 +08:00",
+  "previousTurn": "Batch54 progress; remote readback ff761c67ac487ddd522df5aabad1c5bbfec4fe12",
+  "remoteHeads": 333,
+  "baselineHub": "ff761c67ac487ddd522df5aabad1c5bbfec4fe12",
+  "taskViewHead": "a3fa21767bfaeb3077fdda08bddb7249366caa93",
+  "engineHeadObserved": "5f44f7d836c550fa1f0fff2ea23cc95a5c0695e3 (3.8.0; not executed)",
+  "siteCommit": "375378efff2116ab2a03cdc3575d8ca73d49a429",
+  "runtime": "The fixed site bundle header and editor DOM declare v3.7.0; fetched 27 site assets by exact Git blobs, not a local source build.",
+  "oldEngineSourceRead": "142dd41870bcca7450f55c970d9e3c8070deeb05",
+  "priorScout": "origin/codex/research-lab-20261025:docs/research/2026-10-25/scouts/protocol-schema-smalltools.md",
+  "duplicateSearches": [
+    {
+      "query": "repo:tt-a1i/archify is:issue wavedrom",
+      "result": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": [],
+        "search_type": "lexical"
+      }
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr wavedrom",
+      "result": {
+        "total_count": 0,
+        "incomplete_results": false,
+        "items": [],
+        "search_type": "lexical"
+      }
+    }
+  ],
+  "failedSearch": "First query omitted is:issue/is:pull-request and the connector returned 422. Corrected to separate issue and PR queries; no UI/product failure inferred.",
+  "scope": "Three variants of an upstream authored teaching example. No hardware trace, protocol compliance, physical units, natural reader trial or fresh engine build."
+}

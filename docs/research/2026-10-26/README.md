@@ -794,3 +794,14 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 49 批 · 代码行注解与现有焦点行工作
 
 [Quarto 行注解筛选](scouts/quarto-annotation-round49.md)：原生点击、取消、Tab 路径和高亮范围已检查；线上高亮带左侧越出代码块 59.5px，当前源码采用不同定位逻辑。实际 diff 确认 Draft #1015 已覆盖 Archify 焦点行，不重复实现。5 份 MIT 来源已归档，5 张实拍及完整页面日志保留本地；研究分支更新，无新 PR。
+
+## 第 50–55 批 · 原生证据补充索引
+
+- [50：PEV2 行数与循环范围](scouts/pev2-native-rows-round50.md)
+- [51：TypeScript AST 选择范围](scouts/ts-ast-selection-round51.md)
+- [52：ELK 端口与层级](scouts/elk-ports-hierarchy-round52.md)
+- [53：asciinema 标记时间坐标](scouts/asciinema-marker-clock-round53.md)
+- [54：Memray 峰值与整次运行统计](scouts/memray-native-peak-round54.md)
+- [55：WaveDrom 相位、缩放与作者标签](scouts/wavedrom-phase-scale-round55.md)
+
+各报告分别记录固定输入、实际运行范围、产物和剩余缺口。第 55 批补齐三组原生编辑器输出：hscale 放大跨度而不同比例放大 phase 偏移；时长文字保留作者输入。上游已有相关语义说明，暂不新增波形引擎或导入器，只推研究分支，不创建 PR。

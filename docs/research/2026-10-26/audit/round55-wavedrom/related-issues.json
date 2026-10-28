@@ -1,0 +1,22 @@
+{
+  "observedAt": "2026-10-29 +08:00",
+  "items": [
+    {
+      "url": "https://github.com/wavedrom/wavedrom/issues/171",
+      "title": "Phase offset doesn't scale with `hscale`",
+      "state": "open",
+      "summary": "The reporter describes changing hscale moving the relative clock-edge alignment while leaving phase unchanged. The supplied negative-phase clock example was read, not replayed here."
+    },
+    {
+      "url": "https://github.com/wavedrom/wavedrom/issues/171#issuecomment-845527096",
+      "author": "reedbn",
+      "summary": "The commenter references issue 53 and discusses compatibility and a possible explicit convention for phase."
+    },
+    {
+      "url": "https://github.com/wavedrom/wavedrom/issues/53#issuecomment-42156824",
+      "author": "drom",
+      "quote": "The number of phase shift rotation steps depends on hscale parameter",
+      "summary": "The maintainer's examples give different angle interpretations for the same phase values at hscale 2 and 3. This is documented historical behavior, not a newly discovered defect."
+    }
+  ]
+}
