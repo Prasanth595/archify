@@ -34,6 +34,7 @@
 - 重建 template、15 个开发示例、15 个打包示例、legacy web-app、Gallery 及 ZIP。官方 Node 22.23.3 / zlib 1.3.1-e00f703 两次 ZIP 构建字节一致；归档模板及全部 20 个 HTML 示例与源文件一致。归档 SHA-256 见 [artifact-checks.json](evidence/artifact-checks.json)。
 - 第一个补充夹具错误使用了不支持的 sequence 自消息，且 y 越界；第二次调整仍未给图例留够空间。保留 [第一次拒绝](evidence/rejected-fixture.log) 和 [图例拒绝](evidence/rejected-fixture-legend.log)。最终使用支持的跨参与者消息和 620 高度，不改校验规则。第一次 npm 启动实际选中 Node 26；最终红绿与核心验证均固定官方 Node 22。
 - 复用锁文件 SHA-256 相同的既有依赖，未安装软件。没有跑完整测试库存、所有浏览器套件、跨平台 CI 或 WebM 编码；本地通过不代表已集成或已发布。
+- 完整提交的 whitespace 检查有 39 条提示，均来自保留原字节的 HTML 或工具原始日志，见 [raw-whitespace.txt](evidence/raw-whitespace.txt)。源码、测试和说明文档的 scoped whitespace 检查通过，不为清理日志而改写原始证据。
 
 已有库依赖可用时，从仓库根目录复现：
 
