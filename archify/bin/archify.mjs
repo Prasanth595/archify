@@ -3675,7 +3675,8 @@ function renderValidatedArchitecture(inputPath, outputPath, quality, repoRoot, c
 }
 
 async function commandCompareWorkflow(args) {
-  const json = args.includes('--json');
+  const options = args.filter(arg => arg.startsWith('--'));
+  const json = options.includes('--json');
   const positional = args.filter(arg => !arg.startsWith('--'));
   const [, baseInput, headInput, output] = positional;
   let outputFailure;
@@ -3710,7 +3711,7 @@ async function commandCompareWorkflow(args) {
     writeReceipt(output, receipt);
     process.exitCode = 1;
   };
-  if (!baseInput || !headInput || positional.length > 4) return failWorkflow('workflow/usage', 'Usage: compare workflow <base.json> <head.json> [output.json] [--json]');
+  if (options.some(option => option !== '--json') || !baseInput || !headInput || positional.length > 4) return failWorkflow('workflow/usage', 'Usage: compare workflow <base.json> <head.json> [output.json] [--json]');
   await validateOutput();
   if (outputFailure) return failWorkflow(outputFailure.code, outputFailure.message);
   let base;
@@ -3750,34 +3751,41 @@ async function commandCompareWorkflow(args) {
     }
     return map;
   };
-  const baseNodes = stable(base.nodes, 'nodes');
-  const headNodes = stable(head.nodes, 'nodes');
-  const baseEdges = stable(base.edges, 'edges');
-  const headEdges = stable(head.edges, 'edges');
-  if (!baseNodes || !headNodes || !baseEdges || !headEdges) return failWorkflow('workflow/identity', 'Workflow nodes and edges require unique stable ids.');
+  const baseNodes = stable(base.nodes);
+  const headNodes = stable(head.nodes);
+  const baseEdges = stable(base.edges);
+  const headEdges = stable(head.edges);
+  const baseLanes = stable(base.lanes);
+  const headLanes = stable(head.lanes);
+  const basePhases = stable(base.phases);
+  const headPhases = stable(head.phases);
+  const baseGroups = stable(base.groups);
+  const headGroups = stable(head.groups);
+  if (!baseNodes || !headNodes || !baseEdges || !headEdges || !baseLanes || !headLanes || !basePhases || !headPhases || !baseGroups || !headGroups) return failWorkflow('workflow/identity', 'Workflow nodes, edges, lanes, phases, and groups require unique stable ids.');
   const presentationKeys = new Set(['row', 'col', 'pos', 'width', 'height', 'x', 'y', 'xOffset', 'yOffset', 'labelDx', 'labelDy']);
   const semantic = (value, ignored = presentationKeys) => {
     if (Array.isArray(value)) return value.map(entry => semantic(entry, ignored));
     if (!value || typeof value !== 'object') return value;
     return Object.fromEntries(Object.keys(value).filter(key => !ignored.has(key)).sort().map(key => [key, semantic(value[key], ignored)]));
   };
-  const changes = { nodes: [], edges: [], mainPath: [] };
-  for (const id of [...new Set([...baseNodes.keys(), ...headNodes.keys()])].sort()) {
-    const before = baseNodes.get(id); const after = headNodes.get(id);
-    if (!before) changes.nodes.push({ id, change: 'added', head: semantic(after) });
-    else if (!after) changes.nodes.push({ id, change: 'removed', base: semantic(before) });
-    else if (JSON.stringify(semantic(before)) !== JSON.stringify(semantic(after))) changes.nodes.push({ id, change: 'modified', base: semantic(before), head: semantic(after) });
-  }
-  for (const id of [...new Set([...baseEdges.keys(), ...headEdges.keys()])].sort()) {
-    const before = baseEdges.get(id); const after = headEdges.get(id);
-    if (!before) changes.edges.push({ id, change: 'added', head: semantic(after) });
-    else if (!after) changes.edges.push({ id, change: 'removed', base: semantic(before) });
-    else if (JSON.stringify(semantic(before)) !== JSON.stringify(semantic(after))) changes.edges.push({ id, change: before.from !== after.from || before.to !== after.to ? 'endpoint-changed' : 'modified', base: semantic(before), head: semantic(after) });
-  }
+  const changes = { lanes: [], phases: [], groups: [], nodes: [], edges: [], mainPath: [] };
+  const compare = (name, beforeItems, afterItems, ignored = presentationKeys) => {
+    for (const id of [...new Set([...beforeItems.keys(), ...afterItems.keys()])].sort()) {
+      const before = beforeItems.get(id); const after = afterItems.get(id);
+      if (!before) changes[name].push({ id, change: 'added', head: semantic(after, ignored) });
+      else if (!after) changes[name].push({ id, change: 'removed', base: semantic(before, ignored) });
+      else if (JSON.stringify(semantic(before, ignored)) !== JSON.stringify(semantic(after, ignored))) changes[name].push({ id, change: name === 'edges' && (before.from !== after.from || before.to !== after.to) ? 'endpoint-changed' : 'modified', base: semantic(before, ignored), head: semantic(after, ignored) });
+    }
+  };
+  compare('lanes', baseLanes, headLanes, new Set());
+  compare('phases', basePhases, headPhases, new Set(['fromCol', 'toCol']));
+  compare('groups', baseGroups, headGroups, new Set(['fromCol', 'toCol']));
+  compare('nodes', baseNodes, headNodes);
+  compare('edges', baseEdges, headEdges);
   if (JSON.stringify(base.mainPath || []) !== JSON.stringify(head.mainPath || [])) changes.mainPath.push({ change: 'modified', base: base.mainPath || [], head: head.mainPath || [] });
-  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: { nodes: changes.nodes.length, edges: changes.edges.length, mainPath: changes.mainPath.length } };
+  const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: Object.fromEntries(Object.entries(changes).map(([name, entries]) => [name, entries.length])) };
   writeReceipt(output, receipt);
-  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${changes.nodes.length + changes.edges.length + changes.mainPath.length}\n`);
+  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${Object.values(receipt.summary).reduce((total, count) => total + count, 0)}\n`);
 }
 
 async function commandCompare(args) {

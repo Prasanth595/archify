@@ -39,13 +39,33 @@ test('Workflow compare reports authored semantic changes and ignores coordinates
 test('Workflow compare ignores presentation-only fields and remains deterministic', () => {
   const base = fixture();
   const head = structuredClone(base);
-  head.nodes[0].col = (head.nodes[0].col || 0) + 2;
+  const detached = head.nodes.find(node => !head.mainPath.includes(node.id));
+  detached.col = detached.col > 0 ? detached.col - 1 : detached.col + 1;
   head.nodes[0].yOffset = 4;
   if (head.edges[0]) head.edges[0].labelDx = 8;
   const first = run(base, head).receipt;
   const second = run(base, head).receipt;
-  assert.deepEqual(first.changes, { nodes: [], edges: [], mainPath: [] });
+  assert.deepEqual(first.changes, { lanes: [], phases: [], groups: [], nodes: [], edges: [], mainPath: [] });
   assert.deepEqual(first, second);
+});
+
+test('Workflow compare reports lane labels and rejects unknown options', () => {
+  const base = fixture();
+  const head = structuredClone(base);
+  head.lanes[0].label = 'Renamed lane';
+  const compared = run(base, head);
+  assert.equal(compared.result.status, 0, compared.result.stderr);
+  assert.deepEqual(compared.receipt.changes.lanes.map(change => [change.id, change.change]), [[base.lanes[0].id, 'modified']]);
+
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-workflow-compare-options-'));
+  const basePath = path.join(directory, 'base.json');
+  const headPath = path.join(directory, 'head.json');
+  fs.writeFileSync(basePath, JSON.stringify(base));
+  fs.writeFileSync(headPath, JSON.stringify(base));
+  const result = spawnSync(process.execPath, [cli, 'compare', 'workflow', basePath, headPath, '--jsno'], { encoding: 'utf8' });
+  fs.rmSync(directory, { recursive: true, force: true });
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /Usage: compare workflow/u);
 });
 
 test('Workflow compare rejects invalid inputs with stable diagnostics', () => {
