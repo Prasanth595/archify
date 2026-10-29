@@ -29,3 +29,8 @@
 2. **uv 两组版本范围与不同失败原因**。[`pip_compile.rs` 的 open3d 快照](https://github.com/astral-sh/uv/blob/f8bec5eac866c5dd3794b4420e21e5dbd44045c6/crates/uv/tests/pip_compile/pip_compile.rs#L16743-L16771) 完整保留失败状态、原因和两个 hints：旧版本范围缺匹配 Python ABI 的 wheel，新版本范围缺匹配平台的 wheel；报告还给出候选 ABI 和平台。测试输入 `open3d`、Python 3.10、目标 `x86_64-manylinux_2_17` 可见，但来源中的完整历史索引元数据未随该片段固定，不能重演或推断当前索引。原生文字已经把范围和两条原因解释清楚；视觉上可审查的潜在收益是帮助对齐版本范围与 ABI/平台证据，仍须保留所有 hints，并禁止将“不兼容 wheel”改写为“版本不存在”。
 
 最小可行对照因此改为：使用 PubGrub 的完整冻结 fixture 作为阅读材料，显示官方输入和来源，同屏提供归约前与归约后两份原文。候选图只做对原文可定位的静态标注，不创建 importer 或交互框架。提问包括“什么事实使 bar 无法满足”和“baz 是否存在于输入”。若参与者看完整原文的准确率和时间已相当，或候选误说完整依赖树、真实索引或隐藏 bar 缺失，则停止。样本一虽有完整输入和双报告，仍是合成案例；样本二有上游完整原文，但缺完整索引 fixture。PubGrub 例子足以支持范围有限的同源静态试制；其合成性质和缺少独立阅读结果意味着价值尚待验证。uv 仅保留研究，不纳入此次试制。
+
+
+## 2026-10-29 后续：本地 wheel 的 uv 实测
+
+[第 57 批](uv-native-locations-round57.md)补充已安装 uv 的原创 metadata-only wheel 对照：缺 bar 退出 1，仅补 bar 1 后退出 0，成功解包含 baz。两次末轮复跑及原始输出审阅页已有证据。它没有执行原 PubGrub Rust fixture，也没有补齐 open3d 历史索引；原生报告已明确包位置范围，暂不新增图或 importer。早期“只读源码”的叙述仍属于当时阶段。

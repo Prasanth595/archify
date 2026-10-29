@@ -809,3 +809,8 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 56 批 · 操作顺序实验的原生执行基线
 
 [Porcupine 同输入执行与交互](scouts/porcupine-native-round56.md)：复用原隔离分支 codex/lab-operation-order，推进到 33f45d05e。原六事件实际返回 Illegal，只修改最后一次读取返回值的对照返回 Ok；原生页面显示前态与非法下一步。保存两次原生运行、两份生成 HTML、5 张实拍和 11 份固定来源，原有 Archify 产物字节未变。补齐执行缺口，但不据此宣称图优于文字或原生工具；没有新 PR。
+
+
+## 第 57 批 · 依赖求解中的候选范围
+
+[uv 本地候选实测](scouts/uv-native-locations-round57.md)：既有 conflict-explanation 分支推进到 `5df448ec0`，用八个 metadata-only wheel 对照缺 bar / 补 bar，实际退出码 1 / 0；成功解仍含 baz。原始输出、两次末轮复跑、两张实拍和来源许可已归档。原生错误已经限定包位置，暂不加图或 parser；这不是原 PubGrub 运行或 open3d 历史索引复现。只推分支，无新 PR。
