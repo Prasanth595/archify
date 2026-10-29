@@ -76,3 +76,7 @@ JS
 ## 完整 Kconfig 页面上的迁移验证
 
 [新增证据包](kconfig-transfer-d5/README.md)固定当前 dev `d5d97949`，仅换入既有 `f9fc38cb` checker；两份 HTML 字节不变，原 28/52 条诊断变为四组观察均到达 42/42、55/55 个初始目标，真实 Tab trap 仍失败。另有实际源码卡片 Tab 进入、Escape 返回及下一引用的图片与轨迹。这是明确记录的临时组合运行时检查，不是 Git 合并、新 ZIP 或完整 finalize；本轮没有再修改 checker，也不回填 Kconfig 原失败回执。
+
+## SQLite 作者产物上的迁移验证
+
+[第 63 批证据包](sqlite-transfer-5ec/README.md)使用新出现的 Explainer reading laboratory 的完整 SQLite HTML，对照固定 dev `5ecbd1bf` 与同运行时加既有 checker。原 28 项诊断在四组观察中均变为 43/43、55 步、零诊断；真实 Tab trap 仍失败。另有 Ego 实际 Tab 到页脚与空格切换清单项的两张图片。没有改输入、checker 或 ZIP，来源实验的旧失败记录保留。

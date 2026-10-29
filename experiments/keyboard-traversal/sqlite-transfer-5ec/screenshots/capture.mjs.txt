@@ -1,0 +1,36 @@
+const fs=await import('node:fs/promises');
+const root='<PACKET_ABSOLUTE_PATH>';
+await fs.mkdir(root+'/screenshots',{recursive:true});
+const page=(await taskSpace(12)).page('p1');
+const initial=await page.evaluate(()=>{
+ const key=e=>{const p=[];for(let n=e;n&&n.nodeType===1;n=n.parentElement){const peers=n.parentElement?[...n.parentElement.children].filter(x=>x.tagName===n.tagName):[n];p.unshift(n.tagName.toLowerCase()+':nth-of-type('+(peers.indexOf(n)+1)+')');}return p.join(' > ');};
+ const controls=[...document.querySelectorAll('a[href],button,input,select,textarea,summary,[role="button"],[role="link"],[onclick],[tabindex]')].filter(e=>{const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&r.width>0&&r.height>0&&!e.disabled&&e.type!=='hidden'&&!e.closest('[inert]');});
+ return {url:location.href,viewport:{width:innerWidth,height:innerHeight},userAgent:navigator.userAgent,theme:document.documentElement.dataset.theme,active:document.activeElement.tagName,controls:controls.map(e=>({key:key(e),tag:e.tagName,type:e.type||null,text:e.textContent.trim().slice(0,120),href:e.getAttribute('href')}))};
+});
+if(initial.active!=='BODY')throw new Error('Expected untouched body after reload');
+const trace=[];let checkbox=null;
+for(let step=1;step<=120;step++){
+ await page.keyboard.press('Tab');
+ const active=await page.evaluate(()=>{
+  const e=document.activeElement,p=[];for(let n=e;n&&n.nodeType===1;n=n.parentElement){const peers=n.parentElement?[...n.parentElement.children].filter(x=>x.tagName===n.tagName):[n];p.unshift(n.tagName.toLowerCase()+':nth-of-type('+(peers.indexOf(n)+1)+')');}
+  return {key:p.join(' > '),tag:e.tagName,type:e.type||null,text:e.textContent.trim().slice(0,120),href:e.getAttribute('href'),checked:e.checked??null,scrollY,hasFocus:document.hasFocus()};
+ });
+ trace.push({step,...active});
+ if(active.type==='checkbox'&&!checkbox){
+  if(active.checked!==false)throw new Error('Checkbox not initially unchecked');
+  await page.keyboard.press('Space');
+  checkbox={step,before:active.checked,after:await page.evaluate(()=>document.activeElement.checked)};
+  if(checkbox.after!==true)throw new Error('Space did not check checkbox');
+  await page.screenshot({path:root+'/screenshots/checkbox-space.png'});
+  await page.keyboard.press('Space');
+  checkbox.restored=await page.evaluate(()=>document.activeElement.checked);
+ }
+ if(active.href==='https://github.com/tt-a1i/archify')break;
+}
+await page.screenshot({path:root+'/screenshots/footer-tab.png'});
+const reached=new Set(trace.map(x=>x.key));
+const missing=initial.controls.filter(x=>!reached.has(x.key));
+const result={initial,trace,checkbox,missing,scope:'Observed native Tab and Space in Ego; no programmatic focus, DOM mutation, external-link activation or SQLite execution.'};
+await fs.writeFile(root+'/screenshots/keyboard-observation.json',JSON.stringify(result,null,2)+'\n',{flag:'wx'});
+console.log({viewport:initial.viewport,count:initial.controls.length,steps:trace.length,reached:initial.controls.length-missing.length,missing,checkbox,final:trace.at(-1)});
+console.log(await page.snapshot());

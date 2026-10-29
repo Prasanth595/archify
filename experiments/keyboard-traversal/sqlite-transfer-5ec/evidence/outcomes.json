@@ -1,0 +1,151 @@
+{
+  "node": "v22.23.3",
+  "chrome": "Google Chrome 156.0.8078.49",
+  "identitiesUnchanged": true,
+  "harnessExitCode": 0,
+  "stderrBytes": 0,
+  "runtimeFileCount": 238,
+  "runs": [
+    {
+      "arm": "base",
+      "name": "sqlite",
+      "exitCode": 1,
+      "status": "fail",
+      "diagnosticCodes": {
+        "explainer/browser-keyboard-traversal": 28
+      },
+      "views": [
+        {
+          "width": 1280,
+          "theme": "light",
+          "count": 43,
+          "reached": 36,
+          "steps": null,
+          "stepLimit": null,
+          "termination": null
+        },
+        {
+          "width": 1440,
+          "theme": "light",
+          "count": 43,
+          "reached": 36,
+          "steps": null,
+          "stepLimit": null,
+          "termination": null
+        },
+        {
+          "width": 1280,
+          "theme": "dark",
+          "count": 43,
+          "reached": 36,
+          "steps": null,
+          "stepLimit": null,
+          "termination": null
+        },
+        {
+          "width": 1440,
+          "theme": "dark",
+          "count": 43,
+          "reached": 36,
+          "steps": null,
+          "stepLimit": null,
+          "termination": null
+        }
+      ]
+    },
+    {
+      "arm": "base",
+      "name": "tab-trap",
+      "keyboardTraversal": {
+        "count": 2,
+        "reached": 1,
+        "missing": [
+          {
+            "key": "1",
+            "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+            "text": "Last",
+            "href": null,
+            "tag": "BUTTON",
+            "component": "last",
+            "label": "Last",
+            "tabIndex": 0,
+            "type": "submit",
+            "reason": "This active control was not reached by Tab or native radio ArrowRight navigation."
+          }
+        ],
+        "ok": false
+      }
+    },
+    {
+      "arm": "candidate",
+      "name": "sqlite",
+      "exitCode": 0,
+      "status": "pass",
+      "diagnosticCodes": {},
+      "views": [
+        {
+          "width": 1280,
+          "theme": "light",
+          "count": 43,
+          "reached": 43,
+          "steps": 55,
+          "stepLimit": 555,
+          "termination": "complete"
+        },
+        {
+          "width": 1440,
+          "theme": "light",
+          "count": 43,
+          "reached": 43,
+          "steps": 55,
+          "stepLimit": 555,
+          "termination": "complete"
+        },
+        {
+          "width": 1280,
+          "theme": "dark",
+          "count": 43,
+          "reached": 43,
+          "steps": 55,
+          "stepLimit": 555,
+          "termination": "complete"
+        },
+        {
+          "width": 1440,
+          "theme": "dark",
+          "count": 43,
+          "reached": 43,
+          "steps": 55,
+          "stepLimit": 555,
+          "termination": "complete"
+        }
+      ]
+    },
+    {
+      "arm": "candidate",
+      "name": "tab-trap",
+      "keyboardTraversal": {
+        "count": 2,
+        "reached": 1,
+        "missing": [
+          {
+            "key": "1",
+            "stableComponent": "html:nth-of-type(1) > body:nth-of-type(1) > button:nth-of-type(2)",
+            "text": "Last",
+            "href": null,
+            "tag": "BUTTON",
+            "component": "last",
+            "label": "Last",
+            "tabIndex": 0,
+            "type": "submit",
+            "reason": "This active control was not reached before keyboard focus repeated without progress."
+          }
+        ],
+        "ok": false,
+        "steps": 2,
+        "stepLimit": 12,
+        "termination": "focus-cycle"
+      }
+    }
+  ]
+}

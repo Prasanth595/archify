@@ -1,0 +1,930 @@
+{
+  "initial": {
+    "url": "http://127.0.0.1:8880/candidate.html",
+    "viewport": {
+      "width": 1512,
+      "height": 762
+    },
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "theme": "light",
+    "active": "BODY",
+    "controls": [
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "跳至正文",
+        "href": "#board"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "系统",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(2)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "浅色",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(3)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "深色",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "杂志",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "导出",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "追问",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > header:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#concurrency"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > header:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "追问",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > span:nth-of-type(2) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "打开交互图",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "▶ 逐步看",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > ol:nth-of-type(1) > li:nth-of-type(1) > b:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "WAL 日志 ↗",
+        "href": "#wal-path"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > ol:nth-of-type(1) > li:nth-of-type(2) > b:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "数据库文件 ↗",
+        "href": "#wal-path"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > ol:nth-of-type(1) > li:nth-of-type(3) > b:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "写事务 ↗",
+        "href": "#wal-path"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > header:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "2",
+        "href": "#checkpoint"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > header:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "追问",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "▶ 沿流程看",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > span:nth-of-type(2) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "打开交互图",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > aside:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > header:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "3",
+        "href": "#recycle"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > header:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "追问",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "1",
+        "href": "#source-wal"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "2",
+        "href": "#source-pragma"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1) > sup:nth-of-type(2) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "3",
+        "href": "#source-checkpoint-api"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > header:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "4",
+        "href": "#checks"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > header:nth-of-type(1) > button:nth-of-type(1)",
+        "tag": "BUTTON",
+        "type": "button",
+        "text": "追问",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > label:nth-of-type(1) > input:nth-of-type(1)",
+        "tag": "INPUT",
+        "type": "checkbox",
+        "text": "",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > label:nth-of-type(1) > input:nth-of-type(1)",
+        "tag": "INPUT",
+        "type": "checkbox",
+        "text": "",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > label:nth-of-type(1) > span:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "4",
+        "href": "#source-txn"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > label:nth-of-type(1) > input:nth-of-type(1)",
+        "tag": "INPUT",
+        "type": "checkbox",
+        "text": "",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > label:nth-of-type(1) > span:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "2",
+        "href": "#source-pragma"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > label:nth-of-type(1) > input:nth-of-type(1)",
+        "tag": "INPUT",
+        "type": "checkbox",
+        "text": "",
+        "href": null
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > label:nth-of-type(1) > span:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "2",
+        "href": "#source-pragma"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "SQLite: Write-Ahead Logging",
+        "href": "https://sqlite.org/wal.html"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "SQLite: PRAGMA wal_checkpoint",
+        "href": "https://www.sqlite.org/pragma.html#pragma_wal_checkpoint"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "SQLite: Checkpoint a database",
+        "href": "https://www.sqlite.org/c3ref/wal_checkpoint_v2.html"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "SQLite: Transactions",
+        "href": "https://www.sqlite.org/lang_transaction.html"
+      },
+      {
+        "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+        "tag": "A",
+        "type": null,
+        "text": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+        "href": "https://github.com/tt-a1i/archify"
+      }
+    ]
+  },
+  "trace": [
+    {
+      "step": 1,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "跳至正文",
+      "href": "#board",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 2,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "系统",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 3,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(2)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "浅色",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 4,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(3)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "深色",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 5,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "杂志",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 6,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "导出",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 7,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "追问",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 8,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 9,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 10,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 11,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 12,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 13,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 14,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > header:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#concurrency",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 15,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > header:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "追问",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 16,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > span:nth-of-type(2) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "打开交互图",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 17,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 18,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 19,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "▶ 逐步看",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 20,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > ol:nth-of-type(1) > li:nth-of-type(1) > b:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "WAL 日志 ↗",
+      "href": "#wal-path",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 21,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > ol:nth-of-type(1) > li:nth-of-type(2) > b:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "数据库文件 ↗",
+      "href": "#wal-path",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 22,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > ol:nth-of-type(1) > li:nth-of-type(3) > b:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "写事务 ↗",
+      "href": "#wal-path",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 23,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > header:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "2",
+      "href": "#checkpoint",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 24,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > header:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "追问",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 25,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "▶ 沿流程看",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 26,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > figure:nth-of-type(1) > figcaption:nth-of-type(1) > span:nth-of-type(2) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "打开交互图",
+      "href": null,
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 27,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 28,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 0,
+      "hasFocus": true
+    },
+    {
+      "step": 29,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > aside:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 442,
+      "hasFocus": true
+    },
+    {
+      "step": 30,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 442,
+      "hasFocus": true
+    },
+    {
+      "step": 31,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > header:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "3",
+      "href": "#recycle",
+      "checked": null,
+      "scrollY": 442,
+      "hasFocus": true
+    },
+    {
+      "step": 32,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > header:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "追问",
+      "href": null,
+      "checked": null,
+      "scrollY": 442,
+      "hasFocus": true
+    },
+    {
+      "step": 33,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "1",
+      "href": "#source-wal",
+      "checked": null,
+      "scrollY": 442,
+      "hasFocus": true
+    },
+    {
+      "step": 34,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 442,
+      "hasFocus": true
+    },
+    {
+      "step": 35,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "2",
+      "href": "#source-pragma",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 36,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://www.sqlite.org/pragma.html#pragma_wal_checkpoint",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 37,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1) > sup:nth-of-type(2) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "3",
+      "href": "#source-checkpoint-api",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 38,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://www.sqlite.org/c3ref/wal_checkpoint_v2.html",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 39,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > header:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "4",
+      "href": "#checks",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 40,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > header:nth-of-type(1) > button:nth-of-type(1)",
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "追问",
+      "href": null,
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 41,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > label:nth-of-type(1) > input:nth-of-type(1)",
+      "tag": "INPUT",
+      "type": "checkbox",
+      "text": "",
+      "href": null,
+      "checked": false,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 42,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > label:nth-of-type(1) > input:nth-of-type(1)",
+      "tag": "INPUT",
+      "type": "checkbox",
+      "text": "",
+      "href": null,
+      "checked": false,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 43,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > label:nth-of-type(1) > span:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "4",
+      "href": "#source-txn",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 44,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://www.sqlite.org/lang_transaction.html",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 45,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > label:nth-of-type(1) > input:nth-of-type(1)",
+      "tag": "INPUT",
+      "type": "checkbox",
+      "text": "",
+      "href": null,
+      "checked": false,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 46,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > label:nth-of-type(1) > span:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "2",
+      "href": "#source-pragma",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 47,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://www.sqlite.org/pragma.html#pragma_wal_checkpoint",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 48,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > label:nth-of-type(1) > input:nth-of-type(1)",
+      "tag": "INPUT",
+      "type": "checkbox",
+      "text": "",
+      "href": null,
+      "checked": false,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 49,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > label:nth-of-type(1) > span:nth-of-type(1) > sup:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "2",
+      "href": "#source-pragma",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 50,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(3) > footer:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "打开原文 ↗",
+      "href": "https://www.sqlite.org/pragma.html#pragma_wal_checkpoint",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 51,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "SQLite: Write-Ahead Logging",
+      "href": "https://sqlite.org/wal.html",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 52,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "SQLite: PRAGMA wal_checkpoint",
+      "href": "https://www.sqlite.org/pragma.html#pragma_wal_checkpoint",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 53,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "SQLite: Checkpoint a database",
+      "href": "https://www.sqlite.org/c3ref/wal_checkpoint_v2.html",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 54,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > section:nth-of-type(1) > ol:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "SQLite: Transactions",
+      "href": "https://www.sqlite.org/lang_transaction.html",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    },
+    {
+      "step": 55,
+      "key": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > footer:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+      "tag": "A",
+      "type": null,
+      "text": "Archify把你想理解、规划或分享的事，变成可以互动的可视化作品。",
+      "href": "https://github.com/tt-a1i/archify",
+      "checked": null,
+      "scrollY": 765.5,
+      "hasFocus": true
+    }
+  ],
+  "checkbox": {
+    "step": 41,
+    "before": false,
+    "after": true,
+    "restored": false
+  },
+  "missing": [],
+  "scope": "Observed native Tab and Space in Ego; no programmatic focus, DOM mutation, external-link activation or SQLite execution."
+}

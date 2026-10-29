@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+root="${1:?pass a fresh output directory}"
+repo="$(git rev-parse --show-toplevel)"
+packet="$repo/experiments/keyboard-traversal/sqlite-transfer-5ec"
+test ! -e "$root"
+mkdir -p "$root/base" "$root/candidate" "$root/inputs"
+git archive 5ecbd1bfdbf83ea747072112493c940e707569cb archify | tar -x -C "$root/base"
+cp -R "$root/base/archify" "$root/candidate/archify"
+git show 3254fda4fcd61a101cc09e6b68fbdbb4d2779604:archify/explainer/browser-check.mjs > "$root/candidate/archify/explainer/browser-check.mjs"
+for arm in base candidate; do
+  ln -s "$repo/node_modules" "$root/$arm/node_modules"
+  ln -s "$repo/archify/node_modules" "$root/$arm/archify/node_modules"
+done
+cp "$packet"/fixed-inputs/* "$root/inputs/"
+/opt/homebrew/opt/node@22/bin/node "$packet/reproduce.mjs" "$root"
