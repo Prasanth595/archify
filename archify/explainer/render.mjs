@@ -142,7 +142,12 @@ function portableChecks(checks) {
 // A page is shared, so the draft it carries names local files relative to the page, never by absolute
 // path: the reader sees no author directories. `patch explainer` resolves them against the page again.
 function portableBundle(bundle, directory) {
-  if (!directory) return bundle;
+  if (!directory) {
+    const page = {...bundle};
+    delete page.inputPath;
+    page.digest = hash(JSON.stringify({...page,digest:undefined}));
+    return page;
+  }
   const local = value => {
     if (typeof value !== 'string') return value;
     const paths = path.win32.isAbsolute(value) && !path.posix.isAbsolute(value) ? path.win32 : path;
@@ -153,9 +158,10 @@ function portableBundle(bundle, directory) {
     return paths.isAbsolute(relative) ? null : relative || '.';
   };
   const subject = entry => entry?.subject ? {...entry,subject:{...entry.subject,...('input' in entry.subject ? {input:local(entry.subject.input)} : {}),...('output' in entry.subject ? {output:local(entry.subject.output)} : {})}} : entry;
-  const page = {...bundle,sourcePath:local(bundle.sourcePath),...('inputPath' in bundle ? {inputPath:local(bundle.inputPath)} : {}),...('baseDir' in bundle ? {baseDir:local(bundle.baseDir)} : {}),
+  const page = {...bundle,sourcePath:local(bundle.sourcePath),...('baseDir' in bundle ? {baseDir:local(bundle.baseDir)} : {}),
     preparedDiagrams:{...bundle.preparedDiagrams,diagrams:Object.fromEntries(Object.entries(bundle.preparedDiagrams?.diagrams || {}).map(([id,diagram])=>[id,{...diagram,checks:portableChecks(diagram.checks)}]))},
     dependencies:(bundle.dependencies || []).map(entry=>entry.path ? {...entry,path:local(entry.path)} : entry),diagnostics:(bundle.diagnostics || []).map(subject)};
+  delete page.inputPath;
   page.digest = hash(JSON.stringify({...page,digest:undefined}));
   return page;
 }
