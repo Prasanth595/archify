@@ -1,0 +1,15 @@
+{
+  "full_exit": 2,
+  "full_warning_count": 9,
+  "full_stdout": "docs/research/2026-10-26/audit/round58-diffoscope/browser/01-open.log:1250: new blank line at EOF.\ndocs/research/2026-10-26/audit/round58-diffoscope/browser/02-member.log:2: new blank line at EOF.\ndocs/research/2026-10-26/audit/round58-diffoscope/browser/04-observe-failure.log:88: trailing whitespace.\n+        text \ndocs/research/2026-10-26/audit/round58-diffoscope/browser/04-observe-failure.log:89: new blank line at EOF.\ndocs/research/2026-10-26/audit/round58-diffoscope/browser/05-record-marker.log:2: new blank line at EOF.\ndocs/research/2026-10-26/audit/round58-diffoscope/browser/06-cleanup.log:3: new blank line at EOF.\ndocs/research/2026-10-26/audit/round58-diffoscope/native.html:88: trailing whitespace.\n+  \ndocs/research/2026-10-26/audit/round58-diffoscope/native.html:8394: new blank line at EOF.\ndocs/research/2026-10-26/audit/round58-diffoscope/source/debbindiff/__init__.py:111: new blank line at EOF.\n",
+  "authored_scope_exit": 0,
+  "excluded_original_artifacts": [
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/browser/*.log",
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/native.html",
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/source/COPYING",
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/source/debbindiff/__init__.py",
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/source/debbindiff/difference.py",
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/source/debbindiff/presenters/html.py",
+    ":(exclude)docs/research/2026-10-26/audit/round58-diffoscope/source/https-everywhere-LICENSE.txt"
+  ]
+}

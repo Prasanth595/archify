@@ -814,3 +814,8 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 57 批 · 依赖求解中的候选范围
 
 [uv 本地候选实测](scouts/uv-native-locations-round57.md)：既有 conflict-explanation 分支推进到 `5df448ec0`，用八个 metadata-only wheel 对照缺 bar / 补 bar，实际退出码 1 / 0；成功解仍含 baz。原始输出、两次末轮复跑、两张实拍和来源许可已归档。原生错误已经限定包位置，暂不加图或 parser；这不是原 PubGrub 运行或 open3d 历史索引复现。只推分支，无新 PR。
+
+
+## 第 58 批 · 保存差异报告的范围
+
+[diffoscope 历史报告实拍](scouts/diffoscope-saved-report-round58.md)：相同 ZIP 清单行与成员内容变化同时存在，SQLite 差异还有四对省略标记。完整 HTML、三图、五份来源许可与核验已归档；原生锚点可引用成员和转换层。未运行原固定 tar 对，也不把旧版报告当成当前能力。暂不新增图或 importer，只推研究分支，无新 PR。
