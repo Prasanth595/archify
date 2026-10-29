@@ -3,8 +3,6 @@
  * locale sets the sentence-limit fallback; bilingual phrase rules always apply.
  */
 const RULES = [
-  {id:'qualification', pattern:/示例|本例|不代表|未实测|仅供参考|\billustrative\b|\bnot measured\b/giu,
-    reason:'把限定条件写进 scope 或来源', example:'@answer scope="适用于当前请求路径"', fix:'把限定条件写进 scope 或来源，正文直接解释判断和原因。'},
   {id: 'light-verb', pattern: /进行(?![中时])\p{Script=Han}{2}|(?:加以|予以|做出|作出)\p{Script=Han}{2}|\b(?:perform an analysis of|carry out an investigation of|make a decision|give consideration to|conduct an? (?:review|investigation|analysis) of)\b/giu,
     reason: 'A light-verb construction can obscure the action.', example: '进行检查 → 检查；做出决定 → 决定; make a decision → decide', fix: 'Use the direct action verb where it preserves the meaning; name who performs the action.'},
   {id: 'cliche', pattern: /赋能|抓手|全方位|多维度|深度融合|至关重要|不可或缺|一站式|底层逻辑|\b(?:at the end of the day|in today[’']s fast-paced world|unlock the full potential|game[- ]changer|cutting[- ]edge|seamless(?:ly)?|delve into)\b/giu,

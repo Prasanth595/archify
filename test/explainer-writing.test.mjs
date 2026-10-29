@@ -103,3 +103,17 @@ test('writing: Chinese and English controlled-language hints stay precise', () =
   assert.deepEqual(rules('In summary, this cutting-edge design is seamless.'), ['filler', 'cliche', 'cliche']);
   assert.deepEqual(lintExplainerWriting(['任务进行中。', '目的的确清楚。', '重试超过 3 次。', '服务以下游为准。', 'Use the cache before the database.'].map(text => entry(text))), []);
 });
+
+
+test('writing: local uncertainty and examples survive strict mode without disabling actionable hints', () => {
+  const qualifications = [
+    '示例中的 3 个请求共用一次调用，不代表结果会被缓存。',
+    '图中的耗时未实测；箭头只表示调用顺序。',
+    'The counts are illustrative, not measured.',
+    'The request count is not measured; check traces before choosing a limit.',
+  ];
+  assert.deepEqual(lintExplainerWriting(qualifications.map(text => entry(text)), {mode: 'strict'}), []);
+  const mixed = lintExplainerWriting([entry('本例未实测。很多用户进行分析。')], {mode: 'strict'});
+  assert.deepEqual(mixed.map(d => d.evidence.rule), ['vague-quantity', 'light-verb']);
+  assert.ok(mixed.every(d => d.severity === 'error'));
+});
