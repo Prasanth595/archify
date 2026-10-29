@@ -1,0 +1,16 @@
+import fs from 'node:fs/promises';
+const root="/Users/tsk/.codex/worktrees/lab-operation-order/archify/experiments/operation-order/native-comparison",task=await taskSpace(3),page=task.page('p1');
+await page.click('.target-rect[data-partition="0"][data-index="2"]');
+await page.mouse.move(700,240);
+const selected=await page.evaluate(()=>({text:document.body.innerText,selected:[...document.querySelectorAll('.history-rect.selected')].map(e=>({x:e.getAttribute('x'),y:e.getAttribute('y')})),viewport:{width:innerWidth,height:innerHeight}}));
+await fs.writeFile(root+'/browser/original-selected-state.json',JSON.stringify(selected,null,2));
+await page.screenshot({path:root+'/browser/original-selected.png'});
+await page.goto('http://127.0.0.1:8876/generated/read-200-control.html');
+await page.waitForFunction(()=>document.querySelectorAll('.target-rect').length===3,undefined,{timeout:10000});
+await page.screenshot({path:root+'/browser/control-overview.png'});
+await page.hover('.target-rect[data-partition="0"][data-index="2"]');
+await page.waitForFunction(()=>document.body.innerText.includes('Previous state'),undefined,{timeout:10000});
+const state=await page.evaluate(()=>({url:location.href,viewport:{width:innerWidth,height:innerHeight},text:document.body.innerText,canvas:document.querySelector('#canvas').innerHTML,jumpLink:document.querySelector('#jump-link').outerHTML,resources:[...document.querySelectorAll('script[src],link[href]')].map(e=>e.src||e.href)}));
+await fs.writeFile(root+'/browser/control-valid-state.json',JSON.stringify(state,null,2));
+await page.screenshot({path:root+'/browser/control-valid.png'});
+console.log(JSON.stringify(selected));console.log(await page.snapshot());

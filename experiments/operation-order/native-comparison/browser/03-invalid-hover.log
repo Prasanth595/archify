@@ -1,0 +1,25 @@
+[p1 "Porcupine" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Porcupine"]
+root
+  svg_root "Clients Time Valid LP Invalid LP [ jump to first error ]"
+    text "Clients"
+    text "Time"
+    text "Valid LP"
+    text "Invalid LP"
+    text "[ jump to first error ]"
+  container
+    svg_root "0 1 2 put(200) -> 0 get() -> 200 get() -> 0"
+      text "0"
+      text "1"
+      text "2"
+      text "put(200) -> 0"
+      text "get() -> 200"
+      text "get() -> 0"
+    container
+      text "Previous state:"
+      text "register = 200"
+      text "New state:"
+      text "⟨invalid op⟩"
+      text "Call: 3"
+      text "Return: 4"
+
+

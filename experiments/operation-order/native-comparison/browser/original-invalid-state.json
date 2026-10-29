@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:8876/generated/original.html",
+  "viewport": {
+    "width": 1291,
+    "height": 762
+  },
+  "text": "Clients\nTime\nValid LP\nInvalid LP\n[ jump to first error ]\n0\n1\n2\nput(200) -> 0\nget() -> 200\nget() -> 0\nPrevious state:\nregister = 200\n\nNew state:\n⟨invalid op⟩\n\nCall: 3\n\nReturn: 4",
+  "visibleDivs": [
+    {
+      "id": "canvas",
+      "cls": "",
+      "text": "0\n1\n2\nput(200) -> 0\nget() -> 200\nget() -> 0\nPrevious state:\nregister = 200\n\nNew state:\n⟨invalid op⟩\n\nCall: 3\n\nReturn: 4"
+    },
+    {
+      "id": "",
+      "cls": "tooltip",
+      "text": "Previous state:\nregister = 200\n\nNew state:\n⟨invalid op⟩\n\nCall: 3\n\nReturn: 4"
+    }
+  ],
+  "canvas": "<svg height=\"140\" width=\"339.6328125\"><g><rect height=\"140\" width=\"339.6328125\" x=\"0\" y=\"0\" class=\"bg\"></rect><text x=\"28.8984375\" y=\"25\" text-anchor=\"end\">0</text><text x=\"28.8984375\" y=\"70\" text-anchor=\"end\">1</text><text x=\"28.8984375\" y=\"115\" text-anchor=\"end\">2</text><line x1=\"38.8984375\" y1=\"10\" x2=\"38.8984375\" y2=\"130\" class=\"divider\"></line></g><g><g><rect height=\"30\" width=\"290.734375\" x=\"38.8984375\" y=\"10\" rx=\"4\" ry=\"4\" class=\"history-rect\" style=\"\"></rect><text x=\"184.265625\" y=\"25\" text-anchor=\"middle\" class=\"history-text\" style=\"\">put(200) -&gt; 0</text></g><g><rect height=\"30\" width=\"124.0390625\" x=\"58.8984375\" y=\"55\" rx=\"4\" ry=\"4\" class=\"history-rect\" style=\"\"></rect><text x=\"120.91796875\" y=\"70\" text-anchor=\"middle\" class=\"history-text\" style=\"\">get() -&gt; 200</text></g><g><rect height=\"30\" width=\"106.6953125\" x=\"202.9375\" y=\"100\" rx=\"4\" ry=\"4\" class=\"history-rect\" style=\"\"></rect><text x=\"256.28515625\" y=\"115\" text-anchor=\"middle\" class=\"history-text\" style=\"\">get() -&gt; 0</text></g></g><g class=\"hidden\"></g><g class=\"\"><line x1=\"38.8984375\" x2=\"38.8984375\" y1=\"5\" y2=\"45\" class=\"linearization linearization-point\"></line><line x1=\"38.8984375\" x2=\"58.8984375\" y1=\"45\" y2=\"50\" class=\"linearization linearization-line\"></line><line x1=\"58.8984375\" x2=\"58.8984375\" y1=\"50\" y2=\"90\" class=\"linearization linearization-point\"></line><line x1=\"58.8984375\" x2=\"202.9375\" y1=\"90\" y2=\"95\" class=\"linearization-invalid linearization-line\"></line><line x1=\"202.9375\" x2=\"202.9375\" y1=\"95\" y2=\"135\" class=\"linearization-invalid linearization-point\"></line></g><g><rect height=\"30\" width=\"290.734375\" x=\"38.8984375\" y=\"10\" class=\"target-rect\" data-partition=\"0\" data-index=\"0\"></rect><rect height=\"30\" width=\"124.0390625\" x=\"58.8984375\" y=\"55\" class=\"target-rect\" data-partition=\"0\" data-index=\"1\"></rect><rect height=\"30\" width=\"106.6953125\" x=\"202.9375\" y=\"100\" class=\"target-rect\" data-partition=\"0\" data-index=\"2\"></rect></g></svg><div class=\"tooltip\" style=\"display: block; left: 284px; top: 180px;\"><strong>Previous state:</strong><br>register = 200<br><br><strong>New state:</strong><br>⟨invalid op⟩<br><br>Call: 3<br><br>Return: 4</div>",
+  "resources": []
+}

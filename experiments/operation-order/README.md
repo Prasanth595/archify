@@ -1,5 +1,7 @@
 # 操作顺序约束：文字与图的对照
 
+2026-10-29 跟进：[同输入 Porcupine 原生执行与交互对照](native-comparison/README.md)已完成。原六事件实际返回 Illegal；仅将最后一次读取改为 200 的对照返回 Ok，原生页面显示相应状态变化。下文“未运行 Porcupine”保留的是初轮事实；新证据没有改动两份旧 HTML，也没有证明约束图比文字或原生视图更易理解。
+
 [三句文字基线](baseline.html) · [文字加约束图](explanation.html) · [源稿](candidate.archify.md) · [独立复核](audit.py)
 
 当前图版已用现有原生字段把图例改为“操作”。下方八张历史截图仍绑定旧版 `4d0d21c6`；新版本已完成四阶段自动检查、[独立静态复核](legend-label-review/review.md)及[手动交互与三张新截图](legend-label-review/manual-review.json)。

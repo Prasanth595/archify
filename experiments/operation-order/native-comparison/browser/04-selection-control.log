@@ -1,0 +1,25 @@
+{"text":"Clients\nTime\nValid LP\nInvalid LP\n[ jump to first error ]\n0\n1\n2\nput(200) -> 0\nget() -> 200\nget() -> 0\nPrevious state:\nregister = 200\n\nNew state:\n⟨invalid op⟩\n\nCall: 3\n\nReturn: 4","selected":[{"x":"202.9375","y":"100"}],"viewport":{"width":1291,"height":762}}
+[p1 "Porcupine" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "Porcupine"]
+root
+  svg_root "Clients Time Valid LP Invalid LP"
+    text "Clients"
+    text "Time"
+    text "Valid LP"
+    text "Invalid LP"
+  container
+    svg_root "0 1 2 put(200) -> 0 get() -> 200 get() -> 200"
+      text "0"
+      text "1"
+      text "2"
+      text "put(200) -> 0"
+      text "get() -> 200"
+      text "get() -> 200"
+    container
+      text "Previous state:"
+      text "register = 200"
+      text "New state:"
+      text "register = 200"
+      text "Call: 3"
+      text "Return: 4"
+
+

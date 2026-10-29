@@ -1,0 +1,28 @@
+{
+  "command": [
+    "go",
+    "run",
+    "-mod=readonly",
+    "."
+  ],
+  "environment": {
+    "GOTOOLCHAIN": "local",
+    "GOPROXY": "off",
+    "GOSUMDB": "off",
+    "GOWORK": "off"
+  },
+  "exitCode": 0,
+  "elapsedSeconds": 1.6640648749962565,
+  "before": {
+    "results.json": "ded91b58cddd47170f7e98c13d4c1eaa8f4c46a1a18355cc79a9a84f738fd107",
+    "generated/original.html": "a5fb9c4ff60024b1f80fdbe811440e876268740aac4560272bbcbd46cbf8cdb8",
+    "generated/read-200-control.html": "7d58abb154c4ad28fd127e9e428ca959ca2dc20db6e6d1872b62901ff9991335"
+  },
+  "after": {
+    "results.json": "ded91b58cddd47170f7e98c13d4c1eaa8f4c46a1a18355cc79a9a84f738fd107",
+    "generated/original.html": "a5fb9c4ff60024b1f80fdbe811440e876268740aac4560272bbcbd46cbf8cdb8",
+    "generated/read-200-control.html": "7d58abb154c4ad28fd127e9e428ca959ca2dc20db6e6d1872b62901ff9991335"
+  },
+  "identical": true,
+  "scope": "One warm replay including compiler/cache overhead, not a performance benchmark"
+}
