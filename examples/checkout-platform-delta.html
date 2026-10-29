@@ -14038,6 +14038,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         var result = reachabilityFor(activeIds[0], direction);
         if (!result || result.nodeIds.length &lt;= 1) return false;
         clearRelationshipPreview({ clearPin: true });
+        renderSourceEvidence(activeIds[0]);
         clearReachability({ updateUrl: false });
         reachabilityMode = direction;
         activeReachability = result;
@@ -29798,6 +29799,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         var result = reachabilityFor(activeIds[0], direction);
         if (!result || result.nodeIds.length &lt;= 1) return false;
         clearRelationshipPreview({ clearPin: true });
+        renderSourceEvidence(activeIds[0]);
         clearReachability({ updateUrl: false });
         reachabilityMode = direction;
         activeReachability = result;
