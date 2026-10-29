@@ -1,0 +1,61 @@
+{ text: 'Hint: Drop a diagram to open\nView on GitHub\n1\n1\nPlay Simulation\nProcess started\n198ckuh\nStart Event\n198ckuh\nToken Simulation\nPROCESS\nGeneral\nDocumentation\nDownload Diagram', titles: [ { tag: 'BUTTON', title: 'Trigger Event', cls: 'bts-context-pad' }, { tag: 'BUTTON', title: 'Trigger Event', cls: 'bts-context-pad' }, { tag: 'BUTTON', title: 'Trigger Event', cls: 'bts-context-pad' }, { tag: 'BUTTON', title: 'Focus process instance 198ckuh', cls: 'bts-scope' }, { tag: 'SPAN', title: 'Play Simulation', cls: 'bts-text' }, { tag: 'SPAN', title: 'Process started', cls: 'bts-text' }, { tag: 'SPAN', title: 'Start Event', cls: 'bts-text' }, { tag: 'BUTTON', title: 'Play/Pause Simulation', cls: 'bts-entry active' }, { tag: 'BUTTON', title: 'Reset Simulation', cls: 'bts-entry' }, { tag: 'BUTTON', title: 'Toggle Simulation Log', cls: 'bts-entry' }, { tag: 'BUTTON', title: 'Set animation speed = Slow', cls: 'bts-animation-speed-button ' }, { tag: 'BUTTON', title: 'Set animation speed = Normal', cls: 'bts-animation-speed-button active' }, { tag: 'BUTTON', title: 'Set animation speed = Fast', cls: 'bts-animation-speed-button ' }, { tag: 'A', title: 'Powered by bpmn.io', cls: 'bjs-powered-by' }, { tag: 'DIV', title: 'Toggle properties panel', cls: 'properties-panel-resizer' }, { tag: 'DIV', title: 'Section contains edits', cls: 'bio-properties-panel-dot' }, { tag: 'BUTTON', title: 'Toggle section', cls: 'bio-properties-panel-group-header-button bio-properties-panel-arrow' }, { tag: 'BUTTON', title: 'Toggle section', cls: 'bio-properties-panel-group-header-button bio-properties-panel-arrow' } ] }
+[p1 "Modeler | BPMN Token Simulation Demo" | space "Archify research 20261026"(2): 1 managed, 0 untracked — p1* "Modeler | BPMN Token Simulation Demo"]
+root
+  container
+    container
+      text "Hint:"
+      text "Drop a diagram to open"
+    anchor [ref=1, loc=href:https://github.com/bpmn-io/bpmn-js-token-simulation, url=https://github.com/bpmn-io/bpmn-js-token-simulation]
+      text "View on GitHub"
+    container
+      container
+        button [ref=11]
+          svg_root
+        button [ref=12]
+          svg_root
+        text "1"
+        button [ref=13]
+          svg_root
+        svg_root [ref=2]
+        button [ref=14]
+          text "1"
+        container
+          container
+            svg_root
+            text "Play Simulation"
+          container
+            svg_root
+            text "Process started"
+            text "198ckuh"
+          container
+            text ""
+            text "Start Event"
+            text "198ckuh"
+        container
+          button [ref=3]
+            svg_root
+          button [ref=4]
+            svg_root
+          button [ref=5]
+            svg_root
+        container
+          svg_root
+          container
+            button [ref=6]
+              svg_root
+            button [ref=7]
+              svg_root
+              svg_root
+            button [ref=8]
+              svg_root
+              svg_root
+              svg_root
+        container
+          text "Token Simulation"
+          svg_root
+      anchor [ref=9, loc=href:http://bpmn.io/, url=http://bpmn.io/]
+        svg_root
+  button [ref=10]
+    text "Download Diagram"
+
+

@@ -1,0 +1,91 @@
+{ text: 'Hint: Drop a diagram to open\nView on GitHub\nFinished\nEnd Event\n0hj6mye\nProcess finished\n0hj6mye\nSimulation Log\n\nProcess started\n0hj6mye\n\nStart Event\n0hj6mye\n\nBoundary Event\n0hj6mye\n\nTask\n0hj6mye\n\nParallel Gateway\n0hj6mye\n\nEnd Event\n0hj6mye\n\nProcess finished\n0hj6mye\n\nToken Simulation\nPROCESS\nGeneral\nDocumentation\nDownload Diagram', overlays: [ { id: 'StartEvent_1', text: '' }, { id: 'ParallelJoin_1', text: '' }, { id: 'EndEvent_1', text: 'Finished' }, { id: 'Activity_1', text: '' }, { id: 'Timer_1', text: '' } ] }
+[p1 "Modeler | BPMN Token Simulation Demo" | space "Archify research 20261026"(2): 1 managed, 0 untracked — p1* "Modeler | BPMN Token Simulation Demo"]
+root
+  container
+    container
+      text "Hint:"
+      text "Drop a diagram to open"
+    anchor [ref=16, loc=href:https://github.com/bpmn-io/bpmn-js-token-simulation, url=https://github.com/bpmn-io/bpmn-js-token-simulation]
+      text "View on GitHub"
+    container
+      container
+        button [ref=17]
+          svg_root
+        container
+          svg_root
+          text "Finished"
+        button [ref=18]
+          svg_root
+        svg_root [ref=19]
+        container
+          container
+            text ""
+            text "End Event"
+            text "0hj6mye"
+          container
+            svg_root
+            text "Process finished"
+            text "0hj6mye"
+        container
+          button [ref=20]
+            svg_root
+          button [ref=21]
+            svg_root
+          button [ref=22]
+            svg_root
+        container
+          container
+            svg_root
+            text "Simulation Log"
+            button "Close" [ref=23, loc=css:button[aria-label="Close"]]
+              svg_root
+          container
+            paragraph
+              svg_root
+              text "Process started"
+              text "0hj6mye"
+            paragraph
+              text ""
+              text "Start Event"
+              text "0hj6mye"
+            paragraph
+              text ""
+              text "Boundary Event"
+              text "0hj6mye"
+            paragraph
+              text ""
+              text "Task"
+              text "0hj6mye"
+            paragraph
+              text ""
+              text "Parallel Gateway"
+              text "0hj6mye"
+            paragraph
+              text ""
+              text "End Event"
+              text "0hj6mye"
+            paragraph
+              svg_root
+              text "Process finished"
+              text "0hj6mye"
+        container
+          svg_root
+          container
+            button [ref=24]
+              svg_root
+            button [ref=25]
+              svg_root
+              svg_root
+            button [ref=26]
+              svg_root
+              svg_root
+              svg_root
+        container
+          text "Token Simulation"
+          svg_root
+      anchor [ref=27, loc=href:http://bpmn.io/, url=http://bpmn.io/]
+        svg_root
+  button [ref=28]
+    text "Download Diagram"
+
+

@@ -1,0 +1,129 @@
+{
+  "actions": [
+    {},
+    {},
+    {}
+  ],
+  "observed": {
+    "text": "Hint: Drop a diagram to open\nView on GitHub\n1\n1\nPlay Simulation\nProcess started\n198ckuh\nStart Event\n198ckuh\nToken Simulation\nPROCESS\nGeneral\nDocumentation\nDownload Diagram",
+    "titles": [
+      {
+        "tag": "BUTTON",
+        "title": "Trigger Event",
+        "cls": "bts-context-pad"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Trigger Event",
+        "cls": "bts-context-pad"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Trigger Event",
+        "cls": "bts-context-pad"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Focus process instance 198ckuh",
+        "cls": "bts-scope"
+      },
+      {
+        "tag": "SPAN",
+        "title": "Play Simulation",
+        "cls": "bts-text"
+      },
+      {
+        "tag": "SPAN",
+        "title": "Process started",
+        "cls": "bts-text"
+      },
+      {
+        "tag": "SPAN",
+        "title": "Start Event",
+        "cls": "bts-text"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Play/Pause Simulation",
+        "cls": "bts-entry active"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Reset Simulation",
+        "cls": "bts-entry"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Toggle Simulation Log",
+        "cls": "bts-entry"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Set animation speed = Slow",
+        "cls": "bts-animation-speed-button "
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Set animation speed = Normal",
+        "cls": "bts-animation-speed-button active"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Set animation speed = Fast",
+        "cls": "bts-animation-speed-button "
+      },
+      {
+        "tag": "A",
+        "title": "Powered by bpmn.io",
+        "cls": "bjs-powered-by"
+      },
+      {
+        "tag": "DIV",
+        "title": "Toggle properties panel",
+        "cls": "properties-panel-resizer"
+      },
+      {
+        "tag": "DIV",
+        "title": "Section contains edits",
+        "cls": "bio-properties-panel-dot"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Toggle section",
+        "cls": "bio-properties-panel-group-header-button bio-properties-panel-arrow"
+      },
+      {
+        "tag": "BUTTON",
+        "title": "Toggle section",
+        "cls": "bio-properties-panel-group-header-button bio-properties-panel-arrow"
+      }
+    ],
+    "overlays": [
+      {
+        "id": "StartEvent_1",
+        "text": "",
+        "html": "<div class=\"djs-overlays\" style=\"position: absolute; left: 179px; top: 99px;\" data-container-id=\"StartEvent_1\"><div class=\"djs-overlay djs-overlay-bts-context-menu\" data-overlay-id=\"ov-489748399-1\" style=\"position: absolute; left: -15px; top: -15px; transform-origin: left top;\"><button class=\"bts-context-pad\" title=\"Trigger Event\" data-scope-ids=\"0rtlpks\">\n      <span class=\"bts-icon \"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Adapted from Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill=\"currentColor\" d=\"M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z\"></path></svg></span>\n    </button></div></div>"
+      },
+      {
+        "id": "ParallelJoin_1",
+        "text": "",
+        "html": "<div class=\"djs-overlays\" data-container-id=\"ParallelJoin_1\" style=\"position: absolute; left: 392px; top: 192px;\"><div class=\"djs-overlay djs-overlay-bts-context-menu\" data-overlay-id=\"ov-489748399-2\" style=\"position: absolute; left: -15px; top: -15px; transform-origin: left top;\"><button class=\"bts-context-pad hidden\" title=\"Trigger Event\" data-scope-ids=\"\">\n      <span class=\"bts-icon \"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Adapted from Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill=\"currentColor\" d=\"M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z\"></path></svg></span>\n    </button></div></div>"
+      },
+      {
+        "id": "EndEvent_1",
+        "text": "",
+        "html": "<div class=\"djs-overlays\" data-container-id=\"EndEvent_1\" style=\"position: absolute; left: 479px; top: 199px;\"><div class=\"djs-overlay djs-overlay-bts-context-menu\" data-overlay-id=\"ov-489748399-3\" style=\"position: absolute; left: -15px; top: -15px; transform-origin: left top;\"><button class=\"bts-context-pad hidden\" title=\"Trigger Event\" data-scope-ids=\"\">\n      <span class=\"bts-icon \"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Adapted from Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill=\"currentColor\" d=\"M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z\"></path></svg></span>\n    </button></div></div>"
+      },
+      {
+        "id": "Activity_1",
+        "text": "1",
+        "html": "<div class=\"djs-overlays\" data-container-id=\"Activity_1\" style=\"position: absolute; left: 267px; top: 77px;\"><div class=\"djs-overlay djs-overlay-bts-context-menu\" data-overlay-id=\"ov-489748399-5\" style=\"position: absolute; left: -15px; top: -15px; transform-origin: left top;\"><button class=\"bts-context-pad\" title=\"Trigger Event\" data-scope-ids=\"1oqxgja\">\n      <span class=\"bts-icon \"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Adapted from Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill=\"currentColor\" d=\"M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z\"></path></svg></span>\n    </button></div><div class=\"djs-overlay djs-overlay-bts-context-menu\" data-overlay-id=\"ov-489748399-7\" style=\"position: absolute; left: -15px; top: -15px; transform-origin: left top;\"><button class=\"bts-context-pad hidden\" title=\"Remove pause point\" data-hide-scope-ids=\"1oqxgja\">\n      <span class=\"bts-icon show-hover\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 580.5 448\">\n  <path fill=\"currentColor\" d=\"M112 0C85 0 64 22 64 48v196l192-89V48c0-26-22-48-48-48zm256 0c-27 0-48 22-48 48v77l190-89c-5-21-24-36-46-36Zm144 105-192 89v70l192-89zM256 224 64 314v70l192-90zm256 21-192 89v66c0 27 21 48 48 48h96c26 0 48-21 48-48zM256 364 89 442c7 4 14 6 23 6h96c26 0 48-21 48-48z\"></path>\n  <rect fill=\"currentColor\" width=\"63.3\" height=\"618.2\" x=\"311.5\" y=\"-469.4\" transform=\"rotate(65)\" rx=\"10\"></rect>\n</svg>\n</span>\n      <span class=\"bts-icon hide-hover\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill=\"currentColor\" d=\"M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z\"></path></svg></span>\n    </button></div><div class=\"djs-overlay djs-overlay-bts-token-count\" data-overlay-id=\"ov-489748399-8\" style=\"position: absolute; left: -15px; top: 70px; transform-origin: left top;\"><div class=\"bts-token-count-parent\">\n      \n    <div data-scope-id=\"198ckuh\" class=\"bts-token-count waiting \" style=\"color: #fff; background: #f7aacb\">\n      1\n    </div>\n  \n    </div></div></div>"
+      },
+      {
+        "id": "Timer_1",
+        "text": "",
+        "html": "<div class=\"djs-overlays\" data-container-id=\"Timer_1\" style=\"position: absolute; left: 319px; top: 139px;\"><div class=\"djs-overlay djs-overlay-bts-context-menu\" data-overlay-id=\"ov-489748399-6\" style=\"position: absolute; left: -15px; top: -15px; transform-origin: left top;\"><button class=\"bts-context-pad\" title=\"Trigger Event\" data-scope-ids=\"1oqxgja\">\n      <span class=\"bts-icon \"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Adapted from Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill=\"currentColor\" d=\"M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z\"></path></svg></span>\n    </button></div></div>"
+      }
+    ]
+  }
+}

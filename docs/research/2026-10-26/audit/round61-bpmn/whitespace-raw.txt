@@ -1,0 +1,495 @@
+docs/research/2026-10-26/audit/round61-bpmn/browser/02-open-output.txt:38: new blank line at EOF.
+docs/research/2026-10-26/audit/round61-bpmn/browser/04-output.txt:60: new blank line at EOF.
+docs/research/2026-10-26/audit/round61-bpmn/browser/05-output.txt:53: new blank line at EOF.
+docs/research/2026-10-26/audit/round61-bpmn/browser/06-output.txt:72: new blank line at EOF.
+docs/research/2026-10-26/audit/round61-bpmn/browser/07-output.txt:90: new blank line at EOF.
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:1: trailing whitespace.
++/* global process */
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:2: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:3: trailing whitespace.
++import TokenSimulationModule from '../..';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:4: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:5: trailing whitespace.
++import BpmnModeler from 'bpmn-js/lib/Modeler';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:6: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:7: trailing whitespace.
++import AddExporter from '@bpmn-io/add-exporter';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:8: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:9: trailing whitespace.
++import {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:10: trailing whitespace.
++  BpmnPropertiesPanelModule,
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:11: trailing whitespace.
++  BpmnPropertiesProviderModule
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:12: trailing whitespace.
++} from 'bpmn-js-properties-panel';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:13: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:14: trailing whitespace.
++import fileDrop from 'file-drops';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:15: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:16: trailing whitespace.
++import fileOpen from 'file-open';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:17: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:18: trailing whitespace.
++import download from 'downloadjs';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:19: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:20: trailing whitespace.
++import exampleXML from '../resources/example.bpmn';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:21: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:22: trailing whitespace.
++const url = new URL(window.location.href);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:23: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:24: trailing whitespace.
++const persistent = url.searchParams.has('p');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:25: trailing whitespace.
++const active = url.searchParams.has('e');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:26: trailing whitespace.
++const presentationMode = url.searchParams.has('pm');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:27: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:28: trailing whitespace.
++let fileName = 'diagram.bpmn';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:29: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:30: trailing whitespace.
++const initialDiagram = (() => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:31: trailing whitespace.
++  try {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:32: trailing whitespace.
++    return persistent && localStorage['diagram-xml'] || exampleXML;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:33: trailing whitespace.
++  } catch (err) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:34: trailing whitespace.
++    return exampleXML;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:35: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:36: trailing whitespace.
++})();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:37: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:38: trailing whitespace.
++function showMessage(cls, message) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:39: trailing whitespace.
++  const messageEl = document.querySelector('.drop-message');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:40: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:41: trailing whitespace.
++  messageEl.textContent = message;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:42: trailing whitespace.
++  messageEl.className = `drop-message ${cls || ''}`;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:43: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:44: trailing whitespace.
++  messageEl.style.display = 'block';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:45: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:46: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:47: trailing whitespace.
++function hideMessage() {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:48: trailing whitespace.
++  const messageEl = document.querySelector('.drop-message');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:49: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:50: trailing whitespace.
++  messageEl.style.display = 'none';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:51: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:52: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:53: trailing whitespace.
++if (persistent) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:54: trailing whitespace.
++  hideMessage();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:55: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:56: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:57: trailing whitespace.
++const ExampleModule = {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:58: trailing whitespace.
++  __init__: [
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:59: trailing whitespace.
++    [ 'eventBus', 'bpmnjs', 'toggleMode', function(eventBus, bpmnjs, toggleMode) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:60: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:61: trailing whitespace.
++      if (persistent) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:62: trailing whitespace.
++        eventBus.on('commandStack.changed', function() {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:63: trailing whitespace.
++          bpmnjs.saveXML().then(result => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:64: trailing whitespace.
++            localStorage['diagram-xml'] = result.xml;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:65: trailing whitespace.
++          });
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:66: trailing whitespace.
++        });
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:67: trailing whitespace.
++      }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:68: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:69: trailing whitespace.
++      if ('history' in window) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:70: trailing whitespace.
++        eventBus.on('tokenSimulation.toggleMode', event => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:71: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:72: trailing whitespace.
++          document.body.classList.toggle('token-simulation-active', event.active);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:73: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:74: trailing whitespace.
++          if (event.active) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:75: trailing whitespace.
++            url.searchParams.set('e', '1');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:76: trailing whitespace.
++          } else {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:77: trailing whitespace.
++            url.searchParams.delete('e');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:78: trailing whitespace.
++          }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:79: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:80: trailing whitespace.
++          history.replaceState({}, document.title, url.toString());
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:81: trailing whitespace.
++        });
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:82: trailing whitespace.
++      }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:83: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:84: trailing whitespace.
++      eventBus.on('diagram.init', 500, () => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:85: trailing whitespace.
++        toggleMode.toggleMode(active);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:86: trailing whitespace.
++      });
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:87: trailing whitespace.
++    } ]
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:88: trailing whitespace.
++  ]
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:89: trailing whitespace.
++};
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:90: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:91: trailing whitespace.
++const modeler = new BpmnModeler({
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:92: trailing whitespace.
++  container: '#canvas',
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:93: trailing whitespace.
++  additionalModules: [
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:94: trailing whitespace.
++    BpmnPropertiesPanelModule,
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:95: trailing whitespace.
++    BpmnPropertiesProviderModule,
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:96: trailing whitespace.
++    TokenSimulationModule,
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:97: trailing whitespace.
++    AddExporter,
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:98: trailing whitespace.
++    ExampleModule
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:99: trailing whitespace.
++  ],
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:100: trailing whitespace.
++  propertiesPanel: {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:101: trailing whitespace.
++    parent: '#properties-panel'
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:102: trailing whitespace.
++  },
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:103: trailing whitespace.
++  exporter: {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:104: trailing whitespace.
++    name: 'bpmn-js-token-simulation',
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:105: trailing whitespace.
++    version: process.env.TOKEN_SIMULATION_VERSION
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:106: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:107: trailing whitespace.
++});
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:108: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:109: trailing whitespace.
++function openDiagram(diagram) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:110: trailing whitespace.
++  return modeler.importXML(diagram)
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:111: trailing whitespace.
++    .then(({ warnings }) => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:112: trailing whitespace.
++      if (warnings.length) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:113: trailing whitespace.
++        console.warn(warnings);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:114: trailing whitespace.
++      }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:115: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:116: trailing whitespace.
++      if (persistent) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:117: trailing whitespace.
++        localStorage['diagram-xml'] = diagram;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:118: trailing whitespace.
++      }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:119: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:120: trailing whitespace.
++      modeler.get('canvas').zoom('fit-viewport');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:121: trailing whitespace.
++    })
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:122: trailing whitespace.
++    .catch(err => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:123: trailing whitespace.
++      console.error(err);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:124: trailing whitespace.
++    });
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:125: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:126: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:127: trailing whitespace.
++if (presentationMode) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:128: trailing whitespace.
++  document.body.classList.add('presentation-mode');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:129: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:130: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:131: trailing whitespace.
++function openFile(files) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:132: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:133: trailing whitespace.
++  // files = [ { name, contents }, ... ]
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:134: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:135: trailing whitespace.
++  if (!files.length) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:136: trailing whitespace.
++    return;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:137: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:138: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:139: trailing whitespace.
++  hideMessage();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:140: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:141: trailing whitespace.
++  fileName = files[0].name;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:142: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:143: trailing whitespace.
++  openDiagram(files[0].contents);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:144: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:145: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:146: trailing whitespace.
++document.body.addEventListener('dragover', fileDrop('Open BPMN diagram', openFile), false);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:147: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:148: trailing whitespace.
++function downloadDiagram() {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:149: trailing whitespace.
++  modeler.saveXML({ format: true }).then(({ xml }) => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:150: trailing whitespace.
++    download(xml, fileName, 'application/xml');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:151: trailing whitespace.
++  });
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:152: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:153: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:154: trailing whitespace.
++document.body.addEventListener('keydown', function(event) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:155: trailing whitespace.
++  if (event.code === 'KeyS' && (event.metaKey || event.ctrlKey)) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:156: trailing whitespace.
++    event.preventDefault();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:157: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:158: trailing whitespace.
++    downloadDiagram();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:159: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:160: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:161: trailing whitespace.
++  if (event.code === 'KeyO' && (event.metaKey || event.ctrlKey)) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:162: trailing whitespace.
++    event.preventDefault();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:163: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:164: trailing whitespace.
++    fileOpen().then(openFile);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:165: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:166: trailing whitespace.
++});
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:167: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:168: trailing whitespace.
++document.querySelector('#download-button').addEventListener('click', function(event) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:169: trailing whitespace.
++  downloadDiagram();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:170: trailing whitespace.
++});
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:171: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:172: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:173: trailing whitespace.
++const propertiesPanel = document.querySelector('#properties-panel');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:174: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:175: trailing whitespace.
++const propertiesPanelResizer = document.querySelector('#properties-panel-resizer');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:176: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:177: trailing whitespace.
++let startX, startWidth;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:178: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:179: trailing whitespace.
++function toggleProperties(open) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:180: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:181: trailing whitespace.
++  if (open) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:182: trailing whitespace.
++    url.searchParams.set('pp', '1');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:183: trailing whitespace.
++  } else {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:184: trailing whitespace.
++    url.searchParams.delete('pp');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:185: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:186: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:187: trailing whitespace.
++  history.replaceState({}, document.title, url.toString());
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:188: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:189: trailing whitespace.
++  propertiesPanel.classList.toggle('open', open);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:190: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:191: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:192: trailing whitespace.
++propertiesPanelResizer.addEventListener('click', function(event) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:193: trailing whitespace.
++  toggleProperties(!propertiesPanel.classList.contains('open'));
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:194: trailing whitespace.
++});
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:195: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:196: trailing whitespace.
++propertiesPanelResizer.addEventListener('dragstart', function(event) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:197: trailing whitespace.
++  const img = new Image();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:198: trailing whitespace.
++  img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:199: trailing whitespace.
++  event.dataTransfer.setDragImage(img, 1, 1);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:200: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:201: trailing whitespace.
++  startX = event.screenX;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:202: trailing whitespace.
++  startWidth = propertiesPanel.getBoundingClientRect().width;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:203: trailing whitespace.
++});
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:204: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:205: trailing whitespace.
++propertiesPanelResizer.addEventListener('drag', function(event) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:206: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:207: trailing whitespace.
++  if (!event.screenX) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:208: trailing whitespace.
++    return;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:209: trailing whitespace.
++  }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:210: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:211: trailing whitespace.
++  const delta = event.screenX - startX;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:212: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:213: trailing whitespace.
++  const width = startWidth - delta;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:214: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:215: trailing whitespace.
++  const open = width > 200;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:216: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:217: trailing whitespace.
++  propertiesPanel.style.width = open ? `${width}px` : null;
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:218: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:219: trailing whitespace.
++  toggleProperties(open);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:220: trailing whitespace.
++});
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:221: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:222: trailing whitespace.
++const remoteDiagram = url.searchParams.get('diagram');
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:223: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:224: trailing whitespace.
++if (remoteDiagram) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:225: trailing whitespace.
++  fetch(remoteDiagram).then(
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:226: trailing whitespace.
++    r => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:227: trailing whitespace.
++      if (r.ok) {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:228: trailing whitespace.
++        return r.text();
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:229: trailing whitespace.
++      }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:230: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:231: trailing whitespace.
++      throw new Error(`Status ${r.status}`);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:232: trailing whitespace.
++    }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:233: trailing whitespace.
++  ).then(
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:234: trailing whitespace.
++    text => openDiagram(text)
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:235: trailing whitespace.
++  ).catch(
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:236: trailing whitespace.
++    err => {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:237: trailing whitespace.
++      showMessage('error', `Failed to open remote diagram: ${err.message}`);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:238: trailing whitespace.
++
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:239: trailing whitespace.
++      openDiagram(initialDiagram);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:240: trailing whitespace.
++    }
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:241: trailing whitespace.
++  );
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:242: trailing whitespace.
++} else {
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:243: trailing whitespace.
++  openDiagram(initialDiagram);
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:244: trailing whitespace.
++}
+docs/research/2026-10-26/audit/round61-bpmn/sources/example/src/modeler.js:245: trailing whitespace.
++

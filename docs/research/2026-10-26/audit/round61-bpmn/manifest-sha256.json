@@ -1,0 +1,177 @@
+{
+  "scope": "All packet files except this manifest; PNGs are actual native browser captures, not generated illustrations.",
+  "files": {
+    ".gitattributes": {
+      "bytes": 17,
+      "sha256": "db44599b09cb542671e1042ea2824860669abc26023ffc5c5559f4be5e3562af"
+    },
+    "browser/01-open.mjs": {
+      "bytes": 380,
+      "sha256": "f28b8b0f082e8b6d254667d1cdfe9609869e36ba509505453d13db9bde441535"
+    },
+    "browser/02-open-output.txt": {
+      "bytes": 1097,
+      "sha256": "00bc59458e0a94810845f026bd1c803cefb9f191237204f25ba8a3bfec70456b"
+    },
+    "browser/02-rebuilt-open.mjs": {
+      "bytes": 380,
+      "sha256": "eca73b0425d83d129a41c0a40a3d18e718503d80c5de610a87c3af554587059d"
+    },
+    "browser/03-initial-dom.json": {
+      "bytes": 14991,
+      "sha256": "3ed6b9240a30921e03a3ae68cdab16ef98f052e7552f7f268ae5072e29252f07"
+    },
+    "browser/03-initial.png": {
+      "bytes": 22776,
+      "sha256": "6e3cc15bdef1963c283f2498da8f8e56a44f19a7112ded34d3cbeddd17775553"
+    },
+    "browser/03-observe.mjs": {
+      "bytes": 932,
+      "sha256": "0cbb7dff4480699961e290a76ebb49bf0441e785a23ab3f84cd722a2a39dbb00"
+    },
+    "browser/04-output.txt": {
+      "bytes": 3212,
+      "sha256": "82e7407a86f38ec222c68c2e89dbd027affcf018edb97fcb65d140aabc019cf3"
+    },
+    "browser/04-start.json": {
+      "bytes": 9019,
+      "sha256": "22cac193d2f6b167bb3ce54ab85a0fd4de4303c32839ebf0ec63dfb6f1113a3e"
+    },
+    "browser/04-start.mjs": {
+      "bytes": 1245,
+      "sha256": "1a2ee6311770bbe001d90ae8ebda32cacfb8202efc5b4098ab9f5df7ed1d58a4"
+    },
+    "browser/05-output.txt": {
+      "bytes": 1738,
+      "sha256": "6d2f5b97522f8b485d36cb5cd7a9145cebdc7cdfca6a14780f8ab7eef1b98877"
+    },
+    "browser/05-two-timers.json": {
+      "bytes": 8006,
+      "sha256": "4f04832e9a26c0397e9663bef0e0dd7a7422269c9803f6f73a2cc04b39e289ae"
+    },
+    "browser/05-two-timers.mjs": {
+      "bytes": 1239,
+      "sha256": "e844ae507ec362731ed0d9d5d67ad04b4afb36c9c3ea4cf29d10fcb26ea2fc80"
+    },
+    "browser/05-two-timers.png": {
+      "bytes": 29276,
+      "sha256": "6610c59d82d8bf3687022496a1b89292138d0a2d26ec243eb4280a40b3b0390b"
+    },
+    "browser/06-log-export.mjs": {
+      "bytes": 1287,
+      "sha256": "9adb6fb55ccfe37718d66a46e5184c30ae229917f6885031947f2fe28c3128d5"
+    },
+    "browser/06-log.json": {
+      "bytes": 2765,
+      "sha256": "098aa8dfd38bcca566b7d2f2d0deea92f72a2bb1e898a7c88bd3b3dd675a9ea5"
+    },
+    "browser/06-output.txt": {
+      "bytes": 2326,
+      "sha256": "0822f33559311e0682c28b2a2db6a5b22eb1244a8a1191e0ea63b2d813188129"
+    },
+    "browser/06-two-timers-log.png": {
+      "bytes": 41906,
+      "sha256": "a55dc86726056241cb09e4d178987e64ac47bb67d26046663661baa3413a7119"
+    },
+    "browser/07-control.mjs": {
+      "bytes": 2033,
+      "sha256": "2630082c2cadc37e83c51ad9e973d0c170a0f6cb47f717a4872a421068c9bfdf"
+    },
+    "browser/07-output.txt": {
+      "bytes": 3013,
+      "sha256": "d1f22c625ab055539de61dcbe36ecf12f9fe85b37c7678e706a26f8fecdc3277"
+    },
+    "browser/07-timer-task.json": {
+      "bytes": 9007,
+      "sha256": "49ef1088d652c9bac5f979e1bd8efbe6d4136c3a163c4a85932e36f2dca1eb67"
+    },
+    "browser/07-timer-task.png": {
+      "bytes": 57879,
+      "sha256": "5905fe98ceeaf0ab41b3f33b584b41c46185149a8ff60799a166cbc9ce4a22b2"
+    },
+    "browser/native-export.bpmn": {
+      "bytes": 3479,
+      "sha256": "0fb2cb8fde76dbe9933a5ede76af2654206c28a0f1ae6ac18c54457af1cb591e"
+    },
+    "checks.json": {
+      "bytes": 530,
+      "sha256": "9f43e91d09765497be1b29767c84fa3c476d995318e56d308cea3dec42df69b0"
+    },
+    "dedup-and-recovery.json": {
+      "bytes": 927,
+      "sha256": "0b0d97adf361bcb5ba34aa2eb84c6cd6931ad984a6d793ac4e62c5d65e6be2d0"
+    },
+    "issue-context.json": {
+      "bytes": 3700,
+      "sha256": "c340936201545819593da3d0145eac3269941edd925c3329721dddb3a579778f"
+    },
+    "remote-changes.json": {
+      "bytes": 858,
+      "sha256": "8b395e3bfcd0af8bb998fc13540426b4536c0b461ebefdde0ed1b47e29a37a38"
+    },
+    "remote-heads-after-resume.tsv": {
+      "bytes": 26837,
+      "sha256": "3a2a1a8461a8a3e3adb8411d0d255bec4cb5ff479bbf12add076c85776be24b2"
+    },
+    "remote-heads.tsv": {
+      "bytes": 26698,
+      "sha256": "d08571fd21972c8f507e4ad270dfef9e4e90de8a134ea1f366fecc840ccf42cb"
+    },
+    "source-identities.json": {
+      "bytes": 3259,
+      "sha256": "6feec3eebb6a381796141eac643df00a8866af62fa60ddf3f7e56582e3b2a4cb"
+    },
+    "sources/LICENSE": {
+      "bytes": 1073,
+      "sha256": "402da3df8b4a66b666e95b41bea30ee639f97ea7ff3a129c2906c6f0ff869ef3"
+    },
+    "sources/README.md": {
+      "bytes": 2668,
+      "sha256": "b9e76f0ee264c8eeab1bfb3d1143a7b5dde382ad5b086e678b064db832bdcd93"
+    },
+    "sources/example/src/modeler.js": {
+      "bytes": 5697,
+      "sha256": "5e10e2ad1bb7ff3fb628c0177710d6f10a420a16f7c9c36be3297e29830a2425"
+    },
+    "sources/lib/simulator/behaviors/ParallelGatewayBehavior.js": {
+      "bytes": 1698,
+      "sha256": "17f10b5a14b30ade9b1e1848a76a1c2312ecbfed27bade7cb901386dcda97f25"
+    },
+    "sources/package.json": {
+      "bytes": 2882,
+      "sha256": "02a17b6d49c656c167d76d961e68de0d1467a367d36635c840d149c6b66aced8"
+    },
+    "sources/test/spec/simulator/Simulator.parallel-gateway-join-1.json": {
+      "bytes": 1154,
+      "sha256": "033b2c16d8265d243f28e47dfd52264b4cc3266e36c54666b7c93a0af903514a"
+    },
+    "sources/test/spec/simulator/Simulator.parallel-gateway-join-2.json": {
+      "bytes": 823,
+      "sha256": "a0b7644fa8bb796d6db78228f55fa2ad5bc0c113a5c910fd649ae4fdd03ae4e4"
+    },
+    "sources/test/spec/simulator/Simulator.parallel-gateway-join-3.json": {
+      "bytes": 1124,
+      "sha256": "4e8e78fabcd8ca0001fab871dbd3421f6584814129af080d36c5a6a0c70510ac"
+    },
+    "sources/test/spec/simulator/Simulator.parallel-gateway-join.bpmn": {
+      "bytes": 3471,
+      "sha256": "ac75f383f96bdf8ca53258da0b71f446d8c0c4f021bfb5a2e9e9a0833fd795f2"
+    },
+    "sources/test/spec/simulator/SimulatorSpec.js": {
+      "bytes": 46182,
+      "sha256": "b5e5c15a0fcd679e9f5e29331a5d3a01404a393470bac7cf92b3f375ce2e944f"
+    },
+    "verification.json": {
+      "bytes": 429,
+      "sha256": "16713169fd2e32946c48c3868e7d46a80f04cd812aaaa51f5d7312b80323a0ff"
+    },
+    "verify.py": {
+      "bytes": 2760,
+      "sha256": "5926aaa8fe155d9e501c9de00b7094d56300a88df0aa464ec3739f60f73d9e8b"
+    },
+    "whitespace-raw.txt": {
+      "bytes": 30759,
+      "sha256": "bfbbe6fcc4afb8029000d2452c9a4842b637f8fbfa9e6fa1b2c4150beddedc25"
+    }
+  }
+}

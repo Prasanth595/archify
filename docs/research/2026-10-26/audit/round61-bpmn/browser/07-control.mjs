@@ -1,0 +1,16 @@
+const page=(await taskSpace(2)).page("p1"); const fs=await import("node:fs/promises"); const actions=[];
+await page.goto(await page.url());
+await page.hover('g[data-element-id="Activity_1"]');
+actions.push(await page.click('[data-container-id="Activity_1"] button[title="Add pause point"]'));
+actions.push(await page.click('[data-container-id="StartEvent_1"] button[title="Trigger Event"]'));
+await page.waitForFunction(()=>{const e=document.querySelector('[data-container-id="Activity_1"] button[title="Trigger Event"]');return e&&!e.classList.contains('hidden');},null,{timeout:10000});
+actions.push(await page.click('[data-container-id="Timer_1"] button[title="Trigger Event"]'));
+await page.waitForFunction(()=>document.querySelector('[data-container-id="ParallelJoin_1"]')?.innerText.trim()==='1',null,{timeout:10000});
+actions.push(await page.click('[data-container-id="Activity_1"] button[title="Trigger Event"]'));
+await page.waitForFunction(()=>document.querySelector('[data-container-id="ParallelJoin_1"]')?.innerText.trim()===''&&!document.querySelector('button.bts-scope'),null,{timeout:10000});
+actions.push(await page.click('button[title="Toggle Simulation Log"]'));
+const observed=await page.evaluate(()=>({url:location.href,text:document.body.innerText,overlays:[...document.querySelectorAll('.djs-overlays')].map(e=>({id:e.getAttribute('data-container-id'),text:e.innerText,html:e.outerHTML})),log:[...document.querySelectorAll('.bts-text')].map(e=>({title:e.title,text:e.textContent,visible:e.getBoundingClientRect().width>0}))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round61-bpmn/browser/07-timer-task.json",JSON.stringify({actions,observed},null,2));
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round61-bpmn/browser/07-timer-task.png"});
+console.log({text:observed.text,overlays:observed.overlays.map(({id,text})=>({id,text}))});
+console.log(await page.snapshot());

@@ -1,0 +1,73 @@
+{ text: 'Hint: Drop a diagram to open\nView on GitHub\n2\n1\n3\nSimulation Log\n\nProcess started\n198ckuh\n\nStart Event\n198ckuh\n\nBoundary Event\n198ckuh\n\nBoundary Event\n198ckuh\n\nToken Simulation\nPROCESS\nGeneral\nDocumentation\nDownload Diagram', download: { url: 'blob:https://bpmn-io.github.io/1d1920c2-09a7-4b44-ac34-d70a994e2c9e', name: 'diagram.bpmn' } }
+[p1 "Modeler | BPMN Token Simulation Demo" | space "Archify research 20261026"(2): 1 managed, 0 untracked — p1* "Modeler | BPMN Token Simulation Demo"]
+root
+  container
+    container
+      text "Hint:"
+      text "Drop a diagram to open"
+    anchor [ref=1, loc=href:https://github.com/bpmn-io/bpmn-js-token-simulation, url=https://github.com/bpmn-io/bpmn-js-token-simulation]
+      text "View on GitHub"
+    container
+      container
+        button [ref=11]
+          svg_root
+        text "2"
+        button [ref=12]
+          svg_root
+        text "1"
+        button [ref=13]
+          svg_root
+        svg_root [ref=2]
+        button [ref=14]
+          text "3"
+        container
+          button [ref=3]
+            svg_root
+          button [ref=4]
+            svg_root
+          button [ref=5]
+            svg_root
+        container
+          container
+            svg_root
+            text "Simulation Log"
+            button "Close" [ref=15, loc=css:button[aria-label="Close"]]
+              svg_root
+          container
+            paragraph
+              svg_root
+              text "Process started"
+              text "198ckuh"
+            paragraph
+              text ""
+              text "Start Event"
+              text "198ckuh"
+            paragraph
+              text ""
+              text "Boundary Event"
+              text "198ckuh"
+            paragraph
+              text ""
+              text "Boundary Event"
+              text "198ckuh"
+        container
+          svg_root
+          container
+            button [ref=6]
+              svg_root
+            button [ref=7]
+              svg_root
+              svg_root
+            button [ref=8]
+              svg_root
+              svg_root
+              svg_root
+        container
+          text "Token Simulation"
+          svg_root
+      anchor [ref=9, loc=href:http://bpmn.io/, url=http://bpmn.io/]
+        svg_root
+  button [ref=10]
+    text "Download Diagram"
+
+

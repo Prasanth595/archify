@@ -1,0 +1,10 @@
+const page=(await taskSpace(2)).page("p1"); const fs=await import("node:fs/promises");
+const action=await page.click('button[title="Toggle Simulation Log"]');
+const observed=await page.evaluate(()=>({text:document.body.innerText,log:[...document.querySelectorAll('.bts-text')].map(e=>({title:e.title,text:e.textContent,visible:e.getBoundingClientRect().width>0})),resources:performance.getEntriesByType('resource').map(e=>({name:e.name,initiatorType:e.initiatorType,transferSize:e.transferSize}))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round61-bpmn/browser/06-log.json",JSON.stringify({action,observed},null,2));
+await page.screenshot({path:"/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round61-bpmn/browser/06-two-timers-log.png"});
+const downloadPromise=page.waitForEvent("download",{timeout:30000});
+await page.click('#download-button'); const download=await downloadPromise;
+await download.saveAs("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round61-bpmn/browser/native-export.bpmn");
+console.log({text:observed.text,download:{url:download.url(),name:download.suggestedFilename()}});
+console.log(await page.snapshot());

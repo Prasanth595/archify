@@ -1,0 +1,10 @@
+const page=(await taskSpace(2)).page("p1"); const fs=await import("node:fs/promises");
+const actions=[];
+actions.push(await page.hover('g[data-element-id="Activity_1"]'));
+actions.push(await page.click('[data-container-id="Activity_1"] button[title="Add pause point"]'));
+actions.push(await page.click('[data-container-id="StartEvent_1"] button[title="Trigger Event"]'));
+await page.waitForFunction(()=>{const e=document.querySelector('[data-container-id="Activity_1"] button[title="Trigger Event"]');return e&&!e.classList.contains('hidden');},null,{timeout:10000});
+const observed=await page.evaluate(()=>({text:document.body.innerText,titles:[...document.querySelectorAll('[title]')].filter(e=>e.getBoundingClientRect().width>0).map(e=>({tag:e.tagName,title:e.getAttribute('title'),cls:e.getAttribute('class')})),overlays:[...document.querySelectorAll('.djs-overlays')].map(e=>({id:e.getAttribute('data-container-id'),text:e.innerText,html:e.outerHTML}))}));
+await fs.writeFile("/Users/tsk/.codex/worktrees/research-lab-20261026/archify/docs/research/2026-10-26/audit/round61-bpmn/browser/04-start.json",JSON.stringify({actions,observed},null,2));
+console.log({text:observed.text,titles:observed.titles});
+console.log(await page.snapshot());
