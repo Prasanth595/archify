@@ -3813,13 +3813,16 @@ async function commandCompareWorkflow(args) {
     if (!checks) return null;
     const identifiers = (values) => [...new Set(values || [])].sort();
     const relations = (values) => [...new Map((values || []).map(({ from, to }) => [`${from}\0${to}`, { from, to }])).values()]
-      .sort((left, right) => left.from.localeCompare(right.from) || left.to.localeCompare(right.to));
-    return Object.fromEntries([
+      .sort((left, right) => (left.from < right.from ? -1 : left.from > right.from ? 1 : 0) || (left.to < right.to ? -1 : left.to > right.to ? 1 : 0));
+    const normalized = [
       ['allowedRoots', identifiers],
       ['allowedTerminals', identifiers],
       ['requiredEdges', relations],
       ['requiredPaths', relations],
-    ].filter(([key]) => Object.hasOwn(checks, key)).map(([key, normalize]) => [key, normalize(checks[key])]));
+    ].filter(([key]) => Object.hasOwn(checks, key)).map(([key, normalize]) => [key, normalize(checks[key])]);
+    return Object.fromEntries([
+      ...normalized.filter(([key, value]) => !(['requiredEdges', 'requiredPaths'].includes(key) && value.length === 0)),
+    ]);
   };
   const baseSemanticChecks = normalizeSemanticChecks(base.semanticChecks);
   const headSemanticChecks = normalizeSemanticChecks(head.semanticChecks);

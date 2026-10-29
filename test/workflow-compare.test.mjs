@@ -125,25 +125,37 @@ test('Workflow compare returns a receipt when the output parent is a file', () =
 test('Workflow compare reports normalized semantic-check changes', () => {
   const base = fixture();
   base.semanticChecks = {
-    allowedRoots: ['user', 'user'],
+    allowedRoots: ['store', 'user', 'user'],
     requiredEdges: [{ from: 'user', to: 'chat' }, { from: 'user', to: 'chat' }],
   };
   const reordered = structuredClone(base);
   reordered.semanticChecks = {
     requiredEdges: [{ from: 'user', to: 'chat' }],
-    allowedRoots: ['user'],
+    allowedRoots: ['user', 'store'],
   };
   assert.deepEqual(run(base, reordered).receipt.changes.semanticChecks, []);
 
   const changed = structuredClone(reordered);
-  changed.semanticChecks.requiredPaths = [{ from: 'user', to: 'response' }];
+  changed.semanticChecks.requiredPaths = [{ from: 'user', to: 'final' }];
   const receipt = run(base, changed).receipt;
   assert.deepEqual(receipt.changes.semanticChecks, [{
     change: 'modified',
-    base: { allowedRoots: ['user'], requiredEdges: [{ from: 'user', to: 'chat' }] },
-    head: { allowedRoots: ['user'], requiredEdges: [{ from: 'user', to: 'chat' }], requiredPaths: [{ from: 'user', to: 'response' }] },
+    base: { allowedRoots: ['store', 'user'], requiredEdges: [{ from: 'user', to: 'chat' }] },
+    head: { allowedRoots: ['store', 'user'], requiredEdges: [{ from: 'user', to: 'chat' }], requiredPaths: [{ from: 'user', to: 'final' }] },
   }]);
   assert.equal(receipt.summary.semanticChecks, 1);
+
+  const empty = structuredClone(reordered);
+  empty.semanticChecks.requiredEdges = [];
+  empty.semanticChecks.requiredPaths = [];
+  const omitted = structuredClone(reordered);
+  delete omitted.semanticChecks.requiredEdges;
+  assert.deepEqual(run(empty, omitted).receipt.changes.semanticChecks, []);
+
+  const caseOrder = structuredClone(reordered);
+  caseOrder.semanticChecks.requiredEdges = [{ from: 'i', to: 'user' }, { from: 'I', to: 'user' }];
+  const ordered = run(reordered, caseOrder).receipt;
+  assert.deepEqual(ordered.changes.semanticChecks[0].head.requiredEdges, [{ from: 'I', to: 'user' }, { from: 'i', to: 'user' }]);
 });
 
 test('Workflow compare rejects a resolved non-JSON receipt destination', (t) => {
