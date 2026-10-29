@@ -102,3 +102,46 @@ test('Workflow compare rejects non-JSON and input-alias outputs before writing',
   assert.equal(alias.result.status, 1);
   assert.equal(alias.receipt.code, 'output/cli-alias');
 });
+
+test('Workflow compare rejects a resolved non-JSON receipt destination', (t) => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-workflow-compare-output-'));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const basePath = path.join(directory, 'base.json');
+  const headPath = path.join(directory, 'head.json');
+  const protectedPath = path.join(directory, 'protected.html');
+  const receiptPath = path.join(directory, 'receipt.json');
+  const base = fixture();
+  fs.writeFileSync(basePath, JSON.stringify(base));
+  fs.writeFileSync(headPath, JSON.stringify(base));
+  fs.writeFileSync(protectedPath, 'do not replace');
+  try {
+    fs.symlinkSync(protectedPath, receiptPath, 'file');
+  } catch (error) {
+    if (['EPERM', 'EACCES', 'ENOTSUP'].includes(error?.code)) return t.skip(`symlink support is unavailable: ${error.code}`);
+    throw error;
+  }
+  const result = spawnSync(process.execPath, [cli, 'compare', 'workflow', basePath, headPath, receiptPath, '--json'], { encoding: 'utf8' });
+  assert.equal(result.status, 1, result.stderr);
+  assert.equal(JSON.parse(result.stdout).code, 'output/cli-resolved-extension');
+  assert.equal(fs.readFileSync(protectedPath, 'utf8'), 'do not replace');
+});
+
+test('Workflow compare prints semantic details outside JSON mode', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-workflow-compare-human-'));
+  try {
+    const base = fixture();
+    const head = structuredClone(base);
+    head.nodes[0].label = 'Changed';
+    const basePath = path.join(directory, 'base.json');
+    const headPath = path.join(directory, 'head.json');
+    fs.writeFileSync(basePath, JSON.stringify(base));
+    fs.writeFileSync(headPath, JSON.stringify(head));
+    const result = spawnSync(process.execPath, [cli, 'compare', 'workflow', basePath, headPath], { encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /^Workflow changes: 1\n/u);
+    assert.match(result.stdout, /"nodes"/u);
+    assert.match(result.stdout, /"Changed"/u);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});

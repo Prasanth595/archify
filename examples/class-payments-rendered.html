@@ -11193,18 +11193,6 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         // Uncapped diagrams keep their existing natural height and Chrome fit.
         automaticAreaHeight = availableSvgHeight + chrome.diagramY;
         var width = Math.max(minWidth, Math.min(maxWidth, desiredWidth, settledCap || desiredWidth));
-        // The diagram stage has its own padding and border around the SVG.
-        // A short viewport otherwise accepts the capped scale and paints the
-        // stage below the fold before scrollHeight reports the overflow.
-        if (automaticSequence && !readingScroll && diagram) {
-          var stageStyle = window.getComputedStyle(diagram);
-          var stageExtra = number(stageStyle.paddingTop) + number(stageStyle.paddingBottom) +
-            number(stageStyle.borderTopWidth) + number(stageStyle.borderBottomWidth);
-          var stageTop = diagram.getBoundingClientRect().top + window.scrollY;
-          var stageBudget = Math.max(1, window.innerHeight - stageTop - stageExtra);
-          var stageWidth = stageBudget * ratio + chrome.diagramX + (docked ? railExtra : 0);
-          width = Math.max(minWidth, Math.min(width, stageWidth));
-        }
         applyWidth(width, minWidth);
         settleOverflow(minWidth);
         return {

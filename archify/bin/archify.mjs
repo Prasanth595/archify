@@ -3687,6 +3687,16 @@ async function commandCompareWorkflow(args) {
       outputFailure = { code: 'output/cli-extension', message: 'Workflow comparison output must use a .json extension.' };
       return;
     }
+    let resolvedTarget = resolved;
+    try {
+      resolvedTarget = fs.realpathSync.native(resolved);
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw error;
+    }
+    if (path.extname(resolvedTarget).toLowerCase() !== '.json') {
+      outputFailure = { code: 'output/cli-resolved-extension', message: 'Workflow comparison output must resolve to a .json extension.' };
+      return;
+    }
     const { sameLocation } = await import('../renderers/shared/path-semantics.mjs');
     for (const input of [baseInput, headInput].filter(Boolean)) {
       const relation = sameLocation(resolved, path.resolve(input));
@@ -3785,7 +3795,12 @@ async function commandCompareWorkflow(args) {
   if (JSON.stringify(base.mainPath || []) !== JSON.stringify(head.mainPath || [])) changes.mainPath.push({ change: 'modified', base: base.mainPath || [], head: head.mainPath || [] });
   const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: Object.fromEntries(Object.entries(changes).map(([name, entries]) => [name, entries.length])) };
   writeReceipt(output, receipt);
-  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`); else process.stdout.write(`Workflow changes: ${Object.values(receipt.summary).reduce((total, count) => total + count, 0)}\n`);
+  if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`);
+  else {
+    const total = Object.values(receipt.summary).reduce((count, entries) => count + entries, 0);
+    const details = total ? `\n${JSON.stringify(receipt.changes, null, 2)}` : '';
+    process.stdout.write(`Workflow changes: ${total}${details}\n`);
+  }
 }
 
 async function commandCompare(args) {
