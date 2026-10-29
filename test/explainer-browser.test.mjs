@@ -223,3 +223,57 @@ test('text names light their diagram nodes and walk-throughs step through steps 
   assert.equal(image.type,'image/png');assert.ok(image.size>20000,'the long image carries the rendered page');
  }finally{await browser.close();}
 });
+
+test('phone native previews keep readable text with local keyboard scrolling and reset for desktop and print',{skip:!chrome},async()=>{
+ const {renderExplainer}=await import('../archify/explainer/render.mjs');
+ const {compileExplainerDiagram,prepareExplainerDiagrams}=await import('../archify/explainer/diagrams.mjs');
+ const doc=formalDocument();
+ const rows=['actor a | Caller A','actor b | Caller B','actor group | Group','actor work | Function','a | group | Start request','group | work | Run function','b | group | Join request','work | group | Result | return','group | a | Result | return','group | b | Same result | return'];
+ doc.panels.push({id:'calls',title:'How do calls share work?',blocks:[{id:'calls-flow',type:'diagram',diagramType:'sequence',spec:compileExplainerDiagram('sequence',rows,{id:'calls-flow',title:'Shared work'})}]});
+ const preparedDiagrams=await prepareExplainerDiagrams(doc,{baseDir:dir,quality:'showcase'});
+ const file=artifact('phone-scroll',renderExplainer(doc,{preparedDiagrams,sourceText:JSON.stringify(doc)}));
+ const browser=new ChromeVisualBrowser(chrome);
+ try{
+  await inspectPublicHtml(browser,{artifactPath:file,width:390,theme:'light',keyboard:false});
+  let [preview]=await inspectNativePreviewLayout(browser);
+  assert.ok(preview.minimum>=9.95,JSON.stringify(preview));
+  assert.ok(preview.scrollWidth>preview.clientWidth,'Overwide diagrams scroll locally instead of shrinking labels');
+  assert.equal(await pageValue(browser,'document.querySelector(".diagram-preview").tabIndex'),0);
+  const before=await pageValue(browser,'document.querySelector(".diagram-preview").scrollLeft');
+  await pageValue(browser,'document.querySelector(".diagram-preview").focus()');
+  for(const type of ['keyDown','keyUp'])await browser.cdp.send('Input.dispatchKeyEvent',{type,key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39},await browser.sessionPromise);
+  const moved=await pageValue(browser,'new Promise(resolve=>{const start=performance.now();function check(){const left=document.querySelector(".diagram-preview").scrollLeft;if(left>0||performance.now()-start>2000)resolve(left);else requestAnimationFrame(check);}check();})');
+  assert.ok(moved>before,'ArrowRight moves the focused preview');
+  const exported=await pageValue(browser,`(async()=>{
+    const preview=document.querySelector('.diagram-preview');
+    preview.scrollLeft=preview.scrollWidth;const left=preview.scrollLeft;
+    const originalHeight=Math.ceil(document.querySelector('.shell').getBoundingClientRect().height+48)*2;
+    const create=URL.createObjectURL,click=HTMLAnchorElement.prototype.click;
+    let finish;const blobReady=new Promise(resolve=>{finish=resolve;});
+    URL.createObjectURL=function(blob){finish(blob);return create.call(this,blob);};
+    HTMLAnchorElement.prototype.click=function(){if(!this.download)return click.call(this);};
+    let timeout;
+    try{
+      document.querySelector('[data-export-image="png"]').click();
+      const blob=await Promise.race([blobReady,new Promise((_,reject)=>{timeout=setTimeout(()=>reject(new Error('Export did not produce an image')),5000);})]);
+      const data=new DataView(await blob.arrayBuffer());
+      return {type:blob.type,width:data.getUint32(16),height:data.getUint32(20),originalHeight,left,afterLeft:preview.scrollLeft,roots:document.querySelectorAll('html').length};
+    }finally{clearTimeout(timeout);URL.createObjectURL=create;HTMLAnchorElement.prototype.click=click;}
+  })()`);
+  assert.equal(exported.type,'image/png');assert.equal(exported.width,780);
+  assert.ok(exported.height<exported.originalHeight,'Export measures the shorter complete overview instead of retaining the enlarged scroll height');
+  assert.equal(exported.left,exported.afterLeft);assert.equal(exported.roots,1);
+
+  assert.equal(await pageValue(browser,'document.querySelector(".panel.diagram-panel").getBoundingClientRect().right<=innerWidth'),true);
+  await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false},await browser.sessionPromise);
+  await pageValue(browser,'new Promise(resolve=>{const start=performance.now();function check(){const e=document.querySelector(".diagram-preview");if((e.dataset.diagramFit==="fit"&&e.scrollWidth<=e.clientWidth+1)||performance.now()-start>2000)resolve();else requestAnimationFrame(check);}check();})');
+  [preview]=await inspectNativePreviewLayout(browser);assert.equal(preview.fit,'fit');assert.ok(preview.scrollWidth<=preview.clientWidth+1);assert.equal(parseFloat(preview.minWidth),0);
+  assert.equal(await pageValue(browser,'document.querySelector(".diagram-preview").hasAttribute("tabindex")'),false);
+  await browser.cdp.send('Emulation.setDeviceMetricsOverride',{width:390,height:900,deviceScaleFactor:1,mobile:false},await browser.sessionPromise);
+  await pageValue(browser,'new Promise(resolve=>{const start=performance.now();function check(){const e=document.querySelector(".diagram-preview");if(e.scrollWidth>e.clientWidth||performance.now()-start>2000)resolve();else requestAnimationFrame(check);}check();})');
+  [preview]=await inspectNativePreviewLayout(browser);assert.ok(preview.minimum>=9.95);assert.ok(preview.scrollWidth>preview.clientWidth);
+  await browser.cdp.send('Emulation.setEmulatedMedia',{media:'print'},await browser.sessionPromise);
+  const printed=await pageValue(browser,'(()=>{const p=document.querySelector(".diagram-preview"),s=p.querySelector("svg");return {svg:s.getBoundingClientRect().width,box:p.clientWidth};})()');
+  assert.ok(printed.svg<=printed.box+1,'Print contains the complete diagram instead of clipping the mobile scroll surface');
+ }finally{await browser.close();}
+});

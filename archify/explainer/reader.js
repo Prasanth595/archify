@@ -203,15 +203,24 @@
       const widened = smallest > 0 && smallest < minimumText && needed <= preview.clientWidth;
       if (widened) preview.style.setProperty('--native-width',Math.ceil(needed / 1.25) + 'px');
       const insufficient = smallest > 0 && smallest < minimumText && !widened;
-      if (insufficient) {
-        preview.dataset.diagramRequiredWidth = String(Math.ceil(svg.getBoundingClientRect().width * minimumText / smallest));
+      // On a phone, preserve the reading floor inside a local scroll surface.
+      // Desktop keeps the complete-fit contract and its actionable fit warning.
+      const scrolling = insufficient && window.innerWidth <= 760;
+      if (scrolling) {
+        svg.style.minWidth = Math.ceil(needed) + 'px';
+        preview.tabIndex = 0;
+      } else preview.removeAttribute('tabindex');
+      if (insufficient && !scrolling) {
+        preview.dataset.diagramRequiredWidth = String(Math.ceil(needed));
       } else delete preview.dataset.diagramRequiredWidth;
-      preview.dataset.diagramFit = insufficient ? 'insufficient' : 'fit';
+      preview.dataset.diagramFit = scrolling ? 'scroll' : insufficient ? 'insufficient' : 'fit';
       preview.dataset.diagramMinimumText = String(minimumText);
       const status = svg.closest('.block-diagram').querySelector('.diagram-fit-status');
       changed ||= status.hidden === insufficient;
       status.hidden = !insufficient;
-      status.textContent = insufficient ? say('This diagram cannot fit this page width with readable text. Open the interactive view to inspect it.','此图在当前页宽下放不下且文字会太小，请打开交互图查看。') : '';
+      status.textContent = scrolling
+        ? say('Scroll the diagram sideways, or focus it and use the arrow keys. Open the interactive view for the full diagram.','左右滑动查看图表；也可聚焦图框后按方向键。打开交互图可查看全图。')
+        : insufficient ? say('This diagram cannot fit this page width with readable text. Open the interactive view to inspect it.','此图在当前页宽下放不下且文字会太小，请打开交互图查看。') : '';
     });
     return changed;
   }
@@ -258,15 +267,28 @@
   // density. Controls, dialogs and walk-through bars are left out. Browsers that refuse to export a
   // foreignObject canvas (Safari) get a notice pointing to Print / PDF.
   async function pageImage(format = 'png') {
-    const shell = document.querySelector('.shell'), width = document.documentElement.clientWidth, height = Math.ceil(shell.getBoundingClientRect().height + 48);
+    const shell = document.querySelector('.shell'), width = document.documentElement.clientWidth;
+    let height = Math.ceil(shell.getBoundingClientRect().height + 48);
     const clone = root.cloneNode(true);
     clone.querySelectorAll('script,dialog,#toast,.skip-link,.tools,.ask-button,.ask-floating,.walk-bar,.walk-start,.interactive,.diagram-fit-status').forEach(element=>element.remove());
     clone.querySelectorAll('.reader-highlight').forEach(element=>element.classList.remove('reader-highlight'));
     clone.querySelectorAll('.focusing').forEach(element=>element.classList.remove('focusing'));
+    // An exported image has no scroll interaction; retain the complete overview.
+    clone.querySelectorAll('.diagram-preview>svg').forEach(svg=>{svg.style.minWidth='0px';});
     // Inside a foreignObject the page's <html> is not :root, so theme and style rules would drop out;
     // the root's own attribute selects the same element with the same specificity.
     const sheet = clone.querySelector('head>style'); if (sheet) sheet.textContent = sheet.textContent.replace(/:root\b/g,'[data-archify-artifact]');
     clone.style.width = `${width}px`;
+    if (clone.querySelector('[data-diagram-fit="scroll"]')) {
+      // The exported overview is shorter than the scrollable live diagram.
+      // Measure the inert clone synchronously, then remove it before painting.
+      const measuring = document.createElement('div');
+      measuring.style.cssText = `position:fixed;left:-100000px;top:0;width:${width}px;visibility:hidden;pointer-events:none`;
+      measuring.append(clone);
+      document.body.append(measuring);
+      try { height = Math.ceil(clone.querySelector('.shell').getBoundingClientRect().height + 48); }
+      finally { measuring.remove(); }
+    }
     const xhtml = new XMLSerializer().serializeToString(clone);
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><foreignObject x="0" y="0" width="${width}" height="${height}">${xhtml}</foreignObject></svg>`;
     const image = new Image();
