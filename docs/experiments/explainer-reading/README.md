@@ -66,3 +66,7 @@ First drafts and all substantive failure receipts are preserved. Initial first-d
 Next worthwhile experiments: compare an equivalent phone-readable explanation using sequential steps versus a wide sequence; evaluate #1076 and #1124 against these exact drafts after their owners' changes are ready; test the local-qualification guidance with fresh independent authors before claiming a general reduction in repairs. Stop adding heuristics when source-backed case edits solve the reading problem.
 
 AI disclosure: Codex performed research, source inspection, writing-rule implementation, tests, artifact authoring and visual inspection. The two independent discovery authors used gpt-6.1-terra with medium reasoning. No human review is claimed.
+
+## Continued exploration — round 2
+
+The user explicitly requested ongoing work on 2026-10-29; the first round is not the end of the goal. See [phone-preview round 2](phone-preview/README.md) for the mobile diagram experiment, export repair, source-backed Redis and TaskGroup pages, actual failures, and verification limits. Runtime change: `b670b5d4d`. No merge or live-install action is implied.
