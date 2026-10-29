@@ -190,6 +190,7 @@
         var result = reachabilityFor(activeIds[0], direction);
         if (!result || result.nodeIds.length <= 1) return false;
         clearRelationshipPreview({ clearPin: true });
+        renderSourceEvidence(activeIds[0]);
         clearReachability({ updateUrl: false });
         reachabilityMode = direction;
         activeReachability = result;

@@ -50,8 +50,11 @@ test('browser renders local-only sources as searchable text and web sources as l
             const selectedPinned = Archify.focus.relationship();
             const selectedVisible = !panel.hidden;
             const relationshipRows = [...panel.querySelectorAll('.semantic-passport-source')];
+            const reached = Archify.focus.reach('downstream', { toggle: false, reveal: false });
+            const reachedRows = [...panel.querySelectorAll('.semantic-passport-source')];
             const legacySelected = Archify.focus.inspectRelationshipById('cdn-to-lb', { toggle: false });
             const legacyRows = [...panel.querySelectorAll('.semantic-passport-source')];
+            const legacyPinned = Archify.focus.relationship();
             return {
               ...nodeEvidence,
               relationship: {
@@ -64,8 +67,11 @@ test('browser renders local-only sources as searchable text and web sources as l
                 locations: relationshipRows.map(row => row.querySelector('code').textContent),
                 labels: relationshipRows.map(row => row.querySelector('strong').textContent),
                 legacySelected,
+                legacyPinned,
                 legacyVisible: !panel.hidden,
-                legacyPaths: legacyRows.map(row => row.querySelector('small').textContent)
+                legacyPaths: legacyRows.map(row => row.querySelector('small').textContent),
+                reached,
+                reachedPaths: reachedRows.map(row => row.querySelector('small').textContent)
               }
             };
           })()`, returnByValue: true,
@@ -90,9 +96,11 @@ test('browser renders local-only sources as searchable text and web sources as l
         assert.equal(observed.relationship.labels[0], 'Request handoff');
         assert.equal(observed.relationship.locations[0], local ? 'L1–3' : 'L1–3 ↗');
         assert.equal(observed.relationship.legacySelected, true);
-        assert.equal(observed.relationship.pinned.id, 'cdn-to-lb');
+        assert.equal(observed.relationship.legacyPinned.id, 'cdn-to-lb');
         assert.equal(observed.relationship.legacyVisible, false);
         assert.deepEqual(observed.relationship.legacyPaths, []);
+        assert.equal(observed.relationship.reached, true);
+        assert.deepEqual(observed.relationship.reachedPaths, ['src/router.js', 'src/store.js']);
       }
     }
   } finally { await browser.close(); }
