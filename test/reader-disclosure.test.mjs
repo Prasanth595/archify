@@ -23,6 +23,16 @@ test('reader update disclosure contains only a local build identity and the fixe
   assert.equal(Object.hasOwn(disclosure, 'feedback'), false);
 });
 
+test('both reader update clients bound manifest text before parsing', () => {
+  const native = fs.readFileSync(path.join(root, 'viewer', 'reader-disclosure.js'), 'utf8');
+  const explainer = fs.readFileSync(path.join(root, 'archify', 'explainer', 'reader.js'), 'utf8');
+  for (const source of [native, explainer]) {
+    assert.match(source, /response\.body.*getReader/);
+    assert.match(source, /reader\.cancel/);
+    assert.doesNotMatch(source, /response\.text\(\)/);
+  }
+});
+
 test('native render emits update-only disclosure data before its interaction runtime', (t) => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-reader-update-'));
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
