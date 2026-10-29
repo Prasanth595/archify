@@ -77,3 +77,7 @@ The user explicitly requested ongoing work on 2026-10-29; the first round is not
 - [12px phone-label experiment](phone-labels/README.md): text grew, but the extra scrolling hid more of the exchange. Checks passed; visual comparison led us to reject this additional default and retain round 2's behavior. The patch and candidate remain inspectable.
 
 These are ongoing exploration checkpoints. No overall-goal completion, human acceptance, merge or installation is claimed.
+
+## Continued exploration — round 4
+
+[Git restore paired experiment](restore-pair/README.md): a short-table-label instruction failed to improve the phone table. The preserved independent pair led to a separate two-column content repair, verified against the pinned Git manual and a disposable-repository probe. The candidate instruction remains unadopted; a remaining split command separator is the next bounded reader problem.
