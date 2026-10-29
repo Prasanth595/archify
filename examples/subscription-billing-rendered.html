@@ -11908,6 +11908,31 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   };
   var stableVersion = function (value) { return typeof value === 'string' && /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(value); };
   var exactKeys = function (value, keys) { return value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).sort().join('\0') === keys.slice().sort().join('\0'); };
+  var readBoundedManifestText = function (response) {
+    var limit = 65536;
+    var declaredLength = Number(response.headers.get('content-length'));
+    if (Number.isFinite(declaredLength) && declaredLength > limit) return Promise.reject(new Error('manifest too large'));
+    if (!response.body || !response.body.getReader) return Promise.reject(new Error('manifest body unavailable'));
+    var reader = response.body.getReader();
+    var decoder = new TextDecoder();
+    var text = '';
+    var read = function () {
+      return reader.read().then(function (chunk) {
+        if (chunk.done) {
+          text += decoder.decode();
+          if (text.length > limit) throw new Error('manifest too large');
+          return text;
+        }
+        text += decoder.decode(chunk.value, { stream: true });
+        if (text.length > limit) {
+          reader.cancel();
+          throw new Error('manifest too large');
+        }
+        return read();
+      });
+    };
+    return read();
+  };
   var validManifest = function (value) {
     if (!exactKeys(value, ['schemaVersion', 'skillId', 'channel', 'version', 'publishedAt', 'source', 'artifact', 'summary', 'releaseNotes', 'severity'])
       || value.schemaVersion !== 1 || value.skillId !== 'archify' || value.channel !== 'stable' || !stableVersion(value.version)
@@ -11948,9 +11973,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 5000);
     fetch(update.manifestUrl, { method: 'GET', credentials: 'omit', cache: 'no-store', redirect: 'error', signal: controller.signal })
-      .then(function (response) { if (!response.ok) throw new Error('manifest unavailable'); return response.text(); })
+      .then(function (response) { if (!response.ok) throw new Error('manifest unavailable'); return readBoundedManifestText(response); })
       .then(function (text) {
-        if (text.length > 65536) throw new Error('manifest too large');
         var manifest = validManifest(JSON.parse(text));
         if (!manifest) throw new Error('invalid manifest');
         if (compareStableVersion(artifact.generatorVersion, manifest.version) >= 0) {
