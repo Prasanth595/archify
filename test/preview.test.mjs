@@ -181,8 +181,9 @@ console.log(JSON.stringify({
 `);
 }
 
-test('preview: rejects destructive or unsupported startup targets before watching', async () => {
+test('preview: rejects destructive or unsupported startup targets before watching', async (t) => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-preview-startup-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
   const input = path.join(tmp, 'diagram.json');
   fs.writeFileSync(input, '{}');
   await assert.rejects(
@@ -201,7 +202,14 @@ test('preview: rejects destructive or unsupported startup targets before watchin
   const realDirectory = path.join(tmp, 'real');
   const linkedDirectory = path.join(tmp, 'linked');
   fs.mkdirSync(realDirectory);
-  fs.symlinkSync(realDirectory, linkedDirectory, 'dir');
+  try {
+    fs.symlinkSync(realDirectory, linkedDirectory, process.platform === 'win32' ? 'junction' : 'dir');
+  } catch (error) {
+    if (['EPERM', 'EACCES', 'ENOTSUP'].includes(error?.code)) {
+      return t.skip(`directory symlink creation is unavailable: ${error.code}`);
+    }
+    throw error;
+  }
   await assert.rejects(
     startPreview({
       type: 'architecture',
