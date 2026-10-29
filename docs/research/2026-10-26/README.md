@@ -844,3 +844,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 63 批：用新作者产物补齐既有修复的验证
 
 [SQLite 键盘迁移验证](scouts/sqlite-keyboard-transfer-round63.md)先排重 336 个远程 head，复用新增 Explainer reading laboratory 的完整页面。固定 dev5ec 的 28 项诊断，在仅换入既有 checker 后四种视图均为 43/43、55 步、零诊断；真实 Tab 陷阱仍失败。两张实际键盘操作截图、固定 HTML 和完整结果加入原 keyboard-traversal 分支，未新建 PR、重写页面或添加产品代码。来源实验旧失败不回填，临时组合验证不等于合并、打包或全面可访问性验收。
+
+## 第 64 批：task-view 原生 CLI 证据
+
+[公开输入与原生流水线](scouts/task-view-native-cli-round64.md)使用官方固定便携二进制，在隔离历史 Git checkout 上实际 validate／open。保留 at 误用的首稿失败，修正后 5 个引用 verified、3 条语言警告；越界对照仍失败。三张最终实拍、原生 HTML、复现脚本和完整许可加入 task-flow-tests 原分支，未新建 PR。原生功能已足够承担引用／diff 阅读，暂不扩通用 importer；历史测试和真人阅读收益仍未验证。

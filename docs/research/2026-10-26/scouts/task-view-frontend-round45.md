@@ -33,3 +33,7 @@ Inspector 的 guard 三行 DOM 文本与归档片段逐字相同，Tests 1 显�
 ![共用节点的 delivered 范围](https://raw.githubusercontent.com/tt-a1i/archify/7b2a7ba3c976fc132379c79fa4182dbcdb6b0671/experiments/task-flow-tests/upstream-frontend/images/shared-delivered.png)
 
 ![路径独立节点的 delivered 范围](https://raw.githubusercontent.com/tt-a1i/archify/7b2a7ba3c976fc132379c79fa4182dbcdb6b0671/experiments/task-flow-tests/upstream-frontend/images/occurrences-delivered.png)
+
+## 第 64 批后续
+
+[原生 CLI 对照](task-view-native-cli-round64.md)现已另存公开格式投影、实际 validate/open 输出与原生页面；原范围的引用校验通过，越界对照失败。它不改变本页手工前端夹具的身份，也不代表历史测试或真人阅读验收。

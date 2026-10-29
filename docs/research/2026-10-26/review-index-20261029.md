@@ -50,3 +50,7 @@ Kconfig、task-occurrences、source-question-tour 的远程 head 与[第 27 批�
 ## 第 63 批补充：键盘候选增加新页面证据
 
 上文第 60 批身份与结果保持冻结。键盘分支现推进到 `5e1320b202eb7052411805590ac73a15fad741dc`，产品 checker 与 ZIP 没有变化；[SQLite 新作者产物迁移验证](scouts/sqlite-keyboard-transfer-round63.md)在固定 dev5ec 临时运行时中仅换入既有 checker，四态 43/43、零诊断，真实 Tab trap 仍失败。完整 HTML、两张键盘操作实拍与正负例结果已入原分支；仍不代表完整合并、打包或全面可访问性验收。
+
+## 第 64 批补充：task-view 原生验证
+
+task-flow-tests 现为 `784a8377210298707357f28ad6ae391c874fe8e1`，新增[实际 CLI 对照](scouts/task-view-native-cli-round64.md)。公开格式投影经一次保留首稿的修正后，正常引用与 diff 检查通过，越界对照失败；原生 HTML 与实拍已归档。原 Archify 产物不变，历史测试仍未执行。
