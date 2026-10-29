@@ -45,7 +45,7 @@ test('Workflow compare ignores presentation-only fields and remains deterministi
   if (head.edges[0]) head.edges[0].labelDx = 8;
   const first = run(base, head).receipt;
   const second = run(base, head).receipt;
-  assert.deepEqual(first.changes, { lanes: [], phases: [], groups: [], nodes: [], edges: [], mainPath: [] });
+  assert.deepEqual(first.changes, { lanes: [], phases: [], groups: [], nodes: [], edges: [], mainPath: [], semanticChecks: [] });
   assert.deepEqual(first, second);
 });
 
@@ -103,6 +103,49 @@ test('Workflow compare rejects non-JSON and input-alias outputs before writing',
   assert.equal(alias.receipt.code, 'output/cli-alias');
 });
 
+test('Workflow compare returns a receipt when the output parent is a file', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-workflow-compare-output-parent-'));
+  try {
+    const base = fixture();
+    const basePath = path.join(directory, 'base.json');
+    const headPath = path.join(directory, 'head.json');
+    const blocker = path.join(directory, 'blocker');
+    fs.writeFileSync(basePath, JSON.stringify(base));
+    fs.writeFileSync(headPath, JSON.stringify(base));
+    fs.writeFileSync(blocker, 'do not replace');
+    const result = spawnSync(process.execPath, [cli, 'compare', 'workflow', basePath, headPath, path.join(blocker, 'receipt.json'), '--json'], { encoding: 'utf8' });
+    assert.equal(result.status, 1);
+    assert.equal(JSON.parse(result.stdout).code, 'output/cli-resolve');
+    assert.equal(fs.readFileSync(blocker, 'utf8'), 'do not replace');
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test('Workflow compare reports normalized semantic-check changes', () => {
+  const base = fixture();
+  base.semanticChecks = {
+    allowedRoots: ['user', 'user'],
+    requiredEdges: [{ from: 'user', to: 'chat' }, { from: 'user', to: 'chat' }],
+  };
+  const reordered = structuredClone(base);
+  reordered.semanticChecks = {
+    requiredEdges: [{ from: 'user', to: 'chat' }],
+    allowedRoots: ['user'],
+  };
+  assert.deepEqual(run(base, reordered).receipt.changes.semanticChecks, []);
+
+  const changed = structuredClone(reordered);
+  changed.semanticChecks.requiredPaths = [{ from: 'user', to: 'response' }];
+  const receipt = run(base, changed).receipt;
+  assert.deepEqual(receipt.changes.semanticChecks, [{
+    change: 'modified',
+    base: { allowedRoots: ['user'], requiredEdges: [{ from: 'user', to: 'chat' }] },
+    head: { allowedRoots: ['user'], requiredEdges: [{ from: 'user', to: 'chat' }], requiredPaths: [{ from: 'user', to: 'response' }] },
+  }]);
+  assert.equal(receipt.summary.semanticChecks, 1);
+});
+
 test('Workflow compare rejects a resolved non-JSON receipt destination', (t) => {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-workflow-compare-output-'));
   t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
@@ -141,6 +184,25 @@ test('Workflow compare prints semantic details outside JSON mode', () => {
     assert.match(result.stdout, /^Workflow changes: 1\n/u);
     assert.match(result.stdout, /"nodes"/u);
     assert.match(result.stdout, /"Changed"/u);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test('Workflow compare prints stable diagnostics outside JSON mode', () => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-workflow-compare-diagnostics-'));
+  try {
+    const base = fixture();
+    const head = structuredClone(base);
+    head.edges[0].to = 'missing-node';
+    const basePath = path.join(directory, 'base.json');
+    const headPath = path.join(directory, 'head.json');
+    fs.writeFileSync(basePath, JSON.stringify(base));
+    fs.writeFileSync(headPath, JSON.stringify(head));
+    const result = spawnSync(process.execPath, [cli, 'compare', 'workflow', basePath, headPath], { encoding: 'utf8' });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /workflow\/unknown-endpoint/u);
+    assert.match(result.stderr, /missing-node/u);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

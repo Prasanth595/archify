@@ -3691,7 +3691,23 @@ async function commandCompareWorkflow(args) {
     try {
       resolvedTarget = fs.realpathSync.native(resolved);
     } catch (error) {
+      if (error?.code === 'ENOTDIR') {
+        outputFailure = { code: 'output/cli-resolve', message: 'Workflow comparison output path could not be resolved.' };
+        return;
+      }
       if (error?.code !== 'ENOENT') throw error;
+      try {
+        if (!fs.statSync(path.dirname(resolved)).isDirectory()) {
+          outputFailure = { code: 'output/cli-resolve', message: 'Workflow comparison output path could not be resolved.' };
+          return;
+        }
+      } catch (parentError) {
+        if (parentError?.code === 'ENOTDIR') {
+          outputFailure = { code: 'output/cli-resolve', message: 'Workflow comparison output path could not be resolved.' };
+          return;
+        }
+        if (parentError?.code !== 'ENOENT') throw parentError;
+      }
     }
     if (path.extname(resolvedTarget).toLowerCase() !== '.json') {
       outputFailure = { code: 'output/cli-resolved-extension', message: 'Workflow comparison output must resolve to a .json extension.' };
@@ -3717,7 +3733,7 @@ async function commandCompareWorkflow(args) {
     const diagnostics = details.diagnostics || [{ code, message }];
     const receipt = { schemaVersion: 1, ok: false, command: 'compare', type: 'workflow', code, error: message, diagnostics, details };
     if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`);
-    else process.stderr.write(`${message}\n`);
+    else process.stderr.write(`${message}${diagnostics.length ? `\n${JSON.stringify(diagnostics, null, 2)}` : ''}\n`);
     writeReceipt(output, receipt);
     process.exitCode = 1;
   };
@@ -3778,7 +3794,7 @@ async function commandCompareWorkflow(args) {
     if (!value || typeof value !== 'object') return value;
     return Object.fromEntries(Object.keys(value).filter(key => !ignored.has(key)).sort().map(key => [key, semantic(value[key], ignored)]));
   };
-  const changes = { lanes: [], phases: [], groups: [], nodes: [], edges: [], mainPath: [] };
+  const changes = { lanes: [], phases: [], groups: [], nodes: [], edges: [], mainPath: [], semanticChecks: [] };
   const compare = (name, beforeItems, afterItems, ignored = presentationKeys) => {
     for (const id of [...new Set([...beforeItems.keys(), ...afterItems.keys()])].sort()) {
       const before = beforeItems.get(id); const after = afterItems.get(id);
@@ -3793,6 +3809,21 @@ async function commandCompareWorkflow(args) {
   compare('nodes', baseNodes, headNodes);
   compare('edges', baseEdges, headEdges);
   if (JSON.stringify(base.mainPath || []) !== JSON.stringify(head.mainPath || [])) changes.mainPath.push({ change: 'modified', base: base.mainPath || [], head: head.mainPath || [] });
+  const normalizeSemanticChecks = (checks) => {
+    if (!checks) return null;
+    const identifiers = (values) => [...new Set(values || [])].sort();
+    const relations = (values) => [...new Map((values || []).map(({ from, to }) => [`${from}\0${to}`, { from, to }])).values()]
+      .sort((left, right) => left.from.localeCompare(right.from) || left.to.localeCompare(right.to));
+    return Object.fromEntries([
+      ['allowedRoots', identifiers],
+      ['allowedTerminals', identifiers],
+      ['requiredEdges', relations],
+      ['requiredPaths', relations],
+    ].filter(([key]) => Object.hasOwn(checks, key)).map(([key, normalize]) => [key, normalize(checks[key])]));
+  };
+  const baseSemanticChecks = normalizeSemanticChecks(base.semanticChecks);
+  const headSemanticChecks = normalizeSemanticChecks(head.semanticChecks);
+  if (JSON.stringify(baseSemanticChecks) !== JSON.stringify(headSemanticChecks)) changes.semanticChecks.push({ change: 'modified', base: baseSemanticChecks, head: headSemanticChecks });
   const receipt = { schemaVersion: 1, ok: true, command: 'compare', type: 'workflow', comparatorVersion: 1, diagnostics: [], changes, summary: Object.fromEntries(Object.entries(changes).map(([name, entries]) => [name, entries.length])) };
   writeReceipt(output, receipt);
   if (json) process.stdout.write(`${JSON.stringify(receipt)}\n`);
