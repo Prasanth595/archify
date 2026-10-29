@@ -70,3 +70,10 @@ AI disclosure: Codex performed research, source inspection, writing-rule impleme
 ## Continued exploration — round 2
 
 The user explicitly requested ongoing work on 2026-10-29; the first round is not the end of the goal. See [phone-preview round 2](phone-preview/README.md) for the mobile diagram experiment, export repair, source-backed Redis and TaskGroup pages, actual failures, and verification limits. Runtime change: `b670b5d4d`. No merge or live-install action is implied.
+
+## Continued exploration — round 3
+
+- [SQLite measured mechanism](sqlite-probe/candidate.html): an isolated temporary database demonstrates old-reader A/new-reader B and checkpoint progress, with a reproducible script, two actual runs and pinned raw output links. Frame counts are explicitly case-specific.
+- [12px phone-label experiment](phone-labels/README.md): text grew, but the extra scrolling hid more of the exchange. Checks passed; visual comparison led us to reject this additional default and retain round 2's behavior. The patch and candidate remain inspectable.
+
+These are ongoing exploration checkpoints. No overall-goal completion, human acceptance, merge or installation is claimed.
