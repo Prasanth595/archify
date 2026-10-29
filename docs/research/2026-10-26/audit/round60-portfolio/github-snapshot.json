@@ -1,0 +1,672 @@
+{
+  "scope": "Derived metadata and selected authored file patches from GitHub GET responses; query result limits apply. Not an exhaustive duplicate search or PR review.",
+  "queries": [
+    {
+      "query": "repo:tt-a1i/archify is:pr source link",
+      "total_count": 389,
+      "items": [
+        {
+          "number": 1063,
+          "title": "feat: GitHub Enterprise source links for repository evidence",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1063"
+        },
+        {
+          "number": 852,
+          "title": "fix(site): verify live canonical link metadata from parsed HTML",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/852"
+        },
+        {
+          "number": 765,
+          "title": "fix: tolerate Win32 link-count inflation in post-publication checks",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/765"
+        },
+        {
+          "number": 1141,
+          "title": "feat: add verifiable source evidence to Architecture relationships",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1141"
+        },
+        {
+          "number": 1101,
+          "title": "docs(readme): put install before showcase and trim agent-facing detail",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1101"
+        },
+        {
+          "number": 895,
+          "title": "feat: add processor architecture components",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/895"
+        },
+        {
+          "number": 865,
+          "title": "feat(evidence): support public Gitea source links",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/865"
+        },
+        {
+          "number": 1147,
+          "title": "fix(evidence): use plain GitHub Markdown line links",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1147"
+        },
+        {
+          "number": 1121,
+          "title": "experiment: read authored behavior paths with explicit test associations",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1121"
+        },
+        {
+          "number": 1145,
+          "title": "feat: add opt-in native connection adjustment",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1145"
+        },
+        {
+          "number": 573,
+          "title": "Claude/repository explanation 4iapi2",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/573"
+        },
+        {
+          "number": 867,
+          "title": "feat(evidence): support public Codeberg source links",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/867"
+        },
+        {
+          "number": 804,
+          "title": "docs(authoring): explain measured viewport height budgets",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/804"
+        },
+        {
+          "number": 1109,
+          "title": "perf(dataflow): avoid repeated flow index scans",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1109"
+        },
+        {
+          "number": 1015,
+          "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1015"
+        },
+        {
+          "number": 862,
+          "title": "fix(viewer): retain keyboard focus after fallback link copy",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/862"
+        },
+        {
+          "number": 1150,
+          "title": "fix(ci): refresh stale Checkout and README proof artifacts",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1150"
+        },
+        {
+          "number": 781,
+          "title": "docs: add official-source notice (README + website footer)",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/781"
+        },
+        {
+          "number": 662,
+          "title": "feat: GitLab source links for repository evidence",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/662"
+        },
+        {
+          "number": 1142,
+          "title": "feat: add explainer claim evidence attribution",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1142"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:issue aria-label",
+      "total_count": 5,
+      "items": [
+        {
+          "number": 1023,
+          "title": "[Bug]: Timeline compresses a sub-second quiet period and labels it \"≈ 0 s\"",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/issues/1023"
+        },
+        {
+          "number": 1082,
+          "title": "explainer: workflow shorthand writes the Chinese lane label \"分支 N\" on non-Chinese pages",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/issues/1082"
+        },
+        {
+          "number": 753,
+          "title": "[Bug]: Historical Timeline years produce impossible UTC offsets",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/issues/753"
+        },
+        {
+          "number": 193,
+          "title": "feat(i18n): add Japanese (ja) as a Viewer locale",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/issues/193"
+        },
+        {
+          "number": 106,
+          "title": "feat(i18n): 根据用户提示词语言统一图表内容与 Viewer 文案",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/issues/106"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr keyboard traversal",
+      "total_count": 7,
+      "items": [
+        {
+          "number": 1124,
+          "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1124"
+        },
+        {
+          "number": 1121,
+          "title": "experiment: read authored behavior paths with explicit test associations",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1121"
+        },
+        {
+          "number": 1122,
+          "title": "experiment: distinguish recorded trace flows from timing and nesting",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1122"
+        },
+        {
+          "number": 1123,
+          "title": "experiment: explain OCI whiteouts and same-layer visibility",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1123"
+        },
+        {
+          "number": 225,
+          "title": "fix(viewer): stabilize relationship exploration",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/225"
+        },
+        {
+          "number": 992,
+          "title": "Add evidence-backed AI task handoff to Code Analysis",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/992"
+        },
+        {
+          "number": 653,
+          "title": "feat(levels): add C4 leveled architecture generation",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/653"
+        }
+      ]
+    },
+    {
+      "query": "repo:tt-a1i/archify is:pr tree roles",
+      "total_count": 5,
+      "items": [
+        {
+          "number": 992,
+          "title": "Add evidence-backed AI task handoff to Code Analysis",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/992"
+        },
+        {
+          "number": 893,
+          "title": "Improve diagram routing, readability and authoring recovery",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/893"
+        },
+        {
+          "number": 1075,
+          "title": "feat(code-analysis): add Java support",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1075"
+        },
+        {
+          "number": 352,
+          "title": "feat(code analyzers): M1: add extract step producing raw-facts.json ",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/352"
+        },
+        {
+          "number": 942,
+          "title": "feat(document): render Markdown using supplied HTML designs",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/942"
+        }
+      ]
+    }
+  ],
+  "prs": [
+    {
+      "number": 1124,
+      "metadata": {
+        "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+        "state": "open",
+        "draft": true,
+        "html_url": "https://github.com/tt-a1i/archify/pull/1124",
+        "body": "## Problem and behavior\n\nA page with native scroll regions or dynamic SourceCard links can require more key presses than its initial control count. The current QA cutoff stops early and reports reachable footer controls as missing. This change freezes the initial target identities and continues real Tab/radio-arrow traversal until all initial targets are reached, a supported no-progress cycle is detected, or bounded work is exhausted.\n\nThe existing research branch is refreshed onto dev `500d4a65211ffe607fde6b3ce7505027b45bb59e`, retaining its SVG-block extraction fixes. Only the keyboard checker, its focused regressions, the canonical ZIP and experiment evidence differ from dev. Reader HTML, layout and focus order are unchanged. Scope comes from the maintainer's [ongoing research task and actual-artifact validation](https://github.com/tt-a1i/archify/blob/4671df2c578925f4c70a7ec7abd68ada93a0d472/docs/research/2026-10-26/audit/keyboard-current-artifacts.md).\n\n## Boundaries and cost\n\nSuccess still requires real keyboard arrival at every initial target. Hiding/removing a target or cloning its QA key cannot make it pass. Real traps and exhausted budgets remain failures. Work is bounded by initial target count + min(initial DOM elements, 1024) + 3 actions; this cost belongs to browser QA, with no new Reader dependency. The cycle check is a conservative heuristic, not a universal accessibility proof.\n\nScoped test-value review retained decisive scroller/SourceCard positives and identity/trap/budget negatives. No new generic focus model or frame/shadow recursion was added. Generation benchmarks do not apply: this change checks fixed HTML and does not change diagram generation.\n\n## Verification\n\n[Current-base reproduction and selected evidence](https://github.com/tt-a1i/archify/tree/f9fc38cbc19f5bb2725fd54d957e182831eb1eb9/experiments/keyboard-traversal/refresh-dev-500d) use official Node 22.23.2 and its canonical bundled zlib:\n\n- At tested merge `48eaf689`, render-output checks plus the Explainer caller tests: 96 passed, zero failed/skipped. Core smoke: 19 passed, zero failed/skipped. Final `f9fc38cb` adds evidence only.\n- Two canonical ZIP builds and the committed ZIP are byte-identical (`712de2a5db70e88ba6cbab82b2810978da6ac4afc74ac61eecf2471499de4cf9`). All 235 entry names match current dev; only the keyboard checker entry differs. Both packed checkers equal combined source.\n- Independent review verified ancestry, unchanged candidate behavior, actual logs, all recorded raw-file hashes and ZIP entries. The only base-sync conflict was the generated ZIP, rebuilt from combined source.\n\n[Earlier browser and CLI evidence](https://github.com/tt-a1i/archify/tree/9601c9b6e4b6addc2f348677d1c198bc6bc74192/experiments/keyboard-traversal/refresh-dev-e837) retains tested merge `49413625`: the full real-Chrome Explainer browser file passed 19/19; public CLI browser-check on the authentic-provenance Trace HTML reached 27/27 in 33 actions across four arms, with unchanged HTML; extracted-package native scroller passed and true trap failed. These paths, the browser orchestrator, wrapper, renderer, dependencies and build script are unchanged by the latest base update. The changed static checker and its Explainer caller have the new local coverage above. This is reused evidence, not a fresh browser run.\n\nEarlier direct-API checks on Task/Trace/OCI retain their original revision: 40/40, 27/27, 29/29 across four arms. Historical baseline 16/12/16 diagnostics remain recorded. Raw logs remain local; committed summaries include hashes and disclosed gaps, including no pre-run hash of the original delivery receipt.\n\nHosted CI for final head `f9fc38cbc19f5bb2725fd54d957e182831eb1eb9` is complete: 19 checks succeeded and two deployment jobs were skipped ([run 40431526745](https://github.com/tt-a1i/archify/actions/runs/40431526745), attempt 2). Attempt 1 failed on the shared 1396×480 compact Sequence case; the WebM aggregate reflected browser failure while decoding succeeded. After the workflow completed, only the failed browser job was requested for rerun and its dependent aggregate followed; other successes retain attempt-1 execution. The [original failure and source-level diagnosis](https://github.com/tt-a1i/archify/blob/255828331107d1c794f03a74e0695c425182c477/docs/research/2026-10-26/audit/keyboard-current-ci-diagnosis.md) remain recorded. Matching earlier #1121 geometry and a passing rerun do not establish root cause or a repaired layout defect. The previous head `9601c9b6` completed 19 checks with two deployment skips ([historical run](https://github.com/tt-a1i/archify/actions/runs/40427641788)); those results are not relabeled as this head's CI. No human acceptance, AT support, all dynamic-control coverage or reading-speed claim.\n\n## Actual image\n\nThis existing Trace observation shows real Tab reaching the footer on the same frozen HTML. It is reused at its original identity, not a visual redesign or a new screenshot from the refreshed checker. [Capture binding and original observation](https://github.com/tt-a1i/archify/blob/9f9f9dacf58832f1c8784a1a24f6e04c456a4881/experiments/trace-flow-evidence/root-review/README.json).\n\n![Actual Tab reaches the footer on unchanged HTML](https://raw.githubusercontent.com/tt-a1i/archify/9f9f9dacf58832f1c8784a1a24f6e04c456a4881/experiments/trace-flow-evidence/root-review/footer-tab.png)\n\n## AI assistance and accountability\n\nCodex/GPT-6.1-Sol reviewed the algorithm, scope and evidence; GPT-6.1-Terra refreshed the isolated tree and ran scoped checks. Accountable maintainer: @tt-a1i. Existing attribution and license notices are preserved.\n\n- [ ] I reviewed the submitted changes and explanation, understand their impact, and can answer questions about them.\n\nDraft for review only; no merge, release, deployment or live installation.\n",
+        "updated_at": "2026-10-27T21:23:18Z",
+        "changed_files": 54
+      },
+      "head": {
+        "sha": "3254fda4fcd61a101cc09e6b68fbdbb4d2779604",
+        "ref": "codex/lab-keyboard-traversal"
+      },
+      "base": {
+        "sha": "500d4a65211ffe607fde6b3ce7505027b45bb59e",
+        "ref": "dev"
+      },
+      "files": null
+    },
+    {
+      "number": 1141,
+      "metadata": {
+        "title": "feat: add verifiable source evidence to Architecture relationships",
+        "state": "open",
+        "draft": false,
+        "html_url": "https://github.com/tt-a1i/archify/pull/1141",
+        "body": "## Problem and value\n\n- Related issue: Fixes #1132.\n- Architecture currently verifies repository source evidence only for components. A connection-level `sources` property is rejected by schema validation, so a displayed relationship cannot carry a first-class, revision-pinned explanation of its authored source.\n- This change adds connection-level evidence to the existing repository-evidence contract and exposes it through relationship inspection without changing authored topology or canonical SVG geometry.\n- Before/after evidence entry point: `test/relationship-source-evidence.test.mjs` creates a real temporary Git repository, delivers an Architecture artifact with connection evidence, checks the verified HTML payload, and compares the SVG with the same artifact without connection evidence. A tracked standalone artifact is provided at `examples/architecture-relationship-evidence.html`, generated from `examples/architecture-relationship-evidence.architecture.json` against the pinned baseline revision.\n\n## AI assistance and accountability\n\n- AI use: implementation, investigation, tests, and review assistance\n- Tools and model (if known), and assisted areas: Codex with repository graph inspection, GitHub API/CLI inspection, TDD implementation, focused regression testing, and generated-artifact verification.\n- Accountable contributor: @outlier27-cell\n- Problem origin: synthetic probe against the fixed `dev` baseline showed `/connections/0.sources` fails with `schema/additionalProperties`; the issue is based on that reproducible CLI behavior.\n- [ ] I reviewed the submitted changes and explanation, understand their impact, and can answer questions about them. Validation results and gaps are recorded below.\n\n## Stability impact\n\n- Impact class and changed behavior/shared callers: schema, shared repository-evidence verification, generated Viewer source-evidence API, Architecture relationship inspection, and generated HTML examples. Existing node evidence and non-Architecture evidence continue to use the same `nodes` payload.\n- Existing behavior preserved / intended compatibility changes / failure behavior: connection evidence is optional and legacy inputs remain valid. A relationship that declares sources must have a stable authored `id`; invalid revision, path, line range, or relationship identity fails closed with repository-evidence diagnostics. No network access is introduced.\n\n## Tests run\n\n- Comparison base: `500d4a65211ffe607fde6b3ce7505027b45bb59e`; candidate: `30196a0b`.\n- `npm test` — 19/19 core smoke tests passed.\n- `npm run test:generated` — viewer, brand marks, validators, release identity, golden renders, template freshness, and version sync passed.\n- `node scripts/run-tests.mjs test/repository-evidence.test.mjs test/repository-evidence-types.test.mjs test/relationship-source-evidence.test.mjs` — 110 passed, 1 platform skip, 0 failed.\n- The new regression covers a real temporary Git repository, positive connection evidence, independent relationship payload, SVG geometry preservation, missing relationship identity, and unsafe source paths.\n- Browser behavior was exercised with Chrome. The relationship selection assertions and existing source-evidence assertions passed. The browser runner reported `ARCHIFY_TEMP_CLEANUP` while closing one Windows Chrome profile; this is an environment cleanup failure, so the browser command is not reported as green.\n\n## Visual evidence\n\n- Evidence provided: browser/CDP assertions in `test/repository-evidence-browser.test.mjs` verify selecting `users-to-cdn` exposes `src/router.js`, the authored label, line range, and relationship permalink identity in the Semantic Passport.\n- Comparison conditions: same delivered Architecture artifact, same 1440x900 viewport, light/dark themes, GitHub/Gitee/GitLab/local-only repository modes.\n- Automated or browser checks: functional browser assertions passed before the Windows profile cleanup failure described above.\n- Perceptual visual review: skipped; no manual human visual acceptance is claimed.\n\n## Remote CI status\n\n- Local validation is complete, but the current head has no GitHub check-runs.\n- The only PR workflow run observed for this branch is an older run on `5296257cf660ff9c20ff9976eef82b5d76c12a85`; no run was created for the current head.\n- `workflow_dispatch` for the branch was attempted and rejected with HTTP 403 because the current credentials do not have repository administrator rights. No further trigger attempts are pending.\n- This PR is waiting for a maintainer or repository administrator to run/enable CI for the current head.\n\n## Generated artifacts\n\nRegenerated from `viewer/template.source.html` and the final source tree:\n\n- `archify/assets/template.html`\n- `archify/renderers/shared/generated-validators.mjs`\n- checked-in development and packaged example HTML files\n- `examples/web-app.html` template freshness fixture\n- `examples/architecture-relationship-evidence.architecture.json`\n- `examples/architecture-relationship-evidence.html`\n\n## Merge Danger\n\n**Door:** two-way\n\nThe change is additive and can be reverted as one commit. The main compatibility risk is the shared evidence payload shape and the generated Viewer template; focused cross-renderer evidence tests and generated checks cover those boundaries.\n\n**Blast Radius:** repository-evidence\n\nThe verifier is shared by all typed renderers, but relationship collection is gated to Architecture and node payload keys remain unchanged. Canonical SVG geometry and relationship routing are not modified.\n",
+        "updated_at": "2026-10-28T14:43:46Z",
+        "changed_files": 44
+      },
+      "head": {
+        "sha": "a70337e84d2b43ae98fd53e79cb9d80d1133bf08",
+        "ref": "feat/1132-relationship-source-evidence"
+      },
+      "base": {
+        "sha": "847146aeb93b492592adb78dc220f57e4a8b4636",
+        "ref": "dev"
+      },
+      "files": [
+        {
+          "filename": "archify.zip",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "archify/assets/template.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/class-payment-processors-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/class-payments-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/dataflow-product-analytics.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/erd-orders-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/lifecycle-agent-run.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/sequence-cache-miss-request.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/subscription-billing-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/timeline-archify-dev-activity-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/timeline-payment-incident-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/tree-archify-repository-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/tree-payment-platform-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/waterfall-checkout-request-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/waterfall-example-rebuild-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/web-app-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/examples/workflow-agent-tool-call-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "archify/renderers/shared/generated-validators.mjs",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1
+        },
+        {
+          "filename": "archify/renderers/shared/repository-evidence.mjs",
+          "status": "modified",
+          "additions": 81,
+          "deletions": 42
+        },
+        {
+          "filename": "archify/schemas/architecture.schema.json",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 1
+        },
+        {
+          "filename": "examples/architecture-relationship-evidence.architecture.json",
+          "status": "added",
+          "additions": 27,
+          "deletions": 0
+        },
+        {
+          "filename": "examples/architecture-relationship-evidence.html",
+          "status": "added",
+          "additions": 15272,
+          "deletions": 0
+        },
+        {
+          "filename": "examples/checkout-platform-delta.html",
+          "status": "modified",
+          "additions": 18,
+          "deletions": 4
+        },
+        {
+          "filename": "examples/checkout-platform-delta.receipt.json",
+          "status": "modified",
+          "additions": 2,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/class-payment-processors-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/class-payments-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/dataflow-product-analytics.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/erd-orders-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/lifecycle-agent-run.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/sequence-cache-miss-request.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/subscription-billing-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/timeline-archify-dev-activity-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/timeline-payment-incident-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/tree-archify-repository-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/tree-payment-platform-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/waterfall-checkout-request-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/waterfall-example-rebuild-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/web-app-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/web-app.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "examples/workflow-agent-tool-call-rendered.html",
+          "status": "modified",
+          "additions": 9,
+          "deletions": 2
+        },
+        {
+          "filename": "test/relationship-source-evidence.test.mjs",
+          "status": "added",
+          "additions": 63,
+          "deletions": 0
+        },
+        {
+          "filename": "test/repository-evidence-browser.test.mjs",
+          "status": "modified",
+          "additions": 34,
+          "deletions": 1,
+          "patch": "@@ -10,6 +10,7 @@ test('browser renders local-only sources as searchable text and web sources as l\n   timeout: 60000,\n }, async () => {\n   const data = fixture();\n+  data.diagram.connections[0].sources = [{ path: 'src/router.js', line: 1, end_line: 3, label: 'Request handoff' }];\n   const browser = new ChromeVisualBrowser(findChrome());\n   try {\n     for (const mode of ['github', 'gitee', 'gitlab', 'local-only']) {\n@@ -32,7 +33,7 @@ test('browser renders local-only sources as searchable text and web sources as l\n             const input = document.getElementById('node-finder-input');\n             input.value = 'src/router.js';\n             input.dispatchEvent(new Event('input', { bubbles: true }));\n-            return {\n+            const nodeEvidence = {\n               visible: !panel.hidden,\n               links: rows.filter(row => row.tagName === 'A').map(row => row.getAttribute('href')),\n               paths: rows.map(row => row.querySelector('small').textContent),\n@@ -45,6 +46,28 @@ test('browser renders local-only sources as searchable text and web sources as l\n               invalidLinks: [...panel.querySelectorAll('a[href]')].some(a => /undefined|javascript:/.test(a.getAttribute('href'))),\n               search: document.getElementById('node-finder-results').textContent\n             };\n+            const selected = Archify.focus.inspectRelationshipById('users-to-cdn', { toggle: false });\n+            const selectedPinned = Archify.focus.relationship();\n+            const selectedVisible = !panel.hidden;\n+            const relationshipRows = [...panel.querySelectorAll('.semantic-passport-source')];\n+            const legacySelected = Archify.focus.inspectRelationshipById('cdn-to-lb', { toggle: false });\n+            const legacyRows = [...panel.querySelectorAll('.semantic-passport-source')];\n+            return {\n+              ...nodeEvidence,\n+              relationship: {\n+                selected,\n+                selectedPinned,\n+                selectedVisible,\n+                pinned: Archify.focus.relationship(),\n+                visible: !panel.hidden,\n+                paths: relationshipRows.map(row => row.querySelector('small').textContent),\n+                locations: relationshipRows.map(row => row.querySelector('code').textContent),\n+                labels: relationshipRows.map(row => row.querySelector('strong').textContent),\n+                legacySelected,\n+                legacyVisible: !panel.hidden,\n+                legacyPaths: legacyRows.map(row => row.querySelector('small').textContent)\n+              }\n+            };\n           })()`, returnByValue: true,\n         }, sessionId);\n         assert.equal(response.exceptionDetails, undefined);\n@@ -60,6 +83,16 @@ test('browser renders local-only sources as searchable text and web sources as l\n         assert.equal(observed.links.length, local ? 0 : 2);\n         assert.equal(observed.locations[0], local ? 'L1–3' : 'L1–3 ↗');\n         assert.equal(observed.repositoryHref, local ? null : `${url}/${mode === 'gitlab' ? '-/' : ''}tree/${data.revision}`);\n+        assert.equal(observed.relationship.selected, true);\n+        assert.equal(observed.relationship.selectedPinned.id, 'users-to-cdn');\n+        assert.equal(observed.relationship.selectedVisible, true);\n+        assert.deepEqual(observed.relationship.paths, ['src/router.js']);\n+        assert.equal(observed.relationship.labels[0], 'Request handoff');\n+        assert.equal(observed.relationship.locations[0], local ? 'L1–3' : 'L1–3 ↗');\n+        assert.equal(observed.relationship.legacySelected, true);\n+        assert.equal(observed.relationship.pinned.id, 'cdn-to-lb');\n+        assert.equal(observed.relationship.legacyVisible, false);\n+        assert.deepEqual(observed.relationship.legacyPaths, []);\n       }\n     }\n   } finally { await browser.close(); }"
+        },
+        {
+          "filename": "viewer/focus.js",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 2,
+          "patch": "@@ -342,12 +342,12 @@\n         element.textContent = normalized;\n         element.hidden = !normalized;\n       }\n-      function renderSourceEvidence(id) {\n+      function renderSourceEvidence(id, relationship) {\n         evidenceLinks.textContent = '';\n         repositoryLink.removeAttribute('href');\n         repositoryLink.removeAttribute('aria-label');\n         repositoryLink.textContent = '';\n-        var sources = Archify.sourceEvidence.node(id);\n+        var sources = relationship ? Archify.sourceEvidence.relationship(id) : Archify.sourceEvidence.node(id);\n         var repository = Archify.sourceEvidence.repository();\n         if (!repository || !sources.length) {\n           evidence.hidden = true;\n@@ -1033,6 +1033,9 @@\n         var target = relationshipHitTarget(key);\n         if (target) target.setAttribute('aria-pressed', 'true');\n         renderRelationshipCopyAction();\n+        if (record.id && Archify.sourceEvidence.relationship(record.id).length) {\n+          renderSourceEvidence(record.id, true);\n+        }\n         summary.textContent = viewerText('viewer.passport.relationship.pinned', {\n           from: record.fromLabel,\n           to: record.toLabel,"
+        },
+        {
+          "filename": "viewer/template.source.html",
+          "status": "modified",
+          "additions": 4,
+          "deletions": 0
+        }
+      ]
+    },
+    {
+      "number": 1142,
+      "metadata": {
+        "title": "feat: add explainer claim evidence attribution",
+        "state": "open",
+        "draft": false,
+        "html_url": "https://github.com/tt-a1i/archify/pull/1142",
+        "body": "## Problem and value\n\n- Related issue: Fixes #1133.\n- Explainer already freezes chart/source/dependency bytes, but a reader cannot tell which existing evidence an authored conclusion is intended to reference. The current schema rejects `answer.evidence`.\n- This change adds optional answer-level claim-to-evidence attribution. References target existing stable block IDs or source IDs, are validated before rendering, and become navigable links in the rendered answer panel.\n- The association remains authored context; it does not claim that a chart or source proves the conclusion.\n\n## AI assistance and accountability\n\n- AI use: implementation, investigation, tests, and review assistance\n- Tools and model (if known), and assisted areas: Codex with repository inspection, TDD, focused Explainer tests, generated checks, and browser regression execution.\n- Accountable contributor: @outlier27-cell\n- Problem origin: synthetic CLI probe against `500d4a65211ffe607fde6b3ce7505027b45bb59e` showed `answer.evidence: [\"latency\"]` rejected by the Explainer schema; existing frozen data behavior was preserved.\n- [ ] I reviewed the submitted changes and explanation, understand their impact, and can answer questions about them. Validation results and gaps are recorded below.\n\n## Stability impact\n\n- Impact class and changed behavior/shared callers: Explainer schema, Markdown answer directive normalization, canonical Explainer validation, and answer HTML rendering.\n- Existing behavior preserved / intended compatibility changes / failure behavior: `answer.evidence` is optional; existing documents remain valid. Dangling IDs fail with `explainer/unresolved-reference`. The implementation does not alter frozen bytes, chart values, dependency manifests, or network behavior.\n\n## Tests run\n\n- Comparison base: `500d4a65211ffe607fde6b3ce7505027b45bb59e`; candidate: `3116eff3`.\n- `node scripts/run-tests.mjs test/explainer-parser.test.mjs test/explainer-attribution.test.mjs test/explainer-check.test.mjs` — 31 passed, 0 failed.\n- `npm run test:generated` — viewer, validators, release identity, golden renders, template freshness, and version checks passed.\n- `npm test` — core smoke completed locally; the command output was interrupted by the local runner after the test process completed its long-running phase, so no new failure was observed but the final summary was not retained.\n- The focused regression covers valid block/source references, navigable HTML mapping, dangling references, and legacy documents without attribution.\n\n## Visual evidence\n\n- Existing Explainer browser regression was run with Chrome. One layout/readability QA case and the formal renderer browser case failed in the current Windows runner; the retry accessibility case passed. The failures are recorded as browser evidence gaps, not as visual acceptance.\n- Perceptual visual review: skipped; no manual human visual acceptance is claimed.\n\n## Generated artifacts\n\n- `archify/renderers/shared/generated-validators.mjs` was regenerated from the Explainer schema.\n- No frozen data, dependency bytes, or checked-in HTML examples were modified.\n- `archify.zip` was rebuilt with the canonical Node 22 toolchain after the initial CI zip-freshness failure.\n\n## Merge Danger\n\n**Door:** two-way\n\nThe change is additive and can be reverted as one commit. The payload contract is optional and scoped to the answer summary.\n\n**Blast Radius:** explainer-reader\n\nOnly canonical Explainer validation and answer rendering consume the new field. Existing source, chart, dependency, and reader contracts remain unchanged.\n",
+        "updated_at": "2026-10-28T14:48:49Z",
+        "changed_files": 8
+      },
+      "head": {
+        "sha": "bd782b46c4f4f8d5c947e7f5638d30d34fe4989f",
+        "ref": "feat/1133-explainer-claim-attribution"
+      },
+      "base": {
+        "sha": "847146aeb93b492592adb78dc220f57e4a8b4636",
+        "ref": "dev"
+      },
+      "files": [
+        {
+          "filename": "archify.zip",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "archify/explainer/parse.mjs",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 3
+        },
+        {
+          "filename": "archify/explainer/render.mjs",
+          "status": "modified",
+          "additions": 5,
+          "deletions": 1
+        },
+        {
+          "filename": "archify/explainer/validate.mjs",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 0
+        },
+        {
+          "filename": "archify/renderers/shared/generated-validators.mjs",
+          "status": "modified",
+          "additions": 1,
+          "deletions": 1
+        },
+        {
+          "filename": "archify/schemas/explainer.schema.json",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 0
+        },
+        {
+          "filename": "test/explainer-attribution.test.mjs",
+          "status": "added",
+          "additions": 34,
+          "deletions": 0
+        },
+        {
+          "filename": "test/explainer-parser.test.mjs",
+          "status": "modified",
+          "additions": 7,
+          "deletions": 0
+        }
+      ]
+    },
+    {
+      "number": 1147,
+      "metadata": {
+        "title": "fix(evidence): use plain GitHub Markdown line links",
+        "state": "open",
+        "draft": true,
+        "html_url": "https://github.com/tt-a1i/archify/pull/1147",
+        "body": "## Problem and value\n\nRelated: https://github.com/tt-a1i/archify/issues/1128.\n\nGitHub renders Markdown by default, so a repository evidence URL ending in `README.md#L1` does not select the intended source line. Add `?plain=1` only for GitHub Markdown links carrying a line reference; retain existing code-file, no-line, GitLab and Gitee behavior.\n\nThis Draft proposes the narrow scope above for maintainer discussion. Maintainer scope agreement is not yet recorded. PR #1063 adds GitHub Enterprise provider support; it does not implement this plain Markdown line-link behavior.\n\n## Contributor review\n\n- Problem origin: synthetic replay/code inspection of the linked public report; no production incident or real Agent generation benchmark is claimed.\n- [ ] I reviewed the submitted changes and explanation, understand their impact, and can answer questions about them. Validation results and gaps are recorded below.\n\nPersonal confirmation remains unchecked pending the accountable person's explicit confirmation, as required by CONTRIBUTING.md.\n\n## Stability impact\n\nShared repository evidence behavior. The change is bounded to the behavior described above. Test-value review selected observable content/URL/acceptance regressions rather than implementation snapshots: each new regression fails on the base and passes with this fix. Existing related coverage is reused. No separate simplify-codebase refactor was needed for this local correction; no speculative abstraction or configuration is added.\n\n## Tests run\n\nBase: `847146aeb93b492592adb78dc220f57e4a8b4636` (dev). Candidate: `28d3612d7ae9f4e2acb0bd3e03d9fc7b00af1d23`.\n\nNode 22.23.2, macOS arm64, zlib 1.3.1-e00f703:\n\n- Base plus the new test: `node --test test/repository-markdown-lines.test.mjs` — fails, exposing the reported behavior.\n- Candidate: `npm run test:focus -- test/repository-markdown-lines.test.mjs test/repository-evidence.test.mjs` — passes.\n- `npm test` and `npm run test:generated` — pass.\n- `git diff --check` — passes.\n- Canonical `bash scripts/build-zip.sh` — passes; extracted ZIP smoke passes for the changed behavior.\n\nThese are fixed-input regressions and scoped core/generated checks. Full integration, Windows, a real-repository Agent generation comparison, maintainer scope approval and required remote CI are not claimed complete.\n\n## Generated artifacts\n\nRegenerated `archify.zip` from the candidate source using the canonical Node/zlib toolchain. SHA-256: `4c588d79741980efde56c380c2e43fcccf6714e4d63cf4ced369087da7abc8bf`. The extracted distribution was exercised; no release or deployment is requested by this PR.\n\n## Upstream CI follow-up\n\nThe full-suite checks on this PR expose two failures also reproduced on the unmodified comparison base `847146aeb93b492592adb78dc220f57e4a8b4636`:\n\n```sh\nnode --test --test-name-pattern='checked-in Checkout compare artifact' test/architecture-delta.test.mjs\nnode --test --test-name-pattern='README motion proof is compact' test/readme-showcase.test.mjs\n```\n\nBoth fail before applying this change. Regenerating the Checkout comparison produces the same bytes on the base and this candidate (SHA-256 `f8a0f1c4e0023d306fd59ba88d6c11811cde985f40b1ec48ce3c63e44615aef6`), so unrelated checked-in examples/README assets were left out of this correction.\n\nThe short-wide Sequence input HTML is byte-identical on base and candidate (SHA-256 `6f8817a3662545a79bc8317c58b9992250c0a04ff44dd12439191790f755c002`). The browser failure has now been reproduced independently with a controlled initial header-height transition; [#1151](https://github.com/tt-a1i/archify/pull/1151) supplies the separate Reader fix and discriminating regression. [#1150](https://github.com/tt-a1i/archify/pull/1150) repairs the two stale derived artifacts. Those PRs carry their own tests and generated outputs; this PR retains its original evidence-link scope. Its existing failed CI run is not relabelled as passing, and upstream integration/review remains pending.\n\nBlueboxC\n",
+        "updated_at": "2026-10-29T00:42:53Z",
+        "changed_files": 3
+      },
+      "head": {
+        "sha": "28d3612d7ae9f4e2acb0bd3e03d9fc7b00af1d23",
+        "ref": "codex/github-markdown-lines-20261028"
+      },
+      "base": {
+        "sha": "847146aeb93b492592adb78dc220f57e4a8b4636",
+        "ref": "dev"
+      },
+      "files": [
+        {
+          "filename": "archify.zip",
+          "status": "modified",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "archify/renderers/shared/repository-location.mjs",
+          "status": "modified",
+          "additions": 3,
+          "deletions": 3
+        },
+        {
+          "filename": "test/repository-markdown-lines.test.mjs",
+          "status": "added",
+          "additions": 10,
+          "deletions": 0
+        }
+      ]
+    }
+  ]
+}

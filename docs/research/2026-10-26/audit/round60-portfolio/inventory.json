@@ -1,0 +1,519 @@
+{
+  "dev": "847146aeb93b492592adb78dc220f57e4a8b4636",
+  "previousReviewDev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+  "remoteHeads": 333,
+  "scope": "Frozen Git objects and patch applicability only; no checkout, merge, runtime test, build, browser or CI.",
+  "branches": [
+    {
+      "id": "source-link-context",
+      "branch": "codex/lab-source-link-context",
+      "head": "dae900182d317d76620104e619d8fdfba7229315",
+      "unchangedSinceRound27": true,
+      "mergeBaseWithDev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+      "devOnlyCommits": 82,
+      "headOnlyCommits": 1,
+      "authoredPaths": [
+        {
+          "path": "viewer/focus.js",
+          "previousDev": {
+            "blob": "6a61c202b4077f4fe5ddcf3f8e291fe668456465",
+            "sha256": "5a3785534247d032a5435b391b8f93d8dfc8eb66e5c849e0a3240d9d0a419967",
+            "bytes": 94292
+          },
+          "dev": {
+            "blob": "6a61c202b4077f4fe5ddcf3f8e291fe668456465",
+            "sha256": "5a3785534247d032a5435b391b8f93d8dfc8eb66e5c849e0a3240d9d0a419967",
+            "bytes": 94292
+          },
+          "candidate": {
+            "blob": "ff2609e015d6d3c0f08ec1521377ce4793b6df2f",
+            "sha256": "61c3a45995a4c204a3623784f2a58312b7250fba7c29d269713e2baea1ce6770",
+            "bytes": 94469
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "test/repository-evidence-browser.test.mjs",
+          "previousDev": {
+            "blob": "85e56b73c86ee7905f85d6ce9276ab3e63e4df7f",
+            "sha256": "be1abc4417f52bf8978821a54c85d726b5468e43b62b776f3040ddf8c222b8a3",
+            "bytes": 12249
+          },
+          "dev": {
+            "blob": "85e56b73c86ee7905f85d6ce9276ab3e63e4df7f",
+            "sha256": "be1abc4417f52bf8978821a54c85d726b5468e43b62b776f3040ddf8c222b8a3",
+            "bytes": 12249
+          },
+          "candidate": {
+            "blob": "29cf370a611bc5a4c0b169e68fea078aeefe2c6f",
+            "sha256": "e238c5108c855b53f2caedfbe09d26f13960dfc3c3ca2dd545c92d6a7dc2c0d8",
+            "bytes": 15959
+          },
+          "devUnchangedSinceRound27": true
+        }
+      ],
+      "authoredPatchSha256": "3213f624cc921f76db9366dd6f04e7e37674b770198c706197f7c384a2e4e5a3",
+      "patchCheck": {
+        "command": "git read-tree DEV; git apply --cached --check candidate.patch (temporary GIT_INDEX_FILE)",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "excludes": "Generated HTML, ZIP, gallery, experiment artifacts; not a complete merge check."
+      }
+    },
+    {
+      "id": "keyboard-traversal",
+      "branch": "codex/lab-keyboard-traversal",
+      "head": "3254fda4fcd61a101cc09e6b68fbdbb4d2779604",
+      "unchangedSinceRound27": true,
+      "mergeBaseWithDev": "500d4a65211ffe607fde6b3ce7505027b45bb59e",
+      "devOnlyCommits": 88,
+      "headOnlyCommits": 8,
+      "authoredPaths": [
+        {
+          "path": "archify/explainer/browser-check.mjs",
+          "previousDev": {
+            "blob": "72f8f8b07a7bbb585463d8b7995e83b434d79427",
+            "sha256": "cbbebfca2cb58cde0791f349e4f13490c0d085ce2f8653279139cf2aed334677",
+            "bytes": 30708
+          },
+          "dev": {
+            "blob": "72f8f8b07a7bbb585463d8b7995e83b434d79427",
+            "sha256": "cbbebfca2cb58cde0791f349e4f13490c0d085ce2f8653279139cf2aed334677",
+            "bytes": 30708
+          },
+          "candidate": {
+            "blob": "2449c2b2c55d3ba7ae314f009f011af7fed1dd11",
+            "sha256": "b4bdcd216e0436033ab892ebbb67ed091c7d735d33e2cdb48ff904cbd904a647",
+            "bytes": 34100
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "test/explainer-browser.test.mjs",
+          "previousDev": {
+            "blob": "fd48eaca9248fe432d082e9426a705fed621f637",
+            "sha256": "05044c988f8e414fc99b9977b9bfbd47c25043568e2c523b0db0301efc4ee8c7",
+            "bytes": 37931
+          },
+          "dev": {
+            "blob": "fd48eaca9248fe432d082e9426a705fed621f637",
+            "sha256": "05044c988f8e414fc99b9977b9bfbd47c25043568e2c523b0db0301efc4ee8c7",
+            "bytes": 37931
+          },
+          "candidate": {
+            "blob": "6bc0a8bc26413ed52934537749490b88e3a24634",
+            "sha256": "3fbfe2b631ebc86da51a9f37a75b0642c4da01d8ca6fa6c4a84a9fa2f64fd08d",
+            "bytes": 45563
+          },
+          "devUnchangedSinceRound27": true
+        }
+      ],
+      "authoredPatchSha256": "6526b7690b2b2d4f52b58f2143d66cd2c2bca335db90a2b64e237657de1e1029",
+      "patchCheck": {
+        "command": "git read-tree DEV; git apply --cached --check candidate.patch (temporary GIT_INDEX_FILE)",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "excludes": "Generated HTML, ZIP, gallery, experiment artifacts; not a complete merge check."
+      }
+    },
+    {
+      "id": "tree-roles",
+      "branch": "codex/lab-tree-roles",
+      "head": "a15fbd6e6b68df387bdf37f0c155509d3c3242ad",
+      "unchangedSinceRound27": true,
+      "mergeBaseWithDev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+      "devOnlyCommits": 82,
+      "headOnlyCommits": 1,
+      "authoredPaths": [
+        {
+          "path": "archify/renderers/tree/render-tree.mjs",
+          "previousDev": {
+            "blob": "72b10002051fd2dc5bc4ee9ae58dbd54ef89f5b2",
+            "sha256": "fc4c2958051464eb85f0e6f19012cdea52b5149e40ef057116308683ea663adc",
+            "bytes": 30826
+          },
+          "dev": {
+            "blob": "72b10002051fd2dc5bc4ee9ae58dbd54ef89f5b2",
+            "sha256": "fc4c2958051464eb85f0e6f19012cdea52b5149e40ef057116308683ea663adc",
+            "bytes": 30826
+          },
+          "candidate": {
+            "blob": "0e2b3a20673a183fdc6c4e7b31a950487662112f",
+            "sha256": "3dbcdc5b23069b34698293f707865f7145c7b48dee2040b8e723632ad78f8228",
+            "bytes": 31951
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "viewer/template.source.html",
+          "previousDev": {
+            "blob": "c014621b85e8fe03a9fa9aa560244894387c49c8",
+            "sha256": "e1a4a1e90a9d6361623a0f77dc683c006cf18782ef992ae9d6fe0d56eb1e048d",
+            "bytes": 171878
+          },
+          "dev": {
+            "blob": "c014621b85e8fe03a9fa9aa560244894387c49c8",
+            "sha256": "e1a4a1e90a9d6361623a0f77dc683c006cf18782ef992ae9d6fe0d56eb1e048d",
+            "bytes": 171878
+          },
+          "candidate": {
+            "blob": "14d1020fcef234ae1b6b0745be83bc1c904d2257",
+            "sha256": "2a8af4dfd6fcae55e44f8db5b50d94f94b3b0acd7ec8eaad4ea635aa5ad38800",
+            "bytes": 171926
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "viewer/semantic-lens.js",
+          "previousDev": {
+            "blob": "09fe1a1928e7dd444b26e301c391e517b991ab99",
+            "sha256": "3208c570f787b6234444be94df37164d65a391e70e87a1a229468587527d64e4",
+            "bytes": 33072
+          },
+          "dev": {
+            "blob": "09fe1a1928e7dd444b26e301c391e517b991ab99",
+            "sha256": "3208c570f787b6234444be94df37164d65a391e70e87a1a229468587527d64e4",
+            "bytes": 33072
+          },
+          "candidate": {
+            "blob": "2995244f322881e121ac191a88417f622dba269c",
+            "sha256": "d94a221a3422f4d82f57a245369b3e91aba65b47c2f74df74f3867d4c2b4ac0d",
+            "bytes": 33388
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "viewer/viewer.css",
+          "previousDev": {
+            "blob": "2b147f8a3320dc5e209ca7bcf03e1f7989ea09c4",
+            "sha256": "ba3fa515e830e8d1d5199af695e943438d309ae7c336dcffa1734fdeefbbda23",
+            "bytes": 191446
+          },
+          "dev": {
+            "blob": "8bcdea9607b64aef0f5126340e96ce33c7de8570",
+            "sha256": "0715303ecda9bf8f75f649f616fd9e47243e2233c601bcf303e71398d0037735",
+            "bytes": 191420
+          },
+          "candidate": {
+            "blob": "00adf47130180210311a0517c477611f998efce8",
+            "sha256": "e60d7ecec9df308f6f8dc6268bd062c29621adb1ca127e44bda42ad9c195bd38",
+            "bytes": 191622
+          },
+          "devUnchangedSinceRound27": false
+        },
+        {
+          "path": "test/tree-branches-browser.test.mjs",
+          "previousDev": {
+            "blob": "2e0c7526eb0d4fdd4296ea853b597cf82ac91861",
+            "sha256": "56a8bda1bf4adf3c42b128976789035b0e605f14d1c77576088118577c960fc6",
+            "bytes": 10376
+          },
+          "dev": {
+            "blob": "2e0c7526eb0d4fdd4296ea853b597cf82ac91861",
+            "sha256": "56a8bda1bf4adf3c42b128976789035b0e605f14d1c77576088118577c960fc6",
+            "bytes": 10376
+          },
+          "candidate": {
+            "blob": "08053d36aaec6c1480daa17063319fa9efe82ea2",
+            "sha256": "884e7b2bbbed9f052c8695ab51145e382369ebb9f243b5001594951b8cd89ccd",
+            "bytes": 15115
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "test/tree-rendering.test.mjs",
+          "previousDev": {
+            "blob": "65b87c86d3869a988551cc9a980cedb3717fb764",
+            "sha256": "b06fe4734bd1dc2c58f4e8e95ad64f8b1e2113961851ed9713066f9735077cb2",
+            "bytes": 7966
+          },
+          "dev": {
+            "blob": "65b87c86d3869a988551cc9a980cedb3717fb764",
+            "sha256": "b06fe4734bd1dc2c58f4e8e95ad64f8b1e2113961851ed9713066f9735077cb2",
+            "bytes": 7966
+          },
+          "candidate": {
+            "blob": "763bdda06a66a91ef1db605cf0c0e878116e28a4",
+            "sha256": "05ea451fd1c763403cb4218e68c8b4bc2f430d4da8c945cda61d23a34a9346f4",
+            "bytes": 10309
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/locales/ar.json",
+          "previousDev": {
+            "blob": "14ddc6edfe055bb9518d15c4209240490e732820",
+            "sha256": "b7a5248e39460e59090b1d8c91025026acc2883f25e6abdf912374da7990c9b1",
+            "bytes": 34771
+          },
+          "dev": {
+            "blob": "14ddc6edfe055bb9518d15c4209240490e732820",
+            "sha256": "b7a5248e39460e59090b1d8c91025026acc2883f25e6abdf912374da7990c9b1",
+            "bytes": 34771
+          },
+          "candidate": {
+            "blob": "836f194a55297c86e8a59c1b301be0dae3a8dec8",
+            "sha256": "83539ae40e5fc9c2b5bdb798dc55715b1bde9af6020979332934c98c37036a97",
+            "bytes": 35400
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/locales/en.json",
+          "previousDev": {
+            "blob": "b84817649ecfad6a46f5f33eee23d40738fa6dfc",
+            "sha256": "45a13d72336901e8233601e912594db307fa862243416011169ac8c02f71c8ec",
+            "bytes": 28153
+          },
+          "dev": {
+            "blob": "b84817649ecfad6a46f5f33eee23d40738fa6dfc",
+            "sha256": "45a13d72336901e8233601e912594db307fa862243416011169ac8c02f71c8ec",
+            "bytes": 28153
+          },
+          "candidate": {
+            "blob": "df872baaced54390ada02b9c7f4d94c5fa5a1d49",
+            "sha256": "c7a6856f73b0b98006f79c9362bffb9c58a2c1570bbc21b0a1a6d702383b42db",
+            "bytes": 28564
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/locales/es.json",
+          "previousDev": {
+            "blob": "d171960f396c155c080d08f2a47fae9ef31a98d7",
+            "sha256": "f5e0532f9cb9c0370cc84eb02a953f8f794b78e3d5cec77261b0450f829896a2",
+            "bytes": 30310
+          },
+          "dev": {
+            "blob": "d171960f396c155c080d08f2a47fae9ef31a98d7",
+            "sha256": "f5e0532f9cb9c0370cc84eb02a953f8f794b78e3d5cec77261b0450f829896a2",
+            "bytes": 30310
+          },
+          "candidate": {
+            "blob": "21138a90825399663c0b56efe0984413462259ae",
+            "sha256": "846e89ad59baea365d4ca65a1a14196fc31e280184137b004aaef6538b6936f6",
+            "bytes": 30761
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/locales/ko.json",
+          "previousDev": {
+            "blob": "a3cf4dda7897b04ba4f37631413396a5f9ab8454",
+            "sha256": "e102c43858544139e9e7924aa770f31f789cc99d50acb988d8101455e2790cd4",
+            "bytes": 31718
+          },
+          "dev": {
+            "blob": "a3cf4dda7897b04ba4f37631413396a5f9ab8454",
+            "sha256": "e102c43858544139e9e7924aa770f31f789cc99d50acb988d8101455e2790cd4",
+            "bytes": 31718
+          },
+          "candidate": {
+            "blob": "d5a29e80a98aa746393b52082f457546d06ec242",
+            "sha256": "a7e70b082973db5a4c9ffd4f6209d22bb10631ba17728675621eff657c73c7b4",
+            "bytes": 32196
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/locales/zh-CN.json",
+          "previousDev": {
+            "blob": "eb7fa452845e4030ad6b1e31363cfb9890e07715",
+            "sha256": "8361076c75527b2aa5172a1a0a767c2405422e97d51ce7ee0303f70ac7b10a7e",
+            "bytes": 27780
+          },
+          "dev": {
+            "blob": "eb7fa452845e4030ad6b1e31363cfb9890e07715",
+            "sha256": "8361076c75527b2aa5172a1a0a767c2405422e97d51ce7ee0303f70ac7b10a7e",
+            "bytes": 27780
+          },
+          "candidate": {
+            "blob": "91c5c2c764edc6d9638bbe1ae32cb92642d1ecb6",
+            "sha256": "b1cd3cb639fb916fb4d21a22c403bf6525affbdd9735b0d6b50831a06eb77805",
+            "bytes": 28198
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/locales/zh-TW.json",
+          "previousDev": {
+            "blob": "6ed434dce9c5d8e7479332dcf3a9392e0f05c7e9",
+            "sha256": "83302ebdc551cce1bae88282d6fab1bb4baf94bcb59ed313eb125bf3f5555570",
+            "bytes": 27850
+          },
+          "dev": {
+            "blob": "6ed434dce9c5d8e7479332dcf3a9392e0f05c7e9",
+            "sha256": "83302ebdc551cce1bae88282d6fab1bb4baf94bcb59ed313eb125bf3f5555570",
+            "bytes": 27850
+          },
+          "candidate": {
+            "blob": "9689c8f2f1523b694126ee9342cd484f65e1b608",
+            "sha256": "059501990097d6817c4090b7db7298953c4773b75b0c1924ba1875cbf15371d6",
+            "bytes": 28268
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/examples/locales/de.json",
+          "previousDev": {
+            "blob": "7fdebf22b389bc652741ee45966fd88585ed758a",
+            "sha256": "77975293855578923fbbee29f478d9d84002c04d6a7b3e22cd9db8cf3fb414ba",
+            "bytes": 28444
+          },
+          "dev": {
+            "blob": "7fdebf22b389bc652741ee45966fd88585ed758a",
+            "sha256": "77975293855578923fbbee29f478d9d84002c04d6a7b3e22cd9db8cf3fb414ba",
+            "bytes": 28444
+          },
+          "candidate": {
+            "blob": "66e0c86f8095866d0ba9b99a9e679965a74120f4",
+            "sha256": "1434f2045fab43fc9d6abb538cb3c6f2b24eec0e5291667d9316845226a0e4cc",
+            "bytes": 28919
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/examples/locales/fr.json",
+          "previousDev": {
+            "blob": "f2ff1aa14378f03c92369633af33c321529de417",
+            "sha256": "466e95b92466e787fc75053435f3dbb02684be1eeb06270194afa75e0ad5f7a0",
+            "bytes": 30484
+          },
+          "dev": {
+            "blob": "f2ff1aa14378f03c92369633af33c321529de417",
+            "sha256": "466e95b92466e787fc75053435f3dbb02684be1eeb06270194afa75e0ad5f7a0",
+            "bytes": 30484
+          },
+          "candidate": {
+            "blob": "d0a4abdbde6370b4a7a28c58a6f24ec711cf5e92",
+            "sha256": "8be6de46394e474a8c1efe267ba716a625215d348feee248351b973623f0f8e5",
+            "bytes": 30965
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/examples/locales/it.json",
+          "previousDev": {
+            "blob": "57df42adc9408540e7e3d95a9ec15b2a2ce3b7f2",
+            "sha256": "be8cd15fcd0311521dc8ae1f35bbcf8e33a180e20e5ce94fd0d65dec4e147e6b",
+            "bytes": 28793
+          },
+          "dev": {
+            "blob": "57df42adc9408540e7e3d95a9ec15b2a2ce3b7f2",
+            "sha256": "be8cd15fcd0311521dc8ae1f35bbcf8e33a180e20e5ce94fd0d65dec4e147e6b",
+            "bytes": 28793
+          },
+          "candidate": {
+            "blob": "f3b2c4d7d7a9859edcba2699adc967a93bf9779c",
+            "sha256": "d9d50ac1889830a8c2bc73a562a79a3d24d9eb651a046e1d6c423788739fc059",
+            "bytes": 29269
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/examples/locales/ja.json",
+          "previousDev": {
+            "blob": "d49ce3a201d7188ccceeb3599e3edc63d9ea4869",
+            "sha256": "bb6d66d7e1126c5c622423317a536728820d3fe686be90d0c9cc8f6ca4ff3e67",
+            "bytes": 32495
+          },
+          "dev": {
+            "blob": "d49ce3a201d7188ccceeb3599e3edc63d9ea4869",
+            "sha256": "bb6d66d7e1126c5c622423317a536728820d3fe686be90d0c9cc8f6ca4ff3e67",
+            "bytes": 32495
+          },
+          "candidate": {
+            "blob": "17ce8b0e9257199bb8fd67fbe1c5f72736cdc20f",
+            "sha256": "0e419506ae429c6e56632674f8aedf63acd4eec564a862363e93420f67aa1a0b",
+            "bytes": 32970
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/examples/locales/pt.json",
+          "previousDev": {
+            "blob": "166c308917214c4d0428304442eac8fecae443df",
+            "sha256": "8e3c6a054183e96465bd882bc23d38eafe19c0484eda5709f4e2b37e132e0731",
+            "bytes": 28454
+          },
+          "dev": {
+            "blob": "166c308917214c4d0428304442eac8fecae443df",
+            "sha256": "8e3c6a054183e96465bd882bc23d38eafe19c0484eda5709f4e2b37e132e0731",
+            "bytes": 28454
+          },
+          "candidate": {
+            "blob": "8cc68f13db08efe56e5f44317463beac71d04acd",
+            "sha256": "876dfc982d468345bbd410b6d14ff61c9621d6d29611e809fdbbcc9f3ebf2b9a",
+            "bytes": 28916
+          },
+          "devUnchangedSinceRound27": true
+        },
+        {
+          "path": "archify/examples/locales/ru.json",
+          "previousDev": {
+            "blob": "8fab5fff47010adc19d311043d81c3c6a15e7b6f",
+            "sha256": "ea673bf7156d87ac43d754839155a1a145aafa481b5de540e04d1f8d3ec008d3",
+            "bytes": 36940
+          },
+          "dev": {
+            "blob": "8fab5fff47010adc19d311043d81c3c6a15e7b6f",
+            "sha256": "ea673bf7156d87ac43d754839155a1a145aafa481b5de540e04d1f8d3ec008d3",
+            "bytes": 36940
+          },
+          "candidate": {
+            "blob": "3d47653b9a92f6310cdbc2e92510826f675fb7fa",
+            "sha256": "e2376d9653136bff41d6f4c53344b166401cd4d4e9b8d1e37219ef96fb9a0e53",
+            "bytes": 37561
+          },
+          "devUnchangedSinceRound27": true
+        }
+      ],
+      "authoredPatchSha256": "f561f138761df99b866bd5e0c91303797f8f247563c2f3f7377e0d68cabd5301",
+      "patchCheck": {
+        "command": "git read-tree DEV; git apply --cached --check candidate.patch (temporary GIT_INDEX_FILE)",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "excludes": "Generated HTML, ZIP, gallery, experiment artifacts; not a complete merge check."
+      }
+    },
+    {
+      "id": "task-flow-tests",
+      "branch": "codex/lab-task-flow-tests",
+      "head": "7b2a7ba3c976fc132379c79fa4182dbcdb6b0671",
+      "unchangedSinceRound27": false,
+      "mergeBaseWithDev": "e837dc4cb83042d2b6c596e039692e25ec62c2da",
+      "devOnlyCommits": 106,
+      "headOnlyCommits": 3
+    },
+    {
+      "id": "kconfig-imply-reading",
+      "branch": "codex/lab-kconfig-imply-reading",
+      "head": "6cf0b8138ced63f7a991d4c2c621e3f3dd2cce2f",
+      "unchangedSinceRound27": true,
+      "mergeBaseWithDev": "d5d979493bba650b3995836afd379cd249f2d0dd",
+      "devOnlyCommits": 82,
+      "headOnlyCommits": 2
+    },
+    {
+      "id": "task-occurrences",
+      "branch": "codex/lab-task-occurrences",
+      "head": "caffb4aabb13b04a77bb9475866ad65465d79b20",
+      "unchangedSinceRound27": true,
+      "mergeBaseWithDev": "10b4dd5c5f2264baa315ee65a9b4cc23c13ea5f0",
+      "devOnlyCommits": 120,
+      "headOnlyCommits": 1
+    },
+    {
+      "id": "source-question-tour",
+      "branch": "codex/lab-source-question-tour",
+      "head": "94d6a4d05bcc5c6bc86704692eef48b73fd53c25",
+      "unchangedSinceRound27": true,
+      "mergeBaseWithDev": "82c7e0f089a02a4d514714adf37dc2061682da5f",
+      "devOnlyCommits": 283,
+      "headOnlyCommits": 1
+    }
+  ]
+}
