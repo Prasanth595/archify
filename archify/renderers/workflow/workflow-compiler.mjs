@@ -4485,14 +4485,15 @@ function workflowEdgeLabelPoint(edge, points) {
   // inside one lane, off the lane dividers, before giving up on it.
   const width = workflowLabelWidth(edge.label, typography);
   const clearOfNodes = ([lx, ly]) => {
-    const rect = { x: lx - width / 2, y: ly - 10, width, height: 14 };
+    const rect = { x: lx - width / 2, y: ly - typography.edgeAscent, width, height: typography.edgeHeight };
     return ![...nodes.values()].some((node) => rectsOverlap(rect, node, -2));
   };
   const insideOneLane = ([lx, ly]) => lx - width / 2 >= layout.laneX + 4
     && lx + width / 2 <= layout.laneX + layout.laneW - 4
     && asArray(workflow.lanes).some((lane, index) => {
     const top = laneTop(lane.id);
-    return ly - 10 >= top + 4 && ly + 4 <= top + laneHeight(index) - 4;
+    return ly - typography.edgeAscent >= top + 4
+      && ly - typography.edgeAscent + typography.edgeHeight <= top + laneHeight(index) - 4;
   });
   const preferred = pointOn(segments[0]?.index ?? 0);
   if (!edge.label || !segments[0]?.horizontal || segments[0].length >= width + 8

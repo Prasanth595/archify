@@ -13,6 +13,8 @@ All notable changes are documented here. Format loosely follows [Keep a Changelo
 
 ### Fixed
 
+- **Workflow 缩放标签的选位边界（#649）。** 自动选择折线路段时，节点避让与泳道范围使用实际缩放后的标签蒙版高度；保留默认倍率和作者指定的路线。
+
 - **Workflow 字体缩放的来源上下文容量检查（#649）。** 自动高度与容量校验共同考虑已验证的源码信息、品牌和标签；修复探测保留来源及品牌上下文，并通过公开 CLI 重放验证。
 
 - **WebP brand container bounds (#602).** Reject missing or out-of-bounds image chunks, including incomplete animation frames, before reporting capture or pinned validation success. Preserve valid lossy, lossless, extended and animated containers and original-byte digests.

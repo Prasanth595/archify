@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { parseFragment } from 'parse5';
 import { createHash } from 'node:crypto';
 import { compileWorkflow } from '../archify/renderers/workflow/workflow-compiler.mjs';
 import { typographyFixture, runWorkflow, svgFacts, sourceTypographyFixture, sourceEvidencePayload } from './helpers/workflow-typography.mjs';
@@ -451,4 +452,44 @@ test('scaled layout preserves upstream phase chips, muted edge labels and reusab
   assert.ok(scaled.receipt.nodes[0].width >= base.receipt.nodes[0].width);
   doc.meta.typography_scale = 1;
   assert.equal(compile().svg, base.svg);
+});
+
+
+test('scaled edge labels select a fitting segment using their visible height', t => {
+  for (const scale of [1, 2]) {
+    const document = typographyFixture('label-boundary');
+    document.meta.typography_scale = scale;
+    if (scale === 1) {
+      // 同一正交路线在默认节点中心高度下的对照；显式坐标仍由作者负责。
+      document.edges[0].via = [[300, 226], [300, 294], [400, 294], [400, 226]];
+    }
+    const original = structuredClone(document);
+    const validation = runWorkflow(t, document, 'validate');
+    assert.equal(validation.status, 0, JSON.stringify(validation.receipt));
+    const rendered = runWorkflow(t, document);
+    assert.equal(rendered.status, 0, rendered.stderr);
+    const facts = svgFacts(rendered.svg);
+    assert.deepEqual(facts.routes[0].points.slice(1, -1), document.edges[0].via,
+      '改标签所在路段不能改写作者指定的路线');
+    const attr = (node, key) => node.attrs?.find(entry => entry.name === key)?.value;
+    function find(node, predicate) {
+      if (predicate(node)) return node;
+      for (const child of node.childNodes || []) {
+        const matched = find(child, predicate);
+        if (matched) return matched;
+      }
+    }
+    const edge = find(parseFragment(rendered.svg), node => attr(node, 'data-edge-id') === 'e' && node.tagName === 'g');
+    const mask = find(edge, node => node.tagName === 'rect' && attr(node, 'class') === 'c-mask');
+    assert.ok(mask, '检查实际绘制的标签蒙版，而不是只检查推测的位置');
+    const rect = Object.fromEntries(['x', 'y', 'width', 'height'].map(key => [key, Number(attr(mask, key))]));
+    assert.equal(rect.height, scale === 1 ? 14 : 28);
+    for (const node of facts.nodes) {
+      const overlap = rect.x < node.x + node.width && rect.x + rect.width > node.x
+        && rect.y < node.y + node.height && rect.y + rect.height > node.y;
+      assert.equal(overlap, false, `标签实际矩形不能覆盖节点 ${node.id}`);
+    }
+    assert.equal(fs.readFileSync(rendered.input, 'utf8'), JSON.stringify(document));
+    assert.deepEqual(document, original, '验证与绘制不能改写作者输入');
+  }
 });
