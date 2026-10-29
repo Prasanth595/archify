@@ -6,7 +6,6 @@ export const browserTestFiles = [
   'reader-readability-maintained-browser.test.mjs',
   'reader-layout-browser.test.mjs',
   'reader-layout-settle-browser.test.mjs',
-  'reader-disclosure-browser.test.mjs',
   'reader-cards-overflow-browser.test.mjs',
   'joint-layout-browser.test.mjs',
   'sequence-header-clearance.test.mjs',
@@ -51,4 +50,5 @@ export const browserTestFiles = [
   'story-browser.test.mjs',
   // Benchmark observers and real export integration require this explicit Chrome lane.
   'diagram-quality-e2e-browser.test.mjs',
+  'reader-disclosure-browser.test.mjs',
 ];

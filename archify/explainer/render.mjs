@@ -143,6 +143,7 @@ function portableChecks(checks) {
 // path: the reader sees no author directories. `patch explainer` resolves them against the page again.
 function portableBundle(bundle, directory) {
   if (!directory) {
+    if (!('inputPath' in bundle)) return bundle;
     const page = {...bundle};
     delete page.inputPath;
     page.digest = hash(JSON.stringify({...page,digest:undefined}));
