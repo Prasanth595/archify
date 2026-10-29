@@ -1329,6 +1329,56 @@ test('preview: Explainer rebuilds for image dependencies and preserves the last 
   }
 });
 
+test('preview: Explainer rebuilds declared CSV data and preserves the last good artifact through invalid edits', { timeout: 60000 }, async (t) => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-preview-explainer-data-'));
+  t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
+  const input = path.join(tmp, 'latency.explainer.json');
+  const data = path.join(tmp, 'latency.csv');
+  const output = path.join(tmp, 'latency.html');
+  const document = {
+    schema_version: 1,
+    diagram_type: 'explainer',
+    meta: { id: 'preview-data', title: 'Preview data dependency' },
+    answer: { summary: 'The chart is rebuilt from its declared CSV input.' },
+    panels: [{
+      id: 'latency',
+      title: 'Latency',
+      blocks: [{
+        id: 'latency-chart',
+        type: 'chart',
+        title: 'P99 latency',
+        data: { path: 'latency.csv', kind: 'line', x: 'day', y: ['p99'], unit: 'ms' },
+      }],
+    }],
+    sources: [],
+  };
+  fs.writeFileSync(input, JSON.stringify(document));
+  fs.writeFileSync(data, 'day,p99\nMon,120\nTue,180\n');
+  const preview = await startPreview({ type: 'explainer', input, output, open: false, debounceMs: 10, pollMs: 80 });
+  try {
+    await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 1, 'Explainer did not publish the initial CSV artifact');
+    const first = sha256(output);
+    const firstArtifact = await (await fetch(new URL('/artifact.html', preview.url))).text();
+    assert.match(firstArtifact, /180/);
+
+    fs.writeFileSync(data, 'day,p99\nMon,120\nTue,260\n');
+    await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 2, 'CSV edit did not rebuild the Explainer preview');
+    const second = sha256(output);
+    assert.notEqual(second, first, 'a CSV edit must publish a new artifact');
+    assert.match(await (await fetch(new URL('/artifact.html', preview.url))).text(), /260/);
+
+    fs.writeFileSync(data, 'day,p99\nMon\n');
+    await waitForState(preview.url, (state) => state.status === 'needs-fix' && state.revision === 2, 'invalid CSV did not preserve the last verified artifact');
+    assert.equal(sha256(output), second, 'an invalid CSV must not replace the last verified artifact');
+
+    fs.writeFileSync(data, 'day,p99\nMon,120\nTue,220\n');
+    await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 3, 'repaired CSV did not publish a recovered artifact');
+    assert.match(await (await fetch(new URL('/artifact.html', preview.url))).text(), /220/);
+  } finally {
+    await preview.stop();
+  }
+});
+
 test('preview: follows a regular-file input symlink when the platform permits it', { timeout: 30000 }, async (t) => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-preview-input-symlink-'));
   t.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
