@@ -24,3 +24,8 @@
 ## 来源与许可
 
 沿用已核验的同一固定源码版本：[fast-check MIT](https://github.com/dubzzz/fast-check/blob/0207dd291888c8cae224b254230ad01b315df296/LICENSE)、[marimo Apache-2.0](https://github.com/marimo-team/marimo/blob/23162ed14182afdcec9272c022870e710e41f645/LICENSE)。本笔记仅链接和概述来源，没有复制项目源码或截图；讨论内容不假定自动继承仓库代码许可。前序归档分别见[counterexample-reading](counterexample-reading.md)与[reactive-reading](reactive-reading.md)。
+
+
+## 第 59 批：浏览器构建实际执行
+
+[配置与原生报告对照](fast-check-config-native-round59.md)补充三组固定运行：默认收缩、全局关闭、局部覆盖。原生报告均给出 endOnFailure:true 重放提示，但实际配置分别为 false/true/false；默认六项尝试中含失败后跳过，numSkips 仍为 0。保留来源、原始报告、复跑及两张实拍。这是 4.10.2 浏览器构建的原创合成 property，不是原 3.15.1 讨论重演或手工事件序列的执行，仍没有新增树图的收益证据。

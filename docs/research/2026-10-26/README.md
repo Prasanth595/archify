@@ -819,3 +819,8 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 58 批 · 保存差异报告的范围
 
 [diffoscope 历史报告实拍](scouts/diffoscope-saved-report-round58.md)：相同 ZIP 清单行与成员内容变化同时存在，SQLite 差异还有四对省略标记。完整 HTML、三图、五份来源许可与核验已归档；原生锚点可引用成员和转换层。未运行原固定 tar 对，也不把旧版报告当成当前能力。暂不新增图或 importer，只推研究分支，无新 PR。
+
+
+## 第 59 批 · 实际配置与重放提示
+
+[fast-check 原生对照](scouts/fast-check-config-native-round59.md)：三组固定运行证实报告中的 endOnFailure:true 不是当次配置；六项尝试也不等于 numShrinks=2 或 numSkips=0。两次末轮复跑一致，原始数据、两图和八份来源许可归档。未安装依赖，暂不加树图/importer，只推研究分支，无新 PR。

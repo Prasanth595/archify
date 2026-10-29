@@ -1,0 +1,33 @@
+Saved run 2
+Saved run 3
+[p1 "fast-check configuration probe" | space "Archify research 20261026"(3): 1 managed, 0 untracked — p1* "fast-check configuration probe"]
+root
+  heading
+    text "实际配置与重放提示是两个范围"
+  paragraph
+    text "固定 seed 42；integer 0–20；跳过 0，其余要求 n < 5。下方是 fast-check 完整报告的纯文本视图（仅去除 ANSI 颜色码）；页面为研究驱动器。"
+  paragraph
+    text "Complete · 4.10.2"
+  container
+    container
+      heading
+        text "default"
+      paragraph
+        text "实际 endOnFailure=false；numShrinks=2；numSkips=0"
+      text "Property failed after 1 tests { seed: 42, path: "0:1:0", endOnFailure: true } Counterexample: [5] Shrunk 2 time(s) Execution summary: × [20] . ! [0] . × [10] . . × [5] . . . √ [3] . . . √ [4]"
+    container
+      heading
+        text "global-stop"
+      paragraph
+        text "实际 endOnFailure=true；numShrinks=0；numSkips=0"
+      text "Property failed after 1 tests { seed: 42, path: "0", endOnFailure: true } Counterexample: [20] Shrunk 0 time(s) Execution summary: × [20]"
+    container
+      heading
+        text "local-override"
+      paragraph
+        text "实际 endOnFailure=false；numShrinks=2；numSkips=0"
+      text "Property failed after 1 tests { seed: 42, path: "0:1:0", endOnFailure: true } Counterexample: [5] Shrunk 2 time(s) Execution summary: × [20] . ! [0] . × [10] . . × [5] . . . √ [3] . . . √ [4]"
+  container [ref=1532]
+    text "完整记录（函数和 Error 使用说明性序列化）"
+
+
