@@ -16508,6 +16508,31 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   };
   var stableVersion = function (value) { return typeof value === &#39;string&#39; &amp;&amp; /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(value); };
   var exactKeys = function (value, keys) { return value &amp;&amp; typeof value === &#39;object&#39; &amp;&amp; !Array.isArray(value) &amp;&amp; Object.keys(value).sort().join(&#39;\0&#39;) === keys.slice().sort().join(&#39;\0&#39;); };
+  var readBoundedManifestText = function (response) {
+    var limit = 65536;
+    var declaredLength = Number(response.headers.get(&#39;content-length&#39;));
+    if (Number.isFinite(declaredLength) &amp;&amp; declaredLength &gt; limit) return Promise.reject(new Error(&#39;manifest too large&#39;));
+    if (!response.body || !response.body.getReader) return Promise.reject(new Error(&#39;manifest body unavailable&#39;));
+    var reader = response.body.getReader();
+    var decoder = new TextDecoder();
+    var text = &#39;&#39;;
+    var read = function () {
+      return reader.read().then(function (chunk) {
+        if (chunk.done) {
+          text += decoder.decode();
+          if (text.length &gt; limit) throw new Error(&#39;manifest too large&#39;);
+          return text;
+        }
+        text += decoder.decode(chunk.value, { stream: true });
+        if (text.length &gt; limit) {
+          reader.cancel();
+          throw new Error(&#39;manifest too large&#39;);
+        }
+        return read();
+      });
+    };
+    return read();
+  };
   var validManifest = function (value) {
     if (!exactKeys(value, [&#39;schemaVersion&#39;, &#39;skillId&#39;, &#39;channel&#39;, &#39;version&#39;, &#39;publishedAt&#39;, &#39;source&#39;, &#39;artifact&#39;, &#39;summary&#39;, &#39;releaseNotes&#39;, &#39;severity&#39;])
       || value.schemaVersion !== 1 || value.skillId !== &#39;archify&#39; || value.channel !== &#39;stable&#39; || !stableVersion(value.version)
@@ -16548,9 +16573,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 5000);
     fetch(update.manifestUrl, { method: &#39;GET&#39;, credentials: &#39;omit&#39;, cache: &#39;no-store&#39;, redirect: &#39;error&#39;, signal: controller.signal })
-      .then(function (response) { if (!response.ok) throw new Error(&#39;manifest unavailable&#39;); return response.text(); })
+      .then(function (response) { if (!response.ok) throw new Error(&#39;manifest unavailable&#39;); return readBoundedManifestText(response); })
       .then(function (text) {
-        if (text.length &gt; 65536) throw new Error(&#39;manifest too large&#39;);
         var manifest = validManifest(JSON.parse(text));
         if (!manifest) throw new Error(&#39;invalid manifest&#39;);
         if (compareStableVersion(artifact.generatorVersion, manifest.version) &gt;= 0) {
@@ -32359,6 +32383,31 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   };
   var stableVersion = function (value) { return typeof value === &#39;string&#39; &amp;&amp; /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(value); };
   var exactKeys = function (value, keys) { return value &amp;&amp; typeof value === &#39;object&#39; &amp;&amp; !Array.isArray(value) &amp;&amp; Object.keys(value).sort().join(&#39;\0&#39;) === keys.slice().sort().join(&#39;\0&#39;); };
+  var readBoundedManifestText = function (response) {
+    var limit = 65536;
+    var declaredLength = Number(response.headers.get(&#39;content-length&#39;));
+    if (Number.isFinite(declaredLength) &amp;&amp; declaredLength &gt; limit) return Promise.reject(new Error(&#39;manifest too large&#39;));
+    if (!response.body || !response.body.getReader) return Promise.reject(new Error(&#39;manifest body unavailable&#39;));
+    var reader = response.body.getReader();
+    var decoder = new TextDecoder();
+    var text = &#39;&#39;;
+    var read = function () {
+      return reader.read().then(function (chunk) {
+        if (chunk.done) {
+          text += decoder.decode();
+          if (text.length &gt; limit) throw new Error(&#39;manifest too large&#39;);
+          return text;
+        }
+        text += decoder.decode(chunk.value, { stream: true });
+        if (text.length &gt; limit) {
+          reader.cancel();
+          throw new Error(&#39;manifest too large&#39;);
+        }
+        return read();
+      });
+    };
+    return read();
+  };
   var validManifest = function (value) {
     if (!exactKeys(value, [&#39;schemaVersion&#39;, &#39;skillId&#39;, &#39;channel&#39;, &#39;version&#39;, &#39;publishedAt&#39;, &#39;source&#39;, &#39;artifact&#39;, &#39;summary&#39;, &#39;releaseNotes&#39;, &#39;severity&#39;])
       || value.schemaVersion !== 1 || value.skillId !== &#39;archify&#39; || value.channel !== &#39;stable&#39; || !stableVersion(value.version)
@@ -32399,9 +32448,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     var controller = new AbortController();
     var timeout = setTimeout(function () { controller.abort(); }, 5000);
     fetch(update.manifestUrl, { method: &#39;GET&#39;, credentials: &#39;omit&#39;, cache: &#39;no-store&#39;, redirect: &#39;error&#39;, signal: controller.signal })
-      .then(function (response) { if (!response.ok) throw new Error(&#39;manifest unavailable&#39;); return response.text(); })
+      .then(function (response) { if (!response.ok) throw new Error(&#39;manifest unavailable&#39;); return readBoundedManifestText(response); })
       .then(function (text) {
-        if (text.length &gt; 65536) throw new Error(&#39;manifest too large&#39;);
         var manifest = validManifest(JSON.parse(text));
         if (!manifest) throw new Error(&#39;invalid manifest&#39;);
         if (compareStableVersion(artifact.generatorVersion, manifest.version) &gt;= 0) {
