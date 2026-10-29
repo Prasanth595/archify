@@ -1365,11 +1365,17 @@ test('preview: Explainer rebuilds declared CSV data and preserves the last good 
     await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 2, 'CSV edit did not rebuild the Explainer preview');
     const second = sha256(output);
     assert.notEqual(second, first, 'a CSV edit must publish a new artifact');
-    assert.match(await (await fetch(new URL('/artifact.html', preview.url))).text(), /260/);
+    const secondResponse = await fetch(new URL('/artifact.html', preview.url));
+    assert.equal(secondResponse.status, 200);
+    const secondArtifact = await secondResponse.text();
+    assert.match(secondArtifact, /260/);
 
     fs.writeFileSync(data, 'day,p99\nMon\n');
     await waitForState(preview.url, (state) => state.status === 'needs-fix' && state.revision === 2, 'invalid CSV did not preserve the last verified artifact');
     assert.equal(sha256(output), second, 'an invalid CSV must not replace the last verified artifact');
+    const invalidResponse = await fetch(new URL('/artifact.html', preview.url));
+    assert.equal(invalidResponse.status, 200);
+    assert.equal(await invalidResponse.text(), secondArtifact, 'an invalid CSV must not replace the served last-good artifact');
 
     fs.writeFileSync(data, 'day,p99\nMon,120\nTue,220\n');
     await waitForState(preview.url, (state) => state.status === 'verified' && state.revision === 3, 'repaired CSV did not publish a recovered artifact');
