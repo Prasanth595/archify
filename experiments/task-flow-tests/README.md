@@ -74,3 +74,7 @@ first draft's `at` misuse, five references validate and the out-of-range control
 fails. Native HTML and actual screenshots are archived; historical tests remain
 unexecuted, and the original Archify artifact is unchanged. This does not
 retroactively turn the earlier front-end fixture into a CLI-generated page.
+
+[Round 65: prompted reading probe](reading-probe-round65/README.md) archives two
+fresh-context readers and their evidence. Both answered the three boundary
+questions; this small, ordered observation does not establish an Archify advantage.
