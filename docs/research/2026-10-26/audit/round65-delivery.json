@@ -1,0 +1,18 @@
+{
+  "candidate": "bb5f42f1a5df7105b1b0617ffb8e63c295f50498",
+  "branch": "codex/lab-task-flow-tests",
+  "firstPush": {
+    "command": "git push origin HEAD:refs/heads/codex/lab-task-flow-tests",
+    "output": "error: RPC failed; HTTP 408 curl 22 The requested URL returned error: 408\nsend-pack: unexpected disconnect while reading sideband packet\nfatal: the remote end hung up unexpectedly\nEverything up-to-date\n",
+    "individualExitCode": "not separately captured; shell continued with rev-parse/status",
+    "conclusion": "ambiguous, remote readback required"
+  },
+  "afterFirstPushReadback": "784a8377210298707357f28ad6ae391c874fe8e1",
+  "retry": {
+    "command": "git push origin HEAD:refs/heads/codex/lab-task-flow-tests",
+    "exitCode": 0,
+    "output": "To https://github.com/tt-a1i/archify.git\n   784a83772..bb5f42f1a  HEAD -> codex/lab-task-flow-tests\n"
+  },
+  "verifiedRemoteHead": "bb5f42f1a5df7105b1b0617ffb8e63c295f50498",
+  "verifiedAt": "2026-10-29T15:06:15.778379+00:00"
+}

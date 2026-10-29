@@ -848,3 +848,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 ## 第 64 批：task-view 原生 CLI 证据
 
 [公开输入与原生流水线](scouts/task-view-native-cli-round64.md)使用官方固定便携二进制，在隔离历史 Git checkout 上实际 validate／open。保留 at 误用的首稿失败，修正后 5 个引用 verified、3 条语言警告；越界对照仍失败。三张最终实拍、原生 HTML、复现脚本和完整许可加入 task-flow-tests 原分支，未新建 PR。原生功能已足够承担引用／diff 阅读，暂不扩通用 importer；历史测试和真人阅读收益仍未验证。
+
+## 第 65 批：同题阅读边界探针
+
+[task-view 与 Archify 的独立阅读记录](scouts/task-view-reading-probe-round65.md)保留同题、各一位 Terra medium 读者的原始回答和三张实拍。两组均能区分路径声明、报告实现与测试执行，原生 notes 和源码已足够回答本题；未证明额外阅读层优势，不扩 importer。完整证据推进既有 task-flow-tests 分支，无新 PR。这个有提示的单 fixture Agent 观察不代表真人效率或两者等效。

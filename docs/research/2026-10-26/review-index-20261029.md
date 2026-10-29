@@ -54,3 +54,7 @@ Kconfig、task-occurrences、source-question-tour 的远程 head 与[第 27 批�
 ## 第 64 批补充：task-view 原生验证
 
 task-flow-tests 现为 `784a8377210298707357f28ad6ae391c874fe8e1`，新增[实际 CLI 对照](scouts/task-view-native-cli-round64.md)。公开格式投影经一次保留首稿的修正后，正常引用与 diff 检查通过，越界对照失败；原生 HTML 与实拍已归档。原 Archify 产物不变，历史测试仍未执行。
+
+## 第 65 批补充：同题阅读边界
+
+task-flow-tests 推进到 `bb5f42f1a5df7105b1b0617ffb8e63c295f50498`，新增[独立阅读证据](scouts/task-view-reading-probe-round65.md)。两位 Agent 各读一种页面，三题均正确；原生 notes／源码已有充分证据，不能据此宣称 Archify 优势或两者等效。保留小 sidecar，未增加产品实现。原始回答、三图、操作记录和方法限制在原分支，无新 PR。
