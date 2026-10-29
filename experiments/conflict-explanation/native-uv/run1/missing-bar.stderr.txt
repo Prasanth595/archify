@@ -1,0 +1,4 @@
+warning: The requested Python version 3.12 is not available; 3.15.0 will be used to build dependencies instead.
+error: No solution found when resolving dependencies
+  cause: Because bar was not found in the provided package locations and all versions of foo depend on bar, we can conclude that all versions of foo cannot be used.
+         And because all versions of root depend on foo and you require root==1, we can conclude that your requirements are unsatisfiable.

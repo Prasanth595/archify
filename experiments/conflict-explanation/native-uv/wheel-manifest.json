@@ -1,0 +1,119 @@
+[
+  {
+    "path": "wheels/base/root-1-py3-none-any.whl",
+    "sha256": "db5fb77ff0425b6d245aeaae5bb36889162fee1fc3617c31902d39ebe10b3f5e",
+    "bytes": 752,
+    "name": "root",
+    "version": "1",
+    "requires_dist": [
+      "foo",
+      "baz"
+    ],
+    "members": [
+      "root-1.dist-info/METADATA",
+      "root-1.dist-info/RECORD",
+      "root-1.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/base/baz-1-py3-none-any.whl",
+    "sha256": "bbf9416dad122421469b875f0a966ccc15f15ab3a0efc81de516c602b395e7db",
+    "bytes": 704,
+    "name": "baz",
+    "version": "1",
+    "requires_dist": [],
+    "members": [
+      "baz-1.dist-info/METADATA",
+      "baz-1.dist-info/RECORD",
+      "baz-1.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/base/foo-1-py3-none-any.whl",
+    "sha256": "2fc3b73684fc9c1aabe95dbfd98e6a3dba9ab8dbcbfde23a937d36b234d201e4",
+    "bytes": 723,
+    "name": "foo",
+    "version": "1",
+    "requires_dist": [
+      "bar"
+    ],
+    "members": [
+      "foo-1.dist-info/METADATA",
+      "foo-1.dist-info/RECORD",
+      "foo-1.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/base/foo-2-py3-none-any.whl",
+    "sha256": "b835a0dacf4246680dc47f8130b5867bd1fb7df18e67f6146d8e2f685973ed60",
+    "bytes": 723,
+    "name": "foo",
+    "version": "2",
+    "requires_dist": [
+      "bar"
+    ],
+    "members": [
+      "foo-2.dist-info/METADATA",
+      "foo-2.dist-info/RECORD",
+      "foo-2.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/base/foo-3-py3-none-any.whl",
+    "sha256": "9d0129cc31d5df852aab6019bd06871b68ef2070a68c64f2121aeffa5b7f4391",
+    "bytes": 723,
+    "name": "foo",
+    "version": "3",
+    "requires_dist": [
+      "bar"
+    ],
+    "members": [
+      "foo-3.dist-info/METADATA",
+      "foo-3.dist-info/RECORD",
+      "foo-3.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/base/foo-4-py3-none-any.whl",
+    "sha256": "8ca50398cb57a79d020f1db4706d694f417dfed333f03c436f2ff388e807f069",
+    "bytes": 723,
+    "name": "foo",
+    "version": "4",
+    "requires_dist": [
+      "bar"
+    ],
+    "members": [
+      "foo-4.dist-info/METADATA",
+      "foo-4.dist-info/RECORD",
+      "foo-4.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/base/foo-5-py3-none-any.whl",
+    "sha256": "9ee4f5484e1103e715cb32f1cd42aae86b1ed756f0f3fd63474b9141bc337440",
+    "bytes": 723,
+    "name": "foo",
+    "version": "5",
+    "requires_dist": [
+      "bar"
+    ],
+    "members": [
+      "foo-5.dist-info/METADATA",
+      "foo-5.dist-info/RECORD",
+      "foo-5.dist-info/WHEEL"
+    ]
+  },
+  {
+    "path": "wheels/bar/bar-1-py3-none-any.whl",
+    "sha256": "884450a725ae5f2116a068c4310cd58c28046e0e82e8123c5c6629bcecd69245",
+    "bytes": 704,
+    "name": "bar",
+    "version": "1",
+    "requires_dist": [],
+    "members": [
+      "bar-1.dist-info/METADATA",
+      "bar-1.dist-info/RECORD",
+      "bar-1.dist-info/WHEEL"
+    ]
+  }
+]

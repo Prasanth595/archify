@@ -1,0 +1,60 @@
+{
+  "checked_at": "2026-10-29T00:21:55.932Z",
+  "uv_tag": {
+    "ref": "refs/tags/0.13.1",
+    "node_id": "REF_kwDOKbIFZbByZWZzL3RhZ3MvMC4xMy4x",
+    "url": "https://api.github.com/repos/astral-sh/uv/git/refs/tags/0.13.1",
+    "object": {
+      "sha": "62faed3351cfee2121b3c28b937b1f4b93233a93",
+      "type": "commit",
+      "url": "https://api.github.com/repos/astral-sh/uv/git/commits/62faed3351cfee2121b3c28b937b1f4b93233a93"
+    }
+  },
+  "pubgrub_current_head": "353134f5a7df2643081652c7af68252c204131e6",
+  "failed_tag_lookup": [
+    {
+      "type": "text",
+      "text": "GitHub API error 404: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/git/tags#get-a-tag\",\"status\":\"404\"}"
+    }
+  ],
+  "queries": [
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20pubgrub&per_page=100",
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": []
+    },
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20pubgrub&per_page=100",
+      "total_count": 0,
+      "incomplete_results": false,
+      "items": []
+    },
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20uv&per_page=100",
+      "total_count": 1,
+      "incomplete_results": false,
+      "items": [
+        {
+          "number": 1012,
+          "title": "[Bug]: Every delivery fails with output/target-changed on Windows 11 24H2+: lstat reports dev 0",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/issues/1012"
+        }
+      ]
+    },
+    {
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20uv&per_page=100",
+      "total_count": 1,
+      "incomplete_results": false,
+      "items": [
+        {
+          "number": 208,
+          "title": "perf: reduce multi-diagram generation latency without weakening quality gates",
+          "state": "open",
+          "html_url": "https://github.com/tt-a1i/archify/pull/208"
+        }
+      ]
+    }
+  ]
+}

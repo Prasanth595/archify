@@ -1,0 +1,7 @@
+{
+  "full_exit": 2,
+  "full_stdout": "experiments/conflict-explanation/native-uv/browser/01-open.log:43: new blank line at EOF.\nexperiments/conflict-explanation/native-uv/browser/02-footer.log:43: new blank line at EOF.\nexperiments/conflict-explanation/native-uv/browser/03-cleanup.log:3: new blank line at EOF.\n",
+  "authored_exit": 0,
+  "excluded": "native-uv/browser/*.log",
+  "reason": "Keep original Ego stdout trailing blank lines"
+}

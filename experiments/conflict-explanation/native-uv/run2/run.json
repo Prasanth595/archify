@@ -1,0 +1,77 @@
+{
+  "uv_version": "uv 0.13.1 (Homebrew 2026-10-14 aarch64-apple-darwin)",
+  "uv_executable_sha256": "cfe5e5695316639f9820e8e57d0732e8a361311c03f1ea1786f4fc879cebf4c5",
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "python_harness": "3.15.0",
+  "environment_keys": [
+    "HOME",
+    "LC_ALL",
+    "PATH",
+    "TMPDIR"
+  ],
+  "script_sha256": "862b719234512e21e3917f1104d20212ff25471358ac8140117f0d0e621dadcb",
+  "cases": [
+    {
+      "name": "missing-bar",
+      "command": [
+        "uv",
+        "pip",
+        "compile",
+        "requirements.in",
+        "--offline",
+        "--no-index",
+        "--no-cache",
+        "--no-python-downloads",
+        "--no-managed-python",
+        "--no-build",
+        "--python-version",
+        "3.15",
+        "--python-platform",
+        "aarch64-apple-darwin",
+        "--config-file",
+        "uv.toml",
+        "--color",
+        "never",
+        "--no-progress",
+        "--find-links",
+        "wheels/base"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.03013141699921107,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4080c5c453f32abd7946cfdf41f46c63cb1f7079ee9e7b33e8cc660a6c749d48"
+    },
+    {
+      "name": "provided-bar",
+      "command": [
+        "uv",
+        "pip",
+        "compile",
+        "requirements.in",
+        "--offline",
+        "--no-index",
+        "--no-cache",
+        "--no-python-downloads",
+        "--no-managed-python",
+        "--no-build",
+        "--python-version",
+        "3.15",
+        "--python-platform",
+        "aarch64-apple-darwin",
+        "--config-file",
+        "uv.toml",
+        "--color",
+        "never",
+        "--no-progress",
+        "--find-links",
+        "wheels/base",
+        "--find-links",
+        "wheels/bar"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.030263916996773332,
+      "stdout_sha256": "75d6e995ce9e944a67a3875ec147d8badc6159466bd3be4225193aa72c89514c",
+      "stderr_sha256": "76844ddedefa1960591289a05365e548f521ed49b4052ed8ac830ad4370125bd"
+    }
+  ]
+}

@@ -70,3 +70,8 @@ Codex agents 参与来源核对、文稿、生成、自动检查、语义审查�
 ## 后续：精确节点链接对照 C
 
 [term-links](term-links/README.md) 保留原 A/B 字节，只将 B 的两个现有包名改成既有节点链接。实际键盘打开与返回已验证，增加292 bytes；详情浮层遮挡和“外部系统”泛化标签仍存在，因此仍是研究样例。旧阶段图片、SHA与成本记录不改绑定。
+
+
+## 第 57 批：uv 本地候选范围实测
+
+[native-uv](native-uv/README.md) 追加 metadata-only wheel 的原生离线求解对照：缺 bar 退出 1，仅补 bar 1 后退出 0，解中保留 baz。两次末轮输出一致，成功日志仅计时不同；保留首轮 Python 版本警告、两张实际页面图片、来源许可和复现脚本。这是 uv 的合成 Python 分发包案例，不是运行上面的 PubGrub Rust fixture，也没有重演 open3d 历史索引。原生报告已经明确包位置范围，暂不新增图或 importer。旧 A/B/C/D 与其验证边界不变。

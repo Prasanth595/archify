@@ -1,0 +1,11 @@
+const task = await taskSpace(3);
+const page = task.page('p1');
+await page.keyboard.press('End');
+await page.waitForFunction(() => scrollY > 0, undefined, { timeout: 5000 });
+const fs = await import('node:fs/promises');
+const here = new URL('.', import.meta.url);
+const state = await page.evaluate(() => ({scrollY,innerHeight,scrollHeight:document.documentElement.scrollHeight,footer:document.querySelector('footer').innerText}));
+await fs.writeFile(new URL('footer.json',here),JSON.stringify(state,null,2)+'\n');
+await page.screenshot({path:new URL('native-output-footer.png',here).pathname});
+console.log(JSON.stringify(state));
+console.log(await page.snapshot());

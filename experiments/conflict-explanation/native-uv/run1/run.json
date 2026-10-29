@@ -1,0 +1,75 @@
+{
+  "uv_version": "uv 0.13.1 (Homebrew 2026-10-14 aarch64-apple-darwin)",
+  "uv_executable_sha256": "cfe5e5695316639f9820e8e57d0732e8a361311c03f1ea1786f4fc879cebf4c5",
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "python_harness": "3.15.0",
+  "environment_keys": [
+    "HOME",
+    "LC_ALL",
+    "PATH",
+    "TMPDIR"
+  ],
+  "script_sha256": "0ae2be0cc1b42dcfc4d2dfc1fffde7e4bb8bafae7323cbfdfacbe82c612cde8e",
+  "cases": [
+    {
+      "name": "missing-bar",
+      "command": [
+        "uv",
+        "pip",
+        "compile",
+        "requirements.in",
+        "--offline",
+        "--no-index",
+        "--no-cache",
+        "--no-python-downloads",
+        "--no-managed-python",
+        "--python-version",
+        "3.12",
+        "--python-platform",
+        "aarch64-apple-darwin",
+        "--config-file",
+        "uv.toml",
+        "--color",
+        "never",
+        "--no-progress",
+        "--find-links",
+        "wheels/base"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.5609579589945497,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "5907da0087fdbc3727da66ec48c1d7759b30554f05409b44ef2ffa49f71d5758"
+    },
+    {
+      "name": "provided-bar",
+      "command": [
+        "uv",
+        "pip",
+        "compile",
+        "requirements.in",
+        "--offline",
+        "--no-index",
+        "--no-cache",
+        "--no-python-downloads",
+        "--no-managed-python",
+        "--python-version",
+        "3.12",
+        "--python-platform",
+        "aarch64-apple-darwin",
+        "--config-file",
+        "uv.toml",
+        "--color",
+        "never",
+        "--no-progress",
+        "--find-links",
+        "wheels/base",
+        "--find-links",
+        "wheels/bar"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.18755654200504068,
+      "stdout_sha256": "00f8281a45570506ac7c2f73ea65666fb1d999ea8c122ad67dac970d11e74725",
+      "stderr_sha256": "a6b450af78144e0ffc0e17974d4cff3f6abca4845658d0dbf26ce1311492c0f0"
+    }
+  ]
+}
