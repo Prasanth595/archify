@@ -4,12 +4,7 @@
   "meta": {
     "title": "Sample Web App",
     "output": "web-app-rendered.html",
-    "quality_profile": "showcase",
-    "repository": {
-      "url": "https://github.com/tt-a1i/archify.git",
-      "provider": "github",
-      "revision": "fca0dc2f9164399fdb378f9d305a55e73223a2fb"
-    }
+    "quality_profile": "showcase"
   },
   "components": [
     { "id": "users", "type": "external", "label": "Users", "sublabel": "Browser / Mobile", "pos": [40, 300], "size": [120, 60] },
@@ -30,7 +25,7 @@
   "connections": [
     { "id": "users-to-cdn", "from": "users", "to": "cdn", "label": "HTTPS", "variant": "emphasis" },
     { "id": "jwt-verification", "from": "auth", "to": "api", "label": "verify JWT", "variant": "security", "fromSide": "right", "toSide": "top", "via": [[620, 142], [620, 246], [735, 246]] },
-    { "id": "cdn-to-lb", "from": "cdn", "to": "lb", "sources": [{ "path": "archify/examples/web-app.architecture.json", "line": 28, "label": "Authored connection" }] },
+    { "id": "cdn-to-lb", "from": "cdn", "to": "lb" },
     { "id": "static-assets", "from": "cdn", "to": "s3", "label": "static", "variant": "dashed", "fromSide": "bottom", "toSide": "top", "labelDy": 58 },
     { "id": "lb-to-api", "from": "lb", "to": "api" },
     { "id": "cache-read-through", "from": "api", "to": "cache", "label": "read-through", "fromSide": "top", "toSide": "bottom", "labelDy": -68 },
