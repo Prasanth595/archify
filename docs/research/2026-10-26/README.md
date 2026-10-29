@@ -840,3 +840,7 @@ CUE 的来源路径不确定性已通过只读文件身份检查排除：macOS �
 用户明确要求继续后恢复推进，远程核对为 335 个 head、dev5ec。[Temporal 事件历史](scouts/temporal-history-state-round62.md)存在真实状态误读问题，但公开 fixture 没有重试，当前状态需要 history 之外的独立数据；暂不建立通用导入器。[Twoslash](scouts/twoslash-reading-round62.md)已在旧研究出现，不计新发现；原生查询／诊断已有完整示例，尚无真实读者阻塞支持新增 token hover。两项均未通过产品实施门槛，本批不新建实验分支或 PR。
 
 [归档证据](audit/round62-reading-candidates/README.md)保存 15 份完整固定源码／样例／许可与有界排重结果。协调者复查修正了 Temporal PR 搜索的零命中说法：实际有已关闭 #1102，未进行完整审阅。静态核对与真实运行区分；本批未安装、运行上游工具、生成截图或重跑产品测试，目标继续保持活动。
+
+## 第 63 批：用新作者产物补齐既有修复的验证
+
+[SQLite 键盘迁移验证](scouts/sqlite-keyboard-transfer-round63.md)先排重 336 个远程 head，复用新增 Explainer reading laboratory 的完整页面。固定 dev5ec 的 28 项诊断，在仅换入既有 checker 后四种视图均为 43/43、55 步、零诊断；真实 Tab 陷阱仍失败。两张实际键盘操作截图、固定 HTML 和完整结果加入原 keyboard-traversal 分支，未新建 PR、重写页面或添加产品代码。来源实验旧失败不回填，临时组合验证不等于合并、打包或全面可访问性验收。

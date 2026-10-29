@@ -46,3 +46,7 @@ Kconfig、task-occurrences、source-question-tour 的远程 head 与[第 27 批�
 三份手写补丁静态检查、Git blob／文件哈希、七个 head、文档链接和快照一致性已核对。没有新增产品行为，依照 CONTRIBUTING 的文档证据范围，没有重跑 renderer、浏览器、完整测试、CI 或 ZIP；没有生成新图片。既有真实图片、HTML、可复现示例与上游署名均留在各实验分支。
 
 初次定位 task-view 补充时尝试 native-comparison/README.md，Git 明确返回不存在；随后依实际 README 使用 upstream-frontend/README.md，未把失败定位当作缺少对照证据。
+
+## 第 63 批补充：键盘候选增加新页面证据
+
+上文第 60 批身份与结果保持冻结。键盘分支现推进到 `5e1320b202eb7052411805590ac73a15fad741dc`，产品 checker 与 ZIP 没有变化；[SQLite 新作者产物迁移验证](scouts/sqlite-keyboard-transfer-round63.md)在固定 dev5ec 临时运行时中仅换入既有 checker，四态 43/43、零诊断，真实 Tab trap 仍失败。完整 HTML、两张键盘操作实拍与正负例结果已入原分支；仍不代表完整合并、打包或全面可访问性验收。

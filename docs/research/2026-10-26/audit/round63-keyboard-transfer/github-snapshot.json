@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-29T14:16:31.452Z",
+  "remoteHeadsFile": "remote-heads.tsv",
+  "newBranch": {
+    "ref": "codex/explainer-reading-lab",
+    "sha": "0f36a3a9af85f87c694b801f445cf9ae8750e8e0",
+    "compareUrl": "https://api.github.com/repos/tt-a1i/archify/compare/5ecbd1bfdbf83ea747072112493c940e707569cb...0f36a3a9af85f87c694b801f445cf9ae8750e8e0",
+    "ahead": 3,
+    "behind": 0,
+    "base": "5ecbd1bfdbf83ea747072112493c940e707569cb",
+    "mergeBase": "5ecbd1bfdbf83ea747072112493c940e707569cb",
+    "commits": [
+      {
+        "sha": "553bf9411e95aa7d549bd8635179bf925ce48bcd",
+        "message": "fix(explainer): keep qualifications beside the claims they explain"
+      },
+      {
+        "sha": "71369790255a992dfddf2d5c49381e94c6923c17",
+        "message": "build: refresh skill archive for explainer writing fix"
+      },
+      {
+        "sha": "0f36a3a9af85f87c694b801f445cf9ae8750e8e0",
+        "message": "experiment(explainer): compare source-backed SQLite and singleflight reading paths"
+      }
+    ],
+    "authoredProductFiles": [
+      {
+        "path": "archify/explainer/writing.mjs",
+        "patch": "@@ -3,8 +3,6 @@\n  * locale sets the sentence-limit fallback; bilingual phrase rules always apply.\n  */\n const RULES = [\n-  {id:'qualification', pattern:/示例|本例|不代表|未实测|仅供参考|\\billustrative\\b|\\bnot measured\\b/giu,\n-    reason:'把限定条件写进 scope 或来源', example:'@answer scope=\"适用于当前请求路径\"', fix:'把限定条件写进 scope 或来源，正文直接解释判断和原因。'},\n   {id: 'light-verb', pattern: /进行(?![中时])\\p{Script=Han}{2}|(?:加以|予以|做出|作出)\\p{Script=Han}{2}|\\b(?:perform an analysis of|carry out an investigation of|make a decision|give consideration to|conduct an? (?:review|investigation|analysis) of)\\b/giu,\n     reason: 'A light-verb construction can obscure the action.', example: '进行检查 → 检查；做出决定 → 决定; make a decision → decide', fix: 'Use the direct action verb where it preserves the meaning; name who performs the action.'},\n   {id: 'cliche', pattern: /赋能|抓手|全方位|多维度|深度融合|至关重要|不可或缺|一站式|底层逻辑|\\b(?:at the end of the day|in today[’']s fast-paced world|unlock the full potential|game[- ]changer|cutting[- ]edge|seamless(?:ly)?|delve into)\\b/giu,"
+      },
+      {
+        "path": "archify/references/explainer-authoring.md",
+        "patch": "@@ -91,7 +91,7 @@ Write for a reader who will act on the page and may check it. Use the user's lan\n - Cover what the reader needs to act on the answer: the mechanism behind the conclusion, how to check it, and the cases where it does not hold. The next question a careful reader would ask gets a panel, a table row or a line in scope; a fact the reader could get wrong without it is not optional.\n - Each panel takes one question and each sentence makes one claim. A claim a table or diagram already shows is not restated; the text adds its reason or exception.\n - Keep one term per thing across the title, panels, diagram labels and table headers, and prefer the reader's own term. The page links a name in the text to the node with that label, so a reader can point at it in the diagram.\n-- Give results with their evidence: a number with its unit, a file position, a source. When a value is unknown or estimated, say so in scope.\n+- Give results with their evidence: a number with its unit, a file position, a source. Keep page-wide conditions in scope. Put a local assumption, exception or uncertainty next to the claim, chart or example it qualifies; do not move it away just to shorten the prose. Label illustrative or unmeasured values where the reader encounters them.\n - Cite a `@source` for each claim the reader cannot check alone: protocol details, thresholds, benchmark figures, API behaviour. A rule of thumb without a source is labelled as one, or left out.\n - Recompute every derived number before delivery and show the arithmetic once: “990 of 1000 requests at 80 ms → P99 = 80 ms; 11 slow → P99 = 600 ms.” Totals in tables add up.\n - Phrase an action as an imperative with its trigger in front: “If the migration reports a schema mismatch, roll it back before retrying.”\n@@ -269,7 +269,7 @@ After a pass, reply in two or three lines: the conclusion, then a Markdown link\n \n Add `--repo-root <path>` when the draft uses `@code`. Finalize validates, atomically delivers and checks the HTML; it does not launch a browser, and its receipt records the browser gate as not run. A failure names the line, component, reason and a repair example; fix the draft and rerun to the same output path.\n \n-Writing warnings apply the [Writing](#writing) rules: sentences over 50 Chinese units or 28 English words, paragraphs over four sentences or 120 units, chained “的”, light verbs, set phrases, openers and sign-offs, unbounded quantities, “以上/以下/以内” after a number, long English words with a common equivalent, qualifiers such as “示例”, “未实测” or “illustrative” outside scope, a mostly bold conclusion and a scope over 50 units. Each warning names the matched text and a repair; fix it when the repair keeps the meaning. `--writing warn|strict|off` sets the severity.\n+Writing warnings apply the [Writing](#writing) rules: sentences over 50 Chinese units or 28 English words, paragraphs over four sentences or 120 units, chained “的”, light verbs, set phrases, openers and sign-offs, unbounded quantities, “以上/以下/以内” after a number, long English words with a common equivalent, a mostly bold conclusion and a scope over 50 units. Each warning names the matched text and a repair; fix it when the repair keeps the meaning. `--writing warn|strict|off` sets the severity.\n \n ## Panel replacement\n "
+      },
+      {
+        "path": "test/explainer-validation.test.mjs",
+        "patch": "@@ -81,9 +81,19 @@ test('source links resolve forward IDs and code requires a repository location',\n  const d=base();blocks(d)[0].text='Read [facts](source:evidence) and [](source:evidence).';assert.equal(validateExplainer(d).ok,true);\n  blocks(d)[0].text='[](source:missing)';check(d,'unresolved-reference');blocks(d)[0].text='Plain.';blocks(d).push({id:'code',type:'code',source:'evidence'});check(d,'code-source-kind');\n });\n-test('answer accepts at most four reasons and qualifier checks exclude scope and sources',()=>{\n+test('answer accepts four reasons and local qualifications remain valid in strict writing mode',()=>{\n  const d=base();d.answer.reasons=['Lower latency','Local transactions'];d.answer.scope='示例，未实测，仅供参考 [5 ms](typical:illustrative, not measured)';d.sources[0].title='illustrative, not measured';\n  assert.deepEqual(validateExplainer(d).diagnostics,[]);\n- for(const field of ['summary','reasons','body']){const changed=structuredClone(d);if(field==='summary')changed.answer.summary='示例判断';if(field==='reasons')changed.answer.reasons=['本例适用'];if(field==='body')blocks(changed)[0].text='Illustrative, not measured.';const issues=validateExplainer(changed).diagnostics.filter(d=>d.code==='explainer/writing-qualification');assert.ok(issues.length,field);assert.ok(JSON.stringify(issues).includes('把限定条件写进 scope 或来源'));}\n+ for(const field of ['summary','reasons','body']){\n+   const changed=structuredClone(d);\n+   const text=field==='body'?'The counts are illustrative, not measured.':'示例中的请求共用一次调用，不代表结果会被缓存。';\n+   if(field==='summary')changed.answer.summary=text;\n+   if(field==='reasons')changed.answer.reasons=[text];\n+   if(field==='body')blocks(changed)[0].text=text;\n+   const result=validateExplainer(changed,{writingMode:'strict'});\n+   assert.equal(result.ok,true,JSON.stringify(result.diagnostics));\n+   assert.deepEqual(result.diagnostics,[]);\n+ }\n+\n  d.answer.reasons=Array(5).fill('Reason');check(d,'schema-maxItems');\n });"
+      },
+      {
+        "path": "test/explainer-writing.test.mjs",
+        "patch": "@@ -103,3 +103,17 @@ test('writing: Chinese and English controlled-language hints stay precise', () =\n   assert.deepEqual(rules('In summary, this cutting-edge design is seamless.'), ['filler', 'cliche', 'cliche']);\n   assert.deepEqual(lintExplainerWriting(['任务进行中。', '目的的确清楚。', '重试超过 3 次。', '服务以下游为准。', 'Use the cache before the database.'].map(text => entry(text))), []);\n });\n+\n+\n+test('writing: local uncertainty and examples survive strict mode without disabling actionable hints', () => {\n+  const qualifications = [\n+    '示例中的 3 个请求共用一次调用，不代表结果会被缓存。',\n+    '图中的耗时未实测；箭头只表示调用顺序。',\n+    'The counts are illustrative, not measured.',\n+    'The request count is not measured; check traces before choosing a limit.',\n+  ];\n+  assert.deepEqual(lintExplainerWriting(qualifications.map(text => entry(text)), {mode: 'strict'}), []);\n+  const mixed = lintExplainerWriting([entry('本例未实测。很多用户进行分析。')], {mode: 'strict'});\n+  assert.deepEqual(mixed.map(d => d.evidence.rule), ['vague-quantity', 'light-verb']);\n+  assert.ok(mixed.every(d => d.severity === 'error'));\n+});"
+      }
+    ]
+  },
+  "existingPr": {
+    "url": "https://github.com/tt-a1i/archify/pull/1124",
+    "state": "open",
+    "draft": true,
+    "title": "fix(qa): finish bounded keyboard traversal across native scroll stops",
+    "head": {
+      "ref": "codex/lab-keyboard-traversal",
+      "sha": "3254fda4fcd61a101cc09e6b68fbdbb4d2779604"
+    },
+    "base": {
+      "ref": "dev",
+      "sha": "500d4a65211ffe607fde6b3ce7505027b45bb59e"
+    },
+    "updated_at": "2026-10-27T21:23:18Z"
+  },
+  "scope": "Derived API snapshot for duplicate and ownership checks. No PR edit, full review or CI acceptance. PR base SHA differs from ls-remote snapshot; experiment freezes the latter."
+}
