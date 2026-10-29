@@ -31,9 +31,9 @@
 <p align="center">
   <a href="https://github.com/tt-a1i/archify/stargazers"><img src="https://img.shields.io/github/stars/tt-a1i/archify?style=flat-square&amp;color=E5B650&amp;logo=github&amp;label=Stars" alt="GitHub stars" /></a>
   <a href="https://skills.sh/tt-a1i/archify/archify"><img src="https://img.shields.io/badge/installs-130K%2B-0EA5E9?style=flat-square" alt="130K+ installs on skills.sh" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT License" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-22c55e?style=flat-square" alt="Apache License 2.0" /></a>
   <a href="#安装方式"><img src="https://img.shields.io/badge/works_with-Claude_Code_%7C_Codex_%7C_Cursor_%7C_OpenCode-7C3AED?style=flat-square" alt="Works with Claude Code, Codex, Cursor, and OpenCode" /></a>
-  <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.1.1--dev.1-0891b2?style=flat-square" alt="Development version 3.1.1-dev.1" /></a>
+  <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.2.1--dev.1-0891b2?style=flat-square" alt="Development version 3.2.1-dev.1" /></a>
 </p>
 
 <p align="center">
@@ -64,6 +64,12 @@ https://github.com/user-attachments/assets/88cff7dd-bdf3-4b97-950c-37cc079898b1
 npx skills add tt-a1i/archify -g
 ```
 
+**让 AI Agent 安装。** 把下面这句原样发给 Agent：
+
+```text
+Install Archify for me by reading https://raw.githubusercontent.com/tt-a1i/archify/main/llms.txt
+```
+
 把这句话发给你的 Agent：
 
 ```text
@@ -76,6 +82,24 @@ API 优先读取 Redis，缓存未命中时查询 PostgreSQL 并回填缓存。
 **不需要绑定代码库：**从描述开始即可。也可以让 Agent 阅读仓库，生成有源码依据的架构图。
 
 [按 Agent 选择安装方式](https://archify.si/zh/start?agent=cursor&type=architecture) · [安装细节与更新检查](#快速开始)
+
+## 问一个问题，得到一页讲清楚的答案
+
+不是每个答案都是一张图。让 agent 用一页来回答，Archify 会生成一份 **explainer**：先给结论，再按问题分成几个面板，用表格、步骤、图表、代码和经过校验的图把理由讲清楚。
+
+[![一页式解答：结论在前，步骤和它讲解的流程图左右并排](docs/assets/explainer-p99-zh.png)](https://archify.si/cases/explainer/p99-tail-latency.html)
+
+- **结论先行。** 先写答案和理由，每个面板只回答一个问题。
+- **图和文字一起讲。** 步骤放在它讲解的图旁边，读到哪一步，图上就亮起哪一部分；点任意节点进入完整的交互图。
+- **能核对。** 结论标注编号来源；仓库代码固定到具体提交，悬停即可看到原文。
+- **好分享。** 一个 HTML 文件，四种样式，浅色深色都有；可导出 PNG、WebP、JPG 长图或打印成 PDF。对任何面板都能追问，生成的追问让 agent 只改这一块。
+
+```text
+用 Archify 一页回答：接口 P99 从 80 ms 涨到 600 ms，平均值几乎没变，
+可能是什么原因，应该怎么排查？
+```
+
+在线示例：[P99 延迟排查](https://archify.si/cases/explainer/p99-tail-latency.html) · [读 Archify 仓库：finalize 怎么保住旧产物](https://archify.si/cases/explainer/finalize-delivery.html) · [第一次租房要确认什么](https://archify.si/cases/explainer/first-rental.html) · [第一次打开 HTTPS 网站（英文）](https://archify.si/cases/explainer/tls-first-visit.html)
 
 <a id="sponsors"></a>
 
@@ -197,7 +221,7 @@ Export 菜单支持复制 PNG，并下载静态或动态格式：
 
 ## 快速开始
 
-**当前开发版本：** `v3.1.1-dev.1`。详见[版本历史](CHANGELOG.md#unreleased)。
+**当前开发版本：** `v3.2.1-dev.1`。详见[版本历史](CHANGELOG.md#unreleased)。
 
 ### 1. 安装
 
@@ -205,14 +229,30 @@ Export 菜单支持复制 PNG，并下载静态或动态格式：
 npx skills add tt-a1i/archify -g
 ```
 
-<details>
-<summary>更多安装方式与更新检查说明</summary>
+**让 AI Agent 安装**
 
-显式、非交互地安装到 Cursor：
+把下面这句原样发给 Agent：
+
+```text
+Install Archify for me by reading https://raw.githubusercontent.com/tt-a1i/archify/main/llms.txt
+```
+
+也可以直接非交互安装。`--agent` 写一个，或为每个切换器目标各写一次（`cursor`、`codex`、`claude-code`、`opencode`、`github-copilot`）。`--copy` 会复制 Skill，而不是创建符号链接：
+
+只安装到 Cursor：
 
 ```bash
 npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
 ```
+
+或者，仅在需要全部五个 Agent 时运行：
+
+```bash
+npx -y skills add tt-a1i/archify --skill archify --agent cursor --agent codex --agent claude-code --agent opencode --agent github-copilot --global --copy --yes
+```
+
+<details>
+<summary>更多安装方式与更新检查说明</summary>
 
 如果只想临时体验：
 
@@ -220,7 +260,7 @@ npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy 
 npx skills use tt-a1i/archify@archify --agent codex
 ```
 
-DeepSeek Harness（社区集成、显式启用）：运行 `dsh plugin --profile web add @tt-a1i/archify-dsh@1.0.0`；参见[兼容范围、限制与安全说明](integrations/deepseek-harness/README.md)。[Agent 切换器](https://archify.si/zh/start?agent=cursor&type=architecture)只为 `cursor`、`codex`、`claude-code` 和 `opencode` 生成命令。
+DeepSeek Harness（社区集成、显式启用）：运行 `dsh plugin --profile web add @tt-a1i/archify-dsh@1.0.0`；参见[兼容范围、限制与安全说明](integrations/deepseek-harness/README.md)。[Agent 切换器](https://archify.si/zh/start?agent=cursor&type=architecture)为 `cursor`、`codex`、`claude-code`、`opencode` 和 `github-copilot` 生成命令。
 
 安装后的 Skill 包含一个低频、失败静默的发布检查，它最多只显示可选更新提醒，绝不会自行下载或安装更新。一次成功检查后，下次网络请求通常约在 24 小时（±20%）后发出；检查失败后，活跃使用可能在首次 6 小时、后续 24 小时退避到期时重试。请求只访问 `https://archify.si/skill-updates/archify/stable.json`。服务端会自然获得 IP、请求时间和常规 HTTP 元数据；检查器不会发送本地版本、Agent、项目数据、用户输入、账户/设备标识，也不会保存或回传 ETag。是否更新以及何时更新始终由你决定。如需完全关闭检查（包括网络请求和提醒状态写入），请在 Agent 环境中设置 `ARCHIFY_UPDATE_CHECK_DISABLED=1`。
 
@@ -401,7 +441,7 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 }
 ```
 
-不设置 `animation` 时结果完全静态；`classic` 始终是默认视觉预设。设计评审、发布说明和技术文档可以显式选择 `editorial`，获得暖纸张与深墨色的编辑风格，同时保持几何完全不变。将 `meta.locale` 设为任意合法语言标签，可选择 `<html lang>`、默认图例、无障碍文案和所有固定 Viewer UI。`en`、`zh-CN`、`zh-TW`、`es` 与 `ko` 已内置，只需设置 `meta.locale`；`meta.translations`（规范消息键到译文字符串的映射）可逐键覆盖，其余文案保持所选语言。其他语言需在该字段中提供完整目录（参见 `archify/examples/locales/`），否则渲染器回退为英文并在 stderr 中说明。作者编写的标题、节点、关系和卡片不会被机器翻译。未带该字段的旧文件仍然有效，并默认使用英文。对于既未内置也未提供 `meta.translations` 的创作语言，应省略 `meta.locale`、保持 authored content 使用用户要求的语言，并主动告知用户固定 Viewer UI 与 `<html lang>` 回退为英文，因此该成品不属于完整本地化。
+不设置 `animation` 时结果完全静态；`classic` 始终是默认视觉预设。设计评审、发布说明和技术文档可以显式选择 `editorial`，获得暖纸张与深墨色的编辑风格，同时保持几何完全不变。将 `meta.locale` 设为任意合法语言标签，可选择 `<html lang>`、默认图例、无障碍文案和所有固定 Viewer UI。`en`、`zh-CN`、`zh-TW`、`es`、`ko` 与 `ar` 已内置，只需设置 `meta.locale`；`meta.translations`（规范消息键到译文字符串的映射）可逐键覆盖，其余文案保持所选语言。其他语言需在该字段中提供完整目录（参见 `archify/examples/locales/`），否则渲染器回退为英文并在 stderr 中说明。作者编写的标题、节点、关系和卡片不会被机器翻译。未带该字段的旧文件仍然有效，并默认使用英文。对于既未内置也未提供 `meta.translations` 的创作语言，应省略 `meta.locale`、保持 authored content 使用用户要求的语言，并主动告知用户固定 Viewer UI 与 `<html lang>` 回退为英文，因此该成品不属于完整本地化。
 
 </details>
 
@@ -468,13 +508,15 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 
 ## 官方入口与第三方服务
 
-- **开源项目：** 源码和安装包可按 [MIT 协议](LICENSE)免费使用。
+- **开源项目：** 当前源码及由其构建的安装包可按 [Apache-2.0 协议](LICENSE)使用；历史发行版保留原有许可。
 - **官方网站：** [archify.si](https://archify.si) 目前提供项目介绍、示例和安装指引。
 - **第三方服务：** 是否收费、如何处理数据、提供什么支持，由第三方运营方决定。名称或域名相似不代表官方合作。
 
 ## License
 
-[MIT](LICENSE) —— 可以自由使用、修改和分发。
+[Apache-2.0](LICENSE) —— 可以自由使用、修改和分发。
+
+历史 MIT 授权继续有效，见 [NOTICE](NOTICE) 和 [LICENSE-MIT](LICENSE-MIT)。第三方组件保留各自许可；软件许可不改变用户原创内容的权属，也不授予一般性的 Archify 商标使用权。
 
 ## 参与贡献
 
@@ -507,6 +549,12 @@ node bin/archify.mjs deliver workflow examples/agent-tool-call.workflow.json /tm
 </details>
 
 使用、分享、反馈问题和贡献改进，也都是对项目的支持。
+
+## 贡献者
+
+感谢每一位参与构建 Archify 的人。[欢迎关注他们。](https://github.com/tt-a1i/archify/graphs/contributors) ❤️
+
+<p align="center"><a href="https://github.com/tt-a1i/archify/graphs/contributors"><img alt="Archify 贡献者" src="https://raw.githubusercontent.com/tt-a1i/archify/contributors/contributors.svg" width="1000" /></a></p>
 
 ## Star History
 

@@ -31,9 +31,9 @@
 <p align="center">
   <a href="https://github.com/tt-a1i/archify/stargazers"><img src="https://img.shields.io/github/stars/tt-a1i/archify?style=flat-square&amp;color=E5B650&amp;logo=github&amp;label=Stars" alt="GitHub stars" /></a>
   <a href="https://skills.sh/tt-a1i/archify/archify"><img src="https://img.shields.io/badge/installs-130K%2B-0EA5E9?style=flat-square" alt="130K+ installs on skills.sh" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="MIT License" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-22c55e?style=flat-square" alt="Apache License 2.0" /></a>
   <a href="#installation-options"><img src="https://img.shields.io/badge/works_with-Claude_Code_%7C_Codex_%7C_Cursor_%7C_OpenCode-7C3AED?style=flat-square" alt="Works with Claude Code, Codex, Cursor, and OpenCode" /></a>
-  <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.1.1--dev.1-0891b2?style=flat-square" alt="Development version 3.1.1-dev.1" /></a>
+  <a href="CHANGELOG.md#unreleased"><img src="https://img.shields.io/badge/version-3.2.1--dev.1-0891b2?style=flat-square" alt="Development version 3.2.1-dev.1" /></a>
 </p>
 
 <p align="center">
@@ -64,6 +64,12 @@ Works with Cursor, Claude Code, Codex CLI, and OpenCode. See installation option
 npx skills add tt-a1i/archify -g
 ```
 
+**With an AI agent.** Paste this:
+
+```text
+Install Archify for me by reading https://raw.githubusercontent.com/tt-a1i/archify/main/llms.txt
+```
+
 Send this to your agent:
 
 ```text
@@ -76,6 +82,24 @@ Then continue: “Add authentication”, “Highlight the cache-miss path”, or
 **No repository is required:** start with a description, or ask your agent to read a repository for a source-backed architecture diagram.
 
 [Choose your agent](https://archify.si/start.html?agent=cursor&type=architecture) · [Installation details and update checks](#quick-start)
+
+## Ask a question, get a one-page answer
+
+Not every answer is one diagram. Ask your agent to answer as a page and Archify builds an **explainer**: the conclusion first, then one panel per question, with tables, steps, charts, code and validated diagrams.
+
+[![An explainer page: the answer first, then steps beside the sequence diagram they walk through](docs/assets/explainer-tls-en.png)](https://archify.si/cases/explainer/tls-first-visit.html)
+
+- **Conclusion first.** The answer and its reasons lead; every panel takes one question.
+- **Diagrams that explain.** Steps sit beside the diagram they walk through and light its parts as you read. Click any node to open the full interactive view.
+- **Easy to check.** Claims cite numbered sources; repository excerpts are pinned to a commit and open in a source card.
+- **Easy to share.** One HTML file with four styles and light or dark themes. Export a PNG, WebP or JPG long image, or print to PDF. Ask about any panel to get a follow-up your agent can use to revise just that panel.
+
+```text
+Use Archify to answer as one page: our API's P99 went from 80 ms to 600 ms
+while the mean barely moved. What is the likely cause, and how should we investigate?
+```
+
+Live examples: [First HTTPS visit](https://archify.si/cases/explainer/tls-first-visit.html) · [P99 latency (Chinese)](https://archify.si/cases/explainer/p99-tail-latency.html) · [How Archify finalize keeps the last good file, read from this repository (Chinese)](https://archify.si/cases/explainer/finalize-delivery.html) · [First rental checklist (Chinese)](https://archify.si/cases/explainer/first-rental.html)
 
 <a id="sponsors"></a>
 
@@ -197,7 +221,7 @@ Open [`examples/web-app.html`](examples/web-app.html) locally to try the complet
 
 ## Quick start
 
-**Current development version:** `v3.1.1-dev.1`. See [Changelog](CHANGELOG.md#unreleased).
+**Current development version:** `v3.2.1-dev.1`. See [Changelog](CHANGELOG.md#unreleased).
 
 ### 1. Install
 
@@ -205,14 +229,30 @@ Open [`examples/web-app.html`](examples/web-app.html) locally to try the complet
 npx skills add tt-a1i/archify -g
 ```
 
-<details>
-<summary>More installation options and update-check details</summary>
+**With an AI agent**
 
-For an explicit, non-interactive Cursor install:
+Paste this to your agent:
+
+```text
+Install Archify for me by reading https://raw.githubusercontent.com/tt-a1i/archify/main/llms.txt
+```
+
+Or install without prompts. Pass one agent, or repeat `--agent` for every switcher target (`cursor`, `codex`, `claude-code`, `opencode`, `github-copilot`). `--copy` copies the skill instead of symlinking:
+
+Cursor only:
 
 ```bash
 npx -y skills add tt-a1i/archify --skill archify --agent cursor --global --copy --yes
 ```
+
+Or, only if you want all five agents:
+
+```bash
+npx -y skills add tt-a1i/archify --skill archify --agent cursor --agent codex --agent claude-code --agent opencode --agent github-copilot --global --copy --yes
+```
+
+<details>
+<summary>More installation options and update-check details</summary>
 
 To try without installing:
 
@@ -222,7 +262,7 @@ npx skills use tt-a1i/archify@archify --agent codex
 
 [DSH community opt-in](integrations/deepseek-harness/README.md): `dsh plugin --profile web add @tt-a1i/archify-dsh@1.0.0`
 
-The [agent switcher](https://archify.si/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, and `opencode`.
+The [agent switcher](https://archify.si/start.html?agent=cursor&type=architecture) covers `cursor`, `codex`, `claude-code`, `opencode`, and `github-copilot`.
 
 Archify may GET the fixed stable manifest solely to show an optional reminder; it never downloads or installs updates. Successful checks wait about 24 hours (±20%); active use retries failures after 6, then 24 hours. The server sees normal HTTP metadata (IP and time), but receives no version, Agent, project data, prompts, account/device ID, or ETag. You decide whether and when to update. Set `ARCHIFY_UPDATE_CHECK_DISABLED=1` to disable networking and reminder-state writes.
 
@@ -400,7 +440,7 @@ Settings:
 }
 ```
 
-`meta.locale` localizes page title, Legend, states/errors, a11y, HTML/SVG `lang`—never authored content. `en`, `zh-CN`, `zh-TW`, `es`, and `ko` are bundled and need only `meta.locale`; `meta.translations` (canonical message key → translated string) overrides individual keys and keeps the rest of the language. Other languages supply their catalog there (see `archify/examples/locales/`), or the renderer falls back to English and discloses it. Static omits `animation`; `classic` defaults.
+`meta.locale` localizes page title, Legend, states/errors, a11y, HTML/SVG `lang`—never authored content. `en`, `zh-CN`, `zh-TW`, `es`, `ko`, and `ar` are bundled and need only `meta.locale`; `meta.translations` (canonical message key → translated string) overrides individual keys and keeps the rest of the language. Other languages supply their catalog there (see `archify/examples/locales/`), or the renderer falls back to English and discloses it. Static omits `animation`; `classic` defaults.
 
 </details>
 
@@ -464,13 +504,15 @@ Connect with other users and developers, share ideas, request features, report b
 
 ## Official channels and third-party services
 
-- **Open-source project:** The source code and installation packages are free to use under the [MIT License](LICENSE).
+- **Open-source project:** Current source and packages built from it are available under the [Apache License 2.0](LICENSE); previously published releases retain their original licenses.
 - **Official website:** [archify.si](https://archify.si) currently provides project information, examples, and installation guidance.
 - **Third-party services:** Pricing, data handling, and support are determined by the respective provider. A similar name or domain does not establish an official affiliation.
 
 ## License
 
-[MIT](LICENSE) — free to use, modify, and distribute.
+[Apache-2.0](LICENSE) — free to use, modify, and distribute.
+
+Historical MIT grants remain in effect; see [NOTICE](NOTICE) and [LICENSE-MIT](LICENSE-MIT). Third-party components retain their own licenses. The software license does not change ownership of your authored content or grant general permission to use Archify trademarks.
 
 ## Contributing
 
@@ -501,6 +543,12 @@ Scan the QR code below with Alipay, or save it and open it in Alipay to scan.
 </details>
 
 Using Archify, sharing it, reporting bugs, and contributing improvements are also ways to help.
+
+## Contributors
+
+Thanks to everyone who helped build Archify. [Go follow them.](https://github.com/tt-a1i/archify/graphs/contributors) ❤️
+
+<p align="center"><a href="https://github.com/tt-a1i/archify/graphs/contributors"><img alt="Archify contributors" src="https://raw.githubusercontent.com/tt-a1i/archify/contributors/contributors.svg" width="1000" /></a></p>
 
 ## Star History
 

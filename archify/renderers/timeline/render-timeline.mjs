@@ -149,7 +149,8 @@ const multiDay = (() => {
 })();
 function clockLabel(ms, { seconds = showSeconds, date = multiDay } = {}) {
   const w = wall(ms);
-  return `${date ? `${w.mo}-${w.d} ` : ''}${w.h}:${w.mi}${seconds ? `:${w.s}` : ''}`;
+  const fraction = new Date(ms).getUTCMilliseconds();
+  return `${date ? `${w.mo}-${w.d} ` : ''}${w.h}:${w.mi}${seconds ? `:${w.s}${fraction ? `.${String(fraction).padStart(3, '0')}` : ''}` : ''}`;
 }
 
 function durationLabel(ms) {
@@ -561,15 +562,17 @@ function buildLayoutReport() {
 }
 
 if (layoutJsonMode) {
-  console.log(JSON.stringify(buildLayoutReport(), null, 2));
-  process.exit(0);
+  // No process.exit() here: let the write drain first, since exit would
+  // discard the part of the report still buffered for a pipe.
+  process.stdout.write(`${JSON.stringify(buildLayoutReport(), null, 2)}\n`);
+} else {
+  writeDiagram({
+    outPath,
+    template,
+    diagramType: 'timeline',
+    meta: tl.meta,
+    svg: renderSvg(),
+    cards: tl.cards,
+    sourceEvidence,
+  });
 }
-writeDiagram({
-  outPath,
-  template,
-  diagramType: 'timeline',
-  meta: tl.meta,
-  svg: renderSvg(),
-  cards: tl.cards,
-  sourceEvidence,
-});
