@@ -32,3 +32,14 @@ test('claim evidence reports dangling IDs without changing legacy documents', ()
   assert.ok(invalid.diagnostics.some(diagnostic => diagnostic.code === 'explainer/unresolved-reference'));
   assert.equal(validateExplainer(documentOf()).ok, true);
 });
+
+test('claim evidence rejects an ID shared by a source and content target', () => {
+  const document = documentOf(['latency-chart']);
+  document.sources[0].id = 'latency-chart';
+  const result = validateExplainer(document);
+  assert.equal(result.ok, false);
+  assert.ok(result.diagnostics.some(diagnostic => (
+    diagnostic.code === 'explainer/ambiguous-reference'
+    && diagnostic.subject.path === '/answer/evidence/0'
+  )));
+});
