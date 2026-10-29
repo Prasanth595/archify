@@ -10,6 +10,13 @@ Its MIT and EPL-2.0 notices, authorship, source URLs and byte identities are kep
 in that directory. They are research fixtures, not Archify runtime dependencies;
 see `upstream-frontend/README.md` for the manually projected data and limitations.
 
+The later `upstream-cli/` packet records execution of the official task-view
+v1.2.0 portable release at the same a3fa217 revision. Its native generated HTML
+retains upstream browser assets; the original MIT notice and complete release
+THIRD_PARTY_LICENSES.txt, including EPL-2.0, accompany the archived sources and
+outputs. Only machine paths in public HTML/evidence copies are replaced;
+original/public hashes are recorded. The executable is not distributed here.
+
 Inspiration: gtindo/task-view, commit f27b8bef63ec336b8e3487e90ccd484a2fa7a235.
 The top-level project is MIT. Its vendor/LICENSES.txt separately lists Cytoscape.js
 and cytoscape-elk under MIT and elkjs under EPL-2.0; the project label is not a

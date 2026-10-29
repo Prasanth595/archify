@@ -66,3 +66,11 @@
 same-fact graph-scope observations, actual screenshots and reproducible pages.
 It does not replace the original artifact or constitute a task-view CLI/Git/schema
 validation run. No new PR was created for this follow-up.
+
+[Round 64: native CLI comparison](upstream-cli/README.md) now runs the official
+portable task-view 1.2.0 release on an explicitly authored public-schema
+projection of the same historical mapping. After preserving and correcting the
+first draft's `at` misuse, five references validate and the out-of-range control
+fails. Native HTML and actual screenshots are archived; historical tests remain
+unexecuted, and the original Archify artifact is unchanged. This does not
+retroactively turn the earlier front-end fixture into a CLI-generated page.
