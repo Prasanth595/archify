@@ -1,0 +1,78 @@
+{
+  "scope": "Derived GET metadata and bounded issue/PR keyword search results; no comments, mutations or full PR review.",
+  "results": [
+    {
+      "key": "temporal-1320",
+      "url": "https://api.github.com/repos/temporalio/ui/issues/1320",
+      "number": 1320,
+      "title": "Provide clear visual indication when WFTScheduled get collapsed due to recurring WFTTimedOut",
+      "state": "open",
+      "updated_at": "2023-04-20T21:34:03Z",
+      "html_url": "https://github.com/temporalio/ui/issues/1320"
+    },
+    {
+      "key": "temporal-2262",
+      "url": "https://api.github.com/repos/temporalio/ui/issues/2262",
+      "number": 2262,
+      "title": "UI shows stale information about WorkflowTaskFailed and doesn't update",
+      "state": "open",
+      "updated_at": "2024-08-12T11:32:27Z",
+      "html_url": "https://github.com/temporalio/ui/issues/2262"
+    },
+    {
+      "key": "archify-1015",
+      "url": "https://api.github.com/repos/tt-a1i/archify/pulls/1015",
+      "number": 1015,
+      "title": "feat(explainer): improve visual hierarchy, KPI deltas, code focus, and interactive details",
+      "state": "open",
+      "draft": true,
+      "head": "fe4f80d2195e0a7b49b7cfe6d3dba7ffd31a7ac8",
+      "base": "ba701d20a55ed6f139484d9ead7ff45671fe40eb",
+      "html_url": "https://github.com/tt-a1i/archify/pull/1015"
+    },
+    {
+      "key": "Temporal-issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20Temporal&per_page=20",
+      "total_count": 0,
+      "items": []
+    },
+    {
+      "key": "Temporal-pr",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20Temporal&per_page=20",
+      "total_count": 1,
+      "items": [
+        {
+          "number": 1102,
+          "title": "Integrate reviewed maintenance fixes and Viewer contracts into dev",
+          "state": "closed",
+          "html_url": "https://github.com/tt-a1i/archify/pull/1102"
+        }
+      ]
+    },
+    {
+      "key": "twoslash-issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20twoslash&per_page=20",
+      "total_count": 0,
+      "items": []
+    },
+    {
+      "key": "twoslash-pr",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20twoslash&per_page=20",
+      "total_count": 0,
+      "items": []
+    },
+    {
+      "key": "shiki-issue",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Aissue%20shiki&per_page=20",
+      "total_count": 0,
+      "items": []
+    },
+    {
+      "key": "shiki-pr",
+      "url": "https://api.github.com/search/issues?q=repo%3Att-a1i%2Farchify%20is%3Apr%20shiki&per_page=20",
+      "total_count": 0,
+      "items": []
+    }
+  ],
+  "recordedAt": "2026-10-29T14:00:00.768181+00:00"
+}

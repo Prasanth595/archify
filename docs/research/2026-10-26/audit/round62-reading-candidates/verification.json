@@ -1,0 +1,67 @@
+{
+  "sourceFilesVerified": 15,
+  "fixtureSummary": {
+    "completed": {
+      "events": 18,
+      "nextPageToken": null,
+      "completedEvents": [
+        {
+          "id": "4",
+          "type": "WorkflowTaskCompleted"
+        },
+        {
+          "id": "11",
+          "type": "WorkflowTaskCompleted"
+        },
+        {
+          "id": "14",
+          "type": "ActivityTaskCompleted"
+        },
+        {
+          "id": "17",
+          "type": "WorkflowTaskCompleted"
+        },
+        {
+          "id": "18",
+          "type": "WorkflowExecutionCompleted"
+        }
+      ],
+      "last": {
+        "id": "18",
+        "type": "WorkflowExecutionCompleted"
+      },
+      "activityAttempts": [
+        1
+      ]
+    },
+    "running": {
+      "events": 13,
+      "nextPageToken": null,
+      "completedEvents": [
+        {
+          "id": "4",
+          "type": "WorkflowTaskCompleted"
+        },
+        {
+          "id": "12",
+          "type": "WorkflowTaskCompleted"
+        }
+      ],
+      "last": {
+        "id": "13",
+        "type": "ActivityTaskScheduled"
+      },
+      "activityAttempts": []
+    }
+  },
+  "pendingActivities": {
+    "count": 2,
+    "attempts": [
+      1,
+      1
+    ],
+    "allLastFailuresNull": true
+  },
+  "shikiCommittedSnapshotContainsReadonlyDiagnostic": true,
+  "scope": "Archive integrity and static fixture inspection only; no producer, UI, TypeScript, import, or product tests."
+}

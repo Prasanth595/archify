@@ -1,0 +1,170 @@
+{
+  "scope": "Complete UTF-8 file bodies fetched from fixed raw GitHub commit URLs. Git blob values are computed locally, not separately verified against upstream tree metadata.",
+  "files": [
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/LICENSE",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "LICENSE",
+      "localPath": "temporal/sources/LICENSE",
+      "bytes": 1107,
+      "sha256": "38166aef0f113c627bd37a84c275c8ad9d7005915d75b7f97e8c553b08773d50",
+      "computedGitBlob": "4b882ddad68685fbcf9ec74e47771107bfa6c628"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/fixtures/raw-events.ascending.completed.json",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/fixtures/raw-events.ascending.completed.json",
+      "localPath": "temporal/sources/src/fixtures/raw-events.ascending.completed.json",
+      "bytes": 11376,
+      "sha256": "ecb8ca85c06b371fb2838681da5da53fa1347c2a70b86fa83ce7e45af9400c65",
+      "computedGitBlob": "3e6b9e67f7dc0a911a5df4043ab919a1880393b4"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/fixtures/raw-events.ascending.running.json",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/fixtures/raw-events.ascending.running.json",
+      "localPath": "temporal/sources/src/fixtures/raw-events.ascending.running.json",
+      "bytes": 9443,
+      "sha256": "1f1cff9546cbf4f9ce5b68e383ff576c3d57b61ac48da54e7719291791ad8fb2",
+      "computedGitBlob": "bb67394ce676c1813980ded26d2eeb5dd5df02f9"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/fixtures/workflow.pending-activities.json",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/fixtures/workflow.pending-activities.json",
+      "localPath": "temporal/sources/src/fixtures/workflow.pending-activities.json",
+      "bytes": 4018,
+      "sha256": "2a14e8c221fa6b51ce64f82e788d38a883548b79eb5235b770621bdfa30d5041",
+      "computedGitBlob": "410dcc67c477aaa5de574e32259ea59f73e9e6d4"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/lib/components/import/event-history-file-import.svelte",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/lib/components/import/event-history-file-import.svelte",
+      "localPath": "temporal/sources/src/lib/components/import/event-history-file-import.svelte",
+      "bytes": 2624,
+      "sha256": "f3ba41733ec9aab1d0bbd5f98bd000e23df47108220b2644d8254d1dd9092364",
+      "computedGitBlob": "d40d44aac5bd8bd668ec09a5eaba9ac6364058d8"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/lib/components/lines-and-dots/workflow-pending-task.svelte",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/lib/components/lines-and-dots/workflow-pending-task.svelte",
+      "localPath": "temporal/sources/src/lib/components/lines-and-dots/workflow-pending-task.svelte",
+      "bytes": 1646,
+      "sha256": "19d999b89e85d736adafdda7c7375b718261affee6d4bbdcae770f604f56af9e",
+      "computedGitBlob": "3be4bb1dcb2749088e611eb0e567a7b6bbf88035"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/lib/components/workflow/pending-attempt-badge/pending-attempt-badge.svelte",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/lib/components/workflow/pending-attempt-badge/pending-attempt-badge.svelte",
+      "localPath": "temporal/sources/src/lib/components/workflow/pending-attempt-badge/pending-attempt-badge.svelte",
+      "bytes": 1272,
+      "sha256": "fedb7d8ff71dfa8c6ac301ac2866b6fbbb9b17b9bad80d65145bdcf1486db154",
+      "computedGitBlob": "dab74dc5976e6c225fe9c0bf3472ebf7414a5041"
+    },
+    {
+      "id": "temporal",
+      "url": "https://raw.githubusercontent.com/temporalio/ui/c75f7143cb902871da2e6e14a125deb3179da9d7/src/lib/components/lines-and-dots/event-history-legend.svelte",
+      "repo": "temporalio/ui",
+      "sha": "c75f7143cb902871da2e6e14a125deb3179da9d7",
+      "path": "src/lib/components/lines-and-dots/event-history-legend.svelte",
+      "localPath": "temporal/sources/src/lib/components/lines-and-dots/event-history-legend.svelte",
+      "bytes": 3617,
+      "sha256": "d61cdf5c90cf999fdb33a2d2a9c85dc435ce5ccee304686802767e75c14d6b3b",
+      "computedGitBlob": "15355d5d35c7f414e788c0c2f9f38b72df926230"
+    },
+    {
+      "id": "shiki",
+      "url": "https://raw.githubusercontent.com/shikijs/shiki/f7d0167873fd676fe4e190bc9b53832fba9ee01d/LICENSE",
+      "repo": "shikijs/shiki",
+      "sha": "f7d0167873fd676fe4e190bc9b53832fba9ee01d",
+      "path": "LICENSE",
+      "localPath": "shiki/sources/LICENSE",
+      "bytes": 1121,
+      "sha256": "7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee",
+      "computedGitBlob": "6a627184d44ec1995fc649fc5ca7d79ce2612e5a"
+    },
+    {
+      "id": "shiki",
+      "url": "https://raw.githubusercontent.com/shikijs/shiki/f7d0167873fd676fe4e190bc9b53832fba9ee01d/packages/twoslash/test/rich.test.ts",
+      "repo": "shikijs/shiki",
+      "sha": "f7d0167873fd676fe4e190bc9b53832fba9ee01d",
+      "path": "packages/twoslash/test/rich.test.ts",
+      "localPath": "shiki/sources/packages/twoslash/test/rich.test.ts",
+      "bytes": 4664,
+      "sha256": "d942d614cd46511f54e2d57f52c963b99cc4f2f4110a2035657a70efcf9bb2c8",
+      "computedGitBlob": "264c7272f011a2666bdd776e985034e60d4ca452"
+    },
+    {
+      "id": "shiki",
+      "url": "https://raw.githubusercontent.com/shikijs/shiki/f7d0167873fd676fe4e190bc9b53832fba9ee01d/packages/twoslash/test/out/rich/line-query.html",
+      "repo": "shikijs/shiki",
+      "sha": "f7d0167873fd676fe4e190bc9b53832fba9ee01d",
+      "path": "packages/twoslash/test/out/rich/line-query.html",
+      "localPath": "shiki/sources/packages/twoslash/test/out/rich/line-query.html",
+      "bytes": 15180,
+      "sha256": "5fbe410e8ee710aaf68eb4cea0f6ce59793906dbb54c6c8f0a457733ee3290f1",
+      "computedGitBlob": "f95e6ff206857a30088780b26ede6a93078b0e77"
+    },
+    {
+      "id": "shiki",
+      "url": "https://raw.githubusercontent.com/shikijs/shiki/f7d0167873fd676fe4e190bc9b53832fba9ee01d/packages/twoslash/src/renderer-rich.ts",
+      "repo": "shikijs/shiki",
+      "sha": "f7d0167873fd676fe4e190bc9b53832fba9ee01d",
+      "path": "packages/twoslash/src/renderer-rich.ts",
+      "localPath": "shiki/sources/packages/twoslash/src/renderer-rich.ts",
+      "bytes": 20041,
+      "sha256": "2002f9203a7347db77917f05cd3eed8956ffbdb1438e8422dca8c68696661342",
+      "computedGitBlob": "6d60adf5e7dc9cafc276fad1b4c355c0d2157731"
+    },
+    {
+      "id": "shiki",
+      "url": "https://raw.githubusercontent.com/shikijs/shiki/f7d0167873fd676fe4e190bc9b53832fba9ee01d/docs/packages/twoslash.md",
+      "repo": "shikijs/shiki",
+      "sha": "f7d0167873fd676fe4e190bc9b53832fba9ee01d",
+      "path": "docs/packages/twoslash.md",
+      "localPath": "shiki/sources/docs/packages/twoslash.md",
+      "bytes": 17260,
+      "sha256": "db54e6273bf78538dc4d4a49d885aadfa7caf035a71f2609c21610a138372abb",
+      "computedGitBlob": "b4296296d0582e8496f93cac3a931928045adcee"
+    },
+    {
+      "id": "twoslash",
+      "url": "https://raw.githubusercontent.com/twoslashes/twoslash/e88c8708deb8d63349f48d840b1cd74cb807a7ce/LICENSE",
+      "repo": "twoslashes/twoslash",
+      "sha": "e88c8708deb8d63349f48d840b1cd74cb807a7ce",
+      "path": "LICENSE",
+      "localPath": "twoslash/sources/LICENSE",
+      "bytes": 1222,
+      "sha256": "3f0931753d9fe9fe535483b28b3c771e539bb19cfce3bc13fa265f938596ed21",
+      "computedGitBlob": "95474e8d305502367ac776a0fa5f9a61f94df4eb"
+    },
+    {
+      "id": "twoslash",
+      "url": "https://raw.githubusercontent.com/twoslashes/twoslash/e88c8708deb8d63349f48d840b1cd74cb807a7ce/packages/twoslash-protocol/src/types/nodes.ts",
+      "repo": "twoslashes/twoslash",
+      "sha": "e88c8708deb8d63349f48d840b1cd74cb807a7ce",
+      "path": "packages/twoslash-protocol/src/types/nodes.ts",
+      "localPath": "twoslash/sources/packages/twoslash-protocol/src/types/nodes.ts",
+      "bytes": 2494,
+      "sha256": "b5e87dd9e26851ea2181702fb0de070559868ea7b27371dd335ec6edb23b757e",
+      "computedGitBlob": "9951ec8a0bdbcd1c32d8b29778bbda568b18e53f"
+    }
+  ]
+}
