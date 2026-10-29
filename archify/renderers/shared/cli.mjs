@@ -246,7 +246,13 @@ export function writeDiagram({ outPath, template, diagramType, meta, svg, cards,
     explanations: diagram ? collectExplanations(diagramType, diagram) : null,
     readerUpdate: createReaderUpdateDisclosure({
       artifactType: diagramType,
-      content: JSON.stringify({ diagramType, title: meta.title, subtitle: meta.subtitle || '', svg, cards }),
+      content: JSON.stringify({
+        diagramType,
+        title: meta.title,
+        subtitle: meta.subtitle || '',
+        svg: svg.replace(/<g aria-hidden="true" data-semantic-sigil="[^"]+"[^>]*>[\s\S]*?<\/g>/g, ''),
+        cards,
+      }),
     }),
   });
   let candidatePath;
