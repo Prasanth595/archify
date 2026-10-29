@@ -27,8 +27,8 @@ test('both reader update clients bound manifest text before parsing', () => {
   const native = fs.readFileSync(path.join(root, 'viewer', 'reader-disclosure.js'), 'utf8');
   const explainer = fs.readFileSync(path.join(root, 'archify', 'explainer', 'reader.js'), 'utf8');
   for (const source of [native, explainer]) {
-    assert.match(source, /response\.body.*getReader/);
-    assert.match(source, /reader\.cancel/);
+    assert.match(source, /getReader/);
+    assert.match(source, /cancel/);
     assert.doesNotMatch(source, /response\.text\(\)/);
   }
 });

@@ -257,3 +257,42 @@ test('a malformed stable manifest cannot promote an artifact to a new version', 
   assert.doesNotMatch(result.result.value.trigger, /New version/i);
   assert.equal(result.result.value.notesHidden, true);
 });
+
+test('both readers reject oversized manifest bodies before they can show a version', {
+  skip: chrome ? false : 'Chrome is unavailable.',
+}, async (t) => {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'archify-reader-update-oversized-'));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const native = path.join(directory, 'native.html');
+  execFileSync(process.execPath, [path.join(root, 'archify/bin/archify.mjs'), 'render', 'workflow', path.join(root, 'archify/examples/agent-tool-call.workflow.json'), native]);
+  fs.writeFileSync(native, fs.readFileSync(native, 'utf8').replace(/"generatorVersion":"[^"]+"/, '"generatorVersion":"3.2.1"'));
+  const explainer = await renderExplainerArtifact(directory);
+  const browser = new ChromeVisualBrowser(chrome);
+  t.after(() => browser.close());
+  const session = await browser.sessionPromise;
+  const send = (method, params = {}) => browser.cdp.send(method, params, session);
+  const cases = [
+    { name: 'streamed body', response: "{ ok: true, headers: new Headers(), body: new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode('x'.repeat(65537))); controller.close(); } }) }" },
+    { name: 'declared content length', response: "{ ok: true, headers: new Headers({ 'content-length': '65537' }), body: new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode('{}')); controller.close(); } }) }" },
+  ];
+  const readers = [
+    { artifact: native, trigger: '#btn-reader-update', check: '#reader-update-check', status: '#reader-update-status', notes: '#reader-update-release-notes' },
+    { artifact: explainer, trigger: '[data-reader-update]', check: '[data-reader-update-check]', status: '[data-reader-update-status]', notes: '[data-reader-update-release-notes]' },
+  ];
+  for (const reader of readers) for (const scenario of cases) {
+    const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
+    await send('Page.navigate', { url: pathToFileURL(reader.artifact).href });
+    await loaded;
+    const invoked = await send('Runtime.evaluate', { expression: `window.fetch = () => Promise.resolve(${scenario.response}); document.querySelector(${JSON.stringify(reader.trigger)}).click(); document.querySelector(${JSON.stringify(reader.check)}).click();` });
+    assert.equal(invoked.exceptionDetails, undefined, `${reader.trigger} ${scenario.name}: ${invoked.exceptionDetails?.text}`);
+    let result;
+    for (let attempt = 0; attempt < 100; attempt += 1) {
+      result = await send('Runtime.evaluate', { returnByValue: true, expression: `({ status: document.querySelector(${JSON.stringify(reader.status)}).textContent, trigger: document.querySelector(${JSON.stringify(reader.trigger)}).textContent, notesHidden: document.querySelector(${JSON.stringify(reader.notes)}).hidden })` });
+      if (result.result.value.status === 'Update status unavailable. No update result was recorded.') break;
+      await new Promise(resolve => setTimeout(resolve, 10));
+    }
+    assert.equal(result.result.value.status, 'Update status unavailable. No update result was recorded.', `${reader.trigger} ${scenario.name}`);
+    assert.doesNotMatch(result.result.value.trigger, /New version/i);
+    assert.equal(result.result.value.notesHidden, true);
+  }
+});
