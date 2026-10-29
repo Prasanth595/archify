@@ -271,9 +271,19 @@ test('both readers reject oversized manifest bodies before they can show a versi
   t.after(() => browser.close());
   const session = await browser.sessionPromise;
   const send = (method, params = {}) => browser.cdp.send(method, params, session);
+  const validManifest = JSON.stringify(stableManifest());
+  const oversizedManifest = `${validManifest}${' '.repeat(65537 - validManifest.length + 1)}`;
   const cases = [
-    { name: 'streamed body', response: "{ ok: true, headers: new Headers(), body: new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode('x'.repeat(65537))); controller.close(); } }) }" },
-    { name: 'declared content length', response: "{ ok: true, headers: new Headers({ 'content-length': '65537' }), body: new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode('{}')); controller.close(); } }) }" },
+    {
+      name: 'streamed body',
+      response: `{ ok: true, headers: new Headers(), body: new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode(${JSON.stringify(oversizedManifest)})); }, cancel() { window.__archifyManifestStreamCancelled = true; } }) }`,
+      expectsCancellation: true,
+    },
+    {
+      name: 'declared content length',
+      response: `{ ok: true, headers: new Headers({ 'content-length': '65537' }), body: new ReadableStream({ start(controller) { controller.enqueue(new TextEncoder().encode(${JSON.stringify(validManifest)})); controller.close(); } }) }`,
+      expectsCancellation: false,
+    },
   ];
   const readers = [
     { artifact: native, trigger: '#btn-reader-update', check: '#reader-update-check', status: '#reader-update-status', notes: '#reader-update-release-notes' },
@@ -283,16 +293,17 @@ test('both readers reject oversized manifest bodies before they can show a versi
     const loaded = browser.cdp.waitFor('Page.loadEventFired', session);
     await send('Page.navigate', { url: pathToFileURL(reader.artifact).href });
     await loaded;
-    const invoked = await send('Runtime.evaluate', { expression: `window.fetch = () => Promise.resolve(${scenario.response}); document.querySelector(${JSON.stringify(reader.trigger)}).click(); document.querySelector(${JSON.stringify(reader.check)}).click();` });
+    const invoked = await send('Runtime.evaluate', { expression: `window.__archifyManifestStreamCancelled = false; window.fetch = () => Promise.resolve(${scenario.response}); document.querySelector(${JSON.stringify(reader.trigger)}).click(); document.querySelector(${JSON.stringify(reader.check)}).click();` });
     assert.equal(invoked.exceptionDetails, undefined, `${reader.trigger} ${scenario.name}: ${invoked.exceptionDetails?.text}`);
     let result;
     for (let attempt = 0; attempt < 100; attempt += 1) {
-      result = await send('Runtime.evaluate', { returnByValue: true, expression: `({ status: document.querySelector(${JSON.stringify(reader.status)}).textContent, trigger: document.querySelector(${JSON.stringify(reader.trigger)}).textContent, notesHidden: document.querySelector(${JSON.stringify(reader.notes)}).hidden })` });
+      result = await send('Runtime.evaluate', { returnByValue: true, expression: `({ status: document.querySelector(${JSON.stringify(reader.status)}).textContent, trigger: document.querySelector(${JSON.stringify(reader.trigger)}).textContent, notesHidden: document.querySelector(${JSON.stringify(reader.notes)}).hidden, streamCancelled: window.__archifyManifestStreamCancelled })` });
       if (result.result.value.status === 'Update status unavailable. No update result was recorded.') break;
       await new Promise(resolve => setTimeout(resolve, 10));
     }
     assert.equal(result.result.value.status, 'Update status unavailable. No update result was recorded.', `${reader.trigger} ${scenario.name}`);
     assert.doesNotMatch(result.result.value.trigger, /New version/i);
     assert.equal(result.result.value.notesHidden, true);
+    assert.equal(result.result.value.streamCancelled, scenario.expectsCancellation, `${reader.trigger} ${scenario.name}: stream cancellation`);
   }
 });
